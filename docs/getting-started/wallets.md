@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # Wallet
 
-The Bittensor wallet is the core ownership and identity technology around which all functionalities of the network are carried out. A wallet consists of a [coldkey](glossary/glossary)  and a [hotkey](glossary/glossary) pairing of two seperate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519) that are responsible for different functionalities within the ecosystem, but are logically connected via the API.
+The Bittensor wallet is the core ownership and identity technology around which all functionalities of the network are carried out. A wallet consists of a [coldkey](docs/intro)  and a [hotkey](docs/intro) pairing of two seperate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519) that are responsible for different functionalities within the ecosystem, but are logically connected via the API.
 
-The [coldkey](glossary/glossary) is encrypted on your device and is used to store funds securely and perform high risk operations, such as transfers and staking, while the [hotkey](glossary/glossary) is unencrypted, and used for less secure operations such as signing messages into the network, running miners, and validating the network.
+The [coldkey](docs/intro) is encrypted on your device and is used to store funds securely and perform high risk operations, such as transfers and staking, while the [hotkey](docs/intro) is unencrypted, and used for less secure operations such as signing messages into the network, running miners, and validating the network.
 
-Once you have [installed bittensor](getting-started/installation), you can create a wallet locally on your machine in two ways, described below. You can also create an [external wallet](#03-external-wallet) through the Bittensor website, or use a secondary tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). Both of these options allow you to use TAO without installing Bittensor.
+Once you have [installed bittensor](/docs/getting-started/installation), you can create a wallet locally on your machine in two ways, described below. You can also create an [external wallet](docs/intro) through the Bittensor website, or use a secondary tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). Both of these options allow you to use TAO without installing Bittensor.
 
 ### btcli
 
@@ -54,7 +54,7 @@ $ tree ~/.bittensor/
                     my_first_hotkey     # Your unencrypted hotkey information.
 ```
 
-You can list all the local wallets stored in Bittensor's root directly with [btcli wallet list](reference/btcli).
+You can list all the local wallets stored in Bittensor's root directly with [btcli wallet list](docs/intro).
 ```bash dark nocopy
 $ btcli wallet list
 Wallets
@@ -62,7 +62,7 @@ Wallets
     my_wallet (<ss58_address>)
        └── my_first_hotkey (<ss58_address>)
 ```
-The [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) strings shown above are compact representations of your public keys, use these as destinations for transfering TAO, for instance when using [btcli wallet transfer](reference/btcli).
+The [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) strings shown above are compact representations of your public keys, use these as destinations for transfering TAO, for instance when using [btcli wallet transfer](docs/intro).
 
 **Be sure to store your mnemonics safely**
 
