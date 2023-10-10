@@ -129,7 +129,7 @@ h5 {
 ul {
   font-family: 'FiraCode';
   font-weight: 200;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .navbar {

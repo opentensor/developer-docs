@@ -5,7 +5,10 @@ sidebar_position: 1
 # Installation
 
 
-There are three primary methods of installing Bittensor on your local machine: using a script, with pip install and from source.
+There are three primary methods of installing Bittensor on your local machine: 
+- Using a script.
+- With `pip install`. 
+- From source.
 
 ### script
 
