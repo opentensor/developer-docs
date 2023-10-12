@@ -1,12 +1,10 @@
----
-sidebar_position: 2
----
 
 # Subnetworks
 
 Bittensor runs multiple self-contained economic markets incentivizing access to different forms of machine intelligence, for instance; subnetwork 1 produces completions from text prompts and subnetwork 2 incentivizes the production of informationally dense embeddings from text. These economic domains are called "subnetworks".
 
-### viewing subnetworks
+
+### Viewing subnetworks
 
 You can uses **btcli list_subnets** to show all currently running subnetworks on bittensor.
 ```bash dark
@@ -26,7 +24,7 @@ NETUID  NEURONS  MAX_N   DIFFICULTY  TEMPO  CON_REQ  EMISSION  BURN(τ)
         BURN: TAO recycle cost per registration.
 ```
 
-### viewing state
+### Viewing state
 
 To extract more fine grained information about each subnetwork use **bt.metagraph**.
 ```python numbered dark
@@ -52,9 +50,9 @@ uid = 123
 print ('uid', uid, ' owned by hotkey:', subnet.hotkeys[ uid ], 'assoicated with coldkey': subnet.coldkey[ uid ] )
 ```
 
-### viewing parameters
+### Viewing parameters
 
-Through [registration](/docs/subnetworks/registration) hotkeys cycle in and out of each subnetwork depending on their performance according to subnetworks validators. Stake **metagraph.S** across subnetwork is universal. This validation method is performed by validators setting a set of weights **metagraph.W** on the chain based on their subjective valuations of the miners across the network.
+Through [registration](subnetworks/registration) hotkeys cycle in and out of each subnetwork depending on their performance according to subnetworks [validators](validating/validating). Stake **metagraph.S** across subnetwork is universal. This validation method is performed by validators setting a set of weights **metagraph.W** on the chain based on their subjective valuations of the miners across the network.
 
 ```python numbered dark
 import bittensor as bt
@@ -69,4 +67,46 @@ subnet = bt.metagraph( netuid = 1 )
 print ('subnet 1 validator dividends', subnet.D )
 ```
 
+### Creating a subnet
 
+Creating subnetworks on mainnet is competitive and the cost is determined by the rate at which new networks are being registered onto the chain. By default you must have at least 100 TAO in your owner wallet to create a subnetwork. However the exact amount will fluctuate based on demand. The code below shows how to get the current price of creating a subnetwork.
+
+```bash dark
+btcli subnet lock_cost
+>> Subnet lock cost: τ100.000000000
+```
+
+Use the `btcli subnet create` subcommand to register a new subnet.
+
+```bash dark
+# Run the register subnetwork command on the main chain.
+btcli subnet create
+>> Enter wallet name (default): owner # Enter your owner wallet name
+>> Enter password to unlock key: # Enter your wallet password.
+>> Register subnet? [y/n]: <y/n> # Select yes (y)
+>> ⠇ 📡 Registering subnet...
+✅ Registered subnetwork with netuid: 1 # Your subnet netuid will show here, save this for later.
+```
+
+
+Here is the help message to see what commands are avaialable via the `subnet` subcommand.
+```bash dark
+btcli subnet --help
+usage: btcli <command> <command args> subnets [-h]
+                                              {list,metagraph,lock_cost,create,register,recycle_register,hyperparameters}
+                                              ...
+
+positional arguments:
+  {list,metagraph,lock_cost,create,register,recycle_register,hyperparameters}
+                        Commands for managing and viewing subnetworks.
+    list                List all subnets on the network
+    metagraph           View a subnet metagraph information.
+    lock_cost           Return the lock cost to register a subnet
+    create              Create a new bittensor subnetwork on this chain.
+    register            Register a wallet to a network.
+    recycle_register    Register a wallet to a network.
+    hyperparameters     View subnet hyperparameters
+
+options:
+  -h, --help            show this help message and exit
+```
