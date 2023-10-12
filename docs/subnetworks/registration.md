@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 
 # Registration
 
@@ -26,10 +23,10 @@ There are two methods of registrations:
       btcli subnet recycle_register --netuid SELECTED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
       ```
 
-Once the registration cost has been paid, the miner enters the network by replacing an older underperforming miner and can now mine themselves from that slot.
+Once the registration cost has been paid, the miner enters the network by replacing an older underperforming miner and can now [mine](mining/mining) themselves from that slot.
 
 
-### pow
+### Pow
 
 Proof-of-Work (POW) registrations require miners to solve a SHA256 hashing problem before winning a UID. This route is recommmended for miners contributing raw compute power to Bittensor or don't have a previous token supply.
 ```bash dark
@@ -42,7 +39,7 @@ btcli subnet register
 The POW registration does not requires only your `coldkeypub.txt` and `hotkey`. It is also possible to sign the registration extrinsic payload by a separate key.
 
 
-### recycle registration
+### Recycle registration
 
 Recycle registrations allow a miner to recycle TAO back into the inflation mechanism (to be passed through the incentive mechanism at a later date) in exchange for a UID on a subnetwork. Recycle registrations cost TAO to execute but takes less time to activate than POW registration. They recommended for miners seeking to attain slots quickly and who already have a small amount of TAO at their disposal.
 ```bash dark
@@ -53,7 +50,7 @@ btcli subnet recycle_register
 ```
 
 
-### cubit
+### Cubit
 
 It is highly recommended that you use a Nvidia GPU to register for a faster hash rate. To use your GPU during the hashing problem you must [install Cubit](https://github.com/opentensor/cubit).
 
@@ -69,7 +66,7 @@ btcli subnet register
 ```
 
 
-### cost updates
+### Cost updates
 
 POW and the recycle regsistration cost are mutually adaptive, updating their costs on an `adjustment interval` so that the number of registrations over that interval remain constanct, i.e. 3 registrations per 100 blocks. Below is pseudo code for the update conditions.
 ```python numbered dark title=subtensor/pallets/subtensor/src/block_step link=https://github.com/opentensor/subtensor/pallets/subtensor/src/block_step.rs
@@ -97,7 +94,7 @@ NETUID  NEURONS  MAX_N   DIFFICULTY  TEMPO  CON_REQ  EMISSION  BURN(τ)
 ```
 
 
-### inspecting uids
+### Inspecting uids
 
 Once a slot has been attained you can view the performance of you registered wallet you can run ```btcli wallet overview --netuid```.
 
@@ -122,7 +119,7 @@ Once a slot has been attained you can view the performance of you registered wal
 
 
 
-### difficulty adjustment
+### Difficulty adjustment 
 
 The POW and Recycle difficulties are adaptively adjusted every 100 blocks based on the following 4 cases.
 
@@ -140,7 +137,7 @@ The POW and Recycle difficulties are adaptively adjusted every 100 blocks based 
         `pow_difficulty = pow_difficulty * ( regs_this_interval + target_regs ) / 2 * target_regs`
 
 
-### viewing difficulty
+### Viewing difficulty
 
 Using the cli
 ```bash dark

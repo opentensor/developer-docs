@@ -1,8 +1,4 @@
----
-sidebar_position: 1
----
-
-# Overview
+# Welcome
 
 Bittensor is a mining network, similar to Bitcoin, that offers censorship-resistant access to a decentralized network of machine learning models. By leveraging digital incentives and rewarding participants directly for their contributions of computational resources, expertise and innovation, Bittensor establishes a comprehensive, open-source ecosystem of artificial intelligence competencies. The native currency, TAO, constitutes both reward and access token to the network.
 

@@ -1,16 +1,13 @@
----
-sidebar_position: 2
----
 
 # Wallet
 
-The Bittensor wallet is the core ownership and identity technology around which all functionalities of the network are carried out. A wallet consists of a [coldkey](docs/intro)  and a [hotkey](docs/intro) pairing of two seperate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519) that are responsible for different functionalities within the ecosystem, but are logically connected via the API.
+The Bittensor wallet is the core ownership and identity technology around which all functionalities of the network are carried out. A wallet consists of a [coldkey](glossary/glossary)  and a [hotkey](glossary/glossary) pairing of two seperate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519) that are responsible for different functionalities within the ecosystem, but are logically connected via the API.
 
-The [coldkey](docs/intro) is encrypted on your device and is used to store funds securely and perform high risk operations, such as transfers and staking, while the [hotkey](docs/intro) is unencrypted, and used for less secure operations such as signing messages into the network, running miners, and validating the network.
+The [coldkey](glossary/glossary) is encrypted on your device and is used to store funds securely and perform high risk operations, such as transfers and staking, while the [hotkey](glossary/glossary) is unencrypted, and used for less secure operations such as signing messages into the network, running miners, and validating the network.
 
-Once you have [installed bittensor](/docs/getting-started/installation), you can create a wallet locally on your machine in two ways, described below. You can also create an [external wallet](docs/intro) through the Bittensor website, or use a secondary tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). Both of these options allow you to use TAO without installing Bittensor.
+Once you have [installed bittensor](getting-started/installation), you can create a wallet locally on your machine in two ways, described below. You can also create an [external wallet](#03-external-wallet) through the Bittensor website, or use a secondary tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). Both of these options allow you to use TAO without installing Bittensor.
 
-### btcli
+### Btcli 
 
 
 ```bash dark
@@ -32,7 +29,7 @@ $ btcli wallet new_hotkey --wallet.name my_coldkey --wallet.hotkey my_first_hotk
 As previously mentioned, the hotkey is **not** encrypted on the device whereas the coldkey **is**.
 If you want to encrypt your hotkey, use **btcli new_hotkey --use_password**.
 
-### python
+### Python 
 
 
 ```python numbered dark
@@ -54,7 +51,7 @@ $ tree ~/.bittensor/
                     my_first_hotkey     # Your unencrypted hotkey information.
 ```
 
-You can list all the local wallets stored in Bittensor's root directly with [btcli wallet list](docs/intro).
+You can list all the local wallets stored in Bittensor's root directly with [btcli wallet list](reference/btcli).
 ```bash dark nocopy
 $ btcli wallet list
 Wallets
@@ -62,7 +59,7 @@ Wallets
     my_wallet (<ss58_address>)
        └── my_first_hotkey (<ss58_address>)
 ```
-The [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) strings shown above are compact representations of your public keys, use these as destinations for transfering TAO, for instance when using [btcli wallet transfer](docs/intro).
+The [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) strings shown above are compact representations of your public keys, use these as destinations for transfering TAO, for instance when using [btcli wallet transfer](reference/btcli).
 
 **Be sure to store your mnemonics safely**
 
@@ -74,14 +71,41 @@ If you need to regenerate your wallets, you can use the cli with your mnemonic.
 btcli wallet regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
 ```
 
-### external wallet
+
+
+
+
+
+
+
+
+
+
+
+
+### External wallet
 
 To create a wallet without installing bittensor you can use the wallet on [Bittensor](http://bittensor.com). Click the **0.00** in the top right corner. Select **create** to create a new wallet or **import** to import your mnemonic from an existing wallet. The "access" option can be used if you have already created a wallet using the website and have not chosen to "forget" it. Once you have accessed your account, you can send, receive, or stake your TAO.
 
-## bt.wallet
 
 
-### Examples
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Bt.wallet
+
+
+<Accordion title="(examples)">
 
 ```python dark
 import bittensor as bt
@@ -96,7 +120,10 @@ wallet = bt.wallet( config = bt.wallet.config() )
 wallet = bt.wallet( name = 'my_coldkey', hotkey = 'my_first_hotkey', path = '~/path/to/wallets/dir' )
 ```
 
-### methods
+
+</Accordion>
+
+<Accordion title="(methods)">
 
 
 #### create_coldkey_from_uri
@@ -162,14 +189,14 @@ regenerate_hotkey(self, use_password: bool = True, overwrite: bool = False, **kw
 Regenerates the hotkey from passed mnemonic, seed, or json encrypts it with the user's password and saves the file.
 
 
-#### _str__
+#### __str__
 ```python
 __str__(self)
 ```
 Returns a string representation of the Wallet.
 
 
-#### _repr__
+#### __repr__
 ```python
 __repr__(self)
 ```
@@ -183,7 +210,7 @@ create_if_non_existent(self, coldkey_use_password:bool = True, hotkey_use_passwo
 Creates coldkeypub and hotkeys if they don't exist.
 
 
-
+ 
 #### create
 ```python
 create(self, coldkey_use_password:bool = True, hotkey_use_password:bool = False) -> 'Wallet'
@@ -221,6 +248,7 @@ create_coldkey_from_uri(self, uri:str, use_password: bool = True, overwrite:bool
 Creates a coldkey from a suri string. Optionally encrypts and overwrites existing coldkey.
 
 
+</Accordion>
 
 
 
@@ -231,3 +259,34 @@ Creates a coldkey from a suri string. Optionally encrypts and overwrites existin
 
 
 
+
+#### Update wallet
+
+It is imperative to update any legacy wallets to the new NaCL format for security. You may accomplish this with the `btcli` using the `wallet update` subcommands.
+
+For example:
+```bash dark
+btcli wallet update
+>> Do you want to update all legacy wallets? [y/n]: n
+>> Enter wallet name (default): my_coldkey
+>> 
+>> =====  wallet(my_coldkey, default, ~/.bittensor/wallets/)  =====
+>> You may update the keyfile to improve the security for storing your keys.
+>> While the key and the password stays the same, it would require providing your password once.
+>> 🔑Keyfile (Ansible Vault encrypted, ~/.bittensor/wallets/default/coldkey)>
+>> 
+>> Update keyfile? [y/n]: y
+>> =====  wallet(my_coldkey, default, ~/.bittensor/wallets/)  =====
+>>
+>> Update keyfile? [y/n]: y
+>>
+>> Please make sure you have the mnemonic stored in case an error occurs during the transfer.
+>>
+>> Have you stored the mnemonic? [y/n]: y
+>>
+>> Enter password to update keyfile:
+>> ********
+>>
+>> ✅ Keyfile is updated. 
+>> 🔑 Keyfile (NaCl encrypted, ~/.bittensor/wallets/default/coldkey)>
+```
