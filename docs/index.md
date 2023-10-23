@@ -1,5 +1,5 @@
 ---
-title: "Bittensor Developer Documentation"
+title: "Welcome"
 slug: "/"
 hidden: false
 sidebar_position: 0
