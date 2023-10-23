@@ -58,7 +58,7 @@ const config = {
       docs: {
         sidebar: {
           autoCollapseCategories: true,
-          hideable: true,
+          hideable: false,
         },
       },
       navbar: {
