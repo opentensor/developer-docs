@@ -17,6 +17,15 @@ const sidebars = {
     "index",
     {
       type: "category",
+      label: "Concepts",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "concepts/introduction",
+      ],
+    },
+    {
+      type: "category",
       label: "Getting Started",
       collapsible: true,
       collapsed: true,
