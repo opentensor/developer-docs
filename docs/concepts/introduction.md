@@ -68,7 +68,7 @@ You can participate in the Bittensor ecosystem as the following personas:
 - **Subnet owner**: When you only want to create a subnet but transfer the tasks of operating the subnet to others.
 - **Subnet validator**: When you are responsible for running the subnet validator.
 - **Subnet miner**: When you are responsible for running the subnet miner.
-- **Blockchain operator**: When you run the blockchain. This applies during the offline testing of your subnet and your incentive mechanism, when you need a local emulation of the Bittensor blockchain because you are disconnected from the Bittensor network.
+- **Blockchain operator**: When you run the blockchain. This mostly applies during the offline testing of your subnet and your incentive mechanism, when you need a local emulation of the Bittensor blockchain because you are disconnected from the Bittensor network.
 
 ## Preparing for subnet
 
