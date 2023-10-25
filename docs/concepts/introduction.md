@@ -40,6 +40,7 @@ You participate in the Bittensor ecosystem by participating in a subnet.
 
 Subnets exist to operationalize the incentive-based competition mechanisms. See the below diagram. 
 
+<center>
 <ThemedImage
 alt="Simplified Bittensor Network"
 sources={{
@@ -47,6 +48,7 @@ sources={{
     dark: useBaseUrl('/img/docs/dark-subnet-high-level.svg'),
   }}
 />
+</center>
 
 A subnet works like this. Note that this explanation is **highly simplified**, and is intended only to convey the essential conceptual core of the subnet. 
 
