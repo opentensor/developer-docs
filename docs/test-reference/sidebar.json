@@ -1,0 +1,47 @@
+{
+  "items": [
+    {
+      "items": [
+        {
+          "items": [
+            "test-reference/neurons/miners/bittensorLM/miner"
+          ],
+          "label": "neurons.miners.bittensorLM",
+          "type": "category"
+        },
+        {
+          "items": [
+            "test-reference/neurons/miners/openai/miner"
+          ],
+          "label": "neurons.miners.openai",
+          "type": "category"
+        },
+        {
+          "items": [
+            "test-reference/neurons/miners/streaming_template/miner"
+          ],
+          "label": "neurons.miners.streaming_template",
+          "type": "category"
+        },
+        {
+          "items": [
+            "test-reference/neurons/miners/template/miner"
+          ],
+          "label": "neurons.miners.template",
+          "type": "category"
+        },
+        {
+          "items": [
+            "test-reference/neurons/miners/vicuna/miner"
+          ],
+          "label": "neurons.miners.vicuna",
+          "type": "category"
+        }
+      ],
+      "label": "neurons.miners",
+      "type": "category"
+    }
+  ],
+  "label": "neurons",
+  "type": "category"
+}
