@@ -154,3 +154,11 @@ ul {
 .navbar {
   margin-bottom: 10px;
 }
+.sidebar-title {
+  font-size: 1.0rem;
+  font-family:'Haffer';
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: .7rem;
+  text-transform: uppercase;
+}
