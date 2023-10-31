@@ -1,5 +1,22 @@
+---
+title: "Register for Subnet"
+---
 
-# Registration
+# Register for Subnet
+
+## Prerequisites
+Before you proceed to register, make sure that:
+- You [installed Bittensor](../getting-started/installation.md). 
+- You have already [created a wallet or know how to create one](../getting-started/wallets.md#creating-a-local-wallet). 
+
+Registration is required before you can participate in a subnet. You can register as any of the following personas:
+- Subnet owner
+- Subnet validator
+- Subnet miner
+
+## Register as a subnet owner
+
+
 
 Prior to mining TAO, miners must attain a UID slot within one of Bittensor's sub-networks via a competition. This step is called registration. At the time of writing, there are 1024 UIDs available on Subnetwork 1 and 4096 on Subnetwork 3.
 

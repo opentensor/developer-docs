@@ -41,11 +41,11 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Subnetworks",
+      label: "Subnets",
       collapsible: true,
       collapsed: true,
       items: [
-        "subnetworks/registration", "subnetworks/subnetworks",
+        "subnets/registration", "subnets/subnetworks",
       ],
     },
     "mining/mining",
