@@ -86,7 +86,7 @@ const config = {
           {
             position: "left",
             label: "Bittensor API",
-            href: "pathname:///python-api/html",
+            href: "pathname:///python-api/html/index.html",
           },
           {
             href: "https://wallet.bittensor.com/",
