@@ -20,15 +20,12 @@ const sidebars = {
       type: "category",
       label: "Concepts",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
-        "concepts/introduction",
+        "concepts/introduction", 
+        "concepts/anatomy-of-incentive-mechanism",
+        "concepts/bittensor-building-blocks",
       ],
-    },
-    {
-      type: "html",
-      value: "How to",
-      className: "sidebar-title",
     },
     {
       type: "category",
@@ -43,9 +40,11 @@ const sidebars = {
       type: "category",
       label: "Subnets",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
-        "subnets/registration", "subnets/subnetworks",
+        "subnets/registration", 
+        "subnets/subnetworks",
+        "subnets/code-walkthrough-text-prompting",
       ],
     },
     "mining/mining",

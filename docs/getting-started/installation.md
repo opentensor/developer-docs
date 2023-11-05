@@ -112,6 +112,7 @@ print( bt.__version__ )
 You can also verify the Bittensor installation by listing the axon information for the neurons. Enter the following lines in the Python interpreter.
 
 ```python
+>>> import bittensor as bt
 >>> metagraph = bt.metagraph(1)
 >>> metagraph.axons[:10]
 ```
