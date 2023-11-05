@@ -61,7 +61,7 @@ Similarly in your subnet miner code you must use the `axon` API to spawn an API 
 
 ### Dendrite
 
-Axon can only receive Synapse objects. Hence a subnet validator will instantiate a `dendrite` client on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
+Axon is a **server** instance. Hence a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
 
 ```python
     responses: List[bt.Synapse] = await self.dendrite(
