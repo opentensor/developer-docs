@@ -59,10 +59,6 @@ then an API server with the name `axon` is spawned on the subnet validator node.
 
 Similarly in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
 
-:::important Axon can only receive. 
-
-:::
-
 ### Dendrite
 
 Axon can only receive Synapse objects. Hence a subnet validator will instantiate a `dendrite` client on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
@@ -79,9 +75,6 @@ then the subnet validator:
 - Has instantiated a `dendrite` client on itself.
 - Transmitted `synapse` objects to a set of `axons` (that are attached to subnet miners).
 - Waits until `timeout` expires.
-
-:::tip Dendrite can only transmit.
-:::
 
 ### Synapse
 
