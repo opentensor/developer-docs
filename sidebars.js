@@ -23,8 +23,8 @@ const sidebars = {
       collapsed: false,
       items: [
         "concepts/introduction", 
-        "concepts/anatomy-of-incentive-mechanism",
         "concepts/bittensor-building-blocks",
+        "concepts/anatomy-of-incentive-mechanism",
       ],
     },
     {
