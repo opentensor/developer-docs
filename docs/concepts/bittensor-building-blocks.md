@@ -33,7 +33,7 @@ For example, see [Minimum compute requirements](https://github.com/opentensor/bi
   - Only subnet validators are allowed to connect to subnet miners, hence isolating subnet miners from the external world. 
 - **Many-to-many bidirectional**: Notice that in the classical neural network shown on the right, the connection from input layer to the hidden layer is only feedforward. However, in a Bittensor subnet, a subnet miner can directly communicate to the subnet validator. This bi-drectional communication between a subnet validator and a subnet miner forms the core of a protocol in an incentive mechanism.
 
-## Axon, dendrite and Synapse 
+## Neuron-to-neuron communication 
 
 Neurons exchange information by:
 - Encapsulating the information in a Synapse object.
@@ -49,7 +49,7 @@ sources={{
 />
 </center>
 
-### Axon
+## Axon
 
 The `axon` module in Bittensor API uses FastAPI library to create and run API servers. For example, when a subnet validator calls,
 ```python
@@ -59,7 +59,7 @@ then an API server with the name `axon` is spawned on the subnet validator node.
 
 Similarly in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
 
-### Dendrite
+## Dendrite
 
 Axon is a **server** instance. Hence a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
 
@@ -76,8 +76,15 @@ then the subnet validator:
 - Transmitted `synapse` objects to a set of `axons` (that are attached to subnet miners).
 - Waits until `timeout` expires.
 
-### Synapse
+## Synapse
 
 Synapse is a data object. Subnet validators and subnet miners use Synapse data objects as the main vehicle to exchange information. The Synapse class inherits from the `BaseModel` of the Pydantic data validation library. 
 
 For example, in the [Text Prompting Subnet](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/protocol.py#L27), the subnet validator creates a Synapse object, called Prompting, with three fields. The fields `roles` and `messages` are set by the subnet validator during the initialization of this Prompting data object and they cannot be changed after that. A third field, `completion`, is mutable. When a subnet miner receives this Prompting object from the subnet validator, the subnet miner updates this `completion` field. The subnet validator then reads this updated `completion` field. 
+
+## Metagraph
+
+- When you call metagraph on a subnet, it will give you the complete information on all the nodes (neurons) in the subnet. You can get every piece of information on every node from this metagraph object. 
+  
+## Subtensor
+TBD
