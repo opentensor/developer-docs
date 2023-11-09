@@ -18,22 +18,15 @@ const sidebars = {
     "whats-new-in-docs",
     {
       type: "category",
-      label: "Concepts",
+      label: "Get Started",
       collapsible: true,
       collapsed: false,
       items: [
-        "concepts/introduction", 
-        "concepts/bittensor-building-blocks",
-        "concepts/anatomy-of-incentive-mechanism",
-      ],
-    },
-    {
-      type: "category",
-      label: "Get Started",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "getting-started/installation", "getting-started/wallets",
+        "get-started/installation", 
+        "get-started/wallets",
+        "get-started/subnet-registration", 
+        "get-started/run-a-subnet-miner",
+        "get-started/run-a-subnet-validator",
       ],
     },
     {
@@ -42,13 +35,21 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        "subnets/registration", 
-        "subnets/subnetworks",
+        "subnets/working-with-subnets",
         "subnets/code-walkthrough-text-prompting",
       ],
     },
-    "mining/mining",
-    "validating/validating",
+    {
+      type: "category",
+      label: "Learn Bittensor Concepts",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "learn/introduction", 
+        "learn/bittensor-building-blocks",
+        "learn/anatomy-of-incentive-mechanism",
+      ],
+    },
     "clients/clients",
     "validating/yuma-consensus",
     "delegation/delegation",
@@ -58,7 +59,6 @@ const sidebars = {
     "reference/btcli",
     "bittensor-api/index",
     "glossary/glossary",
-
   ],
 };
 
