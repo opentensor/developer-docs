@@ -16,8 +16,8 @@ A subnet closely follows how a classical feedforward neural network is connected
 <ThemedImage
 alt="Incentive Mechanism Big Picture"
 sources={{
-    light: useBaseUrl('/img/docs/building-blocks-first.png'),
-    dark: useBaseUrl('/img/docs/building-blocks-first.png'),
+    light: useBaseUrl('/img/docs/building-blocks-first.svg'),
+    dark: useBaseUrl('/img/docs/dark-building-blocks-first.svg'),
   }}
 />
 
@@ -43,13 +43,13 @@ Neurons exchange information by:
 <ThemedImage
 alt="Incentive Mechanism Big Picture"
 sources={{
-    light: useBaseUrl('/img/docs/second-building-blocks.png'),
-    dark: useBaseUrl('/img/docs/second-building-blocks.png'),
+    light: useBaseUrl('/img/docs/second-building-blocks.svg'),
+    dark: useBaseUrl('/img/docs/dark-second-building-blocks.svg'),
   }}
 />
 </center>
 
-## Axon
+### Axon
 
 The `axon` module in Bittensor API uses FastAPI library to create and run API servers. For example, when a subnet validator calls,
 ```python
@@ -59,7 +59,7 @@ then an API server with the name `axon` is spawned on the subnet validator node.
 
 Similarly in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
 
-## Dendrite
+### Dendrite
 
 Axon is a **server** instance. Hence a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
 
@@ -76,7 +76,7 @@ then the subnet validator:
 - Transmitted `synapse` objects to a set of `axons` (that are attached to subnet miners).
 - Waits until `timeout` expires.
 
-## Synapse
+### Synapse
 
 Synapse is a data object. Subnet validators and subnet miners use Synapse data objects as the main vehicle to exchange information. The Synapse class inherits from the `BaseModel` of the Pydantic data validation library. 
 
@@ -84,7 +84,12 @@ For example, in the [Text Prompting Subnet](https://github.com/opentensor/text-p
 
 ## Metagraph
 
-- When you call metagraph on a subnet, it will give you the complete information on all the nodes (neurons) in the subnet. You can get every piece of information on every node from this metagraph object. 
-  
+A metagraph is a neural network graph object that contains comprehensive information about current state of the subnet. When you call metagraph on a subnet, it will give you complete information on all the nodes (neurons) in the subnet. A subnet validator should first sync with a subnet's metagraph to know all the subnet miners that are in the subnet. 
+
+:::tip Example 
+For example, see [Initialize the metagraph](../subnets/code-walkthrough-text-prompting#initialize-the-metagraph).
+:::  
+
 ## Subtensor
-TBD
+
+A subtensor is a Bittensor object that handles the interactions with the blockchain, whether the chain is local or testchain or mainchain. 
