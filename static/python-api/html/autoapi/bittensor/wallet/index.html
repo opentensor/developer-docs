@@ -1,0 +1,1229 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>bittensor.wallet &#8212; Bittensor API</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom-css-for-sphinx-book-theme.css?v=43651722" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/wallet/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="neurons" href="../../neurons/index.html" />
+    <link rel="prev" title="bittensor.types" href="../types/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor API - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.svg" class="logo__image only-dark" alt="Bittensor API - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">API Reference</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/prometheus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.prometheus</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.registration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.senate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/serving/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.serving</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.set_weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/staking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.staking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.transfer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/_register_cuda/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils._register_cuda</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/balance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.balance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/formatting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.formatting</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/networking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.networking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.registration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/stats/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/test_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.test_utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/wallet_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.wallet_utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/weight_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.weight_utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.logging</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synapse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.synapse</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.tensor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../threadpool/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.threadpool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.types</span></code></a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../neurons/validators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neurons/validators/validator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators.validator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">miner</span></code></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../prompting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../prompting/baseminer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/blacklist/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.blacklist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.miner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/priority/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/run/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.run</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.set_weights</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../prompting/validators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/penalty/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.penalty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/reward/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.reward</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/criteria/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.criteria</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/dataset/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/event/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.event</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/forward/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.forward</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/gating/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.gating</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.misc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/prompts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.prompts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/tasks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.tasks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.weights</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../prompting/protocol/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.protocol</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/autoapi/bittensor/wallet/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>bittensor.wallet</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.regen_coldkeypub</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.regen_coldkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.regen_hotkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.config"><code class="docutils literal notranslate"><span class="pre">wallet.config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.help"><code class="docutils literal notranslate"><span class="pre">wallet.help()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.add_args"><code class="docutils literal notranslate"><span class="pre">wallet.add_args()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.__str__"><code class="docutils literal notranslate"><span class="pre">wallet.__str__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.__repr__"><code class="docutils literal notranslate"><span class="pre">wallet.__repr__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_if_non_existent"><code class="docutils literal notranslate"><span class="pre">wallet.create_if_non_existent()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create"><code class="docutils literal notranslate"><span class="pre">wallet.create()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.recreate"><code class="docutils literal notranslate"><span class="pre">wallet.recreate()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.set_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.set_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.set_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.get_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.get_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.get_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_coldkey_from_uri"><code class="docutils literal notranslate"><span class="pre">wallet.create_coldkey_from_uri()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_hotkey_from_uri"><code class="docutils literal notranslate"><span class="pre">wallet.create_hotkey_from_uri()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.new_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.new_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_new_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.create_new_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.new_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.new_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_new_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.create_new_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_hotkey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-bittensor.wallet">
+<span id="bittensor-wallet"></span><h1><a class="reference internal" href="#module-bittensor.wallet" title="bittensor.wallet"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a><a class="headerlink" href="#module-bittensor.wallet" title="Link to this heading">#</a></h1>
+<p>Implementation of the wallet class, which manages balances with staking and transfer. Also manages hotkey and coldkey.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wallet</span></code></a></p></td>
+<td><p>Bittensor wallet maintenance class. Each wallet contains a coldkey and a hotkey.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.wallet.display_mnemonic_msg" title="bittensor.wallet.display_mnemonic_msg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_mnemonic_msg</span></code></a>(keypair, key_type)</p></td>
+<td><p>Display the mnemonic and a warning message to keep the mnemonic safe.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.wallet.display_mnemonic_msg">
+<span class="sig-prename descclassname"><span class="pre">bittensor.wallet.</span></span><span class="sig-name descname"><span class="pre">display_mnemonic_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.display_mnemonic_msg" title="Link to this definition">#</a></dt>
+<dd><p>Display the mnemonic and a warning message to keep the mnemonic safe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>Keypair</em>) – Keypair object.</p></li>
+<li><p><strong>key_type</strong> (<em>str</em>) – Type of the key (coldkey or hotkey).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.wallet.</span></span><span class="sig-name descname"><span class="pre">wallet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet" title="Link to this definition">#</a></dt>
+<dd><p>Bittensor wallet maintenance class. Each wallet contains a coldkey and a hotkey.
+The coldkey is the user’s primary key for holding stake in their wallet
+and is the only way that users can access Tao. Coldkeys can hold tokens and should be encrypted on your device.
+The coldkey must be used to stake and unstake funds from a running node. The hotkey, on the other hand, is only used
+for subscribing and setting weights from running code. Hotkeys are linked to coldkeys through the metagraph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>hotkey</strong> (<em>str</em>) – </p></li>
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.hotkey_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkey_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.keyfile</span></em><a class="headerlink" href="#bittensor.wallet.wallet.hotkey_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the hotkey file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The hotkey file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.coldkey_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkey_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.keyfile</span></em><a class="headerlink" href="#bittensor.wallet.wallet.coldkey_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the coldkey file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The coldkey file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.coldkeypub_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeypub_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.keyfile</span></em><a class="headerlink" href="#bittensor.wallet.wallet.coldkeypub_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the coldkeypub file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The coldkeypub file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.hotkey">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.Keypair</span></em><a class="headerlink" href="#bittensor.wallet.wallet.hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Loads the hotkey from wallet.path/wallet.name/hotkeys/wallet.hotkey or raises an error.
+:returns:     hotkey loaded from config arguments.
+:rtype: hotkey (Keypair)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrec password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.coldkey">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.Keypair</span></em><a class="headerlink" href="#bittensor.wallet.wallet.coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Loads the hotkey from wallet.path/wallet.name/coldkey or raises an error.
+:returns:     colkey loaded from config arguments.
+:rtype: coldkey (Keypair)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrec password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.coldkeypub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeypub</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.Keypair</span></em><a class="headerlink" href="#bittensor.wallet.wallet.coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Loads the coldkeypub from wallet.path/wallet.name/coldkeypub.txt or raises an error.
+:returns:     colkeypub loaded from config arguments.
+:rtype: coldkeypub (Keypair)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrect password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regen_coldkeypub">
+<span class="sig-name descname"><span class="pre">regen_coldkeypub</span></span><a class="headerlink" href="#bittensor.wallet.wallet.regen_coldkeypub" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regen_coldkey">
+<span class="sig-name descname"><span class="pre">regen_coldkey</span></span><a class="headerlink" href="#bittensor.wallet.wallet.regen_coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regen_hotkey">
+<span class="sig-name descname"><span class="pre">regen_hotkey</span></span><a class="headerlink" href="#bittensor.wallet.wallet.regen_hotkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.config" title="Link to this definition">#</a></dt>
+<dd><p>Get config from the argument parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Config object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../index.html#bittensor.config" title="bittensor.config">bittensor.config</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.help">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.help" title="Link to this definition">#</a></dt>
+<dd><p>Print help to stdout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.add_args">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.add_args" title="Link to this definition">#</a></dt>
+<dd><p>Accept specific arguments from parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – Argument parser object.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – Argument prefix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Returns the string representation of the Wallet object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.__repr__" title="Link to this definition">#</a></dt>
+<dd><p>Returns the string representation of the Wallet object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create_if_non_existent">
+<span class="sig-name descname"><span class="pre">create_if_non_existent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create_if_non_existent" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to True.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to True.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.recreate">
+<span class="sig-name descname"><span class="pre">recreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.recreate" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to True.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.set_hotkey">
+<span class="sig-name descname"><span class="pre">set_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.set_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Sets the hotkey for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The hotkey keypair.</p></li>
+<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to encrypt the hotkey. Defaults to False.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite an existing hotkey. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hotkey file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.set_coldkeypub">
+<span class="sig-name descname"><span class="pre">set_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.set_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Sets the coldkeypub for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The coldkeypub keypair.</p></li>
+<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to encrypt the coldkeypub. Defaults to False.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite an existing coldkeypub. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkeypub file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.set_coldkey">
+<span class="sig-name descname"><span class="pre">set_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.set_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Sets the coldkey for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The coldkey keypair.</p></li>
+<li><p><strong>encrypt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to encrypt the coldkey. Defaults to True.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite an existing coldkey. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkey file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.keyfile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.get_coldkey">
+<span class="sig-name descname"><span class="pre">get_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.get_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Gets the coldkey from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em><em>, </em><em>optional</em>) – The password to decrypt the coldkey. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkey keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.get_hotkey">
+<span class="sig-name descname"><span class="pre">get_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.get_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Gets the hotkey from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em><em>, </em><em>optional</em>) – The password to decrypt the hotkey. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hotkey keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.get_coldkeypub">
+<span class="sig-name descname"><span class="pre">get_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.get_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Gets the coldkeypub from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em><em>, </em><em>optional</em>) – The password to decrypt the coldkeypub. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkeypub keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create_coldkey_from_uri">
+<span class="sig-name descname"><span class="pre">create_coldkey_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create_coldkey_from_uri" title="Link to this definition">#</a></dt>
+<dd><p>Creates coldkey from suri string, optionally encrypts it with the user’s inputed password.
+:param uri: (str, required):</p>
+<blockquote>
+<div><p>URI string to use i.e. /Alice or /Bob</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the coldkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/coldkey</p></li>
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create_hotkey_from_uri">
+<span class="sig-name descname"><span class="pre">create_hotkey_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create_hotkey_from_uri" title="Link to this definition">#</a></dt>
+<dd><p>Creates hotkey from suri string, optionally encrypts it with the user’s inputed password.
+:param uri: (str, required):</p>
+<blockquote>
+<div><p>URI string to use i.e. /Alice or /Bob</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the hotkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/hotkeys/&lt;hotkey&gt;</p></li>
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.new_coldkey">
+<span class="sig-name descname"><span class="pre">new_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.new_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new coldkey, optionally encrypts it with the user’s inputed password and saves to disk.
+:param n_words: (int, optional):</p>
+<blockquote>
+<div><p>Number of mnemonic words to use.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the coldkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/coldkey</p></li>
+<li><p><strong>n_words</strong> (<em>int</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create_new_coldkey">
+<span class="sig-name descname"><span class="pre">create_new_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create_new_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new coldkey, optionally encrypts it with the user’s inputed password and saves to disk.
+:param n_words: (int, optional):</p>
+<blockquote>
+<div><p>Number of mnemonic words to use.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the coldkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/coldkey</p></li>
+<li><p><strong>n_words</strong> (<em>int</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.new_hotkey">
+<span class="sig-name descname"><span class="pre">new_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.new_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new hotkey, optionally encrypts it with the user’s inputed password and saves to disk.
+:param n_words: (int, optional):</p>
+<blockquote>
+<div><p>Number of mnemonic words to use.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the hotkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/hotkeys/&lt;hotkey&gt;</p></li>
+<li><p><strong>n_words</strong> (<em>int</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.create_new_hotkey">
+<span class="sig-name descname"><span class="pre">create_new_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.create_new_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new hotkey, optionally encrypts it with the user’s inputed password and saves to disk.
+:param n_words: (int, optional):</p>
+<blockquote>
+<div><p>Number of mnemonic words to use.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the hotkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/hotkeys/&lt;hotkey&gt;</p></li>
+<li><p><strong>n_words</strong> (<em>int</em>) – </p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regenerate_coldkeypub">
+<span class="sig-name descname"><span class="pre">regenerate_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet.regenerate_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Regenerates the coldkeypub from passed ss58_address or public_key and saves the file</dt><dd><p>Requires either ss58_address or public_key to be passed.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss58_address</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – (str, optional):
+Address as ss58 string.</p></li>
+<li><p><strong>public_key</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – (str | bytes, optional):
+Public key as hex string or bytes.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – False):
+Will this operation overwrite the coldkeypub (if exists) under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/coldkeypub</p></li>
+<li><p><strong>suppress</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>newly re-generated Wallet with coldkeypub.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regenerate_coldkey">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mnemonic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span><a class="headerlink" href="#bittensor.wallet.wallet.regenerate_coldkey" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span></dt>
+<dd><p>Regenerates the coldkey from passed mnemonic, seed, or json encrypts it with the user’s password and saves the file
+:param mnemonic: (Union[list, str], optional):</p>
+<blockquote>
+<div><p>Key mnemonic as list of words or string space separated words.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> – (str, optional):
+Seed as hex string.</p></li>
+<li><p><strong>json</strong> – (Tuple[Union[str, Dict], str], optional):
+Restore from encrypted JSON backup as (json_data: Union[str, Dict], passphrase: str)</p></li>
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the coldkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/coldkey</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+<p>Note: uses priority order: mnemonic &gt; seed &gt; json</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.regenerate_hotkey">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mnemonic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span><a class="headerlink" href="#bittensor.wallet.wallet.regenerate_hotkey" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><span class="pre">wallet</span></a></span></span></dt>
+<dd><p>Regenerates the hotkey from passed mnemonic, encrypts it with the user’s password and save the file
+:param mnemonic: (Union[list, str], optional):</p>
+<blockquote>
+<div><p>Key mnemonic as list of words or string space separated words.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> – (str, optional):
+Seed as hex string.</p></li>
+<li><p><strong>json</strong> – (Tuple[Union[str, Dict], str], optional):
+Restore from encrypted JSON backup as (json_data: Union[str, Dict], passphrase: str)</p></li>
+<li><p><strong>use_password</strong> (<em>bool</em><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Will this operation overwrite the hotkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/hotkeys/&lt;hotkey&gt;</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>this object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet">wallet</a> (bittensor.wallet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../types/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.types</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../neurons/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub_file</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.regen_coldkeypub</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.regen_coldkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regen_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.regen_hotkey</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.config"><code class="docutils literal notranslate"><span class="pre">wallet.config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.help"><code class="docutils literal notranslate"><span class="pre">wallet.help()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.add_args"><code class="docutils literal notranslate"><span class="pre">wallet.add_args()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.__str__"><code class="docutils literal notranslate"><span class="pre">wallet.__str__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.__repr__"><code class="docutils literal notranslate"><span class="pre">wallet.__repr__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_if_non_existent"><code class="docutils literal notranslate"><span class="pre">wallet.create_if_non_existent()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create"><code class="docutils literal notranslate"><span class="pre">wallet.create()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.recreate"><code class="docutils literal notranslate"><span class="pre">wallet.recreate()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.set_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.set_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.set_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.set_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.get_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.get_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.get_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.get_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_coldkey_from_uri"><code class="docutils literal notranslate"><span class="pre">wallet.create_coldkey_from_uri()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_hotkey_from_uri"><code class="docutils literal notranslate"><span class="pre">wallet.create_hotkey_from_uri()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.new_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.new_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_new_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.create_new_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.new_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.new_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.create_new_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.create_new_hotkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_coldkeypub"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_coldkeypub()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_coldkey"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_coldkey()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.regenerate_hotkey"><code class="docutils literal notranslate"><span class="pre">wallet.regenerate_hotkey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bittensor
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Bittensor.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
