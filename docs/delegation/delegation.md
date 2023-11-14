@@ -73,7 +73,7 @@ See below for an explanation of the column headings in the above terminal output
 | :------ | ------------------------------------------------------------|
 | INDEX   | Delegates with larger total stake are higher in the list. |
 | DELEGATE | The name of the delegate. Click on the name to visit the delegate website. Only shows if the delegate has registered. |
-| SS58    | The [SS58 hotkey of the delegate](../get-started/wallets.md#list-all-the-local-wallets).                       |
+| SS58    | The [SS58 hotkey of the delegate](../getting-started/wallets#list-all-the-local-wallets).                       |
 | NOMINATORS    | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) who have nominated **to** this hotkey (i.e., to this delegate).                       |
 | DELEGATE STAKE(τ)    | The amount of delegate's own stake (not the TAO delegated from any nominators). This is the the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others).                       |
 | TOTAL STAKE(τ)    | The total amount of stake delegated to this delegator's hotkey.                       |
