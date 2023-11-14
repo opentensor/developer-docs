@@ -77,9 +77,9 @@ See below for an explanation of the column headings in the above terminal output
 | NOMINATORS    | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) who have nominated **to** this hotkey (i.e., to this delegate).                       |
 | DELEGATE STAKE(τ)    | The amount of delegate's own stake (not the TAO delegated from any nominators). This is the the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others).                       |
 | TOTAL STAKE(τ)    | The total amount of stake delegated to this delegator's hotkey.                       |
-| CHANGE/(4h)     | The percent change in the total stake delegated to this delegate within the past 4 hours.                       |
-| SUBNETS    | A list of subnet numbers this delegate (i.e., this subnet validator) is registered in. See the VPERMIT column description.                      |
-| VPERMIT    | A `*` shows that this delegate has the validator permit for the corresponding subnet in the SUBNETS list.                      |
+| CHANGE/(4h)     | The percent change in the total stake delegated to this delegate within the past 4 hours.                       |                   |
+| VPERMIT    | Shows the subnets for which the validator permits are held by the delegate. 
+| TAKE    | Shows the delegate take percentage.                      |
 | NOMINATOR/(24h)/kτ    | Stake reward distributed to this delegate's nominators within the past 24 hour period (per 1000 TAO). |
 | DELEGATE/(24h)    | Stake reward cut taken by this delegate within the past 24 hour period.                        |
 | Desc    | A description of the delegate.                     |
