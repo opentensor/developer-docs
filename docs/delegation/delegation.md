@@ -1,79 +1,106 @@
+---
+title: "Delegation"
+---
 
 # Delegation
 
+TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. Delegation on Bittensor network works like this:
 
-Delegation occurs when TAO is transferred to a hotkey that is not owned by the delegate, and enables external users, or those without sufficent TAO to run a validator,  to increase their earning by accruing dividends. This mechanism prompts growth and facilitates efficient resource allocation around value-producing nodes, enhancing the overall utility of the network. In order to receive delegated TAO from the network **delegates**, hotkeys can nominate themselves as **nominates**. Of the TAO earned through delegation, the nominates are entitled to an 18% "tax" for owning the nominated hotkey, while the rest is distributed to the delegate in proportion to their delegated stake. The delegation cut is presently a hard coded, but subject to change as the network evolves.
+- A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator.  
+- The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
+- After deducting a percentage for the delegate, these staking rewards are given back to the delegate's nominators. 
+:::tip Delegate take %
+The default value of the delegate take is 18%. As a delegate you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
+:::
+- The above (100-18)% of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
 
-### Viewing available delegates 
+:::info A nominator is a delegating authority
+A nominator is the same as a delegating authority. Typically a nominator is an owner of TAO funds, looking to invest in Bittensor network without doing any validating tasks.
+:::
 
-Hotkeys only become available for delegation once they have **nominated** themselves. To see a list of nominated validators you can run **btcli root list_delegates**
-```bash dark
-$ btcli root list_delegates
-```
-![List Delegates](/img/list_delegates.png 'Output of List Delegates')
-
-| Column | Description                                                 |
-| :------ | ------------------------------------------------------------|
-| INDEX   | Delegates with more total stake show higher in the list. |
-| DELEGATE | The name of the delegate + clickable URL connected to delegate website. Only shows if the deleagate has registered. |
-| SS58    | Clipped ss58 hotkey of the delegate.                       |
-| NOMINATORS    | The number of unique coldkeys who have nominated to this hotkey.                       |
-| DELEGATE STAKE(τ)    | The amount of stake the owning coldkey has delegates to this hotkey (distinct from TAO delegated from others).                       |
-| TOTAL STAKE(τ)    | The total amount of stake delegated to this hotkey.                       |
-| CHANGE/(4h)     | The percent difference between the total stake delegated with 4hours.                       |
-| SUBNETS    | List of subnets this validator is registered on.                      |
-| VPERMIT    | Shows "*" is the delegate has validator permit on each subnet ordered  SUBNETS                     |
-| NOMINATOR/(24h)/kτ    | Stake cut taken by nominators to this delegate per 1000 TAO per day. |
-| DELEGATE/(24h)    | Stake cut taken by the delegate within a 24 hour period.                        |
-| Desc    | Delegate defined description.                     |
-
-
-### Delegating tao
-
-You delegate TAO using btcli. This will show a list of delegates sorted by stake on your terminal. Read this list to find your delegate and use the index to select which to send stake to.
-```bash dark
-$ btcli root delegate
-```
-
-### Showing my delegations 
-
-To show all your previously made delegations run **btcli my_delegates**, use **--all** to show delegations across all wallets.
-```bash dark
-$ btcli root my_delegates
-```
+## Delegate examples
 
 ### Becoming a delegate
 
-You can `nominate` your hotkey to become and active delegate by running **btcli nominate**.
-> You can [sign](delegation/signing) your delegate information to give the hotkey a recognizable name an description.
-```bash dark
-$ btcli root nominate
+If you are a registered subnet validator, you can become a delegate. To become a delegate:
+1. You must make your hotkey available for the nominators. 
+2. You must provide your delegate information and sign it.
+
+The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
+
+#### Step 1: Nominate yourself as a delegate
+
+Run the below command (for self nominating as a delegate):
+
+```bash
+btcli root nominate
     --wallet.name YOUR_WALLET_NAME
-    --wallet.hotkye YOUR_HOTKEY_NAME
+    --wallet.hotkey YOUR_HOTKEY_NAME
 ```
 
-### Signing delegates 
+#### Step 2: Provide your delegate information 
 
+Next, provide your delegate information, such as your delegate name, URL and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates. 
 
-Signing your delegate name, URL and description makes it show when others run btcli list_delegates. To do this you need to submit a pull request to the bittensor-delegates repo.
+To provide this information and sign it, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
 
+### Setting your delegate take
 
-1. Generating your details
-```bash dark title=bittensor/scripts/validator_info_signature/generate.py link=https://github.com/opentensor/bittensor/scripts/validator_info_signature/generate.py
-$ python3 generate.py
-The mnemonic of your validator's Hotkey ( see file: ~/.bittensor/wallets/<coldkey>/hotkeys/<validator> ): ...
-Your validator's descriptive name (i.e. Opentensor Foundation): ...
-Your validator url (i.e. www.opentensor.org ): ...
-A short description for your validator ( i.e. Build, maintain and advance Bittensor): ...
+As a delegate you can set your delegate percentage by running the below command:
+
+```bash
+btcli root set_delegate_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
+```
+where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take as 10%.
+
+## Nominator examples
+
+### Viewing available delegates 
+
+If you are looking for trusted delegate(s) to delegate your funds to, start by seeing a list of delegates who are already active on the Bittensor network. Run the below command on your terminal:  
+
+```bash
+btcli root list_delegates
 ```
 
-2. Verify a validator info signature.
-```bash dark title=bittensor/scripts/validator_info_signature/verify.py link=https://github.com/opentensor/bittensor/scripts/validator_info_signature/verify.py
-$ python3 verify.py
-Validator information: sdasdasd
-Validator signature: asdasdas
+You will get an output like this (click on the image to zoom):
+
+[![List Delegates](/img/docs/list_delegates_screenshot.png 'Output of List Delegates')](/img/docs/list_delegates_screenshot.png)
+
+See below for an explanation of the column headings in the above terminal output:
+
+| Column | Meaning                                                 |
+| :------ | ------------------------------------------------------------|
+| INDEX   | Delegates with larger total stake are higher in the list. |
+| DELEGATE | The name of the delegate. Click on the name to visit the delegate website. Only shows if the delegate has registered. |
+| SS58    | The [SS58 hotkey of the delegate](../get-started/wallets.md#list-all-the-local-wallets).                       |
+| NOMINATORS    | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) who have nominated **to** this hotkey (i.e., to this delegate).                       |
+| DELEGATE STAKE(τ)    | The amount of delegate's own stake (not the TAO delegated from any nominators). This is the the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others).                       |
+| TOTAL STAKE(τ)    | The total amount of stake delegated to this delegator's hotkey.                       |
+| CHANGE/(4h)     | The percent change in the total stake delegated to this delegate within the past 4 hours.                       |                   |
+| VPERMIT    | Shows the subnets for which the validator permits are held by the delegate. 
+| TAKE    | Shows the delegate take percentage.                      |
+| NOMINATOR/(24h)/kτ    | Stake reward distributed to this delegate's nominators within the past 24 hour period (per 1000 TAO). |
+| DELEGATE/(24h)    | Stake reward cut taken by this delegate within the past 24 hour period.                        |
+| Desc    | A description of the delegate.                     |
+
+### Delegating tao
+
+The below command will show a list of delegates sorted by their total stake. Select a delegate from this list to send your stake to.
+```bash 
+btcli root delegate
 ```
 
-3. Submit a PR.
-Visit this [bittensor repo](https://github.com/opentensor/bittensor) from here click `pull requests'. ...
+### Show your delegations 
+
+To show all your previously made delegations:
+
+:::tip
+Use `--all` option to show delegations across all your wallets.
+:::
+
+```bash
+btcli root my_delegates
+```
+
 
