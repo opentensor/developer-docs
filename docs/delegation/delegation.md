@@ -9,27 +9,53 @@ TAO holders can delegate any amount of their stake to a subnet validator through
 - A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator.  
 - The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
 - After deducting a percentage for the delegate, these staking rewards are given back to the delegate's nominators. 
-:::tip Currently this delegate percentage is 18%. 
+:::tip Delegate take %
+The default value of the delegate take is 18%. As a delegate you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
 :::
 - The above (100-18)% of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
 
-:::tip A nominator is a delegating authority
+:::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically a nominator is an owner of TAO funds, looking to invest in Bittensor network without doing any validating tasks.
 :::
 
-## Becoming a delegate
+## Delegate examples
 
-If you are a registered subnet validator you can become a delegate. To become an active delegate, you must make your hotkey available for the nominators. The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
+### Becoming a delegate
 
-Run the below command:
+If you are a registered subnet validator, you can become a delegate. To become a delegate:
+1. You must make your hotkey available for the nominators. 
+2. You must provide your delegate information and sign it.
+
+The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
+
+#### Step 1: Nominate yourself as a delegate
+
+Run the below command (for self nominating as a delegate):
 
 ```bash
 btcli root nominate
     --wallet.name YOUR_WALLET_NAME
-    --wallet.hotkye YOUR_HOTKEY_NAME
+    --wallet.hotkey YOUR_HOTKEY_NAME
 ```
 
-## Viewing available delegates 
+#### Step 2: Provide your delegate information 
+
+Next, provide your delegate information, such as your delegate name, URL and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates. 
+
+To provide this information and sign it, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
+
+### Setting your delegate take
+
+As a delegate you can set your delegate percentage by running the below command:
+
+```bash
+btcli root set_delegate_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
+```
+where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take as 10%.
+
+## Nominator examples
+
+### Viewing available delegates 
 
 If you are looking for trusted delegate(s) to delegate your funds to, start by seeing a list of delegates who are already active on the Bittensor network. Run the below command on your terminal:  
 
@@ -37,9 +63,9 @@ If you are looking for trusted delegate(s) to delegate your funds to, start by s
 btcli root list_delegates
 ```
 
-You will get an output like this:
+You will get an output like this (click on the image to zoom):
 
-![List Delegates](/img/list_delegates.png 'Output of List Delegates')
+[![List Delegates](/img/docs/list_delegates_screenshot.png 'Output of List Delegates')](/img/docs/list_delegates_screenshot.png)
 
 See below for an explanation of the column headings in the above terminal output:
 
@@ -58,15 +84,14 @@ See below for an explanation of the column headings in the above terminal output
 | DELEGATE/(24h)    | Stake reward cut taken by this delegate within the past 24 hour period.                        |
 | Desc    | A description of the delegate.                     |
 
-
-## Delegating tao
+### Delegating tao
 
 The below command will show a list of delegates sorted by their total stake. Select a delegate from this list to send your stake to.
 ```bash 
 btcli root delegate
 ```
 
-## Show your delegations 
+### Show your delegations 
 
 To show all your previously made delegations:
 
@@ -78,32 +103,4 @@ Use `--all` option to show delegations across all your wallets.
 btcli root my_delegates
 ```
 
-
-<!-- 
-### Signing delegates 
-
-Next, make your delegate information available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates. You can do so by signing your 
-
-Signing your delegate name, URL and description makes it show when others run btcli list_delegates. To do this you need to submit a pull request to the bittensor-delegates repo.
-
-
-1. Generating your details
-```bash dark title=bittensor/scripts/validator_info_signature/generate.py link=https://github.com/opentensor/bittensor/scripts/validator_info_signature/generate.py
-$ python3 generate.py
-The mnemonic of your validator's Hotkey ( see file: ~/.bittensor/wallets/<coldkey>/hotkeys/<validator> ): ...
-Your validator's descriptive name (i.e. Opentensor Foundation): ...
-Your validator url (i.e. www.opentensor.org ): ...
-A short description for your validator ( i.e. Build, maintain and advance Bittensor): ...
-```
-
-1. Verify a validator info signature.
-```bash dark title=bittensor/scripts/validator_info_signature/verify.py link=https://github.com/opentensor/bittensor/scripts/validator_info_signature/verify.py
-$ python3 verify.py
-Validator information: sdasdasd
-Validator signature: asdasdas
-```
-
-1. Submit a PR.
-Visit this [bittensor repo](https://github.com/opentensor/bittensor) from here click `pull requests'. ...
--->
 
