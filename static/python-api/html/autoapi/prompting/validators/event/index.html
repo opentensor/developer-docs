@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>prompting.validators.event &#8212; Bittensor API</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom-css-for-sphinx-book-theme.css?v=43651722" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/prompting/validators/event/index';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="prompting.validators.forward" href="../forward/index.html" />
+    <link rel="prev" title="prompting.validators.dataset" href="../dataset/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor API - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.svg" class="logo__image only-dark" alt="Bittensor API - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../bittensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../bittensor/extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/prometheus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.prometheus</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.registration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.senate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/serving/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.serving</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.set_weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/staking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.staking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.transfer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../bittensor/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/_register_cuda/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils._register_cuda</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/balance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.balance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/formatting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.formatting</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/networking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.networking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.registration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/stats/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/test_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.test_utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/wallet_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.wallet_utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/weight_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.weight_utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.logging</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/synapse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.synapse</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/tensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.tensor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/threadpool/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.threadpool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/types/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bittensor/wallet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../neurons/validators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../neurons/validators/validator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators.validator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">miner</span></code></a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../baseminer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/blacklist/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.blacklist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.miner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/priority/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/run/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.run</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../baseminer/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.set_weights</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../penalty/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.penalty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reward/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.reward</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../criteria/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.criteria</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dataset/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.dataset</span></code></a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.event</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../forward/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.forward</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gating/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.gating</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.misc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../prompts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.prompts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tasks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.tasks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.weights</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../protocol/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.protocol</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/autoapi/prompting/validators/event/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>prompting.validators.event</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema"><code class="docutils literal notranslate"><span class="pre">EventSchema</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completions"><code class="docutils literal notranslate"><span class="pre">EventSchema.completions</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_times"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_times</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_status_messages"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_status_messages</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_status_codes"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_status_codes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.name"><code class="docutils literal notranslate"><span class="pre">EventSchema.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_type"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_type</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.block"><code class="docutils literal notranslate"><span class="pre">EventSchema.block</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.gating_loss"><code class="docutils literal notranslate"><span class="pre">EventSchema.gating_loss</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.uids"><code class="docutils literal notranslate"><span class="pre">EventSchema.uids</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.step_length"><code class="docutils literal notranslate"><span class="pre">EventSchema.step_length</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.best"><code class="docutils literal notranslate"><span class="pre">EventSchema.best</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rewards"><code class="docutils literal notranslate"><span class="pre">EventSchema.rewards</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dahoas_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.dahoas_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter_matched_ngram"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter_matched_ngram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter_significance_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter_significance_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.reciprocate_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.reciprocate_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_historic"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_historic</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_batch"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_batch</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dpo_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.dpo_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rlhf_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.rlhf_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dahoas_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.dahoas_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.reciprocate_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.reciprocate_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dpo_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.dpo_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rlhf_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.rlhf_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_bert_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_bert_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_mpnet_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_mpnet_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.set_weights"><code class="docutils literal notranslate"><span class="pre">EventSchema.set_weights</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.from_dict"><code class="docutils literal notranslate"><span class="pre">EventSchema.from_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-prompting.validators.event">
+<span id="prompting-validators-event"></span><h1><a class="reference internal" href="#module-prompting.validators.event" title="prompting.validators.event"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.event</span></code></a><a class="headerlink" href="#module-prompting.validators.event" title="Link to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#prompting.validators.event.EventSchema" title="prompting.validators.event.EventSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventSchema</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">prompting.validators.event.</span></span><span class="sig-name descname"><span class="pre">EventSchema</span></span><a class="headerlink" href="#prompting.validators.event.EventSchema" title="Link to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.completions">
+<span class="sig-name descname"><span class="pre">completions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.completions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.completion_times">
+<span class="sig-name descname"><span class="pre">completion_times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.completion_times" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.completion_status_messages">
+<span class="sig-name descname"><span class="pre">completion_status_messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.completion_status_messages" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.completion_status_codes">
+<span class="sig-name descname"><span class="pre">completion_status_codes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.completion_status_codes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.task_type">
+<span class="sig-name descname"><span class="pre">task_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.task_type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.block">
+<span class="sig-name descname"><span class="pre">block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.block" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.gating_loss">
+<span class="sig-name descname"><span class="pre">gating_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.gating_loss" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.uids">
+<span class="sig-name descname"><span class="pre">uids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.uids" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.prompt">
+<span class="sig-name descname"><span class="pre">prompt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.prompt" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.step_length">
+<span class="sig-name descname"><span class="pre">step_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.step_length" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.best">
+<span class="sig-name descname"><span class="pre">best</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.best" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.rewards">
+<span class="sig-name descname"><span class="pre">rewards</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.rewards" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.dahoas_reward_model">
+<span class="sig-name descname"><span class="pre">dahoas_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.dahoas_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.blacklist_filter">
+<span class="sig-name descname"><span class="pre">blacklist_filter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.blacklist_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.blacklist_filter_matched_ngram">
+<span class="sig-name descname"><span class="pre">blacklist_filter_matched_ngram</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.blacklist_filter_matched_ngram" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.blacklist_filter_significance_score">
+<span class="sig-name descname"><span class="pre">blacklist_filter_significance_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.blacklist_filter_significance_score" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.nsfw_filter">
+<span class="sig-name descname"><span class="pre">nsfw_filter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.nsfw_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.reciprocate_reward_model">
+<span class="sig-name descname"><span class="pre">reciprocate_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.reciprocate_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.diversity_reward_model">
+<span class="sig-name descname"><span class="pre">diversity_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.diversity_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.diversity_reward_model_historic">
+<span class="sig-name descname"><span class="pre">diversity_reward_model_historic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.diversity_reward_model_historic" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.diversity_reward_model_batch">
+<span class="sig-name descname"><span class="pre">diversity_reward_model_batch</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.diversity_reward_model_batch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.dpo_reward_model">
+<span class="sig-name descname"><span class="pre">dpo_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.dpo_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.rlhf_reward_model">
+<span class="sig-name descname"><span class="pre">rlhf_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.rlhf_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.prompt_reward_model">
+<span class="sig-name descname"><span class="pre">prompt_reward_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.prompt_reward_model" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.relevance_filter">
+<span class="sig-name descname"><span class="pre">relevance_filter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.relevance_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.dahoas_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">dahoas_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.dahoas_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.nsfw_filter_normalized">
+<span class="sig-name descname"><span class="pre">nsfw_filter_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.nsfw_filter_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.nsfw_filter_score">
+<span class="sig-name descname"><span class="pre">nsfw_filter_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.nsfw_filter_score" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.reciprocate_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">reciprocate_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.reciprocate_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.diversity_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">diversity_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.diversity_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.dpo_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">dpo_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.dpo_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.rlhf_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">rlhf_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.rlhf_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.prompt_reward_model_normalized">
+<span class="sig-name descname"><span class="pre">prompt_reward_model_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.prompt_reward_model_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.relevance_filter_normalized">
+<span class="sig-name descname"><span class="pre">relevance_filter_normalized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.relevance_filter_normalized" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.relevance_filter_bert_score">
+<span class="sig-name descname"><span class="pre">relevance_filter_bert_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.relevance_filter_bert_score" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.relevance_filter_mpnet_score">
+<span class="sig-name descname"><span class="pre">relevance_filter_mpnet_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.relevance_filter_mpnet_score" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.task_validation_penalty_raw">
+<span class="sig-name descname"><span class="pre">task_validation_penalty_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.task_validation_penalty_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.task_validation_penalty_adjusted">
+<span class="sig-name descname"><span class="pre">task_validation_penalty_adjusted</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.task_validation_penalty_adjusted" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.task_validation_penalty_applied">
+<span class="sig-name descname"><span class="pre">task_validation_penalty_applied</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.task_validation_penalty_applied" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.keyword_match_penalty_raw">
+<span class="sig-name descname"><span class="pre">keyword_match_penalty_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.keyword_match_penalty_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.keyword_match_penalty_adjusted">
+<span class="sig-name descname"><span class="pre">keyword_match_penalty_adjusted</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.keyword_match_penalty_adjusted" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.keyword_match_penalty_applied">
+<span class="sig-name descname"><span class="pre">keyword_match_penalty_applied</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.keyword_match_penalty_applied" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.sentence_match_penalty_raw">
+<span class="sig-name descname"><span class="pre">sentence_match_penalty_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.sentence_match_penalty_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.sentence_match_penalty_adjusted">
+<span class="sig-name descname"><span class="pre">sentence_match_penalty_adjusted</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.sentence_match_penalty_adjusted" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.sentence_match_penalty_applied">
+<span class="sig-name descname"><span class="pre">sentence_match_penalty_applied</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.sentence_match_penalty_applied" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.set_weights">
+<span class="sig-name descname"><span class="pre">set_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#prompting.validators.event.EventSchema.set_weights" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="prompting.validators.event.EventSchema.from_dict">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_log_rewards</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#prompting.validators.event.EventSchema.from_dict" title="Link to this definition">#</a></dt>
+<dd><p>Converts a dictionary to an EventSchema object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_dict</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>disable_log_rewards</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#prompting.validators.event.EventSchema" title="prompting.validators.event.EventSchema">EventSchema</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../dataset/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.dataset</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../forward/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.forward</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema"><code class="docutils literal notranslate"><span class="pre">EventSchema</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completions"><code class="docutils literal notranslate"><span class="pre">EventSchema.completions</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_times"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_times</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_status_messages"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_status_messages</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.completion_status_codes"><code class="docutils literal notranslate"><span class="pre">EventSchema.completion_status_codes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.name"><code class="docutils literal notranslate"><span class="pre">EventSchema.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_type"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_type</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.block"><code class="docutils literal notranslate"><span class="pre">EventSchema.block</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.gating_loss"><code class="docutils literal notranslate"><span class="pre">EventSchema.gating_loss</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.uids"><code class="docutils literal notranslate"><span class="pre">EventSchema.uids</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.step_length"><code class="docutils literal notranslate"><span class="pre">EventSchema.step_length</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.best"><code class="docutils literal notranslate"><span class="pre">EventSchema.best</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rewards"><code class="docutils literal notranslate"><span class="pre">EventSchema.rewards</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dahoas_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.dahoas_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter_matched_ngram"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter_matched_ngram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.blacklist_filter_significance_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.blacklist_filter_significance_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.reciprocate_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.reciprocate_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_historic"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_historic</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_batch"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_batch</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dpo_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.dpo_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rlhf_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.rlhf_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt_reward_model"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt_reward_model</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dahoas_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.dahoas_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.nsfw_filter_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.nsfw_filter_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.reciprocate_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.reciprocate_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.diversity_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.diversity_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.dpo_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.dpo_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.rlhf_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.rlhf_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.prompt_reward_model_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.prompt_reward_model_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_normalized"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_normalized</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_bert_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_bert_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.relevance_filter_mpnet_score"><code class="docutils literal notranslate"><span class="pre">EventSchema.relevance_filter_mpnet_score</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.task_validation_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.task_validation_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.keyword_match_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.keyword_match_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_raw"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_raw</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_adjusted"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_adjusted</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.sentence_match_penalty_applied"><code class="docutils literal notranslate"><span class="pre">EventSchema.sentence_match_penalty_applied</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.set_weights"><code class="docutils literal notranslate"><span class="pre">EventSchema.set_weights</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting.validators.event.EventSchema.from_dict"><code class="docutils literal notranslate"><span class="pre">EventSchema.from_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bittensor
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Bittensor.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

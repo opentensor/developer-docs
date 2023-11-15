@@ -8,6 +8,9 @@ hide_table_of_contents: false
 
 # Bittensor Developer Documentation
 
-Bittensor is a mining network, similar to Bitcoin, that offers censorship-resistant access to a decentralized network of machine learning models. By leveraging digital incentives and rewarding participants directly for their contributions of computational resources, expertise and innovation, Bittensor establishes a comprehensive, open-source ecosystem of artificial intelligence competencies. The native currency, TAO, constitutes both reward and access token to the network.
+**Welcome!** Bittensor is a protocol for decentralized subnets. Each subnet is an incentive-based competition in action. Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **The rewards for subnet participants are in the form of TAO tokens.** 
 
-This documentation covers the three primary ways that users can interact with Bittensor: mining, validating, and through the API as a client.
+You can either create your custom incentive mechanism for your own competition or join a competition that already exists in the Bittensor ecosystem. For example, the [text prompting subnet](https://github.com/opentensor/text-prompting) incentivizes subnet miners that produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet. 
+
+Bittensor provides all the open source tools, codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
+
