@@ -18,15 +18,15 @@ const sidebars = {
     "whats-new-in-docs",
     {
       type: "category",
-      label: "Get Started",
+      label: "Getting Started",
       collapsible: true,
       collapsed: false,
       items: [
-        "get-started/installation", 
-        "get-started/wallets",
-        "get-started/subnet-registration", 
-        "get-started/run-a-subnet-miner",
-        "get-started/run-a-subnet-validator",
+        "getting-started/installation", 
+        "getting-started/wallets",
+        "getting-started/subnet-registration", 
+        "getting-started/run-a-subnet-miner",
+        "getting-started/run-a-subnet-validator",
       ],
     },
     {
