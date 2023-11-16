@@ -19,7 +19,7 @@ When one entity creates an opportunity for another entity to perform some work, 
 A **subnet incentive mechanism**, when running optimally on a subnet, will continuously produce high quality task completions because the subnet miners and subnet validators are incentivized to do so. 
 
 :::tip See also
-See [Introduction](../concepts/introduction.md) that describes how subnets form the heartbeat of the Bittensor network.
+See [Introduction](./introduction) that describes how subnets form the heartbeat of the Bittensor network.
 :::
 
 ## Paradigm
