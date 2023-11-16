@@ -18,7 +18,18 @@ const sidebars = {
     "whats-new-in-docs",
     {
       type: "category",
-      label: "Getting Started",
+      label: "Learn Bittensor Concepts",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "learn/introduction", 
+        "learn/bittensor-building-blocks",
+        "learn/anatomy-of-incentive-mechanism",
+      ],
+    },
+    {
+      type: "category",
+      label: "Get Started",
       collapsible: true,
       collapsed: false,
       items: [
@@ -35,19 +46,9 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
+        "subnets/preparing-for-subnet",
         "subnets/working-with-subnets",
         "subnets/code-walkthrough-text-prompting",
-      ],
-    },
-    {
-      type: "category",
-      label: "Learn Bittensor Concepts",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        "learn/introduction", 
-        "learn/bittensor-building-blocks",
-        "learn/anatomy-of-incentive-mechanism",
       ],
     },
     "clients/clients",
