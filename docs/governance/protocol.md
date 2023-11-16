@@ -2,7 +2,7 @@
 # Governance
 
 
-Bittensor's governance protocol transitions network management from centralization within the foundation to community-ownership over time. The first stage of this management decentralization creates a bicameral legislature, in which the [Triumvirate](glossary/glossary#triumvirate) creates proposals for the [Senate](governance/senate) to approve or veto. Triumvirate members are Opentensor Foundation employees, while the Senate is formed from the top K delegate hotkeys.
+Bittensor's governance protocol transitions network management from centralization within the foundation to community-ownership over time. The first stage of this management decentralization creates a bicameral legislature, in which the [Triumvirate](../glossary/glossary.md#triumvirate) creates proposals for the [Senate](./senate.md) to approve or veto. Triumvirate members are Opentensor Foundation employees, while the Senate is formed from the top K delegate hotkeys.
 
 ### Proposals
 
