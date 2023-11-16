@@ -4,7 +4,7 @@ title: "Run a Subnet Validator"
 
 # Run a Subnet Validator
 
-Network validation is thus open to participants who have [registered](subnetworks/registration) a UID on any subnetwork **and** who have enough TAO staked on their hotkey to be considered a [top 64 validator](validating/validator-permit).
+Network validation is thus open to participants who have [registered](./subnet-registration.md) a UID on any subnetwork **and** who have enough TAO staked on their hotkey to be considered a [top 64 validator](validating/validator-permit).
 
 ### Staking
 

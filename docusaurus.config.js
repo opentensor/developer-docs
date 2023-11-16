@@ -4,6 +4,7 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+// KaTex stuff
 const math = require('remark-math');
 const katex = require('rehype-katex');
 
@@ -12,21 +13,17 @@ const config = {
   title: "Bittensor",
   tagline: "Developer Documentation",
   favicon: "img/favicon.ico",
-
   // Set the production url of your site here
   url: "https://docs.bittensor.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "opentensor", // Usually your GitHub org/user name.
   projectName: "new-docs", // Usually your repo name.
-
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
-
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -34,7 +31,6 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-
   presets: [
     [
       "classic",
@@ -47,6 +43,7 @@ const config = {
           rehypePlugins: [katex],
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: true,
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -120,7 +117,40 @@ const config = {
       },
       footer: {
         style: "dark",
-        copyright: `Built in ${new Date().getFullYear()} by <a href="https://bittensor.com">Bittensor</a> with Docusaurus.`,
+        links: [
+          {
+            title: "Wallet",
+            items: [
+              {
+                label: "Bittensor Wallet",
+                to: "https://wallet.bittensor.com/",
+              },
+            ],
+          },
+          {
+            title: "About",
+            items: [
+              {
+                label: "About Bittensor",
+                to: "https://bittensor.com/about",
+              },
+            ],
+          },
+          {
+            title: "Community",
+            items: [
+              {
+                label: "Bittensor Discord",
+                href: "https://discord.gg/qasY3HA9F9",
+              },
+              {
+                label: "Documentation GitHub",
+                href: "https://github.com/opentensor/new-docs",
+              },
+            ],
+          },
+        ],
+        copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
       },
       prism: {
         theme: lightCodeTheme,

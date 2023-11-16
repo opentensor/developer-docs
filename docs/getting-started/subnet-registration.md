@@ -16,8 +16,6 @@ Registration is required before you can participate in a subnet. You can registe
 
 ## Register as a subnet owner
 
-
-
 Prior to mining TAO, miners must attain a UID slot within one of Bittensor's sub-networks via a competition. This step is called registration. At the time of writing, there are 1024 UIDs available on Subnetwork 1 and 4096 on Subnetwork 3.
 
 ```bash dark
@@ -40,7 +38,7 @@ There are two methods of registrations:
       btcli subnet recycle_register --netuid SELECTED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
       ```
 
-Once the registration cost has been paid, the miner enters the network by replacing an older underperforming miner and can now [mine](mining/mining) themselves from that slot.
+Once the registration cost has been paid, the miner enters the network by replacing an older underperforming miner and can now [mine](./run-a-subnet-miner.md) themselves from that slot.
 
 
 ### Pow
