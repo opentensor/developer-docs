@@ -150,7 +150,6 @@ ul {
   font-weight: 200;
   text-transform: none;
 }
-
 .navbar {
   margin-bottom: 10px;
 }
@@ -161,4 +160,10 @@ ul {
   letter-spacing: 0.05em;
   margin: .7rem;
   text-transform: uppercase;
+}
+#bittensor-img {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;;
 }
