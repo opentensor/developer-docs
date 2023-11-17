@@ -4,7 +4,7 @@ title: "Run a Subnet Miner"
 
 # Run a Subnet Miner
 
-Before mining you must [register](./subnet-registration.md) the [hotkey of your wallet](./wallets.md) into a UID slot on one of Bittensor's [subnets](../subnets/working-with-subnets.md), once this UID is yours you can run your own miner or select one of Bittensor's many [pre-built miners](https://github.com/opentensor/text-prompting/tree/main/neurons/miners).
+Before mining you must [register](./run-a-subnet-miner.md) the [hotkey of your wallet](../getting-started/wallets.md) into a UID slot on one of Bittensor's [subnets](../subnets/working-with-subnets.md), once this UID is yours you can run your own miner or select one of Bittensor's many [pre-built miners](https://github.com/opentensor/text-prompting/tree/main/neurons/miners).
 
 ### Running with pre-built
 
