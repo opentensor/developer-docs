@@ -95,7 +95,7 @@ const config = {
           },
           {
             position: "left",
-            label: "Bittensor API",
+            label: "Python API",
             href: "pathname:///python-api/html/index.html",
           },
           {

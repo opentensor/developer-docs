@@ -1,8 +1,8 @@
 ---
-title: "Register for Subnet"
+title: "Register a Subnet"
 ---
 
-# Register for Subnet
+# Register a Subnet
 
 ## Prerequisites
 Before you proceed to register, make sure that:

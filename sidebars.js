@@ -35,9 +35,6 @@ const sidebars = {
       items: [
         "getting-started/installation", 
         "getting-started/wallets",
-        "getting-started/subnet-registration", 
-        "getting-started/run-a-subnet-miner",
-        "getting-started/run-a-subnet-validator",
       ],
     },
     {
@@ -46,7 +43,10 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
+        "subnets/register-a-subnet", 
         "subnets/preparing-for-subnet",
+        "subnets/run-a-subnet-miner",
+        "subnets/run-a-subnet-validator",
         "subnets/working-with-subnets",
         "subnets/code-walkthrough-text-prompting",
       ],
@@ -58,7 +58,7 @@ const sidebars = {
     "governance/senate",
     "reference/testnet",
     "reference/btcli",
-    "bittensor-api/index",
+   // "bittensor-api/index",
     "glossary/glossary",
   ],
 };
