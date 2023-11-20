@@ -1,18 +1,47 @@
 ---
-title: "Register a Subnet"
+title: "Create a Subnet"
 ---
 
-# Register a Subnet
+# Create a Subnet
+
+Before you create your first subnet, we strongly recommend that you follow the below order:
+1. First create a subnet on your local, and develop and test your incentive mechanism on the local subnet. 
+2. After you are satisfied with it, next create a subnet on the Bittensor testchain, and test and debug your incentive mechanism on this testchain subnet. 
+3. Finally, only after you completed the above steps, create a subnet on the Bittensor mainchain. 
+
+:::tip Minimum required TAO 
+Creating a subnet on mainnet is competitive and the cost is determined by the rate at which new networks are being registered onto the chain. By default you must have at least 100 TAO in your owner wallet to create a subnetwork. However the exact amount will fluctuate based on demand.
+:::
 
 ## Prerequisites
-Before you proceed to register, make sure that:
+
+To create a subnet, whether locally or on testchain or mainchain, make sure that:
 - You [installed Bittensor](../getting-started/installation.md). 
 - You have already [created a wallet or know how to create one](../getting-started/wallets.md#creating-a-local-wallet). 
 
-Registration is required before you can participate in a subnet. You can register as any of the following personas:
-- Subnet owner
-- Subnet validator
-- Subnet miner
+### Creating a subnet
+
+ The code below shows how to get the current price of creating a subnetwork.
+
+```bash dark
+btcli subnet lock_cost
+>> Subnet lock cost: τ100.000000000
+```
+
+Use the `btcli subnet create` subcommand to register a new subnet.
+
+```bash dark
+# Run the register subnetwork command on the main chain.
+btcli subnet create
+>> Enter wallet name (default): owner # Enter your owner wallet name
+>> Enter password to unlock key: # Enter your wallet password.
+>> Register subnet? [y/n]: <y/n> # Select yes (y)
+>> Registering subnet...
+✅ Registered subnetwork with netuid: 1 # Your subnet netuid will show here, save this for later.
+```
+
+
+
 
 ## Register as a subnet owner
 
@@ -24,19 +53,11 @@ uids
     netuid 3: [ 0, 1, 2, ... 4094, 4095 ]
 ```
 
-There are two methods of registrations:
+TAO Recycle Registration
 
-1. Proof-of-Work registration
-
-      ```bash dark
-      btcli subnet register --netuid SELECTED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
-      ```
-
-2. TAO Recycle Registration
-
-      ```bash dark
-      btcli subnet recycle_register --netuid SELECTED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
-      ```
+```bash
+btcli subnet recycle_register --netuid SELECTED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
+```
 
 Once the registration cost has been paid, the miner enters the network by replacing an older underperforming miner and can now [mine](./run-a-subnet-miner.md) themselves from that slot.
 
@@ -109,9 +130,14 @@ NETUID  NEURONS  MAX_N   DIFFICULTY  TEMPO  CON_REQ  EMISSION  BURN(τ)
 ```
 
 
-### Inspecting uids
+### Inspecting UIDs
 
-Once a slot has been attained you can view the performance of you registered wallet you can run ```btcli wallet overview --netuid```.
+After you obtain a slot you can view the performance of you registered wallet by running:
+```bash
+btcli wallet overview --netuid
+```
+
+After providing your wallet name at the prompt, you will see the following output:
 
 | Parameter         | Value | Description |
 | :---------------- | :------: | ----: |
@@ -152,16 +178,5 @@ The POW and Recycle difficulties are adaptively adjusted every 100 blocks based 
         `pow_difficulty = pow_difficulty * ( regs_this_interval + target_regs ) / 2 * target_regs`
 
 
-### Viewing difficulty
-
-Using the cli
-```bash dark
-btcli subnets list
-NETUID  NEURONS  MAX_N   DIFFICULTY  TEMPO  CON_REQ  EMISSION  BURN(τ)
-1       691    1.02 K   198.08 T    99     None     28.44%   τ4.75710
-3      4096    4.10 K   320.81 T    99     None     71.56%   τ1.00000
-    DIFFICULTY: Current proof of work difficulty
-    BURN: Current cost to register a key via recycle registration.
-```
 
 
