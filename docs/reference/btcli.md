@@ -1,12 +1,12 @@
+---
+title: "Bittensor CLI"
+---
 
 # Bittensor CLI
 
-
 The Bittensor command line interface (btcli) comes [installed](getting-started/installation) with the bittensor API and can be used to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network.
 
-
-
-<Accordion title="_basic commands">
+## Basic commands
 
 ```bash dark
 btcli [COMMAND]
@@ -24,10 +24,7 @@ positional arguments:
     legacy (l)          Miscellaneous commands.
 ```
 
-</Accordion>
-
-
-<Accordion title="_wallets">
+## Wallets 
 
 ### List wallets
 Lists all wallets locally stored on your machine under path `--wallet.path`. Outputs addresses are [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) required as desinstations for ```btcli transfer```
@@ -73,18 +70,8 @@ Regenerate a wallet with just the public seed of your coldkey.
 ```bash dark
 btcli wallet regen_coldkeypub
 ```
-</Accordion>
 
-
-
-<Accordion title="Registration">
-
-### POW registration
-Begins a proof of word registration.
-**Usage**: ```btcli subnet register [OPTIONS]```
-```bash dark
-btcli subnet register
-```
+## Registration
 
 ### Recycle registration
 Initiates a TAO recycle registration.
@@ -92,10 +79,8 @@ Initiates a TAO recycle registration.
 ```bash dark
 btcli subnet recycle_register
 ```
-</Accordion>
 
-
-<Accordion title="Transfers/Staking">
+### Transfers and staking 
 
 ### Transfer Tao
 Transfers TAO from a wallet coldkey to another wallet public key address. Destination addresses must be [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier).
@@ -117,10 +102,8 @@ Remove stake TAO from the hotkey staking account and add it to the coldkey.
 ```bash dark
 btcli stake remove
 ```
-</Accordion>
 
-
-<Accordion title="Delegation">
+## Delegation
 
 ### Delegate Tao
 List all active delegates available for delegated TAO.
@@ -150,9 +133,8 @@ Create a hotkey associated to a wallet.
 ```bash dark
 btcli wallet new_hotkey
 ```
-</Accordion>
 
-<Accordion title="Governance">
+## Governance
 
 ### View proposals
 List all active proposals for the Senate to vote on.
@@ -182,9 +164,8 @@ Participate in a triumvirate proposal by voting with your senate hotkey.
 ```bash dark
 btcli root senate_vote --proposal=[PROPOSAL_HASH]
 ```
-</Accordion>
 
-<Accordion title="Misc">
+## Misc
 
 ### Update Bittensor
 Update your Bittensor installation
@@ -192,4 +173,3 @@ Update your Bittensor installation
 ```bash dark
 btcli misc update
 ```
-</Accordion>
