@@ -4,18 +4,20 @@ title: "Install Bittensor"
 
 # Install Bittensor
 
-Before you can get started, you should install Bittensor and then create Bittensor wallet.
+Before you can start developing, install Bittensor and then create Bittensor wallet.
 
 :::tip On macOS
-The following installation instructions are for macOS. Also see the below  special instructions for Apple M1. 
+The following installation instructions are for macOS. For Apple M1, see the below [Installing on Apple M1](#installing-on-apple-m1) section. 
 :::
 
-You can install Bittensor on your local machine in either of the following ways. Make sure you verify your installation after you install:
+## Install
+
+You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
 - Using a Bash command.
 - Using `pip3 install`.
 - From source.
 
-## Using a Bash command
+### Using a Bash command
 
 This is the most straightforward method. It is recommended for a beginner as it will pre-install requirements like Python, if they are not already present on your machine. Copy and paste the following `bash` command into your terminal:
 
@@ -23,13 +25,13 @@ This is the most straightforward method. It is recommended for a beginner as it 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
 ```
 
-## Using `pip3 install`
+### Using `pip3 install`
 
 ```bash
 pip3 install bittensor
 ```
 
-## From source
+### From source
 
 1. Clone the Bittensor repo.
 
@@ -127,7 +129,7 @@ For multi-line display click the `Toggle word wrap` button on the top right of t
 >>>
 ```
 
-## Apple M1
+## Installing on Apple M1
 
 To use Bittensor on Apple M1, either via CLI (`btcli`) or within your Python code, follow the below steps:
 

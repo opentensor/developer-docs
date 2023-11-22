@@ -1,8 +1,11 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+// const lightCodeTheme = require("prism-react-renderer/themes/github");
+// const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
 // KaTex stuff
 const math = require('remark-math');
@@ -79,11 +82,6 @@ const config = {
         },
         items: [
           {
-            position: "left",
-            label: "Python API",
-            href: "pathname:///python-api/html/index.html",
-          },
-          {
             href: "https://wallet.bittensor.com/",
             label: "Wallet",
             position: "right",
@@ -138,8 +136,8 @@ const config = {
         copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: lightTheme,
+        darkTheme: darkTheme,
       },
       algolia: {
         appId: "B07G29NY9F",

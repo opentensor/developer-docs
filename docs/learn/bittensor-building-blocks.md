@@ -7,7 +7,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Bittensor Building Blocks
 
-The Bittensor API provides basic building blocks you can use to develop your incentive mechanism. This section first presents an overview of a subnet before introducing the building blocks. 
+The Bittensor API provides basic building blocks you can use to develop your incentive mechanism. This section presents:
+- An overview of a subnet.
+- Introduction to the Bittensor building blocks. 
 
 ## Subnet
 
