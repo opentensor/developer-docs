@@ -81,21 +81,21 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: "dropdown",
-            label: "Getting Started",
-            position: "left",
-            items: [
-              {
-                label: "Installation",
-                to: "getting-started/installation",
-              },
-              {
-                label: "Wallets",
-                to: "getting-started/wallets",
-              },
-            ],
-          },
+          // {
+          //   type: "dropdown",
+          //   label: "Getting Started",
+          //   position: "left",
+          //   items: [
+          //     {
+          //       label: "Installation",
+          //       to: "getting-started/installation",
+          //     },
+          //     {
+          //       label: "Wallets",
+          //       to: "getting-started/wallets",
+          //     },
+          //   ],
+          // },
           // {
           //   position: "left",
           //   label: "Python API",
