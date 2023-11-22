@@ -43,7 +43,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        "subnets/register-a-subnet", 
+        "subnets/create-a-subnet", 
         "subnets/preparing-for-subnet",
         "subnets/run-a-subnet-miner",
         "subnets/run-a-subnet-validator",
