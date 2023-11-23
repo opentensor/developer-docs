@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 Documentation updates.
 
-## 29 December 2023
+## 29 November 2023
 
 - Release of new and revised documentation hosted on `docs.bittensor.com`, which will now be the default site for Bittensor developer documentation. 
 - A new [Learn Bittensor Concepts](./learn/introduction.md) section comprising of:

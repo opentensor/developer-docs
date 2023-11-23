@@ -1,10 +1,8 @@
 ---
-title: "Staking and Delegation"
+title: "Delegation"
 ---
 
-# Staking and Delegation
-
-## Delegation
+# Delegation
 
 TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. Delegation on Bittensor network works like this:
 
