@@ -52,7 +52,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        "subnets/preparing-for-subnet",
+        "subnets/checklist-for-subnet",
         "subnets/create-a-subnet", 
         "subnets/register-and-participate",
         //"subnets/run-a-subnet-validator",

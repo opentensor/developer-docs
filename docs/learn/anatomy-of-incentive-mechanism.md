@@ -107,12 +107,13 @@ sources={{
 The item numbers below correspond to the circled numbers in the above diagram.
 
 1. Each subnet validator maintains a vector of weights. Each element of the vector represents the weight assigned to a subnet miner. This weight represents how well the subnet miner is performing **according to this subnet validator**. 
-
-  Each subnet validator ranks all the subnet miners by means of this weight vector. Each subnet validator within the subnet, acting independently, transmits its miner ranking weight vector to the blockchain. These ranking weight vectors can arrive at the blockchain at different times. Typically each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks. 
+   
+   Each subnet validator ranks all the subnet miners by means of this weight vector. Each subnet validator within the subnet, acting independently, transmits its miner ranking weight vector to the blockchain. These ranking weight vectors can arrive at the blockchain at different times. Typically each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks. 
 2. The blockchain (subtensor) waits until the latest ranking weight vectors from all the subnet validators of the given subnet arrive at the blockchain. A ranking weight matrix formed from these ranking weight vectors is then provided as input to the Yuma Consensus module on-chain.
 3. The Yuma Consensus (YC) on-chain then uses this weight matrix, along with the amount of stake associated with the UIDs on this subnet, to calculate rewards. The YC calculates how the reward TAO tokens should be distributed amongst the subnet validators and subnet miners in the subnet, i.e., amongst each UID in the subnet.  
-  :::tip All reward TAO tokens are newly minted. 
-  :::
+   
+:::tip All reward TAO tokens are newly minted. 
+:::
 4. Finally, the YC calculates a consensus distribution of TAO (the ‘emission’) and distributes the newly minted reward TAO immediately into the accounts associated with the UIDs. 
 
 ### Tempo
