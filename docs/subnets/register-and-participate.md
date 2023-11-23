@@ -27,7 +27,7 @@ After your register your keys, you can then proceed to become either a subnet mi
 
 After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are already available in the active subnets. 
 
-If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](./preparing-for-subnet.md) for more details.
+If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-subnet.md) for more details.
 
 ## Running a subnet validator 
 
