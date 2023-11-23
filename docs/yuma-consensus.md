@@ -1,38 +1,41 @@
+---
+title: "Yuma Consensus"
+---
 
-# Consensus
+# Yuma Consensus
 
+The Bittensor API is designed to enable subnet owners to write their own incentive mechanisms. These incentive mechanisms allow the subnet validators to express their own subjective preferences about what the network should learn. Such an approach:
 
-Bittensor's API is designed to allow Validators to write their own validation mechanisms and express their own subjective prefrences about what the network should learn. This both [1] facilitates the economic market through which producers ([miners](mining/mining)) are constantly driven to make their knowledge output more useful, in terms of speed, intelligence and diversity, but also [2] decentralizes Bittensor's the governance across multiple diverse stakeholders, ensuring that no single group has full control over what is learned.
+1. Facilitates the economic market in which producers (subnet miners) are constantly driven to make their knowledge output more useful in terms of speed, intelligence and diversity.
+2. And also decentralizes Bittensor's governance across multiple diverse stakeholders, ensuring that no single group has full control over what is learned.
 
-### Weights
+## Weights
 
-Validators express their perspective about how performant miners are on a subnetwork through a set of weights **w_i** which aggregated across validators on a particular subnetwork produce a weight matrix **W**. Validators learn their row of **W** by running the validator and continuously verifying the responses produced by miners in terms of in terms of speed, intelligence and diversity.
+A subnet validator in a subnet expresses their perspective about how performant subnet miners in the subnet are, through a set of weights $w_i$. 
 
-```python numbered dark
+Such weights $w_i$ are aggregated across all the subnet validators in the subnet,  to produce a weight matrix $W$. Subnet validators learn their row in $W$ by running the validator module and continuously verifying the responses produced by the subnet miners in terms of speed, intelligence and diversity.
+
+The below example code prints the $W$ matrix of a subnet with the `netuid` of `1`.
+
+```python
 import bittensor as bt
 subnet = bt.metagraph( netuid = 1, lite = False)
 print ('weights', subnet.W )
 ```
 
-### Ranks + trust + consensus + incentive
+## Ranks, trust, consensus, incentive 
 
-Yuma consensus is the algorithm which translates the weight matrix into a the incentive landscape into which miners must mine.
+The Yuma Consensus algorithm translates the weight matrix $W$ into incentives for the subnet miners and dividends for the subnet validators.
 
-### Yuma consensus
+However, radical divergence from consensus view points is dangerous, especially if bad actor validators manipulate incentives in ways that benefits themselves, for example, lying about the value produced by miners. 
 
-Divergence from view points however is dangerous, especially if bad actor validators merely manipulate incentives in ways that benefits themselves, lying about the value produced by miners for instance. To avoid this scenario Bittensor uses a dual proof-of-stake, proof-of-work mechanism called Yuma Consensus which rewards validators with **dividends** for producing evaluations of miner-value which are in agreement with the subjective evaluations produced by other validators weighted by **stake**.
+To avoid this scenario Bittensor uses a mechanism called Yuma Consensus. The Yuma Consensus rewards subnet validators with **dividends** for producing miner-value evaluations that are in agreement with the subjective evaluations produced by other subnet validators, weighted by **stake**.
 
-```python numbered dark
+The below example code prints the values of `S`, subnet validator stake, and `W`, subnet validator weights for a subnet with the `netuid` of `1`:
+
+```python
 import bittensor as bt
 subnet = bt.metagraph( netuid = 1, lite = False)
 print ('subnet 1 validator stake', subnet.S )
 print ('subnet 1 validator weights', subnet.W )
 ```
-
-Validators thus speculateTAO which has been locked into Bittensor's incentive mechanism and attached to a validator.  However, consensus is rewarded by the network as validators accumulate **dividends** while remaining in agreement with others in the network.
-
-Under the hood, Bittensor’s economic market, is facilitated by a blockchain token mechanism, through which producers ([miners](mining/mining)) and the verification of the work done by those miners ([validators](validating/validating)) are rewarded. Miners host, train or otherwise procure machine learning systems into the network as a means of fulfilling the verification problems defined by the validators, like the ability to generate responses from prompts i.e. “What is the capital of Texas? and making them available to [clients](clients/clients).
-
-The token based mechanism under which the miners are incentivized ensures that they are constantly driven to make their knowledge output more useful, in terms of speed, intelligence and diversity. The value generated by the network is distributed directly to the individuals producing that value, without intermediarias. Anyone can participate in this endeavour, extract value from the network, and govern Bittensor. The network is open to all participants, and no individual or group has full control over what is learned, who can profit from it, or who can access it.
-
-Under the hood, Bittensor's validation uses a dual proof-of-stake, proof-of-work mechanism called Yuma Consensus which you can read about here. Yuma consensus rewards validators with **dividends** for producing evaluations of miner-value which are in agreement with the subjective evaluations produced by other validators weighted by **stake**, TAO which has been locked into Bittensor's incentive mechanism and attached to a validator.
