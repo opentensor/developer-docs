@@ -116,7 +116,7 @@ After providing your wallet name at the prompt, you will see the following outpu
 | CONSENSUS   | 0.89                 |    This validator's aggregate consensus score.                                       |
 | INCENTIVE   | 0.029                |    This miner's incentive, TAO emission attained via mining.                     |
 | DIVIDENDS   | 0.001                |    This validator's dividends, TAO emission attained via validating.                 |
-| EMISSION    | 29_340_153           |    This miner's total emission in RAO ( 10^-9 TAO ) per block.                   |
+| EMISSION    | 29_340_153           |    This miner's total emission in RAO ( 10<sup>-9</sup> TAO ) per block.                   |
 | VTRUST      | 0.96936              |    This validators trust score as a validator.                                   |
 | VPERMIT     | *                    |    Whether this miner is considered active for validating on this subnetwork.    |
 | UPDATED     | 43                   |    Blocks since this miner set weights on the chain.                             |
