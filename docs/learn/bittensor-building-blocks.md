@@ -33,7 +33,7 @@ For example, see [Minimum compute requirements](https://github.com/opentensor/bi
 - In the classical neural network, the inputs from the external world are connected only to the input layer, and the hidden nodes are isolated from the external world (hence, "hidden"). Similarly, in a Bittensor subnet:
   - Inputs from the external world can connect only to the subnet validators. 
   - Only subnet validators are allowed to connect to subnet miners, hence isolating subnet miners from the external world. 
-- **Many-to-many bidirectional**: Notice that in the classical neural network shown on the right, the connection from input layer to the hidden layer is only feedforward. However, in a Bittensor subnet, a subnet miner can directly communicate to the subnet validator. This bi-drectional communication between a subnet validator and a subnet miner forms the core of a protocol in an incentive mechanism. This closely resembles the architecture of a restricted Botlzmann machine (RBM).
+- **Many-to-many bidirectional**: Notice that in the classical neural network shown on the right, the connection from input layer to the hidden layer is only feedforward. However, in a Bittensor subnet, a subnet miner can directly communicate to the subnet validator. This bi-drectional communication between a subnet validator and a subnet miner forms the core of a protocol in an incentive mechanism. This closely resembles the architecture of a [Restricted Botlzmann Machine (RBM)](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine).
 
 ## Neuron-to-neuron communication 
 
@@ -86,7 +86,7 @@ For example, in the [Text Prompting Subnet](https://github.com/opentensor/text-p
 
 ## Metagraph
 
-A metagraph is a data structure that contains comprehensive information about current state of the subnet. When you inspect the metagraph of a subnet, you will find detailed information on all the nodes (neurons) in the subnets. A subnet validator should first sync with a subnet's metagraph to know all the subnet miners that are in the subnet. The metagraph can be inspected without participating in a subnet.
+A metagraph is a data structure that contains comprehensive information about current state of the subnet. When you inspect the metagraph of a subnet, you will find detailed information on all the nodes (neurons) in the subnet. A subnet validator should first sync with a subnet's metagraph to know all the subnet miners that are in the subnet. The metagraph can be inspected without participating in a subnet.
 
 :::tip Example 
 For example, see [Initialize the metagraph](../subnets/code-walkthrough-text-prompting#initialize-the-metagraph).

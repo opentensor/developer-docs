@@ -20,13 +20,16 @@ Registering works like this:
 :::tip A hotkey can hold multiple UID slots 
 Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. A hotkey can hold many UID slots, either in a single subnet or in multiple subnets. See [Delegation](../delegation.md).
 :::
-<< steffen: i'm actually not sure if this is true. Let's confirm >>
 
 After your register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
 
 ## Running a subnet miner
 
-After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are provided in the subnet codebase. Note that you do not need to have any stake to run a miner, beside initial registration. 
+After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are provided in the subnet codebase. 
+
+:::tip Stake not needed to run a miner 
+Note that you do not need to have any stake to run a miner. You only need to register. 
+:::
 
 If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-subnet.md) for more details.
 

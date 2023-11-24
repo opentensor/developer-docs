@@ -22,13 +22,11 @@ In a Bittensor subnet:
 - The task-performing entities are called **subnet miners**.
 - Entities that create the tasks, score the output of the subnet miners and reward them, are called **subnet validators**. 
 
-Incentive menchanisms are a fundamental part of Bittensor. They drive the behaviour of subnet miners and govern the consensus between validators. The two components of an incentive mechanism are:
-1. Task generation, which defines what the miners should become competent at.
-2. Reward model, which is the mathematical object that scores miner performance and thus miners seek to maximize.
+Incentive mechanisms are a fundamental part of Bittensor. They drive the behaviour of the subnet miners and govern the consensus amongst the subnet validators. The two key components of an incentive mechanism are (described in more detail in the below [Components of incentive mechanism](#components-of-incentive-mechanism) section):
+1. Task generation: The subnet miners should become competent in this task generation.
+2. Reward model: A mathematical object that scores the subnet miner performance. The reward model produces a numerical reward for all miner behaviours. The subnet miners seek to maximize their reward.
 
-The reward model produces a numerical reward for all miner behaviours. In other words, it defines a landscape that miners will traverse as they navigate towards the global peak.
-
-Each subnet has its own incentive mechanism. Subnet developers should design incentive mechanisms carefully so that these mechanisms comprehensively and explicitly promote all the desired behaviors and penalize undesired behaviors. The zen of incentive mechanisms is "explicit is better than implicit, objective beats subjective".
+Each subnet has its own incentive mechanism. Subnet developers should design incentive mechanisms carefully so that these mechanisms comprehensively and explicitly promote all the desired behaviors and penalize undesired behaviors. 
 
 :::tip Machine learning analogy
 In machine learning analogy, incentive mechanisms are effectively loss functions that steer the behaviour of subnet miners towards desirable outcomes. Miner earnings are dependent on their loss value, hence the miners are incentivized to act in ways that minimize such loss value. Furthermore, competition between subnet miners will drive the miners to seek optimal strategies within the given subnet incentive landscape.
@@ -81,10 +79,10 @@ See **1** and **3** in the above diagram. A subnet protocol, which is unique to 
 Use the Bittensor building blocks Axon, dendrite and Synapse to develop your subnet protocol. See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
 :::
 
-For example, a subnet validator might send a query containing the task description to the subnet miners. The subnet miners will perform the task and then respond to the subnet validators with the results of the task the miners performed. Note, however, that query-response is only one of the ways of subnet miner-and-subnet validator interaction. One alternative is that validators and miners can use additional shared resources such as databases and these resources can be used to evaluate miner performance.
+For example, a subnet validator might send a query containing the task description to the subnet miners. The subnet miners will perform the task and then respond to the subnet validators with the results of the task the miners performed. Note, however, that query-response is only one of the ways of subnet miner-and-subnet validator interaction. An alternative example is when the subnet validators and subnet miners use additional shared resources such as databases, and these resources can be used to evaluate miner performance.
 
 ### Subnet task
-See **2** in the above diagram. The specific task a subnet miner should perform, based on which the validator scores the miner. Examples of this are text prompts that contain natural language tasks, encrypted files to be stored.
+See **2** in the above diagram. The specific task a subnet miner should perform, based on which the validator scores the miner. Examples of tasks are text prompts that contain natural language tasks, or encrypted files to be stored.
 
 ### Subnet reward model
 See **4** and **5** in the above diagram. The reward model should define how  responses from the subnet miners are evaluated by a subnet validator and how a subnet miner must be rewarded for its response. 

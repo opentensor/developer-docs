@@ -74,7 +74,14 @@ You can participate in the Bittensor ecosystem as the following personas:
 
 ## Participating in a subnet
 
-When creating a subnet you should always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. Testing the incentive mechanism means running one or more validators and miners to ensure that rewards are distributed in the intended way. We recommend all subnet participants to familiarize themselves with the incentive mechanism before joining, which can be done by following the aforementioned steps.
+When creating a subnet you should always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
+
+Testing the incentive mechanism means running one or more validators and miners to ensure that rewards are distributed in the intended way. 
+
+:::tip Before you participate in a subnet
+We recommend all subnet participants to become familiar with the incentive mechanism before joining a subnet or creating a new subnet.
+:::
+
 <ThemedImage
 alt="Simplified Bittensor Network"
 sources={{
