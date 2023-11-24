@@ -81,10 +81,10 @@ See **1** and **3** in the above diagram. A subnet protocol, which is unique to 
 Use the Bittensor building blocks Axon, dendrite and Synapse to develop your subnet protocol. See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
 :::
 
-For example, a subnet validator might send a query containing the task description to the subnet miners. The subnet miners will perform the task and then respond to the subnet validators with the results of the task the miners performed. Note, however, that query-response is only one of the ways of subnet miner-and-subnet validator interaction.
+For example, a subnet validator might send a query containing the task description to the subnet miners. The subnet miners will perform the task and then respond to the subnet validators with the results of the task the miners performed. Note, however, that query-response is only one of the ways of subnet miner-and-subnet validator interaction. One alternative is that validators and miners can use additional shared resources such as databases and these resources can be used to evaluate miner performance.
 
 ### Subnet task
-See **2** in the above diagram. The specific task a subnet miner should perform, based on which the validator scores the miner. 
+See **2** in the above diagram. The specific task a subnet miner should perform, based on which the validator scores the miner. Examples of this are text prompts that contain natural language tasks, encrypted files to be stored.
 
 ### Subnet reward model
 See **4** and **5** in the above diagram. The reward model should define how  responses from the subnet miners are evaluated by a subnet validator and how a subnet miner must be rewarded for its response. 
