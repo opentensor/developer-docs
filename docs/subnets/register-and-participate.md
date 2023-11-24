@@ -20,12 +20,13 @@ Registering works like this:
 :::tip A hotkey can hold multiple UID slots 
 Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. A hotkey can hold many UID slots, either in a single subnet or in multiple subnets. See [Delegation](../delegation.md).
 :::
+<< steffen: i'm actually not sure if this is true. Let's confirm >>
 
 After your register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
 
 ## Running a subnet miner
 
-After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are already available in the active subnets. 
+After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are provided in the subnet codebase. Note that you do not need to have any stake to run a miner, beside initial registration. 
 
 If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-subnet.md) for more details.
 
@@ -106,12 +107,12 @@ After providing your wallet name at the prompt, you will see the following outpu
 | HOTKEY      | my_first_hotkey      |    The name of the hotkey associated with your slot.                          |
 | UID         | 5                    |    The index of the uid out of available uids.                                   |
 | ACTIVE      | True                 |    Whether or not the uid is considered active.                                  |
-| STAKE(τ)    | 71.296               |    The amount of stake on this miner.                                            |
+| STAKE(τ)    | 71.296               |    The amount of stake in this wallet.                                           |
 | RANK        | 0.0629               |    This miner's absolute ranking according to validators on the network.         |
 | TRUST       | 0.2629               |    This miner's trust as a proportion of validators on the network.              |
-| CONSENSUS   | 0.89                 |    This miner's aggregate consensus score.                                       |
+| CONSENSUS   | 0.89                 |    This validator's aggregate consensus score.                                       |
 | INCENTIVE   | 0.029                |    This miner's incentive, TAO emission attained via mining.                     |
-| DIVIDENDS   | 0.001                |    This miner's dividends, TAO emission attained via validating.                 |
+| DIVIDENDS   | 0.001                |    This validator's dividends, TAO emission attained via validating.                 |
 | EMISSION    | 29_340_153           |    This miner's total emission in RAO ( 10^-9 TAO ) per block.                   |
 | VTRUST      | 0.96936              |    This validators trust score as a validator.                                   |
 | VPERMIT     | *                    |    Whether this miner is considered active for validating on this subnetwork.    |
