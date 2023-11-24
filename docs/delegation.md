@@ -12,7 +12,12 @@ TAO holders can delegate any amount of their stake to a subnet validator through
 :::tip Delegate take %
 The default value of the delegate take is 18%. As a delegate you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
 :::
-- The above (100-18)% of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
+- The above percentage of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
+
+Let's provide a concrete example. Say a delegate holds 800 TAO and three nominators delegate 30, 70 and 100 TAO to them. The effective stake of the delegate becomes 1000 TAO and when the staking rewards are received the dividends are shared in the following way; 
+- The delegate would keep 80% based on their proportion of total stake **plus** 18% of the remaining dividends which is the delegate take. 
+- As a result, the total dividends would be `0.8 + 0.2*0.18=0.836` for the delegate, and
+- `0.03*(1-0.18)=0.0246`,  `0.07*(1-0.18)=0.0574` and  `0.1*(1-0.18)=0.082` for the nominators respectively.
 
 :::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically a nominator is an owner of TAO funds, looking to invest in Bittensor network without doing any validating tasks.
