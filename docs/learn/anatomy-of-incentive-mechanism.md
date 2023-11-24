@@ -22,15 +22,19 @@ In a Bittensor subnet:
 - The task-performing entities are called **subnet miners**.
 - Entities that create the tasks, score the output of the subnet miners and reward them, are called **subnet validators**. 
 
-Incentive menchanisms are a fundamental part of Bittensor. They drive the behaviour of subnet miners. Each subnet has its own incentive mechanism. 
+Incentive menchanisms are a fundamental part of Bittensor. They drive the behaviour of subnet miners and govern the consensus between validators. The two components of an incentive mechanism are:
+1. Task generation, which defines what the miners should become competent at.
+2. Reward model, which is the mathematical object that scores miner performance and thus miners seek to maximize.
 
-Subnet developers should design incentive mechanisms carefully so that these mechanisms comprehensively and explicitly promote all the desired behaviors and penalize undesired behaviors. 
+The reward model produces a numerical reward for all miner behaviours. In other words, it defines a landscape that miners will traverse as they navigate towards the global peak.
+
+Each subnet has its own incentive mechanism. Subnet developers should design incentive mechanisms carefully so that these mechanisms comprehensively and explicitly promote all the desired behaviors and penalize undesired behaviors. The zen of incentive mechanisms is "explicit is better than implicit, objective beats subjective".
 
 :::tip Machine learning analogy
 In machine learning analogy, incentive mechanisms are effectively loss functions that steer the behaviour of subnet miners towards desirable outcomes. Miner earnings are dependent on their loss value, hence the miners are incentivized to act in ways that minimize such loss value. Furthermore, competition between subnet miners will drive the miners to seek optimal strategies within the given subnet incentive landscape.
 :::
 
-A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality task completions because the subnet miners and subnet validators are incentivized to do so. 
+A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will enourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
 
 ## Subnet owner responsibilities
 
