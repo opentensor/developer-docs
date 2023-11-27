@@ -86,16 +86,20 @@ The task defines the scope of work that miners will undertake, and what utility 
 ### Subnet reward model
 See **4** and **5** in the above diagram. Just as the task describes **what** miners should do, the reward model dictates **how** it should be done. Similarly, just as tasks should mimic user interactions, reward models should mimic user preferences or desired outcomes.
 
-As with any machine learning model, a subnet has an objective function that it is continuously optimizing. The reward model defines the quality of all miner behvaiour in the subnet (both intended and unintended). Operationally, it is the mathematical object that converts miner responses into numerical scores. A reward model can in fact contain as many different reward mechanisms as are necesary to align miners with the intended task. Miners will continuously compete to achieve the highest reward possible. If the reward is maximized there will be no way for miners to improve further and so care should be taken to enable continuous improvement rather than stagnation.
+As with any machine learning model, a subnet has an objective function that it is continuously optimizing. The reward model defines the quality of all miner behvaiour in the subnet (both intended and unintended). 
+
+Operationally, it is the mathematical object that converts miner responses into numerical scores. A reward model can in fact contain as many different reward mechanisms as are necesary to align miners with the intended task. 
+
+Miners will continuously compete to achieve the highest reward possible. If the reward is capped at an upper limit, miners may not be motivated to improve further. Hence care should be taken to enable continuous improvement of the miner, rather than stagnation.
 
 :::tip The zen of incentive mechanisms
-_Explicit is better than implicit. 
-Objective is better than subjective.
-Subnets should be endlessly improving._
+Subnets should be endlessly improving.
 :::
 
 ### Discourage exploits
-The incentive mechanism is ultimately the judge of subnet miner performance. When the incentive mechanism is well calibrated, it can result in a virtuous cycle in which the subnet miners continuously improve at the desired task due to competition. On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
+The incentive mechanism is ultimately the judge of subnet miner performance. When the incentive mechanism is well calibrated, it can result in a virtuous cycle in which the subnet miners continuously improve at the desired task due to competition. 
+
+On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
 
 
 ## Distribution of rewards

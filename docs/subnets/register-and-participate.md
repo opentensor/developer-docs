@@ -17,8 +17,10 @@ Registering works like this:
 - When you run the above command, you have purchased a UID slot in the subnet of your choice.
 - Your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
 
-:::tip A hotkey can hold multiple UID slots 
-Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. A hotkey can hold many UID slots, either in a single subnet or in multiple subnets. See [Delegation](../delegation.md).
+:::tip Ownership belongs to a hotkey
+Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. See [Delegation](../delegation.md). 
+
+A hotkey can hold multiple UIDs across **separate** subnets. However within one subnet, each UID must have a unique hotkey. 
 :::
 
 After your register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
