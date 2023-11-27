@@ -7,7 +7,7 @@ title: "Install Bittensor"
 Before you can start developing, install Bittensor and then create Bittensor wallet.
 
 :::tip On macOS
-The following installation instructions are for macOS. For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon)) section. 
+The following installation instructions are for macOS. For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon) section. 
 :::
 
 ## Install
