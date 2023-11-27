@@ -82,6 +82,11 @@ const config = {
         },
         items: [
           {
+            position: "left",
+            label: "Python API Reference",
+            href: "pathname:///python-api/html/index.html",
+          },
+          {
             href: "https://wallet.bittensor.com/",
             label: "Wallet",
             position: "right",
