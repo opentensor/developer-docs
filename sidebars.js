@@ -61,7 +61,7 @@ const sidebars = {
       ],
     },
     "reference/btcli",
-    "reference/bittensor-api-ref",
+    // "reference/bittensor-api-ref",
     "delegation",
     "yuma-consensus",
     "governance",
