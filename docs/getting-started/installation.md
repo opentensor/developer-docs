@@ -7,7 +7,7 @@ title: "Install Bittensor"
 Before you can start developing, install Bittensor and then create Bittensor wallet.
 
 :::tip On macOS
-The following installation instructions are for macOS. For Apple M1, see the below [Installing on Apple M1](#installing-on-apple-m1) section. 
+The following installation instructions are for macOS. For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon)) section. 
 :::
 
 ## Install
@@ -125,9 +125,11 @@ The Python interpreter output will look like below.
 >>>
 ```
 
-## Installing on Apple M1
+## Installing on Apple Silicon
 
-To use Bittensor on Apple M1, either via CLI (`btcli`) or within your Python code, follow the below steps:
+To install Bittensor on Apple M1, we recommend you first activate a Python virtual environment. Follow the below steps:
+
+### Activate a virtual environment
 
 1. Install `conda` on macOS. Follow [this guide on conda.io](https://conda.io/projects/conda/en/latest/user-guide/install/macos.html).
 2. Download the `apple_m1_environment.yml` configuration file from Bittensor. 
@@ -149,4 +151,11 @@ To use Bittensor on Apple M1, either via CLI (`btcli`) or within your Python cod
    ```bash
    conda env list
    ```
-6. Now are you ready to use Bittensor on your Apple M1.
+6. Next, install Bittensor as shown below.
+
+### Install Bittensor
+Run the below command to install Bittensor in the above virtual environment.
+
+```python
+pip3 install bittensor --no-deps
+```
