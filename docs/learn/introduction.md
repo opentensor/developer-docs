@@ -36,7 +36,7 @@ Bittensor provides all the open source tools, codebase and the documentation, wi
 
 You participate in the Bittensor ecosystem by participating in a subnet. 
 
-## How subnet works
+## How a subnet works
 
 Subnets exist to operationalize the incentive-based competition mechanisms. See the below diagram. 
 
@@ -50,14 +50,14 @@ sources={{
 />
 </center>
 
-A subnet works like this. Note that this explanation is **highly simplified**, and is intended only to convey the essential conceptual core of the subnet. 
+Here is an explanation of the primary components of a subnet. Note that this explanation is **highly simplified**, and is intended only to convey the essential conceptual core of the subnet. 
 
 The item numbers below correspond to the numbers in the above diagram. 
 
 1. A subnet is defined by the incentive mechanism it supports. The incentive mechanism is unique to the subnet. 
-2. Entities in the subnet, called **subnet miners**, each produce a solution, i.e., solve some problem, as defined in the incentive mechanism of the subnet. 
-3. Separate entities in the same subnet, called **subnet validators**, each independently evaluate all such solutions from all the subnet miners. 
-4. The subnet validators then each express their opinion on each miner’s solution. These opinions of the subnet validators are then provided as a collective input to the **Yuma Consensus** mechanism on the blockchain by using the Bittensor API. 
+2. Entities in the subnet, called **subnet miners**, each perform useful task, i.e., solve some problem, as defined in the incentive mechanism of the subnet. 
+3. Separate entities in the same subnet, called **subnet validators**, each independently evaluate the task performed by the subnet miners. 
+4. The subnet validators then each express their opinion on the quality of the miners. These opinions of the subnet validators are then provided as a collective input to the **Yuma Consensus** mechanism on the blockchain by using the Bittensor API. 
 5. The output of the Yuma Consensus mechanism from the blockchain will then determine how the rewards for the subnet miners and subnet validators are to be distributed. **The rewards are in the form of TAO tokens.**  
 
 When you participate in the Bittensor ecosystem, most of your activity occurs within the subnet you participate in. This is true whether you created your own incentive mechanism, i.e., your own subnet, or joined an existing subnet either as a subnet validator or as a subnet miner. Nevertheless, you can interact with other subnet entities. 
@@ -72,9 +72,15 @@ You can participate in the Bittensor ecosystem as the following personas:
 - **Subnet miner**: When you are responsible for running the subnet miner.
 - **Blockchain operator**: When you run the blockchain. This mostly applies during the offline testing of your subnet and your incentive mechanism, when you need a local emulation of the Bittensor blockchain because you are disconnected from the Bittensor network.
 
-## Preparing for subnet
+## Participating in a subnet
 
-Whether you create your own subnet or participate in an existing subnet as either a subnet validator or a subnet miner, you must always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
+When creating a subnet you should always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
+
+Testing the incentive mechanism means running one or more validators and miners to ensure that rewards are distributed in the intended way. 
+
+:::tip Before you participate in a subnet
+We recommend all subnet participants to become familiar with the incentive mechanism before joining a subnet or creating a new subnet.
+:::
 
 <ThemedImage
 alt="Simplified Bittensor Network"

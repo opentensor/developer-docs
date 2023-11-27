@@ -6,13 +6,26 @@ title: "Delegation"
 
 TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. Delegation on Bittensor network works like this:
 
-- A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator.  
+- A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator. This provides support to the delegate as the delegate's effective stake becomes larger, which increases the delegate's impact on the network.
 - The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
 - After deducting a percentage for the delegate, these staking rewards are given back to the delegate's nominators. 
 :::tip Delegate take %
 The default value of the delegate take is 18%. As a delegate you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
 :::
-- The above (100-18)% of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
+- The above percentage of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
+
+## Example
+Consider the below example:
+- A delegate holds their own TAO of 800.
+- Three nominators delegate 30, 70 and 100 TAO to the delegate.
+- The effective stake of the delegate is 1000 TAO (30+70+100 of the delegated TAO plus their own 800 TAO), comprising of 80% of delegate's own and remaining 20% from the nominators.
+
+When the staking dividends are received, the dividends are shared in the following way:
+- The delegate would keep 80% of the dividends, based on their 80% proportion of the total stake (0.8).
+- In addition, the delegate would also keep 18% of the dividends earned on the delegated stake (delegated stake is 20%). This is the delegate take.
+- As a result:
+  - Total dividends to the delegate are: `0.8 + 0.2*0.18=0.836` of the received dividends.
+  - Dividends for each nominator are: `0.03*(1-0.18)=0.0246`, `0.07*(1-0.18)=0.0574` and  `0.1*(1-0.18)=0.082`, of the received dividends, respectively.
 
 :::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically a nominator is an owner of TAO funds, looking to invest in Bittensor network without doing any validating tasks.
