@@ -649,15 +649,26 @@ response chunks before finally yielding the filled Synapse as the final element.
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.dendrite.dendrite.session">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">aiohttp.ClientSession</span></em><a class="headerlink" href="#bittensor.dendrite.dendrite.session" title="Link to this definition">#</a></dt>
-<dd><p>Asynchronous property that provides access to the internal aiohttp client session.</p>
-<p>If the session is not already initialized, this property will instantiate a new
-aiohttp.ClientSession and return it.</p>
+<dd><p>An asynchronous property that provides access to the internal aiohttp client session.</p>
+<p>This property ensures the management of HTTP connections in an efficient way. It lazily
+initializes the aiohttp.ClientSession on its first use. The session is then reused for subsequent
+HTTP requests, offering performance benefits by reusing underlying connections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The aiohttp client session instance.</p>
+<dd class="field-odd"><p>The active aiohttp client session instance. If no session exists, a
+new one is created and returned. This session is used for asynchronous HTTP requests within
+the dendrite, adhering to the async nature of the network interactions in the Bittensor framework.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>aiohttp.ClientSession</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<dl class="simple">
+<dt>async with dendrite_instance.session as session:</dt><dd><dl class="simple">
+<dt>async with session.get(’<a class="reference external" href="http://example.com">http://example.com</a>’) as response:</dt><dd><p># Process the response</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -665,11 +676,15 @@ aiohttp.ClientSession and return it.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
 <span class="sig-name descname"><span class="pre">close_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
-<dd><p>Closes the internal aiohttp client session in a synchronous manner.</p>
-<p>This method ensures that the resources tied with the aiohttp client session are released.
-It should be called when the session is no longer needed, typically during the cleanup phase.</p>
+<dd><p>Closes the internal aiohttp client session synchronously.</p>
+<p>This method ensures the proper closure and cleanup of the aiohttp client session, releasing any
+resources like open connections and internal buffers. It is crucial for preventing resource leakage
+and should be called when the dendrite instance is no longer in use, especially in synchronous contexts.</p>
+<p>Note: This method utilizes asyncio’s event loop to close the session asynchronously from a synchronous
+context. It is advisable to use this method only when asynchronous context management is not feasible.</p>
 <dl class="simple">
-<dt>Usage:</dt><dd><p>dendrite_instance.close_session()</p>
+<dt>Usage:</dt><dd><p># When finished with dendrite in a synchronous context
+dendrite_instance.close_session()</p>
 </dd>
 </dl>
 </dd></dl>
@@ -678,33 +693,99 @@ It should be called when the session is no longer needed, typically during the c
 <dt class="sig sig-object py" id="id1">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aclose_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
 <dd><p>Asynchronously closes the internal aiohttp client session.</p>
-<p>Similar to the synchronous <cite>close_session</cite> method but designed to be used within
-asynchronous contexts. This method ensures that all related resources are released.</p>
+<p>This method is the asynchronous counterpart to the <cite>close_session</cite> method. It should be used in
+asynchronous contexts to ensure that the aiohttp client session is closed properly. The method
+releases resources associated with the session, such as open connections and internal buffers,
+which is essential for resource management in asynchronous applications.</p>
 <dl class="simple">
-<dt>Usage:</dt><dd><p>await dendrite_instance.aclose_session()</p>
+<dt>Usage:</dt><dd><p># When finished with dendrite in an asynchronous context
+await dendrite_instance.aclose_session()</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<dl class="simple">
+<dt>async with dendrite_instance:</dt><dd><p># Operations using dendrite
+pass</p>
+</dd>
+</dl>
+<p># The session will be closed automatically after the above block</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.dendrite.dendrite._get_endpoint_url">
 <span class="sig-name descname"><span class="pre">_get_endpoint_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.dendrite.dendrite._get_endpoint_url" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Constructs the endpoint URL for a network request to a target axon.</p>
+<p>This internal method generates the full HTTP URL for sending a request to the specified axon. The
+URL includes the IP address and port of the target axon, along with the specific request name. It
+differentiates between requests to the local system (using ‘0.0.0.0’) and external systems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_axon</strong> – The target axon object containing IP and port information.</p></li>
+<li><p><strong>request_name</strong> – The specific name of the request being made.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string representing the complete HTTP URL for the request.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.dendrite.dendrite._handle_request_errors">
 <span class="sig-name descname"><span class="pre">_handle_request_errors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.dendrite.dendrite._handle_request_errors" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Handles exceptions that occur during network requests, updating the synapse with appropriate status
+codes and messages.</p>
+<p>This method interprets different types of exceptions and sets the corresponding status code and
+message in the synapse object. It covers common network errors such as connection issues and timeouts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>synapse</strong> – The synapse object associated with the request.</p></li>
+<li><p><strong>request_name</strong> – The name of the request during which the exception occurred.</p></li>
+<li><p><strong>exception</strong> – The exception object caught during the request.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Note: This method updates the synapse object in-place.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.dendrite.dendrite._log_outgoing_request">
 <span class="sig-name descname"><span class="pre">_log_outgoing_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.dendrite.dendrite._log_outgoing_request" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Logs information about outgoing requests for debugging purposes.</p>
+<p>This internal method logs key details about each outgoing request, including the size of the
+request, the name of the synapse, the axon’s details, and a success indicator. This information
+is crucial for monitoring and debugging network activity within the Bittensor network.</p>
+<p>To turn on debug messages, set the environment variable BITTENSOR_DEBUG to 1. or call the bittensor
+debug method like so:
+<code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">import</span> <span class="pre">bittensor</span>
+<span class="pre">bittensor.debug()</span>
+<span class="pre">`</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> – The synapse object representing the request being sent.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.dendrite.dendrite._log_incoming_response">
 <span class="sig-name descname"><span class="pre">_log_incoming_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.dendrite.dendrite._log_incoming_response" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Logs information about incoming responses for debugging and monitoring.</p>
+<p>Similar to <cite>_log_outgoing_request</cite>, this method logs essential details of the incoming responses,
+including the size of the response, synapse name, axon details, status code, and status message.
+This logging is vital for troubleshooting and understanding the network interactions in Bittensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> – The synapse object representing the received response.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id2">

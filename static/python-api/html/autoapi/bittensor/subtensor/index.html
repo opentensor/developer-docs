@@ -2146,6 +2146,7 @@ and specific interactions with the network’s runtime environment.</p>
 <dd><p>Retrieves the ‘Rho’ hyperparameter for a specified subnet within the Bittensor network.
 ‘Rho’ represents the global inflation rate, which directly influences the network’s
 token emission rate and economic model.</p>
+<p>Note: This is currently fixed such that the Bittensor blockchain emmits 7200 Tao per day.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2162,7 +2163,7 @@ token emission rate and economic model.</p>
 </dl>
 <dl class="simple">
 <dt>Mathematical Context:</dt><dd><p>Rho (p) is calculated based on the network’s target inflation and actual neuron staking.
-It adjusts the emission rate of the TAO cryptocurrency to balance the network’s economy.
+It adjusts the emission rate of the TAO token to balance the network’s economy and dynamics.
 The formula for Rho is defined as: p = (Staking_Target / Staking_Actual) * Inflation_Target.
 Here, Staking_Target and Staking_Actual represent the desired and actual total stakes in the network,
 while Inflation_Target is the predefined inflation rate goal&amp;#8203;``【oaicite:0】``&amp;#8203;.</p>
@@ -2232,7 +2233,7 @@ computational effort required for validating transactions and participating in t
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.burn">
 <span class="sig-name descname"><span class="pre">burn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.burn" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the ‘Burn’ hyperparameter for a specified subnet. The ‘Burn’ parameter represents the
-amount of cryptocurrency that is effectively removed from circulation within the Bittensor network.</p>
+amount of Tao that is effectively removed from circulation within the Bittensor network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2248,7 +2249,7 @@ amount of cryptocurrency that is effectively removed from circulation within the
 </dd>
 </dl>
 <p>Understanding the ‘Burn’ rate is essential for analyzing the network’s economic model, particularly
-how it manages inflation and the overall supply of its native cryptocurrency.</p>
+how it manages inflation and the overall supply of its native token Tao.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2689,7 +2690,7 @@ immediate punitive actions.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.total_issuance">
 <span class="sig-name descname"><span class="pre">total_issuance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.total_issuance" title="Link to this definition">#</a></dt>
-<dd><p>Retrieves the total issuance of the Bittensor network’s native cryptocurrency (TAO) as of a specific
+<dd><p>Retrieves the total issuance of the Bittensor network’s native token (Tao) as of a specific
 blockchain block. This represents the total amount of currency that has been issued or mined on the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2870,7 +2871,7 @@ the extent of its decentralized infrastructure.</p>
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.get_emission_value_by_subnet">
 <span class="sig-name descname"><span class="pre">get_emission_value_by_subnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.get_emission_value_by_subnet" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the emission value of a specific subnet within the Bittensor network. The emission value
-represents the rate at which the subnet emits or distributes the network’s native cryptocurrency.</p>
+represents the rate at which the subnet emits or distributes the network’s native token (Tao).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3670,7 +3671,7 @@ facilitating consensus and validation processes critical for the network’s int
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.get_subnet_burn_cost">
 <span class="sig-name descname"><span class="pre">get_subnet_burn_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.get_subnet_burn_cost" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the burn cost for registering a new subnet within the Bittensor network. This cost
-represents the amount of cryptocurrency that needs to be locked or burned to establish a new subnet.</p>
+represents the amount of Tao that needs to be locked or burned to establish a new subnet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – The blockchain block number for the query.</p>
@@ -3763,7 +3764,7 @@ controlling the proliferation of subnets and ensuring their commitment to the ne
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.get_balance">
 <span class="sig-name descname"><span class="pre">get_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.get_balance" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the token balance of a specific address within the Bittensor network. This function queries
-the blockchain to determine the amount of cryptocurrency held by a given account.</p>
+the blockchain to determine the amount of Tao held by a given account.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3803,7 +3804,7 @@ operations on the blockchain. It serves as a reference point for network activit
 <dt class="sig sig-object py" id="bittensor.subtensor.subtensor.get_balances">
 <span class="sig-name descname"><span class="pre">get_balances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.subtensor.subtensor.get_balances" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the token balances of all accounts within the Bittensor network as of a specific blockchain block.
-This function provides a comprehensive view of the cryptocurrency distribution among different accounts.</p>
+This function provides a comprehensive view of the token distribution among different accounts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – The blockchain block number at which to perform the query.</p>
