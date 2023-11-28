@@ -1,6 +1,14 @@
-# Website
+<h1 align="center">
+  <a href="https://www.docs.bittensor.com">
+    <img alt="Tao Logo" src="./static/img/tao-logo.png" />
+  </a>
+</h1>
+<h2 align="center">Bittensor Developer Docs</h2>
+<h3 align="center">https://docs.bittensor.com</h3>
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+-----------------------------------------------------------------------------
+
+Welcome to Bittensor Developer Docs. These docs are built using [Docusaurus](https://docusaurus.io/). See the below instructions to build these docs locally.
 
 ### Installation
 
