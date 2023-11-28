@@ -382,6 +382,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.name"><code class="docutils literal notranslate"><span class="pre">wallet.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.path"><code class="docutils literal notranslate"><span class="pre">wallet.path</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_str"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_str</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_file</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey_file</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub_file</span></code></a></li>
@@ -441,7 +444,7 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.wallet.wallet" title="bittensor.wallet.wallet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wallet</span></code></a></p></td>
-<td><p>Bittensor wallet maintenance class. Each wallet contains a coldkey and a hotkey.</p></td>
+<td><p>The wallet class in the Bittensor framework handles wallet functionality, crucial for participating in</p></td>
 </tr>
 </tbody>
 </table>
@@ -472,11 +475,17 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.wallet.wallet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.wallet.</span></span><span class="sig-name descname"><span class="pre">wallet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.wallet.wallet" title="Link to this definition">#</a></dt>
-<dd><p>Bittensor wallet maintenance class. Each wallet contains a coldkey and a hotkey.
-The coldkey is the user’s primary key for holding stake in their wallet
-and is the only way that users can access Tao. Coldkeys can hold tokens and should be encrypted on your device.
-The coldkey must be used to stake and unstake funds from a running node. The hotkey, on the other hand, is only used
-for subscribing and setting weights from running code. Hotkeys are linked to coldkeys through the metagraph.</p>
+<dd><p>The wallet class in the Bittensor framework handles wallet functionality, crucial for participating in
+the Bittensor network. It manages two types of keys: coldkey and hotkey, each serving different purposes
+in network operations. Each wallet contains a coldkey and a hotkey.</p>
+<p>The coldkey is the user’s primary key for holding stake in their wallet and is the only way that users
+can access Tao. Coldkeys can hold tokens and should be encrypted on your device.</p>
+<p>The coldkey is the primary key used for securing the wallet’s stake in the Bittensor network (Tao) and
+is critical for financial transactions like staking and unstaking tokens. It’s recommended to keep the
+coldkey encrypted and secure, as it holds the actual tokens.</p>
+<p>The hotkey, in contrast, is used for operational tasks like subscribing to and setting weights in the
+network. It’s linked to the coldkey through the metagraph and does not directly hold tokens, thereby
+offering a safer way to interact with the network during regular operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -485,6 +494,100 @@ for subscribing and setting weights from running code. Hotkeys are linked to col
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
 <li><p><strong>config</strong> (<a class="reference internal" href="../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>) – </p></li>
 </ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bittensor.wallet.wallet.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of the wallet, used to identify it among possibly multiple wallets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#bittensor.wallet.wallet.path" title="Link to this definition">#</a></dt>
+<dd><p>File system path where wallet keys are stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.wallet.wallet.hotkey_str">
+<span class="sig-name descname"><span class="pre">hotkey_str</span></span><a class="headerlink" href="#bittensor.wallet.wallet.hotkey_str" title="Link to this definition">#</a></dt>
+<dd><p>String identifier for the hotkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">_hotkey,</span> <span class="pre">_coldkey,</span> <span class="pre">_coldkeypub</span></span></dt>
+<dd><p>Internal representations of the hotkey and coldkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_if_non_existent,</span> <span class="pre">create,</span> <span class="pre">recreate</span></span></dt>
+<dd><p>Methods to handle the creation of wallet keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_coldkey,</span> <span class="pre">get_hotkey,</span> <span class="pre">get_coldkeypub</span></span></dt>
+<dd><p>Methods to retrieve specific keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_coldkey,</span> <span class="pre">set_hotkey,</span> <span class="pre">set_coldkeypub</span></span></dt>
+<dd><p>Methods to set or update keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hotkey_file,</span> <span class="pre">coldkey_file,</span> <span class="pre">coldkeypub_file</span></span></dt>
+<dd><p>Properties that return respective key file objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey,</span> <span class="pre">regenerate_hotkey,</span> <span class="pre">regenerate_coldkeypub</span></span></dt>
+<dd><p>Methods to regenerate keys from different sources.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">config,</span> <span class="pre">help,</span> <span class="pre">add_args</span></span></dt>
+<dd><p>Utility methods for configuration and assistance.</p>
+</dd></dl>
+
+<p>The wallet class is a fundamental component for users to interact securely with the Bittensor network,
+facilitating both operational tasks and transactions involving value transfer across the network.</p>
+<dl>
+<dt>Example Usage:</dt><dd><p># Create a new wallet with default coldkey and hotkey names
+my_wallet = wallet()</p>
+<p># Access hotkey and coldkey
+hotkey = my_wallet.get_hotkey()
+coldkey = my_wallet.get_coldkey()</p>
+<p># Update wallet hotkey
+my_wallet.set_hotkey(new_hotkey)</p>
+<p># Print wallet details
+print(my_wallet)</p>
 </dd>
 </dl>
 <dl class="py property">
@@ -1141,6 +1244,9 @@ Restore from encrypted JSON backup as (json_data: Union[str, Dict], passphrase: 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.name"><code class="docutils literal notranslate"><span class="pre">wallet.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.path"><code class="docutils literal notranslate"><span class="pre">wallet.path</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_str"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_str</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.hotkey_file</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkey_file</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.wallet.wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">wallet.coldkeypub_file</span></code></a></li>
