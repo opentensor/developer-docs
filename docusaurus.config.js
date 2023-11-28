@@ -25,8 +25,8 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "opentensor", // Usually your GitHub org/user name.
   projectName: "new-docs", // Usually your repo name.
-  onBrokenLinks: "log",
-  onBrokenMarkdownLinks: "log",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -92,7 +92,7 @@ const config = {
         items: [
           {
             position: "left",
-            label: "Python API Reference",
+            label: "Bittensor API Reference",
             href: "pathname:///python-api/html/index.html",
           },
           {

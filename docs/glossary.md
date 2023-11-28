@@ -143,7 +143,7 @@ Bittensor unit of intelligence and value. TAO [inflation](#incentive) occurs con
 The digital token that functions as currency in the network. Tao uses the same tokenomics as Bitcoin with a 4 year halving cycle and a max supply of 21 millions tokens.
 
 #### Triumvirate
-The Triumvirate has three seats which are filled by Opentensor Foundation members, and is the party responsible for creating and executing proposals. Triumvirate members are not elected, but they have no voting power on the proposals they create. The [Senate](governance/senate) is the party responsible for whether or not the proposal should be included into the network.
+The Triumvirate has three seats which are filled by Opentensor Foundation members, and is the party responsible for creating and executing proposals. Triumvirate members are not elected, but they have no voting power on the proposals they create. The [Senate](#senate) is the party responsible for whether or not the proposal should be included into the network.
 
 #### trust
 The average number of non-zero weights in the weight matrix [W](#weights) in a [subnetwork](#subnetworks)
