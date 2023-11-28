@@ -1,3 +1,12 @@
+<h1 align="center">
+  <a href="https://www.docs.bittensor.com">
+    <img alt="Tao Logo" src="https://github.com/opentensor/new-docs/blob/main/static/img/tao-logo.png" width="80%" />
+  </a>
+</h1>
+<h1 align="center">Bittensor Developer Docs</h1>
+<h3 align="center">https://docs.bittensor.com</h3>
+
+
 # Website
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
