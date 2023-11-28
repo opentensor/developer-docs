@@ -88,6 +88,7 @@ const config = {
         logo: {
           alt: "Bittensor",
           src: "img/logo.svg",
+          srcDark: "img/logo-dark-mode.svg",
         },
         items: [
           {
