@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.utils.wallet_utils &#8212; Bittensor API</title>
+    <title>bittensor.commands.list &#8212; Bittensor API</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/wallet_utils/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/commands/list/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="bittensor.utils.weight_utils" href="../weight_utils/index.html" />
-    <link rel="prev" title="bittensor.utils.test_utils" href="../test_utils/index.html" />
+    <link rel="next" title="bittensor.commands.metagraph" href="../metagraph/index.html" />
+    <link rel="prev" title="bittensor.commands.inspect" href="../inspect/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -141,8 +141,26 @@
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../delegates/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.delegates</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identity/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../inspect/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.inspect</span></code></a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.metagraph</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.misc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.overview</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../register/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.register</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.senate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.stake</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.transfer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../unstake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.unstake</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../wallets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.wallets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
@@ -157,25 +175,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../_register_cuda/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils._register_cuda</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../balance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.balance</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../formatting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.formatting</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../networking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.networking</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.registration</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../stats/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.stats</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../test_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.test_utils</span></code></a></li>
-<li class="toctree-l4 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.wallet_utils</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../weight_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.weight_utils</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../../axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../btlogging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.btlogging</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.cli</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.logging</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
@@ -186,7 +193,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../wallet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../neurons/validators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../neurons/validators/validator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators.validator</span></code></a></li>
 </ul>
@@ -194,7 +201,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">miner</span></code></a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../prompting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../prompting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../prompting/baseminer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/baseminer/blacklist/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.blacklist</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/baseminer/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.config</span></code></a></li>
@@ -216,7 +223,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/validators/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.misc</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/validators/prompts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.prompts</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/validators/tasks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.tasks</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../prompting/validators/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.utils</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../prompting/validators/weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.weights</span></code></a></li>
 </ul>
 </li>
@@ -279,7 +285,7 @@
       
       
       
-      <li><a href="../../../../_sources/autoapi/bittensor/utils/wallet_utils/index.rst" target="_blank"
+      <li><a href="../../../../_sources/autoapi/bittensor/commands/list/index.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +367,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>bittensor.utils.wallet_utils</h1>
+    <h1>bittensor.commands.list</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,11 +378,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.get_ss58_format"><code class="docutils literal notranslate"><span class="pre">get_ss58_format()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_ed25519_pubkey"><code class="docutils literal notranslate"><span class="pre">is_valid_ed25519_pubkey()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.console"><code class="docutils literal notranslate"><span class="pre">console</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand"><code class="docutils literal notranslate"><span class="pre">ListCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.run"><code class="docutils literal notranslate"><span class="pre">ListCommand.run()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.check_config"><code class="docutils literal notranslate"><span class="pre">ListCommand.check_config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.add_args"><code class="docutils literal notranslate"><span class="pre">ListCommand.add_args()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -392,91 +402,80 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="module-bittensor.utils.wallet_utils">
-<span id="bittensor-utils-wallet-utils"></span><h1><a class="reference internal" href="#module-bittensor.utils.wallet_utils" title="bittensor.utils.wallet_utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.wallet_utils</span></code></a><a class="headerlink" href="#module-bittensor.utils.wallet_utils" title="Link to this heading">#</a></h1>
+  <section id="module-bittensor.commands.list">
+<span id="bittensor-commands-list"></span><h1><a class="reference internal" href="#module-bittensor.commands.list" title="bittensor.commands.list"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.list</span></code></a><a class="headerlink" href="#module-bittensor.commands.list" title="Link to this heading">#</a></h1>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.wallet_utils.get_ss58_format" title="bittensor.utils.wallet_utils.get_ss58_format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ss58_format</span></code></a>(ss58_address)</p></td>
-<td><p>Returns the ss58 format of the given ss58 address.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.wallet_utils.is_valid_ss58_address" title="bittensor.utils.wallet_utils.is_valid_ss58_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_ss58_address</span></code></a>(address)</p></td>
-<td><p>Checks if the given address is a valid ss58 address.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.wallet_utils.is_valid_ed25519_pubkey" title="bittensor.utils.wallet_utils.is_valid_ed25519_pubkey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_ed25519_pubkey</span></code></a>(public_key)</p></td>
-<td><p>Checks if the given public_key is a valid ed25519 key.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key" title="bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key</span></code></a>(address)</p></td>
-<td><p>Checks if the given address is a valid destination address.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.commands.list.ListCommand" title="bittensor.commands.list.ListCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListCommand</span></code></a></p></td>
+<td><p>Executes the 'list' command which enumerates all wallets and their respective hotkeys</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.wallet_utils.get_ss58_format">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.wallet_utils.</span></span><span class="sig-name descname"><span class="pre">get_ss58_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.wallet_utils.get_ss58_format" title="Link to this definition">#</a></dt>
-<dd><p>Returns the ss58 format of the given ss58 address.</p>
-<dl class="field-list simple">
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.commands.list.console" title="bittensor.commands.list.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.commands.list.console">
+<span class="sig-prename descclassname"><span class="pre">bittensor.commands.list.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#bittensor.commands.list.console" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.commands.list.ListCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.commands.list.</span></span><span class="sig-name descname"><span class="pre">ListCommand</span></span><a class="headerlink" href="#bittensor.commands.list.ListCommand" title="Link to this definition">#</a></dt>
+<dd><p>Executes the ‘list’ command which enumerates all wallets and their respective hotkeys
+present in the user’s Bittensor configuration directory. The command organizes the
+information in a tree structure, displaying each wallet along with the SS58 addresses
+for the coldkey public key and any hotkeys associated with it.</p>
+<p>Optional arguments:
+-p, –path: The path to the Bittensor configuration directory. Defaults to ‘~/.bittensor’.</p>
+<p>The output is presented in a hierarchical tree format, with each wallet as a root node,
+and any associated hotkeys as child nodes. The SS58 address is displayed for each
+coldkey and hotkey that is not encrypted and exists on the device.</p>
+<p>Usage:
+Upon invocation, the command scans the wallet directory and prints a list of all wallets,
+indicating whether the public keys are available (‘?’ denotes unavailable or encrypted keys).</p>
+<p>Example usage:
+&gt;&gt;&gt; btcli list –path ~/.bittensor</p>
+<p>Note:
+This command is read-only and does not modify the filesystem or the network state. It is
+intended for use within the Bittensor CLI to provide a quick overview of the user’s wallets.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.list.ListCommand.run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.commands.list.ListCommand.run" title="Link to this definition">#</a></dt>
+<dd><p>Lists wallets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.list.ListCommand.check_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.commands.list.ListCommand.check_config" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ss58_address</strong> (<em>str</em>) – </p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.wallet_utils.is_valid_ss58_address">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.wallet_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_ss58_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.wallet_utils.is_valid_ss58_address" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the given address is a valid ss58 address.</p>
-<dl class="field-list simple">
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.list.ListCommand.add_args">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.commands.list.ListCommand.add_args" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>address</strong> (<em>str</em>) – The address to check.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the address is a valid ss58 address for Bittensor, False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-odd"><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.wallet_utils.is_valid_ed25519_pubkey">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.wallet_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_ed25519_pubkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.wallet_utils.is_valid_ed25519_pubkey" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the given public_key is a valid ed25519 key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>public_key</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>bytes</em><em>]</em>) – The public_key to check.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the public_key is a valid ed25519 key, False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.wallet_utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_bittensor_address_or_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the given address is a valid destination address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>address</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>bytes</em><em>]</em>) – The address to check.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the address is a valid destination address, False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
@@ -495,20 +494,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../test_utils/index.html"
+       href="../inspect/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.test_utils</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.inspect</span></code></p>
       </div>
     </a>
     <a class="right-next"
-       href="../weight_utils/index.html"
+       href="../metagraph/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.weight_utils</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.metagraph</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -528,11 +527,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.get_ss58_format"><code class="docutils literal notranslate"><span class="pre">get_ss58_format()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_ed25519_pubkey"><code class="docutils literal notranslate"><span class="pre">is_valid_ed25519_pubkey()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.wallet_utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.console"><code class="docutils literal notranslate"><span class="pre">console</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand"><code class="docutils literal notranslate"><span class="pre">ListCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.run"><code class="docutils literal notranslate"><span class="pre">ListCommand.run()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.check_config"><code class="docutils literal notranslate"><span class="pre">ListCommand.check_config()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.list.ListCommand.add_args"><code class="docutils literal notranslate"><span class="pre">ListCommand.add_args()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

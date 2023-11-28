@@ -3,13 +3,13 @@
 
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 // const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const {themes} = require('prism-react-renderer');
+const { themes } = require("prism-react-renderer");
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
 // KaTex stuff
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -54,13 +54,22 @@ const config = {
       }),
     ],
   ],
+  scripts: [
+    // String format.
+    // 'https://docusaurus.io/script.js',
+    // Object format.
+    {
+      src: "/static/feedbug-widjet.js",
+      async: true,
+    },
+  ],
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
     },
   ],
   themeConfig:
@@ -82,6 +91,11 @@ const config = {
         },
         items: [
           {
+            position: "left",
+            label: "Python API Reference",
+            href: "pathname:///python-api/html/index.html",
+          },
+          {
             href: "https://wallet.bittensor.com/",
             label: "Wallet",
             position: "right",
@@ -97,6 +111,20 @@ const config = {
             position: "right",
           },
         ],
+      },
+
+      prism: {
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        additionalLanguages: ["bash", "diff", "json"],
+      },
+      algolia: {
+        appId: "B07G29NY9F",
+        apiKey: "fff5aa7a466a7c3252ae85d9a0629b2f",
+        indexName: "new--alpha",
+        contextualSearch: true,
+        insights: true,
+        debug: false,
       },
       footer: {
         style: "dark",
@@ -134,19 +162,6 @@ const config = {
           },
         ],
         copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
-      },
-      prism: {
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        additionalLanguages: ['bash', 'diff', 'json'],
-      },
-      algolia: {
-        appId: "B07G29NY9F",
-        apiKey: "fff5aa7a466a7c3252ae85d9a0629b2f",
-        indexName: "new--alpha",
-        contextualSearch: true,
-        insights: true,
-        debug: false,
       },
     }),
 };

@@ -42,11 +42,13 @@
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/metagraph/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="bittensor.stream" href="../stream/index.html" />
-    <link rel="prev" title="bittensor.logging" href="../logging/index.html" />
+    <link rel="prev" title="bittensor.keyfile" href="../keyfile/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -141,8 +143,26 @@
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">API Reference</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="../extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../commands/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../commands/delegates/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.delegates</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/identity/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/inspect/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.inspect</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/list/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.metagraph</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.misc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/overview/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.overview</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/register/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.register</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.senate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/stake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.stake</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.transfer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/unstake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.unstake</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/wallets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.wallets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
@@ -157,25 +177,14 @@
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../utils/_register_cuda/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils._register_cuda</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/balance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.balance</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/formatting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.formatting</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/networking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.networking</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.registration</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/stats/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.stats</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/test_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.test_utils</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/wallet_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.wallet_utils</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../utils/weight_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.utils.weight_utils</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../btlogging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.btlogging</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.cli</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.logging</span></code></a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
@@ -186,7 +195,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../wallet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../neurons/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../neurons/validators/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../neurons/validators/validator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">neurons.validators.validator</span></code></a></li>
 </ul>
@@ -194,7 +203,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../miner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">miner</span></code></a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../prompting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../prompting/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../prompting/baseminer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/blacklist/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.blacklist</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/baseminer/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.baseminer.config</span></code></a></li>
@@ -216,7 +225,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.misc</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/prompts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.prompts</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/tasks/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.tasks</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.utils</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../prompting/validators/weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">prompting.validators.weights</span></code></a></li>
 </ul>
 </li>
@@ -377,27 +385,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.get_save_dir"><code class="docutils literal notranslate"><span class="pre">get_save_dir()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.latest_block_path"><code class="docutils literal notranslate"><span class="pre">latest_block_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.netuid"><code class="docutils literal notranslate"><span class="pre">metagraph.netuid</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.network"><code class="docutils literal notranslate"><span class="pre">metagraph.network</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.version"><code class="docutils literal notranslate"><span class="pre">metagraph.version</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.n"><code class="docutils literal notranslate"><span class="pre">metagraph.n</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.block"><code class="docutils literal notranslate"><span class="pre">metagraph.block</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.stake"><code class="docutils literal notranslate"><span class="pre">metagraph.stake</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.total_stake"><code class="docutils literal notranslate"><span class="pre">metagraph.total_stake</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.ranks"><code class="docutils literal notranslate"><span class="pre">metagraph.ranks</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.trust"><code class="docutils literal notranslate"><span class="pre">metagraph.trust</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.consensus"><code class="docutils literal notranslate"><span class="pre">metagraph.consensus</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.validator_trust"><code class="docutils literal notranslate"><span class="pre">metagraph.validator_trust</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.incentive"><code class="docutils literal notranslate"><span class="pre">metagraph.incentive</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.emission"><code class="docutils literal notranslate"><span class="pre">metagraph.emission</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.dividends"><code class="docutils literal notranslate"><span class="pre">metagraph.dividends</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.active"><code class="docutils literal notranslate"><span class="pre">metagraph.active</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.last_update"><code class="docutils literal notranslate"><span class="pre">metagraph.last_update</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.validator_permit"><code class="docutils literal notranslate"><span class="pre">metagraph.validator_permit</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.weights"><code class="docutils literal notranslate"><span class="pre">metagraph.weights</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.bonds"><code class="docutils literal notranslate"><span class="pre">metagraph.bonds</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.uids"><code class="docutils literal notranslate"><span class="pre">metagraph.uids</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.axons"><code class="docutils literal notranslate"><span class="pre">metagraph.axons</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.S"><code class="docutils literal notranslate"><span class="pre">metagraph.S</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.R"><code class="docutils literal notranslate"><span class="pre">metagraph.R</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.I"><code class="docutils literal notranslate"><span class="pre">metagraph.I</span></code></a></li>
@@ -451,7 +438,7 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.metagraph.metagraph" title="bittensor.metagraph.metagraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metagraph</span></code></a></p></td>
-<td><p>Metagraph class representing the neural network graph.</p></td>
+<td><p>The metagraph class is a core component of the Bittensor network, representing the neural graph that forms the backbone of the decentralized machine learning system.</p></td>
 </tr>
 </tbody>
 </table>
@@ -461,7 +448,7 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.metagraph.get_save_dir" title="bittensor.metagraph.get_save_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_save_dir</span></code></a>(network, netuid)</p></td>
-<td><p>Return directory path from network and netuid.</p></td>
+<td><p>Return directory path from <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.metagraph.latest_block_path" title="bittensor.metagraph.latest_block_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latest_block_path</span></code></a>(dir_path)</p></td>
 <td><p>Get the latest block path from the directory.</p></td>
@@ -471,19 +458,19 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.metagraph.get_save_dir">
 <span class="sig-prename descclassname"><span class="pre">bittensor.metagraph.</span></span><span class="sig-name descname"><span class="pre">get_save_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.get_save_dir" title="Link to this definition">#</a></dt>
-<dd><p>Return directory path from network and netuid.</p>
+<dd><p>Return directory path from <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>network</strong> (<em>str</em>) – Network name.</p></li>
-<li><p><strong>netuid</strong> (<em>int</em>) – Network UID.</p></li>
+<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Network name.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Network UID.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Directory path.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -494,13 +481,13 @@ document.write(`
 <dd><p>Get the latest block path from the directory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dir_path</strong> (<em>str</em>) – Directory path.</p>
+<dd class="field-odd"><p><strong>dir_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Directory path.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Latest block path.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -508,256 +495,75 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.metagraph.</span></span><span class="sig-name descname"><span class="pre">metagraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finney'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></p>
-<p>Metagraph class representing the neural network graph.</p>
+<dd><p>Bases: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<p>The metagraph class is a core component of the Bittensor network, representing the neural graph that forms the backbone of the decentralized machine learning system.</p>
+<p>The metagraph is a dynamic representation of the network’s state, capturing the interconnectedness and attributes of neurons (participants) in the Bittensor ecosystem. This class is not just a static structure but a live reflection of the network, constantly updated and synchronized with the state of the blockchain.</p>
+<p>In Bittensor, neurons are akin to nodes in a distributed system, each contributing computational resources and participating in the network’s collective intelligence. The metagraph tracks various attributes of these neurons, such as stake, trust, and consensus, which are crucial for the network’s incentive mechanisms and the Yuma Consensus algorithm as outlined in the <a class="reference external" href="https://bittensor.com/pdfs/academia/NeurIPS_DAO_Workshop_2022_3_3.pdf">NeurIPS paper</a>. These attributes
+govern how neurons interact, how they are incentivized, and their roles within the network’s
+decision-making processes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>netuid</strong> (<em>int</em>) – </p></li>
-<li><p><strong>network</strong> (<em>str</em>) – </p></li>
-<li><p><strong>lite</strong> (<em>bool</em>) – </p></li>
-<li><p><strong>sync</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – A unique identifier that distinguishes between different instances or versions of the Bittensor network.</p></li>
+<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name of the network, signifying specific configurations or iterations within the Bittensor ecosystem.</p></li>
+<li><p><strong>version</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch v2.1)"><em>torch.nn.parameter.Parameter</em></a>) – The version number of the network, formatted for compatibility with PyTorch models, integral for tracking network updates.</p></li>
+<li><p><strong>n</strong> (<em>torch.nn.Parameter</em>) – The total number of neurons in the network, reflecting its size and complexity.</p></li>
+<li><p><strong>block</strong> (<em>torch.nn.Parameter</em>) – The current block number in the blockchain, crucial for synchronizing with the network’s latest state.</p></li>
+<li><p><strong>stake</strong> – Represents the cryptocurrency staked by neurons, impacting their influence and earnings within the network.</p></li>
+<li><p><strong>total_stake</strong> – The cumulative stake across all neurons.</p></li>
+<li><p><strong>ranks</strong> – Neuron rankings as per the Yuma Consensus algorithm, influencing their incentive distribution and network authority.</p></li>
+<li><p><strong>trust</strong> – Scores indicating the reliability of neurons, mainly miners, within the network’s operational context.</p></li>
+<li><p><strong>consensus</strong> – Scores reflecting each neuron’s alignment with the network’s collective decisions.</p></li>
+<li><p><strong>validator_trust</strong> – Trust scores for validator neurons, crucial for network security and validation.</p></li>
+<li><p><strong>incentive</strong> – Rewards allocated to neurons, particularly miners, for their network contributions.</p></li>
+<li><p><strong>emission</strong> – The rate at which rewards are distributed to neurons.</p></li>
+<li><p><strong>dividends</strong> – Rewards received primarily by validators as part of the incentive mechanism.</p></li>
+<li><p><strong>active</strong> – Status indicating whether a neuron is actively participating in the network.</p></li>
+<li><p><strong>last_update</strong> – Timestamp of the latest update to a neuron’s data.</p></li>
+<li><p><strong>validator_permit</strong> – Indicates if a neuron is authorized to act as a validator.</p></li>
+<li><p><strong>weights</strong> – Inter-neuronal weights set by each neuron, influencing network dynamics.</p></li>
+<li><p><strong>bonds</strong> – Represents speculative investments by neurons in others, part of the reward mechanism.</p></li>
+<li><p><strong>uids</strong> – Unique identifiers for each neuron, essential for network operations.</p></li>
+<li><p><strong>axons</strong> (<em>List</em>) – Details about each neuron’s axon, critical for facilitating network communication.</p></li>
+<li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – </p></li>
+<li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – </p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.netuid">
-<span class="sig-name descname"><span class="pre">netuid</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.netuid" title="Link to this definition">#</a></dt>
-<dd><p>Network UID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>int</p>
+<p>The metagraph plays a pivotal role in Bittensor’s decentralized AI operations, influencing everything from data propagation to reward distribution. It embodies the principles of decentralized governance
+and collaborative intelligence, ensuring that the network remains adaptive, secure, and efficient.</p>
+<dl>
+<dt>Example Usage:</dt><dd><p>Initializing the metagraph to represent the current state of the Bittensor network:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">metagraph</span><span class="p">(</span><span class="n">netuid</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">netuid</span><span class="p">,</span> <span class="n">network</span><span class="o">=</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Synchronizing the metagraph with the network to reflect the latest state and neuron data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Accessing metagraph properties to inform network interactions and decisions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total_stake</span> <span class="o">=</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">S</span>
+<span class="n">neuron_ranks</span> <span class="o">=</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">R</span>
+<span class="n">neuron_incentives</span> <span class="o">=</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">I</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Maintaining a local copy of hotkeys for querying and interacting with network entities:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hotkeys</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">metagraph</span><span class="o">.</span><span class="n">hotkeys</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.network">
-<span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.network" title="Link to this definition">#</a></dt>
-<dd><p>Network name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.version">
-<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.version" title="Link to this definition">#</a></dt>
-<dd><p>Version of the network.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.n">
-<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.n" title="Link to this definition">#</a></dt>
-<dd><p>Number of neurons in the graph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.block">
-<span class="sig-name descname"><span class="pre">block</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.block" title="Link to this definition">#</a></dt>
-<dd><p>Current block number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.stake">
-<span class="sig-name descname"><span class="pre">stake</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.stake" title="Link to this definition">#</a></dt>
-<dd><p>Stake of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.total_stake">
-<span class="sig-name descname"><span class="pre">total_stake</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.total_stake" title="Link to this definition">#</a></dt>
-<dd><p>Total stake of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.ranks">
-<span class="sig-name descname"><span class="pre">ranks</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.ranks" title="Link to this definition">#</a></dt>
-<dd><p>Ranks of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.trust">
-<span class="sig-name descname"><span class="pre">trust</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.trust" title="Link to this definition">#</a></dt>
-<dd><p>Trust values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.consensus">
-<span class="sig-name descname"><span class="pre">consensus</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.consensus" title="Link to this definition">#</a></dt>
-<dd><p>Consensus values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.validator_trust">
-<span class="sig-name descname"><span class="pre">validator_trust</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.validator_trust" title="Link to this definition">#</a></dt>
-<dd><p>Validator trust values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.incentive">
-<span class="sig-name descname"><span class="pre">incentive</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.incentive" title="Link to this definition">#</a></dt>
-<dd><p>Incentive values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.emission">
-<span class="sig-name descname"><span class="pre">emission</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.emission" title="Link to this definition">#</a></dt>
-<dd><p>Emission values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.dividends">
-<span class="sig-name descname"><span class="pre">dividends</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.dividends" title="Link to this definition">#</a></dt>
-<dd><p>Dividends of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.active">
-<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.active" title="Link to this definition">#</a></dt>
-<dd><p>Activation state of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.last_update">
-<span class="sig-name descname"><span class="pre">last_update</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.last_update" title="Link to this definition">#</a></dt>
-<dd><p>Last update time of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.validator_permit">
-<span class="sig-name descname"><span class="pre">validator_permit</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.validator_permit" title="Link to this definition">#</a></dt>
-<dd><p>Validator permit state of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.weights">
-<span class="sig-name descname"><span class="pre">weights</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.weights" title="Link to this definition">#</a></dt>
-<dd><p>Weights of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.bonds">
-<span class="sig-name descname"><span class="pre">bonds</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.bonds" title="Link to this definition">#</a></dt>
-<dd><p>Bonds of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.uids">
-<span class="sig-name descname"><span class="pre">uids</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.uids" title="Link to this definition">#</a></dt>
-<dd><p>UID values of the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.nn.Parameter</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.metagraph.metagraph.axons">
-<span class="sig-name descname"><span class="pre">axons</span></span><a class="headerlink" href="#bittensor.metagraph.metagraph.axons" title="Link to this definition">#</a></dt>
-<dd><p>List of axon information for the neurons.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.S">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">S</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.S" title="Link to this definition">#</a></dt>
-<dd><p>Total stake of the neurons.</p>
+<dd><p>Represents the stake of each neuron in the Bittensor network. Stake is an important concept in the
+Bittensor ecosystem, signifying the amount of network weight (or “stake”) each neuron holds,
+represented on a digital ledger. The stake influences a neuron’s ability to contribute to and benefit
+from the network, playing a crucial role in the distribution of incentives and decision-making processes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total stake.</p>
+<dd class="field-odd"><p>A tensor representing the stake of each neuron in the network. Higher values signify a greater stake held by the respective neuron.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -768,10 +574,13 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.R">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">R</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.R" title="Link to this definition">#</a></dt>
-<dd><p>Ranks of the neurons.</p>
+<dd><p>Contains the ranks of neurons in the Bittensor network. Ranks are determined by the network based
+on each neuron’s performance and contributions. Higher ranks typically indicate a greater level of
+contribution or performance by a neuron. These ranks are crucial in determining the distribution of
+incentives within the network, with higher-ranked neurons receiving more incentive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Ranks.</p>
+<dd class="field-odd"><p>A tensor where each element represents the rank of a neuron. Higher values indicate higher ranks within the network.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -782,10 +591,13 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.I">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">I</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.I" title="Link to this definition">#</a></dt>
-<dd><p>Incentive values of the neurons.</p>
+<dd><p>Incentive values of neurons represent the rewards they receive for their contributions to the network.
+The Bittensor network employs an incentive mechanism that rewards neurons based on their
+informational value, stake, and consensus with other peers. This ensures that the most valuable and
+trusted contributions are incentivized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Incentive values.</p>
+<dd class="field-odd"><p>A tensor of incentive values, indicating the rewards or benefits accrued by each neuron based on their contributions and network consensus.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -796,10 +608,13 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.E">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">E</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.E" title="Link to this definition">#</a></dt>
-<dd><p>Emission values of the neurons.</p>
+<dd><p>Denotes the emission values of neurons in the Bittensor network. Emissions refer to the distribution or
+release of rewards (often in the form of cryptocurrency) to neurons, typically based on their stake and
+performance. This mechanism is central to the network’s incentive model, ensuring that active and
+contributing neurons are appropriately rewarded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Emission values.</p>
+<dd class="field-odd"><p>A tensor where each element represents the emission value for a neuron, indicating the amount of reward distributed to that neuron.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -810,10 +625,14 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.C">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">C</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.C" title="Link to this definition">#</a></dt>
-<dd><p>Consensus values of the neurons.</p>
+<dd><p>Represents the consensus values of neurons in the Bittensor network. Consensus is a measure of how
+much a neuron’s contributions are trusted and agreed upon by the majority of the network. It is
+calculated based on a staked weighted trust system, where the network leverages the collective
+judgment of all participating peers. Higher consensus values indicate that a neuron’s contributions
+are more widely trusted and valued across the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Consensus values.</p>
+<dd class="field-odd"><p>A tensor of consensus values, where each element reflects the level of trust and agreement a neuron has achieved within the network.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -824,10 +643,15 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.T">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">T</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.T" title="Link to this definition">#</a></dt>
-<dd><p>Trust values of the neurons.</p>
+<dd><p>Represents the trust values assigned to each neuron in the Bittensor network. Trust is a key metric that
+reflects the reliability and reputation of a neuron based on its past behavior and contributions. It is
+an essential aspect of the network’s functioning, influencing decision-making processes and interactions
+between neurons.</p>
+<p>The trust matrix is inferred from the network’s inter-peer weights, indicating the level of trust each neuron
+has in others. A higher value in the trust matrix suggests a stronger trust relationship between neurons.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Trust values.</p>
+<dd class="field-odd"><p>A tensor of trust values, where each element represents the trust level of a neuron. Higher values denote a higher level of trust within the network.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -838,10 +662,15 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.Tv">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Tv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.Tv" title="Link to this definition">#</a></dt>
-<dd><p>Validator trust values of the neurons.</p>
+<dd><p>Contains the validator trust values of neurons in the Bittensor network. Validator trust is specifically
+associated with neurons that act as validators within the network. This specialized form of trust reflects
+the validators’ reliability and integrity in their role, which is crucial for maintaining the network’s
+stability and security.</p>
+<p>Validator trust values are particularly important for the network’s consensus and validation processes,
+determining the validators’ influence and responsibilities in these critical functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Validator trust values.</p>
+<dd class="field-odd"><p>A tensor of validator trust values, specifically applicable to neurons serving as validators, where higher values denote greater trustworthiness in their validation roles.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -852,10 +681,12 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.D">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">D</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.D" title="Link to this definition">#</a></dt>
-<dd><p>Dividends of the neurons.</p>
+<dd><p>Represents the dividends received by neurons in the Bittensor network. Dividends are a form of reward or
+distribution, typically given to neurons based on their stake, performance, and contribution to the network.
+They are an integral part of the network’s incentive structure, encouraging active and beneficial participation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dividends.</p>
+<dd class="field-odd"><p>A tensor of dividend values, where each element indicates the dividends received by a neuron, reflecting their share of network rewards.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -866,10 +697,13 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.B">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">B</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.B" title="Link to this definition">#</a></dt>
-<dd><p>Bonds of the neurons.</p>
+<dd><p>Bonds in the Bittensor network represent a speculative reward mechanism where neurons can accumulate
+bonds in other neurons. Bonds are akin to investments or stakes in other neurons, reflecting a belief in
+their future value or performance. This mechanism encourages correct weighting and collaboration
+among neurons while providing an additional layer of incentive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Bonds.</p>
+<dd class="field-odd"><p>A tensor representing the bonds held by each neuron, where each value signifies the proportion of bonds owned by one neuron in another.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -880,10 +714,17 @@ document.write(`
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.W">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">W</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.FloatTensor</span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.W" title="Link to this definition">#</a></dt>
-<dd><p>Weights of the neurons.</p>
+<dd><p>Represents the weights assigned to each neuron in the Bittensor network. In the context of Bittensor,
+weights are crucial for determining the influence and interaction between neurons. Each neuron is responsible
+for setting its weights, which are then recorded on a digital ledger. These weights are reflective of the
+neuron’s assessment or judgment of other neurons in the network.</p>
+<p>The weight matrix <span class="math notranslate nohighlight">\(W = [w_{ij}]\)</span> is a key component of the network’s architecture, where the <span class="math notranslate nohighlight">\(i^{th}\)</span> row is set by
+neuron <span class="math notranslate nohighlight">\(i\)</span> and represents its weights towards other neurons. These weights influence the ranking and incentive
+mechanisms within the network. Higher weights from a neuron towards another can imply greater trust or value
+placed on that neuron’s contributions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Weights.</p>
+<dd class="field-odd"><p>A tensor of inter-peer weights, where each element <span class="math notranslate nohighlight">\(w_{ij}\)</span> represents the weight assigned by neuron <span class="math notranslate nohighlight">\(i\)</span> to neuron <span class="math notranslate nohighlight">\(j\)</span>. This matrix is fundamental to the network’s functioning, influencing the distribution of incentives and the inter-neuronal dynamics.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>torch.FloatTensor</p>
@@ -893,122 +734,204 @@ document.write(`
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.hotkeys">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkeys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.hotkeys" title="Link to this definition">#</a></dt>
-<dd><p>List of hotkeys for the neurons.</p>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkeys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.hotkeys" title="Link to this definition">#</a></dt>
+<dd><p>Represents a list of <code class="docutils literal notranslate"><span class="pre">hotkeys</span></code> for each neuron in the Bittensor network.</p>
+<p>Hotkeys are unique identifiers used by neurons for active participation in the network, such as sending and receiving information or
+transactions. They are akin to public keys in cryptographic systems and are essential for identifying and authenticating neurons within the network’s operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of hotkeys.</p>
+<dd class="field-odd"><p><p>A list of hotkeys, with each string representing the hotkey of a corresponding neuron.</p>
+<p>These keys are crucial for the network’s security and integrity, ensuring proper identification and authorization of network participants.</p>
+</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[str]</p>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While the <a class="reference external" href="https://bittensor.com/pdfs/academia/NeurIPS_DAO_Workshop_2022_3_3.pdf">NeurIPS paper</a> may not explicitly detail the concept of hotkeys, they are a fundamental  of decentralized networks for secure and authenticated interactions.</p>
+</div>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.coldkeys">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.coldkeys" title="Link to this definition">#</a></dt>
-<dd><p>List of coldkeys for the neurons.</p>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.coldkeys" title="Link to this definition">#</a></dt>
+<dd><p>Contains a list of <code class="docutils literal notranslate"><span class="pre">coldkeys</span></code> for each neuron in the Bittensor network.</p>
+<p>Coldkeys are similar to hotkeys but are typically used for more secure, offline activities such as storing assets or offline signing of transactions. They are an important aspect of a neuron’s security, providing an additional layer of protection for sensitive operations and assets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of coldkeys.</p>
+<dd class="field-odd"><p>A list of coldkeys, each string representing the coldkey of a neuron. These keys play a vital role in the secure management of assets and sensitive operations within the network.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[str]</p>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The concept of coldkeys, while not explicitly covered in the NeurIPS paper, is a standard practice in
+blockchain and decentralized networks for enhanced security and asset protection.</p>
+</div>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.addresses">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addresses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.addresses" title="Link to this definition">#</a></dt>
-<dd><p>List of IP addresses for the neurons.</p>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addresses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.metagraph.metagraph.addresses" title="Link to this definition">#</a></dt>
+<dd><p>Provides a list of IP addresses for each neuron in the Bittensor network. These addresses are used for
+network communication, allowing neurons to connect, interact, and exchange information with each other.
+IP addresses are fundamental for the network’s peer-to-peer communication infrastructure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of IP addresses.</p>
+<dd class="field-odd"><p>A list of IP addresses, with each string representing the address of a neuron. These addresses enable the decentralized, distributed nature of the network, facilitating direct communication and data exchange among neurons.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[str]</p>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While IP addresses are a basic aspect of network communication, specific details about their use in
+the Bittensor network may not be covered in the <a class="reference external" href="https://bittensor.com/pdfs/academia/NeurIPS_DAO_Workshop_2022_3_3.pdf">NeurIPS paper</a>. They are, however, integral to the
+functioning of any distributed network.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.__str__" title="Link to this definition">#</a></dt>
-<dd><p>String representation of the metagraph.</p>
+<dd><p>Provides a human-readable string representation of the metagraph object. This representation includes key identifiers and attributes of the metagraph, making it easier to quickly understand
+the state and configuration of the metagraph in a simple format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>String representation.</p>
+<dd class="field-odd"><p>A string that succinctly represents the metagraph, including its network UID, the total number of neurons (n), the current block number, and the network’s name. This format is particularly useful for logging, debugging, and displaying the metagraph in a concise manner.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>When printing the metagraph object or using it in a string context, this method is automatically invoked:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">metagraph</span><span class="p">)</span>  <span class="c1"># Output: &quot;metagraph(netuid:1, n:100, block:500, network:finney)&quot;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.__repr__">
 <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.__repr__" title="Link to this definition">#</a></dt>
-<dd><p>String representation of the metagraph.</p>
+<dd><p>Provides a detailed string representation of the metagraph object, intended for unambiguous understanding and debugging purposes. This method simply calls the <a class="reference internal" href="../index.html#bittensor.metagraph.__str__" title="bittensor.metagraph.__str__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code></a> method, ensuring
+consistency between the informal and formal string representations of the metagraph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>String representation.</p>
+<dd class="field-odd"><p>The same string representation as provided by the <a class="reference internal" href="../index.html#bittensor.metagraph.__str__" title="bittensor.metagraph.__str__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code></a> method, detailing the metagraph’s key attributes including network UID, number of neurons, block number, and network name.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>The <a class="reference internal" href="../index.html#bittensor.metagraph.__repr__" title="bittensor.metagraph.__repr__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__repr__()</span></code></a> output can be used in debugging to get a clear and concise description of the metagraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph_repr</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">metagraph</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metagraph_repr</span><span class="p">)</span>  <span class="c1"># Output mirrors that of __str__</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.metadata">
 <span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.metadata" title="Link to this definition">#</a></dt>
-<dd><p>Get the metadata of the metagraph.</p>
+<dd><p>Retrieves the metadata of the metagraph, providing key information about the current state of the
+Bittensor network. This metadata includes details such as the network’s unique identifier (<code class="docutils literal notranslate"><span class="pre">netuid</span></code>),
+the total number of neurons (<code class="docutils literal notranslate"><span class="pre">n</span></code>), the current block number, the network’s name, and the version of
+the Bittensor network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Metadata dictionary.</p>
+<dd class="field-odd"><p><p>A dictionary containing essential metadata about the metagraph, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">netuid</span></code>: The unique identifier for the network.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: The total number of neurons in the network.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">block</span></code>: The current block number in the network’s blockchain.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">network</span></code>: The name of the Bittensor network.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code>: The version number of the Bittensor software.</p></li>
+</ul>
+</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This metadata is crucial for understanding the current state and configuration of the network, as well as for tracking its evolution over time.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.sync">
 <span class="sig-name descname"><span class="pre">sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.sync" title="Link to this definition">#</a></dt>
-<dd><p>Initiates the synchronization process of the metagraph.</p>
+<dd><p>Synchronizes the metagraph with the Bittensor network’s current state. It updates the metagraph’s attributes
+to reflect the latest data from the network, ensuring the metagraph represents the most current state of the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>block</strong> (<em>int</em><em>, </em><em>optional</em>) – Block number to sync. If None, the current block is used.</p></li>
-<li><p><strong>lite</strong> (<em>bool</em>) – Whether to use lite version of the metagraph.</p></li>
-<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em><em>, </em><em>optional</em>) – Subtensor object to use for syncing.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – A specific block number to synchronize with. If None, the metagraph syncs with the latest block.
+This allows for historical analysis or specific state examination of the network.</p></li>
+<li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True, a lite version of the metagraph is used for quicker synchronization. This is beneficial
+when full detail is not necessary, allowing for reduced computational and time overhead.</p></li>
+<li><p><strong>subtensor</strong> (<em>Optional</em><em>[</em><em>bittensor.subtensor</em><em>]</em>) – An instance of the subtensor class from Bittensor, providing an
+interface to the underlying blockchain data. If provided, this
+instance is used for data retrieval during synchronization.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Updated metagraph object.</p>
+<dd class="field-even"><p>The metagraph instance, updated to the state of the specified block or the latest network state.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#bittensor.metagraph.metagraph" title="bittensor.metagraph.metagraph">metagraph</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Sync the metagraph with the latest block from the subtensor, using the lite version for efficiency:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sync with a specific block number for detailed analysis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">lite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If attempting to access data beyond the previous 300 blocks, you <strong>must</strong> use the <code class="docutils literal notranslate"><span class="pre">archive</span></code> network for subtensor.
+Light nodes are configured only to store the previous 300 blocks if connecting to finney or test networks.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subtensor</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="s1">&#39;archive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._initialize_subtensor">
 <span class="sig-name descname"><span class="pre">_initialize_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._initialize_subtensor" title="Link to this definition">#</a></dt>
-<dd><p>Initializes the subtensor to be used for syncing.</p>
+<dd><p>Initializes the subtensor to be used for syncing the metagraph.</p>
+<p>This method ensures that a subtensor instance is available and properly set up for data retrieval during the synchronization process.</p>
+<p>If no subtensor is provided, this method is responsible for creating a new instance of the subtensor, configured according to the current network settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>subtensor</strong> – The subtensor to initialize. If None, a new subtensor is created.</p>
+<dd class="field-odd"><p><strong>subtensor</strong> – The subtensor instance provided for initialization. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a new subtensor instance is created using the current network configuration.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The initialized subtensor.</p>
+<dd class="field-even"><p>The initialized subtensor instance, ready to be used for syncing the metagraph.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="../subtensor/index.html#bittensor.subtensor.subtensor" title="bittensor.subtensor.subtensor">subtensor</a></p>
+</dd>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally during the sync process to ensure a valid subtensor instance is available:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subtensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_subtensor</span><span class="p">(</span><span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1016,17 +939,22 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._assign_neurons">
 <span class="sig-name descname"><span class="pre">_assign_neurons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._assign_neurons" title="Link to this definition">#</a></dt>
-<dd><p>Assigns neurons to the metagraph based on the ‘lite’ flag.</p>
+<dd><p>Assigns neurons to the metagraph based on the provided block number and the lite flag.</p>
+<p>This method is responsible for fetching and setting the neuron data in the metagraph, which includes neuron attributes like UID, stake, trust, and other relevant information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>block</strong> – The block number for which the neurons need to be assigned.</p></li>
-<li><p><strong>lite</strong> – Flag to decide the type of neurons to be assigned.</p></li>
-<li><p><strong>subtensor</strong> – The subtensor to use for syncing.</p></li>
+<li><p><strong>block</strong> – The block number for which the neuron data needs to be fetched. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the latest block data is used.</p></li>
+<li><p><strong>lite</strong> – A boolean flag indicating whether to use a lite version of the neuron data. The lite version typically includes essential information and is quicker to fetch and process.</p></li>
+<li><p><strong>subtensor</strong> – The subtensor instance used for fetching neuron data from the network.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None.</p>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally during the sync process to fetch and set neuron data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_assign_neurons</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">lite</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1034,16 +962,21 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._set_metagraph_attributes">
 <span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._set_metagraph_attributes" title="Link to this definition">#</a></dt>
-<dd><p>Sets attributes for the metagraph.</p>
+<dd><p>Sets various attributes of the metagraph based on the latest network data fetched from the subtensor.</p>
+<p>This method updates parameters like the number of neurons, block number, stakes, trusts, ranks, and other neuron-specific information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>block</strong> – The block number for which the attributes need to be set.</p></li>
-<li><p><strong>subtensor</strong> – The subtensor to use for syncing.</p></li>
+<li><p><strong>block</strong> – The block number for which the metagraph attributes need to be set. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the latest block data is used.</p></li>
+<li><p><strong>subtensor</strong> – The subtensor instance used for fetching the latest network data.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None.</p>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally during the sync process to update the metagraph’s attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_set_metagraph_attributes</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1051,19 +984,27 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._create_tensor">
 <span class="sig-name descname"><span class="pre">_create_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._create_tensor" title="Link to this definition">#</a></dt>
-<dd><p>Creates a tensor parameter with the given data and dtype.</p>
+<dd><p>Creates a tensor parameter with the given data and data type. This method is a utility function used internally to encapsulate data into a PyTorch tensor, making it compatible with the metagraph’s PyTorch
+model structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – The data to be included in the tensor.</p></li>
-<li><p><strong>dtype</strong> – The datatype for the tensor.</p></li>
+<li><p><strong>data</strong> – The data to be included in the tensor. This could be any numeric data, like stakes, ranks, etc.</p></li>
+<li><p><strong>dtype</strong> – The data type for the tensor, typically a PyTorch data type like <code class="docutils literal notranslate"><span class="pre">torch.float32</span></code> or <code class="docutils literal notranslate"><span class="pre">torch.int64</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tensor parameter.</p>
+<dd class="field-even"><p>A tensor parameter encapsulating the provided data.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.nn.Parameter</p>
+</dd>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally to create tensor parameters for various metagraph attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">stake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_tensor</span><span class="p">(</span><span class="n">neuron_stakes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1071,13 +1012,17 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._set_weights_and_bonds">
 <span class="sig-name descname"><span class="pre">_set_weights_and_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._set_weights_and_bonds" title="Link to this definition">#</a></dt>
-<dd><p>Computes and sets weights and bonds for each neuron.</p>
+<dd><p>Computes and sets the weights and bonds for each neuron in the metagraph. This method is responsible for processing the raw weight and bond data obtained from the network and converting it into a structured format suitable for the metagraph model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>) – The subtensor instance used for fetching weights and bonds data. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the weights and bonds are not updated.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>) – </p>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally during the sync process to update the weights and bonds of the neurons:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_set_weights_and_bonds</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1085,19 +1030,26 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._process_weights_or_bonds">
 <span class="sig-name descname"><span class="pre">_process_weights_or_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._process_weights_or_bonds" title="Link to this definition">#</a></dt>
-<dd><p>Processes weights or bonds based on the given attribute.</p>
+<dd><p>Processes the raw weights or bonds data and converts it into a structured tensor format. This method handles the transformation of neuron connection data (<code class="docutils literal notranslate"><span class="pre">weights</span></code> or <code class="docutils literal notranslate"><span class="pre">bonds</span></code>) from a list or other unstructured format into a tensor that can be utilized within the metagraph model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – The weights or bonds data to be processed.</p></li>
-<li><p><strong>attribute</strong> (<em>str</em>) – The attribute to decide the type of processing (‘weights’ or ‘bonds’).</p></li>
+<li><p><strong>data</strong> – The raw weights or bonds data to be processed. This data typically comes from the subtensor.</p></li>
+<li><p><strong>attribute</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A string indicating whether the data is <code class="docutils literal notranslate"><span class="pre">weights</span></code> or <code class="docutils literal notranslate"><span class="pre">bonds</span></code>, which determines the specific processing steps to be applied.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The processed tensor parameter.</p>
+<dd class="field-even"><p>A tensor parameter encapsulating the processed weights or bonds data.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.nn.Parameter</p>
+</dd>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally to process and set weights or bonds for the neurons:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_weights_or_bonds</span><span class="p">(</span><span class="n">raw_weights_data</span><span class="p">,</span> <span class="s2">&quot;weights&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1105,20 +1057,29 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph._process_root_weights">
 <span class="sig-name descname"><span class="pre">_process_root_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph._process_root_weights" title="Link to this definition">#</a></dt>
-<dd><p>Processes root weights based on the given attribute.</p>
+<dd><p>Specifically processes the root weights data for the metagraph. This method is similar to <a class="reference internal" href="../index.html#bittensor.metagraph._process_weights_or_bonds" title="bittensor.metagraph._process_weights_or_bonds"><code class="xref py py-func docutils literal notranslate"><span class="pre">_process_weights_or_bonds()</span></code></a> but is tailored for processing root weights, which have a different structure and significance in the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – The weights or bonds data to be processed.</p></li>
-<li><p><strong>attribute</strong> (<em>str</em>) – The attribute to decide the type of processing (‘weights’ or ‘bonds’).</p></li>
-<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>) – </p></li>
+<li><p><strong>data</strong> – The raw root weights data to be processed.</p></li>
+<li><p><strong>attribute</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A string indicating the attribute type, here it’s typically <code class="docutils literal notranslate"><span class="pre">weights</span></code>.</p></li>
+<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>) – The subtensor instance used for additional data and context needed in processing.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The processed tensor parameter.</p>
+<dd class="field-even"><p>A tensor parameter encapsulating the processed root weights data.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch.nn.Parameter</p>
+</dd>
+</dl>
+<dl>
+<dt>Internal Usage:</dt><dd><p>Used internally to process and set root weights for the metagraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">root_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_root_weights</span><span class="p">(</span>
+    <span class="n">raw_root_weights_data</span><span class="p">,</span> <span class="s2">&quot;weights&quot;</span><span class="p">,</span> <span class="n">subtensor</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -1126,46 +1087,90 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.save" title="Link to this definition">#</a></dt>
-<dd><p>Save the state of the metagraph object.</p>
+<dd><p>Saves the current state of the metagraph to a file on disk. This function is crucial for persisting the current state of the network’s metagraph, which can later be reloaded or analyzed. The save operation includes all neuron attributes and parameters, ensuring a complete snapshot of the metagraph’s state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Updated metagraph object.</p>
+<dd class="field-odd"><p>The metagraph instance after saving its state.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#bittensor.metagraph.metagraph" title="bittensor.metagraph.metagraph">metagraph</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Save the current state of the metagraph to the default directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The saved state can later be loaded to restore or analyze the metagraph’s state at this point.</p>
+<p>If using the default save path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If using a custom save path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">load_from_path</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.load">
 <span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.load" title="Link to this definition">#</a></dt>
-<dd><p>Load the state of the metagraph object.</p>
+<dd><p>Loads the state of the metagraph from the default save directory. This method is instrumental for restoring the metagraph to its last saved state. It automatically identifies the save directory based on the <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> properties of the metagraph, locates the latest block file in that directory, and loads all metagraph parameters from it.</p>
+<p>This functionality is particularly beneficial when continuity in the state of the metagraph is necessary
+across different runtime sessions, or after a restart of the system. It ensures that the metagraph reflects
+the exact state it was in at the last save point, maintaining consistency in the network’s representation.</p>
+<p>The method delegates to <code class="docutils literal notranslate"><span class="pre">load_from_path</span></code>, supplying it with the directory path constructed from the metagraph’s current <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> properties. This abstraction simplifies the process of loading the metagraph’s state for the user, requiring no direct path specifications.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Updated metagraph object.</p>
+<dd class="field-odd"><p>The metagraph instance after loading its state from the default directory.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#bittensor.metagraph.metagraph" title="bittensor.metagraph.metagraph">metagraph</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Load the metagraph state from the last saved snapshot in the default directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metagraph</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After this operation, the metagraph’s parameters and neuron data are restored to their state at the time of the last save in the default directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default save directory is determined based on the metagraph’s <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> attributes. It is important to ensure that these attributes are set correctly and that the default save directory contains the appropriate state files for the metagraph.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.metagraph.metagraph.load_from_path">
 <span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.metagraph.metagraph.load_from_path" title="Link to this definition">#</a></dt>
-<dd><p>Load the state of the metagraph object from the specified path.</p>
+<dd><p>Loads the state of the metagraph from a specified directory path. This method is crucial for restoring the metagraph to a specific state based on saved data. It locates the latest block file in the given
+directory and loads all metagraph parameters from it. This is particularly useful for analyses that require historical states of the network or for restoring previous states of the metagraph in different
+execution environments.</p>
+<p>The method first identifies the latest block file in the specified directory, then loads the metagraph state including neuron attributes and parameters from this file. This ensures that the metagraph is accurately reconstituted to reflect the network state at the time of the saved block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dir_path</strong> (<em>str</em>) – Directory path.</p>
+<dd class="field-odd"><p><strong>dir_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The directory path where the metagraph’s state files are stored. This path should contain one or more saved state files, typically named in a format that includes the block number.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Updated metagraph object.</p>
+<dd class="field-even"><p>The metagraph instance after loading its state from the specified directory path.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#bittensor.metagraph.metagraph" title="bittensor.metagraph.metagraph">metagraph</a></p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<p>Load the metagraph state from a specific directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dir_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/saved/metagraph/states&quot;</span>
+<span class="n">metagraph</span><span class="o">.</span><span class="n">load_from_path</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The metagraph is now restored to the state it was in at the time of the latest saved block in the specified directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method assumes that the state files in the specified directory are correctly formatted and
+contain valid data for the metagraph. It is essential to ensure that the directory path and the
+state files within it are accurate and consistent with the expected metagraph structure.</p>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -1186,12 +1191,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../logging/index.html"
+       href="../keyfile/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.logging</span></code></p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></p>
       </div>
     </a>
     <a class="right-next"
@@ -1224,27 +1229,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.get_save_dir"><code class="docutils literal notranslate"><span class="pre">get_save_dir()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.latest_block_path"><code class="docutils literal notranslate"><span class="pre">latest_block_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.netuid"><code class="docutils literal notranslate"><span class="pre">metagraph.netuid</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.network"><code class="docutils literal notranslate"><span class="pre">metagraph.network</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.version"><code class="docutils literal notranslate"><span class="pre">metagraph.version</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.n"><code class="docutils literal notranslate"><span class="pre">metagraph.n</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.block"><code class="docutils literal notranslate"><span class="pre">metagraph.block</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.stake"><code class="docutils literal notranslate"><span class="pre">metagraph.stake</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.total_stake"><code class="docutils literal notranslate"><span class="pre">metagraph.total_stake</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.ranks"><code class="docutils literal notranslate"><span class="pre">metagraph.ranks</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.trust"><code class="docutils literal notranslate"><span class="pre">metagraph.trust</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.consensus"><code class="docutils literal notranslate"><span class="pre">metagraph.consensus</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.validator_trust"><code class="docutils literal notranslate"><span class="pre">metagraph.validator_trust</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.incentive"><code class="docutils literal notranslate"><span class="pre">metagraph.incentive</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.emission"><code class="docutils literal notranslate"><span class="pre">metagraph.emission</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.dividends"><code class="docutils literal notranslate"><span class="pre">metagraph.dividends</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.active"><code class="docutils literal notranslate"><span class="pre">metagraph.active</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.last_update"><code class="docutils literal notranslate"><span class="pre">metagraph.last_update</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.validator_permit"><code class="docutils literal notranslate"><span class="pre">metagraph.validator_permit</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.weights"><code class="docutils literal notranslate"><span class="pre">metagraph.weights</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.bonds"><code class="docutils literal notranslate"><span class="pre">metagraph.bonds</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.uids"><code class="docutils literal notranslate"><span class="pre">metagraph.uids</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.axons"><code class="docutils literal notranslate"><span class="pre">metagraph.axons</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.S"><code class="docutils literal notranslate"><span class="pre">metagraph.S</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.R"><code class="docutils literal notranslate"><span class="pre">metagraph.R</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.metagraph.metagraph.I"><code class="docutils literal notranslate"><span class="pre">metagraph.I</span></code></a></li>
