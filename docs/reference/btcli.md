@@ -121,23 +121,15 @@ btcli subnets register [OPTIONS]
 
 Registers a new neuron using the `recycle_register` option. Adds a new neuron to the specified subnet `--netuid`.
 
+:::caution alert
+The command option `recycle_register` is removed. Instead, use the above `register` option.
+:::
+
 To register in a subnet of `netuid` of `1`:
 
 ```bash
 
 btcli subnets register --netuid 1
-```
-
-### Recycle registration
-
-```bash
-btcli recycle_register [OPTIONS]
-```
-
-Initiates a TAO recycle registration.
-
-```bash 
-btcli subnet recycle_register
 ```
 
 ### PoW registration
@@ -223,10 +215,10 @@ btcli stake remove
 
 ## Delegation
 
-### See active delegates
+### See available delegates
 
 ```bash
-btcli root list
+btcli root list_delegates
 ```
 
 List all active delegates available for delegated TAO. Displays the below output:
@@ -291,6 +283,15 @@ Use `--all` option to show delegations across all your wallets.
 :::
 
 ## Root network
+
+### Root network list
+
+```bash
+btcli root list
+```
+
+Lists all the root network members. Shows the top 64 validators in the root network.
+
 
 ### Boost weights
 
