@@ -4,14 +4,13 @@ title: "Bittensor CLI"
 
 # Bittensor CLI
 
-The Bittensor command line interface (btcli) comes [installed](../getting-started/installation.md) with the bittensor API and can be used to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network.
+After you [install Bittensor](../getting-started/installation.md) you can use `btcli` command line interface (CLI) to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network. This section presents the command and subcommand options available in `btcli` CLI.
 
-## Basic commands
+## Usage
 
-```bash dark
+```bash
 btcli [COMMAND]
 usage: btcli <command> <command args>
-bittensor cli v6.0.0
 positional arguments:
   {subnets,s,subnet,root,r,roots,wallet,w,wallets,stake,st,stakes,sudo,su,sudos,legacy,l}
     subnets (s, subnet)
@@ -27,149 +26,368 @@ positional arguments:
 ## Wallets 
 
 ### List wallets
-Lists all wallets locally stored on your machine under path `--wallet.path`. Outputs addresses are [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier) required as desinstations for ```btcli transfer```
-**Usage**: ```btcli wallet list [OPTIONS]```
-```bash dark
+
+```bash
+btcli wallet list [OPTIONS]
+```
+
+
+- Lists all wallets locally stored on your machine under path `--wallet.path`. 
+- Output addresses are [SS58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier). 
+- Required as destinations for ```btcli transfer```
+
+```bash 
 btcli wallet list
 Wallets
 └─
     my_wallet (<ss58_address>)
        └── my_first_hotkey (<ss58_address>)
 ```
-### New Coldkey
-Create a new wallet with encrypted coldkey [EdDSA cryptographic keypair](https://en.wikipedia.org/wiki/EdDSA#Ed25519)
-**Usage**: ```btcli wallet new_coldkey [OPTIONS]```
-```bash dark
+
+### Check balance
+
+```bash
+btcli wallet balance
+```
+
+Lists the balances in all the wallets in the user's configuration directory, showing the wallet name, coldkey address, and the free and staked balances.
+
+### New coldkey
+
+```bash
+btcli wallet new_coldkey [OPTIONS]
+```
+
+Create a new wallet with encrypted coldkey [EdDSA cryptographic keypair](https://en.wikipedia.org/wiki/EdDSA#Ed25519):
+
+```bash
 btcli wallet new_coldkey
 ```
 
-### New Hotkey
-Create a [EdDSA cryptographic keypair](https://en.wikipedia.org/wiki/EdDSA#Ed25519) hotkey associated with a wallet.
-**Usage**: ```btcli wallet new_hotkey [OPTIONS]```
-```bash dark
+### New hotkey
+
+```bash
+btcli wallet new_hotkey [OPTIONS]
+```
+
+Create a [EdDSA cryptographic keypair](https://en.wikipedia.org/wiki/EdDSA#Ed25519) hotkey associated with a wallet:
+
+```bash
 btcli wallet new_hotkey
 ```
 
-### Regenerate Hotkey
-Regenerate a hotkey from mnemonic.
-**Usage**: ```btcli wallet regen_hotkey [OPTIONS]```
-```bash dark
+### Regenerate hotkey
+
+```bash
+btcli wallet regen_hotkey [OPTIONS]
+```
+
+Regenerate a hotkey from mnemonic:
+```bash
 btcli wallet regen_hotkey
 ```
 
-### Regenerate Coldkey
-Regenerate a wallet encrypted coldkey file from mnemonic or seed.
-**Usage**: ```btcli wallet regen_coldkey [OPTIONS]```
-```bash dark
+### Regenerate coldkey
+
+```bash
+btcli wallet regen_coldkey [OPTIONS]
+```
+Regenerate a wallet encrypted coldkey file from mnemonic or seed:
+
+```bash
 btcli wallet regen_coldkey
 ```
 
-### Regenerate Coldkeypub
-Regenerate a wallet with just the public seed of your coldkey.
-**Usage**: ```btcli wallet regen_coldkeypub [OPTIONS]```
-```bash dark
+### Regenerate coldkeypub
+
+```bash
+btcli wallet regen_coldkeypub [OPTIONS]
+```
+
+Regenerate a wallet with just the public seed of your coldkey:
+
+```bash
 btcli wallet regen_coldkeypub
 ```
 
 ## Registration
 
+### Register
+
+```bash
+
+btcli subnets register [OPTIONS]
+```
+
+Registers a new neuron using the `recycle_register` option. Adds a new neuron to the specified subnet `--netuid`.
+
+To register in a subnet of `netuid` of `1`:
+
+```bash
+
+btcli subnets register --netuid 1
+```
+
 ### Recycle registration
+
+```bash
+btcli recycle_register [OPTIONS]
+```
+
 Initiates a TAO recycle registration.
-**Usage**: ```btcli recycle_register [OPTIONS]```
-```bash dark
+
+```bash 
 btcli subnet recycle_register
 ```
 
-### Transfers and staking 
+### PoW registration
+
+```bash
+btcli pow_register [OPTIONS]
+```
+
+Registers a neuron on the Bittensor network using Proof of Work (PoW). This method is an alternative registration process that leverages computational work for securing a neuron's place on the network.
+
+Example:
+
+```bash
+btcli pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
+```
+
+:::caution
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
+
+## Identity
+
+### Get identity
+
+```
+btli get_identity --key <s58_address> [OPTIONS]
+```
+
+- `--key` [Optional] is the SS58 address of the coldkey or hotkey.
+
+Displays the identity details of a user's coldkey or hotkey associated with the Bittensor network.
+
+### Set identity
+
+```bash
+btcli root set_identity [OPTIONS]
+```
+
+Creates or updates a delegate's on-chain identity. This identity includes various    attributes such as display name, legal name, web URL, PGP fingerprint, and contact    information, among others.
+
+:::caution
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
+
+## Transfers and staking 
 
 ### Transfer Tao
-Transfers TAO from a wallet coldkey to another wallet public key address. Destination addresses must be [ss58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier).
-**Usage**: ```btcli wallet transfer [OPTIONS]```
-```bash dark
+
+```bash
+btcli wallet transfer [OPTIONS]
+```
+
+- Transfers TAO from a wallet coldkey to another wallet public key address. 
+- Destination addresses must be [SS58 encoded](https://docs.substrate.io/reference/address-formats/#:~:text=case%20L%20(l)-,Address%20type,address%20bytes%20that%20follow%20it.&text=Simple%20account%2Faddress%2Fnetwork%20identifier,directly%20as%20such%20an%20identifier).
+
+```bash
 btcli wallet transfer
 ```
 
-### Stake Tao
+### Stake 
+
+```bash
+btcli stake add [OPTIONS]
+```
+
 Stake TAO from the coldkey balance to the hotkey staking account.
-**Usage**: ```btcli stake add [OPTIONS]```
-```bash dark
+
+```bash
 btcli stake add
 ```
 
 ### Unstake Tao
+
+```bash
+btcli stake remove [OPTIONS]
+```
+
 Remove stake TAO from the hotkey staking account and add it to the coldkey.
-**Usage**: ```btcli stake remove [OPTIONS]```
-```bash dark
+
+```bash
 btcli stake remove
 ```
 
 ## Delegation
 
-### Delegate Tao
-List all active delegates available for delegated TAO.
-**Usage**: ```btcli root list```
-```bash dark
+### See active delegates
+
+```bash
 btcli root list
 ```
-![List Delegates](/img/list_delegates.png 'Output of List Delegates')
+
+List all active delegates available for delegated TAO. Displays the below output:
+
+[![List Delegates](/img/docs/list_delegates_screenshot.png 'Output of List Delegates')](/img/docs/list_delegates_screenshot.png)
+
 
 ### Delegate Tao
+
+```bash
+btcli delegate [OPTIONS]
+```
+
 Delegate TAO from the coldkey balance to the hotkey staking account of a delegate.
-**Usage**: ```btcli delegate [OPTIONS]```
-```bash dark
+
+```bass
 btcli delegate
 ```
 
+### Set delegate take
+
+```bash
+btcli root set_delegate_take [OPTIONS]
+```
+Sets the take percentage of the delegate.
+
+To set the delegate take at 10%:
+
+```bash
+btcli root set_delegate_take --take 0.1
+```
+
+The `--take` value must be a floating point number between `0` and `1`.
+
+To use a specific wallet:
+
+```bash
+btcli root set_delegate_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
+```
+
 ### Undelegate Tao
+
+```bash
+btcli root undelegate [OPTIONS]
+```
 Remove TAO from the hotkey balance of delegate you have previously delegated to.
-**Usage**: ```btcli root undelegate [OPTIONS]```
-```bash dark
+
+```bash
 btcli root undelegate
 ```
 
-### My Delegates
-Create a hotkey associated to a wallet.
-**Usage**: ```btcli wallet new_hotkey [OPTIONS]```
-```bash dark
-btcli wallet new_hotkey
+### My delegates
+
+```bash
+btcli root my_delegates
+```
+
+Show all your previously made delegations.
+
+:::tip
+Use `--all` option to show delegations across all your wallets.
+:::
+
+## Root network
+
+### Boost weights
+
+
+```bash
+btcli root boost [OPTIONS]
+```
+
+This command allows boosting (increasing) of weights for different subnets within the root network.
+
+Optional arguments:
+  - `--netuid` (int): A single `netuid` for which weights are to be boosted (increased).
+  - `--increase` (float): The corresponding increase in the weight for this subnet.
+
+Example:
+
+```bash
+btcli root boost --netuid 1 --increase 0.01
+```
+
+### Slash weights
+
+
+```bash
+btcli root slash [OPTIONS]
+```
+
+This command allows slashing (decreasing) the weights for different subnets within the root network.
+
+Optional arguments:
+  - `--netuid` (int): A single `netuid` for which weights are to be slashed (decreased).
+  - `--decrease` (float): The corresponding decrease in the weight for this subnet.
+
+Example:
+
+```bash
+btcli root slash --netuid 1 --decrease 0.01
 ```
 
 ## Governance
 
 ### View proposals
-List all active proposals for the Senate to vote on.
-**Usage**: ```btcli root proposals```
-```bash dark
+
+```bash
 btcli root proposals
 ```
-![Proposals](/img/list_proposals.png 'Output of Proposals')
 
-### Proposal Votes
+List all active proposals for the Senate to vote on. Displays an output similar to below:
+
+[![Proposals](/img/list_proposals.png 'Output of Proposals')](/img/list_proposals.png)
+
+
+### Proposal votes
+
+```bash
+btcli root proposals [OPTIONS]
+```
 Inspect the votes for a single proposal.
-**Usage**: ```btcli root proposals [OPTIONS]```
-```bash dark
+
+```bash 
 btcli root proposals --proposal=[PROPOSAL_HASH]
 ```
 
-### Senate Register
+### Senate register
+
+```bash
+btcli root register [OPTIONS]
+```
+
 Elect to join the Senate with your nominated hotkey.
-**Usage**: ```btcli root register [OPTIONS]```
+
 ```bash dark
 btcli root register
 ```
 
-### Senate Vote
+### Senate vote
+
+```bash
+btcli root senate_vote [OPTIONS]
+```
+
 Participate in a triumvirate proposal by voting with your senate hotkey.
-**Usage**: ```btcli root senate_vote [OPTIONS]```
-```bash dark
+
+```bash 
 btcli root senate_vote --proposal=[PROPOSAL_HASH]
 ```
 
 ## Misc
 
 ### Update Bittensor
-Update your Bittensor installation
-**Usage**: ```btcli misc update [OPTIONS]```
-```bash dark
+
+```bash
+btcli misc update [OPTIONS]
+```
+
+Update your Bittensor installation.
+
+```bash 
 btcli misc update
 ```
