@@ -54,15 +54,16 @@ const config = {
       }),
     ],
   ],
-  scripts: [
-    // String format.
-    // 'https://docusaurus.io/script.js',
-    // Object format.
-    {
-      src: "/static/feedbug-widjet.js",
-      async: true,
-    },
-  ],
+  // scripts: [
+  //   // String format.
+  //   // 'https://docusaurus.io/script.js',
+  //   // Object format.
+  //   {
+  //     src: "/static/feedbug-widjet.js",
+  //     async: true,
+  //   },
+  // ],
+  clientModules: ["/static/feedbug-widjet.js"],
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
