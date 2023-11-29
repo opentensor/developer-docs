@@ -128,7 +128,7 @@ const config = {
         debug: false,
       },
       footer: {
-        style: "dark",
+        //style: "dark",
         links: [
           {
             title: "Wallet",
