@@ -155,7 +155,7 @@ This command is suited for users with adequate computational resources to partic
 ### Get identity
 
 ```
-btli get_identity --key <s58_address> [OPTIONS]
+btcli root get_identity --key <s58_address> [OPTIONS]
 ```
 
 - `--key` [Optional] is the SS58 address of the coldkey or hotkey.
