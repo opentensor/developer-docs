@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Preload font file -->
+        <link rel="preload" as="font" type="font/ttf" href="../fonts/Haffer-Regular.ttf" crossorigin>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Subtensor</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html">Introduction</a></li><li class="chapter-item "><a href="../nested/TheProtocol2.html">The Protocol</a></li><li class="chapter-item "><a href="../tokenomics.html">Taonomics</a></li><li class="chapter-item affix "><li class="part-title">Tutorials</li><li class="chapter-item "><a href="../nested/Updates.html">Updates</a></li><li class="chapter-item "><a href="../Installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../cli/Subtensor.html" class="active">Subtensor</a></li><li class="chapter-item "><a href="../cli/Basicbtcli.html">Wallet</a></li><li class="chapter-item "><a href="../Registration.html">Registering a Miner</a></li><li class="chapter-item "><a href="../cli/MinerPreperation.html">Running a Miner</a></li><li class="chapter-item "><a href="../css/ServerCustomization.html">Server Customization</a></li><li class="chapter-item "><a href="../css/ValidatorCustomization.html">Validator Customization</a></li><li class="chapter-item "><a href="../Delegation.html">Delegation</a></li><li class="chapter-item "><a href="../StakingGuide.html">Delegation via PolkadotJS</a></li><li class="chapter-item "><a href="../nested/FineTuning.html">Fine Tuning</a></li><li class="chapter-item "><a href="../cli/ConfigurationMethods.html">Methods of Configuration</a></li><li class="chapter-item "><a href="../nested/TheDataset.html">Bittensor Dataset</a></li><li class="chapter-item "><a href="../nested/Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../Arguments.html">Configuration Settings</a></li><li class="chapter-item "><a href="../nested/ReturnCodes.html">Return Codes</a></li><li class="chapter-item "><a href="../Hyperparameters.html">Validator Hyperparameters</a></li><li class="chapter-item "><a href="../PromptSubnet.html">Prompt Subnetwork</a></li><li class="chapter-item "><a href="../TestNet.html">Finney Testnet</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/opentensor/docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/opentensor/docs/edit/main/src/cli/Subtensor.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="running-locally---subtensor"><a class="header" href="#running-locally---subtensor">Running locally - Subtensor</a></h1>
+<hr />
+<p>Subtensor is our network blockchain and keeps a record of every transaction that occurs. A new block is created and recorded every 12 seconds - or &quot;blockstep&quot; - at which time a new round of Tao is distributed. </p>
+<p>By connecting to Nakamoto, you automatically gain access to Subtensor. Running a Subtensor instance locally, however, will ensure a faster and more consistent experience in the case that the network is compromised or slowed by high traffic. It is therefore <strong>highly</strong> recommended to run Subtensor locally for serious Servers.</p>
+<h2 id="running-subtensor"><a class="header" href="#running-subtensor">Running Subtensor</a></h2>
+<p><em>Should any of the below commands fail, try running with sudo.</em></p>
+<ol>
+<li>Prepare your system by updating outdated packages in your system, and installing the newest available ones. You can do this in two commands. </li>
+</ol>
+<pre><code class="language-bash">apt-get update
+</code></pre>
+<pre><code class="language-bash">apt-get upgrade
+</code></pre>
+<ol start="2">
+<li>Download Docker.</li>
+</ol>
+<pre><code class="language-bash">curl -fsSL https://get.docker.com -o get-docker.sh
+</code></pre>
+<ol start="3">
+<li>Make the Docker install script executable.</li>
+</ol>
+<pre><code class="language-bash">chmod +x ./get-docker.sh
+</code></pre>
+<ol start="4">
+<li>Install Docker. For more information, follow this <a href="https://www.docker.com/">link</a>.</li>
+</ol>
+<pre><code class="language-bash">./get-docker.sh
+</code></pre>
+<ol start="5">
+<li>Clone the Subtensor repository.</li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/opentensor/subtensorv3.git
+</code></pre>
+<ol start="6">
+<li>Open the Subtensor directory.</li>
+</ol>
+<pre><code class="language-bash">cd subtensorv3
+</code></pre>
+<ol start="7">
+<li>Pull the latest Subtensor image.</li>
+</ol>
+<pre><code class="language-bash">docker pull opentensor/subtensor
+</code></pre>
+<ol start="8">
+<li>Run Subtensor inside of Docker.</li>
+</ol>
+<pre><code class="language-bash">docker compose up -d
+</code></pre>
+<ol start="9">
+<li>Check that Subtensor is fully synced.</li>
+</ol>
+<pre><code class="language-bash">docker logs --since=1h node-subtensor 2&gt;&amp;1  | grep &quot;best&quot;
+</code></pre>
+<p>Here is an example of a synced copy of Subtensor:</p>
+<pre><code class="language-bash">/node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50564.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50568.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50572.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50576.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50580.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50584.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50588.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50592.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50596.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50600.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50604.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50608.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50612.    
+node-subtensor    | 2022-04-27 01:32:22 Accepted a new tcp connection from 172.22.0.1:50616. 
+</code></pre>
+<p>In case your Subtensor goes down, here is the command to restart it: </p>
+<pre><code class="language-bash"># quick restart
+cd subtensorv3 &amp;&amp; \
+docker-compose down &amp;&amp; \
+docker-compose up -d
+
+# full restart
+cd subtensorv3 &amp;&amp; \
+docker-compose down &amp;&amp; \
+docker system prune -a -f &amp;&amp; \
+git pull &amp;&amp; \
+docker pull opentensor/subtensor &amp;&amp; \
+docker-compose up -d
+</code></pre>
+<p>Lastly, here are the steps to ensure both Bittensor and Subtensor are up to date. </p>
+<p>Update Bittensor: </p>
+<pre><code class="language-bash">git -C ~/.bittensor/bittensor pull origin master
+python3 -m pip install -e ~/.bittensor/bittensor
+</code></pre>
+<p>Update Subtensor: </p>
+<pre><code class="language-bash">#Bring Subtensor down
+docker compose down
+#Connect to directory
+cd subtensorv3
+#update Subtensor
+git pull
+#Bring Subtensor back up 
+docker compose up -d
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../cli/Basicbtcli.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../cli/Basicbtcli.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

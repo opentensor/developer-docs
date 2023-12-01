@@ -60,6 +60,11 @@ const sidebars = {
         "subnets/code-walkthrough-text-prompting",
       ],
     },
+    {
+      type: "link",
+      label: "Subtensor",
+      href: "pathname:///Subtensor.html",
+    },
     "reference/btcli",
     // "reference/bittensor-api-ref",
     "delegation",
