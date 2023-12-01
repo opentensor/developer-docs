@@ -110,10 +110,97 @@
 
 body {
   font-family: 'Haffer';
+  font-size: 16px;
   font-weight: 200;
+  letter-spacing: 0%;
+  line-height: 160%;
 }
 
-h1,
+.h1 {
+  font-family: 'Haffer';
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: calc(-0.01 * 20px);
+  line-height: 120%;
+}
+
+.h2 {
+  font-family: 'Haffer';
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: calc(-0.01 * 20px);
+  line-height: 120%;
+}
+
+.h3 {
+  font-family: 'Haffer';
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0%;
+  line-height: 120%;
+}
+
+.h4 {
+  font-family: 'Haffer';
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0%;
+  line-height: 140%;
+}
+
+a {
+  /* color: rgb(0, 49, 0); */
+  color: none;
+  font-weight: 400;
+}
+
+.menu__list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  font-family: 'FiraCode';
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: calc(0.05 * 12px);
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.table-of-contents, .table-of-contents ul {
+  font-family: 'FiraCode';
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+  content: '';
+}
+.pagination-nav__link--next .pagination-nav__label::after {
+  content: '';
+}
+.pagination-nav__link {
+  border: none;
+}
+
+.navbar__link {
+  font-family: "FiraCode";
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.breadcrumbs {
+  font-family: "FiraCode";
+  text-transform: uppercase;
+  letter-spacing: calc(0.05 * 12px);
+}
+
+.theme-last-updated {
+  font-style: normal;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-family: "FiraCode";
+}
+
+/* h1,
 h2,
 h3,
 h4,
@@ -143,7 +230,7 @@ h3 {
 
 h4 {
   font-size: var(--ifm-h4-font-size);
-}
+} */
 
 ul {
   font-family: 'Haffer';
