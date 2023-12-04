@@ -123,7 +123,7 @@ const config = {
       algolia: {
         appId: "B07G29NY9F",
         apiKey: "fff5aa7a466a7c3252ae85d9a0629b2f",
-        indexName: "new--alpha",
+        indexName: "bittensor-docs",
         contextualSearch: true,
         insights: true,
         debug: false,
