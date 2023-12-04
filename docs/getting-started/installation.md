@@ -6,11 +6,24 @@ title: "Install Bittensor"
 
 Before you can start developing, install Bittensor and then create Bittensor wallet.
 
+## Upgrade
+
+If you already installed Bittensor, make sure you upgrade to the latest version. Run the below command:
+
+```bash
+python3 -m pip install --upgrade bittensor
+```
+
+or
+```bash
+python -m pip install --upgrade bittensor
+``````
+
+## Install
+
 :::tip On macOS
 The following installation instructions are for macOS. For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon) section. 
 :::
-
-## Install
 
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
 - Using a Bash command.
