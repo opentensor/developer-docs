@@ -11,7 +11,8 @@ Before you create your first subnet, we strongly recommend that you follow the b
 
 ## Prerequisites
 
-To create a subnet, whether locally or on testchain or mainchain, make sure that:
+To create a subnet, whether locally or on testchain or on mainchain, make sure that:
+
 - You [installed Bittensor](../getting-started/installation.md). 
 - You have already [created a wallet or know how to create one](../getting-started/wallets.md#creating-a-local-wallet). 
 
@@ -19,9 +20,18 @@ To create a subnet, whether locally or on testchain or mainchain, make sure that
 Registering a subnet will create the subnet. This step is also referred as **purchasing a slot**. 
 :::
 
-## Creating a local subnet 
+## Creating a local subnet (staging)
+
+### Local blockchain vs local subtensor node 
+
+Running a local blockchain is sometimes synonymously referred as **running on staging**. This is **different** from running a local subtensor node that connects to the Bittensor mainchain. 
+
+A local subtensor node will connect to the mainchain and sync with the mainchain, giving you your own access point to the mainchain. 
+
+Running a local blockchain spins up two authority nodes locally, not connected to any other nodes or testchain or mainchain. The below instructions are applicable when you want to create a local subnet together with creating a local blockchain. 
 
 ### Step 1. Mint tokens from faucet
+
 You will need tokens to register a subnet on your local. Run the following command to mint faucet tokens (fake TAO).
 ```bash
 # Mint tokens for the subnet owner
@@ -29,8 +39,10 @@ btcli wallet faucet --wallet.name <owner-wallet-name> --subtensor.chain_endpoint
 >> Balance: τ0.000000000 ➡ τ100.000000000
 ```
 
-### Step 2. Create a local subnet
+### Step 2. Create the subnet
+
 Run the below command to create a new subnet on your local chain. The cost will be exactly τ100.000000000 for the first subnet you create.
+
 ```bash
 btcli subnet create --wallet.name owner --subtensor.chain_endpoint ws://127.0.0.1:9946 
 >> Your balance is: τ200.000000000
@@ -54,20 +66,13 @@ btcli subnet lock_cost --subtensor.network test
 >> Subnet lock cost: τ100.000000000
 ```
 
-### Step 2. Mint tokens from faucet
-   
-If you do not have enough faucet tokens to create a testchain subnet, you can create additional testnet faucet tokens using the below command.
+### Step 2. Get faucet tokens
 
-```bash
-btcli wallet faucet --wallet.name owner --subtensor.network test
->> Balance: τ0.000000000 ➡ τ100.000000000
->> Balance: τ100.000000000 ➡ τ200.000000000
-...
-```
+Faucet is disabled on the testchain. Hence, if you don't have sufficient faucet tokens, ask the [Bittensor Discord community](https://discord.com/channels/799672011265015819/830068283314929684) for faucet tokens.
 
-### Step 3. Purchasing a slot
+### Step 3. Create the subnet 
 
-Register (i.e., create) your new subnet on the testchain using the test TAO you minted from the previous step.  This will create a new subnet on the testchain and give you the owner permissions to it. 
+Register (i.e., create) your new subnet on the testchain using the test TAO you minted from the previous step.  This will create a new subnet on the testchain and give you the owner permissions to it. This step is sometimes referred as **purchasing a slot**.
 
 :::tip Your TAO is recycled
 Slots cost TAO, and you will not get this TAO back. Instead, this TAO is recycled back into your incentive mechanism, to be later mined.
@@ -99,7 +104,7 @@ btcli subnet lock_cost
 >> Subnet lock cost: τ100.000000000
 ```
 
-### Step 2. Create a subnet 
+### Step 2. Create the subnet 
 
 Use the below command to register a new subnet on the mainchain. 
 
