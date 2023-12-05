@@ -17,12 +17,12 @@
   --ifm-h1-font-size: 1.8rem;
   --ifm-h2-font-size: 1.5rem;
   --ifm-h3-font-size: 1.2rem;
-  --ifm-h4-font-size: 1.0rem;
+  --ifm-h4-font-size: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -34,82 +34,82 @@
 }
 
 @font-face {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   src: url(../../static/fonts/Haffer-Light.ttf);
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   src: url(../../static/fonts/Haffer-Medium.ttf);
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   src: url(../../static/fonts/Haffer-Regular.ttf);
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   src: url(../../static/fonts/Haffer-SemiBold.ttf);
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'HafferSQ';
+  font-family: "HafferSQ";
   src: url(../../static/fonts/HafferSQ-Light.ttf);
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'HafferSQ';
+  font-family: "HafferSQ";
   src: url(../../static/fonts/HafferSQ-Medium.ttf);
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'HafferSQ';
+  font-family: "HafferSQ";
   src: url(../../static/fonts/HafferSQ-Regular.ttf);
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'HafferSQ';
+  font-family: "HafferSQ";
   src: url(../../static/fonts/HafferSQ-SemiBold.ttf);
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'TTCommonsPro';
+  font-family: "TTCommonsPro";
   src: url(../../static/fonts/TTCommonsProMonoMedium.ttf);
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'TTCommonsPro';
+  font-family: "TTCommonsPro";
   src: url(../../static/fonts/TTCommonsProMonoRegular.ttf);
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FiraCode';
+  font-family: "FiraCode";
   src: url(../../static/fonts/FiraCode_VariableFont_wght.ttf);
 }
 
 body {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0%;
@@ -117,7 +117,7 @@ body {
 }
 
 .h1 {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   font-size: 32px;
   font-weight: 400;
   letter-spacing: calc(-0.01 * 20px);
@@ -125,7 +125,7 @@ body {
 }
 
 .h2 {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   font-size: 24px;
   font-weight: 400;
   letter-spacing: calc(-0.01 * 20px);
@@ -133,7 +133,7 @@ body {
 }
 
 .h3 {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0%;
@@ -141,7 +141,7 @@ body {
 }
 
 .h4 {
-  font-family: 'Haffer';
+  font-family: "Haffer";
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 0%;
@@ -158,7 +158,7 @@ a {
   list-style: none;
   margin: 0;
   padding-left: 0;
-  font-family: 'TTCommonsPro';
+  font-family: "FiraCode";
   font-size: 12px;
   font-weight: 200;
   letter-spacing: calc(0.05 * 12px);
@@ -166,20 +166,16 @@ a {
   text-transform: uppercase;
 }
 
-.table-of-contents, .table-of-contents ul {
-  font-family: 'TTCommonsPro';
-  font-size: 13px;
-  font-weight: 200;
-  letter-spacing: calc(0.05 * 12px);
-  line-height: 160%;
-  text-transform: none;
+.table-of-contents,
+.table-of-contents ul {
+  font-family: "FiraCode";
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
-  content: '';
+  content: "";
 }
 .pagination-nav__link--next .pagination-nav__label::after {
-  content: '';
+  content: "";
 }
 .pagination-nav__link {
   border: none;
@@ -258,24 +254,45 @@ h4 {
 } */
 
 ul {
-  font-family: 'Haffer';
-  font-weight: 400;
+  font-family: "Haffer";
+  font-weight: 200;
   text-transform: none;
 }
 .navbar {
   margin-bottom: 10px;
 }
 .sidebar-title {
-  font-size: 1.0rem;
-  font-family:'Haffer';
+  font-size: 1rem;
+  font-family: "Haffer";
   font-weight: 500;
   letter-spacing: 0.05em;
-  margin: .7rem;
+  margin: 0.7rem;
   text-transform: uppercase;
 }
 #bittensor-img {
   width: 80%;
   display: block;
   margin-left: auto;
-  margin-right: auto;;
+  margin-right: auto;
+}
+
+/* ALGOLIA SEARCH INPUT */
+/* button.DocSearch.DocSearch-Button {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dbdde1;
+} */
+
+/* NAVBAR LINKS */
+.navbar__item.navbar__link {
+  font-size: 12px !important;
+  padding: 4px !important;
+}
+
+/* NAV TITLE */
+.navbar__title.text--truncate {
+  font-size: 16px !important;
+  line-height: 27.2px !important;
+  font-weight: 400 !important;
+  font-family: "Haffer";
 }

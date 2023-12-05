@@ -87,22 +87,23 @@ const config = {
       },
       navbar: {
         title: "Developer Documentation",
+
         logo: {
           alt: "Bittensor",
           src: "img/logo.svg",
           srcDark: "img/logo-dark-mode.svg",
+          style: {
+            objectFit: "contain",
+            width: 20,
+          },
         },
         items: [
-          {
-            position: "left",
-            label: "Bittensor API Reference",
-            href: "pathname:///python-api/html/index.html",
-          },
-          {
-            href: "https://wallet.bittensor.com/",
-            label: "Wallet",
-            position: "right",
-          },
+          // {
+          //   position: "left",
+          //   label: "Bittensor API Reference",
+          //   href: "pathname:///python-api/html/index.html",
+          // },
+
           {
             href: "https://github.com/opentensor/bittensor",
             label: "GitHub",
@@ -111,6 +112,11 @@ const config = {
           {
             href: "https://bittensor.com/about",
             label: "About Bittensor",
+            position: "right",
+          },
+          {
+            href: "https://wallet.bittensor.com/",
+            label: "Wallet",
             position: "right",
           },
         ],
