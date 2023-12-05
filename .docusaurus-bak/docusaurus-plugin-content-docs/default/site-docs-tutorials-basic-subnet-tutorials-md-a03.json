@@ -1,0 +1,27 @@
+{
+  "id": "tutorials/basic-subnet-tutorials",
+  "title": "Basic Subnet Tutorials",
+  "description": "If you are new to subnets, start with these beginner tutorials with Bittensor Subnet Template:",
+  "source": "@site/docs/tutorials/basic-subnet-tutorials.md",
+  "sourceDirName": "tutorials",
+  "slug": "/tutorials/basic-subnet-tutorials",
+  "permalink": "/tutorials/basic-subnet-tutorials",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Basic Subnet Tutorials"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "Create Wallet",
+    "permalink": "/getting-started/wallets"
+  },
+  "next": {
+    "title": "Checklist for Subnet",
+    "permalink": "/subnets/checklist-for-subnet"
+  }
+}

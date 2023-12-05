@@ -1,0 +1,27 @@
+{
+  "id": "learn/bittensor-building-blocks",
+  "title": "Bittensor Building Blocks",
+  "description": "The Bittensor API provides basic building blocks you can use to develop your incentive mechanism. This section presents:",
+  "source": "@site/docs/learn/bittensor-building-blocks.md",
+  "sourceDirName": "learn",
+  "slug": "/learn/bittensor-building-blocks",
+  "permalink": "/learn/bittensor-building-blocks",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Bittensor Building Blocks"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/learn/introduction"
+  },
+  "next": {
+    "title": "Anatomy of Incentive Mechanism",
+    "permalink": "/learn/anatomy-of-incentive-mechanism"
+  }
+}

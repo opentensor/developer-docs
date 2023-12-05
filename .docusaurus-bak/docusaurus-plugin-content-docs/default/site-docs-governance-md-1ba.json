@@ -1,0 +1,27 @@
+{
+  "id": "governance",
+  "title": "Governance",
+  "description": "Bittensor's governance protocol transitions the management of the network from centralization within the foundation to community-ownership over time.",
+  "source": "@site/docs/governance.md",
+  "sourceDirName": ".",
+  "slug": "/governance",
+  "permalink": "/governance",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Governance"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "Yuma Consensus",
+    "permalink": "/yuma-consensus"
+  },
+  "next": {
+    "title": "Senate",
+    "permalink": "/senate"
+  }
+}

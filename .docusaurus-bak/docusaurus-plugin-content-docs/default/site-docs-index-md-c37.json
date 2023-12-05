@@ -1,0 +1,28 @@
+{
+  "id": "index",
+  "title": "Welcome",
+  "description": "Welcome! Bittensor is a protocol for decentralized subnets. Each subnet is an incentive-based competition in action. Subnets run on blockchain and constitute the core of the Bittensor ecosystem. The rewards for subnet participants are in the form of TAO tokens.",
+  "source": "@site/docs/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "title": "Welcome",
+    "slug": "/",
+    "hidden": false,
+    "sidebar_position": 0,
+    "hide_table_of_contents": false
+  },
+  "sidebar": "bittensorSidebar",
+  "next": {
+    "title": "What's New in Docs",
+    "permalink": "/whats-new-in-docs"
+  }
+}

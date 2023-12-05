@@ -1,0 +1,135 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "concepts/equations",
+              "path": "/concepts/equations"
+            },
+            {
+              "id": "delegation",
+              "path": "/delegation",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "getting-started/installation",
+              "path": "/getting-started/installation",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "getting-started/wallets",
+              "path": "/getting-started/wallets",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "glossary",
+              "path": "/glossary",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "governance",
+              "path": "/governance",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "index",
+              "path": "/",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "learn/anatomy-of-incentive-mechanism",
+              "path": "/learn/anatomy-of-incentive-mechanism",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "learn/bittensor-building-blocks",
+              "path": "/learn/bittensor-building-blocks",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "learn/introduction",
+              "path": "/learn/introduction",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "reference/bittensor-api-ref",
+              "path": "/reference/bittensor-api-ref"
+            },
+            {
+              "id": "reference/btcli",
+              "path": "/reference/btcli",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "senate",
+              "path": "/senate",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "subnets/checklist-for-subnet",
+              "path": "/subnets/checklist-for-subnet",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "subnets/code-walkthrough-text-prompting",
+              "path": "/subnets/code-walkthrough-text-prompting",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "subnets/create-a-subnet",
+              "path": "/subnets/create-a-subnet",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "subnets/register-and-participate",
+              "path": "/subnets/register-and-participate",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "subnets/subnet-hyperparameters",
+              "path": "/subnets/subnet-hyperparameters"
+            },
+            {
+              "id": "subnets/working-with-subnets",
+              "path": "/subnets/working-with-subnets",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "tutorials/basic-subnet-tutorials",
+              "path": "/tutorials/basic-subnet-tutorials",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "whats-new-in-docs",
+              "path": "/whats-new-in-docs",
+              "sidebar": "bittensorSidebar"
+            },
+            {
+              "id": "yuma-consensus",
+              "path": "/yuma-consensus",
+              "sidebar": "bittensorSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "bittensorSidebar": {
+              "link": {
+                "path": "/",
+                "label": "index"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

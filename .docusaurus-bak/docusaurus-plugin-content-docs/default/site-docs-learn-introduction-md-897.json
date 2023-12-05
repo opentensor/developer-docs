@@ -1,0 +1,27 @@
+{
+  "id": "learn/introduction",
+  "title": "Introduction",
+  "description": "If you are new to the Bittensor ecosystem read this section first before proceeding to participate in the Bittensor network.",
+  "source": "@site/docs/learn/introduction.md",
+  "sourceDirName": "learn",
+  "slug": "/learn/introduction",
+  "permalink": "/learn/introduction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Introduction"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "What's New in Docs",
+    "permalink": "/whats-new-in-docs"
+  },
+  "next": {
+    "title": "Bittensor Building Blocks",
+    "permalink": "/learn/bittensor-building-blocks"
+  }
+}
