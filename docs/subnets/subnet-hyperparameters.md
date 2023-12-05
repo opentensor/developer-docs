@@ -4,7 +4,7 @@ title: "Subnet Hyperparameters"
 
 # Subnet Hyperparameters
 
-This document presents the description of subnet hyperparameters. You can see the subnet parmeters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
+This document presents the description of subnet hyperparameters. You can see the subnet hyperparameters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
 
 ```bash
 btcli subnet hyperparameters
