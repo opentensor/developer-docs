@@ -120,14 +120,14 @@ const config = {
         darkTheme: darkTheme,
         additionalLanguages: ["bash", "diff", "json"],
       },
-      algolia: {
-        appId: "B07G29NY9F",
-        apiKey: "d23c920e8a9bdae899572be3c8494696",
-        indexName: "bittensor-docs",
-        contextualSearch: true,
-        insights: true,
-        debug: false,
-      },
+      // algolia: {
+      //   appId: "B07G29NY9F",
+      //   apiKey: "d23c920e8a9bdae899572be3c8494696",
+      //   indexName: "bittensor-docs",
+      //   contextualSearch: true,
+      //   insights: true,
+      //   debug: false,
+      // },
       footer: {
         //style: "dark",
         links: [
