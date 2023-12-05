@@ -9,7 +9,7 @@ To participate either as a subnet validator or subnet miner, you must register f
 Run the below command to register your keys. The `YOUR_PREFERRED_NETUID` is the `netuid` of your preferred subnet.
 
 ```bash
-btcli subnet recycle_register --netuid YOUR_PREFERRED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
+btcli subnet register --netuid YOUR_PREFERRED_NETUID --wallet.name YOUR_COLDKEY --wallet.hotkey YOUR_HOTKEY
 ```
 
 Registering works like this:
