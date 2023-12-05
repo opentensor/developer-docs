@@ -1,0 +1,27 @@
+{
+  "id": "delegation",
+  "title": "Delegation",
+  "description": "TAO holders can delegate any amount of their stake to a subnet validator through a process called delegation. Delegation on Bittensor network works like this:",
+  "source": "@site/docs/delegation.md",
+  "sourceDirName": ".",
+  "slug": "/delegation",
+  "permalink": "/delegation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Delegation"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "Bittensor CLI",
+    "permalink": "/reference/btcli"
+  },
+  "next": {
+    "title": "Yuma Consensus",
+    "permalink": "/yuma-consensus"
+  }
+}

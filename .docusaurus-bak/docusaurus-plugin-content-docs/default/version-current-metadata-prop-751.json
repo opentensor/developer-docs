@@ -1,0 +1,315 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "bittensorSidebar": [
+      {
+        "type": "link",
+        "label": "Welcome",
+        "href": "/",
+        "docId": "index",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "What's New in Docs",
+        "href": "/whats-new-in-docs",
+        "docId": "whats-new-in-docs",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Learn Bittensor Concepts",
+        "collapsible": true,
+        "collapsed": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/learn/introduction",
+            "docId": "learn/introduction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Bittensor Building Blocks",
+            "href": "/learn/bittensor-building-blocks",
+            "docId": "learn/bittensor-building-blocks",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Anatomy of Incentive Mechanism",
+            "href": "/learn/anatomy-of-incentive-mechanism",
+            "docId": "learn/anatomy-of-incentive-mechanism",
+            "unlisted": false
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Get Started",
+        "collapsible": true,
+        "collapsed": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Install Bittensor",
+            "href": "/getting-started/installation",
+            "docId": "getting-started/installation",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Create Wallet",
+            "href": "/getting-started/wallets",
+            "docId": "getting-started/wallets",
+            "unlisted": false
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Tutorials",
+        "collapsible": true,
+        "collapsed": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Basic Subnet Tutorials",
+            "href": "/tutorials/basic-subnet-tutorials",
+            "docId": "tutorials/basic-subnet-tutorials",
+            "unlisted": false
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Subnets",
+        "collapsible": true,
+        "collapsed": false,
+        "items": [
+          {
+            "type": "link",
+            "label": "Checklist for Subnet",
+            "href": "/subnets/checklist-for-subnet",
+            "docId": "subnets/checklist-for-subnet",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Create a Subnet",
+            "href": "/subnets/create-a-subnet",
+            "docId": "subnets/create-a-subnet",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Register and Participate",
+            "href": "/subnets/register-and-participate",
+            "docId": "subnets/register-and-participate",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Working with Subnets",
+            "href": "/subnets/working-with-subnets",
+            "docId": "subnets/working-with-subnets",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Code Walkthrough of Text Prompting Subnet",
+            "href": "/subnets/code-walkthrough-text-prompting",
+            "docId": "subnets/code-walkthrough-text-prompting",
+            "unlisted": false
+          }
+        ]
+      },
+      {
+        "type": "link",
+        "label": "Subtensor",
+        "href": "pathname:///Subtensor.html"
+      },
+      {
+        "type": "link",
+        "label": "Bittensor CLI",
+        "href": "/reference/btcli",
+        "docId": "reference/btcli",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Delegation",
+        "href": "/delegation",
+        "docId": "delegation",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Yuma Consensus",
+        "href": "/yuma-consensus",
+        "docId": "yuma-consensus",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Governance",
+        "href": "/governance",
+        "docId": "governance",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Senate",
+        "href": "/senate",
+        "docId": "senate",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Glossary",
+        "href": "/glossary",
+        "docId": "glossary",
+        "unlisted": false
+      }
+    ]
+  },
+  "docs": {
+    "concepts/equations": {
+      "id": "concepts/equations",
+      "title": "Equations",
+      "description": "$$"
+    },
+    "delegation": {
+      "id": "delegation",
+      "title": "Delegation",
+      "description": "TAO holders can delegate any amount of their stake to a subnet validator through a process called delegation. Delegation on Bittensor network works like this:",
+      "sidebar": "bittensorSidebar"
+    },
+    "getting-started/installation": {
+      "id": "getting-started/installation",
+      "title": "Install Bittensor",
+      "description": "Before you can start developing, install Bittensor and then create Bittensor wallet.",
+      "sidebar": "bittensorSidebar"
+    },
+    "getting-started/wallets": {
+      "id": "getting-started/wallets",
+      "title": "Create Wallet",
+      "description": "The Bittensor wallet holds the core ownership. It is the identity technology underlying all the operations in the Bittensor network.",
+      "sidebar": "bittensorSidebar"
+    },
+    "glossary": {
+      "id": "glossary",
+      "title": "Glossary",
+      "description": "a-e",
+      "sidebar": "bittensorSidebar"
+    },
+    "governance": {
+      "id": "governance",
+      "title": "Governance",
+      "description": "Bittensor's governance protocol transitions the management of the network from centralization within the foundation to community-ownership over time.",
+      "sidebar": "bittensorSidebar"
+    },
+    "index": {
+      "id": "index",
+      "title": "Welcome",
+      "description": "Welcome! Bittensor is a protocol for decentralized subnets. Each subnet is an incentive-based competition in action. Subnets run on blockchain and constitute the core of the Bittensor ecosystem. The rewards for subnet participants are in the form of TAO tokens.",
+      "sidebar": "bittensorSidebar"
+    },
+    "learn/anatomy-of-incentive-mechanism": {
+      "id": "learn/anatomy-of-incentive-mechanism",
+      "title": "Anatomy of Incentive Mechanism",
+      "description": "This section describes a conceptual “anatomy” of a subnet incentive mechanism. Read this for how to think about a subnet incentive mechanism before you begin coding it.",
+      "sidebar": "bittensorSidebar"
+    },
+    "learn/bittensor-building-blocks": {
+      "id": "learn/bittensor-building-blocks",
+      "title": "Bittensor Building Blocks",
+      "description": "The Bittensor API provides basic building blocks you can use to develop your incentive mechanism. This section presents:",
+      "sidebar": "bittensorSidebar"
+    },
+    "learn/introduction": {
+      "id": "learn/introduction",
+      "title": "Introduction",
+      "description": "If you are new to the Bittensor ecosystem read this section first before proceeding to participate in the Bittensor network.",
+      "sidebar": "bittensorSidebar"
+    },
+    "reference/bittensor-api-ref": {
+      "id": "reference/bittensor-api-ref",
+      "title": "Bittensor API Reference",
+      "description": "bt.subtensor"
+    },
+    "reference/btcli": {
+      "id": "reference/btcli",
+      "title": "Bittensor CLI",
+      "description": "After you install Bittensor you can use btcli command line interface (CLI) to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network. This section presents the command and subcommand options available in btcli CLI.",
+      "sidebar": "bittensorSidebar"
+    },
+    "senate": {
+      "id": "senate",
+      "title": "Senate",
+      "description": "The Senate is a group of delegates who have elected to participate in proposals, and who control a significant portion of total network stake.",
+      "sidebar": "bittensorSidebar"
+    },
+    "subnets/checklist-for-subnet": {
+      "id": "subnets/checklist-for-subnet",
+      "title": "Checklist for Subnet",
+      "description": "When you are preparing to be a subnet validator or a subnet miner, use the below checklist to get ready. Read the documentation for the existing subnets to accomplish these checklist items:",
+      "sidebar": "bittensorSidebar"
+    },
+    "subnets/code-walkthrough-text-prompting": {
+      "id": "subnets/code-walkthrough-text-prompting",
+      "title": "Code Walkthrough of Text Prompting Subnet",
+      "description": "In this section we present a step-by-step code walkthrough of the Text Prompting Subnet.",
+      "sidebar": "bittensorSidebar"
+    },
+    "subnets/create-a-subnet": {
+      "id": "subnets/create-a-subnet",
+      "title": "Create a Subnet",
+      "description": "Before you create your first subnet, we strongly recommend that you follow the below order:",
+      "sidebar": "bittensorSidebar"
+    },
+    "subnets/register-and-participate": {
+      "id": "subnets/register-and-participate",
+      "title": "Register and Participate",
+      "description": "To participate either as a subnet validator or subnet miner, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.",
+      "sidebar": "bittensorSidebar"
+    },
+    "subnets/subnet-hyperparameters": {
+      "id": "subnets/subnet-hyperparameters",
+      "title": "Subnet Hyperparameters",
+      "description": "rho"
+    },
+    "subnets/working-with-subnets": {
+      "id": "subnets/working-with-subnets",
+      "title": "Working with Subnets",
+      "description": "Subnets are composed of a discrete number of UIDs. The subnet validators and subnet miners are associated with these UIDs. Each UID in the subnet belongs to a unique hotkey which in turn is connected to a unique coldkey which was used during regisration. The Yuma Consensus runs on these UIDs. This section presents a few examples showing how to work with subnets.",
+      "sidebar": "bittensorSidebar"
+    },
+    "tutorials/basic-subnet-tutorials": {
+      "id": "tutorials/basic-subnet-tutorials",
+      "title": "Basic Subnet Tutorials",
+      "description": "If you are new to subnets, start with these beginner tutorials with Bittensor Subnet Template:",
+      "sidebar": "bittensorSidebar"
+    },
+    "whats-new-in-docs": {
+      "id": "whats-new-in-docs",
+      "title": "What's New in Docs",
+      "description": "Documentation updates.",
+      "sidebar": "bittensorSidebar"
+    },
+    "yuma-consensus": {
+      "id": "yuma-consensus",
+      "title": "Yuma Consensus",
+      "description": "The Bittensor API is designed to enable subnet owners to write their own incentive mechanisms. These incentive mechanisms allow the subnet validators to express their own subjective preferences about what the network should learn. Such an approach:",
+      "sidebar": "bittensorSidebar"
+    }
+  }
+}

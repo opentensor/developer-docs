@@ -10,6 +10,7 @@ const darkTheme = themes.dracula;
 // KaTex stuff
 const math = require("remark-math");
 const katex = require("rehype-katex");
+const deflist = require("remark-definition-list");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -42,7 +43,7 @@ const config = {
         docs: {
           routeBasePath: "/",
           path: "docs",
-          remarkPlugins: [math],
+          remarkPlugins: [math, deflist],
           rehypePlugins: [katex],
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: true,

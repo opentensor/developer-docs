@@ -55,7 +55,7 @@ const sidebars = {
         "subnets/checklist-for-subnet",
         "subnets/create-a-subnet", 
         "subnets/register-and-participate",
-        //"subnets/run-a-subnet-validator",
+        "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/code-walkthrough-text-prompting",
       ],

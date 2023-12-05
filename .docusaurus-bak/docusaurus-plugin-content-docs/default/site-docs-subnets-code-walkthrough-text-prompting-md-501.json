@@ -1,0 +1,27 @@
+{
+  "id": "subnets/code-walkthrough-text-prompting",
+  "title": "Code Walkthrough of Text Prompting Subnet",
+  "description": "In this section we present a step-by-step code walkthrough of the Text Prompting Subnet.",
+  "source": "@site/docs/subnets/code-walkthrough-text-prompting.md",
+  "sourceDirName": "subnets",
+  "slug": "/subnets/code-walkthrough-text-prompting",
+  "permalink": "/subnets/code-walkthrough-text-prompting",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "title": "Code Walkthrough of Text Prompting Subnet"
+  },
+  "sidebar": "bittensorSidebar",
+  "previous": {
+    "title": "Working with Subnets",
+    "permalink": "/subnets/working-with-subnets"
+  },
+  "next": {
+    "title": "Bittensor CLI",
+    "permalink": "/reference/btcli"
+  }
+}
