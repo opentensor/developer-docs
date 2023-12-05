@@ -86,22 +86,23 @@ const config = {
       },
       navbar: {
         title: "Developer Documentation",
+
         logo: {
           alt: "Bittensor",
           src: "img/logo.svg",
           srcDark: "img/logo-dark-mode.svg",
+          style: {
+            objectFit: "contain",
+            width: 20,
+          },
         },
         items: [
-          {
-            position: "left",
-            label: "Bittensor API Reference",
-            href: "pathname:///python-api/html/index.html",
-          },
-          {
-            href: "https://wallet.bittensor.com/",
-            label: "Wallet",
-            position: "right",
-          },
+          // {
+          //   position: "left",
+          //   label: "Bittensor API Reference",
+          //   href: "pathname:///python-api/html/index.html",
+          // },
+
           {
             href: "https://github.com/opentensor/new-docs",
             label: "GitHub",
@@ -112,6 +113,11 @@ const config = {
             label: "About Bittensor",
             position: "right",
           },
+          {
+            href: "https://wallet.bittensor.com/",
+            label: "Wallet",
+            position: "right",
+          },
         ],
       },
 
@@ -120,14 +126,14 @@ const config = {
         darkTheme: darkTheme,
         additionalLanguages: ["bash", "diff", "json"],
       },
-      // algolia: {
-      //   appId: "B07G29NY9F",
-      //   apiKey: "d23c920e8a9bdae899572be3c8494696",
-      //   indexName: "bittensor-docs",
-      //   contextualSearch: true,
-      //   insights: true,
-      //   debug: false,
-      // },
+      algolia: {
+        appId: "B07G29NY9F",
+        apiKey: "d23c920e8a9bdae899572be3c8494696",
+        indexName: "bittensor-docs",
+        contextualSearch: true,
+        insights: true,
+        debug: false,
+      },
       footer: {
         //style: "dark",
         links: [
