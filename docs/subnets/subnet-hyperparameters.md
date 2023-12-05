@@ -4,7 +4,12 @@ title: "Subnet Hyperparameters"
 
 # Subnet Hyperparameters
 
-intro 
+This document presents the description of subnet hyperparameters. You can see the subnet parmeters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
+
+```bash
+btcli subnet hyperparameters
+```
+
 
 ## rho, kappa
 
@@ -17,6 +22,8 @@ intro
 
 **Setting**
 : Must not be changed. 
+
+---
 
 ## immunity_period
 
@@ -33,10 +40,11 @@ A subnet miner or a subnet validator at a UID can perform poorly during the `imm
 
 When a subnet miner or a subnet validator is deregistered, they are required to register again  to be considered for the subnet. 
 
-
 ### Example
 
 Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registred, before they will be considered for deregistration. 
+
+---
 
 ## min_allowed_weights
 
@@ -58,6 +66,8 @@ A subnet validator can be considered as poorly performing if they set weights on
 
 In this case, none of the actual weight-setting extrinsics that the subnet validator sends to the chain will be accepted. Hence on the chain it will look like this subnet validator has not set any weights at all. The Yuma Consensus may conclude that this subnet validator is performing poorly and after the `immunity_period` expires, this subnet validator could be deregistered to make room for others waiting to be miners or validators.
 
+---
+
 ## max_weight_limit
 
 This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) type. 
@@ -71,6 +81,8 @@ This is the maximum weight that can be set by a subnet validator for a subnet mi
 ### Example
 
 Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weights` is set to 8. This means that each subnet validator must set weights for at least 8 subnet miners, and each such weight must not exceed `455`.
+
+---
 
 ## tempo
 
@@ -87,10 +99,14 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 **Setting**
 : Must not be changed. 
 
+---
+
 ## min_difficulty, max_difficulty
 
 **Description**
 : Obsolete. We no longer support PoW (proof-of-work) registration, hence these parameters are no longer used. 
+
+---
 
 ## weights_version
 
@@ -104,6 +120,8 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. Setting this parameter to a version ensures that all the subnet validators use the same version of the code.
 
+---
+
 ## weights_rate_limit
 
 **Description**
@@ -115,6 +133,8 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 
 **Setting**
 : Must not be changed.
+
+---
 
 ## adjustment_interval
 
@@ -132,13 +152,36 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 
 Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scenario where, in a 112-block interval (`adjustment_interval`) this subnet had 3 registrations. This is higher than `target_regs_per_interval`. The blockchain will now raise the minimum cost to register, i.e., the `min_burn` value, by a certain amount, in order to lower the actual registrations within the 112-block interval from 3 to 2 (`target_regs_per_interval`). 
 
+---
+
 ## activity_cutoff
 
+**Description**
+: Expressed in number of blocks. If a subnet validator has not set weights on the blockchain for `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator as offline, i.e., turned off. The weights of this subnet validator are considered too old to be useful. The weights of this subnet validator slowly lose their impact over time and eventually will no longer be considered for consensus calcuation.
 
+:::tip This parameter is applicable to subnet validators only.
+:::
+
+**Value**
+: Set to `5000` (blocks) for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
 
 ## registration_allowed
 
+**Description**
+: `True` or `False`. Indicates whether this subnet allows registrations. 
 
+**Value**
+: Set to `True` for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
 
 ## target_regs_per_interval
 
@@ -151,6 +194,8 @@ Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scena
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
+---
+
 ## min_burn, max_burn
 
 **Description**
@@ -159,8 +204,32 @@ Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scena
 **Setting**
 : This parameter is automatically updated by the blockchain. 
 
+---
 
 ## bonds_moving_avg
 
+**Description**
+: This parameter controls how fast bonds will decay in the entire subnet. This has a direct impact on subnet validator. The faster the bonds decay the quicker a subnet validator will lose its dividends after the subnet validator is out of the `activity_cutoff`.
+
+If this `bonds_moving_avg` value is low, then the moving average of the bonds will decay slowly. This will allow the subnet validator to become active again, start setting new weights and start earning new bonds. 
+
+If this `bonds_moving_avg` value is high, then bonds in the subnet decay quickly. As a result, a subnet validator who has fallen out of the `activity_cutoff` and hence is running the risk of being viewed as "turned off", may not be able to become active again.
+
+**Value**
+: Set to `900000` for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
 
 ## max_regs_per_block
+
+**Description**
+: Maximum allowed registrations in this subnet per block. 
+
+**Value**
+: Set to `1` for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
