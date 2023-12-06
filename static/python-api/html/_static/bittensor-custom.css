@@ -1,0 +1,16 @@
+.dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center {
+    position: relative;
+    display: none;
+}
+
+/* .search-button {
+    display: none;
+} */
+
+.btn-fullscreen-button {
+    display: none;
+}
+
+.bd-sidebar-secondary .onthispage {
+    display: none;
+}
