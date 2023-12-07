@@ -6,11 +6,11 @@
 
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #2e8555;
+	--ifm-color-primary: rgba(14, 16, 19, 1);
 	--ifm-color-primary-dark: #29784c;
 	--ifm-color-primary-darker: #277148;
 	--ifm-color-primary-darkest: #205d3b;
-	--ifm-color-primary-light: #33925d;
+	--ifm-color-primary-light: black;
 	--ifm-color-primary-lighter: #359962;
 	--ifm-color-primary-lightest: #3cad6e;
 	--ifm-code-font-size: 95%;
@@ -20,19 +20,30 @@
 	--ifm-h4-font-size: 1rem;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-	--text-primary: #0e1013;
-	--text-secondary: #5f6368;
+	--text-primary: #5F6368;
+	--text-secondary: #5F6368;
 	--grey-100: #F8F9FA;
 	--grey-900: #0e1013;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-	--ifm-color-primary: #25c2a0;
-	--ifm-color-primary-dark: #21af90;
+	--ifm-color-primary: white;
+	--ifm-color-primary-dark: white;
 	--ifm-color-primary-darker: #1fa588;
 	--ifm-color-primary-darkest: #1a8870;
 	--ifm-color-primary-light: #29d5b0;
+	--ifm-color-primary-lighter: #32d8b4;
+	--ifm-color-primary-lightest: #4fddbf;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] {
+	--ifm-color-primary: black;
+	--ifm-color-primary-dark: white;
+	--ifm-color-primary-darker: #1fa588;
+	--ifm-color-primary-darkest: #1a8870;
+	--ifm-color-primary-light: black;
 	--ifm-color-primary-lighter: #32d8b4;
 	--ifm-color-primary-lightest: #4fddbf;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
@@ -179,9 +190,11 @@ a {
 .pagination-nav__link--prev .pagination-nav__label::before {
 	content: '';
 }
+
 .pagination-nav__link--next .pagination-nav__label::after {
 	content: '';
 }
+
 .pagination-nav__link {
 	border: none;
 }
@@ -263,9 +276,11 @@ ul {
 	font-weight: 200;
 	text-transform: none;
 }
+
 .navbar {
 	margin-bottom: 10px;
 }
+
 .sidebar-title {
 	font-size: 1rem;
 	font-family: 'Haffer';
@@ -274,6 +289,7 @@ ul {
 	margin: 0.7rem;
 	text-transform: uppercase;
 }
+
 #bittensor-img {
 	width: 80%;
 	display: block;
@@ -306,6 +322,7 @@ ul {
 .breadcrumbs__item .breadcrumbs__link {
 	color: var(--text-secondary);
 }
+
 .breadcrumbs__item.breadcrumbs__item--active .breadcrumbs__link {
 	background: initial !important;
 	color: var(--text-primary);
@@ -321,6 +338,7 @@ ul {
 .footer__copyright.footer__copyright__custom .container {
 	max-width: 100%;
 }
+
 @media (min-width: 1440px) {
 	.footer .container {
 		max-width: 100% !important;
@@ -328,11 +346,152 @@ ul {
 	}
 }
 
+/* sidebar style */
+.theme-doc-sidebar-container {
+	width: 35% !important;
+}
+
+.sidebarSearch_src-theme-DocSidebarItem-Link-styles-module {
+	margin-top: 1rem !important;
+	margin-bottom: 30px !important;
+}
+
+.theme-doc-sidebar-container .sidebar_src-theme-DocSidebar-Desktop-styles-module {
+	width: 100% !important;
+}
+
+nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
+	padding: 10px 7% !important;
+}
+
+.menu__link {
+	padding: 15px;
+	font-size: 15px !important;
+	border-bottom: 1px dashed rgba(95, 99, 104, 1);
+}
+
+.menu__link--active {
+	background-color: transparent !important;
+}
+
+/* sidebar search style */
+.sidebarSearch_src-theme-DocSidebarItem-Link-styles-module {
+	width: 100% !important;
+}
+
+/* custom style for navbar */
+.navbar__inner .container_src-theme-SearchBar-styles-module {
+	display: none !important;
+}
+
+.navbar__items--right {
+	gap: 0 15px !important;
+}
+
+.navbar__items--right>div{
+	margin-left: 20px !important;
+	margin-bottom: 5px !important;
+}
+
+/* right bar style */
+.table-of-contents__link--active {
+	font-weight: bold;
+}
+
+.table-of-contents.table-of-contents__left-border {
+	border: none !important;
+}
+
+.table-of-contents.table-of-contents__left-border li {
+	margin: 0 !important;
+}
+
+.table-of-contents.table-of-contents__left-border li a{
+	padding: 10px 0;
+	padding-left: 15px;
+}
+
+.container.padding-top--md {
+	padding: 20px 40px !important;
+}
+
+[data-theme='dark'] {
+	.container_src-theme-SearchBar-styles-module {
+		border: 1px solid #282A2D !important;
+	}
+
+	.table-of-contents.table-of-contents__left-border li a{
+		border-left: 2px solid rgba(40, 42, 45, 1);
+		font-weight: 400;
+		color: rgba(95, 99, 104, 1);
+	}
+
+	.table-of-contents__link--active{
+		border-left:2px solid rgba(248, 249, 250, 1) !important;
+		color: white !important;
+		font-weight: 600 !important;
+	}
+
+	.navbar {
+		background-color: black !important;
+	}
+
+	.navbar__item {
+		color: #5F6368 !important;
+	}
+
+	#__docusaurus {
+		background-color: black !important;
+	}
+	
+	.menu__link {
+		color: #5F6368 !important;
+	}
+
+	.menu__link--active {
+		color: white !important;
+	}
+	
+	.menu__link--sublist-caret.menu__link--active {
+		color: #5F6368 !important;
+	}
+
+}
+
+
 [data-theme='light'] {
+	
+	.menu__link {
+		color: rgb(111, 112, 114) !important;
+	}
+	
+	.table-of-contents.table-of-contents__left-border li a{
+		border-left: 2px solid rgba(219, 221, 225, 1);
+	}
+
+	.table-of-contents__link--active{
+		border-left:2px solid black !important;
+	}
+
+	#__docusaurus {
+		background-color: white;
+	}
+
+	.menu__link--active {
+		color: black !important;
+		font-weight: 600;
+	}
+	
+	.menu__link--sublist-caret.menu__link--active {
+		color: rgb(111, 112, 114) !important;
+		font-weight: 400;
+	}
+
 	.footer {
 		background-color: var(--grey-900);
 	}
-	.footer__copyright.footer__copyright__custom{
+
+	.footer__copyright.footer__copyright__custom {
 		color: var(--grey-100) !important;
 
 	}
