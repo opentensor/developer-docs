@@ -10,6 +10,13 @@ This document presents the description of subnet hyperparameters. You can see th
 btcli subnet hyperparameters
 ```
 
+## Setting the hyperparameters
+
+Use the below command to set these hyperparameters:
+
+```bash
+btcli sudo set
+```
 
 ## rho, kappa
 
@@ -17,7 +24,7 @@ btcli subnet hyperparameters
 : These two parameters determine how the Yuma Consensus behaves. Generally speaking, they determine how the Yuma Consensus normalizes divergent weights.
 
 **Value**
-: - **rho**: ($\rho$): Set to `10`.
+: - **rho** ($\rho$): Set to `10`.
   - **kappa** ($\kappa$): Set to `32767`.
 
 **Setting**
