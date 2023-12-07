@@ -411,8 +411,20 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	padding-left: 15px;
 }
 
+.table-of-contents.table-of-contents__left-border ul {
+	padding: 0 !important;
+}
+
 .container.padding-top--md {
 	padding: 20px 40px !important;
+}
+
+.breadcrumbs:first-child a {
+	margin-top: -30px !important;
+}
+
+.breadcrumbs__item--active span {
+	padding: 5px;
 }
 
 [data-theme='dark'] {
@@ -456,6 +468,10 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 		color: #5F6368 !important;
 	}
 
+	.breadcrumbs__item--active span {
+		color: rgba(248, 249, 250, 1) !important;
+	}
+
 }
 
 
@@ -494,5 +510,9 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	.footer__copyright.footer__copyright__custom {
 		color: var(--grey-100) !important;
 
+	}
+	
+	.breadcrumbs__item--active span {
+		color: rgba(14, 16, 19, 1) !important;
 	}
 }
