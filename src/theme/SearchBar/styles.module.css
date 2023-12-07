@@ -1,13 +1,13 @@
 :root {
   --custom-container-bg: #fff;
   --custom-container-border: #dbdde1;
-  --custom-container-color: #414143;
+  --custom-container-color: #5F6368;
 }
 
 [data-theme="dark"] {
   --custom-container-bg: #000;
   --custom-container-border: #242424;
-  --custom-container-color: #cbc5c5;
+  --custom-container-color: #5F6368;
 }
 
 .container {
