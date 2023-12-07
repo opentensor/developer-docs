@@ -19,6 +19,9 @@
   --ifm-h3-font-size: 1.2rem;
   --ifm-h4-font-size: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+	--text-primary: #0e1013;
+	--text-secondary: #5f6368;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -276,4 +279,15 @@ ul {
   line-height: 27.2px !important;
   font-weight: 400 !important;
   font-family: "Haffer";
+}
+
+/* Bread Crumb */
+.breadcrumbs__item .breadcrumbs__link {
+	color: var(--text-secondary);
+}
+.breadcrumbs__item.breadcrumbs__item--active .breadcrumbs__link {
+	background: initial !important;
+	color: var(--text-primary);
+	font-family: 'FiraCode';
+	font-weight: 500;
 }
