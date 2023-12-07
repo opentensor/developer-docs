@@ -111,7 +111,7 @@
 body {
   font-family: 'Haffer';
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 400;
   letter-spacing: 0%;
   line-height: 160%;
 }
@@ -158,16 +158,21 @@ a {
   list-style: none;
   margin: 0;
   padding-left: 0;
-  font-family: 'FiraCode';
+  font-family: 'TTCommonsPro';
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 200;
   letter-spacing: calc(0.05 * 12px);
   line-height: 150%;
   text-transform: uppercase;
 }
 
 .table-of-contents, .table-of-contents ul {
-  font-family: 'FiraCode';
+  font-family: 'TTCommonsPro';
+  font-size: 13px;
+  font-weight: 200;
+  letter-spacing: calc(0.05 * 12px);
+  line-height: 160%;
+  text-transform: none;
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
@@ -181,14 +186,14 @@ a {
 }
 
 .navbar__link {
-  font-family: "FiraCode";
+  font-family: "TTCommonsPro";
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
 }
 
 .breadcrumbs {
-  font-family: "FiraCode";
+  font-family: "TTCommonsPro";
   text-transform: uppercase;
   letter-spacing: calc(0.05 * 12px);
 }
@@ -254,7 +259,7 @@ h4 {
 
 ul {
   font-family: 'Haffer';
-  font-weight: 200;
+  font-weight: 400;
   text-transform: none;
 }
 .navbar {
