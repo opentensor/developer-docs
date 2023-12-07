@@ -6,203 +6,205 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --ifm-h1-font-size: 1.8rem;
-  --ifm-h2-font-size: 1.5rem;
-  --ifm-h3-font-size: 1.2rem;
-  --ifm-h4-font-size: 1rem;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+	--ifm-color-primary: #2e8555;
+	--ifm-color-primary-dark: #29784c;
+	--ifm-color-primary-darker: #277148;
+	--ifm-color-primary-darkest: #205d3b;
+	--ifm-color-primary-light: #33925d;
+	--ifm-color-primary-lighter: #359962;
+	--ifm-color-primary-lightest: #3cad6e;
+	--ifm-code-font-size: 95%;
+	--ifm-h1-font-size: 1.8rem;
+	--ifm-h2-font-size: 1.5rem;
+	--ifm-h3-font-size: 1.2rem;
+	--ifm-h4-font-size: 1rem;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
 	--text-primary: #0e1013;
 	--text-secondary: #5f6368;
+	--grey-100: #F8F9FA;
+	--grey-900: #0e1013;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme='dark'] {
+	--ifm-color-primary: #25c2a0;
+	--ifm-color-primary-dark: #21af90;
+	--ifm-color-primary-darker: #1fa588;
+	--ifm-color-primary-darkest: #1a8870;
+	--ifm-color-primary-light: #29d5b0;
+	--ifm-color-primary-lighter: #32d8b4;
+	--ifm-color-primary-lightest: #4fddbf;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
 @font-face {
-  font-family: "Haffer";
-  src: url(../../static/fonts/Haffer-Light.ttf);
-  font-weight: 200;
-  font-style: normal;
+	font-family: 'Haffer';
+	src: url(../../static/fonts/Haffer-Light.ttf);
+	font-weight: 200;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Haffer";
-  src: url(../../static/fonts/Haffer-Medium.ttf);
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Haffer';
+	src: url(../../static/fonts/Haffer-Medium.ttf);
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Haffer";
-  src: url(../../static/fonts/Haffer-Regular.ttf);
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Haffer';
+	src: url(../../static/fonts/Haffer-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Haffer";
-  src: url(../../static/fonts/Haffer-SemiBold.ttf);
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'Haffer';
+	src: url(../../static/fonts/Haffer-SemiBold.ttf);
+	font-weight: bold;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "HafferSQ";
-  src: url(../../static/fonts/HafferSQ-Light.ttf);
-  font-weight: 200;
-  font-style: normal;
+	font-family: 'HafferSQ';
+	src: url(../../static/fonts/HafferSQ-Light.ttf);
+	font-weight: 200;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "HafferSQ";
-  src: url(../../static/fonts/HafferSQ-Medium.ttf);
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'HafferSQ';
+	src: url(../../static/fonts/HafferSQ-Medium.ttf);
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "HafferSQ";
-  src: url(../../static/fonts/HafferSQ-Regular.ttf);
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'HafferSQ';
+	src: url(../../static/fonts/HafferSQ-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "HafferSQ";
-  src: url(../../static/fonts/HafferSQ-SemiBold.ttf);
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'HafferSQ';
+	src: url(../../static/fonts/HafferSQ-SemiBold.ttf);
+	font-weight: bold;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "TTCommonsPro";
-  src: url(../../static/fonts/TTCommonsProMonoMedium.ttf);
-  font-weight: 200;
-  font-style: normal;
+	font-family: 'TTCommonsPro';
+	src: url(../../static/fonts/TTCommonsProMonoMedium.ttf);
+	font-weight: 200;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "TTCommonsPro";
-  src: url(../../static/fonts/TTCommonsProMonoRegular.ttf);
-  font-weight: 100;
-  font-style: normal;
+	font-family: 'TTCommonsPro';
+	src: url(../../static/fonts/TTCommonsProMonoRegular.ttf);
+	font-weight: 100;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "FiraCode";
-  src: url(../../static/fonts/FiraCode_VariableFont_wght.ttf);
+	font-family: 'FiraCode';
+	src: url(../../static/fonts/FiraCode_VariableFont_wght.ttf);
 }
 
 body {
-  font-family: "Haffer";
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 0%;
-  line-height: 160%;
+	font-family: 'Haffer';
+	font-size: 16px;
+	font-weight: 200;
+	letter-spacing: 0%;
+	line-height: 160%;
 }
 
 .h1 {
-  font-family: "Haffer";
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: calc(-0.01 * 20px);
-  line-height: 120%;
+	font-family: 'Haffer';
+	font-size: 32px;
+	font-weight: 400;
+	letter-spacing: calc(-0.01 * 20px);
+	line-height: 120%;
 }
 
 .h2 {
-  font-family: "Haffer";
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: calc(-0.01 * 20px);
-  line-height: 120%;
+	font-family: 'Haffer';
+	font-size: 24px;
+	font-weight: 400;
+	letter-spacing: calc(-0.01 * 20px);
+	line-height: 120%;
 }
 
 .h3 {
-  font-family: "Haffer";
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0%;
-  line-height: 120%;
+	font-family: 'Haffer';
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: 0%;
+	line-height: 120%;
 }
 
 .h4 {
-  font-family: "Haffer";
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0%;
-  line-height: 140%;
+	font-family: 'Haffer';
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0%;
+	line-height: 140%;
 }
 
 a {
-  /* color: rgb(0, 49, 0); */
-  color: none;
-  font-weight: 400;
+	/* color: rgb(0, 49, 0); */
+	color: none;
+	font-weight: 400;
 }
 
 .menu__list {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-  font-family: "FiraCode";
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: calc(0.05 * 12px);
-  line-height: 150%;
-  text-transform: uppercase;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+	font-family: 'FiraCode';
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: calc(0.05 * 12px);
+	line-height: 150%;
+	text-transform: uppercase;
 }
 
 .table-of-contents,
 .table-of-contents ul {
-  font-family: "FiraCode";
+	font-family: 'FiraCode';
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
-  content: "";
+	content: '';
 }
 .pagination-nav__link--next .pagination-nav__label::after {
-  content: "";
+	content: '';
 }
 .pagination-nav__link {
-  border: none;
+	border: none;
 }
 
 .navbar__link {
-  font-family: "FiraCode";
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 400;
+	font-family: 'FiraCode';
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 400;
 }
 
 .breadcrumbs {
-  font-family: "FiraCode";
-  text-transform: uppercase;
-  letter-spacing: calc(0.05 * 12px);
+	font-family: 'FiraCode';
+	text-transform: uppercase;
+	letter-spacing: calc(0.05 * 12px);
 }
 
 .theme-last-updated {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 9px;
-  text-transform: uppercase;
-  font-family: "FiraCode";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 9px;
+	text-transform: uppercase;
+	font-family: 'FiraCode';
 }
 
 /* h1,
@@ -238,26 +240,26 @@ h4 {
 } */
 
 ul {
-  font-family: "Haffer";
-  font-weight: 200;
-  text-transform: none;
+	font-family: 'Haffer';
+	font-weight: 200;
+	text-transform: none;
 }
 .navbar {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .sidebar-title {
-  font-size: 1rem;
-  font-family: "Haffer";
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  margin: 0.7rem;
-  text-transform: uppercase;
+	font-size: 1rem;
+	font-family: 'Haffer';
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	margin: 0.7rem;
+	text-transform: uppercase;
 }
 #bittensor-img {
-  width: 80%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* ALGOLIA SEARCH INPUT */
@@ -269,16 +271,16 @@ ul {
 
 /* NAVBAR LINKS */
 .navbar__item.navbar__link {
-  font-size: 12px !important;
-  padding: 4px !important;
+	font-size: 12px !important;
+	padding: 4px !important;
 }
 
 /* NAV TITLE */
 .navbar__title.text--truncate {
-  font-size: 16px !important;
-  line-height: 27.2px !important;
-  font-weight: 400 !important;
-  font-family: "Haffer";
+	font-size: 16px !important;
+	line-height: 27.2px !important;
+	font-weight: 400 !important;
+	font-family: 'Haffer';
 }
 
 /* Bread Crumb */
@@ -290,4 +292,29 @@ ul {
 	color: var(--text-primary);
 	font-family: 'FiraCode';
 	font-weight: 500;
+}
+
+/* Footer */
+.footer__copyright.footer__copyright__custom {
+	/* text-align: left; */
+}
+
+.footer__copyright.footer__copyright__custom .container {
+	max-width: 100%;
+}
+@media (min-width: 1440px) {
+	.footer .container {
+		max-width: 100% !important;
+		padding: 0;
+	}
+}
+
+[data-theme='light'] {
+	.footer {
+		background-color: var(--grey-900);
+	}
+	.footer__copyright.footer__copyright__custom{
+		color: var(--grey-100) !important;
+
+	}
 }
