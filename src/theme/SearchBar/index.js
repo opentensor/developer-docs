@@ -157,7 +157,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         onClick={onOpen}
         ref={searchButtonRef}
         translations={translations.button}
-        placeholder="Search documentation"
+        placeholder={props.placeholder ?? "Search documentation"}
       />
 
       {isOpen &&
@@ -177,7 +177,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
             })}
             {...props}
             searchParameters={searchParameters}
-            placeholder="Search documentation"
+            placeholder={props.placeholder ?? "Search documentation"}
             translations={translations.modal}
           />,
           searchContainer.current
@@ -185,7 +185,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
     </>
   );
 }
-export default function SearchBar() {
+export default function SearchBar(props ) {
   const { siteConfig } = useDocusaurusContext();
-  return <DocSearch {...siteConfig.themeConfig.algolia} />;
+  return <DocSearch {...siteConfig.themeConfig.algolia} {...props} />;
 }
