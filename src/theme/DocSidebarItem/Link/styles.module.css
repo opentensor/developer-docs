@@ -1,0 +1,8 @@
+.menuExternalLink {
+  align-items: center;
+}
+.sidebarSearch {
+width: calc(var(--doc-sidebar-width) - 10%);
+margin-top: 4rem;
+margin-bottom: 3rem;
+}
