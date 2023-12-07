@@ -7,7 +7,11 @@ hide_table_of_contents: false
 
 # What's New in Docs
 
-Documentation updates.
+Key updates to this documentation.
+
+## 06 December 2023
+
+- A new [Subnet Hyperparameters](./subnets/subnet-hyperparameters.md) document published.
 
 ## 29 November 2023
 
