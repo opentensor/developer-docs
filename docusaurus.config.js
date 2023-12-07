@@ -165,7 +165,7 @@ const config = {
               },
             ],
           },
-        ],
+				],
         copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
       },
     }),
