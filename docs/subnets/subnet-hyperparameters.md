@@ -44,6 +44,10 @@ When a subnet miner or a subnet validator is deregistered, they are required to 
 
 Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registred, before they will be considered for deregistration. 
 
+:::tip Controlling the number of UIDs in immunity period 
+The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
+:::
+
 ---
 
 ## min_allowed_weights
@@ -87,14 +91,14 @@ Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weight
 ## tempo
 
 **Description**
-: How often the emissions occur for the subnet, expressed in number of blocks. This is also how often the Yuma Consensus runs for the subnet.  
+: A duration of a number of blocks. Several subnet events occur at the end of every tempo period. For example, Yuma Consensus runs for the subnet and emissions are transferred to the hotkeys (delegated or staked).
 
 :::tip See also
 See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanism.md#tempo).
 :::
 
 **Value**
-: Set to `99` for Subnet-1. All other subnets are set to `360`. 
+: Set to `99` blocks for Subnet-1. All user-created subnets are set to `360` blocks. 
 
 **Setting**
 : Must not be changed. 
@@ -132,14 +136,16 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 : This means that after a subnet validator in Subnet-1 sends the weights to the blockchain, this subnet validator must wait for at least 100 blocks before sending the weights again to the blockchain.
 
 **Setting**
-: Must not be changed.
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
 ---
 
 ## adjustment_interval
 
 **Description**
-: Expressed in number of blocks. How often the [`min_burn`](#min_burn-max_burn) and [`max_burn`](#min_burn-max_burn) costs, i.e., the minimum and maximum costs of registering into this subnet, must be adjusted by the blockchain.  
+: Expressed in number of blocks. This is the number of blocks after which the recycle register cost and the `pow_register` difficulty are recalculated. 
+
+If the number of actual registrations that occurred in the last `adjustment_interval` is higher than the [`target_regs_per_interval`](#target_regs_per_interval), then the blockchain will raise the recycle register cost, by increasing the [`min_burn`](#min_burn-max_burn) value by a certain amount, in order to slow down the actual registrations and bring them back to `target_regs_per_interval` value.
 
 **Value**
 : Set to `112` for Subnet-1. 
@@ -150,7 +156,11 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 
 ### Example
 
-Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scenario where, in a 112-block interval (`adjustment_interval`) this subnet had 3 registrations. This is higher than `target_regs_per_interval`. The blockchain will now raise the minimum cost to register, i.e., the `min_burn` value, by a certain amount, in order to lower the actual registrations within the 112-block interval from 3 to 2 (`target_regs_per_interval`). 
+The Subnet-1 has its `target_regs_per_interval` set to 2. Consider a scenario where, in a 112-block interval (`adjustment_interval`) this subnet had 6 registrations. This is higher than `target_regs_per_interval`. The blockchain will now raise the minimum cost to recycle register, by increasing the `min_burn` value by a certain amount, in order to slow down the actual registrations. 
+
+:::tip Controlling the number of UIDs in immunity period 
+The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
+:::
 
 ---
 
@@ -186,13 +196,21 @@ Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scena
 ## target_regs_per_interval
 
 **Description**
-: Maximum number of registrations allowed in a `adjustment_interval` period. Expressed in integer number.
+: The target number of registrations desired in a `adjustment_interval` period. Expressed as an integer number.
+
+:::tip Maximum number of registrations
+The maximum number of registrations that can occur in an `adjustment_interval` is (3 * `target_regs_per_interval`). 
+:::
 
 **Value**
 : Set to `1` for Subnet-1. 
 
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+:::tip Controlling the number of UIDs in immunity period 
+The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
+:::
 
 ---
 
@@ -209,7 +227,7 @@ Consider Subnet-1 where `target_regs_per_interval` is set to 2. Consider a scena
 ## bonds_moving_avg
 
 **Description**
-: This parameter controls how fast bonds will decay in the entire subnet. This has a direct impact on subnet validator. The faster the bonds decay the quicker a subnet validator will lose its dividends after the subnet validator is out of the `activity_cutoff`.
+: This parameter controls how fast bonds will decay in the entire subnet. This is a unit-less number. This number has a direct impact on subnet validator. The faster the bonds decay the quicker a subnet validator will lose its dividends after the subnet validator is out of the `activity_cutoff`.
 
 If this `bonds_moving_avg` value is low, then the moving average of the bonds will decay slowly. This will allow the subnet validator to become active again, start setting new weights and start earning new bonds. 
 
@@ -230,6 +248,36 @@ If this `bonds_moving_avg` value is high, then bonds in the subnet decay quickly
 
 **Value**
 : Set to `1` for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+:::tip Controlling the number of UIDs in immunity period 
+The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
+:::
+
+---
+
+## serving_rate_limit
+
+**Description**
+: Determines how often you can change your node's IP address on the blockchain. Expressed in number of blocks. Applies to both subnet validator and subnet miner nodes. Used when you move your node to a new machine.
+
+**Value**
+: Usually this is set to `100` blocks. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
+
+## max_validators
+
+**Description**
+: Determines the maximum number of subnet validators you can have in the subnet. 
+
+**Value**
+: Default value is `64`.
 
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
