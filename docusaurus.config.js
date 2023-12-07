@@ -79,11 +79,12 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
-      docs: {
+			docs: {
+				
         sidebar: {
           autoCollapseCategories: true,
           hideable: false,
-        },
+				},
       },
       navbar: {
         title: "Developer Documentation",
@@ -137,35 +138,39 @@ const config = {
       },
       footer: {
         //style: "dark",
-        links: [
-          {
-            title: "Wallet",
-            items: [
-              {
-                label: "Bittensor Wallet",
-                to: "https://wallet.bittensor.com/",
-              },
-            ],
-          },
-          {
-            title: "About",
-            items: [
-              {
-                label: "About Bittensor",
-                to: "https://bittensor.com/about",
-              },
-            ],
-          },
-          {
-            title: "Community",
-            items: [
-              {
-                label: "Bittensor Discord",
-                href: "https://discord.gg/qasY3HA9F9",
-              },
-            ],
-          },
-				],
+        // links: [
+        //   {
+        //     title: "Wallet",
+        //     items: [
+        //       {
+        //         label: "Bittensor Wallet",
+        //         to: "https://wallet.bittensor.com/",
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: "About",
+        //     items: [
+        //       {
+        //         label: "About Bittensor",
+        //         to: "https://bittensor.com/about",
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: "Community",
+        //     items: [
+        //       {
+        //         label: "Bittensor Discord",
+        //         href: "https://discord.gg/qasY3HA9F9",
+        //       },
+        //       {
+        //         label: "Documentation GitHub",
+        //         href: "https://github.com/opentensor/new-docs",
+        //       },
+        //     ],
+        //   },
+				// ],
         copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
       },
     }),
