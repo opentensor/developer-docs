@@ -427,7 +427,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 
 .dropdown__menu {
 	padding: 0;
-	min-width: 200px !important;
+	min-width: 250px !important;
 	margin-left: 60px;
 }
 
@@ -531,7 +531,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 }
 
 .breadcrumbs .breadcrumbs__item .breadcrumbs__link {
-	padding: 0 !important ;
+	padding: 0 !important;
 }
 
 
