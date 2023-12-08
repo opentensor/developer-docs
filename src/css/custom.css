@@ -370,6 +370,10 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	border-bottom: 1px dashed rgba(95, 99, 104, 1);
 }
 
+.theme-doc-sidebar-menu.menu__list li {
+	margin: 0 !important;
+}
+
 .menu__link--active {
 	background-color: transparent !important;
 }
@@ -417,6 +421,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 
 .container.padding-top--md {
 	padding: 20px 40px !important;
+	position: relative;
 }
 
 .breadcrumbs:first-child a {
@@ -451,6 +456,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 .dropdown__menu .dropdown__link {
 	padding: 7px 20px !important;
 	border-bottom: 1px dashed rgba(95, 99, 104, 1) !important;
+	border-radius: 0 !important;
 	margin: 0 !important;
 	cursor: pointer;
 }
@@ -552,11 +558,75 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 }
 
 /* Feedback */
-.feedback_ {
+.feedback {
+	display: flex !important;
+	align-items: center;
+	gap: 0 20px;
+}
+
+.feedback span {
+	font-weight: 400 !important;
 	font-family: TTCommonsPro;
+	text-transform: uppercase;
+	font-size: 10px;
 }
-.feedback_message {
+
+.feedback .feelings {
+	display: flex;
+	align-items: center;
+	gap: 0 20px;
 }
+
+.feedbackAndName {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+	margin-top: 80px;
+}
+
+.feedbackAndName .EditedBy {
+	display: block;
+}
+
+.feedbackAndName .EditedBy p {
+	margin: 0 !important;
+	font-family: TTCommonsPro !important;
+	font-size: 10px !important;
+	line-height: 15px;
+	text-decoration: underline;
+}
+
+.feedbackAndName .EditedBy div {
+	display: flex;
+	align-items: center;
+	gap: 0 10px;
+	font-size: 10px !important;
+	font-family: TTCommonsPro !important;
+	color: #5F6368;
+}
+
+.footer-line div {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100% !important;
+	border-bottom: 2px solid #DBDDE1;
+	margin-top: 30px;
+}
+
+/* pagination */
+.pagination-nav {
+	display: flex !important;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.pagination-nav .pagination-nav__link {
+	max-width: 30% !important;
+	text-align: start !important;
+}
+
 
 [data-theme='dark'] {
 	.container_src-theme-SearchBar-styles-module {
