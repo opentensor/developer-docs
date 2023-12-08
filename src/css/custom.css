@@ -651,7 +651,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	}
 
 	.navbar {
-		background-color: black !important;
+		background-color: black;
 	}
 
 	.navbar__item {

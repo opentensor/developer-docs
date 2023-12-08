@@ -126,11 +126,11 @@ const config = {
 								dropdown: [
 									{
 										label: "INSTALL BITTENSOR",
-										to: "getting-started/installation",
+										to: "/getting-started/installation",
 									},
 									{
 										label: "INSTALL BITTENSOR",
-										to: "getting-started/wallets",
+										to: "/getting-started/wallets",
 									},
 								],
 								// type: "dropdown",
@@ -139,11 +139,7 @@ const config = {
 								// 	"getting-started/wallets",
 								// ],
 								to: '/item2',
-							},
-							{
-								label: 'Item 2',
-								to: '/item2'
-							},
+							}
 						],
 					},
 					{
