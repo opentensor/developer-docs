@@ -44,7 +44,8 @@ function EditMetaRow({
 export default function DocItemFooter() {
   const {metadata} = useDoc();
   const {editUrl, lastUpdatedAt, formattedLastUpdatedAt, lastUpdatedBy, tags} =
-    metadata;
+		metadata;
+	console.log(metadata);
   const canDisplayTagsRow = tags.length > 0;
   const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
   const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
@@ -53,7 +54,34 @@ export default function DocItemFooter() {
   }
   return (
     <footer
-      className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}>
+			className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}>
+			
+			<div className='feedback'>
+				
+				<span className='feedback_message'>
+					was this helpful?
+
+				</span>
+				<div className="feelings">
+					{
+
+						['/img/feelings1.png', '/img/feelings2.png','/img/feelings3.png','/img/feelings4.png'].map(imgPath => 
+							<img src={imgPath} key={imgPath} alt="" />
+						)
+					}
+				</div>
+			</div>
+			
+			<div >
+				{/* //TODO here right side */}
+				EDIT THIS PAGE
+			<br />
+				SUBMIT  AN ISSUE 
+			<br />
+				{
+					formattedLastUpdatedAt
+				}
+			</div>
       {canDisplayTagsRow && <TagsRow tags={tags} />}
       {canDisplayEditMetaRow && (
         <EditMetaRow
