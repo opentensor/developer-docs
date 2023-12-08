@@ -20,9 +20,9 @@
 	--ifm-h4-font-size: 1rem;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-	--text-primary: #5F6368;
-	--text-secondary: #5F6368;
-	--grey-100: #F8F9FA;
+	--text-primary: #5f6368;
+	--text-secondary: #5f6368;
+	--grey-100: #f8f9fa;
 	--grey-900: #0e1013;
 }
 
@@ -388,7 +388,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	gap: 0 15px !important;
 }
 
-.navbar__items--right>div {
+.navbar__items--right > div {
 	margin-left: 20px !important;
 	margin-bottom: 5px !important;
 }
@@ -427,12 +427,10 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	padding: 5px;
 }
 
-
 /* dropdown */
 
 .dropdown_menu_container {
 	position: relative;
-
 }
 
 .dropdown_menu_container li {
@@ -457,7 +455,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	cursor: pointer;
 }
 
-.dropdown__menu>li:last-child a {
+.dropdown__menu > li:last-child a {
 	border-bottom: 0 !important;
 }
 
@@ -469,7 +467,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	padding-left: 15px !important;
 	height: 0;
 	overflow: hidden;
-	transition: all ease .3s !important;
+	transition: all ease 0.3s !important;
 }
 
 @keyframes heightAnimation {
@@ -553,10 +551,16 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	padding: 0 !important;
 }
 
+/* Feedback */
+.feedback_ {
+	font-family: TTCommonsPro;
+}
+.feedback_message {
+}
 
 [data-theme='dark'] {
 	.container_src-theme-SearchBar-styles-module {
-		border: 1px solid #282A2D !important;
+		border: 1px solid #282a2d !important;
 	}
 
 	.table-of-contents.table-of-contents__left-border li a {
@@ -576,7 +580,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	}
 
 	.navbar__item {
-		color: #5F6368 !important;
+		color: #5f6368 !important;
 	}
 
 	#__docusaurus {
@@ -584,7 +588,7 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	}
 
 	.menu__link {
-		color: #5F6368 !important;
+		color: #5f6368 !important;
 	}
 
 	.menu__link--active {
@@ -592,18 +596,15 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	}
 
 	.menu__link--sublist-caret.menu__link--active {
-		color: #5F6368 !important;
+		color: #5f6368 !important;
 	}
 
 	.breadcrumbs__item--active span {
 		color: rgba(248, 249, 250, 1) !important;
 	}
-
 }
 
-
 [data-theme='light'] {
-
 	.menu__link {
 		color: rgb(111, 112, 114) !important;
 	}
@@ -636,7 +637,6 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 
 	.footer__copyright.footer__copyright__custom {
 		color: var(--grey-100) !important;
-
 	}
 
 	.breadcrumbs__item--active span {

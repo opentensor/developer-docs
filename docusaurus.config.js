@@ -37,7 +37,7 @@ const config = {
   },
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
@@ -48,12 +48,16 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: true,
           showLastUpdateTime: true,
+					docItemComponent: '@theme/DocItem',
+
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
-    ],
+
+
+    ]
   ],
   // scripts: [
   //   // String format.
@@ -128,7 +132,7 @@ const config = {
 									},
 									{
 										label: "INSTALL BITTENSOR",
-										to: "getting-started/installation",
+										to: "getting-started/wallets",
 									},
 								],
 								// type: "dropdown",
