@@ -14,8 +14,8 @@ function Footer() {
     <FooterLayout
 			style={style}
 			className= 'footerPrimary'
-      // links={links && links.length > 0 && <FooterLinks links={links} />}
-      // logo={logo && <FooterLogo logo={logo} />}
+      links={links && links.length > 0 && <FooterLinks links={links} />}
+      logo={logo && <FooterLogo logo={logo} />}
       copyright={copyright && <FooterCopyright copyright={copyright} />}
     />
   );
