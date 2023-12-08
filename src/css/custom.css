@@ -24,6 +24,7 @@
 	--text-secondary: #5f6368;
 	--grey-100: #f8f9fa;
 	--grey-900: #0e1013;
+	--doc-sidebar-width: 28% !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -346,11 +347,6 @@ ul {
 	}
 }
 
-/* sidebar style */
-.theme-doc-sidebar-container {
-	width: 35% !important;
-}
-
 .sidebarSearch_src-theme-DocSidebarItem-Link-styles-module {
 	margin-top: 1rem !important;
 	margin-bottom: 30px !important;
@@ -611,8 +607,11 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	left: 0;
 	right: 0;
 	width: 100% !important;
-	border-bottom: 2px solid #DBDDE1;
+	border-top: 2px solid #DBDDE1;
 	margin-top: 30px;
+	height: 100px;
+	background: white;
+	z-index: 9 !important;
 }
 
 /* pagination */
@@ -620,6 +619,8 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	display: flex !important;
 	align-items: center;
 	justify-content: space-between;
+	z-index: 99 !important;
+	position: relative;
 }
 
 .pagination-nav .pagination-nav__link {

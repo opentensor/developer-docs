@@ -92,9 +92,7 @@ export default function DocItemFooter() {
       </div>
 
       <div className="footer-line">
-        <div>
-          
-        </div>
+        <div></div>
       </div>
 
       {canDisplayTagsRow && <TagsRow tags={tags} />}
