@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import { useDoc } from "@docusaurus/theme-common/internal";
@@ -6,6 +6,8 @@ import LastUpdated from "@theme/LastUpdated";
 import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import styles from "./styles.module.css";
+import { useColorMode } from "@docusaurus/theme-common";
+
 function TagsRow(props) {
   return (
     <div
@@ -51,13 +53,20 @@ export default function DocItemFooter() {
     lastUpdatedBy,
     tags,
   } = metadata;
-  console.log(metadata);
+
   const canDisplayTagsRow = tags.length > 0;
   const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
   const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
   if (!canDisplayFooter) {
     return null;
   }
+
+  const { colorMode, setColorMode } = useColorMode();
+
+  useEffect(() => {
+    console.log('colorModecolorMode', colorMode);
+  }, [colorMode])
+
   return (
     <footer
       className={clsx(ThemeClassNames.docs.docFooter, "docusaurus-mt-lg")}
@@ -66,14 +75,29 @@ export default function DocItemFooter() {
         <div className="feedback">
           <span className="feedback_message">was this helpful?</span>
           <div className="feelings">
-            {[
-              "/img/feelings1.png",
-              "/img/feelings2.png",
-              "/img/feelings3.png",
-              "/img/feelings4.png",
-            ].map((imgPath) => (
-              <img src={imgPath} key={imgPath} alt="" />
-            ))}
+            {colorMode === "light" ? (
+              <>
+                {[
+                  "/img/feelings1.png",
+                  "/img/feelings2.png",
+                  "/img/feelings3.png",
+                  "/img/feelings4.png",
+                ].map((imgPath) => (
+                  <img src={imgPath} key={imgPath} alt="" />
+                ))}
+              </>
+            ) : (
+              <>
+                {[
+                  "/img/darkfeeling1.png",
+                  "/img/darkfeeling2.png",
+                  "/img/darkfeeling3.png",
+                  "/img/darkfeeling4.png",
+                ].map((imgPath) => (
+                  <img src={imgPath} key={imgPath} alt="" />
+                ))}
+              </>
+            )}
           </div>
         </div>
 
