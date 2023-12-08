@@ -408,6 +408,22 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	padding: 5px;
 }
 
+
+/* Nested Navbar */
+
+ .dropdown_menu_container {
+	position: relative;
+
+}
+.dropdown_menu_container li {
+	list-style: none;
+}
+
+.dropdown_menu_container .dropdownNavbarItemNested{
+	position: absolute;
+	left: 100%;
+}
+
 [data-theme='dark'] {
 	.container_src-theme-SearchBar-styles-module {
 		border: 1px solid #282A2D !important;
