@@ -608,6 +608,10 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 	text-align: start !important;
 }
 
+.menu__link {
+	border-radius: 0 !important;
+}
+
 
 [data-theme='dark'] {
 	.container_src-theme-SearchBar-styles-module {
