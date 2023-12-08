@@ -106,7 +106,7 @@ const config = {
 					// },
 					{
 						type: 'dropdown',
-						label: 'Dropdown',
+						label: 'GETTING STARTED',
 						position: 'left',
 						items: [
 							// {
@@ -126,6 +126,10 @@ const config = {
 										label: "INSTALL BITTENSOR",
 										to: "getting-started/installation",
 									},
+									{
+										label: "INSTALL BITTENSOR",
+										to: "getting-started/installation",
+									},
 								],
 								// type: "dropdown",
 								// 	items: [
@@ -136,7 +140,7 @@ const config = {
 							},
 							{
 								label: 'Item 2',
-								to: '/item2',
+								to: '/item2'
 							},
 						],
 					},

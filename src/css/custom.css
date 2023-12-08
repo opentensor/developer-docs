@@ -428,20 +428,131 @@ nav.menu_src-theme-DocSidebar-Desktop-Content-styles-module {
 }
 
 
-/* Nested Navbar */
+/* dropdown */
 
- .dropdown_menu_container {
+.dropdown_menu_container {
 	position: relative;
 
 }
+
 .dropdown_menu_container li {
 	list-style: none;
 }
 
-.dropdown_menu_container .dropdownNavbarItemNested{
+.dropdown_menu_container .dropdownNavbarItemNested {
 	position: absolute;
 	left: 100%;
 }
+
+.dropdown__menu {
+	padding: 0;
+	min-width: 200px !important;
+	margin-left: 60px;
+}
+
+.dropdown__menu .dropdown__link {
+	padding: 7px 20px !important;
+	border-bottom: 1px dashed rgba(95, 99, 104, 1) !important;
+	margin: 0 !important;
+	cursor: pointer;
+}
+
+.dropdown__menu>li:last-child a {
+	border-bottom: 0 !important;
+}
+
+.dropdown__menu ul li:last-child a {
+	border-bottom: 0 !important;
+}
+
+.dropdown__menu ul {
+	padding-left: 15px !important;
+	height: 0;
+	overflow: hidden;
+	transition: all ease .3s !important;
+}
+
+@keyframes heightAnimation {
+	0% {
+		height: 0px;
+		border-bottom: 1px dashed rgba(95, 99, 104, 1);
+	}
+
+	100% {
+		border-bottom: 1px dashed rgba(95, 99, 104, 1);
+		height: 100%;
+	}
+}
+
+.dropdown__menu .active-nested-dropdown {
+	animation-name: heightAnimation;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.dropdown__menu ul li {
+	list-style: none !important;
+}
+
+.dropdown__menu .has-dropdown {
+	display: flex;
+	width: 100% !important;
+	position: relative;
+}
+
+.dropdown__menu .has-dropdown a {
+	width: 100% !important;
+}
+
+.dropdown__menu .has-dropdown .arrow {
+	position: absolute;
+	right: 15px;
+	top: 12px;
+}
+
+.navbar__item.dropdown a {
+	margin-top: 6px;
+	display: block;
+	margin-left: 100px;
+}
+
+.navbar__item.dropdown a::after {
+	margin-left: 10px !important;
+	margin-bottom: 2px !important;
+}
+
+/* breadcrumbs styles */
+.breadcrumbs {
+	display: flex;
+}
+
+.breadcrumbs .breadcrumbs__item::after {
+	background: url('../../static//img/slice.png');
+	height: 15px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.breadcrumbs .breadcrumbs__item span {
+	padding: 0 !important;
+	margin-bottom: -6px;
+	display: table;
+}
+
+.breadcrumbs .breadcrumbs__item {
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumbs .breadcrumbs__item:first-child {
+	display: block !important;
+	margin-top: 5px !important;
+}
+
+.breadcrumbs .breadcrumbs__item .breadcrumbs__link {
+	padding: 0 !important ;
+}
+
 
 [data-theme='dark'] {
 	.container_src-theme-SearchBar-styles-module {
