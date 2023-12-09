@@ -633,6 +633,10 @@ ul {
 	margin-top: 80px;
 }
 
+.feeling-symbol {
+	cursor: pointer !important;
+}
+
 .feedbackAndName .EditedBy {
 	display: block;
 }
@@ -717,6 +721,7 @@ ul {
 .footer .footer__copyright a {
 	color: var(--ifm-footer-company-name-color) !important;
 }
+
 
 /* Algolia Search */
 .DocSearch {

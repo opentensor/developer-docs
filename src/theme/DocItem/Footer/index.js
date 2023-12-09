@@ -84,7 +84,12 @@ export default function DocItemFooter() {
                   "/img/feelings3.png",
                   "/img/feelings4.png",
                 ].map((imgPath) => (
-                  <img src={imgPath} key={imgPath} alt="" />
+                  <img
+                    className="feeling-symbol"
+                    src={imgPath}
+                    key={imgPath}
+                    alt=""
+                  />
                 ))}
               </>
             ) : (
@@ -96,7 +101,7 @@ export default function DocItemFooter() {
                   "/img/darkfeeling4.png",
                 ].map((imgPath) => (
                   <img
-                    className="feeling-seymbol"
+                    className="feeling-symbol"
                     src={imgPath}
                     key={imgPath}
                     alt=""
