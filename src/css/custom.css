@@ -493,14 +493,6 @@ ul {
 	cursor: pointer;
 }
 
-.dropdown__menu>li:last-child a {
-	border-bottom: 0 !important;
-}
-
-.dropdown__menu ul li:last-child a {
-	border-bottom: 0 !important;
-}
-
 .dropdown__menu ul {
 	padding-left: 15px !important;
 	height: 0;
@@ -528,6 +520,10 @@ ul {
 
 .dropdown__menu_nested_items{
 	border-bottom: 1px dashed rgba(95, 99, 104, 1) !important;
+}
+
+.dropdown__menu ul li:last-child a{
+	border-bottom: 0 !important;
 }
 
 .dropdown__menu ul li {
