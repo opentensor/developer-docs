@@ -24,7 +24,7 @@
 	--text-secondary: #5f6368;
 	--grey-100: #f8f9fa;
 	--grey-900: #0e1013;
-	--doc-sidebar-width: 25% !important;
+	--doc-sidebar-width: 28% !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -798,11 +798,92 @@ ul {
 		font-weight: 400;
 	}
 
-	.footer {
-		background-color: var(--grey-900);
-	}
-
 	.footer__copyright.footer__copyright__custom {
 		color: var(--grey-100) !important;
 	}
 }
+
+
+/* @media screen and (max-width: 996px) {
+	.navbar__items {
+		justify-content: space-between;
+	}
+	.navbar__items button.navbar__toggle {
+		margin: 0;
+	}
+}
+
+
+@media screen and (max-width: 600px) {
+	.container.padding-top--md {
+		padding: 15px 20px !important;
+	}
+
+	.pagination-nav .pagination-nav__link {
+		max-width: 45% !important;
+		width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.footer-line div {
+		height: 2px !important;
+	}
+
+	.footer {
+		padding: 20px 10px !important;
+	}
+
+	.footer .footer__copyright {
+		gap: 0 20px !important;
+	}
+
+	.navbar {
+		padding: 5px 20px !important;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.feedbackAndName {
+		display: block !important;
+	}
+
+	.feedbackAndName .EditedBy {
+		width: 100%;
+		text-align: right;
+		margin-top: 25px;
+	}
+
+	.feedbackAndName .EditedBy div {
+		display: table !important;
+		float: right;
+	}
+
+	.feedbackAndName .feedback {
+		display: block !important;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.navbar-sidebar {
+		width: 100% !important;
+	}
+
+	.navbar-sidebar__item:last-child {
+		width: 100% !important;
+	}
+}
+
+
+@media screen and (max-width: 420px) {
+	.container.padding-top--md {
+		padding: 15px 10px !important;
+	}
+
+	.navbar {
+		padding: 5px 10px !important;
+	}
+
+	.footer {
+		padding: 20px 0 !important;
+	}
+} */
