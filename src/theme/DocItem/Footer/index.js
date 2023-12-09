@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import { useDoc } from "@docusaurus/theme-common/internal";
@@ -62,10 +62,11 @@ export default function DocItemFooter() {
   }
 
   const { colorMode, setColorMode } = useColorMode();
+  const [status, setStatus] = useState("dark");
 
   useEffect(() => {
-    console.log('colorModecolorMode', colorMode);
-  }, [colorMode])
+    setStatus(colorMode);
+  }, [colorMode]);
 
   return (
     <footer
@@ -75,7 +76,7 @@ export default function DocItemFooter() {
         <div className="feedback">
           <span className="feedback_message">was this helpful?</span>
           <div className="feelings">
-            {colorMode === "light" ? (
+            {status === "light" ? (
               <>
                 {[
                   "/img/feelings1.png",
@@ -94,7 +95,12 @@ export default function DocItemFooter() {
                   "/img/darkfeeling3.png",
                   "/img/darkfeeling4.png",
                 ].map((imgPath) => (
-                  <img src={imgPath} key={imgPath} alt="" />
+                  <img
+                    className="feeling-seymbol"
+                    src={imgPath}
+                    key={imgPath}
+                    alt=""
+                  />
                 ))}
               </>
             )}

@@ -3,7 +3,7 @@
 
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 // const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const { themes } = require('prism-react-renderer');
+const { themes } = require("prism-react-renderer");
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
@@ -43,21 +43,18 @@ const config = {
         docs: {
           routeBasePath: "/",
           path: "docs",
-          remarkPlugins: [math, deflist],
+          remarkPlugins: [math],
           rehypePlugins: [katex],
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: true,
           showLastUpdateTime: true,
-					docItemComponent: '@theme/DocItem',
-
+          docItemComponent: "@theme/DocItem",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
-
-
-    ]
+    ],
   ],
   // scripts: [
   //   // String format.
@@ -83,84 +80,84 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
-			docs: {
-				sidebar: {
-					autoCollapseCategories: true,
-					hideable: false,
-				},
-			},
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+          hideable: false,
+        },
+      },
 
-			navbar: {
-				title: 'Developer Documentation',
-				logo: {
-					alt: 'Bittensor',
-					src: 'img/logo.svg',
-					srcDark: 'img/logo-dark-mode.svg',
-					style: {
-						objectFit: 'contain',
-						width: 20,
-					},
-				},
+      navbar: {
+        title: "Developer Documentation",
+        logo: {
+          alt: "Bittensor",
+          src: "img/logo.svg",
+          srcDark: "img/logo-dark-mode.svg",
+          style: {
+            objectFit: "contain",
+            width: 20,
+          },
+        },
 
-				items: [
-					// {
-					//   position: "left",
-					//   label: "Bittensor API Reference",
-					//   href: "pathname:///python-api/html/index.html",
-					// },
-					{
-						type: 'dropdown',
-						label: 'GETTING STARTED',
-						position: 'left',
-						items: [
-							// {
-							// 	label: 'Item 1',
+        items: [
+          // {
+          //   position: "left",
+          //   label: "Bittensor API Reference",
+          //   href: "pathname:///python-api/html/index.html",
+          // },
+          {
+            type: "dropdown",
+            label: "GETTING STARTED",
+            position: "left",
+            items: [
+              // {
+              // 	label: 'Item 1',
 
-							// 	position: "left",
-							// 	type: 'category',
-							// 	items: [
-							// 		"getting-started/installation",
-							// 		"getting-started/wallets",
-							// 	],
-							// },
-							{
-								label: 'Get Started',
-								dropdown: [
-									{
-										label: "INSTALL BITTENSOR",
-										to: "/getting-started/installation",
-									},
-									{
-										label: "INSTALL BITTENSOR",
-										to: "/getting-started/wallets",
-									},
-								],
-								// type: "dropdown",
-								// 	items: [
-								// 	"getting-started/installation",
-								// 	"getting-started/wallets",
-								// ],
-								to: '/item2',
-							}
-						],
-					},
-					{
-						href: 'https://github.com/opentensor/new-docs',
-						label: 'GitHub',
-						position: 'right',
-					},
-					{
-						href: 'https://bittensor.com/about',
-						label: 'About Bittensor',
-						position: 'right',
-					},
-					{
-						href: 'https://wallet.bittensor.com/',
-						label: 'Wallet',
-						position: 'right',
-					},
-				],
-			},
+              // 	position: "left",
+              // 	type: 'category',
+              // 	items: [
+              // 		"getting-started/installation",
+              // 		"getting-started/wallets",
+              // 	],
+              // },
+              {
+                label: "Get Started",
+                dropdown: [
+                  {
+                    label: "INSTALL BITTENSOR",
+                    to: "/getting-started/installation",
+                  },
+                  {
+                    label: "INSTALL BITTENSOR",
+                    to: "/getting-started/wallets",
+                  },
+                ],
+                // type: "dropdown",
+                // 	items: [
+                // 	"getting-started/installation",
+                // 	"getting-started/wallets",
+                // ],
+                to: "/item2",
+              },
+            ],
+          },
+          {
+            href: "https://github.com/opentensor/new-docs",
+            label: "GitHub",
+            position: "right",
+          },
+          {
+            href: "https://bittensor.com/about",
+            label: "About Bittensor",
+            position: "right",
+          },
+          {
+            href: "https://wallet.bittensor.com/",
+            label: "Wallet",
+            position: "right",
+          },
+        ],
+      },
 
       prism: {
         theme: lightTheme,
@@ -169,8 +166,8 @@ const config = {
       },
       algolia: {
         appId: "B07G29NY9F",
-        apiKey: "fff5aa7a466a7c3252ae85d9a0629b2f",
-        indexName: "new--alpha",
+        apiKey: "d23c920e8a9bdae899572be3c8494696",
+        indexName: "bittensor-docs",
         contextualSearch: true,
         insights: true,
         debug: false,
@@ -209,10 +206,15 @@ const config = {
         //       },
         //     ],
         //   },
-				// ],
-				copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation`,
-			},
-		}),
+        // ],
+        copyright: `
+					<div className="copyRight">
+						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation. <span>all rights reserved.</span>
+					</div>
+					<img src="img/logo-dark-mode.svg" alt="logo"/>
+				`,
+      },
+    }),
 };
 
 module.exports = config;
