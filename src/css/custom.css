@@ -665,7 +665,7 @@ ul {
 	left: 0;
 	right: 0;
 	width: 100% !important;
-	border-top: 2px solid #dbdde1;
+	border-top: 2px solid var(--ifm-navbar-border);
 	margin-top: 30px;
 	height: 100px;
 	z-index: 9 !important;
@@ -780,10 +780,13 @@ ul {
 }
 
 .navbar {
-	border-bottom: 1px solid var(--ifm-navbar-border) !important;
+	border-bottom: 2px solid var(--ifm-navbar-border) !important;
 	box-shadow: none !important;
 }
 
+#__docusaurus_skipToContent_fallback>div>div aside {
+	border-right: 2px solid var(--ifm-navbar-border) !important;
+}
 
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
@@ -811,6 +814,7 @@ ul {
 	.navbar__items {
 		justify-content: space-between;
 	}
+
 	.navbar__items button.navbar__toggle {
 		margin: 0;
 	}
