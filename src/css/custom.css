@@ -53,6 +53,7 @@
 	--ifm-footer-company-name-color: white;
 	--ifm-algolia-bg: #242526;
 	--ifm-algolia-border: #7f8497;
+	--ifm-navbar-border: #282A2D;
 }
 
 [data-theme="light"] {
@@ -77,6 +78,7 @@
 	--ifm-footer-company-name-color: white;
 	--ifm-algolia-bg: white;
 	--ifm-algolia-border: #0E1013;
+	--ifm-navbar-border: #DBDDE1;
 }
 
 @font-face {
@@ -777,6 +779,11 @@ ul {
 	margin: 0 !important;
 }
 
+.navbar {
+	border-bottom: 1px solid var(--ifm-navbar-border) !important;
+	box-shadow: none !important;
+}
+
 
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
@@ -785,10 +792,6 @@ ul {
 
 	.navbar__item {
 		color: #5f6368 !important;
-	}
-
-	.navbar {
-		border-bottom: 2px solid #282A2D;
 	}
 
 }
@@ -804,7 +807,7 @@ ul {
 }
 
 
-/* @media screen and (max-width: 996px) {
+@media screen and (max-width: 996px) {
 	.navbar__items {
 		justify-content: space-between;
 	}
@@ -886,4 +889,4 @@ ul {
 	.footer {
 		padding: 20px 0 !important;
 	}
-} */
+}
