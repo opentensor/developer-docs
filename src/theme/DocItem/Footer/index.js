@@ -111,7 +111,7 @@ export default function DocItemFooter() {
             )}
           </div>
         </div>
-
+				{/* Make it external Link */}
         <div className="EditedBy">
           <p>
             EDIT THIS PAGE

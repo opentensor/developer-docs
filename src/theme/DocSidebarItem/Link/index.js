@@ -28,7 +28,7 @@ export default function DocSidebarItemLink({
 	const isInternalLink = isInternalUrl(href);
 
 	const isSearchComponent = className?.includes('sidebarSearch') || false;
-	console.log(isSearchComponent, className);
+	// console.log(isSearchComponent, className);
 	/**
 	 * [ ] Check it's a search component or not ()
 	 * 	- if it's search Component pass the Search Component
