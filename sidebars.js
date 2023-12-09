@@ -44,7 +44,7 @@ const sidebars = {
       collapsed: false,
       items: [
         "tutorials/basic-subnet-tutorials",
-        "tutorials/subnet-tutorial",
+        "tutorials/ocr-subnet-tutorial",
       ],
     },
     {

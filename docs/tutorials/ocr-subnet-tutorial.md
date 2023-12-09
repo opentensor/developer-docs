@@ -1,43 +1,83 @@
 ---
-title: "Subnet Tutorial"
+title: "OCR Subnet Tutorial"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Subnet Tutorial
-In this tutorial you will learn how to build a subnet, starting from the beginning. We will use digital document restoration (DDR) as the task to be performed by the subnet miners. When you complete this tutorial, you will know the following:
-- How to create a subnet.
+# OCR Subnet Tutorial
+
+In this tutorial you will learn how to build a subnet, starting from the beginning. We will use optical character recognition (OCR) as the task to be performed by the subnet miners. When you complete this tutorial, you will know the following:
+
+- How to create a subnet. You will start with Bittensor Subnet Template for this step. This template exists to quickstart your subnet creation process.
 - How to perform subnet validation and subnet mining.
 - How to design your own subnet incentive mechanism. 
 
 :::tip Tutorial source
-See the tutorial source code here.
+See the tutorial source code here (TBD).
 :::
 
 ## Prerequisites
 
 ### Install
+
 To run the tutorial, make sure that you complete the below steps:
+
 1. [Install Bittensor](../getting-started/installation.md). 
 2. [Create a wallet, or know how to create one](../getting-started/wallets.md#creating-a-local-wallet). 
 
 ### Required reading
 
-Before you proceed, read the following sections:
+If you are new to Bittensor, then before you proceed read the following sections:
+
 1. [Introduction](../learn/introduction.md) that describes how subnets form the heartbeat of the Bittensor network.
 2. [Bittensor Building Blocks](../learn/bittensor-building-blocks.md) that presents the basic building blocks you use to develop your subnet incentive mechanism.
 3. [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanism.md) that introduces the general concept of a subnet incentive mechanism. 
 
-## Digital document restoration subnet
+## OCR subnet summary
 
-In this tutorial the DDR subnet works like this:
+This tutorial OCR subnet works like this:
 
-- Subnet validators send an image file to subnet miners.
-- Subnet miners respond with a JSON object containing the contents of the image file, including the positional information of the content, fonts used in the text, font size . Subnet miners use the [Hugging Face OCR-Donut-CORD model](https://huggingface.co/jinhybr/OCR-Donut-CORD) to restore the contents from the image.
-- Subnet validators then score the subnet miners on how closely the JSON object matches the images file.
+- A subnet validator sends an image file to subnet miners. This constitutes the **query** from the subnet validator to subnet miners.
+- The **task** of the subnet miners is to respond with a JSON object containing the contents of the image file, including the text content, the positional information of the text, the fonts used in the text and the font size. <!--Subnet miners use the [Hugging Face OCR-Donut-CORD model](https://huggingface.co/jinhybr/OCR-Donut-CORD) to restore the contents from the image.-->
+- The subnet validator then **scores** the subnet miners based on how closely their response JSON object matches the query image file. 
+- Finally, the subnet validator sets the **reward weights** for the subnet miners on the blockchain. 
 
-## Loss function
+## Step 1. Clone the template
+
+1. Go to [Bittensor Subnet Template](https://github.com/opentensor/bittensor-subnet-template) and click on the **Use this template** dropdown on the top right. 
+2. Click on **Create a new repository** and give your preferred name in the **Repository name** field. We will use the name **ocr_subnet** in this tutorial. 
+3. Optionally provide a description in the **Description** field. 
+4. Choose either **Public** or **Private**.
+5. Click on **Create repository**.
+6. GitHub will now show you your **ocr_subnet** repository page. 
+7. Clone your **ocr_subnet** repo locally.
+
+## Code structure
+
+Your **ocr_subnet** repo already contains basic code organized as below:
+
+**Neurons**
+: A neuron is another name for a subnet validator or a subnet miner. 
+
+   - `neurons/miner.py`: Code that defines the subnet miner's task and how the miner responds to the requests from the subnet validator.
+   - `neurons/validator.py`: Code that defines the subnet validator's behavior, i.e., how the validator requests information from the miners and determines the scores.
+
+**Subnet protocol**
+: - `template/protocol.py`: Contains the code for the protocol used by the subnet validator and the subnet miners.
+   - `template/forward.py`: Contains the definition of the validator's forward pass.
+
+**Reward**
+: - `template/reward.py`: Contains the definition of how validators reward miner responses.
+
+## Step 2. TBD
+
+And so on.
+
+
+## Loss function 
+
+**To be organized.**
 
 Loss function for OCR-Donut-CORD model:
 
