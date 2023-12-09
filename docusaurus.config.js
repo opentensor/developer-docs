@@ -119,16 +119,22 @@ const config = {
               // 		"getting-started/installation",
               // 		"getting-started/wallets",
               // 	],
-              // },
+							// },
+							{to:"/",  label: "WELCOME",},
+							{
+								label: "WHAT'S NEW IN DOCS",
+								to: "/whats-new-in-docs"
+							},
               {
-                label: "Get Started",
+								label: "Get Started",
+								
                 dropdown: [
                   {
                     label: "INSTALL BITTENSOR",
                     to: "/getting-started/installation",
                   },
                   {
-                    label: "INSTALL BITTENSOR",
+                    label: 'CREATE WALLET',
                     to: "/getting-started/wallets",
                   },
                 ],
@@ -137,7 +143,7 @@ const config = {
                 // 	"getting-started/installation",
                 // 	"getting-started/wallets",
                 // ],
-                to: "/item2",
+                to: "/getting-started/installation",
               },
             ],
           },
