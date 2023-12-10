@@ -36,12 +36,16 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 
 :::
+
+### Blockquote
+> Sodales tempus turpis et eget mauris urna aliquet nisl. Tellus quam aliquam vitae pharetra. In porttitor luctus id neque cras vulputate donec blandit auctor. Amet lacus vitae ullamcorper blandit massa aliquet porttitor magna nisi. Mattis turpis orci neque dui morbi ut. Ullamcorper nullam elementum purus sed eu vel ligula sed.
+> Lectus pharetra lobortis faucibus ullamcorper pretium. Sed est amet convallis in. Pharetra risus in viverra porta purus suspendisse. Ultrices sit dictumst et donec risus tellus nec faucibus. Venenatis in scelerisque augue eu aliquet mauris ut. Nunc consequat vitae nulla adipiscing molestie tellus nam. Egestas dapibus vitae faucibus augue ut in. Blandit in viverra feugiat pellentesque augue vestibulum elit nec a. Volutpat risus tristique leo mattis dolor nisl elit. Eget ultrices rutrum vestibulum ornare tristique id congue.
 ### Code Block
 ```bash
 LPUSH bikes:repairs bike:1
 ```
 ### Show source
-```tsx title="<file />icons/hello"
+```tsx title="<file />bitterson/App.tsx"
 const App = () => (
   <Bitteson
     dataProvider={dataProvider}
