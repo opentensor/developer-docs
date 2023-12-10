@@ -74,6 +74,7 @@ const sidebars = {
     "governance",
     "senate",
     "glossary",
+    "components",
   ],
 };
 
