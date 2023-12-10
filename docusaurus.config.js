@@ -104,7 +104,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/opentensor/new-docs",
+            href: "https://github.com/opentensor/bittensor",
             label: "GitHub",
             position: "right",
           },
@@ -156,10 +156,6 @@ const config = {
               {
                 label: "Bittensor Discord",
                 href: "https://discord.gg/qasY3HA9F9",
-              },
-              {
-                label: "Documentation GitHub",
-                href: "https://github.com/opentensor/new-docs",
               },
             ],
           },
