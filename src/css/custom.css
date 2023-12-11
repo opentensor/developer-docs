@@ -63,6 +63,7 @@
 	--ifm-tab-container-active-bg: white;
 	--ifm-tab-container-active-color: black;
 	--ifm-ul: #f5f6f7;
+	--ifm-hr: rgba(95, 99, 104, 1);
 }
 
 [data-theme="light"] {
@@ -97,6 +98,7 @@
 	--ifm-tab-container-active-bg: black;
 	--ifm-tab-container-active-color: white;
 	--ifm-ul: rgba(95, 99, 104, 1);
+	--ifm-hr: rgba(14, 16, 19, 1);
 }
 
 @font-face {
@@ -218,6 +220,52 @@ a {
 	/* color: rgb(0, 49, 0); */
 	color: none;
 	font-weight: 400;
+}
+
+
+h1 {
+	font-weight: 400 !important;
+	font-size: 32px !important;
+}
+
+h1.anchor {
+	font-weight: 400 !important;
+	font-size: 32px !important;
+}
+
+h2 {
+	font-weight: 400 !important;
+	font-size: 24px !important;
+}
+
+h2.anchor {
+	font-weight: 400 !important;
+	font-size: 24px !important;
+}
+
+h3 {
+	font-weight: 400 !important;
+	font-size: 20px !important;
+}
+
+h3.anchor {
+	font-weight: 400 !important;
+	font-size: 20px !important;
+}
+
+h4 {
+	font-size: 16px !important;
+	font-weight: bold !important;
+}
+
+h4.anchor {
+	font-size: 16px !important;
+	font-weight: bold !important;
+}
+
+p {
+	font-size: 16px !important;
+	font-weight: 400 !important;
 }
 
 .menu__list {
@@ -975,13 +1023,13 @@ table tr td:first-child {
 
 hr {
 	background-color: transparent !important;
-	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 10%, transparent 30%);
+	background-image: linear-gradient(to right, var(--ifm-hr) 10%, transparent 30%);
 	background-size: 5px 7px;
 	background-repeat: repeat-x;
 	background-position: 0 bottom;
 }
 
-ol:not([class]) li{
+ol:not([class]) li {
 	font-size: 14px !important;
 	font-weight: 600 !important;
 	color: var(--ifm-ul) !important;
@@ -992,17 +1040,31 @@ ol:not([class]) li::marker {
 }
 
 ul:not([class]) {
-	list-style-type:dashed !important;
+	list-style-type: none !important;
+	padding: 0 !important;
+	padding-left: 15px !important;
 }
 
-ul:not([class]) li{
+ul:not([class]) li {
 	font-size: 14px !important;
 	font-weight: 600 !important;
 	color: var(--ifm-ul) !important;
+	display: flex;
 }
 
-ul:not([class]) li::marker {
-	font-weight: 400 !important;
+ul:not([class]) li::before {
+	content: "" !important;
+	display: block;
+	width: 8px !important;
+	background-color: var(--ifm-ul) !important;
+	height: 1px !important;
+	margin-top: 13px !important;
+	margin-right: 10px !important;
+}
+
+
+p>a>img[loading="lazy"] {
+	width: 100% !important;
 }
 
 
