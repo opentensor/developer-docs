@@ -888,6 +888,7 @@ code {
 	letter-spacing: 2px;
 	font-size: 14px !important;
 	padding: 8px 10px !important;
+	padding-bottom: 5px !important;
 }
 
 .tabs-container>ul li.tabs__item--active {
@@ -898,6 +899,9 @@ code {
 
 table {
 	background-color: white !important;
+	border-color: transparent !important;
+	border-spacing: 0 !important;
+	border: 0 !important;
 }
 
 table thead,tbody {
@@ -917,6 +921,9 @@ table thead {
 	background-color: #F8F9FA !important;
 }
 
+table tr td,th  {
+	border: 0 !important;
+}
 
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
