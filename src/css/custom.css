@@ -1039,7 +1039,7 @@ ol:not([class]) li::marker {
 	font-weight: 400 !important;
 }
 
-ul:not([class]) {
+/* ul:not([class]) {
 	list-style-type: none !important;
 	padding: 0 !important;
 	padding-left: 15px !important;
@@ -1060,7 +1060,7 @@ ul:not([class]) li::before {
 	height: 1px !important;
 	margin-top: 13px !important;
 	margin-right: 10px !important;
-}
+} */
 
 
 p>a>img[loading="lazy"] {
