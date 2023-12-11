@@ -15,7 +15,7 @@ Please write down your wallet’s mnemonic seed and keep it in a safe place. The
 
 :::tip
 
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+<!-- Some **content** with _Markdown_ `syntax`. Check [this `api`](#). -->
 
 :::
 
@@ -31,7 +31,7 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 
 :::
 
-:::danger
+:::danger[ ]
 
 Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 
