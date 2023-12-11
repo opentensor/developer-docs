@@ -895,7 +895,7 @@ ul {
 	height: 1.1rem !important;
 }
 
-.alert>div:first-child {
+/* .alert>div:first-child {
 	position: absolute;
 	top: -35px;
 	left: -5px;
@@ -905,17 +905,17 @@ ul {
 	position: absolute;
 	top: 300%;
 	left: 18px;
-}
+} */
 
-.alert.alert--success>div:first-child span,
+/* .alert.alert--success>div:first-child span,
 .alert.alert--info>div:first-child span,
 .alert.alert--secondary>div:first-child span {
 	top: 310% !important;
-}
+} */
 
-.alert>div:nth-child(2) {
+/* .alert>div:nth-child(2) {
 	margin-left: 30px;
-}
+} */
 
 blockquote {
 	border-left: 3px solid var(--ifm-blockquote-border) !important;
