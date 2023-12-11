@@ -19,12 +19,11 @@
 	--ifm-h3-font-size: 1.2rem;
 	--ifm-h4-font-size: 1rem;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
 	--text-primary: #5f6368;
 	--text-secondary: #5f6368;
 	--grey-100: #f8f9fa;
 	--grey-900: #0e1013;
-	--doc-sidebar-width: 28% !important;
+	--doc-sidebar-width: 21% !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -40,7 +39,7 @@
 	--ifm-background-surface-color: #000000 !important;
 	--ifm-background-color: #000000 !important;
 	--ifm-navbar-active-color: white;
-	--ifm-navbar-item-color: #5f6368;
+	--ifm-navbar-item-color: #a5abaf;
 	--ifm-footer-div-color: black;
 	--ifm-table-of-contents-border: rgba(40, 42, 45, 1);
 	--ifm-table-of-contents-border-active: rgba(248, 249, 250, 1);
@@ -521,6 +520,15 @@ ul {
 
 .table-of-contents.table-of-contents__left-border ul {
 	padding: 0 !important;
+}
+
+.table-of-contents>li>ul>li>a {
+	padding-left: 35px !important;
+	display: table !important;
+}
+
+.table-of-contents>li>ul>li>ul>li>a {
+	margin-left: 40px !important;
 }
 
 .container.padding-top--md {
@@ -1031,28 +1039,53 @@ hr {
 
 ol:not([class]) li {
 	font-size: 14px !important;
-	font-weight: 600 !important;
+	font-weight: bold !important;
 	color: var(--ifm-ul) !important;
 }
 
 ol:not([class]) li::marker {
-	font-weight: 400 !important;
+	font-weight: 600 !important;
 }
 
-/* ul:not([class]) {
+ul.dashed_ul {
+	list-style-type: none !important;
+	padding: 0 !important;
+	padding-left: 25px !important;
+}
+
+ul.dashed_ul>li {
+	font-size: 14px !important;
+	font-weight: block !important;
+	color: var(--ifm-ul) !important;
+	position: relative;
+}
+
+ul.dashed_ul>li::before {
+	content: "" !important;
+	display: block;
+	width: 8px !important;
+	background-color: var(--ifm-ul) !important;
+	height: 1px !important;
+	margin-top: 13px !important;
+	margin-right: 10px !important;
+	position: absolute;
+	left: -15px;
+}
+
+/* ul.dashed_ul {
 	list-style-type: none !important;
 	padding: 0 !important;
 	padding-left: 15px !important;
 }
 
-ul:not([class]) li {
+ul.dashed_ul li {
 	font-size: 14px !important;
 	font-weight: 600 !important;
 	color: var(--ifm-ul) !important;
 	display: flex;
 }
 
-ul:not([class]) li::before {
+ul.dashed_ul li::before {
 	content: "" !important;
 	display: block;
 	width: 8px !important;
@@ -1062,19 +1095,7 @@ ul:not([class]) li::before {
 	margin-right: 10px !important;
 } */
 
-ul {
-  margin: 0;
-}
-ul.dashed_ul {
-  list-style-type: none;
-}
-ul.dashed_ul > li {
-  text-indent: -5px;
-}
-ul.dashed_ul > li:before {
-  content: "-";
-  text-indent: -5px;
-}
+
 p>a>img[loading="lazy"] {
 	width: 100% !important;
 }
@@ -1090,7 +1111,7 @@ p>a>img[loading="lazy"] {
 	}
 
 	.navbar__item {
-		color: #5f6368 !important;
+		color: #a5abaf !important;
 	}
 }
 
