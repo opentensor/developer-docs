@@ -125,18 +125,18 @@ const App = () => (
 </Tabs>
 
 ### Table
-| Programming Language | Hello world | Year |
-|----------------------|-------------|------|
-| C                    | world       | 1972 |
-| Python               | world       | 1991 |
-| Java                 | world       | 1995 |
-| JavaScript           | world       | 1995 |
-| Ruby                 | world       | 1995 |
-| C#                   | world       | 2000 |
-| Swift                | world       | 2014 |
-| Rust                 | world       | 2010 |
-| Kotlin               | world       | 2011 |
-| TypeScript           | world       | 2012 |
+| Programming Language | Year |
+|----------------------|------|
+| C                    | 1972 |
+| Python               | 1991 |
+| Java                 | 1995 |
+| JavaScript           | 1995 |
+| Ruby                 | 1995 |
+| C#                   | 2000 |
+| Swift                | 2014 |
+| Rust                 | 2010 |
+| Kotlin               | 2011 |
+| TypeScript           | 2012 |
 
 
 ### Horizontal line

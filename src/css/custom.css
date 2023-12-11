@@ -62,6 +62,7 @@
 	--ifm-blockquote-border: #606770;
 	--ifm-tab-container-active-bg: white;
 	--ifm-tab-container-active-color: black;
+	--ifm-ul: #f5f6f7;
 }
 
 [data-theme="light"] {
@@ -95,6 +96,7 @@
 	--ifm-blockquote-border: #DBDDE1;
 	--ifm-tab-container-active-bg: black;
 	--ifm-tab-container-active-color: white;
+	--ifm-ul: rgba(95, 99, 104, 1);
 }
 
 @font-face {
@@ -818,7 +820,7 @@ ul {
 	background-color: var(--ifm-alert-secondary) !important;
 }
 
-.alert.alert--success{
+.alert.alert--success {
 	background-color: var(--ifm-alert-success) !important;
 }
 
@@ -838,6 +840,13 @@ ul {
 	background-color: var(--ifm-alert-danger) !important;
 }
 
+.alert.alert--success svg,
+.alert.alert--info svg,
+.alert.alert--secondary svg {
+	width: 1.1rem !important;
+	height: 1.1rem !important;
+}
+
 .alert>div:first-child {
 	position: absolute;
 	top: -35px;
@@ -848,6 +857,12 @@ ul {
 	position: absolute;
 	top: 300%;
 	left: 18px;
+}
+
+.alert.alert--success>div:first-child span,
+.alert.alert--info>div:first-child span,
+.alert.alert--secondary>div:first-child span {
+	top: 310% !important;
 }
 
 .alert>div:nth-child(2) {
@@ -882,7 +897,7 @@ code {
 	gap: 0 5px;
 }
 
-.tabs-container>ul li{
+.tabs-container>ul li {
 	border-radius: 5px !important;
 	font-weight: 400 !important;
 	letter-spacing: 2px;
@@ -902,28 +917,94 @@ table {
 	border-color: transparent !important;
 	border-spacing: 0 !important;
 	border: 0 !important;
-}
-
-table thead,tbody {
 	width: 100% !important;
+	min-width: 100% !important;
+	display: table !important;
 }
 
-table tr {
-	width: 100% !important;
-}
-
-table tr  {
-	border-bottom: 1px dashed rgba(95, 99, 104, 1) !important;
-	background-color: transparent !important;
-}
-
-table thead {
+table thead,
+tbody {
 	background-color: #F8F9FA !important;
 }
 
-table tr td,th  {
+
+table tr {
+	border-bottom: 1px dotted rgba(14, 16, 19, 1) !important;
 	border: 0 !important;
+	border-spacing: 10px !important;
+	background-color: transparent !important;
+	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 50%, transparent 50%);
+	background-size: 7px 1px;
+	background-repeat: repeat-x;
+	background-position: 0 bottom;
 }
+
+table tr:last-child {
+	background: none !important;
+}
+
+table tbody {
+	background-color: transparent !important;
+}
+
+table tr td,
+th {
+	border: 0 !important;
+	font-weight: 400 !important;
+}
+
+table tr th {
+	color: #5F6368;
+	text-transform: uppercase !important;
+	font-size: 13px !important;
+	text-align: start !important;
+	font-family: TTCommonsPro !important;
+}
+
+table tr td {
+	font-family: "Haffer" !important;
+	color: rgba(95, 99, 104, 1) !important;
+	text-transform: capitalize !important;
+	font-size: 14px !important;
+}
+
+table tr td:first-child {
+	color: rgba(14, 16, 19, 1) !important;
+	font-weight: 600 !important;
+}
+
+hr {
+	background-color: transparent !important;
+	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 10%, transparent 30%);
+	background-size: 5px 7px;
+	background-repeat: repeat-x;
+	background-position: 0 bottom;
+}
+
+ol:not([class]) li{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: var(--ifm-ul) !important;
+}
+
+ol:not([class]) li::marker {
+	font-weight: 400 !important;
+}
+
+ul:not([class]) {
+	list-style-type:dashed !important;
+}
+
+ul:not([class]) li{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: var(--ifm-ul) !important;
+}
+
+ul:not([class]) li::marker {
+	font-weight: 400 !important;
+}
+
 
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
