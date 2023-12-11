@@ -1062,7 +1062,19 @@ ul:not([class]) li::before {
 	margin-right: 10px !important;
 } */
 
-
+ul {
+  margin: 0;
+}
+ul.dashed_ul {
+  list-style-type: none;
+}
+ul.dashed_ul > li {
+  text-indent: -5px;
+}
+ul.dashed_ul > li:before {
+  content: "-";
+  text-indent: -5px;
+}
 p>a>img[loading="lazy"] {
 	width: 100% !important;
 }
