@@ -142,6 +142,12 @@ const App = () => (
 ### Horizontal line
 ---
 
+### Image
+![image info](https://plainbackground.com/plain1024/565b5f.png)
+
+### Video
+[![](https://markdown-videos-api.jorgenkh.no/youtube/f6zXyq4VPP8)](https://www.youtube.com/watch?v=f6zXyq4VPP8)
+
 ### Ordered List
 1. First item
 2. Second item
