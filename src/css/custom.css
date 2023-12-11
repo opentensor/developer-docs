@@ -1067,6 +1067,10 @@ p>a>img[loading="lazy"] {
 	width: 100% !important;
 }
 
+.open_grepper_editor {
+	display: none !important;
+}
+
 
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
@@ -1076,7 +1080,6 @@ p>a>img[loading="lazy"] {
 	.navbar__item {
 		color: #5f6368 !important;
 	}
-
 }
 
 [data-theme="light"] {
