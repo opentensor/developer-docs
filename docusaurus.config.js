@@ -99,11 +99,11 @@ const config = {
         },
 
         items: [
-          // {
-          //   position: "left",
-          //   label: "Bittensor API Reference",
-          //   href: "pathname:///python-api/html/index.html",
-          // },
+          {
+            position: "left",
+            label: "Bittensor API Reference",
+            href: "pathname:///python-api/html/index.html",
+          },
           {
             type: "dropdown",
             label: "GETTING STARTED",
