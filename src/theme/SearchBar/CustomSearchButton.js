@@ -24,6 +24,7 @@ export default function CustomSearchButton({
   placeholder,
 }) {
 	return (
+    <>
 		<div className="search_container">
 
     <div
@@ -90,12 +91,14 @@ export default function CustomSearchButton({
 			</div>
 
 			</div>
-			<IoSearchCircleOutline className="search_icon" onClick={onClick}
+			
+
+		</div>
+    <IoSearchCircleOutline className="search_icon-for-search" onClick={onClick}
       ref={ref}
       onTouchStart={onTouchStart}
       onFocus={onFocus}
       onMouseOver={onMouseOver} />
-
-		</div>
+    </>
   );
 }

@@ -63,6 +63,7 @@
 	--ifm-tab-container-active-color: black;
 	--ifm-ul: #f5f6f7;
 	--ifm-hr: rgba(95, 99, 104, 1);
+	--ifm-search-icon-color: #a5abaf;
 }
 
 [data-theme="light"] {
@@ -98,6 +99,7 @@
 	--ifm-tab-container-active-color: white;
 	--ifm-ul: rgba(95, 99, 104, 1);
 	--ifm-hr: rgba(14, 16, 19, 1);
+	--ifm-search-icon-color: #1c1e21;
 }
 
 @font-face {
@@ -1154,12 +1156,36 @@ p>a>img[loading="lazy"] {
 	display: flex;
 }
 
+.search_icon-for-search {
+	display: none !important;
+}
+
 @media screen and (max-width: 1370px) {
 	nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 		display: none !important;
 	}
 	.custom__algolia__search__container_xfkw {
 		display: none !important;
+	}
+
+	.search_icon-for-search {
+		display: block !important;
+		width: 25px !important;
+		height: 25px !important;
+		color: var(--ifm-search-icon-color) !important;
+		margin-top: 11px !important;
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	.search_icon-for-search {
+		margin-right: 30px !important;
+	}
+}
+
+@media screen and (max-width: 1175px) {
+	.search_icon-for-search {
+		margin-right: 50px !important;
 	}
 }
 
@@ -1176,8 +1202,21 @@ p>a>img[loading="lazy"] {
 }
 
 @media screen and (max-width: 996px) {
+	.search_icon-for-search {
+		position: absolute;
+		right: 0;
+	}
+
 	.theme-doc-sidebar-menu.menu__list li:first-child>div {
 		display: block !important;
+	}
+
+	.navbar__inner .search_container {
+		width: 100%;
+	}
+
+	.navbar__toggle.clean-btn {
+		margin-bottom: 5px;
 	}
 }
 
