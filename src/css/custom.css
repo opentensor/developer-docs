@@ -1207,6 +1207,10 @@ p>a>img[loading="lazy"] {
 	.feedbackAndName .feedback {
 		display: block !important;
 	}
+
+	.pagination-nav.docusaurus-mt-lg {
+		margin-top: 80px !important;
+	}
 }
 
 @media screen and (max-width: 500px) {
