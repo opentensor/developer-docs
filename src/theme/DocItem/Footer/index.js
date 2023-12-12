@@ -113,11 +113,11 @@ export default function DocItemFooter() {
         </div>
 				{/* Make it external Link */}
         <div className="EditedBy">
-          <p>
+          {/* <p>
             EDIT THIS PAGE
             <br />
             SUBMIT AN ISSUE
-          </p>
+          </p> */}
 
           <div>
             <span>LAST EDIT:</span>
