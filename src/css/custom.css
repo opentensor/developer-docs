@@ -485,11 +485,18 @@ ul {
 }
 
 /* custom style for navbar */
-.custom__algolia__search__container_xfkw {
+.custom__algolia__search__container_xfkw>div>div {
 	width: 250px !important;
 	min-width: 250px !important;
 	max-width: 250px !important;
 }
+
+.custom__algolia__search__container_xfkw>div {
+	width: 250px !important;
+	min-width: 250px !important;
+	max-width: 250px !important;
+}
+
 
 nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 	width: 250px !important;
