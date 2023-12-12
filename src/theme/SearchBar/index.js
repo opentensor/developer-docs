@@ -157,7 +157,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         onClick={onOpen}
         ref={searchButtonRef}
         translations={translations.button}
-        placeholder={props.placeholder ?? "Search documentation"}
+        placeholder={props.placeholder ?? "Search"}
       />
 
       {isOpen &&
