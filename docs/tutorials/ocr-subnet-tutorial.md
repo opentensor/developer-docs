@@ -39,7 +39,7 @@ The Python notebooks we use in this tutorial contain all the three essential com
 
 ## Tutorial method
 
-For the rest of this tutorial we will proceed by copying blocks of code from the above Python notebooks into the OCR subnet repository.
+For the rest of this tutorial we will proceed by copying blocks of code from the above Python notebooks into the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet).
 
 ## Prerequisites
 
@@ -82,7 +82,23 @@ sources={{
 
 ## Step 1: Generate challenge and query miners
 
-TBD
+**Generate challenge**
+
+To generate a challenge task, the subnet validator applies the following steps:
+- Creates a synthetic invoice document using the [Python Faker library](https://github.com/joke2k/faker). 
+- Converts this synthetic data into PDF using [ReportLab Python library](https://docs.reportlab.com/install/open_source_installation/). 
+- Finally the validator creates the challenge by converting this PDF into a corrupted image. 
+
+**Collab Notebook source:** The validated code for the above logic is in [Validation Data cell](https://colab.research.google.com/drive/1jLj1y2SHKhCAjx6koryp2bbIucbdVX7v#scrollTo=M8Cf2XVUJnBh).
+
+**Copy to OCR repo**
+
+All we have to do is to copy the above Notebook code into a proper place in the OCR subnet repo. In the OCR subnet repo we see that the validator code is located in the `ocr_subnet/validator` directory. We copy the above Notebook code into the following code files:
+
+- [**ocr_subnet/validator/generate.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/generate.py): Code to generate a synthetic sample invoice PDF document.
+- [**ocr_subnet/validator/corrupt.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/corrupt.py): Code that adds noise to the sample invoice document.
+
+**Query miners**
 
 ## Step 2: Miner response
 
