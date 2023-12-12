@@ -736,24 +736,7 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 }
 
 .feedbackAndName .EditedBy {
-	display: block;
-}
-
-.feedbackAndName .EditedBy p {
-	margin: 0 !important;
-	font-family: TTCommonsPro !important;
-	font-size: 10px !important;
-	line-height: 15px;
-	text-decoration: underline;
-}
-
-.feedbackAndName .EditedBy div {
-	display: flex;
-	align-items: center;
-	gap: 0 10px;
-	font-size: 10px !important;
-	font-family: TTCommonsPro !important;
-	color: #5f6368;
+	display: none !important;
 }
 
 .footer-line div {
@@ -1156,8 +1139,22 @@ p>a>img[loading="lazy"] {
 	display: flex;
 }
 
+.navbar-sidebar__item.menu .search_icon-for-search {
+	display: none !important;
+}
+
 .search_icon-for-search {
 	display: none !important;
+}
+
+.lastEdit {
+	width: 100%;
+	text-align: right;
+	margin-top: -65px;
+	margin-bottom: 45px;
+	font-size: 12px !important;
+	font-family: TTCommonsPro !important;
+	color: #5f6368;
 }
 
 @media screen and (max-width: 1370px) {
@@ -1203,8 +1200,7 @@ p>a>img[loading="lazy"] {
 
 @media screen and (max-width: 996px) {
 	.search_icon-for-search {
-		position: absolute;
-		right: 0;
+		display: none !important;
 	}
 
 	.theme-doc-sidebar-menu.menu__list li:first-child>div {
@@ -1252,17 +1248,6 @@ p>a>img[loading="lazy"] {
 @media screen and (max-width: 550px) {
 	.feedbackAndName {
 		display: block !important;
-	}
-
-	.feedbackAndName .EditedBy {
-		width: 100%;
-		text-align: right;
-		margin-top: 25px;
-	}
-
-	.feedbackAndName .EditedBy div {
-		display: table !important;
-		float: right;
 	}
 
 	.feedbackAndName .feedback {
