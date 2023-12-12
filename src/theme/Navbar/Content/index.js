@@ -30,7 +30,8 @@ Please double-check the following navbar item (themeConfig.navbar.items) of your
 ${JSON.stringify(item, null, 2)}`,
               { cause: error }
             )
-          }>
+          }
+        >
           <NavbarItem {...item} />
         </ErrorCauseBoundary>
       ))}
@@ -43,7 +44,8 @@ function NavbarContentLayout({ left, right }) {
       className="navbar__inner"
       style={{
         position: "relative",
-      }}>
+      }}
+    >
       <div className="navbar__items">{left}</div>
       <div className={styles.custom__algolia__search__container}>
         <NavbarSearch>
@@ -64,8 +66,8 @@ export default function NavbarContent() {
       left={
         // TODO stop hardcoding items?
         <>
-          <NavbarLogo />
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+          <NavbarLogo />
           <NavbarItems items={leftItems} />
         </>
       }
