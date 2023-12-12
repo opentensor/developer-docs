@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import { IoSearchCircleOutline } from "react-icons/io5";
 
 {
   /* <DocSearchButton
@@ -22,7 +23,9 @@ export default function CustomSearchButton({
   translations,
   placeholder,
 }) {
-  return (
+	return (
+		<div className="search_container">
+
     <div
       className={styles.container}
       onClick={onClick}
@@ -51,7 +54,6 @@ export default function CustomSearchButton({
         </defs>
       </svg>
       <p>{placeholder}</p>
-
       <div className={styles.keys}>
         <svg
           width="34"
@@ -85,7 +87,11 @@ export default function CustomSearchButton({
             fill="#5F6368"
           />
         </svg>
-      </div>
-    </div>
+			</div>
+
+			</div>
+			<IoSearchCircleOutline className="search_icon" />
+
+		</div>
   );
 }
