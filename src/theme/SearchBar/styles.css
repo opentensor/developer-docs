@@ -18,4 +18,39 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.search_mobile_icon {
+	align-items: center;
+	background: var(--docsearch-searchbox-background);
+	border: 0;
+	border-radius: 40px;
+	color: var(--docsearch-muted-color);
+	cursor: pointer;
+	/* display: flex; */
+	font-weight: 500;
+	height: 36px;
+	justify-content: space-between;
+	margin: 0 0 0 16px;
+	padding: 0 8px;
+	-webkit-user-select: none;
+	user-select: none;
+	width: 36px;
+	display:none;
+}
 
+@media (max-width: 1310px) {
+	.search_mobile_icon{
+		display: flex;
+    justify-content: center;
+	}
+
+	.custom_algolia {
+	right: 1rem;	
+	left: unset;
+	}
+}
+@media (max-width: 996px)
+{
+	.custom_algolia {
+		
+	}
+}
