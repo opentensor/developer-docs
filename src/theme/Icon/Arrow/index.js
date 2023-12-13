@@ -1,29 +1,14 @@
-import React from "react";
+import React from 'react';
+import { IoMdArrowDropright } from "react-icons/io";
+
 export default function IconArrow(props) {
+    // <svg width="20" height="20" aria-hidden="true" {...props}>
+    //   <g fill="#7a7a7a">
+    //     <path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0" />
+    //     <path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0" />
+    //   </g>
+    // </svg>
   return (
-    <svg
-      width="24"
-      {...props}
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_74_1897)">
-        <path
-          d="M15.5937 13.7958L14.5856 13.7813L14.5856 10.1804L8.8762 15.8899L8.16912 15.1828L13.8786 9.47335L10.2777 9.47335L10.2632 8.46529L15.5937 8.46529L15.5937 13.7958Z"
-          fill="#5F6368"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_74_1897">
-          <rect
-            width="16"
-            height="16"
-            fill="white"
-            transform="translate(0.744141 12) rotate(-45)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  );
+  <IoMdArrowDropright {...props}/>
+		);
 }
