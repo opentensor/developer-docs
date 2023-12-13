@@ -96,9 +96,15 @@ To generate a challenge task, the subnet validator applies the following steps:
 All we have to do is to copy the above Notebook code into a proper place in the OCR subnet repo. In the OCR subnet repo we see that the validator code is located in the `ocr_subnet/validator` directory. We copy the above Notebook code into the following code files:
 
 - [**ocr_subnet/validator/generate.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/generate.py): Code to generate a synthetic sample invoice PDF document.
-- [**ocr_subnet/validator/corrupt.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/corrupt.py): Code that adds noise to the sample invoice document.
+- [**ocr_subnet/validator/corrupt.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/corrupt.py): Code that converts PDF into an image and adds noise to the image.
 
 **Query miners**
+
+Next, the subnet validator sends this noisy image to the miners, tasking them to perform OCR and content extraction. In the validated Collab Notebook code, this is accomplished by passing the path information of the noisy image from the validator collab notebook to the miner collab notebook. 
+
+embeds this noisy image into a Synapse object called 
+
+- [**ocr_subnet/protocol.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/protocol.py): `OCRSynapse` class definition.
 
 ## Step 2: Miner response
 
