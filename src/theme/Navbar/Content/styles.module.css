@@ -5,18 +5,4 @@ Hide color mode toggle in small viewports
   .colorModeToggle {
     display: none;
   }
-  .custom__algolia__search__container {
-    display: none;
-  }
-}
-
-.custom__algolia__search__container {
-  flex: 1;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 34%;
-  height: 100%;
-  min-width: 300px !important;
 }

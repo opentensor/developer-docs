@@ -94,11 +94,7 @@ export default function CustomSearchButton({
 			
 
 		</div>
-    <IoSearchCircleOutline className="search_icon-for-search" onClick={onClick}
-      ref={ref}
-      onTouchStart={onTouchStart}
-      onFocus={onFocus}
-      onMouseOver={onMouseOver} />
+   
     </>
   );
 }

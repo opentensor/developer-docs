@@ -12,3 +12,10 @@
 .DocSearch-Container {
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
+.custom_algolia {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

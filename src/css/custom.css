@@ -444,11 +444,11 @@ ul {
 		padding: 0;
 	}
 }
-
+/* 
 .menu__list-item.sidebarSearch>div {
 	margin-top: 1rem !important;
 	margin-bottom: 30px !important;
-}
+} */
 
 .theme-doc-sidebar-container>div>div {
 	width: 100% !important;
@@ -480,12 +480,12 @@ ul {
 }
 
 /* sidebar search style */
-.theme-doc-sidebar-item-link>div {
+/* .theme-doc-sidebar-item-link>div {
 	width: 100% !important;
-}
+} */
 
 /* custom style for navbar */
-.custom__algolia__search__container_xfkw>div>div {
+/* .custom__algolia__search__container_xfkw>div>div {
 	width: 250px !important;
 	min-width: 250px !important;
 	max-width: 250px !important;
@@ -495,7 +495,7 @@ ul {
 	width: 250px !important;
 	min-width: 250px !important;
 	max-width: 250px !important;
-}
+} */
 
 
 nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
@@ -817,7 +817,7 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 
 
 /* Algolia Search */
-.DocSearch {
+/* .DocSearch {
 	position: fixed !important;
 	left: 0;
 	top: 0;
@@ -877,7 +877,7 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 
 #__docusaurus_skipToContent_fallback>div>div aside {
 	border-right: 2px solid var(--ifm-navbar-border) !important;
-}
+} */
 
 /* Components design */
 .alert {
@@ -1151,13 +1151,13 @@ p>a>img[loading="lazy"] {
 	display: flex;
 }
 
-.navbar-sidebar__item.menu .search_icon-for-search {
+/* .navbar-sidebar__item.menu .search_icon-for-search {
 	display: none !important;
 }
 
 .search_icon-for-search {
 	display: none !important;
-}
+} */
 
 .lastEdit {
 	width: 100%;
