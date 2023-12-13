@@ -444,6 +444,7 @@ ul {
 		padding: 0;
 	}
 }
+
 /* 
 .menu__list-item.sidebarSearch>div {
 	margin-top: 1rem !important;
@@ -486,24 +487,25 @@ ul {
 
 /* custom style for navbar - Change the Class name if you want stick with it (custom_algolia)  */
 .custom__algolia__search__container_xfkw>div>div {
-	width: 250px !important;
-	min-width: 250px !important;
-	max-width: 250px !important;
+	width: 300px !important;
+	min-width: 300px !important;
+	max-width: 300px !important;
 }
 
 .custom__algolia__search__container_xfkw>div {
-	width: 250px !important;
-	min-width: 250px !important;
-	max-width: 250px !important;
+	width: 300px !important;
+	min-width: 300px !important;
+	max-width: 300px !important;
 }
 
 
 nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
-	width: 250px !important;
-	min-width: 250px !important;
-	max-width: 250px !important;
+	width: 300px !important;
+	min-width: 300px !important;
+	max-width: 300px !important;
 
 }
+
 /* BUG it's has some issue Be Careful */
 /* .navbar .navbar__inner div:nth-child(2) {
 	display: flex;
@@ -558,6 +560,7 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 .container.padding-top--md {
 	position: relative;
 }
+
 .container.padding-top--md>div>div:last-child {
 	padding-left: 1rem !important;
 }
@@ -757,7 +760,7 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 	right: 0;
 	width: 100% !important;
 	border-top: 2px solid var(--ifm-navbar-border);
-	margin-top: 30px;
+	margin-top: -10px;
 	height: 110px;
 	z-index: 9 !important;
 	background-color: var(--ifm-footer-div-color);
@@ -766,7 +769,6 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 /* pagination */
 .pagination-nav {
 	display: flex !important;
-	align-items: center;
 	justify-content: space-between;
 	z-index: 99 !important;
 	position: relative;
@@ -994,26 +996,15 @@ table {
 	display: table !important;
 }
 
-table thead,
-tbody {
+table thead {
 	background-color: #F8F9FA !important;
 }
 
 
 table tr {
-	border-bottom: 1px dotted rgba(14, 16, 19, 1) !important;
-	border: 0 !important;
-	border-spacing: 10px !important;
-	background-color: transparent !important;
-	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 50%, transparent 50%);
-	background-size: 7px 1px;
-	background-repeat: repeat-x;
-	background-position: 0 bottom;
+	border-bottom: 1px dashed rgba(14, 16, 19, 1) !important;
 }
 
-table tr:last-child {
-	background: none !important;
-}
 
 table tbody {
 	background-color: transparent !important;
@@ -1054,14 +1045,10 @@ hr {
 }
 
 ol:not([class]) li {
-	font-size: 14px !important;
-	font-weight: bold !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
 	color: var(--ifm-ul) !important;
 	font-family: "Haffer";
-}
-
-ol:not([class]) li::marker {
-	font-weight: 600 !important;
 }
 
 ul.dashed_ul {
@@ -1088,29 +1075,6 @@ ul.dashed_ul>li::before {
 	position: absolute;
 	left: -15px;
 }
-
-/* ul.dashed_ul {
-	list-style-type: none !important;
-	padding: 0 !important;
-	padding-left: 15px !important;
-}
-
-ul.dashed_ul li {
-	font-size: 14px !important;
-	font-weight: 600 !important;
-	color: var(--ifm-ul) !important;
-	display: flex;
-}
-
-ul.dashed_ul li::before {
-	content: "" !important;
-	display: block;
-	width: 8px !important;
-	background-color: var(--ifm-ul) !important;
-	height: 1px !important;
-	margin-top: 13px !important;
-	margin-right: 10px !important;
-} */
 
 
 p>a>img[loading="lazy"] {
@@ -1151,14 +1115,6 @@ p>a>img[loading="lazy"] {
 	display: flex;
 }
 
-/* .navbar-sidebar__item.menu .search_icon-for-search {
-	display: none !important;
-}
-
-.search_icon-for-search {
-	display: none !important;
-} */
-
 .lastEdit {
 	width: 100%;
 	text-align: right;
@@ -1167,52 +1123,44 @@ p>a>img[loading="lazy"] {
 	font-size: 12px !important;
 	font-family: TTCommonsPro !important;
 	color: #5f6368;
+	position: absolute !important;
+	top: 55px !important;
 }
 
-@media screen and (max-width: 1370px) {
-	nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
-		display: none !important;
-	}
-	.custom__algolia__search__container_xfkw {
-		display: none !important;
-	}
 
-	.search_icon-for-search {
-		display: block !important;
-		width: 25px !important;
-		height: 25px !important;
-		color: var(--ifm-search-icon-color) !important;
-		margin-top: 11px !important;
-	}
+.navbar__inner .search_container div:last-child {
+	margin-right: 8px !important;
 }
 
-@media screen and (max-width: 1280px) {
-	.search_icon-for-search {
-		margin-right: 30px !important;
-	}
+.navbar.navbar--fixed-top {
+	margin-bottom: 0 !important;
 }
 
-@media screen and (max-width: 1175px) {
-	.search_icon-for-search {
-		margin-right: 50px !important;
-	}
+main article{
+	position: relative !important;
 }
 
-@media screen and (max-width: 1077px) {
-	.navbar__items.navbar__items--right {
-		gap: 0 !important;
-	}
+main article a{
+	text-decoration: underline !important;
 }
 
-@media screen and (max-width: 1020px) {
-	.navbar__items.navbar__items--right>div {
-		margin-left: 0px !important;
+@media screen and (max-width: 1310px) {
+	.navbar__inner .navbar__items--right a:nth-child(3) {
+		margin-right: 20px !important;
 	}
 }
 
 @media screen and (max-width: 996px) {
-	.search_icon-for-search {
-		display: none !important;
+	.navbar__inner .navbar__items:first-child div {
+		right: 0 !important;
+	}
+
+	.navbar.navbar--fixed-top {
+		padding: 10px 15px !important;
+	}
+
+	.navbar__inner .search_container div:last-child {
+		margin-right: 0px !important;
 	}
 
 	.theme-doc-sidebar-menu.menu__list li:first-child>div {
@@ -1279,6 +1227,10 @@ p>a>img[loading="lazy"] {
 	.navbar-sidebar__item:last-child {
 		width: 100% !important;
 	}
+	
+	.pagination-nav .pagination-nav__link {
+		max-width:489  !important;
+	}
 }
 
 
@@ -1294,4 +1246,8 @@ p>a>img[loading="lazy"] {
 	.footer {
 		padding: 20px 0 !important;
 	}
+}
+
+.feedbackAndName {
+	display: none !important;
 }
