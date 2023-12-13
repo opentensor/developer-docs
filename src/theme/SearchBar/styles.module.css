@@ -46,3 +46,9 @@
 .keys > svg:first-child {
   margin-right: 4px;
 }
+
+@media (max-width: 1310px) {
+	.container {
+		display: none;
+	}
+}

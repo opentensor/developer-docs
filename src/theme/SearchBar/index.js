@@ -152,7 +152,7 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}) {
           crossOrigin="anonymous"
         />
       </Head>
-			{windowSize === 'mobile'?<DocSearchButton
+			{windowSize === 'mobile'?<CustomSearchButton
         onTouchStart={importDocSearchModalIfNeeded}
         onFocus={importDocSearchModalIfNeeded}
         onMouseOver={importDocSearchModalIfNeeded}
