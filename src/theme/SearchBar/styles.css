@@ -12,6 +12,9 @@
 .DocSearch-Container {
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
+.search_container {
+	width: 250px;
+}
 .custom_algolia {
 	position: absolute;
   top: 50%;
@@ -38,6 +41,10 @@
 }
 
 @media (max-width: 1310px) {
+	
+.search_container {
+	width: auto;
+}
 	.search_mobile_icon{
 		display: flex;
     justify-content: center;
