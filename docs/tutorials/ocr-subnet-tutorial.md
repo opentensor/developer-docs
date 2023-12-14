@@ -154,6 +154,42 @@ To generate this challenge, the subnet validator applies the following steps:
 - Converts this synthetic data into PDF using [ReportLab Python library](https://docs.reportlab.com/install/open_source_installation/). 
 - Finally the validator creates the challenge by converting this PDF into a corrupted image, called `noisy_image`. 
 
+#### Code snapshot
+
+See below for a snapshot view of the code. 
+
+```python
+# Generates a PDF invoice from the raw data passed in as "invoice_data" dictionary 
+# and saves the PDF with "filename"
+def create_invoice(invoice_data, filename)
+...
+
+# Using Faker, generate sample data for the invoice
+invoice_info = {
+    "company_name": fake.company(),
+    "company_address": fake.address(),
+    "company_city_zip": f'{fake.city()}, {fake.zipcode()}',
+...
+}
+...
+
+# Pass the "invoice_info" containing the Faker-generated raw data 
+# to create_invoice() method and generate the synthetic invoice PDF 
+pdf_filename = "sample_invoice.pdf"
+data = create_invoice(invoice_info, pdf_filename)
+...
+
+# Converts PDF into PIL image using Pillow library
+# Used by the corrupt_image() method 
+def load_image(pdf_path, page=0, zoom_x=1.0, zoom_y=1.0):
+
+# Accepts a PDF, uses load_image() method to convert to image 
+# and adds noise, blur, spots, rotates the page, curls corners, darkens edges so 
+# that the overall result is noisy. Saves back in PDF format. 
+# This is our corrupted synthetic PDF document. 
+def corrupt_image(input_pdf_path, output_pdf_path, border=50, noise=0.1, spot=(100,100), scale=0.
+```
+
 **Collab Notebook source:** The validated code for the above synthetic PDF generation logic is in [Validation flow cell](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh).
 
 All we have to do is to copy the above Notebook code into a proper place in the OCR subnet repo. 
@@ -203,6 +239,17 @@ Next, the subnet validator sends this `noisy_image` to the miners, tasking them 
 
 However, in a Bittensor subnet, any communication between a subnet validator and a subnet miner must use an object of the type `Synapse`. Hence, the subnet validator must embed the corrupted image into a `Synapse` object and send this object to the miners. The miners will then place their responses into this same object they received and send them back to the subnet validator. 
 
+#### Code snapshot
+
+```python
+# OCRSynapse class, using bt.Synapse as its base.
+# This protocol enables communication between the miner and the validator.
+# Attributes:
+#    - image: A pdf image to be processed by the miner.
+#    - response: List[dict] containing data extracted from the image.
+class OCRSynapse(bt.Synapse): 
+```
+
 :::tip important
 The `OCRSynapse` object can only contain serializable objects. This is because both the subnet validators and the subnet miners must be able to deserialize after receiving the object.
 :::
@@ -228,7 +275,23 @@ See [Neuron-to-neuron communication](../learn/bittensor-building-blocks.md#neuro
 
 With the `OCRSynapse` class defined, next we use the network client `dendrite` of the subnet validator to send queries to the `Axon` server of the subnet miners. 
 
-See [**ocr_subnet/forward.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/forward.py) which contains all this communication logic. 
+#### Code snapshot
+
+```python
+# Create synapse object to send to the miner and attach the image.
+# convert PIL image into a json serializable format
+synapse = OCRSynapse(base64_image = serialize_image(image))
+# The dendrite client of the validator queries the miners in the subnet
+responses = self.dendrite.query(
+    # Send the query to selected miner axons in the network.
+    axons=[self.metagraph.axons[uid] for uid in miner_uids],
+    # Pass the synapse to the miner.
+    synapse=synapse,
+...
+)
+```
+
+See [**ocr_subnet/validator/forward.py**](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/validator/forward.py) which contains all this communication logic. 
 
 Also note that the [**scripts/**](https://github.com/steffencruz/ocr_subnet/tree/main/scripts) directory contains the sample invoice document and its noisy version. The subnet validator uses these as ground truth labels to score the miner responses.
 
@@ -266,6 +329,16 @@ The Python notebook contains an implementation of the base miner, which uses [`p
 
 **Collab Notebook source**: See the `miner` method in this [Miner cell of the Collab Notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=hhKFy5U2EW7e).
 
+#### Code snapshot
+
+```python
+import pytesseract
+# Extracts text data from image using pytesseract. This is the baseline miner.
+def miner(image, merge=True, sort=True)
+...
+response = miner(noisy_image, merge=True)
+```
+
 We copy the above miner code from the Notebook into the following code files. Click on the OCR repo file names to see the copied code:
 
 ```bash {4}
@@ -298,6 +371,39 @@ When a miner sends its response, the subnet validator scores the quality of the 
 
 **Response time penalty**
 : Calculate the response time penalty for the miner for these predictions.
+
+#### Code snapshot
+```python
+# Calculate the intersection over union (IoU) of two bounding boxes.
+def get_position_reward(boxA: List[float], boxB: List[float] = None):
+...
+# Calculate the edit distance between two strings.
+def get_text_reward(text1: str, text2: str = None):
+...
+# Calculate the distance between two fonts, based on the font size and font family.
+def get_font_reward(font1: dict, font2: dict = None, alpha_size=1.0, alpha_family=1.0):
+...
+# Score a section of the image based on the section's correctness.
+# Correctness is defined as:
+# - the intersection over union of the bounding boxes,
+# - the delta between the predicted font and the ground truth font,
+# - and the edit distance between the predicted text and the ground truth text.
+def section_reward(label: dict, pred: dict, alpha_p=1.0, alpha_f=1.0, alpha_t=1.0, verbose=False):
+  ...
+  reward = {
+        'text': get_text_reward(label['text'], pred.get('text')),
+        'position': get_position_reward(label['position'], pred.get('position')),
+        'font': get_font_reward(label['font'], pred.get('font')),
+    }
+
+    reward['total'] = (alpha_t * reward['text'] + alpha_p * reward['position'] + alpha_f * reward['font']) / (alpha_p + alpha_f + alpha_t)
+...
+# Reward the miner response.
+def reward(image_data: List[dict], predictions: List[dict], time_elapsed: float) -> float:
+    time_reward = max(1 - time_elapsed / max_time, 0)
+    total_reward = (alpha_prediction * prediction_reward + alpha_time * time_reward) / (alpha_prediction + alpha_time)
+...
+```
 
 **Collab Notebook source**: See the [Incentive mechanism cell](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=jcwFaIjwJnBj).
 
