@@ -1172,35 +1172,6 @@ footer .container.container-fluid {
 	max-width: 100% !important;
 }
 
-.docsearch-list {
-	border: 1px solid var(--ifm-doc-search-border-color) !important;
-	border-radius: 10px !important;
-}
-
-
-.docsearch-list>li {
-	background-color: transparent !important;
-	padding: 0 !important;
-	border-bottom: 1px dashed var(--ifm-doc-search-border-color) !important;
-	color: 1px solid var(--ifm-tab-container-active-bg) !important;
-	font-size: 16px !important;
-}
-
-
-.docsearch-list>li:last-child {
-	border-bottom: 0 !important;
-}
-
-.DocSearch-Modal .DocSearch-Hit-source {
-	font-size: 15px !important;
-	text-transform: uppercase !important;
-	font-weight: bold !important;
-	color: 1px solid var(--ifm-tab-container-active-bg) !important;
-}
-
-.docsearch-list>li>a>div {
-	gap: 0 10px;
-}
 
 @media screen and (max-width: 1310px) {
 	.navbar__inner .navbar__items--right a:nth-child(3) {
