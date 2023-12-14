@@ -1012,7 +1012,7 @@ table tr {
 	background-position: 0 bottom;
 }
 
-table tr:last-child {
+table tbody tr:last-child {
 	border-bottom: 0 !important;
 	background-image: none !important;
 }
