@@ -1012,6 +1012,10 @@ table tr {
 	background-position: 0 bottom;
 }
 
+table tr:last-child {
+	border-bottom: 0 !important;
+	background-image: none !important;
+}
 
 table tbody {
 	background-color: transparent !important;
@@ -1026,9 +1030,18 @@ th {
 table tr th {
 	color: #5F6368;
 	text-transform: uppercase !important;
-	font-size: 13px !important;
-	text-align: start !important;
+	font-size: 14px !important;
+	text-align: center !important;
 	font-family: TTCommonsPro !important;
+	font-weight: bold !important;
+}
+
+table tr th:first-child {
+	text-align: start !important;
+}
+
+table tr th:last-child {
+	text-align: start !important;
 }
 
 table tr td {
@@ -1036,11 +1049,19 @@ table tr td {
 	color: rgba(95, 99, 104, 1) !important;
 	text-transform: capitalize !important;
 	font-size: 14px !important;
+	text-align: center !important;
 }
 
 table tr td:first-child {
-	color: rgba(14, 16, 19, 1) !important;
-	font-weight: 600 !important;
+	text-align: start !important;
+}
+
+table tr td:last-child {
+	text-align: start !important;
+}
+
+table tr td:first-child {
+	font-weight: 400 !important;
 }
 
 hr {
@@ -1151,6 +1172,11 @@ main article a{
 	text-decoration: underline !important;
 }
 
+
+.feedbackAndName {
+	display: none !important;
+}
+
 @media screen and (max-width: 1310px) {
 	.navbar__inner .navbar__items--right a:nth-child(3) {
 		margin-right: 20px !important;
@@ -1213,14 +1239,6 @@ main article a{
 }
 
 @media screen and (max-width: 550px) {
-	.feedbackAndName {
-		display: block !important;
-	}
-
-	.feedbackAndName .feedback {
-		display: block !important;
-	}
-
 	.pagination-nav.docusaurus-mt-lg {
 		margin-top: 80px !important;
 	}
@@ -1253,8 +1271,4 @@ main article a{
 	.footer {
 		padding: 20px 0 !important;
 	}
-}
-
-.feedbackAndName {
-	display: none !important;
 }
