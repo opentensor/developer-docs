@@ -1002,7 +1002,14 @@ table thead {
 
 
 table tr {
-	border-bottom: 1px dashed rgba(14, 16, 19, 1) !important;
+	border-bottom: 1px dotted rgba(14, 16, 19, 1) !important;
+	border: 0 !important;
+	border-spacing: 10px !important;
+	background-color: transparent !important;
+	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 50%, transparent 50%);
+	background-size: 7px 1px;
+	background-repeat: repeat-x;
+	background-position: 0 bottom;
 }
 
 
