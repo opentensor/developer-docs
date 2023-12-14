@@ -45,7 +45,7 @@ Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 LPUSH bikes:repairs bike:1
 ```
 ### Show source
-```tsx title="<file />bitterson/App.tsx"
+```tsx title="<file />bitterson/App.tsx" link="https://figma.com"
 const App = () => (
   <Bitteson
     dataProvider={dataProvider}
@@ -85,7 +85,7 @@ const App = () => (
 ### Show Tabs with Source
 <Tabs>
   <TabItem value="ts" label="TS" default>
-```tsx title="<file />Bitterson/help.ts"
+```tsx title="<file />Bitterson/help.ts" link="https://figma.com"
 const App = () => (
   <Bitteson
     dataProvider={dataProvider}
