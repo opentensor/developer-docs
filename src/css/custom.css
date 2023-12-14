@@ -1136,7 +1136,7 @@ p>a>img[loading="lazy"] {
 .lastEdit {
 	width: 100%;
 	text-align: right;
-	margin-top: -70px;
+	/* margin-top: -70px; */
 	margin-bottom: 45px;
 	font-size: 12px !important;
 	font-family: TTCommonsPro !important;
