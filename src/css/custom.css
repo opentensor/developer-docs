@@ -1177,6 +1177,11 @@ main article a{
 	display: none !important;
 }
 
+footer .container.container-fluid {
+	margin: 0 !important;
+	max-width: 100% !important;
+}
+
 @media screen and (max-width: 1310px) {
 	.navbar__inner .navbar__items--right a:nth-child(3) {
 		margin-right: 20px !important;
