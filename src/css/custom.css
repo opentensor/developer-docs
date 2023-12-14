@@ -1029,8 +1029,7 @@ th {
 
 table tr th {
 	color: #5F6368;
-	text-transform: uppercase !important;
-	font-size: 14px !important;
+	font-size: 15px !important;
 	text-align: center !important;
 	font-family: TTCommonsPro !important;
 	font-weight: bold !important;
@@ -1049,16 +1048,7 @@ table tr td {
 	color: rgba(95, 99, 104, 1) !important;
 	text-transform: capitalize !important;
 	font-size: 14px !important;
-	/* text-align: center !important; */
 }
-
-/* table tr td:first-child {
-	text-align: start !important;
-}
-
-table tr td:last-child {
-	text-align: start !important;
-} */
 
 table tr td:first-child {
 	font-weight: 400 !important;
