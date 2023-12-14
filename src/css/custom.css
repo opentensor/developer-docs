@@ -1049,16 +1049,16 @@ table tr td {
 	color: rgba(95, 99, 104, 1) !important;
 	text-transform: capitalize !important;
 	font-size: 14px !important;
-	text-align: center !important;
+	/* text-align: center !important; */
 }
 
-table tr td:first-child {
+/* table tr td:first-child {
 	text-align: start !important;
 }
 
 table tr td:last-child {
 	text-align: start !important;
-}
+} */
 
 table tr td:first-child {
 	font-weight: 400 !important;
