@@ -104,7 +104,7 @@ const App = () => (
 ```
   </TabItem>
 	<TabItem value="js" label="JS" default>
-```tsx title="<file />Bitterson/help.js"
+```tsx title="<file />Bitterson/help.js" link="https://github.com/facebook/react"
 const App = () => (
   <Bitteson
     dataProvider={dataProvider}

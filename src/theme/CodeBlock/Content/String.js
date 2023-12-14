@@ -16,6 +16,7 @@ import Container from '@theme/CodeBlock/Container';
 import { CiFileOn } from "react-icons/ci";
 
 import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 // Prism languages are always lowercase
 // We want to fail-safe and allow both "php" and "PHP"
 // See https://github.com/facebook/docusaurus/issues/9012
@@ -37,7 +38,8 @@ export default function CodeBlockString({
     languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage,
   );
   const prismTheme = usePrismTheme();
-  const wordWrap = useCodeWordWrap();
+	const wordWrap = useCodeWordWrap();
+	console.log(metastring,"metastring");
   // We still parse the metastring in case we want to support more syntax in the
   // future. Note that MDX doesn't strip quotes when parsing metastring:
   // "title=\"xyz\"" => title: "\"xyz\""
@@ -53,7 +55,16 @@ export default function CodeBlockString({
     magicComments,
   });
   const showLineNumbers =
-    showLineNumbersProp ?? containsLineNumbers(metastring);
+		showLineNumbersProp ?? containsLineNumbers(metastring);
+		const regexExtractLink = /link="([^"]+)"/;
+	const match = `${metastring}`.match(regexExtractLink);
+	console.log(match);
+	if (match) {
+		const linkValue = match[1];
+		title = <Link href={linkValue}> {title}</Link>
+	} else {
+		console.log('Link not found in the input string.');
+	}
   return (
     <Container
       as="div"
@@ -65,7 +76,8 @@ export default function CodeBlockString({
       )}>
 			{title && <div className={styles.codeBlockTitle}>
 				{isFileIconEnabled ? <CiFileOn className='codeTitleIcon' />:null}
-				{title}</div>}
+				{title}
+			</div>}
       <div className={styles.codeBlockContent}>
         <Highlight theme={prismTheme} code={code} language={language ?? 'text'}>
           {({className, style, tokens, getLineProps, getTokenProps}) => (
