@@ -1044,9 +1044,7 @@ table tr th:last-child {
 }
 
 table tr td {
-	font-family: "Haffer" !important;
 	color: rgba(95, 99, 104, 1) !important;
-	text-transform: capitalize !important;
 	font-size: 14px !important;
 }
 
