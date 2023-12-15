@@ -67,6 +67,17 @@ const sidebars = {
         "subnets/code-walkthrough-text-prompting",
       ],
     },
+    {
+      type: "category",
+      label: "Subnet Showcase",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "subnet-showcase/subnet-showcase",
+        "subnet-showcase/subnet-1",
+      ],
+    },
+    
     "reference/btcli",
     "emissions",
     // "reference/bittensor-api-ref",
