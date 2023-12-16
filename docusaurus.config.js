@@ -104,13 +104,56 @@ const config = {
             label: "Bittensor API Reference",
             href: "pathname:///python-api/html/index.html",
           },
+          // {
+          //   type: "dropdown",
+          //   label: "GETTING STARTED",
+          //   position: "left",
+          //   items: [
+          //     // {
+          //     // 	label: 'Item 1',
+
+          //     // 	position: "left",
+          //     // 	type: 'category',
+          //     // 	items: [
+          //     // 		"getting-started/installation",
+          //     // 		"getting-started/wallets",
+          //     // 	],
+					// 		// },
+					// 		{to:"/",  label: "WELCOME",},
+					// 		{
+					// 			label: "WHAT'S NEW IN DOCS",
+					// 			to: "/whats-new-in-docs"
+					// 		},
+          //     {
+					// 			label: "Get Started",
+								
+          //       dropdown: [
+          //         {
+          //           label: "INSTALL BITTENSOR",
+          //           to: "/getting-started/installation",
+          //         },
+          //         {
+          //           label: 'CREATE WALLET',
+          //           to: "/getting-started/wallets",
+          //         },
+          //       ],
+          //       // type: "dropdown",
+          //       // 	items: [
+          //       // 	"getting-started/installation",
+          //       // 	"getting-started/wallets",
+          //       // ],
+          //       to: "/getting-started/installation",
+          //     },
+          //   ],
+					// },
+					
+					{
+						type: "search",
+						position: "left",
+						className: "custom_algolia"
+					},
           {
-            href: "https://wallet.bittensor.com/",
-            label: "Wallet",
-            position: "right",
-          },
-          {
-            href: "https://github.com/opentensor/bittensor",
+            href: "https://github.com/opentensor/new-docs",
             label: "GitHub",
             position: "right",
           },
@@ -142,7 +185,7 @@ const config = {
       },
       footer: {
         //style: "dark",
-       // links: [
+        // links: [
         //   {
         //     title: "Wallet",
         //     items: [
