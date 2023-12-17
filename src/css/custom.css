@@ -65,6 +65,10 @@
 	--ifm-hr: rgba(95, 99, 104, 1);
 	--ifm-search-icon-color: #a5abaf;
 	--ifm-doc-search-border-color: #000000;
+	--ifm-table-header-bg: #2B2B2D;
+	--ifm-table-header-color: white;
+	--ifm-table-body-color: #D7E3E3;
+	--ifm-table-tr-border: #3c3e42;
 }
 
 [data-theme="light"] {
@@ -102,6 +106,10 @@
 	--ifm-hr: rgba(14, 16, 19, 1);
 	--ifm-search-icon-color: #1c1e21;
 	--ifm-doc-search-border-color: rgba(219, 221, 225, 1);
+	--ifm-table-header-bg: #F8F9FA;
+	--ifm-table-header-color: #5F6368;
+	--ifm-table-body-color: rgba(95, 99, 104, 1);
+	--ifm-table-tr-border: rgba(14, 16, 19, 1);
 }
 
 @font-face {
@@ -781,6 +789,11 @@ nav.navbar .navbar__inner .container_src-theme-SearchBar-styles-module {
 	text-align: start !important;
 }
 
+.pagination-nav:has(.pagination-nav__link:first-child.pagination-nav__link--next) {
+	justify-content: end;
+}
+
+
 .table-of-contents.table-of-contents__left-border li a {
 	border-left: 2px solid var(--ifm-table-of-contents-border);
 }
@@ -989,7 +1002,7 @@ code {
 }
 
 table {
-	background-color: white !important;
+	background-color: transparent !important;
 	border-color: transparent !important;
 	border-spacing: 0 !important;
 	border: 0 !important;
@@ -999,16 +1012,16 @@ table {
 }
 
 table thead {
-	background-color: #F8F9FA !important;
+	background-color: var(--ifm-table-header-bg) !important;
 }
 
 
 table tr {
-	border-bottom: 1px dotted rgba(14, 16, 19, 1) !important;
+	border-bottom: 1px dotted var(--ifm-table-tr-border) !important;
 	border: 0 !important;
 	border-spacing: 10px !important;
 	background-color: transparent !important;
-	background-image: linear-gradient(to right, rgba(14, 16, 19, 1) 50%, transparent 50%);
+	background-image: linear-gradient(to right, var(--ifm-table-tr-border) 50%, transparent 50%);
 	background-size: 7px 1px;
 	background-repeat: repeat-x;
 	background-position: 0 bottom;
@@ -1030,11 +1043,11 @@ th {
 }
 
 table tr th {
-	color: #5F6368;
+	color: var(--ifm-table-header-color) !important;
 	font-size: 15px !important;
 	text-align: center !important;
 	font-family: TTCommonsPro !important;
-	font-weight: bold !important;
+	font-weight: 600 !important;
 }
 
 table tr th:first-child {
@@ -1046,7 +1059,7 @@ table tr th:last-child {
 }
 
 table tr td {
-	color: rgba(95, 99, 104, 1) !important;
+	color: var(--ifm-table-body-color) !important;
 	font-size: 14px !important;
 }
 
