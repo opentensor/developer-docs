@@ -115,17 +115,17 @@ If you are new to Bittensor, read the following sections before you proceed:
 
 ## OCR subnet summary
 
-This tutorial OCR subnet works like this:
+This tutorial OCR subnet works like this. The below numbered items correspond to the numbers in the diagram:
 
 <ThemedImage
 alt="Incentive Mechanism Big Picture"
 sources={{
-    light: useBaseUrl('/img/docs/OCR-high-level.png'),
-    dark: useBaseUrl('/img/docs/OCR-high-level.png'),
+    light: useBaseUrl('/img/docs/OCR-high-level.svg'),
+    dark: useBaseUrl('/img/docs/dark-OCR-high-level.svg'),
   }}
 />
 
-1. In this tutorial the subnet validator sends a challenge simultaneously to a few subnet miners. In this tutorial the challenge consists of an image file of a synthetic invoice document. The image file is contained in a synapse object called `OCRSynapse`. This step constitutes the **query** from the subnet validator to subnet miners.
+1. The subnet validator sends a challenge simultaneously to a few subnet miners. In this tutorial the challenge consists of an image file of a synthetic invoice document. The image file is contained in a synapse object called `OCRSynapse`. This step constitutes the **query** from the subnet validator to subnet miners.
 2. The subnet miners respond after performing the challenge **task**. After receiving the synapse object containing the image data, each miner then performs the task of extracting, from the image data, its contents, including the text content, the positional information of the text, the fonts used in the text and the font size. 
 3. The subnet validator then **scores** each subnet miner based on the quality of the response and how quickly the miner completed the task. The subnet validator uses the original synthetic invoice document as the ground truth for this step. 
 4. Finally, the subnet validator **sets the weights** for the subnet miners by sending the weights to the blockchain. 
@@ -365,7 +365,11 @@ When a miner sends its response, the subnet validator scores the quality of the 
 **Prediction loss**
 : Compute the loss in the prediction of the miner for the text content, text position and the font. The total prediction loss is calculated as below:
 
-- For each section of the synthetic invoice document, compute the **three** partial loss quantities: text loss, font loss and position loss. This is done by comparing a section in the miner response to the corresponding section in the ground truth synthetic invoice document. 
+- For each section of the synthetic invoice document, compute the **three** partial loss quantities: 
+  - text loss.
+  - font loss.
+  - position loss. 
+- This is done by comparing a section in the miner response to the corresponding section in the ground truth synthetic invoice document. 
 - Add the above three partial loss quantities to compute the total loss for the particlar section.
 - Take the mean score of all such total losses over all the sections of the invoice document.
 
@@ -437,4 +441,8 @@ Finally, as shown in the above [OCR subnet summary](#ocr-subnet-summary), the su
 
 ## Next steps 
 
-TBD 
+Congratulations, you have successfully transformed your Python Notebook into a working Bittensor subnet. See below tips for your next steps.
+
+Can you think of ways your incentive mechanism would lead to undesirable behavior? For example:
+- The positional structure of the invoice, i.e., how sections are positioned in the invoice, is usually predictable. Hence all subnet miners may predict the position correctly without doing much work. This will render the position loss as ineffective. How can you avoid this?
+- Experiment with the $\alpha$ hyperparameters to make the subnet miners compete more effectively. See [Reward model (incentive mechanism)](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=jcwFaIjwJnBj).
