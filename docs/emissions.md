@@ -35,7 +35,7 @@ It is these root network weights for the subnets that determine the emissions fo
 
 Hierarchically speaking, the root network is at one level above the other 32 subnets.
 
-Structurally speaking, a root network is not that different from any other subnet. The root network has a fixed number of subnet validators, i.e., 64 largest subnet validators. The 32 subnets take the place of subnet miners in the root network. 
+Structurally speaking, a root network is not that different from any other subnet. The root network has a fixed number of validators, i.e., the 64 largest subnet validators. Instead of miners, the root network has the 32 subnets.
 
 Behaviorally speaking, root network validators behave much the same way as any other subnet validator. A root network validator expresses their opinion on the quality of the subnets, similar to how a non-root subnet validator expresses their opinion on the quality of subnet miners in its subnet.  
 
