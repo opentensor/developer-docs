@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { IoSearchCircleOutline } from "react-icons/io5";
+// import { IoSearchCircleOutline } from "react-icons/io5";
 
 {
   /* <DocSearchButton
