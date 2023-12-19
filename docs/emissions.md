@@ -41,7 +41,7 @@ Behaviorally speaking, root network validators behave much the same way as any o
 
 In the rest of this document we consider the subnet weights (set by the root validators) as **inputs** and proceed to present emission calculations as **outputs**. 
 
-## Subnet weights, trust, consensus, rank, emission 
+## Subnet weights, trust, rank, consensus, emission 
 
 ### Read root network metagraph
 
