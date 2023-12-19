@@ -10,7 +10,7 @@ In this document we describe how emissions are calculated for a subnet.
 
 The emission process works like this:
 
-- Every block, i.e., every 12 seconds in a user-created subnet, a single TAO ($\tau$) is minted, i.e., newly created.
+- Every block, i.e., every 12 seconds on the Bittensor blockchain, a single TAO ($\tau$) is minted, i.e., newly created.
 - A percentage portion of this single TAO ($\tau$) is allocated to each of the 32 subnets in accordance with the subnet's performance. The root network determines the percentage portion for each subnet. Hence, all such partial percentage allocations will sum to 100%, i.e., one TAO ($\tau$). 
     :::tip Taostats
     See the [percentage numbers in each "**SN**" column on the root network page on Taostats](https://taostats.io/subnets/netuid-0/). These percentages for SN1 through SN32 all add up to `100`. 
