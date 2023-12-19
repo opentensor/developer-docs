@@ -222,7 +222,9 @@ const config = {
 					<div className="copyRight">
 						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation. <span>all rights reserved.</span>
 					</div>
+					<a href='https://bittensor.com/'>
 					<img src="img/logo-dark-mode.svg" alt="logo"/>
+					</a>
 				`,
       },
     }),
