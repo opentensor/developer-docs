@@ -55,7 +55,7 @@ const config = {
       }),
     ],
 	],
-	plugins:[["@gracefullight/docusaurus-plugin-vercel-analytics"]]
+	plugins:["@gracefullight/docusaurus-plugin-vercel-analytics"],
   // scripts: [
   //   // String format.
   //   // 'https://docusaurus.io/script.js',
