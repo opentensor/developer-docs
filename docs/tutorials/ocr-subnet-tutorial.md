@@ -237,7 +237,7 @@ Next, the subnet validator sends this `noisy_image` to the miners, tasking them 
 
 #### Define OCRSynapse class
 
-However, in a Bittensor subnet, any communication between a subnet validator and a subnet miner must use an object of the type `Synapse`. Hence, the subnet validator must embed the corrupted image into a `Synapse` object and send this object to the miners. The miners will then place their responses into this same object they received and send them back to the subnet validator. 
+However, in a Bittensor subnet, any communication between a subnet validator and a subnet miner must use an object of the type `Synapse`. Hence, the subnet validator must attach the corrupted image to a `Synapse` object and send this object to the miners. The miners will then update the passed synapse by attaching their responses into this same object and send them back to the subnet validator. 
 
 #### Code snapshot
 
