@@ -437,7 +437,7 @@ We copy the above miner code from the Notebook into the following code files. Cl
 
 ## Step 4: Set weights 
 
-Finally, as shown in the above [OCR subnet summary](#ocr-subnet-summary), the subnet validator sends the weights of the subnet miners to the blockchain. This step is not in the Python notebooks. This step is performed by the function `set_weights` in the [ocr_subnet/base/validator.py](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/base/validator.py#L206) and it is already available fully implemented in the OCR subnet repo. 
+Finally, as shown in the above [OCR subnet summary](#ocr-subnet-summary), the subnet validator normalizes the EMA scores and sets the weights of the subnet miners to the blockchain. This step is not in the Python notebooks. This step is performed by the function `set_weights` in the [ocr_subnet/base/validator.py](https://github.com/steffencruz/ocr_subnet/blob/main/ocr_subnet/base/validator.py#L206) and it is already available fully implemented in the OCR subnet repo. 
 
 ## Next steps 
 
