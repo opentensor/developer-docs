@@ -40,7 +40,7 @@ The Python [notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C
 
 ### OCR subnet repository
 
-- We will use the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet) to place the working code for the OCR subnet.
+- We will use the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet) to as our starting point and then incorporate the notebook code to build the OCR subnet.
 
 ## Tutorial method
 
