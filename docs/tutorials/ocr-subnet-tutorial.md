@@ -370,7 +370,7 @@ When a miner sends its response, the subnet validator scores the quality of the 
   - font loss.
   - position loss. 
 - This is done by comparing a section in the miner response to the corresponding section in the ground truth synthetic invoice document. 
-- Add the above three partial loss quantities to compute the total loss for the particlar section.
+- Add the above three partial reward quantities to compute the total loss for the particular section.
 - Take the mean score of all such total losses over all the sections of the invoice document.
 
 **Response time penalty**
