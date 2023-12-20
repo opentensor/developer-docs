@@ -125,12 +125,14 @@ data = create_invoice(invoice_info, pdf_filename)
 # Loads PDF and converts it into usable PIL image using Pillow library
 # Used by the corrupt_image() method 
 def load_image(pdf_path, page=0, zoom_x=1.0, zoom_y=1.0):
+  ...
 
 # Accepts a PDF, uses load_image() method to convert to image 
 # and adds noise, blur, spots, rotates the page, curls corners, darkens edges so 
 # that the overall result is noisy. Saves back in PDF format. 
 # This is our corrupted synthetic PDF document. 
 def corrupt_image(input_pdf_path, output_pdf_path, border=50, noise=0.1, spot=(100,100), scale=0.95, theta=0.2, blur=0.5):
+  ...
 ```
 
 **Collab Notebook source:** The validated code for the above synthetic PDF generation logic is in [Validation flow cell](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh).
