@@ -144,7 +144,7 @@ sources={{
 
 ### Step 1.1: Synthetic PDF as challenge
 
-In this tutorial, the subnet validator will generate synthetic data, which is a PDF document. The validator will use this synthetic PDF as the basis for assessing the subnet miner performance. Synthetic data is an appropriate choice, in contrast to using a pre-existing dataset from the web. Subnet miners cannot "lookup" the answers on the web with synthetic data. 
+In this tutorial, the subnet validator will generate synthetic data, which is a PDF document containing an invoice. The validator will use this synthetic PDF as the basis for assessing the subnet miner performance. Synthetic data is an appropriate choice as it provides an unlimited source of customizable validation data and enables the difficulty of the task to gradually increase so that the miners are required to continuously improve. This is in contrast to using a pre-existing dataset from the web, where subnet miners can "lookup" the answers on the web. 
 
 The contents of the PDF document are the ground truth labels. The subnet validator uses them to score the miner responses. The synthetic PDF document is corrupted with different types of noise to mimic poorly scanned documents. The amount of noise can also be gradually increased to make the task more challenging.
 
