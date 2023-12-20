@@ -110,6 +110,28 @@ Regenerate a wallet with just the public seed of your coldkey:
 btcli wallet regen_coldkeypub
 ```
 
+### Get identity
+
+```
+btcli wallet get_identity --key <s58_address> [OPTIONS]
+```
+
+- `--key` [Optional] is the SS58 address of the coldkey or hotkey.
+
+Displays the identity details of a user's coldkey or hotkey associated with the Bittensor network.
+
+### Set identity
+
+```bash
+btcli wallet set_identity [OPTIONS]
+```
+
+Creates or updates a delegate's on-chain identity. This identity includes various attributes such as display name, legal name, web URL, PGP fingerprint, and contact information, among others.
+
+:::caution
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
+
 ## Registration
 
 ### Register
@@ -148,30 +170,6 @@ btcli pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
 
 :::caution
 This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
-:::
-
-## Identity
-
-### Get identity
-
-```
-btcli root get_identity --key <s58_address> [OPTIONS]
-```
-
-- `--key` [Optional] is the SS58 address of the coldkey or hotkey.
-
-Displays the identity details of a user's coldkey or hotkey associated with the Bittensor network.
-
-### Set identity
-
-```bash
-btcli root set_identity [OPTIONS]
-```
-
-Creates or updates a delegate's on-chain identity. This identity includes various    attributes such as display name, legal name, web URL, PGP fingerprint, and contact    information, among others.
-
-:::caution
-This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
 :::
 
 ## Transfers and staking 
