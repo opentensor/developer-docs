@@ -179,7 +179,7 @@ pdf_filename = "sample_invoice.pdf"
 data = create_invoice(invoice_info, pdf_filename)
 ...
 
-# Converts PDF into PIL image using Pillow library
+# Loads PDF and converts it into usable PIL image using Pillow library
 # Used by the corrupt_image() method 
 def load_image(pdf_path, page=0, zoom_x=1.0, zoom_y=1.0):
 
