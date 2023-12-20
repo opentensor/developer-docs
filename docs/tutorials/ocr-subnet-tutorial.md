@@ -31,7 +31,7 @@ When you complete this tutorial, you will know the following:
 
 ### Python notebooks
 
-The Python notebooks we use in this tutorial contain all the three essential components of the OCR subnet:
+The Python [notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh) we use in this tutorial contain all the three essential components of the OCR subnet:
 
 - [Validation flow](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh).
 - [Baseline miner implementation](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=hhKFy5U2EW7e).
