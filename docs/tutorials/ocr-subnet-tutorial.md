@@ -363,7 +363,7 @@ We copy the above miner code from the Notebook into the following code files. Cl
 When a miner sends its response, the subnet validator scores the quality of the response in the following way:
 
 **Prediction reward**
-: Compute the loss in the prediction of the miner for the text content, text position and the font. The total prediction loss is calculated as below:
+: Compute the similarity between the ground truth and the prediction of the miner for the text content, text position and the font. This is conceptually equivalent to a loss function that is used in a machine learning setting, with the only difference being that rewards are a function to be **maximized** rather than **minimized**. The total prediction reward is calculated as below:
 
 - For each section of the synthetic invoice document, compute the **three** partial loss quantities: 
   - text loss.
