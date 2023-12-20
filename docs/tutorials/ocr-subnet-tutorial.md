@@ -444,5 +444,5 @@ Finally, as shown in the above [OCR subnet summary](#ocr-subnet-summary), the su
 Congratulations, you have successfully transformed your Python Notebook into a working Bittensor subnet. See below tips for your next steps.
 
 Can you think of ways your incentive mechanism would lead to undesirable behavior? For example:
-- The positional structure of the invoice, i.e., how sections are positioned in the invoice, is usually predictable. Hence all subnet miners may predict the position correctly without doing much work. This will render the position loss as ineffective. How can you avoid this?
+- The positional structure of the invoice, i.e., how sections are positioned in the invoice, is mostly static and thus easily predictable. Hence all subnet miners may predict the position correctly without doing much work. This will render the position reward as ineffective. How can you avoid this?
 - Experiment with the $\alpha$ hyperparameters to make the subnet miners compete more effectively. See [Reward model (incentive mechanism)](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=jcwFaIjwJnBj).
