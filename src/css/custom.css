@@ -69,6 +69,10 @@
 	--ifm-table-header-color: white;
 	--ifm-table-body-color: #D7E3E3;
 	--ifm-table-tr-border: #3c3e42;
+	--ifm-doc-search-title-color: white;
+	--ifm-dock-search-active-a-bg: #000000;
+	--ifm-dock-search-active-a-color: white;
+	--ifm-dock-search-svg-color: white;
 }
 
 [data-theme="light"] {
@@ -110,6 +114,10 @@
 	--ifm-table-header-color: #5F6368;
 	--ifm-table-body-color: rgba(95, 99, 104, 1);
 	--ifm-table-tr-border: rgba(14, 16, 19, 1);
+	--ifm-doc-search-title-color: rgba(14, 16, 19, 1);
+	--ifm-dock-search-active-a-bg: white;
+	--ifm-dock-search-active-a-color: #000000;
+	--ifm-dock-search-svg-color: rgba(14, 16, 19, 1);
 }
 
 @font-face {
@@ -1183,6 +1191,64 @@ footer .container.container-fluid {
 	max-width: 100% !important;
 }
 
+#docsearch-list {
+	border: 2px solid var(--ifm-doc-search-border-color) !important;
+	border-radius: 5px !important;
+}
+
+#docsearch-list li {
+	padding: 0 !important;
+}
+
+#docsearch-list li a {
+	box-shadow: none !important;
+	border-bottom: 1px dashed var(--ifm-doc-search-border-color) !important;
+	background-color: transparent !important;
+}
+
+#docsearch-list li:last-child a {
+	border-bottom: 0 !important;
+}
+
+#docsearch-list li a .DocSearch-Hit-icon svg {
+	color: var(--ifm-dock-search-svg-color) !important;
+}
+
+.DocSearch-Hits .DocSearch-Hit-source {
+	font-weight: 600 !important;
+	color: var(--ifm-doc-search-title-color) !important;
+	font-size: 13px !important;
+	letter-spacing: 1px !important;
+	background: transparent !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a {
+	background-color: var(--ifm-dock-search-active-a-bg) !important;
+	border-radius: 0 !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-title {
+	font-weight: bold !important;
+	color: var(--ifm-dock-search-active-a-color) !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-title mark {
+	font-weight: bold !important;
+	color: var(--ifm-dock-search-active-a-color) !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-path {
+	font-weight: 400 !important;
+	color: var(--ifm-dock-search-active-a-color) !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-path mark {
+	font-weight: 600 !important;
+	color: var(--ifm-dock-search-active-a-color) !important;
+}
+.DocSearch-Hit[aria-selected=true] a .DocSearch-Hit-Tree {
+	color: var(--docsearch-muted-color) !important;
+}
 
 @media screen and (max-width: 1310px) {
 	.navbar__inner .navbar__items--right a:nth-child(3) {
