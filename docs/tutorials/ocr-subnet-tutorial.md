@@ -125,7 +125,7 @@ sources={{
   }}
 />
 
-1. The subnet validator sends a challenge simultaneously to a few subnet miners. In this tutorial the challenge consists of an image file of a synthetic invoice document. The image file is contained in a synapse object called `OCRSynapse`. This step constitutes the **query** from the subnet validator to subnet miners.
+1. The subnet validator sends a challenge simultaneously to multiple subnet miners. In this tutorial the challenge consists of an image file of a synthetic invoice document. The serialized image file is attached to a synapse object called `OCRSynapse`. This step constitutes the **query** from the subnet validator to subnet miners.
 2. The subnet miners respond after performing the challenge **task**. After receiving the synapse object containing the image data, each miner then performs the task of extracting, from the image data, its contents, including the text content, the positional information of the text, the fonts used in the text and the font size. 
 3. The subnet validator then **scores** each subnet miner based on the quality of the response and how quickly the miner completed the task. The subnet validator uses the original synthetic invoice document as the ground truth for this step. 
 4. Finally, the subnet validator **sets the weights** for the subnet miners by sending the weights to the blockchain. 
