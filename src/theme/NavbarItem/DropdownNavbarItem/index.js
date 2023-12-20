@@ -56,11 +56,11 @@ function DropdownNavbarItemDesktop({
 			document.removeEventListener("focusin", handleClickOutside);
 		};
 	}, [dropdownRef]);
-	// console.log(items);
+	// // console.log(items);
 	const location = useLocation();
 	useEffect(() => {
 		function getDocTitle(listOfItems, index) {
-			// console.log(listOfItems, index);
+			// // console.log(listOfItems, index);
 			if (listOfItems.length === index) {
 				return null;
 			}
@@ -76,7 +76,7 @@ function DropdownNavbarItemDesktop({
 		}
 
 		setCurrentDocTitle(getDocTitle(items, 0))
-		console.log(getDocTitle(items, 0), 'hello', null)
+		// console.log(getDocTitle(items, 0), 'hello', null)
 	}, [
 		location.pathname
 	])
@@ -129,8 +129,8 @@ function DropdownNavbarItemMobile({
 	...props
 }) {
 	const localPathname = useLocalPathname();
-	console.log(localPathname, 'localpathname');
-	
+	// console.log(localPathname, 'localpathname');
+
 	const containsActive = containsActiveItems(items, localPathname);
 	const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
 		initialState: () => !containsActive,
@@ -141,8 +141,8 @@ function DropdownNavbarItemMobile({
 			setCollapsed(!containsActive);
 		}
 	}, [localPathname, containsActive, setCollapsed]);
-	console.log(onClick.toString());
-	console.log(items, 'items');
+	// console.log(onClick.toString());
+	// console.log(items, 'items');
 	return (
 		<li
 			className={clsx("menu__list-item", {
@@ -183,25 +183,25 @@ function DropdownNavbarItemMobile({
 }
 
 function DropdownItemsMobile({ items, onClick, className, ...props }) {
-	console.log("Wow it's render", items);
+	// console.log("Wow it's render", items);
 	const location = useLocation()
-		function getDocTitle(listOfItems, index) {
-			// console.log(listOfItems, index);
-			if (listOfItems.length === index) {
-				return false;
-			}
+	function getDocTitle(listOfItems, index) {
+		// // console.log(listOfItems, index);
+		if (listOfItems.length === index) {
+			return false;
+		}
 
-			if (listOfItems[index]?.dropdown) {
-				return getDocTitle(listOfItems[index]?.dropdown, 0)
-			} else if (listOfItems[index]?.to === location.pathname) {
-				return true
-			} else {
-				index++;
-				return getDocTitle(listOfItems, index)
-			}
+		if (listOfItems[index]?.dropdown) {
+			return getDocTitle(listOfItems[index]?.dropdown, 0)
+		} else if (listOfItems[index]?.to === location.pathname) {
+			return true
+		} else {
+			index++;
+			return getDocTitle(listOfItems, index)
+		}
 	}
 	const containsActive = getDocTitle(items, 0)
-	console.log(containsActive, 'containsActive');
+	// console.log(containsActive, 'containsActive');
 	const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
 		initialState: () => !containsActive,
 	});
@@ -210,20 +210,20 @@ function DropdownItemsMobile({ items, onClick, className, ...props }) {
 		"menu__list-item--collapsed": collapsed,
 	})}>
 		<NavbarNavLink
-				role="button"
-				className={clsx(
-					styles.dropdownNavbarItemMobile,
-					"menu__link menu__link--sublist menu__link--sublist-caret",
-					className
-				)}
-				{...props}
-				onClick={(e) => {
-					e.preventDefault();
-					toggleCollapsed();
-				}}
-			>
-				{props.children ?? props.label}
-			</NavbarNavLink>
+			role="button"
+			className={clsx(
+				styles.dropdownNavbarItemMobile,
+				"menu__link menu__link--sublist menu__link--sublist-caret",
+				className
+			)}
+			{...props}
+			onClick={(e) => {
+				e.preventDefault();
+				toggleCollapsed();
+			}}
+		>
+			{props.children ?? props.label}
+		</NavbarNavLink>
 		<Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
 			{items.map((childItemProps, i) =>
 			(
@@ -291,7 +291,7 @@ function DropdownItems({ items }) {
 }
 
 export default function DropdownNavbarItem({ mobile = false, ...props }) {
-	console.log(props, mobile, "props");
+	// console.log(props, mobile, "props");
 	const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
 	return <Comp {...props} />;
 }
