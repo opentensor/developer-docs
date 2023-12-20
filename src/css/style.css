@@ -73,6 +73,7 @@
 	--ifm-dock-search-active-a-bg: #000000;
 	--ifm-dock-search-active-a-color: white;
 	--ifm-dock-search-svg-color: white;
+	--ifm-doc-search-title-bg: #242526;
 }
 
 [data-theme="light"] {
@@ -118,6 +119,7 @@
 	--ifm-dock-search-active-a-bg: white;
 	--ifm-dock-search-active-a-color: #000000;
 	--ifm-dock-search-svg-color: rgba(14, 16, 19, 1);
+	--ifm-doc-search-title-bg: white;
 }
 
 
@@ -1120,7 +1122,7 @@ footer .container.container-fluid {
 	color: var(--ifm-doc-search-title-color) !important;
 	font-size: 13px !important;
 	letter-spacing: 1px !important;
-	background: transparent !important;
+	background: var(--ifm-doc-search-title-bg) !important;
 }
 
 .DocSearch-Hit[aria-selected=true] a {
