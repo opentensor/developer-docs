@@ -374,7 +374,7 @@ When a miner sends its response, the subnet validator scores the quality of the 
 - Take the mean score of all such total rewards over all the sections of the invoice document.
 
 **Response time penalty**
-: Calculate the response time penalty for the miner for these predictions.
+: Calculate the response time penalty for the miner for these predictions. The goal here is to assign higher rewards to faster miners.
 
 #### Code snapshot
 ```python
