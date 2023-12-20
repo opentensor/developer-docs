@@ -22,7 +22,7 @@ This is the motivation for creating an OCR subnet for this tutorial. By using th
 
 When you complete this tutorial, you will know the following:
 
-- How to convert your Python notebooks containing validated idea into a working Bittensor subnet.  
+- How to convert your Python notebook containing the validated idea into a working Bittensor subnet.  
 - How to use the [Bittensor Subnet Template](https://github.com/opentensor/bittensor-subnet-template) to accomplish this goal.
 - How to perform subnet validation and subnet mining.
 - How to design your own subnet incentive mechanism.
@@ -31,7 +31,7 @@ When you complete this tutorial, you will know the following:
 
 ### Python notebook
 
-The Python [notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh) we use in this tutorial contain all the three essential components of the OCR subnet:
+The Python [notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh) we use in this tutorial contains all the three essential components of the OCR subnet:
 
 - [Validation flow](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh).
 - [Baseline miner implementation](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=hhKFy5U2EW7e).
@@ -40,68 +40,11 @@ The Python [notebook](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C
 
 ### OCR subnet repository
 
-- We will use the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet) to as our starting point and then incorporate the notebook code to build the OCR subnet.
+- We will use the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet) as our starting point and then incorporate the notebook code to build the OCR subnet.
 
 ## Tutorial method
 
 For the rest of this tutorial we will proceed by demonstrating which blocks of Python notebook code are copied into specific sections of the [OCR subnet repository](https://github.com/steffencruz/ocr_subnet). 
-
-### OCR subnet repo structure
-
-See below for the tree structure of this repo:
-
-```bash
-├── LICENSE
-├── README.md
-├── contrib
-│   ├── CODE_REVIEW_DOCS.md
-│   ├── CONTRIBUTING.md
-│   ├── DEVELOPMENT_WORKFLOW.md
-│   └── STYLE.md
-├── docs
-│   ├── running_on_mainnet.md
-│   ├── running_on_staging.md
-│   ├── running_on_testnet.md
-│   └── what_are_subnets.md
-├── min_compute.yml
-├── neurons
-│   ├── __init__.py
-│   ├── miner.py
-│   └── validator.py
-├── ocr_subnet
-│   ├── __init__.py
-│   ├── base
-│   │   ├── __init__.py
-│   │   ├── miner.py
-│   │   ├── neuron.py
-│   │   └── validator.py
-│   ├── protocol.py
-│   ├── utils
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── misc.py
-│   │   ├── serialize.py
-│   │   └── uids.py
-│   └── validator
-│       ├── __init__.py
-│       ├── corrupt.py
-│       ├── forward.py
-│       ├── generate.py
-│       ├── reward.py
-│       └── utils.py
-├── requirements.txt
-├── scripts
-│   ├── check_compatibility.sh
-│   ├── check_requirements_changes.sh
-│   ├── demo_pytesseract_miner.ipynb
-│   ├── demo_validator.ipynb
-│   ├── noisy_invoice.pdf
-│   ├── noisy_invoice.png
-│   └── sample_invoice.pdf
-├── setup.py
-└── tests
-    └── test_template_validator.py
-```
 
 ## Prerequisites
 
@@ -144,7 +87,7 @@ sources={{
 
 ### Step 1.1: Synthetic PDF as challenge
 
-In this tutorial, the subnet validator will generate synthetic data, which is a PDF document containing an invoice. The validator will use this synthetic PDF as the basis for assessing the subnet miner performance. Synthetic data is an appropriate choice as it provides an unlimited source of customizable validation data and enables the difficulty of the task to gradually increase so that the miners are required to continuously improve. This is in contrast to using a pre-existing dataset from the web, where subnet miners can "lookup" the answers on the web. 
+In this tutorial, the subnet validator will generate synthetic data, which is a PDF document containing an invoice. The subnet validator will use this synthetic PDF as the basis for assessing the subnet miner performance. Synthetic data is an appropriate choice as it provides an **unlimited** source of **customizable** validation data. It also enables the subnet validators to gradually increase the **difficulty** of the task so that the miners are required to continuously improve. This is in contrast to using a pre-existing dataset from the web, where subnet miners can "lookup" the answers on the web. 
 
 The contents of the PDF document are the ground truth labels. The subnet validator uses them to score the miner responses. The synthetic PDF document is corrupted with different types of noise to mimic poorly scanned documents. The amount of noise can also be gradually increased to make the task more challenging.
 
@@ -161,7 +104,7 @@ See below for a snapshot view of the code.
 ```python
 # Generates a PDF invoice from the raw data passed in as "invoice_data" dictionary 
 # and saves the PDF with "filename"
-def create_invoice(invoice_data, filename)
+def create_invoice(invoice_data, filename):
 ...
 
 # Using Faker, generate sample data for the invoice
@@ -187,7 +130,7 @@ def load_image(pdf_path, page=0, zoom_x=1.0, zoom_y=1.0):
 # and adds noise, blur, spots, rotates the page, curls corners, darkens edges so 
 # that the overall result is noisy. Saves back in PDF format. 
 # This is our corrupted synthetic PDF document. 
-def corrupt_image(input_pdf_path, output_pdf_path, border=50, noise=0.1, spot=(100,100), scale=0.
+def corrupt_image(input_pdf_path, output_pdf_path, border=50, noise=0.1, spot=(100,100), scale=0.95, theta=0.2, blur=0.5):
 ```
 
 **Collab Notebook source:** The validated code for the above synthetic PDF generation logic is in [Validation flow cell](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=M8Cf2XVUJnBh).
@@ -207,15 +150,6 @@ All we have to do is to copy the above Notebook code into a proper place in the 
 │       ├── reward.py
 │       └── utils.py
 ...
-├── scripts
-│   ├── check_compatibility.sh
-│   ├── check_requirements_changes.sh
-│   ├── demo_pytesseract_miner.ipynb
-│   ├── demo_validator.ipynb
-│   ├── noisy_invoice.pdf
-│   ├── noisy_invoice.png
-│   └── sample_invoice.pdf
-
 ```
 
 We copy the above Notebook code into the following code files. Click on the OCR repo file names to see the copied code:
@@ -247,7 +181,21 @@ However, in a Bittensor subnet, any communication between a subnet validator and
 # Attributes:
 #    - image: A pdf image to be processed by the miner.
 #    - response: List[dict] containing data extracted from the image.
-class OCRSynapse(bt.Synapse): 
+class OCRSynapse(bt.Synapse):
+   """
+    A simple OCR synapse protocol representation which uses bt.Synapse as its base.
+    This protocol enables communication betweenthe miner and the validator.
+
+    Attributes:
+    - image: A pdf image to be processed by the miner.
+    - response: List[dict] containing data extracted from the image.
+    """
+
+    # Required request input, filled by sending dendrite caller. It is a base64 encoded string.
+    base64_image: str
+
+    # Optional request output, filled by recieving axon.
+    response: typing.Optional[typing.List[dict]] = None
 ```
 
 :::tip important
@@ -308,15 +256,6 @@ Also note that the [**scripts/**](https://github.com/steffencruz/ocr_subnet/tree
 │       ├── reward.py
 │       └── utils.py
 ...
-├── scripts
-│   ├── check_compatibility.sh
-│   ├── check_requirements_changes.sh
-│   ├── demo_pytesseract_miner.ipynb
-│   ├── demo_validator.ipynb
-│   ├── noisy_invoice.pdf
-│   ├── noisy_invoice.png
-│   └── sample_invoice.pdf
-
 ```
 
 ## Step 2: Miner response
@@ -367,8 +306,8 @@ When a miner sends its response, the subnet validator scores the quality of the 
 
 - For each section of the synthetic invoice document, compute the **three** partial reward quantities: 
   - text reward.
-  - font reward.
-  - position reward. 
+  - position reward.
+  - font reward. 
 - This is done by comparing a section in the miner response to the corresponding section in the ground truth synthetic invoice document. 
 - Add the above three partial reward quantities to compute the total loss for the particular section.
 - Take the mean score of all such total rewards over all the sections of the invoice document.
@@ -378,15 +317,15 @@ When a miner sends its response, the subnet validator scores the quality of the 
 
 #### Code snapshot
 ```python
-# Calculate the intersection over union (IoU) of two bounding boxes.
-def get_position_reward(boxA: List[float], boxB: List[float] = None):
-...
 # Calculate the edit distance between two strings.
 def get_text_reward(text1: str, text2: str = None):
-...
+  ...
+# Calculate the intersection over union (IoU) of two bounding boxes.
+def get_position_reward(boxA: List[float], boxB: List[float] = None):
+  ...
 # Calculate the distance between two fonts, based on the font size and font family.
 def get_font_reward(font1: dict, font2: dict = None, alpha_size=1.0, alpha_family=1.0):
-...
+  ...
 # Score a section of the image based on the section's correctness.
 # Correctness is defined as:
 # - the intersection over union of the bounding boxes,
@@ -408,6 +347,10 @@ def reward(image_data: List[dict], predictions: List[dict], time_elapsed: float)
     total_reward = (alpha_prediction * prediction_reward + alpha_time * time_reward) / (alpha_prediction + alpha_time)
 ...
 ```
+
+:::tip Rewards are exponential moving averaged
+The rewards attained by miners are averaged over many turns using an exponential moving average (EMA). This is done to obtain a more reliable estimate of the overall performance on the task. We often refer to these smoothed rewards as EMA scores.
+:::
 
 **Collab Notebook source**: See the [Incentive mechanism cell](https://colab.research.google.com/drive/1Z2KT11hyKwsmMib8C6lDsY93vnomJznz#scrollTo=jcwFaIjwJnBj).
 
