@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # OCR Subnet Tutorial
 
-In this tutorial you will learn how to quickly convert your validated idea into a functional Bittensor subnet. This tutorial begins with Python notebooks that contain the already validated code for optical character recognition (OCR). We demonstrate how straightforward it is to start with such notebooks and produce a working subnet.
+In this tutorial you will learn how to quickly convert your validated idea into a functional Bittensor subnet. This tutorial begins with a Python notebook that contains the already validated code for optical character recognition (OCR). We demonstrate how straightforward it is to start with such notebooks and produce a working subnet.
 
 
 ## Motivation 
