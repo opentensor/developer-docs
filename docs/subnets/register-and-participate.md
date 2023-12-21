@@ -35,6 +35,22 @@ Note that you do not need to have any stake to run a miner. You only need to reg
 
 If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-subnet.md) for more details.
 
+### Moving a subnet miner to a different machine
+
+Once your subnet miner has began mining, you can change it to a different machine, but proceed with caution. 
+
+:::tip Always minimize subnet miner downtime
+Make sure that you always minimize any downtime for your subnet miner. This is because missing validation requests can be significantly damaging to incentive and rewards for your subnet miner.
+:::
+
+To move a subnet miner from one machine to another, follow the below guidelines in this order:
+
+1. Start the subnet miner on the new machine.
+2. Wait for the old miner to stop receiving requests from the subnet validators.
+3. Stop the old miner.
+
+It can take the subnet validators some time to realize that the UID Axon of your subnet miner has changed. 
+
 ## Running a subnet validator 
 
 To become a subnet validator, you must:
