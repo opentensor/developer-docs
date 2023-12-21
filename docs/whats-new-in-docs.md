@@ -11,7 +11,7 @@ Key updates to this documentation.
 
 ## 21 December 2023
 
-- A new [OCR Subnet Tutorial](#) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
+- A new [OCR Subnet Tutorial](./tutorials/ocr-subnet-tutorial.md) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
 - A new [Emissions](./emissions.md) document is published. This document presents how to calculate emissions, trust, rank and consensus for a subnet. 
 - A new section [Moving a subnet miner to a different machine](./subnets/register-and-participate.md#moving-a-subnet-miner-to-a-different-machine) is added.
 - A new section for [Subnets](./reference/btcli.md#subnets) is added in the CLI document.
