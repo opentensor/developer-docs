@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
-## 20 December 2023
+## 21 December 2023
 
 - A new [OCR Subnet Tutorial](#) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
 - A new [Emissions](./emissions.md) document is published. This document presents how to calculate emissions, trust, rank and consensus for a subnet. 
