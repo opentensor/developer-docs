@@ -22,6 +22,7 @@ positional arguments:
     sudo (su, sudos)    Commands for subnet management
     legacy (l)          Miscellaneous commands.
 ```
+---
 
 ## Wallets 
 
@@ -132,7 +133,64 @@ Creates or updates a delegate's on-chain identity. This identity includes variou
 This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
 :::
 
-## Registration
+---
+
+## Subnets
+
+### List subnets
+
+Lists the existing subnets and shows their detailed information. In addition to the subnet details, the command fetches delegate information and provides the name of the subnet owner where available. If the owner's name is not available, the owner's SS58 address is displayed.
+
+Defaults to subnets on the mainchain. 
+
+```bash
+btcli subnets list [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets list --help
+```
+
+to see the available OPTIONS.
+
+### Show lock cost
+
+Shows the locking cost required for creating a new subnet on the Bittensor network. This command is designed to provide users with the current cost of registering a new subnet. If the cost is unappealing currently, check back in a day or two to see if it has improved.
+
+```bash
+btcli subnets lock_cost [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets lock_cost --help
+```
+
+to see the available OPTIONS.
+
+### Create subnet
+
+:::tip For advanced users only
+This command is intended for advanced users of the Bittensor network who wish to contribute by adding new subnets. It requires a clear understanding of the Bittensor network's functioning and the roles of subnets. Users should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork to the Bittensor ecosystem.
+:::
+
+Creates and registers a new subnet. This involves interaction with the user's wallet and the Bittensor subtensor. It ensures that the user has the necessary credentials and configurations to successfully register a new subnet.
+
+```bash
+btcli subnets create [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets create --help
+```
+
+to see the available OPTIONS.
+
 
 ### Register
 
@@ -154,10 +212,18 @@ To register in a subnet of `netuid` of `1`:
 btcli subnets register --netuid 1
 ```
 
+Use,
+
+```bash
+btcli subnets register --help
+```
+
+to see the available OPTIONS.
+
 ### PoW registration
 
 ```bash
-btcli pow_register [OPTIONS]
+btcli subnets pow_register [OPTIONS]
 ```
 
 Registers a neuron on the Bittensor network using Proof of Work (PoW). This method is an alternative registration process that leverages computational work for securing a neuron's place on the network.
@@ -165,12 +231,54 @@ Registers a neuron on the Bittensor network using Proof of Work (PoW). This meth
 Example:
 
 ```bash
-btcli pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
+btcli subnets pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
 ```
 
+Use,
+
+```bash
+btcli subnets pow_register --help
+```
+
+to see the available OPTIONS.
+
 :::caution
-This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+This command is for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
 :::
+
+### Show metagraph
+
+Shows the metagraph of the desired subnet. Defaults to subnets on the mainchain. 
+
+```bash
+btcli subnets metagraph [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets metagraph --help
+```
+
+to see the available OPTIONS.
+
+### Show hyperparameters
+
+Shows the current hyperparameters for the desired subnet. This command is useful for users who wish to understand the configuration and operational parameters of a particular subnet.
+
+```bash
+btcli subnets hyperparameters [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets hyperparameters --help
+```
+
+to see the available OPTIONS.
+
+---
 
 ## Transfers and staking 
 
@@ -210,6 +318,8 @@ Remove stake TAO from the hotkey staking account and add it to the coldkey.
 ```bash
 btcli stake remove
 ```
+
+---
 
 ## Delegation
 
@@ -280,6 +390,8 @@ Show all your previously made delegations.
 Use `--all` option to show delegations across all your wallets.
 :::
 
+---
+
 ## Root network
 
 ### Root network list
@@ -329,6 +441,8 @@ Example:
 btcli root slash --netuid 1 --decrease 0.01
 ```
 
+---
+
 ## Governance
 
 ### View proposals
@@ -377,16 +491,18 @@ Participate in a triumvirate proposal by voting with your senate hotkey.
 btcli root senate_vote --proposal=[PROPOSAL_HASH]
 ```
 
+---
+
 ## Misc
 
 ### Update Bittensor
 
 ```bash
-btcli misc update [OPTIONS]
+btcli legacy update [OPTIONS]
 ```
 
 Update your Bittensor installation.
 
 ```bash 
-btcli misc update
+btcli legacy update
 ```

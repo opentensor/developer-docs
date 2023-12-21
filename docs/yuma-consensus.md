@@ -15,7 +15,9 @@ A subnet validator in a subnet expresses their perspective about how performant 
 
 Such weights $w_i$ are aggregated across all the subnet validators in the subnet,  to produce a weight matrix $W$. Subnet validators learn their row in $W$ by running the validator module and continuously verifying the responses produced by the subnet miners in terms of speed, intelligence and diversity.
 
-The below example code prints the $W$ matrix of a subnet with the `netuid` of `1`.
+### Example
+
+For example, the below code prints the $W$ matrix of a subnet with the `netuid` of `1`. You can print such $W$ matrix for any other subnet by passing its `netuid`.
 
 ```python
 import bittensor as bt
