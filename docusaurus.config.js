@@ -15,7 +15,7 @@ const katex = require("rehype-katex");
 const config = {
   title: "Bittensor",
   tagline: "Developer Documentation",
-  favicon: "img/favicon.ico",
+  favicon: "img/logo.svg",
   // Set the production url of your site here
   url: "https://docs.bittensor.com",
   // Set the /<baseUrl>/ pathname under which your site is served
