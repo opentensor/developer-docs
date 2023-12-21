@@ -155,6 +155,22 @@ btcli subnets list --help
 
 to see the available OPTIONS.
 
+### Show lock cost
+
+Shows the locking cost required for creating a new subnet on the Bittensor network. This command is designed to provide users with the current cost of registering a new subnet. If the cost is unappealing currently, check back in a day or two to see if it has improved.
+
+```bash
+btcli subnets lock_cost [OPTIONS]
+```
+
+Use,
+
+```bash
+btcli subnets lock_cost --help
+```
+
+to see the available OPTIONS.
+
 ### Create subnet
 
 :::tip For advanced users only
@@ -215,7 +231,7 @@ Registers a neuron on the Bittensor network using Proof of Work (PoW). This meth
 Example:
 
 ```bash
-btcli pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
+btcli subnets pow_register --netuid 1 --pow_register.num_processes 4 --cuda.use_cuda
 ```
 
 Use,
@@ -242,22 +258,6 @@ Use,
 
 ```bash
 btcli subnets metagraph --help
-```
-
-to see the available OPTIONS.
-
-### Show lock cost
-
-Shows the locking cost required for creating a new subnet on the Bittensor network. This command is designed to provide users with the current cost of registering a new subnet. If the cost is unappealing currently, check back in a day or two to see if it has improved.
-
-```bash
-btcli subnets lock_cost [OPTIONS]
-```
-
-Use,
-
-```bash
-btcli subnets lock_cost --help
 ```
 
 to see the available OPTIONS.
