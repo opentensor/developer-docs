@@ -49,7 +49,7 @@ To move a subnet miner from one machine to another, follow the below guidelines 
 2. Wait for the old miner to stop receiving requests from the subnet validators.
 3. Stop the old miner.
 
-It can take the subnet validators some time to realize that the UID Axon of your subnet miner has changed. 
+It can take the subnet validators some time to realize that the IP of the Axon for your subnet miner has changed. 
 
 ## Running a subnet validator 
 

@@ -14,7 +14,7 @@ See [what's new in docs](./whats-new-in-docs.md).
 :::
 
 
-**Welcome!** Bittensor is a protocol for decentralized subnets. Subnets exist to produce decentralized intelligence. Each subnet is an incentive-based competition in action, to produce the best decentralized intelligence. 
+**Welcome!** Bittensor is a protocol for decentralized subnets. Subnets exist to produce decentralized intelligence. Each subnet is an incentive-based competitive market in action, to produce the best decentralized intelligence. 
 
 Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **The rewards for subnet participants are in the form of TAO tokens.** 
 
