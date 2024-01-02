@@ -26,6 +26,33 @@ positional arguments:
 
 ## Wallets 
 
+### Show overview
+
+```bash
+btcli wallet overview [OPTIONS]
+```
+
+Displays comprehensive information about each neuron associated with the user's wallets, including both hotkeys and coldkeys. It is especially useful for users managing multiple accounts or looking for a summary of their network activities and stake distributions.
+
+#### Example
+
+```bash
+btcli wallet overview
+```
+
+With example options:
+
+```bash
+btcli wallet overview --all --sort_by stake --sort_order descending
+```
+
+Run,
+```bash
+btcli wallet overview --help
+```
+for full options.
+
+
 ### List wallets
 
 ```bash
@@ -337,13 +364,13 @@ List all active delegates available for delegated TAO. Displays the below output
 ### Delegate Tao
 
 ```bash
-btcli delegate [OPTIONS]
+btcli root delegate [OPTIONS]
 ```
 
 Delegate TAO from the coldkey balance to the hotkey staking account of a delegate.
 
-```bass
-btcli delegate
+```bash
+btcli root delegate
 ```
 
 ### Set delegate take
