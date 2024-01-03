@@ -70,6 +70,15 @@ const sidebars = {
     "reference/btcli",
     "emissions",
     // "reference/bittensor-api-ref",
+    {
+      type: "category",
+      label: "Staking",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "staking/staking-polkadot-js",
+      ],
+    },
     "delegation",
     "yuma-consensus",
     "governance",
