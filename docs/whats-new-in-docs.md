@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 02 January 2024
+
+- Added a new doc [Staking with Polkadot JS](./staking/staking-polkadot-js.md).
+
 ## 21 December 2023
 
 - A new [OCR Subnet Tutorial](./tutorials/ocr-subnet-tutorial.md) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
