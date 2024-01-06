@@ -95,15 +95,25 @@ const config = {
           srcDark: "img/logo-dark-mode.svg",
           style: {
             objectFit: "contain",
-            width: 20,
+            width: 24,
           },
         },
 
         items: [
           {
-            position: "left",
-            label: "Bittensor API Reference",
-            href: "pathname:///python-api/html/index.html",
+            position: "right",
+            type:'dropdown',
+            label: "Getting started",
+            items:[
+              {
+                label:'Installation',
+                to: '/getting-started/installation'
+              },
+              {
+                label:'Wallet',
+                to:'/getting-started/wallets'
+              }
+            ]
           },
           // {
           //   type: "dropdown",
@@ -160,7 +170,7 @@ const config = {
           },
           {
             href: "https://bittensor.com/about",
-            label: "About Bittensor",
+            label: "About Opentensor",
             position: "right",
           },
           {

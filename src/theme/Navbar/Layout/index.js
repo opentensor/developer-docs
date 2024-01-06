@@ -32,10 +32,11 @@ export default function NavbarLayout({ children }) {
         description: "The ARIA label for the main navigation",
       })}
       style={{
-        height: 72,
-        paddingBottom: 4,
-        paddingLeft: 32,
-        paddingRight: 32,
+        height: 96,
+        paddingBottom: 24,
+        paddingLeft: 48,
+        paddingRight: 48,
+        paddingTop: 24,
       }}
       className={clsx(
         "navbar",
