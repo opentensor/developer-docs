@@ -26,7 +26,7 @@
 
 .container > p {
   margin: 0;
-  margin-left: 12px;
+  margin-left: 8px;
   font-size: 14px;
   line-height: 22.4px;
   color: var(--custom-container-color);
