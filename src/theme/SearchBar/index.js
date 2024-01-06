@@ -152,6 +152,8 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
           crossOrigin="anonymous"
         />
       </Head>
+      {/* Prevents sidebar items from appearing above search on scroll*/}
+      <div style={{position:'absolute', height:97, background:'white', width:353, top:-43, display:'none'}}/>
       <CustomSearchButton
         onTouchStart={importDocSearchModalIfNeeded}
         onFocus={importDocSearchModalIfNeeded}
@@ -159,7 +161,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         onClick={onOpen}
         ref={searchButtonRef}
         translations={translations.button}
-        placeholder={"Search"}
+        placeholder={"Search documentation"}
       />
 
       {isOpen &&

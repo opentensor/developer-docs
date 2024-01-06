@@ -24,6 +24,7 @@
 	--grey-100: #f8f9fa; /* --contrast-100 */
 	--grey-900: #0e1013; /* --border-dashed-primary-hk */
 	--doc-sidebar-width: 351px !important;
+	--ifm-menu-color-background-hover: var(--grey-100)
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -299,14 +300,18 @@ p {
 
 .menu__list {
 	list-style: none;
-	margin: 0;
-	padding-left: 0;
+	margin: 0 !important;
+	padding-left: 0 !important;
 	font-family: "FiraCode";
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: calc(0.05 * 12px);
 	line-height: 150%;
 	text-transform: uppercase;
+}
+
+.theme-doc-sidebar-item-category > ul > li > a {
+	padding-left: 48px;
 }
 
 .table-of-contents,
@@ -455,23 +460,90 @@ ul {
 }
 
 .theme-doc-sidebar-container nav {
-	padding: 48px 32px 48px 48px !important;
-	margin-top: 80px;
+	padding: 0px 32px 48px 48px !important;
+	margin-top: 127px;
 }
 
 .menu__link {
 	padding: 15px;
 	font-size: 15px !important;
-	border-bottom: 1px dashed rgba(95, 99, 104, 1);
+}
+.menu__link--sublist-caret::after{
+	background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_2202_2258)"><path d="M11.7691 9.99968L8.83325 12.9355L8.83325 7.06381L11.7691 9.99968Z" fill="%230E1013"/></g><defs><clipPath id="clip0_2202_2258"><rect width="16" height="16" fill="white" transform="translate(2 18) rotate(-90)"/></clipPath></defs></svg>');
+	transform: rotate(90deg);
+}
+.menu__list-item--collapsed .menu__link--sublist::after, .menu__list-item--collapsed.menu__caret::before{
+	transform: rotateZ(0deg) !important;
+}
+.theme-doc-sidebar-menu.menu__list > li {
+	position: relative;
+}
+.theme-doc-sidebar-menu.menu__list > li::after {
+	content: '';
+	background-position: 0 0;
+	background-image: linear-gradient(to right, var(--grey-900), 1.5px, transparent 1.5px);
+	background-repeat: repeat-x;
+	background-size: 6px;
+	display: block;
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+
+.menu__list-item-collapsible {
+	position: relative;
+}
+.menu__list-item-collapsible::after {
+	content: '';
+	background-position: 0 0;
+	background-image: linear-gradient(to right, var(--grey-900), 1.5px, transparent 1.5px);
+	background-repeat: repeat-x;
+	background-size: 6px;
+	display: block;
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+
+.theme-doc-sidebar-item-link-level-2 {
+	position: relative;
+}
+.theme-doc-sidebar-item-link-level-2:not(:last-child)::after {
+	content: '';
+	background-position: 0 0;
+	background-image: linear-gradient(to right, var(--grey-900), 1.5px, transparent 1.5px);
+	background-repeat: repeat-x;
+	background-size: 6px;
+	display: block;
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
 }
 
 .theme-doc-sidebar-menu.menu__list li {
 	margin: 0 !important;
 }
 
+.theme-doc-sidebar-menu.menu__list li > a {
+	height: 48px;
+}
+
+.menu__link.menu__link--sublist.menu__link--sublist-caret {
+	height: 48px;
+}
+
 .menu__link {
 	border-radius: 0 !important;
 	color: var(--ifm-navbar-item-color);
+	font-size: 12px !important;
+	font-family: 'DM Mono', monospace;
+	letter-spacing: 0.6px !important;
 }
 
 .menu__link--active {
@@ -500,6 +572,9 @@ ul {
 		position: absolute;
 		left: 178px;
 		top: 200px;
+	}
+	.custom_algolia > div {
+		display: block !important;
 	}
 }
 
@@ -1143,11 +1218,6 @@ p>a>img[loading="lazy"] {
 	top: -15px !important;
 }
 
-
-.navbar__inner .search_container div:last-child {
-	margin-right: 8px !important;
-}
-
 .navbar.navbar--fixed-top {
 	margin-bottom: 0 !important;
 }
@@ -1335,6 +1405,11 @@ footer .container.container-fluid {
 	.pagination-nav .pagination-nav__link {
 		max-width: 489 !important;
 	}
+
+	.navbar-sidebar__item menu{
+		width: 100% !important;
+	}
+	
 }
 
 

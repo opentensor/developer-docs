@@ -13,6 +13,11 @@
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
 
+.search_container p {
+	font-size: 14px !important;
+	letter-spacing: 0.28px; 
+}
+
 @media (min-width: 997px) {
 	.custom_algolia {
 		position: absolute;
@@ -42,19 +47,26 @@
 
 @media (max-width: 996px) {
 	
-.search_container {
-	width: auto;
-}
+    .search_container {
+	    width: auto;
+    }
 	.search_mobile_icon{
 		display: flex;
-    justify-content: center;
+        justify-content: center;
 	}
 
 	.custom_algolia {
-	right: 1rem;	
-	left: unset;
-	transform: translateX(-50%);
+		right: 1rem;	
+		left: unset;
+		transform: translateX(-50%);
 	}
+
+	.search_container > div {
+		width: 36px !important;
+		min-width: 36px !important;
+		max-width: 36px !important;
+		height: 36px;
+	  }
 
 }
 @media (max-width: 996px)
