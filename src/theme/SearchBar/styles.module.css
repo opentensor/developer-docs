@@ -47,7 +47,8 @@
   margin-right: 4px;
 }
 
-@media (max-width: 1310px) {
+@media (max-width: 997px) {
+  /* Algolia search container */
 	.container {
 		display: none;
 	}
