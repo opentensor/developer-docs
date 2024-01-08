@@ -63,6 +63,8 @@ You can verify your installation in either of the two ways as shown below:
 
 ### Verify using the `btcli` command
 
+Using the [Bittensor Command Line Interface](../reference/btcli.md).
+
 ```bash
 btcli --help
 ```
@@ -71,33 +73,12 @@ which will give you the below output:
 ```text
 usage: btcli <command> <command args>
 
-bittensor cli v6.1.0
+bittensor cli <version number>
 
 positional arguments:
-  {subnets,s,subnet,root,r,roots,wallet,w,wallets,stake,st,stakes,sudo,su,sudos,legacy,l}
-    subnets (s, subnet)
-                        Commands for managing and viewing subnetworks.
-    root (r, roots)     Commands for managing and viewing the root network.
-    wallet (w, wallets)
-                        Commands for managing and viewing wallets.
-    stake (st, stakes)  Commands for staking and removing stake from hotkey accounts.
-    sudo (su, sudos)    Commands for subnet management
-    legacy (l)          Miscellaneous commands.
-
-options:
-  -h, --help            show this help message and exit
-  --config CONFIG       If set, defaults are overridden by passed file.
-  --strict              If flagged, config will check that only exact arguments have been set.
-  --no_version_checking
-                        Set true to stop cli version checking.
-  --no_prompt           Set true to stop cli from prompting the user.
+...
 ```
-
-using the [Bittensor Command Line Interface](reference/btcli) with **btcli --help*** and/or check the installation in python.
-```python numbered
-import bittensor as bt
-print( bt.__version__ )
-```
+You will see the version number you installed in place of `<version number>`. 
 
 ### Verify using Python interpreter
 
@@ -119,9 +100,9 @@ print( bt.__version__ )
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import bittensor as bt
     >>> print( bt.__version__ )
-    6.1.0
+    <version number>
     ```
-
+You will see the version number you installed in place of `<version number>`. 
 ### Verify by listing axon information
 
 You can also verify the Bittensor installation by listing the axon information for the neurons. Enter the following lines in the Python interpreter.
@@ -140,7 +121,7 @@ The Python interpreter output will look like below.
 
 ## Installing on Apple Silicon
 
-To install Bittensor on Apple M1, we recommend you first activate a Python virtual environment. Follow the below steps:
+To install Bittensor on Apple M1 or M2, we recommend you first activate a Python virtual environment. Follow the below steps:
 
 ### Activate a virtual environment
 
