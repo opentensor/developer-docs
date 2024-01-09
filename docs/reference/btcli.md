@@ -52,6 +52,19 @@ btcli wallet overview --help
 ```
 for full options.
 
+### Show history
+
+```bash
+btcli wallet history --wallet.name <YOUR WALLET NAME>
+```
+
+Displays the last 1000 transactions performed with `<YOUR WALLET NAME>` by querying the [Taostats](https://taostats.io/) GraphQL indexer. It shows the `From`, `To`, `Amount`, `Extrinsic Id` and `Block Number`.
+
+Run,
+```bash
+btcli wallet history --help
+```
+for help.
 
 ### List wallets
 
