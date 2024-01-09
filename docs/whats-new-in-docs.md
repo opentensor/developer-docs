@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 10 January 2024 (DRAFT)
+
+- Added the `btcli wallet history` [command description](./reference/btcli.md#show-history).  
+
 ## 02 January 2024
 
 - Added a new doc [Staking with Polkadot JS](./staking/staking-polkadot-js.md).
