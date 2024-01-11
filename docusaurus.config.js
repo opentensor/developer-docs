@@ -157,7 +157,11 @@ const config = {
           //     },
           //   ],
 					// },
-					
+          {
+            position: "left",
+            label: "Bittensor API Reference",
+            href: "pathname:///python-api/html/index.html",
+          },
 					{
 						type: "search",
 						position: "left",
@@ -175,7 +179,7 @@ const config = {
           },
           {
             href: "https://wallet.bittensor.com/",
-            label: "Wallet",
+            label: "wallet",
             position: "right",
           },
         ],

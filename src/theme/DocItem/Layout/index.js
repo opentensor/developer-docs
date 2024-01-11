@@ -48,18 +48,6 @@ export default function DocItemLayout({ children }) {
 					<article>
 						<DocBreadcrumbs />
 						<DocVersionBadge />
-						<div className="lastEdit">
-							{/* <p>
-            EDIT THIS PAGE
-            <br />
-            SUBMIT AN ISSUE
-          </p> */}
-
-							<div>
-								<span>LAST EDIT:</span>
-								<span>{formattedLastUpdatedAt}</span>
-							</div>
-						</div>
 						{docTOC.mobile}
 						<DocItemContent>{children}</DocItemContent>
 						<DocItemFooter />

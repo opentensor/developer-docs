@@ -7,6 +7,7 @@ import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
+import siteMetadata from "@generated/site-metadata";
 
 function TagsRow(props) {
   return (
@@ -76,39 +77,10 @@ export default function DocItemFooter() {
         <div className="feedback">
           <span className="feedback_message">was this helpful?</span>
           <div className="feelings">
-            {status === "light" ? (
-              <>
-                {[
-                  "/img/feelings1.png",
-                  "/img/feelings2.png",
-                  "/img/feelings3.png",
-                  "/img/feelings4.png",
-                ].map((imgPath) => (
-                  <img
-                    className="feeling-symbol"
-                    src={imgPath}
-                    key={imgPath}
-                    alt=""
-                  />
-                ))}
-              </>
-            ) : (
-              <>
-                {[
-                  "/img/darkfeeling1.png",
-                  "/img/darkfeeling2.png",
-                  "/img/darkfeeling3.png",
-                  "/img/darkfeeling4.png",
-                ].map((imgPath) => (
-                  <img
-                    className="feeling-symbol"
-                    src={imgPath}
-                    key={imgPath}
-                    alt=""
-                  />
-                ))}
-              </>
-            )}
+           <span className="feeling">:D</span>
+           <span className="feeling">:)</span>
+           <span className="feeling">:(</span>
+           <span className="feeling">x(</span>
           </div>
         </div>
 				{/* Make it external Link */}
@@ -126,9 +98,6 @@ export default function DocItemFooter() {
         </div>
       </div>
 
-      <div className="footer-line">
-        <div></div>
-      </div>
 
       {canDisplayTagsRow && <TagsRow tags={tags} />}
       {/* {canDisplayEditMetaRow && (

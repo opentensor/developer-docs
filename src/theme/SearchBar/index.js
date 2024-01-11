@@ -17,6 +17,7 @@ import { createPortal } from "react-dom";
 import translations from "@theme/SearchTranslations";
 import { useWindowSize } from "@docusaurus/theme-common";
 import CustomSearchButton from "./CustomSearchButton";
+import styles from './styles.module.css';
 
 let DocSearchModal = null;
 function Hit({ hit, children }) {
@@ -153,7 +154,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         />
       </Head>
       {/* Prevents sidebar items from appearing above search on scroll*/}
-      <div style={{position:'absolute', height:97, background:'white', width:353, top:-43, display:'none'}}/>
+      <div className='search_mask'/>
       <CustomSearchButton
         onTouchStart={importDocSearchModalIfNeeded}
         onFocus={importDocSearchModalIfNeeded}
@@ -161,7 +162,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         onClick={onOpen}
         ref={searchButtonRef}
         translations={translations.button}
-        placeholder={"Search documentation"}
+        placeholder={"Search"}
       />
 
       {isOpen &&
