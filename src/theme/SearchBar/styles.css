@@ -21,8 +21,8 @@
 @media (min-width: 997px) {
 	.custom_algolia {
 		position: absolute;
-		top: 139px;
-		left: 35px;
+		top: 122px;
+		left: 4px;
 	}
 }
 
@@ -74,4 +74,16 @@
 	.custom_algolia {
 		
 	}
+}
+
+.search_mask {
+	position:absolute;
+	height:80px;
+	background:white;
+	width:268px;
+	top:-26px;
+	display:none;
+}
+[data-theme="dark"]	.search_mask {
+	background:#000;
 }
