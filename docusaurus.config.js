@@ -106,11 +106,6 @@ const config = {
             href: "pathname:///python-api/html/index.html",
           },
           {
-            position: "left",
-            label: "Subnet Showcase",
-            to: "subnet-showcase",
-          },
-          {
             href: "https://wallet.bittensor.com/",
             label: "Wallet",
             position: "right",

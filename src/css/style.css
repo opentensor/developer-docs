@@ -1268,3 +1268,74 @@ footer .container.container-fluid {
 		padding: 20px 0 !important;
 	}
 }
+
+/* Subnet showcase cards -Raj */
+
+.subnet-container {
+	width: 80%;
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	padding-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+.subnet-container {
+	grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller screens */
+}
+}
+@media (max-width: 480px) {
+.subnet-container {
+	grid-template-columns: 1fr; /* 1 card per row on very small screens */
+}
+}
+
+.subnet-card {
+background: white;
+border-radius: 6px;
+border: 1px solid #ddd;
+/* box-shadow: 0 6px 12px rgba(0,0,0,0.1); */
+overflow: hidden;
+transition: box-shadow 0.3s;
+cursor: pointer;
+text-decoration: none;
+color: inherit;
+}
+
+.subnet-card a {
+	text-decoration: none !important;
+}
+
+.subnet-card:hover {
+box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+text-decoration: none;
+}
+
+.subnet-card-image {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+
+.subnet-card-body {
+padding: 20px;
+}
+
+.subnet-card-title {
+margin: 0;
+color: #333;
+font-size: 20px;
+font-weight: 400;
+text-transform: none;
+}
+
+.subnet-card-text {
+color: #666;
+font-size: 14px;
+margin-top: 10px;
+word-wrap: break-word;
+overflow-wrap: break-word;
+text-transform: uppercase;
+letter-spacing: 1.1px;
+}
