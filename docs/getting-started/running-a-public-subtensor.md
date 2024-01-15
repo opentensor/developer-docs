@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Running a Public Subtensor
 
-You can run a public subtensor node and synchronize with the Bittensor network. You can run this subtensor node as either a lite node or an archive node, and connect and sync with either the Bittensor mainchain or the testchain. This document describes how to run a public subtensor node either by compiling the subtensor source code into a binary and executing this binary, or by using a Docker container.
+You can run a public subtensor node and synchronize with the Bittensor network. You can run this subtensor node as either a lite node or as an archive node, and connect and sync with either the Bittensor mainchain or the testchain. This document describes how to run a public subtensor node either by compiling the subtensor source code into a binary and executing this binary, or by using a Docker container.
 
 ## A public subtensor vs a local blockchain
 
@@ -19,6 +19,7 @@ sources={{
     light: useBaseUrl('/img/docs/local-subtensor.svg'),
     dark: useBaseUrl('/img/docs/dark-local-subtensor.svg'),
   }}
+style={{width: 650}}
 />
 </center>
 
