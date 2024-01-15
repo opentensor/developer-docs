@@ -41,7 +41,7 @@ const sidebars = {
       items: [
         "getting-started/installation", 
         "getting-started/wallets",
-        "getting-started/running-subtensor",
+        "getting-started/running-a-public-subtensor",
       ],
     },
     {
