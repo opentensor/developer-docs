@@ -74,8 +74,8 @@ Faucet is disabled on the testchain. Hence, if you don't have sufficient faucet 
 
 Register (i.e., create) your new subnet on the testchain using the test TAO you minted from the previous step.  This will create a new subnet on the testchain and give you the owner permissions to it. This step is sometimes referred as **purchasing a slot**.
 
-:::tip Your TAO is recycled
-Slots cost TAO, and you will not get this TAO back. Instead, this TAO is recycled back into your incentive mechanism, to be later mined.
+:::tip Your TAO is returned when subnet is deregistered
+Subnet registration costs TAO. You will get this TAO back when the subnet is deregistered.
 :::
 
 ```bash
@@ -105,6 +105,10 @@ btcli subnet lock_cost
 ```
 
 ### Step 2. Create the subnet 
+
+:::tip Your TAO is returned when subnet is deregistered
+Subnet registration costs TAO. You will get this TAO back when the subnet is deregistered.
+:::
 
 Use the below command to register a new subnet on the mainchain. 
 
