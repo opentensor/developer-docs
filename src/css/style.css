@@ -1295,17 +1295,16 @@ footer .container.container-fluid {
 }
 }
 
-
 .subnet-card {	
-background: white;
-border-radius: 6px;
-border: 1px solid #ddd;
-/* box-shadow: 0 6px 12px rgba(0,0,0,0.1); */
-overflow: hidden;
-transition: box-shadow 0.3s;
-cursor: pointer;
-text-decoration: none;
-color: inherit;
+	background: white;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	/* box-shadow: 0 6px 12px rgba(0,0,0,0.1); */
+	overflow: hidden;
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 }
 
 .subnet-card a {
