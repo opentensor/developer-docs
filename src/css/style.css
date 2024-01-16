@@ -1271,6 +1271,7 @@ footer .container.container-fluid {
 
 /* Subnet showcase cards -Raj */
 
+@media screen and (min-width: 1310px){
 .subnet-container {
 	width: 80%;
 	margin-top: 20px;
@@ -1278,6 +1279,7 @@ footer .container.container-fluid {
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
 	padding-bottom: 2px;
+}
 }
 
 
