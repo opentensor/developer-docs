@@ -134,7 +134,7 @@ To run an archive node, execute the below command:
 
 ### Install Docker
 
-Follow Docker's [oficial installation guides](https://docs.docker.com/engine/install/).
+Follow Docker's [official installation guides](https://docs.docker.com/engine/install/).
 
 ### Clone the subtensor repo
 
