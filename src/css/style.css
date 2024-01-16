@@ -1280,6 +1280,9 @@ footer .container.container-fluid {
 	gap: 10px;
 	padding-bottom: 2px;
 }
+.subnet-card {
+	border: 1px solid #ddd;
+}
 }
 
 
@@ -1287,11 +1290,17 @@ footer .container.container-fluid {
 .subnet-container {
 	grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller screens */
 }
+.subnet-card {
+	border: 1px solid #ddd;
+}
 }
 
 @media screen and (max-width: 480px) {
 .subnet-container {
 	grid-template-columns: 1fr;  /* 1 card per row on very small screens */
+}
+.subnet-card {
+	border: 1px solid #ddd;
 }
 }
 
