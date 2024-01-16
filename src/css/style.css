@@ -1294,12 +1294,6 @@ footer .container.container-fluid {
 	grid-template-columns: 1fr;  /* 1 card per row on very small screens */
 }
 }
-@media screen and (min-width: 769px) and (max-width: 1440px) {
-    .subnet-card {
-        border: 1px solid #ddd;
-    }
-}
-
 
 .subnet-card {	
 	background: white;
