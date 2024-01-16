@@ -1280,18 +1280,21 @@ footer .container.container-fluid {
 	padding-bottom: 2px;
 }
 
-@media (max-width: 768px) {
+
+@media screen and (max-width: 768px) {
 .subnet-container {
 	grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller screens */
 }
 }
-@media (max-width: 480px) {
+
+@media screen and (max-width: 480px) {
 .subnet-container {
-	grid-template-columns: 1fr; /* 1 card per row on very small screens */
+	grid-template-columns: 1fr;  /* 1 card per row on very small screens */
 }
 }
 
-.subnet-card {
+
+.subnet-card {	
 background: white;
 border-radius: 6px;
 border: 1px solid #ddd;
