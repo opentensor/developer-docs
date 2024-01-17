@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 // import { IoSearchCircleOutline } from "react-icons/io5";
 
@@ -24,12 +24,15 @@ export default function CustomSearchButton({
   placeholder,
 }) {
   
-  // Function to detect MacOS
-  const isMacOS = () => {
+
+  const [isMacOS, setIsMacOS] = useState(false)
+  useEffect(() => {
+    // Function to detect MacOS
     const userAgent = window.navigator.userAgent;
     const macPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"];
-    return macPlatforms.some(platform => userAgent.includes(platform));
-  };
+    setIsMacOS(macPlatforms.some(platform => userAgent.includes(platform)))
+  }, [])
+  
 
   return (
     <>
@@ -62,7 +65,7 @@ export default function CustomSearchButton({
           <p>{placeholder}</p>
           <div className={styles.keys}>
             {/* Dynamically render Ctrl or Cmd key SVG based on OS */}
-            {isMacOS() ? (
+            {isMacOS ? (
               // SVG for MacOS (Cmd key)
               <svg
                 width="34"
