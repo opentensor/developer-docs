@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 18 January 2024
+
+- Add a new document [Running a Public Subtensor](./getting-started/running-a-public-subtensor.md).
+
 ## 10 January 2024
 
 - Added the `btcli wallet history` [command description](./reference/btcli.md#show-history).  
