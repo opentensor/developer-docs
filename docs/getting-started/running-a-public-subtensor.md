@@ -95,34 +95,36 @@ cargo build --release --features runtime-benchmarks
 
 You can now run the public subtensor node either as a lite node or as an archive node. See below:
 
-### Run a lite node
+### Lite node on mainchain 
 
-To run a lite node, execute the below command:
+To run a lite node connected to the mainchain, execute the below command:
 
 ```bash
-./target/release/node-subtensor \
-  --base-path /tmp/blockchain \
-  --chain ./raw_spec.json \
-  --rpc-external --rpc-cors all \
-  --ws-external --no-mdns \
-  --ws-max-connections 10000 --in-peers 500 --out-peers 500 \
-  --bootnodes /dns/bootnode.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC \
-  --sync warp
+sudo ./scripts/run/subtensor.sh -e binary --network mainnet --node-type lite
 ``` 
 
-### Run an archive node
+### Archive node on mainchain
 
-To run an archive node, execute the below command:
+To run an archive node connected to the mainchain, execute the below command:
 
 ```bash
-./target/release/node-subtensor \
-  --base-path /tmp/blockchain \
-  --chain ./raw_spec.json \
-  --rpc-external --rpc-cors all \
-  --ws-external --no-mdns \
-  --ws-max-connections 10000 --in-peers 500 --out-peers 500 \
-  --bootnodes /dns/bootnode.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC \
-  --pruning=archive
+sudo ./scripts/run/subtensor.sh -e docker --network mainnet --node-type archive
+``` 
+
+### Lite node on testchain 
+
+To run a lite node connected to the testchain, execute the below command:
+
+```bash
+sudo ./scripts/run/subtensor.sh -e binary --network testnet --node-type lite
+``` 
+
+### Archive node on testchain
+
+To run an archive node connected to the testchain, execute the below command:
+
+```bash
+sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
 ``` 
 
 
@@ -159,7 +161,7 @@ Before you proceed, make sure that Docker is running.
 To run a lite node connected to the Bittensor mainchain, run the below command.
 
 ```bash
-docker compose up -d mainnet-lite # To run a lite node on the mainnet
+sudo ./scripts/run/subtensor.sh -e docker --network mainnet --node-type lite
 ```
 
 ### Archive node on mainchain
@@ -167,7 +169,7 @@ docker compose up -d mainnet-lite # To run a lite node on the mainnet
 To run an archive node connected to the Bittensor mainchain, run the below command.
 
 ```bash
-docker compose up -d mainnet-archive
+sudo ./scripts/run/subtensor.sh -e docker --network mainnet --node-type archive
 ```
 
 ### Lite node on testchain
@@ -175,7 +177,7 @@ docker compose up -d mainnet-archive
 To run a lite node connected to the Bittensor testchain, run the below command.
 
 ```bash
-docker compose up -d testnet-lite
+sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type lite
 ```
 
 ### Archive node on testchain
@@ -183,7 +185,7 @@ docker compose up -d testnet-lite
 To run an archive node connected to the Bittensor testchain, run the below command.
 
 ```bash
-docker compose up -d testnet-archive
+sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
 ```
 
 
