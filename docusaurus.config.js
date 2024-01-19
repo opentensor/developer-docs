@@ -30,6 +30,13 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
+
+  customFields: {
+    enableIssueLinks: false, // Set to true to enable issue links
+    enableEditUrlLinks : false, // Set to true to enable edit url links
+    issueBaseUrl: 'https://github.com/opentensor/new-docs/issues/new',
+  },
+
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -48,6 +55,7 @@ const config = {
           sidebarCollapsible: true,
           showLastUpdateTime: true,
           docItemComponent: "@theme/DocItem",
+          editUrl: 'https://github.com/opentensor/new-docs/blob/main/',
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

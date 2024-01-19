@@ -1,0 +1,20 @@
+.link {
+  color: var(--grey-900);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  text-decoration-line: underline;
+}
+[data-theme="dark"] .link {
+  color: var(--grey-100)
+}
+
+.lastEdit {
+  color: var(--text-primary);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
