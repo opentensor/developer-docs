@@ -7,7 +7,6 @@ import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import siteMetadata from "@generated/site-metadata";
 
 function TagsRow(props) {
   return (
@@ -15,8 +14,7 @@ function TagsRow(props) {
       className={clsx(
         ThemeClassNames.docs.docFooterTagsRow,
         "row margin-bottom--sm"
-      )}
-    >
+      )}>
       <div className="col">
         <TagsListInline {...props} />
       </div>
@@ -71,33 +69,18 @@ export default function DocItemFooter() {
 
   return (
     <footer
-      className={clsx(ThemeClassNames.docs.docFooter, "docusaurus-mt-lg")}
-    >
+      className={clsx(ThemeClassNames.docs.docFooter, "docusaurus-mt-lg")}>
       <div className="feedbackAndName">
         <div className="feedback">
           <span className="feedback_message">was this helpful?</span>
           <div className="feelings">
-           <span className="feeling">:D</span>
-           <span className="feeling">:)</span>
-           <span className="feeling">:(</span>
-           <span className="feeling">x(</span>
-          </div>
-        </div>
-				{/* Make it external Link */}
-        <div className="EditedBy">
-          {/* <p>
-            EDIT THIS PAGE
-            <br />
-            SUBMIT AN ISSUE
-          </p> */}
-
-          <div>
-            <span>LAST EDIT:</span>
-            <span>{formattedLastUpdatedAt}</span>
+            <span className="feeling">:D</span>
+            <span className="feeling">:)</span>
+            <span className="feeling">:(</span>
+            <span className="feeling">x(</span>
           </div>
         </div>
       </div>
-
 
       {canDisplayTagsRow && <TagsRow tags={tags} />}
       {/* {canDisplayEditMetaRow && (
