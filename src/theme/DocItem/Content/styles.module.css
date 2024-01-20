@@ -47,3 +47,9 @@
 		width: 138%;
 	}
 }
+
+@media screen and (max-width: 996px) {
+	.hideOnMobile {
+		display: none !important;
+	}
+}
