@@ -42,17 +42,11 @@ export default function DocItemContent({ children }) {
           </div>
         </header>
       )}
-      {topLevel ? (
-        <div className="topLevelDoc">
-          <MetaActions />
-          <MDXContent>{children}</MDXContent>
-        </div>
-      ) : (
-        <div className="subLevelDoc">
-          <MetaActions style={{top:50, right:0}} />
-          <MDXContent>{children}</MDXContent>
-        </div>
-      )}
+
+      <div className={topLevel ? styles.topLevelDoc : ""}>
+        <MetaActions style={{ ...(!topLevel && { top: 50, right: 0 }) }}/>
+        <MDXContent>{children}</MDXContent>
+      </div>
     </div>
   );
 }
