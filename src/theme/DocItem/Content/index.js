@@ -71,6 +71,7 @@ function MetaActions({ style }) {
   const formattedLastUpdatedAt = metadata?.formattedLastUpdatedAt;
   return (
     <div
+      className={styles.hideOnMobile}
       style={{
         top: 186,
         display: "flex",
