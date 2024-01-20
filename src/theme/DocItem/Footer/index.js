@@ -33,9 +33,9 @@ export default function DocItemFooter() {
           <span className="feedback_message">was this helpful?</span>
           <div className="feelings">
             <span className="feeling" onClick={() => track("VeryHappy")}>:D</span>
-            <span className="feeling" onClick={() => track("Happy")}    >:)</span>
-            <span className="feeling" onClick={() => track("Sad")}      >:(</span>
-            <span className="feeling" onClick={() => track("Signup")}   >x(</span>
+            <span className="feeling" onClick={() => track("Happy")}>:)</span>
+            <span className="feeling" onClick={() => track("Sad")}>:(</span>
+            <span className="feeling" onClick={() => track("VerySad")}>x(</span>
           </div>
         </div>
       </div>
