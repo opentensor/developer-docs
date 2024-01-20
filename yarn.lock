@@ -1398,6 +1398,7 @@
     vfile "^6.0.1"
     webpack "^5.88.1"
 
+<<<<<<< HEAD
 "@docusaurus/module-type-aliases@3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-3.1.0.tgz#f3451702f143557bfde0502287713a08086a0415"
@@ -1416,9 +1417,15 @@
   version "3.0.1"
   resolved "https://registry.npmjs.org/@docusaurus/module-type-aliases/-/module-type-aliases-3.0.1.tgz"
   integrity sha512-DEHpeqUDsLynl3AhQQiO7AbC7/z/lBra34jTcdYuvp9eGm01pfH1wTVq8YqWZq6Jyx0BgcVl/VJqtE9StRd9Ag==
+=======
+"@docusaurus/module-type-aliases@3.1.0", "@docusaurus/module-type-aliases@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-3.1.0.tgz#f3451702f143557bfde0502287713a08086a0415"
+  integrity sha512-XUl7Z4PWlKg4l6KF05JQ3iDHQxnPxbQUqTNKvviHyuHdlalOFv6qeDAm7IbzyQPJD5VA6y4dpRbTWSqP9ClwPg==
+>>>>>>> 2147de4 (Upgraded Docusaurus to 3.1.0)
   dependencies:
     "@docusaurus/react-loadable" "5.5.2"
-    "@docusaurus/types" "3.0.1"
+    "@docusaurus/types" "3.1.0"
     "@types/history" "^4.7.11"
     "@types/react" "*"
     "@types/react-router-config" "*"
@@ -1666,16 +1673,17 @@
     fs-extra "^11.1.1"
     tslib "^2.6.0"
 
-"@docusaurus/tsconfig@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@docusaurus/tsconfig/-/tsconfig-3.0.1.tgz"
-  integrity sha512-hT2HCdNE3pWTzXV/7cSsowfmaOxXVOTFOXmkqaYjBWjaxjJ3FO0nHbdJ8rF6Da7PvWmIPbUekdP5gep1XCJ7Vg==
+"@docusaurus/tsconfig@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@docusaurus/tsconfig/-/tsconfig-3.1.0.tgz#ab6936a72b5a52904f37c0ef7d65c6d6aa6ab46d"
+  integrity sha512-PE6fSuj5gJy5sNC1OO+bYAU1/xZH5YqddGjhrNu3/T7OAUroqkMZfVl13Tz70CjYB8no4OWcraqSkObAeNdIcQ==
 
-"@docusaurus/types@3.0.1", "@docusaurus/types@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@docusaurus/types/-/types-3.0.1.tgz"
-  integrity sha512-plyX2iU1tcUsF46uQ01pAd4JhexR7n0iiQ5MSnBFX6M6NSJgDYdru/i1/YNPKOnQHBoXGLHv0dNT6OAlDWNjrg==
+"@docusaurus/types@3.1.0", "@docusaurus/types@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.1.0.tgz#1dbb60ea38e98ba869f8d7ea2323e4460f05ab65"
+  integrity sha512-VaczOZf7+re8aFBIWnex1XENomwHdsSTkrdX43zyor7G/FY4OIsP6X28Xc3o0jiY0YdNuvIDyA5TNwOtpgkCVw==
   dependencies:
+    "@mdx-js/mdx" "^3.0.0"
     "@types/history" "^4.7.11"
     "@types/react" "*"
     commander "^5.1.0"
@@ -1685,6 +1693,7 @@
     webpack "^5.88.1"
     webpack-merge "^5.9.0"
 
+<<<<<<< HEAD
 "@docusaurus/types@3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.1.0.tgz#1dbb60ea38e98ba869f8d7ea2323e4460f05ab65"
@@ -1700,6 +1709,8 @@
     webpack "^5.88.1"
     webpack-merge "^5.9.0"
 
+=======
+>>>>>>> 2147de4 (Upgraded Docusaurus to 3.1.0)
 "@docusaurus/utils-common@3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/utils-common/-/utils-common-3.1.0.tgz#846ce9c12b9ebf1ebf513e65303fb8158dcd2e1b"
