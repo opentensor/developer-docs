@@ -91,7 +91,7 @@
 	--ifm-table-of-contents-border: rgba(219, 221, 225, 1);
 	--ifm-table-of-contents-border-active: black;
 	--ifm-table-of-contents-text: #5F6368;
-	--ifm-table-of-contents-text-active: black;
+	--ifm-table-of-contents-text-active: #0E1013;
 	--ifm-breadcrumbs__item--active: rgba(14, 16, 19, 1);
 	--ifm-menu__link--active: rgb(111, 112, 114);
 	--ifm-footer-bg: #0E1013;
@@ -323,6 +323,9 @@ p {
 .table-of-contents,
 .table-of-contents ul {
 	font-family: "FiraCode";
+}
+[class*="tableOfContents"] {
+	padding-top: 20px;
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
@@ -604,6 +607,15 @@ ul {
 }
 
 /* right bar style */
+.table-of-contents__link {
+	color: #5F6368;
+	font-family: 'DM Mono', monospace;
+	font-size: 0.75rem;
+	line-height: 130%;
+	letter-spacing: 0.6px;
+	text-transform: lowercase;
+}
+
 .table-of-contents__link--active {
 	font-weight: bold;
 }
@@ -636,7 +648,6 @@ ul {
 
 .table-of-contents .table-of-contents__link:hover {
 	color: var(--ifm-table-of-contents-text-active) !important;
-	font-weight: 600;
 }
 
 .container.padding-top--md {
@@ -918,7 +929,7 @@ ul {
 
 
 .table-of-contents.table-of-contents__left-border li a {
-	border-left: 2px solid var(--ifm-table-of-contents-border);
+	border-left: 1px solid var(--ifm-table-of-contents-border);
 }
 
 .table-of-contents.table-of-contents__left-border li a {
@@ -927,8 +938,7 @@ ul {
 }
 
 .table-of-contents__link--active {
-	border-left: 2px solid var(--ifm-table-of-contents-border-active) !important;
-	font-weight: 600 !important;
+	border-left: 1px solid var(--ifm-table-of-contents-border-active) !important;
 	color: var(--ifm-table-of-contents-text-active) !important;
 }
 
