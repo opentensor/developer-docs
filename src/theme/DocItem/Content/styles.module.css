@@ -42,6 +42,9 @@
 	bottom: 0px;
 	left: 0;
 }
+[data-theme="dark"] .topLevelDoc > h1::after {
+	background-image: linear-gradient(to right, var(--grey-100), 1.5px, transparent 1.5px);
+}
 @media screen and (min-width: 997px) {
 	.topLevelDoc > h1::after {
 		width: 138%;
