@@ -33,8 +33,8 @@ const config = {
 
   customFields: {
     enableIssueLinks: false, // Set to true to enable issue links
-    enableEditUrlLinks : false, // Set to true to enable edit url links
-    issueBaseUrl: 'https://github.com/opentensor/new-docs/issues/new',
+    enableEditUrlLinks: false, // Set to true to enable edit url links
+    issueBaseUrl: "https://github.com/opentensor/new-docs/issues/new",
   },
 
   i18n: {
@@ -55,15 +55,28 @@ const config = {
           sidebarCollapsible: true,
           showLastUpdateTime: true,
           docItemComponent: "@theme/DocItem",
-          editUrl: 'https://github.com/opentensor/new-docs/blob/main/',
+          editUrl: "https://github.com/opentensor/new-docs/blob/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
-	],
-	plugins:["@gracefullight/docusaurus-plugin-vercel-analytics"],
+  ],
+  plugins: [
+    "@gracefullight/docusaurus-plugin-vercel-analytics",
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/btcli",
+            from: "/reference/btcli",
+          },
+        ],
+      },
+    ],
+  ],
   // scripts: [
   //   // String format.
   //   // 'https://docusaurus.io/script.js',
@@ -110,18 +123,18 @@ const config = {
         items: [
           {
             position: "right",
-            type:'dropdown',
+            type: "dropdown",
             label: "Getting started",
-            items:[
+            items: [
               {
-                label:'Installation',
-                to: '/getting-started/installation'
+                label: "Installation",
+                to: "/getting-started/installation",
               },
               {
-                label:'Wallet',
-                to:'/getting-started/wallets'
-              }
-            ]
+                label: "Wallet",
+                to: "/getting-started/wallets",
+              },
+            ],
           },
           // {
           //   type: "dropdown",
@@ -137,15 +150,15 @@ const config = {
           //     // 		"getting-started/installation",
           //     // 		"getting-started/wallets",
           //     // 	],
-					// 		// },
-					// 		{to:"/",  label: "WELCOME",},
-					// 		{
-					// 			label: "WHAT'S NEW IN DOCS",
-					// 			to: "/whats-new-in-docs"
-					// 		},
+          // 		// },
+          // 		{to:"/",  label: "WELCOME",},
+          // 		{
+          // 			label: "WHAT'S NEW IN DOCS",
+          // 			to: "/whats-new-in-docs"
+          // 		},
           //     {
-					// 			label: "Get Started",
-								
+          // 			label: "Get Started",
+
           //       dropdown: [
           //         {
           //           label: "INSTALL BITTENSOR",
@@ -164,17 +177,17 @@ const config = {
           //       to: "/getting-started/installation",
           //     },
           //   ],
-					// },
+          // },
           {
             position: "left",
             label: "Bittensor API Reference",
             href: "pathname:///python-api/html/index.html",
           },
-					{
-						type: "search",
-						position: "left",
-						className: "custom_algolia"
-					},
+          {
+            type: "search",
+            position: "left",
+            className: "custom_algolia",
+          },
           {
             href: "https://github.com/opentensor/new-docs",
             label: "GitHub",

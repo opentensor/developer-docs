@@ -26,7 +26,7 @@ Key updates to this documentation.
 - A new [OCR Subnet Tutorial](./tutorials/ocr-subnet-tutorial.md) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
 - A new [Emissions](./emissions.md) document is published. This document presents how to calculate emissions, trust, rank and consensus for a subnet. 
 - A new section [Moving a subnet miner to a different machine](./subnets/register-and-participate.md#moving-a-subnet-miner-to-a-different-machine) is added.
-- A new section for [Subnets](./reference/btcli.md#subnets) is added in the CLI document.
+- A new section for [Subnets](./btcli.md#subnets) is added in the CLI document.
 - Dark-mode display problems with [Bittensor API Reference (see navbar above)](https://docs.bittensor.com/python-api/html/index.html) are fixed.
 - Styling for this documentation site is enhanced to reflect Opentensor Foundation visual theme. 
 
