@@ -19,7 +19,7 @@ Key updates to this documentation.
 
 ## 10 January 2024
 
-- Added the `btcli wallet history` [command description](./reference/btcli.md#show-history).  
+- Added the `btcli wallet history` [command description](/btcli.md#show-history).  
 
 ## 02 January 2024
 
