@@ -1,0 +1,41 @@
+.cards {
+  display: flex;
+  padding: 24px 0;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 376px;
+  border-radius: 8px;
+  padding: 20px 24px 24px 24px;
+  border: 1px solid var(--ifm-navbar-border); 
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 140%;
+  margin-bottom: 16px;
+}
+
+.body {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  line-height: 160%;
+  letter-spacing: 0.28px;
+}
+
+.readMore {
+	font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  margin-top: 24px;
+  text-decoration: none !important;
+  display: inline-block
+}

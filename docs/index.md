@@ -6,6 +6,13 @@ sidebar_position: 0
 hide_table_of_contents: false
 ---
 
+import { HiAcademicCap } from "react-icons/hi2";
+import { MdInstallDesktop } from "react-icons/md";
+import { FaNetworkWired } from "react-icons/fa";
+import { GiMining } from "react-icons/gi";
+import { GrValidate } from "react-icons/gr";
+
+
 # Bittensor Developer Documentation
 
 
@@ -21,3 +28,32 @@ Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **
 You can either create your own subnet, with your custom incentive mechanism, to launch your own competition, or join a subnet that already exists in the Bittensor ecosystem. For example, the [text prompting subnet](https://github.com/opentensor/text-prompting) incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet. 
 
 Bittensor provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
+
+<Cards>
+    <Card 
+    icon={HiAcademicCap}
+    title='Getting started'
+    link='getting-started/installation'
+    body='Augue ultricies tincidunt suscipit fringilla. Ac fusce ac quam hendrerit. Faucibus pulvinar curabitur.' />
+    <Card
+    icon={MdInstallDesktop}
+    title='Installation'
+    link='getting-started/installation'
+    body='Vel est magna turpis elit. Nunc imperdiet amet pulvinar semper urna erat ipsum. Quis neque nibh.' />
+    <Card
+    icon={FaNetworkWired}
+    title='Subnetworks'
+    link='getting-started/installation'
+    body='Turpis purus vel massa venenatis. Volutpat praesent est cras erat morbi massa. Nisl ac.' />
+    <Card
+    icon={GiMining}
+    title='Mining'
+    link='getting-started/installation'
+    body='In odio non a curabitur nisl sit est adipiscing convallis. Nulla ornare eu vulputate sit amet quis.' />
+    <Card
+    icon={GrValidate}
+    title='Validating'
+    link='getting-started/installation'
+    body='Diam duis sapien sollicitudin vitae duis diam. Vulputate mi quam odio lectus vestibulum.' />
+</Cards>
+
