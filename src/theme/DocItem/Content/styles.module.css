@@ -18,3 +18,32 @@
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
+
+.topLevelDoc > h1 {
+	margin-top: 88px;
+	margin-bottom: 48px !important;
+	padding-bottom: 48px;
+	font-family: Haffer;
+	font-size: 6rem !important;
+	line-height: 90%;
+	letter-spacing: -3.84px;
+	position: relative;
+}
+.topLevelDoc > h1::after {
+	content: '';
+	background-position: 0 0;
+	background-image: linear-gradient(to right, var(--grey-900), 1.5px, transparent 1.5px);
+	background-repeat: repeat-x;
+	background-size: 6px;
+	display: block;
+	width: 100%;
+	height: 1.5px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+@media screen and (min-width: 997px) {
+	.topLevelDoc > h1::after {
+		width: 138%;
+	}
+}
