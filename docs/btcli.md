@@ -4,7 +4,7 @@ title: "Bittensor CLI"
 
 # Bittensor CLI
 
-After you [install Bittensor](../getting-started/installation.md) you can use `btcli` command line interface (CLI) to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network. This section presents the command and subcommand options available in `btcli` CLI.
+After you [install Bittensor](/getting-started/installation.md) you can use `btcli` command line interface (CLI) to stake or unstake funds, run miners, check network state, and even deploy, analyze, and interface with the Bittensor network. This section presents the command and subcommand options available in `btcli` CLI.
 
 ## Usage
 

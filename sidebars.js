@@ -68,7 +68,7 @@ const sidebars = {
         "subnets/code-walkthrough-text-prompting",
       ],
     },
-    "reference/btcli",
+    "btcli",
     "emissions",
     // "reference/bittensor-api-ref",
     {
