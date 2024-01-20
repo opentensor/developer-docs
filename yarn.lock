@@ -1399,7 +1399,11 @@
     webpack "^5.88.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@docusaurus/module-type-aliases@3.1.0":
+=======
+"@docusaurus/module-type-aliases@3.1.0", "@docusaurus/module-type-aliases@^3.1.0":
+>>>>>>> 0195c57 (Resolved merge conflicts)
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-3.1.0.tgz#f3451702f143557bfde0502287713a08086a0415"
   integrity sha512-XUl7Z4PWlKg4l6KF05JQ3iDHQxnPxbQUqTNKvviHyuHdlalOFv6qeDAm7IbzyQPJD5VA6y4dpRbTWSqP9ClwPg==
@@ -1413,6 +1417,7 @@
     react-helmet-async "*"
     react-loadable "npm:@docusaurus/react-loadable@5.5.2"
 
+<<<<<<< HEAD
 "@docusaurus/module-type-aliases@^3.0.1":
   version "3.0.1"
   resolved "https://registry.npmjs.org/@docusaurus/module-type-aliases/-/module-type-aliases-3.0.1.tgz"
@@ -1433,6 +1438,8 @@
     react-helmet-async "*"
     react-loadable "npm:@docusaurus/react-loadable@5.5.2"
 
+=======
+>>>>>>> 0195c57 (Resolved merge conflicts)
 "@docusaurus/plugin-client-redirects@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-client-redirects/-/plugin-client-redirects-3.1.0.tgz#1d107a319d83da24edac0a672681b098129eee8f"
@@ -1679,6 +1686,7 @@
   integrity sha512-PE6fSuj5gJy5sNC1OO+bYAU1/xZH5YqddGjhrNu3/T7OAUroqkMZfVl13Tz70CjYB8no4OWcraqSkObAeNdIcQ==
 
 "@docusaurus/types@3.1.0", "@docusaurus/types@^3.1.0":
+<<<<<<< HEAD
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.1.0.tgz#1dbb60ea38e98ba869f8d7ea2323e4460f05ab65"
   integrity sha512-VaczOZf7+re8aFBIWnex1XENomwHdsSTkrdX43zyor7G/FY4OIsP6X28Xc3o0jiY0YdNuvIDyA5TNwOtpgkCVw==
@@ -1695,6 +1703,8 @@
 
 <<<<<<< HEAD
 "@docusaurus/types@3.1.0":
+=======
+>>>>>>> 0195c57 (Resolved merge conflicts)
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.1.0.tgz#1dbb60ea38e98ba869f8d7ea2323e4460f05ab65"
   integrity sha512-VaczOZf7+re8aFBIWnex1XENomwHdsSTkrdX43zyor7G/FY4OIsP6X28Xc3o0jiY0YdNuvIDyA5TNwOtpgkCVw==

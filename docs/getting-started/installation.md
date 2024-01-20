@@ -63,7 +63,7 @@ You can verify your installation in either of the two ways as shown below:
 
 ### Verify using the `btcli` command
 
-Using the [Bittensor Command Line Interface](../reference/btcli.md).
+Using the [Bittensor Command Line Interface](/btcli.md).
 
 ```bash
 btcli --help
