@@ -347,11 +347,11 @@ p {
 	color: var(--text-secondary);
 	letter-spacing: 0.6px;
 }
-[data-theme="dark"] .navbar__link {
-	color: #a5abaf;
-}
 [data-theme="dark"] .navbar__link:hover {
 	color:#e3e3e3 !important;
+}
+[data-theme="dark"] .navbar__item {
+	/* color: rgb(95, 99, 104) !important; */
 }
 .navbar__link:hover {
 	color: #000 !important;
@@ -1337,10 +1337,6 @@ footer .container.container-fluid {
 [data-theme="dark"] {
 	.theme-doc-sidebar-menu li:first-child>div>div {
 		border: 1px solid #282a2d !important;
-	}
-
-	.navbar__item {
-		color: #a5abaf !important;
 	}
 }
 
