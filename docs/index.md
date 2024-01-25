@@ -57,3 +57,26 @@ Bittensor provides all the open source tools, the codebase and the documentation
     body='Diam duis sapien sollicitudin vitae duis diam. Vulputate mi quam odio lectus vestibulum.' />
 </Cards>
 
+<Cards>
+    <CardSmall 
+    title='Subnet 1'
+    link='getting-started/installation'
+    body='text prompting' />
+    <CardSmall
+    title='Subnet 2'
+    link='getting-started/installation'
+    body='machine translation' />
+    <CardSmall
+    title='Subnet 3'
+    link='getting-started/installation'
+    body='data scraping' />
+    <CardSmall
+    title='Subnet 4'
+    link='getting-started/installation'
+    body='multimodality' />
+        <CardSmall
+    title='Subnet 5'
+    link='getting-started/installation'
+    body='multimodality' />
+</Cards>
+
