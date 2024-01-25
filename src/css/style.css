@@ -613,7 +613,6 @@ ul {
 	font-size: 0.75rem;
 	line-height: 130%;
 	letter-spacing: 0.6px;
-	text-transform: lowercase;
 }
 
 .table-of-contents__link--active {
