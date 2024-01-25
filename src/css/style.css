@@ -347,6 +347,15 @@ p {
 	color: var(--text-secondary);
 	letter-spacing: 0.6px;
 }
+[data-theme="dark"] .navbar__link {
+	color: #a5abaf;
+}
+[data-theme="dark"] .navbar__link:hover {
+	color:#e3e3e3 !important;
+}
+.navbar__link:hover {
+	color: #000 !important;
+}
 
 .theme-last-updated {
 	font-style: normal;
