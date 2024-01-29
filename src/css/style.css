@@ -350,9 +350,7 @@ p {
 [data-theme="dark"] .navbar__link:hover {
 	color:#e3e3e3 !important;
 }
-[data-theme="dark"] .navbar__item {
-	/* color: rgb(95, 99, 104) !important; */
-}
+
 .navbar__link:hover {
 	color: #000 !important;
 }
@@ -418,9 +416,13 @@ ul {
 	font-family: 'DM Mono', monospace;
 	color: var(--text-secondary);
 	font-size: 12px !important;
-	display: flex;
 	align-items: center;
 	letter-spacing: 0.6px;
+}
+@media (min-width: 997) {
+	.navbar__item.navbar__link {
+		display: flex;
+	}
 }
 
 .dropdown--right {
