@@ -35,6 +35,7 @@ const config = {
     enableIssueLinks: false, // Set to true to enable issue links
     enableEditUrlLinks: false, // Set to true to enable edit url links
     issueBaseUrl: "https://github.com/opentensor/new-docs/issues/new",
+    enableFeedback: true // Set to false to disable feedback
   },
 
   i18n: {
