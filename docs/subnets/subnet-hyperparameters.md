@@ -4,11 +4,15 @@ title: "Subnet Hyperparameters"
 
 # Subnet Hyperparameters
 
-This document presents the description of subnet hyperparameters. You can see the subnet hyperparameters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
+This document presents the description of the allowed subnet hyperparameters. For any subnet, you can see the subnet hyperparameters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
 
 ```bash
 btcli subnet hyperparameters
 ```
+
+:::tip Current hyperparameters list
+Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters. Only these are described in this document.
+::: 
 
 ## Setting the hyperparameters
 
@@ -17,6 +21,74 @@ Use the below command to set these hyperparameters:
 ```bash
 btcli sudo set
 ```
+
+## serving_rate_limit
+
+**Description**
+: Determines how often you can change your node's IP address on the blockchain. Expressed in number of blocks. Applies to both subnet validator and subnet miner nodes. Used when you move your node to a new machine.
+
+**Value**
+: Usually this is set to `100` blocks. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
+
+
+## min_difficulty, max_difficulty
+
+**Description**
+: Obsolete. We no longer support PoW (proof-of-work) registration, hence these parameters are no longer used. 
+
+---
+
+## weights_version
+
+**Description**
+: Indicates the required minimum version of the subnet validator code. 
+
+**Value**
+: Set to `2013` for Subnet-1. 
+: This means that every subnet validator in Subnet-1 must have at least version `2013` of the subnet validaor code.
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. Setting this parameter to a version ensures that all the subnet validators use the same version of the code.
+
+---
+
+## weights_rate_limit
+
+**Description**
+: How often a subnet validator can set weights on the blockchain, expressed in number of blocks. 
+
+**Value**
+: Set to `100` for Subnet-1. 
+: This means that after a subnet validator in Subnet-1 sends the weights to the blockchain, this subnet validator must wait for at least 100 blocks before sending the weights again to the blockchain.
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
+
+
+## max_weight_limit
+
+This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) type. 
+
+**Value**
+: Set to `455` for Subnet-1. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+### Example
+
+Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weights` is set to 8. This means that each subnet validator must set weights for at least 8 subnet miners, and each such weight must not exceed `455`.
+
+---
+
+<!-- 
 
 ## rho, kappa
 
@@ -30,7 +102,7 @@ btcli sudo set
 **Setting**
 : Must not be changed. 
 
----
+--- -->
 
 ## immunity_period
 
@@ -79,21 +151,7 @@ In this case, none of the actual weight-setting extrinsics that the subnet valid
 
 ---
 
-## max_weight_limit
-
-This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) type. 
-
-**Value**
-: Set to `455` for Subnet-1. 
-
-**Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
-
-### Example
-
-Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weights` is set to 8. This means that each subnet validator must set weights for at least 8 subnet miners, and each such weight must not exceed `455`.
-
----
+<!-- ---
 
 ## tempo
 
@@ -110,42 +168,10 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 **Setting**
 : Must not be changed. 
 
----
+--- -->
 
-## min_difficulty, max_difficulty
 
-**Description**
-: Obsolete. We no longer support PoW (proof-of-work) registration, hence these parameters are no longer used. 
-
----
-
-## weights_version
-
-**Description**
-: Indicates the required minimum version of the subnet validator code. 
-
-**Value**
-: Set to `2013` for Subnet-1. 
-: This means that every subnet validator in Subnet-1 must have at least version `2013` of the subnet validaor code.
-
-**Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. Setting this parameter to a version ensures that all the subnet validators use the same version of the code.
-
----
-
-## weights_rate_limit
-
-**Description**
-: How often a subnet validator can set weights on the blockchain, expressed in number of blocks. 
-
-**Value**
-: Set to `100` for Subnet-1. 
-: This means that after a subnet validator in Subnet-1 sends the weights to the blockchain, this subnet validator must wait for at least 100 blocks before sending the weights again to the blockchain.
-
-**Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
-
----
+<!-- ---
 
 ## adjustment_interval
 
@@ -169,7 +195,7 @@ The Subnet-1 has its `target_regs_per_interval` set to 2. Consider a scenario wh
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
 :::
 
----
+--- -->
 
 ## activity_cutoff
 
@@ -187,7 +213,7 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 
 ---
 
-## registration_allowed
+## network_registration_allowed
 
 **Description**
 : `True` or `False`. Indicates whether this subnet allows registrations. 
@@ -200,6 +226,16 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 
 ---
 
+## network_pow_registration_allowed
+
+**Description**
+: `True` or `False`. Indicates whether this subnet allows POW (proof of work) registrations. 
+
+**Setting**
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+
+---
+<!-- 
 ## target_regs_per_interval
 
 **Description**
@@ -219,7 +255,7 @@ The maximum number of registrations that can occur in an `adjustment_interval` i
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
 :::
 
----
+--- -->
 
 ## min_burn, max_burn
 
@@ -230,7 +266,7 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : This parameter is automatically updated by the blockchain. 
 
 ---
-
+<!-- 
 ## bonds_moving_avg
 
 **Description**
@@ -265,19 +301,6 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 
 ---
 
-## serving_rate_limit
-
-**Description**
-: Determines how often you can change your node's IP address on the blockchain. Expressed in number of blocks. Applies to both subnet validator and subnet miner nodes. Used when you move your node to a new machine.
-
-**Value**
-: Usually this is set to `100` blocks. 
-
-**Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
-
----
-
 ## max_validators
 
 **Description**
@@ -287,4 +310,4 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : Default value is `64`.
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet.  -->
