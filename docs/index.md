@@ -37,6 +37,25 @@ Bittensor provides all the open source tools, the codebase and the documentation
     body='Augue ultricies tincidunt suscipit fringilla. Ac fusce ac quam hendrerit. Faucibus pulvinar curabitur.' />
     <Card
     icon={MdInstallDesktop}
+    title='Dendrite'
+    link='http://localhost:3000/python-api/html/autoapi/bittensor/dendrite/index.html'
+    body='Vel est magna turpis elit. Nunc imperdiet amet pulvinar semper urna erat ipsum. Quis neque nibh.' />
+    <Card
+    icon={FaNetworkWired}
+    title='Subnetworks'
+    link='getting-started/installation'
+    body='Turpis purus vel massa venenatis. Volutpat praesent est cras erat morbi massa. Nisl ac.' />
+    
+</Cards>
+
+<Cards>
+    <Card 
+    icon={HiAcademicCap}
+    title='Getting started'
+    link='getting-started/installation'
+    body='Augue ultricies tincidunt suscipit fringilla. Ac fusce ac quam hendrerit. Faucibus pulvinar curabitur.' />
+    <Card
+    icon={MdInstallDesktop}
     title='Installation'
     link='getting-started/installation'
     body='Vel est magna turpis elit. Nunc imperdiet amet pulvinar semper urna erat ipsum. Quis neque nibh.' />
@@ -59,8 +78,8 @@ Bittensor provides all the open source tools, the codebase and the documentation
 
 <Cards>
     <CardSmall 
-    title='Subnet 1'
-    link='getting-started/installation'
+    title='Axon'
+    link='http://localhost:3000/python-api/html/autoapi/bittensor/axon/index.html'
     body='text prompting' />
     <CardSmall
     title='Subnet 2'
