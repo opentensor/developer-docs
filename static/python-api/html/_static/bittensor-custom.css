@@ -145,7 +145,7 @@ code.literal {
 }
 
 .bd-sidebar-secondary{
-    max-height: none;
+    max-height: calc(100vh - var(--pst-header-height));
 }
 
 @media (min-width: 960px){

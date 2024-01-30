@@ -11,6 +11,17 @@ import { MdInstallDesktop } from "react-icons/md";
 import { FaNetworkWired } from "react-icons/fa";
 import { GiMining } from "react-icons/gi";
 import { GrValidate } from "react-icons/gr";
+import { MdOutlineChecklistRtl } from "react-icons/md";
+import { GiArchiveRegister } from "react-icons/gi";
+import { BiMath } from "react-icons/bi";
+import { RiTeamLine } from "react-icons/ri";
+import { RiGovernmentLine } from "react-icons/ri";
+import { FaGalacticSenate } from "react-icons/fa";
+import { GiStarFormation } from "react-icons/gi";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { VscSymbolParameter } from "react-icons/vsc";
+import { GoCommandPalette } from "react-icons/go";
+import { FaPython } from "react-icons/fa";
 
 
 # Bittensor Developer Documentation
@@ -39,12 +50,12 @@ If you are new to Bittensor, start by learning the concepts. Then install the Bi
     <Card 
     icon={HiAcademicCap}
     title='Learn the concepts'
-    link='getting-started/installation'
-    body='Augue ultricies tincidunt suscipit fringilla. Ac fusce ac quam hendrerit. Faucibus pulvinar curabitur.' />
+    link='learn/introduction'
+    body='Start by learning the Bittensor concept, building blocks and incentive mechanism.' />
     <Card
     icon={MdInstallDesktop}
     title='Install'
-    link='http://localhost:3000/python-api/html/autoapi/bittensor/dendrite/index.html'
+    link='getting-started/installation'
     body='To validate or mine, or run your own subnet, install Bittensor and create wallet to get started.' />
     
 </Cards>
@@ -59,32 +70,32 @@ You can participate in an existing subnet as either a subnet validator or a subn
 
 <Cards>
     <Card 
-    icon={HiAcademicCap}
+    icon={MdOutlineChecklistRtl}
     title='1. Checklist for participating'
     link='subnets/checklist-for-subnet'
     body='When you are preparing to be a subnet validator or a subnet miner, use this checklist to get ready.' />
     <Card
-    icon={MdInstallDesktop}
-    title='2. Register and participate'
+    icon={GiArchiveRegister}
+    title='2. Register, stake and participate'
     link='subnets/register-and-participate'
     body='Follow these steps to register and become a miner, or stake your TAO and become a validator.' />
     <Card
-    icon={FaNetworkWired}
+    icon={BiMath}
     title='3. Emissions'
     link='emissions'
     body='Learn how dividends for the validators and incentives for the miners are calculated.' />
     <Card
-    icon={FaNetworkWired}
+    icon={RiTeamLine}
     title='4. Delegation'
     link='delegation'
     body='Get to know how delegation works and how to delegate your TAO.' />
     <Card
-    icon={FaNetworkWired}
+    icon={RiGovernmentLine}
     title='Governance'
     link='governance'
     body='Learn how the Bittensor governance works as it transitions into full community-ownership over time.' />
     <Card
-    icon={FaNetworkWired}
+    icon={FaGalacticSenate}
     title='Senate'
     link='senate'
     body='Understand what Senate is, requirements to participate in a Senate and how voting works.' />
@@ -104,17 +115,17 @@ Ready to run your own subnet? Follow the below links.
     link='tutorials/basic-subnet-tutorials'
     body='Learn how to run a simple subnet locally or on testchain or mainchain.' />
     <Card
-    icon={MdInstallDesktop}
+    icon={GiStarFormation}
     title='Create a subnet'
     link='subnets/create-a-subnet'
     body='Step-by-step instructions for creating a local subnet or a subnet on testchain or mainchain.' />
     <Card
-    icon={FaNetworkWired}
+    icon={HiOutlineAcademicCap}
     title='OCR subnet tutorial'
     link='tutorials/ocr-subnet-tutorial'
     body='Shows how to convert your Python notebook containing validated code for an incentive mechanism into a working subnet.' />
     <Card
-    icon={GiMining}
+    icon={VscSymbolParameter}
     title='Subnet hyperparameters'
     link='subnets/subnet-hyperparameters'
     body='Get to know subnet hyperparameters and how to use them effectively. As a subnet owner, your success depends on this knowledge.' />
@@ -128,12 +139,12 @@ Use the Bittensor CLI and Python API to develop and participate in the Bittensor
 
 <Cards>
     <Card 
-    icon={HiAcademicCap}
+    icon={GoCommandPalette}
     title='Bittensor CLI'
     link='btcli'
     body='With Bittensor CLI, you can stake or unstake funds, check network state and much more.' />
     <Card
-    icon={MdInstallDesktop}
+    icon={FaPython}
     title='Python API'
     link='bt-api-ref'
     body='A comprehensive Python API reference documentation for the open-sourced Bittensor API.' />
