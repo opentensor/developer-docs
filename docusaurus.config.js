@@ -122,25 +122,30 @@ const config = {
         },
 
         items: [
+          // {
+          //   position: "left",
+          //   type: "dropdown",
+          //   label: "Getting started",
+          //   items: [
+          //     {
+          //       label: "Installation",
+          //       to: "/getting-started/installation",
+          //     },
+          //     {
+          //       label: "Wallet",
+          //       to: "/getting-started/wallets",
+          //     },
+          //   ],
+          // },
+          // {
+          //   position: "right",
+          //   label: "Bittensor API Reference",
+          //   href: "pathname:///python-api/html/index.html",
+          // },
           {
             position: "left",
-            type: "dropdown",
-            label: "Getting started",
-            items: [
-              {
-                label: "Installation",
-                to: "/getting-started/installation",
-              },
-              {
-                label: "Wallet",
-                to: "/getting-started/wallets",
-              },
-            ],
-          },
-          {
-            position: "right",
-            label: "Bittensor API Reference",
-            href: "pathname:///python-api/html/index.html",
+            label: "Bittensor API",
+            to: "bt-api-ref",
           },
           {
             type: "search",

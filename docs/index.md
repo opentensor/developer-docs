@@ -16,7 +16,7 @@ import { GrValidate } from "react-icons/gr";
 # Bittensor Developer Documentation
 
 
-:::note See what's new
+:::tip See what's new
 See [what's new in docs](./whats-new-in-docs.md).
 :::
 
@@ -76,7 +76,7 @@ Bittensor provides all the open source tools, the codebase and the documentation
     body='Diam duis sapien sollicitudin vitae duis diam. Vulputate mi quam odio lectus vestibulum.' />
 </Cards>
 
-<Cards>
+<!-- <Cards>
     <CardSmall 
     title='Axon'
     link='http://localhost:3000/python-api/html/autoapi/bittensor/axon/index.html'
@@ -97,5 +97,5 @@ Bittensor provides all the open source tools, the codebase and the documentation
     title='Subnet 5'
     link='getting-started/installation'
     body='multimodality' />
-</Cards>
+</Cards> -->
 
