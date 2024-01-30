@@ -35,7 +35,7 @@ const config = {
     enableIssueLinks: false, // Set to true to enable issue links
     enableEditUrlLinks: false, // Set to true to enable edit url links
     issueBaseUrl: "https://github.com/opentensor/new-docs/issues/new",
-    enableFeedback: true // Set to false to disable feedback
+    enableFeedback: false // Set to false to disable feedback
   },
 
   i18n: {
@@ -123,7 +123,7 @@ const config = {
 
         items: [
           {
-            position: "right",
+            position: "left",
             type: "dropdown",
             label: "Getting started",
             items: [
@@ -137,50 +137,8 @@ const config = {
               },
             ],
           },
-          // {
-          //   type: "dropdown",
-          //   label: "GETTING STARTED",
-          //   position: "left",
-          //   items: [
-          //     // {
-          //     // 	label: 'Item 1',
-
-          //     // 	position: "left",
-          //     // 	type: 'category',
-          //     // 	items: [
-          //     // 		"getting-started/installation",
-          //     // 		"getting-started/wallets",
-          //     // 	],
-          // 		// },
-          // 		{to:"/",  label: "WELCOME",},
-          // 		{
-          // 			label: "WHAT'S NEW IN DOCS",
-          // 			to: "/whats-new-in-docs"
-          // 		},
-          //     {
-          // 			label: "Get Started",
-
-          //       dropdown: [
-          //         {
-          //           label: "INSTALL BITTENSOR",
-          //           to: "/getting-started/installation",
-          //         },
-          //         {
-          //           label: 'CREATE WALLET',
-          //           to: "/getting-started/wallets",
-          //         },
-          //       ],
-          //       // type: "dropdown",
-          //       // 	items: [
-          //       // 	"getting-started/installation",
-          //       // 	"getting-started/wallets",
-          //       // ],
-          //       to: "/getting-started/installation",
-          //     },
-          //   ],
-          // },
           {
-            position: "left",
+            position: "right",
             label: "Bittensor API Reference",
             href: "pathname:///python-api/html/index.html",
           },
@@ -191,17 +149,12 @@ const config = {
           },
           {
             href: "https://github.com/opentensor/new-docs",
-            label: "GitHub",
+            label: "Docs GitHub",
             position: "right",
           },
           {
             href: "https://bittensor.com/about",
             label: "About Opentensor",
-            position: "right",
-          },
-          {
-            href: "https://wallet.bittensor.com/",
-            label: "wallet",
             position: "right",
           },
         ],
@@ -221,40 +174,6 @@ const config = {
         debug: false,
       },
       footer: {
-        //style: "dark",
-        // links: [
-        //   {
-        //     title: "Wallet",
-        //     items: [
-        //       {
-        //         label: "Bittensor Wallet",
-        //         to: "https://wallet.bittensor.com/",
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: "About",
-        //     items: [
-        //       {
-        //         label: "About Bittensor",
-        //         to: "https://bittensor.com/about",
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: "Community",
-        //     items: [
-        //       {
-        //         label: "Bittensor Discord",
-        //         href: "https://discord.gg/qasY3HA9F9",
-        //       },
-        //       {
-        //         label: "Documentation GitHub",
-        //         href: "https://github.com/opentensor/new-docs",
-        //       },
-        //     ],
-        //   },
-        // ],
         copyright: `
 					<div className="copyRight">
 						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation. <span>all rights reserved.</span>
