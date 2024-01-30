@@ -69,6 +69,7 @@ const sidebars = {
       ],
     },
     "btcli",
+    "bt-api-ref",
     "emissions",
     // "reference/bittensor-api-ref",
     {
