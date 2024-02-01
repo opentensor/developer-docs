@@ -84,7 +84,7 @@ style={{width: 990}}
 - At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period`. If this subnet miner's performance (incentive) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
 
 :::tip Subnet miner incentive
-Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is updated at the end of a tempo period. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
+Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is only updated at the end of the tempo periods. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
 :::
 
 ## Running a subnet validator 
