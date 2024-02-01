@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 29 January 2024
+
+- Edited the [Subnet Hyperparameters](./subnets/subnet-hyperparameters.md) doc to describe only the allowed hyperparameters.
+
 ## 18 January 2024
 
 - Add a new document [Running a Public Subtensor](./getting-started/running-a-public-subtensor.md).
