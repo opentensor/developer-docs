@@ -2,6 +2,9 @@
 title: "Register and Participate"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Register and Participate
 
 To participate either as a subnet validator or subnet miner, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.
@@ -50,6 +53,39 @@ To move a subnet miner from one machine to another, follow the below guidelines 
 3. Stop the old miner.
 
 It can take the subnet validators some time to realize that the IP of the Axon for your subnet miner has changed. 
+
+### Miner de-registration
+
+A subnet miner can be deregistered if its performance is poor. Mining is competitive&mdash;and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 (i.e., 256-64) UIDs for subnet miners.
+
+A poor performing miner occupying a UID risks being replaced by a newly registered miner who then occupies this UID. It works like this:
+
+- Every subnet has a [`immunity_period`](./subnet-hyperparameters.md#immunity_period) hyperparameter, expressed in number of blocks. 
+- A subnet miner or a subnet validator at a UID (in that subnet) has the duration of `immunity_period` during which this miner or validator must improve its performance. When the `immunity_period` expires for a miner or a validator, then they risk being deregistered, but only if their performance is the worst in the subnet. In specific, if, at the end of its `immunity_period`, a subnet miner's incentive is the lowest in the subnet, then this subnet miner will be deregistered when a new registration request arrives. 
+- The `immunity_period` starts when a subnet validator or a subnet miner is registered into the subnet.
+
+See the below subnet miner timeline diagram illustrating how deregistration works:
+
+<ThemedImage
+alt="Miner de-registration"
+sources={{
+    light: useBaseUrl('/img/docs/miner-deregistration.svg'),
+    dark: useBaseUrl('/img/docs/miner-deregistration.svg'),
+  }}
+style={{width: 990}}
+/>
+
+- Blocks are processed in the subtensor (Bittensor blockchain) at every 12 seconds. 
+- A subnet miner registers a hotkey and receives a UID&mdash;and its immunity period starts.
+- The subnet miner starts running and publishes is Axon's IP:PORT for the subnet validators.
+- The subnet validators refresh their metagraph and will know about the hotkey change on the UID and the new miner Axon's IP:PORT information. Typically this occurs at the immediate next tempo boundary of the subnet. 
+- The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive incentive award based on their responses.
+- While in `immunity_period` the subnet miner slowly builds its incentive, starting with no history.
+- At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period`. If this subnet miner's performance (incentive) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
+
+:::tip Subnet miner incentive
+Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is updated at the end of a tempo period. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
+:::
 
 ## Running a subnet validator 
 
