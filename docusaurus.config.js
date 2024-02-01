@@ -47,7 +47,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: "/",
+          routeBasePath: "/", //
           path: "docs",
           remarkPlugins: [math],
           rehypePlugins: [katex],
