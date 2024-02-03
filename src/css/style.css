@@ -418,6 +418,7 @@ ul {
 	font-size: 12px !important;
 	align-items: center;
 	letter-spacing: 0.6px;
+	margin-left: 32px;
 }
 @media (min-width: 997) {
 	.navbar__item.navbar__link {
@@ -670,6 +671,12 @@ ul {
 
 .container.padding-top--md>div>div:first-child {
 	padding: 32px 32px 48px 56px !important;
+}
+/*  */
+@media screen and (max-width: 550px) {
+	.container.padding-top--md>div>div:first-child {
+		padding: 32px 32px 48px 32px !important;
+	}
 }
 
 .breadcrumbs:first-child svg {
