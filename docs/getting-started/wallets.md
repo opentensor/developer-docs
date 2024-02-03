@@ -55,7 +55,7 @@ IMPORTANT: Store this mnemonic in a secure (preferably offline place), as anyone
 The mnemonic to the new coldkey is:
 **** *** **** **** ***** **** *** **** **** **** ***** *****
 You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
+btcli w regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
 ```
 
 :::tip Regenerating a key
@@ -81,7 +81,7 @@ IMPORTANT: Store this mnemonic in a secure (preferably offline place), as anyone
 The mnemonic to the new hotkey is:
 **** *** **** **** ***** **** *** **** **** **** ***** *****
 You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli regen_hotkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
+btcli w regen_hotkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
 ```
 :::tip Regenerating a key
 Make a note of the above command option `regen_hotkey` showing how to regenerate your hotkey in case you lose it.
