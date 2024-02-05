@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 05 February 2024
+
+- xx
+
 ## 29 January 2024
 
 - Edited the [Subnet Hyperparameters](./subnets/subnet-hyperparameters.md) doc to describe only the allowed hyperparameters.
