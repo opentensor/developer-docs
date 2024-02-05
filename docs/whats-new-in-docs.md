@@ -11,7 +11,15 @@ Key updates to this documentation.
 
 ## 05 February 2024
 
-- xx
+- Enhanced the docs homepage to clarify that you do not need to create a subnet to participate in the Bittensor network. See [Start here](./index.md#start-here). 
+
+- Added a new homepage for the [Bittensor API](bt-api-ref).
+
+- Enhanced the rendering of the [Python docstrings for Bittensor API](https://docs.bittensor.com/python-api/html/index.html).
+
+- Added a new section on [Miner deregistration](./subnets/register-and-participate.md#miner-deregistration).
+
+- 
 
 ## 29 January 2024
 

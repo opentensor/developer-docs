@@ -32,11 +32,13 @@ See [what's new in docs](./whats-new-in-docs.md).
 :::
 
 
-**Welcome!** Bittensor is a protocol for decentralized subnets. Subnets exist to produce decentralized intelligence. Each subnet is an incentive-based competitive market in action, to produce the best decentralized intelligence. 
+**Welcome!** Bittensor is a protocol for decentralized subnets. Subnets exist to produce decentralized intelligence. Each subnet is an incentive-based competitive market in action, to produce the best decentralized intelligence. For example, the [text prompting subnet](https://github.com/opentensor/text-prompting) incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet. 
 
 Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **The rewards for subnet participants are in the form of TAO tokens.** 
 
-You can either create your own subnet, with your custom incentive mechanism, to launch your own competition, or join a subnet that already exists in the Bittensor ecosystem. For example, the [text prompting subnet](https://github.com/opentensor/text-prompting) incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet. 
+:::tip no need to create a subnet
+A straightforward way to participate in the Bittensor network is to be a miner or a validator in an existing subnet. Follow the below links in the [Validate or mine](#validate-or-mine) section. Alternately, if you want to create your own custom incentive mechanism, then you can create your own subnet and launch your own competition. See the below [Running a subnet](#running-a-subnet) section.
+:::
 
 Bittensor provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
 
