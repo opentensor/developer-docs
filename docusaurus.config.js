@@ -148,6 +148,11 @@ const config = {
             to: "bt-api-ref",
           },
           {
+            position: "left",
+            label: "Subnet Pages",
+            to: "subnet-pages",
+          },
+          {
             type: "search",
             position: "left",
             className: "custom_algolia",
