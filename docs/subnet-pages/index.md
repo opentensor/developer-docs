@@ -17,15 +17,15 @@ This page presents key information for each subnet. Click on a subnet card to go
 <Cards>
     <CardSmall 
     title='Subnet 1'
-    link='subnet-pages/subnet-1'
+    link='/subnet-pages/subnet-1'
     body='text prompting' />
     <CardSmall
     title='Subnet 2'
-    link='subnet-pages/subnet-2'
+    link='/subnet-pages/subnet-2'
     body='machine translation' />
     <CardSmall
     title='Subnet 3'
-    link='subnet-pages/subnet-3'
+    link='/subnet-pages/subnet-3'
     body='data scraping' />
     <CardSmall
     title='Subnet 4'
