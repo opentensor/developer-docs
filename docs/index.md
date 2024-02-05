@@ -152,26 +152,4 @@ Use the Bittensor CLI and Python API to develop and participate in the Bittensor
     body='A comprehensive Python API reference documentation for the open-sourced Bittensor API.' />
 </Cards>
 
-<!-- <Cards>
-    <CardSmall 
-    title='Axon'
-    link='http://localhost:3000/python-api/html/autoapi/bittensor/axon/index.html'
-    body='text prompting' />
-    <CardSmall
-    title='Subnet 2'
-    link='getting-started/installation'
-    body='machine translation' />
-    <CardSmall
-    title='Subnet 3'
-    link='getting-started/installation'
-    body='data scraping' />
-    <CardSmall
-    title='Subnet 4'
-    link='getting-started/installation'
-    body='multimodality' />
-        <CardSmall
-    title='Subnet 5'
-    link='getting-started/installation'
-    body='multimodality' />
-</Cards> -->
 
