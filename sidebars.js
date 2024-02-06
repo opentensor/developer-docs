@@ -71,7 +71,7 @@ const sidebars = {
     {
       type: "category",
       label: "Subnet Pages",
-      //link: {type: "doc", id: "subnet-pages/index",},
+      link: {type: "doc", id: "subnet-pages/index",},
       collapsible: true,
       collapsed: true,
       items: [
