@@ -1,27 +1,27 @@
 ---
-title: "Subnet 12"
+title: "Subnet 0"
 ---
 
-# Subnet 12
+# Subnet 0
 
 ## Name
 
-ComputeHorde
+Root network
 
 ## Netuid
-12
+0
 
 ## Description
 
-A subnet that provides compute resources.
+The weights for the subnets are set by the root network validators. These root network weights determine the emissions for all the subnets. See more at [Root network](../emissions.md#root-network).
 
 ## Subnet owner
 
-https://github.com/backend-developers-ltd/ComputeHorde
+Opentensor Foundation
 
 ## GitHub
 
-https://github.com/backend-developers-ltd/ComputeHorde
+https://github.com/opentensor/bittensor
 
 <!-- 
 ## Hyperparameters

@@ -6,18 +6,18 @@ title: "Subnet 26"
 
 ## Name
 
-Text prompting
+Image Alchemy
 
 ## Netuid
 26
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Image Alchemy
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/Supreme-Emperor-Wang/ImageAlchemy/
 
 ## GitHub
 

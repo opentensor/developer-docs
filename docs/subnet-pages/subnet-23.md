@@ -6,18 +6,19 @@ title: "Subnet 23"
 
 ## Name
 
-Text prompting
+NicheImage
 
 ## Netuid
+
 23
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Image Generating Subnet
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/NicheTensor/NicheImage/
 
 ## GitHub
 

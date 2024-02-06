@@ -6,18 +6,20 @@ title: "Subnet 13"
 
 ## Name
 
-Text prompting
+Data Universe
 
 ## Netuid
 13
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Data Universe subnet collects and stores large amounts of data from across a wide-range of sources, for use by other Subnets. This subnet is built from the ground-up with a focus on decentralization and scalability. There is no centralized entity that controls the data; the data is stored across all Miner's on the network and is queryable via the Validators. 
+
+At launch, Data Universe is able to support up to 50 Petabytes of data across 200 miners, while only requiring ~10GB of storage on the Validator.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/RusticLuftig/data-universe/
 
 ## GitHub
 

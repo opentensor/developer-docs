@@ -6,18 +6,18 @@ title: "Subnet 14"
 
 ## Name
 
-Text prompting
+Bittensor LLM Defender Subnet
 
 ## Netuid
 14
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+The LLM Defender subnet provides Large Language Model (LLM) developers a way to decentralize the computing required to detect and prevent various attacks and exploits against LLM applications.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/ceterum1/llm-defender-subnet/
 
 ## GitHub
 

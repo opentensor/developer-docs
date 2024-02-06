@@ -6,18 +6,18 @@ title: "Subnet 21"
 
 ## Name
 
-Text prompting
+FileTAO
 
 ## Netuid
 21
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+FileTAO implements a novel, multi-layered zero-knowledge interactive proof-of-spacetime algorithm. It cleverly uses Pedersen commitments, random challenges leveraging elliptic curve cryptography, sequential seed-based chained hash verification, and merkle proofs to achieve an efficient, robust, secure, and highly available decetralized storage system on the Bittensor network.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/ifrit98/storage-subnet/
 
 ## GitHub
 

@@ -6,18 +6,20 @@ title: "Subnet 8"
 
 ## Name
 
-Text prompting
+Prediction Subnet
 
 ## Netuid
 8
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Initially, the primary focus of this subnet is to forecast the future trends of financial markets, starting with predicting the price movements of Bitcoin. Eventually, TSPS will expand to include a broader range of cryptocurrency trading pairs. Subsequently, our scope will broaden to encompass additional financial markets.
+
+As the project evolves, we anticipate that miners will diversify their focus, specializing in different subjects or domains. Some may concentrate on specific areas, while others, particularly those with advanced skills, tackle multiple topics, such as sports betting or various client-requested issues.
 
 ## Subnet owner
 
-Opentensor Foundation
+[taoshi](https://www.taoshi.io/)
 
 ## GitHub
 

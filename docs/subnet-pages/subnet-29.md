@@ -17,7 +17,7 @@ A 3D asset creation extension for the Bittensor network.
 
 ## Subnet owner
 
-TBD
+https://github.com/404-Repo/Subnet-29
 
 ## GitHub
 

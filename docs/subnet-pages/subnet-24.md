@@ -6,18 +6,18 @@ title: "Subnet 24"
 
 ## Name
 
-Text prompting
+Advertizing subnet
 
 ## Netuid
 24
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+The first incentivized & decentralized Advertising Subnetwork on Bittensor.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/eseckft/BitAds.ai/tree/main
 
 ## GitHub
 

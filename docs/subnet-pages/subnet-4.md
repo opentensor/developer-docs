@@ -6,18 +6,18 @@ title: "Subnet 4"
 
 ## Name
 
-Text prompting
+**TARGON**: A Redundant Deterministic Verification of Large Language Models.
 
 ## Netuid
 4
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+TARGON is a redundant deterministic verification mechanism that can be used to interpret and analyze ground truth sources and a query.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/manifold-inc/targon/
 
 ## GitHub
 

@@ -5,13 +5,13 @@ hide_table_of_contents: true
 
 # Subnet Pages
 
-This page presents key information for each subnet. Click on a subnet card to go to its details page. 
+This section presents key information for each subnet. Click on a subnet card to go to its details page. 
 
 <Cards>
     <CardSmall 
-    title='Root Subnet'
-    link=''
-    body='' />
+    title='Subnet 0'
+    link='/subnet-pages/subnet-0'
+    body='root subnet' />
 </Cards>
 
 <Cards>
@@ -41,7 +41,7 @@ This page presents key information for each subnet. Click on a subnet card to go
     <CardSmall
     title='Subnet 6'
     link='/subnet-pages/subnet-6'
-    body='Unknown' />
+    body='Nous Finetuning' />
     <CardSmall
     title='Subnet 7'
     link='/subnet-pages/subnet-7'
@@ -64,7 +64,7 @@ This page presents key information for each subnet. Click on a subnet card to go
     <CardSmall
     title='Subnet 11'
     link='/subnet-pages/subnet-11'
-    body='text prompting' />
+    body='transcription' />
     <CardSmall
     title='Subnet 12'
     link='/subnet-pages/subnet-12'
@@ -102,49 +102,49 @@ This page presents key information for each subnet. Click on a subnet card to go
     <CardSmall
     title='Subnet 19'
     link='/subnet-pages/subnet-19'
-    body='data scraping' />
+    body='vision' />
     <CardSmall
     title='Subnet 20'
-    link='/subnet-pages/subnet-21'
-    body='multimodality' />
+    link='/subnet-pages/subnet-20'
+    body='bitagent' />
 </Cards>
 
 <Cards>
     <CardSmall 
     title='Subnet 21'
-    link='/subnet-pages/subnet-22'
-    body='text prompting' />
+    link='/subnet-pages/subnet-21'
+    body='filetao' />
     <CardSmall
     title='Subnet 22'
     link='/subnet-pages/subnet-22'
-    body='machine translation' />
+    body='smart-scrape' />
     <CardSmall
     title='Subnet 23'
     link='/subnet-pages/subnet-23'
-    body='data scraping' />
+    body='NicheImage' />
     <CardSmall
     title='Subnet 24'
     link='/subnet-pages/subnet-24'
-    body='multimodality' />
+    body='bitaids.ai' />
 </Cards>
 
 <Cards>
     <CardSmall 
     title='Subnet 25'
     link='/subnet-pages/subnet-25'
-    body='text prompting' />
+    body='distributed training' />
     <CardSmall
     title='Subnet 26'
     link='/subnet-pages/subnet-26'
-    body='machine translation' />
+    body='ImageAlchemy' />
     <CardSmall
     title='Subnet 27'
     link='/subnet-pages/subnet-27'
-    body='data scraping' />
+    body='compute subnet' />
     <CardSmall
     title='Subnet 28'
     link='/subnet-pages/subnet-28'
-    body='multimodality' />
+    body='zktensor subnet' />
 </Cards>
 
 <Cards>
