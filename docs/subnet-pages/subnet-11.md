@@ -6,22 +6,22 @@ title: "Subnet 11"
 
 ## Name
 
-Text prompting
+Transcription Subnet
 
 ## Netuid
 11
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Miners are responsible for transcribing spoken language into accurate written text using advanced speech-to-text models, while validators ensure the quality and reliability of these transcriptions. This synergetic process not only makes audio content universally accessible and searchable but also significantly amplifies its value across diverse sectors.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/Cazure8/transcription-subnet
 
 ## GitHub
 
-https://github.com/opentensor/text-prompting 
+https://github.com/Cazure8/transcription-subnet
 
 <!-- 
 ## Hyperparameters

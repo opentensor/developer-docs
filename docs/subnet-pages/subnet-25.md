@@ -6,22 +6,22 @@ title: "Subnet 25"
 
 ## Name
 
-Text prompting
+Distributed Training Subnet
 
 ## Netuid
 25
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Distributed Training.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/KMFODA/DistributedTraining
 
 ## GitHub
 
-https://github.com/opentensor/text-prompting 
+https://github.com/KMFODA/DistributedTraining
 
 <!-- 
 ## Hyperparameters

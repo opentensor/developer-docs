@@ -6,18 +6,20 @@ title: "Subnet 18"
 
 ## Name
 
-Text prompting
+Cortex.t Subnet for AI Development and Synthetic Data Generation.
 
 ## Netuid
 18
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Cortex.t offers a dual-purpose solution that caters to the needs of app developers and innovators in the AI space. 
+
+This subnet is meticulously designed to deliver reliable, high-quality text and image responses through API usage, utilising the decentralised Bittensor network. This subnet serves as a cornerstone for creating a fair, transparent, and manipulation-free environment for the incentivised production of intelligence (mining) and generation and fulfilment of diverse user prompts.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/corcel-api/cortex.t/
 
 ## GitHub
 

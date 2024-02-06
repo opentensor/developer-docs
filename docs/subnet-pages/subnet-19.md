@@ -6,18 +6,18 @@ title: "Subnet 19"
 
 ## Name
 
-Text prompting
+Vision
 
 ## Netuid
 19
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+This subnet is a world of images unlocked. Recognition, Embeddings, Object detection, Segmentation. Here, we will do it all. Starting with Meta's Segment Anything Model.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/namoray/vision/
 
 ## GitHub
 

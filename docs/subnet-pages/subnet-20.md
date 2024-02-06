@@ -6,22 +6,32 @@ title: "Subnet 20"
 
 ## Name
 
-Text prompting
+BitAgent
 
 ## Netuid
+
 20
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+BitAgent has 2 core thrusts:
+
+1. **Q&A/Tasking**, available in a few flavors:
+- a) with your data in real time (BYOD)
+- b) summarization of large data (BYOD)
+- c) logic-based reasoning 
+- d) agency (tool execution, operation performance)
+
+2. **Integrated Orchestration** - this is task completion initiated by natural language for application.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/RogueTensor/bitagent_subnet
+
 
 ## GitHub
 
-https://github.com/oracle-subnet/oracle-subnet/
+https://github.com/RogueTensor/bitagent_subnet
 
 <!-- 
 ## Hyperparameters

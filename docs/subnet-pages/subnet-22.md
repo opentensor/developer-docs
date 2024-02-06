@@ -6,18 +6,18 @@ title: "Subnet 22"
 
 ## Name
 
-Text prompting
+Smart-Scrape
 
 ## Netuid
 22
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Smart-Scrape subnet is a cutting-edge tool hosted, designed for effective and simplified analysis of Twitter data. This subnet is ideal for researchers, marketers, and data analysts who seek to extract insightful information from Twitter with ease.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/surcyf123/smart-scrape/
 
 ## GitHub
 

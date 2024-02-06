@@ -6,18 +6,20 @@ title: "Subnet 28"
 
 ## Name
 
-Text prompting
+ZkTensor Subnet
 
 ## Netuid
 28
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Miners receive public inputs of the specified model in the deployment layer, generate output and zk proof and return the result. 
+
+Validators send public inputs of the specified model (which is deployed in deployment layer) to the miners, and verify the output and proof returned from the miners, update weights based on the verificaton results.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/zktensor/zktensor_subnet/
 
 ## GitHub
 

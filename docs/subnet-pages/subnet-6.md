@@ -6,22 +6,24 @@ title: "Subnet 6"
 
 ## Name
 
-Text prompting
+Nous Finetuning Subnet
 
 ## Netuid
 6
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+The Nous-Bittensor subnet rewards miners for fine-tuning Large Language Models (LLMs) with data generated from a continuous stream of synthetic data provided by subnet 18 (also on Bittensor). It is the first-ever continuous fine-tuning benchmark, with new data generated daily, and the first incentivized fine-tuning benchmark. 
+
+Additionally, it is the first Bittensor subnet to perform true cross-boundary communication, where data from one subnet is utilized in a secondary subnet.
 
 ## Subnet owner
 
-Opentensor Foundation
+[Nous Research](https://nousresearch.com/)
 
 ## GitHub
 
-TBD
+https://github.com/NousResearch/finetuning-subnet
 
 <!-- 
 ## Hyperparameters

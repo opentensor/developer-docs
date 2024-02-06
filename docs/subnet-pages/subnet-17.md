@@ -6,18 +6,18 @@ title: "Subnet 17"
 
 ## Name
 
-Text prompting
+Flavia - Model Inference Subnet
 
 ## Netuid
 17
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+The Flavia subnet focuses on decentralized model inference at different scales.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/CortexLM/flavia/
 
 ## GitHub
 

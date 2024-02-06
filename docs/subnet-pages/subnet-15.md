@@ -6,18 +6,18 @@ title: "Subnet 15"
 
 ## Name
 
-Text prompting
+Bittensor Blockchain Insights Subnet
 
 ## Netuid
 15
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Blockchain Insights Subnet is an innovative project focusing on transforming raw blockchain data into structured graph models. This project aims to provide comprehensive insights into various blockchain activities, including simple transactions, DeFi protocol transactions, and NFT exchanges.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/blockchain-insights/blockchain-data-subnet/
 
 ## GitHub
 

@@ -13,7 +13,10 @@ Healthcare subnet
 
 ## Description
 
-TBD
+In this innovative healthcare subnet, miners play a crucial role in contributing to disease diagnosis by predicting from medical images. Through continuous training, miners strive to improve their models, with more accurate models earning substantial rewards. Miners have the flexibility to adapt and enhance the structure of their models, datasets, and other factors influencing model accuracy. This collaborative effort aims to advance disease prediction and underscores the vital role miners play in shaping the future of medical diagnostics.
+
+Validators play a pivotal role in evaluating miner's models by periodically sending diverse images for assessment. They meticulously score miners based on their responses, contributing to the ongoing refinement of models and ensuring the highest standards of performance and accuracy in our collaborative network.
+
 
 ## Subnet owner
 
