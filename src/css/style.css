@@ -483,6 +483,13 @@ ul {
 	background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_2202_2258)"><path d="M11.7691 9.99968L8.83325 12.9355L8.83325 7.06381L11.7691 9.99968Z" fill="%230E1013"/></g><defs><clipPath id="clip0_2202_2258"><rect width="16" height="16" fill="white" transform="translate(2 18) rotate(-90)"/></clipPath></defs></svg>');
 	transform: rotate(90deg);
 }
+.menu__caret::before{
+	background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_2202_2258)"><path d="M11.7691 9.99968L8.83325 12.9355L8.83325 7.06381L11.7691 9.99968Z" fill="%230E1013"/></g><defs><clipPath id="clip0_2202_2258"><rect width="16" height="16" fill="white" transform="translate(2 18) rotate(-90)"/></clipPath></defs></svg>');
+}
+.menu__caret{
+ transform: rotate(270deg);
+ margin-right: 2px;
+}
 .menu__list-item--collapsed .menu__link--sublist::after, .menu__list-item--collapsed.menu__caret::before{
 	transform: rotateZ(0deg) !important;
 }
