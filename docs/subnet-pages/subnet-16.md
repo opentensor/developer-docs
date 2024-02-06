@@ -6,18 +6,18 @@ title: "Subnet 16"
 
 ## Name
 
-Text prompting
+Audio Generation Subnetwork
 
 ## Netuid
 16
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+This subnetwork is a decentralized system designed for text-to-audio applications within the Bittensor network.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/UncleTensor/AudioSubnet/
 
 ## GitHub
 

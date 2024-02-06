@@ -6,18 +6,19 @@ title: "Subnet 7"
 
 ## Name
 
-Text prompting
+Storage subnet.
 
 ## Netuid
+
 7
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+The storage subnet will allow nodes to contribute storage space, employing a prototype incentive mechanism similar to Filecoin. It will offer decentralized storage solutions, allowing nodes to serve their hard drive space to the network, proven to validators utilizing Yuma consensus.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/tensorage/tensorage/
 
 ## GitHub
 

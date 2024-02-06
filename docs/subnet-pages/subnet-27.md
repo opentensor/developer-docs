@@ -6,18 +6,20 @@ title: "Subnet 27"
 
 ## Name
 
-Text prompting
+Compute Subnet
 
 ## Netuid
 27
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+This is a compute-composable subnet, integrating various cloud platforms (e.g., Runpod, Lambda, AWS) into a cohesive unit. Its purpose is to enable higher-level cloud platforms to offer seamless compute composability across different underlying platforms. 
+
+With the proliferation of cloud platforms, there's a growing need for a subnet that can seamlessly integrate these platforms, allowing efficient resource sharing and allocation. This compute-composable subnet empowers nodes to contribute computational power, with validators ensuring the integrity and efficiency of the shared resources.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/neuralinternet/compute-subnet/
 
 ## GitHub
 

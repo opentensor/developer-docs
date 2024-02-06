@@ -6,18 +6,18 @@ title: "Subnet 10"
 
 ## Name
 
-Text prompting
+Map Reduce
 
 ## Netuid
 10
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+This subnet (Map Reduce Subnet) incentivizes miners by offering rewards for contributing network bandwidth and memory resources.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/dream-well/map-reduce-subnet/
 
 ## GitHub
 

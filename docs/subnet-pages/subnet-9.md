@@ -6,18 +6,22 @@ title: "Subnet 9"
 
 ## Name
 
-Text prompting
+Pretrain Subnet
 
 ## Netuid
 9
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+This subnet rewards miners for producing pretrained Foundation-Models on the Falcon Refined Web dataset. It acts like a continuous benchmark whereby miners are rewarded for attaining the best losses on randomly sampled pages of Falcon given a consistent model architecture. The reward mechanism works as follows:
+
+1. Miners train and periodically host trained model weights linked to their miner key as exampled by the code in neurons/miner.py.
+2. Validators run a continuous eval on the hosted models, performing the validation system outlined in neurons/validator.py and setting weights to the chain based on the performance of each miner on the Falcon dataset.
+3. The chain aggregates weights from all active validators and runs Yuma Consensus to determine the proportion of TAO emission rewarded to miners and validators. 
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/unconst/pretrain-subnet/
 
 ## GitHub
 

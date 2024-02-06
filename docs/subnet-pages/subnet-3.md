@@ -6,18 +6,22 @@ title: "Subnet 3"
 
 ## Name
 
-Text prompting
+Scraping Subnet
 
 ## Netuid
 3
 
 ## Description
 
-Incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+Data scraping is a critical component in numerous AI and machine learning models, often acting as the foundational layer for various subnets, including [Subnet 1](./subnet-1.md). 
+
+The objective of this subnet is to harvest data from platforms such as Reddit, Twitter, and other social media sites, and aggregate this information into shared storage solutions like Wasabi s3 storage. 
+
+Looking ahead, the developers of this subnet intend to leverage the storage subnet of Bittensor to augment the data storage capabilities.
 
 ## Subnet owner
 
-Opentensor Foundation
+https://github.com/gitphantomman/scraping_subnet/
 
 ## GitHub
 
