@@ -56,7 +56,7 @@ const config = {
           sidebarCollapsible: true,
           showLastUpdateTime: true,
           docItemComponent: "@theme/DocItem",
-          editUrl: "https://github.com/opentensor/new-docs/blob/main/",
+          editUrl: "https://github.com/opentensor/developer-docs/blob/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -153,7 +153,7 @@ const config = {
             className: "custom_algolia",
           },
           {
-            href: "https://github.com/opentensor/new-docs",
+            href: "https://github.com/opentensor/developer-docs",
             label: "Docs GitHub",
             position: "right",
           },
