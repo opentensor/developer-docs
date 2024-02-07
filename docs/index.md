@@ -73,13 +73,13 @@ You can participate in an existing subnet as either a subnet validator or a subn
 <Cards>
     <Card 
     icon={MdOutlineChecklistRtl}
-    title='1. Checklist for participating'
-    link='subnets/checklist-for-subnet'
+    title='1. Checklist for validating and mining'
+    link='subnets/checklist-for-validating-mining'
     body='When you are preparing to be a subnet validator or a subnet miner, use this checklist to get ready.' />
     <Card
     icon={GiArchiveRegister}
-    title='2. Register, stake and participate'
-    link='subnets/register-and-participate'
+    title='2. Register, validate and mine'
+    link='subnets/register-validate-mine'
     body='Follow these steps to register and become a miner, or stake your TAO and become a validator.' />
     <Card
     icon={BiMath}

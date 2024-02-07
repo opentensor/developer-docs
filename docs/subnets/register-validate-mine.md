@@ -1,13 +1,15 @@
 ---
-title: "Register and Participate"
+title: "Register, Validate and Mine"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Register and Participate
+# Register, Validate and Mine
 
 To participate either as a subnet validator or subnet miner, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.
+
+## Register
 
 Run the below command to register your keys. The `YOUR_PREFERRED_NETUID` is the `netuid` of your preferred subnet.
 
@@ -28,67 +30,6 @@ A hotkey can hold multiple UIDs across **separate** subnets. However within one 
 
 After your register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
 
-## Running a subnet miner
-
-After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are provided in the subnet codebase. 
-
-:::tip Stake not needed to run a miner 
-Note that to run a miner you do not need to have any stake. You only need to register.
-:::
-
-If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-subnet.md) for more details.
-
-### Moving a subnet miner to a different machine
-
-Once your subnet miner has began mining, you can change it to a different machine, but proceed with caution. 
-
-:::tip Always minimize subnet miner downtime
-Make sure that you always minimize any downtime for your subnet miner. This is because missing validation requests can be significantly damaging to incentive and rewards for your subnet miner.
-:::
-
-To move a subnet miner from one machine to another, follow the below guidelines in this order:
-
-1. Start the subnet miner on the new machine.
-2. Wait for the old miner to stop receiving requests from the subnet validators.
-3. Stop the old miner.
-
-It can take the subnet validators some time to realize that the IP of the Axon for your subnet miner has changed. 
-
-### Miner deregistration
-
-A subnet miner can be deregistered if its performance is poor. Mining is competitive&mdash;and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 (i.e., 256-64) UIDs for subnet miners.
-
-A poor performing miner occupying a UID risks being replaced by a newly registered miner who then occupies this UID. It works like this:
-
-- Every subnet has a `immunity_period` hyperparameter, expressed in number of blocks. 
-    :::tip See
-    See [`immunity_period`](./subnet-hyperparameters.md#immunity_period).
-    :::
-- A subnet miner or a subnet validator at a UID (in that subnet) has the duration of `immunity_period` during which this miner or validator must improve its performance. When the `immunity_period` expires for a miner or a validator, then they risk being deregistered, but only if their performance is the worst in the subnet. In specific, if, at the end of its `immunity_period`, a subnet miner's incentive is the lowest in the subnet, then this subnet miner will be deregistered when a new registration request arrives. 
-- The `immunity_period` starts when a subnet validator or a subnet miner is registered into the subnet.
-
-See the below subnet miner timeline diagram illustrating how registration works:
-
-<ThemedImage
-alt="Miner deregistration"
-sources={{
-    light: useBaseUrl('/img/docs/miner-deregistration.svg'),
-    dark: useBaseUrl('/img/docs/dark-miner-deregistration.svg'),
-  }}
-style={{width: 990}}
-/>
-
-- Blocks are processed in the subtensor (Bittensor blockchain) at every 12 seconds. 
-- A subnet miner registers a hotkey and receives a UID&mdash;and its immunity period starts.
-- The subnet miner starts running and publishes is Axon's `IP:PORT` for the subnet validators.
-- The subnet validators refresh their metagraph and will know about the hotkey change on the UID and the new miner Axon's ``IP:PORT`` information. 
-- The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive incentive award based on their responses.
-- While in `immunity_period` the subnet miner slowly builds its incentive, starting with no history.
-- At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period` in this subnet. If this subnet miner's performance (i.e., incentive) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
-
-:::tip Subnet miner incentive
-Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is only updated at the end of the tempo periods. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
-:::
 
 ## Running a subnet validator 
 
@@ -154,6 +95,68 @@ wallet = bt.wallet( name = 'my_wallet_name', hotkey = 'my_validator_hotkey_name'
 my_uid = subnet.hotkeys.index( wallet.hotkey.ss58_address )
 print ('validator permit', subnet.validator_permit[ my_uid ])
 ```
+
+## Running a subnet miner
+
+After registering your key to the subnet, you can start mining. You can run your own miner or select miner modules that are provided in the subnet codebase. 
+
+:::tip Stake not needed to run a miner 
+Note that to run a miner you do not need to have any stake. You only need to register.
+:::
+
+If you plan to run an existing miner module, make sure to read the documentation of the specific subnet, including the node requirements to run the specific miner you want to run. See [Preparing for Subnet](checklist-for-validating-mining.md) for more details.
+
+### Moving a subnet miner to a different machine
+
+Once your subnet miner has began mining, you can change it to a different machine, but proceed with caution. 
+
+:::tip Always minimize subnet miner downtime
+Make sure that you always minimize any downtime for your subnet miner. This is because missing validation requests can be significantly damaging to incentive and rewards for your subnet miner.
+:::
+
+To move a subnet miner from one machine to another, follow the below guidelines in this order:
+
+1. Start the subnet miner on the new machine.
+2. Wait for the old miner to stop receiving requests from the subnet validators.
+3. Stop the old miner.
+
+It can take the subnet validators some time to realize that the IP of the Axon for your subnet miner has changed. 
+
+### Miner deregistration
+
+A subnet miner can be deregistered if its performance is poor. Mining is competitive&mdash;and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 (i.e., 256-64) UIDs for subnet miners.
+
+A poor performing miner occupying a UID risks being replaced by a newly registered miner who then occupies this UID. It works like this:
+
+- Every subnet has a `immunity_period` hyperparameter, expressed in number of blocks. 
+    :::tip See
+    See [`immunity_period`](./subnet-hyperparameters.md#immunity_period).
+    :::
+- A subnet miner or a subnet validator at a UID (in that subnet) has the duration of `immunity_period` during which this miner or validator must improve its performance. When the `immunity_period` expires for a miner or a validator, then they risk being deregistered, but only if their performance is the worst in the subnet. In specific, if, at the end of its `immunity_period`, a subnet miner's incentive is the lowest in the subnet, then this subnet miner will be deregistered when a new registration request arrives. 
+- The `immunity_period` starts when a subnet validator or a subnet miner is registered into the subnet.
+
+See the below subnet miner timeline diagram illustrating how registration works:
+
+<ThemedImage
+alt="Miner deregistration"
+sources={{
+    light: useBaseUrl('/img/docs/miner-deregistration.svg'),
+    dark: useBaseUrl('/img/docs/dark-miner-deregistration.svg'),
+  }}
+style={{width: 990}}
+/>
+
+- Blocks are processed in the subtensor (Bittensor blockchain) at every 12 seconds. 
+- A subnet miner registers a hotkey and receives a UID&mdash;and its immunity period starts.
+- The subnet miner starts running and publishes is Axon's `IP:PORT` for the subnet validators.
+- The subnet validators refresh their metagraph and will know about the hotkey change on the UID and the new miner Axon's ``IP:PORT`` information. 
+- The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive incentive award based on their responses.
+- While in `immunity_period` the subnet miner slowly builds its incentive, starting with no history.
+- At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period` in this subnet. If this subnet miner's performance (i.e., incentive) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
+
+:::tip Subnet miner incentive
+Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is only updated at the end of the tempo periods. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
+:::
 
 ## Inspecting UIDs
 

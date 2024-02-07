@@ -46,7 +46,17 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Tutorials",
+      label: "Validating and Mining",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "subnets/checklist-for-validating-mining",
+        "subnets/register-validate-mine",
+      ],
+    },
+    {
+      type: "category",
+      label: "Subnet Tutorials",
       collapsible: true,
       collapsed: false,
       items: [
@@ -60,9 +70,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        "subnets/checklist-for-subnet",
         "subnets/create-a-subnet", 
-        "subnets/register-and-participate",
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/code-walkthrough-text-prompting",
