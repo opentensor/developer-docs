@@ -32,9 +32,9 @@ const config = {
   // to replace "en" with "zh-Hans".
 
   customFields: {
-    enableIssueLinks: false, // Set to true to enable issue links
+    enableIssueLinks: true, // Set to true to enable issue links
     enableEditUrlLinks: false, // Set to true to enable edit url links
-    issueBaseUrl: "https://github.com/opentensor/new-docs/issues/new",
+    issueBaseUrl: "https://github.com/opentensor/developer-docs/issues/new",
     enableFeedback: false, // Set to false to disable feedback
   },
 
