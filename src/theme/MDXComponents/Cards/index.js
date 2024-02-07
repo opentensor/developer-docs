@@ -19,10 +19,11 @@ export function Card({ icon: Icon, title, body, link }) {
   );
 }
 
-export function CardSmall({ title, body, link }) {
+export function CardSmall({ icon: Icon, title, body, link }) {
   return (
     <Link to={link} className={styles.cardSmallLink}>
       <div className={styles.cardSmall}>
+        {Icon ? <Icon size="1.2rem" /> : <p />} 
         <div className={styles.titleSmall}>{title}</div>
         <div className={styles.bodySmall}>{body}</div>
       </div>
