@@ -119,6 +119,10 @@ A subnet miner or a subnet validator at a UID can perform poorly during the `imm
 
 When a subnet miner or a subnet validator is deregistered, they are required to register again  to be considered for the subnet. 
 
+:::tip immunity period for a subnet
+Immunity period also exists for a subnet. See [Immunity period for a subnet](./create-a-subnet.md#immunity-period-for-a-subnet).
+:::
+
 ### Example
 
 Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registred, before they will be considered for deregistration. 
