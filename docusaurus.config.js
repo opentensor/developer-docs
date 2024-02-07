@@ -24,7 +24,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "opentensor", // Usually your GitHub org/user name.
-  projectName: "new-docs", // Usually your repo name.
+  projectName: "developer-docs", // Usually your repo name.
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   // Even if you don't use internalization, you can use this field to set useful
