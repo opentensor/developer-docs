@@ -74,6 +74,14 @@ const config = {
             to: "/btcli",
             from: "/reference/btcli",
           },
+          {
+            to: "/subnets/checklist-for-validating-mining",
+            from: "/subnets/checklist-for-subnet",
+          },
+          {
+            to: "/subnets/register-validate-mine",
+            from: "/subnets/register-and-participate",
+          },
         ],
       },
     ],

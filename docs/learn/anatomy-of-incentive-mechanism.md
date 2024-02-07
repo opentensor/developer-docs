@@ -47,7 +47,7 @@ Though a subnet incentive mechanism works in conjunction with the Yuma Consensus
 To attract high-performing subnet miners and subnet validators, make sure that you publish sufficient documentation on your subnet. 
 
 :::tip Participating in your subnet
-When a developer is getting ready to participate in a subnet, they will follow a checklist like the one in [Checklist for Subnet](../subnets/checklist-for-subnet.md). Make sure that your subnet documentation helps the developer fulfill the checklist items comprehensively.
+When a developer is getting ready to participate in a subnet, they will follow a checklist like the one in [Checklist for Subnet](../subnets/checklist-for-validating-mining.md). Make sure that your subnet documentation helps the developer fulfill the checklist items comprehensively.
 :::
 
 After a subnet validator registers into your subnet, they will run the validator module to begin the validation operation. Similarly a subnet miner will register and then run the miner module. For example, see the following documents in the text prompting subnet for a quick view of these steps:
