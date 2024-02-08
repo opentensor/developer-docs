@@ -12,7 +12,9 @@ Key updates to this documentation.
 ## 08 February 2024
 
 - Added a new [Subnet Pages](./subnet-pages/index.md) section.
+- Opened the docs GitHub repo to public.
 - Added a section on [Immunity period for a subnet](./subnets/create-a-subnet.md#immunity-period-for-a-subnet).
+- Consolidated staking and delegation docs into [Staking and Delegation](staking-and-delegation/index.md) section.
 
 ## 05 February 2024
 
