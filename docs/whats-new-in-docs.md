@@ -11,6 +11,7 @@ Key updates to this documentation.
 
 ## 08 February 2024
 
+- Added a new [Subnet Pages](./subnet-pages/index.md) section.
 - Added a section on [Immunity period for a subnet](./subnets/create-a-subnet.md#immunity-period-for-a-subnet).
 
 ## 05 February 2024
@@ -39,7 +40,7 @@ Key updates to this documentation.
 
 ## 02 January 2024
 
-- Added a new doc [Staking with Polkadot JS](./staking/staking-polkadot-js.md).
+- Added a new doc [Staking with Polkadot JS](staking-and-delegation/staking-polkadot-js.md).
 
 ## 21 December 2023
 

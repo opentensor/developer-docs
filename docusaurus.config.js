@@ -82,6 +82,14 @@ const config = {
             to: "/subnets/register-validate-mine",
             from: "/subnets/register-and-participate",
           },
+          {
+            to: "/staking-and-delegation/delegation",
+            from: "/delegation",
+          },
+          {
+            to: "/staking-and-delegation",
+            from: "/staking",
+          },
         ],
       },
     ],
