@@ -88,9 +88,9 @@ You can participate in an existing subnet as either a subnet validator or a subn
     body='Learn how dividends for the validators and incentives for the miners are calculated.' />
     <Card
     icon={RiTeamLine}
-    title='4. Delegation'
-    link='delegation'
-    body='Get to know how delegation works and how to delegate your TAO.' />
+    title='4. Staking and Delegation'
+    link='staking-and-delegation'
+    body='Get to know how staking and delegating your TAO works in the Bittensor network.' />
     <Card
     icon={RiGovernmentLine}
     title='Governance'

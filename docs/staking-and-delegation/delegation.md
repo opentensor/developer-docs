@@ -5,7 +5,7 @@ title: "Delegation"
 # Delegation
 
 :::tip Staking
-See also [Staking](subnets/register-validate-mine.md#staking).
+See also [Staking](../subnets/register-validate-mine.md#staking).
 :::
 
 TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. Delegation on Bittensor network works like this:

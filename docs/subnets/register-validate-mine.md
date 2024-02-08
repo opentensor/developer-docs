@@ -23,7 +23,7 @@ Registering works like this:
 - Your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
 
 :::tip Ownership belongs to a hotkey
-Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. See [Delegation](../delegation.md). 
+Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to the hotkey of the subnet validator. See [Delegation](../staking-and-delegation/delegation.md). 
 
 A hotkey can hold multiple UIDs across **separate** subnets. However within one subnet, each UID must have a unique hotkey. 
 :::
@@ -40,7 +40,7 @@ To become a subnet validator, you must:
 ### Staking
 
 :::tip Delegation
-See also [Delegation](../delegation.md)
+See also [Delegation](../staking-and-delegation/delegation.md)
 :::
 
 You stake by attaching TAO to your hotkey. Attaching TAO to your hotkey can be achieved in two ways:
@@ -67,7 +67,7 @@ btcli root nominate
 ```
 
 :::tip See also
-See [Becoming a delegate](../delegation.md#becoming-a-delegate) for specific steps.
+See [Becoming a delegate](../staking-and-delegation/delegation.md#becoming-a-delegate) for specific steps.
 :::
 
 ### Validator permit
