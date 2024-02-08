@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 08 February 2024
+
+- Added a section on [Immunity period for a subnet](./subnets/create-a-subnet.md#immunity-period-for-a-subnet).
+
 ## 05 February 2024
 
 - Enhanced the docs homepage to clarify that you do not need to create a subnet to participate in the Bittensor network. See [Start here](./index.md#start-here). 
