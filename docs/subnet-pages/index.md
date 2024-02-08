@@ -182,22 +182,22 @@ This section presents key information for each subnet. Click on a subnet card to
 
 <Cards>
     <CardSmall
-    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ח</span>}
+    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ה</span>}
     title='Subnet 29'
     link='/subnet-pages/subnet-29'
     body='3D Asset Creation' />
     <CardSmall
-    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>α</span>}
+    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ו</span>}
     title='Subnet 30'
     link='/subnet-pages/subnet-30'
     body='Unknown' />
     <CardSmall
-    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>α</span>}
+    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ז</span>}
     title='Subnet 31'
     link='/subnet-pages/subnet-31'
     body='healthcare' />
     <CardSmall
-    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>α</span>}
+    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ח</span>}
     title='Subnet 32'
     link='/subnet-pages/subnet-32'
     body='Roleplay' />

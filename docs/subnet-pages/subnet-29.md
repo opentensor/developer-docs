@@ -17,11 +17,11 @@ A 3D asset creation extension for the Bittensor network.
 
 ## Subnet owner
 
-https://github.com/404-Repo/Subnet-29
+https://github.com/404-Repo/three-gen-subnet
 
 ## GitHub
 
-https://github.com/404-Repo/Subnet-29
+https://github.com/404-Repo/three-gen-subnet
 
 <!-- 
 ## Hyperparameters
