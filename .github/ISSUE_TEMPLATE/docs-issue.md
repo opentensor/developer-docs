@@ -1,5 +1,5 @@
 ---
-name: Docs Issue Template
+name: Docs Issue
 about: Guidelines to write an Issue
 title: Docs Bug or Enhancement or Suggestion (Edit this before submitting)
 labels: ''
