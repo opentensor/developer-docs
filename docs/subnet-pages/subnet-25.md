@@ -16,12 +16,10 @@ Distributed Training Subnet
 Distributed Training.
 
 ## Subnet owner
-
-https://github.com/KMFODA/DistributedTraining
+https://github.com/bit-current/DistributedTraining
 
 ## GitHub
-
-https://github.com/KMFODA/DistributedTraining
+https://github.com/bit-current/DistributedTraining
 
 <!-- 
 ## Hyperparameters
