@@ -130,7 +130,7 @@ const config = {
       },
 
       navbar: {
-        title: "Developer Documentation",
+        // title: "Developer Documentation",
         logo: {
           alt: "Bittensor",
           src: "img/logo.svg",
