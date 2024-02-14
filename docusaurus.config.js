@@ -136,7 +136,7 @@ const config = {
           srcDark: "img/logo-dark-mode.svg",
           style: {
             objectFit: "contain",
-            width: 24,
+            width: 21,
           },
         },
 
