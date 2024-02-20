@@ -6,24 +6,22 @@ title: "Subnet 5"
 
 ## Name
 
-ImageSubnet
+Unknown
 
 ## Netuid
 5
 
 ## Description
 
-Image Subnet, or text2image, is built by default to host and run Stable Diffusion models. However, it is adaptable, and any model can be run on the network that takes in a prompt, width, and height paramaters.
-
-The Validator is built such that it ranks miners images on aesthetic and how closely they match the given prompt. Also, images which are too similiar in style will be slightly penalized to promote diverisity among image models hosted on miners.
+Unknown
 
 ## Subnet owner
 
-https://github.com/unconst/ImageSubnet/
+Unknown
 
 ## GitHub
 
-https://github.com/unconst/ImageSubnet/
+Unknown
 
 <!-- 
 ## Hyperparameters
