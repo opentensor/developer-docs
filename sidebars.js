@@ -22,6 +22,7 @@ const sidebars = {
     // },
     "index",
     "whats-new-in-docs",
+    "questions-and-answers",
     {
       type: "category",
       label: "Learn Bittensor Concepts",
