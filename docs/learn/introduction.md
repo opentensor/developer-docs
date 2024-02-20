@@ -55,7 +55,7 @@ Here is an explanation of the primary components of a subnet. Note that this exp
 The item numbers below correspond to the numbers in the above diagram. 
 
 1. A subnet is defined by the incentive mechanism it supports. The incentive mechanism is unique to the subnet. 
-2. Entities in the subnet, called **subnet miners**, each perform useful task, i.e., solve some problem, as defined in the incentive mechanism of the subnet. 
+2. Entities in the subnet, called **subnet miners**, each perform a useful task, i.e., solve some problem, as defined in the incentive mechanism of the subnet. 
 3. Separate entities in the same subnet, called **subnet validators**, each independently evaluate the task performed by the subnet miners. 
 4. The subnet validators then each express their opinion on the quality of the miners. These opinions of the subnet validators are then provided as a collective input to the **Yuma Consensus** mechanism on the blockchain by using the Bittensor API. 
 5. The output of the Yuma Consensus mechanism from the blockchain will then determine how the rewards for the subnet miners and subnet validators are to be distributed. **The rewards are in the form of TAO tokens.**  
