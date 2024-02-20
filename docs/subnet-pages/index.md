@@ -51,7 +51,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ε</span>}
     title='Subnet 5'
     link='/subnet-pages/subnet-5'
-    body='image subnet' />
+    body='unknown' />
     <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ζ</span>}
     title='Subnet 6'
@@ -158,7 +158,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ω</span>}
     title='Subnet 24'
     link='/subnet-pages/subnet-24'
-    body='bitads.ai' />
+    body='cellular automata' />
 </Cards>
 
 <Cards>
@@ -189,7 +189,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ה</span>}
     title='Subnet 29'
     link='/subnet-pages/subnet-29'
-    body='3D Asset Creation' />
+    body='Fractal' />
     <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ו</span>}
     title='Subnet 30'
@@ -204,5 +204,5 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ח</span>}
     title='Subnet 32'
     link='/subnet-pages/subnet-32'
-    body='Roleplay' />
+    body='BitAudit' />
 </Cards>

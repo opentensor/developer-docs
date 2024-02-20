@@ -6,22 +6,23 @@ title: "Subnet 24"
 
 ## Name
 
-Advertizing subnet
+Cellular Automata
 
 ## Netuid
 24
 
 ## Description
 
-The first incentivized & decentralized Advertising Subnetwork on Bittensor.
+The primary focus of this subnet is to run, analyze, and store cellular automata to serve as a research and science accelerator. The subnet will serve as a conduit between cellular automata researchers in the scientific community and the computational resources available through the Bittensor community of miners and validators.
+
 
 ## Subnet owner
 
-https://github.com/eseckft/BitAds.ai/tree/main
+https://github.com/vn-automata/bt-automata
 
 ## GitHub
 
-https://github.com/eseckft/BitAds.ai/tree/main
+https://github.com/vn-automata/bt-automata
 
 <!-- 
 ## Hyperparameters
