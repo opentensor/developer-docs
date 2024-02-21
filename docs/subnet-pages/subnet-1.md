@@ -21,7 +21,7 @@ Opentensor Foundation
 
 ## GitHub
 
-https://github.com/opentensor/text-prompting 
+https://github.com/opentensor/prompting 
 
 <!-- 
 ## Hyperparameters

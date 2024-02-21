@@ -22,7 +22,7 @@ The Bittensor ecosystem consists of the following three components (refer to the
 1. **An incentive-based competition mechanism**: You can either create your custom incentive mechanism for your own competition or join a competition that already exists in the Bittensor ecosystem. Each such incentive-based competition market is called a **subnet**. Subnets constitute the core of the Bittensor ecosystem. 
 
 :::tip Text prompting subnet
-For example, the [text prompting subnet](https://github.com/opentensor/text-prompting), developed by the Open Tensor foundation, incentivizes subnet miners that produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
+For example, the [text prompting subnet](https://github.com/opentensor/prompting), developed by the Open Tensor foundation, incentivizes subnet miners that produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
 :::
 
 2. A **blockchain** that runs the above subnets and supports their proper functioning so that the incentive-based competition market is decentralized, is permissionless and is collusion-resistant, i.e., is resistant to market manipulation.
