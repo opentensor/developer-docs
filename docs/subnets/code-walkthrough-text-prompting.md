@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Code Walkthrough of Text Prompting Subnet
 
-In this section we present a step-by-step code walkthrough of the [Text Prompting Subnet](https://github.com/opentensor/text-prompting/tree/main). 
+In this section we present a step-by-step code walkthrough of the [Text Prompting Subnet](https://github.com/opentensor/prompting/tree/main). 
 
 :::tip Explorer
 You can see the text prompting subnet in action on the [Taostats explorer (select Subnet 01: Text Generation from top right menu)](https://taostats.io/). 
@@ -45,13 +45,13 @@ Both the subnet validator and the subnet miners use large language models to cre
 
 ## Start
 
-After you install Bittensor, create a wallet, register to be a subnet validator and ensure that you have enough stake to be a subnet validator, you will execute a command like below to start validating in the text prompting subnet. For the exact command, see [Bittensor Validator Setup Guide](https://github.com/opentensor/text-prompting/blob/main/docs/running_a_validator.md),  
+After you install Bittensor, create a wallet, register to be a subnet validator and ensure that you have enough stake to be a subnet validator, you will execute a command like below to start validating in the text prompting subnet. For the exact command, see [Bittensor Validator Setup Guide](https://github.com/opentensor/prompting/blob/main/docs/running_a_validator.md),  
 
 ```bash
 python3 /path/to/validator.py <options>
 ```
 
-The above command runs the following code segment of the [`validator.py`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L348C1-L349C19): 
+The above command runs the following code segment of the [`validator.py`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L348C1-L349C19): 
 ```python
 def main():
     neuron().run()
@@ -59,14 +59,14 @@ def main():
 
 The above code executes the following steps:
 
-- [First, initializes a `neuron` object](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L84).
-- [Then starts the `neuron.run()` method](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L349). The `run()` calls the [`run_forward()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L319), which then calls the [`forward()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) function. 
+- [First, initializes a `neuron` object](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L84).
+- [Then starts the `neuron.run()` method](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L349). The `run()` calls the [`run_forward()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L319), which then calls the [`forward()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) function. 
 
 Before we look at the initialization part of the code, let's first summarize the run phase where we can see the key actions centered on a subnet validator in this incentive mechanism. 
 
 ## Subnet validator run summary
 
-The [`forward()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) function performs the following steps (see the below diagram): 
+The [`forward()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) function performs the following steps (see the below diagram): 
 
 <center id="bittensor-img">
 <ThemedImage
@@ -93,7 +93,7 @@ sources={{
 ### 4. Repeat
 - Repeat steps 2 and 3 multiple times.
 
-This completes a single run, i.e., a single iteration of the [`forward()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) method. At the conclusion of the single run of `forward()`, the subnet validator sets weights on chain. 
+This completes a single run, i.e., a single iteration of the [`forward()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220) method. At the conclusion of the single run of `forward()`, the subnet validator sets weights on chain. 
 
 :::tip 
 Hence, in a single run, i.e., in a single iteration of the `forward()` method, the subnet validator prompts multiple times, each time selecting a separate set of subnet miners, prompting them, scoring their responses and updating their weights locally. 
@@ -103,7 +103,7 @@ See also [Subnet validator run details](#subnet-validator-run-details).
 
 ## Initialization 
 
-The following steps are executed in the intialization of the `neuron` object. Refer to the [code that initializes a `neuron` object](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L84).
+The following steps are executed in the intialization of the `neuron` object. Refer to the [code that initializes a `neuron` object](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L84).
 
 ### Create a subnet validator instance 
 - A `neuron` object is created, using the configuration passed in the command line arguments list for the above `validator.py`. This is managed by the `bt.Config` method. Setting up the configuration includes the target hardware, getting the information of the validator name, wallet, the subtensor network (mainchain or testchain name) and so on. 
@@ -111,7 +111,7 @@ The following steps are executed in the intialization of the `neuron` object. Re
 
 ### Use the specified hardware device 
 
-This below [device initialization section](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L91C9-L94C43) makes sure that the subnet validator instance runs on the target hardware device specified:
+This below [device initialization section](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L91C9-L94C43) makes sure that the subnet validator instance runs on the target hardware device specified:
   ```python
   # Init device.
       bt.logging.debug("loading", "device")
@@ -121,7 +121,7 @@ This below [device initialization section](https://github.com/opentensor/text-pr
 
 ### Connect with the blockchain and initialize
 
-This below [subtensor initialization section](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L98C9-L98C58) starts a connection from this subnet validator to the blockchain.
+This below [subtensor initialization section](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L98C9-L98C58) starts a connection from this subnet validator to the blockchain.
 ```python
 self.subtensor = bt.subtensor(config=self.config)
 ```
@@ -138,7 +138,7 @@ self.wallet = bt.wallet(config=self.config)
 
 Next, we sync with the metagraph of the subnet. The metagraph is a neural network graph object. It contains comprehensive information about all the participants in the subnet. We sync with this subnet's metagraph because we must know all the subnet miners that are in this text prompting subnet. We pass the `netuid` to the `bt.metagraph` method, identifying which subnet we belong to, and download the subnet's metagraph into our local subtensor (i.e., local blockchain). 
 
-In this below [initialize metagraph section](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L117) the Bittensor method `bt.metagraph` is called on the current `netuid`.
+In this below [initialize metagraph section](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L117) the Bittensor method `bt.metagraph` is called on the current `netuid`.
 
 ``` python
 self.metagraph = bt.metagraph( 
@@ -149,7 +149,7 @@ self.metagraph = bt.metagraph(
 
 ### Initialize weights
 
-Next, because you are a subnet validator, you will maintain a vector of weights for all the subnet miners. Each element of this vector is a weight, a floating point number, for a subnet miner. At the end of each step of the validation run (see [Subnet validator summary](#subnet-validator-summary)) you will update this vector as a moving average. So, first [start by setting these moving average weights to zero](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L126C9-L126C86). 
+Next, because you are a subnet validator, you will maintain a vector of weights for all the subnet miners. Each element of this vector is a weight, a floating point number, for a subnet miner. At the end of each step of the validation run (see [Subnet validator summary](#subnet-validator-summary)) you will update this vector as a moving average. So, first [start by setting these moving average weights to zero](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L126C9-L126C86). 
 ```python
 self.moving_averaged_scores = torch.zeros((self.metagraph.n)).to(self.device)
 ```
@@ -158,25 +158,25 @@ self.moving_averaged_scores = torch.zeros((self.metagraph.n)).to(self.device)
 
 We know from [Prompt for summary](#1-prompt-for-summary) that the very first thing a subnet validator does is to establish a common context with the subnet miners ("What's the topic we will be talking about?").
 
-The subnet validator [extracts some random lines of text from Dataset](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L134).
+The subnet validator [extracts some random lines of text from Dataset](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L134).
 
 ```python
 self.dataset = Dataset()
 ```
 
 :::tip OpenWebText and RedPajama-Data
-The [`Dataset` class](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/dataset.py#L25) downloads datasets from [OpenWebText](https://github.com/jcpeterson/openwebtext) and [RedPajama-Data](https://github.com/togethercomputer/RedPajama-Data).   
+The [`Dataset` class](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/dataset.py#L25) downloads datasets from [OpenWebText](https://github.com/jcpeterson/openwebtext) and [RedPajama-Data](https://github.com/togethercomputer/RedPajama-Data).   
 :::
 
 ### Gating model
 
-The gating model is intended to be used in inference, when a subnet validator wants to pre-determine a set of subnet miners that are suitable for the inference task at hand. The [GatingModel](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/gating.py#L109) is a neural network model that is trained to identify such subnet miners. 
+The gating model is intended to be used in inference, when a subnet validator wants to pre-determine a set of subnet miners that are suitable for the inference task at hand. The [GatingModel](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/gating.py#L109) is a neural network model that is trained to identify such subnet miners. 
 
 ### Create axon server
 
 Next, the subnet validator activates an `axon` server on itself. This is the first step in estabilishing the network connectivity between itself and all the subnet miners in this subnet. 
 
-In [this block of code](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L154C9-L176C67), replicated below:
+In [this block of code](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L154C9-L176C67), replicated below:
 
 ```python showLineNumbers
 if not self.config.neuron.axon_off:
@@ -209,14 +209,14 @@ Next, when this subnet validator executes the subtensor command `subtensor.serve
 
 ### Create dendrite client 
 
-The `axon` acts mainly as a server. However, during the process of prompting the subnet miners and receiving responses from them, this subnet validator needs a way to query these subnet miners. This is accomplished by the subnet validator by means of  [instantiating `dendrite` client on itself](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L183C13-L183C60). 
+The `axon` acts mainly as a server. However, during the process of prompting the subnet miners and receiving responses from them, this subnet validator needs a way to query these subnet miners. This is accomplished by the subnet validator by means of  [instantiating `dendrite` client on itself](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L183C13-L183C60). 
 ```python
 self.dendrite = bt.dendrite(wallet=self.wallet)
 ```
 
 ### Initialize the reward model
 
-Next, the [reward model is initialized](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L186). **The reward model determines the subnet incentive mechanism**. The reward functions used in the reward model determine how a response from a subnet miner must be processed to generate the reward for this subnet miner. See the below diagram that shows how a response from a subnet miner is processed to compute the reward. 
+Next, the [reward model is initialized](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L186). **The reward model determines the subnet incentive mechanism**. The reward functions used in the reward model determine how a response from a subnet miner must be processed to generate the reward for this subnet miner. See the below diagram that shows how a response from a subnet miner is processed to compute the reward. 
 
 :::tip Journey from response to reward 
 The below diagram shows the journey of a subnet miner's response to the reward for a **single prompt run**. As described in [Subnet validator run summary](#subnet-validator-run-summary), a full single run of `forward()` consists of 9 such prompt runs. Hence, only after 9 such response-to-reward journeys are completed will a single `forward()` run be complete.
@@ -251,8 +251,8 @@ A few key notes on this reward model section of the code:
       dtype=torch.float32,
     ).to(self.device)
   ``` 
-- **Important**: Set the reward function weight for each reward function you have added to the list. Make sure that however many reward functions you added to the list, [their `reward_weights` must all sum to one](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L203).
-- Similarly, [for penalty functions, see](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L279):
+- **Important**: Set the reward function weight for each reward function you have added to the list. Make sure that however many reward functions you added to the list, [their `reward_weights` must all sum to one](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L203).
+- Similarly, [for penalty functions, see](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L279):
   ```python
   self.penalty_functions = [
       TaskValidationPenaltyModel(max_penalty=0.1),
@@ -269,7 +269,7 @@ With this the initialization code section concludes.
 See [Subnet validator run summary](#subnet-validator-run-summary) before you proceed.
 :::
 
-Recall that when the subnet validator starts off, the [`validator.py`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L348C1-L349C19) Python code executes this below code:
+Recall that when the subnet validator starts off, the [`validator.py`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L348C1-L349C19) Python code executes this below code:
 ```python
 def main():
     neuron().run()
@@ -277,16 +277,16 @@ def main():
 
 In the above code, first the `neuron()` function creates a `neuron` object, i.e., a subnet validator node instance, where the initialization happens. 
 
-Next, the [`neuron().run()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L305) method is run, which is when the subnet validator begins the validation process. 
+Next, the [`neuron().run()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L305) method is run, which is when the subnet validator begins the validation process. 
 
 In the `run` mode, the following steps are executed:
 
-- A [self check is performed](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L311) to ensure that the subnet validator is registered and possesss proper hotkeys.  
-- The [`run_forward()`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L319) section calls the [`forward` function](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220).
+- A [self check is performed](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L311) to ensure that the subnet validator is registered and possesss proper hotkeys.  
+- The [`run_forward()`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L319) section calls the [`forward` function](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L220).
 - This `forward` function will then:
   - Start with subnet miner weights all initialized to zero.
   - Perform 9 distinct prompt runs as described in the [Subnet validator run summary](#subnet-validator-run-summary).
-  - Then it will set the subnet miner weights on chain. See [`should_set_weights`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L332).
+  - Then it will set the subnet miner weights on chain. See [`should_set_weights`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L332).
 
 ### Common actions in all prompt runs
 
@@ -295,7 +295,7 @@ In all the multiple prompt runs that occur within a single run of the `forward()
 - Each prompt is sent to a distinct, non-overlapping, set of subnet miners. Hence, a given subnet miner is not prompted more than once within a given `forward()` run. 
 [(Not used) Gating model](#gating-model)
 - At the end of each prompt run the subnet validator computes the rewards for all the subnet miners that participated in this prompt run. The subnet validator maintains these rewards as a **reward vector**.
-- The reward vectors between any two prompt runs within a given `forward()` run are updated on a **moving average basis**. See [this code section](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L181C5-L186C52):
+- The reward vectors between any two prompt runs within a given `forward()` run are updated on a **moving average basis**. See [this code section](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L181C5-L186C52):
   ```python
   # Update moving_averaged_scores with rewards produced by this step.
     # shape: [ metagraph.n ]
@@ -304,13 +304,13 @@ In all the multiple prompt runs that occur within a single run of the `forward()
         1 - alpha
     ) * self.moving_averaged_scores.to(self.device)
   ```
-- Within a `forward()` run, any subsequent prompt run usually extracts [the best completion](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L158) from the immediate previous prompt run, within the same `forward()` run, and makes use of this best completion. 
+- Within a `forward()` run, any subsequent prompt run usually extracts [the best completion](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L158) from the immediate previous prompt run, within the same `forward()` run, and makes use of this best completion. 
 
 ### Select miners
 
 Recall that in the initialization section the subnet validator has downloaded the metagraph of the subnet. See [Initialize the metagraph](#initialize-the-metagraph). 
 
-This metagraph contains the `uid`s of all the active subnet miners in the subnet. [A random list of `uid`s is extracted from this metagraph](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L87C5-L88C71). See the below code section:
+This metagraph contains the `uid`s of all the active subnet miners in the subnet. [A random list of `uid`s is extracted from this metagraph](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L87C5-L88C71). See the below code section:
 ```python
   # Get the list of uids to query for this step.
    uids = get_random_uids(self, k=k, exclude=exclude).to(self.device)
@@ -327,7 +327,7 @@ Next, a Synapse object `synapse` is created for constructing the prompt.
 ```python
 synapse = prompting.protocol.Prompting(roles=["user"], messages=[prompt])
 ```
-The above `Prompting` class is a subclass of the Synapse class. See the [code section in `protocol.py`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/protocol.py#L27) that begins with the following line:
+The above `Prompting` class is a subclass of the Synapse class. See the [code section in `protocol.py`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/protocol.py#L27) that begins with the following line:
 ```python
 class Prompting(bt.Synapse):
 ```
@@ -335,7 +335,7 @@ This Synapse object `synapse` will serve as the vehicle for exchanging informati
 
 ### Send the prompt
 
-Now it is time to send out the prompt to the selected subnet miners. Recall from the initialization section [Create dendrite client](#create-dendrite-client) that the subnet validator created the `dendrite` client instance on itself. In the below code section the [subnet validator broadcasts the `synapse` object](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L92C5-L97C6) to the `axons` of the selected subnet miners:
+Now it is time to send out the prompt to the selected subnet miners. Recall from the initialization section [Create dendrite client](#create-dendrite-client) that the subnet validator created the `dendrite` client instance on itself. In the below code section the [subnet validator broadcasts the `synapse` object](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L92C5-L97C6) to the `axons` of the selected subnet miners:
 ```python
 # Make calls to the network with the prompt.
 responses: List[bt.Synapse] = await self.dendrite(
@@ -348,7 +348,7 @@ The subnet validator waits until the `timeout` has elapsed before processing the
 
 ### Score the responses
 
-The text prompt completions from the subnet miners are [first cleaned up](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L100). See the code section that begins with the below line:
+The text prompt completions from the subnet miners are [first cleaned up](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/forward.py#L100). See the code section that begins with the below line:
 ```python
 for response in responses:
     # remove leading and trailing periods
@@ -365,7 +365,7 @@ Also see [Common actions in all prompt runs](#common-actions-in-all-prompt-runs)
 
 ### Send updated weights to subtensor
 
-When the 9 prompt runs are completed within this single `forward()` run, [the code returns back to the `validator.py`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L324). See below:
+When the 9 prompt runs are completed within this single `forward()` run, [the code returns back to the `validator.py`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/neurons/validators/validator.py#L324). See below:
 
 ```python showLineNumbers
 # Run multiple forwards.
@@ -388,7 +388,7 @@ async def run_forward():
         reinit_wandb(self)
 ```
 
-The `set_weights()` function on line 14 above calls the `self.subtensor.set_weights()` function that transmits the subnet miner weights to the subtensor (blockchain). [See the below code section in the `weights.py`](https://github.com/opentensor/text-prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/weights.py#L61C5-L69C6):
+The `set_weights()` function on line 14 above calls the `self.subtensor.set_weights()` function that transmits the subnet miner weights to the subtensor (blockchain). [See the below code section in the `weights.py`](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/validators/weights.py#L61C5-L69C6):
 ```python
 # Set the weights on chain via our subtensor connection.
 self.subtensor.set_weights(
