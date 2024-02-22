@@ -17,7 +17,9 @@ Read the documentation for the existing subnets to complete these checklist item
     For example, see [Minimum compute requirements](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml) for compute, memory, bandwidth and storage requirements for a typical subnet node, i.e., for a typical subnet neuron.
     :::
 4. Decide which subnet suits you best, based on the expertise you can provide and the cost of computing you can bear. **Read the subnet documentation for guidance on which subnet works best for you.**
-5. Select your first choice subnet. 
+5. **Note on Windows machine**: While wallet transactions like delegating, transfer, registering, staking can be performed on a Windows machine using WSL (Windows Subsystem for Linux), mining and validating are not recommended and are not supported on Windows machines.
+
+6. Select your first choice subnet. 
 7. Register on this subnet and secure a UID slot. This will cost you TAO. 
 8. Know that when you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. This is one way to prevent you from hogging all the UID slots in various subnets. Nevertheless, you can indeed be a subnet validator or subnet miner in as many subnets as you can afford and expect to be successful. You will just have to manage them carefully. 
 9. Keep in mind that to become a subnet miner, you must secure a UID by paying the registration cost, but to become a subnet validator, you must not only pay to secure the UID slot, **you must also stake enough TAO**.

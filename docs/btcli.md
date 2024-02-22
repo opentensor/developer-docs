@@ -85,13 +85,25 @@ Wallets
        └── my_first_hotkey (<ss58_address>)
 ```
 
-### Check balance
+### Check balance in all wallets
 
 ```bash
-btcli wallet balance
+btcli wallet balance --all
 ```
 
 Lists the balances in all the wallets in the user's configuration directory, showing the wallet name, coldkey address, and the free and staked balances.
+
+### Check balance in a single wallet
+
+```bash
+btcli w balance --wallet.name WALLET
+```
+
+or you can specify the wallet's name in the terminal prompt:
+
+```bash
+btcli w balance
+```
 
 ### New coldkey
 
