@@ -127,7 +127,6 @@ To run an archive node connected to the testchain, execute the below command:
 sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
 ``` 
 
-
 ## Method 2: Using Docker
 
 ### Install git
@@ -188,5 +187,9 @@ To run an archive node connected to the Bittensor testchain, run the below comma
 sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
 ```
 
+## On cloud
 
+:::danger Not tested on cloud 
+We have not tested these installation scripts on any cloud service. In addition, if you are using Runpod cloud service, then note that this service is already [containerized](https://docs.runpod.io/pods/overview). Hence, the only option available to you is to [compile from source](#method-1-by-compiling-the-source-code) but these scripts have not been tested on Runpod. 
+:::
 
