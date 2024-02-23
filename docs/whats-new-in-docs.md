@@ -9,6 +9,12 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 22 February 2024
+
+- Updated [`btcli wallet` command options](./btcli.md#check-balance-in-all-wallets).
+- Added a note on [mining and validating on Windows](./subnets/register-validate-mine.md#register).
+- Added a note on running a [public subtensor on cloud](./getting-started/running-a-public-subtensor.md#on-cloud).
+
 ## 08 February 2024
 
 - Added a new [Subnet Pages](./subnet-pages/index.md) section.
