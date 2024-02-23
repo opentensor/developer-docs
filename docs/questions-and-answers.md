@@ -11,7 +11,7 @@ This General section presents a highly simplistic explanation of Bittensor. Do n
 
 ### Is Bittensor a blockchain or an AI platform?
 
-In Bittensor there is one blockchain and many platforms that are connected to this one blockchain. In Bittensor we call these platforms as subnets. So, a subnet can be AI-related or can be something else. In specific, Bittensor network has 32 distinct subnets. All these subnets are connected to the single blockchain. We use the term "subtensor" for the blockchain. If you are thinking, "So, subnets are connected to subtensor?" then the answer is "yes, exactly."
+In Bittensor there is one blockchain and many platforms that are connected to this one blockchain. We call these platforms as subnets. So, a subnet can be AI-related or can be something else. The Bittensor network has 32 distinct subnets. All these subnets are connected to the single blockchain. We use the term "subtensor" for the blockchain. If you are thinking, "So, subnets are connected to subtensor?" then the answer is "yes, exactly."
 
 ### So what is a subnet?
 
@@ -21,7 +21,7 @@ A subnet is a competition market. Anyone can create a subnet, or participate in 
 
 So the subnet competition works like this. Say you decided to be a subnet miner. The subnet validators will give you some work to do. Other subnet miners in the subnet are also given the same work task. All you subnet miners complete the task and respond to the subnet validator with the work results. 
 
-The subnet validator then ranks the quality of the work done by the subnet miners. You as a subnet miner will get a reward (in TAO) based on your work quality. Other subnet miners also get their reward based on their work quality. The subnet validator is also rewarded because it makes sure that good quality subnet miners are rewarded better so that overall subnet quality is continuously improving. All this happens programmatically, as coded up by the subnet owner. 
+The subnet validator then ranks the quality of the work done by the subnet miners. You as a subnet miner will get a reward (in TAO) based on your work quality. Other subnet miners also get their reward based on their work quality. At the same time, the subnet validator is also rewarded because the subnet validator makes sure that good quality subnet miners are rewarded better so that overall subnet quality is continuously improving. All this happens programmatically, as coded up by the subnet owner. 
 
 ### What exactly is the task of a subnet miner?
 
@@ -29,7 +29,7 @@ It depends on the subnet. For example, in subnet 1 the miner task is to respond 
 
 ### So where does the blockchain come in?
 
-The subtensor blockchain records all the key activity of all the subnets in its ledger, but most importantly, the subtensor blockchain determines the rewards distribution for subnet miners and subnet validators. An algorithm called Yuma Consensus (YC) is always running on the blockchain. Rankings of the subnet miners by the subnet validators are input to the YC algorithm. Every 12 seconds, the YC algorithm computes the rewards based on these inputs. These rewards (in TAO) are then deposited into the wallets of subnet miners and subnet validators. 
+The subtensor blockchain records all the key activity of all the subnets in its ledger. But most importantly, the subtensor blockchain determines the rewards distribution for subnet miners and subnet validators. An algorithm called Yuma Consensus (YC) is always running on the blockchain. Rankings of the subnet miners set by the subnet validators are input to the YC algorithm. Every 12 seconds, the YC algorithm computes the rewards based on these inputs. These rewards (in TAO) are then deposited into the wallets of subnet miners and subnet validators. 
 
 The subtensor blockchain does not mix data from one subnet with another subnet data. It continuously runs the YC algorithm for each subnet separately. Also keep in mind that a subnet does not communicate with another subnet. 
 
@@ -48,9 +48,26 @@ In Bittensor, the term "mining" is not related to Bitcoin mining. Similarly Bitt
 See more here in [How a subnet works](learn/introduction.md#how-a-subnet-works). 
 :::
 
+### What is the incentive for me to be a miner or a validator, or even create a subnet? 
+
+Your incentive is that you earn TAO. It works like this. Every 12 seconds a new TAO is created (i.e., minted). This single TAO is then distributed among the 32 subnets. So every 12 seconds each subnet gets a fraction of this newly-created TAO, based on the performance of the subnet. This fractional TAO reward that a subnet receives, called emission, is, in turn, distributed within the subnet like this: 
+- 18% of it goes to the subnet owner.
+- 41% goes to subnet validators (this is called dividend).
+- 41% goes to the subnet miners (this is called incentive). 
+
+Like this, every day 7200 TAO (86,400 seconds in a day, one TAO per 12 seconds) are newly created and distributed as rewards. 
+
+:::tip See also
+See [Emissions](./emissions.md) for details, in specific the role of the root network in determining which subnet gets how much reward.
+:::
+
 ### I don't want to create a subnet, can I just be a miner or a validator?
 
 Yes. But remember, you have 32 different subnets to choose from. Requirements for mining or validating are subnet-specific. Start with this [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md). Then see the step by step instructions in [Register, Validate and Mine](./subnets/register-validate-mine.md).
+
+### Is there a central place where I can see compute requirements for mining and validating for all subnets?
+
+Unfortunately no. Subnets are neither run nor managed by Opentensor Foundation, except subnet 1. Moreover, a poor-performing subnet might be removed from a `netuid` and a new subnet may have taken its place. , and we have not automated tracking the subnets this way, yet. Your best approach is to visit each subnet's GitHub repo for documentation via [Subnet Pages](./subnet-pages/index.md).
 
 ### Can I be a subnet miner or a subnet validator forever?
 
