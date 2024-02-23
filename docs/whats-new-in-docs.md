@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 23 February 2024
+
+- A new [Questions and Answers](./questions-and-answers.md) doc is added, intended for first-time explorers of Bittensor.
+
 ## 22 February 2024
 
 - Updated [`btcli wallet` command options](./btcli.md#check-balance-in-all-wallets).

@@ -21,22 +21,27 @@ A subnet is a competition market. Anyone can create a subnet, or participate in 
 
 So the subnet competition works like this. Say you decided to be a subnet miner. The subnet validators will give you some work to do. Other subnet miners in the subnet are also given the same work task. All you subnet miners complete the task and respond to the subnet validator with the work results. 
 
-The subnet validator then ranks the quality of the work done by the subnet miners. You as a subnet miner will get a reward (in TAO) based on your work quality. Other subnet miners also get their reward based on their work quality. At the same time, the subnet validator is also rewarded because the subnet validator makes sure that good quality subnet miners are rewarded better so that overall subnet quality is continuously improving. All this happens programmatically, as coded up by the subnet owner. 
+The subnet validator then ranks the quality of the work done by the subnet miners. You as a subnet miner will get a reward (in TAO) based on your work quality. Other subnet miners also get their reward based on their work quality. At the same time, the subnet validator is also rewarded because the subnet validator makes sure that higher quality subnet miners are rewarded better so that overall subnet quality is continuously improving. All this happens programmatically, as coded up by the subnet owner. 
 
 ### What exactly is the task of a subnet miner?
 
-It depends on the subnet. For example, in subnet 1 the miner task is to respond to a text prompt, in subnet 2 it is the machine translation, and in subnet 7 it is to serve storage space. See [Subnet Pages](./subnet-pages/index.md) for more.
+It depends on the subnet. For example, in subnet 1 the miner task is to respond to a text prompt, in subnet 2 it is the machine translation, and in subnet 21 it is to serve storage space. See [Subnet Pages](./subnet-pages/index.md) for more.
 
 ### So where does the blockchain come in?
 
-The subtensor blockchain records all the key activity of all the subnets in its ledger. But most importantly, the subtensor blockchain determines the rewards distribution for subnet miners and subnet validators. An algorithm called Yuma Consensus (YC) is always running on the blockchain. Rankings of the subnet miners set by the subnet validators are input to the YC algorithm. Every 12 seconds, the YC algorithm computes the rewards based on these inputs. These rewards (in TAO) are then deposited into the wallets of subnet miners and subnet validators. 
-
-The subtensor blockchain does not mix data from one subnet with another subnet data. It continuously runs the YC algorithm for each subnet separately. Also keep in mind that a subnet does not communicate with another subnet. 
+The subtensor blockchain records all the key activity of all the subnets in its ledger. But most importantly, the subtensor blockchain determines the rewards distribution for subnet miners and subnet validators. An algorithm called Yuma Consensus (YC) is always running on the blockchain. Rankings of the subnet miners set by the subnet validators are input to the YC algorithm. Every 12 seconds, the YC algorithm computes the rewards based on these inputs. These rewards (in TAO) are then deposited into the wallets of subnet miners and subnet validators. The subtensor blockchain continuously runs the YC algorithm for each subnet separately.
 
 :::tip See also
 See [Introduction](./learn/introduction.md) and [Anatomy of Incentive Mechanism](./learn/anatomy-of-incentive-mechanism.md) next.
 :::
 
+### So we have 32 subnets, do they talk to each other?
+
+A new abstract base class, called `SubnetsAPI` is released in Bittensor `6.8.0` and your application can use this to enable cross subnet communication. Normally, however, if you are not using the `SubnetsAPI`, then the subtensor blockchain does not mix data from one subnet with another subnet data and a subnet does not communicate with another subnet. 
+
+:::tip See also
+See [Bittensor Subnets API](https://github.com/opentensor/bittensor/blob/master/README.md#bittensor-subnets-api).
+:::
 
 ## Mining and validation
 
@@ -47,6 +52,15 @@ In Bittensor, the term "mining" is not related to Bitcoin mining. Similarly Bitt
 :::tip See also
 See more here in [How a subnet works](learn/introduction.md#how-a-subnet-works). 
 :::
+
+### So is there a separate blockchain validation on Bittensor?
+
+Yes. As we saw in the above [So where does the blockchain come in](#so-where-does-the-blockchain-come-in) section, the subtensor blockchain is an essential part of the Bittensor. This subtensor blockchain is like any blockchain, i.e., there are decentralized validator nodes that validate the transactions coming into the subtensor blockchain and post them in the subtensor blockchain ledger. Blocks containing such transactions are processed at the rate of one block every 12 seconds. You can run your own public subtensor node to synchronize with the Bittensor mainchain or testchain. 
+
+:::tip See also
+See [Running a Public Subtensor](getting-started/running-a-public-subtensor.md). 
+:::
+
 
 ### What is the incentive for me to be a miner or a validator, or even create a subnet? 
 
@@ -67,7 +81,7 @@ Yes. But remember, you have 32 different subnets to choose from. Requirements fo
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 
-Unfortunately no. Subnets are neither run nor managed by Opentensor Foundation, except subnet 1. Moreover, a poor-performing subnet might be removed from a `netuid` and a new subnet may have taken its place. , and we have not automated tracking the subnets this way, yet. Your best approach is to visit each subnet's GitHub repo for documentation via [Subnet Pages](./subnet-pages/index.md).
+Unfortunately no. Not all subnets are run or managed by Opentensor Foundation. Moreover, a poor-performing subnet might be removed from a `netuid` and a new subnet may have taken its place. We have not automated tracking the subnets this way yet. Your best approach is to visit each subnet's GitHub repo for documentation via [Subnet Pages](./subnet-pages/index.md).
 
 ### Can I be a subnet miner or a subnet validator forever?
 
