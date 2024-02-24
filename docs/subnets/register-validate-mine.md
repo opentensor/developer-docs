@@ -151,7 +151,7 @@ style={{width: 990}}
 
 - Blocks are processed in the subtensor (Bittensor blockchain) at every 12 seconds. 
 - A subnet miner registers a hotkey and receives a UID&mdash;and its immunity period starts.
-- The subnet miner starts running and publishes is Axon's `IP:PORT` for the subnet validators.
+- The subnet miner starts running and publishes its Axon's `IP:PORT` for the subnet validators.
 - The subnet validators refresh their metagraph and will know about the hotkey change on the UID and the new miner Axon's ``IP:PORT`` information. 
 - The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive incentive award based on their responses.
 - While in `immunity_period` the subnet miner slowly builds its incentive, starting with no history.
