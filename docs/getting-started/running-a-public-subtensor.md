@@ -23,6 +23,21 @@ style={{width: 650}}
 />
 </center>
 
+## Query archived data 
+
+After you install the public subtensor as described in the below sections, you can query for blockchain data older than previous 300 blocks via the archive node like this:
+
+For example, to sync with a specific block number `12345` that is older than the 300 blocks:
+
+```python
+import bittensor as bt
+meta = bt.subtensor('archive').metagraph(netuid=18, block=12345)
+print(meta)
+```
+
+:::tip See also
+Also see the [`metagraph` API reference](https://docs.bittensor.com/python-api/html/autoapi/bittensor/metagraph/index.html#bittensor.metagraph.metagraph.sync).
+:::
 
 ## Method 1: By compiling the source code
 
