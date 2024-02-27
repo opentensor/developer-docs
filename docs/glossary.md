@@ -1,9 +1,12 @@
+---
+title: "Glossary"
+---
 
 # Glossary
 
-### a-e
+## A-E
 
-#### axon
+### axon
 Servers receive requests from other peers in the network via the [dendrite](#dendrite).
 
 
