@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 27 February 2024
+
+- Added [System requirements](./getting-started/running-a-public-subtensor.md#system-requirements) and [Network requirements and port settings](getting-started/running-a-public-subtensor.md#network-requirements-and-port-settings) to the public subtensor installation document.
+
 ## 23 February 2024
 
 - A new [Questions and Answers](./questions-and-answers.md) doc is added, intended for first-time explorers of Bittensor.
