@@ -36,8 +36,8 @@ See [what's new in docs](./whats-new-in-docs.md).
 
 Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **The rewards for subnet participants are in the form of TAO tokens.** 
 
-:::tip no need to create a subnet
-A straightforward way to participate in the Bittensor network is to be a miner or a validator in an existing subnet. Follow the below links in the [Validate or mine](#validate-or-mine) section. Alternately, if you want to create your own custom incentive mechanism, then you can create your own subnet and launch your own competition. See the below [Running a subnet](#running-a-subnet) section.
+:::tip looking for a non-technical introduction to Bittensor?
+See [Questions and Answers](./questions-and-answers.md).
 :::
 
 Bittensor provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
@@ -62,7 +62,9 @@ If you are new to Bittensor, start by learning the concepts. Then install the Bi
     
 </Cards>
 
-Next, follow the below paths:
+:::tip How to participate
+A straightforward way to participate in the Bittensor network is to be a subnet miner or a subnet validator in an existing subnet. It is not necessary to create a subnet. Follow the below links in the [Validate or mine](#validate-or-mine) section. Alternately, if you want to create your own custom incentive mechanism, then you create your own subnet and launch your own competition. See the below [Running a subnet](#running-a-subnet) section.
+:::
 
 ---
 
