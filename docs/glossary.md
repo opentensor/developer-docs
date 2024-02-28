@@ -307,7 +307,7 @@ A data object used by subnet validators and subnet miners as the main vehicle to
 
 ### TAO (τ)
 
-The native cryptocurrency of the Bittensor network, used to reward subnet miners and validators. A single TAO is newly every 12 seconds on the Bittensor blockchain.
+The native cryptocurrency of the Bittensor network, used to reward subnet miners and validators. A single TAO is newly created (i.e., minted) every 12 seconds on the Bittensor blockchain.
 
 ### Tempo
 
