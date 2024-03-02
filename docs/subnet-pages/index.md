@@ -181,7 +181,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ד</span>}
     title='Subnet 28'
     link='/subnet-pages/subnet-28'
-    body='Foundry S&P Oracle' />
+    body='S&P 500 Oracle' />
 </Cards>
 
 <Cards>
