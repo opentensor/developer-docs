@@ -13,9 +13,9 @@ S&P 500 Oracle
 
 ## Description
 
-Overview: The Foundry S&P 500 Oracle incentivizes miners to frequently predict the S&P 500 price index during trading hours (9:30 AM - 4 PM.) We chose to integrate traditional financial markets and the Bittensor network to expose Bittensor, a decentralized system to the largest system in the world; the global economy. The S&P 500 model serves as a suitable starting point for financial predictions given the index’s utility, accessibility, and world-wide acceptance. 
+The Foundry S&P 500 Oracle incentivizes miners to frequently predict the S&P 500 price index during trading hours (9:30 AM - 4 PM Eastern Standard Time). This subnet serves as a suitable starting point for the traditional financial markets predictions given the S&P 500 index’s utility, accessibility, and world-wide acceptance. 
 
-The Mechanism at-work: Validators send miners a timestamp, or future time, for which the miners must  make an S&P 500 price prediction. The miners must immediately respond with their price prediction at that given time. Validators then store these predictions, and calculate the scores of the miners once the predictions mature. Miners then receive ranks to stack up against one another, naturally incentivizing competition. 
+In this subnet, subnet validators send subnet miners a timestamp of a future time, for which the miners must make an S&P 500 price prediction. The miners must immediately respond with their price prediction for that given timestamp. Validators store these predictions and calculate the scores of the miners once the predictions mature. Miners then receive ranks to stack up against one another, naturally incentivizing competition. 
 
 ## Subnet owner
 https://foundrydigital.com/accelerate/
