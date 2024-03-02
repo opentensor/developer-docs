@@ -6,7 +6,7 @@ title: "Subnet 28"
 
 ## Name
 
-S&P 500 Oracle
+Foundry S&P 500 Oracle
 
 ## Netuid
 28
