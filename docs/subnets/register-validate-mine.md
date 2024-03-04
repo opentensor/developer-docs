@@ -28,7 +28,7 @@ Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to
 A hotkey can hold multiple UIDs across **separate** subnets. However within one subnet, each UID must have a unique hotkey. 
 :::
 
-After your register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
+After you register your keys, you can then proceed to become either a subnet miner or a subnet validator, which have different requirements. See below. 
 
 :::danger Windows not supported
 While wallet transactions like delegating, transfer, registering, staking can be performed on a Windows machine using WSL (Windows Subsystem for Linux), mining and validating are not recommended and are not supported on Windows machines.
