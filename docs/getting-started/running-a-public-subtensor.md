@@ -44,10 +44,6 @@ style={{width: 650}}
 />
 </center>
 
-
-
-
-
 ## Query archived data 
 
 After you install the public subtensor as described in the below sections, you can query for blockchain data older than previous 300 blocks via the archive node like this:
