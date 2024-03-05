@@ -19,12 +19,12 @@ A subtensor node is different from a Bittensor neuron, i.e., a subnet validator 
 Normally, a node in Bittensor blockchain must always be synchronized to the latest blockchain state. Such a blockchain node accomplishes this by holding a copy of the entire Bittensor blockchain database, from the genesis block all the way to the current block. However, holding an entire copy of blockchain ledger state, which is continously increasing in size, can be expensive. Hence, two types of nodes, a lite node and an archive node, are defined, as below:
 
 - A **lite node** is configured to synchronize only with the current block of the Bittensor blockchain, and not the entire blockchain. The purpose of a lite node is to serve, with minimal hardware and storage requirements, as a local entry point into the Bittensor mainchain or testchain. A lite node's storage is always refreshed with only the current block from the Bittensor blockchain. 
-  :::tip a lite node for a subnet miner
+  :::tip lite node for a subnet miner
   A subnet miner should use a local lite node to communicate with the Bittensor blockchain. 
   :::
 
 - On the other hand, an **archive node** is configured to synchronize with Bittensor blockchain data older than 300 blocks, though you can use it to access data from any block. An archive node stores all the Bittensor blockchain blocks from genesis up to the 300th most recent block. If you want to query for Bittensor blockchain data that is older than 300 blocks, you should use an archive node. 
-  :::tip a lite node for a subnet miner
+  :::tip archive node for a blockchain explorer
   Applications such as Bittensor blockchain explorer, for example, [Taostats](https://taostats.io/) that require access to historical blockchain data use an archive node. 
   :::
 
