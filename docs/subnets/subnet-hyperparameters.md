@@ -50,7 +50,7 @@ btcli sudo set
 
 **Value**
 : Set to `2013` for Subnet-1. 
-: This means that every subnet validator in Subnet-1 must have at least version `2013` of the subnet validaor code.
+: This means that every subnet validator in Subnet-1 must have at least version `2013` of the subnet validator code.
 
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. Setting this parameter to a version ensures that all the subnet validators use the same version of the code.
@@ -117,7 +117,7 @@ Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weight
 
 A subnet miner or a subnet validator at a UID can perform poorly during the `immunity_period` without risking deregistration. If the UID still does not perform well even after the expiry of the `immunity_period`, then the subnet miner or subnet validator at that UID can be removed from the subnet. They will be removed when a new entity, i.e., a subnet miner or a subnet validator, requests to join the subnet.
 
-When a subnet miner or a subnet validator is deregistered, they are required to register again  to be considered for the subnet. 
+When a subnet miner or a subnet validator is deregistered, they are required to register again to be considered for the subnet. 
 
 :::tip immunity period for a subnet
 Immunity period also exists for a subnet. See [Immunity period for a subnet](./create-a-subnet.md#immunity-period-for-a-subnet).
@@ -125,7 +125,7 @@ Immunity period also exists for a subnet. See [Immunity period for a subnet](./c
 
 ### Example
 
-Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registred, before they will be considered for deregistration. 
+Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registered, before they will be considered for deregistration. 
 
 :::tip Controlling the number of UIDs in immunity period 
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
