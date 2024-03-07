@@ -23,7 +23,7 @@ Normally, a node in Bittensor blockchain must always be synchronized to the late
   A subnet miner should use a local lite node to communicate with the Bittensor blockchain. 
   :::
 
-- On the other hand, an **archive node** is configured to synchronize with Bittensor blockchain data older than 300 blocks, though you can use it to access data from any block. An archive node stores all the Bittensor blockchain blocks from genesis up to the most recent block.
+- On the other hand, an **archive node** stores all the Bittensor blockchain blocks from genesis up to the most recent block.
   :::tip archive node for a blockchain explorer
   Applications such as Bittensor blockchain explorer, for example, [Taostats](https://taostats.io/) that require access to historical blockchain data use an archive node. 
   :::
@@ -45,7 +45,7 @@ style={{width: 650}}
 
 ## Query archived data 
 
-After you install the public subtensor as described in the below sections, you can query for blockchain data older than previous 300 blocks via the archive node like this:
+We recommend that you use archive public subtensor node to retrieve blockchain data older than the previous 300 blocks. See the below example:
 
 For example, to sync with a specific block number `12345` that is older than the 300 blocks:
 
