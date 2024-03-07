@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 07 March 2024
+
+- Added [Lite node vs archive node](getting-started/running-a-public-subtensor#lite-node-vs-archive-node) section.
+
 ## 28 February 2024
 
 - The [Glossary](glossary.md) section is revised and updated.
