@@ -4,6 +4,8 @@ title: "Glossary"
 
 # Glossary
 
+## A 
+
 ### Active UID
 
 A UID slot that is considered active within a specific subnet, allowing the associated hotkey to participate as a subnet validator or subnet miner.
@@ -15,6 +17,8 @@ A type of public subtensor node that stores the entire blockchain history, allow
 ### Axon
 
 A module in the Bittensor API that uses the FastAPI library to create and run API servers. Axons receive incoming Synapse objects. Typically an Axon is the entry point advertised by a subnet miner on the Bittensor blockchain, allowing subnet validators to communicate with the miner.
+
+## B
 
 ### Bicameral Legislature
 
@@ -28,6 +32,8 @@ A digital wallet that holds the core ownership in the Bittensor network and serv
 
 A unit of data in the Bittensor blockchain, containing a collection of transactions and a unique identifier (block hash). A single block is processed every 12 seconds in the Bittensor blockchain. 
 
+## C
+
 ### Coldkey
 
 A component of a Bittensor wallet responsible for securely storing funds and performing high-risk operations such as transfers and staking. It is encrypted on the user's device. This is analogous to a private key.
@@ -39,6 +45,8 @@ A combination of two keys, a coldkey for secure storage and high-risk operations
 ### Consensus
 
 A measure of a subnet validator's agreement with other validators on the network, calculated based on their trust scores. This is a κ-centered sigmoid of trust, influencing the emission calculation.
+
+## D
 
 ### Delegate
 
@@ -76,6 +84,8 @@ The process by which newly minted TAO tokens (emissions) are allocated among sub
 
 A portion of the TAO emission received by subnet validators as a reward for their participation in validating transactions and maintaining the integrity of a subnet.
 
+## E 
+
 ### EdDSA Cryptographic Keypairs
 
 A cryptographic algorithm used to generate public and private key pairs for coldkeys and hotkeys in the Bittensor wallet.
@@ -96,6 +106,8 @@ An optional security measure for the hotkey.
 
 A Bittensor wallet created through the Bittensor website or using a tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/), allowing users to use TAO without installing Bittensor.
 
+## H 
+
 ### Hotkey
 
 A component of a Bittensor wallet responsible for less secure operations such as signing messages into the network, secure a UID slot in a subnet, running subnet miners and subnet validators in a subnet. It can be encrypted or unencrypted, but is unencrypted by default. The terms "account" and "hotkey" are used synonymously.
@@ -103,6 +115,8 @@ A component of a Bittensor wallet responsible for less secure operations such as
 ### Hotkey-Coldkey Pair
 
 Authentication mechanism for delegates and nominators and for delegates participating in the Senate.
+
+## I 
 
 ### Immunity Period
 
@@ -115,6 +129,8 @@ A portion of the TAO emission received by the subnet miners when they provide va
 ### Incentive Mechanism
 
 A system that drives the behavior of subnet miners and governs consensus among subnet validators in a Bittensor subnet. Each subnet has its own incentive mechanism, which should be designed carefully to promote desired behaviors and penalize undesired ones.
+
+## L 
 
 ### Lite Node
 
@@ -131,6 +147,8 @@ A Bittensor wallet created on the user's machine, requiring the installation of 
 ### Loss Function
 
 In the context of machine learning, a mathematical function that measures the difference between the predicted output and the ground truth. In Bittensor, incentive mechanisms act as loss functions that steer subnet miners towards desirable outcomes.
+
+## M 
 
 ### Mainchain
 
@@ -156,7 +174,9 @@ The software component that subnet miners run to perform task operations and com
 
 A sequence of words used to regenerate keys, in case of loss, and restore coldkeys and hotkeys in the Bittensor wallet.
 
-### NaCL Format
+## N 
+
+### NaCl Format
 
 A secure encryption format, using the [NaCl](https://nacl.cr.yp.to/) library, used for updating legacy Bittensor wallets to improve security.
 
@@ -180,9 +200,13 @@ Another term for a delegator. A subnet validator who nominates their own hotkey 
 
 A TAO holder who delegates their stake.
 
+## O 
+
 ### Objective Function
 
 In the context of machine learning and subnet operations, this refers to the goal that the subnet is continuously optimizing for, through its incentive mechanism.
+
+## P 
 
 ### Private Key
 
@@ -203,6 +227,8 @@ A cryptographic key that is publicly available and used for verifying signatures
 ### Public Subtensor
 
 A publicly accessible node in the Bittensor network that can be run as a lite node or an archive node and synchronized with either the mainchain or testchain.
+
+## R 
 
 ### RAO
 
@@ -232,6 +258,8 @@ A special kind of subnet with a netuid of 0, responsible for determining the emi
 ### Root Network Validators
 
 Validators in the root network. The largest 64 subnet validators across all active subnets, in terms of the subnet validator stake, are by default the  validators in the root network.
+
+## S 
 
 ### SS58 Encoded
 
@@ -305,6 +333,8 @@ A privileged key for administrative actions, replaced by governance protocol for
 
 A data object used by subnet validators and subnet miners as the main vehicle to exchange information. Synapse objects are based on the BaseModel of the Pydantic data validation library.
 
+## T 
+
 ### TAO (τ)
 
 The native cryptocurrency of the Bittensor network, used to reward subnet miners and validators. A single TAO is newly created (i.e., minted) every 12 seconds on the Bittensor blockchain.
@@ -329,9 +359,13 @@ A measure of a subnet miner's reputation and reliability, calculated based on th
 
 A measure of the confidence in a subnet based on the stakes that set non-zero weights.
 
+## U 
+
 ### UID Slot
 
 A position occupied by a subnet miner or subnet validator within a subnet, identified by a unique UID. The UID is assigned to a hotkey when it is registered in a subnet, allowing the hotkey to participate as a subnet validator or subnet miner.
+
+## V 
 
 ### VPermit
 
@@ -344,6 +378,8 @@ The software component that subnet validators run to perform their subnet valida
 ### Validator Permit
 
 A permission granted to the largest 64 subnet validators in terms of stake, allowing them to be validators in the root network. 
+
+## W 
 
 ### Wallet Address
 
@@ -360,6 +396,8 @@ A matrix formed from the ranking weight vectors of all subnet validators in a su
 ### Weight Vector
 
 A vector maintained by each subnet validator, with each element representing the weight assigned to a subnet miner based on its performance.
+
+## Y 
 
 ### Yuma Consensus
 

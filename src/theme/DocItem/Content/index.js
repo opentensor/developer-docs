@@ -90,7 +90,7 @@ function MetaActions({ style }) {
           href={editUrl}
           target="_blank"
           rel="noopener noreferrer">
-          EDIT THIS PAGE
+          SUBMIT A PR
         </a>
       )}
 

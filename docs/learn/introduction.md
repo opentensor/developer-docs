@@ -7,7 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Introduction
 
-If you are new to the Bittensor ecosystem read this section first before proceeding to participate in the Bittensor network.
+If you are new to the Bittensor developer ecosystem read this section first before proceeding to participate in the Bittensor network.
+
+:::tip looking for a non-technical introduction to Bittensor?
+See [Questions and Answers](../questions-and-answers.md).
+:::
+
 
 <ThemedImage
 alt="Simplified Bittensor Network"
