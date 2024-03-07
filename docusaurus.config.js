@@ -134,6 +134,7 @@ const config = {
           alt: "Bittensor",
           src: "img/bt-docs-logo.svg",
           srcDark: "img/logo-dark-mode.svg",
+          href: "https://bittensor.com",
           style: {
             objectFit: "contain",
             width: 16.5,
