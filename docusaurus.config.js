@@ -132,11 +132,11 @@ const config = {
       navbar: {
         logo: {
           alt: "Bittensor",
-          src: "img/logo.svg",
+          src: "img/bt-docs-logo.svg",
           srcDark: "img/logo-dark-mode.svg",
           style: {
             objectFit: "contain",
-            width: 21,
+            width: 16.5,
           },
         },
 
