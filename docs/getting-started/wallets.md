@@ -21,8 +21,8 @@ Each key is a pairing of two seperate [EdDSA cryptographic keypairs](https://en.
 ## Ways of creating wallet
 
 You can:
-- Create a wallet locally on your machine. This requires that you install Bittensor on your machine.
-- Create an external wallet, either through the Bittensor website or by using a tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). An external wallet created in this way will allow you to use TAO without installing Bittensor.
+- Create a wallet locally on your machine. This requires that you install Bittensor on your machine, or
+- Create an external wallet either through the [Chrome extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1) or by using a tool like [subkey](https://docs.substrate.io/reference/command-line-tools/subkey/). An external wallet created in this way will allow you to use TAO without installing Bittensor.
 
 ## Creating a local wallet
 
@@ -189,11 +189,7 @@ btcli wallet regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** ***
 
 ## Creating an external wallet
 
-To create a wallet without installing Bittensor, use the wallet on [Bittensor](http://bittensor.com). Follow these steps:
-
-1. On [Bittensor website](http://bittensor.com) click the **0.00** on the top right corner. 
-2. Select **Create** to create a new wallet or **Import** to import your mnemonic from an existing wallet. 
-   - Use the **Access** option if you have already created a wallet using the website and have not chosen to **Forget** it. After you have accessed your account, you can send, receive, or stake your TAO.
+To create a wallet without installing Bittensor, use the [Chrome extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1).
 
 <!-- move this section to somewhere else
 ## Bt.wallet 
