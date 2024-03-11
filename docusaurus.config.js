@@ -33,7 +33,7 @@ const config = {
 
   customFields: {
     enableIssueLinks: true, // Set to true to enable issue links
-    enableEditUrlLinks: false, // Set to true to enable edit url links
+    enableEditUrlLinks: true, // Set to true to enable edit url links
     issueBaseUrl: "https://github.com/opentensor/developer-docs/issues",
     enableFeedback: false, // Set to false to disable feedback
   },
@@ -132,35 +132,15 @@ const config = {
       navbar: {
         logo: {
           alt: "Bittensor",
-          src: "img/logo.svg",
+          src: "img/bt-docs-logo.svg",
           srcDark: "img/logo-dark-mode.svg",
+          href: "https://bittensor.com",
           style: {
             objectFit: "contain",
-            width: 21,
+            width: 16.5,
           },
         },
-
         items: [
-          // {
-          //   position: "left",
-          //   type: "dropdown",
-          //   label: "Getting started",
-          //   items: [
-          //     {
-          //       label: "Installation",
-          //       to: "/getting-started/installation",
-          //     },
-          //     {
-          //       label: "Wallet",
-          //       to: "/getting-started/wallets",
-          //     },
-          //   ],
-          // },
-          // {
-          //   position: "right",
-          //   label: "Bittensor API Reference",
-          //   href: "pathname:///python-api/html/index.html",
-          // },
           {
             position: "left",
             label: "Bittensor API",
@@ -179,11 +159,6 @@ const config = {
           {
             href: "https://github.com/opentensor/developer-docs",
             label: "Docs GitHub",
-            position: "right",
-          },
-          {
-            href: "https://bittensor.com/about",
-            label: "About Opentensor",
             position: "right",
           },
         ],
