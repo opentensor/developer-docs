@@ -21,6 +21,9 @@ The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) app
 
 - However, at the end of this immunity period, if the subnet's emissions are the lowest among all the 32 subnets, then this subnet will be deregistered when a new subnet registration request arrives. If there are several subnets with the lowest emission then the oldest subnet among the lowest will be deregistered first, and then the second oldest, and so on. 
 
+:::tip A newly created subnet starts from zero emission
+:::
+
 ## Prerequisites
 
 To create a subnet, whether locally or on testchain or on mainchain, make sure that:

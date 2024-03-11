@@ -130,6 +130,7 @@ const sidebars = {
     "btcli",
     "bt-api-ref",
     "emissions",
+    "root-network",
     // "reference/bittensor-api-ref",
     "yuma-consensus",
     "governance",
