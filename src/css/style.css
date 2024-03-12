@@ -1098,14 +1098,14 @@ blockquote {
 }
 
 .language-bash>div span>span.token.plain {
-	font-family: TTCommonsPro !important;
+	font-family: FiraCode !important;
 }
 
 .theme-code-block div:first-child {
 	display: flex !important;
 	align-items: center;
 	gap: 0 10px !important;
-	font-family: TTCommonsPro !important;
+	font-family: FiraCode !important;
 }
 
 .theme-code-block div:first-child svg {
@@ -1113,7 +1113,7 @@ blockquote {
 }
 
 code {
-	font-family: TTCommonsPro !important;
+	font-family: FiraCode !important;
 }
 
 .tabs-container>ul {
