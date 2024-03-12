@@ -15,7 +15,7 @@ The following changes are documented:
 
 - A new document [Root Network](./root-network.md) is added.
 - A newly created subnet now starts from zero emission. Previously, the newly registered subnets inherited the emission from the previous owners.
-- The subnet registrations adjustment interval is changed from `0` to `0.97`. See [set_adjustment_alpha](./subnets/subnet-hyperparameters.md#set_adjustment_alpha).
+- The subnet registrations adjustment interval is changed from `0` to `0.97`. See [adjustment_alpha](./subnets/subnet-hyperparameters.md#adjustment_alpha).
 - Setting weights will now require a minimum of 1000 TAO. See the note in [Root network vs subnets](./root-network.md#root-network-vs-subnets).
 
 ## 07 March 2024
