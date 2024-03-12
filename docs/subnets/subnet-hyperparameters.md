@@ -183,10 +183,10 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97` from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs.
 
 :::important
-This does not effect already registered subnets, but we strongly recommend that subnet owners update this value by setting it through the CLI, by running the below command: 
+By default this does not effect already registered subnets, but to take advantage of the new value, we strongly recommend that existing subnet owners update this value by setting it through the CLI, by running the below command: 
 
 ```bash
-btcli sudo set_adjustment_alpha --value 17893341751498265066
+btcli sudo set --param adjustment_alpha --value 17893341751498265066 --netuid <NETUID>
 ```
 :::
 
