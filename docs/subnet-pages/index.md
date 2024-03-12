@@ -51,7 +51,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ε</span>}
     title='Subnet 5'
     link='/subnet-pages/subnet-5'
-    body='unknown' />
+    body='OpenKaito Search' />
     <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>ζ</span>}
     title='Subnet 6'
