@@ -186,7 +186,7 @@ A factor that controls the subnet registrations adjustment interval. This hyperp
 By default this change from `0` to `0.97` does not effect already registered subnets. However, to take advantage of the new value, we strongly recommend that existing subnet owners update this value by setting it through the CLI, by running the below command. The `--value 17893341751498265066` corresponds to setting the `adjustment_alpha` to `0.97`. See [this line of code](https://github.com/opentensor/subtensor/pull/249/files#diff-731a2a37ce113771b45fd0a44bf63d71307465bcb1ce26353eed95c1f4d4c26cR728).
 :::
 
-```sh
+```bash
 btcli sudo set --param adjustment_alpha --value 17893341751498265066 --netuid <NETUID>
 ```
 
