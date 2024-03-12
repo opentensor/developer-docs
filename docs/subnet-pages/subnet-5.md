@@ -2,26 +2,32 @@
 title: "Subnet 5"
 ---
 
-# Subnet 5
+# Subnet 5 
 
 ## Name
 
-Unknown
+OpenKaito
 
 ## Netuid
 5
 
 ## Description
 
-Unknown
+A search index plays a crucial role in accessing information within Web3 and serves as the foundation for RAG applications. OpenKaito is dedicated to constructing a decentralized search index for Web3, and its incentive mechanism can be outlined as follows:
+
+1. Miners are encouraged to develop high-quality and efficient indexing and ranking schemes for Web3 data.
+
+2. Validators will submit structured or vector retrieval queries to perform spot checks on the indexing quality using LLM. For instance, validators should anticipate receiving high-quality content related to OP for the query "optimism" from miners. Miners are incentivized to differentiate between the English word "optimism" and the crypto project "optimism" within massive amounts of Twitter data. The final reward will be determined based on the quality, ranking, recency, and uniqueness of the data indexed by miners.
+
+3. By collectively executing large-scale content understanding, indexing, and ranking, a decentralized search engine and data analytics platform can be established on top of OpenKaito.
 
 ## Subnet owner
 
-Unknown
+[Kaito AI](https://www.kaito.ai/)
 
 ## GitHub
 
-Unknown
+https://github.com/OpenKaito/openkaito
 
 <!-- 
 ## Hyperparameters
