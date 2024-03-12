@@ -4,7 +4,7 @@ title: "Install Bittensor"
 
 # Install Bittensor
 
-Before you can start developing, install Bittensor and then create Bittensor wallet.
+Before you can start developing, you must install Bittensor and then create Bittensor wallet.
 
 ## Upgrade
 
@@ -17,12 +17,12 @@ python3 -m pip install --upgrade bittensor
 or
 ```bash
 python -m pip install --upgrade bittensor
-``````
+```
 
-## Install
+## Install on macOS and Linux
 
-:::tip On macOS
-The following installation instructions are for macOS. For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon) section. 
+:::tip For macOS on Apple silicon
+For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon) section. 
 :::
 
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
@@ -56,6 +56,53 @@ pip3 install bittensor
     ```bash
     python3 -m pip install -e bittensor/
     ```
+
+### Installing on Apple Silicon
+
+To install Bittensor on Apple M1 or M2, we recommend you first activate a Python virtual environment. Follow the below steps:
+
+#### Activate a virtual environment
+
+1. Install `conda` on macOS. Follow [this guide on conda.io](https://conda.io/projects/conda/en/latest/user-guide/install/macos.html).
+2. Download the `apple_m1_environment.yml` configuration file from Bittensor. 
+   - [Click to visit the file](https://github.com/opentensor/bittensor/blob/master/scripts/environments/apple_m1_environment.yml).
+   - Click on the `Raw` button at the top right and save the raw file on your local machine.
+  
+3. Create the `conda` environment using the `apple_m1_environment.yml` file you just downloaded:
+    ```bash
+    conda env create -f apple_m1_environment.yml
+    ```
+
+4. Activate the new environment: 
+   ```bash
+   conda activate bittensor
+   ```
+
+5. Verify that the new environment was installed correctly:
+   
+   ```bash
+   conda env list
+   ```
+6. Next, install Bittensor as shown below.
+
+#### Install Bittensor
+
+Run the below command to install Bittensor in the above virtual environment.
+
+```python
+pip3 install bittensor --no-deps
+```
+
+## Install on Windows
+
+To install and run Bittensor on Windows you must install [**WSL 2** (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) on Windows and select [Ubuntu Linux distribution](https://github.com/ubuntu/WSL/blob/main/docs/guides/install-ubuntu-wsl2.md). 
+
+After you installed the above, follow the same installation steps described above in [Install on macOS and Linux](#install-on-macos-and-linux).
+
+:::danger Limited support on Windows
+While wallet transactions like delegating, transfer, registering, staking can be performed on a Windows machine using WSL 2, the mining and validating operations are not recommended and are not supported on Windows machines.
+ :::
+
 
 ## Verify the installation
 
@@ -119,37 +166,3 @@ The Python interpreter output will look like below.
 >>>
 ```
 
-## Installing on Apple Silicon
-
-To install Bittensor on Apple M1 or M2, we recommend you first activate a Python virtual environment. Follow the below steps:
-
-### Activate a virtual environment
-
-1. Install `conda` on macOS. Follow [this guide on conda.io](https://conda.io/projects/conda/en/latest/user-guide/install/macos.html).
-2. Download the `apple_m1_environment.yml` configuration file from Bittensor. 
-   - [Click to visit the file](https://github.com/opentensor/bittensor/blob/master/scripts/environments/apple_m1_environment.yml).
-   - Click on the `Raw` button at the top right and save the raw file on your local machine.
-  
-3. Create the `conda` environment using the `apple_m1_environment.yml` file you just downloaded:
-    ```bash
-    conda env create -f apple_m1_environment.yml
-    ```
-
-4. Activate the new environment: 
-   ```bash
-   conda activate bittensor
-   ```
-
-5. Verify that the new environment was installed correctly:
-   
-   ```bash
-   conda env list
-   ```
-6. Next, install Bittensor as shown below.
-
-### Install Bittensor
-Run the below command to install Bittensor in the above virtual environment.
-
-```python
-pip3 install bittensor --no-deps
-```
