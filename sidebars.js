@@ -53,6 +53,7 @@ const sidebars = {
       items: [
         "subnets/checklist-for-validating-mining",
         "subnets/register-validate-mine",
+        "subnets/working-with-keys",
       ],
     },
     {
