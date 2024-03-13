@@ -11,7 +11,7 @@ btcli subnet hyperparameters
 ```
 
 :::tip Current hyperparameters list
-Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters. Only these are described in this document.
+Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters.
 ::: 
 
 ## Setting the hyperparameters
@@ -38,7 +38,7 @@ btcli sudo set
 ## min_difficulty, max_difficulty
 
 **Description**
-: For subnets that have enabled PoW registration using [`network_pow_registration_allowed`](#etwork_pow_registration_allowed), these parameters determine the minimum and maximum difficulty for the Proof of Work calculation, respectively, expressed in terahashes.  The actual difficulty is dynamic, auto-adjusting based on the number of registrations per adjustment interval. When a new adjustment interval is reached and the number of registrations/registration attempts in the previous interval exceeds the target value, the difficulty will double in the oncoming interval.  If the number of registrations/registration attempts was fewer than the target, it will halve.
+: For subnets that have enabled PoW registration using [`network_pow_registration_allowed`](#network_pow_registration_allowed), these parameters determine the minimum and maximum difficulty for the Proof of Work calculation, respectively, expressed in terahashes.  The actual difficulty is dynamic, auto-adjusting based on the number of registrations per [adjustment interval](#adjustment_interval). When a new adjustment interval is reached and the number of registrations or registration attempts in the previous adjustment interval exceeds the target number of registrations value, the difficulty will double in the following adjustment interval.  If the number of registrations or registration attempts was fewer than the target number of registrations value, the difficulty will halve.
 
 ---
 
@@ -129,12 +129,11 @@ Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The durati
 The subnet owner may modify the [`immunity_period`](#immunity_period) at any given time, as well as temporarily turn off [`network_registration_allowed`] to allow established nodes (miners and/or validators) to adjust to major codebase updates without being deregistered.
 :::
 
-<!-- 
 :::tip Controlling the number of UIDs in immunity period 
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
 :::
---- -->
----
+
+--- 
 
 ## min_allowed_weights
 
@@ -195,14 +194,14 @@ By default this change from `0` to `0.97` does not effect already registered sub
 btcli sudo set --param adjustment_alpha --value 17893341751498265066 --netuid <NETUID>
 ```
 
-<!-- ---
+---
 
 ## adjustment_interval
 
 **Description**
 : Expressed in number of blocks. This is the number of blocks after which the recycle register cost and the `pow_register` difficulty are recalculated. 
 
-If the number of actual registrations that occurred in the last `adjustment_interval` is higher than the [`target_regs_per_interval`](#target_regs_per_interval), then the blockchain will raise the recycle register cost, by increasing the [`min_burn`](#min_burn-max_burn) value by a certain amount, in order to slow down the actual registrations and bring them back to `target_regs_per_interval` value.
+If the number of actual registrations that occurred in the last [`adjustment_interval`](#adjustment_interval) is higher than the [`target_regs_per_interval`](#target_regs_per_interval), then the blockchain will raise the recycle register cost, by increasing the [`min_burn`](#min_burn-max_burn) value by a certain amount, in order to slow down the actual registrations and bring them back to `target_regs_per_interval` value.
 
 **Value**
 : Set to `112` for Subnet-1. 
@@ -219,7 +218,7 @@ The Subnet-1 has its `target_regs_per_interval` set to 2. Consider a scenario wh
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
 :::
 
---- -->
+---
 
 ## activity_cutoff
 
