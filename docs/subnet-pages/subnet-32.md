@@ -41,6 +41,10 @@ be very helpful. We believe that this LLM-detection subnet
 not only is a useful tool at a good price for people to use,
 but it also encourages competition to make better and smarter ways to spot AI-generated content.
 
+## Subnet owner
+
+[https://github.com/It-s-AI/llm-detection](https://github.com/It-s-AI/llm-detection.git)
+
 ## GitHub
 
 [https://github.com/It-s-AI/llm-detection](https://github.com/It-s-AI/llm-detection.git)
