@@ -9,6 +9,15 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 11 March 2024
+
+The following changes are documented:
+
+- A new document [Root Network](./root-network.md) is added.
+- A newly created subnet now starts from zero emission. Previously, the newly registered subnets inherited the emission from the previous owners.
+- The subnet registrations adjustment interval is changed from `0` to `0.97`. See [adjustment_alpha](./subnets/subnet-hyperparameters.md#adjustment_alpha).
+- Setting weights will now require a minimum of 1000 TAO. See the note in [Root network vs subnets](./root-network.md#root-network-vs-subnets).
+
 ## 07 March 2024
 
 - Added [Lite node vs archive node](getting-started/running-a-public-subtensor#lite-node-vs-archive-node) section.
