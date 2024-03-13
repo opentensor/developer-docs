@@ -35,7 +35,6 @@ btcli sudo set
 
 ---
 
-
 ## min_difficulty, max_difficulty
 
 **Description**
@@ -70,7 +69,6 @@ btcli sudo set
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
 ---
-
 
 ## max_weight_limit
 
@@ -153,6 +151,10 @@ A subnet validator can be considered as poorly performing if they set weights on
 
 In this case, none of the actual weight-setting extrinsics that the subnet validator sends to the chain will be accepted. Hence on the chain it will look like this subnet validator has not set any weights at all. The Yuma Consensus may conclude that this subnet validator is performing poorly and after the `immunity_period` expires, this subnet validator could be deregistered to make room for others waiting to be miners or validators.
 
+:::important Minimum 1000 TAO required to set weights 
+A validate function will blacklist set-weights transactions from keys with less than 1000 TAO. This is designed to reduce chain bloat and make it easier for validators and root network participants to set weights on the chain. 
+:::
+
 ---
 
 <!-- ---
@@ -174,6 +176,19 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 
 --- -->
 
+## adjustment_alpha
+
+**Description**
+
+A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97`, a change from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs.
+
+:::important
+By default this change from `0` to `0.97` does not effect already registered subnets. However, to take advantage of the new value, we strongly recommend that existing subnet owners update this value by setting it through the CLI, by running the below command. The `--value 17893341751498265066` corresponds to setting the `adjustment_alpha` to `0.97`. See [this line of code](https://github.com/opentensor/subtensor/pull/249/files#diff-731a2a37ce113771b45fd0a44bf63d71307465bcb1ce26353eed95c1f4d4c26cR728).
+:::
+
+```bash
+btcli sudo set --param adjustment_alpha --value 17893341751498265066 --netuid <NETUID>
+```
 
 <!-- ---
 
