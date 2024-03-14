@@ -197,6 +197,10 @@ The contents of the `coldkeypub.txt` are to be interpreted as below:
 - The `secretPhrase` and `secretSeed` are not included in the file due to the high-security nature of the coldkey. When you create your wallet, either using Chrome extension or `btcli`, the mnemonic (`secretPhrase`) is shown only once while `secretSeed` is not shown. 
 - The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your coldkey public wallet address for receiving TAO from another party.** 
 
+:::tip Conversion between publicKey and ss58Address
+Use this site [SS58.org](https://ss58.org/) to verify the conversions between `publicKey` and `ss58Address` fields.
+:::
+
 Similarly, listing out the contents of the `hotkeys/tst_hotkey` file:
 
 ```bash
@@ -205,7 +209,7 @@ cat hotkeys/tst1_hotkey | jq
   "accountId": "0xc66695556006c79e278f487b01d44cf4bc611f195615a321bf3208f5e351621e",
   "publicKey": "0xc66695556006c79e278f487b01d44cf4bc611f195615a321bf3208f5e351621e",
   "secretPhrase": "pyramid xxx wide slush xxx hub xxx crew spin xxx easily xxx",
-  "secretSeed": "0x6c359cc52ff1256c9e5***5536c***892e9ffe4e4066ad2a6e35561d6964e",
+  "secretSeed": "0x6c359cc52ff1256c9e5 * * * 5536c * * * 892e9ffe4e4066ad2a6e35561d6964e",
   "ss58Address": "5GYqp3eKu6W7KxhCNrHrVaPjsJHHLuAs5jbYWfeNzVudH8DE"
 }
 ```
@@ -233,7 +237,7 @@ Wallets
 The output will show only the `ss58Address` field values from the `coldkeypub.txt` and `tst1_hotkey` files of the wallets. 
 
 :::tip Use the ss58Address keys as destinations for TAO
-Use the above shown `ss58Address` field values as public wallet addresses, i.e., as destinations for TAO transfers. For example, when using a command: `btcli wallet transfer`.
+Use the above shown `ss58Address` field values as your public wallet addresses, i.e., as destinations for TAO transfers from another wallet to your wallet. For example, when using a command: `btcli wallet transfer`.
 :::
 
 ### Store your mnemonics safely
