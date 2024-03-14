@@ -4,7 +4,7 @@ title: "Create Wallet"
 
 # Create Wallet
 
-This section describes steps to create a Bittensor wallet, regenerate keys and encrypt keys. If you are new to Bittensor wallets, see [Working with Keys](../subnets/working-with-keys.md) for an explanation of Bittensor wallet keys.
+This section describes steps to create a Bittensor wallet, regenerate keys and encrypt keys. If you are new to Bittensor wallets, see [Coldkeys and Hotkeys](../learn/coldkeys-and-hotkeys.md) for an explanation of Bittensor wallet keys.
 
 ## Ways of creating wallet
 
@@ -54,7 +54,7 @@ Using `btcli` to create a local wallet is a two-step process:
 - Provide this coldkey as a parameter to generate a hotkey. 
 
 :::tip Explanation of keys 
-See [Working with Keys](../subnets/working-with-keys.md) for an explanation of coldkey and hotkey.
+See [Coldkeys and Hotkeys](../learn/coldkeys-and-hotkeys.md) for an explanation of coldkey and hotkey.
 :::
 
 #### Step 1: Generate a coldkey
@@ -156,7 +156,8 @@ btcli w regen_hotkey --mnemonic **** **** **** **** **** **** **** **** **** ***
 wallet(tst1_coldkey, tst1_hotkey, ~/.bittensor/wallets/)
 >>>
 ```
-### Location and contents of the local wallet
+
+## Location and contents of the local wallets
 
 Local wallets are stored on your machine under `~/.bittensor/wallets`. Use the below command to list them:
 
@@ -220,7 +221,7 @@ The contents of the `hotkeys/tst1_hotkey` file are to be interpreted as below:
 - The `secretPhrase` and `secretSeed` are shown because the hotkey is by default not encrypted. 
 - The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your hotkey public wallet address for receiving TAO from another party.** 
 
-### List all the local wallets
+## Listing all the local wallets
 
 You can list all the local wallets stored in Bittensor's root directly with:
 ```bash
@@ -240,7 +241,7 @@ The output will show only the `ss58Address` field values from the `coldkeypub.tx
 Use the above shown `ss58Address` field values as your public wallet addresses, i.e., as destinations for TAO transfers from another wallet to your wallet. For example, when using a command: `btcli wallet transfer`.
 :::
 
-### Store your mnemonics safely
+## Store your mnemonics safely
 
 :::danger If someone has your mnemonic, they own your TAO 
 If you lose the password to your wallet, or if you have lost the access to the machine where the wallet is stored, you can regenerate the coldkey using the mnemonic you saved during wallet creation steps above. You can **not** retrieve the wallet with the password alone. Remember that if someone has your mnemonic, they own your TAO. 
