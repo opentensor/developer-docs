@@ -32,6 +32,7 @@ const sidebars = {
         "learn/introduction",
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
+        "learn/coldkeys-and-hotkeys",
       ],
     },
     {
@@ -53,7 +54,6 @@ const sidebars = {
       items: [
         "subnets/checklist-for-validating-mining",
         "subnets/register-validate-mine",
-        "subnets/working-with-keys",
       ],
     },
     {
