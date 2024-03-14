@@ -1,14 +1,17 @@
 ---
-title: "Working with Keys"
+title: "Coldkeys and Hotkeys"
 ---
 
-# Working with Keys
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+# Coldkeys and Hotkeys
 
 The Bittensor wallet holds the core ownership of the assets on the Bittensor network. It is the identity technology underlying all the operations in the Bittensor network. This section describes the concepts of Bittensor wallet keys. For a step-by-step guide on how to create a Bittensor wallet and manage your keys, see [Create Wallet](../getting-started/wallets.md).
 
 ## Coldkey and hotkey
 
-A Bittensor wallet consists of a **coldkey** and a **hotkey**. The coldkey and hotkey are responsible for different operations in the Bittensor ecosystem. These two keys are logically connected via the Bittensor API.
+A Bittensor wallet consists of a **coldkey** and a **hotkey**. The coldkey and hotkey are used for different operations in the Bittensor ecosystem. These two keys are logically connected via the Bittensor API.
 
 ### Coldkey
 
@@ -25,15 +28,28 @@ A Bittensor wallet consists of a **coldkey** and a **hotkey**. The coldkey and h
 
 A coldkey is like a highly secure key you use for accessing a safe where your valuables are stored. The coldkey is used less frequently than the hotkey, and is stored very securely to minimize the risk of unauthorized access.
 
+<center>
+<ThemedImage
+alt="Components of Incentive Mechanism"
+sources={{
+    light: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
+    dark: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
 ### Hotkey 
 
+**Relationship to coldkey**: A hotkey is always paired with **only one** coldkey at a given time. 
+
 **Purpose**: Used for regular operational tasks in the Bittensor network, such as:
-    - Signing messages.
-    - Registering and running subnet miners and subnet validators.
+  - Signing messages.
+  - Registering and running subnet miners and subnet validators.
 
 **Security**: Less secure than a coldkey. A hotkey is by default unencrypted, but you can encrypt it. 
 
-**Relationship to coldkey**: A hotkey is always paired with **only one** coldkey at a given time. 
+
 
 Think of a hotkey as an everyday key you carry for tasks that require regular access. Because a hotkey is used more frequently and needs to be readily accessible, there's a higher risk of exposure to potential threats. However, the permissions and the scope of operations that can be performed with the hotkey are limited to operational activities, minimizing the risk of significant loss of TAO.
 
@@ -44,4 +60,3 @@ Each key is a pairing of two seperate [EdDSA cryptographic keypairs](https://en.
 :::
 
 ## Pairing of coldkey and hotkeys
-
