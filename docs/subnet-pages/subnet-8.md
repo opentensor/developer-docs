@@ -14,13 +14,13 @@ Proprietary Trading Network (PTN)
 
 ## Description
 
-PTN receives signals from quant and deep learning machine learning trading systems to deliver the world's most complete trading signals across a variety of asset classes.
+The PTN subnet receives signals from quant and machine learning trading systems, and delivers world's most complete trading signals across a variety of asset classes.
 
-PTN is the most challenging & competitive network in the world. Our miners need to provide futures based signals (long/short) that are highly efficient and effective across various markets to compete (forex, crypto, indices). The top miners are those that provide the most returns, while never exceeding certain drawdown limits.
+PTN is the most challenging & competitive subnet in the world. Our subnet miners must provide futures-based signals (long and short) that are highly efficient and effective across various markets (forex, crypto, indices). The top subnet miners provide most returns while never exceeding the drawdown limits.
 
 ## Subnet owner
 
-[taoshi](https://www.taoshi.io/)
+[https://www.taoshi.io/](https://www.taoshi.io/)
 
 ## GitHub
 
