@@ -6,16 +6,17 @@ title: "Subnet 8"
 
 ## Name
 
-Prediction Subnet
+Proprietary Trading Network (PTN)
 
 ## Netuid
+
 8
 
 ## Description
 
-Initially, the primary focus of this subnet is to forecast the future trends of financial markets, starting with predicting the price movements of Bitcoin. Eventually, TSPS will expand to include a broader range of cryptocurrency trading pairs. Subsequently, our scope will broaden to encompass additional financial markets.
+PTN receives signals from quant and deep learning machine learning trading systems to deliver the world's most complete trading signals across a variety of asset classes.
 
-As the project evolves, we anticipate that miners will diversify their focus, specializing in different subjects or domains. Some may concentrate on specific areas, while others, particularly those with advanced skills, tackle multiple topics, such as sports betting or various client-requested issues.
+PTN is the most challenging & competitive network in the world. Our miners need to provide futures based signals (long/short) that are highly efficient and effective across various markets to compete (forex, crypto, indices). The top miners are those that provide the most returns, while never exceeding certain drawdown limits.
 
 ## Subnet owner
 
@@ -23,9 +24,9 @@ As the project evolves, we anticipate that miners will diversify their focus, sp
 
 ## GitHub
 
-https://github.com/taoshidev/time-series-prediction-subnet/
+https://github.com/taoshidev/proprietary-trading-network
 
-<!-- 
+<!--
 ## Hyperparameters
 
 | Hyperparameter| Value|
