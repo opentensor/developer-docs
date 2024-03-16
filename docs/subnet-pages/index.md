@@ -66,7 +66,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>θ</span>}
     title='Subnet 8'
     link='/subnet-pages/subnet-8'
-    body='prediction subnet' />
+    body='Proprietary Trading Network (PTN)' />
 </Cards>
 
 <Cards>
