@@ -30,33 +30,35 @@ A coldkey is like a highly secure key you use for accessing a safe where your va
 
 <center>
 <ThemedImage
-alt="Components of Incentive Mechanism"
+alt="Coldkey and hotkey pairings"
 sources={{
     light: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
     dark: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
   }}
-style={{width: 650}}
+style={{width: 750}}
 />
 </center>
+
+<br />
 
 ### Hotkey 
 
 **Relationship to coldkey**: A hotkey is always paired with **only one** coldkey at a given time. 
 
 **Purpose**: Used for regular operational tasks in the Bittensor network, such as:
-  - Signing messages.
+  - Signing transactions.
   - Registering and running subnet miners and subnet validators.
 
 **Security**: Less secure than a coldkey. A hotkey is by default unencrypted, but you can encrypt it. 
-
-
 
 Think of a hotkey as an everyday key you carry for tasks that require regular access. Because a hotkey is used more frequently and needs to be readily accessible, there's a higher risk of exposure to potential threats. However, the permissions and the scope of operations that can be performed with the hotkey are limited to operational activities, minimizing the risk of significant loss of TAO.
 
 This dual-key system helps balance convenience and security, allowing you to participate actively in the Bittensor network without constantly exposing your primary, TAO-holding key.
 
-:::tip Coldkey and hotkey are pairings of separate private and public keys
+:::tip Coldkey and hotkey each are pairings of separate private and public keys
 Each key is a pairing of two seperate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public keys. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
 :::
 
-## Pairing of coldkey and hotkeys
+## Operational uses of hotkeys
+
+
