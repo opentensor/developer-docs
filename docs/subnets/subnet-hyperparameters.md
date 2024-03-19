@@ -182,7 +182,9 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 
 **Description**
 
-A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97`, a change from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs. This parameter functions as a balance between registration burn and POW cost. For example: If the target registration was `2` and there was `1` burn registration in the interval, the registration cost halving would apply to POW. On the other hand, if there were 1 POW registration, it would decrease the registration burn costs by half. In this way the `adjustment_alpha` mechanism tries to balance out the registration burn and POW costs.
+A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97`, a change from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs. This parameter functions as a balance between registration burn and POW cost. 
+
+For example: If the target registration was `2` and there was `1` burn registration in the interval, the registration cost halving would apply to POW. On the other hand, if there were 1 POW registration, it would decrease the registration burn costs by half. In this way the `adjustment_alpha` mechanism tries to balance out the registration burn and POW costs.
 
 :::important
 By default this change from `0` to `0.97` does not effect already registered subnets. However, to take advantage of the new value, we strongly recommend that existing subnet owners update this value by setting it through the CLI, by running the below command. The `--value 17893341751498265066` corresponds to setting the `adjustment_alpha` to `0.97`. See [this line of code](https://github.com/opentensor/subtensor/pull/249/files#diff-731a2a37ce113771b45fd0a44bf63d71307465bcb1ce26353eed95c1f4d4c26cR728).
