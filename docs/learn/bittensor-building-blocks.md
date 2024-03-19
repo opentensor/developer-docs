@@ -88,10 +88,6 @@ For example, in the [Text Prompting Subnet](https://github.com/opentensor/prompt
 
 A metagraph is a data structure that contains comprehensive information about current state of the subnet. When you inspect the metagraph of a subnet, you will find detailed information on all the nodes (neurons) in the subnet. A subnet validator should first sync with a subnet's metagraph to know all the subnet miners that are in the subnet. The metagraph can be inspected without participating in a subnet.
 
-:::tip Example 
-For example, see [Initialize the metagraph](../subnets/code-walkthrough-text-prompting#initialize-the-metagraph).
-:::  
-
 ## Subtensor
 
 A subtensor is a Bittensor object that handles the interactions with the blockchain, whether the chain is local or testchain or mainchain. 
