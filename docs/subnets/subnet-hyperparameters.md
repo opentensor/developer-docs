@@ -11,7 +11,7 @@ btcli subnet hyperparameters
 ```
 
 :::tip Current hyperparameters list
-Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters.
+**Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable**. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters.
 ::: 
 
 ## Setting the hyperparameters
@@ -161,8 +161,6 @@ A validate function will blacklist set-weights transactions from keys with less 
 
 ---
 
-<!-- ---
-
 ## tempo
 
 **Description**
@@ -173,18 +171,18 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 :::
 
 **Value**
-: Set to `99` blocks for Subnet-1. All user-created subnets are set to `360` blocks. 
+: Set to `99` blocks for Subnet-1. All other subnets are set to `360` blocks. 
 
 **Setting**
 : Must not be changed. 
 
---- -->
+---
 
 ## adjustment_alpha
 
 **Description**
 
-A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97`, a change from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs.
+A factor that controls the subnet registrations adjustment interval. This hyperparameter is now set to `0.97`, a change from an earlier value of `0`. A larger adjustment alpha will smooth the registration burn and POW cost for newly registered subnets, thus reducing the thrashing seen for registration costs. This parameter functions as a balance between registration burn and POW cost. For example: If the target registration was `2` and there was `1` burn registration in the interval, the registration cost halving would apply to POW. On the other hand, if there were 1 POW registration, it would decrease the registration burn costs by half. In this way the `adjustment_alpha` mechanism tries to balance out the registration burn and POW costs.
 
 :::important
 By default this change from `0` to `0.97` does not effect already registered subnets. However, to take advantage of the new value, we strongly recommend that existing subnet owners update this value by setting it through the CLI, by running the below command. The `--value 17893341751498265066` corresponds to setting the `adjustment_alpha` to `0.97`. See [this line of code](https://github.com/opentensor/subtensor/pull/249/files#diff-731a2a37ce113771b45fd0a44bf63d71307465bcb1ce26353eed95c1f4d4c26cR728).
@@ -258,7 +256,7 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
 ---
-<!-- 
+
 ## target_regs_per_interval
 
 **Description**
@@ -278,7 +276,7 @@ The maximum number of registrations that can occur in an `adjustment_interval` i
 The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
 :::
 
---- -->
+---
 
 ## min_burn, max_burn
 
@@ -289,6 +287,7 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : This parameter is automatically updated by the blockchain. 
 
 ---
+
 <!-- 
 ## bonds_moving_avg
 
@@ -305,7 +304,7 @@ If this `bonds_moving_avg` value is high, then bonds in the subnet decay quickly
 **Setting**
 : This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
----
+--- -->
 
 ## max_regs_per_block
 
@@ -333,4 +332,4 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : Default value is `64`.
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet.  -->
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet.
