@@ -82,7 +82,7 @@ const sidebars = {
         "subnets/create-a-subnet", 
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
-        "subnets/code-walkthrough-text-prompting",
+        "subnets/walkthrough-prompting",
       ],
     },
     {

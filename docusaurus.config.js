@@ -94,6 +94,10 @@ const config = {
             to: "/staking-and-delegation",
             from: "/staking",
           },
+          {
+            to: "/subnets/walkthrough-prompting",
+            from: "/subnets/code-walkthrough-text-prompting",
+          },
         ],
       },
     ],
