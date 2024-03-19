@@ -96,6 +96,6 @@ The following changes are documented:
   - [Introduction](./learn/introduction.md).
   - [Bittensor Building Blocks](./learn/bittensor-building-blocks.md).
   - [Anatomy of Incentive Mechanism](./learn/anatomy-of-incentive-mechanism.md).
-- A new [Code Walkthrough of Text Prompting Subnet](./subnets/code-walkthrough-text-prompting.md) section.
+- A new [Code Walkthrough of Text Prompting Subnet](subnets/walkthrough-prompting.md) section.
 - A comprehensive Bittensor API Reference section (see the top navbar).
 - General revisions, removing obsolete content and cleanup.
