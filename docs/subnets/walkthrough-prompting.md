@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Walkthrough of Subnet 1
 
-In this section we present a high-level walkthrough of the [Subnet 1: Prompting](https://github.com/opentensor/prompting/tree/main). This subnet creates  human-conversation-like AI for a variety of tasks such as:
+In this section we present a high-level walkthrough of the [Subnet 1: Prompting](https://github.com/opentensor/prompting/tree/main). This subnet contains multiple incentive mechanisms which produce an internet-scale conversational intelligence. It is driven by large language models (LLMs) which search the internet and utilize specialized simulator modules to produce factually accurate and mathematically correct responses.
 
 - Answering questions.
 - Summarizing a given text.
