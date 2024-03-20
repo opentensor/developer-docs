@@ -57,7 +57,7 @@ style={{width: 750}}
 
 The numbered items in the below description correspond to the numbered sections in the above diagram:
 
-1. The subnet validator sends a **challenge** simultaneously to multiple subnet miners. This step constitutes the **query** from the subnet validator to subnet miners. A challenge is a prompt sent to subnet miners in such a way that:
+1. The subnet validator sends a **challenge** simultaneously to multiple subnet miners. This step constitutes the **prompt** from the subnet validator to subnet miners. A challenge is a prompt sent to subnet miners in such a way that:
    - This prompt is in a style and tone that is similar to humans.
    - This prompt drives the conversation between the subnet validator and the subnet miners in order to reach a pre-defined goal. 
 
