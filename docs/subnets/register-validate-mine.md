@@ -163,7 +163,7 @@ Note that the subnet miner incentive, instead of growing as a continuous graph a
 
 ## Inspecting UIDs
 
-After you obtain a UID slot you can view the performance of your registered wallet by running:
+After you obtain a UID slot you can view the status of your registered wallet by running:
 
 ```bash
 btcli wallet overview --netuid
@@ -191,6 +191,4 @@ After providing your wallet name at the prompt, you will see the following outpu
 | HOTKEY_SS58 | 5F4tQyWr...          |    The raw ss58 encoded address of the miner's hotkey.                           |
 
 
-
-
-
+In the above table, the `ACTIVE` row is applicable only for UIDs that are subnet validators. It shows whether the UID is actively setting the weights within the [`activity_cutoff`](./subnet-hyperparameters#activity_cutoff) window. If the UID has not set weights on the blockchain for `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator as offline, i.e., turned off (`False`).
