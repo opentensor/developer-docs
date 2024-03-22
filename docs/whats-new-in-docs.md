@@ -9,16 +9,9 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
-## 19 March 2024
+## 22 March 2024
 
-Description for the following subnet hyperparameters is added:
-
-- [`target_regs_per_interval`](./subnets/subnet-hyperparameters.md#target_regs_per_interval).
-- [`tempo`](./subnets/subnet-hyperparameters#tempo).
-- [`adjustment_interval`](./subnets/subnet-hyperparameters#adjustment_interval). 
-- [`activity_cutoff`](./subnets/subnet-hyperparameters#activity_cutoff).
-- [`min_burn` and `max_burn`](./subnets/subnet-hyperparameters#min_burn-max_burn).
-- [`max_regs_per_block`](./subnets/subnet-hyperparameters#max_regs_per_block).
+- Added a section on [Checking the registration status](./subnets/register-validate-mine.md#checking-the-registration-status) of a given UID.
 
 ## 11 March 2024
 

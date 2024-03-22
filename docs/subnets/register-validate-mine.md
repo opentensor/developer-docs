@@ -193,7 +193,7 @@ After providing your wallet name at the prompt, you will see the following outpu
 
 In the above table, the `ACTIVE` row is applicable only for UIDs that are subnet validators. It shows whether the UID is actively setting the weights within the [`activity_cutoff`](./subnet-hyperparameters#activity_cutoff) window. If the UID has not set weights on the blockchain for `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator as offline, i.e., turned off (`False`).
 
-## Checking registration status
+## Checking the registration status
 
 To check the registration status of your UID, use any one of the below approaches:
 
