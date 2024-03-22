@@ -192,3 +192,58 @@ After providing your wallet name at the prompt, you will see the following outpu
 
 
 In the above table, the `ACTIVE` row is applicable only for UIDs that are subnet validators. It shows whether the UID is actively setting the weights within the [`activity_cutoff`](./subnet-hyperparameters#activity_cutoff) window. If the UID has not set weights on the blockchain for `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator as offline, i.e., turned off (`False`).
+
+## Checking registration status
+
+To check the registration status of your UID, use any one of the below approaches:
+
+### With SS58 hotkey
+
+In the below code, replace the `hotkey` field value with the SS58 version of your hotkey:
+
+```python
+import bittensor as bt
+# Replace below with your SS58 hotkey 
+hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
+network = "finney"
+sub = bt.subtensor(network)
+print(f"Registration status for hotkey {hotkey} is: {sub.is_hotkey_registered(hotkey)}")
+```
+
+### With SS58 hotkey and netuid
+
+In the below code, replace the `hotkey` field value with the SS58 version of your hotkey and the `netuid` field value with the `netuid` of the subnet you have registered into:
+
+```python
+import bittensor as bt
+# Replace below with your SS58 hotkey 
+hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
+network = "finney"
+netuid = 1 # subnet uid
+sub = bt.subtensor(network)
+mg = sub.metagraph(netuid)
+if hotkey not in mg.hotkeys:
+  print(f"Hotkey {hotkey} deregistered")
+else:
+  print(f"Hotkey {hotkey} is registered")
+```
+
+### With UID and SS58 hotkey
+
+Additionally, if you also know your UID, replace `uid` value with your UID:
+
+```python
+import bittensor as bt
+# Replace below with your SS58 hotkey 
+hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
+network = "finney"
+netuid = 1 # subnet uid
+sub = bt.subtensor(network)
+mg = sub.metagraph(netuid)
+uid = 2 # Your UID
+registered = mg.hotkeys[uid] == hotkey
+if not registered:
+  print(f"Miner at uid {uid} not registered")
+else:
+  print(f"Miner at uid {uid} registered")
+```
