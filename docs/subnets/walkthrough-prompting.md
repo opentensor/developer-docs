@@ -12,9 +12,10 @@ In this section we present a high-level walkthrough of the [Subnet 1: Prompting]
 - Answering questions.
 - Summarizing a given text.
 - Debugging code. 
+- Translating languages.
 - Solve mathematics problems, and more.
 
-This subnet is driven by large language models (LLMs). These LLMs search the internet and utilize specialized tools to produce factually accurate and mathematically correct responses. 
+This subnet is driven by large language models (LLMs). These LLMs search the internet and utilize specialized simulator modules to produce factually accurate and mathematically correct responses. 
 
 :::tip Subnet 1 Explorer
 You can see the prompting subnet in action on the [Taostats explorer (select Subnet 01: Text Prompting from the top menu)](https://taostats.io/). 
@@ -60,12 +61,12 @@ style={{width: 750}}
 The numbered items in the below description correspond to the numbered sections in the above diagram:
 
 1. The subnet validator sends a **challenge** simultaneously to multiple subnet miners. This step constitutes the **prompt** from the subnet validator to subnet miners. A challenge is a prompt sent to subnet miners in such a way that:
-   - This prompt is in a style and tone that is similar to humans.
+   - This prompt is in a style and tone that is similar to humans. This is so that subnet miners become adept at handling "fuzzy" instructions with ambiguity. This is required in order to excel at understanding user needs.
    - This prompt drives the conversation between the subnet validator and the subnet miners in order to reach a pre-defined goal. 
 
     See the below [Challenge generation](#challenge-generation) section for how a challenge is generated. 
-2. The subnet miners respond to the subnet validator after performing the challenge **task**. 
-3. The subnet validator then **scores** each subnet miner by comparing the subnet miner's response with a locally generated **reference** answer. The subnet validator uses this reference as the ground truth for this step. 
+2. The subnet miners respond to the subnet validator after performing the challenge **task**. Most tasks require subnet miners to make use of APIs or tools to perform well.
+3. The subnet validator then **scores** each subnet miner by comparing the subnet miner's response with a locally generated **reference** answer. The subnet validator uses this reference as the ground truth for this step. The reference is generated using data from APIs and tools to ensure factual correctness and to provide citations.
 4. Finally, the subnet validator **sets the weights** for the subnet miners by sending the weights to the blockchain. In the Bittensor blockchain the Yuma Consensus allocates the rewards to the participating subnet miners and subnet validators. 
 
 :::tip Use of large language models 
@@ -81,7 +82,7 @@ This subnet has developed a few innovative techniques to get to a real human-lik
 To deliver to a user of this subnet an experience of a human-like conversation:
 
 - Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. By doing this, the subnet validators engage the subnet miners in a real, random, human-like conversation throughout the subnet operation.
-- This means that throughout the subnet validation process the subnet miners continually improve their performance as though all validation prompts originated from an external API client query. This enables the subnet miners to become better intelligent AI assistants. 
+- This means that throughout the subnet validation process the subnet miners become better and better at handling ambiguous and "fuzzy" instructions. 
 
 :::tip Class HumanAgent
 See [class HumanAgent](https://github.com/opentensor/prompting/blob/main/prompting/agent.py#L30).
@@ -93,12 +94,16 @@ To prevent the subnet miners from simply looking up the answers on the internet,
 
 ### Evolve subnet as a mixture of experts (MoE)
 
-The subnet validator composes a challenge based on whether the task is answering questions, summarizing a given text, debugging code, solve mathematics problems. The motivation behind using multiple tasks is several fold:
+The subnet validator composes a challenge based on whether the task is answering questions, summarizing a given text, debugging code, solve mathematics problems, and so on. The motivation behind using multiple tasks is several fold:
 
 - Using multiple tasks in the prompts continously benchmarks the capabilities of the subnet miners across a broad range of tasks that are challenging but are still common use-cases. 
 - Using multiple tasks, prompts can be routed to specialized subnet miners, thereby providing an effective mixture of experts system.
 - This approach also serves as a precursor to Bittensor's inter-subnet bridging mechanism that will enable Subnet 1 to interact with other subnets and access the useful work provided by these subnets. 
 - Finally, the subnet miners in this subnet must become adept at using tools and APIs in order to fulfill validation tasks. We are building an API layer for inter-subnet communication, which is a natural extension of 'agentic' models.
+
+:::tip Continuously improving performance with new tasks
+We add new tasks all the time to this subnet to mimic the distribution of real use cases and to benchmark the subnet miner performance across a broad skill set (which is also useful for a routing mechanism).
+:::
 
 ## Challenge generation
 
