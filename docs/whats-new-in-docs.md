@@ -11,7 +11,8 @@ Key updates to this documentation.
 
 ## 22 March 2024
 
-- Added a section on [Checking the registration status](./subnets/register-validate-mine.md#checking-the-registration-status) of a given UID.
+- Added a section on [Checking the registration status of a given UID](./subnets/register-validate-mine.md#checking-the-registration-status).
+- Updated the Subnet 1 Prompting documentation and renamed the document to [Walkthrough of Subnet 1](./subnets/walkthrough-prompting).
 
 ## 11 March 2024
 
