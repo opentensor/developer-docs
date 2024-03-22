@@ -14,7 +14,7 @@ In this section we present a high-level walkthrough of the [Subnet 1: Prompting]
 - Debugging code. 
 - Solve mathematics problems, and more.
 
-This subnet is driven by large language models (LLMs). These LLMs search the internet and utilize specialized simulator modules to produce factually accurate and mathematically correct responses. 
+This subnet is driven by large language models (LLMs). These LLMs search the internet and utilize specialized tools to produce factually accurate and mathematically correct responses. 
 
 :::tip Subnet 1 Explorer
 You can see the prompting subnet in action on the [Taostats explorer (select Subnet 01: Text Prompting from the top menu)](https://taostats.io/). 
