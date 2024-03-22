@@ -198,7 +198,7 @@ In the above table, the `ACTIVE` row is applicable only for UIDs that are subnet
 To check the registration status of your UID, use any one of the below Python code fragments. To use these code fragments:
 
 - **Using Python interpreter**: A straightforward way is to type "python" or "python3" on your macOS or Linux terminal and it will open up a Python interpreter. Copy and paste the entire code fragment into it and hit "Return" and see the output.
-- **Using Python compiler**: Or you can use the Python compiler. Copy the code fragment into a file, say, "check_reg.py" and run the command `python3 check_reg.py` or `python check_reg.py` on your terminal command line and see the output.
+- **Using Python compiler**: Or you can use the Python binary. Copy the code fragment into a file, say, "check_reg.py" and run the command `python3 check_reg.py` or `python check_reg.py` on your terminal command line and see the output.
 
 ### With SS58 hotkey
 
