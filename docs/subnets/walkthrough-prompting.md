@@ -37,7 +37,7 @@ For easier understanding, in this document we will focus on how a **single** sub
 alt="1-Prompting Walkthrough"
 sources={{
     light: useBaseUrl('/img/docs/1-prompting-subnet-walkthrough.svg'),
-    dark: useBaseUrl('/img/docs/1-prompting-subnet-walkthrough.svg'),
+    dark: useBaseUrl('/img/docs/dark-1-prompting-subnet-walkthrough.svg'),
   }}
 style={{width: 600}}
 />
@@ -52,7 +52,7 @@ See the below diagram showing a high-level view of how this Prompting subnet wor
 alt="Prompting Subnet 1 Big Picture"
 sources={{
     light: useBaseUrl('/img/docs/2-prompting-subnet-high-level.svg'),
-    dark: useBaseUrl('/img/docs/2-prompting-subnet-high-level.svg'),
+    dark: useBaseUrl('/img/docs/dark-2-prompting-subnet-high-level.svg'),
   }}
 style={{width: 750}}
 />
@@ -73,16 +73,50 @@ The numbered items in the below description correspond to the numbered sections 
 In this subnet both the subnet validator and the subnet miners use large language models (LLMs) to create the challenges (subnet validator) and respond to the prompts (subnet miners).
 :::
 
+## Challenge generation
+
+<center>
+<ThemedImage
+alt="Prompting Subnet 1 Big Picture"
+sources={{
+    light: useBaseUrl('/img/docs/3-prompting-subnet1-key-innovation.svg'),
+    dark: useBaseUrl('/img/docs/dark-3-prompting-subnet1-key-innovation.svg'),
+  }}
+style={{width: 600}}
+/>
+</center>
+
+The challenge generation works like this (see the above diagram):
+
+- The subnet validator generates a **prompt** consisting of a clearly stated question or a task description, for a given task type. 
+- The subnet validator also generates one or more **reference** answers to the above prompt. The subnet validator also provides the context to generate this reference answer.
+- A requirement for this prompting subnet is that the entire conversation should be human-like. To accomplish this, the subnet validator takes on a human persona and wraps the above prompt in the persona's style and tone. The introduction of such random persona's style and tone creates a lossy, corrupted, version of the original clear instruction. This corrupted prompt is called a **challenge**. 
+- The subnet validator prompts the subnet miners with this challenge. Note that the **reference** is not sent to the subnet miners.
+
+## Score the subnet miner responses
+
+The responses from the subnet miners are compared to the reference answers by the subnet validator. The closer a subnet miner's response is to the reference answer, the higher is the subnet miner's score. 
+
+:::tip Measuring subnet miner's response
+This Prompting Subnet 1 presently uses a combination of string literal similarity and semantic similarity as the basis for measuring the closeness of a subnet miner's response to the reference answer. 
+:::
+
 ## Key innovations in this subnet
 
-This subnet has developed a few innovative techniques to get to a real human-like conversational AI that actually produces intelligence instead of copying from the internet. See below:
+This subnet has developed a few innovative techniques to get to a real human-like conversational AI that actually produces intelligence instead of copying from the internet. Refer to the diagram in the above [Challenge generation](#challenge-generation) section:
 
 ### Achieving human-like conversation
 
 To deliver to a user of this subnet an experience of a human-like conversation:
 
 - Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. By doing this, the subnet validators engage the subnet miners in a real, random, human-like conversation throughout the subnet operation.
-- This means that throughout the subnet validation process the subnet miners become better and better at handling ambiguous and "fuzzy" instructions. 
+- Subnet miners are required to produce completions that are as close as possible to the reference. To accomplish this a subnet miner must:
+  - Extract clear instruction from the lossy challenge.
+  - Find the appropriate context, for example, using Wikipedia. 
+  - Generate a completion that matches the tone and style of the reference.
+- This means that throughout the subnet validation process the subnet miners become better and better at handling ambiguous, "fuzzy" instructions. 
+- The subnet validator may also increase the corruption of the instruction more and more, introducing massive grammatical errors. This is one way a subnet validator can control the tone and style of the subnet miner completions, because the subnet miners are required to match the tone and style of the reference.
+
 
 :::tip Class HumanAgent
 See [class HumanAgent](https://github.com/opentensor/prompting/blob/main/prompting/agent.py#L30).
@@ -101,22 +135,9 @@ The subnet validator composes a challenge based on whether the task is answering
 - This approach also serves as a precursor to Bittensor's inter-subnet bridging mechanism that will enable Subnet 1 to interact with other subnets and access the useful work provided by these subnets. 
 - Finally, the subnet miners in this subnet must become adept at using tools and APIs in order to fulfill validation tasks. We are building an API layer for inter-subnet communication, which is a natural extension of 'agentic' models.
 
-:::tip Continuously improving performance with new tasks
-We add new tasks all the time to this subnet to mimic the distribution of real use cases and to benchmark the subnet miner performance across a broad skill set (which is also useful for a routing mechanism).
+:::tip Continuously improving performance
+One objective of this subnet is achieve full coverage of the distributions across different personas (representing different users), and different tasks (representing different use-cases). See the arXiv paper [Super-Natural Instructions](https://arxiv.org/abs/2204.07705) [(PDF)](https://arxiv.org/pdf/2204.07705.pdf).
+
 :::
 
-## Challenge generation
 
-The challenge-creation works like this:
-
-- The subnet validator generates a **query** consisting of a question or a task description, for a given task type. 
-- The subnet validator also generates one or more **reference** answers to the above query. 
-- A requirement for this subnet is that the entire conversation should be human-like. To accomplish this, the subnet validator takes on a human persona. The subnet validator then wraps the above query in the persona's style and tone. This query wrapped in the persona style is called a **challenge**. The subnet validator prompts the subnet miners with this challenge. Note that the **reference** is not sent to the subnet miners.
-
-## Score the subnet miner responses
-
-The responses from the subnet miners are compared to the reference answers by the subnet validator. The closer a subnet miner's response is to the reference answer, the higher is the subnet miner's score. 
-
-:::tip Measuring subnet miner's response
-This Prompting Subnet 1 presently uses a combination of string literal similarity and semantic similarity as the basis for measuring the closeness of a subnet miner's response to the reference answer. 
-:::
