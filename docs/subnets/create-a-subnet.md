@@ -4,6 +4,10 @@ title: "Create a Subnet"
 
 # Create a Subnet
 
+:::tip Note to miners/validators
+You **do not** have to create a subnet to mine or validate on the Bittensor network. See the [Checklist for Validating and Mining](./checklist-for-validating-mining.md) for information on mining and validating on Bittensor.
+:::
+
 Before you create your first subnet, we strongly recommend that you follow the below order:
 1. First create a subnet on your local, and develop and test your incentive mechanism on the local subnet. 
 2. After you are satisfied with it, next create a subnet on the Bittensor testchain, and test and debug your incentive mechanism on this testchain subnet. 
