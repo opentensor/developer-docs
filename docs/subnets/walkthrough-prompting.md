@@ -109,13 +109,17 @@ This subnet has developed a few innovative techniques to get to a real human-lik
 
 To deliver to a user of this subnet an experience of a human-like conversation:
 
-- Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. By doing this, the subnet validators engage the subnet miners in a real, random, human-like conversation throughout the subnet operation.
+- Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. There are several tangible benefits to this roleplaying flow, such as: 
+  - Subnet validators can engage the subnet miners in a real, random, human-like conversation throughout the subnet operation.
+  - Subnet miners become adept at handling ambiguous instructions.
+  - This generates, as a byproduct, interesting synthetic datasets that can be used to finetune other LLMs.
 - Subnet miners are required to produce completions that are as close as possible to the reference. To accomplish this a subnet miner must:
   - Extract clear instruction from the lossy challenge.
   - Find the appropriate context, for example, using Wikipedia. 
   - Generate a completion that matches the tone and style of the reference.
 - This means that throughout the subnet validation process the subnet miners become better and better at handling ambiguous, "fuzzy" instructions. 
-- The subnet validator may also increase the corruption of the instruction more and more, introducing massive grammatical errors. This is one way a subnet validator can control the tone and style of the subnet miner completions, because the subnet miners are required to match the tone and style of the reference.
+- A subnet validator could increase the corruption of the instruction to increase the difficulty of the tasks.
+- To change the subnet miner completions, a subnet validator may modify the style and tone of the reference answers or change the scoring function, or both.
 
 
 :::tip Class HumanAgent
