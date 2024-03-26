@@ -148,6 +148,15 @@ const sidebars = {
     "governance",
     "senate",
     "utilities",
+    {
+      type: "category",
+      label: "Early Releases",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "early-releases-and-proposals/stao-demo-rls",
+      ],
+    },
     "glossary",
   ],
 };
