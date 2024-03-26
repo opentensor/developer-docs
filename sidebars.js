@@ -135,6 +135,20 @@ const sidebars = {
     "yuma-consensus",
     "governance",
     "senate",
+    // {
+    //   type: "html",
+    //   value: "Early Releases",
+    //   className: "sidebar-title",
+    // },
+    {
+      type: "category",
+      label: "Early Releases",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "early-releases-and-proposals/stao-demo-rls",
+      ],
+    },
     "glossary",
   ],
 };
