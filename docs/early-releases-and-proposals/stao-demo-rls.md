@@ -16,12 +16,11 @@ The current STAO feature is strictly early release only. Do not use this in  any
 
 ## STAO benefits
 
-The STAO feature allows TAO holders to get more bandwidth into individual Bittensor subnets by staking specifically into these subnets. The STAO upgrade introduces the following enhancements into the Bittensor ecosystem:
+The STAO feature allows TAO holders to get more bandwidth into any individual Bittensor subnets by staking specifically into these subnets. The STAO feature introduces the following enhancements into the Bittensor ecosystem:
 
-- **More democratized decision-making**: For TAO holders, the STAO feature provides more democratized decision-making ability to decide which commmodity systems (i.e., subnets) can receive more emission.
+- **More democratized decision-making**: For TAO holders, the STAO feature provides more democratized decision-making ability to decide on which commmodity systems (i.e., subnets) can receive more emission.
 - **Flexible access control**: The STAO feature provides the TAO holders an ability to increase or decrease the access control they have for individual digital commodities. By staking into a subnet, their control over the subnet's digital commodity is increased.
 - **Validator selection**: With STAO feature, a TAO holder has the ability to directly select specific validator(s) to delegate to, for any subnet. This could be done, for example, to give these specific delegates additional access to resources in the subnet, so they can monetize these resources.
-
 
 ## Subnet-specific staking with STAO
 
