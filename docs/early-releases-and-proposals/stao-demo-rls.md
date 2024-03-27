@@ -83,7 +83,7 @@ btcli wallet faucet --wallet.name YOUR-WALLET --subtensor.chain_endpoint wss://d
 Register your wallet with `netuid 1`. Subnet 1 is used here for illustration. You can use any subnet by using its `netuid` in the below command:
 
 ```bash title="NOTE: Use the wallet you funded above"
-btcli subnet register --netuid 1 --wallet.name YOUR-WALLET --wallet.hotkey 5Exxxxx --subtensor.network wss://dev.chain.opentensor.ai:443
+btcli subnet register --netuid 1 --wallet.name YOUR-WALLET --wallet.hotkey 5Exxxxx --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443
 ```
 
 ## STAO commands 
@@ -91,7 +91,7 @@ btcli subnet register --netuid 1 --wallet.name YOUR-WALLET --wallet.hotkey 5Exxx
 ### Stake to a subnet
 
 ```bash
-btcli substake add --hotkey <Hotkey-you-registered-above> --subtensor.network wss://dev.chain.opentensor.ai:443 --netuid 1 --wallet.name YOUR-WALLET
+btcli substake add --hotkey <Hotkey-you-registered-above> --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443 --netuid 1 --wallet.name YOUR-WALLET
 ```
 
 <!--
