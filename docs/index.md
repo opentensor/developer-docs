@@ -6,6 +6,9 @@ sidebar_position: 0
 hide_table_of_contents: false
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 import { HiAcademicCap } from "react-icons/hi2";
 import { MdInstallDesktop } from "react-icons/md";
 import { FaNetworkWired } from "react-icons/fa";
@@ -26,21 +29,42 @@ import { FaPython } from "react-icons/fa";
 
 # Bittensor Developer Documentation
 
-
 :::tip See what's new
 See [what's new in docs](./whats-new-in-docs.md).
 :::
 
+**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities, such as machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. See the below diagram for a top-level view of the Bittensor ecosystem. 
 
-**Welcome!** Bittensor is a protocol for decentralized subnets. Subnets exist to produce decentralized intelligence. Each subnet is an incentive-based competitive market in action, to produce the best decentralized intelligence. For example, the [text prompting subnet](https://github.com/opentensor/prompting) incentivizes subnet miners who produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet. 
+<center>
+<ThemedImage
+alt="Bittensor Platform Big Picture"
+sources={{
+    light: useBaseUrl('/img/docs/Bittensor-ecosystem-top-level.svg'),
+    dark: useBaseUrl('/img/docs/dark-Bittensor-ecosystem-top-level.svg'),
+  }}
+style={{width: 600}}
+/>
+</center>
 
-Subnets run on blockchain and constitute the core of the Bittensor ecosystem. **The rewards for subnet participants are in the form of TAO tokens.** 
+Each category of the digital commodity is produced in a distinct **subnet**. Applications are built on these specific subnets. End-users of these applications would be served by these applications.
+
+Subnets, which exist outside the blockchain and connected to it, are off-chain competitions where only the best producers are rewarded. A subnet consists of off-chain **subnet validators** who initiate the competition for a specific digital commodity, and off-chain **subnet miners** who compete and respond by producing the best quality digital commodity. 
+
+Scores are assigned to the top subnet miners and subnet validators. The on-chain Yuma Consensus determines **the TAO rewards for these top performers**. The Bittensor blockchain, called **subtensor**, runs on decentralized validation nodes, just like any blockchain. 
+
+For example, in the [Subnet 1 Prompting](https://github.com/opentensor/prompting) the subnet miners compete to generate answers that are closest to a machine learning base model chosen by the subnet validators. 
+
 
 :::tip looking for a non-technical introduction to Bittensor?
 See [Questions and Answers](./questions-and-answers.md).
 :::
 
-Bittensor provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
+Opentensor Foundation provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
+
+:::danger This documentation is for bittensor platform only
+
+This documentation and the Bittensor codebase is for the Bittensor platform only. For subnets and applications, refer to subnet-specific websites, which are maintained by subnet owners. See [Subnet Pages](./subnet-pages/index.md).
+:::
 
 ---
 
