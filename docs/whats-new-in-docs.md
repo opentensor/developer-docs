@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 02 April 2024
+
+- Added [a diagram](./index.md) and description in the front page distinguishing the Bittensor platform from subnets and end-user applications. 
+
 ## 22 March 2024
 
 - Added a section on [Checking the registration status of a given UID](./subnets/register-validate-mine.md#checking-the-registration-status).
