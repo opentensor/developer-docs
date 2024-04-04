@@ -78,12 +78,17 @@ To install Bittensor on Apple M1 or M2, we recommend you first activate a Python
    conda activate bittensor
    ```
 
-5. Verify that the new environment was installed correctly:
+5. Install `shtab`:
+   ```bash
+   conda install -c anaconda shtab
+   ```
+   
+6. Verify that the new environment was installed correctly:
    
    ```bash
    conda env list
    ```
-6. Next, install Bittensor as shown below.
+7. Next, install Bittensor as shown below.
 
 #### Install Bittensor
 
