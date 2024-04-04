@@ -67,7 +67,7 @@ This dual-key system helps balance convenience and security, allowing you to par
 
 ## Operational uses of keys
 
-The below diagram shows key operations you can do with a hotkey. You can use the `btcli` to perform any of these operations. See [Bitttensor Wallet CLI](../btcli.md#wallets) for command syntax.
+The below diagram shows operations you can do with a hotkey and coldkey. You can use the `btcli` to perform any of these operations. See [Bitttensor Wallet CLI](../btcli.md#wallets) for command syntax.
 
 <center>
 <ThemedImage
