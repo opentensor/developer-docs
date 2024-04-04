@@ -4,7 +4,7 @@ title: "Create Wallet"
 
 # Create Wallet
 
-This section describes steps to create a Bittensor wallet, regenerate keys and encrypt keys. If you are new to Bittensor wallets, see [Coldkeys and Hotkeys](../learn/coldkeys-and-hotkeys.md) for an explanation of Bittensor wallet keys.
+This section describes steps to create a Bittensor wallet, regenerate keys and encrypt keys. If you are new to Bittensor wallets, see [Working with Keys](../subnets/working-with-keys.md) for an explanation of Bittensor wallet keys.
 
 ## Ways of creating wallet
 
@@ -22,42 +22,49 @@ Use this option if your activities are limited to sending and receiving TAO and 
 To create a basic wallet account use the Chrome Extension for Bittensor Wallet. Follow the below steps:
 
 1. The Wallet will first create a wallet account address in the form of a 48-hexadecimal character string that usually starts with `5`. 
-2. Critically, the Wallet will show you a 12-word list arranged in a specific order. You are required to keep this list of words, without changing the word order, in a safe location. This list of ordered words is called a **mnemonic** or **seed phrase**.
+2. Critically, the Wallet will show you a 12-word list arranged in a specific order. You are required to keep this list of words, without changing the word order, in a safe location. This list of ordered words is called by various names such as **mnemonic** or **seed phrase**.
 3. The Wallet will then prompt you for specific mnemonic words as a way of authentication.
 4. Next, you will assign a name and a password to your wallet account.
 5. Finally, to receive TAO from another party, you will give them your wallet account address from Step 1 (the 48-hexadecimal character string) as the destination address. Similarly, to send (transfer) TAO to another party, you will first ask them for their wallet address and send TAO to their wallet address. You can create multiple wallet accounts, each with a different name, and even a different password for each wallet account, this way. 
 
 ### Mnemonic
 
-Anyone who knows the mnemonic for your wallet account can access your tokens. Hence you must always keep this mnemonic in a safe and secure place, known only to you. More important, if you lose your wallet address, you can use its mnemonic (that you stored away in safekeeping) to restore the wallet. 
+:::danger Always keep your mnemonic safe 
+Anyone who knows the mnemonic for your wallet account can access your TAO tokens. Hence you must always keep this mnemonic in a safe and secure place, known only to you. More important, if you lose your wallet address, you can use its mnemonic (that you stored away in safekeeping) to restore the wallet. 
+:::
 
 :::note Use Import option in Chrome Wallet Extension
 To restore your lost coldkey, use the **Import** option in Chrome Extension for Bittensor Wallet and provide your 12-word mnemonic.
 :::
 
-## Creating a local wallet
+## Creating a local wallet with CLI
 
 :::tip Suitable for subnet participation
 Use this option if you are creating a subnet or participating as a subnet validator or a subnet miner. You must [install Bittensor](installation.md) for this option.
 :::
 
-After you have [installed Bittensor](installation.md), you can create a wallet locally on your machine in the following two ways:
+After you have [installed Bittensor](installation.md), you can create a local wallet on your machine in the following two ways:
 
 - Using `btcli`.
 - Using Python.
 
-### Using `btcli` 
+### Coldkey and hotkey
 
-Using `btcli` to create a local wallet is a two-step process: 
-
-- First create a coldkey.
-- Provide this coldkey as a parameter to generate a hotkey. 
+A Bittensor wallet consists of a **coldkey** and a **hotkey**. Only coldkey is created when you use the [Chrome Extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1). This is sufficient for normal storage and sending and receiving of TAO. But to participate in a subnet, you will not only need a local coldkey but also a local hotkey. 
 
 :::tip Explanation of keys 
-See [Coldkeys and Hotkeys](../learn/coldkeys-and-hotkeys.md) for an explanation of coldkey and hotkey.
+See [Working with Keys](../subnets/working-with-keys.md) for an explanation of coldkey and hotkey.
 :::
 
-#### Step 1: Generate a coldkey
+### Creating a coldkey using `btcli` 
+
+If you plan to perform any of the following tasks, you only need to create a coldkey:
+
+- Create a subnet.
+- Transfer TAO.
+- Delegate to a validator-delegate's hotkey.
+
+**However, if you want to validate or mine in a subnet, you will need to create hotkey also**. See the below section [Creating a hotkey using `btcli`](#creating-a-hotkey-using-btcli).
 
 Run the following command on your terminal by giving a name to your wallet, replacing the `my_coldkey`. 
 
@@ -83,9 +90,13 @@ btcli w regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** ***
 Make a note of the above command option `regen_coldkey` showing how to regenerate your coldkey in case you lose it.
 :::
 
-#### Step 2: Generate a hotkey
+### Creating a hotkey using `btcli` 
 
-Next, use the below command to generate the hotkey. Replace `<my_coldkey>` with the coldkey generated above, and `<my_first_hotkey>` with a name for your hotkey.
+If you plan to validate or mine in a subnet, then you must create both a coldkey and a hotkey.
+
+First create a coldkey as described above in the [Creating a coldkey using `btcli`](#creating-a-coldkey-using-btcli). Then provide this coldkey as a parameter to generate a hotkey. This will pair the hotkey with the coldkey. See below.
+
+Use the below command to generate the hotkey. Replace `<my_coldkey>` with the coldkey generated above, and `<my_first_hotkey>` with a name for your hotkey.
 
 ```bash
 btcli wallet new_hotkey --wallet.name <my_coldkey> --wallet.hotkey <my_first_hotkey>
@@ -115,8 +126,9 @@ By default, the hotkey is not encrypted on the device whereas the coldkey is enc
 btcli wallet new_hotkey --use_password
 ```
 
-### Using Python 
-Copy and paste the following three lines into your Python interpreter. You can replace the string values for `name` (`my_coldkey`) and `hotkey` (`my_first_hotkey`) with your own.
+## Creating a wallet using Python 
+
+Copy and paste the following three lines into your Python interpreter. Replace the string values for `name` (`my_coldkey`) and `hotkey` (`my_first_hotkey`) with your own.
 
 ```python showLineNumbers
 import bittensor as bt
@@ -157,7 +169,7 @@ wallet(tst1_coldkey, tst1_hotkey, ~/.bittensor/wallets/)
 >>>
 ```
 
-## Location and contents of the local wallets
+## Location and addresses of the local wallets
 
 Local wallets are stored on your machine under `~/.bittensor/wallets`. Use the below command to list them:
 
