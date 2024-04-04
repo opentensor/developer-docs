@@ -33,7 +33,7 @@ import { FaPython } from "react-icons/fa";
 See [what's new in docs](./whats-new-in-docs.md).
 :::
 
-**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities, such as machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. See the below diagram for a top-level view of the Bittensor ecosystem. 
+**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. See the below diagram for a top-level view of the Bittensor ecosystem. 
 
 <center>
 <ThemedImage
@@ -48,7 +48,7 @@ style={{width: 600}}
 
 Each category of the digital commodity is produced in a distinct **subnet**. Applications are built on these specific subnets. End-users of these applications would be served by these applications.
 
-Subnets, which exist outside the blockchain and connected to it, are off-chain competitions where only the best producers are rewarded. A subnet consists of off-chain **subnet validators** who initiate the competition for a specific digital commodity, and off-chain **subnet miners** who compete and respond by producing the best quality digital commodity. 
+Subnets, which exist outside the blockchain and are connected to it, are off-chain competitions where only the best producers are rewarded. A subnet consists of off-chain **subnet validators** who initiate the competition for a specific digital commodity, and off-chain **subnet miners** who compete and respond by producing the best quality digital commodity. 
 
 Scores are assigned to the top subnet miners and subnet validators. The on-chain Yuma Consensus determines **the TAO rewards for these top performers**. The Bittensor blockchain, called **subtensor**, runs on decentralized validation nodes, just like any blockchain. 
 
