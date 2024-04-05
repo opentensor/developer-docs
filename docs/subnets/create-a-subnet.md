@@ -30,7 +30,7 @@ The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) app
 
 ## Subnet deregistration
 
-When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The `netuid` is freed up until a new subnet is registered at this `netuid`. The new subnet starts afresh and any subnet miners and subnet validators for this new subnet must register again. 
+When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The new subnet at this `netuid` starts afresh and any subnet miners and subnet validators for this new subnet must register using the normal registration step, described in [Register](../subnets/register-validate-mine.md#register). 
 
 ## Prerequisites
 
