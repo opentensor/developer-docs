@@ -52,6 +52,7 @@ sources={{
     light: useBaseUrl('/img/docs/subnet-high-level.svg'),
     dark: useBaseUrl('/img/docs/dark-subnet-high-level.svg'),
   }}
+style={{width: 600}}
 />
 </center>
 
