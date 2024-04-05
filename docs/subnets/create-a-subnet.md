@@ -28,6 +28,10 @@ The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) app
 :::tip A newly created subnet starts from zero emission
 :::
 
+## Subnet deregistration
+
+When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The `netuid` is freed up until a new subnet is registered at this `netuid`. The new subnet starts afresh and any subnet miners and subnet validators for this new subnet must register again. 
+
 ## Prerequisites
 
 To create a subnet, whether locally or on testchain or on mainchain, make sure that:
