@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 05 April 2024
+
+- Added a brief note on subnet deregistration in [Subnet deregistration](./subnets/create-a-subnet.md#subnet-deregistration).
+
 ## 04 April 2024
 
 - A new doc [Working with Keys](./subnets/working-with-keys.md) that explains how to work with hotkey and coldkey is added. 
