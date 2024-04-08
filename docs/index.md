@@ -1,5 +1,5 @@
 ---
-title: "Welcome"
+title: "Docs Home"
 slug: "/"
 hidden: false
 sidebar_position: 0
