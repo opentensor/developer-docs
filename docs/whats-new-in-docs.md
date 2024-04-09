@@ -38,7 +38,7 @@ The following changes are documented:
 
 ## 07 March 2024
 
-- Added [Lite node vs archive node](getting-started/running-a-public-subtensor#lite-node-vs-archive-node) section.
+- Added [Lite node vs archive node](subtensor-nodes/index.md#lite-node-vs-archive-node) section.
 
 ## 28 February 2024
 
@@ -46,7 +46,7 @@ The following changes are documented:
 
 ## 27 February 2024
 
-- Added [System requirements](./getting-started/running-a-public-subtensor.md#system-requirements) and [Network requirements and port settings](getting-started/running-a-public-subtensor.md#network-requirements-and-port-settings) to the public subtensor installation document.
+- Added [System requirements](subtensor-nodes/subtensor-node-requirements.md) and [Network requirements and port settings](subtensor-nodes/subtensor-node-requirements.md#network-requirements-and-port-settings) to the public subtensor installation document.
 
 ## 23 February 2024
 
@@ -56,7 +56,7 @@ The following changes are documented:
 
 - Updated [`btcli wallet` command options](./btcli.md#check-balance-in-all-wallets).
 - Added a note on [mining and validating on Windows](./subnets/register-validate-mine.md#register).
-- Added a note on running a [public subtensor on cloud](./getting-started/running-a-public-subtensor.md#on-cloud).
+- Added a note on running a [public subtensor on cloud](subtensor-nodes/using-source.md).
 
 ## 08 February 2024
 
@@ -83,7 +83,7 @@ The following changes are documented:
 
 ## 18 January 2024
 
-- Add a new document [Running a Public Subtensor](./getting-started/running-a-public-subtensor.md).
+- Add a new document [Subtensor Nodes](subtensor-nodes/index.md).
 
 ## 10 January 2024
 

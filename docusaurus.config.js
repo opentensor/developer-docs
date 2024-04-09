@@ -98,6 +98,10 @@ const config = {
             to: "/subnets/walkthrough-prompting",
             from: "/subnets/code-walkthrough-text-prompting",
           },
+          {
+            to: "/subtensor-nodes/index",
+            from: "/getting-started/running-a-public-subtensor",
+          },
         ],
       },
     ],
@@ -154,6 +158,11 @@ const config = {
             position: "left",
             label: "Subnet Pages",
             to: "subnet-pages",
+          },
+          {
+            position: "left",
+            label: "Subtensor Nodes",
+            to: "subtensor-nodes",
           },
           {
             type: "search",

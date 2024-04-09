@@ -42,7 +42,18 @@ const sidebars = {
       items: [
         "getting-started/installation",
         "getting-started/wallets",
-        "getting-started/running-a-public-subtensor",
+      ],
+    },
+    {
+      type: "category",
+      label: "Subtensor Nodes",
+      link: {type: "doc", id: "subtensor-nodes/index",},
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "subtensor-nodes/subtensor-node-requirements",
+        "subtensor-nodes/using-source",
+        "subtensor-nodes/using-docker",
       ],
     },
     {
