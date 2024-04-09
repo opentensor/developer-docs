@@ -99,7 +99,7 @@ const config = {
             from: "/subnets/code-walkthrough-text-prompting",
           },
           {
-            to: "/subtensor-nodes/index",
+            to: "/subtensor-nodes",
             from: "/getting-started/running-a-public-subtensor",
           },
         ],
