@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 09 April 2024
+
+- Added a new section for [Subtensor Nodes](./subtensor-nodes/index.md).
+
 ## 05 April 2024
 
 - Added a brief note on subnet deregistration in [Subnet deregistration](./subnets/create-a-subnet.md#subnet-deregistration).
