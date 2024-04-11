@@ -149,31 +149,31 @@ const config = {
           },
         },
         items: [
-          {
-            position: "left",
-            label: "Bittensor API",
-            to: "bt-api-ref",
-          },
-          {
-            position: "left",
-            label: "Subnet Pages",
-            to: "subnet-pages",
-          },
-          {
-            position: "left",
-            label: "Subtensor Nodes",
-            to: "subtensor-nodes",
-          },
+          // {
+          //   position: "left",
+          //   label: "Bittensor API",
+          //   to: "bt-api-ref",
+          // },
+          // {
+          //   position: "left",
+          //   label: "Subnet Pages",
+          //   to: "subnet-pages",
+          // },
+          // {
+          //   position: "left",
+          //   label: "Subtensor Nodes",
+          //   to: "subtensor-nodes",
+          // },
           {
             type: "search",
             position: "left",
             className: "custom_algolia",
           },
-          {
-            href: "https://github.com/opentensor/developer-docs",
-            label: "Docs GitHub",
-            position: "right",
-          },
+          // {
+          //   href: "https://github.com/opentensor/developer-docs",
+          //   label: "Docs GitHub",
+          //   position: "right",
+          // },
         ],
       },
 

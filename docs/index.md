@@ -163,7 +163,7 @@ Ready to run your own subnet? Follow the below links.
 
 ## Bittensor CLI and API
 
-Use the Bittensor CLI and Python API to develop and participate in the Bittensor network.
+Use the Bittensor CLI and Bittensor API to develop and participate in the Bittensor network.
 
 <Cards>
     <Card 
@@ -173,7 +173,7 @@ Use the Bittensor CLI and Python API to develop and participate in the Bittensor
     body='With Bittensor CLI, you can stake or unstake funds, check network state and much more.' />
     <Card
     icon={FaPython}
-    title='Python API'
+    title='Bittensor API'
     link='bt-api-ref'
     body='A comprehensive Python API reference documentation for the open-sourced Bittensor API.' />
 </Cards>
