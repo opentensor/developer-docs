@@ -6,29 +6,25 @@ title: "Subnet 2"
 
 ## Name
 
-Machine translation.
+Omron (𝜏, β)
 
 ## Netuid
 2
 
 ## Description
 
-BitTranslate’s process is a synergy between validators and miners. Validators begin by proceeding organic requests or by extracting sample texts in specific languages from the dataset. To guarantee uniqueness, these texts are processed using a Text Generation model.
-
-Once processed, requests are distributed to a network of specialized subnet miners, which are ready for translation. Using advanced AI models, miners ensure the translations are both accurate and of high quality. Validators then step in again to rigorously evaluate these translations using multiple quality estimation techniques:
-
-- **BertScore**: Prioritizing the essence of content, this model rewards translations that resonate deeply with the original material.
-- **TransQuest Technology**: Beyond just words, TransQuest evaluates the depth and context of translations, ensuring they capture the full spectrum of meanings from the source.
-
-Then, miners are rewarded with TAO tokens based on their performance. The mechanisms ensures competitiveness and hence continuous excellence in BitTranslate.
+The purpose of the Omron subnet is to provide verified AI inferences to optimize staking and re-staking yields.
+Omron allows a variety of yield optimization models to be hosted and run against the network while being zk-verified.
+Specifically, this subnet enhances the Bittensor network as a whole by providing external uses for protocols outside the Bittensor ecosystem; thereby amplifying bittensor’s mission throughout a variety of external networks.
+As well, this subnet provides internal uses for guiding bittensor users towards the most profitable validators to delegate to which benefits delegators and thereby the network as a whole.
 
 ## Subnet owner
 
-https://www.bittranslate.io/
+https://twitter.com/omron_ai
 
 ## GitHub
 
-https://github.com/bittranslateio/bittranslate/
+https://github.com/inference-labs-inc/omron-subnet
 
 <!-- 
 ## Hyperparameters
