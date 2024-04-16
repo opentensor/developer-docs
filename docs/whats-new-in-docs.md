@@ -11,7 +11,7 @@ Key updates to this documentation.
 
 ## 16 April 2024
 
-- Added [a script to query next adjustment block](../scripts) to calculate how many blocks to go before the recycle register cost is recalculated. See `/scripts/bt-next-adjustment-block.js` for how to install and use it.
+- Added [a script to query next adjustment block](../scripts) to calculate how many blocks to go before the recycle register cost is recalculated. See `https://raw.githubusercontent.com/opentensor/developer-docs/0ac978508685f40855372ed165d9ce475a48e20b/scripts/bt-next-adjustment-block.js` for how to install and use it.
 
 ## 09 April 2024
 
