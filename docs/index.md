@@ -132,6 +132,12 @@ You can participate in an existing subnet as either a subnet validator or a subn
 
 ---
 
+## Subnet pages
+
+See [Subnet Pages](./subnet-pages/index.md) for a brief description of each subnet.
+
+---
+
 ## Running a subnet
 
 Ready to run your own subnet? Follow the below links.
