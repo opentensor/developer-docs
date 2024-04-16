@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 16 April 2024
+
+- Added [a script to query next adjustment block](../scripts) to calculate how many blocks to go before the recycle register cost is recalculated. See `/scripts/bt-next-adjustment-block.js` for how to install and use it.
+
 ## 09 April 2024
 
 - Added a new section for [Subtensor Nodes](./subtensor-nodes/index.md).
