@@ -13,10 +13,13 @@ Omron (𝜏, β)
 
 ## Description
 
-The purpose of the Omron subnet is to provide verified AI inferences to optimize staking and re-staking yields.
-Omron allows a variety of yield optimization models to be hosted and run against the network while being zk-verified.
-Specifically, this subnet enhances the Bittensor network as a whole by providing external uses for protocols outside the Bittensor ecosystem; thereby amplifying bittensor’s mission throughout a variety of external networks.
-As well, this subnet provides internal uses for guiding bittensor users towards the most profitable validators to delegate to which benefits delegators and thereby the network as a whole.
+The purpose of the Omron subnet is to provide verified AI inferences in order to optimize staking and re-staking yields.
+
+Omron allows a variety of yield optimization models to be hosted and run against the Bittensor network while being zk-verified.
+
+In specific, this subnet enhances the Bittensor network by providing utility to protocols and networks outside the Bittensor ecosystem. As a result, this subnet amplifies Bittensor’s mission throughout a variety of such external protocols and networks.
+
+Furthermore, this subnet provides internal benefits by guiding Bittensor users towards the most profitable validators to delegate to. This, in turn, benefits delegators and thereby benefits the Bittensor network as a whole.
 
 ## Subnet owner
 

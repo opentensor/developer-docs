@@ -33,7 +33,7 @@ If your subnet details page need updates, then [submit a GitHub issue](https://g
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>β</span>}
     title='Subnet 2'
     link='/subnet-pages/subnet-2'
-    body='machine translation' />
+    body='Omron' />
     <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>γ</span>}
     title='Subnet 3'
