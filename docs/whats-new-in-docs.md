@@ -11,7 +11,7 @@ Key updates to this documentation.
 
 ## 16 April 2024
 
-- Added a script to query for how many blocks to go before the recycle register cost is recalculated. See for how to install and use it.
+- Added a script `bt-next-adjustment-block.js` to query for how many blocks to go before the recycle register cost is recalculated. See [Utilities](./utilities.md) for details.
 
 ## 09 April 2024
 
