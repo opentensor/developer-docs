@@ -4,7 +4,11 @@ title: "STAO"
 
 # STAO
 
-This document describes the demonstration version of a **new Bittensor feature proposal** called subnet-specific TAO, or STAO. Using the steps described in this document you can test this STAO proposal flow. This feature proposal is available in the `stao` branch of the Bittensor GitHub repo.
+This document describes the demonstration version of a **new Bittensor feature proposal** called subnet-specific TAO, or STAO. Using the steps described in this document you can test this STAO feature proposal. This feature proposal is available in the `stao` branch of the Bittensor GitHub repo.
+
+## Before you proceed
+
+Make sure that you are on Bittensor Version 6.9.3 to test this STAO feature.
 
 ## Description
 
@@ -67,6 +71,8 @@ Follow the below steps:
     ```bash
     python3 -m pip install -e bittensor/
     ```
+
+  **NOTE:** Verify that you are on Bittensor 6.9.3 by running `btcli --help`.
 
 ### Step 2: Using Wallet
 
@@ -153,6 +159,8 @@ In the above command, instead of the hotkey name such as `rkstao1-hotkey` you ca
 :::
 
 ### Remove stake from a hotkey in a subnet
+
+The below command and its terminal log shows how to remove substake using `btcli substake` command:
 
 ```bash
 btcli substake remove --subtensor.chain_endpoint ws://138.2.239.223:9946
