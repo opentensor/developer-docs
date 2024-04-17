@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 17 April 2024
+
+- A new doc for the [proposed STAO feature](./early-releases-and-proposals/stao-demo-rls.md) is added.
+
 ## 16 April 2024
 
 - Added a script `bt-next-adjustment-block.js` to query for how many blocks to go before the recycle register cost is recalculated. See [Utilities](./utilities.md) for details.
