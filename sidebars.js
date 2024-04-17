@@ -147,6 +147,7 @@ const sidebars = {
     "yuma-consensus",
     "governance",
     "senate",
+    "utilities",
     "glossary",
   ],
 };
