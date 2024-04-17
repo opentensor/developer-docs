@@ -9,7 +9,8 @@ INSTALLATION STEPS
 2. Install the following packages:
    npm install @polkadot/api
    npm install prompt-sync
-3. Run this script using the command "node bt-next-adjustment-block.js". Follow the prompts to enter the network and subnet number.
+3. Download the raw version of this file, save it as `bt-next-adjustment-block.js` anywhere in your Bittensor environment. 
+4. Run the script using the command "node bt-next-adjustment-block.js". Follow the prompts to enter the network and subnet number.
 
 EXAMPLE
 =======
