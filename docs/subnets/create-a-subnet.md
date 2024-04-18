@@ -13,6 +13,10 @@ Before you create your first subnet, we strongly recommend that you follow the b
 2. After you are satisfied with it, next create a subnet on the Bittensor testchain, and test and debug your incentive mechanism on this testchain subnet. 
 3. Finally, only after you completed the above steps, create a subnet on the Bittensor mainchain. 
 
+::: Registration Limits
+Subnet registrations are limited to **one registration per 7200 blocks** (approximately one day).
+:::
+
 ## Immunity period for a subnet
 
 The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) applies to a subnet also. It works like this:
