@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 22 April 2024
+
+- Fixed the subtensor node installation instructions for testchain. See the updated command line settings for [Lite node on testchain](./subtensor-nodes/using-source#lite-node-on-testchain) and [Archive node on testchain](./subtensor-nodes/using-source#archive-node-on-testchain).
+
 ## 16 April 2024
 
 - Added a script `bt-next-adjustment-block.js` to query for how many blocks to go before the recycle register cost is recalculated. See [Utilities](./utilities.md) for details.
