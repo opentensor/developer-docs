@@ -20,6 +20,7 @@
 }
 
 .topLevelDoc > h1 {
+	margin-top: 88px;
 	margin-bottom: 48px !important;
 	padding-bottom: 48px;
 	font-family: Haffer;
