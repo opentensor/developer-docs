@@ -320,6 +320,11 @@ p {
 	padding-left: 48px;
 }
 
+.theme-doc-sidebar-container > div > div {
+	padding-top: 96px !important;
+	margin-top: -96px !important;
+}
+
 .table-of-contents,
 .table-of-contents ul {
 	font-family: "FiraCode";
