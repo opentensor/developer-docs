@@ -52,8 +52,8 @@ When a developer is getting ready to participate in a subnet, they will follow a
 
 After a subnet validator registers into your subnet, they will run the validator module to begin the validation operation. Similarly a subnet miner will register and then run the miner module. For example, see the following documents in the text prompting subnet for a quick view of these steps:
 
-- [Running a validator](https://github.com/opentensor/prompting/blob/main/docs/running_a_validator.md).
-- [Running a miner](https://github.com/opentensor/prompting/blob/main/docs/running_a_miner.md).
+- [Running a validator](https://github.com/opentensor/prompting/blob/main/docs/SN1_validation.md).
+- [Running a miner](https://github.com/opentensor/prompting/blob/main/docs/stream_miner_template.md).
 
 ## Components of incentive mechanism
 
