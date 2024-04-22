@@ -21,11 +21,11 @@ This subnet rewards miners for producing pretrained Foundation-Models on the Fal
 
 ## Subnet owner
 
-https://github.com/unconst/pretrain-subnet/
+https://github.com/RaoFoundation/pretraining
 
 ## GitHub
 
-https://github.com/unconst/pretrain-subnet/
+https://github.com/RaoFoundation/pretraining
 
 <!-- 
 ## Hyperparameters
