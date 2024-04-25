@@ -21,7 +21,7 @@ This subnet rewards miners for producing pretrained Foundation-Models on the Fal
 
 ## Subnet owner
 
-https://github.com/RaoFoundation/pretraining
+Macrocosmos & collaborators
 
 ## GitHub
 
