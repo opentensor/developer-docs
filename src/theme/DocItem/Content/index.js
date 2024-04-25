@@ -73,7 +73,6 @@ function MetaActions({ style }) {
     <div
       className={styles.hideOnMobile}
       style={{
-        top: 186,
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
