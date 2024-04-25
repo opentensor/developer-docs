@@ -1472,7 +1472,7 @@ footer .container.container-fluid {
 	}
 }
 
-.pagination-nav__link--next > *{
+.pagination-nav__link--next > .pagination-nav__label{
 	text-align: right;
 }
 
