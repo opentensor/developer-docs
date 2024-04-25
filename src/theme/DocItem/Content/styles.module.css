@@ -20,7 +20,6 @@
 }
 
 .topLevelDoc > h1 {
-	margin-top: 88px;
 	margin-bottom: 48px !important;
 	padding-bottom: 48px;
 	font-family: Haffer;
@@ -28,6 +27,8 @@
 	line-height: 90%;
 	letter-spacing: -3.04px;
 	position: relative;
+	padding-bottom: 22px !important;
+	margin-top: 0px !important;
 }
 @media screen and (max-width: 550px) {
 	.topLevelDoc > h1 {

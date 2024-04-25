@@ -262,6 +262,8 @@ a {
 h1 {
 	font-weight: 400 !important;
 	font-size: 32px !important;
+	padding-bottom: 22px !important;
+	margin-top: -16px !important;
 }
 
 h1.anchor {
@@ -850,7 +852,7 @@ ul {
 }
 
 [aria-label="Breadcrumbs"] {
-	margin-bottom: 56px !important;
+	margin-bottom: 46px !important;
 }
 
 .breadcrumbs .breadcrumbs__item::after {
