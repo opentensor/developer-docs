@@ -1480,6 +1480,7 @@ footer .container.container-fluid {
     font-family: 'DM Mono', monospace;
     position: relative;
 	padding-right: 12px;
+	text-align: right;
 }
 
 .pagination-nav__link--next > .pagination-nav__sublabel::before {
