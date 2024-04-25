@@ -17,7 +17,7 @@ Incentivizes subnet miners who produce the best prompt completions in response t
 
 ## Subnet owner
 
-Opentensor Foundation
+Macrocosmos
 
 ## GitHub
 
