@@ -1471,3 +1471,43 @@ footer .container.container-fluid {
 		padding: 20px 0 !important;
 	}
 }
+
+.pagination-nav__link--next > .pagination-nav__sublabel {
+    font-family: 'DM Mono', monospace;
+    position: relative;
+	padding-right: 12px;
+}
+
+.pagination-nav__link--next > * {
+	text-align: right;
+}
+
+.pagination-nav__link--next > .pagination-nav__sublabel::before {
+    content: "";
+    position: absolute; 
+    right: 0px;
+    top: 4.5px; 
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent; /* Adjust the size of the arrow */
+    border-bottom: 4px solid transparent; /* Adjust the size of the arrow */
+    border-left: 6px solid rgb(82, 88, 96); /* Adjust the size and color of the arrow */
+}
+
+.pagination-nav__link--prev > .pagination-nav__sublabel {
+    font-family: 'DM Mono', monospace;
+    position: relative;
+	padding-left: 12px;
+}
+
+.pagination-nav__link--prev > .pagination-nav__sublabel::before {
+    content: "";
+    position: absolute; 
+    left: 0px;
+    top: 4.5px; 
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 6px solid rgb(82, 88, 96);
+}
