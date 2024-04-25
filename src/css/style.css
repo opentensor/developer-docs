@@ -951,7 +951,6 @@ ul {
 
 .pagination-nav .pagination-nav__link {
 	max-width: 30% !important;
-	text-align: start !important;
 }
 
 .pagination-nav:has(.pagination-nav__link:first-child.pagination-nav__link--next) {
