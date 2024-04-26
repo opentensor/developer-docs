@@ -851,10 +851,6 @@ ul {
 	flex-wrap: wrap;
 }
 
-[aria-label="Breadcrumbs"] {
-	margin-bottom: 46px !important;
-}
-
 .breadcrumbs .breadcrumbs__item::after {
 	background: url("../../static//img/slice.svg");
 	height: 15px;
@@ -1051,7 +1047,7 @@ ul {
 }
 
 .navbar {
-	border-bottom: 1px solid var(--ifm-navbar-border) !important;
+	border-bottom: none !important;
 	box-shadow: none !important;
 }
 
