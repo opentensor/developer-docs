@@ -68,7 +68,12 @@ function MetaActions({ style }) {
   const { enableEditUrlLinks, enableIssueLinks, issueBaseUrl } = customFields;
 
   // Last updated at
-  const formattedLastUpdatedAt = metadata?.formattedLastUpdatedAt;
+  const formattedLastUpdatedAt = new Date(metadata?.lastUpdatedAt).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit'
+  });
+
   return (
     <div
       className={styles.hideOnMobile}
