@@ -216,10 +216,6 @@ If the number of actual registrations that occurred in the last [`adjustment_int
 
 The Subnet-1 has its `target_regs_per_interval` set to 2. Consider a scenario where, in a 112-block interval (`adjustment_interval`) this subnet had 6 registrations. This is higher than `target_regs_per_interval`. The blockchain will now raise the minimum cost to recycle register, by increasing the `min_burn` value by a certain amount, in order to slow down the actual registrations. 
 
-:::tip Controlling the number of UIDs in immunity period 
-The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
-:::
-
 ---
 
 ## activity_cutoff
