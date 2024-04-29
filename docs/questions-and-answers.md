@@ -55,7 +55,7 @@ See more here in [How a subnet works](learn/introduction.md#how-a-subnet-works).
 
 ### So is there a separate blockchain validation on Bittensor?
 
-Yes. As we saw in the above [So where does the blockchain come in](#so-where-does-the-blockchain-come-in) section, the subtensor blockchain is an essential part of the Bittensor. This subtensor blockchain is like any blockchain, i.e., there are decentralized validator nodes that validate the transactions coming into the subtensor blockchain and post them in the subtensor blockchain ledger. Blocks containing such transactions are processed at the rate of one block every 12 seconds. You can run your own public subtensor node to synchronize with the Bittensor mainchain or testchain. 
+Yes. As we saw in the above [So where does the blockchain come in](#so-where-does-the-blockchain-come-in) section, the subtensor blockchain is an essential part of the Bittensor. This subtensor blockchain is like any blockchain, i.e., there are validator nodes, hosted by the Opentensor Foundation and functioning via Proof-of-Authority, that validate the transactions coming into the subtensor blockchain and post them in the subtensor blockchain ledger. Blocks containing such transactions are processed at the rate of one block every 12 seconds. You can run your own public subtensor node to synchronize with the Bittensor mainchain or testchain. 
 
 :::tip See also
 See [Subtensor Nodes](./subtensor-nodes/index.md). 
