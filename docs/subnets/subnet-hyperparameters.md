@@ -132,10 +132,6 @@ Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The durati
 The subnet owner may modify the [`immunity_period`](#immunity_period) at any given time, as well as temporarily turn off [`network_registration_allowed`] to allow established nodes (miners and/or validators) to adjust to major codebase updates without being deregistered.
 :::
 
-:::tip Controlling the number of UIDs in immunity period 
-The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
-:::
-
 --- 
 
 ## min_allowed_weights
@@ -177,7 +173,7 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 : Set to `99` blocks for Subnet-1. All other subnets are set to `360` blocks. 
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+: Must not be changed.
 
 ---
 
