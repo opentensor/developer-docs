@@ -40,6 +40,9 @@ btcli sudo set
 **Description**
 : For subnets that have enabled PoW registration using [`network_pow_registration_allowed`](#network_pow_registration_allowed), these parameters determine the minimum and maximum difficulty for the Proof of Work calculation, respectively, expressed in terahashes.  The actual difficulty is dynamic, auto-adjusting based on the number of registrations per [adjustment interval](#adjustment_interval). When a new adjustment interval is reached and the number of registrations or registration attempts in the previous adjustment interval exceeds the target number of registrations value, the difficulty will double in the following adjustment interval.  If the number of registrations or registration attempts was fewer than the target number of registrations value, the difficulty will halve.
 
+**Setting**
+: This parameter can be changed by the subnet owner.
+
 ---
 
 ## weights_version
@@ -174,7 +177,7 @@ See also [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanis
 : Set to `99` blocks for Subnet-1. All other subnets are set to `360` blocks. 
 
 **Setting**
-: Must not be changed. 
+: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
 
 ---
 
@@ -194,6 +197,9 @@ By default this change from `0` to `0.97` does not effect already registered sub
 btcli sudo set --param adjustment_alpha --value 17893341751498265066 --netuid <NETUID>
 ```
 
+**Setting**
+: Must not be changed. 
+
 ---
 
 ## adjustment_interval
@@ -208,7 +214,7 @@ If the number of actual registrations that occurred in the last [`adjustment_int
 : The blockchain uses this parameter together with the `target_regs_per_interval` and the [`min_burn`](#min_burn-max_burn) and [`max_burn`](#min_burn-max_burn) parameters. 
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+: Must not be changed. 
 
 ### Example
 
@@ -272,11 +278,7 @@ The maximum number of registrations that can occur in an `adjustment_interval` i
 : Set to `1` for Subnet-1. 
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
-
-:::tip Controlling the number of UIDs in immunity period 
-The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
-:::
+: Must not be changed. 
 
 ---
 
@@ -317,11 +319,7 @@ If this `bonds_moving_avg` value is high, then bonds in the subnet decay quickly
 : Set to `1` for Subnet-1. 
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
-
-:::tip Controlling the number of UIDs in immunity period 
-The subnet owner should modify the [`adjustment_interval`](#adjustment_interval), `target_regs_per_interval` and [`max_regs_per_block`](#max_regs_per_block) parameters to control the number of UIDs that are within the [`immunity_period`](#immunity_period) at any given time.
-:::
+: Must not be changed. 
 
 ---
 
@@ -334,4 +332,4 @@ The subnet owner should modify the [`adjustment_interval`](#adjustment_interval)
 : Default value is `64`.
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet.
+: Must not be changed. 
