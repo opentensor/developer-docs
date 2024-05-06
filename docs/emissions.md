@@ -4,7 +4,7 @@ title: "Emissions"
 
 # Emissions
 
-In this document we describe how emissions are calculated for a subnet. 
+In this document we describe how the root network calculates emissions for a subnet. 
 
 :::tip Before you proceed
 Read the [Root Network](./root-network.md) document before you proceed.
