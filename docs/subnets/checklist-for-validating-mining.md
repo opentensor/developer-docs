@@ -7,7 +7,7 @@ title: "Checklist for Validating and Mining"
 When you are preparing to be a subnet validator or a subnet miner, use the below checklist to get ready. When you are ready to validate or mine, see the below [Instructions](#instructions).
 
 :::tip Read the subnet-specific documentation
-Read the documentation for the existing subnets to complete these checklist items. You will find each subnet's documentation in that subnet's GitHub repo. See [Subnet Pages](../subnet-pages/index.md) for GitHub repo links for each subnet.
+Read the documentation for the existing subnets to complete these checklist items. You will find each subnet's documentation in that subnet's GitHub repo. 
 :::
 
 1. See the subnets that are active on the Bittensor network. 

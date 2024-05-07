@@ -102,6 +102,10 @@ const config = {
             to: "/subtensor-nodes",
             from: "/getting-started/running-a-public-subtensor",
           },
+          {
+            to: "/",
+            from: "/subnet-pages",
+          },
         ],
       },
     ],

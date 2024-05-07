@@ -63,7 +63,7 @@ Opentensor Foundation provides all the open source tools, the codebase and the d
 
 :::danger This documentation is for bittensor platform only
 
-This documentation and the Bittensor codebase is for the Bittensor platform only. For subnets and applications, refer to subnet-specific websites, which are maintained by subnet owners. See [Subnet Pages](./subnet-pages/index.md).
+This documentation and the Bittensor codebase is for the Bittensor platform only. For subnets and applications, refer to subnet-specific websites, which are maintained by subnet owners.
 :::
 
 ---
@@ -129,12 +129,6 @@ You can participate in an existing subnet as either a subnet validator or a subn
     body='Understand what Senate is, requirements to participate in a Senate and how voting works.' />
     
 </Cards>
-
----
-
-## Subnet pages
-
-See [Subnet Pages](./subnet-pages/index.md) for a brief description of each subnet.
 
 ---
 

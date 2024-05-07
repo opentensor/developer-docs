@@ -25,7 +25,7 @@ The subnet validator then ranks the quality of the work done by the subnet miner
 
 ### What exactly is the task of a subnet miner?
 
-It depends on the subnet. For example, in subnet 1 the miner task is to respond to a text prompt, in subnet 2 it is the machine translation, and in subnet 21 it is to serve storage space. See [Subnet Pages](./subnet-pages/index.md) for more.
+It depends on the subnet. For example, in subnet 1 the miner task is to respond to a text prompt, in subnet 2 it is the machine translation, and in subnet 21 it is to serve storage space.
 
 ### So where does the blockchain come in?
 
@@ -81,7 +81,7 @@ Yes. But remember, you have 32 different subnets to choose from. Requirements fo
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 
-Unfortunately no. Not all subnets are run or managed by Opentensor Foundation. Moreover, a poor-performing subnet might be removed from a `netuid` and a new subnet may have taken its place. We have not automated tracking the subnets this way yet. Your best approach is to visit each subnet's GitHub repo for documentation via [Subnet Pages](./subnet-pages/index.md).
+Unfortunately no. Not all subnets are run or managed by Opentensor Foundation. Moreover, a poor-performing subnet might be removed from a `netuid` and a new subnet may have taken its place. We have not automated tracking the subnets this way yet. Your best approach is to visit each subnet's GitHub repo for documentation.
 
 ### Can I be a subnet miner or a subnet validator forever?
 
