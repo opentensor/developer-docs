@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 07 May 2024
+
+- Removed Subnet Pages section due to lack of proper updates from the subnet owners.
+
 ## 22 April 2024
 
 - Fixed the subtensor node installation instructions for testchain. See the updated command line settings for [Lite node on testchain](./subtensor-nodes/using-source#lite-node-on-testchain) and [Archive node on testchain](./subtensor-nodes/using-source#archive-node-on-testchain).
@@ -72,7 +76,7 @@ The following changes are documented:
 
 ## 08 February 2024
 
-- Added a new [Subnet Pages](./subnet-pages/index.md) section.
+- ~~Added a new `Subnet Pages)`~~ (removed) section.
 - Opened the docs GitHub repo to public.
 - Added a section on [Immunity period for a subnet](./subnets/create-a-subnet.md#immunity-period-for-a-subnet).
 - Consolidated staking and delegation docs into [Staking and Delegation](staking-and-delegation/index.md) section.
