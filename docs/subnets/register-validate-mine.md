@@ -135,7 +135,7 @@ A poor performing miner occupying a UID risks being replaced by a newly register
     :::tip See
     See [`immunity_period`](./subnet-hyperparameters.md#immunity_period).
     :::
-- A subnet miner or a subnet validator at a UID (in that subnet) has the duration of `immunity_period` during which this miner or validator must improve its performance. When the `immunity_period` expires for a miner or a validator, then they risk being deregistered, but only if their performance is the worst in the subnet. In specific, if, at the end of its `immunity_period`, a subnet miner's incentive is the lowest in the subnet, then this subnet miner will be deregistered when a new registration request arrives. 
+- A subnet miner or a subnet validator at a UID (in that subnet) has the duration of `immunity_period` during which this miner or validator must improve its performance. When the `immunity_period` expires for a miner or a validator, then they risk being deregistered, but only if their performance is the worst in the subnet. In specific, if, at the end of its `immunity_period`, the emissions to a subnet miner is the lowest in the subnet, then this subnet miner will be deregistered when a new registration request arrives. 
 - The `immunity_period` starts when a subnet validator or a subnet miner is registered into the subnet.
 
 See the below subnet miner timeline diagram illustrating how registration works:
@@ -152,13 +152,13 @@ style={{width: 990}}
 - Blocks are processed in the subtensor (Bittensor blockchain) at every 12 seconds. 
 - A subnet miner registers a hotkey and receives a UID&mdash;and its immunity period starts.
 - The subnet miner starts running and publishes its Axon's `IP:PORT` for the subnet validators.
-- The subnet validators refresh their metagraph and will know about the hotkey change on the UID and the new miner Axon's ``IP:PORT`` information. 
-- The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive incentive award based on their responses.
-- While in `immunity_period` the subnet miner slowly builds its incentive, starting with no history.
-- At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period` in this subnet. If this subnet miner's performance (i.e., incentive) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
+- The subnet validators refresh their metagraph, and hence will know about the hotkey change on the UID and the new miner Axon's ``IP:PORT`` information. 
+- The subnet validators send requests to the subnet miner's Axon and evaluate the responses, i.e., they participate in the subnet's incentive mechanism. The subnet miner will receive emission award based on its responses.
+- While in `immunity_period` the subnet miner slowly builds its emissions, starting with no history.
+- At the end of `immunity_period` for this subnet miner, its performance is  scored against all other subnet miners that were similarly out of their `immunity_period` in this subnet. If this subnet miner's performance (i.e., emission) is the lowest, then at the next registration request this poor-performing subnet miner's UID will be transferred to the newly registered hotkey.
 
-:::tip Subnet miner incentive
-Note that the subnet miner incentive, instead of growing as a continuous graph as shown in the above picture, is only updated at the end of the tempo periods. In addition, the subnet validators might have internal mechanisms that update faster than subnet's tempo. For example a validator might discover new miners and update its metagraph every 100 blocks to ensure that it will always have the latest information.
+:::tip Subnet miner emission
+Note that a subnet miner's emission may not always grow as a continuous graph as shown in the above picture. The emission may only be updated at the end of the tempo periods, or the subnet validators might have internal mechanisms that update faster than the subnet's tempo. For example, a subnet validator might discover new subnet miners and update its metagraph every 100 blocks to ensure that the metagraph will always have the latest information.
 :::
 
 ## Inspecting UIDs
