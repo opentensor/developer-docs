@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 16 May 2024
+
+- In the [Create a Subnet](./subnets/create-a-subnet.md) doc, added the missing step to install and run a local blockchain node for the local subnet option. Made additional clarifications elsewhere on this topic.
+
 ## 07 May 2024
 
 - Removed Subnet Pages section due to lack of proper updates from the subnet owners.
