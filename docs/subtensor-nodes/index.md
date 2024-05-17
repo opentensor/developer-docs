@@ -6,7 +6,25 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Subtensor Node Basics
 
-You can run a public subtensor node and synchronize with the Bittensor network. You can run this subtensor node as either a **lite node** or as an **archive node**, and connect and sync with either the Bittensor mainchain or the testchain. This document describes how to run a public subtensor node either by compiling the subtensor source code into a binary and executing this binary, or by using a Docker container.
+You can run a public subtensor node and synchronize with the Bittensor network. This public subtensor node can be either a **lite node** or an **archive node**. You can connect and sync this public subtensor node with either the Bittensor mainchain or the testchain. This document describes how to run a public subtensor node either by compiling the subtensor source code into a binary and executing this binary, or by using a Docker container.
+
+## A public subtensor vs a local blockchain
+
+Note that running a public subtensor node is not the same as running a local blockchain. See the below diagram. When you run a local blockchain (section **A** of the below diagram), it is for the purposes of developing and testing your subnet incentive mechanism. This local blockchain is not public and hence it is isolated from any Bittensor network. For instructions on running a local blockchain see [Running on Staging](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md).
+
+:::tip Running a local blockchain is the same as running on staging
+:::
+
+<center>
+<ThemedImage
+alt="Local blockchain vs public subtensor"
+sources={{
+    light: useBaseUrl('/img/docs/local-subtensor.svg'),
+    dark: useBaseUrl('/img/docs/dark-local-subtensor.svg'),
+  }}
+style={{width: 550}}
+/>
+</center>
 
 ## Lite node vs archive node
 
@@ -50,20 +68,7 @@ The full synchronization performed by an archive node can be significantly slowe
   Applications such as Bittensor blockchain explorer, for example, [Taostats](https://taostats.io/) that require access to historical blockchain data use an archive node. 
   :::
 
-## A public subtensor vs a local blockchain
 
-Note that running a public subtensor node locally, as described above, is not the same as [running a local blockchain, also referred as running on staging](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md). When you run a local blockchain, it is for the purposes of developing and testing your subnet incentive mechanism. This local blockchain is not public and hence it is isolated from any Bittensor network. See the below diagram.
-
-<center>
-<ThemedImage
-alt="Components of Incentive Mechanism"
-sources={{
-    light: useBaseUrl('/img/docs/local-subtensor.svg'),
-    dark: useBaseUrl('/img/docs/dark-local-subtensor.svg'),
-  }}
-style={{width: 550}}
-/>
-</center>
 
 ## Query archived data 
 
