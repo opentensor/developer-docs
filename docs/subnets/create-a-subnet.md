@@ -42,7 +42,7 @@ Running a local blockchain is **different** from running a public subtensor node
 
 Follow the [Bittensor Subnet Template document](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md) and run the below specified steps:
 - From and including [Step 1 Installing substrate dependencies](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md#1-install-substrate-dependencies).
-- To and including [Step 5 Initialize](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md).
+- To and including [Step 5 Initialize](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md#5-initialize).
 
 The above steps will install and run a local blockchain node. Furthermore, when built with the `--features pow-faucet` flag, as instructed in the above **Step 5. Initialize**, the local blockchain node will provide the faucet feature using which you can mint test tokens.
 
@@ -71,7 +71,7 @@ btcli subnet create --wallet.name owner --subtensor.chain_endpoint ws://127.0.0.
 >> ✅ Registered subnetwork with netuid: 1
 ```
 
-The local chain will now have a default `netuid` of 1. A second registration will create `netuid` 2 and so on until you reach the subnet limit of 8. If you create the 9th subnet, then the subnet with the least staked TAO will be replaced with the newly create subnet, thereby maintaining total subnet count to 8.
+The local chain will now have registered a default `netuid` of 1. A second registration will create `netuid` 2 and so on until you reach the subnet limit of 8. If you create the 9th subnet, then the subnet with the least staked TAO will be replaced with the newly create subnet, thereby maintaining total subnet count to 8.
 
 ## Creating a subnet on testchain
 
@@ -79,7 +79,7 @@ You do not need to run a local blockchain node for creating a subnet on the test
 
 Creating a subnet on the testchain is competitive. Though you will only use the faucet TAO tokens for testchain, the cost to create a subnet is determined by the rate at which new subnets are being registered onto the testchain. 
 
-By default you must have at least 100 testnet TAO in your owner wallet to create a subnet. However the exact amount will fluctuate based on demand. Follow the below  steps. 
+By default you must have at least 100 test TAO in your owner wallet to create a subnet. However, the exact amount will fluctuate based on demand. Follow the below  steps. 
 
 ### Step 1. Create wallet
 
@@ -98,10 +98,10 @@ Faucet is disabled on the testchain. Hence, if you don't have sufficient faucet 
 
 ### Step 4. Create the subnet 
 
-Create your new subnet on the testchain using the test TAO you minted from the previous step. This will create a new subnet on the testchain and give you the owner permissions to it. 
+Create your new subnet on the testchain using the test TAO you received from the previous step. This will create a new subnet on the testchain and give you the owner permissions to it. 
 
 :::tip Your test TAO is returned when subnet is deregistered
-Subnet creation (also called subnet registration) on testchain costs test TAO. You will get this test TAO back when the subnet is deregistered.
+Subnet creation (also called subnet registration) on the testchain costs test TAO. You will get this test TAO back when the subnet is deregistered.
 :::
 
 ```bash
@@ -119,8 +119,8 @@ btcli subnet create --subtensor.network test
 
 You do not need to run a local blockchain node for creating a subnet on the mainchain. Instead, your subnet will connect to the Bittensor mainchain. Follow the below steps.
 
-:::tip Alert: Minimum required TAO 
-Creating a subnet on mainnet is competitive and the cost is determined by the rate at which new networks are being registered onto the chain. By default you must have at least 100 TAO in your owner wallet to create a subnet on the mainchain. However the exact amount will fluctuate based on demand.
+:::caution Alert: Minimum required TAO 
+Creating a subnet on mainnet is competitive and the cost is determined by the rate at which new networks are being registered onto the chain. By default you must have at least 100 TAO in your owner wallet to create a subnet on the mainchain. However, the exact amount will fluctuate based on demand.
 :::
 
 ### Step 1. Create wallet
@@ -129,7 +129,7 @@ If you have not already done so, create Bittensor wallet(s) using the steps desc
 
 ### Step 2. Get the current price 
 
-The code below shows how to get the current price of creating a subnet on the mainchain (when the `--subtensor.network` option is not used then the `btcli` will default to the `mainchain`).
+The below code shows how to get the current price of creating a subnet on the mainchain (when the `--subtensor.network` option is not used then the `btcli` will default to the `mainchain`).
 
 ```bash
 btcli subnet lock_cost
@@ -139,7 +139,7 @@ btcli subnet lock_cost
 ### Step 3. Create the subnet 
 
 :::tip Your TAO is returned when subnet is deregistered
-Subnet creation (also called subnet registration) on mainchain costs real TAO. You will get this TAO back when the subnet is deregistered.
+Subnet creation (also called subnet registration) on the mainchain costs real TAO. You will get this TAO back when the subnet is deregistered.
 :::
 
 Use the below command to create a new subnet on the mainchain. 
