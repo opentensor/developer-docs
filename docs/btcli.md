@@ -397,7 +397,7 @@ Delegate TAO from the coldkey balance to the hotkey staking account of a delegat
 ```bash
 btcli root delegate
 ```
-
+<!-- 
 ### Set delegate take
 
 ```bash
@@ -418,6 +418,7 @@ To use a specific wallet:
 ```bash
 btcli root set_delegate_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
 ```
+-->
 
 ### Undelegate Tao
 
