@@ -397,28 +397,44 @@ Delegate TAO from the coldkey balance to the hotkey staking account of a delegat
 ```bash
 btcli root delegate
 ```
-<!-- 
-### Set delegate take
+
+### Set Delegate Take
 
 ```bash
-btcli root set_delegate_take [OPTIONS]
+btcli root set_take [OPTIONS]
 ```
+
 Sets the take percentage of the delegate.
 
 To set the delegate take at 10%:
 
 ```bash
-btcli root set_delegate_take --take 0.1
+btcli root set_take --take 0.1
 ```
 
-The `--take` value must be a floating point number between `0` and `1`.
+The `--take` value must be a floating point number between `0` and `0.18`.
 
 To use a specific wallet:
 
 ```bash
-btcli root set_delegate_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
+btcli root set_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
 ```
--->
+
+### Additional Notes
+- **Take Range**: Ensure the `--take` value is within the range of `0` to `0.18`.
+- **Wallet and Hotkey**: If not specified, the command will prompt for the wallet name and hotkey.
+
+### Example Usage
+
+1. **Set Delegate Take to 10%**:
+    ```bash
+    btcli root set_take --take 0.1
+    ```
+
+2. **Set Delegate Take to 10% using a specific wallet**:
+    ```bash
+    btcli root set_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
+    ```
 
 ### Undelegate Tao
 
