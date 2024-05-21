@@ -1,5 +1,5 @@
 ---
-title: "Release Notes"
+title: "Bittensor Release Notes"
 ---
 
 # Bittensor Release Notes
