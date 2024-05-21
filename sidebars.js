@@ -21,15 +21,7 @@ const sidebars = {
     // 	className: 'sidebarSearch', //  based on Class name it will add search component
     // },
     "index",
-    {
-      type: "category",
-      label: "Release Notes",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        "release-notes/bt-rel-700",
-      ],
-    },
+    "bittensor-rel-notes",
     "whats-new-in-docs",
     "questions-and-answers",
     {
