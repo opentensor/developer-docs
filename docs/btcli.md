@@ -412,9 +412,9 @@ To set the delegate take at 10%:
 btcli root set_take --take 0.1
 ```
 
-The `--take` value must be a floating point number between `0` and `0.18`. 
+The `--take` value must be a floating point number between `0.09` and `0.18`. 
 
-:::tip Default `--take` value is `0.09` (`9%`).
+:::tip Default `--take` value is `0.18` (`18%`).
 :::
 
 To use a specific wallet:
@@ -423,7 +423,7 @@ To use a specific wallet:
 btcli root set_take --wallet.name my_wallet --wallet.hotkey my_hotkey --take 0.1
 ```
 
-- **Allowed `take` values**: Ensure the `--take` value is within the range of `0` to `0.18`.
+- **Allowed `take` values**: Ensure the `--take` value is within the range of `0.09` to `0.18`.
 - **`wallet.name` and `wallet.hotkey`**: If not specified, the command will prompt for the wallet name and hotkey.
 
 Examples:
