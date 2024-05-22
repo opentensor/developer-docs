@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 22 May 2024
+
+- A new `btcli` subcommand is added to set the delegate take % between `0` and `18%`. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take).
+
 ## 16 May 2024
 
 - In the [Create a Subnet](./subnets/create-a-subnet.md) doc, added the missing step to install and run a local blockchain node for the local subnet option. Made additional clarifications elsewhere on this topic.
