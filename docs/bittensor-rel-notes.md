@@ -4,7 +4,7 @@ title: "Bittensor Release Notes"
 
 # Bittensor Release Notes
 
-The following are the release notes for Bittensor software:
+The following are the release notes for the Bittensor software:
 
 ## Release 7.0.0
 
