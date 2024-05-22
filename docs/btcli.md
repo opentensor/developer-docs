@@ -412,7 +412,10 @@ To set the delegate take at 10%:
 btcli root set_take --take 0.1
 ```
 
-The `--take` value must be a floating point number between `0` and `0.18`.
+The `--take` value must be a floating point number between `0` and `0.18`. 
+
+:::tip Default `--take` value is `0.09` (`9%`).
+:::
 
 To use a specific wallet:
 
