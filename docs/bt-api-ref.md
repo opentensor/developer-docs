@@ -18,7 +18,7 @@ import { CiWallet } from "react-icons/ci";
 
 # Bittensor API
 
-This section presents the Python API reference documentation for Bittensor. Follow the below links to specific Python modules or [click here for API reference documentation homepage](https://docs.bittensor.com/python-api/html/index.html). 
+This section presents the Python API reference documentation for Bittensor. Follow the below links to specific Python modules or [click here for API reference documentation homepage](pathname:///python-api/html/index.html). 
 
 <Cards>
     <Card 
