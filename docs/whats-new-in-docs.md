@@ -11,7 +11,7 @@ Key updates to this documentation.
 
 ## 22 May 2024
 
-- A new `btcli` subcommand is added to set the delegate take % between `0` and `18%`. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take).
+- A new `btcli` subcommand is added to set the delegate take % between `9%` and `18%`. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take).
 
 ## 16 May 2024
 
