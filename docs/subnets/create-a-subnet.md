@@ -160,13 +160,13 @@ btcli subnet create
 
 The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) applies to a subnet also. It works like this:
 
-- Subnets are competitive and only 32 subnet slots exist in the Bittensor network. As a result, subnet performance is continously monitored, poor-performing subnets are deregistered and the registration cost will be returned to the deregistered subnet owner. 
+- Subnets are competitive, even though new and additional subnets are created routinely in the Bittensor network. As a result, subnet performance is continously monitored, poor-performing subnets are deregistered and the registration cost will be returned to the deregistered subnet owner. 
 
 - A subnet's performance is measured using the emissions earned by the subnet: The lower the emission earned by the subnet, the poorer is the subnet's performance. See [Emissions](../emissions.md).
 
 - Furthermore, any subnet has an immunity period of `7 * 7200` blocks, which is 7 days. See the line of code that defines [SubtensorInitialNetworkImmunity](https://github.com/opentensor/subtensor/blob/52882caa011c5244ad75f1d9d4e182a1a17958a2/runtime/src/lib.rs#L660). This initial network immunity period starts when the subnet is created and its `netuid` is issued to the subnet owner. During this immunity period the subnet is not under any risk of being deregistered. 
 
-- However, at the end of this immunity period, if the subnet's emissions are the lowest among all the 32 subnets, then this subnet will be deregistered when a new subnet registration request arrives. If there are several subnets with the lowest emission then the oldest subnet among the lowest will be deregistered first, and then the second oldest, and so on. 
+- However, at the end of this immunity period, if the subnet's emissions are the lowest among all the subnets, then this subnet will be deregistered when a new subnet registration request arrives. If there are several subnets with the lowest emission then the oldest subnet among the lowest will be deregistered first, and then the second oldest, and so on. 
 
 :::tip A newly created subnet starts with zero emission
 :::
