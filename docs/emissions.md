@@ -15,9 +15,9 @@ Read the [Root Network](./root-network.md) document before you proceed.
 The emission process works like this:
 
 - Every block, i.e., every 12 seconds on the Bittensor blockchain, a single TAO ($\tau$) is minted, i.e., newly created.
-- A percentage portion of this single TAO ($\tau$) is allocated to each of the 32 subnets in accordance with the subnet's performance. The root network determines the percentage portion for each subnet. Hence, all such partial percentage allocations will sum to 100%, i.e., one TAO ($\tau$). 
+- A percentage portion of this single TAO ($\tau$) is allocated to each subnet in accordance with the subnet's performance. The root network determines the percentage portion for each subnet. Hence, all such partial percentage allocations will sum to 100%, i.e., one TAO ($\tau$). 
     :::tip Taostats
-    See the [percentage numbers in each "**SN**" column on the root network page on Taostats](https://taostats.io/subnets/netuid-0/). These percentages for SN1 through SN32 all add up to `100`. 
+    See the [percentage numbers in each "**SN**" column on the root network page on Taostats](https://taostats.io/subnets/netuid-0/). These percentages for all SNs add up to `100`. 
     :::
 - At the end of every tempo, i.e., every 360 blocks in a user-created subnet, the TAO ($\tau$) accumulated for each subnet is emitted into the subnet. This emitted TAO for the subnet is then distributed within the subnet as:
   - **Dividends** to the subnet validators, and 
@@ -41,13 +41,13 @@ metagraph = bt.metagraph(netuid=0, lite=False)
 metagraph.weights.shape
 ```
 
-Running the above code will give you the shape of the weight matrix of the root network.  
+Running the above code will give you the shape of the weight matrix of the root network. For example, when total number of subnets are 32 (there is no limit to the number of subnets):
 
 ```python
 torch.Size([64, 33])
 ```
 
-As expected, the shape of the weights reflects the 64 root network validators that set the weights for the 32 subnets. The root network itself is counted, hence `33` in the above output, instead of 32.
+As expected, the shape of the weights reflects the 64 root network validators that set the weights for the example case of 32 subnets. The root network itself is counted, hence `33` in the above output, instead of the example number 32.
 
 You can then read the weights matrix $W$ from the metagraph as below. See the [`metagraph` API documentation](https://docs.bittensor.com/python-api/html/autoapi/bittensor/metagraph/index.html#bittensor.metagraph.metagraph.W).
 

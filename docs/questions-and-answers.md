@@ -11,7 +11,7 @@ This General section presents a highly simplistic explanation of Bittensor. Do n
 
 ### Is Bittensor a blockchain or an AI platform?
 
-In Bittensor there is one blockchain and many platforms that are connected to this one blockchain. We call these platforms as subnets. So, a subnet can be AI-related or can be something else. The Bittensor network has 32 distinct subnets. All these subnets are connected to the single blockchain. We use the term "subtensor" for the blockchain. If you are thinking, "So, subnets are connected to subtensor?" then the answer is "yes, exactly."
+In Bittensor there is one blockchain and many platforms that are connected to this one blockchain. We call these platforms as subnets. So, a subnet can be AI-related or can be something else. The Bittensor network has a number of distinct subnets. All these subnets are connected to the single blockchain. We use the term "subtensor" for the blockchain. If you are thinking, "So, subnets are connected to subtensor?" then the answer is "yes, exactly."
 
 ### So what is a subnet?
 
@@ -35,7 +35,7 @@ The subtensor blockchain records all the key activity of all the subnets in its 
 See [Introduction](./learn/introduction.md) and [Anatomy of Incentive Mechanism](./learn/anatomy-of-incentive-mechanism.md) next.
 :::
 
-### So we have 32 subnets, do they talk to each other?
+### So we have all these subnets, do they talk to each other?
 
 A new abstract base class, called `SubnetsAPI` is released in Bittensor `6.8.0` and your application can use this to enable cross subnet communication. Normally, however, if you are not using the `SubnetsAPI`, then the subtensor blockchain does not mix data from one subnet with another subnet data and a subnet does not communicate with another subnet. 
 
@@ -64,7 +64,7 @@ See [Subtensor Nodes](./subtensor-nodes/index.md).
 
 ### What is the incentive for me to be a miner or a validator, or even create a subnet? 
 
-Your incentive is that you earn TAO. It works like this. Every 12 seconds a new TAO is created (i.e., minted). This single TAO is then distributed among the 32 subnets. So every 12 seconds each subnet gets a fraction of this newly-created TAO, based on the performance of the subnet. This fractional TAO reward that a subnet receives, called emission, is, in turn, distributed within the subnet like this: 
+Your incentive is that you earn TAO. It works like this. Every 12 seconds a new TAO is created (i.e., minted). This single TAO is then distributed among all the subnets. So every 12 seconds each subnet gets a fraction of this newly-created TAO, based on the performance of the subnet. This fractional TAO reward that a subnet receives, called emission, is, in turn, distributed within the subnet like this: 
 - 18% of it goes to the subnet owner.
 - 41% goes to subnet validators (this is called dividend).
 - 41% goes to the subnet miners (this is called incentive). 
@@ -77,7 +77,7 @@ See [Emissions](./emissions.md) for details, in specific the role of the root ne
 
 ### I don't want to create a subnet, can I just be a miner or a validator?
 
-Yes. But remember, you have 32 different subnets to choose from. Requirements for mining or validating are subnet-specific. Start with this [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md). Then see the step by step instructions in [Register, Validate and Mine](./subnets/register-validate-mine.md).
+Yes. But remember, you have so many different subnets to choose from. Requirements for mining or validating are subnet-specific. Start with this [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md). Then see the step by step instructions in [Register, Validate and Mine](./subnets/register-validate-mine.md).
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 
