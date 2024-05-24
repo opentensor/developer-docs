@@ -252,7 +252,7 @@ The process of registering keys with a subnet and purchasing a UID slot.
 
 ### Root Network
 
-A special subnet that determines the emission allocations for all other subnets. A special kind of subnet with a netuid of 0, responsible for determining the emission allocations, i.e., the percentage allocation of newly minted TAO (τ), to each subnet based on their performance.
+A special subnet that determines the emission allocations for all other subnets. The root network has a netuid of 0. It is responsible for determining the emission allocations, i.e., the percentage allocation of newly minted TAO (τ), to each subnet based on their performance.
 
 ### Root Network Validators
 
