@@ -21,7 +21,7 @@ Macrocosmos
 
 ## GitHub
 
-https://github.com/opentensor/prompting 
+https://github.com/macrocosm-os/prompting
 
 <!-- 
 ## Hyperparameters
