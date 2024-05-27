@@ -25,7 +25,7 @@ Macrocosmos & collaborators
 
 ## GitHub
 
-https://github.com/RaoFoundation/pretraining
+https://github.com/macrocosm-os/pretraining
 
 <!-- 
 ## Hyperparameters
