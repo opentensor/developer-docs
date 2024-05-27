@@ -6,20 +6,24 @@ title: "Subnet 25"
 
 ## Name
 
-Distributed Training Subnet
+Protein folding
 
 ## Netuid
 25
 
 ## Description
 
-Distributed Training.
+The protein folding subnet is Bittensors’ first venture into academic use cases, built and maintained by Macrocosmos AI. While the current subnet landscape consists of mainly AI and web-scraping protocols, we believe that it is important to highlight to the world how Bittensor is flexible enough to solve almost any problem.
+
+This subnet is designed to produce valuable academic research in Bittensor. Researchers and universities can use this subnet to solve almost any protein, on demand, for free. It is our hope that this subnet will empower researchers to conduct world-class research and publish in top journals while demonstrating that decentralized systems are an economic and efficient alternative to traditional approaches.
 
 ## Subnet owner
-https://github.com/bit-current/DistributedTraining
+
+Macrocosmos
 
 ## GitHub
-https://github.com/bit-current/DistributedTraining
+
+https://github.com/macrocosm-os/folding
 
 <!-- 
 ## Hyperparameters
@@ -28,13 +32,13 @@ https://github.com/bit-current/DistributedTraining
 |:---|------|
 | rho | 10 |
 | kappa | 32767 |
-| immunity_period | 7200 |
+| immunity_period | 5000 |
 | min_allowed_weights | 8 |
 | max_weight_limit | 455 |
 | tempo | 99 |
 | min_difficulty | 1000000000000000000 |
 | max_difficulty | 1000000000000000000 |
-| weights_version | 2013 |
+| weights_version | 1 |
 | weights_rate_limit | 100 |
 | adjustment_interval | 112 |
 | activity_cutoff | 5000 |
@@ -45,4 +49,4 @@ https://github.com/bit-current/DistributedTraining
 | bonds_moving_avg | 900000 |
 | max_regs_per_block | 1 |
 | serving_rate_limit | 10 |
-| max_validators | 128 | -->
+| max_validators | 64 | -->
