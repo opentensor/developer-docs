@@ -1,8 +1,8 @@
 ---
-title: "Bittensor Release Notes"
+title: "Mainchain Release Notes"
 ---
 
-# Bittensor Release Notes
+# Mainchain Release Notes
 
 The following are the release notes for the Bittensor software:
 
