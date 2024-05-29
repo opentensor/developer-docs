@@ -4,9 +4,9 @@ title: "Chain Release Notes"
 
 # Chain Release Notes
 
-## Pre-release Notes for Testchain 1.1.1
+## Release Notes for Testchain 1.1.0
 
-The following are the pre-release notes for the testchain 1.1.1 updates. **These updates will be available on the testchain only. They are not yet available on the mainchain.**
+The following are the release notes for the testchain 1.1.0 updates. **These updates will be available on the testchain only. They are not yet available on the mainchain.**
 
 ## New feature
 
@@ -23,6 +23,11 @@ In addition, a subnet owner can turn this commit reveal feature on by setting th
 For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as copiers will not be able to independently score new miners.
 
 By giving weight copiers access only to old weights, the goal is to reduce the advantage gained by copying the current consensus. With commit-reveal we aim to make weight copying less attractive by decreasing the reward.
+
+:::tip Weight copying technical paper and blog
+- See [Weight Copying in Bittensor, a technical paper (PDF)](/papers/BT_Weight_copier-29May2024.pdf).
+- Blog post, Weight Copying in Bittensor.
+:::
 
 ### How to test the commit reveal feature
 
