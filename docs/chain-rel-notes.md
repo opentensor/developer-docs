@@ -87,7 +87,7 @@ Optional arguments:
 
 ## Enhancement
 
-- Emissions are now burnt for those subnets that have registration turned off. 
+- Emissions are now recycled for those subnets that have registration turned off. 
 - The `btcli root weights` command now uses a new function `set_root_weights()` behind the scenes and uses the coldkey to sign the transaction. 
 
 **Pull request**: https://github.com/opentensor/subtensor/pull/474
