@@ -29,8 +29,12 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 The commit reveal feature is available only at the below testchain URL and the specified branches:
 
 - **Testchain URL**: `wss://test.finney.opentensor.ai:443/`
-- **Subtensor repo branch:** 
-- **Bittensor repo and branch**: Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
+- **Bittensor repo and branch**: 
+    1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
+    2. Install by running the below command:
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
+    ```
 
 #### New subnet hyperparameters
 
@@ -44,7 +48,7 @@ Two new subnet hyperparameters are added to support the commit reveal feature. A
 Example usage:
 
 ```bash
-btcli wt commit --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4
+btcli wt commit --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --subtensor.network wss://test.chain.opentensor.ai:443
 ```
 The above command is used to commit weights for a specific subnet and requires the user to have the necessary permissions.
 
@@ -58,7 +62,7 @@ Optional arguments:
 Example usage:
 
 ```bash
-btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189 --subtensor.network wss://test.chain.opentensor.ai:443
 ```
 
 The above command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
