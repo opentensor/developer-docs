@@ -12,6 +12,8 @@ The following are the release notes for the testchain 1.1.0 updates. **These upd
 
 ### Commit reveal
 
+**Pull request**: https://github.com/opentensor/subtensor/pull/396
+
 A new feature, called, **commit reveal**, is made available on the testchain only. This feature will address the weight copying issue. 
 
 The commit reveal feature changes the way the subnet validator weights are recorded to the chain. Rather than submitting weights openly to the chain that can be seen by anyone on the next block, subnet validators will upload an encrypted hash of their weights. This encrypted hash will be automatically decrypted after a set number of blocks. 
@@ -34,7 +36,7 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 The commit reveal feature is available only at the below testchain URL and the specified branches:
 
 - **Testchain URL**: `wss://test.finney.opentensor.ai:443/`.
-- **Subtensor repo**: Make sure to checkout the tag `1.1.1 pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
+- **Subtensor repo**: Make sure to checkout the tag `1.1.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
 - **Bittensor repo and branch**: 
     1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
     2. Install by running the below command:
@@ -83,6 +85,11 @@ Optional arguments:
 - ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
 - ``--salt`` (str): Corresponding salt for the hash function, integers in comma-separated format. You will use the `salt` values you stored when executing the `btcli wt commit` command above.
 
+## Enhancement
+
+Emissions are now burnt for those subnets that have registration turned off. 
+
+**Pull request**: https://github.com/opentensor/subtensor/pull/474
 
 ## Fixed issue
 
@@ -92,6 +99,8 @@ Previousy, due to a bug in Yuma Consensus implementation, the weights were not n
 
 The function `set_weights()` is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
 
+**Pull request**: https://github.com/opentensor/subtensor/pull/335
+
 ## General
 
-- Polkadot SDK version is updated to 1.10 with this testchain update.
+Polkadot SDK version is updated to 1.10 with this testchain update.
