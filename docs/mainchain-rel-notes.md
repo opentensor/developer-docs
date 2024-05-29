@@ -10,9 +10,8 @@ The following are the release notes for the Bittensor software:
 
 ### New features and enhancements
 
-- A new `btcli` subcommand is added to set the delegate take % between 0 and 18%. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take). 
-- Enhanced the `btcli wallet regen_coldkey --mnemonic` command which now supports passing the seed phrase as either a list of word strings, or a list of the entire seed phrase as a string, or the seed phrase as a string of space-separated words. [Add link to doc] 
-- A new `btcli` subcommand is added for fetching a light version of the delegate object. See the doc for `btcli root list_delegates_lite`. [Add link to doc] 
+- A new `btcli` subcommand is added to set the delegate take % between 9% and 18%. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take). 
+- Enhanced the `btcli wallet regen_coldkey --mnemonic` command which now supports passing the seed phrase as either a list of word strings, or a list of the entire seed phrase as a string, or the seed phrase as a string of space-separated words.
 
 ### Fixed issues
 
