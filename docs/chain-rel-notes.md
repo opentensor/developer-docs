@@ -25,7 +25,7 @@ For subnets that are very stable and have durable subnet miners who change ranks
 By giving weight copiers access only to old weights, the goal is to reduce the advantage gained by copying the current consensus. With commit-reveal we aim to make weight copying less attractive by decreasing the reward.
 
 :::tip Weight copying technical paper and blog
-- See [Weight Copying in Bittensor, a technical paper (PDF)](/papers/BT_Weight_copier-29May2024.pdf).
+- See [Weight Copying in Bittensor, a technical paper (PDF)](/static/papers/BT_Weight_Copier-29May2024.pdf).
 - Blog post, Weight Copying in Bittensor.
 :::
 
