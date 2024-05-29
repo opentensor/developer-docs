@@ -23,10 +23,13 @@ The following are the release notes for the Bittensor software:
 ```bash
 starlette , shtab and typing-extension based on the FastAPI version fastapi==0.110.1
 ```
+<!--
 
 ### Breaking changes
 
 The `set_weights` method is no longer supported. Instead, use the new method `set_root_weights`. [Add the link to the docs]
+
+-->
 
 ### Deprecated
 
