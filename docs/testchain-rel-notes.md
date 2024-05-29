@@ -4,9 +4,9 @@ title: "Testchain Release Notes"
 
 # Testchain Release Notes
 
-## Pre-release Notes for Testchain 1.0.1
+## Pre-release Notes for Testchain 1.1.1
 
-The following are the pre-release notes for the testchain 1.0.1 updates. **These updates will be available on the testchain only. They are not yet available on the mainchain.**
+The following are the pre-release notes for the testchain 1.1.1 updates. **These updates will be available on the testchain only. They are not yet available on the mainchain.**
 
 ## New feature
 
@@ -28,7 +28,8 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 
 The commit reveal feature is available only at the below testchain URL and the specified branches:
 
-- **Testchain URL**: `wss://test.finney.opentensor.ai:443/`
+- **Testchain URL**: `wss://test.finney.opentensor.ai:443/`.
+- **Subtensor repo**: Make sure to checkout the tag `1.1.1 pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
 - **Bittensor repo and branch**: 
     1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
     2. Install by running the below command:
