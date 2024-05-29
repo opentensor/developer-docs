@@ -9,6 +9,11 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 28 May 2024
+
+- Release notes for [Bittensor 7.0.0](./bittensor-rel-notes.md) are published.
+- Release notes for [testchain updates](./chain-rel-notes.md) are published.
+
 ## 22 May 2024
 
 - A new `btcli` subcommand is added to set the delegate take % between `9%` and `18%`. See the doc for [`btcli root set_take`](btcli.md#set-delegate-take).

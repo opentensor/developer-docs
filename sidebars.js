@@ -21,8 +21,8 @@ const sidebars = {
     // 	className: 'sidebarSearch', //  based on Class name it will add search component
     // },
     "index",
-    "testchain-rel-notes",
-    "mainchain-rel-notes",
+    "chain-rel-notes",
+    "bittensor-rel-notes",
     "whats-new-in-docs",
     "questions-and-answers",
     {
