@@ -28,7 +28,7 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 
 :::tip Weight copying technical paper and blog
 - See [Weight Copying in Bittensor, a technical paper (PDF)](https://github.com/opentensor/developer-docs/tree/main/static/papers/BT_Weight_Copier-29May2024.pdf).
-- Blog post, Weight Copying in Bittensor.
+- Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
 :::
 
 ### How to test the commit reveal feature
@@ -41,7 +41,7 @@ The commit reveal feature is available only at the below testchain URL and the s
     1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
     2. Install by running the below command:
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.0.1/scripts/install.sh)"
     ```
 
 #### New subnet hyperparameters
@@ -87,7 +87,8 @@ Optional arguments:
 
 ## Enhancement
 
-Emissions are now burnt for those subnets that have registration turned off. 
+- Emissions are now burnt for those subnets that have registration turned off. 
+- The `btcli root weights` command now uses a new function `set_root_weights()` behind the scenes and uses the coldkey to sign the transaction. 
 
 **Pull request**: https://github.com/opentensor/subtensor/pull/474
 
@@ -97,7 +98,7 @@ Previousy, due to a bug in Yuma Consensus implementation, the weights were not n
 
 ## Breaking change
 
-The function `set_weights()` is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
+If you are using the function `set_weights()` directly, then note that this function is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
 
 **Pull request**: https://github.com/opentensor/subtensor/pull/335
 
