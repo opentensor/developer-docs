@@ -57,6 +57,10 @@ Optional arguments:
 - ``--uids`` (str): Corresponding UIDs for the specified netuid, in comma-separated format.
 - ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
 
+:::tip store the salt values 
+After executing the above command you will see the `salt` values displayed on the terminal. Store these values. You will need them to reveal weights (see below).
+:::
+
 ### Reveal weights
 
 Example usage:
@@ -71,4 +75,4 @@ Optional arguments:
 - ``--netuid`` (int): The netuid of the subnet for which weights are to be revealed.
 - ``--uids`` (str): Corresponding UIDs for the specified netuid, in comma-separated format.
 - ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
-- ``--salt`` (str): Corresponding salt for the hash function, integers in comma-separated format.
+- ``--salt`` (str): Corresponding salt for the hash function, integers in comma-separated format. You will use the `salt` values you stored when executing the `btcli wt commit` command above.
