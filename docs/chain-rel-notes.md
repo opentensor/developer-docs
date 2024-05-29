@@ -82,3 +82,16 @@ Optional arguments:
 - ``--uids`` (str): Corresponding UIDs for the specified netuid, in comma-separated format.
 - ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
 - ``--salt`` (str): Corresponding salt for the hash function, integers in comma-separated format. You will use the `salt` values you stored when executing the `btcli wt commit` command above.
+
+
+## Fixed issue
+
+Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
+
+## Breaking change
+
+The function `set_weights()` is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
+
+## General
+
+- Polkadot SDK version is updated to 1.10 with this testchain update.
