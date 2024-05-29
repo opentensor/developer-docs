@@ -1,8 +1,8 @@
 ---
-title: "Testchain Release Notes"
+title: "Chain Release Notes"
 ---
 
-# Testchain Release Notes
+# Chain Release Notes
 
 ## Pre-release Notes for Testchain 1.1.1
 

@@ -1,8 +1,8 @@
 ---
-title: "Mainchain Release Notes"
+title: "Bittensor Release Notes"
 ---
 
-# Mainchain Release Notes
+# Bittensor Release Notes
 
 The following are the release notes for the Bittensor software:
 
@@ -33,7 +33,7 @@ The `set_weights` method is no longer supported. Instead, use the new method `se
 
 ### Deprecated
 
-- Starting with this 7.0.0 release, the `torch` library is no longer used by default. Instead, the [`numpy`](https://numpy.org/) library is used. However, you can still use `torch` by setting the environment variable `USE_TORCH=1` and making sure that you have installed the `torch` library. See [Install Bittensor] doc. 
+- Starting with this 7.0.0 release, the `torch` library is no longer used by default. Instead, the [`numpy`](https://numpy.org/) library is used. However, you can still use `torch` by setting the environment variable `USE_TORCH=1` and making sure that you have installed the `torch` library. See [Install Bittensor](./getting-started/installation.md) doc. 
 
 ### General 
 	
