@@ -67,6 +67,7 @@ const sidebars = {
         "subnets/checklist-for-validating-mining",
         "subnets/register-validate-mine",
         "subnets/working-with-keys",
+        "subnets/commit-reveal",
       ],
     },
     {
