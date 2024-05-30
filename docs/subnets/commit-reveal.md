@@ -12,6 +12,7 @@ This guide describes a new and not-yet-released feature, called, **commit reveal
 
 - See [Weight Copying in Bittensor, a technical paper (PDF)](pathname:///papers/BT_Weight_Copier-29May2024.pdf).
 - Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
+- Also go to the GitHub repo directory for the [Python notebook](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
 
 ## Description
 
