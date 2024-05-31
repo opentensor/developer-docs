@@ -9,6 +9,11 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 04 June 2024
+
+- Release notes for [Bittensor 7.0.1](./bittensor-rel-notes.md) are published.
+- Release notes for [mainchain updates](./chain-rel-notes.md) are published.
+
 ## 30 May 2024
 
 - Created a new doc for the [Commit Reveal](./subnets/commit-reveal.md) feature. This feature is available on testchain only. See [testchain updates](./chain-rel-notes.md) for more.

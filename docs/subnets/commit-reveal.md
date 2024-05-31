@@ -1,12 +1,14 @@
 ---
-title: "Commit Reveal (Testchain only)"
+title: "Commit Reveal"
 ---
 
-# Commit Reveal (Testchain only)
+# Commit Reveal
 
-This guide describes a new and not-yet-released feature, called, **commit reveal**. This feature will address the weight copying issue. Currently this feature is available for testing on the testchain only. 
+This guide describes the **commit reveal** feature. This feature will address the weight copying issue. 
 
-**Pull request**: https://github.com/opentensor/subtensor/pull/396
+:::tip Available only in Bittensor 7.0.1 and later versions
+This feature is available in Bittensor 7.0.1 and later versions. Make sure you update to Bittensor 7.0.1 before using this feature.
+:::
 
 ## Technical paper, blog and Python notebook
 
@@ -25,19 +27,6 @@ In addition, a subnet owner can turn this commit reveal feature on by setting th
 For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as copiers will not be able to independently score new miners.
 
 By giving weight copiers access only to old weights, the goal is to reduce the advantage gained by copying the current consensus. With commit-reveal we aim to make weight copying less attractive by decreasing the reward.
-
-## How to test the commit reveal feature
-
-The commit reveal feature is available only at the below testchain URL and the specified branches:
-
-- **Testchain URL**: `wss://test.finney.opentensor.ai:443/`.
-- **Subtensor repo**: Make sure to checkout the tag `1.1.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
-- **Bittensor repo and branch**: 
-    1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
-    2. Install by running the below command:
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.0.1/scripts/install.sh)"
-    ```
 
 ### New subnet hyperparameters
 
