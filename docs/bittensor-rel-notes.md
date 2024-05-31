@@ -6,7 +6,37 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software:
 
-## Release 7.0.0
+## 04 June 2024: Release 7.0.1
+
+### New features and enhancements
+
+#### Commit Reveal
+
+- The **commit reveal** feature that addresses the weight copying issue is now available in this 7.0.1 version on the mainchain. 
+- The following new `btcli` command options are added to use the commit reveal feature:
+  - `btcli wt commit`
+  - `btcli wt reveal`
+- The following new subnet hyperparameters are added to support the commit reveal feature:
+  - `commit_reveal_weights_interval` (integer): Specify the desired number of blocks of delay before revealing the weights. 
+  - `commit_reveal_weights_enabled` (boolean): Set this hyperparameter to `True` to enable the commit reveal feature.
+- For a detailed description of the feature and how to use it, see the [Commit Reveal](./subnets/commit-reveal.md) document. 
+
+#### Enhancements
+
+- Emissions are now recycled for those subnets that have registration turned off. 
+- The `btcli root weights` command now uses a new function `set_root_weights()` behind the scenes and uses the coldkey to sign the transaction. There is no change in how you use this command. 
+
+### Fixed issue
+
+Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
+
+### Breaking change
+
+If you are directly using the function `set_weights()` in your Python module to set the root weights, then you have to now use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The previous `set_weights()` function was signed by the hotkey. **This breaking change applies only for setting the root weights. If you are setting weights within a subnet, then there is no change.** 
+
+See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
+
+## 28 May 2024: Release 7.0.0
 
 ### New features and enhancements
 
@@ -22,13 +52,6 @@ The following are the release notes for the Bittensor software:
 ```bash
 starlette , shtab and typing-extension based on the FastAPI version fastapi==0.110.1
 ```
-<!--
-
-### Breaking changes
-
-The `set_weights` method is no longer supported. Instead, use the new method `set_root_weights`. [Add the link to the docs]
-
--->
 
 ### Deprecated
 
