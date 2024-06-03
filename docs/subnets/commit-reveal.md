@@ -33,10 +33,10 @@ The commit reveal feature is available only at the below testchain URL and the s
 - **Testchain URL**: `wss://test.finney.opentensor.ai:443/`.
 - **Subtensor repo**: Make sure to checkout the tag `1.1.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
 - **Bittensor repo and branch**: 
-    1. Make sure you switch to `release/7.0.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
+    1. Make sure you switch to `release/7.1` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
     2. Install by running the below command:
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.0.1/scripts/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.1/scripts/install.sh)"
     ```
 
 ### New subnet hyperparameters
