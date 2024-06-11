@@ -12,7 +12,7 @@ Key updates to this documentation.
 ## 04 June 2024
 
 - Release notes for [Bittensor 7.0.1](./bittensor-rel-notes.md) are published.
-- Release notes for [mainchain updates](./chain-rel-notes.md) are published.
+- Release notes for [mainnet updates](./chain-rel-notes.md) are published.
 
 ## 30 May 2024
 
@@ -21,7 +21,7 @@ Key updates to this documentation.
 ## 28 May 2024
 
 - Release notes for [Bittensor 7.0.0](./bittensor-rel-notes.md) are published.
-- Release notes for [testchain updates](./chain-rel-notes.md) are published.
+- Release notes for [testnet updates](./chain-rel-notes.md) are published.
 
 ## 22 May 2024
 
