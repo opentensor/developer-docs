@@ -20,6 +20,7 @@ $$
 Currently the $\alpha$ is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made a variable. In the current version of this feature this change occurs behind-the-scenes, i.e., no specific user action is enabled. 
 
 **Blog post**: https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b
+
 **Also see**: [Validator bonding document section in the subtensor repo](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
 :::
 
