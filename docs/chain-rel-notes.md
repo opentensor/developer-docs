@@ -6,7 +6,7 @@ title: "Chain Release Notes"
 
 ## 11 June 2024: Release notes for mainnet 1.1.1
 
-- All the items described in the below [Release Notes for testnet 1.1.0](#release-notes-for-testnet-110) are now available in the mainchain.
+- All the items described in the below [Release Notes for testnet 1.1.0](#28-may-2024-release-notes-for-testnet-110) are now available in the mainchain.
 
 ## 11 June 2024: Release notes for testnet 1.1.1
 
