@@ -6,13 +6,13 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software:
 
-## 04 June 2024: Release 7.0.1
+## 11 June 2024: Release 7.1.0
 
 ### New features and enhancements
 
 #### Commit Reveal
 
-- The **commit reveal** feature that addresses the weight copying issue is now available in this 7.0.1 version on the mainchain. 
+- The **commit reveal** feature that addresses the weight copying issue is now available in this 7.1.0 version on the mainchain. 
 - The following new `btcli` command options are added to use the commit reveal feature:
   - `btcli wt commit`
   - `btcli wt reveal`
