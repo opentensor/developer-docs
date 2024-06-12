@@ -4,13 +4,9 @@ title: "Chain Release Notes"
 
 # Chain Release Notes
 
-## 11 June 2024: Release notes for mainnet 1.1.1
+## 13 June 2024: Release notes for testnet 1.1.1
 
-- All the items described in the below [Release Notes for testnet 1.1.0](#28-may-2024-release-notes-for-testnet-110) are now available in the mainchain.
-
-## 11 June 2024: Release notes for testnet 1.1.1
-
-- A new feature, called **consensus-based weights** is released in the testchain 1.1.1 only. Currently while calculating the dividends to a subnet validator, a quantity called instantaneous bond value is used. A subnet validator maintains an instantaneous bond value on each subnet miner. Instead of directly using the instantaneous bond value, a moving average, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
+- A new feature, called **consensus-based weights** will be released in the testchain 1.1.1 only. Currently while calculating the dividends to a subnet validator, a quantity called instantaneous bond value is used. A subnet validator maintains an instantaneous bond value on each subnet miner. Instead of directly using the instantaneous bond value, a moving average, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
 
 $$
 B_{ij}^{(t)} = \alpha\cdot\Delta B_{ij}^{(t)} + (1-\alpha)\cdot B_{ij}^{(t-1)}
@@ -23,6 +19,14 @@ Currently the $\alpha$ is set to `0.9`. With the consensus-based weights feature
 
 **Also see**: [Validator bonding document section in the subtensor repo](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
 :::
+
+---
+
+## 11 June 2024: Release notes for mainnet 1.1.1
+
+- All the items described in the below [Release Notes for testnet 1.1.0](#28-may-2024-release-notes-for-testnet-110) are now available in the mainchain.
+
+---
 
 ## 28 May 2024: Release notes for testnet 1.1.0
 
