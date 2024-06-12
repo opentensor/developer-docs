@@ -16,7 +16,6 @@ The terminal output print of the subnet hyperparameters is enhanced from its cur
 
 - Nonce implementation is enhanced against replay attack vulnerability. Previously nonces were converted to monotonic numbers. In the fixed version a nonce is converted to timestamp and while verifying it a check is made for the version number. 
 - Terminal display of subnet hyperparameters is enhanced to human-readable format.
-- A bug existed wherein the IPV4 version was hardcoded. This is fixed to first check the version of the IP and then the proper IPV4 and IPV6 addresses are asserted and invalid IP addresses are rejected.
 
 ### Deprecated
 
