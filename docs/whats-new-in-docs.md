@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 12 June 2024
+
+- Release notes for [Bittensor 7.2.0](./bittensor-rel-notes.md) are published.
+
 ## 04 June 2024
 
 - Release notes for [Bittensor 7.1.0](./bittensor-rel-notes.md) are published.
