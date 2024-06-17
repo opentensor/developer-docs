@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 17 June 2024
+
+- The [Commit Reveal](./subnets/commit-reveal.md) document is updated with Python code example.
+
 ## 12 June 2024
 
 - Release notes for [Bittensor 7.2.0](./bittensor-rel-notes.md) are published.
