@@ -32,6 +32,14 @@ Currently the $\alpha$ is set to `0.9`. With the consensus-based weights feature
 
 The following are the release notes for the testchain 1.1.0 updates. **These updates will be available on the testchain only. They are not yet available on the mainchain.**
 
+### Breaking change
+
+If you are using the function `set_weights()` directly, then note that this function is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
+
+### Dependencies version change
+
+Polkadot SDK version is updated to 1.10 with this testchain update.
+
 ### New feature
 
 #### Commit reveal
@@ -53,12 +61,4 @@ For a detailed description of the feature and how to test it, see the [Commit Re
 
 Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
 
-### Breaking change
-
-If you are using the function `set_weights()` directly, then note that this function is no longer in use. In its place, use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The now-removed `set_weights()` function was signed by the hotkey. See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
-
 **Pull request**: https://github.com/opentensor/subtensor/pull/335
-
-### General
-
-Polkadot SDK version is updated to 1.10 with this testchain update.
