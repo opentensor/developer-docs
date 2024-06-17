@@ -159,7 +159,7 @@ import bittensor as bt
         wallet=wallet,
         netuid=1,
         uids=weight_uids,
-        weights=weight_vals,
+        weights=weights,
         salt=salt
     )
 ```
