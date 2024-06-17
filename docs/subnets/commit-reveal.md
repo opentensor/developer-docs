@@ -34,7 +34,7 @@ Here are summary steps to use the commmit reveal feature:
 
 1. Enable the commit reveal feature by setting the new subnet hyperparameter `commit_reveal_weights_enabled` (bool) to `True`.
 2. Specify the desired number of blocks of delay before revealing the weights, by using the new subnet hyperparameter `commit_reveal_weights_interval` (integer). 
-3. (Recommended) Set the subnet hyperparameter `weights_rate_limit`.
+3. Set the subnet hyperparameter `weights_rate_limit`.
 4. Generate your own salt. For example, you can use the following code snippet to generate salt. 
     ```python
         # Generate random salt
