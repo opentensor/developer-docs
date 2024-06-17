@@ -8,6 +8,10 @@ The following are the release notes for the Bittensor software:
 
 ## 12 June 2024: Release 7.2.0
 
+### Deprecated
+
+Starting with 7.2.0, usage of the `nest_asyncio` package is deprecated. If you use `nest_asyncio` then make sure to explicitly add it to your project dependencies. In the next major release, the `nest_asyncio` will be removed from the `bittensor` package.  
+
 ### New features and enhancements
 
 The terminal output print of the subnet hyperparameters is enhanced from its current raw U16 and U64 format to human-readable versions. For example, `max_weight_limit` was displayed previously as `65535` but now enhanced to display `1.0`. 
@@ -17,10 +21,6 @@ The terminal output print of the subnet hyperparameters is enhanced from its cur
 - Nonce implementation is enhanced against replay attack vulnerability. Previously nonces were converted to monotonic numbers. In the fixed version a nonce is converted to timestamp and while verifying it a check is made for the version number. 
 - Terminal display of subnet hyperparameters is enhanced to human-readable format.
 
-### Deprecated
-
-Starting with 7.2.0, usage of the `nest_asyncio` package is deprecated. If you use `nest_asyncio` then make sure to explicitly add it to your project dependencies. In the next major release, the `nest_asyncio` will be removed from the `bittensor` package.  
-
 ### General 
 	
 Several enhancements such as dependency cleanups and better end-to-end tests are made to the code. 
@@ -28,6 +28,12 @@ Several enhancements such as dependency cleanups and better end-to-end tests are
 ---
 
 ## 11 June 2024: Release 7.1.0
+
+### Breaking change
+
+If you are directly using the function `set_weights()` in your Python module to set the root weights, then you have to now use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The previous `set_weights()` function was signed by the hotkey. **This breaking change applies only for setting the root weights. If you are setting weights within a subnet, then there is no change.** 
+
+See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
 
 ### New features and enhancements
 
@@ -51,15 +57,15 @@ Several enhancements such as dependency cleanups and better end-to-end tests are
 
 Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
 
-### Breaking change
-
-If you are directly using the function `set_weights()` in your Python module to set the root weights, then you have to now use the new function `set_root_weights()` to set the root weights. This new function now requires that you sign it with your coldkey. The previous `set_weights()` function was signed by the hotkey. **This breaking change applies only for setting the root weights. If you are setting weights within a subnet, then there is no change.** 
-
-See [line of code for the new `set_root_weights()`](https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/root.rs#L585). 
-
 ---
 
 ## 28 May 2024: Release 7.0.0
+
+### Deprecated
+
+- Starting with this 7.0.0 release, the `torch` library is no longer used by default. Instead, the [`numpy`](https://numpy.org/) library is used. However, you can still use `torch` by setting the environment variable `USE_TORCH=1` and making sure that you have installed the `torch` library. See [Install Bittensor](./getting-started/installation.md) doc.
+- Pydantic library used in Bittensor is updated to V2 (to [Pydantic version 2.7.1](https://github.com/pydantic/pydantic/releases/tag/v2.7.1)).
+- Python 3.8 is no longer supported starting with this Bittensor 7.0.0 release. 
 
 ### New features and enhancements
 
@@ -75,12 +81,3 @@ See [line of code for the new `set_root_weights()`](https://github.com/opentenso
 ```bash
 starlette , shtab and typing-extension based on the FastAPI version fastapi==0.110.1
 ```
-
-### Deprecated
-
-- Starting with this 7.0.0 release, the `torch` library is no longer used by default. Instead, the [`numpy`](https://numpy.org/) library is used. However, you can still use `torch` by setting the environment variable `USE_TORCH=1` and making sure that you have installed the `torch` library. See [Install Bittensor](./getting-started/installation.md) doc. 
-
-### General 
-	
-- Pydantic library used in Bittensor is updated to V2 (to [Pydantic version 2.7.1](https://github.com/pydantic/pydantic/releases/tag/v2.7.1)).
-- Python 3.8 is no longer supported starting with this Bittensor 7.0.0 release. 
