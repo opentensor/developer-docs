@@ -169,7 +169,7 @@ btcli wallet regen_coldkeypub
 btcli wallet swap_hotkey
 ```
 
-For a registered key pair, for example, a (coldkeyA, hotkeyA) pair, this command swaps the hotkeyA with another already-registered hotkeyB to create a registered (coldkeyA, hotkeyB) pair.
+For a registered key pair, for example, a (coldkeyA, hotkeyA) pair, this command swaps the hotkeyA with another already-registered hotkeyB to move the original registration to the (coldkeyA, hotkeyB) pair.
 
 :::tip this operation costs 1 TAO recycled
 This command registers, behind the scenes, the new key pair (coldkeyA, hotkeyB) into the network you specify (defaults to mainnet, `finney`), hence it costs you 1 TAO recycled.
