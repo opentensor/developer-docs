@@ -163,6 +163,24 @@ Regenerate a wallet with just the public seed of your coldkey:
 btcli wallet regen_coldkeypub
 ```
 
+### Swap hotkey
+
+```bash
+btcli wallet swap_hotkey
+```
+
+For a registered key pair, for example, a (coldkeyA, hotkeyA) pair, this command swaps the hotkeyA with another already-registered hotkeyB to create a registered (coldkeyA, hotkeyB) pair.
+
+:::tip this operation costs 1 TAO recycled
+This command registers, behind the scenes, the new key pair (coldkeyA, hotkeyB) into the network you specify (defaults to mainnet, `finney`), hence it costs you 1 TAO recycled.
+:::
+
+**IMPORTANT**
+
+- Make sure that your original key pair (coldkeyA, hotkeyA) is already registered. 
+- Make sure that you first create the new hotkeyB before using it in this command.
+- Finally, note that this command will not warn you but it does take out 1 TAO for recycling from your coldkeyA wallet.
+
 ### Get identity
 
 ```
