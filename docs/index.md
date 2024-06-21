@@ -52,7 +52,7 @@ import { GoNumber } from "react-icons/go";
     icon={GoNumber}
     title='Current subnet limit'
     link=''
-    body='38' />
+    body='45' />
     <!-- <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>Δ</span>}
     title='Subnet 4'
