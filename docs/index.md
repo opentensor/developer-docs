@@ -25,15 +25,42 @@ import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { VscSymbolParameter } from "react-icons/vsc";
 import { GoCommandPalette } from "react-icons/go";
 import { FaPython } from "react-icons/fa";
+import { FaRegNewspaper } from "react-icons/fa";
+import { SiFuturelearn } from "react-icons/si";
+import { GoNumber } from "react-icons/go";
+
+
+
 
 
 # Bittensor Developer Documentation
 
-:::tip See what's new
-See [what's new in docs](./whats-new-in-docs.md).
-:::
+**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. 
 
-**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. See the below diagram for a top-level view of the Bittensor ecosystem. 
+<Cards>
+    <CardSmall
+    icon={FaRegNewspaper}
+    title='See what is new'
+    link='whats-new-in-docs'
+    body='Updates to Docs' />
+    <CardSmall
+    icon={SiFuturelearn}
+    title='A non-technical introduction'
+    link='questions-and-answers'
+    body='Q and A' />
+    <CardSmall
+    icon={GoNumber}
+    title='Current subnet limit'
+    link=''
+    body='38' />
+    <!-- <CardSmall
+    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>Δ</span>}
+    title='Subnet 4'
+    link='/subnet-pages/subnet-4'
+    body='Targon' /> -->
+</Cards>
+
+See the below diagram for a top-level view of the Bittensor ecosystem. 
 
 <center>
 <ThemedImage
@@ -53,11 +80,6 @@ Subnets, which exist outside the blockchain and are connected to it, are off-cha
 Scores are assigned to the top subnet miners and subnet validators. The on-chain Yuma Consensus determines **the TAO rewards for these top performers**. The Bittensor blockchain, called **subtensor**, runs on decentralized validation nodes, just like any blockchain. 
 
 For example, in the [Subnet 1 Prompting](https://github.com/opentensor/prompting) the subnet miners compete to generate answers that are closest to a machine learning base model chosen by the subnet validators. 
-
-
-:::tip looking for a non-technical introduction to Bittensor?
-See [Questions and Answers](./questions-and-answers.md).
-:::
 
 Opentensor Foundation provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
 
