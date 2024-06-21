@@ -20,9 +20,13 @@ This feature is available in Bittensor 7.0.1 and later versions. Make sure you u
 
 The commit reveal feature changes the way the subnet validator weights are recorded to the chain. Rather than submitting weights openly to the chain that can be seen by anyone on the next block, subnet validators will upload an encrypted hash of their weights. This encrypted hash will be automatically decrypted after a set number of blocks. 
 
-The delay in revealing the weights is a parameter that can be set by the subnet owners. The delay is expressed in integer number of blocks. The optimal delay will be different for different subnets and depends mostly on the rate of turnover in the subnet miners. A subnet owner can use the `commit_reveal_weights_interval` subnet hyperparameter to adjust this delay.
+The delay in revealing the weights is a parameter that can be set by the subnet owners. The delay is expressed in integer number of blocks. The optimal delay will be different for different subnets and depends mostly on the rate of turnover in the subnet miners. 
 
-In addition, a subnet owner can turn this commit reveal feature on by setting the `commit_reveal_weights_enabled` hyperparameter to `True`.
+### New subnet hyperparameters
+
+This feature is meant to be used by a subnet owner. To activate this feature, a subnet owner should set the `commit_reveal_weights_enabled` hyperparameter to `True`.
+
+In addition, the subnet owner should use the `commit_reveal_weights_interval` subnet hyperparameter to set the delay before revealing the weights.
 
 For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as copiers will not be able to independently score new miners.
 
@@ -30,7 +34,7 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 
 ## How to use commit reveal feature
 
-Here are summary steps to use the commmit reveal feature:
+Here are summary steps to use the commmit reveal feature. These steps are typically executed by a subnet owner:
 
 1. Enable the commit reveal feature by setting the new subnet hyperparameter `commit_reveal_weights_enabled` (bool) to `True`.
 2. Specify the desired number of blocks of delay before revealing the weights, by using the new subnet hyperparameter `commit_reveal_weights_interval` (integer). 

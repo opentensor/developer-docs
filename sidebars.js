@@ -69,6 +69,7 @@ const sidebars = {
         "subnets/register-validate-mine",
         "subnets/working-with-keys",
         "subnets/commit-reveal",
+        "subnets/consensus-based-weights",
       ],
     },
     {
