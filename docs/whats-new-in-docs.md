@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 21 June 2024
+
+- A new document, [Errors and Troubleshooting](./errors-and-troubleshooting.md) is published.
+
 ## 17 June 2024
 
 - The [Commit Reveal](./subnets/commit-reveal.md) document is updated with Python code example.
