@@ -4,21 +4,54 @@ title: "Chain Release Notes"
 
 # Chain Release Notes
 
-## Release notes for testnet 1.1.1
+## Testnet 1.2.1-pre-release 
 
-- A new feature, called **consensus-based weights** will be released soon in the testchain 1.1.1 only. Currently while calculating the dividends to a subnet validator, a quantity called instantaneous bond value is used. A subnet validator maintains an instantaneous bond value on each subnet miner. Instead of directly using the instantaneous bond value, a moving average, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
+The below are the advanced release notes. **The testnet 1.2.1-pre-release will be available on 26th June 2024.**
+
+### New features
+
+#### Consensus-based weights
+
+A new feature, called **consensus-based weights** is available in the testnet 1.2.1-pre-release. Currently while calculating the dividends to a subnet validator, a quantity called exponential moving average bond value of a subnet validator, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
 
 $$
 B_{ij}^{(t)} = \alpha\cdot\Delta B_{ij}^{(t)} + (1-\alpha)\cdot B_{ij}^{(t-1)}
 $$
 
-:::tip what changed
-Currently the $\alpha$ is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made a variable. In the current version of this feature this change occurs behind-the-scenes, i.e., no specific user action is enabled. 
+Until now, the value of $\alpha$ is set to `0.9`. With this new feature, the $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence this feature is called **consensus-based weights**. A subnet owner can now experiment for the optimum value of $\alpha$. See the below documentation links for how to use this feature:
 
-**Blog post**: https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b
+:::note Documentation links for consensus-based-weights feature
+**Detailed documentation and how to test the consensus-based weights feature**: See [Consensus-based Weights](./subnets/consensus-based-weights.md).
 
-**Also see**: [Validator bonding document section in the subtensor repo](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
+**Tech blog post with analysis**: https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b
+
+**Mathematical context**: [Validator bonding document section in the subtensor repo](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
+
+**See the PR**: https://github.com/opentensor/subtensor/pull/552
 :::
+
+#### Safe Mode
+
+A new feature, called **Safe Mode**, is added to the subtensor. This feature is added in the form of a Rust pallet, called Safe Mode pallet, to the subtensor runtime. This pallet allows a highly privileged user such as `root` to put the entire chain into "safe mode" for a set period of time, whereby only a select few extrinsics can be executed, while all other extrinsics will be rejected. While in safe mode, the privileged user can also choose to extend the duration of the safe mode period.
+
+**See the PR**: https://github.com/opentensor/subtensor/pull/553
+
+### Fixed issues
+
+#### Current root members could not become a senate member
+
+The following bug is fixed: Current root members could not become a Senate member upon attaining the requirements after registering on the root network, initially. This is fixed in the below PR.
+
+**See the PR**: https://github.com/opentensor/subtensor/pull/537
+
+#### Subtensor error: Allocator ran out of space
+
+The following bug is fixed: When running a subtensor archive node, the node stops syncing blocks with the below error:
+```bash
+Failed to allocate memory: "Allocator ran out of space"
+```
+
+**See the PR**: https://github.com/opentensor/subtensor/pull/561
 
 ---
 
