@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 25 June 2024
+
+- Advanced release notes for [Testnet 1.2.1-pre-release](./chain-rel-notes.md#testnet-121-pre-release) are published.
+
 ## 21 June 2024
 
 - A new document, [Errors and Troubleshooting](./errors-and-troubleshooting.md) is published.

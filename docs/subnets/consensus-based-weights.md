@@ -39,27 +39,46 @@ Without the consensus-based weights feature, the $\alpha$ in the above equation 
 
 Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet. 
 
-## How to use consensus-based weights
+## Installing the test consensus-based weights feature
+
+The consensus-based weights feature is available only at the below testnet URL and the specified subtensor and bittensor repo branches:
+
+- **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
+- **Subtensor repo**: Make sure to checkout the tag `1.2.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
+- **Bittensor repo and branch**: 
+    1. Make sure you first switch to `rc_7.3.0` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
+    2. Install Bittensor by running the below command:
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.0.1/scripts/install.sh)"
+    ```
+---
+
+## Using the test consensus-based weights feature
+
+### Summary steps
 
 Here are summary steps to use the consensus-based weights feature. These steps are typically executed by a subnet owner:
 
 1. To activate this feature, a subnet owner should set the `liquid_alpha_enabled` (bool) hyperparameter to `True`.
 2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using the two subnet hyperparameters, `alpha_low` (int) and `alpha_high` (int). 
 
-### Default values, allowed ranges and value format
+---
 
-#### Default values
+## Default values, allowed ranges and value format
+
+### Default values
 
 - Default value for `alpha_low` is `0.7`.
 - Default value for `alpha_high` is `0.9`.
+- Default value for `liquid_alpha_enabled` is `False`.
 
-#### Allowed ranges
+### Allowed ranges
 
 - The range for both `alpha_low` and `alpha_high` hyperparameters is `(0,1)`.
 - However, until further notice, the `alpha_high` value must be greater than or equal to `0.8`, and
 - The value of `alpha_low` must not be greater than or equal to `alpha_high`.
 
-#### Value format
+### Value format
 
 When you set the subnet hyperparameters `alpha_low` and `alpha_high`, you must pass their integer equivalents in `u16`. This applies whether you set these hyperparameters using the `btcli` command or in your Python code. These integer values are then converted by the subtensor into their corresponding decimal values in the `u16` format. 
 
@@ -73,7 +92,9 @@ Hence, for example:
 - If you want `alpha_low` to be `0.1`, then you would pass `6554`, which is the rounded up value of `0.1 * 65536`. 
 - If you want `alpha_high` to be `0.8`, then you would pass `52429`, which is the rounded up value of `0.8 * 65536`.
 
-## Using in Python code
+---
+
+## Detailed steps using Python code
 
 ### Method signatures
 
@@ -147,7 +168,7 @@ Below is the example Python code showing how to use the above definitions for th
 
 ---
 
-## Using `btcli`
+## Detailed steps using `btcli`
 
 ### Set the subnet hyperparameters
 
