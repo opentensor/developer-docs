@@ -35,7 +35,7 @@ where $B_{ij}$ is the EMA bond value of the subnet validator $i$ with the subnet
 
 ### What changed with this feature
 
-Without the consensus-based weights feature, the $\alpha$ in the above equation is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence this feature is called **consensus-based weights**.
+Without the consensus-based weights feature, the $\alpha$ in the above equation is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus (YC-2) in a given subnet. Hence this feature is called **consensus-based weights**.
 
 Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet. 
 
