@@ -36,6 +36,16 @@ A new feature, called **Safe Mode**, is added to the subtensor. This feature is 
 
 **See the PR**: https://github.com/opentensor/subtensor/pull/553
 
+#### Added `freeze_layout` attribute macro 
+
+This feature is added to prevent accidental changes to storage structs. An attribute called `freeze_layout` is added to the storage structs and other change-sensitive Rust items. This attribute will take a single argument which is a hash code of the non-trivial (ignoring doc comments) AST nodes that make up the item the attribute is attached to.
+
+**If the hash code is not provided**: A compiler error will be displayed providing the programmer with the proper hash code which they can then paste in.
+
+**If the hash code does not match**: A compiler error will be displayed informing the programmer that they have made a non-trivial or structural change to a storage struct and that they will likely need to write a migration to enact this change. The correct hash code will also be displayed.
+
+**See the PR**: https://github.com/opentensor/subtensor/pull/533
+
 ### Fixed issues
 
 #### Current root members could not become a senate member

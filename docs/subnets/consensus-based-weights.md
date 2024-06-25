@@ -35,7 +35,7 @@ where $B_{ij}$ is the EMA bond value of the subnet validator $i$ with the subnet
 
 ### What changed with this feature
 
-Without the consensus-based weights feature, the $\alpha$ in the above equation is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. 
+Without the consensus-based weights feature, the $\alpha$ in the above equation is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence this feature is called **consensus-based weights**.
 
 Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet. 
 
@@ -60,7 +60,10 @@ The consensus-based weights feature is available only at the below testnet URL a
 Here are summary steps to use the consensus-based weights feature. These steps are typically executed by a subnet owner:
 
 1. To activate this feature, a subnet owner should set the `liquid_alpha_enabled` (bool) hyperparameter to `True`.
-2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using the two subnet hyperparameters, `alpha_low` (int) and `alpha_high` (int). 
+2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using a single subnet hyperparameter, `alpha_values` (List[int]). 
+
+:::danger you must set both low and high alpha values together. See below.
+:::
 
 ---
 
@@ -75,7 +78,7 @@ Here are summary steps to use the consensus-based weights feature. These steps 
 ### Allowed ranges
 
 - The range for both `alpha_low` and `alpha_high` hyperparameters is `(0,1)`.
-- However, until further notice, the `alpha_high` value must be greater than or equal to `0.8`, and
+- However, **until further notice**, the `alpha_high` value must be greater than or equal to `0.8`.
 - The value of `alpha_low` must not be greater than or equal to `alpha_high`.
 
 ### Value format
@@ -111,21 +114,12 @@ import bittensor as bt
         wait_for_inclusion=True,
         wait_for_finalization=True,
     )
-    # Set alpha_low
-    alpha_low_result = bt.subtensor.set_hyperparameter(
+    # Set alpha_values as a list of integers passed to "value" parameter in this order: alpha_low, alpha_high
+    alpha_low_high_result = bt.subtensor.set_hyperparameter(
         wallet=wallet,
         netuid=netuid,
-        parameter="alpha_low",
-        value=value,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Set alpha_high
-    alpha_high_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=netuid,
-        parameter="alpha_high",
-        value=value,
+        parameter="alpha_values",
+        value=[],
         wait_for_inclusion=True,
         wait_for_finalization=True,
     )
@@ -146,25 +140,20 @@ Below is the example Python code showing how to use the above definitions for th
         wait_for_inclusion=True,
         wait_for_finalization=True,
     )
-    # Set alpha_low
-    alpha_low_result = bt.subtensor.set_hyperparameter(
+    # Set alpha low and high values
+    alpha_low_high_result = bt.subtensor.set_hyperparameter(
         wallet=wallet,
         netuid=netuid,
-        parameter="alpha_low",
-        value="6554", # decimal 0.1
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Set alpha_high
-    alpha_high_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=netuid,
-        parameter="alpha_high",
-        value="52429", # decimal 0.8
+        parameter="alpha_values",
+        value=[6554, 52429], # decimal 0.1 for alpha_low and 0.8 for alpha_high
         wait_for_inclusion=True,
         wait_for_finalization=True,
     )
 ```
+
+:::danger you must always set alpha_low and alpha_high together
+You must set the values for both `alpha_low` and `alpha_high` together. Current functionality does not allow setting a value to only one of `alpha_low` or `alpha_high`. For example, if you want to set a new value to `alpha_low` but do not want to change the `alpha_high` value, you must set the new value to `alpha_low` and also set again the current, unchanging value to `alpha_high`. 
+:::
 
 ---
 
@@ -187,19 +176,43 @@ For subnet 1 (`netuid` of `1`):
 ```bash
 btcli sudo set hyperparameters --netuid 1 --param liquid_alpha_enabled --value True
 ```
+or you can also use,
 
-#### 2. Set the `alpha_low` and `alpha_high`
+```bash
+btcli sudo set
+```
+and follow the terminal prompts. 
+
+:::warning alert
+When you use `btcli sudo set` make sure to enter `1` or `0` to enable or disable the `liquid_alpha_enabled` hyperparameter. Do not use `True` or `False`. 
+:::
+
+#### 2. Use the `alpha_values` to set the `alpha_low` and `alpha_high`
+
+**Syntax**
+
+```bash
+btcli sudo set hyperparameters --netuid <NETUID> --param alpha_values --value <value-of-alpha_low, value-of-alpha_high>
+```
 
 **Example**
 
-Setting the value of `alpha_low` to the decimal `0.1` for subnet 1 (`netuid` of `1`):
+Setting the value of `alpha_low` to the decimal `0.1` (integer `6554`) and `alpha_high` to the decimal `0.8` (integer `52429`) for subnet 1 (`netuid` of `1`):
 
 ```bash
-btcli sudo set hyperparameters --netuid 1 --param alpha_low --value 6554
+btcli sudo set hyperparameters --netuid 1 --param alpha_values --value 6554, 52429
 ```
 
-Setting the value of `alpha_high` to the decimal `0.8` for subnet 1 (`netuid` of `1`):
+Now if you want to only change the `alpha_high` value from `0.8` to `0.85` (integer `55706`) then: 
+
+First execute the `btcli sudo set` command and provide the `netuid`. The terminal will display the current values of `alpha_low` and `alpha_high`. 
+
+:::warning alert
+When you use `btcli sudo set` the display will not show `alpha_values` parameter. It will only show `alpha_low` and `alpha_high` parameters.
+:::
+
+Use the current value of `alpha_low` from the above display, and the new desired value of `alpha_high` and set both like below:
 
 ```bash
-btcli sudo set hyperparameters --netuid 1 --param alpha_high --value 52429
+btcli sudo set hyperparameters --netuid 1 --param alpha_values --value 6554, 55706
 ```
