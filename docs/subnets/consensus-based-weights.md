@@ -183,8 +183,8 @@ btcli sudo set
 ```
 and follow the terminal prompts. 
 
-:::warning alert
-When you use `btcli sudo set` make sure to enter `1` or `0` to enable or disable the `liquid_alpha_enabled` hyperparameter. Do not use `True` or `False`. 
+:::info tip
+When you use `btcli sudo set` you can use `1` or `0` to enable or disable the `liquid_alpha_enabled` hyperparameter. You can also use `true` or `True`, or `false` or `False`. 
 :::
 
 #### 2. Use the `alpha_values` to set the `alpha_low` and `alpha_high`
