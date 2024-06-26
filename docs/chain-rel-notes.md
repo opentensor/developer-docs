@@ -6,8 +6,6 @@ title: "Chain Release Notes"
 
 ## Testnet 1.2.1-pre-release 
 
-The below are the advanced release notes. **The testnet 1.2.1-pre-release will be available on 26th June 2024.**
-
 ### New features
 
 #### Consensus-based weights
