@@ -29,7 +29,7 @@ Each subnet has its own incentive mechanism. Subnet developers should design inc
 In machine learning analogy, incentive mechanisms are effectively loss functions that steer the behaviour of subnet miners towards desirable outcomes. Miner earnings are dependent on their loss value, hence the miners are incentivized to act in ways that minimize such loss value. Furthermore, competition between subnet miners will drive the miners to seek optimal strategies within the given subnet incentive landscape.
 :::
 
-A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will enourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
+A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will encourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
 
 ## Subnet owner responsibilities
 
