@@ -6,25 +6,40 @@ import torch
 import time
 import copy
 from multiprocessing.pool import ThreadPool
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 from experiment_setup import ExperimentSetup
 import time
 import os
 import pickle
+import argparse
+
+
+import torch.multiprocessing as mp
+
 
 class WeightCopySimulation:
     def __init__(self, setup = None):
-
         if setup != None:
             self.setup = setup
         else:
-            self.setup = ExperimentSetup()
+            self.get_parse()
+            self.setup = ExperimentSetup(
+                processes=1,
+                result_path=f'./liquid_alpha_results_al{setup.alpha_low:.2f}',
+                netuids = range(self.args.start_netuid, self.args.end_netuid)
+            )
         self.metas = self.get_metagraphs()
+
+    def get_parse(self):
+        parser = argparse.ArgumentParser(description='Process some integers.')
+        parser.add_argument('--start_netuid', type=int, default = 1)
+        parser.add_argument('--end_netuid', type=int, default = 33)
+        self.args = parser.parse_args()
+        print(self.args)
 
     def get_metagraphs(self):
         def load_metagraph(file_name, netuid, block):
             meta = torch.load(file_name)
-            print(f"loaded metagraph | netuid: {netuid} | block: {block}")
             return meta
 
         metas = {}
@@ -98,12 +113,16 @@ class WeightCopySimulation:
                 )
             )
 
-            yuma_result = Yuma2(W_bad, S_bad, B_old=B_old)
+            yuma_result = Yuma2(
+                W_bad, 
+                S_bad, 
+                B_old=B_old, 
+                liquid_alpha= self.setup.liquid_alpha,
+                alpha_low = self.setup.alpha_low,
+                alpha_high = self.setup.alpha_high
+            )
             yuma_results[block] = yuma_result
 
-            print(
-                f"{time.time() - start_time:.2f} | netuid: {netuid} | {i} early yuma"
-            )
             start_time = time.time()
 
         # === Save the stat ===
@@ -119,7 +138,7 @@ class WeightCopySimulation:
         yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
         similarity_file_name = f"{self.setup.result_path}/similarity_netuid{netuid}_conceal{conceal_period}.pt"
         
-        if os.path.isfile(yuma_file_name) and os.path.isfile(similarity_file_name):
+        if os.path.isfile(yuma_file_name): # and os.path.isfile(similarity_file_name):
             return 
         
         yuma_results = {}
@@ -158,12 +177,16 @@ class WeightCopySimulation:
                     yuma_results[early_block]["server_consensus_weight"].view(1, -1),
                 )
             )
-            yuma_result = Yuma2(W_bad.detach().clone(), S_bad.detach().clone(), B_old=B_old)
+            yuma_result = Yuma2(
+                W_bad, 
+                S_bad, 
+                B_old=B_old, 
+                liquid_alpha=self.setup.liquid_alpha,
+                alpha_low = self.setup.alpha_low,
+                alpha_high = self.setup.alpha_high
+            )
             yuma_results[late_block] = yuma_result
 
-            print(
-                f"{time.time() - start_time:.2f} | netuid: {netuid} | conceal: {conceal_period} | {i} late yuma"
-            )
             start_time = time.time()
 
         # === Save the stat ===
@@ -194,14 +217,18 @@ class WeightCopySimulation:
     def run_simulation(self):
         # === Collect all simulations per netuid per conceal period ===
         args = []
+        
         for netuid in self.setup.netuids:
             try:
-                self.base_simulate( netuid, self.metas[netuid])
+                self.base_simulate(netuid, self.metas[netuid])
             except Exception as e:
                 print(e)
+        
         with ThreadPoolExecutor(max_workers=self.setup.processes) as e:
             for netuid in self.setup.netuids:
                 e.submit(self.wrap_simulate, netuid, self.metas[netuid])
 
+
 if __name__ == "__main__":
-    WeightCopySimulation().run_simulation()
+    sim = WeightCopySimulation()
+    sim.run_simulation()
