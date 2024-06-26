@@ -19,7 +19,7 @@ $$
 Until now, the value of $\alpha$ is set to `0.9`. With this new feature, the $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence this feature is called **consensus-based weights**. A subnet owner can now experiment for the optimum value of $\alpha$. See the below documentation links for how to use this feature:
 
 :::note Documentation links for consensus-based-weights feature
-**Detailed documentation and how to test the consensus-based weights feature**: See [Consensus-based Weights](./subnets/consensus-based-weights.md).
+**Detailed documentation and how to test the consensus-based weights feature (including a Python notebook for subnet owners)**: See [Consensus-based Weights](./subnets/consensus-based-weights.md).
 
 **Tech blog post with analysis**: https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b
 
