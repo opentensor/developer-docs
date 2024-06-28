@@ -41,7 +41,7 @@ class ExperimentSetup:
 
     def create_directory(self):
         if not os.path.isdir(self.metagraph_storage_path):
-            os.mkdir(self.metagraph_storage_path)
+            os.makedirs(self.metagraph_storage_path)
 
         if not os.path.isdir(self.result_path):
-            os.mkdir(self.result_path)
+            os.makedirs(self.result_path)
