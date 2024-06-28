@@ -16,15 +16,15 @@ We have not tested subtensor node installation scripts on any cloud service. In 
 
 Install the basic requirements by running the below commands on a Linux terminal.
 
-```bash title="On Linux"
+```bash title="Linux"
 sudo apt-get update 
-sudo apt install build-essential
-sudo apt-get install clang
-sudo apt-get install curl 
-sudo apt-get install git 
-sudo apt-get install make
-sudo apt install --assume-yes git clang curl libssl-dev protobuf-compiler
-sudo apt install --assume-yes git clang curl libssl-dev llvm libudev-dev make protobuf-compiler
+sudo apt install -y build-essential clang curl git make libssl-dev llvm libudev-dev protobuf-compiler
+```
+
+Install the basic requirements by running the below command on macOS.
+
+```bash title="macOS"
+brew install protobuf
 ```
 
 ## Install Rust
@@ -50,31 +50,29 @@ rustup target add --toolchain nightly wasm32-unknown-unknown
 
 Next, to compile the subtensor source code, follow the below steps:
 
-Clone the subtensor repo:
+1. Clone the Subtensor repository:
 
 ```bash
 git clone https://github.com/opentensor/subtensor.git
 ```
-
-`cd` into the subtensor directory:
+2. Change to the Subtensor directory:
 
 ```bash
 cd subtensor
 ```
-
-Make sure you are on the `main` branch. If not, switch to it:
+3. Ensure you are on the `main` branch. If not, switch to it:
 
 ```bash
 git checkout main
 ```
 
-Remove previous chain state:
+4. Remove any previous chain state:
 
 ```bash
 rm -rf /tmp/blockchain 
 ```
 
-Install subtensor by compiling with `cargo`:
+5. Install Subtensor by compiling with Cargo:
 
 ```bash
 cargo build --release --features=runtime-benchmarks
