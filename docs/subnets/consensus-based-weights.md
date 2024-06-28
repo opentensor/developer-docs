@@ -14,11 +14,13 @@ With this feature, the dividends to a subnet validator are better correlated to 
 - Blog post: [Consensus-based Weights](https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b).
 - Subtensor document section: [Validator bonding](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
 
-## Python notebook
+## Collab notebooks
 
-A subnet owner can run the `weight_copy/liquid_alpha_diagnostic.ipynb` in the below Python notebook to experiment and choose the right values for the hyperparameters `alpha_low`, `alpha_high`, `commit_reveal_interval` 
+A subnet owner can run the `weight_copy/liquid_alpha_diagnostic.ipynb` in the below Python notebook to experiment and choose the right values for the hyperparameters `alpha_low`, `alpha_high`, `commit_reveal_interval`.
 
-- [Consensus-based Weights Python notebook](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
+- For commit reveal diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/commit_reveal_diagnostic.ipynb?authuser=5
+- For liquid alpha diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/liquid_alpha_diagnostic.ipynb?authuser=5
+- [GitHub directory with Python notebooks](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
 
 ## Description
 
