@@ -16,19 +16,19 @@ If you are already running a subtensor node using Docker, then go directly to [S
 
 ## Step 1: Install git
 
-Make sure you installed `git` on your machine. See [GitHub docs](https://docs.github.com/en/get-started).
+Ensure that `git` is installed on your machine. Refer to the [GitHub documentation](https://docs.github.com/en/get-started) for installation instructions..
 
 ## Step 2: Install Docker
 
 Follow Docker's [official installation guides](https://docs.docker.com/engine/install/) and install Docker.
 
 :::tip Run Docker first
-Before you proceed, make sure that Docker is running.
+Before proceeding, make sure that Docker is running.
 :::
 
 ## Step 3: Clone the subtensor repo
 
-Clone the subtensor repo:
+Clone the subtensor repository:
 
 ```bash
 git clone https://github.com/opentensor/subtensor.git
@@ -36,7 +36,7 @@ git clone https://github.com/opentensor/subtensor.git
 
 ## Step 4: Go into subtensor directory
 
-Then `cd` into the subtensor directory:
+Navigate into the Subtensor directory:
 
 ```bash
 cd subtensor
@@ -46,7 +46,7 @@ cd subtensor
 
 Execute the below three commands in this order:
 
-Make sure you are on the `main` branch. If not, switch to it:
+Ensure you are on the `main` branch. If not, switch to it:
 
 ```bash
 git checkout main
@@ -58,40 +58,40 @@ Pull the latest `main` branch contents:
 git pull
 ```
 
-Stop the currently running Docker containers:
+Stop any currently running Docker containers:
 
 ```bash
 docker compose down --volumes
 ```
 
-## Run a lite node on mainchain
+## Run a Lite Node on Mainchain
 
-To run a lite node connected to the Bittensor mainchain, run the below command.
+To run a lite node connected to the Bittensor mainchain, execute the below command.
 
 ```bash
-sudo ./scripts/run/subtensor.sh -e docker --network mainnet --node-type lite
+./scripts/run/subtensor.sh -e docker --network mainnet --node-type lite
 ```
 
-## Run an archive node on mainchain
+## Run an Archive Node on Mainchain
 
-To run an archive node connected to the Bittensor mainchain, run the below command.
+To run an archive node connected to the Bittensor mainchain, execute the below command.
 
 ```bash
-sudo ./scripts/run/subtensor.sh -e docker --network mainnet --node-type archive
+./scripts/run/subtensor.sh -e docker --network mainnet --node-type archive
 ```
 
-## Run a lite node on testchain
+## Run a Lite Node on Testchain
 
-To run a lite node connected to the Bittensor testchain, run the below command.
+To run a lite node connected to the Bittensor testchain, execute the below command.
 
 ```bash
-sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type lite
+./scripts/run/subtensor.sh -e docker --network testnet --node-type lite
 ```
 
-## Run an archive node on testchain
+## Run an Archive Node on Testchain
 
-To run an archive node connected to the Bittensor testchain, run the below command.
+To run an archive node connected to the Bittensor testchain, execute the below command.
 
 ```bash
-sudo ./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
+./scripts/run/subtensor.sh -e docker --network testnet --node-type archive
 ```
