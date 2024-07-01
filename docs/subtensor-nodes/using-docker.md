@@ -63,6 +63,14 @@ Stop any currently running Docker containers:
 ```bash
 docker compose down --volumes
 ```
+## Linux post-installation steps for Docker Engine
+
+Please follow Docker's [official documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user ) to perform standard Linux post-installation steps for Docker Engine
+
+:::tip 
+Adding a user to the `docker` group is only necessary on Linux, where `sudo` privileges are required to run Docker commands. It is unnecessary on macOS.
+:::
+
 
 ## Run a Lite Node on Mainchain
 
