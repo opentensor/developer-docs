@@ -10,7 +10,7 @@ With this feature, the dividends to a subnet validator are better correlated to 
 
 ## Technical paper, blog
 
-- See [Amplifying the Weight-copying Penalty in Bittensor, a working paper (PDF)](pathname:///papers/BT-Consensus-based-Weights-26June2024.pdf).
+- See [Amplifying the Weight-copying Penalty in Bittensor, a working paper (PDF)](pathname:///papers/BT-Consensus-based-Weights.pdf).
 - Blog post: [Consensus-based Weights](https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b).
 - Subtensor document section: [Validator bonding](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
 
