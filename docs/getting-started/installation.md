@@ -14,23 +14,14 @@ If you already installed Bittensor, make sure you upgrade to the latest version.
 python3 -m pip install --upgrade bittensor
 ```
 
-or
-```bash
-python -m pip install --upgrade bittensor
-```
-
 ## Install on macOS and Linux
 
-:::tip For macOS on Apple silicon
-For Apple Silicon see the below [Installing on Apple Silicon](#installing-on-apple-silicon) section. 
-:::
-
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
-- Using a Bash command.
-- Using `pip3 install`.
-- From source.
+- [Install Using a Bash command](#install-using-a-bash-command).
+- [Install Using "pip3 install"](#install-using-pip3-install)
+- [Install From source](#install-from-source)
 
-### Using a Bash command
+### Install Using a Bash command
 
 This is the most straightforward method. It is recommended for a beginner as it will pre-install requirements like Python, if they are not already present on your machine. Copy and paste the following `bash` command into your terminal:
 
@@ -38,57 +29,37 @@ This is the most straightforward method. It is recommended for a beginner as it 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
 ```
 
-### Using `pip3 install`
+### Install Using "pip3 install"
 
 ```bash
 pip3 install bittensor
 ```
 
-### From source
+### Install from Source
 
 1. Clone the Bittensor repo.
 
-    ```bash
-    git clone https://github.com/opentensor/bittensor.git
-    ```
-2. Install with `python3`
+```bash
+git clone https://github.com/opentensor/bittensor.git
+```
+2.  Change to the Bittensor directory:
 
-    ```bash
-    python3 -m pip install -e bittensor/
-    ```
+```bash
+cd bittensor
+```
+3. Install with `python3`
 
-### Installing on Apple Silicon
+```bash
+python3 -m pip install -e bittensor/
+```
 
-To install Bittensor on Apple M1 or M2, we recommend you first activate a Python virtual environment. Follow the below steps:
+#### Create and Activate a Virtual Environment
 
-#### Activate a virtual environment
+1. Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 
-1. Install `conda` on macOS. Follow [this guide on conda.io](https://conda.io/projects/conda/en/latest/user-guide/install/macos.html).
-2. Download the `apple_m1_environment.yml` configuration file from Bittensor. 
-   - [Click to visit the file](https://github.com/opentensor/bittensor/blob/master/scripts/environments/apple_m1_environment.yml).
-   - Click on the `Raw` button at the top right and save the raw file on your local machine.
-  
-3. Create the `conda` environment using the `apple_m1_environment.yml` file you just downloaded:
-    ```bash
-    conda env create -f apple_m1_environment.yml
-    ```
-
-4. Activate the new environment: 
-   ```bash
-   conda activate bittensor
-   ```
-
-5. Install `shtab`:
-   ```bash
-   conda install -c anaconda shtab
-   ```
+2. Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
    
-6. Verify that the new environment was installed correctly:
-   
-   ```bash
-   conda env list
-   ```
-7. Next, install Bittensor as shown below.
+Next, install Bittensor as shown below.
 
 #### Install Bittensor
 
@@ -124,9 +95,7 @@ which will give you the below output:
 
 ```text
 usage: btcli <command> <command args>
-
 bittensor cli <version number>
-
 positional arguments:
 ...
 ```
@@ -141,7 +110,7 @@ You will see the version number you installed in place of `<version number>`.
     ```
 2. Enter the following two lines in the Python interpreter.
    
-   ```python
+    ```python
     import bittensor as bt
     print( bt.__version__ )
     ```
@@ -160,9 +129,9 @@ You will see the version number you installed in place of `<version number>`.
 You can also verify the Bittensor installation by listing the axon information for the neurons. Enter the following lines in the Python interpreter.
 
 ```python
->>> import bittensor as bt
->>> metagraph = bt.metagraph(1)
->>> metagraph.axons[:10]
+import bittensor as bt
+metagraph = bt.metagraph(1)
+metagraph.axons[:10]
 ```
 The Python interpreter output will look like below.
 
