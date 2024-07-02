@@ -9,6 +9,14 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 02 July 2024
+
+- Subtensor node installation instructions are updated in the following docs:
+  - [Using Source](./subtensor-nodes/using-source).
+  - [Using Docker](./subtensor-nodes/using-docker).
+
+- The [Install Bittensor](./getting-started/installation) doc is updated.
+
 ## 26 June 2024
 
 - Release notes for [Testnet 1.2.1-pre-release](./chain-rel-notes.md#testnet-121-pre-release) are published.
