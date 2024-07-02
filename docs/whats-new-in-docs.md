@@ -9,6 +9,11 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 11 July 2024
+
+- Release notes for [Mainnet 1.2.3](./chain-rel-notes#mainnet-123) are published.
+- Release notes for [Bittensor 7.3.0](./bittensor-rel-notes#release-730) are published.
+
 ## 05 July 2024
 
 - A new doc for [Schedule Key Swap](./schedule-key-swap) is published.
@@ -20,6 +25,7 @@ Key updates to this documentation.
   - [Using Docker](./subtensor-nodes/using-docker).
 
 - The [Install Bittensor](./getting-started/installation) doc is updated.
+
 
 ## 26 June 2024
 

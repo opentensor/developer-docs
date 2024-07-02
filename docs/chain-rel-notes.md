@@ -4,6 +4,22 @@ title: "Chain Release Notes"
 
 # Chain Release Notes
 
+The following are the release notes for the subtensor on-chain software.
+
+## Mainnet 1.2.3 
+
+- All the items described in the below [Testnet 1.2.1-pre-release](#testnet-121-pre-release) are now available in the mainnet.
+
+## Mainnet 1.1.3 hotfix 
+
+### Fixed issue 
+
+A bug is fixed where, when a subnet's registration is turned off, the chain was not running the epoch for that subnet. The hotfix fixed this bug by running the epoch for the subnet and setting the emissions to zero, for that subnet. 
+
+- [Subtensor hotfix release tag](https://github.com/opentensor/subtensor/releases/tag/v1.1.3)
+
+- [Hotfix PR](https://github.com/opentensor/subtensor/pull/602)
+
 ## Testnet 1.2.1-pre-release 
 
 ### New features
