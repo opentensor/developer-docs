@@ -8,10 +8,19 @@ This guide describes how to use the **consensus-based weights** feature (also ca
 
 With this feature, the dividends to a subnet validator are better correlated to the performance of the subnet miner on which the subnet validator is setting the weights. In this context, see also the documentation for the [Commit Reveal](./commit-reveal.md) feature, as both these features help the subnet validators in finding new subnet miners that perform well and bonding to them quickly. 
 
-## Technical blog
+## Technical paper, blog
 
+- See [Amplifying the Weight-copying Penalty in Bittensor, a working paper (PDF)](pathname:///papers/BT-Consensus-based-Weights.pdf).
 - Blog post: [Consensus-based Weights](https://blog.bittensor.com/consensus-based-weights-1c5bbb4e029b).
 - Subtensor document section: [Validator bonding](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding).
+
+## Collab notebooks
+
+A subnet owner can run the `weight_copy/liquid_alpha_diagnostic.ipynb` in the below Python notebook to experiment and choose the right values for the hyperparameters `alpha_low`, `alpha_high`, `commit_reveal_interval`.
+
+- For commit reveal diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/commit_reveal_diagnostic.ipynb?authuser=5
+- For liquid alpha diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/liquid_alpha_diagnostic.ipynb?authuser=5
+- [GitHub directory with Python notebooks](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
 
 ## Description
 
@@ -46,10 +55,11 @@ The consensus-based weights feature is available only at the below testnet URL a
 - **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
 - **Subtensor repo**: Make sure to checkout the tag `1.2.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
 - **Bittensor repo and branch**: 
-    1. Make sure you first switch to `rc_7.3.0` branch on the Bittensor repo `https://github.com/opentensor/bittensor`
-    2. Install Bittensor by running the below command:
+    1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
+    2. Next, switch to `rc_7.3.0` branch. 
+    3. Then install Bittensor by running the below command:
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.0.1/scripts/install.sh)"
+    pip install -e .
     ```
 ---
 

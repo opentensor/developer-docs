@@ -14,7 +14,13 @@ This feature is available in Bittensor 7.0.1 and later versions. Make sure you u
 
 - See [Weight Copying in Bittensor, a technical paper (PDF)](pathname:///papers/BT_Weight_Copier-29May2024.pdf).
 - Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
-- Also go to the GitHub repo directory for the [Python notebook](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
+
+## Collab notebooks
+
+A subnet owner can run the below Python notebook to experiment and choose the right values for the hyperparameter `commit_reveal_interval`.
+
+- For commit reveal diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/commit_reveal_diagnostic.ipynb?authuser=5
+- [GitHub directory with Python notebooks](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
 
 ## Description
 

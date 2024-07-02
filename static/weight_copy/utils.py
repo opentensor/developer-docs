@@ -5,6 +5,7 @@ import pandas as pd
 import random
 import time
 import pickle
+import math
 
 
 def init_weight(n_validators, n_miners, std=0.06):
@@ -215,7 +216,7 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
     return similarity, div_lost
 
 
-def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.9):
+def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.1, liquid_alpha = False, alpha_high = 0.9, alpha_low = 0.7, precision = 100000, override_consensus_high = None, override_consensus_low = None):
     # === Weight === 
     W = (W.T / (W.sum(dim=1) +  1e-6)).T
     
@@ -227,13 +228,21 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.9):
 
     # === Consensus ===
     C = torch.zeros(W.shape[1])
-    for c in np.arange(0, 1, 0.0001):
-        _W = W.detach().clone()
-        _W[_W < c] = 0
-        _W[_W >= c] = 1
-        _C = S.view(-1, 1) * _W
-        _C_sum = _C.sum(dim=0)
-        C[_C_sum >= kappa] = c
+
+    for i, miner_weight in enumerate(W.T):
+        c_high = 1
+        c_low = 0
+        
+        while (c_high - c_low) > 1/precision:
+            c_mid = (c_high + c_low) / 2
+
+            _c_sum = (miner_weight > c_mid) * S
+            if sum(_c_sum) > kappa:
+                c_low = c_mid
+            else:
+                c_high = c_mid
+
+        C[i] = c_high
 
     C = (C / C.sum() * 65535).int() / 65535
 
@@ -254,6 +263,26 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.9):
     W_b = (1 - bond_penalty) * W + bond_penalty * W_clipped
     B = S.view(-1, 1) * W_b / (S.view(-1, 1) * W_b).sum(dim=0)
     B = B.nan_to_num(0)
+
+    a = b = None
+    if liquid_alpha:
+        if override_consensus_high == None:
+            consensus_high = C.quantile(0.75)
+        else:
+            consensus_high = override_consensus_high 
+        
+        if override_consensus_low == None:
+            consensus_low = C.quantile(0.25)
+        else:
+            consensus_low = override_consensus_low 
+
+        if consensus_high == consensus_low:
+            consensus_high = C.quantile(0.99)
+        a = (math.log(1/alpha_high - 1) - math.log(1/ alpha_low - 1) ) / (consensus_low - consensus_high) 
+        b = math.log(1/ alpha_low - 1) + a * consensus_low 
+        alpha = 1 / (1 + math.e **(-a *C + b)) # alpha to the old weight
+        bond_alpha = 1 - torch.clip(alpha, alpha_low, alpha_high)
+
     if B_old != None:
         B_ema = bond_alpha * B + (1 - bond_alpha) * B_old
     else:
@@ -278,4 +307,7 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.9):
         "validator_ema_bond": B_ema,
         "validator_reward": D,
         "validator_reward_normalized": D_normalized,
+        "bond_alpha": bond_alpha,
+        "alpha_a": a,
+        "alpha_b": b
     }

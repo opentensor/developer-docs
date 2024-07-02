@@ -6,7 +6,6 @@ from experiment_setup import ExperimentSetup
 
 def download_metagraph(netuid, block, file_name):
     if os.path.isfile(file_name):
-        print(netuid, block, file_name, " | file already exist!")
         return
     else:
         print(netuid, block, file_name, " | downloading...")
