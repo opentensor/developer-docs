@@ -48,22 +48,13 @@ Without the consensus-based weights feature, the $\alpha$ in the above equation 
 
 Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet. 
 
-## Installing the test consensus-based weights feature
+## Installing the consensus-based weights feature
 
-The consensus-based weights feature is available only at the below testnet URL and the specified subtensor and bittensor repo branches:
+The consensus-based weights feature is available in Bittensor 7.3.0 and later versions. Make sure you update to `7.3.0` version to use this feature. 
 
-- **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
-- **Subtensor repo**: Make sure to checkout the tag `1.2.1-pre-release` on the Subtensor repo `https://github.com/opentensor/subtensor`.
-- **Bittensor repo and branch**: 
-    1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
-    2. Next, switch to `rc_7.3.0` branch. 
-    3. Then install Bittensor by running the below command:
-    ```bash
-    pip install -e .
-    ```
 ---
 
-## Using the test consensus-based weights feature
+## Using test consensus-based weights feature
 
 ### Summary steps
 

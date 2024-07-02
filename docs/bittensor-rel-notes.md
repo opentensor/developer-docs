@@ -4,7 +4,13 @@ title: "Bittensor Release Notes"
 
 # Bittensor Release Notes
 
-The following are the release notes for the Bittensor software:
+The following are the release notes for the Bittensor software.
+
+## Release 7.3.0
+
+### New features and enhancements
+
+- With this version, the [Consensus-based weights](./subnets/consensus-based-weights.md) feature is now available in the `master` branch. This feature was available only in the `rc_7.3.0` branch of the `bittensor` repo until now. 
 
 ## 12 June 2024: Release 7.2.0
 
