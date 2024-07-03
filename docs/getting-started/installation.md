@@ -17,11 +17,11 @@ python3 -m pip install --upgrade bittensor
 ## Install on macOS and Linux
 
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
-- [Install Using a Bash command](#install-using-a-bash-command).
-- [Install Using "pip3 install"](#install-using-pip3-install)
-- [Install From source](#install-from-source)
+- [Install using a Bash command](#install-using-a-bash-command).
+- [Install using `pip3 install`](#install-using-pip3-install)
+- [Install from source](#install-from-source)
 
-### Install Using a Bash command
+### Install using a Bash command
 
 This is the most straightforward method. It is recommended for a beginner as it will pre-install requirements like Python, if they are not already present on your machine. Copy and paste the following `bash` command into your terminal:
 
@@ -29,13 +29,13 @@ This is the most straightforward method. It is recommended for a beginner as it 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
 ```
 
-### Install Using "pip3 install"
+### Install using `pip3 install`
 
 ```bash
 pip3 install bittensor
 ```
 
-### Install from Source
+### Install from source
 
 1. Clone the Bittensor repo.
 
@@ -53,7 +53,7 @@ cd bittensor
 python3 -m pip install -e bittensor/
 ```
 
-#### Create and Activate a Virtual Environment
+#### Create and activate a virtual environment
 
 1. Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 
