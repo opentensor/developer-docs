@@ -47,7 +47,7 @@ Follow the [WRITING STYLE GUIDE](./WRITING-STYLE-GUIDE.md) and stick to those wr
 ### Build static html
 
 ```
-$ yarn build
+yarn build
 ```
 
 This command generates static content, including all the static html files and assets, into the `build` directory. You can then serve this `build` directory using any static hosting service.
