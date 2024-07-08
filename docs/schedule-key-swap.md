@@ -58,12 +58,12 @@ If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub 
 
 ## Installing the schedule coldkey swap feature
 
+:::tip Currently this feature is available on testnet only
+:::
+
 The schedule coldkey swap feature is available only at the below specified subtensor and bittensor repo branches and the testnet URL:
 
 - **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
-- **Subtensor repo and branch**: 
-    1. First make sure you do `git pull master` to pull the latest changes from the Subtensor repo.
-    2. Next, checkout the branch `arbitrage_coldkeys`.
 
 - **Bittensor repo and branch**: 
     1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
@@ -92,21 +92,28 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 
 - This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72-hours from the time this command is run. 
 - The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
-- This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey to initiate a coldkey swap to your new coldkey.**
+- This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
 
-:::danger Do not run more than once using a same coldkey
-
-**We highly recommend that you run this command only once for each distinct pair of** (**old** coldkey, **new** coldkey).
-
-**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine the exact coldkey pair on which the swap will occur. See [Arbitration](#arbitration).
+:::danger Do not run this command more than once using a same coldkey
 :::
 
 ### Example
 
-NOTE TO SELF: Fill this section with actual example terminal log.
+```bash
+btcli wallet schedule_coldkey_swap --subtensor.network=test
+```
+
+Sample output:
 
 ```bash
-btcli wallet schedule_coldkey_swap 
+btcli wallet schedule_coldkey_swap --subtensor.network=test
+Enter wallet name (default): 
+Enter new coldkey SS58 address: 5HM...Srw
+⚠If you call this on the same key multiple times, the key will enter arbitration.
+Enter password to unlock key: 
+Good news. There has been no previous key swap initiated for your coldkey swap.
+Do you want to schedule a coldkey swap to: 5HM..Srw? [y/n]: y
+Successfully scheduled coldkey swap.
 ```
 
 ### For help
