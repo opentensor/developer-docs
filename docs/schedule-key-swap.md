@@ -94,7 +94,11 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 - This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72-hours from the time this command is run. 
 - The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
 - This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey to initiate a coldkey swap to your new coldkey.**
-- **Do not run this command twice using the same old coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. 
+
+:::danger Do not run using a same coldkey
+
+**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. **We highly recommend that you run this command only once for each distinct pair of (old coldkey, new coldkey).** 
+:::
 
 ### Example
 
