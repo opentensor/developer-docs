@@ -31,28 +31,28 @@ You may not need to use this feature. Do not use this feature if any of the foll
   - The Bittensor Wallet (for Chrome or iOS)
   - SafeWallet, Talisman, Polkadot Vault, Tensor Wallet, Nova Wallet, polkadot.js
   - Websites that utilize polkadot.js such as Taostats.io for staking unstaking
-  - You hold your TAO on exchanges, then your funds are safe. 
+- If you hold your TAO only on exchanges, then your funds are safe. 
+- If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub source, then do not use this feature. **Only the PyPi package of Bittensor 6.12.2 is malicious.**
 
 ### Use this feature only if 
 
 Use this feature ONLY: 
 
-- If you downloaded the Bittensor PyPi package between May 22 7:14 PM UTC and May 29 6:47 PM UTC and then performed any of the below operations.
-Those who used Bittensor==6.12.2 and then performed any of the below operations.
+- If you downloaded the Bittensor PyPi package for the Bittensor version 6.12.2 between May 22 7:14 PM UTC and May 29 6:47 PM UTC and then performed any of the below operations.
 
-#### Impacted btcli operations 
+  **Impacted btcli 6.12.2 operations**
 
-```bash
-btcli stake add
-btcli stake remove
-btcli wallet transfer
-btcli root delegate
-btcli root undelegate
-btcli root set_take
-btcli subnet register
-```
+  ```bash
+  btcli stake add
+  btcli stake remove
+  btcli wallet transfer
+  btcli root delegate
+  btcli root undelegate
+  btcli root set_take
+  btcli subnet register
+  ```
 
-:::important
+:::important reminder
 If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub source, then do not use this feature. Only the PyPi package of Bittensor 6.12.2 is malicious.
 :::
 
