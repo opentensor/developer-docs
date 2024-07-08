@@ -8,9 +8,9 @@ This guide describes how to use the schedule coldkey swap feature. Use this feat
 
 If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet opens.
 
-:::tip Mainnet opening schedule
+:::tip Window to use this schedule coldkey swap feature
 
-The Bittensor mainnet opens fully to normal operations on Thursday July 11, 2 PM US Eastern. You can use this schedule cold key swap feature **only between the window** starting Monday July 8, 2 PM US Eastern and ending when the mainnet opens fully on Thursday July 11, 2 PM US Eastern.
+You can use this schedule cold key swap feature **only in the window** starting Monday July 8, 5 PM US Eastern and ending when the mainnet opens fully on Thursday July 11, 5 PM US Eastern.
 :::
 
 ## Description
@@ -19,7 +19,7 @@ The schedule coldkey swap feature works like this:
 
 - The schedule coldkey swap feature enables you to only schedule the actual swapping of your TAO funds from your old potentially compromised coldkey to a new coldkey. 
 - When you use this feature, it will not actually swap your TAO funds. It will only schedule the swap event. 
-- All scheduled coldkey swaps will be executed on-chain when the mainnet opens for normal operations on Thursday July 11, 2 PM US Eastern.
+- All scheduled coldkey swaps will be executed on-chain when the mainnet opens for normal operations on Thursday July 11, 5 PM US Eastern.
 
 ## Do not use this feature if
 
@@ -38,7 +38,7 @@ You may not need to use this feature. Do not use this feature if any of the foll
 
 Use this feature ONLY: 
 
-- If you downloaded the Bittensor PyPi package for the Bittensor version 6.12.2 between May 22 7:14 PM UTC and May 29 6:47 PM UTC and then performed any of the below operations.
+- If you downloaded the Bittensor PyPi package for the Bittensor version 6.12.2 and then performed any of the below operations.
 
   **Impacted btcli 6.12.2 operations**
 
@@ -99,7 +99,7 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 
 **We highly recommend that you run this command only once for each distinct pair of** (**old** coldkey, **new** coldkey).
 
-**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. 
+**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine the exact coldkey pair on which the swap will occur. See [Arbitration](#arbitration).
 :::
 
 ### Example
@@ -116,3 +116,7 @@ For help description, run:
 ```bash
 btcli wallet schedule_coldkey_swap --help
 ```
+
+## Arbitration
+
+When multiple coldkey swaps, involving either the same old coldkey or the same new coldkey, are scheduled, then the swap will not be performed when the mainnet opens. Instead, the swap enters an arbitration stage where the Senate votes to determine which coldkey swap should occur. 
