@@ -66,12 +66,16 @@ The schedule coldkey swap feature is available only at the below specified subte
 - **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
 
 - **Bittensor repo and branch**: 
-    1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
-    2. Next, switch to branch `feat/arbitrage-coldkeys`. 
-    3. Then install Bittensor by running the below command:
+    1. First make sure you use a virtual environment. 
+    2. Then install the `feat/arbitrage-coldkeys` branch of the Bittensor repo by running the below command:
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
     ```
+    3. Test if you installed the schedule coldkey swap feature by running the below command:
+    ```bash
+    btcli wallet --help
+    ```
+    which should show `schedule_coldkey_swap` as one of the positional arguments.
 ---
 
 ## Detailed steps using `btcli`
