@@ -4,7 +4,7 @@ title: "Schedule Key Swap"
 
 # Schedule Key Swap
 
-This guide describes how to use the schedule coldkey swap feature. Use this feature only if you believe your wallet is impacted by the hacker attack on July 2nd, as described in [Bittensor Community Update — July 3, 2024](https://blog.bittensor.com/bittnesor-community-update-july-3-2024-45661b1d542d). This feature helps you to schedule your funds transfer from an at-risk wallet to a new secure wallet. 
+This guide describes how to use the schedule coldkey swap feature. If you have a reason to believe that your wallet is at-risk as a result of July 2nd attack, as described in [Bittensor Community Update — July 3, 2024](https://blog.bittensor.com/bittnesor-community-update-july-3-2024-45661b1d542d), we strongly recommend that you use this feature to transfer your funds to a secure wallet. This feature schedules your funds transfer from an at-risk wallet to a new secure wallet. 
 
 If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet opens.
 
