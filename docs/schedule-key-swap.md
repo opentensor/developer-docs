@@ -97,7 +97,9 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 
 :::danger Do not run using a same coldkey
 
-**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. **We highly recommend that you run this command only once for each distinct pair of (old coldkey, new coldkey).** 
+**We highly recommend that you run this command only once for each distinct pair of** (**old** coldkey, **new** coldkey).
+
+**Do not run this command more than once using either the same old coldkey or the same new coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. 
 :::
 
 ### Example
