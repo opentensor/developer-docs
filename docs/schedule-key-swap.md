@@ -1,0 +1,112 @@
+---
+title: "Schedule Key Swap"
+---
+
+# Schedule Key Swap
+
+This guide describes how to use the schedule coldkey swap feature. Use this feature only if you believe your wallet is impacted by the hacker attack on July 2nd, as described in [Bittensor Community Update — July 3, 2024](https://blog.bittensor.com/bittnesor-community-update-july-3-2024-45661b1d542d). This feature helps you to schedule your funds transfer from an at-risk wallet to a new secure wallet. 
+
+If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet opens.
+
+:::tip Mainnet opening schedule
+
+The Bittensor mainnet opens fully to normal operations on Thursday July 11, 2 PM US Eastern. You can use this schedule cold key swap feature **only between the window** starting Monday July 8, 2 PM US Eastern and ending when the mainnet opens fully on Thursday July 11, 2 PM US Eastern.
+:::
+
+## Description
+
+The schedule coldkey swap feature works like this:
+
+- The schedule coldkey swap feature enables you to only schedule the actual swapping of your TAO funds from your old potentially compromised coldkey to a new coldkey. 
+- When you use this feature, it will not actually swap your TAO funds. It will only schedule the swap event. 
+- All scheduled coldkey swaps will be executed on-chain when the mainnet opens for normal operations on Thursday July 11, 2 PM US Eastern.
+
+## Do not use this feature if
+
+You may not need to use this feature. Do not use this feature if any of the following are true for you:
+
+- If you never used `btcli`, regardless of the Bittensor version, then do not use this feature. Your funds are safe. 
+- If you never used Bittensor version 6.12.2, then do not use this feature. Your funds are safe. 
+- If you only used any wallet browser extension or only a wallet application such as below, then your funds are safe:
+  - The Bittensor Wallet (for Chrome or iOS)
+  - SafeWallet, Talisman, Polkadot Vault, Tensor Wallet, Nova Wallet, polkadot.js
+  - Websites that utilize polkadot.js such as Taostats.io for staking unstaking
+  - You hold your TAO on exchanges, then your funds are safe. 
+
+### Use this feature only if 
+
+Use this feature ONLY: 
+
+- If you downloaded the Bittensor PyPi package between May 22 7:14 PM UTC and May 29 6:47 PM UTC and then performed any of the below operations.
+Those who used Bittensor==6.12.2 and then performed any of the below operations.
+
+#### Impacted btcli operations 
+
+```bash
+btcli stake add
+btcli stake remove
+btcli wallet transfer
+btcli root delegate
+btcli root undelegate
+btcli root set_take
+btcli subnet register
+```
+
+:::important
+If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub source, then do not use this feature. Only the PyPi package of Bittensor 6.12.2 is malicious.
+:::
+
+## Installing the schedule coldkey swap feature
+
+The schedule coldkey swap feature is available only at the below specified subtensor and bittensor repo branches:
+
+- **Subtensor repo**: Make sure to checkout the tag `specify release tag` on the Subtensor repo `https://github.com/opentensor/subtensor`.
+- **Bittensor repo and branch**: 
+    1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
+    2. Next, switch to `release/7.3.0` branch. 
+    3. Then install Bittensor by running the below command:
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.3.0/scripts/install.sh)"
+    ```
+    4. Confirm that you have the correct Bittensor version installed by running the below command: 
+    ```bash
+    btcli --help
+    ```
+    You should see the version `7.3.0` in the output.
+---
+
+## Detailed steps using `btcli`
+
+### Syntax
+
+```bash
+btcli wallet schedule_coldkey_swap [--new_coldkey <new_coldkey_ss58_address>]
+```
+This command is used to **schedule** a swap your coldkey to a new coldkey. You must specify the new coldkey address. You must first separately create a new coldkey before using it in this command. 
+
+- To create a new coldkey, see [Creating a coldkey using `btcli`](./getting-started/wallets.md#creating-a-coldkey-using-btcli).
+- To see the SS58 address of your coldkey, see [Listing all the local wallets](https://docs.bittensor.com/getting-started/wallets#listing-all-the-local-wallets).
+
+The command checks for the validity of the new coldkey and prompts for confirmation before proceeding with the scheduling process.
+
+### Important 
+
+- This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72-hours from the time this command is run. 
+- The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
+- This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey to initiate a coldkey swap to your new coldkey.**
+- **Do not run this command twice using the same old coldkey.** If you do so, then your old coldkey goes into arbitration to determine on which key the swap will occur. 
+
+### Example
+
+NOTE TO SELF: Fill this section with actual example terminal log.
+
+```bash
+btcli wallet schedule_coldkey_swap 
+```
+
+### For help
+
+For help description, run:
+```bash
+btcli wallet schedule_coldkey_swap --help
+```
