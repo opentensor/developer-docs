@@ -19,7 +19,7 @@ The schedule coldkey swap feature works like this:
 
 - The schedule coldkey swap feature enables you to only schedule the actual swapping of your TAO funds from your old potentially compromised coldkey to a new coldkey. 
 - When you use this feature, it will not actually swap your TAO funds. It will only schedule the swap event. 
-- All scheduled coldkey swaps will be executed on-chain when the mainnet opens for normal operations on Thursday July 11, 5 PM US Eastern.
+- All scheduled coldkey swaps will be executed on-chain when the mainnet opens for normal operations.
 
 ## Do not use this feature if
 
