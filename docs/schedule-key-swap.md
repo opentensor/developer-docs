@@ -58,21 +58,20 @@ If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub 
 
 ## Installing the schedule coldkey swap feature
 
-The schedule coldkey swap feature is available only at the below specified subtensor and bittensor repo branches:
+The schedule coldkey swap feature is available only at the below specified subtensor and bittensor repo branches and the testnet URL:
 
-- **Subtensor repo**: Make sure to checkout the tag `specify release tag` on the Subtensor repo `https://github.com/opentensor/subtensor`.
+- **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
+- **Subtensor repo and branch**: 
+    1. First make sure you do `git pull master` to pull the latest changes from the Subtensor repo.
+    2. Next, checkout the branch `arbitrage_coldkeys`.
+
 - **Bittensor repo and branch**: 
     1. First make sure you do `git pull master` to pull the latest changes from the Bittensor repo `https://github.com/opentensor/bittensor`. 
-    2. Next, switch to `release/7.3.0` branch. 
+    2. Next, switch to branch `feat/arbitrage-coldkeys`. 
     3. Then install Bittensor by running the below command:
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/release/7.3.0/scripts/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
     ```
-    4. Confirm that you have the correct Bittensor version installed by running the below command: 
-    ```bash
-    btcli --help
-    ```
-    You should see the version `7.3.0` in the output.
 ---
 
 ## Detailed steps using `btcli`
