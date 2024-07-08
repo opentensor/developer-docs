@@ -95,7 +95,7 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 - The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
 - This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey to initiate a coldkey swap to your new coldkey.**
 
-:::danger Do not run using a same coldkey
+:::danger Do not run more than once using a same coldkey
 
 **We highly recommend that you run this command only once for each distinct pair of** (**old** coldkey, **new** coldkey).
 
