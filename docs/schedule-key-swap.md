@@ -96,9 +96,6 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 - **For subnet owners**: You do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
 - **For validators**: If you have 500 TAO or more delegated then you do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
 - **For subnet owners**: Any subnet ownership from your old coldkey will move over to the new coldkey.
-<!-- 
-- All hotkeys ownership will be moved to the new coldkey.
--->
 - Delegated stake will transfer from your old coldkey to the new coldkey.
 - For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
 
