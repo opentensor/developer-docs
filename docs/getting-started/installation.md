@@ -66,7 +66,7 @@ Next, install Bittensor as shown below.
 Run the below command to install Bittensor in the above virtual environment.
 
 ```python
-pip3 install bittensor --no-deps
+pip3 install bittensor
 ```
 
 ## Install on Windows
