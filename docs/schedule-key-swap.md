@@ -6,12 +6,8 @@ title: "Schedule Key Swap"
 
 This guide describes how to use the schedule coldkey swap feature. If you have a reason to believe that your wallet is at-risk as a result of July 2nd attack, as described in [Bittensor Community Update — July 3, 2024](https://blog.bittensor.com/bittnesor-community-update-july-3-2024-45661b1d542d), we strongly recommend that you use this feature to transfer your funds to a secure wallet. This feature schedules your funds transfer from an at-risk wallet to a new secure wallet. 
 
-If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet opens.
+If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet fully opens.
 
-:::tip Window to use this schedule coldkey swap feature
-
-You can use this schedule cold key swap feature **only in the window** starting Monday July 8, 5 PM US Eastern and ending when the mainnet opens fully on Thursday July 11, 5 PM US Eastern.
-:::
 
 ## Description
 
@@ -58,13 +54,11 @@ If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub 
 
 ## Installing the schedule coldkey swap feature
 
-:::tip Currently this feature is available on testnet only
-:::
+The schedule coldkey swap feature is available at the below specified subtensor and bittensor repo branches:
 
-The schedule coldkey swap feature is available only at the below specified subtensor and bittensor repo branches and the testnet URL:
-
+<!--
 - **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
-
+-->
 - **Bittensor repo and branch**: 
     1. First make sure you use a virtual environment. 
     2. Then install the `feat/arbitrage-coldkeys` branch of the Bittensor repo by running the below command:
@@ -78,9 +72,11 @@ The schedule coldkey swap feature is available only at the below specified subte
     which should show `schedule_coldkey_swap` as one of the positional arguments.
 ---
 
-## Detailed steps using `btcli`
+## How to use it with `btcli`
 
 ### Syntax
+
+**This is syntax only. See the example below.**
 
 ```bash
 btcli wallet schedule_coldkey_swap [--new_coldkey <new_coldkey_ss58_address>]
@@ -96,12 +92,27 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 
 - This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72-hours from the time this command is run. 
 - The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
-- This is a free transaction. **However, you need a balance of at least one TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
+- This is a free transaction. **However, you need a balance of at least 0.1 TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
+- **For subnet owners**: You do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
+- **For validators**: If you have 500 TAO or more delegated then you do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
+- **For subnet owners**: Any subnet ownership from your old coldkey will move over to the new coldkey.
+- All hotkeys ownership will be moved to the new coldkey.
+- Delegated stake will transfer from your old coldkey to the new coldkey.
+- For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
+
 
 :::danger Do not run this command more than once using a same coldkey
 :::
 
 ### Example
+
+**On mainnet**:
+
+```bash
+btcli wallet schedule_coldkey_swap
+```
+
+**On testnet**:
 
 ```bash
 btcli wallet schedule_coldkey_swap --subtensor.network=test
@@ -110,7 +121,7 @@ btcli wallet schedule_coldkey_swap --subtensor.network=test
 Sample output:
 
 ```bash
-btcli wallet schedule_coldkey_swap --subtensor.network=test
+btcli wallet schedule_coldkey_swap
 Enter wallet name (default): 
 Enter new coldkey SS58 address: 5HM...Srw
 ⚠If you call this on the same key multiple times, the key will enter arbitration.
@@ -129,4 +140,4 @@ btcli wallet schedule_coldkey_swap --help
 
 ## Arbitration
 
-When multiple coldkey swaps, involving either the same old coldkey or the same new coldkey, are scheduled, then the swap will not be performed when the mainnet opens. Instead, the swap enters an arbitration stage where the Senate votes to determine which coldkey swap should occur. 
+When multiple coldkey swaps, involving the same coldkey, are scheduled, the swap will not be performed when the mainnet opens. Instead, the swap will enter an arbitration stage where the Senate votes to determine which coldkey swap should occur. 
