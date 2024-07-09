@@ -42,10 +42,7 @@ pip3 install bittensor
 
     - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
 
-Next, install Bittensor as shown below.
-
-
-2. Clone the Bittensor repo.
+2. Clone the Bittensor repo
 
 ```bash
 git clone https://github.com/opentensor/bittensor.git
