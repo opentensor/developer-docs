@@ -139,11 +139,12 @@ btcli wallet schedule_coldkey_swap --help
 
 ## Checking your scheduled swap status
 
-To check if your coldkey has been scheduled for swap or has been place in arbitration, run the below command:
+To check if your coldkey has been scheduled for swap or has been place in arbitration, run the below command. Make sure you have pulled the latest from the `feat/arbitrage-coldkeys` branch to use the below `check_coldkey_swap` command:
 
 ```bash
   btcli wallet check_coldkey_swap
 ```
+
 
 ## Arbitration
 
