@@ -60,16 +60,116 @@ The schedule coldkey swap feature is available at the below specified subtensor 
 - **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
 -->
 - **Bittensor repo and branch**: 
-    1. First, make sure you use a virtual environment.
-    2. Then install the `feat/arbitrage-coldkeys` branch of the Bittensor repo by running the below command:
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
-    ```
-    3. Test if you installed the schedule coldkey swap feature by running the below command:
-    ```bash
-    btcli wallet --help
-    ```
-    which should show `schedule_coldkey_swap` as one of the positional arguments.
+
+  1. First, ensure you are using a `virtual environment`. If you are not familiar with creating a virtual, environment follow this guide on [python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
+
+  2. If you do not already have the Bittensor repository, clone it using the following command:
+
+  ```bash
+  git clone https://github.com/opentensor/bittensor.git
+  ```
+
+  3. Change to the Bittensor directory:
+  ```bash
+  cd bittensor
+  ```
+
+  4. Switch to the `feat/arbitrage-coldkeys` branch
+  ```bash
+  git checkout feat/arbitrage-coldkeys
+  ```
+
+  5. Then install the Bittensor by running the below command:
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
+  ```
+  The output will look like this:
+  ```bash
+  ❯ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
+
+
+  ██████╗░██╗████████╗████████╗███████╗███╗░░██╗░██████╗░█████╗░██████╗░
+  ██╔══██╗██║╚══██╔══╝╚══██╔══╝██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗
+  ██████╦╝██║░░░██║░░░░░░██║░░░█████╗░░██╔██╗██║╚█████╗░██║░░██║██████╔╝
+  ██╔══██╗██║░░░██║░░░░░░██║░░░██╔══╝░░██║╚████║░╚═══██╗██║░░██║██╔══██╗
+  ██████╦╝██║░░░██║░░░░░░██║░░░███████╗██║░╚███║██████╔╝╚█████╔╝██║░░██║
+  ╚═════╝░╚═╝░░░╚═╝░░░░░░╚═╝░░░╚══════╝╚═╝░░╚══╝╚═════╝░░╚════╝░╚═╝░░╚═╝
+
+                                                      - Mining a new element.
+
+  ==> This script will install:
+  xcode
+  homebrew
+  git
+  cmake
+  python3
+  python3-pip
+  bittensor
+
+  Press RETURN to continue or any other key to abort
+  ==> Updating ...
+
+  ...
+  ...
+  ...
+
+  Successfully installed bittensor-7.3.0
+
+
+  ######################################################################
+  ##                                                                  ##
+  ##                      BITTENSOR SETUP                             ##
+  ##                                                                  ##
+  ######################################################################
+
+
+  ==> Welcome. Installation successful
+
+  ```
+  **Note**: If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+
+  6. Test if you installed the schedule coldkey swap feature by running the below command:
+  ```bash
+  btcli wallet --help
+  ```
+
+  You should see `schedule_coldkey_swap` listed as one of the positional arguments.
+
+  The output should look like this:
+  ```bash
+  --help                                                                                                                                          bittensor 15:21:52
+    usage: btcli <command> <command args> wallet [-h]
+                                                {list,overview,transfer,inspect,balance,create,new_hotkey,new_coldkey,regen_coldkey,regen_coldkeypub,regen_hotkey,faucet,update,swap_hotkey,set_identity,get_identity,history,schedule_coldkey_swap,check_coldkey_swap}
+                                                ...
+
+    positional arguments:
+      {list,overview,transfer,inspect,balance,create,new_hotkey,new_coldkey,regen_coldkey,regen_coldkeypub,regen_hotkey,faucet,update,swap_hotkey,set_identity,get_identity,history,schedule_coldkey_swap,check_coldkey_swap}
+                            Commands for managing and viewing wallets.
+        list                List wallets
+        overview            Show registered account overview.
+        transfer            Transfer Tao between accounts.
+        inspect             Inspect a wallet (cold, hot) pair
+        balance             Checks the balance of the wallet.
+        create              Creates a new coldkey (for containing balance) under the specified path.
+        new_hotkey          Creates a new hotkey (for running a miner) under the specified path.
+        new_coldkey         Creates a new coldkey (for containing balance) under the specified path.
+        regen_coldkey       Regenerates a coldkey from a passed value
+        regen_coldkeypub    Regenerates a coldkeypub from the public part of the coldkey.
+        regen_hotkey        Regenerates a hotkey from a passed mnemonic
+        faucet              Perform PoW to receieve test TAO in your wallet.
+        update              Updates the wallet security using NaCL instead of ansible vault.
+        swap_hotkey         Swap your associated hotkey.
+        set_identity        Create or update identity on-chain for a given cold wallet. Must be a subnet owner.
+        get_identity        Creates a new coldkey (for containing balance) under the specified path.
+        history             Fetch transfer history associated with the provided wallet
+        schedule_coldkey_swap
+                            Schedule a swap of the coldkey on the Bittensor network. There is a 72-hour delay on this. If there is another call to schedule_coldkey_swap , this key goes into arbitration to
+                            determine on which key the swap will occur. This is a free transaction. Coldkeys require a balance of at least τ0.5 to initiate a coldkey swap.
+        check_coldkey_swap  Check the status of swap requests for a coldkey on the Bittensor network. Adding more than one swap request will make the key go into arbitration mode.
+
+    options:
+      -h, --help            show this help message and exit
+      ```
 ---
 
 ## How to use it with `btcli`
