@@ -58,11 +58,13 @@ Pull the latest `main` branch contents:
 git pull
 ```
 
-Stop any currently running Docker containers:
+Stop any currently running Docker containers and clean up the Docker environment:
 
 ```bash
-docker compose down --volumes
+docker compose down --volumes && docker system prune -a --volumes -f
+
 ```
+
 ## Linux post-installation steps for Docker Engine
 
 Please follow Docker's [official documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user ) to perform standard Linux post-installation steps for Docker Engine
