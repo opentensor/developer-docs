@@ -25,7 +25,7 @@ To create a basic wallet account, use the Chrome Extension for Bittensor Wallet.
 2. Critically, the Wallet will show you a 12-word list arranged in a specific order. You are required to keep this list of words, without changing the word order, in a safe location. This list of ordered words is called by various names such as **mnemonic** or **seed phrase**.
 3. The Wallet will then prompt you for specific mnemonic words as a way of authentication.
 4. Next, you will assign a name and a password to your wallet account.
-5. Finally, to receive TAO from another party, you will give them your wallet account address from Step 1 (the 48-hexadecimal character string) as the destination address. Similarly, to send (transfer) TAO to another party, you will first ask them for their wallet address and send TAO to their wallet address. YThis way, you can create multiple wallet accounts, each with a different name and even a different password for each wallet account.
+5. Finally, to receive TAO from another party, you will give them your wallet account address from Step 1 (the 48-hexadecimal character string) as the destination address. Similarly, to send (transfer) TAO to another party, you will first ask them for their wallet address and send TAO to their wallet address. This way, you can create multiple wallet accounts, each with a different name and even a different password for each wallet account.
 
 ### Mnemonic
 
