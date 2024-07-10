@@ -88,7 +88,7 @@ The amount of TAO needed to acquire a validator permit depends on how the other 
 ```python
 import bittensor as bt
 subnet = bt.metagraph(1)
-top_64_stake = subnet.S.sort()[0][-64:].tolist()
+top_64_stake = sorted(subnet.S)[-64:]
 print (f'Current requirement for validator permits based on the top 64 stake stands at {min(top_64_stake)} tao')
 ```
 
