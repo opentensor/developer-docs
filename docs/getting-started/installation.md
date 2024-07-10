@@ -36,37 +36,32 @@ pip3 install bittensor
 ```
 
 ### Install from source
+1. Create and activate a virtual environment
 
-1. Clone the Bittensor repo.
+    - Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
+
+    - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
+
+Next, install Bittensor as shown below.
+
+
+2. Clone the Bittensor repo.
 
 ```bash
 git clone https://github.com/opentensor/bittensor.git
 ```
-2.  Change to the Bittensor directory:
+3.  Change to the Bittensor directory:
 
 ```bash
 cd bittensor
 ```
-3. Install with `python3`
 
-```bash
-python3 -m pip install -e bittensor/
-```
-
-#### Create and activate a virtual environment
-
-1. Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
-
-2. Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
-   
-Next, install Bittensor as shown below.
-
-#### Install Bittensor
+4. Install Bittensor
 
 Run the below command to install Bittensor in the above virtual environment.
 
 ```python
-pip3 install bittensor
+pip install .
 ```
 
 ## Install on Windows
