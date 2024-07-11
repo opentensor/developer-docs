@@ -24,7 +24,7 @@ const sidebars = {
     "chain-rel-notes",
     "bittensor-rel-notes",
     "whats-new-in-docs",
-    "schedule-key-swap",
+    "subnets/schedule-key-swap",
     "questions-and-answers",
     {
       type: "category",

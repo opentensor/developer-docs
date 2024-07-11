@@ -29,6 +29,10 @@ This is the most straightforward method. It is recommended for a beginner as it 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
 ```
 
+:::warning For Ubuntu-Linux users
+If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+:::
+
 ### Install using `pip3 install`
 
 ```bash
