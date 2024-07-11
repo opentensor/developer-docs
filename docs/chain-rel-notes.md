@@ -8,6 +8,8 @@ The following are the release notes for the subtensor on-chain software.
 
 ## Mainnet 1.2.3 
 
+`Released 12 July 2024`
+
 - All the items described in the below [Testnet 1.2.1-pre-release](#testnet-121-pre-release) are now available in the mainnet.
 
 ## Mainnet 1.1.3 hotfix 
