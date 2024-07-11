@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
-## 11 July 2024
+## 12 July 2024
 
 - Release notes for [Mainnet 1.2.3](./chain-rel-notes#mainnet-123) are published.
 - Release notes for [Bittensor 7.3.0](./bittensor-rel-notes#release-730) are published.
