@@ -9,6 +9,15 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 05 July 2024
+
+- New feature to schedule your funds transfer from an at-risk wallet to a new secure wallet.
+  - [Schedule Key Swap](./schedule-key-swap)
+- Added a command to clean up the Docker environment by removing all unused data.
+  - [Using Docker](./subtensor-nodes/using-docker).
+- Updated the [Register, Validate and Mine](./register-validate-mine) documentation for improved clarity and guidance.
+
+
 ## 02 July 2024
 
 - Subtensor node installation instructions are updated in the following docs:
