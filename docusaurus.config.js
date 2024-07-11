@@ -106,6 +106,10 @@ const config = {
             to: "/",
             from: "/subnet-pages",
           },
+          {
+            to: "/subnets/schedule-key-swap",
+            from: "/schedule-key-swap",
+          },
         ],
       },
     ],
