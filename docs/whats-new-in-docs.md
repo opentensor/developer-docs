@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 05 July 2024
+
+- A new doc for [Schedule Key Swap](./schedule-key-swap) is published.
+
 ## 02 July 2024
 
 - Subtensor node installation instructions are updated in the following docs:
