@@ -11,12 +11,7 @@ Key updates to this documentation.
 
 ## 05 July 2024
 
-- New feature to schedule your funds transfer from an at-risk wallet to a new secure wallet.
-  - [Schedule Key Swap](./schedule-key-swap)
-- Added a command to clean up the Docker environment by removing all unused data.
-  - [Using Docker](./subtensor-nodes/using-docker).
-- Updated the [Register, Validate and Mine](./register-validate-mine) documentation for improved clarity and guidance.
-
+- A new doc for [Schedule Key Swap](./schedule-key-swap) is published.
 
 ## 02 July 2024
 
