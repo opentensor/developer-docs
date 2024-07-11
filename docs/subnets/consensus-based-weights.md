@@ -63,7 +63,8 @@ Here are summary steps to use the consensus-based weights feature. These steps 
 1. To activate this feature, a subnet owner should set the `liquid_alpha_enabled` (bool) hyperparameter to `True`.
 2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using a single subnet hyperparameter, `alpha_values` (List[int]). 
 
-:::danger you must set both low and high alpha values together. See below.
+:::danger Set alpha low and high together
+You must set both `alpha_low` and `alpha_high` together by using `alpha_values`. See below.
 :::
 
 ---
@@ -89,12 +90,12 @@ When you set the subnet hyperparameters `alpha_low` and `alpha_high`, you must p
 Use the below conversion formula to determine the integer values for your desired decimal values for both `alpha_low` and `alpha_high` hyperparameters.
 
 $$ 
-\text{Integer value} = \text{(your-desired-decimal-value)} \times 65536
+\text{Integer value} = \text{(your-desired-decimal-value)} \times 65535
 $$
 
 Hence, for example:
-- If you want `alpha_low` to be `0.1`, then you would pass `6554`, which is the rounded up value of `0.1 * 65536`. 
-- If you want `alpha_high` to be `0.8`, then you would pass `52429`, which is the rounded up value of `0.8 * 65536`.
+- If you want `alpha_low` to be `0.1`, then you would pass `6554`, which is the rounded up value of `0.1 * 65535`. 
+- If you want `alpha_high` to be `0.8`, then you would pass `52428`, which is the value of `0.8 * 65535`.
 
 ---
 
@@ -146,14 +147,16 @@ Below is the example Python code showing how to use the above definitions for th
         wallet=wallet,
         netuid=netuid,
         parameter="alpha_values",
-        value=[6554, 52429], # decimal 0.1 for alpha_low and 0.8 for alpha_high
+        value=[6554, 52428], # decimal 0.1 for alpha_low and 0.8 for alpha_high
         wait_for_inclusion=True,
         wait_for_finalization=True,
     )
 ```
 
 :::danger you must always set alpha_low and alpha_high together
-You must set the values for both `alpha_low` and `alpha_high` together. Current functionality does not allow setting a value to only one of `alpha_low` or `alpha_high`. For example, if you want to set a new value to `alpha_low` but do not want to change the `alpha_high` value, you must set the new value to `alpha_low` and also set again the current, unchanging value to `alpha_high`. 
+You must set the values for both `alpha_low` and `alpha_high` together. Current functionality does not allow setting a value to only one of `alpha_low` or `alpha_high`. 
+
+For example, if you want to set a new value to `alpha_low` but do not want to change the `alpha_high` value, you must pass the new value of `alpha_low`, and also the current, unchanging value of `alpha_high`, while setting the `alpha_values`. 
 :::
 
 ---
@@ -198,13 +201,13 @@ btcli sudo set hyperparameters --netuid <NETUID> --param alpha_values --value <v
 
 **Example**
 
-Setting the value of `alpha_low` to the decimal `0.1` (integer `6554`) and `alpha_high` to the decimal `0.8` (integer `52429`) for subnet 1 (`netuid` of `1`):
+Setting the value of `alpha_low` to the decimal `0.1` (integer `6554`) and `alpha_high` to the decimal `0.8` (integer `52428`) for subnet 1 (`netuid` of `1`):
 
 ```bash
 btcli sudo set hyperparameters --netuid 1 --param alpha_values --value 6554, 52429
 ```
 
-Now if you want to only change the `alpha_high` value from `0.8` to `0.85` (integer `55706`) then: 
+Now if you want to only change the `alpha_high` value from `0.8` to `0.85` (integer `55705`) then: 
 
 First execute the `btcli sudo set` command and provide the `netuid`. The terminal will display the current values of `alpha_low` and `alpha_high`. 
 
