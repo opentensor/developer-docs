@@ -64,19 +64,7 @@ First, ensure you are using a Python virtual environment. You can use either Con
 
 #### Create and activate virtual environment
 
-Make sure you create a new virtual environment and activate it. For example, to create and activate a virtual environment named `my-schedule-swap-env` with `conda`, run the below two commands:
-
-**Create**:
-
-```bash
-conda create --name my-schedule-swap-env
-```
-
-**Activate**:
-
-```bash
-conda activate my-schedule-swap-env
-```
+Make sure you **create** a new virtual environment and **activate** it. Then proceed as below. 
 
 ### Step 2: Install
 
@@ -165,8 +153,8 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 
 ### What does this feature do 
 
-- This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72 hours from the time this command is run.
-- The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
+- This command does not immediately swap the coldkeys. Your scheduled coldkey swap will execute on the mainnet exactly `7200 * 3` blocks (72 hours) after you successfully ran the `btcli wallet schedule_coldkey_swap` command.
+- The old coldkey you used in the `schedule_coldkey_swap` will be locked when you schedule the swap. After the 72-hour period is elapsed your original coldkey will be unlocked entirely.
 - This is a free transaction. **However, you need a balance of at least 0.1 TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
 - **For subnet owners**: You do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
 - **For validators**: If you have 500 TAO or more delegated then you do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
