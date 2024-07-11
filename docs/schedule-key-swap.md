@@ -6,8 +6,9 @@ title: "Schedule Key Swap"
 
 This guide describes how to use the schedule coldkey swap feature. If you have a reason to believe that your wallet is at-risk as a result of the July 2nd attack, as described in [Bittensor Community Update — July 3, 2024](https://blog.bittensor.com/bittnesor-community-update-july-3-2024-45661b1d542d), we strongly recommend that you use this feature to transfer your funds to a secure wallet. This feature schedules your funds transfer from an at-risk wallet to a new secure wallet.
 
+:::tip Use this feature before mainnet opens fully
 If you decide to use this feature, then run the commands described in this guide **before** the Bittensor mainnet fully opens.
-
+:::
 
 ## Description
 
@@ -32,9 +33,7 @@ You may not need to use this feature. Do not use this feature if any of the foll
 
 ### Use this feature only if 
 
-Use this feature ONLY: 
-
-- If you downloaded the Bittensor PyPi package for the Bittensor version 6.12.2 and then performed any of the below operations.
+Use this feature only if you downloaded the Bittensor PyPi package for the Bittensor version 6.12.2 and then performed any of the below operations.
 
   **Impacted btcli 6.12.2 operations**
 
@@ -54,129 +53,105 @@ If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub 
 
 ## Installing the schedule coldkey swap feature
 
-The schedule coldkey swap feature is available at the below specified subtensor and bittensor repo branches:
+The schedule coldkey swap feature is available in the **Bittensor 7.3.0 version**. Follow the below steps to install the feature.
 
-<!--
-- **Testnet URL**: `wss://test.finney.opentensor.ai:443/`.
--->
-- **Bittensor repo and branch**: 
+### Step 1: Python virtual environment 
 
-  1. First, ensure you are using a `virtual environment`. If you are not familiar with creating a virtual, environment follow this guide on [python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
+First, ensure you are using a Python virtual environment. You can use either Conda or Python to create your virual environment:
 
-  2. If you do not already have the Bittensor repository, clone it using the following command:
+- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or 
+- [python](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
 
-  ```bash
-  git clone https://github.com/opentensor/bittensor.git
-  ```
+#### Create and activate virtual environment
 
-  3. Change to the Bittensor directory:
-  ```bash
-  cd bittensor
-  ```
+Make sure you create a new virtual environment and activate it. For example, to create and activate a virtual environment named `my-schedule-swap-env` with `conda`, run the below two commands:
 
-  4. Switch to the `feat/arbitrage-coldkeys` branch
-  ```bash
-  git checkout feat/arbitrage-coldkeys
-  ```
+**Create**:
 
-  5. Then install the Bittensor by running the below command:
-  ```bash
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
-  ```
-  The output will look like this:
-  ```bash
-  ❯ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
+```bash
+conda create --name my-schedule-swap-env
+```
 
+**Activate**:
 
-  ██████╗░██╗████████╗████████╗███████╗███╗░░██╗░██████╗░█████╗░██████╗░
-  ██╔══██╗██║╚══██╔══╝╚══██╔══╝██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗
-  ██████╦╝██║░░░██║░░░░░░██║░░░█████╗░░██╔██╗██║╚█████╗░██║░░██║██████╔╝
-  ██╔══██╗██║░░░██║░░░░░░██║░░░██╔══╝░░██║╚████║░╚═══██╗██║░░██║██╔══██╗
-  ██████╦╝██║░░░██║░░░░░░██║░░░███████╗██║░╚███║██████╔╝╚█████╔╝██║░░██║
-  ╚═════╝░╚═╝░░░╚═╝░░░░░░╚═╝░░░╚══════╝╚═╝░░╚══╝╚═════╝░░╚════╝░╚═╝░░╚═╝
+```bash
+conda activate my-schedule-swap-env
+```
 
-                                                      - Mining a new element.
+### Step 2: Install
 
-  ==> This script will install:
-  xcode
-  homebrew
-  git
-  cmake
-  python3
-  python3-pip
-  bittensor
+You can install the schedule coldkey swap feature in **any one of the below two methods**.
 
-  Press RETURN to continue or any other key to abort
-  ==> Updating ...
+#### Method 1: Install directly from the feature branch 
 
-  ...
-  ...
-  ...
+**IMPORTANT**: Before you proceed, delete any previously-installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands: 
 
-  Successfully installed bittensor-7.3.0
+Run the below command to clone the `feat/arbitrage-coldkeys` branch from the Bittensor 7.3.0 version.
 
+```bash
+git clone -b feat/arbitrage-coldkeys https://github.com/opentensor/bittensor.git
+```
+Next, run the below command to install the feature:
 
-  ######################################################################
-  ##                                                                  ##
-  ##                      BITTENSOR SETUP                             ##
-  ##                                                                  ##
-  ######################################################################
+```bash
+python3 -m pip install bittensor/
+```
 
+This will install the schedule coldkey swap feature. Now skip to [Verfy the install](#step-3-verify-the-install) section.
 
-  ==> Welcome. Installation successful
+#### Method 2: Install with a script
 
-  ```
-  **Note**: If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+You can also use the install script that is in the Bittensor repo. 
 
-  6. Test if you installed the schedule coldkey swap feature by running the below command:
-  ```bash
-  btcli wallet --help
-  ```
+**IMPORTANT**: Before you proceed, delete any previously-installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands: 
 
-  You should see `schedule_coldkey_swap` listed as one of the positional arguments.
+First, clone the repo:
 
-  The output should look like this:
-  ```bash
-  --help                                                                                                                                          bittensor 15:21:52
-    usage: btcli <command> <command args> wallet [-h]
-                                                {list,overview,transfer,inspect,balance,create,new_hotkey,new_coldkey,regen_coldkey,regen_coldkeypub,regen_hotkey,faucet,update,swap_hotkey,set_identity,get_identity,history,schedule_coldkey_swap,check_coldkey_swap}
-                                                ...
+```bash
+git clone https://github.com/opentensor/bittensor.git
+```
 
-    positional arguments:
-      {list,overview,transfer,inspect,balance,create,new_hotkey,new_coldkey,regen_coldkey,regen_coldkeypub,regen_hotkey,faucet,update,swap_hotkey,set_identity,get_identity,history,schedule_coldkey_swap,check_coldkey_swap}
-                            Commands for managing and viewing wallets.
-        list                List wallets
-        overview            Show registered account overview.
-        transfer            Transfer Tao between accounts.
-        inspect             Inspect a wallet (cold, hot) pair
-        balance             Checks the balance of the wallet.
-        create              Creates a new coldkey (for containing balance) under the specified path.
-        new_hotkey          Creates a new hotkey (for running a miner) under the specified path.
-        new_coldkey         Creates a new coldkey (for containing balance) under the specified path.
-        regen_coldkey       Regenerates a coldkey from a passed value
-        regen_coldkeypub    Regenerates a coldkeypub from the public part of the coldkey.
-        regen_hotkey        Regenerates a hotkey from a passed mnemonic
-        faucet              Perform PoW to receieve test TAO in your wallet.
-        update              Updates the wallet security using NaCL instead of ansible vault.
-        swap_hotkey         Swap your associated hotkey.
-        set_identity        Create or update identity on-chain for a given cold wallet. Must be a subnet owner.
-        get_identity        Creates a new coldkey (for containing balance) under the specified path.
-        history             Fetch transfer history associated with the provided wallet
-        schedule_coldkey_swap
-                            Schedule a swap of the coldkey on the Bittensor network. There is a 72-hour delay on this. If there is another call to schedule_coldkey_swap , this key goes into arbitration to
-                            determine on which key the swap will occur. This is a free transaction. Coldkeys require a balance of at least τ0.5 to initiate a coldkey swap.
-        check_coldkey_swap  Check the status of swap requests for a coldkey on the Bittensor network. Adding more than one swap request will make the key go into arbitration mode.
+Next, change to the `bittensor` directory: 
 
-    options:
-      -h, --help            show this help message and exit
-      ```
+```bash
+cd bittensor
+```
+
+Switch to the `feat/arbitrage-coldkeys` branch:
+
+```bash
+git checkout feat/arbitrage-coldkeys
+```
+
+Finally, run the below command, which will install the feature: 
+  
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
+```
+
+:::warning For Ubuntu-Linux users
+If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+:::
+
+This will install the schedule coldkey swap feature. Next, verify the installation by following the below steps.
+
+### Step 3: Verify the install
+
+Test if you properly installed the schedule coldkey swap feature by running the below command:
+
+```bash
+btcli wallet --help
+```
+
+You should see `schedule_coldkey_swap` and `check_coldkey_swap` listed in the positional arguments. **This confirms that you have successfully installed the schedule coldkey swap feature.**
+
 ---
 
-## How to use it with `btcli`
+## Using the feature with `btcli`
 
 ### Syntax
 
-**This is syntax only. See the example below.**
+**This is syntax only. See the [Example](#example) below.**
 
 ```bash
 btcli wallet schedule_coldkey_swap [--new_coldkey <new_coldkey_ss58_address>]
@@ -188,7 +163,7 @@ This command is used to **schedule** a swap of your coldkey to a new coldkey. Yo
 
 The command checks for the validity of the new coldkey and prompts for confirmation before proceeding with the scheduling process.
 
-### Important 
+### What does this feature do 
 
 - This command does not immediately swap the coldkeys. It will schedule the coldkey swap event after a delay of 72 hours from the time this command is run.
 - The actual coldkey swap event occurs on-chain when the chain is back to normal operations.
@@ -198,7 +173,6 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 - **For subnet owners**: Any subnet ownership from your old coldkey will move over to the new coldkey.
 - The delegated stake will be transferred from your old coldkey to the new coldkey.
 - For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
-
 
 :::danger Do not run this command more than once using the same coldkey
 :::
