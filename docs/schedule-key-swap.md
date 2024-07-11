@@ -53,7 +53,7 @@ If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub 
 
 ## Installing the schedule coldkey swap feature
 
-The schedule coldkey swap feature is available in the **Bittensor 7.3.0 version**. Follow the below steps to install the feature.
+The schedule coldkey swap feature is available in the **Bittensor 7.3.0 version**. To install it, follow the below steps.
 
 ### Step 1: Python virtual environment 
 
@@ -62,9 +62,9 @@ First, ensure you are using a Python virtual environment. You can use either Con
 - [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or 
 - [python](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
 
-#### Create and activate virtual environment
+#### Create and activate the virtual environment
 
-Make sure you **create** a new virtual environment and **activate** it. Then proceed as below. 
+Make sure you **create** and **activate** a new virtual environment. Then proceed as below.
 
 ### Step 2: Install
 
@@ -72,7 +72,7 @@ You can install the schedule coldkey swap feature in **any one of the below two 
 
 #### Method 1: Install directly from the feature branch 
 
-**IMPORTANT**: Before you proceed, delete any previously-installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands: 
+**IMPORTANT**: Before you proceed, delete any previously installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands:
 
 Run the below command to clone the `feat/arbitrage-coldkeys` branch from the Bittensor 7.3.0 version.
 
@@ -91,7 +91,7 @@ This will install the schedule coldkey swap feature. Now skip to [Verfy the inst
 
 You can also use the install script that is in the Bittensor repo. 
 
-**IMPORTANT**: Before you proceed, delete any previously-installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands: 
+**IMPORTANT**: Before you proceed, delete any previously installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands:
 
 First, clone the repo:
 
@@ -125,7 +125,7 @@ This will install the schedule coldkey swap feature. Next, verify the installati
 
 ### Step 3: Verify the install
 
-Test if you properly installed the schedule coldkey swap feature by running the below command:
+Test if you correctly installed the schedule coldkey swap feature by running the below command:
 
 ```bash
 btcli wallet --help
@@ -158,7 +158,7 @@ The command checks for the validity of the new coldkey and prompts for confirmat
 - This is a free transaction. **However, you need a balance of at least 0.1 TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
 - **For subnet owners**: You do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
 - **For validators**: If you have 500 TAO or more delegated then you do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
-- **For subnet owners**: Any subnet ownership from your old coldkey will move over to the new coldkey.
+- **For subnet owners**: Any subnet ownership from your old coldkey will move to the new coldkey.
 - The delegated stake will be transferred from your old coldkey to the new coldkey.
 - For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
 
@@ -201,7 +201,7 @@ btcli wallet schedule_coldkey_swap --help
 
 ## Checking your scheduled swap status
 
-To check if your coldkey has been scheduled for swap or has been placed in arbitration, run the below command. Make sure you have pulled the latest from the `feat/arbitrage-coldkeys` branch to use the below `check_coldkey_swap` command:
+To check if your coldkey has been scheduled for swap or placed in arbitration, run the below command. Make sure you have pulled the latest from the `feat/arbitrage-coldkeys` branch to use the below `check_coldkey_swap` command:
 
 ```bash
 btcli wallet check_coldkey_swap
