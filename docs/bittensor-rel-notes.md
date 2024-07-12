@@ -13,7 +13,10 @@ The following are the release notes for the Bittensor software.
 ### New features and enhancements
 
 - **Consensus-based weights** ("liquid alpha"): With this version, the [Consensus-based weights](./subnets/consensus-based-weights.md) feature is now available in the `master` branch. Until now this feature was available only in the `rc_7.3.0` branch of the `bittensor` repo. 
+
+<!--
 - **Schedule coldkey swap**: The [Schedule coldkey swap](./subnets/schedule-key-swap.md) feature is now available in the `master` branch. This feature is available only in Bittensor 7.3.0 and later versions. 
+-->
 
 ## 12 June 2024: Release 7.2.0
 
