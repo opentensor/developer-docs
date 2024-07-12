@@ -22,12 +22,8 @@ class WeightCopySimulation:
         else:
             self.get_parse()
             self.setup = ExperimentSetup(
-                processes = 1,
                 netuids = range(self.args.start_netuid, self.args.end_netuid),
                 liquid_alpha = True,
-                alpha_lows = list(np.arange(0.1, 0.95, 0.2)),
-                alpha_highs = list(np.arange(0.1, 0.95, 0.2)),
-                conceal_period = [0] + list(range(1, 16, 2)),
             )
         self.metas = self.get_metagraphs()
 
@@ -221,7 +217,7 @@ class WeightCopySimulation:
                 pickle.dump(yuma_results, f)
 
         try:
-            _simulate(self, yuma_file_name,  netuid, conceal_period, metas, alpha_low = 0.9, alpha_high = 0.9)
+            _simulate(self, yuma_file_name,  netuid, conceal_period, metas, alpha_low, alpha_high)
         except Exception as E:
             print(yuma_file_name, E)
  

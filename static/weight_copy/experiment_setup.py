@@ -4,7 +4,7 @@ import numpy as np
 
 class ExperimentSetup:
     def __init__(self,
-        processes: int = 30, # processes to run with 
+        processes: int = 1, # processes to run with 
         tempo: int = 360, # the tempo on chain (blocks), how often are the chain calculating consensus.
         start_block: int = 3223749, # (22 June) the block to refer to to start the experiment
         conceal_period: List = None, # the range of conceal period for experiment
