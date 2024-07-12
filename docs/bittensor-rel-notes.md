@@ -12,7 +12,7 @@ The following are the release notes for the Bittensor software.
 
 ### New features and enhancements
 
-- **Consensus-based weights** ("liquid alpha"): With this version, the [Consensus-based weights](./subnets/consensus-based-weights.md) feature is now available in the `master` branch. Until now this feature was available only in the `rc_7.3.0` branch of the `bittensor` repo. 
+- **Consensus-based weights** ("liquid alpha"): With this version, the [Consensus-based weights](./subnets/consensus-based-weights.md) feature is now available in the `master` branch. Until now, this feature has only been available in the `rc_7.3.0` branch of the `bittensor` repo. 
 - **Check coldkey swap**: A new `btcli` command option, `check_coldkey_swap` is released. This command option will enable you to check the remaining time before your scheduled coldkey swap executes on-chain, and if your scheduled coldkey swap is in arbitration. See [Schedule Key Swap](./subnets/schedule-key-swap.md#checking-your-scheduled-swap-status).
 
 <!--
