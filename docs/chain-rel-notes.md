@@ -13,7 +13,7 @@ The following are the release notes for the subtensor on-chain software.
 - All the items described in the below [Testnet 1.2.1-pre-release](#testnet-121-pre-release) are now available in the mainnet.
 
 <!--
-- **Schedule coldkey swap**: The [Schedule coldkey swap](./subnets/schedule-key-swap.md) feature is now available in mainnet. Until now this feature was only available on testnet. 
+- **Schedule coldkey swap**: The [Schedule coldkey swap](./subnets/schedule-key-swap.md) feature is now available in mainnet. Until now, this feature has only been available on testnet.
 
 -->
 
