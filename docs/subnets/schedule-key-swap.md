@@ -58,17 +58,87 @@ Use this feature only if you downloaded the Bittensor PyPi package for the Bitte
 If you installed Bittensor 6.12.2 not via PyPi package but directly from GitHub source, then do not use this feature. Only the PyPi package of Bittensor 6.12.2 is malicious.
 :::
 
-## Verifying if you have schedule coldkey swap feature
+## Installing the schedule coldkey swap feature
 
-The schedule coldkey swap feature is available by default in the **Bittensor 7.3.0 and later versions**. See [Install Bittensor](../getting-started/installation.md) for upgrading Bittensor to the latest version.
+The schedule coldkey swap feature is available in the **Bittensor 7.3.0 version** but on the `feat/arbitrage-coldkeys` branch only. To install it, follow the below steps.
 
-To test if you have the schedule coldkey swap feature, run the below command:
+### Step 1: Python virtual environment 
+
+First, ensure you are using a Python virtual environment. You can use either Conda or Python to create your virual environment:
+
+- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or 
+- [python](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
+
+#### Create and activate the virtual environment
+
+Make sure you **create** and **activate** a new virtual environment. Then proceed as below.
+
+### Step 2: Install
+
+You can install the schedule coldkey swap feature in **any one of the below two methods**.
+
+#### Method 1: Install directly from the feature branch 
+
+**IMPORTANT**: Before you proceed, delete any previously installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands:
+
+Run the below command to clone the `feat/arbitrage-coldkeys` branch from the Bittensor 7.3.0 version.
+
+```bash
+git clone -b feat/arbitrage-coldkeys https://github.com/opentensor/bittensor.git
+```
+Next, run the below command to install the feature:
+
+```bash
+python3 -m pip install bittensor/
+```
+
+This will install the schedule coldkey swap feature. Now skip to [Verfy the install](#step-3-verify-the-install) section.
+
+#### Method 2: Install with a script
+
+You can also use the install script that is in the Bittensor repo. 
+
+**IMPORTANT**: Before you proceed, delete any previously installed `bittensor` directory. Or you can create a new directory and `cd` into it before running the below commands:
+
+First, clone the repo:
+
+```bash
+git clone https://github.com/opentensor/bittensor.git
+```
+
+Next, change to the `bittensor` directory: 
+
+```bash
+cd bittensor
+```
+
+Switch to the `feat/arbitrage-coldkeys` branch:
+
+```bash
+git checkout feat/arbitrage-coldkeys
+```
+
+Finally, run the below command, which will install the feature: 
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/feat/arbitrage-coldkeys/scripts/install.sh)"
+```
+
+:::warning For Ubuntu-Linux users
+If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+:::
+
+This will install the schedule coldkey swap feature. Next, verify the installation by following the below steps.
+
+### Step 3: Verify the install
+
+Test if you correctly installed the schedule coldkey swap feature by running the below command:
 
 ```bash
 btcli wallet --help
 ```
 
-You should see `schedule_coldkey_swap` and `check_coldkey_swap` listed in the positional arguments. **This confirms that you can use the schedule coldkey swap feature.** If you do not see these options, then you do not have Bittensor **7.3.0** version, and you must install it.
+You should see `schedule_coldkey_swap` and `check_coldkey_swap` listed in the positional arguments. **This confirms that you have successfully installed the schedule coldkey swap feature.**
 
 ---
 
