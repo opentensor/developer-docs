@@ -32,10 +32,6 @@ import { GoNumber } from "react-icons/go";
 
 # Bittensor Developer Documentation
 
-:::tip See schedule key swap guide
-See the [Schedule Key Swap guide here](./subnets/schedule-key-swap.md).
-:::
-
 **Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. 
 
 <Cards>
