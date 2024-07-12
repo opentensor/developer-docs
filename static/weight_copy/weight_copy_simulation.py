@@ -1,5 +1,4 @@
 import bittensor as bt
-import seaborn as sns
 import scipy
 from utils import *
 import torch
@@ -13,7 +12,6 @@ import os
 import pickle
 import argparse
 
-
 import torch.multiprocessing as mp
 
 
@@ -24,23 +22,24 @@ class WeightCopySimulation:
         else:
             self.get_parse()
             self.setup = ExperimentSetup(
-                processes=1,
-                result_path=f'./liquid_alpha_results_al{setup.alpha_low:.2f}',
-                netuids = range(self.args.start_netuid, self.args.end_netuid)
+                netuids = range(self.args.start_netuid, self.args.end_netuid),
+                liquid_alpha = True,
             )
         self.metas = self.get_metagraphs()
 
     def get_parse(self):
         parser = argparse.ArgumentParser(description='Process some integers.')
         parser.add_argument('--start_netuid', type=int, default = 1)
-        parser.add_argument('--end_netuid', type=int, default = 33)
+        parser.add_argument('--end_netuid', type=int, default = 38)
         self.args = parser.parse_args()
-        print(self.args)
 
     def get_metagraphs(self):
         def load_metagraph(file_name, netuid, block):
-            meta = torch.load(file_name)
-            return meta
+            try:
+                meta = torch.load(file_name)
+                return meta
+            except:
+                return None
 
         metas = {}
 
@@ -79,154 +78,175 @@ class WeightCopySimulation:
 
         return yuma_results
 
-    def base_simulate(self, netuid, metas):
+    def base_simulate(self, netuid, metas, alpha_low = 0.9 , alpha_high = 0.9):
         file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_base.pkl"
-
+     
         if os.path.isfile(file_name):
             return 
+        
+        for block, meta in metas.items():
+            if meta == None: 
+                return
 
-        # === Simulate the early blocks ===
-        yuma_results = {}
-        meta_0 = list(metas.values())[0]
-        validators = meta_0.validator_trust > 0
+        def _base_simulate(self, file_name, netuid, metas): 
+            # === Simulate the early blocks ===
+            yuma_results = {}
+            meta_0 = list(metas.values())[0]
+            validators = meta_0.validator_trust > 0
 
-        # === Setup for the scope of simulation ===
-        early_blocks = [
-            self.setup.start_block + self.setup.tempo * data_point
-            for data_point in range(self.setup.data_points)
-        ]
-
-        start_time = time.time()
-        for i, block in enumerate(early_blocks):
-            meta = metas[block]
-            S_bad = torch.cat((meta.S[validators], meta.S[validators].median().view(1)))
-
-            if i == 0:
-                B_old = None
-            else:
-                B_old = yuma_results[block - self.setup.tempo]["validator_ema_bond"]
-
-            W_bad = torch.cat(
-                (
-                    meta.W[validators],
-                    (torch.ones(meta.W.shape[1]) / meta.W.shape[1]).view(1, -1),
-                )
-            )
-
-            yuma_result = Yuma2(
-                W_bad, 
-                S_bad, 
-                B_old=B_old, 
-                liquid_alpha= self.setup.liquid_alpha,
-                alpha_low = self.setup.alpha_low,
-                alpha_high = self.setup.alpha_high
-            )
-            yuma_results[block] = yuma_result
+            # === Setup for the scope of simulation ===
+            early_blocks = [
+                self.setup.start_block + self.setup.tempo * data_point
+                for data_point in range(self.setup.data_points)
+            ]
 
             start_time = time.time()
+            for i, block in enumerate(early_blocks):
+                meta = metas[block]
+                S = torch.tensor(meta.S)
+                W = torch.tensor(meta.W)
+                S_bad = torch.cat((S[validators], S[validators].median().view(1)))
 
-        # === Save the stat ===
-        with open(
-            file_name,
-            "wb",
-        ) as f:
-            pickle.dump(yuma_results, f)
+                if i == 0:
+                    B_old = None
+                else:
+                    B_old = yuma_results[block - self.setup.tempo]["validator_ema_bond"]
 
-        return yuma_results
+                W_bad = torch.cat(
+                    (
+                        W[validators],
+                        (torch.ones(W.shape[1]) / W.shape[1]).view(1, -1),
+                    )
+                )
 
-    def simulate(self, netuid, conceal_period, metas):
-        yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
-        similarity_file_name = f"{self.setup.result_path}/similarity_netuid{netuid}_conceal{conceal_period}.pt"
+                yuma_result = Yuma2(
+                    W_bad, 
+                    S_bad, 
+                    B_old=B_old, 
+                    liquid_alpha= self.setup.liquid_alpha,
+                    alpha_low = alpha_low,
+                    alpha_high = alpha_high
+                )
+                yuma_results[block] = yuma_result
+
+                start_time = time.time()
+
+            # === Save the stat ===
+            with open(
+                file_name,
+                "wb",
+            ) as f:
+                pickle.dump(yuma_results, f)
+
+            return yuma_results
+
+        try:
+            return _base_simulate(self, file_name, netuid, metas)
+        except Exception as E:
+            print(file_name, E)
+
+    def simulate(self, netuid, conceal_period, metas, alpha_low = 0.9, alpha_high = 0.9):
+        yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
         
-        if os.path.isfile(yuma_file_name): # and os.path.isfile(similarity_file_name):
+        if os.path.isfile(yuma_file_name):
             return 
         
-        yuma_results = {}
-        meta_0 = list(metas.values())[0]
-        validators = meta_0.validator_trust > 0
+        for block, meta in metas.items():
+            if meta == None: 
+                return
 
-        # === Setup for the scope of simulation ===
-        early_blocks = [
-            self.setup.start_block + self.setup.tempo * data_point
-            for data_point in range(self.setup.data_points)
-        ]
+        print(yuma_file_name)
+        
+        def _simulate(self, yuma_file_name, netuid, conceal_period, metas, alpha_low = 0.9, alpha_high = 0.9):
+            yuma_results = {}
+            meta_0 = list(metas.values())[0]
+            validators = meta_0.validator_trust > 0
 
-        late_blocks = [
-            self.setup.start_block + self.setup.tempo * (data_point + conceal_period)
-            for data_point in range(self.setup.data_points)
-        ]
+            # === Setup for the scope of simulation ===
+            early_blocks = [
+                self.setup.start_block + self.setup.tempo * data_point
+                for data_point in range(self.setup.data_points)
+            ]
 
-        yuma_results = self.get_base_simulate(netuid)
+            late_blocks = [
+                self.setup.start_block + self.setup.tempo * (data_point + conceal_period)
+                for data_point in range(self.setup.data_points)
+            ]
 
-        # === Simulate for the late blocks ===
-        start_time = time.time()
-        for i, (early_block, late_block) in enumerate(zip(early_blocks, late_blocks)):
-            meta = metas[late_block]
-            S_bad = torch.cat((meta.S[validators], meta.S[validators].median().view(1)))
+            yuma_results = self.get_base_simulate(netuid)
 
-            if i == 0:
-                B_old = None
-            else:
-                B_old = yuma_results[late_block - self.setup.tempo][
-                    "validator_ema_bond"
-                ].detach().clone()
-
-            W_bad = torch.cat(
-                (
-                    meta.W[validators],
-                    yuma_results[early_block]["server_consensus_weight"].view(1, -1),
-                )
-            )
-            yuma_result = Yuma2(
-                W_bad, 
-                S_bad, 
-                B_old=B_old, 
-                liquid_alpha=self.setup.liquid_alpha,
-                alpha_low = self.setup.alpha_low,
-                alpha_high = self.setup.alpha_high
-            )
-            yuma_results[late_block] = yuma_result
-
+            # === Simulate for the late blocks ===
             start_time = time.time()
+            for i, (early_block, late_block) in enumerate(zip(early_blocks, late_blocks)):
+                meta = metas[late_block]
+                S = torch.tensor(meta.S)
+                W = torch.tensor(meta.W)
+                
+                S_bad = torch.cat((S[validators], S[validators].median().view(1)))
 
-        # === Save the stat ===
-        with open(
-            yuma_file_name,
-            "wb",
-        ) as f:
-            pickle.dump(yuma_results, f)
+                if i == 0:
+                    B_old = None
+                else:
+                    B_old = yuma_results[late_block - self.setup.tempo][
+                        "validator_ema_bond"
+                    ].detach().clone()
 
-        # === Get similarity ===
-        similarity = get_experiment_weight_similarities(
-            metas, validators, early_blocks, late_blocks
-        )
-        torch.save(
-            similarity,
-            similarity_file_name,
-        )
+                W_bad = torch.cat(
+                    (
+                        W[validators],
+                        yuma_results[early_block]["server_consensus_weight"].view(1, -1),
+                    )
+                )
+                yuma_result = Yuma2(
+                    W_bad, 
+                    S_bad, 
+                    B_old=B_old, 
+                    liquid_alpha=self.setup.liquid_alpha,
+                    alpha_low = alpha_low,
+                    alpha_high = alpha_high
+                )
+                yuma_results[late_block] = yuma_result
 
-        return
+                start_time = time.time()
 
-    def wrap_simulate(self, netuid, metas):
-        for conceal_period in self.setup.conceal_periods:
-            try:
-                self.simulate(netuid, conceal_period, metas)
-            except Exception as e:
-                print(e)
-    
+            # === Save the stat ===
+            with open(
+                yuma_file_name,
+                "wb",
+            ) as f:
+                pickle.dump(yuma_results, f)
+
+        try:
+            _simulate(self, yuma_file_name,  netuid, conceal_period, metas, alpha_low, alpha_high)
+        except Exception as E:
+            print(yuma_file_name, E)
+ 
     def run_simulation(self):
-        # === Collect all simulations per netuid per conceal period ===
-        args = []
-        
+        # === Base simulation for all use case === 
+        processes = [] 
         for netuid in self.setup.netuids:
-            try:
-                self.base_simulate(netuid, self.metas[netuid])
-            except Exception as e:
-                print(e)
+            p = mp.Process(target=self.base_simulate, args=(netuid, self.metas[netuid]), name="") 
+            p.start() 
+            processes.append(p) 
+            
+        for p in processes: 
+            p.join() 
         
-        with ThreadPoolExecutor(max_workers=self.setup.processes) as e:
-            for netuid in self.setup.netuids:
-                e.submit(self.wrap_simulate, netuid, self.metas[netuid])
+        # === All simulations for all use case === 
+        for netuid in self.setup.netuids:
+            for conceal_period in self.setup.conceal_periods:
+                processes = [] 
+                for alpha_low in self.setup.alpha_lows:
+                    for alpha_high in self.setup.alpha_highs:
+                        if alpha_low > alpha_high:
+                            continue
+
+                        p = mp.Process(target=self.simulate, args=(netuid, conceal_period, self.metas[netuid], alpha_low, alpha_high), name="") 
+                        p.start() 
+                        processes.append(p) 
+            
+                for p in processes: 
+                    p.join() 
 
 
 if __name__ == "__main__":
