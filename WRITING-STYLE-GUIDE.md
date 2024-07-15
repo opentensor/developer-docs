@@ -11,6 +11,8 @@ When you write a developer document for Opentensor Foundation, your audience sho
 
 # General principles
 
+This section describes the general principles for writing docs. 
+
 ## Style and tone
 
 - Avoid colloquialisms and jargon.
