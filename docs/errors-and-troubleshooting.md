@@ -6,6 +6,34 @@ title: "Errors and Troubleshooting"
 
 This document presents helpful hints to troubleshoot the errors you may get while working in the Bittensor ecosystem. 
 
+## SSLCertVerificationError
+
+Running any `btcli` command gives the following error, on macOS:
+
+```bash
+SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer
+certificate (_ssl.c:1000)
+```
+
+**Likely cause and remedy:** The `certifi` version used in the `openssl` on your machine is incompatible with the Bittensor requirement. You can solve this issue by any one of the below ways:
+
+**Remedy 1**: Follow this below exact method, as described in this StackOverflow page: [https://stackoverflow.com/a/43855394](https://stackoverflow.com/a/43855394):
+
+```bash
+Go to the folder where Python is installed, e.g., in my case (Mac OS) it is installed in the Applications folder with the folder name 'Python 3.6'. Now double click on 'Install Certificates.command'. You will no longer face this error.
+```
+
+**Remedy 2**: Run the below commands:
+
+- On macOS when not using any Python virtual environment: 
+    ```bash
+    brew reinstall openssl
+    ```
+- On macOS when using a virtual environment:
+    ```bash
+    pip install urllib3 --force-reinstall
+    ```
+
 ## KeyFileError
 
 ```bash
