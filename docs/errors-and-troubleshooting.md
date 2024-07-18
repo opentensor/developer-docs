@@ -6,6 +6,17 @@ title: "Errors and Troubleshooting"
 
 This document presents helpful hints to troubleshoot the errors you may get while working in the Bittensor ecosystem. 
 
+## Priority is too low
+
+Running a `btcli` command sometimes gives me the below error:
+
+```bash
+{'code': 1014, 'message': 'Priority is too low: (18446744073709551615 vs 18446744073709551615)', 'data': 'The transaction has too low priority to replace another transaction already in the pool.'}
+```
+
+**Likely cause and remedy**: This means that you are submitting the same, duplicate transaction that you have already submitted. For example, if you are running a script, it is trying to submit transactions too quickly, most likely. You just have to wait for a few minutes before you run the command again.
+
+
 ## SSLCertVerificationError
 
 Running any `btcli` command gives the following error, on macOS:
