@@ -71,6 +71,7 @@ const sidebars = {
         "subnets/register-validate-mine",
         "subnets/recycled-tao",
         "subnets/working-with-keys",
+        "subnets/child-hotkeys",
         "subnets/commit-reveal",
         "subnets/consensus-based-weights",
         "subnets/schedule-key-swap",
