@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This guide describes the **child hotkeys** feature and how to use it. With the child hotkeys, a subnet validator is no longer required to use the same delegate hotkey for every subnet they validate in. The subnet validator can use a separate **child hotkey** per subnet. The subnet validator does this by re-delegating a portion of their stake from their delegate hotkey to this separate child hotkey on a subnet. The originating delegate hotkey is called the **parent hotkey**. 
 
-The owner of this child hotkey would then validate in the subnet on behalf of the parent hotkey. The child hotkey would receive a percentage `take` from the resulting dividends, and would pass on the remaining dividends to the parent hotkey owner.
+The owner of this child hotkey would then validate in the subnet on behalf of the parent hotkey. The child hotkey would receive a percentage `take` from the resulting dividends.
 
 
 
