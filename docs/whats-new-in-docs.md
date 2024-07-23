@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 23 July 2024
+
+- The example in the [Delegates](./staking-and-delegation/delegation.md#example) section is clarified.
+
 ## 12 July 2024
 
 - Release notes for [Mainnet 1.2.3](./chain-rel-notes#mainnet-123) are published.
