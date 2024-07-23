@@ -36,7 +36,7 @@ Consider the example below:
 
 <center>
 <ThemedImage
-alt="Coldkey and hotkey pairings"
+alt="Delegate example"
 sources={{
     light: useBaseUrl('/img/docs/delegate-example.svg'),
     dark: useBaseUrl('/img/docs/dark-delegate-example.svg'),
