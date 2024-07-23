@@ -2,6 +2,9 @@
 title: "Delegation"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Delegation
 
 :::tip Staking
@@ -21,15 +24,39 @@ The default value of the delegate take is 18%. As a delegate, you can set your o
 ## Example
 Consider the example below:
 - A delegate holds their own TAO of 800.
-- Three nominators delegate 30, 70, and 100 TAO to the delegate.
-- The effective stake of the delegate is 1000 TAO (30+70+100 of the delegated TAO plus their own 800 TAO), comprising of 80% of the delegate's own and the remaining 20% from the nominators.
+- Three nominators delegate their TAO to the delegate as follows: 
+  - Nominator 1 delegates 100 TAO.
+  - Nominator 2 delegates 70 TAO.
+  - Nominator 3 delegates 30 TAO.
+- The effective stake of the delegate is 1000 TAO (100+70+30 of the delegated TAO plus their own 800 TAO), comprising of 80% of the delegate's own and the remaining 20% from the nominators.
+- Finally, the individual nominator contributions of the total delegated TAO are as follows:
+  - Nominator 1 contributes 50% of total delegated TAO (i.e., 100/(100+70+30)).
+  - Nominator 2 contributes 35% of the total delegated TAO.
+  - Nominator 3 contributes 15% of the total delegated TAO.
 
-When the staking dividends are received, the dividends are shared in the following way:
+<center>
+<ThemedImage
+alt="Coldkey and hotkey pairings"
+sources={{
+    light: useBaseUrl('/img/docs/delegate-example.svg'),
+    dark: useBaseUrl('/img/docs/dark-delegate-example.svg'),
+}}
+style={{width: 700}}
+/>
+</center>
+
+<br />
+
+When the staking dividends are received, the dividends are shared in the following way (see the above picture):
 - The delegate would keep 80% of the dividends, based on their 80% proportion of the total stake (0.8).
 - In addition, the delegate would keep 18% of the dividends earned on the delegated stake (the delegated stake is 20%). This is the delegate's take %.
 - As a result:
   - Total dividends to the delegate are: `0.8 + 0.2*0.18=0.836` of the received dividends.
-  - Dividends for each nominator are: `0.03*(1-0.18)=0.0246`, `0.07*(1-0.18)=0.0574` and  `0.1*(1-0.18)=0.082`, of the received dividends, respectively.
+  - Each nominator receives the following portions of the received dividends, based on their contribution percentages:
+    - Nominator 1 receives: `(1-0.8)*(1-0.18)*50% = 0.082`.
+    - Nominoator 2 receives: `(1-0.8)*(1-0.18)*35% = 0.0574`. 
+    - Nominator 3 receives: `(1-0.8)*(1-0.18)*15% = 0.0246`.
+    
 
 :::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically, a nominator is an owner of TAO funds who wants to invest in the Bittensor network without performing any validating tasks.
