@@ -25,6 +25,12 @@ Requirements:
 
 - macOS 10.7+
 
+## Storage requirements
+
+- **Lite node**: 128 GB is sufficient.
+- **Archive node**: Minimum 1 TB for the current size of the chain, as of block # 3443567 on 22 July 2024. We recommend 1.5 TB to ensure your archive node does not run out of storage space in the near term. 
+
+
 ## Network requirements and port settings
 
 After you install the subtensor as per the below instructions, make sure that you open network ports on your subtensor node. This will allow other peer subtensor nodes to connect to your subtensor node. 

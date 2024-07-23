@@ -16,10 +16,10 @@ You **do not** have to create a subnet to mine or validate on the Bittensor netw
 ## Register
 
 Run the following command on your terminal, replacing the `<your_preferred_netuid>`, `<my_coldkey>`, `<my_hotkey>`.
-The `<your_preferref_netuid>` is the `netuid` of your preferred subnet.
+The `<your_preferred_netuid>` is the `netuid` of your preferred subnet.
 
 ```bash
-btcli subnet register --netuid <your_preferref_netuid>  --wallet.name  <my_coldkey> --wallet.hotkey <my_hotkey>
+btcli subnet register --netuid <your_preferred_netuid>  --wallet.name  <my_coldkey> --wallet.hotkey <my_hotkey>
 ```
 
 For example:
