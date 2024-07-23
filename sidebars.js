@@ -67,6 +67,7 @@ const sidebars = {
       items: [
         "subnets/checklist-for-validating-mining",
         "subnets/register-validate-mine",
+        "subnets/recycled-tao",
         "subnets/working-with-keys",
         "subnets/commit-reveal",
         "subnets/consensus-based-weights",
