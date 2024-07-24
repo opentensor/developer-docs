@@ -17,12 +17,8 @@ The phrase "recycled TAO" means that this TAO is put back into the Bittensor emi
 
 Any TAO that is burned is permanently removed from the circulation.
 
-## TAO is spent
-
-Another way of saying "TAO is recycled". 
-
 ## TAO is locked
 
-This is different from recycling TAO. The locked TAO is neither recycled nor burned. The locked TAO is held in a coldkey.
+This is different from recycling TAO. The locked TAO is neither recycled nor burned. The locked TAO is held unspent, without the ability to move it until it is unlocked.
 
 **Netuid registration costs**: When you create a subnet and get a `netuid` in return, this subnet registration cost TAO you pay is returned to you when the subnet is deregistered. In the meantime this TAO is locked.  
