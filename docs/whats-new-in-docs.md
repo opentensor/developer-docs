@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 29 July 2024
+
+- A new document [Bittensor Networks](./bittensor-networks.md) is published.
+
 ## 23 July 2024
 
 - The example in the [Delegates](./staking-and-delegation/delegation.md#example) section is clarified.
