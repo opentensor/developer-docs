@@ -12,7 +12,7 @@ The below table presents Bittensor networks and a few details:
 | **Example Usage**| Default|`btcli wallet swap_hotkey --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443` **or** `btcli wallet swap_hotkey --subtensor.network test`|`btcli wallet swap_hotkey --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443`|
 | **Block processing** | One block every 12 seconds | One block every 12 seconds | One block every 12 seconds|
 | **Mainnet Archive** | wss://archive.chain.opentensor.ai:443 | None | None |
-| **Network Purpose**| For all | For all | For OTF-internal only |
+| **Network Purpose**| For all | For all | **For OTF-internal development only** |
 | **Faucet**| None | None | Available on internal project-basis |
 | **Test TAO**| None | Available on request (not compatible with devnet test TAO) | Available internally on request (not compatible with testnet test TAO)|
 
