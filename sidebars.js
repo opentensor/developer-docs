@@ -59,6 +59,7 @@ const sidebars = {
         "subtensor-nodes/using-docker",
       ],
     },
+  "bittensor-networks",
     {
       type: "category",
       label: "Validating and Mining",
