@@ -4,7 +4,7 @@ title: "Error Messages"
 
 # Error Messages
 
-When [Subtensor](./subtensor-nodes/index.md) gives you errors, either when using [`btcli`](./btcli.md) or [Bittensor API](./bt-api-ref.md), consult this document to understand the meaning of the error messages. 
+When [Subtensor](./subtensor-nodes/index.md) gives you errors, either when using [`btcli`](./btcli.md) or [Bittensor API](./bt-api-ref.md), consult this document to understand the meaning of these error messages. 
 
 ## Subtensor error message format
 
