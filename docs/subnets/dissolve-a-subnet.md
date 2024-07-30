@@ -43,7 +43,7 @@ Locate the drop-down section labeled **using the selected account** and select y
 
 Locate the drop-down section labeled **submit the following extrinsic** and select `subtensorModule`.
 
-### Step 5: Choose the `dissolve_network` function 
+### Step 5: Choose the `dissolveNetwork` function 
 
 After selecting the `subtensorModule`, a second drop-down menu will appear on the right side of it. From this drop-down select the `dissolveNetwork(netuid)`  option. 
 
@@ -54,7 +54,7 @@ Provide the required values as shown below:
 - If you have not already provided this in the above Step 3, then for the `origin` argument, select the appropriate account from the **using the selected account** drop-down. This account should have the necessary permissions to dissolve the network.
 - For the `netuid` argument, enter the `netuid` of the subnet you want to dissolve. 
 
-### Step 7: Submit the Transaction
+### Step 7: Submit the transaction
 
 Check again that you have entered the correct `netuid` value.
 
@@ -70,3 +70,4 @@ After submitting the transaction, you can monitor its status in the **Network** 
 In the **Explorer** page, click on the **Node Info** in the top navigation bar. You will see a status of the recent blocks and transactions. Look for your transaction in the list and click on it to view its details and status.
 
 If the transaction is successful, the network with the specified `netuid` will be dissolved, and the associated data will be removed from the Subtensor storage.
+
