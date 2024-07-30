@@ -23,7 +23,7 @@ Proceed only after you satisfy the above three requirements.
 
 ## Deregister subnet manually
 
-To manually deregister (dissolve) your subnet, you must call the `dissolve_network` extrinsic directly from the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. You must successfully complete step 2 in the above [Before you proceed](#before-you-proceed) section to use this extrinsic.
+To manually deregister (dissolve) your subnet, you must call the `dissolveNetwork` extrinsic directly from the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. You must successfully complete step 2 in the above [Before you proceed](#before-you-proceed) section to use this extrinsic.
 
 Follow the below steps:
 
