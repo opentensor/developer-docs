@@ -36,6 +36,7 @@ const sidebars = {
         "learn/anatomy-of-incentive-mechanism",
       ],
     },
+    "error-messages",
     "errors-and-troubleshooting",
     {
       type: "category",
