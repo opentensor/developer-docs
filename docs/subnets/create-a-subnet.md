@@ -195,3 +195,4 @@ Ensure your subnet's performance is high, or it risks being deregistered. Also,
 :::
 
 When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The new subnet at this `netuid` starts afresh, and any subnet miners and subnet validators for this new subnet must register using the standard registration step described in [Register](../subnets/register-validate-mine.md#register).
+

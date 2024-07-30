@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 30 July 2024
+
+- A new document [Dissolve a Subnet](./subnets/dissolve-a-subnet.md) is added.
+
 ## 29 July 2024
 
 - A new document [Bittensor Networks](./bittensor-networks.md) is published.
