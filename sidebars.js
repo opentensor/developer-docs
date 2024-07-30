@@ -100,6 +100,7 @@ const sidebars = {
       collapsed: false,
       items: [
         "subnets/create-a-subnet", 
+        "subnets/dissolve-a-subnet",
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
