@@ -59,6 +59,7 @@ const sidebars = {
         "subtensor-nodes/using-docker",
       ],
     },
+  "bittensor-networks",
     {
       type: "category",
       label: "Validating and Mining",
@@ -67,6 +68,7 @@ const sidebars = {
       items: [
         "subnets/checklist-for-validating-mining",
         "subnets/register-validate-mine",
+        "subnets/recycled-tao",
         "subnets/working-with-keys",
         "subnets/child-hotkeys",
         "subnets/commit-reveal",
