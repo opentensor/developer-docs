@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 31 July 2024
+
+- A new document [Error Messages](./error-messages.md), describing subtensor error messages, is published.
+
 ## 30 July 2024
 
 - A new document [Dissolve a Subnet](./subnets/dissolve-a-subnet.md) is added.
