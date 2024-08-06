@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 06 August 2024
+
+- A new document [Subtensor Rate Limits](./subtensor-nodes/subtensor-rate-limits.md) is added.
+
 ## 30 July 2024
 
 - A new document [Dissolve a Subnet](./subnets/dissolve-a-subnet.md) is added.
