@@ -4,8 +4,8 @@ title: "Subtensor Storage Query Examples"
 
 # Subtensor Storage Query Examples
 
-
 ## 1. ActivityCutoff
+
 - **Description**: Activity cutoff for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -22,6 +22,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 2. AdjustmentAlpha
+
 - **Description**: Alpha adjustment value for the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -38,6 +39,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 3. AdjustmentInterval
+
 - **Description**: Adjustment interval for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -54,6 +56,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 4. AlphaValues
+
 - **Description**: Alpha values for the network.
 - **Query Type**: `u16 -> (u16, u16)`
 - **Parameters**:
@@ -70,6 +73,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 5. Axons
+
 - **Description**: Axon information for a given hotkey within a network.
 - **Query Type**: `(u16, AccountId) -> AxonInfoOf`
 - **Parameters**:
@@ -88,6 +92,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 6. BlockAtRegistration
+
 - **Description**: Block number at registration for a given UID.
 - **Query Type**: `(u16, u16) -> u64`
 - **Parameters**:
@@ -106,6 +111,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 7. BlockEmission
+
 - **Description**: The total block emission value.
 - **Query Type**: `u64`
 - **Default Value**: `1000000000`
@@ -119,6 +125,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 8. BlocksSinceLastStep
+
 - **Description**: Number of blocks since the last mechanism step.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -135,6 +142,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 9. Bonds
+
 - **Description**: Bond values of UIDs in a network.
 - **Query Type**: `(u16, u16) -> Vec<(u16, u16)>`
 - **Parameters**:
@@ -153,6 +161,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 10. BondsMovingAverage
+
 - **Description**: Moving average of bonds in the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -169,6 +178,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 11. Burn
+
 - **Description**: Burn value for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -185,6 +195,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 12. BurnRegistrationsThisInterval
+
 - **Description**: Number of burn registrations in this interval.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -201,6 +212,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 13. ChildKeys
+
 - **Description**: Maps parent keys to child keys with proportions.
 - **Query Type**: `(AccountId, u16) -> Vec<(u64, AccountId)>`
 - **Parameters**:
@@ -219,6 +231,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 14. CommitRevealWeightsEnabled
+
 - **Description**: Indicates whether the commit-reveal process for weights is enabled for a given network.
 - **Query Type**: `u16 -> bool`
 - **Parameters**:
@@ -235,6 +248,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 15. Consensus
+
 - **Description**: Consensus values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -251,6 +265,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 16. Delegates
+
 - **Description**: Returns the hotkey delegation take, signaling that this key is open for delegation.
 - **Query Type**: `AccountId -> u16`
 - **Parameters**:
@@ -267,6 +282,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 17. Difficulty
+
 - **Description**: Difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -283,6 +299,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 18. Dividends
+
 - **Description**: Dividend values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -299,6 +316,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 19. Emission
+
 - **Description**: Emission values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u64>`
 - **Parameters**:
@@ -315,6 +333,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 20. EmissionValues
+
 - **Description**: Emission values of the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -331,6 +350,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 21. HasMigrationRun
+
 - **Description**: Storage for migration run status.
 - **Query Type**: `Vec<u8> -> bool`
 - **Parameters**:
@@ -347,6 +367,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 22. HotkeyEmissionTempo
+
 - **Description**: The emission tempo of hotkeys.
 - **Query Type**: `u64`
 - **Default Value**: `7200`
@@ -360,6 +381,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 23. Identities
+
 - **Description**: Identity information for a given coldkey.
 - **Query Type**: `AccountId -> ChainIdentityOf`
 - **Parameters**:
@@ -376,6 +398,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 24. ImmunityPeriod
+
 - **Description**: Immunity period for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -392,6 +415,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 25. Incentive
+
 - **Description**: Incentive values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -408,6 +432,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 26. IsNetworkMember
+
 - **Description**: Whether a hotkey is a member of a network.
 - **Query Type**: `(AccountId, u16) -> bool`
 - **Parameters**:
@@ -426,6 +451,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 27. Kappa
+
 - **Description**: Kappa parameter of the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -442,6 +468,7 @@ title: "Subtensor Storage Query Examples"
     ```    
 
 ## 28. Keys
+
 - **Description**: Maps UID to hotkey within a network.
 - **Query Type**: `(u16, u16) -> AccountId`
 - **Parameters**:
@@ -460,6 +487,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 29. LastAddStakeIncrease
+
 - **Description**: Last block number when stake was increased for a hotkey-coldkey pair.
 - **Query Type**: `(AccountId, AccountId) -> u64`
 - **Parameters**:
@@ -478,6 +506,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 30. LastAdjustmentBlock
+
 - **Description**: Block number of the last adjustment for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -494,6 +523,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 31. LastHotkeyEmissionDrain
+
 - **Description**: Last block we drained this hotkey's emission.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -510,6 +540,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 32. LastMechansimStepBlock
+
 - **Description**: Last block when the mechanism step was performed.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -526,6 +557,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 33. LastTxBlock
+
 - **Description**: Last block for a transaction key.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -542,6 +574,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 34. LastTxBlockDelegateTake
+
 - **Description**: Last block for a delegate take transaction key.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -558,6 +591,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 35. LastUpdate
+
 - **Description**: Last update values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u64>`
 - **Parameters**:
@@ -574,6 +608,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 36. LiquidAlphaOn
+
 - **Description**: Whether Liquid Alpha is enabled.
 - **Query Type**: `u16 -> bool`
 - **Parameters**:
@@ -590,6 +625,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 37. LoadedEmission
+
 - **Description**: Emission data loaded for a network.
 - **Query Type**: `u16 -> Vec<(AccountId, u64, u64)>`
 - **Parameters**:
@@ -606,6 +642,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 38. MaxAllowedUids
+
 - **Description**: Maximum allowed UIDs for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -622,6 +659,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 39. MaxAllowedValidators
+
 - **Description**: Maximum allowed validators for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -638,6 +676,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 40. MaxBurn
+
 - **Description**: Maximum burn value for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -654,6 +693,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 41. MaxDifficulty
+
 - **Description**: Maximum difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -670,6 +710,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 42. MaxRegistrationsPerBlock
+
 - **Description**: Maximum registrations allowed per block.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -686,6 +727,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 43. MaxTake
+
 - **Description**: Maximum take percentage for delegations.
 - **Query Type**: `u16`
 - **Default Value**: `11796`
@@ -699,6 +741,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 44. MaxWeightsLimit
+
 - **Description**: Maximum weight limit for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -715,6 +758,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 45. MinAllowedWeights
+
 - **Description**: Minimum allowed weights for networks.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -731,6 +775,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 46. MinBurn
+
 - **Description**: Minimum burn value for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -747,6 +792,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 47. MinDifficulty
+
 - **Description**: Minimum difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -763,6 +809,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 48. MinTake
+
 - **Description**: Minimum take percentage for delegations.
 - **Query Type**: `u16`
 - **Default Value**: `5898`
@@ -776,6 +823,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 49. NetworkImmunityPeriod
+
 - **Description**: Immunity period for networks.
 - **Query Type**: `u64`
 - **Default Value**: `50400`
@@ -789,6 +837,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 50. NetworkLastLockCost
+
 - **Description**: Last lock cost for networks.
 - **Query Type**: `u64`
 - **Default Value**: `1000000000000`
@@ -802,6 +851,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 51. NetworkLastRegistered
+
 - **Description**: Last registered block number for networks.
 - **Query Type**: `u64`
 - **Default Value**: `0`
@@ -815,6 +865,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 52. NetworkLockReductionInterval
+
 - **Description**: Lock reduction interval for networks.
 - **Query Type**: `u64`
 - **Default Value**: `100800`
@@ -828,6 +879,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 53. NetworkMaxStake
+
 - **Description**: Max stake allowed on a subnet.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -844,6 +896,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 54. NetworkMinAllowedUids
+
 - **Description**: Minimum allowed UIDs for networks.
 - **Query Type**: `u16`
 - **Default Value**: `128`
@@ -857,6 +910,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 55. NetworkMinLockCost
+
 - **Description**: Minimum lock cost for networks.
 - **Query Type**: `u64`
 - **Default Value**: `1000000000000`
@@ -870,6 +924,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 56. NetworkModality
+
 - **Description**: Modality of the network (0: TEXT, 1: IMAGE, 2: TENSOR).
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -886,6 +941,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 57. NetworkPowRegistrationAllowed
+
 - **Description**: Whether PoW registration is allowed in the network.
 - **Query Type**: `u16 -> bool`
 - **Parameters**:
@@ -902,6 +958,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 58. NetworkRateLimit
+
 - **Description**: Network rate limit.
 - **Query Type**: `u64`
 - **Default Value**: `7200` (`0` if `pow-faucet` feature is enabled)
@@ -915,6 +972,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 59. NetworkRegisteredAt
+
 - **Description**: Block number when the network was registered.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -931,6 +989,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 60. NetworkRegistrationAllowed
+
 - **Description**: Whether registration is allowed in the network.
 - **Query Type**: `u16 -> bool`
 - **Parameters**:
@@ -947,6 +1006,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 61. NetworksAdded
+
 - **Description**: Whether the network has been added.
 - **Query Type**: `u16 -> bool`
 - **Parameters**:
@@ -963,6 +1023,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 62. NeuronsToPruneAtNextEpoch
+
 - **Description**: UIDs of neurons to be pruned at the next epoch.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -979,6 +1040,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 63. NominatorMinRequiredStake
+
 - **Description**: Minimum required stake for nominators.
 - **Query Type**: `u64`
 - **Default Value**: `0`
@@ -992,6 +1054,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 64. Owner
+
 - **Description**: Returns the controlling coldkey for a hotkey.
 - **Query Type**: `AccountId -> AccountId`
 - **Parameters**:
@@ -1008,6 +1071,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 65. OwnedHotkeys
+
 - **Description**: Returns the vector of hotkeys controlled by this coldkey.
 - **Query Type**: `AccountId -> Vec<AccountId>`
 - **Parameters**:
@@ -1024,6 +1088,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 66. ParentKeys
+
 - **Description**: Maps child keys to parent keys with proportions.
 - **Query Type**: `(AccountId, u16) -> Vec<(u64, AccountId)>`
 - **Parameters**:
@@ -1042,6 +1107,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 67. PendingEmission
+
 - **Description**: Pending emission of the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1058,6 +1124,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 68. PendingdHotkeyEmission
+
 - **Description**: Accumulated hotkey emission.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -1074,6 +1141,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 69. POWRegistrationsThisInterval
+
 - **Description**: Number of PoW registrations in this interval.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1090,6 +1158,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 70. PruningScores
+
 - **Description**: Pruning scores of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -1106,6 +1175,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 71. RAORecycledForRegistration
+
 - **Description**: Global RAO recycled for registration.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1122,6 +1192,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 72. Rank
+
 - **Description**: Rank values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -1138,6 +1209,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 73. RegistrationsThisBlock
+
 - **Description**: Number of registrations in the current block for a given network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1154,6 +1226,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 74. Rho
+
 - **Description**: Rho parameter of the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1170,6 +1243,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 75. ScalingLawPower
+
 - **Description**: Scaling law power for the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1186,6 +1260,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 76. SenateRequiredStakePercentage
+
 - **Description**: The percentage of stake required by the Senate.
 - **Query Type**: `u64`
 - **Default Value**: `1`
@@ -1199,6 +1274,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 77. ServingRateLimit
+
 - **Description**: Rate limit for serving in the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1215,6 +1291,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 78. Stake
+
 - **Description**: Returns the stake under a coldkey prefixed by hotkey.
 - **Query Type**: `(AccountId, AccountId) -> u64`
 - **Parameters**:
@@ -1233,6 +1310,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 79. StakeInterval
+
 - **Description**: Interval for stakes.
 - **Query Type**: `u64`
 - **Default Value**: `360`
@@ -1246,6 +1324,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 80. StakeWeight
+
 - **Description**: Weight for stake used in YC.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -1262,6 +1341,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 81. StakingHotkeys
+
 - **Description**: Maps coldkey to hotkeys that stake to it.
 - **Query Type**: `AccountId -> Vec<AccountId>`
 - **Parameters**:
@@ -1278,6 +1358,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 82. SubnetLimit
+
 - **Description**: Maximum number of networks.
 - **Query Type**: `u16`
 - **Default Value**: `12`
@@ -1291,6 +1372,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 83. SubnetLocked
+
 - **Description**: Locked amount in the subnet.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1307,6 +1389,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 84. SubnetOwner
+
 - **Description**: Owner of the subnet.
 - **Query Type**: `u16 -> AccountId`
 - **Parameters**:
@@ -1323,6 +1406,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 85. SubnetOwnerCut
+
 - **Description**: Subnet owner cut percentage.
 - **Query Type**: `u16`
 - **Default Value**: `11796`
@@ -1336,6 +1420,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 86. SubnetworkN
+
 - **Description**: Number of UIDs in the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1352,6 +1437,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 87. TargetRegistrationsPerInterval
+
 - **Description**: Target registrations per interval for the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1368,6 +1454,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 88. TargetStakesPerInterval
+
 - **Description**: Target stakes per interval.
 - **Query Type**: `u64`
 - **Default Value**: `1`
@@ -1381,6 +1468,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 89. Tempo
+
 - **Description**: Tempo of the network.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
@@ -1397,6 +1485,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 90. TotalColdkeyStake
+
 - **Description**: Returns the total amount of stake under a coldkey.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -1413,6 +1502,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 91. TotalHotkeyColdkeyStakesThisInterval
+
 - **Description**: Returns a tuple (u64: stakes, u64: block_number) for a given hotkey and coldkey.
 - **Query Type**: `(AccountId, AccountId) -> (u64, u64)`
 - **Parameters**:
@@ -1431,6 +1521,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 92. TotalHotkeyStake
+
 - **Description**: Returns the total amount of stake under a hotkey.
 - **Query Type**: `AccountId -> u64`
 - **Parameters**:
@@ -1447,6 +1538,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 93. TotalIssuance
+
 - **Description**: Represents the total issuance of tokens on the Bittensor network.
 - **Query Type**: `u64`
 - **Default Value**: `0`
@@ -1460,6 +1552,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 94. TotalNetworks
+
 - **Description**: Total number of existing networks.
 - **Query Type**: `u16`
 - **Default Value**: `0`
@@ -1473,6 +1566,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 95. TotalStake
+
 - **Description**: The total amount of tokens staked in the system.
 - **Query Type**: `u64`
 - **Default Value**: `0`
@@ -1486,6 +1580,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 96. TransactionKeyLastBlock
+
 - **Description**: Last block of a transaction for a given key, netuid, and name.
 - **Query Type**: `(AccountId, u16, u16) -> u64`
 - **Parameters**:
@@ -1506,6 +1601,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 97. Trust
+
 - **Description**: Trust values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -1522,6 +1618,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 98. TxDelegateTakeRateLimit
+
 - **Description**: Transaction delegate take rate limit.
 - **Query Type**: `u64`
 - **Default Value**: `216000`
@@ -1535,6 +1632,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 99. TxRateLimit
+
 - **Description**: Transaction rate limit.
 - **Query Type**: `u64`
 - **Default Value**: `1000`
@@ -1548,6 +1646,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 100. Uids
+
 - **Description**: Maps hotkey to UID within a network.
 - **Query Type**: `(u16, AccountId) -> u16`
 - **Parameters**:
@@ -1566,6 +1665,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 101. UsedWork
+
 - **Description**: Global used work storage.
 - **Query Type**: `Vec<u8> -> u64`
 - **Parameters**:
@@ -1582,6 +1682,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 102. ValidatorPermit
+
 - **Description**: Validator permit values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<bool>`
 - **Parameters**:
@@ -1598,6 +1699,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 103. ValidatorPruneLen
+
 - **Description**: Length of validator pruning.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1614,6 +1716,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 104. ValidatorTrust
+
 - **Description**: Validator trust values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
@@ -1630,6 +1733,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 105. WeightCommits
+
 - **Description**: Returns the hash and weight committed by an account for a given netuid.
 - **Query Type**: `(u16, AccountId) -> (H256, u64)`
 - **Parameters**:
@@ -1648,6 +1752,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 106. WeightCommitRevealInterval
+
 - **Description**: Interval for the commit-reveal process of weights.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1664,6 +1769,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 107. Weights
+
 - **Description**: Weight values of UIDs in a network.
 - **Query Type**: `(u16, u16) -> Vec<(u16, u16)>`
 - **Parameters**:
@@ -1682,6 +1788,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 108. WeightsMinStake
+
 - **Description**: Minimum stake required for weights.
 - **Query Type**: `u64`
 - **Default Value**: `0`
@@ -1695,6 +1802,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 109. WeightsSetRateLimit
+
 - **Description**: Rate limit for setting weights in the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
@@ -1711,6 +1819,7 @@ title: "Subtensor Storage Query Examples"
     ```
 
 ## 110. WeightsVersionKey
+
 - **Description**: Version key for weights in the network.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
