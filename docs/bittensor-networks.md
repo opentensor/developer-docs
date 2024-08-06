@@ -8,7 +8,7 @@ The below table presents Bittensor networks and a few details:
 
 | DESCRIPTION | MAINNET | TESTNET | DEVNET |
 | :-----------| :------ |:-------|:----|
-| **Chain URL**   | wss://entrypoint-finney.ai:443 | wss://test.finney.opentensor.ai:443 |wss://dev.chain.opentensor.ai:443|
+| **Chain URL**   | wss://entrypoint-finney.opentensor.ai:443 | wss://test.finney.opentensor.ai:443 |wss://dev.chain.opentensor.ai:443|
 | **Example Usage**| Default|`btcli wallet swap_hotkey --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443` **or** `btcli wallet swap_hotkey --subtensor.network test`|`btcli wallet swap_hotkey --subtensor.chain_endpoint wss://dev.chain.opentensor.ai:443`|
 | **Block processing** | One block every 12 seconds | One block every 12 seconds | One block every 12 seconds|
 | **Mainnet Archive** | wss://archive.chain.opentensor.ai:443 | None | None |
