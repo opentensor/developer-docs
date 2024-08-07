@@ -44,6 +44,10 @@ cd subtensor
 
 ## Step 5: Switch to `v1.1.1` branch
 
+:::tip temporary fix
+The use of `v1.1.1` branch is a temporary fix for this step while we resolve some installation issues using the `main` branch. 
+:::
+
 Execute the below commands in this order:
 
 Switch to the `v1.1.1` branch:
