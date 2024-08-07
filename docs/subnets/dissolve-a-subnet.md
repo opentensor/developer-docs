@@ -27,7 +27,7 @@ Proceed only after you satisfy the above three requirements.
 To manually deregister (dissolve) your subnet, you must call the `dissolveNetwork` extrinsic directly from the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
 
 :::danger Connect your subnet coldkey first
-You must successfully import your subnet coldkey into the Polkadot JS extension, and connect the subnet coldkey account to the website, as noted in step 3 in the above [Before you proceed](#before-you-proceed) section, to use this extrinsic. If you do not do this step, then you will not see **Developer** > **Extrinsics** option on the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
+You must successfully import your subnet coldkey into the Polkadot JS extension, and connect the subnet coldkey account to the Polkadot.js Apps website, as noted in step 3 in the above [Before you proceed](#before-you-proceed) section, to use this extrinsic. If you do not do this step, then you will not see **Developer** > **Extrinsics** option on the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
 :::
 
 Follow the below steps:
@@ -38,7 +38,7 @@ Open your web browser and navigate to the Polkadot.js Apps website (https://polk
 
 ### Step 2: Navigate to the Extrinsics page
 
-From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. If you do not see this option, then make sure you successfully imported your subnet coldkey into the Polkadot JS extension. 
+From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. If you do not see this option, then make sure you successfully imported your subnet coldkey into the Polkadot JS extension, and connected this coldkey account to the Polkadot.js Apps website. 
 
 ### Step 3: Select your connected account
 
