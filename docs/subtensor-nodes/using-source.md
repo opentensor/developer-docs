@@ -60,10 +60,10 @@ git clone https://github.com/opentensor/subtensor.git
 ```bash
 cd subtensor
 ```
-3. Ensure you are on the `main` branch. If not, switch to it:
+1. Switch to `v1.1.1` branch:
 
 ```bash
-git checkout main
+git checkout v1.1.1
 ```
 
 4. Remove any previous chain state:
