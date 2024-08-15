@@ -16,14 +16,19 @@ When a subnet is dissolved, all currently registered subnet miners and subnet va
 Make sure you satisfy the below requirements before you proceed:
 
 1. You must be the owner of the subnet coldkey to manually deregister your subnet.
-2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` tool does not support subnet deregistration. You must set up an account on Polkadot JS extension and connect this account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
-3. Before you dissolve your subnet, make sure you communicate your intent and timeline of the subnet dissolution to the subnet miners and subnet validators in your subnet, and to your community.
+2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` tool does not support subnet deregistration.
+3. You must import your subnet coldkey into the Polkadot JS extension and connect this coldkey account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
+4. Before you dissolve your subnet, make sure you communicate your intent and timeline of the subnet dissolution to the subnet miners and subnet validators in your subnet, and to your community.
 
 Proceed only after you satisfy the above three requirements.
 
 ## Deregister subnet manually
 
-To manually deregister (dissolve) your subnet, you must call the `dissolveNetwork` extrinsic directly from the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. You must successfully complete step 2 in the above [Before you proceed](#before-you-proceed) section to use this extrinsic.
+To manually deregister (dissolve) your subnet, you must call the `dissolveNetwork` extrinsic directly from the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
+
+:::danger Connect your subnet coldkey first
+You must successfully import your subnet coldkey into the Polkadot JS extension, and connect the subnet coldkey account to the Polkadot.js Apps website, as noted in step 3 in the above [Before you proceed](#before-you-proceed) section, to use this extrinsic. If you do not do this step, then you will not see **Developer** > **Extrinsics** option on the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
+:::
 
 Follow the below steps:
 
@@ -33,7 +38,7 @@ Open your web browser and navigate to the Polkadot.js Apps website (https://polk
 
 ### Step 2: Navigate to the Extrinsics page
 
-From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. 
+From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. If you do not see this option, then make sure you successfully imported your subnet coldkey into the Polkadot JS extension, and connected this coldkey account to the Polkadot.js Apps website. 
 
 ### Step 3: Select your connected account
 

@@ -24,7 +24,7 @@ A subnet owner can run the below Python notebook to experiment and choose the ri
 
 ## Description
 
-The commit reveal feature changes the way the subnet validator weights are recorded to the chain. Rather than submitting weights openly to the chain that can be seen by anyone on the next block, subnet validators will upload an encrypted hash of their weights. This encrypted hash will be automatically decrypted after a set number of blocks. 
+The commit reveal feature changes the way the subnet validator weights are recorded on the chain. Instead of submitting weights openly to the chain where they can be seen by anyone, subnet validators will commit an encrypted hash of their weights to the chain. These same validators will then be encouraged to reveal these weights after the expiry of `commit_reveal_weights_interval`.
 
 The delay in revealing the weights is a parameter that can be set by the subnet owners. The delay is expressed in integer number of blocks. The optimal delay will be different for different subnets and depends mostly on the rate of turnover in the subnet miners. 
 
