@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
-## 06 August 2024
+## 15 August 2024
 
 - A new document [Subtensor Rate Limits](./subtensor-nodes/subtensor-rate-limits.md) is added.
 
