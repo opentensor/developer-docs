@@ -53,14 +53,50 @@ See the above diagram. With the child hotkeys, if an attacker steals a child hot
   The terms "child hotkey" and "parent hotkey" are only terms of convenience. There is nothing inherently different about a "child hotkey" that separates it from a "parent hotkey". Neither have any special attributes compared to a normal hotkey.
   :::
 
-## Example
-
-Show Mira board example of how the emissions flow, showing dividends and take %s with one child hotkey and one parent hotkey in a subnet. 
-
 ## Installing
 
 Installation instructions
 
-## Using
+## Commands
 
-Document all supported child hotkey command options for `btcli`. 
+Use the `btcli` command options described below to work with child hotkeys.
+
+## Setting the child hotkeys
+
+### Setting a single child hotkey
+
+```bash
+btcli stake set_children --netuid 4 --children 5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y --proportions 0.5 --subtensor.chain_endpoint ws://localhost:9945 --wallet.name Alice
+```
+
+### Setting multiple child hotkeys
+
+```bash
+btcli stake set_children --netuid 4 --children 5Gx1CZ9jviC6V2KynBAcTpES4yK76riCagv5o5SFFZFYXj4s,5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y --proportions 0.3,0.7  --subtensor.chain_endpoint ws://localhost:9946 --wallet.name Alice
+```
+
+## Getting the child hotkeys
+
+```bash
+btcli stake get_children --netuid 4 --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y --subtensor.chain_endpoint ws://localhost:9945
+```
+
+or
+
+```bash
+btcli stake get_children --subtensor.chain_endpoint ws://localhost:9945
+```
+and follow the prompts.
+
+## Revoking the child hotkeys
+
+```bash
+btcli stake revoke_children --netuid 4 --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y --subtensor.chain_endpoint ws://localhost:9946 --wallet.name Alice
+```
+
+or
+
+```bash
+btcli stake revoke_children  --subtensor.chain_endpoint ws://localhost:9945
+```
+and follow the prompts.
