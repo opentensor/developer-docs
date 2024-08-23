@@ -47,7 +47,7 @@ style={{width: 900}}
 </center>
 <br />
 
-  1. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
+  4. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
 
 <center id="Talisman-1.4">
 <ThemedImage
