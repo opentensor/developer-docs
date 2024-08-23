@@ -47,7 +47,7 @@ style={{width: 900}}
 </center>
 <br />
 
-  4. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
+  1. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
 
 <center id="Talisman-1.4">
 <ThemedImage
@@ -77,7 +77,7 @@ style={{width: 900}}
 </center>
 <br />
 
-  5. When the above steps are complete, then you have successfully connected your Ledger hardware wallet device to the Polkadot app. Next, choose the Ledger hardware wallet addresses you would like to connect to the Talisman wallet.
+  5. When the above steps are complete, then you have successfully connected your Ledger hardware wallet device to the Polkadot app. Next, choose the Ledger hardware wallet addresses you would like to import to the Talisman wallet.
    
 <center id="Talisman-1.4a">
 <ThemedImage
