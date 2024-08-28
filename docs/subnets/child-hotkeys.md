@@ -118,20 +118,22 @@ btcli stake set_children --netuid <netuid> --children <a list of SS58 child hotk
 #### Setting a single child hotkey
 
 ```bash
-btcli stake set_children --netuid 4 \ 
-  --children 5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei \ 
-  --proportions 0.5 \ 
-  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \ 
+btcli stake set_children \
+  --netuid 4 \
+  --children 5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei \
+  --proportions 0.5 \
+  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
   --wallet.name Alice
 ```
 
 #### Setting multiple child hotkeys
 
 ```bash
-btcli stake set_children --netuid 4 \ 
-  --children 5Gx1CZ9jviC6V2KynBAcTpES4yK76riCagv5o5SFFZFYXj4s,5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei \ 
-  --proportions 0.3,0.7 \ 
-  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \ 
+btcli stake set_children \
+  --netuid 4 \
+  --children 5Gx1CZ9jviC6V2KynBAcTpES4yK76riCagv5o5SFFZFYXj4s,5HEXVAHY9gyavj5xnbov9Qoba4hPJYkkwwnq1MQFepLK7Gei \
+  --proportions 0.3,0.7 \
+  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
   --wallet.name Alice
 ```
 
@@ -162,9 +164,10 @@ btcli stake get_children --netuid <netuid> --hotkey <parent hotkey>
 ### Example
 
 ```bash
-btcli stake get_children --netuid 4 \ 
-  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \ 
-  --wallet.name Alice 
+btcli stake get_children \
+  --netuid 4 \
+  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
+  --wallet.name Alice
 ```
 
 or
@@ -186,16 +189,18 @@ Currently it is not possible to revoke a specific child hotkey. However, if a pa
 
 
 ```bash
-btcli stake revoke_children --netuid <netuid> \ 
-  --hotkey <parent hotkey> \ 
+btcli stake revoke_children \
+  --netuid <netuid> \
+  --hotkey <parent hotkey> \
   --wallet.name <coldkey>
 ```
 
 ### Example
 
 ```bash
-btcli stake revoke_children --netuid 4 \ 
-  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \ 
+btcli stake revoke_children \
+  --netuid 4 \
+  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
   --wallet.name Alice
 ```
 
@@ -219,9 +224,10 @@ The child hotkey can also set its delegate take separately from the child hotkey
 ### Usage
 
 ```bash
-btcli stake set_childkey_take  --netuid <netuid> \ 
-  --hotkey <child hotkey> \ 
-  --take <decimal number> \ 
+btcli stake set_childkey_take \
+  --netuid <netuid> \
+  --hotkey <child hotkey> \
+  --take <decimal number> \
   --wallet.name <coldkey>
 ```
 
@@ -234,28 +240,32 @@ btcli stake set_childkey_take  --netuid <netuid> \
 ### Example
 
 ```bash
-btcli stake set_childkey_take --netuid 4 \ 
-  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \ 
-  --take 0.09 \ 
+btcli stake set_childkey_take \
+  --netuid 4 \
+  --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
+  --take 0.09 \
   --wallet.name Alice
 ```
 
 ## Getting child hotkey take
 
-This command displays the take percentage of a given child hotkey and `netuid`. 
+This command displays the take percentage of a given child hotkey and `netuid`.
 
 ### Usage
 
 ```bash
-btcli stake get_childkey_take --netuid <netuid> \ 
-  --hotkey <child hotkey> \ 
+btcli stake get_childkey_take \
+  --netuid <netuid> \
+  --hotkey <child hotkey> \
   --wallet.name <coldkey>
 ```
+
 
 ### Example
 
 ```bash
-btcli stake get_childkey_take --netuid 4 \ 
-  --hotkey 5Gx1CZ9jviC6V2KynBAcTpES4yK76riCagv5o5SFFZFYXj4s \ 
+btcli stake get_childkey_take \
+  --netuid 4 \
+  --hotkey 5Gx1CZ9jviC6V2KynBAcTpES4yK76riCagv5o5SFFZFYXj4s \
   --wallet.name Bob
 ```
