@@ -9,6 +9,11 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 28 August 2024
+
+- A new document [Using Ledger Hardware Wallet](./staking-and-delegation/using-ledger-hw-wallet.md) is published.
+- A new document [Child Hotkeys](./subnets/child-hotkeys.md) is published.
+
 ## 15 August 2024
 
 - A new document [Subtensor Rate Limits](./subtensor-nodes/subtensor-rate-limits.md) is added.
