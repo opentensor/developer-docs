@@ -208,7 +208,13 @@ and follow the prompts.
 
 ## Setting child hotkey take
 
-This command sets the take percentage of the child hotkey for a given `netuid`. The `take` can be between `0` (0%) and `0.18` (18%). The child hotkey take rate is an attribute of the child hotkey and this take rate applies to all the parent hotkeys for which this hotkey is the child hotkey. The child hotkey can also set its delegate take separately from the child hotkey take. That is, a child hotkey can carry two separate take rates: the child hotkey take rate and the delegate take rate. For the delegate take rate, see [Set delegate take](../btcli.md#set-delegate-take).
+This command sets the take percentage of the child hotkey for a given `netuid`. The `take` can be between `0` (0%) and `0.18` (18%). 
+
+A child hotkey's `take` is subnet-specific, i.e., a child hotkey can have one `take` in one `netuid` and a different `take` in another `netuid`. 
+
+The child hotkey take rate is an attribute of the child hotkey and this take rate applies to all the parent hotkeys for which this hotkey is the child hotkey. 
+
+The child hotkey can also set its delegate take separately from the child hotkey take. That is, a child hotkey can carry two separate take rates: the child hotkey take rate and the delegate take rate. For the delegate take rate, see [Set delegate take](../btcli.md#set-delegate-take).
 
 ### Usage
 
@@ -223,6 +229,7 @@ btcli stake set_childkey_take  --netuid <netuid> \
 
 - `--hotkey`: SS58. A single SS58 of the child hotkey. Note that this `--hotkey` parameter expects child hotkey whereas the `--hotkey` parameter of the [Setting a child hotkey](#parameters) expects parent hotkey.
 - `--take`: Floating. A value between `0` (0%) and `0.18` (18%). Default value is `0`.
+- `--netuid`: Integer. The `netuid` in which this child hotkey's `take` is applicable. Note that a child hotkey's `take` is subnet-specific, i.e., a child hotkey can have one `take` in one `netuid` and a different `take` in another `netuid`. 
 
 ### Example
 
