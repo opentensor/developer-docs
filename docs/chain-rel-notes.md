@@ -6,6 +6,29 @@ title: "Chain Release Notes"
 
 The following are the release notes for the subtensor on-chain software.
 
+## Mainnet
+
+### New features
+
+- **Child hotkey take**: With this feature, you can now set a take rate for child hotkey delegation that is different from the take rate for delegation by nominator. In addition, there is no maximum limit on a hotkey's total stake (i.e., no maximum limit on a hotkey's sum of delegated stake + child hotkey stake).
+ 
+- **Schedule coldkey swap**: Schedule a coldkey swap, and it always executes the actual swap five (5) days from the time of scheduling. 
+
+    :::danger No btcli support yet
+    The Bittensor software does not yet support this schedule coldkey swap feature.
+    :::
+
+### Enhancements
+
+- **New proxy types**: Added new proxy types for finer-grained control. This allows for separate proxies for small and large sum transactions.
+
+- **Sensible runtime logging**: Reduced the amount of logging and clarified the reduced output.
+
+### Fixed issues
+
+- **Neuron pruning based on registration date**: Neurons are now pruned starting from the oldest registered first.
+
+
 ## Mainnet 1.2.3 
 
 `Released 12 July 2024`
