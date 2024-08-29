@@ -6,6 +6,19 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Release 7.4.0
+
+`Released 28 August 2024`
+
+### Breaking change
+
+- Updates to support the mainnet changes. Everyone is required to update the Bittensor to 7.3.1 or later versions. If you prefer to stay with your current version and not install 7.3.1, then you must install the patch for your preferred version, as described in the [Discord announcement (see Patch installation steps section)](https://discord.com/channels/799672011265015819/830075335084474390/1266138337203458088).
+
+## New feature
+
+- **Child hotkeys**: Support is added in `btcli` for child hotkeys feature. See [Child Hotkeys](./subnets/child-hotkeys.md). 
+  - Also see the blog post: https://blog.bittensor.com/child-hotkeys-77d0b855ce59
+
 ## Release 7.3.0
 
 `Released 12 July 2024`

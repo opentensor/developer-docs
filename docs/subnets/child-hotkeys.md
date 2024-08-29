@@ -18,7 +18,7 @@ The owner of this child hotkey would then validate in the subnet on behalf of th
 alt="Coldkey and hotkey pairings"
 sources={{
     light: useBaseUrl('/img/docs/child-hotkey-fig1.svg'),
-    dark: useBaseUrl('/img/docs/child-hotkey-fig1.svg'),
+    dark: useBaseUrl('/img/docs/dark-child-hotkey-fig1.svg'),
 }}
 style={{width: 750}}
 />
@@ -33,7 +33,7 @@ See the above diagram. Without the child hotkeys, a subnet validator's delegate 
 alt="Coldkey and hotkey pairings"
 sources={{
     light: useBaseUrl('/img/docs/fig2-child-hotkey.svg'),
-    dark: useBaseUrl('/img/docs/fig2-child-hotkey.svg'),
+    dark: useBaseUrl('/img/docs/dark-fig2-child-hotkey.svg'),
 }}
 style={{width: 800}}
 />
@@ -158,7 +158,7 @@ This command displays all the child hotkeys for a given parent hotkey.
 ### Usage
 
 ```bash
-btcli stake get_children --netuid <netuid> --hotkey <parent hotkey>
+btcli stake get_children --netuid <netuid> --hotkey <parent hotkey> --all
 ```
 
 ### Example
@@ -167,7 +167,8 @@ btcli stake get_children --netuid <netuid> --hotkey <parent hotkey>
 btcli stake get_children \
   --netuid 4 \
   --hotkey 5DqJdDLU23m7yf6rZSmbLTshU7Bfn9eCTBkduhF4r9i73B9Y \
-  --wallet.name Alice
+  --wallet.name Alice \
+  --all
 ```
 
 or
