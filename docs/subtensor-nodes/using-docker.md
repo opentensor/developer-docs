@@ -42,34 +42,23 @@ Navigate into the Subtensor directory:
 cd subtensor
 ```
 
-## Step 5: Switch to `v1.1.1` branch
-
-:::tip temporary fix
-The use of `v1.1.1` branch is a temporary fix for this step while we resolve some installation issues using the `main` branch. 
-:::
+## Step 5: Prepare to run
 
 Execute the below commands in this order:
 
-Switch to the `v1.1.1` branch:
+Ensure you are on the `main` branch. If not, switch to it:
 
 ```bash
-git checkout v1.1.1
+git checkout main
 ```
 
-Pull the latest `v1.1.1` branch contents:
+Pull the latest `main` branch contents:
 
 ```bash
 git pull
 ```
 
-## Step 6: Edit the `docker-compose.yml` file 
-
-Change line 11 of the [subtensor/docker-compose.yml](https://github.com/opentensor/subtensor/blob/v1.1.1/docker-compose.yml#L11) as below:
-
-- **from**: `image: ghcr.io/opentensor/subtensor:latest`
-- **to**: `image: ghcr.io/opentensor/subtensor:v1.1.1`
-
-## Step 7: Stop and clean Docker environment
+## Step 6: Stop and clean Docker environment
 
 Stop any currently running Docker containers and clean up the Docker environment:
 

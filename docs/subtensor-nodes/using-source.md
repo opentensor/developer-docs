@@ -60,14 +60,11 @@ git clone https://github.com/opentensor/subtensor.git
 ```bash
 cd subtensor
 ```
-3. Switch to `v1.1.1` branch:
 
-    :::tip temporary fix
-    The use of `v1.1.1` branch is a temporary fix for this step while we resolve some installation issues using the `main` branch. 
-    :::
+3. Ensure you are on the `main` branch. If not, switch to it:
 
 ```bash
-git checkout v1.1.1
+git checkout main
 ```
 
 4. Remove any previous chain state:
