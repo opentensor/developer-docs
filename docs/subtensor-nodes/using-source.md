@@ -61,14 +61,10 @@ git clone https://github.com/opentensor/subtensor.git
 cd subtensor
 ```
 
-3. Switch to `v1.1.3` branch:
-
-    :::tip temporary fix
-    The use of `v1.1.3` branch is a temporary fix for this step while we resolve some installation issues using the `main` branch. 
-    :::
+3. Switch to `main` branch:
 
 ```bash
-git checkout v1.1.3
+git checkout main
 ```
 
 4. Remove any previous chain state:
@@ -80,7 +76,7 @@ rm -rf /tmp/blockchain
 5. Install Subtensor by compiling with Cargo:
 
 ```bash
-cargo build --profile production --features=runtime-benchmarks
+cargo build -p node-subtensor --profile=production --features=runtime-benchmarks
 ```
 
 ## Run the subtensor node
