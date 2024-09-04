@@ -8,11 +8,11 @@ The following are the release notes for the Bittensor software.
 
 ## Release 7.4.0
 
-`Released 28 August 2024`
+`Released 04 September 2024`
 
 ### Breaking change
 
-- Updates to support the mainnet changes. Everyone is required to update the Bittensor to 7.3.1 or later versions. If you prefer to stay with your current version and not install 7.3.1, then you must install the patch for your preferred version, as described in the [Discord announcement (see Patch installation steps section)](https://discord.com/channels/799672011265015819/830075335084474390/1266138337203458088).
+- Updates to support the mainnet changes. Everyone is required to update the Bittensor to 7.4.0 or later versions. If you prefer to stay with your current version and not install 7.4.0, then you must install the patch for your preferred version, as described in the [Discord announcement (see Patch installation steps section)](https://discord.com/channels/799672011265015819/830075335084474390/1266138337203458088).
 
 ## New feature
 

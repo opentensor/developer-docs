@@ -8,6 +8,8 @@ The following are the release notes for the subtensor on-chain software.
 
 ## Mainnet
 
+`Released 04 September 2024`
+
 ### New features
 
 - **Child hotkey take**: With this feature, you can now set a take rate for child hotkey delegation that is different from the take rate for delegation by nominator. In addition, there is no maximum limit on a hotkey's total stake (i.e., no maximum limit on a hotkey's sum of delegated stake + child hotkey stake).
@@ -20,13 +22,19 @@ The following are the release notes for the subtensor on-chain software.
 
 ### Enhancements
 
-- **New proxy types**: Added new proxy types for finer-grained control. This allows for separate proxies for small and large sum transactions.
+- **Change in the emission schedule**: To reduce the chain bloat, we are changing the emission schedule. The new emission schedule will be once every 24 hours (7200 blocks). The keys will continue to accumulate the emissions at every tempo as usual. With this new emission schedule, staking returns are auto-compounded every 24-hours (7200 blocks).
+
+    **Elaboration**: Every time the [`emit_inflation_through_hotkey_account`](https://github.com/opentensor/subtensor/blob/1332d077ea73bc7bf40f551c7f1adea3370df2bd/pallets/subtensor/src/block_step.rs#L217) function is executed on-chain, it increases the size of the chain state. The chain currently runs this function every epoch, thereby significantly contributing to the chain bloat. To mitigate the above chain bloat issue, the OTF will make a change so that the above emit_inflation_through_hotkey_account function runs once every 20 epochs (every 7200 blocks), instead of every 360 blocks. As a result, this will reduce the chain bloat by a factor of 20.
+
+- **Single tempo delay**: We are introducing a single tempo delay between when you increase your stake and begin accumulating the corresponding staking returns. In specific, if you increased your stake during any block in the current tempo, you will start accumulating your staking returns only in the next tempo. For example, if you stake at tempo=0, then you will not receive any staking returns for this tempo=0. Your stake will only start to accumulate returns starting at tempo=1. 
+
+- **New proxy types**: Added the transfer proxy type in two flavors for finer-grained control. This allows for separate proxies for small and large sum transactions.
 
 - **Sensible runtime logging**: Reduced the amount of logging and clarified the reduced output.
 
 ### Fixed issues
 
-- **Neuron pruning based on registration date**: Neurons are now pruned starting from the oldest registered first.
+- **Better neuron pruning**: A neuron with the worst pruning score is pruned first, but if multiple neurons have the same worst pruning score, then the oldest registered neuron is pruned first. 
 
 
 ## Mainnet 1.2.3 
