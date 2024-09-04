@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 04 September 2024
+
+- A new document [Subtensor Storage Query Examples](./subtensor-nodes/subtensor-storage-query-examples.md) is added.
+
 ## 28 August 2024
 
 - A new document [Using Ledger Hardware Wallet](./staking-and-delegation/using-ledger-hw-wallet.md) is published.
