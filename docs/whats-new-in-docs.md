@@ -12,6 +12,7 @@ Key updates to this documentation.
 ## 04 September 2024
 
 - A new document [Subtensor Storage Query Examples](./subtensor-nodes/subtensor-storage-query-examples.md) is added.
+- A new document [Subtensor Error Messages](./subtensor-nodes/subtensor-error-messages.md) is added.
 
 ## 28 August 2024
 
