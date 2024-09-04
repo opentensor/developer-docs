@@ -36,7 +36,6 @@ const sidebars = {
         "learn/anatomy-of-incentive-mechanism",
       ],
     },
-    "error-messages",
     "errors-and-troubleshooting",
     {
       type: "category",
@@ -60,6 +59,7 @@ const sidebars = {
         "subtensor-nodes/using-docker",
         "subtensor-nodes/subtensor-rate-limits",
         "subtensor-nodes/subtensor-storage-query-examples",
+        "subtensor-nodes/subtensor-error-messages",
       ],
     },
   "bittensor-networks",

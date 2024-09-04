@@ -1,10 +1,10 @@
 ---
-title: "Error Messages"
+title: "Subtensor Error Messages"
 ---
 
-# Error Messages
+# Subtensor Error Messages
 
-When [Subtensor](./subtensor-nodes/index.md) gives you errors, either when using [`btcli`](./btcli.md) or [Bittensor API](./bt-api-ref.md), consult this document to understand the meaning of these error messages. 
+When [Subtensor](./index.md) gives you errors, either when using [`btcli`](../btcli.md) or [Bittensor API](../bt-api-ref.md), consult this document to understand the meaning of these error messages. 
 
 ## Subtensor error message format
 
@@ -14,6 +14,21 @@ Subtensor presents the errors in the following format:
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: [Error Code]'
 }
 ```
+
+---
+
+Below are the detailed error messages:
+
+## Custom error: 0
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 0'
+}
+```
+
+### Description
+
+The account (`who`) is attempting to call any of `dissolve_network`, `transfer_keep_alive`, `transfer_allow_death` or `transfer_all` while a coldkey swap is scheduled for the calling account.
 
 ## Custom error: 1
 
@@ -67,16 +82,5 @@ The number of registrations for the current interval exceeds the maximum allowed
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 5'
-}
-```
-
-## Custom error: 6
-
-### Description
-
-An account (`who`) under arbitration is attempting to call `dissolve_network`.
-
-```bash
-{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 6'
 }
 ```
