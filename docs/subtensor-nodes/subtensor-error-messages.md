@@ -28,7 +28,7 @@ Below are the detailed error messages:
 
 ### Description
 
-The account (`who`) is attempting to call any of `dissolve_network`, `transfer_keep_alive`, `transfer_allow_death` or `transfer_all` while a coldkey swap is scheduled for the calling account.
+The account is attempting to call any of `dissolve_network`, `transfer_keep_alive`, `transfer_allow_death` or `transfer_all` while a coldkey swap is scheduled for the calling account.
 
 ## Custom error: 1
 
@@ -39,13 +39,13 @@ The account (`who`) is attempting to call any of `dissolve_network`, `transfer_k
 
 ### Description
 
-The account (`who`) attempting the `commit_weights` call does not meet the minimum stake requirement for weights.
+The account that is attempting to call `commit_weights` does not meet the minimum stake requirement for weights.
 
 ## Custom error: 2
 
 ### Description
 
-The account (`who`) attempting the `reveal_weights` call does not meet the minimum stake requirement for weights.
+The account that is attempting to call `reveal_weights` does not meet the minimum stake requirement for weights.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 2'
@@ -56,7 +56,7 @@ The account (`who`) attempting the `reveal_weights` call does not meet the minim
 
 ### Description
 
-The account (`who`) attempting the `set_weights` call does not meet the minimum stake requirement for weights.
+The account that is attempting to call `set_weights` does not meet the minimum stake requirement for weights.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 3'
