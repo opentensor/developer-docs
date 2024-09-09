@@ -113,14 +113,14 @@ Your Ledger hardware wallet device is now ready to be used with the Talisman Wal
 
    6. Lastly, perform the following steps on your Talisman app. 
    
-      **Talisman** > **Settings** > **Networks & Tokens** > **Manage networks** > **Polkadot** > **Bittensor** > (checkbox) **This network supports CheckMetadataHash sign extension**. See the below screenshots:
+      **Settings** > **Networks & Tokens** > **Manage networks** > **Polkadot** > **Bittensor** > (checkbox) **This network supports CheckMetadataHash sign extension** > **Update Network**. See the below screenshots:
 
 <center id="Talisman-1.4a">
 <ThemedImage
 alt="Talisman-1.4a"
 sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
+    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
+    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
   }}
 style={{width: 900}}
 />
@@ -131,8 +131,8 @@ style={{width: 900}}
 <ThemedImage
 alt="Talisman-1.4a"
 sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
+    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
+    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
   }}
 style={{width: 900}}
 />
