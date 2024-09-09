@@ -37,7 +37,7 @@ Proceed only after you successfully ran the above steps. The rest of this guide 
 
 <center id="Talisman-1.3">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.3"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
@@ -51,7 +51,7 @@ style={{width: 900}}
 
 <center id="Talisman-1.4">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
@@ -67,7 +67,7 @@ If you see "Failed to connect to your Ledger" message, then unlock your Ledger d
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
@@ -83,7 +83,7 @@ style={{width: 900}}
    
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
@@ -99,7 +99,7 @@ If you had transferred TAO to the Ledger device already, then select **Custom** 
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
@@ -111,6 +111,35 @@ style={{width: 900}}
 
 Your Ledger hardware wallet device is now ready to be used with the Talisman Wallet app.
 
+   6. Lastly, perform the following steps on your Talisman app. 
+   
+      **Talisman** > **Settings** > **Networks & Tokens** > **Manage networks** > **Polkadot** > **Bittensor** > (checkbox) **This network supports CheckMetadataHash sign extension**. See the below screenshots:
+
+<center id="Talisman-1.4a">
+<ThemedImage
+alt="Talisman-1.4a"
+sources={{
+    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
+    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
+  }}
+style={{width: 900}}
+/>
+</center>
+<br />
+
+<center id="Talisman-1.4a">
+<ThemedImage
+alt="Talisman-1.4a"
+sources={{
+    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
+    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
+  }}
+style={{width: 900}}
+/>
+</center>
+<br />
+
+
 ---
 
 ## Step 2. Transfer TAO from Ledger hardware wallet 
@@ -121,7 +150,7 @@ To transfer TAO from your connected Ledger hardware wallet, execute the followin
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-3.1.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-3.1.png'),
@@ -136,7 +165,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.1.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.1.png'),
@@ -153,7 +182,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.4.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.4.png'),
@@ -167,7 +196,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.5.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.5.png'),
@@ -181,7 +210,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.6.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.6.png'),
@@ -199,7 +228,7 @@ The below steps require you to verify on the Ledger device screen.
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7a.jpg'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7a.jpg'),
@@ -211,7 +240,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7b.jpg'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7b.jpg'),
@@ -223,7 +252,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7c.jpg'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7c.jpg'),
@@ -235,7 +264,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7d.jpg'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7d.jpg'),
@@ -247,7 +276,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7e.jpg'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Ledger/Ledger-4.7e.jpg'),
@@ -261,7 +290,7 @@ style={{width: 550}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.8.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet/Talisman/Talisman-4.8.png'),
@@ -279,7 +308,7 @@ While using any crypto wallet, you might need to bring over your Ledger device's
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.1.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.1.png'),
@@ -293,7 +322,7 @@ style={{width: 900}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.2.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.2.png'),
@@ -307,7 +336,7 @@ style={{width: 900}}
 
 <center id="Talisman-1.4a">
 <ThemedImage
-alt="1-Prompting Walkthrough"
+alt="Talisman-1.4a"
 sources={{
     light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.3.png'),
     dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-3.3.png'),
