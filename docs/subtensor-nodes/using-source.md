@@ -42,8 +42,7 @@ Next, install Rust toolchain:
 rustup default stable
 rustup update
 rustup target add wasm32-unknown-unknown
-rustup toolchain install nightly
-rustup target add --toolchain nightly wasm32-unknown-unknown
+wasm32-unknown-unknown
 ```
 
 ## Compile subtensor code 
@@ -76,7 +75,7 @@ rm -rf /tmp/blockchain
 5. Install Subtensor by compiling with Cargo:
 
 ```bash
-cargo build -p node-subtensor --profile=production --features=runtime-benchmarks
+cargo build -p node-subtensor --profile=production --features=metadata-hash
 ```
 
 ## Run the subtensor node
