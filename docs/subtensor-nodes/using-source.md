@@ -42,7 +42,6 @@ Next, install Rust toolchain:
 rustup default stable
 rustup update
 rustup target add wasm32-unknown-unknown
-wasm32-unknown-unknown
 ```
 
 ## Compile subtensor code 
