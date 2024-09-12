@@ -109,7 +109,7 @@ This subnet has developed a few innovative techniques to get to a real human-lik
 
 To deliver to a user of this subnet an experience of a human-like conversation:
 
-- Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. There are several tangible benefits to this roleplaying flow, such as: 
+- Subnet validators perform a roleplay where they take on the persona of **random** human users before they prompt the subnet miners. There are several tangible benefits to this role playing flow, such as: 
   - Subnet validators can engage the subnet miners in a real, random, human-like conversation throughout the subnet operation.
   - Subnet miners become adept at handling ambiguous instructions.
   - This generates, as a byproduct, interesting synthetic datasets that can be used to finetune other LLMs.
@@ -134,13 +134,13 @@ To prevent the subnet miners from simply looking up the answers on the internet,
 
 The subnet validator composes a challenge based on whether the task is answering questions, summarizing a given text, debugging code, solve mathematics problems, and so on. The motivation behind using multiple tasks is several fold:
 
-- Using multiple tasks in the prompts continously benchmarks the capabilities of the subnet miners across a broad range of tasks that are challenging but are still common use-cases. 
+- Using multiple tasks in the prompts continuously benchmarks the capabilities of the subnet miners across a broad range of tasks that are challenging but are still common use-cases. 
 - Using multiple tasks, prompts can be routed to specialized subnet miners, thereby providing an effective mixture of experts system.
 - This approach also serves as a precursor to Bittensor's inter-subnet bridging mechanism that will enable Subnet 1 to interact with other subnets and access the useful work provided by these subnets. 
 - Finally, the subnet miners in this subnet must become adept at using tools and APIs in order to fulfill validation tasks. We are building an API layer for inter-subnet communication, which is a natural extension of 'agentic' models.
 
 :::tip Continuously improving performance
-One objective of this subnet is achieve full coverage of the distributions across different personas (representing different users), and different tasks (representing different use-cases). See the arXiv paper [Super-Natural Instructions](https://arxiv.org/abs/2204.07705) [(PDF)](https://arxiv.org/pdf/2204.07705.pdf).
+One objective of this subnet is to achieve full coverage of the distributions across different personas (representing different users), and different tasks (representing different use-cases). See the arXiv paper [Super-Natural Instructions](https://arxiv.org/abs/2204.07705) [(PDF)](https://arxiv.org/pdf/2204.07705.pdf).
 
 :::
 

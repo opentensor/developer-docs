@@ -292,14 +292,14 @@ wallet = bt.wallet( name = 'my_coldkey', hotkey = 'my_first_hotkey', path = '~/p
 ```python
 create_coldkey_from_uri(self, uri:str, use_password: bool = True, overwrite:bool = False) -> 'Wallet'
 ```
-Creates coldkey from suri string, optionally encrypts it with the user's inputed password.
+Creates coldkey from uri string, optionally encrypts it with user entered password.
 
 
 #### create_hotkey_from_uri
 ```python
 create_hotkey_from_uri( self, uri:str, use_password: bool = False, overwrite:bool = False) -> 'Wallet'
 ```
-Creates hotkey from suri string, optionally encrypts it with the user's input password.
+Creates hotkey from uri string, optionally encrypts it with user entered password.
 
 
 #### new_coldkey
@@ -407,7 +407,7 @@ Returns the coldkey, hotkey, and coldkeypub, respectively. If encrypted, require
 ```python
 create_coldkey_from_uri(self, uri:str, use_password: bool = True, overwrite:bool = False) -> 'Wallet'
 ```
-Creates a coldkey from a suri string. Optionally encrypts and overwrites existing coldkey.
+Creates a coldkey from uri string. Optionally encrypts and overwrites existing coldkey.
 
 
 </Accordion>

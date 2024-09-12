@@ -64,7 +64,7 @@ The schedule coldkey swap feature is available in the **Bittensor 7.3.0 version*
 
 ### Step 1: Python virtual environment 
 
-First, ensure you are using a Python virtual environment. You can use either Conda or Python to create your virual environment:
+First, ensure you are using a Python virtual environment. You can use either Conda or Python to create your virtual environment:
 
 - [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or 
 - [python](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
@@ -92,7 +92,7 @@ Next, run the below command to install the feature:
 python3 -m pip install bittensor/
 ```
 
-This will install the schedule coldkey swap feature. Now skip to [Verfy the install](#step-3-verify-the-install) section.
+This will install the schedule coldkey swap feature. Now skip to [Verify the install](#step-3-verify-the-install) section.
 
 #### Method 2: Install with a script
 

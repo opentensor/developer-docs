@@ -28,7 +28,7 @@ Consider the example below:
   - Nominator 1 delegates 100 TAO.
   - Nominator 2 delegates 70 TAO.
   - Nominator 3 delegates 30 TAO.
-- The effective stake of the delegate is 1000 TAO (100+70+30 of the delegated TAO plus their own 800 TAO), comprising of 80% of the delegate's own and the remaining 20% from the nominators.
+- The effective stake of the delegate is 1000 TAO (100+70+30 of the delegated TAO plus their own 800 TAO), consisting of 80% of the delegate's own and the remaining 20% from the nominators.
 - Finally, the individual nominator contributions of the total delegated TAO are as follows:
   - Nominator 1 contributes 50% of total delegated TAO (i.e., 100/(100+70+30)).
   - Nominator 2 contributes 35% of the total delegated TAO.
@@ -54,7 +54,7 @@ When the staking dividends are received, the dividends are shared in the followi
   - Total dividends to the delegate are: `0.8 + 0.2*0.18=0.836` of the received dividends.
   - Each nominator receives the following portions of the received dividends, based on their contribution percentages:
     - Nominator 1 receives: `(1-0.8)*(1-0.18)*50% = 0.082`.
-    - Nominoator 2 receives: `(1-0.8)*(1-0.18)*35% = 0.0574`. 
+    - Nominator 2 receives: `(1-0.8)*(1-0.18)*35% = 0.0574`. 
     - Nominator 3 receives: `(1-0.8)*(1-0.18)*15% = 0.0246`.
     
 
@@ -119,20 +119,20 @@ You will get an output like this (click on the image to zoom):
 
 See below for an explanation of the column headings in the above terminal output:
 
-| Column                | Meaning                                                                                                                                               |
-| :------               | ------------------------------------------------------------                                                                                          |
-| INDEX                 | Delegates with a larger total stake are higher on the list.                                                                                 |
-| DELEGATE              | The name of the delegate. Click on the name to visit the delegate website. It only shows if the delegate has registered.                              |
-| SS58                  | The [SS58 hotkey of the delegate](../getting-started/wallets#list-all-the-local-wallets).                                                             |
-| NOMINATORS            | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) nominated **to** this hotkey (i.e., to this delegate).                                                                                                              |
-| DELEGATE STAKE(τ)     | The amount of the delegate's own stake (not the TAO delegated from any nominators). This is the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others).                                                                                                  |
-| TOTAL STAKE(τ)        | The total amount of stake delegated to this delegator's hotkey.                                                                                       |
-| CHANGE/(4h)           | The percent change in the total stake delegated to this delegate within the past 4 hours.                                                             |
-| VPERMIT               | Shows the subnets for which the delegate holds the validator permits.                                                                                 |
-| TAKE                  | Shows the delegate take percentage.                                                                                                                   |
-| NOMINATOR/(24h)/kτ    | Stake reward distributed to this delegate's nominators within the past 24-hour period (per 1000 TAO).                                                 |
-| DELEGATE/(24h)        | Stake reward cut taken by this delegate within the past 24 hours.                                                                                     |
-| Desc                  | A description of the delegate.                                                                                                                        |
+| Column                | Meaning                                                                                                                                                                                                                            |
+| :------               |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| INDEX                 | Delegates with a larger total stake are higher on the list.                                                                                                                                                                        |
+| DELEGATE              | The name of the delegate. Click on the name to visit the delegate website. It only shows if the delegate has registered.                                                                                                           |
+| SS58                  | The [SS58 hotkey of the delegate](../getting-started/wallets#list-all-the-local-wallets).                                                                                                                                          |
+| NOMINATORS            | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) nominated **to** this hotkey (i.e., to this delegate).                   |
+| DELEGATE STAKE(τ)     | The amount of the delegate's own stake (not the TAO delegated from any nominators). This is the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others). |
+| TOTAL STAKE(τ)        | The total amount of stake delegated to this delegator's hotkey.                                                                                                                                                                    |
+| CHANGE/(4h)           | The percent change in the total stake delegated to this delegate within the past 4 hours.                                                                                                                                          |
+| VPERMIT               | Shows the subnets for which the delegate holds the validator permits.                                                                                                                                                              |
+| TAKE                  | Shows the delegate take percentage.                                                                                                                                                                                                |
+| NOMINATOR/(24h)/kτ    | Stake reward distributed to this delegate's nominators within the past 24-hour period (per 1000 TAO).                                                                                                                              |
+| DELEGATE/(24h)        | Stake reward cut taken by this delegate within the past 24 hours.                                                                                                                                                                  |
+| Desc                  | A description of the delegate.                                                                                                                                                                                                     |
 
 ### Delegating tao
 

@@ -4,12 +4,12 @@ title: "Working with Subnets"
 
 # Working with Subnets
 
-Subnets are composed of a discrete number of UIDs. The subnet validators and subnet miners are associated with these UIDs. Each UID in the subnet belongs to a unique [hotkey](../getting-started/wallets.md#coldkey-and-hotkey) which in turn is connected to a unique **coldkey** which was used during regisration. The Yuma Consensus runs on these UIDs. This section presents a few examples showing how to work with subnets. 
+Subnets are composed of a discrete number of UIDs. The subnet validators and subnet miners are associated with these UIDs. Each UID in the subnet belongs to a unique [hotkey](../getting-started/wallets.md#coldkey-and-hotkey) which in turn is connected to a unique **coldkey** which was used during registration. The Yuma Consensus runs on these UIDs. This section presents a few examples showing how to work with subnets. 
 
 Transfer is transfer from cold to cold 
 Registration takes tao from cold 
-Hotkey Tao movement is only stake addd and remove and it’s loaded by emissions while mining
-Root delegation/undelegation  is hotkey Tao movement to a strangers hotkey and its loaded by the activities of the strangers emission validation activities
+Hotkey Tao movement is only stake add and remove and it’s loaded by emissions while mining
+Root delegation/undelegation is hotkey Tao movement to a strangers hotkey and it’s loaded by the activities of the strangers emission validation activities
 
 ## Viewing subnetworks
 

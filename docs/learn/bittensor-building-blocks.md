@@ -13,7 +13,7 @@ The Bittensor API provides basic building blocks you can use to develop your inc
 
 ## Subnet
 
-A subnet closely follows how a classical feedforward neural network is connected. Consider the below diagram showing a comparision of a classical neural network with a subnet.
+A subnet closely follows how a classical feedforward neural network is connected. Consider the below diagram showing a comparison of a classical neural network with a subnet.
 
 <ThemedImage
 alt="Incentive Mechanism Big Picture"
@@ -33,7 +33,7 @@ For example, see [Minimum compute requirements](https://github.com/opentensor/bi
 - In the classical neural network, the inputs from the external world are connected only to the input layer, and the hidden nodes are isolated from the external world (hence, "hidden"). Similarly, in a Bittensor subnet:
   - Inputs from the external world can connect only to the subnet validators. 
   - Only subnet validators are allowed to connect to subnet miners, hence isolating subnet miners from the external world. 
-- **Many-to-many bidirectional**: Notice that in the classical neural network shown on the left, the connection from input layer to the hidden layer is only feedforward. However, in a Bittensor subnet, shown on the right, a subnet miner can directly communicate to the subnet validator. This bi-drectional communication between a subnet validator and a subnet miner forms the core of a protocol in an incentive mechanism. This closely resembles the architecture of a [Restricted Botlzmann Machine (RBM)](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine).
+- **Many-to-many bidirectional**: Notice that in the classical neural network shown on the left, the connection from input layer to the hidden layer is only feedforward. However, in a Bittensor subnet, shown on the right, a subnet miner can directly communicate to the subnet validator. This bidirectional communication between a subnet validator and a subnet miner forms the core of a protocol in an incentive mechanism. This closely resembles the architecture of a [Restricted Boltzmann Machine (RBM)](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine).
 
 ## Neuron-to-neuron communication 
 
@@ -59,11 +59,11 @@ axon = bt.axon(wallet=self.wallet, config=self.config)
 ```
 then an API server with the name `axon` is spawned on the subnet miner node. This `axon` API server receives incoming Synapse objects from subnet validators, i.e., the `axon` starts to serve on behalf of the subnet miner.
 
-Similarly in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
+Similarly, in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
 
 ### Dendrite
 
-Axon is a **server** instance. Hence a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
+Axon is a **server** instance. Hence, a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
 
 ```python
     responses: List[bt.Synapse] = await self.dendrite(
@@ -82,7 +82,7 @@ then the subnet validator:
 
 Synapse is a data object. Subnet validators and subnet miners use Synapse data objects as the main vehicle to exchange information. The Synapse class inherits from the `BaseModel` of the Pydantic data validation library. 
 
-For example, in the [Text Prompting Subnet](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/protocol.py#L27), the subnet validator creates a Synapse object, called Prompting, with three fields. The fields `roles` and `messages` are set by the subnet validator during the initialization of this Prompting data object and they cannot be changed after that. A third field, `completion`, is mutable. When a subnet miner receives this Prompting object from the subnet validator, the subnet miner updates this `completion` field. The subnet validator then reads this updated `completion` field. 
+For example, in the [Text Prompting Subnet](https://github.com/opentensor/prompting/blob/6c493cbce0c621e28ded203d947ce47a9ae062ea/prompting/protocol.py#L27), the subnet validator creates a Synapse object, called Prompting, with three fields. The fields `roles` and `messages` are set by the subnet validator during the initialization of this Prompting data object, and they cannot be changed after that. A third field, `completion`, is mutable. When a subnet miner receives this Prompting object from the subnet validator, the subnet miner updates this `completion` field. The subnet validator then reads this updated `completion` field. 
 
 ## Metagraph
 

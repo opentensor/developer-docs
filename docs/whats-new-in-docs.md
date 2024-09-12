@@ -212,7 +212,7 @@ The following changes are documented:
 ## 29 November 2023
 
 - Release of new and revised documentation hosted on `docs.bittensor.com`, which will now be the default site for Bittensor developer documentation. 
-- A new [Learn Bittensor Concepts](./learn/introduction.md) section comprising of:
+- A new [Learn Bittensor Concepts](./learn/introduction.md) section consisting of:
   - [Introduction](./learn/introduction.md).
   - [Bittensor Building Blocks](./learn/bittensor-building-blocks.md).
   - [Anatomy of Incentive Mechanism](./learn/anatomy-of-incentive-mechanism.md).

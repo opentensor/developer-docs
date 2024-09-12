@@ -44,7 +44,7 @@ The terminal output print of the subnet hyperparameters is enhanced from its cur
 
 ### Fixed issues
 
-- Nonce implementation is enhanced against replay attack vulnerability. Previously nonces were converted to monotonic numbers. In the fixed version a nonce is converted to timestamp and while verifying it a check is made for the version number. 
+- Nonce implementation is enhanced against replay attack vulnerability. Previously each nonce was converted to monotonic numbers. In the fixed version a nonce is converted to timestamp and while verifying it a check is made for the version number. 
 - Terminal display of subnet hyperparameters is enhanced to human-readable format.
 
 ### General 
@@ -81,7 +81,7 @@ See [line of code for the new `set_root_weights()`](https://github.com/opentenso
 
 ### Fixed issue
 
-Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
+Previously, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
 
 ---
 

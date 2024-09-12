@@ -16,7 +16,7 @@ If you are already running a subtensor node using Docker, then go directly to [S
 
 ## Step 1: Install git
 
-Ensure that `git` is installed on your machine. Refer to the [GitHub documentation](https://docs.github.com/en/get-started) for installation instructions..
+Ensure that `git` is installed on your machine. Refer to the [GitHub documentation](https://docs.github.com/en/get-started) for installation instructions.
 
 ## Step 2: Install Docker
 

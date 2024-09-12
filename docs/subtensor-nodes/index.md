@@ -34,7 +34,7 @@ A public subtensor node refers to an internet-connected computer that is synchro
 A subtensor node is different from a Bittensor neuron. A Bittensor neuron is either a subnet validator node or a subnet miner node&mdash;it exists in a subnet, and it does not contain blockchain database. 
 :::
 
-Normally, a node in Bittensor blockchain must always be synchronized to the latest blockchain ledger state. Such a blockchain node accomplishes this by holding a copy of the entire Bittensor blockchain database, from the genesis block all the way to the current block. However, holding an entire copy of blockchain ledger state, which is continously increasing in size, can be expensive. Hence, two types of nodes, a lite node and an archive node, are defined for subtensor, as below:
+Normally, a node in Bittensor blockchain must always be synchronized to the latest blockchain ledger state. Such a blockchain node accomplishes this by holding a copy of the entire Bittensor blockchain database, from the genesis block all the way to the current block. However, holding an entire copy of blockchain ledger state, which is continuously increasing in size, can be expensive. Hence, two types of nodes, a lite node and an archive node, are defined for subtensor, as below:
 
 ### Lite node
 

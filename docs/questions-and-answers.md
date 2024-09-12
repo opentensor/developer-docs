@@ -47,7 +47,7 @@ See [Bittensor Subnets API](https://github.com/opentensor/bittensor/blob/master/
 
 ### I don't understand Bittensor mining and validation
 
-In Bittensor, the term "mining" is not related to Bitcoin mining. Similarly Bittensor "validation" has nothing to do with blockchain validation. In Bittensor, mining is "subnet mining" and validation is "subnet validation". Subnet miners perform some useful task given to them by subnet validators. See the above [General](#general) section. 
+In Bittensor, the term "mining" is not related to Bitcoin mining. Similarly, Bittensor "validation" has nothing to do with blockchain validation. In Bittensor, mining is "subnet mining" and validation is "subnet validation". Subnet miners perform some useful task given to them by subnet validators. See the above [General](#general) section. 
 
 :::tip See also
 See more here in [How a subnet works](learn/introduction.md#how-a-subnet-works). 
@@ -77,7 +77,7 @@ See [Emissions](./emissions.md) for details, in specific the role of the root ne
 
 ### I don't want to create a subnet, can I just be a miner or a validator?
 
-Yes. But remember, you have so many different subnets to choose from. Requirements for mining or validating are subnet-specific. Start with this [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md). Then see the step by step instructions in [Register, Validate and Mine](./subnets/register-validate-mine.md).
+Yes. But remember, you have so many different subnets to choose from. Requirements for mining or validating are subnet-specific. Start with this [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md). Then see the step-by-step instructions in [Register, Validate and Mine](./subnets/register-validate-mine.md).
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 

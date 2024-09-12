@@ -69,7 +69,7 @@ The child hotkey features are as follows:
 
 The following rate limits apply for child hotkeys:
 
-- A child hotkey's take rate can only be adjust once per 30 days.
+- A child hotkey's take rate can only be adjusted once per 30 days.
 - One successful execution of `set_children` or `revoke_children` is allowed for every 720 blocks. 
 
 ---

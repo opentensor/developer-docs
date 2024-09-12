@@ -25,7 +25,7 @@ When a proposal is executed, the calldata passed to it during its creation are i
 
 ## Security
 
-Before the governance protocol existed, all administrative actions within the network (e.g., changing hyperparameters, creating new sub-networks, chain upgrades) required permission via a single privileged key, known as `sudo`. If the `sudo` private key were somehow compromised, a malicious actor could take over the network and execute any privileged extrinsics.
+Before the governance protocol existed, all administrative actions within the network (e.g., changing hyperparameters, creating new subnetworks, chain upgrades) required permission via a single privileged key, known as `sudo`. If the `sudo` private key were somehow compromised, a malicious actor could take over the network and execute any privileged extrinsics.
 
 Under the governance protocol, a malicious actor would have to compromise a Triumvirate member and control a majority of Senate seats in order to approve a proposal.
 

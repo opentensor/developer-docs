@@ -40,7 +40,7 @@ By giving weight copiers access only to old weights, the goal is to reduce the a
 
 ## How to use commit reveal feature
 
-Here are summary steps to use the commmit reveal feature. These steps are typically executed by a subnet owner:
+Here are summary steps to use the commit reveal feature. These steps are typically executed by a subnet owner:
 
 1. Enable the commit reveal feature by setting the new subnet hyperparameter `commit_reveal_weights_enabled` (bool) to `True`.
 2. Specify the desired number of blocks of delay before revealing the weights, by using the new subnet hyperparameter `commit_reveal_weights_interval` (integer). 

@@ -539,7 +539,7 @@ title: "Subtensor Storage Query Examples"
     print(result.value)
     ```
 
-## 32. LastMechansimStepBlock
+## 32. LastMechanismStepBlock
 
 - **Description**: Last block when the mechanism step was performed.
 - **Query Type**: `u16 -> u64`
@@ -552,7 +552,7 @@ title: "Subtensor Storage Query Examples"
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
-    result = substrate.query('SubtensorModule', 'LastMechansimStepBlock', [netuid])
+    result = substrate.query('SubtensorModule', 'LastMechanismStepBlock', [netuid])
     print(result.value)
     ```
 
@@ -1123,7 +1123,7 @@ title: "Subtensor Storage Query Examples"
     print(result.value)
     ```
 
-## 68. PendingdHotkeyEmission
+## 68. PendingHotkeyEmission
 
 - **Description**: Accumulated hotkey emission.
 - **Query Type**: `AccountId -> u64`
@@ -1136,7 +1136,7 @@ title: "Subtensor Storage Query Examples"
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
-    result = substrate.query('SubtensorModule', 'PendingdHotkeyEmission', [hotkey])
+    result = substrate.query('SubtensorModule', 'PendingHotkeyEmission', [hotkey])
     print(result.value)
     ```
 

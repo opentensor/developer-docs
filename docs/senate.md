@@ -12,7 +12,7 @@ All members of the network who have delegated stake to any of these Senate membe
 
 In order to participate in the Senate, a member must meet the below four requirements. Only upon meeting these requirements can a coldkey-hotkey pair vote on proposals.
 
-1. Has registered with any sub-network as a hotkey-coldkey pair.
+1. Has registered with any subnetwork as a hotkey-coldkey pair.
 2. Has nominated themselves as a delegate for anyone to stake their $TAO with.
 3. Their hotkey stake value is greater than 2% of the network's total stake amount, through delegation or self-stake.
 4. Has elected to participate in the Senate.

@@ -95,7 +95,7 @@ To generate this challenge, the subnet validator applies the following steps:
 
 - Creates a synthetic invoice document using the [Python Faker library](https://github.com/joke2k/faker). 
 - Converts this synthetic data into PDF using [ReportLab Python library](https://docs.reportlab.com/install/open_source_installation/). 
-- Finally the validator creates the challenge by converting this PDF into a corrupted image, called `noisy_image`. 
+- Finally, the validator creates the challenge by converting this PDF into a corrupted image, called `noisy_image`. 
 
 #### Code snapshot
 
@@ -186,7 +186,7 @@ However, in a Bittensor subnet, any communication between a subnet validator and
 class OCRSynapse(bt.Synapse):
    """
     A simple OCR synapse protocol representation which uses bt.Synapse as its base.
-    This protocol enables communication betweenthe miner and the validator.
+    This protocol enables communication between the miner and the validator.
 
     Attributes:
     - image: A pdf image to be processed by the miner.
@@ -196,7 +196,7 @@ class OCRSynapse(bt.Synapse):
     # Required request input, filled by sending dendrite caller. It is a base64 encoded string.
     base64_image: str
 
-    # Optional request output, filled by recieving axon.
+    # Optional request output, filled by receiving axon.
     response: typing.Optional[typing.List[dict]] = None
 ```
 
