@@ -13,7 +13,7 @@ FileTAO
 
 ## Description
 
-FileTAO implements a novel, multi-layered zero-knowledge interactive proof-of-spacetime algorithm. It cleverly uses Pedersen commitments, random challenges leveraging elliptic curve cryptography, sequential seed-based chained hash verification, and merkle proofs to achieve an efficient, robust, secure, and highly available decetralized storage system on the Bittensor network.
+FileTAO implements a novel, multi-layered zero-knowledge interactive proof-of-spacetime algorithm. It cleverly uses Pedersen commitments, random challenges leveraging elliptic curve cryptography, sequential seed-based chained hash verification, and merkle proofs to achieve an efficient, robust, secure, and highly available decentralized storage system on the Bittensor network.
 
 ## Subnet owner
 

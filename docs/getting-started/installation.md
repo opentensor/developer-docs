@@ -51,7 +51,7 @@ pip3 install bittensor
 ```bash
 git clone https://github.com/opentensor/bittensor.git
 ```
-3.  Change to the Bittensor directory:
+3. Change to the Bittensor directory:
 
 ```bash
 cd bittensor

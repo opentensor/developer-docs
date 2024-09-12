@@ -16,7 +16,7 @@ A type of public subtensor node that stores the entire blockchain history, allow
 
 ### Axon
 
-A module in the Bittensor API that uses the FastAPI library to create and run API servers. Axons receive incoming Synapse objects. Typically an Axon is the entry point advertised by a subnet miner on the Bittensor blockchain, allowing subnet validators to communicate with the miner.
+A module in the Bittensor API that uses the FastAPI library to create and run API servers. Axons receive incoming Synapse objects. Typically, an Axon is the entry point advertised by a subnet miner on the Bittensor blockchain, allowing subnet validators to communicate with the miner.
 
 ## B
 
@@ -306,7 +306,7 @@ A component of the incentive mechanism that defines how subnet miners' responses
 
 ### Subnet Task
 
-A key component of any incentive mechanism that defines the work the subnet miners will perform. The task should be chosen to maximize submet miner effectiveness at the intended use case for the subnet.
+A key component of any incentive mechanism that defines the work the subnet miners will perform. The task should be chosen to maximize subnet miner effectiveness at the intended use case for the subnet.
 
 ### Subnet Validator
 

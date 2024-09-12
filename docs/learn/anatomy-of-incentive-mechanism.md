@@ -88,7 +88,7 @@ See **4** and **5** in the above diagram. Just as the task describes **what** mi
 
 As with any machine learning model, a subnet has an objective function that it is continuously optimizing. The reward model defines the quality of all miner behaviour in the subnet (both intended and unintended). 
 
-Operationally, it is the mathematical object that converts miner responses into numerical scores. A reward model can in fact contain as many different reward mechanisms as are necesary to align miners with the intended task. 
+Operationally, it is the mathematical object that converts miner responses into numerical scores. A reward model can in fact contain as many different reward mechanisms as are necessary to align miners with the intended task. 
 
 Miners will continuously compete to achieve the highest reward possible. If the reward is capped at an upper limit, miners may not be motivated to improve further. Hence care should be taken to enable continuous improvement of the miner, rather than stagnation.
 

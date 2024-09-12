@@ -85,9 +85,9 @@ const App = () => (
 ### Show Tabs with Source
 <Tabs>
   <TabItem value="ts" label="TS" default>
-```tsx title="<file />Bitterson/help.ts" link="https://figma.com"
+```tsx title="<file />Bittensor/help.ts" link="https://figma.com"
 const App = () => (
-  <Bitteson
+  <Bittensor
     dataProvider={dataProvider}
     resources={
 	[{
@@ -99,14 +99,14 @@ const App = () => (
 	]}
   >
     /* ... */
-  </Bitteson>
+  </Bittensor>
 );
 ```
   </TabItem>
 	<TabItem value="js" label="JS" default>
-```tsx title="<file />Bitterson/help.js" link="https://github.com/facebook/react"
+```tsx title="<file />Bittensor/help.js" link="https://github.com/facebook/react"
 const App = () => (
-  <Bitteson
+  <Bittensor
     dataProvider={dataProvider}
     resources={
 	[{
@@ -118,7 +118,7 @@ const App = () => (
 	]}
   >
     /* ... */
-  </Bitteson>
+  </Bittensor>
 );
 ```
   </TabItem>

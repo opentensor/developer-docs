@@ -38,16 +38,16 @@ Follow the below steps:
 
 5. Paste the hotkey of the delegate in the box labeled **hotkey**.
 
-    ![delegatehotkey](/img/docs/step5.png)
+    ![delegate hotkey](/img/docs/step5.png)
 
 
 6. In the box labeled **amountStaked**, input, in units of Rao, the amount of TAO that you wish to stake to this delegate. 
 
     Note that 1 TAO = 10<sup>9</sup> Rao. Therefore, if you wish to stake 1 TAO, then input 1000000000 (`1` followed by nine zeros). If you wish to stake 10 TAO, then input 10000000000 (`1` followed by ten zeros), and so on. 
 
-    ![amountstaked](/img/docs/step6.png)
+    ![amount staked](/img/docs/step6.png)
 
 
 7. After you have verified the keys and amounts, click **Submit Transaction** to sign and submit this transaction to be included on the chain.
 
-    ![signandsubmit](/img/docs/step7.png)
+    ![sign and submit](/img/docs/step7.png)

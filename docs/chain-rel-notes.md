@@ -64,13 +64,13 @@ A bug is fixed where, when a subnet's registration is turned off, the chain was 
 
 #### Consensus-based weights
 
-A new feature, called **consensus-based weights** is available in the testnet 1.2.1-pre-release. Currently while calculating the dividends to a subnet validator, a quantity called exponential moving average bond value of a subnet validator, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
+A new feature, called **consensus-based weights** is available in the testnet 1.2.1-pre-release. Currently, while calculating the dividends to a subnet validator, a quantity called exponential moving average bond value of a subnet validator, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
 
 $$
 B_{ij}^{(t)} = \alpha\cdot\Delta B_{ij}^{(t)} + (1-\alpha)\cdot B_{ij}^{(t-1)}
 $$
 
-Until now, the value of $\alpha$ is set to `0.9`. With this new feature, the $\alpha$ value is made into a variable. An optimium value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence this feature is called **consensus-based weights**. A subnet owner can now experiment for the optimum value of $\alpha$. See the below documentation links for how to use this feature:
+Until now, the value of $\alpha$ is set to `0.9`. With this new feature, the $\alpha$ value is made into a variable. An optimum value for the variable $\alpha$ is determined based on the current consensus in a given subnet. Hence, this feature is called **consensus-based weights**. A subnet owner can now experiment for the optimum value of $\alpha$. See the below documentation links for how to use this feature:
 
 :::note Documentation links for consensus-based-weights feature
 **Detailed documentation and how to test the consensus-based weights feature (including a Python notebook for subnet owners)**: See [Consensus-based Weights](./subnets/consensus-based-weights.md).
@@ -154,6 +154,6 @@ For a detailed description of the feature and how to test it, see the [Commit Re
 
 ### Fixed issue
 
-Previousy, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
+Previously, due to a bug in Yuma Consensus implementation, the weights were not normalized before calculating subnet emissions. This bug is fixed in this update, so that the weights are now normalized before calculating subnet emissions.
 
 **Pull request**: https://github.com/opentensor/subtensor/pull/335

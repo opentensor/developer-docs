@@ -858,7 +858,7 @@ bt.logging.critical(message)
 bt.logging.error(message)
 >>> 2023-05-29 09:27:25.426 |       INFO       | message
 
-# Log using prefex suffix design
+# Log using prefix suffix design
 bt.logging.info(prefix, message)
 bt.logging.debug(prefix, message)
 bt.logging.trace(prefix, message)
