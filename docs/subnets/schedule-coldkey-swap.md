@@ -21,16 +21,8 @@ The schedule coldkey swap feature works as follows:
 - When you use this feature, it will not immediately swap your coldkeys and swap your TAO funds from the old coldkey to the new coldkey. It will only schedule the swap event. 
 - All scheduled coldkey swaps will be executed on-chain. **Your scheduled coldkey swap will execute on the mainnet exactly 5 days after you successfully scheduled the coldkey swap using the method described in this document.**
 - The old coldkey you used in this method will be locked when you schedule the swap. After the 5-day period is elapsed your original coldkey will be unlocked entirely.
-- This is a free transaction. **However, you need a balance of at least 0.1 TAO in your old coldkey, or one TAO staked, to initiate a coldkey swap to your new coldkey.**
-
-### For subnet owners
-
-- You do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey. 
+- **Cost**: The cost of this coldkey swap transaction is 0.01 TAO. This must be available in your old coldkey.
 - Any subnet ownership from your old coldkey will move to the new coldkey.
-
-### For subnet validators
-
-- If you have 500 TAO or more delegated, then you do not need any balance in your old coldkey to initiate a coldkey swap to your new coldkey.
 - The delegated stake will be transferred from your old coldkey to the new coldkey.
 - For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
 
@@ -96,10 +88,7 @@ Provide your new coldkey in the `newColdkey: AccountId32` field.
 
 Check again that you have provided the correct old and new coldkeys. 
 
-Scroll down to the bottom of the page and click on the **Submit Transaction** button.
-
-Polkadot.js will prompt you to sign the transaction using the selected account.
-After you sign the transaction, the signed transaction will be broadcast to the Subtensor.
+Scroll down to the bottom of the page and click on the **Submit Transaction** button. Polkadot.js will prompt you to sign the transaction using the selected account. After you sign the transaction, the signed transaction will be broadcast to the Subtensor.
 
 ## Verify
 
