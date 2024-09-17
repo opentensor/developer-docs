@@ -107,8 +107,12 @@ const config = {
             from: "/subnet-pages",
           },
           {
-            to: "/subnets/schedule-key-swap",
+            to: "/subnets/schedule-coldkey-swap",
             from: "/schedule-key-swap",
+          },
+          {
+            to: "/subnets/schedule-coldkey-swap",
+            from: "/subnets/schedule-key-swap",
           },
         ],
       },
