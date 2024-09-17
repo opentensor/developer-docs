@@ -42,7 +42,7 @@ Key updates to this documentation.
 
 ## 05 July 2024
 
-- A new doc for [Schedule Key Swap](./subnets/schedule-key-swap) is published.
+- A new doc for [Schedule Key Swap](./subnets/schedule-coldkey-swap) is published.
 
 ## 02 July 2024
 
