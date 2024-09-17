@@ -76,7 +76,7 @@ const sidebars = {
         "subnets/child-hotkeys",
         "subnets/commit-reveal",
         "subnets/consensus-based-weights",
-        "subnets/schedule-key-swap",
+        "subnets/schedule-coldkey-swap",
       ],
     },
     {
