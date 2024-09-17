@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 17 September 2024
+
+- A new document [Schedule Codlkey Swap](./subnets/schedule-coldkey-swap.md), showing how to use Polkadot JS webapp for coldkey swap, is published.
+
 ## 04 September 2024
 
 - A new document [Subtensor Storage Query Examples](./subtensor-nodes/subtensor-storage-query-examples.md) is added.
