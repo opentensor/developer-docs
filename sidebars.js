@@ -22,6 +22,7 @@ const sidebars = {
     // },
     "index",
     "chain-rel-notes",
+    "newdoc",
     "bittensor-rel-notes",
     "whats-new-in-docs",
     "questions-and-answers",
