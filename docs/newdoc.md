@@ -1,8 +1,4 @@
----
-title: "New BTCLI"
----
-
-# New `btcli`
+# `btcli`
 
 Method called before all others when using any CLI command. Gives version if that flag is set, otherwise
 loads the config from the config file.
@@ -62,21 +58,25 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 * `clear`: Setting the flags in this command will...
 * `get`: Prints the current config file in a table
 * `metagraph`: Interactive module to update the config...
-* `set`: Sets values in config file.
+* `set`: Sets values in config file
 
 ### `btcli c clear`
 
 Setting the flags in this command will clear those items from your config file.
 
-# Usage
+#### Usage
 
 - To clear the chain and network:
 
-btcli config clear --chain --network
+```bash
+ btcli config clear --chain --network
+```
 
 - To clear your config entirely:
 
-btcli config clear --all
+```bash
+ btcli config clear --all
+```
 
 **Usage**:
 
@@ -91,7 +91,7 @@ $ btcli c clear [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey`
 * `--network, --subtensor.network`
 * `--chain, --subtensor.chain_endpoint`
-* `--cache`
+* `--no-cache, --no_cache`
 * `--all`
 * `--help`: Show this message and exit.
 
@@ -126,7 +126,7 @@ $ btcli c metagraph [OPTIONS]
 
 ### `btcli c set`
 
-Sets values in config file. To set metagraph configuration, use the command `btcli config metagraph`
+Sets values in config file
 
 **Usage**:
 
@@ -141,7 +141,7 @@ $ btcli c set [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet
 * `--network, --subtensor.network TEXT`: The subtensor network to connect to. Default: finney.
 * `--chain, --subtensor.chain_endpoint TEXT`: The subtensor chain endpoint to connect to.
-* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `--html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.
+* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.  [default: no-cache]
 * `--help`: Show this message and exit.
 
 ## `btcli conf`
@@ -163,21 +163,25 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 * `clear`: Setting the flags in this command will...
 * `get`: Prints the current config file in a table
 * `metagraph`: Interactive module to update the config...
-* `set`: Sets values in config file.
+* `set`: Sets values in config file
 
 ### `btcli conf clear`
 
 Setting the flags in this command will clear those items from your config file.
 
-# Usage
+#### Usage
 
 - To clear the chain and network:
 
-btcli config clear --chain --network
+```bash
+ btcli config clear --chain --network
+```
 
 - To clear your config entirely:
 
-btcli config clear --all
+```bash
+ btcli config clear --all
+```
 
 **Usage**:
 
@@ -192,7 +196,7 @@ $ btcli conf clear [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey`
 * `--network, --subtensor.network`
 * `--chain, --subtensor.chain_endpoint`
-* `--cache`
+* `--no-cache, --no_cache`
 * `--all`
 * `--help`: Show this message and exit.
 
@@ -227,7 +231,7 @@ $ btcli conf metagraph [OPTIONS]
 
 ### `btcli conf set`
 
-Sets values in config file. To set metagraph configuration, use the command `btcli config metagraph`
+Sets values in config file
 
 **Usage**:
 
@@ -242,7 +246,7 @@ $ btcli conf set [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet
 * `--network, --subtensor.network TEXT`: The subtensor network to connect to. Default: finney.
 * `--chain, --subtensor.chain_endpoint TEXT`: The subtensor chain endpoint to connect to.
-* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `--html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.
+* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.  [default: no-cache]
 * `--help`: Show this message and exit.
 
 ## `btcli config`
@@ -264,21 +268,25 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 * `clear`: Setting the flags in this command will...
 * `get`: Prints the current config file in a table
 * `metagraph`: Interactive module to update the config...
-* `set`: Sets values in config file.
+* `set`: Sets values in config file
 
 ### `btcli config clear`
 
 Setting the flags in this command will clear those items from your config file.
 
-# Usage
+#### Usage
 
 - To clear the chain and network:
 
-btcli config clear --chain --network
+```bash
+ btcli config clear --chain --network
+```
 
 - To clear your config entirely:
 
-btcli config clear --all
+```bash
+ btcli config clear --all
+```
 
 **Usage**:
 
@@ -293,7 +301,7 @@ $ btcli config clear [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey`
 * `--network, --subtensor.network`
 * `--chain, --subtensor.chain_endpoint`
-* `--cache`
+* `--no-cache, --no_cache`
 * `--all`
 * `--help`: Show this message and exit.
 
@@ -328,7 +336,7 @@ $ btcli config metagraph [OPTIONS]
 
 ### `btcli config set`
 
-Sets values in config file. To set metagraph configuration, use the command `btcli config metagraph`
+Sets values in config file
 
 **Usage**:
 
@@ -343,7 +351,7 @@ $ btcli config set [OPTIONS]
 * `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet
 * `--network, --subtensor.network TEXT`: The subtensor network to connect to. Default: finney.
 * `--chain, --subtensor.chain_endpoint TEXT`: The subtensor chain endpoint to connect to.
-* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `--html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.
+* `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`.  [default: no-cache]
 * `--help`: Show this message and exit.
 
 ## `btcli r`
@@ -391,13 +399,15 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 Boost the weights for a specific subnet within the root network on the Bittensor
 network.
 
-# Usage:
+#### Usage
 
 The command allows boosting the weights for different subnets within the root network.
 
-# Example usage:
+#### Example usage
 
-btcli root boost --netuid 1 --increase 0.01
+```bash
+ btcli root boost --netuid 1 --increase 0.01
+```
 
 **Usage**:
 
@@ -428,22 +438,26 @@ This action allocates the user's Tao to support a delegate, potentially earning 
 The command interacts with the user to determine the delegate and the amount of Tao to be staked. If the
 `--all` flag is used, it delegates the entire available balance.
 
-# Usage:
+#### Usage
 
 The user must specify the delegate's SS58 address and the amount of Tao to stake. The function sends a
 transaction to the subtensor network to delegate the specified amount to the chosen delegate. These values are
 prompted if not provided. You can list all delegates with `btcli root list-delegates`.
 
-# Example usage:
+#### Example usage
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command modifies the blockchain state and may incur transaction fees. It requires user confirmation
-and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address
-and the amount to be staked are correct before executing the command.
+:::tip
+This command modifies the blockchain state and may incur transaction fees. It requires user confirmation and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address and the amount to be staked are correct before executing the command.
+:::
 
 **Usage**:
 
@@ -475,22 +489,26 @@ This action allocates the user's Tao to support a delegate, potentially earning 
 The command interacts with the user to determine the delegate and the amount of Tao to be staked. If the
 `--all` flag is used, it delegates the entire available balance.
 
-# Usage:
+#### Usage
 
 The user must specify the delegate's SS58 address and the amount of Tao to stake. The function sends a
 transaction to the subtensor network to delegate the specified amount to the chosen delegate. These values are
 prompted if not provided. You can list all delegates with `btcli root list-delegates`.
 
-# Example usage:
+#### Example usage
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command modifies the blockchain state and may incur transaction fees. It requires user confirmation
-and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address
-and the amount to be staked are correct before executing the command.
+:::tip
+This command modifies the blockchain state and may incur transaction fees. It requires user confirmation and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address and the amount to be staked are correct before executing the command.
+:::
 
 **Usage**:
 
@@ -520,17 +538,19 @@ Retrieve the weights set for the root network on the Bittensor network.
 This command provides visibility into how network responsibilities and rewards are distributed among various
 subnets.
 
-# Usage:
+#### Usage
 The command outputs a table listing the weights assigned to each subnet within the root network. This
 information is crucial for understanding the current influence and reward distribution among the subnets.
 
-# Example usage:
+#### Example usage
 
-btcli root get_weights
+```bash
+ btcli root get_weights
+```
 
-[italic]Note[/italic]: This command is essential for users interested in the governance and operational
-dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities
-are allocated across different subnets.
+:::tip
+This command is essential for users interested in the governance and operational dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities are allocated across different subnets.
+:::
 
 **Usage**:
 
@@ -557,17 +577,19 @@ Retrieve the weights set for the root network on the Bittensor network.
 This command provides visibility into how network responsibilities and rewards are distributed among various
 subnets.
 
-# Usage:
+#### Usage
 The command outputs a table listing the weights assigned to each subnet within the root network. This
 information is crucial for understanding the current influence and reward distribution among the subnets.
 
-# Example usage:
+#### Example usage
 
-btcli root get_weights
+```bash
+ btcli root get_weights
+```
 
-[italic]Note[/italic]: This command is essential for users interested in the governance and operational
-dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities
-are allocated across different subnets.
+:::tip
+This command is essential for users interested in the governance and operational dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities are allocated across different subnets.
+:::
 
 **Usage**:
 
@@ -593,17 +615,19 @@ Display the members of the root network (Netuid = 0) on the Bittensor network.
 
 This command provides an overview of the neurons that constitute the network's foundational layer.
 
-# Usage:
+#### Usage
 Upon execution, the command fetches and lists the neurons in the root network, showing their unique identifiers
 (UIDs), names, addresses, stakes, and whether they are part of the senate (network governance body).
 
-# Example usage:
+#### Example usage
 
-btcli root list
+```bash
+ btcli root list
+```
 
-[italic]Note[/italic]: This command is useful for users interested in understanding the composition and
-governance structure of the Bittensor network's root layer. It provides insights into which neurons hold
-significant influence and responsibility within the network.
+:::tip
+This command is useful for users interested in understanding the composition and governance structure of the Bittensor network's root layer. It provides insights into which neurons hold significant influence and responsibility within the network.
+:::
 
 **Usage**:
 
@@ -656,16 +680,23 @@ Sorting is done based on the `TOTAL STAKE` column in descending order. Changes i
 increases in green and decreases in red. Entries with no previous data are marked with ``NA``. Each delegate's
 name is a hyperlink to their respective URL, if available.
 
-# Example usage:
+#### Example usage
 
-btcli root list_delegates
+```bash
+ btcli root list_delegates
+```
 
-btcli root list_delegates --wallet-name my_wallet
+```bash
+ btcli root list_delegates --wallet-name my_wallet
+```
 
-btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```bash
+ btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```
 
-[italic]Note[/italic]: This function is part of the Bittensor CLI tools and is intended for use within a
-console application. It prints directly to the console and does not return any value.
+:::tip
+This function is part of the Bittensor CLI tools and is intended for use within a console application. It prints directly to the console and does not return any value.
+:::
 
 **Usage**:
 
@@ -718,16 +749,23 @@ Sorting is done based on the `TOTAL STAKE` column in descending order. Changes i
 increases in green and decreases in red. Entries with no previous data are marked with ``NA``. Each delegate's
 name is a hyperlink to their respective URL, if available.
 
-# Example usage:
+#### Example usage
 
-btcli root list_delegates
+```bash
+ btcli root list_delegates
+```
 
-btcli root list_delegates --wallet-name my_wallet
+```bash
+ btcli root list_delegates --wallet-name my_wallet
+```
 
-btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```bash
+ btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```
 
-[italic]Note[/italic]: This function is part of the Bittensor CLI tools and is intended for use within a
-console application. It prints directly to the console and does not return any value.
+:::tip
+This function is part of the Bittensor CLI tools and is intended for use within a console application. It prints directly to the console and does not return any value.
+:::
 
 **Usage**:
 
@@ -779,19 +817,27 @@ The table output includes the following columns:
 
 The command also sums and prints the total amount of Tao delegated across all wallets.
 
-# Usage:
+#### Usage
 
 The command can be run as part of the Bittensor CLI suite of tools and requires no parameters if a single wallet
 is used. If multiple wallets are present, the `--all` flag can be specified to aggregate information across
 all wallets.
 
-# Example usage:
+#### Example usage
 
-btcli root my-delegates
-btcli root my-delegates --all
-btcli root my-delegates --wallet-name my_wallet
+```bash
+ btcli root my-delegates
+```
+```bash
+ btcli root my-delegates --all
+```
+```bash
+ btcli root my-delegates --wallet-name my_wallet
+```
 
-[italic]Note[/italic]: This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::tip
+This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::
 
 **Usage**:
 
@@ -847,19 +893,27 @@ The table output includes the following columns:
 
 The command also sums and prints the total amount of Tao delegated across all wallets.
 
-# Usage:
+#### Usage
 
 The command can be run as part of the Bittensor CLI suite of tools and requires no parameters if a single wallet
 is used. If multiple wallets are present, the `--all` flag can be specified to aggregate information across
 all wallets.
 
-# Example usage:
+#### Example usage
 
-btcli root my-delegates
-btcli root my-delegates --all
-btcli root my-delegates --wallet-name my_wallet
+```bash
+ btcli root my-delegates
+```
+```bash
+ btcli root my-delegates --all
+```
+```bash
+ btcli root my-delegates --wallet-name my_wallet
+```
 
-[italic]Note[/italic]: This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::tip
+This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::
 
 **Usage**:
 
@@ -894,20 +948,24 @@ The command performs several checks:
 
 Upon success, the wallet's hotkey is registered as a delegate on the network.
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. If the wallet is not
 already nominated, this command will initiate the process.
 
-# Example usage:
+#### Example usage
 
-btcli root nominate
+```bash
+ btcli root nominate
+```
 
-btcli root nominate --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root nominate --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function is intended to be used as a CLI command. It prints the outcome directly to the console
-and does not return any value. It should not be called programmatically in user code due to its interactive nature and
-side effects on the network state.
+:::tip
+This function is intended to be used as a CLI command. It prints the outcome directly to the console and does not return any value. It should not be called programmatically in user code due to its interactive nature and side effects on the network state.
+:::
 
 **Usage**:
 
@@ -933,18 +991,20 @@ View active proposals for the senate within Bittensor's governance protocol.
 
 This command displays the details of ongoing proposals, including votes, thresholds, and proposal data.
 
-# Usage:
+#### Usage
 
 The command lists all active proposals, showing their hash, voting threshold, number of ayes and nays, detailed
 votes by address, end block number, and call data associated with each proposal.
 
-# Example usage:
+#### Example usage
 
-btcli root proposals
+```bash
+ btcli root proposals
+```
 
-[italic]Note[/italic]: This command is essential for users who are actively participating in or monitoring the
-governance of the Bittensor network. It provides a detailed view of the proposals being considered, along with
-the community's response to each.
+:::tip
+This command is essential for users who are actively participating in or monitoring the governance of the Bittensor network. It provides a detailed view of the proposals being considered, along with the community's response to each.
+:::
 
 **Usage**:
 
@@ -967,7 +1027,7 @@ Register a neuron on the Bittensor network by recycling some TAO (the network's 
 This command is used to add a new neuron to a specified subnet within the network, contributing to the
 decentralization and robustness of Bittensor.
 
-# Usage:
+#### Usage
 
 Before registering, the command checks if the specified subnet exists and whether the user's balance is
 sufficient to cover the registration cost.
@@ -996,13 +1056,15 @@ Columns Displayed in the confirmation prompt:
 - Cost to Register: The required amount of TAO needed to register on the specified subnet.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets register --netuid 1
+```bash
+ btcli subnets register --netuid 1
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to contribute a new neuron to the network.
-It requires careful consideration of the subnet selection and an understanding of the registration costs.
-Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::tip
+This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::
 
 **Usage**:
 
@@ -1028,17 +1090,20 @@ View the members of Bittensor's governance protocol, known as the Senate.
 
 This command lists the delegates involved in the decision-making process of the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command retrieves and displays a list of Senate members, showing their names and wallet addresses.
 This information is crucial for understanding who holds governance roles within the network.
 
-# Example usage:
+#### Example usage
 
-btcli root senate
+```bash
+ btcli root senate
+```
 
-[italic]Note[/italic]: This command is particularly useful for users interested in the governance structure
-and participants of the Bittensor network. It provides transparency into the network's decision-making body.
+:::tip
+This command is particularly useful for users interested in the governance structure and participants of the Bittensor network. It provides transparency into the network's decision-making body.
+:::
 
 **Usage**:
 
@@ -1060,17 +1125,20 @@ Cast a vote on an active proposal in Bittensor's governance protocol.
 
 This command is used by Senate members to vote on various proposals that shape the network's future.
 
-# Usage:
+#### Usage
 
 The user needs to specify the hash of the proposal they want to vote on. The command then allows the Senate
 member to cast an 'Aye' or 'Nay' vote, contributing to the decision-making process.
 
-# Example usage:
+#### Example usage
 
-btcli root senate_vote --proposal `<proposal_hash>`
+```bash
+ btcli root senate_vote --proposal <proposal_hash>
+```
 
-[italic]Note[/italic]: This command is crucial for Senate members to exercise their voting rights on key proposals.
-It plays a vital role in the governance and evolution of the Bittensor network.
+:::tip
+This command is crucial for Senate members to exercise their voting rights on key proposals. It plays a vital role in the governance and evolution of the Bittensor network.
+:::
 
 **Usage**:
 
@@ -1097,17 +1165,20 @@ Cast a vote on an active proposal in Bittensor's governance protocol.
 
 This command is used by Senate members to vote on various proposals that shape the network's future.
 
-# Usage:
+#### Usage
 
 The user needs to specify the hash of the proposal they want to vote on. The command then allows the Senate
 member to cast an 'Aye' or 'Nay' vote, contributing to the decision-making process.
 
-# Example usage:
+#### Example usage
 
-btcli root senate_vote --proposal `<proposal_hash>`
+```bash
+ btcli root senate_vote --proposal <proposal_hash>
+```
 
-[italic]Note[/italic]: This command is crucial for Senate members to exercise their voting rights on key proposals.
-It plays a vital role in the governance and evolution of the Bittensor network.
+:::tip
+This command is crucial for Senate members to exercise their voting rights on key proposals. It plays a vital role in the governance and evolution of the Bittensor network.
+:::
 
 **Usage**:
 
@@ -1137,15 +1208,19 @@ The command performs several checks:
 1. Hotkey is already a delegate
 2. New take value is within 0-18% range
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. Also, the hotkey should already be a delegate.
 
-# Example usage:
+#### Example usage
 
-btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function can be used to update the takes individually for every subnet
+:::tip
+This function can be used to update the takes individually for every subnet
+:::
 
 **Usage**:
 
@@ -1171,19 +1246,21 @@ Set the weights for the oot network on the Bittensor network.
 
 This command is used by network senators to influence the distribution of network rewards and responsibilities.
 
-# Usage:
+#### Usage
 
 The command allows setting weights for different subnets within the root network. Users need to specify the
 netuids (network unique identifiers) and corresponding weights they wish to assign.
 
-# Example usage:
+#### Example usage
 
+```bash
  btcli root set-weights 0.3 0.3 0.4 -n 1 -n 2 -n 3 --chain ws://127.0.0.1:9945
+```
 
 
-This command is particularly important for network senators and requires a comprehensive understanding of the
-network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward
-distribution.
+```bash
+ This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward distribution.
+```
 
 **Usage**:
 
@@ -1214,15 +1291,19 @@ The command performs several checks:
 1. Hotkey is already a delegate
 2. New take value is within 0-18% range
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. Also, the hotkey should already be a delegate.
 
-# Example usage:
+#### Example usage
 
-btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function can be used to update the takes individually for every subnet
+:::tip
+This function can be used to update the takes individually for every subnet
+:::
 
 **Usage**:
 
@@ -1248,19 +1329,21 @@ Set the weights for the oot network on the Bittensor network.
 
 This command is used by network senators to influence the distribution of network rewards and responsibilities.
 
-# Usage:
+#### Usage
 
 The command allows setting weights for different subnets within the root network. Users need to specify the
 netuids (network unique identifiers) and corresponding weights they wish to assign.
 
-# Example usage:
+#### Example usage
 
+```bash
  btcli root set-weights 0.3 0.3 0.4 -n 1 -n 2 -n 3 --chain ws://127.0.0.1:9945
+```
 
 
-This command is particularly important for network senators and requires a comprehensive understanding of the
-network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward
-distribution.
+```bash
+ This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward distribution.
+```
 
 **Usage**:
 
@@ -1286,13 +1369,15 @@ $ btcli r set_weights [OPTIONS]
 
 Decrease the weights for a specific subnet within the root network on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows slashing (decreasing) the weights for different subnets within the root network.
 
-# Example usage:
+#### Example usage
 
-btcli root slash --netuid 1 --decrease 0.01
+```bash
+ btcli root slash --netuid 1 --decrease 0.01
+```
 
 Enter netuid (e.g. 1): 1
 Enter decrease amount (e.g. 0.01): 0.2
@@ -1328,21 +1413,25 @@ The command prompts the user for the amount of Tao to undelegate and the ``SS58`
 which to undelegate. If the ``--all`` flag is used, it will attempt to undelegate the entire staked amount from
 the specified delegate.
 
-# Usage:
+#### Usage
 
 The user must provide the delegate's SS58 address and the amount of Tao to undelegate. The function will then
 send a transaction to the Bittensor network to process the undelegation.
 
-# Example usage:
+#### Example usage
 
-btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
- btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command can result in a change to the blockchain state and may incur transaction fees.
-It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can
-affect the delegate's total stake and potentially the user's staking rewards.
+:::tip
+This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can affect the delegate's total stake and potentially the user's staking rewards.
+:::
 
 **Usage**:
 
@@ -1375,21 +1464,25 @@ The command prompts the user for the amount of Tao to undelegate and the ``SS58`
 which to undelegate. If the ``--all`` flag is used, it will attempt to undelegate the entire staked amount from
 the specified delegate.
 
-# Usage:
+#### Usage
 
 The user must provide the delegate's SS58 address and the amount of Tao to undelegate. The function will then
 send a transaction to the Bittensor network to process the undelegation.
 
-# Example usage:
+#### Example usage
 
-btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
- btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command can result in a change to the blockchain state and may incur transaction fees.
-It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can
-affect the delegate's total stake and potentially the user's staking rewards.
+:::tip
+This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can affect the delegate's total stake and potentially the user's staking rewards.
+:::
 
 **Usage**:
 
@@ -1457,13 +1550,15 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 Boost the weights for a specific subnet within the root network on the Bittensor
 network.
 
-# Usage:
+#### Usage
 
 The command allows boosting the weights for different subnets within the root network.
 
-# Example usage:
+#### Example usage
 
-btcli root boost --netuid 1 --increase 0.01
+```bash
+ btcli root boost --netuid 1 --increase 0.01
+```
 
 **Usage**:
 
@@ -1494,22 +1589,26 @@ This action allocates the user's Tao to support a delegate, potentially earning 
 The command interacts with the user to determine the delegate and the amount of Tao to be staked. If the
 `--all` flag is used, it delegates the entire available balance.
 
-# Usage:
+#### Usage
 
 The user must specify the delegate's SS58 address and the amount of Tao to stake. The function sends a
 transaction to the subtensor network to delegate the specified amount to the chosen delegate. These values are
 prompted if not provided. You can list all delegates with `btcli root list-delegates`.
 
-# Example usage:
+#### Example usage
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command modifies the blockchain state and may incur transaction fees. It requires user confirmation
-and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address
-and the amount to be staked are correct before executing the command.
+:::tip
+This command modifies the blockchain state and may incur transaction fees. It requires user confirmation and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address and the amount to be staked are correct before executing the command.
+:::
 
 **Usage**:
 
@@ -1541,22 +1640,26 @@ This action allocates the user's Tao to support a delegate, potentially earning 
 The command interacts with the user to determine the delegate and the amount of Tao to be staked. If the
 `--all` flag is used, it delegates the entire available balance.
 
-# Usage:
+#### Usage
 
 The user must specify the delegate's SS58 address and the amount of Tao to stake. The function sends a
 transaction to the subtensor network to delegate the specified amount to the chosen delegate. These values are
 prompted if not provided. You can list all delegates with `btcli root list-delegates`.
 
-# Example usage:
+#### Example usage
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
-btcli delegate-stake --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command modifies the blockchain state and may incur transaction fees. It requires user confirmation
-and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address
-and the amount to be staked are correct before executing the command.
+:::tip
+This command modifies the blockchain state and may incur transaction fees. It requires user confirmation and interaction, and is designed to be used within the Bittensor CLI environment. The user should ensure the delegate's address and the amount to be staked are correct before executing the command.
+:::
 
 **Usage**:
 
@@ -1586,17 +1689,19 @@ Retrieve the weights set for the root network on the Bittensor network.
 This command provides visibility into how network responsibilities and rewards are distributed among various
 subnets.
 
-# Usage:
+#### Usage
 The command outputs a table listing the weights assigned to each subnet within the root network. This
 information is crucial for understanding the current influence and reward distribution among the subnets.
 
-# Example usage:
+#### Example usage
 
-btcli root get_weights
+```bash
+ btcli root get_weights
+```
 
-[italic]Note[/italic]: This command is essential for users interested in the governance and operational
-dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities
-are allocated across different subnets.
+:::tip
+This command is essential for users interested in the governance and operational dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities are allocated across different subnets.
+:::
 
 **Usage**:
 
@@ -1623,17 +1728,19 @@ Retrieve the weights set for the root network on the Bittensor network.
 This command provides visibility into how network responsibilities and rewards are distributed among various
 subnets.
 
-# Usage:
+#### Usage
 The command outputs a table listing the weights assigned to each subnet within the root network. This
 information is crucial for understanding the current influence and reward distribution among the subnets.
 
-# Example usage:
+#### Example usage
 
-btcli root get_weights
+```bash
+ btcli root get_weights
+```
 
-[italic]Note[/italic]: This command is essential for users interested in the governance and operational
-dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities
-are allocated across different subnets.
+:::tip
+This command is essential for users interested in the governance and operational dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities are allocated across different subnets.
+:::
 
 **Usage**:
 
@@ -1659,17 +1766,19 @@ Display the members of the root network (Netuid = 0) on the Bittensor network.
 
 This command provides an overview of the neurons that constitute the network's foundational layer.
 
-# Usage:
+#### Usage
 Upon execution, the command fetches and lists the neurons in the root network, showing their unique identifiers
 (UIDs), names, addresses, stakes, and whether they are part of the senate (network governance body).
 
-# Example usage:
+#### Example usage
 
-btcli root list
+```bash
+ btcli root list
+```
 
-[italic]Note[/italic]: This command is useful for users interested in understanding the composition and
-governance structure of the Bittensor network's root layer. It provides insights into which neurons hold
-significant influence and responsibility within the network.
+:::tip
+This command is useful for users interested in understanding the composition and governance structure of the Bittensor network's root layer. It provides insights into which neurons hold significant influence and responsibility within the network.
+:::
 
 **Usage**:
 
@@ -1722,16 +1831,23 @@ Sorting is done based on the `TOTAL STAKE` column in descending order. Changes i
 increases in green and decreases in red. Entries with no previous data are marked with ``NA``. Each delegate's
 name is a hyperlink to their respective URL, if available.
 
-# Example usage:
+#### Example usage
 
-btcli root list_delegates
+```bash
+ btcli root list_delegates
+```
 
-btcli root list_delegates --wallet-name my_wallet
+```bash
+ btcli root list_delegates --wallet-name my_wallet
+```
 
-btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```bash
+ btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```
 
-[italic]Note[/italic]: This function is part of the Bittensor CLI tools and is intended for use within a
-console application. It prints directly to the console and does not return any value.
+:::tip
+This function is part of the Bittensor CLI tools and is intended for use within a console application. It prints directly to the console and does not return any value.
+:::
 
 **Usage**:
 
@@ -1784,16 +1900,23 @@ Sorting is done based on the `TOTAL STAKE` column in descending order. Changes i
 increases in green and decreases in red. Entries with no previous data are marked with ``NA``. Each delegate's
 name is a hyperlink to their respective URL, if available.
 
-# Example usage:
+#### Example usage
 
-btcli root list_delegates
+```bash
+ btcli root list_delegates
+```
 
-btcli root list_delegates --wallet-name my_wallet
+```bash
+ btcli root list_delegates --wallet-name my_wallet
+```
 
-btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```bash
+ btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+```
 
-[italic]Note[/italic]: This function is part of the Bittensor CLI tools and is intended for use within a
-console application. It prints directly to the console and does not return any value.
+:::tip
+This function is part of the Bittensor CLI tools and is intended for use within a console application. It prints directly to the console and does not return any value.
+:::
 
 **Usage**:
 
@@ -1845,19 +1968,27 @@ The table output includes the following columns:
 
 The command also sums and prints the total amount of Tao delegated across all wallets.
 
-# Usage:
+#### Usage
 
 The command can be run as part of the Bittensor CLI suite of tools and requires no parameters if a single wallet
 is used. If multiple wallets are present, the `--all` flag can be specified to aggregate information across
 all wallets.
 
-# Example usage:
+#### Example usage
 
-btcli root my-delegates
-btcli root my-delegates --all
-btcli root my-delegates --wallet-name my_wallet
+```bash
+ btcli root my-delegates
+```
+```bash
+ btcli root my-delegates --all
+```
+```bash
+ btcli root my-delegates --wallet-name my_wallet
+```
 
-[italic]Note[/italic]: This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::tip
+This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::
 
 **Usage**:
 
@@ -1913,19 +2044,27 @@ The table output includes the following columns:
 
 The command also sums and prints the total amount of Tao delegated across all wallets.
 
-# Usage:
+#### Usage
 
 The command can be run as part of the Bittensor CLI suite of tools and requires no parameters if a single wallet
 is used. If multiple wallets are present, the `--all` flag can be specified to aggregate information across
 all wallets.
 
-# Example usage:
+#### Example usage
 
-btcli root my-delegates
-btcli root my-delegates --all
-btcli root my-delegates --wallet-name my_wallet
+```bash
+ btcli root my-delegates
+```
+```bash
+ btcli root my-delegates --all
+```
+```bash
+ btcli root my-delegates --wallet-name my_wallet
+```
 
-[italic]Note[/italic]: This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::tip
+This function is typically called by the CLI parser and is not intended to be used directly in user code.
+:::
 
 **Usage**:
 
@@ -1960,20 +2099,24 @@ The command performs several checks:
 
 Upon success, the wallet's hotkey is registered as a delegate on the network.
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. If the wallet is not
 already nominated, this command will initiate the process.
 
-# Example usage:
+#### Example usage
 
-btcli root nominate
+```bash
+ btcli root nominate
+```
 
-btcli root nominate --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root nominate --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function is intended to be used as a CLI command. It prints the outcome directly to the console
-and does not return any value. It should not be called programmatically in user code due to its interactive nature and
-side effects on the network state.
+:::tip
+This function is intended to be used as a CLI command. It prints the outcome directly to the console and does not return any value. It should not be called programmatically in user code due to its interactive nature and side effects on the network state.
+:::
 
 **Usage**:
 
@@ -1999,18 +2142,20 @@ View active proposals for the senate within Bittensor's governance protocol.
 
 This command displays the details of ongoing proposals, including votes, thresholds, and proposal data.
 
-# Usage:
+#### Usage
 
 The command lists all active proposals, showing their hash, voting threshold, number of ayes and nays, detailed
 votes by address, end block number, and call data associated with each proposal.
 
-# Example usage:
+#### Example usage
 
-btcli root proposals
+```bash
+ btcli root proposals
+```
 
-[italic]Note[/italic]: This command is essential for users who are actively participating in or monitoring the
-governance of the Bittensor network. It provides a detailed view of the proposals being considered, along with
-the community's response to each.
+:::tip
+This command is essential for users who are actively participating in or monitoring the governance of the Bittensor network. It provides a detailed view of the proposals being considered, along with the community's response to each.
+:::
 
 **Usage**:
 
@@ -2033,7 +2178,7 @@ Register a neuron on the Bittensor network by recycling some TAO (the network's 
 This command is used to add a new neuron to a specified subnet within the network, contributing to the
 decentralization and robustness of Bittensor.
 
-# Usage:
+#### Usage
 
 Before registering, the command checks if the specified subnet exists and whether the user's balance is
 sufficient to cover the registration cost.
@@ -2062,13 +2207,15 @@ Columns Displayed in the confirmation prompt:
 - Cost to Register: The required amount of TAO needed to register on the specified subnet.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets register --netuid 1
+```bash
+ btcli subnets register --netuid 1
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to contribute a new neuron to the network.
-It requires careful consideration of the subnet selection and an understanding of the registration costs.
-Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::tip
+This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::
 
 **Usage**:
 
@@ -2094,17 +2241,20 @@ View the members of Bittensor's governance protocol, known as the Senate.
 
 This command lists the delegates involved in the decision-making process of the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command retrieves and displays a list of Senate members, showing their names and wallet addresses.
 This information is crucial for understanding who holds governance roles within the network.
 
-# Example usage:
+#### Example usage
 
-btcli root senate
+```bash
+ btcli root senate
+```
 
-[italic]Note[/italic]: This command is particularly useful for users interested in the governance structure
-and participants of the Bittensor network. It provides transparency into the network's decision-making body.
+:::tip
+This command is particularly useful for users interested in the governance structure and participants of the Bittensor network. It provides transparency into the network's decision-making body.
+:::
 
 **Usage**:
 
@@ -2126,17 +2276,20 @@ Cast a vote on an active proposal in Bittensor's governance protocol.
 
 This command is used by Senate members to vote on various proposals that shape the network's future.
 
-# Usage:
+#### Usage
 
 The user needs to specify the hash of the proposal they want to vote on. The command then allows the Senate
 member to cast an 'Aye' or 'Nay' vote, contributing to the decision-making process.
 
-# Example usage:
+#### Example usage
 
-btcli root senate_vote --proposal `<proposal_hash>`
+```bash
+ btcli root senate_vote --proposal <proposal_hash>
+```
 
-[italic]Note[/italic]: This command is crucial for Senate members to exercise their voting rights on key proposals.
-It plays a vital role in the governance and evolution of the Bittensor network.
+:::tip
+This command is crucial for Senate members to exercise their voting rights on key proposals. It plays a vital role in the governance and evolution of the Bittensor network.
+:::
 
 **Usage**:
 
@@ -2163,17 +2316,20 @@ Cast a vote on an active proposal in Bittensor's governance protocol.
 
 This command is used by Senate members to vote on various proposals that shape the network's future.
 
-# Usage:
+#### Usage
 
 The user needs to specify the hash of the proposal they want to vote on. The command then allows the Senate
 member to cast an 'Aye' or 'Nay' vote, contributing to the decision-making process.
 
-# Example usage:
+#### Example usage
 
-btcli root senate_vote --proposal `<proposal_hash>`
+```bash
+ btcli root senate_vote --proposal <proposal_hash>
+```
 
-[italic]Note[/italic]: This command is crucial for Senate members to exercise their voting rights on key proposals.
-It plays a vital role in the governance and evolution of the Bittensor network.
+:::tip
+This command is crucial for Senate members to exercise their voting rights on key proposals. It plays a vital role in the governance and evolution of the Bittensor network.
+:::
 
 **Usage**:
 
@@ -2203,15 +2359,19 @@ The command performs several checks:
 1. Hotkey is already a delegate
 2. New take value is within 0-18% range
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. Also, the hotkey should already be a delegate.
 
-# Example usage:
+#### Example usage
 
-btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function can be used to update the takes individually for every subnet
+:::tip
+This function can be used to update the takes individually for every subnet
+:::
 
 **Usage**:
 
@@ -2237,19 +2397,21 @@ Set the weights for the oot network on the Bittensor network.
 
 This command is used by network senators to influence the distribution of network rewards and responsibilities.
 
-# Usage:
+#### Usage
 
 The command allows setting weights for different subnets within the root network. Users need to specify the
 netuids (network unique identifiers) and corresponding weights they wish to assign.
 
-# Example usage:
+#### Example usage
 
+```bash
  btcli root set-weights 0.3 0.3 0.4 -n 1 -n 2 -n 3 --chain ws://127.0.0.1:9945
+```
 
 
-This command is particularly important for network senators and requires a comprehensive understanding of the
-network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward
-distribution.
+```bash
+ This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward distribution.
+```
 
 **Usage**:
 
@@ -2280,15 +2442,19 @@ The command performs several checks:
 1. Hotkey is already a delegate
 2. New take value is within 0-18% range
 
-# Usage:
+#### Usage
 
 To run the command, the user must have a configured wallet with both hotkey and coldkey. Also, the hotkey should already be a delegate.
 
-# Example usage:
+#### Example usage
 
-btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```bash
+ btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+```
 
-[italic]Note[/italic]: This function can be used to update the takes individually for every subnet
+:::tip
+This function can be used to update the takes individually for every subnet
+:::
 
 **Usage**:
 
@@ -2314,19 +2480,21 @@ Set the weights for the oot network on the Bittensor network.
 
 This command is used by network senators to influence the distribution of network rewards and responsibilities.
 
-# Usage:
+#### Usage
 
 The command allows setting weights for different subnets within the root network. Users need to specify the
 netuids (network unique identifiers) and corresponding weights they wish to assign.
 
-# Example usage:
+#### Example usage
 
+```bash
  btcli root set-weights 0.3 0.3 0.4 -n 1 -n 2 -n 3 --chain ws://127.0.0.1:9945
+```
 
 
-This command is particularly important for network senators and requires a comprehensive understanding of the
-network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward
-distribution.
+```bash
+ This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward distribution.
+```
 
 **Usage**:
 
@@ -2352,13 +2520,15 @@ $ btcli root set_weights [OPTIONS]
 
 Decrease the weights for a specific subnet within the root network on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows slashing (decreasing) the weights for different subnets within the root network.
 
-# Example usage:
+#### Example usage
 
-btcli root slash --netuid 1 --decrease 0.01
+```bash
+ btcli root slash --netuid 1 --decrease 0.01
+```
 
 Enter netuid (e.g. 1): 1
 Enter decrease amount (e.g. 0.01): 0.2
@@ -2394,21 +2564,25 @@ The command prompts the user for the amount of Tao to undelegate and the ``SS58`
 which to undelegate. If the ``--all`` flag is used, it will attempt to undelegate the entire staked amount from
 the specified delegate.
 
-# Usage:
+#### Usage
 
 The user must provide the delegate's SS58 address and the amount of Tao to undelegate. The function will then
 send a transaction to the Bittensor network to process the undelegation.
 
-# Example usage:
+#### Example usage
 
-btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
- btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command can result in a change to the blockchain state and may incur transaction fees.
-It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can
-affect the delegate's total stake and potentially the user's staking rewards.
+:::tip
+This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can affect the delegate's total stake and potentially the user's staking rewards.
+:::
 
 **Usage**:
 
@@ -2441,21 +2615,25 @@ The command prompts the user for the amount of Tao to undelegate and the ``SS58`
 which to undelegate. If the ``--all`` flag is used, it will attempt to undelegate the entire staked amount from
 the specified delegate.
 
-# Usage:
+#### Usage
 
 The user must provide the delegate's SS58 address and the amount of Tao to undelegate. The function will then
 send a transaction to the Bittensor network to process the undelegation.
 
-# Example usage:
+#### Example usage
 
-btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --amount `<AMOUNT>`
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+```
 
- btcli undelegate --delegate_ss58key `<SS58_ADDRESS>` --all
+```bash
+ btcli undelegate --delegate_ss58key <SS58_ADDRESS> --all
+```
 
 
-[italic]Note[/italic]: This command can result in a change to the blockchain state and may incur transaction fees.
-It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can
-affect the delegate's total stake and potentially the user's staking rewards.
+:::tip
+This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can affect the delegate's total stake and potentially the user's staking rewards.
+:::
 
 **Usage**:
 
@@ -2512,7 +2690,7 @@ This command facilitates the creation and registration of a subnetwork, which in
 user's wallet and the Bittensor subtensor. It ensures that the user has the necessary credentials and
 configurations to successfully register a new subnetwork.
 
-# Usage:
+#### Usage
 Upon invocation, the command performs several key steps to register a subnetwork:
 
 1. It copies the user's current configuration settings.
@@ -2539,14 +2717,15 @@ The command structure includes:
 - Registering the subnetwork with the necessary credentials.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets create
+```bash
+ btcli subnets create
+```
 
-[italic]Note[/italic]: This command is intended for advanced users of the Bittensor network who wish to contribute by adding new
-subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users
-should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork
-to the Bittensor ecosystem.
+:::tip
+This command is intended for advanced users of the Bittensor network who wish to contribute by adding new subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork to the Bittensor ecosystem.
+:::
 
 **Usage**:
 
@@ -2572,19 +2751,22 @@ Retrieve hyperparameters of a specific subnet.
 
 This command is used for both `sudo get` and `subnets hyperparameters`.
 
-# Usage:
+#### Usage
 
 The command connects to the Bittensor network, queries the specified subnet, and returns a detailed list
 of all its hyperparameters. This includes crucial operational parameters that determine the subnet's
 performance and interaction within the network.
 
-# Example usage:
+#### Example usage
 
-btcli sudo get --netuid 1
+```bash
+ btcli sudo get --netuid 1
+```
 
 
-[italic]Note[/italic]: Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view.
-This command is designed for informational purposes and does not alter any network settings or configurations.
+:::tip
+Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view. This command is designed for informational purposes and does not alter any network settings or configurations.
+:::
 
 **Usage**:
 
@@ -2610,7 +2792,7 @@ network, including its unique identifier (netuid), the number of neurons, maximu
 emission rate, tempo, recycle register cost (burn), proof of work (PoW) difficulty, and the name or
 SS58 address of the subnet owner.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following actions:
 
@@ -2638,12 +2820,15 @@ The command structure includes:
 - Displaying the table with a footer that summarizes the total number of subnets and neurons.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets list
+```bash
+ btcli subnets list
+```
 
-[italic]Note[/italic]: This command is particularly useful for users seeking an overview of the Bittensor network's
-structure and the distribution of its resources and ownership information for each subnet.
+:::tip
+This command is particularly useful for users seeking an overview of the Bittensor network's structure and the distribution of its resources and ownership information for each subnet.
+:::
 
 **Usage**:
 
@@ -2671,7 +2856,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -2697,13 +2882,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -2729,7 +2916,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -2755,13 +2942,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -2819,19 +3008,23 @@ The table displayed includes the following columns for each neuron:
 
 The command also prints network-wide statistics such as total stake, issuance, and difficulty.
 
-# Usage:
+#### Usage
 
 The user must specify the network UID to query the metagraph. If not specified, the default network UID is used.
 
-# Example usage:
+#### Example usage
 
-btcli subnet metagraph --netuid 0  # Root network
+```bash
+ btcli subnet metagraph --netuid 0 # Root network
+```
 
-btcli subnet metagraph --netuid 1 --network test
+```bash
+ btcli subnet metagraph --netuid 1 --network test
+```
 
-[italic]Note[/italic]: This command provides a snapshot of the network's state at the time of calling.
-It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and
-not as a standalone function within user code.
+:::tip
+This command provides a snapshot of the network's state at the time of calling. It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -2857,7 +3050,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -2866,13 +3059,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -2907,7 +3102,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -2916,13 +3111,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -2957,7 +3154,7 @@ Register a neuron on the Bittensor network by recycling some TAO (the network's 
 This command is used to add a new neuron to a specified subnet within the network, contributing to the
 decentralization and robustness of Bittensor.
 
-# Usage:
+#### Usage
 
 Before registering, the command checks if the specified subnet exists and whether the user's balance is
 sufficient to cover the registration cost.
@@ -2980,13 +3177,15 @@ Columns Displayed in the confirmation prompt:
 - Balance: The current balance of the user's wallet in TAO.
 - Cost to Register: The required amount of TAO needed to register on the specified subnet.
 
-# Example usage:
+#### Example usage
 
-btcli subnets register --netuid 1
+```bash
+ btcli subnets register --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to contribute a new neuron to the network. It requires careful
-consideration of the subnet selection and an understanding of the registration costs. Users should ensure their
-wallet is sufficiently funded before attempting to register a neuron.
+:::tip
+This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::
 
 **Usage**:
 
@@ -3036,7 +3235,7 @@ Stake TAO tokens to one or more hotkeys from a user's coldkey on the Bittensor n
 This command is used to allocate tokens to different hotkeys, securing their position and influence on the
  network.
 
-# Usage:
+#### Usage
 
 Users can specify the amount to stake, the hotkeys to stake to (either by name or ``SS58`` address), and whether
 to stake to all hotkeys. The command checks for sufficient balance and hotkey registration before proceeding
@@ -3045,12 +3244,15 @@ with the staking process.
 
 The command prompts for confirmation before executing the staking operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake add --amount 100 --wallet-name `<my_wallet>` --wallet-hotkey `<my_hotkey>`
+```bash
+ btcli stake add --amount 100 --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to distribute their stakes among different neurons (hotkeys) on the
-network. It allows for a strategic allocation of tokens to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to distribute their stakes among different neurons (hotkeys) on the network. It allows for a strategic allocation of tokens to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3102,7 +3304,7 @@ Get all child hotkeys on a specified subnet on the Bittensor network.
 
 This command is used to view delegated authority to different hotkeys on the subnet.
 
-# Usage:
+#### Usage
 Users can specify the subnet and see the children and the proportion that is given to them.
 
 The command compiles a table showing:
@@ -3112,12 +3314,18 @@ The command compiles a table showing:
 - Proportion: The proportion that is assigned to them.
 - Expiration: The expiration of the hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli stake get_children --netuid 1
-btcli stake get_children --all-netuids
+```bash
+ btcli stake get_children --netuid 1
+```
+```bash
+ btcli stake get_children --all-netuids
+```
 
-[italic]Note[/italic]: This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::tip
+This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -3145,19 +3353,22 @@ Remove all children hotkeys on a specified subnet on the Bittensor network.
 This command is used to remove delegated authority from all child hotkeys, removing their position and influence
 on the subnet.
 
-# Usage:
+#### Usage
 
 Users need to specify the parent hotkey and the subnet ID (netuid).
 The user needs to have sufficient authority to make this call.
 
 The command prompts for confirmation before executing the revoke_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child revoke --hotkey `<parent_hotkey>` --netuid 1
+```bash
+ btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to remove children hotkeys on the network.
-It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to remove children hotkeys on the network. It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3187,7 +3398,7 @@ Add children hotkeys on a specified subnet on the Bittensor network.
 This command is used to delegate authority to different hotkeys, securing their position and influence on the
 subnet.
 
-# Usage:
+#### Usage
 
 Users can specify the amount or 'proportion' to delegate to child hotkeys (``SS58`` address),
 the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
@@ -3195,12 +3406,15 @@ than 1.
 
 The command prompts for confirmation before executing the set_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child set - `<child_hotkey>` -c `<child_hotkey>` --hotkey `<parent_hotkey>` --netuid 1 -prop 0.3 -prop 0.3
+```bash
+ btcli stake child set - <child_hotkey> -c <child_hotkey> --hotkey <parent_hotkey> --netuid 1 -prop 0.3 -prop 0.3
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to delegate children hotkeys among different
-neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to delegate children hotkeys among different neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3231,20 +3445,25 @@ Get and set your childkey take on a specified subnet on the Bittensor network.
 
 This command is used to set the take on your child hotkeys with limits between 0 - 18%.
 
-# Usage:
+#### Usage
 
 Users need to specify their child hotkey and the subnet ID (netuid).
 
 The command prompts for confirmation before setting the childkey take.
 
-# Example usage:
+#### Example usage
 
-btcli stake child take --hotkey `<child_hotkey>` --netuid 1
-
-btcli stake child take --hotkey `<child_hotkey>` --take 0.12 --netuid 1
+```bash
+ btcli stake child take --hotkey <child_hotkey> --netuid 1
 ```
 
-[italic]Note[/italic]: This command is critical for users who wish to modify their child hotkey take on the network.
+```bash
+ btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1 ```
+```
+
+:::tip
+This command is critical for users who wish to modify their child hotkey take on the network.
+:::
 
 **Usage**:
 
@@ -3295,7 +3514,7 @@ Get all child hotkeys on a specified subnet on the Bittensor network.
 
 This command is used to view delegated authority to different hotkeys on the subnet.
 
-# Usage:
+#### Usage
 Users can specify the subnet and see the children and the proportion that is given to them.
 
 The command compiles a table showing:
@@ -3305,12 +3524,18 @@ The command compiles a table showing:
 - Proportion: The proportion that is assigned to them.
 - Expiration: The expiration of the hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli stake get_children --netuid 1
-btcli stake get_children --all-netuids
+```bash
+ btcli stake get_children --netuid 1
+```
+```bash
+ btcli stake get_children --all-netuids
+```
 
-[italic]Note[/italic]: This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::tip
+This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -3338,19 +3563,22 @@ Remove all children hotkeys on a specified subnet on the Bittensor network.
 This command is used to remove delegated authority from all child hotkeys, removing their position and influence
 on the subnet.
 
-# Usage:
+#### Usage
 
 Users need to specify the parent hotkey and the subnet ID (netuid).
 The user needs to have sufficient authority to make this call.
 
 The command prompts for confirmation before executing the revoke_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child revoke --hotkey `<parent_hotkey>` --netuid 1
+```bash
+ btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to remove children hotkeys on the network.
-It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to remove children hotkeys on the network. It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3380,7 +3608,7 @@ Add children hotkeys on a specified subnet on the Bittensor network.
 This command is used to delegate authority to different hotkeys, securing their position and influence on the
 subnet.
 
-# Usage:
+#### Usage
 
 Users can specify the amount or 'proportion' to delegate to child hotkeys (``SS58`` address),
 the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
@@ -3388,12 +3616,15 @@ than 1.
 
 The command prompts for confirmation before executing the set_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child set - `<child_hotkey>` -c `<child_hotkey>` --hotkey `<parent_hotkey>` --netuid 1 -prop 0.3 -prop 0.3
+```bash
+ btcli stake child set - <child_hotkey> -c <child_hotkey> --hotkey <parent_hotkey> --netuid 1 -prop 0.3 -prop 0.3
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to delegate children hotkeys among different
-neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to delegate children hotkeys among different neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3424,20 +3655,25 @@ Get and set your childkey take on a specified subnet on the Bittensor network.
 
 This command is used to set the take on your child hotkeys with limits between 0 - 18%.
 
-# Usage:
+#### Usage
 
 Users need to specify their child hotkey and the subnet ID (netuid).
 
 The command prompts for confirmation before setting the childkey take.
 
-# Example usage:
+#### Example usage
 
-btcli stake child take --hotkey `<child_hotkey>` --netuid 1
-
-btcli stake child take --hotkey `<child_hotkey>` --take 0.12 --netuid 1
+```bash
+ btcli stake child take --hotkey <child_hotkey> --netuid 1
 ```
 
-[italic]Note[/italic]: This command is critical for users who wish to modify their child hotkey take on the network.
+```bash
+ btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1 ```
+```
+
+:::tip
+This command is critical for users who wish to modify their child hotkey take on the network.
+:::
 
 **Usage**:
 
@@ -3469,7 +3705,7 @@ Unstake TAO tokens from one or more hotkeys and transfer them back to the user's
 
 This command is used to withdraw tokens previously staked to different hotkeys.
 
-# Usage:
+#### Usage
 
 Users can specify the amount to unstake, the hotkeys to unstake from (either by name or `SS58` address), and
 whether to unstake from all hotkeys. The command checks for sufficient stake and prompts for confirmation before
@@ -3477,12 +3713,15 @@ proceeding with the unstaking process.
 
 The command prompts for confirmation before executing the unstaking operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake remove --amount 100 -in hk1 -in hk2
+```bash
+ btcli stake remove --amount 100 -in hk1 -in hk2
+```
 
-[italic]Note[/italic]: This command is important for users who wish to reallocate their stakes or withdraw
-them from the network. It allows for flexible management of token stakes across different neurons (hotkeys) on the network.
+:::tip
+This command is important for users who wish to reallocate their stakes or withdraw them from the network. It allows for flexible management of token stakes across different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -3516,7 +3755,7 @@ List all stake accounts associated with a user's wallet on the Bittensor network
 This command provides a comprehensive view of the stakes associated with both hotkeys and delegates linked to
 the user's coldkey.
 
-# Usage:
+#### Usage
 
 The command lists all stake accounts for a specified wallet or all wallets in the user's configuration
 directory. It displays the coldkey, balance, account details (hotkey/delegate name), stake amount, and the rate
@@ -3535,12 +3774,15 @@ The command compiles a table showing:
 - Rate: The rate of return on the stake, typically shown in TAO per day.
 
 
-# Example usage:
+#### Example usage
 
-btcli stake show --all
+```bash
+ btcli stake show --all
+```
 
-[italic]Note[/italic]: This command is essential for users who wish to monitor their stake distribution and returns across various
-accounts on the Bittensor network. It provides a clear and detailed overview of the user's staking activities.
+:::tip
+This command is essential for users who wish to monitor their stake distribution and returns across various accounts on the Bittensor network. It provides a clear and detailed overview of the user's staking activities.
+:::
 
 **Usage**:
 
@@ -3591,7 +3833,7 @@ Stake TAO tokens to one or more hotkeys from a user's coldkey on the Bittensor n
 This command is used to allocate tokens to different hotkeys, securing their position and influence on the
  network.
 
-# Usage:
+#### Usage
 
 Users can specify the amount to stake, the hotkeys to stake to (either by name or ``SS58`` address), and whether
 to stake to all hotkeys. The command checks for sufficient balance and hotkey registration before proceeding
@@ -3600,12 +3842,15 @@ with the staking process.
 
 The command prompts for confirmation before executing the staking operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake add --amount 100 --wallet-name `<my_wallet>` --wallet-hotkey `<my_hotkey>`
+```bash
+ btcli stake add --amount 100 --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to distribute their stakes among different neurons (hotkeys) on the
-network. It allows for a strategic allocation of tokens to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to distribute their stakes among different neurons (hotkeys) on the network. It allows for a strategic allocation of tokens to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3657,7 +3902,7 @@ Get all child hotkeys on a specified subnet on the Bittensor network.
 
 This command is used to view delegated authority to different hotkeys on the subnet.
 
-# Usage:
+#### Usage
 Users can specify the subnet and see the children and the proportion that is given to them.
 
 The command compiles a table showing:
@@ -3667,12 +3912,18 @@ The command compiles a table showing:
 - Proportion: The proportion that is assigned to them.
 - Expiration: The expiration of the hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli stake get_children --netuid 1
-btcli stake get_children --all-netuids
+```bash
+ btcli stake get_children --netuid 1
+```
+```bash
+ btcli stake get_children --all-netuids
+```
 
-[italic]Note[/italic]: This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::tip
+This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -3700,19 +3951,22 @@ Remove all children hotkeys on a specified subnet on the Bittensor network.
 This command is used to remove delegated authority from all child hotkeys, removing their position and influence
 on the subnet.
 
-# Usage:
+#### Usage
 
 Users need to specify the parent hotkey and the subnet ID (netuid).
 The user needs to have sufficient authority to make this call.
 
 The command prompts for confirmation before executing the revoke_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child revoke --hotkey `<parent_hotkey>` --netuid 1
+```bash
+ btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to remove children hotkeys on the network.
-It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to remove children hotkeys on the network. It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3742,7 +3996,7 @@ Add children hotkeys on a specified subnet on the Bittensor network.
 This command is used to delegate authority to different hotkeys, securing their position and influence on the
 subnet.
 
-# Usage:
+#### Usage
 
 Users can specify the amount or 'proportion' to delegate to child hotkeys (``SS58`` address),
 the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
@@ -3750,12 +4004,15 @@ than 1.
 
 The command prompts for confirmation before executing the set_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child set - `<child_hotkey>` -c `<child_hotkey>` --hotkey `<parent_hotkey>` --netuid 1 -prop 0.3 -prop 0.3
+```bash
+ btcli stake child set - <child_hotkey> -c <child_hotkey> --hotkey <parent_hotkey> --netuid 1 -prop 0.3 -prop 0.3
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to delegate children hotkeys among different
-neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to delegate children hotkeys among different neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3786,20 +4043,25 @@ Get and set your childkey take on a specified subnet on the Bittensor network.
 
 This command is used to set the take on your child hotkeys with limits between 0 - 18%.
 
-# Usage:
+#### Usage
 
 Users need to specify their child hotkey and the subnet ID (netuid).
 
 The command prompts for confirmation before setting the childkey take.
 
-# Example usage:
+#### Example usage
 
-btcli stake child take --hotkey `<child_hotkey>` --netuid 1
-
-btcli stake child take --hotkey `<child_hotkey>` --take 0.12 --netuid 1
+```bash
+ btcli stake child take --hotkey <child_hotkey> --netuid 1
 ```
 
-[italic]Note[/italic]: This command is critical for users who wish to modify their child hotkey take on the network.
+```bash
+ btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1 ```
+```
+
+:::tip
+This command is critical for users who wish to modify their child hotkey take on the network.
+:::
 
 **Usage**:
 
@@ -3850,7 +4112,7 @@ Get all child hotkeys on a specified subnet on the Bittensor network.
 
 This command is used to view delegated authority to different hotkeys on the subnet.
 
-# Usage:
+#### Usage
 Users can specify the subnet and see the children and the proportion that is given to them.
 
 The command compiles a table showing:
@@ -3860,12 +4122,18 @@ The command compiles a table showing:
 - Proportion: The proportion that is assigned to them.
 - Expiration: The expiration of the hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli stake get_children --netuid 1
-btcli stake get_children --all-netuids
+```bash
+ btcli stake get_children --netuid 1
+```
+```bash
+ btcli stake get_children --all-netuids
+```
 
-[italic]Note[/italic]: This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::tip
+This command is for users who wish to see child hotkeys among different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -3893,19 +4161,22 @@ Remove all children hotkeys on a specified subnet on the Bittensor network.
 This command is used to remove delegated authority from all child hotkeys, removing their position and influence
 on the subnet.
 
-# Usage:
+#### Usage
 
 Users need to specify the parent hotkey and the subnet ID (netuid).
 The user needs to have sufficient authority to make this call.
 
 The command prompts for confirmation before executing the revoke_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child revoke --hotkey `<parent_hotkey>` --netuid 1
+```bash
+ btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to remove children hotkeys on the network.
-It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to remove children hotkeys on the network. It allows for a complete removal of delegated authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3935,7 +4206,7 @@ Add children hotkeys on a specified subnet on the Bittensor network.
 This command is used to delegate authority to different hotkeys, securing their position and influence on the
 subnet.
 
-# Usage:
+#### Usage
 
 Users can specify the amount or 'proportion' to delegate to child hotkeys (``SS58`` address),
 the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
@@ -3943,12 +4214,15 @@ than 1.
 
 The command prompts for confirmation before executing the set_children operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake child set - `<child_hotkey>` -c `<child_hotkey>` --hotkey `<parent_hotkey>` --netuid 1 -prop 0.3 -prop 0.3
+```bash
+ btcli stake child set - <child_hotkey> -c <child_hotkey> --hotkey <parent_hotkey> --netuid 1 -prop 0.3 -prop 0.3
+```
 
-[italic]Note[/italic]: This command is critical for users who wish to delegate children hotkeys among different
-neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::tip
+This command is critical for users who wish to delegate children hotkeys among different neurons (hotkeys) on the network. It allows for a strategic allocation of authority to enhance network participation and influence.
+:::
 
 **Usage**:
 
@@ -3979,20 +4253,25 @@ Get and set your childkey take on a specified subnet on the Bittensor network.
 
 This command is used to set the take on your child hotkeys with limits between 0 - 18%.
 
-# Usage:
+#### Usage
 
 Users need to specify their child hotkey and the subnet ID (netuid).
 
 The command prompts for confirmation before setting the childkey take.
 
-# Example usage:
+#### Example usage
 
-btcli stake child take --hotkey `<child_hotkey>` --netuid 1
-
-btcli stake child take --hotkey `<child_hotkey>` --take 0.12 --netuid 1
+```bash
+ btcli stake child take --hotkey <child_hotkey> --netuid 1
 ```
 
-[italic]Note[/italic]: This command is critical for users who wish to modify their child hotkey take on the network.
+```bash
+ btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1 ```
+```
+
+:::tip
+This command is critical for users who wish to modify their child hotkey take on the network.
+:::
 
 **Usage**:
 
@@ -4024,7 +4303,7 @@ Unstake TAO tokens from one or more hotkeys and transfer them back to the user's
 
 This command is used to withdraw tokens previously staked to different hotkeys.
 
-# Usage:
+#### Usage
 
 Users can specify the amount to unstake, the hotkeys to unstake from (either by name or `SS58` address), and
 whether to unstake from all hotkeys. The command checks for sufficient stake and prompts for confirmation before
@@ -4032,12 +4311,15 @@ proceeding with the unstaking process.
 
 The command prompts for confirmation before executing the unstaking operation.
 
-# Example usage:
+#### Example usage
 
-btcli stake remove --amount 100 -in hk1 -in hk2
+```bash
+ btcli stake remove --amount 100 -in hk1 -in hk2
+```
 
-[italic]Note[/italic]: This command is important for users who wish to reallocate their stakes or withdraw
-them from the network. It allows for flexible management of token stakes across different neurons (hotkeys) on the network.
+:::tip
+This command is important for users who wish to reallocate their stakes or withdraw them from the network. It allows for flexible management of token stakes across different neurons (hotkeys) on the network.
+:::
 
 **Usage**:
 
@@ -4071,7 +4353,7 @@ List all stake accounts associated with a user's wallet on the Bittensor network
 This command provides a comprehensive view of the stakes associated with both hotkeys and delegates linked to
 the user's coldkey.
 
-# Usage:
+#### Usage
 
 The command lists all stake accounts for a specified wallet or all wallets in the user's configuration
 directory. It displays the coldkey, balance, account details (hotkey/delegate name), stake amount, and the rate
@@ -4090,12 +4372,15 @@ The command compiles a table showing:
 - Rate: The rate of return on the stake, typically shown in TAO per day.
 
 
-# Example usage:
+#### Example usage
 
-btcli stake show --all
+```bash
+ btcli stake show --all
+```
 
-[italic]Note[/italic]: This command is essential for users who wish to monitor their stake distribution and returns across various
-accounts on the Bittensor network. It provides a clear and detailed overview of the user's staking activities.
+:::tip
+This command is essential for users who wish to monitor their stake distribution and returns across various accounts on the Bittensor network. It provides a clear and detailed overview of the user's staking activities.
+:::
 
 **Usage**:
 
@@ -4142,19 +4427,22 @@ Retrieve hyperparameters of a specific subnet.
 
 This command is used for both `sudo get` and `subnets hyperparameters`.
 
-# Usage:
+#### Usage
 
 The command connects to the Bittensor network, queries the specified subnet, and returns a detailed list
 of all its hyperparameters. This includes crucial operational parameters that determine the subnet's
 performance and interaction within the network.
 
-# Example usage:
+#### Example usage
 
-btcli sudo get --netuid 1
+```bash
+ btcli sudo get --netuid 1
+```
 
 
-[italic]Note[/italic]: Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view.
-This command is designed for informational purposes and does not alter any network settings or configurations.
+:::tip
+Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view. This command is designed for informational purposes and does not alter any network settings or configurations.
+:::
 
 **Usage**:
 
@@ -4178,19 +4466,21 @@ Used to set hyperparameters for a specific subnet on the Bittensor network.
 This command allows subnet owners to modify various hyperparameters of theirs subnet, such as its tempo,
 emission rates, and other network-specific settings.
 
-# Usage:
+#### Usage
 
 The command first prompts the user to enter the hyperparameter they wish to change and its new value.
 It then uses the user's wallet and configuration settings to authenticate and send the hyperparameter update
 to the specified subnet.
 
-# Example usage:
+#### Example usage
 
-btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
+```bash
+ btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
+```
 
-[italic]Note[/italic]: This command requires the user to specify the subnet identifier (``netuid``) and both
-the hyperparameter and its new value. It is intended for advanced users who are familiar with the network's
-functioning and the impact of changing these parameters.
+:::tip
+This command requires the user to specify the subnet identifier (``netuid``) and both the hyperparameter and its new value. It is intended for advanced users who are familiar with the network's functioning and the impact of changing these parameters.
+:::
 
 **Usage**:
 
@@ -4246,7 +4536,7 @@ This command facilitates the creation and registration of a subnetwork, which in
 user's wallet and the Bittensor subtensor. It ensures that the user has the necessary credentials and
 configurations to successfully register a new subnetwork.
 
-# Usage:
+#### Usage
 Upon invocation, the command performs several key steps to register a subnetwork:
 
 1. It copies the user's current configuration settings.
@@ -4273,14 +4563,15 @@ The command structure includes:
 - Registering the subnetwork with the necessary credentials.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets create
+```bash
+ btcli subnets create
+```
 
-[italic]Note[/italic]: This command is intended for advanced users of the Bittensor network who wish to contribute by adding new
-subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users
-should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork
-to the Bittensor ecosystem.
+:::tip
+This command is intended for advanced users of the Bittensor network who wish to contribute by adding new subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork to the Bittensor ecosystem.
+:::
 
 **Usage**:
 
@@ -4306,19 +4597,22 @@ Retrieve hyperparameters of a specific subnet.
 
 This command is used for both `sudo get` and `subnets hyperparameters`.
 
-# Usage:
+#### Usage
 
 The command connects to the Bittensor network, queries the specified subnet, and returns a detailed list
 of all its hyperparameters. This includes crucial operational parameters that determine the subnet's
 performance and interaction within the network.
 
-# Example usage:
+#### Example usage
 
-btcli sudo get --netuid 1
+```bash
+ btcli sudo get --netuid 1
+```
 
 
-[italic]Note[/italic]: Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view.
-This command is designed for informational purposes and does not alter any network settings or configurations.
+:::tip
+Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view. This command is designed for informational purposes and does not alter any network settings or configurations.
+:::
 
 **Usage**:
 
@@ -4344,7 +4638,7 @@ network, including its unique identifier (netuid), the number of neurons, maximu
 emission rate, tempo, recycle register cost (burn), proof of work (PoW) difficulty, and the name or
 SS58 address of the subnet owner.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following actions:
 
@@ -4372,12 +4666,15 @@ The command structure includes:
 - Displaying the table with a footer that summarizes the total number of subnets and neurons.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets list
+```bash
+ btcli subnets list
+```
 
-[italic]Note[/italic]: This command is particularly useful for users seeking an overview of the Bittensor network's
-structure and the distribution of its resources and ownership information for each subnet.
+:::tip
+This command is particularly useful for users seeking an overview of the Bittensor network's structure and the distribution of its resources and ownership information for each subnet.
+:::
 
 **Usage**:
 
@@ -4405,7 +4702,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -4431,13 +4728,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -4463,7 +4762,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -4489,13 +4788,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -4553,19 +4854,23 @@ The table displayed includes the following columns for each neuron:
 
 The command also prints network-wide statistics such as total stake, issuance, and difficulty.
 
-# Usage:
+#### Usage
 
 The user must specify the network UID to query the metagraph. If not specified, the default network UID is used.
 
-# Example usage:
+#### Example usage
 
-btcli subnet metagraph --netuid 0  # Root network
+```bash
+ btcli subnet metagraph --netuid 0 # Root network
+```
 
-btcli subnet metagraph --netuid 1 --network test
+```bash
+ btcli subnet metagraph --netuid 1 --network test
+```
 
-[italic]Note[/italic]: This command provides a snapshot of the network's state at the time of calling.
-It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and
-not as a standalone function within user code.
+:::tip
+This command provides a snapshot of the network's state at the time of calling. It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -4591,7 +4896,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -4600,13 +4905,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -4641,7 +4948,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -4650,13 +4957,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -4691,7 +5000,7 @@ Register a neuron on the Bittensor network by recycling some TAO (the network's 
 This command is used to add a new neuron to a specified subnet within the network, contributing to the
 decentralization and robustness of Bittensor.
 
-# Usage:
+#### Usage
 
 Before registering, the command checks if the specified subnet exists and whether the user's balance is
 sufficient to cover the registration cost.
@@ -4714,13 +5023,15 @@ Columns Displayed in the confirmation prompt:
 - Balance: The current balance of the user's wallet in TAO.
 - Cost to Register: The required amount of TAO needed to register on the specified subnet.
 
-# Example usage:
+#### Example usage
 
-btcli subnets register --netuid 1
+```bash
+ btcli subnets register --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to contribute a new neuron to the network. It requires careful
-consideration of the subnet selection and an understanding of the registration costs. Users should ensure their
-wallet is sufficiently funded before attempting to register a neuron.
+:::tip
+This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::
 
 **Usage**:
 
@@ -4775,7 +5086,7 @@ This command facilitates the creation and registration of a subnetwork, which in
 user's wallet and the Bittensor subtensor. It ensures that the user has the necessary credentials and
 configurations to successfully register a new subnetwork.
 
-# Usage:
+#### Usage
 Upon invocation, the command performs several key steps to register a subnetwork:
 
 1. It copies the user's current configuration settings.
@@ -4802,14 +5113,15 @@ The command structure includes:
 - Registering the subnetwork with the necessary credentials.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets create
+```bash
+ btcli subnets create
+```
 
-[italic]Note[/italic]: This command is intended for advanced users of the Bittensor network who wish to contribute by adding new
-subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users
-should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork
-to the Bittensor ecosystem.
+:::tip
+This command is intended for advanced users of the Bittensor network who wish to contribute by adding new subnetworks. It requires a clear understanding of the network's functioning and the roles of subnetworks. Users should ensure that they have secured their wallet and are aware of the implications of adding a new subnetwork to the Bittensor ecosystem.
+:::
 
 **Usage**:
 
@@ -4835,19 +5147,22 @@ Retrieve hyperparameters of a specific subnet.
 
 This command is used for both `sudo get` and `subnets hyperparameters`.
 
-# Usage:
+#### Usage
 
 The command connects to the Bittensor network, queries the specified subnet, and returns a detailed list
 of all its hyperparameters. This includes crucial operational parameters that determine the subnet's
 performance and interaction within the network.
 
-# Example usage:
+#### Example usage
 
-btcli sudo get --netuid 1
+```bash
+ btcli sudo get --netuid 1
+```
 
 
-[italic]Note[/italic]: Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view.
-This command is designed for informational purposes and does not alter any network settings or configurations.
+:::tip
+Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view. This command is designed for informational purposes and does not alter any network settings or configurations.
+:::
 
 **Usage**:
 
@@ -4873,7 +5188,7 @@ network, including its unique identifier (netuid), the number of neurons, maximu
 emission rate, tempo, recycle register cost (burn), proof of work (PoW) difficulty, and the name or
 SS58 address of the subnet owner.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following actions:
 
@@ -4901,12 +5216,15 @@ The command structure includes:
 - Displaying the table with a footer that summarizes the total number of subnets and neurons.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets list
+```bash
+ btcli subnets list
+```
 
-[italic]Note[/italic]: This command is particularly useful for users seeking an overview of the Bittensor network's
-structure and the distribution of its resources and ownership information for each subnet.
+:::tip
+This command is particularly useful for users seeking an overview of the Bittensor network's structure and the distribution of its resources and ownership information for each subnet.
+:::
 
 **Usage**:
 
@@ -4934,7 +5252,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -4960,13 +5278,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -4992,7 +5312,7 @@ critical piece of information for anyone considering expanding the network's inf
 The current implementation anneals the cost of creating a subnet over a period of two days. If the cost is
 unappealing currently, check back in a day or two to see if it has reached a more amenable level.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command performs the following operations:
 
@@ -5018,13 +5338,15 @@ The command structure includes:
 - Displaying the cost in a user-friendly manner.
 
 
-# Example usage:
+#### Example usage
 
-btcli subnets lock_cost
+```bash
+ btcli subnets lock_cost
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who are planning to contribute to the Bittensor network
-by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their
-potential contributions and investments in the network.
+:::tip
+This command is particularly useful for users who are planning to contribute to the Bittensor network by adding new subnetworks. Understanding the lock cost is essential for these users to make informed decisions about their potential contributions and investments in the network.
+:::
 
 **Usage**:
 
@@ -5082,19 +5404,23 @@ The table displayed includes the following columns for each neuron:
 
 The command also prints network-wide statistics such as total stake, issuance, and difficulty.
 
-# Usage:
+#### Usage
 
 The user must specify the network UID to query the metagraph. If not specified, the default network UID is used.
 
-# Example usage:
+#### Example usage
 
-btcli subnet metagraph --netuid 0  # Root network
+```bash
+ btcli subnet metagraph --netuid 0 # Root network
+```
 
-btcli subnet metagraph --netuid 1 --network test
+```bash
+ btcli subnet metagraph --netuid 1 --network test
+```
 
-[italic]Note[/italic]: This command provides a snapshot of the network's state at the time of calling.
-It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and
-not as a standalone function within user code.
+:::tip
+This command provides a snapshot of the network's state at the time of calling. It is useful for network analysis and diagnostics. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -5120,7 +5446,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -5129,13 +5455,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -5170,7 +5498,7 @@ Register a neuron on the Bittensor network using Proof of Work (PoW).
 This method is an alternative registration process that leverages computational work for securing a neuron's
 place on the network.
 
-# Usage:
+#### Usage
 
 The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it
 terminates with an error message. On successful verification, the PoW registration process is initiated, which
@@ -5179,13 +5507,15 @@ requires solving computational puzzles.
 The command also supports additional wallet and subtensor arguments, enabling further customization of the
 registration process.
 
-# Example usage:
+#### Example usage
 
-btcli pow_register --netuid 1 --num_processes 4 --cuda
+```bash
+ btcli pow_register --netuid 1 --num_processes 4 --cuda
+```
 
-[italic]Note[/italic]: This command is suited for users with adequate computational resources to participate in PoW registration.
-It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems
-meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::tip
+This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
+:::
 
 This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
 permanently disabled.
@@ -5220,7 +5550,7 @@ Register a neuron on the Bittensor network by recycling some TAO (the network's 
 This command is used to add a new neuron to a specified subnet within the network, contributing to the
 decentralization and robustness of Bittensor.
 
-# Usage:
+#### Usage
 
 Before registering, the command checks if the specified subnet exists and whether the user's balance is
 sufficient to cover the registration cost.
@@ -5243,13 +5573,15 @@ Columns Displayed in the confirmation prompt:
 - Balance: The current balance of the user's wallet in TAO.
 - Cost to Register: The required amount of TAO needed to register on the specified subnet.
 
-# Example usage:
+#### Example usage
 
-btcli subnets register --netuid 1
+```bash
+ btcli subnets register --netuid 1
+```
 
-[italic]Note[/italic]:This command is critical for users who wish to contribute a new neuron to the network. It requires careful
-consideration of the subnet selection and an understanding of the registration costs. Users should ensure their
-wallet is sufficiently funded before attempting to register a neuron.
+:::tip
+This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.
+:::
 
 **Usage**:
 
@@ -5295,19 +5627,22 @@ Retrieve hyperparameters of a specific subnet.
 
 This command is used for both `sudo get` and `subnets hyperparameters`.
 
-# Usage:
+#### Usage
 
 The command connects to the Bittensor network, queries the specified subnet, and returns a detailed list
 of all its hyperparameters. This includes crucial operational parameters that determine the subnet's
 performance and interaction within the network.
 
-# Example usage:
+#### Example usage
 
-btcli sudo get --netuid 1
+```bash
+ btcli sudo get --netuid 1
+```
 
 
-[italic]Note[/italic]: Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view.
-This command is designed for informational purposes and does not alter any network settings or configurations.
+:::tip
+Users need to provide the `netuid` of the subnet whose hyperparameters they wish to view. This command is designed for informational purposes and does not alter any network settings or configurations.
+:::
 
 **Usage**:
 
@@ -5331,19 +5666,21 @@ Used to set hyperparameters for a specific subnet on the Bittensor network.
 This command allows subnet owners to modify various hyperparameters of theirs subnet, such as its tempo,
 emission rates, and other network-specific settings.
 
-# Usage:
+#### Usage
 
 The command first prompts the user to enter the hyperparameter they wish to change and its new value.
 It then uses the user's wallet and configuration settings to authenticate and send the hyperparameter update
 to the specified subnet.
 
-# Example usage:
+#### Example usage
 
-btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
+```bash
+ btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
+```
 
-[italic]Note[/italic]: This command requires the user to specify the subnet identifier (``netuid``) and both
-the hyperparameter and its new value. It is intended for advanced users who are familiar with the network's
-functioning and the impact of changing these parameters.
+:::tip
+This command requires the user to specify the subnet identifier (``netuid``) and both the hyperparameter and its new value. It is intended for advanced users who are familiar with the network's functioning and the impact of changing these parameters.
+:::
 
 **Usage**:
 
@@ -5412,7 +5749,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 Check the balance of the wallet on the Bittensor network.
 This provides a detailed view of the wallet's coldkey balances, including free and staked balances.
 
-# Usage:
+#### Usage
 
 The command lists the balances of all wallets in the user's configuration directory, showing the
 wallet name, coldkey address, and the respective free and staked balances.
@@ -5422,13 +5759,19 @@ wallet name, coldkey address, and the respective free and staked balances.
 - To display the balance of a single wallet, use the command with the `--wallet-name` argument to specify
 the wallet name:
 
-btcli w balance --wallet-name WALLET
+```bash
+ btcli w balance --wallet-name WALLET
+```
 
-btcli w balance
+```bash
+ btcli w balance
+```
 
 - To display the balances of all wallets, use the `--all` argument:
 
-btcli w balance --all
+```bash
+ btcli w balance --all
+```
 
 **Usage**:
 
@@ -5455,17 +5798,19 @@ Generate both a new coldkey and hotkey under a specified wallet.
 This command is a comprehensive utility for creating a complete wallet setup with both cold
 and hotkeys.
 
-# Usage:
+#### Usage
 The command facilitates the creation of a new coldkey and hotkey with an optional word count for the
 mnemonics. It supports password protection for the coldkey and allows overwriting of existing keys.
 
-# Example usage:
+#### Example usage
 
-btcli wallet create --n_words 21
+```bash
+ btcli wallet create --n_words 21
+```
 
-[italic]Note[/italic]: This command is ideal for new users setting up their wallet for the first time
-or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys
-for secure and effective participation in the network.
+:::tip
+This command is ideal for new users setting up their wallet for the first time or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys for secure and effective participation in the network.
+:::
 
 **Usage**:
 
@@ -5493,18 +5838,20 @@ This command is particularly useful for users who need test tokens for operation
 # IMPORTANT:
     *THIS COMMAND IS DISABLED ON FINNEY AND TESTNET.*
 
-# Usage:
+#### Usage
 
 The command uses the PoW mechanism to validate the user's effort and rewards them with test TAO tokens. It is
 typically used in local chain environments where real value transactions are not necessary.
 
-# Example usage:
+#### Example usage
 
-btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```bash
+ btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```
 
-[italic]Note[/italic]: This command is meant for use in local environments where users can experiment with the network
-without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for
-CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::tip
+This command is meant for use in local environments where users can experiment with the network without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::
 
 **Usage**:
 
@@ -5547,17 +5894,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -5592,17 +5942,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -5624,17 +5977,20 @@ $ btcli w get_identity [OPTIONS]
 Fetch the latest transfers of the provided wallet on the Bittensor network.
 This provides a detailed view of the transfers carried out on the wallet.
 
-# Usage:
+#### Usage
 
 The command lists the latest transfers of the provided wallet, showing the 'From', 'To', 'Amount',
 'Extrinsic ID' and 'Block Number'.
 
-# Example usage:
+#### Example usage
 
-btcli wallet history
+```bash
+ btcli wallet history
+```
 
-[italic]Note[/italic]: This command is essential for users to monitor their financial status on the Bittensor network.
-It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::tip
+This command is essential for users to monitor their financial status on the Bittensor network. It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::
 
 **Usage**:
 
@@ -5679,7 +6035,7 @@ The resulting table includes columns for:
 
 - *Hotkey*: The hotkey associated with the neuron on the network.
 
-# Usage:
+#### Usage
 
 This command can be used to inspect a single wallet or all wallets located within a
 specified path. It is useful for a comprehensive overview of a user's participation
@@ -5687,13 +6043,17 @@ and performance in the Bittensor network.
 
 # Example usage::
 
-btcli wallet inspect
+```bash
+ btcli wallet inspect
+```
 
-btcli wallet inspect --all -n 1 -n 2 -n 3
+```bash
+ btcli wallet inspect --all -n 1 -n 2 -n 3
+```
 
-[italic]Note[/italic]: The `inspect` command is for displaying information only and does not perform any
-transactions or state changes on the Bittensor network. It is intended to be used as
-part of the Bittensor CLI and not as a standalone function within user code.
+:::tip
+The `inspect` command is for displaying information only and does not perform any transactions or state changes on the Bittensor network. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -5724,17 +6084,20 @@ The output is presented in a hierarchical tree format, with each wallet as a roo
 and any associated hotkeys as child nodes. The ``ss58`` address is displayed for each
 coldkey and hotkey that is not encrypted and exists on the device.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command scans the wallet directory and prints a list of all wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# Example usage:
+#### Example usage
 
-btcli wallet list --path ~/.bittensor
+```bash
+ btcli wallet list --path ~/.bittensor
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the filesystem or the network state.
-It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::tip
+This command is read-only and does not modify the filesystem or the network state. It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::
 
 **Usage**:
 
@@ -5753,18 +6116,20 @@ $ btcli w list [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -5787,18 +6152,21 @@ $ btcli w new-coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -5821,18 +6189,20 @@ $ btcli w new-hotkey [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -5855,18 +6225,21 @@ $ btcli w new_coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -5893,7 +6266,7 @@ This command compiles and displays comprehensive information about each neuron a
 wallets, including both hotkeys and coldkeys. It is especially useful for users managing multiple accounts or
 seeking a summary of their network activities and stake distributions.
 
-# Usage:
+#### Usage
 
 The command offers various options to customize the output. Users can filter the displayed data by specific
 netuids, sort by different criteria, and choose to include all wallets in the user's configuration directory.
@@ -5932,17 +6305,23 @@ The output is presented in a tabular format with the following columns:
 - HOTKEY_SS58: Human-readable representation of the hotkey.
 
 
-# Example usage:
+#### Example usage
 
-btcli wallet overview
+```bash
+ btcli wallet overview
+```
 
-btcli wallet overview --all --sort-by stake --sort-order descending
+```bash
+ btcli wallet overview --all --sort-by stake --sort-order descending
+```
 
-btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```bash
+ btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the network state or account configurations.
-It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status,
-stake distribution, and overall contribution to the Bittensor network.
+:::tip
+This command is read-only and does not modify the network state or account configurations. It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status, stake distribution, and overall contribution to the Bittensor network.
+:::
 
 **Usage**:
 
@@ -5973,18 +6352,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -6012,18 +6394,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -6048,18 +6432,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -6087,18 +6473,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -6126,18 +6515,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -6162,18 +6553,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -6216,20 +6609,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -6280,20 +6674,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -6327,20 +6722,23 @@ $ btcli w set_identity [OPTIONS]
 
 Allows users to sign a message with the provided wallet or wallet hotkey.
 
-# Usage:
+#### Usage
 
 The command generates a signature for a given message using the provided wallet
 
-# Example usage:
+#### Example usage
 
-btcli wallet sign --wallet-name default --message 
+```bash
+ btcli wallet sign --wallet-name default --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message
+```bash
+ btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-
-[italic]Note[/italic]: When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based
-on your preference for brevity or clarity. This command is essential for users to easily prove their ownership
-over a coldkey or a hotkey.
+:::tip
+When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based on your preference for brevity or clarity. This command is essential for users to easily prove their ownership over a coldkey or a hotkey.
+:::
 
 **Usage**:
 
@@ -6363,13 +6761,15 @@ $ btcli w sign [OPTIONS]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -6397,13 +6797,15 @@ $ btcli w swap-hotkey [OPTIONS] [DESTINATION_HOTKEY_NAME]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -6435,17 +6837,20 @@ This command is used for transactions between different accounts, enabling users
 participants on the network. The command displays the user's current balance before prompting for the amount
 to transfer, ensuring transparency and accuracy in the transaction.
 
-# Usage:
+#### Usage
 
 The command requires specifying the destination address (public key) and the amount of TAO to be transferred.
 It checks for sufficient balance and prompts for confirmation before proceeding with the transaction.
 
-# Example usage:
+#### Example usage
 
-btcli wallet transfer --dest 5Dp8... --amount 100
+```bash
+ btcli wallet transfer --dest 5Dp8... --amount 100
+```
 
-[italic]Note[/italic]: This command is crucial for executing token transfers within the Bittensor network.
-Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::tip
+This command is crucial for executing token transfers within the Bittensor network. Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::
 
 **Usage**:
 
@@ -6514,7 +6919,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 Check the balance of the wallet on the Bittensor network.
 This provides a detailed view of the wallet's coldkey balances, including free and staked balances.
 
-# Usage:
+#### Usage
 
 The command lists the balances of all wallets in the user's configuration directory, showing the
 wallet name, coldkey address, and the respective free and staked balances.
@@ -6524,13 +6929,19 @@ wallet name, coldkey address, and the respective free and staked balances.
 - To display the balance of a single wallet, use the command with the `--wallet-name` argument to specify
 the wallet name:
 
-btcli w balance --wallet-name WALLET
+```bash
+ btcli w balance --wallet-name WALLET
+```
 
-btcli w balance
+```bash
+ btcli w balance
+```
 
 - To display the balances of all wallets, use the `--all` argument:
 
-btcli w balance --all
+```bash
+ btcli w balance --all
+```
 
 **Usage**:
 
@@ -6557,17 +6968,19 @@ Generate both a new coldkey and hotkey under a specified wallet.
 This command is a comprehensive utility for creating a complete wallet setup with both cold
 and hotkeys.
 
-# Usage:
+#### Usage
 The command facilitates the creation of a new coldkey and hotkey with an optional word count for the
 mnemonics. It supports password protection for the coldkey and allows overwriting of existing keys.
 
-# Example usage:
+#### Example usage
 
-btcli wallet create --n_words 21
+```bash
+ btcli wallet create --n_words 21
+```
 
-[italic]Note[/italic]: This command is ideal for new users setting up their wallet for the first time
-or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys
-for secure and effective participation in the network.
+:::tip
+This command is ideal for new users setting up their wallet for the first time or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys for secure and effective participation in the network.
+:::
 
 **Usage**:
 
@@ -6595,18 +7008,20 @@ This command is particularly useful for users who need test tokens for operation
 # IMPORTANT:
     *THIS COMMAND IS DISABLED ON FINNEY AND TESTNET.*
 
-# Usage:
+#### Usage
 
 The command uses the PoW mechanism to validate the user's effort and rewards them with test TAO tokens. It is
 typically used in local chain environments where real value transactions are not necessary.
 
-# Example usage:
+#### Example usage
 
-btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```bash
+ btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```
 
-[italic]Note[/italic]: This command is meant for use in local environments where users can experiment with the network
-without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for
-CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::tip
+This command is meant for use in local environments where users can experiment with the network without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::
 
 **Usage**:
 
@@ -6649,17 +7064,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -6694,17 +7112,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -6726,17 +7147,20 @@ $ btcli wallet get_identity [OPTIONS]
 Fetch the latest transfers of the provided wallet on the Bittensor network.
 This provides a detailed view of the transfers carried out on the wallet.
 
-# Usage:
+#### Usage
 
 The command lists the latest transfers of the provided wallet, showing the 'From', 'To', 'Amount',
 'Extrinsic ID' and 'Block Number'.
 
-# Example usage:
+#### Example usage
 
-btcli wallet history
+```bash
+ btcli wallet history
+```
 
-[italic]Note[/italic]: This command is essential for users to monitor their financial status on the Bittensor network.
-It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::tip
+This command is essential for users to monitor their financial status on the Bittensor network. It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::
 
 **Usage**:
 
@@ -6781,7 +7205,7 @@ The resulting table includes columns for:
 
 - *Hotkey*: The hotkey associated with the neuron on the network.
 
-# Usage:
+#### Usage
 
 This command can be used to inspect a single wallet or all wallets located within a
 specified path. It is useful for a comprehensive overview of a user's participation
@@ -6789,13 +7213,17 @@ and performance in the Bittensor network.
 
 # Example usage::
 
-btcli wallet inspect
+```bash
+ btcli wallet inspect
+```
 
-btcli wallet inspect --all -n 1 -n 2 -n 3
+```bash
+ btcli wallet inspect --all -n 1 -n 2 -n 3
+```
 
-[italic]Note[/italic]: The `inspect` command is for displaying information only and does not perform any
-transactions or state changes on the Bittensor network. It is intended to be used as
-part of the Bittensor CLI and not as a standalone function within user code.
+:::tip
+The `inspect` command is for displaying information only and does not perform any transactions or state changes on the Bittensor network. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -6826,17 +7254,20 @@ The output is presented in a hierarchical tree format, with each wallet as a roo
 and any associated hotkeys as child nodes. The ``ss58`` address is displayed for each
 coldkey and hotkey that is not encrypted and exists on the device.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command scans the wallet directory and prints a list of all wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# Example usage:
+#### Example usage
 
-btcli wallet list --path ~/.bittensor
+```bash
+ btcli wallet list --path ~/.bittensor
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the filesystem or the network state.
-It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::tip
+This command is read-only and does not modify the filesystem or the network state. It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::
 
 **Usage**:
 
@@ -6855,18 +7286,20 @@ $ btcli wallet list [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -6889,18 +7322,21 @@ $ btcli wallet new-coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -6923,18 +7359,20 @@ $ btcli wallet new-hotkey [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -6957,18 +7395,21 @@ $ btcli wallet new_coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -6995,7 +7436,7 @@ This command compiles and displays comprehensive information about each neuron a
 wallets, including both hotkeys and coldkeys. It is especially useful for users managing multiple accounts or
 seeking a summary of their network activities and stake distributions.
 
-# Usage:
+#### Usage
 
 The command offers various options to customize the output. Users can filter the displayed data by specific
 netuids, sort by different criteria, and choose to include all wallets in the user's configuration directory.
@@ -7034,17 +7475,23 @@ The output is presented in a tabular format with the following columns:
 - HOTKEY_SS58: Human-readable representation of the hotkey.
 
 
-# Example usage:
+#### Example usage
 
-btcli wallet overview
+```bash
+ btcli wallet overview
+```
 
-btcli wallet overview --all --sort-by stake --sort-order descending
+```bash
+ btcli wallet overview --all --sort-by stake --sort-order descending
+```
 
-btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```bash
+ btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the network state or account configurations.
-It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status,
-stake distribution, and overall contribution to the Bittensor network.
+:::tip
+This command is read-only and does not modify the network state or account configurations. It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status, stake distribution, and overall contribution to the Bittensor network.
+:::
 
 **Usage**:
 
@@ -7075,18 +7522,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -7114,18 +7564,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -7150,18 +7602,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -7189,18 +7643,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -7228,18 +7685,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -7264,18 +7723,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -7318,20 +7779,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -7382,20 +7844,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -7429,20 +7892,23 @@ $ btcli wallet set_identity [OPTIONS]
 
 Allows users to sign a message with the provided wallet or wallet hotkey.
 
-# Usage:
+#### Usage
 
 The command generates a signature for a given message using the provided wallet
 
-# Example usage:
+#### Example usage
 
-btcli wallet sign --wallet-name default --message 
+```bash
+ btcli wallet sign --wallet-name default --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message
+```bash
+ btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-
-[italic]Note[/italic]: When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based
-on your preference for brevity or clarity. This command is essential for users to easily prove their ownership
-over a coldkey or a hotkey.
+:::tip
+When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based on your preference for brevity or clarity. This command is essential for users to easily prove their ownership over a coldkey or a hotkey.
+:::
 
 **Usage**:
 
@@ -7465,13 +7931,15 @@ $ btcli wallet sign [OPTIONS]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -7499,13 +7967,15 @@ $ btcli wallet swap-hotkey [OPTIONS] [DESTINATION_HOTKEY_NAME]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -7537,17 +8007,20 @@ This command is used for transactions between different accounts, enabling users
 participants on the network. The command displays the user's current balance before prompting for the amount
 to transfer, ensuring transparency and accuracy in the transaction.
 
-# Usage:
+#### Usage
 
 The command requires specifying the destination address (public key) and the amount of TAO to be transferred.
 It checks for sufficient balance and prompts for confirmation before proceeding with the transaction.
 
-# Example usage:
+#### Example usage
 
-btcli wallet transfer --dest 5Dp8... --amount 100
+```bash
+ btcli wallet transfer --dest 5Dp8... --amount 100
+```
 
-[italic]Note[/italic]: This command is crucial for executing token transfers within the Bittensor network.
-Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::tip
+This command is crucial for executing token transfers within the Bittensor network. Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::
 
 **Usage**:
 
@@ -7616,7 +8089,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 Check the balance of the wallet on the Bittensor network.
 This provides a detailed view of the wallet's coldkey balances, including free and staked balances.
 
-# Usage:
+#### Usage
 
 The command lists the balances of all wallets in the user's configuration directory, showing the
 wallet name, coldkey address, and the respective free and staked balances.
@@ -7626,13 +8099,19 @@ wallet name, coldkey address, and the respective free and staked balances.
 - To display the balance of a single wallet, use the command with the `--wallet-name` argument to specify
 the wallet name:
 
-btcli w balance --wallet-name WALLET
+```bash
+ btcli w balance --wallet-name WALLET
+```
 
-btcli w balance
+```bash
+ btcli w balance
+```
 
 - To display the balances of all wallets, use the `--all` argument:
 
-btcli w balance --all
+```bash
+ btcli w balance --all
+```
 
 **Usage**:
 
@@ -7659,17 +8138,19 @@ Generate both a new coldkey and hotkey under a specified wallet.
 This command is a comprehensive utility for creating a complete wallet setup with both cold
 and hotkeys.
 
-# Usage:
+#### Usage
 The command facilitates the creation of a new coldkey and hotkey with an optional word count for the
 mnemonics. It supports password protection for the coldkey and allows overwriting of existing keys.
 
-# Example usage:
+#### Example usage
 
-btcli wallet create --n_words 21
+```bash
+ btcli wallet create --n_words 21
+```
 
-[italic]Note[/italic]: This command is ideal for new users setting up their wallet for the first time
-or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys
-for secure and effective participation in the network.
+:::tip
+This command is ideal for new users setting up their wallet for the first time or for those who wish to completely renew their wallet keys. It ensures a fresh start with new keys for secure and effective participation in the network.
+:::
 
 **Usage**:
 
@@ -7697,18 +8178,20 @@ This command is particularly useful for users who need test tokens for operation
 # IMPORTANT:
     *THIS COMMAND IS DISABLED ON FINNEY AND TESTNET.*
 
-# Usage:
+#### Usage
 
 The command uses the PoW mechanism to validate the user's effort and rewards them with test TAO tokens. It is
 typically used in local chain environments where real value transactions are not necessary.
 
-# Example usage:
+#### Example usage
 
-btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```bash
+ btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+```
 
-[italic]Note[/italic]: This command is meant for use in local environments where users can experiment with the network
-without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for
-CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::tip
+This command is meant for use in local environments where users can experiment with the network without using real TAO tokens. It's important for users to have the necessary hardware setup, especially when opting for CUDA-based GPU calculations. It is currently disabled on testnet and finney. You must use this on a local chain.
+:::
 
 **Usage**:
 
@@ -7751,17 +8234,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -7796,17 +8282,20 @@ The displayed table includes:
 
 - *Value*: The corresponding values of the attributes.
 
-# Usage:
+#### Usage
 
 The user must provide an ss58 address as input to the command. If the address is not
 provided in the configuration, the user is prompted to enter one.
 
-# Example usage:
+#### Example usage
 
-btcli wallet get_identity --key `<s58_address>`
+```bash
+ btcli wallet get_identity --key <s58_address>
+```
 
-[italic]Note[/italic]: This function is designed for CLI use and should be executed in a terminal.
-It is primarily used for informational purposes and has no side effects on the network state.
+:::tip
+This function is designed for CLI use and should be executed in a terminal. It is primarily used for informational purposes and has no side effects on the network state.
+:::
 
 **Usage**:
 
@@ -7828,17 +8317,20 @@ $ btcli wallets get_identity [OPTIONS]
 Fetch the latest transfers of the provided wallet on the Bittensor network.
 This provides a detailed view of the transfers carried out on the wallet.
 
-# Usage:
+#### Usage
 
 The command lists the latest transfers of the provided wallet, showing the 'From', 'To', 'Amount',
 'Extrinsic ID' and 'Block Number'.
 
-# Example usage:
+#### Example usage
 
-btcli wallet history
+```bash
+ btcli wallet history
+```
 
-[italic]Note[/italic]: This command is essential for users to monitor their financial status on the Bittensor network.
-It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::tip
+This command is essential for users to monitor their financial status on the Bittensor network. It helps in fetching info on all the transfers so that user can easily tally and cross-check the transactions.
+:::
 
 **Usage**:
 
@@ -7883,7 +8375,7 @@ The resulting table includes columns for:
 
 - *Hotkey*: The hotkey associated with the neuron on the network.
 
-# Usage:
+#### Usage
 
 This command can be used to inspect a single wallet or all wallets located within a
 specified path. It is useful for a comprehensive overview of a user's participation
@@ -7891,13 +8383,17 @@ and performance in the Bittensor network.
 
 # Example usage::
 
-btcli wallet inspect
+```bash
+ btcli wallet inspect
+```
 
-btcli wallet inspect --all -n 1 -n 2 -n 3
+```bash
+ btcli wallet inspect --all -n 1 -n 2 -n 3
+```
 
-[italic]Note[/italic]: The `inspect` command is for displaying information only and does not perform any
-transactions or state changes on the Bittensor network. It is intended to be used as
-part of the Bittensor CLI and not as a standalone function within user code.
+:::tip
+The `inspect` command is for displaying information only and does not perform any transactions or state changes on the Bittensor network. It is intended to be used as part of the Bittensor CLI and not as a standalone function within user code.
+:::
 
 **Usage**:
 
@@ -7928,17 +8424,20 @@ The output is presented in a hierarchical tree format, with each wallet as a roo
 and any associated hotkeys as child nodes. The ``ss58`` address is displayed for each
 coldkey and hotkey that is not encrypted and exists on the device.
 
-# Usage:
+#### Usage
 
 Upon invocation, the command scans the wallet directory and prints a list of all wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# Example usage:
+#### Example usage
 
-btcli wallet list --path ~/.bittensor
+```bash
+ btcli wallet list --path ~/.bittensor
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the filesystem or the network state.
-It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::tip
+This command is read-only and does not modify the filesystem or the network state. It is intended for use within the Bittensor CLI to provide a quick overview of the user's wallets.
+:::
 
 **Usage**:
 
@@ -7957,18 +8456,20 @@ $ btcli wallets list [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -7991,18 +8492,21 @@ $ btcli wallets new-coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -8025,18 +8529,20 @@ $ btcli wallets new-hotkey [OPTIONS]
 
 Create a new coldkey under a wallet. A coldkey, is essential for holding balances and performing high-value transactions.
 
-# Usage:
+#### Usage
 
 The command creates a new coldkey with an optional word count for the mnemonic and supports password
 protection. It also allows overwriting an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new_coldkey --n_words 15
+```bash
+ btcli wallet new_coldkey --n_words 15
+```
 
-[italic]Note[/italic]: This command is crucial for users who need to create a new coldkey for
-enhanced security or as part of setting up a new wallet. It's a foundational step in establishing
-a secure presence on the Bittensor network.
+:::tip
+This command is crucial for users who need to create a new coldkey for enhanced security or as part of setting up a new wallet. It's a foundational step in establishing a secure presence on the Bittensor network.
+:::
 
 **Usage**:
 
@@ -8059,18 +8565,21 @@ $ btcli wallets new_coldkey [OPTIONS]
 
 Create a new hotkey under a wallet.
 
-# Usage:
+#### Usage
 
 This command is used to generate a new hotkey for managing a neuron or participating in the network,
 with an optional word count for the mnemonic and supports password protection. It also allows overwriting an
 existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet new-hotkey --n_words 24
+```bash
+ btcli wallet new-hotkey --n_words 24
+```
 
-[italic]Note[/italic]: This command is useful for users who wish to create additional hotkeys
-for different purposes, such as running multiple miners or separating operational roles within the network.
+:::tip
+This command is useful for users who wish to create additional hotkeys for different purposes, such as running multiple miners or separating operational roles within the network.
+:::
 
 **Usage**:
 
@@ -8097,7 +8606,7 @@ This command compiles and displays comprehensive information about each neuron a
 wallets, including both hotkeys and coldkeys. It is especially useful for users managing multiple accounts or
 seeking a summary of their network activities and stake distributions.
 
-# Usage:
+#### Usage
 
 The command offers various options to customize the output. Users can filter the displayed data by specific
 netuids, sort by different criteria, and choose to include all wallets in the user's configuration directory.
@@ -8136,17 +8645,23 @@ The output is presented in a tabular format with the following columns:
 - HOTKEY_SS58: Human-readable representation of the hotkey.
 
 
-# Example usage:
+#### Example usage
 
-btcli wallet overview
+```bash
+ btcli wallet overview
+```
 
-btcli wallet overview --all --sort-by stake --sort-order descending
+```bash
+ btcli wallet overview --all --sort-by stake --sort-order descending
+```
 
-btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```bash
+ btcli wallet overview -in hk1 -in hk2 --sort-by stake
+```
 
-[italic]Note[/italic]: This command is read-only and does not modify the network state or account configurations.
-It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status,
-stake distribution, and overall contribution to the Bittensor network.
+:::tip
+This command is read-only and does not modify the network state or account configurations. It provides a quick and comprehensive view of the user's network presence, making it ideal for monitoring account status, stake distribution, and overall contribution to the Bittensor network.
+:::
 
 **Usage**:
 
@@ -8177,18 +8692,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -8216,18 +8734,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -8252,18 +8772,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -8291,18 +8813,21 @@ Regenerate a coldkey for a wallet on the Bittensor network.
 
 This command is used to create a new coldkey from an existing mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can specify a mnemonic, a seed string, or a JSON file path to regenerate a coldkey.
 The command supports optional password protection for the generated key and can overwrite an existing coldkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```bash
+ btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+```
 
 
-[italic]Note[/italic]: This command is critical for users who need to regenerate their coldkey, possibly for recovery or
-security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::tip
+This command is critical for users who need to regenerate their coldkey, possibly for recovery or security reasons. It should be used with caution to avoid overwriting existing keys unintentionally.
+:::
 
 **Usage**:
 
@@ -8330,18 +8855,20 @@ Regenerate the public part of a coldkey (coldkeypub) for a wallet.
 
 This command is used when a user needs to recreate their coldkeypub from an existing public key or SS58 address.
 
-# Usage:
+#### Usage
 
 The command requires either a public key in hexadecimal format or an ``SS58`` address to regenerate the
 coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```bash
+ btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+```
 
-[italic]Note[/italic]: This command is particularly useful for users who need to regenerate their coldkeypub,
-perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet
-functionalities.
+:::tip
+This command is particularly useful for users who need to regenerate their coldkeypub, perhaps due to file corruption or loss. It is a recovery-focused utility that ensures continued access to wallet functionalities.
+:::
 
 **Usage**:
 
@@ -8366,18 +8893,20 @@ Regenerates a hotkey for a wallet.
 
 Similar to regenerating a coldkey, this command creates a new hotkey from a mnemonic, seed, or JSON file.
 
-# Usage:
+#### Usage
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey.
 The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
+#### Example usage
 
-btcli wallet regen_hotkey --seed 0x1234...
+```bash
+ btcli wallet regen_hotkey --seed 0x1234...
+```
 
-[italic]Note[/italic]: This command is essential for users who need to regenerate their hotkey,
-possibly for security upgrades or key recovery.
-It should be used cautiously to avoid accidental overwrites of existing keys.
+:::tip
+This command is essential for users who need to regenerate their hotkey, possibly for security upgrades or key recovery. It should be used cautiously to avoid accidental overwrites of existing keys.
+:::
 
 **Usage**:
 
@@ -8420,20 +8949,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -8484,20 +9014,21 @@ not have a hotkey, the coldkey address is used by default.
 If setting a validator identity, the hotkey will be used by default. If the user is
 setting an identity for a subnet, the coldkey will be used by default.
 
-# Usage:
+#### Usage
 
 The user should call this command from the command line and follow the interactive
 prompts to enter or update the identity information. The command will display the
 updated identity details in a table format upon successful execution.
 
-# Example usage:
+#### Example usage
 
-btcli wallet set_identity
+```bash
+ btcli wallet set_identity
+```
 
-[italic]Note[/italic]: This command should only be used if the user is willing to incur the 1 TAO
-transaction fee associated with setting an identity on the blockchain. It is a high-level command
-that makes changes to the blockchain state and should not be used programmatically as
-part of other scripts or applications.
+:::tip
+This command should only be used if the user is willing to incur the 1 TAO transaction fee associated with setting an identity on the blockchain. It is a high-level command that makes changes to the blockchain state and should not be used programmatically as part of other scripts or applications.
+:::
 
 **Usage**:
 
@@ -8531,20 +9062,23 @@ $ btcli wallets set_identity [OPTIONS]
 
 Allows users to sign a message with the provided wallet or wallet hotkey.
 
-# Usage:
+#### Usage
 
 The command generates a signature for a given message using the provided wallet
 
-# Example usage:
+#### Example usage
 
-btcli wallet sign --wallet-name default --message 
+```bash
+ btcli wallet sign --wallet-name default --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message
+```bash
+ btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message '{"something": "here", "timestamp": 1719908486}'
+```
 
-
-[italic]Note[/italic]: When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based
-on your preference for brevity or clarity. This command is essential for users to easily prove their ownership
-over a coldkey or a hotkey.
+:::tip
+When using `btcli`, `w` is used interchangeably with `wallet`. You may use either based on your preference for brevity or clarity. This command is essential for users to easily prove their ownership over a coldkey or a hotkey.
+:::
 
 **Usage**:
 
@@ -8567,13 +9101,15 @@ $ btcli wallets sign [OPTIONS]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -8601,13 +9137,15 @@ $ btcli wallets swap-hotkey [OPTIONS] [DESTINATION_HOTKEY_NAME]
 
 Swap hotkeys for a neuron on the network.
 
-# Usage:
+#### Usage
 
 The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.
 
-# Example usage:
+#### Example usage
 
-btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```bash
+ btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+```
 
 **Usage**:
 
@@ -8639,17 +9177,20 @@ This command is used for transactions between different accounts, enabling users
 participants on the network. The command displays the user's current balance before prompting for the amount
 to transfer, ensuring transparency and accuracy in the transaction.
 
-# Usage:
+#### Usage
 
 The command requires specifying the destination address (public key) and the amount of TAO to be transferred.
 It checks for sufficient balance and prompts for confirmation before proceeding with the transaction.
 
-# Example usage:
+#### Example usage
 
-btcli wallet transfer --dest 5Dp8... --amount 100
+```bash
+ btcli wallet transfer --dest 5Dp8... --amount 100
+```
 
-[italic]Note[/italic]: This command is crucial for executing token transfers within the Bittensor network.
-Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::tip
+This command is crucial for executing token transfers within the Bittensor network. Users should verify the destination address and amount before confirming the transaction to avoid errors or loss of funds.
+:::
 
 **Usage**:
 
@@ -8694,7 +9235,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 
 Commit weights for specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows committing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to commit.
@@ -8702,10 +9243,13 @@ identifier), corresponding UIDs, and weights they wish to commit.
 
 ### Example usage:
 
-btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```bash
+ btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```
 
-[italic]Note[/italic]: This command is used to commit weights for a specific subnet and requires the user to have the necessary
-permissions.
+:::tip
+This command is used to commit weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
@@ -8732,17 +9276,21 @@ $ btcli weight commit [OPTIONS]
 
 Reveal weights for a specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows revealing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to reveal.
 
 
-# Example usage:
+#### Example usage
 
-btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```bash
+ btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```
 
-[italic]Note[/italic]: This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::tip
+This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
@@ -8788,7 +9336,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 
 Commit weights for specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows committing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to commit.
@@ -8796,10 +9344,13 @@ identifier), corresponding UIDs, and weights they wish to commit.
 
 ### Example usage:
 
-btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```bash
+ btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```
 
-[italic]Note[/italic]: This command is used to commit weights for a specific subnet and requires the user to have the necessary
-permissions.
+:::tip
+This command is used to commit weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
@@ -8826,17 +9377,21 @@ $ btcli weights commit [OPTIONS]
 
 Reveal weights for a specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows revealing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to reveal.
 
 
-# Example usage:
+#### Example usage
 
-btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```bash
+ btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```
 
-[italic]Note[/italic]: This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::tip
+This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
@@ -8882,7 +9437,7 @@ Made with [bold red]:heart:[/bold red] by Openτensor Foundaτion
 
 Commit weights for specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows committing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to commit.
@@ -8890,10 +9445,13 @@ identifier), corresponding UIDs, and weights they wish to commit.
 
 ### Example usage:
 
-btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```bash
+ btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+```
 
-[italic]Note[/italic]: This command is used to commit weights for a specific subnet and requires the user to have the necessary
-permissions.
+:::tip
+This command is used to commit weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
@@ -8920,17 +9478,21 @@ $ btcli wt commit [OPTIONS]
 
 Reveal weights for a specific subnet on the Bittensor network.
 
-# Usage:
+#### Usage
 
 The command allows revealing weights for a specific subnet. Users need to specify the netuid (network unique
 identifier), corresponding UIDs, and weights they wish to reveal.
 
 
-# Example usage:
+#### Example usage
 
-btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```bash
+ btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+```
 
-[italic]Note[/italic]: This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::tip
+This command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
+:::
 
 **Usage**:
 
