@@ -1479,7 +1479,7 @@ participating in the network, including their stakes, trust scores, and more.
 
 The table displayed includes the following columns for each neuron:
 
-- [bold]UID[/bold]: Unique identifier of the neuron.
+- **UID**: Unique identifier of the neuron.
 
 - [bold]STAKE(τ)[/bold]: Total stake of the neuron in TAO (τ).
 
