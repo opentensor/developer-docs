@@ -33,6 +33,37 @@ $ btcli [OPTIONS] COMMAND [ARGS]
 
 ## btcli config
 
+## Example config file
+
+You can set the commonly used values, such as your hotkey and coldkey names, the default chain URL or the network name you use, and more, in `config.yml`. You can override these values by explicitly passing them in the command line for any `btcli` command. 
+
+The default location of the config file is: `~/.bittensor/config.yml`. An example of a `config.yml` is shown below:
+
+```yaml
+chain: ws://127.0.0.1:9945 
+network: local 
+no_cache: False
+wallet_hotkey: hotkey-user1
+wallet_name: coldkey-user1
+wallet_path: ~/.bittensor/wallets
+metagraph_cols:
+  ACTIVE: true
+  AXON: true
+  COLDKEY: true
+  CONSENSUS: true
+  DIVIDENDS: true
+  EMISSION: true
+  HOTKEY: true
+  INCENTIVE: true
+  RANK: true
+  STAKE: true
+  TRUST: true
+  UID: true
+  UPDATED: true
+  VAL: true
+  VTRUST: true
+```
+
 **Usage**:
 
 ```console
