@@ -4,6 +4,7 @@ import os.path
 from multiprocessing import Pool
 from experiment_setup import ExperimentSetup
 
+
 def download_metagraph(netuid, block, file_name):
     if os.path.isfile(file_name):
         return
@@ -14,8 +15,9 @@ def download_metagraph(netuid, block, file_name):
     torch.save(meta, file_name)
     return
 
+
 class DownloadMetagraph:
-    def __init__(self, setup = None):
+    def __init__(self, setup=None):
         if setup != None:
             self.setup = setup
         else:
