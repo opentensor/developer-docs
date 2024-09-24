@@ -2,49 +2,53 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API Reference &#8212; Bittensor API</title>
+    <title>API Reference &#8212; BTCLI Docs 1.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="../_static/bittensor-custom.css?v=2d4d389c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/bittensor-custom.css?v=c1dfe055" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/index';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bittensor" href="bittensor/index.html" />
+    <link rel="prev" title="Bittensor SDK Documentation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -54,28 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -97,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -117,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -130,66 +140,63 @@
       
     
     
-    <img src="../_static/logo.svg" class="logo__image only-light" alt="Bittensor API - Home"/>
-    <script>document.write(`<img src="../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor API - Home"/>`);</script>
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="bittensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bittensor/commands/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/delegates/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.delegates</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/identity/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.identity</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/inspect/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.inspect</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/list/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.list</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.metagraph</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.misc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.network</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/overview/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.overview</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/register/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.register</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.root</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.senate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/stake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.stake</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.transfer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/unstake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.unstake</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/wallets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.wallets</span></code></a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/types/index.html">bittensor.core.types</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bittensor/extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/prometheus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.prometheus</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.registration</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.root</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.senate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/serving/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.serving</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.set_weights</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/staking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.staking</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.transfer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/btlogging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.btlogging</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.cli</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/synapse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.synapse</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/tensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.tensor</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/threadpool/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.threadpool</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/types/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.types</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/wallet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/__main__/index.html">bittensor.__main__</a></li>
 </ul>
-</li>
+</details></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -205,7 +212,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -214,14 +221,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -244,7 +251,7 @@
       
       
       
-      <li><a href="https://github.com/opentensor/bittensor" target="_blank"
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -261,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/opentensor/bittensor/blob/main/autoapi/index.rst?plain=1" target="_blank"
+      <li><a href="https://github.com/opentensor/btcli/blob/main/autoapi/index.rst?plain=1" target="_blank"
    class="btn btn-sm btn-source-file-button dropdown-item"
    title="Show source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +285,7 @@
       
       
       
-      <li><a href="https://github.com/opentensor/bittensor/issues/new?title=Issue%20on%20page%20%2Fautoapi/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2Fautoapi/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -360,19 +367,21 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -400,63 +409,77 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
 <p>This page contains auto-generated API reference documentation <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bittensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/commands/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/delegates/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.delegates</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/identity/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.identity</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/inspect/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.inspect</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/list/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.list</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.metagraph</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/misc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.misc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.network</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/overview/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.overview</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/register/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.register</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.root</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.senate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/stake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.stake</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.transfer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/unstake/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.unstake</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/commands/wallets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.commands.wallets</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="bittensor/index.html">bittensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bittensor/core/index.html">bittensor.core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/chain_data/index.html">bittensor.core.chain_data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/axon_info/index.html">bittensor.core.chain_data.axon_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/delegate_info/index.html">bittensor.core.chain_data.delegate_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/delegate_info_lite/index.html">bittensor.core.chain_data.delegate_info_lite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/ip_info/index.html">bittensor.core.chain_data.ip_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/neuron_info/index.html">bittensor.core.chain_data.neuron_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/neuron_info_lite/index.html">bittensor.core.chain_data.neuron_info_lite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/prometheus_info/index.html">bittensor.core.chain_data.prometheus_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/proposal_vote_data/index.html">bittensor.core.chain_data.proposal_vote_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/scheduled_coldkey_swap_info/index.html">bittensor.core.chain_data.scheduled_coldkey_swap_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/stake_info/index.html">bittensor.core.chain_data.stake_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/subnet_hyperparameters/index.html">bittensor.core.chain_data.subnet_hyperparameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/subnet_info/index.html">bittensor.core.chain_data.subnet_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/utils/index.html">bittensor.core.chain_data.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/extrinsics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/delegation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.delegation</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/log_utilities/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.log_utilities</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/network/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.network</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/prometheus/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.prometheus</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/registration/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.registration</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/root/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.root</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/senate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.senate</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/serving/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.serving</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/set_weights/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.set_weights</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/staking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.staking</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/transfer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.transfer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/extrinsics/unstaking/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.extrinsics.unstaking</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/commit_weights/index.html">bittensor.core.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/prometheus/index.html">bittensor.core.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/serving/index.html">bittensor.core.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/set_weights/index.html">bittensor.core.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/transfer/index.html">bittensor.core.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/utils/index.html">bittensor.core.extrinsics.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/axon/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.axon</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/btlogging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.btlogging</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/chain_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.chain_data</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/cli/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.cli</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.config</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/dendrite/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.dendrite</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.errors</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/keyfile/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.keyfile</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/metagraph/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.metagraph</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/stream/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.stream</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/subtensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.subtensor</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/synapse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.synapse</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/tensor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.tensor</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/threadpool/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.threadpool</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/types/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.types</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="bittensor/wallet/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bittensor.wallet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bittensor/utils/index.html">bittensor.utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/defines/index.html">bittensor.utils.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/format/index.html">bittensor.utils.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/helpers/index.html">bittensor.utils.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/loggingmachine/index.html">bittensor.utils.btlogging.loggingmachine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/mock/index.html">bittensor.utils.mock</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/mock/subtensor_mock/index.html">bittensor.utils.mock.subtensor_mock</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bittensor/__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </li>
 </ul>
@@ -477,9 +500,27 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bittensor SDK Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="bittensor/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">bittensor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -503,6 +544,7 @@ By Opentensor Foundation
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024, Opentensor Foundation.
@@ -529,8 +571,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
