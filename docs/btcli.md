@@ -2218,7 +2218,7 @@ The output is presented in a tabular format with the following columns:
 ```
 
 ```bash
- btcli wallet overview -in hk1 -in hk2 --sort-by stake
+btcli wallet overview -in hk1,hk2 --sort-by stake
 ```
 
 :::tip
