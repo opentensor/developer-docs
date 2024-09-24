@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.core.settings &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/core/settings';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/__main__/index.html">bittensor.__main__</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/core/settings.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.core.settings</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2024 Opentensor Foundation</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">munch</span> <span class="kn">import</span> <span class="n">munchify</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">rich.traceback</span> <span class="kn">import</span> <span class="n">install</span>
+
+<span class="c1"># Rich console.</span>
+<span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Remove overdue locals in debug training.</span>
+<span class="n">install</span><span class="p">(</span><span class="n">show_locals</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="turn_console_off">
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/settings/index.html#bittensor.core.settings.turn_console_off">[docs]</a>
+<span class="k">def</span> <span class="nf">turn_console_off</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">__use_console__</span>
+    <span class="k">global</span> <span class="n">__console__</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+
+    <span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">StringIO</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="turn_console_on">
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/settings/index.html#bittensor.core.settings.turn_console_on">[docs]</a>
+<span class="k">def</span> <span class="nf">turn_console_on</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">__use_console__</span>
+    <span class="k">global</span> <span class="n">__console__</span>
+    <span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span></div>
+
+
+
+<span class="n">turn_console_off</span><span class="p">()</span>
+
+<span class="n">bt_console</span> <span class="o">=</span> <span class="n">__console__</span>
+
+
+<span class="n">HOME_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+<span class="n">USER_BITTENSOR_DIR</span> <span class="o">=</span> <span class="n">HOME_DIR</span> <span class="o">/</span> <span class="s2">&quot;.bittensor&quot;</span>
+<span class="n">WALLETS_DIR</span> <span class="o">=</span> <span class="n">USER_BITTENSOR_DIR</span> <span class="o">/</span> <span class="s2">&quot;wallets&quot;</span>
+<span class="n">MINERS_DIR</span> <span class="o">=</span> <span class="n">USER_BITTENSOR_DIR</span> <span class="o">/</span> <span class="s2">&quot;miners&quot;</span>
+
+<span class="c1"># Bittensor networks name</span>
+<span class="n">NETWORKS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;archive&quot;</span><span class="p">]</span>
+
+<span class="n">DEFAULT_ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://entrypoint-finney.opentensor.ai:443&quot;</span>
+<span class="n">DEFAULT_NETWORK</span> <span class="o">=</span> <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Create dirs if they don&#39;t exist</span>
+<span class="n">WALLETS_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">MINERS_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1"># Bittensor endpoints (Needs to use wss://)</span>
+<span class="n">FINNEY_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://entrypoint-finney.opentensor.ai:443&quot;</span>
+<span class="n">FINNEY_TEST_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://test.finney.opentensor.ai:443/&quot;</span>
+<span class="n">ARCHIVE_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://archive.chain.opentensor.ai:443/&quot;</span>
+<span class="n">LOCAL_ENTRYPOINT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_SUBTENSOR_CHAIN_ENDPOINT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;ws://127.0.0.1:9946&quot;</span>
+
+<span class="c1"># Currency Symbols Bittensor</span>
+<span class="n">TAO_SYMBOL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x03C4</span><span class="p">)</span>
+<span class="n">RAO_SYMBOL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x03C1</span><span class="p">)</span>
+
+<span class="c1"># Pip address for versioning</span>
+<span class="n">PIPADDRESS</span> <span class="o">=</span> <span class="s2">&quot;https://pypi.org/pypi/bittensor/json&quot;</span>
+
+<span class="c1"># Substrate chain block time (seconds).</span>
+<span class="n">BLOCKTIME</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># Substrate ss58_format</span>
+<span class="n">SS58_FORMAT</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="c1"># Wallet ss58 address length</span>
+<span class="n">SS58_ADDRESS_LENGTH</span> <span class="o">=</span> <span class="mi">48</span>
+
+<span class="c1"># Raw GitHub url for delegates registry file</span>
+<span class="n">DELEGATES_DETAILS_URL</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/opentensor/bittensor-delegates/main/public/delegates.json&quot;</span>
+
+<span class="c1"># Block Explorers map network to explorer url</span>
+<span class="c1"># Must all be polkadotjs explorer urls</span>
+<span class="n">NETWORK_EXPLORER_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;opentensor&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;local&quot;</span><span class="p">:</span> <span class="s2">&quot;https://polkadot.js.org/apps/?rpc=wss%3A</span><span class="si">%2F%2F</span><span class="s2">entrypoint-finney.opentensor.ai%3A443#/explorer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://polkadot.js.org/apps/?rpc=wss%3A</span><span class="si">%2F%2F</span><span class="s2">entrypoint-finney.opentensor.ai%3A443#/explorer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;finney&quot;</span><span class="p">:</span> <span class="s2">&quot;https://polkadot.js.org/apps/?rpc=wss%3A</span><span class="si">%2F%2F</span><span class="s2">entrypoint-finney.opentensor.ai%3A443#/explorer&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;taostats&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;local&quot;</span><span class="p">:</span> <span class="s2">&quot;https://x.taostats.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://x.taostats.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;finney&quot;</span><span class="p">:</span> <span class="s2">&quot;https://x.taostats.io&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1"># --- Type Registry ---</span>
+<span class="n">TYPE_REGISTRY</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Balance&quot;</span><span class="p">:</span> <span class="s2">&quot;u64&quot;</span><span class="p">,</span>  <span class="c1"># Need to override default u128</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;runtime_api&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;NeuronInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;get_neuron_lite&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;uid&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;get_neurons_lite&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;SubnetInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;get_subnet_hyperparams&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;SubnetRegistrationRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;get_network_registration_cost&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u64&quot;</span><span class="p">}}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<span class="n">_BT_AXON_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_AXON_PORT&quot;</span><span class="p">)</span>
+<span class="n">_BT_AXON_MAX_WORKERS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_AXON_MAX_WORKERS&quot;</span><span class="p">)</span>
+<span class="n">_BT_PRIORITY_MAX_WORKERS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_PRIORITY_MAX_WORKERS&quot;</span><span class="p">)</span>
+<span class="n">_BT_PRIORITY_MAXSIZE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_PRIORITY_MAXSIZE&quot;</span><span class="p">)</span>
+
+<span class="n">DEFAULTS</span> <span class="o">=</span> <span class="n">munchify</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;axon&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">_BT_AXON_PORT</span><span class="p">)</span> <span class="k">if</span> <span class="n">_BT_AXON_PORT</span> <span class="k">else</span> <span class="mi">8091</span><span class="p">,</span>
+            <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_AXON_IP&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;[::]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;external_port&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_AXON_EXTERNAL_PORT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;external_ip&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_AXON_EXTERNAL_IP&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;max_workers&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">_BT_AXON_MAX_WORKERS</span><span class="p">)</span> <span class="k">if</span> <span class="n">_BT_AXON_MAX_WORKERS</span> <span class="k">else</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_DEBUG&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;trace&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_TRACE&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;record_log&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_RECORD_LOG&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;logging_dir&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_LOGGING_DIR&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">MINERS_DIR</span><span class="p">),</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max_workers&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">_BT_PRIORITY_MAX_WORKERS</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_BT_PRIORITY_MAX_WORKERS</span>
+            <span class="k">else</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;maxsize&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">_BT_PRIORITY_MAXSIZE</span><span class="p">)</span> <span class="k">if</span> <span class="n">_BT_PRIORITY_MAXSIZE</span> <span class="k">else</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;subtensor&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;chain_endpoint&quot;</span><span class="p">:</span> <span class="n">DEFAULT_ENDPOINT</span><span class="p">,</span>
+            <span class="s2">&quot;network&quot;</span><span class="p">:</span> <span class="n">DEFAULT_NETWORK</span><span class="p">,</span>
+            <span class="s2">&quot;_mock&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;wallet&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">WALLETS_DIR</span><span class="p">),</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Parsing version without any literals.</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\d+\.\d+\.\d+&quot;</span><span class="p">,</span> <span class="n">__version__</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">version_split</span> <span class="o">=</span> <span class="n">__version__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">_version_info</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">part</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">version_split</span><span class="p">)</span>
+<span class="n">_version_int_base</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="k">assert</span> <span class="nb">max</span><span class="p">(</span><span class="n">_version_info</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">_version_int_base</span>
+
+<span class="n">version_as_int</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+    <span class="n">e</span> <span class="o">*</span> <span class="p">(</span><span class="n">_version_int_base</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">_version_info</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">version_as_int</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span>  <span class="c1"># fits in int32</span>
+
+
+<div class="viewcode-block" id="__apply_nest_asyncio">
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/settings/index.html#bittensor.core.settings.__apply_nest_asyncio">[docs]</a>
+<span class="k">def</span> <span class="nf">__apply_nest_asyncio</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply nest_asyncio if the environment variable NEST_ASYNCIO is set to &quot;1&quot; or not set.</span>
+<span class="sd">    If not set, warn the user that the default will change in the future.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nest_asyncio_env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NEST_ASYNCIO&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nest_asyncio_env</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="ow">or</span> <span class="n">nest_asyncio_env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nest_asyncio_env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;NEST_ASYNCIO implicitly set to &#39;1&#39;. In the future, the default value will be &#39;0&#39;.</span>
+<span class="sd">                If you use `nest_asyncio`, make sure to add it explicitly to your project dependencies,</span>
+<span class="sd">                as it will be removed from `bittensor` package dependencies in the future.</span>
+<span class="sd">                To silence this warning, explicitly set the environment variable, e.g. `export NEST_ASYNCIO=0`.&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="c1"># Install and apply nest asyncio to allow the async functions to run in a .ipynb</span>
+        <span class="kn">import</span> <span class="nn">nest_asyncio</span>
+
+        <span class="n">nest_asyncio</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span></div>
+
+
+
+<span class="n">__apply_nest_asyncio</span><span class="p">()</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

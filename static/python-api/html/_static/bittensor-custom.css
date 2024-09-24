@@ -94,6 +94,7 @@ html[data-theme=dark]{
     --pst-color-inline-code-links: #fff;
     --pst-color-target: #545454;
     --pst-color-inline-code: #1fd01f;
+	--pst-color-table-row-hover-bg: #003200;
 }
 
 
@@ -102,6 +103,7 @@ html[data-theme=light]{
     --pst-color-inline-code-links: #000;
     --pst-color-target: #eaebed;
     --pst-color-inline-code: #0fa50f;
+	--pst-color-table-row-hover-bg: #ffffc0;
 }
 
 html[data-theme=dark], html[data-theme=light] {
