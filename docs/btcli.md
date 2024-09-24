@@ -2032,7 +2032,7 @@ and performance in the Bittensor network.
 ```
 
 ```bash
- btcli wallet inspect --all -n 1 -n 2 -n 3
+btcli wallet inspect --all -n 1,2,3
 ```
 
 :::tip
