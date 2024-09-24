@@ -6,6 +6,12 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Release 8.0.0
+
+`Released 25 September 2024`
+
+- TBD
+
 ## Release 7.4.0
 
 `Released 04 September 2024`

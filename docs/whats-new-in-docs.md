@@ -9,6 +9,11 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 25 September 2024
+
+- A new [Bittensor SDK](./bt-api-ref.md) reference document is published.
+- A new [BTCLI](./btcli.md) command line reference document is published.
+
 ## 17 September 2024
 
 - A new document [Schedule Codlkey Swap](./subnets/schedule-coldkey-swap.md), showing how to use Polkadot JS webapp for coldkey swap, is published.
