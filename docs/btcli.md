@@ -39,7 +39,7 @@ You can set the commonly used values, such as your hotkey and coldkey names, the
 
 The default location of the config file is: `~/.bittensor/config.yml`. An example of a `config.yml` is shown below:
 
-```yaml
+```yaml title="Example ~/.bittensor/config.yml"
 chain: ws://127.0.0.1:9945
 network: local
 no_cache: False
