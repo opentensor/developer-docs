@@ -1804,7 +1804,7 @@ btcli w balance --wallet-name WALLET
 ```
 
 ```bash
- btcli w balance
+btcli w balance
 ```
 
 - To display the balances of all wallets, use the `--all` argument:
