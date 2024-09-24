@@ -1800,7 +1800,7 @@ wallet name, coldkey address, and the respective free and staked balances.
   the wallet name:
 
 ```bash
- btcli w balance --wallet-name WALLET
+btcli w balance --wallet-name WALLET
 ```
 
 ```bash
