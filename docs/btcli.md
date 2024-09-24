@@ -1148,7 +1148,7 @@ The command prompts for confirmation before executing the unstaking operation.
 #### Example
 
 ```bash
- btcli stake remove --amount 100 -in hk1 -in hk2
+ btcli stake remove --amount 100 -in hk1,hk2
 ```
 
 :::tip
