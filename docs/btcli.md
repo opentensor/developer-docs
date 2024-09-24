@@ -749,7 +749,7 @@ netuids (network unique identifiers) and corresponding weights they wish to assi
 #### Example
 
 ```bash
- btcli root set-weights 0.3 0.3 0.4 -n 1 -n 2 -n 3 --chain ws://127.0.0.1:9945
+btcli root set-weights -w 0.3,0.3,0.4 -n 1,2,3 --chain ws://127.0.0.1:9945
 ```
 
 :::tip
