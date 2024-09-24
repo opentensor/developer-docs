@@ -2629,7 +2629,7 @@ $ btcli weights reveal [OPTIONS]
 - `--netuid INTEGER`: The netuid (network unique identifier) of the subnet within the root network, (e.g. 1).
 - `-u, --uids INTEGER`: Corresponding UIDs for the specified netuid, e.g. -u 1,2,3 ... [default: None]`
 - `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs. [default: None]`
-- `-s, --salt INTEGER`: Corresponding salt for the hash function, e.g. `-s 163 -s 241 -s 217 ...`
+- `-s, --salt INTEGER`: Corresponding salt for the hash function, e.g. -s 163,241,217 ... [default: None]`
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
 - `--help`: Show this message and exit.
