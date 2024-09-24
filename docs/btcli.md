@@ -770,7 +770,7 @@ $ btcli root set-weights [OPTIONS]
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets
 - `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet
 - `-n, --netuids INTEGER`: Set the netuid(s) to filter by (e.g. `0 1 2`)
-- `-w, --weights FLOAT`: Corresponding weights for the specified UIDs, e.g. `-w 0.2 -w 0.4 -w 0.1 ...`
+- `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs. [default: None]`
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt]
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
