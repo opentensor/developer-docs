@@ -1172,7 +1172,7 @@ $ btcli stake remove [OPTIONS]
 - `-a, --amount FLOAT`: The amount of TAO tokens to unstake. [default: 0.0]
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to unstake from.
 - `--max-stake, --max FLOAT`: Sets the maximum amount of TAO to remain staked in each hotkey. [default: 0.0]
-- `-in, --include-hotkeys TEXT`: Specifies hotkeys by name or SS58 address to unstake from. i.e `-in hk1 -in hk2`
+- `-in, --include-hotkeys TEXT`: Specifies the hotkeys by name or ss58 address to unstake from. For example, `-in hk1,hk2`
 - `-ex, --exclude-hotkeys TEXT`: Specifies hotkeys by name/SS58 address not to unstake from (only use with `--all-hotkeys`.) i.e. `-ex hk3 -ex hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, unstakes from all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys]
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt].
