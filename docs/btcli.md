@@ -918,7 +918,7 @@ $ btcli stake add [OPTIONS]
 - `-m, --max-stake FLOAT`: Sets the maximum amount of TAO to have staked in each hotkey. [default: 0.0].
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to stake to.
 - `-in, --include-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
-- `-ex, --exclude-hotkeys TEXT`: Specifies hotkeys by name/SS58 address not to stake to (only use with `--all-hotkeys`.) i.e. `-ex hk3 -ex hk4`.
+- `-ex, --exclude-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, stakes to all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys].
 - `--wallet-name, --name, --wallet_name, --wallet.name TEXT`: Name of wallet
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
