@@ -2568,7 +2568,7 @@ identifier), corresponding UIDs, and weights they wish to commit.
 ### Example
 
 ```bash
- btcli wt commit --netuid 1 --uids 1,2,3,4 --w 0.1 -w 0.2 -w 0.3 -w 0.4
+btcli wt commit --netuid 1 --uids 1,2,3,4 -w 0.1,0.2,0.3,0.4
 ```
 
 :::tip
