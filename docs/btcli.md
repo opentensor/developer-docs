@@ -1721,7 +1721,7 @@ to the specified subnet.
 #### Example
 
 ```bash
- btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
+btcli sudo set --netuid 1 --param 'tempo' --value '0.5'
 ```
 
 :::tip
