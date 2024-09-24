@@ -2589,7 +2589,7 @@ $ btcli weights commit [OPTIONS]
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
 - `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet.
 - `--netuid INTEGER`: The netuid (network unique identifier) of the subnet within the root network, (e.g. 1).
-- `-u, --uids INTEGER`: Corresponding UIDs for the specified netuid, e.g. `-u 1 -u 2 -u 3 ...`
+- `-u, --uids INTEGER`: UIDs of interest for the specified netuid, e.g. -u 1,2,3 ... [default: None]`
 - `-w, --weights FLOAT`: Corresponding weights for the specified UIDs, e.g. `-w 0.2 -w 0.4 -w 0.1 ...`
 - `-s, --salt INTEGER`: Corresponding salt for the hash function, e.g. `-s 163 -s 241 -s 217 ...`
 - `--quiet`: Do not output to the console besides critical information.
