@@ -26,7 +26,7 @@ $ btcli [OPTIONS] COMMAND [ARGS]
 - `stake`: [Stake commands](#btcli-stake), alias: `st`.
 - `subnet`: [Subnet commands](#btcli-subnet), alias: `s`, `subnets`.
 - `sudo`: [Sudo commands](#btcli-sudo), alias: `su`.
-- `wallet`: [Wallet commands](#btcli-wallet), aliases: `wallets`, `w`.
+- `wallet`: [Wallet commands](#btcli-wallet), aliases: `w`, `wallets`.
 - `weights`: [Weights commands](#btcli-weights), aliases: `wt`, `weight`.
 
 ## Config
@@ -90,13 +90,13 @@ Setting the flags in this command will clear those items from your config file.
 - To clear the chain and network:
 
 ```bash
- btcli config clear --chain --network
+btcli config clear --chain --network
 ```
 
 - To clear your config entirely:
 
 ```bash
- btcli config clear --all
+btcli config clear --all
 ```
 
 **Options**:
@@ -201,7 +201,7 @@ network. The command allows boosting the weights for different subnets within th
 #### Example
 
 ```bash
- btcli root boost --netuid 1 --increase 0.01
+btcli root boost --netuid 1 --increase 0.01
 ```
 
 **Usage**:
@@ -240,11 +240,11 @@ prompted if not provided. You can list all delegates with `btcli root list-deleg
 #### Examples
 
 ```bash
- btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
+btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --amount <AMOUNT>
 ```
 
 ```bash
- btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
+btcli delegate-stake --delegate_ss58key <SS58_ADDRESS> --all
 ```
 
 :::tip
@@ -283,7 +283,7 @@ information is crucial for understanding the current influence and reward distri
 #### Example
 
 ```bash
- btcli root get_weights
+btcli root get-weights
 ```
 
 :::tip
@@ -320,7 +320,7 @@ Upon execution, the command fetches and lists the neurons in the root network, s
 #### Example
 
 ```bash
- btcli root list
+btcli root list
 ```
 
 :::tip
@@ -380,15 +380,15 @@ name is a hyperlink to their respective URL, if available.
 #### Examples
 
 ```bash
- btcli root list_delegates
+btcli root list-delegates
 ```
 
 ```bash
- btcli root list_delegates --wallet-name my_wallet
+btcli root list-delegates --wallet-name <my_wallet>
 ```
 
 ```bash
- btcli root list_delegates --subtensor.network finney # can also be `test` or `local`
+btcli root list-delegates --subtensor.network finney # can also be `test` or `local`
 ```
 
 :::tip
@@ -451,15 +451,15 @@ all wallets.
 #### Examples
 
 ```bash
- btcli root my-delegates
+btcli root my-delegates
 ```
 
 ```bash
- btcli root my-delegates --all
+btcli root my-delegates --all
 ```
 
 ```bash
- btcli root my-delegates --wallet-name my_wallet
+btcli root my-delegates --wallet-name <my_wallet>
 ```
 
 :::tip
@@ -505,11 +505,11 @@ already nominated, this command will initiate the process.
 #### Examples
 
 ```bash
- btcli root nominate
+btcli root nominate
 ```
 
 ```bash
- btcli root nominate --wallet-name my_wallet --wallet-hotkey my_hotkey
+btcli root nominate --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
 ```
 
 :::tip
@@ -546,7 +546,7 @@ votes by address, end block number, and call data associated with each proposal.
 #### Example
 
 ```bash
- btcli root proposals
+btcli root proposals
 ```
 
 :::tip
@@ -602,7 +602,7 @@ Columns Displayed in the confirmation prompt:
 #### Example
 
 ```bash
- btcli subnets register --netuid 1
+btcli subnets register --netuid 1
 ```
 
 :::tip
@@ -639,7 +639,7 @@ This information is crucial for understanding who holds governance roles within 
 #### Example
 
 ```bash
- btcli root senate
+btcli root senate
 ```
 
 :::tip
@@ -672,7 +672,7 @@ member to cast a 'Yes' or 'No' vote, contributing to the decision-making process
 #### Example
 
 ```bash
- btcli root senate_vote --proposal <proposal_hash>
+btcli root senate-vote --proposal <proposal_hash>
 ```
 
 :::tip
@@ -712,7 +712,7 @@ To run the command, the user must have a configured wallet with both hotkey and 
 #### Example
 
 ```bash
- btcli root set_take --wallet-name my_wallet --wallet-hotkey my_hotkey
+btcli root set-take --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
 ```
 
 :::tip
@@ -785,8 +785,10 @@ The command allows slashing (decreasing) the weights for different subnets withi
 #### Example
 
 ```bash
- btcli root slash --netuid 1 --decrease 0.01
-
+btcli root slash --netuid 1 --decrease 0.01
+```
+Output:
+```bash
 Enter netuid (e.g. 1): 1
 Enter decrease amount (e.g. 0.01): 0.2
 Slashing weight for subnet: 1 by amount: 0.2
@@ -898,7 +900,7 @@ The command prompts for confirmation before executing the staking operation.
 #### Example
 
 ```bash
- btcli stake add --amount 100 --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
+btcli stake add --amount 100 --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
 ```
 
 :::tip
@@ -967,11 +969,11 @@ The command compiles a table showing:
 #### Examples
 
 ```bash
- btcli stake get_children --netuid 1
+btcli stake get-children --netuid 1
 ```
 
 ```bash
- btcli stake get_children --all-netuids
+btcli stake get-children --all-netuids
 ```
 
 :::tip
@@ -1012,7 +1014,7 @@ The command prompts for confirmation before executing the revoke_children operat
 #### Example
 
 ```bash
- btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
+btcli stake child revoke --hotkey <parent_hotkey> --netuid 1
 ```
 
 :::tip
@@ -1056,7 +1058,7 @@ The command prompts for confirmation before executing the set_children operation
 #### Example
 
 ```bash
- btcli stake child set - <child_hotkey> -c <child_hotkey> --hotkey <parent_hotkey> --netuid 1 -prop 0.3 -prop 0.3
+btcli stake child set --children <child_ss58> --children <child_ss58> --hotkey <parent_hotkey> --netuid 1 --prop 0.3 --prop 0.3
 ```
 
 :::tip
@@ -1099,11 +1101,11 @@ The command prompts for confirmation before setting the childkey take.
 #### Examples
 
 ```bash
- btcli stake child take --hotkey <child_hotkey> --netuid 1
+btcli stake child take --hotkey <child_hotkey> --netuid 1
 ```
 
 ````bash
- btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1 ```
+btcli stake child take --hotkey <child_hotkey> --take 0.12 --netuid 1
 ````
 
 :::tip
@@ -1148,7 +1150,7 @@ The command prompts for confirmation before executing the unstaking operation.
 #### Example
 
 ```bash
- btcli stake remove --amount 100 -in hk1,hk2
+btcli stake remove --amount 100 -in hk1,hk2
 ```
 
 :::tip
@@ -1206,7 +1208,7 @@ The command compiles a table showing:
 #### Example
 
 ```bash
- btcli stake show --all
+btcli stake show --all
 ```
 
 :::tip
@@ -1294,7 +1296,7 @@ The command structure includes:
 #### Example
 
 ```bash
- btcli subnets create
+btcli subnets create
 ```
 
 :::tip
@@ -1332,7 +1334,7 @@ performance and interaction within the network.
 #### Example
 
 ```bash
- btcli sudo get --netuid 1
+btcli sudo get --netuid 1
 ```
 
 :::tip
@@ -1390,7 +1392,7 @@ The command structure includes:
 #### Example
 
 ```bash
- btcli subnets list
+btcli subnets list
 ```
 
 :::tip
@@ -1449,7 +1451,7 @@ The command structure includes:
 #### Example
 
 ```bash
- btcli subnets lock_cost
+btcli subnets lock_cost
 ```
 
 :::tip
@@ -1481,33 +1483,33 @@ The table displayed includes the following columns for each neuron:
 
 - **UID**: Unique identifier of the neuron.
 
-- [bold]STAKE(τ)[/bold]: Total stake of the neuron in TAO (τ).
+- **STAKE(τ)**: Total stake of the neuron in TAO (τ).
 
-- [bold]RANK[/bold]: Rank score of the neuron.
+- **RANK**: Rank score of the neuron.
 
-- [bold]TRUST[/bold]: Trust score assigned to the neuron by other neurons.
+- **TRUST**: Trust score assigned to the neuron by other neurons.
 
-- [bold]CONSENSUS[/bold]: Consensus score of the neuron.
+- **CONSENSUS**: Consensus score of the neuron.
 
-- [bold]INCENTIVE[/bold]: Incentive score representing the neuron's incentive alignment.
+- **INCENTIVE**: Incentive score representing the neuron's incentive alignment.
 
-- [bold]DIVIDENDS[/bold]: Dividends earned by the neuron.
+- **DIVIDENDS**: Dividends earned by the neuron.
 
-- [bold]EMISSION(p)[/bold]: Emission in Rho (p) received by the neuron.
+- **EMISSION(p)**: Emission in Rho (p) received by the neuron.
 
-- [bold]VTRUST[/bold]: Validator trust score indicating the network's trust in the neuron as a validator.
+- **VTRUST**: Validator trust score indicating the network's trust in the neuron as a validator.
 
-- [bold]VAL[/bold]: Validator status of the neuron.
+- **VAL**: Validator status of the neuron.
 
-- [bold]UPDATED[/bold]: Number of blocks since the neuron's last update.
+- **UPDATED**: Number of blocks since the neuron's last update.
 
-- [bold]ACTIVE[/bold]: Activity status of the neuron.
+- **ACTIVE**: Activity status of the neuron.
 
-- [bold]AXON[/bold]: Network endpoint information of the neuron.
+- **AXON**: Network endpoint information of the neuron.
 
-- [bold]HOTKEY[/bold]: Partial hotkey (public key) of the neuron.
+- **HOTKEY**: Partial hotkey (public key) of the neuron.
 
-- [bold]COLDKEY[/bold]: Partial coldkey (public key) of the neuron.
+- **COLDKEY**: Partial coldkey (public key) of the neuron.
 
 The command also prints network-wide statistics such as total stake, issuance, and difficulty.
 
@@ -1516,11 +1518,11 @@ The user must specify the network UID to query the metagraph. If not specified, 
 #### Examples
 
 ```bash
- btcli subnet metagraph --netuid 0 # Root network
+btcli subnet metagraph --netuid 0 # Root network
 ```
 
 ```bash
- btcli subnet metagraph --netuid 1 --network test
+btcli subnet metagraph --netuid 1 --network test
 ```
 
 :::tip
@@ -1561,7 +1563,7 @@ registration process.
 #### Example
 
 ```bash
- btcli pow_register --netuid 1 --num_processes 4 --cuda
+btcli pow-register --netuid 1 --num_processes 4 --cuda
 ```
 
 :::caution
@@ -1625,7 +1627,7 @@ Columns Displayed in the confirmation prompt:
 #### Example
 
 ```bash
- btcli subnets register --netuid 1
+btcli subnets register --netuid 1
 ```
 
 :::tip
@@ -1685,7 +1687,7 @@ performance and interaction within the network.
 #### Example
 
 ```bash
- btcli sudo get --netuid 1
+btcli sudo get --netuid 1
 ```
 
 :::tip
@@ -1773,10 +1775,8 @@ $ btcli wallet [OPTIONS] COMMAND [ARGS]...
 - `history`: Fetch the latest transfers of the provided wallet.
 - `inspect`: Detailed report of a user's wallet pairs (coldkey, hotkey).
 - `list`: Displays all wallets and their respective hotkeys present in the user's Bittensor configuration directory.
-- `new-coldkey`: Create a new coldkey under a wallet.
-- `new-hotkey`: Create a new hotkey under a wallet.
-- `new_coldkey`: Create a new coldkey under a wallet.
-- `new_hotkey`: Create a new hotkey under a wallet.
+- `new-coldkey` or `new_coldkey`: Create a new coldkey under a wallet.
+- `new-hotkey` or `new_hotkey`: Create a new hotkey under a wallet.
 - `overview`: Presents a detailed overview of the user's registered accounts.
 - `regen-coldkey` or `regen_coldkey`: Regenerate a coldkey for a wallet.
 - `regen-coldkeypub` or `regen_coldkeypub`: Regenerate the public part of a coldkey.
@@ -1800,7 +1800,7 @@ wallet name, coldkey address, and the respective free and staked balances.
   the wallet name:
 
 ```bash
-btcli w balance --wallet-name WALLET
+btcli w balance --wallet-name <my_wallet>
 ```
 
 ```bash
@@ -1844,7 +1844,7 @@ mnemonics. It supports password protection for the coldkey and allows overwritin
 #### Example
 
 ```bash
- btcli wallet create --n_words 21
+btcli wallet create --n-words 21
 ```
 
 :::tip
@@ -1884,7 +1884,7 @@ typically used in local chain environments where real value transactions are not
 #### Example
 
 ```bash
- btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
+btcli wallet faucet --faucet.num_processes 4 --faucet.cuda.use_cuda
 ```
 
 :::tip
@@ -1938,7 +1938,7 @@ provided in the configuration, the user is prompted to enter one.
 #### Example
 
 ```bash
- btcli wallet get_identity --key <s58_address>
+btcli wallet get-identity --key <ss58_address>
 ```
 
 :::tip
@@ -1971,7 +1971,7 @@ The command lists the latest transfers of the provided wallet, showing the 'From
 #### Example
 
 ```bash
- btcli wallet history
+btcli wallet history
 ```
 
 :::tip
@@ -2028,7 +2028,7 @@ and performance in the Bittensor network.
 #### Examples
 
 ```bash
- btcli wallet inspect
+btcli wallet inspect
 ```
 
 ```bash
@@ -2074,7 +2074,7 @@ public keys are available (`?` denotes unavailable or encrypted keys).
 #### Example
 
 ```bash
- btcli wallet list --path ~/.bittensor
+btcli wallet list --wallet-path ~/.bittensor
 ```
 
 :::tip
@@ -2104,7 +2104,7 @@ protection. It also allows overwriting an existing coldkey.
 #### Example
 
 ```bash
- btcli wallet new_coldkey --n_words 15
+btcli wallet new-coldkey --n-words 15
 ```
 
 :::tip
@@ -2139,7 +2139,7 @@ existing hotkey.
 #### Example
 
 ```bash
- btcli wallet new-hotkey --n_words 24
+btcli wallet new-hotkey --n-words 24
 ```
 
 :::tip
@@ -2210,11 +2210,11 @@ The output is presented in a tabular format with the following columns:
 #### Examples
 
 ```bash
- btcli wallet overview
+btcli wallet overview
 ```
 
 ```bash
- btcli wallet overview --all --sort-by stake --sort-order descending
+btcli wallet overview --all --sort-by stake --sort-order descending
 ```
 
 ```bash
@@ -2260,7 +2260,7 @@ The command supports optional password protection for the generated key and can 
 #### Example
 
 ```bash
- btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
+btcli wallet regen-coldkey --mnemonic "word1 word2 ... word12"
 ```
 
 :::tip
@@ -2299,7 +2299,7 @@ coldkeypub. It optionally allows overwriting an existing coldkeypub file.
 #### Example
 
 ```bash
- btcli wallet regen_coldkeypub --ss58_address 5DkQ4...
+btcli wallet regen-coldkeypub --ss58_address 5DkQ4...
 ```
 
 :::tip
@@ -2390,7 +2390,7 @@ updated identity details in a table format upon successful execution.
 #### Example
 
 ```bash
- btcli wallet set_identity
+ btcli wallet set-identity
 ```
 
 :::danger Stop, Read before using this command
@@ -2434,11 +2434,11 @@ The command generates a signature for a given message using the provided wallet
 #### Example
 
 ```bash
- btcli wallet sign --wallet-name default --message '{"something": "here", "timestamp": 1719908486}'
+btcli wallet sign --wallet-name default --message '{"something": "here", "timestamp": 1719908486}'
 ```
 
 ```bash
- btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message '{"something": "here", "timestamp": 1719908486}'
+btcli wallet sign --wallet-name default --wallet-hotkey hotkey --message '{"something": "here", "timestamp": 1719908486}'
 ```
 
 :::tip
@@ -2471,7 +2471,7 @@ The command is used to swap the hotkey of a wallet for another hotkey on that sa
 #### Example usage
 
 ```bash
- btcli wallet swap_hotkey new_hotkey --wallet-name your_wallet_name --wallet-hotkey original_hotkey
+btcli wallet swap-hotkey <my_new_hotkey> --wallet-name <my_wallet> --wallet-hotkey <my_hotkey>
 ```
 
 **Usage**:
@@ -2510,7 +2510,7 @@ It checks for sufficient balance and prompts for confirmation before proceeding 
 #### Example
 
 ```bash
- btcli wallet transfer --dest 5Dp8... --amount 100
+btcli wallet transfer --dest 5Dp8... --amount 100
 ```
 
 :::tip
@@ -2589,8 +2589,8 @@ $ btcli weights commit [OPTIONS]
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
 - `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet.
 - `--netuid INTEGER`: The netuid (network unique identifier) of the subnet within the root network, (e.g. 1).
-- `-u, --uids INTEGER`: UIDs of interest for the specified netuid, e.g. -u 1,2,3 ... [default: None]`
-- `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs. [default: None]`
+- `-u, --uids INTEGER`: UIDs of interest for the specified netuid, e.g. `-u 1,2,3 ... [default: None]`
+- `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs.
 - `-s, --salt INTEGER`: Corresponding salt for the hash function, e.g. `-s 163 -s 241 -s 217 ...`
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
@@ -2606,7 +2606,7 @@ identifier), corresponding UIDs, and weights they wish to reveal.
 #### Example
 
 ```bash
- btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
+btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189
 ```
 
 :::tip
@@ -2627,9 +2627,9 @@ $ btcli weights reveal [OPTIONS]
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
 - `-H, --hotkey, --wallet_hotkey, --wallet-hotkey, --wallet.hotkey TEXT`: Hotkey of wallet.
 - `--netuid INTEGER`: The netuid (network unique identifier) of the subnet within the root network, (e.g. 1).
-- `-u, --uids INTEGER`: Corresponding UIDs for the specified netuid, e.g. -u 1,2,3 ... [default: None]`
-- `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs. [default: None]`
-- `-s, --salt INTEGER`: Corresponding salt for the hash function, e.g. -s 163,241,217 ... [default: None]`
+- `-u, --uids INTEGER`: Corresponding UIDs for the specified netuid, `e.g. -u 1,2,3 ... [default: None]`
+- `-w, --weights FLOAT`: Weights for the specified UIDs, e.g. `-w 0.2,0.4,0.1 ...` Must correspond to the order of the UIDs. [default: None]
+- `-s, --salt INTEGER`: Corresponding salt for the hash function, `e.g. -s 163,241,217 ... [default: None]`
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
 - `--help`: Show this message and exit.
