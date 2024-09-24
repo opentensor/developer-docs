@@ -2241,7 +2241,7 @@ $ btcli wallet overview [OPTIONS]
 - `--sort-order TEXT`: Sort the hotkeys in the specified ordering. (ascending/asc or descending/desc/reverse).
 - `-in, --include-hotkeys TEXT`: Specify the hotkeys to include by name or ss58 address. (e.g. `hk1,hk2,hk3`). If left empty, all hotkeys not excluded will be included.
 - `-ex, --exclude-hotkeys TEXT`: Specify the hotkeys to exclude by name or ss58 address. (e.g. `hk1,hk2,hk3`). If left empty, and no hotkeys included in --include-hotkeys, all hotkeys will be included.
-- `-n, --netuids INTEGER`: Set the netuid(s) to filter by (e.g. `0 1 2`).
+- `-n, --netuids INTEGER`: Set the netuid(s) to filter by (e.g. `0,1,2`).
 - `--network, --subtensor.network TEXT`: The subtensor network to connect to. Default: finney.
 - `--chain, --subtensor.chain_endpoint TEXT`: The subtensor chain endpoint to connect to.
 - `--quiet`: Do not output to the console besides critical information.
