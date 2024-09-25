@@ -39,12 +39,11 @@ If you are using Ubuntu-Linux, the script will prompt for `sudo` access to insta
     - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
 :::
 
-### Install using `pip3 install`
+### Install Python virtual environment
 
 ```bash
 python3 -m venv btsdk_venv
 source btsdk_venv/bin/activate
-pip install bittensor
 ```
 
 ### Install from source
@@ -74,7 +73,7 @@ pip install ".[btcli]"
 pip install ".[torch]"
 ```
 
-### Install from PiPy
+### Install from PyPi
 
 You can install Bittensor using any of the below options:
 
