@@ -16,21 +16,21 @@ import torch.multiprocessing as mp
 
 
 class WeightCopySimulation:
-    def __init__(self, setup = None):
+    def __init__(self, setup=None):
         if setup != None:
             self.setup = setup
         else:
             self.get_parse()
             self.setup = ExperimentSetup(
-                netuids = range(self.args.start_netuid, self.args.end_netuid),
-                liquid_alpha = True,
+                netuids=range(self.args.start_netuid, self.args.end_netuid),
+                liquid_alpha=True,
             )
         self.metas = self.get_metagraphs()
 
     def get_parse(self):
-        parser = argparse.ArgumentParser(description='Process some integers.')
-        parser.add_argument('--start_netuid', type=int, default = 1)
-        parser.add_argument('--end_netuid', type=int, default = 38)
+        parser = argparse.ArgumentParser(description="Process some integers.")
+        parser.add_argument("--start_netuid", type=int, default=1)
+        parser.add_argument("--end_netuid", type=int, default=38)
         self.args = parser.parse_args()
 
     def get_metagraphs(self):
@@ -78,17 +78,17 @@ class WeightCopySimulation:
 
         return yuma_results
 
-    def base_simulate(self, netuid, metas, alpha_low = 0.9 , alpha_high = 0.9):
+    def base_simulate(self, netuid, metas, alpha_low=0.9, alpha_high=0.9):
         file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_base.pkl"
-     
+
         if os.path.isfile(file_name):
-            return 
-        
+            return
+
         for block, meta in metas.items():
-            if meta == None: 
+            if meta == None:
                 return
 
-        def _base_simulate(self, file_name, netuid, metas): 
+        def _base_simulate(self, file_name, netuid, metas):
             # === Simulate the early blocks ===
             yuma_results = {}
             meta_0 = list(metas.values())[0]
@@ -120,12 +120,12 @@ class WeightCopySimulation:
                 )
 
                 yuma_result = Yuma2(
-                    W_bad, 
-                    S_bad, 
-                    B_old=B_old, 
-                    liquid_alpha= self.setup.liquid_alpha,
-                    alpha_low = alpha_low,
-                    alpha_high = alpha_high
+                    W_bad,
+                    S_bad,
+                    B_old=B_old,
+                    liquid_alpha=self.setup.liquid_alpha,
+                    alpha_low=alpha_low,
+                    alpha_high=alpha_high,
                 )
                 yuma_results[block] = yuma_result
 
@@ -145,19 +145,27 @@ class WeightCopySimulation:
         except Exception as E:
             print(file_name, E)
 
-    def simulate(self, netuid, conceal_period, metas, alpha_low = 0.9, alpha_high = 0.9):
+    def simulate(self, netuid, conceal_period, metas, alpha_low=0.9, alpha_high=0.9):
         yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
-        
+
         if os.path.isfile(yuma_file_name):
-            return 
-        
+            return
+
         for block, meta in metas.items():
-            if meta == None: 
+            if meta == None:
                 return
 
         print(yuma_file_name)
-        
-        def _simulate(self, yuma_file_name, netuid, conceal_period, metas, alpha_low = 0.9, alpha_high = 0.9):
+
+        def _simulate(
+            self,
+            yuma_file_name,
+            netuid,
+            conceal_period,
+            metas,
+            alpha_low=0.9,
+            alpha_high=0.9,
+        ):
             yuma_results = {}
             meta_0 = list(metas.values())[0]
             validators = meta_0.validator_trust > 0
@@ -169,7 +177,8 @@ class WeightCopySimulation:
             ]
 
             late_blocks = [
-                self.setup.start_block + self.setup.tempo * (data_point + conceal_period)
+                self.setup.start_block
+                + self.setup.tempo * (data_point + conceal_period)
                 for data_point in range(self.setup.data_points)
             ]
 
@@ -177,33 +186,41 @@ class WeightCopySimulation:
 
             # === Simulate for the late blocks ===
             start_time = time.time()
-            for i, (early_block, late_block) in enumerate(zip(early_blocks, late_blocks)):
+            for i, (early_block, late_block) in enumerate(
+                zip(early_blocks, late_blocks)
+            ):
                 meta = metas[late_block]
                 S = torch.tensor(meta.S)
                 W = torch.tensor(meta.W)
-                
+
                 S_bad = torch.cat((S[validators], S[validators].median().view(1)))
 
                 if i == 0:
                     B_old = None
                 else:
-                    B_old = yuma_results[late_block - self.setup.tempo][
-                        "validator_ema_bond"
-                    ].detach().clone()
+                    B_old = (
+                        yuma_results[late_block - self.setup.tempo][
+                            "validator_ema_bond"
+                        ]
+                        .detach()
+                        .clone()
+                    )
 
                 W_bad = torch.cat(
                     (
                         W[validators],
-                        yuma_results[early_block]["server_consensus_weight"].view(1, -1),
+                        yuma_results[early_block]["server_consensus_weight"].view(
+                            1, -1
+                        ),
                     )
                 )
                 yuma_result = Yuma2(
-                    W_bad, 
-                    S_bad, 
-                    B_old=B_old, 
+                    W_bad,
+                    S_bad,
+                    B_old=B_old,
                     liquid_alpha=self.setup.liquid_alpha,
-                    alpha_low = alpha_low,
-                    alpha_high = alpha_high
+                    alpha_low=alpha_low,
+                    alpha_high=alpha_high,
                 )
                 yuma_results[late_block] = yuma_result
 
@@ -217,36 +234,56 @@ class WeightCopySimulation:
                 pickle.dump(yuma_results, f)
 
         try:
-            _simulate(self, yuma_file_name,  netuid, conceal_period, metas, alpha_low, alpha_high)
+            _simulate(
+                self,
+                yuma_file_name,
+                netuid,
+                conceal_period,
+                metas,
+                alpha_low,
+                alpha_high,
+            )
         except Exception as E:
             print(yuma_file_name, E)
- 
+
     def run_simulation(self):
-        # === Base simulation for all use case === 
-        processes = [] 
+        # === Base simulation for all use case ===
+        processes = []
         for netuid in self.setup.netuids:
-            p = mp.Process(target=self.base_simulate, args=(netuid, self.metas[netuid]), name="") 
-            p.start() 
-            processes.append(p) 
-            
-        for p in processes: 
-            p.join() 
-        
-        # === All simulations for all use case === 
+            p = mp.Process(
+                target=self.base_simulate, args=(netuid, self.metas[netuid]), name=""
+            )
+            p.start()
+            processes.append(p)
+
+        for p in processes:
+            p.join()
+
+        # === All simulations for all use case ===
         for netuid in self.setup.netuids:
             for conceal_period in self.setup.conceal_periods:
-                processes = [] 
+                processes = []
                 for alpha_low in self.setup.alpha_lows:
                     for alpha_high in self.setup.alpha_highs:
                         if alpha_low > alpha_high:
                             continue
 
-                        p = mp.Process(target=self.simulate, args=(netuid, conceal_period, self.metas[netuid], alpha_low, alpha_high), name="") 
-                        p.start() 
-                        processes.append(p) 
-            
-                for p in processes: 
-                    p.join() 
+                        p = mp.Process(
+                            target=self.simulate,
+                            args=(
+                                netuid,
+                                conceal_period,
+                                self.metas[netuid],
+                                alpha_low,
+                                alpha_high,
+                            ),
+                            name="",
+                        )
+                        p.start()
+                        processes.append(p)
+
+                for p in processes:
+                    p.join()
 
 
 if __name__ == "__main__":

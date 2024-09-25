@@ -216,10 +216,23 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
     return similarity, div_lost
 
 
-def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.1, liquid_alpha = False, alpha_high = 0.9, alpha_low = 0.7, precision = 100000, override_consensus_high = None, override_consensus_low = None):
-    # === Weight === 
-    W = (W.T / (W.sum(dim=1) +  1e-6)).T
-    
+def Yuma2(
+    W,
+    S,
+    B_old=None,
+    kappa=0.5,
+    bond_penalty=1,
+    bond_alpha=0.1,
+    liquid_alpha=False,
+    alpha_high=0.9,
+    alpha_low=0.7,
+    precision=100000,
+    override_consensus_high=None,
+    override_consensus_low=None,
+):
+    # === Weight ===
+    W = (W.T / (W.sum(dim=1) + 1e-6)).T
+
     # === Stake ===
     S = S / S.sum()
 
@@ -232,8 +245,8 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.1, liquid_al
     for i, miner_weight in enumerate(W.T):
         c_high = 1
         c_low = 0
-        
-        while (c_high - c_low) > 1/precision:
+
+        while (c_high - c_low) > 1 / precision:
             c_mid = (c_high + c_low) / 2
 
             _c_sum = (miner_weight > c_mid) * S
@@ -269,18 +282,20 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.1, liquid_al
         if override_consensus_high == None:
             consensus_high = C.quantile(0.75)
         else:
-            consensus_high = override_consensus_high 
-        
+            consensus_high = override_consensus_high
+
         if override_consensus_low == None:
             consensus_low = C.quantile(0.25)
         else:
-            consensus_low = override_consensus_low 
+            consensus_low = override_consensus_low
 
         if consensus_high == consensus_low:
             consensus_high = C.quantile(0.99)
-        a = (math.log(1/alpha_high - 1) - math.log(1/ alpha_low - 1) ) / (consensus_low - consensus_high) 
-        b = math.log(1/ alpha_low - 1) + a * consensus_low 
-        alpha = 1 / (1 + math.e **(-a *C + b)) # alpha to the old weight
+        a = (math.log(1 / alpha_high - 1) - math.log(1 / alpha_low - 1)) / (
+            consensus_low - consensus_high
+        )
+        b = math.log(1 / alpha_low - 1) + a * consensus_low
+        alpha = 1 / (1 + math.e ** (-a * C + b))  # alpha to the old weight
         bond_alpha = 1 - torch.clip(alpha, alpha_low, alpha_high)
 
     if B_old != None:
@@ -309,5 +324,5 @@ def Yuma2(W, S, B_old=None, kappa=0.5, bond_penalty=1, bond_alpha=0.1, liquid_al
         "validator_reward_normalized": D_normalized,
         "bond_alpha": bond_alpha,
         "alpha_a": a,
-        "alpha_b": b
+        "alpha_b": b,
     }
