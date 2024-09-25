@@ -18,7 +18,6 @@ python3 -m pip install --upgrade bittensor
 
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
 - [Install using a Bash command](#install-using-a-bash-command).
-- [Install using `pip3 install`](#install-using-pip3-install)
 - [Install from source](#install-from-source)
 
 ### Install using a Bash command
