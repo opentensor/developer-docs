@@ -40,7 +40,7 @@ With this 8.0.0 version, the Bittensor software is split into the following thre
 - Users will now receive their UID immediately after they register a neuron on any subnet.
 - Enhanced the error message handling so that now all existing error message types will be handled by the subtensor (including custom error message types).
 - The new "btcli" now presents information-rich tables on the terminal display showing all the critical information in an easy-to-understand manner.
-- The help text for the "btcli --help" command is completely rewritten, adding more information.
+- The help text for the `btcli --help` command is completely rewritten, adding more information.
 - Several more fixes and enhancements.
 
 ---
