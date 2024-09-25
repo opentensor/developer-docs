@@ -1,14 +1,14 @@
 ---
-title: "Install Bittensor"
+title: "Install Bittensor SDK"
 ---
 
-# Install Bittensor
+# Install Bittensor SDK
 
-Before you can start developing, you must install Bittensor and then create Bittensor wallet.
+Before you can start developing, you must install Bittensor SDK and then create Bittensor wallet.
 
 ## Upgrade
 
-If you already installed Bittensor, make sure you upgrade to the latest version. Run the below command:
+If you already installed Bittensor SDK, make sure you upgrade to the latest version. Run the below command:
 
 ```bash
 python3 -m pip install --upgrade bittensor
@@ -32,42 +32,58 @@ This is the most straightforward method. It is recommended for a beginner as it 
 :::warning For Ubuntu-Linux users
 If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
 :::
-
-### Install using `pip3 install`
-
-```bash
-pip3 install bittensor
-```
-
-### Install from source
-1. Create and activate a virtual environment
+:::tip Create and activate a virtual environment
 
     - Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 
     - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
+:::
 
-2. Clone the Bittensor repo
+### Install using `pip3 install`
+
+```bash
+python3 -m venv btsdk_venv
+source btsdk_venv/bin/activate
+pip install bittensor
+```
+
+### Install from source
+
+1. Clone the Bittensor repo
 
 ```bash
 git clone https://github.com/opentensor/bittensor.git
 ```
-3. Change to the Bittensor directory:
+2. Change to the Bittensor directory:
 
 ```bash
 cd bittensor
 ```
 
-4. Install Bittensor
+3. Installation
 
-Run the below command to install Bittensor in the above virtual environment.
+You can install Bittensor using any of the below options:
 
+- **Install only SDK**: Run the below command to install Bittensor SDK in the above virtual environment.
 ```python
-pip install .
+pip install bittensor
 ```
+- **Install SDK with btcli**: Install Bittensor SDK with `btcli`. The `btcli` will be installed as an independent tool and its Python package is `bittensor-cli`.
+```python
+pip install bittensor[btcli]
+```
+- **Install SDK with torch**: Install Bittensor SDK with [torch.](https://pytorch.org/docs/stable/torch.html)
+```python
+pip install bittensor[torch]
+```
+- **Install SDK with cubit**: Install Bittensor SDK with [cubit.](https://github.com/opentensor/cubit)
+
+    - Install `cubit` first. See the [Install](https://github.com/opentensor/cubit?tab=readme-ov-file#install) section. **Only Python 3.9 and 3.10 versions are supported.**
+    - Then install SDK with `pip install bittensor`.
 
 ## Install on Windows
 
-To install and run Bittensor on Windows you must install [**WSL 2** (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) on Windows and select [Ubuntu Linux distribution](https://github.com/ubuntu/WSL/blob/main/docs/guides/install-ubuntu-wsl2.md). 
+To install and run Bittensor SDK on Windows you must install [**WSL 2** (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) on Windows and select [Ubuntu Linux distribution](https://github.com/ubuntu/WSL/blob/main/docs/guides/install-ubuntu-wsl2.md). 
 
 After you installed the above, follow the same installation steps described above in [Install on macOS and Linux](#install-on-macos-and-linux).
 
@@ -80,22 +96,18 @@ While wallet transactions like delegating, transfer, registering, staking can be
 
 You can verify your installation in either of the two ways as shown below:
 
-### Verify using the `btcli` command
+### Verify using `btsdk` version
 
-Using the [Bittensor Command Line Interface](/btcli.md).
+```python
+python3 -m bittensor
+```
 
 ```bash
-btcli --help
+Bittensor SDK version: <version number>
 ```
-which will give you the below output:
 
-```text
-usage: btcli <command> <command args>
-bittensor cli <version number>
-positional arguments:
-...
-```
-You will see the version number you installed in place of `<version number>`. 
+The above command will show you the `<version number>` of the `btsdk` you just installed.
+
 
 ### Verify using Python interpreter
 
@@ -113,9 +125,6 @@ You will see the version number you installed in place of `<version number>`.
     The Python interpreter output will look like below:
 
     ```python
-    Python 3.11.6 (main, Oct  2 2023, 13:45:54) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>> import bittensor as bt
     >>> print( bt.__version__ )
     <version number>
     ```

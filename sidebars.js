@@ -44,6 +44,7 @@ const sidebars = {
       collapsed: false,
       items: [
         "getting-started/installation",
+        "getting-started/install-btcli",
         "getting-started/wallets",
       ],
     },
