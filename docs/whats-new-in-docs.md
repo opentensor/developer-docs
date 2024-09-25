@@ -11,6 +11,7 @@ Key updates to this documentation.
 
 ## 25 September 2024
 
+- The release notes for [Bittensor 8.0.0](./bittensor-rel-notes.md#release-800) are published.
 - A new [Bittensor SDK](./bt-api-ref.md) reference document is published.
 - A new [BTCLI](./btcli.md) command line reference document is published.
 
