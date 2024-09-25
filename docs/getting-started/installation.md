@@ -59,8 +59,22 @@ git clone https://github.com/opentensor/bittensor.git
 ```bash
 cd bittensor
 ```
+3. Install
 
-3. Installation
+- **Install only SDK**: Run the below command to install Bittensor SDK in the above virtual environment.
+```python
+pip install .
+```
+- **Install SDK with btcli**: Install Bittensor SDK with `btcli`. The `btcli` will be installed as an independent tool and its Python package is `bittensor-cli`.
+```python
+pip install ".[btcli]"
+```
+- **Install SDK with torch**: Install Bittensor SDK with [torch.](https://pytorch.org/docs/stable/torch.html)
+```python
+pip install ".[torch]"
+```
+
+### Install from PiPy
 
 You can install Bittensor using any of the below options:
 
@@ -78,8 +92,9 @@ pip install bittensor[torch]
 ```
 - **Install SDK with cubit**: Install Bittensor SDK with [cubit.](https://github.com/opentensor/cubit)
 
-    - Install `cubit` first. See the [Install](https://github.com/opentensor/cubit?tab=readme-ov-file#install) section. **Only Python 3.9 and 3.10 versions are supported.**
-    - Then install SDK with `pip install bittensor`.
+    - First install SDK with `pip install bittensor`.
+    - Then install `cubit`. See the [Install](https://github.com/opentensor/cubit?tab=readme-ov-file#install) section. **Only Python 3.9 and 3.10 versions are supported.**
+    
 
 ## Install on Windows
 
