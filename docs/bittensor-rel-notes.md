@@ -10,7 +10,40 @@ The following are the release notes for the Bittensor software.
 
 `Released 25 September 2024`
 
-- TBD
+This is a major release of the Bittensor software.
+
+### Summary
+
+With this 8.0.0 version, the Bittensor software is split into the following three separate repos: 
+- The Bittensor SDK: https://github.com/opentensor/bittensor/tree/master (the existing Bittensor repo).
+- The new BTCLI repo: https://github.com/opentensor/btcli.
+- The new BT Wallet repo: https://github.com/opentensor/btwallet.
+
+- **Bittensor SDK version 8.0.0**: This is the Bittensor software as you know it, and provides the same functionality, except it is lighter because the BTCLI and Wallet functionalities are separated out from it. All our tests have confirmed that this Bittensor SDK 8.0.0 is compatible with the current Bittensor version 7.4.0. 
+
+  :::tip new installation docs for SDK
+  See the updated developer documentation for the new [Bittensor SDK](./getting-started/installation.md).
+  :::
+
+- **New BTCLI version 8.0.0**: This new `btcli` is entirely rewritten to enhance its performance and user-interface. All commands and options are compatible with the existing "legacy" `btcli`. Online help, with `--help` option, is significantly enhanced. 
+
+  :::tip new docs for BTCLI
+  See the updated [BTCLI installation doc](./getting-started/install-btcli.md) and the new [BTCLI guide](./btcli.md).
+  :::
+
+- **BT Wallet SDK 1.0.0**: For security reasons, the `bittensor.wallet` package is separated into its own repo and will be released soon as BT Wallet SDK 1.0.0. More updates on this in the days and weeks ahead. 
+
+### New features and enhancements
+
+- The new async "btcli" is built from ground up by rewriting the `py-substrate-interface` as `async-substrate` to enhance the performance and achieve significant speedups. With the previously-used version of `py-substrate-interface` we could not execute requests asynchonously. With this rewrite as `async-substrate`, the new `btcli` is able to make RPC calls to the chain concurrently. Furthermore, we built the `async-substrate` with `asyncio` at its core, so every call is optimised to work within an `asyncio` environment.
+- A new `bt-decode` package is developed. This is a Rust SCALE decoder that is exposed to Python, allowing for 10-40X faster SCALE decodes over the previous Python implementation. This new `bt-decode` functionality is built in to the new `async-substrate`, interface, so to the user the new "btcli" is simply faster because it is optimised for the network-bound I/O and the CPU-bound decoding.
+- Users will now receive their UID immediately after they register a neuron on any subnet.
+- Enhanced the error message handling so that now all existing error message types will be handled by the subtensor (including custom error message types).
+- The new "btcli" now presents information-rich tables on the terminal display showing all the critical information in an easy-to-understand manner.
+- The help text for the "btcli --help" command is completely rewritten, adding more information.
+- Several more fixes and enhancements.
+
+---
 
 ## Release 7.4.0
 
@@ -25,6 +58,8 @@ The following are the release notes for the Bittensor software.
 - **Child hotkeys**: Support is added in `btcli` for child hotkeys feature. See [Child Hotkeys](./subnets/child-hotkeys.md). 
   - Also see the blog post: https://blog.bittensor.com/child-hotkeys-77d0b855ce59
 
+---
+
 ## Release 7.3.0
 
 `Released 12 July 2024`
@@ -33,6 +68,8 @@ The following are the release notes for the Bittensor software.
 
 - **Consensus-based weights** ("liquid alpha"): With this version, the [Consensus-based weights](./subnets/consensus-based-weights.md) feature is now available in the `master` branch. Until now, this feature has only been available in the `rc_7.3.0` branch of the `bittensor` repo. 
 - **Check coldkey swap**: A new `btcli` command option, `check_coldkey_swap` is released. This command option will enable you to check the remaining time before your scheduled coldkey swap executes on-chain, and if your scheduled coldkey swap is in arbitration. See [Schedule Coldkey Swap](./subnets/schedule-coldkey-swap.md).
+
+---
 
 ## 12 June 2024: Release 7.2.0
 
