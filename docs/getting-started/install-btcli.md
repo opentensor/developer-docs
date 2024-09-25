@@ -61,24 +61,6 @@ While wallet transactions like delegating, transfer, registering, staking can be
 
 ## Verify the installation
 
-You can verify your installation in either of the two ways as shown below:
-
-### Verify using `btsdk` version
-
-```python
-python3 -m bittensor
-```
-
-```bash
-Bittensor SDK version: <version number>
-```
-
-The above command will show you the `<version number>` of the `btsdk` you just installed.
-
-### Verify using the `btcli` command
-
-Using the [Bittensor Command Line Interface](/btcli.md).
-
 ```bash
 btcli --version
 ```
@@ -87,27 +69,6 @@ which will give you the below output:
 ```bash
 BTCLI version: <version number>
 ```
-You will see the version number you installed in place of `<version number>`. 
-
-### Verify using Python interpreter
-
-1. Launch the Python interpreter on your terminal.   
-
-    ```bash
-    python3
-    ```
-2. Enter the following two lines in the Python interpreter.
-   
-    ```python
-    import bittensor_cli as bt
-    print( bt.__version__ )
-    ```
-    The Python interpreter output will look like below:
-
-    ```python
-    >>> print( bt.__version__ )
-    <version number>
-    ```
 You will see the version number you installed in place of `<version number>`. 
 
 ## Configuration
