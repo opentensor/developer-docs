@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.commands.identity &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/commands/identity';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/commands/index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/register/index.html">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/keyfile/index.html">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/commands/identity.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.commands.identity</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">rich.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">rich.prompt</span> <span class="kn">import</span> <span class="n">Prompt</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">getsizeof</span>
+
+<span class="kn">import</span> <span class="nn">bittensor</span>
+
+
+<div class="viewcode-block" id="SetIdentityCommand">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.SetIdentityCommand">[docs]</a>
+<span class="k">class</span> <span class="nc">SetIdentityCommand</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executes the :func:`set_identity` command within the Bittensor network, which allows for the creation or update of a delegate&#39;s on-chain identity.</span>
+
+<span class="sd">    This identity includes various</span>
+<span class="sd">    attributes such as display name, legal name, web URL, PGP fingerprint, and contact</span>
+<span class="sd">    information, among others.</span>
+
+<span class="sd">    Optional Arguments:</span>
+<span class="sd">        - ``display``: The display name for the identity.</span>
+<span class="sd">        - ``legal``: The legal name for the identity.</span>
+<span class="sd">        - ``web``: The web URL for the identity.</span>
+<span class="sd">        - ``riot``: The riot handle for the identity.</span>
+<span class="sd">        - ``email``: The email address for the identity.</span>
+<span class="sd">        - ``pgp_fingerprint``: The PGP fingerprint for the identity.</span>
+<span class="sd">        - ``image``: The image URL for the identity.</span>
+<span class="sd">        - ``info``: The info for the identity.</span>
+<span class="sd">        - ``twitter``: The X (twitter) URL for the identity.</span>
+
+<span class="sd">    The command prompts the user for the different identity attributes and validates the</span>
+<span class="sd">    input size for each attribute. It provides an option to update an existing validator</span>
+<span class="sd">    hotkey identity. If the user consents to the transaction cost, the identity is updated</span>
+<span class="sd">    on the blockchain.</span>
+
+<span class="sd">    Each field has a maximum size of 64 bytes. The PGP fingerprint field is an exception</span>
+<span class="sd">    and has a maximum size of 20 bytes. The user is prompted to enter the PGP fingerprint</span>
+<span class="sd">    as a hex string, which is then converted to bytes. The user is also prompted to enter</span>
+<span class="sd">    the coldkey or hotkey ``ss58`` address for the identity to be updated. If the user does</span>
+<span class="sd">    not have a hotkey, the coldkey address is used by default.</span>
+
+<span class="sd">    If setting a validator identity, the hotkey will be used by default. If the user is</span>
+<span class="sd">    setting an identity for a subnet, the coldkey will be used by default.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        The user should call this command from the command line and follow the interactive</span>
+<span class="sd">        prompts to enter or update the identity information. The command will display the</span>
+<span class="sd">        updated identity details in a table format upon successful execution.</span>
+
+<span class="sd">    Example usage::</span>
+
+<span class="sd">        btcli wallet set_identity</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This command should only be used if the user is willing to incur the 1 TAO transaction</span>
+<span class="sd">        fee associated with setting an identity on the blockchain. It is a high-level command</span>
+<span class="sd">        that makes changes to the blockchain state and should not be used programmatically as</span>
+<span class="sd">        part of other scripts or applications.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SetIdentityCommand.run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.SetIdentityCommand.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create a new or update existing identity on-chain.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">log_verbose</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="n">SetIdentityCommand</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;subtensor&quot;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                <span class="n">subtensor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;closing subtensor connection&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SetIdentityCommand._run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.SetIdentityCommand._run">[docs]</a>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create a new or update existing identity on-chain.&quot;&quot;&quot;</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span>
+
+        <span class="n">wallet</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="n">id_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;display&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">display</span><span class="p">,</span>
+            <span class="s2">&quot;legal&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">legal</span><span class="p">,</span>
+            <span class="s2">&quot;web&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">web</span><span class="p">,</span>
+            <span class="s2">&quot;pgp_fingerprint&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pgp_fingerprint</span><span class="p">,</span>
+            <span class="s2">&quot;riot&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">riot</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+            <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">image</span><span class="p">,</span>
+            <span class="s2">&quot;twitter&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">twitter</span><span class="p">,</span>
+            <span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">getsizeof</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">113</span><span class="p">:</span>  <span class="c1"># 64 + 49 overhead bytes for string</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Identity value `</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">` must be &lt;= 64 raw bytes&quot;</span><span class="p">)</span>
+
+        <span class="n">identified</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span>
+                <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                    <span class="s2">&quot;Are you updating a validator hotkey identity?&quot;</span><span class="p">,</span>
+                    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+                    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span>
+                <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                    <span class="s2">&quot;Cost to register an Identity is [bold white italic]0.1 Tao[/bold white italic], are you sure you wish to continue?&quot;</span><span class="p">,</span>
+                    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">,</span>
+                    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="o">==</span> <span class="s2">&quot;n&quot;</span>
+        <span class="p">):</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;:cross_mark: Aborted!&quot;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wallet</span><span class="o">.</span><span class="n">coldkey</span>  <span class="c1"># unlock coldkey</span>
+        <span class="k">except</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">:</span>
+            <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="s2">&quot;:cross_mark: [red]Keyfile is corrupt, non-writable, non-readable or the password used to decrypt is invalid[/red]:[bold white]</span><span class="se">\n</span><span class="s2">  [/bold white]&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;:satellite: [bold green]Updating identity on-chain...&quot;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subtensor</span><span class="o">.</span><span class="n">update_identity</span><span class="p">(</span>
+                    <span class="n">identified</span><span class="o">=</span><span class="n">identified</span><span class="p">,</span>
+                    <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+                    <span class="n">params</span><span class="o">=</span><span class="n">id_dict</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[red]:cross_mark: Failed![/red] </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;:white_heavy_check_mark: Success!&quot;</span><span class="p">)</span>
+
+        <span class="n">identity</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">query_identity</span><span class="p">(</span><span class="n">identified</span> <span class="ow">or</span> <span class="n">wallet</span><span class="o">.</span><span class="n">coldkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+
+        <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;[bold white italic]Updated On-Chain Identity&quot;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Key&quot;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">no_wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span>
+
+        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">identified</span> <span class="ow">or</span> <span class="n">wallet</span><span class="o">.</span><span class="n">coldkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">identity</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span><span class="p">)</span>
+
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SetIdentityCommand.check_config">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.SetIdentityCommand.check_config">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">check_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="s2">&quot;bittensor.config&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.name&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter wallet name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.hotkey&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter wallet hotkey&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;subtensor.network&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter subtensor network&quot;</span><span class="p">,</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span><span class="p">,</span>
+                <span class="n">choices</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">__networks__</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="p">(</span>
+                <span class="n">_</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">determine_chain_endpoint_and_network</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;display&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter display name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;legal&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">legal</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter legal string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;web&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">web</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter web url&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;pgp_fingerprint&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">pgp_fingerprint</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter pgp fingerprint (must be 20 bytes)&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;riot&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">riot</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter riot&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter email address&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter image url&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;twitter&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">twitter</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter twitter url&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter info&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SetIdentityCommand.add_args">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.SetIdentityCommand.add_args">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+        <span class="n">new_coldkey_parser</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span>
+            <span class="s2">&quot;set_identity&quot;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Create or update identity on-chain for a given cold wallet. Must be a subnet owner.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--display&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The display name for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--legal&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The legal name for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--web&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The web url for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--riot&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The riot handle for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--email&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The email address for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--pgp_fingerprint&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The pgp fingerprint for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--image&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The image url for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--info&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The info for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--twitter&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The twitter url for the identity.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">new_coldkey_parser</span><span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">new_coldkey_parser</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="GetIdentityCommand">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.GetIdentityCommand">[docs]</a>
+<span class="k">class</span> <span class="nc">GetIdentityCommand</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executes the :func:`get_identity` command, which retrieves and displays the identity details of a user&#39;s coldkey or hotkey associated with the Bittensor network. This function</span>
+<span class="sd">    queries the subtensor chain for information such as the stake, rank, and trust associated</span>
+<span class="sd">    with the provided key.</span>
+
+<span class="sd">    Optional Arguments:</span>
+<span class="sd">        - ``key``: The ``ss58`` address of the coldkey or hotkey to query.</span>
+
+<span class="sd">    The command performs the following actions:</span>
+
+<span class="sd">    - Connects to the subtensor network and retrieves the identity information.</span>
+<span class="sd">    - Displays the information in a structured table format.</span>
+
+<span class="sd">    The displayed table includes:</span>
+
+<span class="sd">    - **Address**: The ``ss58`` address of the queried key.</span>
+<span class="sd">    - **Item**: Various attributes of the identity such as stake, rank, and trust.</span>
+<span class="sd">    - **Value**: The corresponding values of the attributes.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        The user must provide an ``ss58`` address as input to the command. If the address is not</span>
+<span class="sd">        provided in the configuration, the user is prompted to enter one.</span>
+
+<span class="sd">    Example usage::</span>
+
+<span class="sd">        btcli wallet get_identity --key &lt;s58_address&gt;</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This function is designed for CLI use and should be executed in a terminal. It is</span>
+<span class="sd">        primarily used for informational purposes and has no side effects on the network state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="GetIdentityCommand.run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.GetIdentityCommand.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Queries the subtensor chain for user identity.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">log_verbose</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="n">GetIdentityCommand</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;subtensor&quot;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                <span class="n">subtensor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;closing subtensor connection&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetIdentityCommand._run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.GetIdentityCommand._run">[docs]</a>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span><span class="p">):</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span>
+
+        <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;:satellite: [bold green]Querying chain identity...&quot;</span><span class="p">):</span>
+            <span class="n">identity</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">query_identity</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;[bold white italic]On-Chain Identity&quot;</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Item&quot;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">no_wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span>
+
+        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">identity</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span><span class="p">)</span>
+
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetIdentityCommand.check_config">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.GetIdentityCommand.check_config">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">check_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="s2">&quot;bittensor.config&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter coldkey or hotkey ss58 address&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;key must be set&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;subtensor.network&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter subtensor network&quot;</span><span class="p">,</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span><span class="p">,</span>
+                <span class="n">choices</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">__networks__</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="p">(</span>
+                <span class="n">_</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">determine_chain_endpoint_and_network</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetIdentityCommand.add_args">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/index.html#bittensor.commands.identity.GetIdentityCommand.add_args">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+        <span class="n">new_coldkey_parser</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span>
+            <span class="s2">&quot;get_identity&quot;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Creates a new coldkey (for containing balance) under the specified path. &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_coldkey_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--key&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;The coldkey or hotkey ss58 address to query.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">new_coldkey_parser</span><span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">new_coldkey_parser</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

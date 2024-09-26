@@ -21,6 +21,10 @@ import { SiTrpc } from "react-icons/si";
 
 This section presents the Bittensor SDK reference documentation. Follow the below links to specific Python modules or [click here for SDK reference homepage](pathname:///python-api/html/index.html). 
 
+:::caution looking for legacy bittensor 7.4.0 docs?
+See [Legacy Bittensor 7.4.0 Documentation](pathname:///legacy-python-api/html/index.html).
+:::
+
 <Cards>
     <Card 
     icon={GiHiveMind}

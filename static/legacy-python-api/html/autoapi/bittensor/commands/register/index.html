@@ -1,0 +1,984 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>bittensor.commands.register &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/commands/register/index';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="bittensor.commands.root" href="../root/index.html" />
+    <link rel="prev" title="bittensor.commands.overview" href="../overview/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../keyfile/index.html">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/blob/main/autoapi/bittensor/commands/register/index.rst?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2Fautoapi/bittensor/commands/register/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/autoapi/bittensor/commands/register/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>bittensor.commands.register</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.console"><code class="docutils literal notranslate"><span class="pre">console</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand"><code class="docutils literal notranslate"><span class="pre">RegisterCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.run"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand._run"><code class="docutils literal notranslate"><span class="pre">RegisterCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.add_args"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.check_config"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.run"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand._run"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.add_args"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.check_config"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.run"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand._run"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.add_args"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.check_config"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.run"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand._run"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.add_args"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.check_config"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-bittensor.commands.register">
+<span id="bittensor-commands-register"></span><h1>bittensor.commands.register<a class="headerlink" href="#module-bittensor.commands.register" title="Link to this heading">#</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.commands.register.console" title="bittensor.commands.register.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.commands.register.RegisterCommand" title="bittensor.commands.register.RegisterCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegisterCommand</span></code></a></p></td>
+<td><p>Executes the <code class="docutils literal notranslate"><span class="pre">register</span></code> command to register a neuron on the Bittensor network by recycling some TAO (the network's native token).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.commands.register.PowRegisterCommand" title="bittensor.commands.register.PowRegisterCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PowRegisterCommand</span></code></a></p></td>
+<td><p>Executes the <code class="docutils literal notranslate"><span class="pre">pow_register</span></code> command to register a neuron on the Bittensor network using Proof of Work (PoW).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.commands.register.RunFaucetCommand" title="bittensor.commands.register.RunFaucetCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunFaucetCommand</span></code></a></p></td>
+<td><p>Executes the <code class="docutils literal notranslate"><span class="pre">faucet</span></code> command to obtain test TAO tokens by performing Proof of Work (PoW).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.commands.register.SwapHotkeyCommand" title="bittensor.commands.register.SwapHotkeyCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SwapHotkeyCommand</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.commands.register.console">
+<span class="sig-prename descclassname"><span class="pre">bittensor.commands.register.</span></span><span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#bittensor.commands.register.console" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.commands.register.RegisterCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.commands.register.</span></span><span class="sig-name descname"><span class="pre">RegisterCommand</span></span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RegisterCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RegisterCommand" title="Link to this definition">#</a></dt>
+<dd><p>Executes the <code class="docutils literal notranslate"><span class="pre">register</span></code> command to register a neuron on the Bittensor network by recycling some TAO (the network’s native token).</p>
+<p>This command is used to add a new neuron to a specified subnet within the network, contributing to the decentralization and robustness of Bittensor.</p>
+<dl>
+<dt>Usage:</dt><dd><p>Before registering, the command checks if the specified subnet exists and whether the user’s balance is sufficient to cover the registration cost.</p>
+<p>The registration cost is determined by the current recycle amount for the specified subnet. If the balance is insufficient or the subnet does not exist, the command will exit with an appropriate error message.</p>
+<p>If the preconditions are met, and the user confirms the transaction (if <code class="docutils literal notranslate"><span class="pre">no_prompt</span></code> is not set), the command proceeds to register the neuron by recycling the required amount of TAO.</p>
+</dd>
+</dl>
+<p>The command structure includes:</p>
+<ul class="simple">
+<li><p>Verification of subnet existence.</p></li>
+<li><p>Checking the user’s balance against the current recycle amount for the subnet.</p></li>
+<li><p>User confirmation prompt for proceeding with registration.</p></li>
+<li><p>Execution of the registration process.</p></li>
+</ul>
+<p>Columns Displayed in the confirmation prompt:</p>
+<ul class="simple">
+<li><p>Balance: The current balance of the user’s wallet in TAO.</p></li>
+<li><p>Cost to Register: The required amount of TAO needed to register on the specified subnet.</p></li>
+</ul>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btcli</span> <span class="n">subnets</span> <span class="n">register</span> <span class="o">--</span><span class="n">netuid</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is critical for users who wish to contribute a new neuron to the network. It requires careful consideration of the subnet selection and an understanding of the registration costs. Users should ensure their wallet is sufficiently funded before attempting to register a neuron.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RegisterCommand.run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RegisterCommand.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RegisterCommand.run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron by recycling some TAO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RegisterCommand._run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RegisterCommand._run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RegisterCommand._run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron by recycling some TAO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RegisterCommand.add_args">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RegisterCommand.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RegisterCommand.add_args" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RegisterCommand.check_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RegisterCommand.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RegisterCommand.check_config" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.commands.register.PowRegisterCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.commands.register.</span></span><span class="sig-name descname"><span class="pre">PowRegisterCommand</span></span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#PowRegisterCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.PowRegisterCommand" title="Link to this definition">#</a></dt>
+<dd><p>Executes the <code class="docutils literal notranslate"><span class="pre">pow_register</span></code> command to register a neuron on the Bittensor network using Proof of Work (PoW).</p>
+<p>This method is an alternative registration process that leverages computational work for securing a neuron’s place on the network.</p>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>The command starts by verifying the existence of the specified subnet. If the subnet does not exist, it terminates with an error message.
+On successful verification, the PoW registration process is initiated, which requires solving computational puzzles.</p>
+</dd>
+<dt>Optional arguments:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--netuid</span></code> (int): The netuid for the subnet on which to serve the neuron. Mandatory for specifying the target subnet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.num_processes</span></code> (int): The number of processors to use for PoW registration. Defaults to the system’s default setting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.update_interval</span></code> (int): The number of nonces to process before checking for the next block during registration. Affects the frequency of update checks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.no_output_in_place</span></code> (bool): When set, disables the output of registration statistics in place. Useful for cleaner logs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.verbose</span></code> (bool): Enables verbose output of registration statistics for detailed information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.cuda.use_cuda</span></code> (bool): Enables the use of CUDA for GPU-accelerated PoW calculations. Requires a CUDA-compatible GPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.cuda.no_cuda</span></code> (bool): Disables the use of CUDA, defaulting to CPU-based calculations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.cuda.dev_id</span></code> (int): Specifies the CUDA device ID, useful for systems with multiple CUDA-compatible GPUs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--pow_register.cuda.tpb</span></code> (int): Sets the number of Threads Per Block for CUDA operations, affecting the GPU calculation dynamics.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The command also supports additional wallet and subtensor arguments, enabling further customization of the registration process.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btcli</span> <span class="n">pow_register</span> <span class="o">--</span><span class="n">netuid</span> <span class="mi">1</span> <span class="o">--</span><span class="n">pow_register</span><span class="o">.</span><span class="n">num_processes</span> <span class="mi">4</span> <span class="o">--</span><span class="n">cuda</span><span class="o">.</span><span class="n">use_cuda</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding
+of the network’s operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements,
+particularly when opting for CUDA-based GPU acceleration.</p>
+</div>
+<p>This command may be disabled according on the subnet owner’s directive. For example, on netuid 1 this is permanently disabled.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.PowRegisterCommand.run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#PowRegisterCommand.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.PowRegisterCommand.run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.PowRegisterCommand._run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#PowRegisterCommand._run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.PowRegisterCommand._run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.PowRegisterCommand.add_args">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#PowRegisterCommand.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.PowRegisterCommand.add_args" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.PowRegisterCommand.check_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#PowRegisterCommand.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.PowRegisterCommand.check_config" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.commands.register.RunFaucetCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.commands.register.</span></span><span class="sig-name descname"><span class="pre">RunFaucetCommand</span></span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RunFaucetCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RunFaucetCommand" title="Link to this definition">#</a></dt>
+<dd><p>Executes the <code class="docutils literal notranslate"><span class="pre">faucet</span></code> command to obtain test TAO tokens by performing Proof of Work (PoW).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>THIS COMMAND IS CURRENTLY DISABLED.</strong></p>
+</div>
+<p>This command is particularly useful for users who need test tokens for operations on the Bittensor testnet.</p>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>The command uses the PoW mechanism to validate the user’s effort and rewards them with test TAO tokens. It is typically used in testnet environments where real value transactions are not necessary.</p>
+</dd>
+<dt>Optional arguments:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.num_processes</span></code> (int): Specifies the number of processors to use for the PoW operation. A higher number of processors may increase the chances of successful computation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.update_interval</span></code> (int): Sets the frequency of nonce processing before checking for the next block, which impacts the PoW operation’s responsiveness.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.no_output_in_place</span></code> (bool): When set, it disables in-place output of registration statistics for cleaner log visibility.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.verbose</span></code> (bool): Enables verbose output for detailed statistical information during the PoW process.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.cuda.use_cuda</span></code> (bool): Activates the use of CUDA for GPU acceleration in the PoW process, suitable for CUDA-compatible GPUs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.cuda.no_cuda</span></code> (bool): Disables the use of CUDA, opting for CPU-based calculations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.cuda.dev_id</span></code> (int[]): Allows selection of specific CUDA device IDs for the operation, useful in multi-GPU setups.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--faucet.cuda.tpb</span></code> (int): Determines the number of Threads Per Block for CUDA operations, affecting GPU calculation efficiency.</p></li>
+</ul>
+</dd>
+</dl>
+<p>These options provide flexibility in configuring the PoW process according to the user’s hardware capabilities and preferences.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btcli</span> <span class="n">wallet</span> <span class="n">faucet</span> <span class="o">--</span><span class="n">faucet</span><span class="o">.</span><span class="n">num_processes</span> <span class="mi">4</span> <span class="o">--</span><span class="n">faucet</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">use_cuda</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command is meant for use in testnet environments where users can experiment with the network without using real TAO tokens.
+It’s important for users to have the necessary hardware setup, especially when opting for CUDA-based GPU calculations.</p>
+</div>
+<p><strong>THIS COMMAND IS CURRENTLY DISABLED.</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RunFaucetCommand.run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RunFaucetCommand.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RunFaucetCommand.run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RunFaucetCommand._run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RunFaucetCommand._run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RunFaucetCommand._run" title="Link to this definition">#</a></dt>
+<dd><p>Register neuron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RunFaucetCommand.add_args">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RunFaucetCommand.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RunFaucetCommand.add_args" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.RunFaucetCommand.check_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#RunFaucetCommand.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.RunFaucetCommand.check_config" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.commands.register.SwapHotkeyCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.commands.register.</span></span><span class="sig-name descname"><span class="pre">SwapHotkeyCommand</span></span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#SwapHotkeyCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.SwapHotkeyCommand" title="Link to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.SwapHotkeyCommand.run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#SwapHotkeyCommand.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.SwapHotkeyCommand.run" title="Link to this definition">#</a></dt>
+<dd><p>Executes the <code class="docutils literal notranslate"><span class="pre">swap_hotkey</span></code> command to swap the hotkeys for a neuron on the network.</p>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>The command is used to swap the hotkey of a wallet for another hotkey on that same wallet.</p>
+</dd>
+<dt>Optional arguments:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--wallet.name</span></code> (str): Specifies the wallet for which the hotkey is to be swapped.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--wallet.hotkey</span></code> (str): The original hotkey name that is getting swapped out.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--wallet.hotkey_b</span></code> (str): The new hotkey name for which the old is getting swapped out for.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">btcli</span> <span class="n">wallet</span> <span class="n">swap_hotkey</span> <span class="o">--</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span> <span class="n">your_wallet_name</span> <span class="o">--</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span> <span class="n">original_hotkey</span> <span class="o">--</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey_b</span> <span class="n">new_hotkey</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.SwapHotkeyCommand._run">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#SwapHotkeyCommand._run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.SwapHotkeyCommand._run" title="Link to this definition">#</a></dt>
+<dd><p>Swap your hotkey for all registered axons on the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cli</strong> (<a class="reference internal" href="../../index.html#bittensor.cli" title="bittensor.cli"><em>bittensor.cli</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<em>bittensor.subtensor</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.SwapHotkeyCommand.add_args">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#SwapHotkeyCommand.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.SwapHotkeyCommand.add_args" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.commands.register.SwapHotkeyCommand.check_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/commands/register.html#SwapHotkeyCommand.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.commands.register.SwapHotkeyCommand.check_config" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../index.html#bittensor.config" title="bittensor.config"><em>bittensor.config</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../overview/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">bittensor.commands.overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../root/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">bittensor.commands.root</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.console"><code class="docutils literal notranslate"><span class="pre">console</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand"><code class="docutils literal notranslate"><span class="pre">RegisterCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.run"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand._run"><code class="docutils literal notranslate"><span class="pre">RegisterCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.add_args"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RegisterCommand.check_config"><code class="docutils literal notranslate"><span class="pre">RegisterCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.run"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand._run"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.add_args"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.PowRegisterCommand.check_config"><code class="docutils literal notranslate"><span class="pre">PowRegisterCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.run"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand._run"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.add_args"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.RunFaucetCommand.check_config"><code class="docutils literal notranslate"><span class="pre">RunFaucetCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.run"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand._run"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand._run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.add_args"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.commands.register.SwapHotkeyCommand.check_config"><code class="docutils literal notranslate"><span class="pre">SwapHotkeyCommand.check_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1504 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>bittensor.keyfile &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/keyfile/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="bittensor.metagraph" href="../metagraph/index.html" />
+    <link rel="prev" title="bittensor.errors" href="../errors/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../commands/index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../commands/check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/register/index.html">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../commands/weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/blob/main/autoapi/bittensor/keyfile/index.rst?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2Fautoapi/bittensor/keyfile/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/autoapi/bittensor/keyfile/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>bittensor.keyfile</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.NACL_SALT"><code class="docutils literal notranslate"><span class="pre">NACL_SALT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.serialized_keypair_to_keyfile_data"><code class="docutils literal notranslate"><span class="pre">serialized_keypair_to_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.deserialize_keypair_from_keyfile_data"><code class="docutils literal notranslate"><span class="pre">deserialize_keypair_from_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.validate_password"><code class="docutils literal notranslate"><span class="pre">validate_password()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.ask_password_to_encrypt"><code class="docutils literal notranslate"><span class="pre">ask_password_to_encrypt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_nacl"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_nacl()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_ansible"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_ansible()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_legacy"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_legacy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_encryption_method"><code class="docutils literal notranslate"><span class="pre">keyfile_data_encryption_method()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.legacy_encrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">legacy_encrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.encrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">encrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.get_coldkey_password_from_environment"><code class="docutils literal notranslate"><span class="pre">get_coldkey_password_from_environment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.decrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">decrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.path"><code class="docutils literal notranslate"><span class="pre">keyfile.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.name"><code class="docutils literal notranslate"><span class="pre">keyfile.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.__str__"><code class="docutils literal notranslate"><span class="pre">keyfile.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.__repr__"><code class="docutils literal notranslate"><span class="pre">keyfile.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.data"><code class="docutils literal notranslate"><span class="pre">keyfile.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.keyfile_data"><code class="docutils literal notranslate"><span class="pre">keyfile.keyfile_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.set_keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.set_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.get_keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.get_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.make_dirs"><code class="docutils literal notranslate"><span class="pre">keyfile.make_dirs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.exists_on_device"><code class="docutils literal notranslate"><span class="pre">keyfile.exists_on_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_readable"><code class="docutils literal notranslate"><span class="pre">keyfile.is_readable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_writable"><code class="docutils literal notranslate"><span class="pre">keyfile.is_writable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_encrypted"><code class="docutils literal notranslate"><span class="pre">keyfile.is_encrypted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._may_overwrite"><code class="docutils literal notranslate"><span class="pre">keyfile._may_overwrite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.check_and_update_encryption"><code class="docutils literal notranslate"><span class="pre">keyfile.check_and_update_encryption()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.encrypt"><code class="docutils literal notranslate"><span class="pre">keyfile.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.decrypt"><code class="docutils literal notranslate"><span class="pre">keyfile.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._read_keyfile_data_from_file"><code class="docutils literal notranslate"><span class="pre">keyfile._read_keyfile_data_from_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._write_keyfile_data_to_file"><code class="docutils literal notranslate"><span class="pre">keyfile._write_keyfile_data_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.path"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile._mock_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile._mock_keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile._mock_data"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile._mock_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.__str__"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.__repr__"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.data"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.set_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.set_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.get_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.get_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.make_dirs"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.make_dirs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.exists_on_device"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.exists_on_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_readable"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_readable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_writable"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_writable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_encrypted"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_encrypted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.encrypt"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.decrypt"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.check_and_update_encryption"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.check_and_update_encryption()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-bittensor.keyfile">
+<span id="bittensor-keyfile"></span><h1>bittensor.keyfile<a class="headerlink" href="#module-bittensor.keyfile" title="Link to this heading">#</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.NACL_SALT" title="bittensor.keyfile.NACL_SALT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NACL_SALT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile" title="bittensor.keyfile.keyfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile</span></code></a></p></td>
+<td><p>Defines an interface for a substrate interface keypair stored on device.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.Mockkeyfile" title="bittensor.keyfile.Mockkeyfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mockkeyfile</span></code></a></p></td>
+<td><p>The Mockkeyfile is a mock object representing a keyfile that does not exist on the device.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.serialized_keypair_to_keyfile_data" title="bittensor.keyfile.serialized_keypair_to_keyfile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialized_keypair_to_keyfile_data</span></code></a>(keypair)</p></td>
+<td><p>Serializes keypair object into keyfile data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.deserialize_keypair_from_keyfile_data" title="bittensor.keyfile.deserialize_keypair_from_keyfile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deserialize_keypair_from_keyfile_data</span></code></a>(keyfile_data)</p></td>
+<td><p>Deserializes Keypair object from passed keyfile data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.validate_password" title="bittensor.keyfile.validate_password"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_password</span></code></a>(password)</p></td>
+<td><p>Validates the password against a password policy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.ask_password_to_encrypt" title="bittensor.keyfile.ask_password_to_encrypt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ask_password_to_encrypt</span></code></a>()</p></td>
+<td><p>Prompts the user to enter a password for key encryption.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile_data_is_encrypted_nacl" title="bittensor.keyfile.keyfile_data_is_encrypted_nacl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_nacl</span></code></a>(keyfile_data)</p></td>
+<td><p>Returns true if the keyfile data is NaCl encrypted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile_data_is_encrypted_ansible" title="bittensor.keyfile.keyfile_data_is_encrypted_ansible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_ansible</span></code></a>(keyfile_data)</p></td>
+<td><p>Returns true if the keyfile data is ansible encrypted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile_data_is_encrypted_legacy" title="bittensor.keyfile.keyfile_data_is_encrypted_legacy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_legacy</span></code></a>(keyfile_data)</p></td>
+<td><p>Returns true if the keyfile data is legacy encrypted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile_data_is_encrypted" title="bittensor.keyfile.keyfile_data_is_encrypted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted</span></code></a>(keyfile_data)</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the keyfile data is encrypted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.keyfile_data_encryption_method" title="bittensor.keyfile.keyfile_data_encryption_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile_data_encryption_method</span></code></a>(keyfile_data)</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the keyfile data is encrypted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.legacy_encrypt_keyfile_data" title="bittensor.keyfile.legacy_encrypt_keyfile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legacy_encrypt_keyfile_data</span></code></a>(keyfile_data[, password])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.encrypt_keyfile_data" title="bittensor.keyfile.encrypt_keyfile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypt_keyfile_data</span></code></a>(keyfile_data[, password])</p></td>
+<td><p>Encrypts the passed keyfile data using ansible vault.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.keyfile.get_coldkey_password_from_environment" title="bittensor.keyfile.get_coldkey_password_from_environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_coldkey_password_from_environment</span></code></a>(coldkey_name)</p></td>
+<td><p>Retrieves the cold key password from the environment variables.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.keyfile.decrypt_keyfile_data" title="bittensor.keyfile.decrypt_keyfile_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decrypt_keyfile_data</span></code></a>(keyfile_data[, password, ...])</p></td>
+<td><p>Decrypts the passed keyfile data using ansible vault.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.keyfile.NACL_SALT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">NACL_SALT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x13q\x83\xdf\xf1Z\t\xbc\x9c\x90\xb5Q\x879\xe9\xb1'</span></em><a class="headerlink" href="#bittensor.keyfile.NACL_SALT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.serialized_keypair_to_keyfile_data">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">serialized_keypair_to_keyfile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#serialized_keypair_to_keyfile_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.serialized_keypair_to_keyfile_data" title="Link to this definition">#</a></dt>
+<dd><p>Serializes keypair object into keyfile data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The keypair object to be serialized.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Serialized keypair data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.deserialize_keypair_from_keyfile_data">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">deserialize_keypair_from_keyfile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#deserialize_keypair_from_keyfile_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.deserialize_keypair_from_keyfile_data" title="Link to this definition">#</a></dt>
+<dd><p>Deserializes Keypair object from passed keyfile data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The keyfile data as bytes to be loaded.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Keypair loaded from bytes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>keypair (bittensor.Keypair)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the passed bytes cannot construct a keypair object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.validate_password">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">validate_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#validate_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.validate_password" title="Link to this definition">#</a></dt>
+<dd><p>Validates the password against a password policy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The password to verify.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the password meets validity requirements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>valid (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.ask_password_to_encrypt">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">ask_password_to_encrypt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#ask_password_to_encrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.ask_password_to_encrypt" title="Link to this definition">#</a></dt>
+<dd><p>Prompts the user to enter a password for key encryption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The valid password entered by the user.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>password (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile_data_is_encrypted_nacl">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile_data_is_encrypted_nacl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile_data_is_encrypted_nacl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile_data_is_encrypted_nacl" title="Link to this definition">#</a></dt>
+<dd><p>Returns true if the keyfile data is NaCl encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a><em>, </em><em>required</em>) – Bytes to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if data is ansible encrypted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>is_nacl (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile_data_is_encrypted_ansible">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile_data_is_encrypted_ansible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile_data_is_encrypted_ansible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile_data_is_encrypted_ansible" title="Link to this definition">#</a></dt>
+<dd><p>Returns true if the keyfile data is ansible encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The bytes to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the data is ansible encrypted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>is_ansible (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile_data_is_encrypted_legacy">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile_data_is_encrypted_legacy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile_data_is_encrypted_legacy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile_data_is_encrypted_legacy" title="Link to this definition">#</a></dt>
+<dd><p>Returns true if the keyfile data is legacy encrypted.
+:param keyfile_data: The bytes to validate.
+:type keyfile_data: bytes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the data is legacy encrypted.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>is_legacy (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile_data_is_encrypted">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile_data_is_encrypted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile_data_is_encrypted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile_data_is_encrypted" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the keyfile data is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The bytes to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the data is encrypted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>is_encrypted (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile_data_encryption_method">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile_data_encryption_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile_data_encryption_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile_data_encryption_method" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the keyfile data is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a><em>, </em><em>required</em>) – Bytes to validate</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if data is encrypted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>encryption_method (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.legacy_encrypt_keyfile_data">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">legacy_encrypt_keyfile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#legacy_encrypt_keyfile_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.legacy_encrypt_keyfile_data" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>)</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.encrypt_keyfile_data">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">encrypt_keyfile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#encrypt_keyfile_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.encrypt_keyfile_data" title="Link to this definition">#</a></dt>
+<dd><p>Encrypts the passed keyfile data using ansible vault.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The bytes to encrypt.</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password used to encrypt the data. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The encrypted data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>encrypted_data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.get_coldkey_password_from_environment">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">get_coldkey_password_from_environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#get_coldkey_password_from_environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.get_coldkey_password_from_environment" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the cold key password from the environment variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coldkey_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name of the cold key.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The password retrieved from the environment variables, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>password (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.keyfile.decrypt_keyfile_data">
+<span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">decrypt_keyfile_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coldkey_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#decrypt_keyfile_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.decrypt_keyfile_data" title="Link to this definition">#</a></dt>
+<dd><p>Decrypts the passed keyfile data using ansible vault.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The bytes to decrypt.</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password used to decrypt the data. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p></li>
+<li><p><strong>coldkey_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the cold key. If provided, retrieves the password from environment variables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decrypted data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>decrypted_data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupted or if the password is incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">keyfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile" title="Link to this definition">#</a></dt>
+<dd><p>Defines an interface for a substrate interface keypair stored on device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#bittensor.keyfile.keyfile.path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bittensor.keyfile.keyfile.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.__str__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.__repr__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.keypair">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">keypair</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.Keypair</span></em><a class="headerlink" href="#bittensor.keyfile.keyfile.keypair" title="Link to this definition">#</a></dt>
+<dd><p>Returns the keypair from path, decrypts data if the file is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The keypair stored under the path.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>keypair (bittensor.Keypair)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></em><a class="headerlink" href="#bittensor.keyfile.keyfile.data" title="Link to this definition">#</a></dt>
+<dd><p>Returns the keyfile data under path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The keyfile data stored under the path.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>keyfile_data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, or writable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.keyfile_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">keyfile_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></em><a class="headerlink" href="#bittensor.keyfile.keyfile.keyfile_data" title="Link to this definition">#</a></dt>
+<dd><p>Returns the keyfile data under path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The keyfile data stored under the path.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>keyfile_data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, or writable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.set_keypair">
+<span class="sig-name descname"><span class="pre">set_keypair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.set_keypair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.set_keypair" title="Link to this definition">#</a></dt>
+<dd><p>Writes the keypair to the file and optionally encrypts data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The keypair to store under the path.</p></li>
+<li><p><strong>encrypt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, encrypts the file under the path. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, forces overwrite of the current file. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password used to encrypt the file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, writable, or if the password is incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.get_keypair">
+<span class="sig-name descname"><span class="pre">get_keypair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.get_keypair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.get_keypair" title="Link to this definition">#</a></dt>
+<dd><p>Returns the keypair from the path, decrypts data if the file is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password used to decrypt the file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The keypair stored under the path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>keypair (bittensor.Keypair)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.make_dirs">
+<span class="sig-name descname"><span class="pre">make_dirs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.make_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.make_dirs" title="Link to this definition">#</a></dt>
+<dd><p>Creates directories for the path if they do not exist.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.exists_on_device">
+<span class="sig-name descname"><span class="pre">exists_on_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.exists_on_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.exists_on_device" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the file exists on the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the file is on the device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>on_device (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.is_readable">
+<span class="sig-name descname"><span class="pre">is_readable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.is_readable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.is_readable" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the file under path is readable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the file is readable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>readable (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.is_writable">
+<span class="sig-name descname"><span class="pre">is_writable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.is_writable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.is_writable" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the file under path is writable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the file is writable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>writable (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.is_encrypted">
+<span class="sig-name descname"><span class="pre">is_encrypted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.is_encrypted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.is_encrypted" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the file under path is encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the file is encrypted.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>encrypted (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile._may_overwrite">
+<span class="sig-name descname"><span class="pre">_may_overwrite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile._may_overwrite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile._may_overwrite" title="Link to this definition">#</a></dt>
+<dd><p>Asks the user if it is okay to overwrite the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the user allows overwriting the file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>may_overwrite (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.check_and_update_encryption">
+<span class="sig-name descname"><span class="pre">check_and_update_encryption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.check_and_update_encryption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.check_and_update_encryption" title="Link to this definition">#</a></dt>
+<dd><p>Check the version of keyfile and update if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>print_result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Print the checking result or not.</p></li>
+<li><p><strong>no_prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Skip if no prompt.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exists, is not readable, writable.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the keyfile is the most updated with nacl, else <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>result (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.encrypt">
+<span class="sig-name descname"><span class="pre">encrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.encrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.encrypt" title="Link to this definition">#</a></dt>
+<dd><p>Encrypts the file under the path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password for encryption. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, or writable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile.decrypt">
+<span class="sig-name descname"><span class="pre">decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile.decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile.decrypt" title="Link to this definition">#</a></dt>
+<dd><p>Decrypts the file under the path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password for decryption. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, asks for user input.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile._read_keyfile_data_from_file">
+<span class="sig-name descname"><span class="pre">_read_keyfile_data_from_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile._read_keyfile_data_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile._read_keyfile_data_from_file" title="Link to this definition">#</a></dt>
+<dd><p>Reads the keyfile data from the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The keyfile data stored under the path.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>keyfile_data (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a>)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file does not exist or is not readable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.keyfile._write_keyfile_data_to_file">
+<span class="sig-name descname"><span class="pre">_write_keyfile_data_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyfile_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#keyfile._write_keyfile_data_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.keyfile._write_keyfile_data_to_file" title="Link to this definition">#</a></dt>
+<dd><p>Writes the keyfile data to the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyfile_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – The byte data to store under the path.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrites the data without asking for permission from the user. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../errors/index.html#bittensor.errors.KeyFileError" title="bittensor.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is not writable or the user responds No to the overwrite prompt.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.keyfile.</span></span><span class="sig-name descname"><span class="pre">Mockkeyfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile" title="Link to this definition">#</a></dt>
+<dd><p>The Mockkeyfile is a mock object representing a keyfile that does not exist on the device.</p>
+<p>It is designed for use in testing scenarios and simulations where actual filesystem operations are not required.
+The keypair stored in the Mockkeyfile is treated as non-encrypted and the data is stored as a serialized string.</p>
+<p>Initializes a Mockkeyfile object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path of the mock keyfile.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile._mock_keypair">
+<span class="sig-name descname"><span class="pre">_mock_keypair</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile._mock_keypair" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile._mock_data">
+<span class="sig-name descname"><span class="pre">_mock_data</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile._mock_data" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Returns a string representation of the Mockkeyfile. The representation will indicate if the keyfile is empty, encrypted, or decrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation of the Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.__repr__" title="Link to this definition">#</a></dt>
+<dd><p>Returns a string representation of the Mockkeyfile, same as <a class="reference internal" href="../index.html#bittensor.keyfile.__str__" title="bittensor.keyfile.__str__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation of the Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.keypair">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">keypair</span></span><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.keypair" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">mock</span> <span class="pre">keypair</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">keyfile.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The mock keypair.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.data" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Returns</span> <span class="pre">the</span> <span class="pre">serialized</span> <span class="pre">keypair</span> <span class="pre">data</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">keyfile.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The serialized keypair data.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)">bytes</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.set_keypair">
+<span class="sig-name descname"><span class="pre">set_keypair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.set_keypair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.set_keypair" title="Link to this definition">#</a></dt>
+<dd><p>Sets the mock keypair in the keyfile. The <code class="docutils literal notranslate"><span class="pre">encrypt</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> parameters are ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>bittensor.Keypair</em>) – The mock keypair to be set.</p></li>
+<li><p><strong>encrypt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.get_keypair">
+<span class="sig-name descname"><span class="pre">get_keypair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.get_keypair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.get_keypair" title="Link to this definition">#</a></dt>
+<dd><p>Returns the mock keypair stored in the keyfile. The <code class="docutils literal notranslate"><span class="pre">password</span></code> parameter is ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mock keypair stored in the keyfile.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bittensor.Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.make_dirs">
+<span class="sig-name descname"><span class="pre">make_dirs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.make_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.make_dirs" title="Link to this definition">#</a></dt>
+<dd><p>Creates the directories for the mock keyfile. Does nothing in this class, since no actual filesystem operations are needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.exists_on_device">
+<span class="sig-name descname"><span class="pre">exists_on_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.exists_on_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.exists_on_device" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating that the mock keyfile exists on the device (although it is not created on the actual file system).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Always returns <code class="docutils literal notranslate"><span class="pre">True</span></code> for Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.is_readable">
+<span class="sig-name descname"><span class="pre">is_readable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.is_readable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.is_readable" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating that the mock keyfile is readable (although it is not read from the actual file system).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Always returns <code class="docutils literal notranslate"><span class="pre">True</span></code> for Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.is_writable">
+<span class="sig-name descname"><span class="pre">is_writable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.is_writable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.is_writable" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating that the mock keyfile is writable (although it is not written to the actual file system).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Always returns <code class="docutils literal notranslate"><span class="pre">True</span></code> for Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.is_encrypted">
+<span class="sig-name descname"><span class="pre">is_encrypted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.is_encrypted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.is_encrypted" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">False</span></code> indicating that the mock keyfile is not encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Always returns <code class="docutils literal notranslate"><span class="pre">False</span></code> for Mockkeyfile.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.encrypt">
+<span class="sig-name descname"><span class="pre">encrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.encrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.encrypt" title="Link to this definition">#</a></dt>
+<dd><p>Raises a ValueError since encryption is not supported for the mock keyfile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><strong>ValueError</strong></a> – Always raises this exception for Mockkeyfile.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.decrypt">
+<span class="sig-name descname"><span class="pre">decrypt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.decrypt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.decrypt" title="Link to this definition">#</a></dt>
+<dd><p>Returns without doing anything since the mock keyfile is not encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Ignored in this context. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.keyfile.Mockkeyfile.check_and_update_encryption">
+<span class="sig-name descname"><span class="pre">check_and_update_encryption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/keyfile.html#Mockkeyfile.check_and_update_encryption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.keyfile.Mockkeyfile.check_and_update_encryption" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../errors/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">bittensor.errors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../metagraph/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">bittensor.metagraph</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.NACL_SALT"><code class="docutils literal notranslate"><span class="pre">NACL_SALT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.serialized_keypair_to_keyfile_data"><code class="docutils literal notranslate"><span class="pre">serialized_keypair_to_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.deserialize_keypair_from_keyfile_data"><code class="docutils literal notranslate"><span class="pre">deserialize_keypair_from_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.validate_password"><code class="docutils literal notranslate"><span class="pre">validate_password()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.ask_password_to_encrypt"><code class="docutils literal notranslate"><span class="pre">ask_password_to_encrypt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_nacl"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_nacl()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_ansible"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_ansible()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted_legacy"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted_legacy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_is_encrypted"><code class="docutils literal notranslate"><span class="pre">keyfile_data_is_encrypted()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile_data_encryption_method"><code class="docutils literal notranslate"><span class="pre">keyfile_data_encryption_method()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.legacy_encrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">legacy_encrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.encrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">encrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.get_coldkey_password_from_environment"><code class="docutils literal notranslate"><span class="pre">get_coldkey_password_from_environment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.decrypt_keyfile_data"><code class="docutils literal notranslate"><span class="pre">decrypt_keyfile_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.path"><code class="docutils literal notranslate"><span class="pre">keyfile.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.name"><code class="docutils literal notranslate"><span class="pre">keyfile.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.__str__"><code class="docutils literal notranslate"><span class="pre">keyfile.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.__repr__"><code class="docutils literal notranslate"><span class="pre">keyfile.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.data"><code class="docutils literal notranslate"><span class="pre">keyfile.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.keyfile_data"><code class="docutils literal notranslate"><span class="pre">keyfile.keyfile_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.set_keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.set_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.get_keypair"><code class="docutils literal notranslate"><span class="pre">keyfile.get_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.make_dirs"><code class="docutils literal notranslate"><span class="pre">keyfile.make_dirs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.exists_on_device"><code class="docutils literal notranslate"><span class="pre">keyfile.exists_on_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_readable"><code class="docutils literal notranslate"><span class="pre">keyfile.is_readable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_writable"><code class="docutils literal notranslate"><span class="pre">keyfile.is_writable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.is_encrypted"><code class="docutils literal notranslate"><span class="pre">keyfile.is_encrypted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._may_overwrite"><code class="docutils literal notranslate"><span class="pre">keyfile._may_overwrite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.check_and_update_encryption"><code class="docutils literal notranslate"><span class="pre">keyfile.check_and_update_encryption()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.encrypt"><code class="docutils literal notranslate"><span class="pre">keyfile.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile.decrypt"><code class="docutils literal notranslate"><span class="pre">keyfile.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._read_keyfile_data_from_file"><code class="docutils literal notranslate"><span class="pre">keyfile._read_keyfile_data_from_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.keyfile._write_keyfile_data_to_file"><code class="docutils literal notranslate"><span class="pre">keyfile._write_keyfile_data_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.path"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile._mock_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile._mock_keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile._mock_data"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile._mock_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.__str__"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.__repr__"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.keypair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.data"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.set_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.set_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.get_keypair"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.get_keypair()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.make_dirs"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.make_dirs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.exists_on_device"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.exists_on_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_readable"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_readable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_writable"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_writable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.is_encrypted"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.is_encrypted()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.encrypt"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.encrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.decrypt"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.decrypt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.keyfile.Mockkeyfile.check_and_update_encryption"><code class="docutils literal notranslate"><span class="pre">Mockkeyfile.check_and_update_encryption()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
