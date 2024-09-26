@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.commands.unstake &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/commands/unstake';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/commands/index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/register/index.html">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/commands/weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/keyfile/index.html">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/commands/unstake.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.commands.unstake</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2021 Yuma Rao</span>
+
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">rich.prompt</span> <span class="kn">import</span> <span class="n">Confirm</span><span class="p">,</span> <span class="n">Prompt</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span> <span class="nn">bittensor</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.balance</span> <span class="kn">import</span> <span class="n">Balance</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">GetChildrenCommand</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_hotkey_wallets_for_wallet</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">wallet_utils</span>
+
+<span class="n">console</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span>
+
+
+<div class="viewcode-block" id="UnStakeCommand">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.UnStakeCommand">[docs]</a>
+<span class="k">class</span> <span class="nc">UnStakeCommand</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executes the ``remove`` command to unstake TAO tokens from one or more hotkeys and transfer them back to the user&#39;s coldkey on the Bittensor network.</span>
+
+<span class="sd">    This command is used to withdraw tokens previously staked to different hotkeys.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        Users can specify the amount to unstake, the hotkeys to unstake from (either by name or ``SS58`` address), and whether to unstake from all hotkeys. The command checks for sufficient stake and prompts for confirmation before proceeding with the unstaking process.</span>
+
+<span class="sd">    Optional arguments:</span>
+<span class="sd">        - ``--all`` (bool): When set, unstakes all staked tokens from the specified hotkeys.</span>
+<span class="sd">        - ``--amount`` (float): The amount of TAO tokens to unstake.</span>
+<span class="sd">        - --hotkey_ss58address (str): The SS58 address of the hotkey to unstake from.</span>
+<span class="sd">        - ``--max_stake`` (float): Sets the maximum amount of TAO to remain staked in each hotkey.</span>
+<span class="sd">        - ``--hotkeys`` (list): Specifies hotkeys by name or SS58 address to unstake from.</span>
+<span class="sd">        - ``--all_hotkeys`` (bool): When set, unstakes from all hotkeys associated with the wallet, excluding any specified in --hotkeys.</span>
+
+<span class="sd">    The command prompts for confirmation before executing the unstaking operation.</span>
+
+<span class="sd">    Example usage::</span>
+
+<span class="sd">        btcli stake remove --amount 100 --hotkeys hk1,hk2</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This command is important for users who wish to reallocate their stakes or withdraw them from the network.</span>
+<span class="sd">        It allows for flexible management of token stakes across different neurons (hotkeys) on the network.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UnStakeCommand.check_config">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.UnStakeCommand.check_config">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">check_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;bittensor.config&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.name&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">wallet_name</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter wallet name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">wallet_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey_ss58address&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.hotkey&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all_hotkeys&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkeys&quot;</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter hotkey name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="p">)</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">hotkey</span><span class="p">)</span>
+
+        <span class="c1"># Get amount.</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey_ss58address&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;amount&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unstake_all&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_stake&quot;</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">hotkeys</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all_hotkeys&quot;</span><span class="p">):</span>
+                <span class="n">hotkeys</span> <span class="o">=</span> <span class="s2">&quot;all hotkeys&quot;</span>
+            <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkeys&quot;</span><span class="p">):</span>
+                <span class="n">hotkeys</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hotkeys</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">hotkeys</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">unstake_all</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># I really don&#39;t like this logic flow. It can be a bit confusing to read for something</span>
+                <span class="c1"># as serious as unstaking all.</span>
+                <span class="k">if</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unstake all Tao from: [bold]&#39;</span><span class="si">{</span><span class="n">hotkeys</span><span class="si">}</span><span class="s2">&#39;[/bold]?&quot;</span><span class="p">):</span>
+                    <span class="n">config</span><span class="o">.</span><span class="n">unstake_all</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">config</span><span class="o">.</span><span class="n">unstake_all</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">amount</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter Tao amount to unstake&quot;</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">config</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;:cross_mark:[red] Invalid Tao amount[/red] [bold white]</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">[/bold white]&quot;</span>
+                        <span class="p">)</span>
+                        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="UnStakeCommand.add_args">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.UnStakeCommand.add_args">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="n">command_parser</span><span class="p">):</span>
+        <span class="n">unstake_parser</span> <span class="o">=</span> <span class="n">command_parser</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span>
+            <span class="s2">&quot;remove&quot;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Remove stake from the specified hotkey into the coldkey balance.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--all&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;unstake_all&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--amount&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--hotkey_ss58address&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;hotkey_ss58address&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--max_stake&quot;</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;max_stake&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Specify the maximum amount of Tao to have staked in each hotkey.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--hotkeys&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--exclude_hotkeys&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--wallet.hotkeys&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--wallet.exclude_hotkeys&quot;</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="p">[],</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+            <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Specify the hotkeys by name or ss58 address. (e.g. hk1 hk2 hk3)&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">unstake_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--all_hotkeys&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--wallet.all_hotkeys&quot;</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;To specify all hotkeys. Specifying hotkeys will exclude them from this all.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">unstake_parser</span><span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">unstake_parser</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnStakeCommand.run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.UnStakeCommand.run">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unstake token of amount from hotkey(s).&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">log_verbose</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="n">UnStakeCommand</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;subtensor&quot;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                <span class="n">subtensor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;closing subtensor connection&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnStakeCommand._run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.UnStakeCommand._run">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unstake token of amount from hotkey(s).&quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">wallet</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># Get the hotkey_names (if any) and the hotkey_ss58s.</span>
+        <span class="n">hotkeys_to_unstake_from</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey_ss58address&quot;</span><span class="p">):</span>
+            <span class="c1"># Stake to specific hotkey.</span>
+            <span class="n">hotkeys_to_unstake_from</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey_ss58address&quot;</span><span class="p">))]</span>
+        <span class="k">elif</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all_hotkeys&quot;</span><span class="p">):</span>
+            <span class="c1"># Stake to all hotkeys.</span>
+            <span class="n">all_hotkeys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_hotkey_wallets_for_wallet</span><span class="p">(</span>
+                <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span>
+            <span class="p">)</span>
+            <span class="c1"># Get the hotkeys to exclude. (d)efault to no exclusions.</span>
+            <span class="n">hotkeys_to_exclude</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkeys&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="p">[])</span>
+            <span class="c1"># Exclude hotkeys that are specified.</span>
+            <span class="n">hotkeys_to_unstake_from</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey_str</span><span class="p">,</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">wallet</span> <span class="ow">in</span> <span class="n">all_hotkeys</span>
+                <span class="k">if</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hotkeys_to_exclude</span>
+            <span class="p">]</span>  <span class="c1"># definitely wallets</span>
+
+        <span class="k">elif</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkeys&quot;</span><span class="p">):</span>
+            <span class="c1"># Stake to specific hotkeys.</span>
+            <span class="k">for</span> <span class="n">hotkey_ss58_or_hotkey_name</span> <span class="ow">in</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkeys&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_valid_ss58_address</span><span class="p">(</span><span class="n">hotkey_ss58_or_hotkey_name</span><span class="p">):</span>
+                    <span class="c1"># If the hotkey is a valid ss58 address, we add it to the list.</span>
+                    <span class="n">hotkeys_to_unstake_from</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="n">hotkey_ss58_or_hotkey_name</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># If the hotkey is not a valid ss58 address, we assume it is a hotkey name.</span>
+                    <span class="c1">#  We then get the hotkey from the wallet and add it to the list.</span>
+                    <span class="n">wallet_</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span>
+                        <span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">hotkey</span><span class="o">=</span><span class="n">hotkey_ss58_or_hotkey_name</span>
+                    <span class="p">)</span>
+                    <span class="n">hotkeys_to_unstake_from</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="n">wallet_</span><span class="o">.</span><span class="n">hotkey_str</span><span class="p">,</span> <span class="n">wallet_</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey&quot;</span><span class="p">):</span>
+            <span class="c1"># Only cli.config.wallet.hotkey is specified.</span>
+            <span class="c1">#  so we stake to that single hotkey.</span>
+            <span class="n">hotkey_ss58_or_name</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hotkey&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_valid_ss58_address</span><span class="p">(</span><span class="n">hotkey_ss58_or_name</span><span class="p">):</span>
+                <span class="n">hotkeys_to_unstake_from</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="n">hotkey_ss58_or_name</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Hotkey is not a valid ss58 address, so we assume it is a hotkey name.</span>
+                <span class="n">wallet_</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span>
+                    <span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">hotkey</span><span class="o">=</span><span class="n">hotkey_ss58_or_name</span>
+                <span class="p">)</span>
+                <span class="n">hotkeys_to_unstake_from</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">(</span><span class="n">wallet_</span><span class="o">.</span><span class="n">hotkey_str</span><span class="p">,</span> <span class="n">wallet_</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+                <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Only cli.config.wallet.hotkey is specified.</span>
+            <span class="c1">#  so we stake to that single hotkey.</span>
+            <span class="k">assert</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="n">hotkeys_to_unstake_from</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+            <span class="p">]</span>
+
+        <span class="n">final_hotkeys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">final_amounts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Balance</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">hotkey</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">hotkeys_to_unstake_from</span><span class="p">):</span>
+            <span class="n">hotkey</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>  <span class="c1"># (hotkey_name (or None), hotkey_ss58)</span>
+            <span class="n">unstake_amount_tao</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;amount&quot;</span>
+            <span class="p">)</span>  <span class="c1"># The amount specified to unstake.</span>
+            <span class="n">hotkey_stake</span><span class="p">:</span> <span class="n">Balance</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_stake_for_coldkey_and_hotkey</span><span class="p">(</span>
+                <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">hotkey</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">coldkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">unstake_amount_tao</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">unstake_amount_tao</span> <span class="o">=</span> <span class="n">hotkey_stake</span><span class="o">.</span><span class="n">tao</span>
+            <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_stake&quot;</span><span class="p">):</span>
+                <span class="c1"># Get the current stake of the hotkey from this coldkey.</span>
+                <span class="n">unstake_amount_tao</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">hotkey_stake</span><span class="o">.</span><span class="n">tao</span> <span class="o">-</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                    <span class="s2">&quot;max_stake&quot;</span>
+                <span class="p">)</span>
+                <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">unstake_amount_tao</span>
+                <span class="k">if</span> <span class="n">unstake_amount_tao</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># Skip if max_stake is greater than current stake.</span>
+                    <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">unstake_amount_tao</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># There is a specified amount to unstake.</span>
+                    <span class="k">if</span> <span class="n">unstake_amount_tao</span> <span class="o">&gt;</span> <span class="n">hotkey_stake</span><span class="o">.</span><span class="n">tao</span><span class="p">:</span>
+                        <span class="c1"># Skip if the specified amount is greater than the current stake.</span>
+                        <span class="k">continue</span>
+
+            <span class="n">final_amounts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unstake_amount_tao</span><span class="p">)</span>
+            <span class="n">final_hotkeys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hotkey</span><span class="p">)</span>  <span class="c1"># add both the name and the ss58 address.</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_hotkeys</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># No hotkeys to unstake from.</span>
+            <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="s2">&quot;Not enough stake to unstake from any hotkeys or max_stake is more than current stake.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># Ask to unstake</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Do you want to unstake from the following keys to </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;    [bold white]- </span><span class="si">{</span><span class="n">hotkey</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">hotkey</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}{</span><span class="n">hotkey</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">bittensor</span><span class="o">.</span><span class="n">__tao_symbol__</span><span class="si">}</span><span class="s1">&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;All&#39;</span><span class="si">}</span><span class="s2">[/bold white]</span><span class="se">\n</span><span class="s2">&quot;</span>
+                        <span class="k">for</span> <span class="n">hotkey</span><span class="p">,</span> <span class="n">amount</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">final_hotkeys</span><span class="p">,</span> <span class="n">final_amounts</span><span class="p">)</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_hotkeys</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># do regular unstake</span>
+            <span class="k">return</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">unstake</span><span class="p">(</span>
+                <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+                <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">final_hotkeys</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">amount</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unstake_all&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">final_amounts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">prompt</span><span class="o">=</span><span class="ow">not</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">subtensor</span><span class="o">.</span><span class="n">unstake_multiple</span><span class="p">(</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">hotkey_ss58s</span><span class="o">=</span><span class="p">[</span><span class="n">hotkey_ss58</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">hotkey_ss58</span> <span class="ow">in</span> <span class="n">final_hotkeys</span><span class="p">],</span>
+            <span class="n">amounts</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unstake_all&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">final_amounts</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="RevokeChildrenCommand">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.RevokeChildrenCommand">[docs]</a>
+<span class="k">class</span> <span class="nc">RevokeChildrenCommand</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executes the ``revoke_children`` command to remove all children hotkeys on a specified subnet on the Bittensor network.</span>
+
+<span class="sd">    This command is used to remove delegated authority from all child hotkeys, removing their position and influence on the subnet.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        Users need to specify the parent hotkey and the subnet ID (netuid).</span>
+<span class="sd">        The user needs to have sufficient authority to make this call.</span>
+
+<span class="sd">    The command prompts for confirmation before executing the revoke_children operation.</span>
+
+<span class="sd">    Example usage::</span>
+
+<span class="sd">        btcli stake revoke_children --hotkey &lt;parent_hotkey&gt; --netuid 1</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This command is critical for users who wish to remove children hotkeys on the network.</span>
+<span class="sd">        It allows for a complete removal of delegated authority to enhance network participation and influence.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RevokeChildrenCommand.run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.RevokeChildrenCommand.run">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Revokes all children hotkeys.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">log_verbose</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="n">RevokeChildrenCommand</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;subtensor&quot;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+                <span class="n">subtensor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;closing subtensor connection&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RevokeChildrenCommand._run">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.RevokeChildrenCommand._run">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="n">cli</span><span class="p">:</span> <span class="s2">&quot;bittensor.cli&quot;</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;bittensor.subtensor&quot;</span><span class="p">):</span>
+        <span class="n">wallet</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># Get values if not set.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;netuid&quot;</span><span class="p">):</span>
+            <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">netuid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter netuid&quot;</span><span class="p">))</span>
+
+        <span class="n">netuid</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">netuid</span>
+        <span class="n">total_subnets</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_total_subnets</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total_subnets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">netuid</span> <span class="o">&lt;</span> <span class="n">total_subnets</span><span class="p">):</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Netuid is outside the current subnet range&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># get parent hotkey</span>
+        <span class="k">if</span> <span class="n">wallet</span> <span class="ow">and</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="p">:</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
+        <span class="k">elif</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;hotkey&quot;</span><span class="p">):</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">hotkey</span>
+        <span class="k">elif</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;ss58&quot;</span><span class="p">):</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ss58</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter parent hotkey (ss58)&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">wallet_utils</span><span class="o">.</span><span class="n">is_valid_ss58_address</span><span class="p">(</span><span class="n">hotkey</span><span class="p">):</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;:cross_mark:[red] Invalid SS58 address: </span><span class="si">{</span><span class="n">hotkey</span><span class="si">}</span><span class="s2">[/red]&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">success</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">set_children</span><span class="p">(</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+            <span class="n">children_with_proportions</span><span class="o">=</span><span class="p">[],</span>
+            <span class="n">hotkey</span><span class="o">=</span><span class="n">hotkey</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+            <span class="n">prompt</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">prompt</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Result</span>
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wait_for_finalization</span> <span class="ow">and</span> <span class="n">cli</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">wait_for_inclusion</span><span class="p">:</span>
+                <span class="n">GetChildrenCommand</span><span class="o">.</span><span class="n">retrieve_children</span><span class="p">(</span>
+                    <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">,</span>
+                    <span class="n">hotkey</span><span class="o">=</span><span class="n">hotkey</span><span class="p">,</span>
+                    <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+                    <span class="n">render_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="s2">&quot;:white_heavy_check_mark: [green]Revoked all children hotkeys.[/green]&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;:cross_mark:[red] Unable to revoke children hotkeys.[/red] </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RevokeChildrenCommand.check_config">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.RevokeChildrenCommand.check_config">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">check_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="s2">&quot;bittensor.config&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.name&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">wallet_name</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter wallet name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">wallet_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">is_set</span><span class="p">(</span><span class="s2">&quot;wallet.hotkey&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">hotkey_or_ss58</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                <span class="s2">&quot;Enter hotkey name or ss58&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">wallet_utils</span><span class="o">.</span><span class="n">is_valid_ss58_address</span><span class="p">(</span><span class="n">hotkey_or_ss58</span><span class="p">):</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">ss58</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">hotkey_or_ss58</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">config</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">hotkey_or_ss58</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RevokeChildrenCommand.add_args">
+<a class="viewcode-back" href="../../../autoapi/bittensor/commands/unstake/index.html#bittensor.commands.RevokeChildrenCommand.add_args">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span>
+            <span class="s2">&quot;revoke_children&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Revoke all children hotkeys.&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--netuid&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;netuid&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--hotkey&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;hotkey&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--wait_for_inclusion&quot;</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;wait_for_inclusion&quot;</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Wait for the transaction to be included in a block.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--wait_for_finalization&quot;</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;wait_for_finalization&quot;</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Wait for the transaction to be finalized.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--prompt&quot;</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;prompt&quot;</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Prompt for confirmation before proceeding.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+            <span class="s2">&quot;--y&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--yes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;--no_prompt&quot;</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;prompt&quot;</span><span class="p">,</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_false&quot;</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Disable prompt for confirmation before proceeding. Defaults to Yes for all prompts.&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+        <span class="n">bittensor</span><span class="o">.</span><span class="n">subtensor</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

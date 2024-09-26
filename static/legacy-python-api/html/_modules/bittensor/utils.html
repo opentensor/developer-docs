@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.utils &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/utils';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/commands/index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/register/index.html">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/keyfile/index.html">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/utils.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2022 Opentensor Foundation</span>
+<span class="c1"># Copyright © 2023 Opentensor Technologies Inc</span>
+
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scalecodec</span>
+
+<span class="kn">import</span> <span class="nn">bittensor</span>
+<span class="kn">from</span> <span class="nn">.registration</span> <span class="kn">import</span> <span class="n">torch</span><span class="p">,</span> <span class="n">use_torch</span>
+<span class="kn">from</span> <span class="nn">.version</span> <span class="kn">import</span> <span class="n">version_checking</span><span class="p">,</span> <span class="n">check_version</span><span class="p">,</span> <span class="n">VersionCheckError</span>
+<span class="kn">from</span> <span class="nn">.wallet_utils</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa F401</span>
+
+<span class="n">RAOPERTAO</span> <span class="o">=</span> <span class="mf">1e9</span>
+<span class="n">U16_MAX</span> <span class="o">=</span> <span class="mi">65535</span>
+<span class="n">U64_MAX</span> <span class="o">=</span> <span class="mi">18446744073709551615</span>
+
+
+<div class="viewcode-block" id="ss58_to_vec_u8">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.ss58_to_vec_u8">[docs]</a>
+<span class="k">def</span> <span class="nf">ss58_to_vec_u8</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">ss58_bytes</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ss58_address_to_bytes</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">)</span>
+    <span class="n">encoded_address</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span> <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">ss58_bytes</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">encoded_address</span></div>
+
+
+
+<div class="viewcode-block" id="_unbiased_topk">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor._unbiased_topk">[docs]</a>
+<span class="k">def</span> <span class="nf">_unbiased_topk</span><span class="p">(</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="s2">&quot;torch.Tensor&quot;</span><span class="p">],</span>
+    <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">largest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;numpy&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;torch.Tensor&quot;</span><span class="p">,</span> <span class="s2">&quot;torch.LongTensor&quot;</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Selects topk as in torch.topk but does not bias lower indices when values are equal.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        values: (np.ndarray) if using numpy, (torch.Tensor) if using torch:</span>
+<span class="sd">            Values to index into.</span>
+<span class="sd">        k: (int):</span>
+<span class="sd">            Number to take.</span>
+<span class="sd">        dim: (int):</span>
+<span class="sd">            Dimension to index into (used by Torch)</span>
+<span class="sd">        sorted: (bool):</span>
+<span class="sd">            Whether to sort indices.</span>
+<span class="sd">        largest: (bool):</span>
+<span class="sd">            Whether to take the largest value.</span>
+<span class="sd">        axis: (int):</span>
+<span class="sd">            Axis along which to index into (used by Numpy)</span>
+<span class="sd">        return_type: (str):</span>
+<span class="sd">            Whether or use torch or numpy approach</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        topk: (np.ndarray) if using numpy, (torch.Tensor) if using torch:</span>
+<span class="sd">            topk k values.</span>
+<span class="sd">        indices: (np.ndarray) if using numpy, (torch.LongTensor) if using torch:</span>
+<span class="sd">            indices of the topk values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">return_type</span> <span class="o">==</span> <span class="s2">&quot;torch&quot;</span><span class="p">:</span>
+        <span class="n">permutation</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">dim</span><span class="p">])</span>
+        <span class="n">permuted_values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">permutation</span><span class="p">]</span>
+        <span class="n">topk</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span>
+            <span class="n">permuted_values</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="nb">sorted</span><span class="o">=</span><span class="nb">sorted</span><span class="p">,</span> <span class="n">largest</span><span class="o">=</span><span class="n">largest</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">topk</span><span class="p">,</span> <span class="n">permutation</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dim</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Ensures a seamless transition for calls made to this function that specified args by keyword</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="n">dim</span>
+
+        <span class="n">permutation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span>
+        <span class="n">permuted_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">permutation</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">permuted_values</span><span class="p">,</span> <span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)[</span><span class="o">-</span><span class="n">k</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">sorted</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">largest</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">topk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">permuted_values</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">topk</span><span class="p">,</span> <span class="n">permutation</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="unbiased_topk">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.unbiased_topk">[docs]</a>
+<span class="k">def</span> <span class="nf">unbiased_topk</span><span class="p">(</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="s2">&quot;torch.Tensor&quot;</span><span class="p">],</span>
+    <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nb">sorted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">largest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;torch.Tensor&quot;</span><span class="p">,</span> <span class="s2">&quot;torch.LongTensor&quot;</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Selects topk as in torch.topk but does not bias lower indices when values are equal.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        values: (np.ndarray) if using numpy, (torch.Tensor) if using torch:</span>
+<span class="sd">            Values to index into.</span>
+<span class="sd">        k: (int):</span>
+<span class="sd">            Number to take.</span>
+<span class="sd">        dim: (int):</span>
+<span class="sd">            Dimension to index into (used by Torch)</span>
+<span class="sd">        sorted: (bool):</span>
+<span class="sd">            Whether to sort indices.</span>
+<span class="sd">        largest: (bool):</span>
+<span class="sd">            Whether to take the largest value.</span>
+<span class="sd">        axis: (int):</span>
+<span class="sd">            Axis along which to index into (used by Numpy)</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        topk: (np.ndarray) if using numpy, (torch.Tensor) if using torch:</span>
+<span class="sd">            topk k values.</span>
+<span class="sd">        indices: (np.ndarray) if using numpy, (torch.LongTensor) if using torch:</span>
+<span class="sd">            indices of the topk values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">use_torch</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">_unbiased_topk</span><span class="p">(</span>
+            <span class="n">values</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">,</span> <span class="n">largest</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_unbiased_topk</span><span class="p">(</span>
+            <span class="n">values</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">,</span> <span class="n">largest</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;numpy&quot;</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="strtobool_with_default">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.strtobool_with_default">[docs]</a>
+<span class="k">def</span> <span class="nf">strtobool_with_default</span><span class="p">(</span>
+    <span class="n">default</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;==SUPRESS==&quot;</span><span class="p">]]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a strtobool function with a default value.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        default(bool): The default value to return if the string is empty.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The strtobool function with the default value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">strtobool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="k">else</span> <span class="n">default</span></div>
+
+
+
+<div class="viewcode-block" id="strtobool">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.strtobool">[docs]</a>
+<span class="k">def</span> <span class="nf">strtobool</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;==SUPRESS==&quot;</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a string to a boolean value.</span>
+
+<span class="sd">    truth-y values are &#39;y&#39;, &#39;yes&#39;, &#39;t&#39;, &#39;true&#39;, &#39;on&#39;, and &#39;1&#39;;</span>
+<span class="sd">    false-y values are &#39;n&#39;, &#39;no&#39;, &#39;f&#39;, &#39;false&#39;, &#39;off&#39;, and &#39;0&#39;.</span>
+
+<span class="sd">    Raises ValueError if &#39;val&#39; is anything else.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid truth value </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">val</span><span class="p">,))</span></div>
+
+
+
+<div class="viewcode-block" id="get_explorer_root_url_by_network_from_map">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.get_explorer_root_url_by_network_from_map">[docs]</a>
+<span class="k">def</span> <span class="nf">get_explorer_root_url_by_network_from_map</span><span class="p">(</span>
+    <span class="n">network</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">network_map</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the explorer root url for the given network name from the given network map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        network(str): The network to get the explorer url for.</span>
+<span class="sd">        network_map(Dict[str, str]): The network map to get the explorer url from.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The explorer url for the given network.</span>
+<span class="sd">        Or None if the network is not in the network map.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">explorer_urls</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">entity_nm</span><span class="p">,</span> <span class="n">entity_network_map</span> <span class="ow">in</span> <span class="n">network_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">entity_network_map</span><span class="p">:</span>
+            <span class="n">explorer_urls</span><span class="p">[</span><span class="n">entity_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">entity_network_map</span><span class="p">[</span><span class="n">network</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">explorer_urls</span></div>
+
+
+
+<div class="viewcode-block" id="get_explorer_url_for_network">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.get_explorer_url_for_network">[docs]</a>
+<span class="k">def</span> <span class="nf">get_explorer_url_for_network</span><span class="p">(</span>
+    <span class="n">network</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">network_map</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the explorer url for the given block hash and network.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        network(str): The network to get the explorer url for.</span>
+<span class="sd">        block_hash(str): The block hash to get the explorer url for.</span>
+<span class="sd">        network_map(Dict[str, Dict[str, str]]): The network maps to get the explorer urls from.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The explorer url for the given block hash and network.</span>
+<span class="sd">        Or None if the network is not known.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">explorer_urls</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Will be None if the network is not known. i.e. not in network_map</span>
+    <span class="n">explorer_root_urls</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">get_explorer_root_url_by_network_from_map</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">network_map</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">explorer_root_urls</span> <span class="o">!=</span> <span class="p">{}:</span>
+        <span class="c1"># We are on a known network.</span>
+        <span class="n">explorer_opentensor_url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{root_url}</span><span class="s2">/query/</span><span class="si">{block_hash}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">root_url</span><span class="o">=</span><span class="n">explorer_root_urls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;opentensor&quot;</span><span class="p">),</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span>
+        <span class="p">)</span>
+        <span class="n">explorer_taostats_url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{root_url}</span><span class="s2">/extrinsic/</span><span class="si">{block_hash}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">root_url</span><span class="o">=</span><span class="n">explorer_root_urls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;taostats&quot;</span><span class="p">),</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span>
+        <span class="p">)</span>
+        <span class="n">explorer_urls</span><span class="p">[</span><span class="s2">&quot;opentensor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">explorer_opentensor_url</span>
+        <span class="n">explorer_urls</span><span class="p">[</span><span class="s2">&quot;taostats&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">explorer_taostats_url</span>
+
+    <span class="k">return</span> <span class="n">explorer_urls</span></div>
+
+
+
+<div class="viewcode-block" id="ss58_address_to_bytes">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.ss58_address_to_bytes">[docs]</a>
+<span class="k">def</span> <span class="nf">ss58_address_to_bytes</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a ss58 address to a bytes object.&quot;&quot;&quot;</span>
+    <span class="n">account_id_hex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">scalecodec</span><span class="o">.</span><span class="n">ss58_decode</span><span class="p">(</span>
+        <span class="n">ss58_address</span><span class="p">,</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__ss58_format__</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">account_id_hex</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="U16_NORMALIZED_FLOAT">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.U16_NORMALIZED_FLOAT">[docs]</a>
+<span class="k">def</span> <span class="nf">U16_NORMALIZED_FLOAT</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">U16_MAX</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="U64_NORMALIZED_FLOAT">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.U64_NORMALIZED_FLOAT">[docs]</a>
+<span class="k">def</span> <span class="nf">U64_NORMALIZED_FLOAT</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">U64_MAX</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="u8_key_to_ss58">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.u8_key_to_ss58">[docs]</a>
+<span class="k">def</span> <span class="nf">u8_key_to_ss58</span><span class="p">(</span><span class="n">u8_key</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a u8-encoded account key to an ss58 address.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        u8_key (List[int]): The u8-encoded account key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># First byte is length, then 32 bytes of key.</span>
+    <span class="k">return</span> <span class="n">scalecodec</span><span class="o">.</span><span class="n">ss58_encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">u8_key</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__ss58_format__</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="hash">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.hash">[docs]</a>
+<span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+    <span class="n">sha3</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha3_256</span><span class="p">()</span>
+
+    <span class="c1"># Update the hash object with the concatenated string</span>
+    <span class="n">sha3</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">))</span>
+
+    <span class="c1"># Produce the hash</span>
+    <span class="k">return</span> <span class="n">sha3</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="format_error_message">
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.format_error_message">[docs]</a>
+<span class="k">def</span> <span class="nf">format_error_message</span><span class="p">(</span><span class="n">error_message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Formats an error message from the Subtensor error information to using in extrinsics.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        error_message (dict): A dictionary containing the error information from Subtensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A formatted error message string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">err_type</span> <span class="o">=</span> <span class="s2">&quot;UnknownType&quot;</span>
+    <span class="n">err_name</span> <span class="o">=</span> <span class="s2">&quot;UnknownError&quot;</span>
+    <span class="n">err_description</span> <span class="o">=</span> <span class="s2">&quot;Unknown Description&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error_message</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">err_type</span> <span class="o">=</span> <span class="n">error_message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">err_type</span><span class="p">)</span>
+        <span class="n">err_name</span> <span class="o">=</span> <span class="n">error_message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">err_name</span><span class="p">)</span>
+        <span class="n">err_docs</span> <span class="o">=</span> <span class="n">error_message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;docs&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">err_description</span> <span class="o">=</span> <span class="n">err_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">err_docs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">err_description</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Subtensor returned `</span><span class="si">{</span><span class="n">err_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">err_type</span><span class="si">}</span><span class="s2">)` error. This means: `</span><span class="si">{</span><span class="n">err_description</span><span class="si">}</span><span class="s2">`&quot;</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

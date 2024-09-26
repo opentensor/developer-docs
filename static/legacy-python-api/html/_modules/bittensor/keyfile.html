@@ -1,0 +1,1455 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.keyfile &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/keyfile';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/btlogging/index.html">bittensor.btlogging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/defines/index.html">bittensor.btlogging.defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/format/index.html">bittensor.btlogging.format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/helpers/index.html">bittensor.btlogging.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/btlogging/loggingmachine/index.html">bittensor.btlogging.loggingmachine</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/commands/index.html">bittensor.commands</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/check_coldkey_swap/index.html">bittensor.commands.check_coldkey_swap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/delegates/index.html">bittensor.commands.delegates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/identity/index.html">bittensor.commands.identity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/inspect/index.html">bittensor.commands.inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/list/index.html">bittensor.commands.list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/metagraph/index.html">bittensor.commands.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/misc/index.html">bittensor.commands.misc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/network/index.html">bittensor.commands.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/overview/index.html">bittensor.commands.overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/register/index.html">bittensor.commands.register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/root/index.html">bittensor.commands.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/senate/index.html">bittensor.commands.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/stake/index.html">bittensor.commands.stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/transfer/index.html">bittensor.commands.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/unstake/index.html">bittensor.commands.unstake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/utils/index.html">bittensor.commands.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/wallets/index.html">bittensor.commands.wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/commands/weights/index.html">bittensor.commands.weights</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/index.html">bittensor.extrinsics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/commit_weights/index.html">bittensor.extrinsics.commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/delegation/index.html">bittensor.extrinsics.delegation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/network/index.html">bittensor.extrinsics.network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/prometheus/index.html">bittensor.extrinsics.prometheus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/registration/index.html">bittensor.extrinsics.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/root/index.html">bittensor.extrinsics.root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/senate/index.html">bittensor.extrinsics.senate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/serving/index.html">bittensor.extrinsics.serving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/set_weights/index.html">bittensor.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/staking/index.html">bittensor.extrinsics.staking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/transfer/index.html">bittensor.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/extrinsics/unstaking/index.html">bittensor.extrinsics.unstaking</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/mock/index.html">bittensor.mock</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/keyfile_mock/index.html">bittensor.mock.keyfile_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/subtensor_mock/index.html">bittensor.mock.subtensor_mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/mock/wallet_mock/index.html">bittensor.mock.wallet_mock</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/_register_cuda/index.html">bittensor.utils._register_cuda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/subtensor/index.html">bittensor.utils.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/test_utils/index.html">bittensor.utils.test_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/wallet_utils/index.html">bittensor.utils.wallet_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/axon/index.html">bittensor.axon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/chain_data/index.html">bittensor.chain_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/cli/index.html">bittensor.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/config/index.html">bittensor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/constants/index.html">bittensor.constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/dendrite/index.html">bittensor.dendrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/errors/index.html">bittensor.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/keyfile/index.html">bittensor.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/metagraph/index.html">bittensor.metagraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/stream/index.html">bittensor.stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/subnets/index.html">bittensor.subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/subtensor/index.html">bittensor.subtensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/synapse/index.html">bittensor.synapse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/tensor/index.html">bittensor.tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/threadpool/index.html">bittensor.threadpool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/types/index.html">bittensor.types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/bittensor/wallet/index.html">bittensor.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/keyfile.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.keyfile</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2021 Yuma Rao</span>
+
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">stat</span>
+<span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">bittensor</span>
+<span class="kn">from</span> <span class="nn">bittensor.errors</span> <span class="kn">import</span> <span class="n">KeyFileError</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">ansible_vault</span> <span class="kn">import</span> <span class="n">Vault</span>
+<span class="kn">from</span> <span class="nn">ansible.parsing.vault</span> <span class="kn">import</span> <span class="n">AnsibleVaultError</span>
+<span class="kn">from</span> <span class="nn">cryptography.exceptions</span> <span class="kn">import</span> <span class="n">InvalidSignature</span><span class="p">,</span> <span class="n">InvalidKey</span>
+<span class="kn">from</span> <span class="nn">cryptography.fernet</span> <span class="kn">import</span> <span class="n">Fernet</span><span class="p">,</span> <span class="n">InvalidToken</span>
+<span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives</span> <span class="kn">import</span> <span class="n">hashes</span>
+<span class="kn">from</span> <span class="nn">cryptography.hazmat.backends</span> <span class="kn">import</span> <span class="n">default_backend</span>
+<span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives.kdf.pbkdf2</span> <span class="kn">import</span> <span class="n">PBKDF2HMAC</span>
+<span class="kn">from</span> <span class="nn">nacl</span> <span class="kn">import</span> <span class="n">pwhash</span><span class="p">,</span> <span class="n">secret</span>
+<span class="kn">from</span> <span class="nn">nacl.exceptions</span> <span class="kn">import</span> <span class="n">CryptoError</span>
+<span class="kn">from</span> <span class="nn">password_strength</span> <span class="kn">import</span> <span class="n">PasswordPolicy</span>
+<span class="kn">from</span> <span class="nn">substrateinterface.utils.ss58</span> <span class="kn">import</span> <span class="n">ss58_encode</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">colored</span>
+<span class="kn">from</span> <span class="nn">rich.prompt</span> <span class="kn">import</span> <span class="n">Confirm</span>
+
+
+<span class="n">NACL_SALT</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x13</span><span class="s2">q</span><span class="se">\x83\xdf\xf1</span><span class="s2">Z</span><span class="se">\t\xbc\x9c\x90\xb5</span><span class="s2">Q</span><span class="se">\x87</span><span class="s2">9</span><span class="se">\xe9\xb1</span><span class="s2">&quot;</span>
+
+
+<div class="viewcode-block" id="serialized_keypair_to_keyfile_data">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.serialized_keypair_to_keyfile_data">[docs]</a>
+<span class="k">def</span> <span class="nf">serialized_keypair_to_keyfile_data</span><span class="p">(</span><span class="n">keypair</span><span class="p">:</span> <span class="s2">&quot;bittensor.Keypair&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Serializes keypair object into keyfile data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keypair (bittensor.Keypair): The keypair object to be serialized.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        data (bytes): Serialized keypair data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">keypair</span><span class="o">.</span><span class="n">public_key</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span> <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">public_key</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;publicKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">keypair</span><span class="o">.</span><span class="n">public_key</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span> <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">public_key</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">keypair</span><span class="o">.</span><span class="n">private_key</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span> <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">private_key</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;secretPhrase&quot;</span><span class="p">:</span> <span class="n">keypair</span><span class="o">.</span><span class="n">mnemonic</span> <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">mnemonic</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;secretSeed&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s2">&quot;0x&quot;</span>
+            <span class="o">+</span> <span class="p">(</span>
+                <span class="n">keypair</span><span class="o">.</span><span class="n">seed_hex</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keypair</span><span class="o">.</span><span class="n">seed_hex</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">keypair</span><span class="o">.</span><span class="n">seed_hex</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">seed_hex</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;ss58Address&quot;</span><span class="p">:</span> <span class="n">keypair</span><span class="o">.</span><span class="n">ss58_address</span> <span class="k">if</span> <span class="n">keypair</span><span class="o">.</span><span class="n">ss58_address</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<div class="viewcode-block" id="deserialize_keypair_from_keyfile_data">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.deserialize_keypair_from_keyfile_data">[docs]</a>
+<span class="k">def</span> <span class="nf">deserialize_keypair_from_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;bittensor.Keypair&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deserializes Keypair object from passed keyfile data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The keyfile data as bytes to be loaded.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        keypair (bittensor.Keypair): The Keypair loaded from bytes.</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        KeyFileError: Raised if the passed bytes cannot construct a keypair object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">keyfile_data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">keyfile_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">string_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">string_value</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0x&quot;</span><span class="p">:</span>
+            <span class="n">string_value</span> <span class="o">=</span> <span class="n">ss58_encode</span><span class="p">(</span><span class="n">string_value</span><span class="p">)</span>
+            <span class="n">keyfile_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;publicKey&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;privateKey&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;secretPhrase&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;secretSeed&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;ss58Address&quot;</span><span class="p">:</span> <span class="n">string_value</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keypair could not be created from keyfile data: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">string_value</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;secretSeed&quot;</span> <span class="ow">in</span> <span class="n">keyfile_dict</span> <span class="ow">and</span> <span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;secretSeed&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">Keypair</span><span class="o">.</span><span class="n">create_from_seed</span><span class="p">(</span><span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;secretSeed&quot;</span><span class="p">])</span>
+
+    <span class="k">elif</span> <span class="s2">&quot;secretPhrase&quot;</span> <span class="ow">in</span> <span class="n">keyfile_dict</span> <span class="ow">and</span> <span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;secretPhrase&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">Keypair</span><span class="o">.</span><span class="n">create_from_mnemonic</span><span class="p">(</span>
+            <span class="n">mnemonic</span><span class="o">=</span><span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;secretPhrase&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">keyfile_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;privateKey&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># May have the above dict keys also, but we want to preserve the first two</span>
+        <span class="k">return</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">Keypair</span><span class="o">.</span><span class="n">create_from_private_key</span><span class="p">(</span>
+            <span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;privateKey&quot;</span><span class="p">],</span> <span class="n">ss58_format</span><span class="o">=</span><span class="n">bittensor</span><span class="o">.</span><span class="n">__ss58_format__</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;ss58Address&quot;</span> <span class="ow">in</span> <span class="n">keyfile_dict</span> <span class="ow">and</span> <span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;ss58Address&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">Keypair</span><span class="p">(</span><span class="n">ss58_address</span><span class="o">=</span><span class="n">keyfile_dict</span><span class="p">[</span><span class="s2">&quot;ss58Address&quot;</span><span class="p">])</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+            <span class="s2">&quot;Keypair could not be created from keyfile data: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keyfile_dict</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="validate_password">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.validate_password">[docs]</a>
+<span class="k">def</span> <span class="nf">validate_password</span><span class="p">(</span><span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates the password against a password policy.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        password (str): The password to verify.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        valid (bool): ``True`` if the password meets validity requirements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">policy</span> <span class="o">=</span> <span class="n">PasswordPolicy</span><span class="o">.</span><span class="n">from_names</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">entropybits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">password</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">tested_pass</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="n">password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">tested_pass</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="n">colored</span><span class="p">(</span>
+                <span class="s2">&quot;Password not strong enough. Try increasing the length of the password or the password complexity&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">password_verification</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Retype your password: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">password</span> <span class="o">!=</span> <span class="n">password_verification</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Passwords do not match&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="ask_password_to_encrypt">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.ask_password_to_encrypt">[docs]</a>
+<span class="k">def</span> <span class="nf">ask_password_to_encrypt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prompts the user to enter a password for key encryption.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        password (str): The valid password entered by the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Specify password for key encryption: &quot;</span><span class="p">)</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="n">validate_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">password</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile_data_is_encrypted_nacl">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile_data_is_encrypted_nacl">[docs]</a>
+<span class="k">def</span> <span class="nf">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns true if the keyfile data is NaCl encrypted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data ( bytes, required ):</span>
+<span class="sd">            Bytes to validate.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        is_nacl (bool):</span>
+<span class="sd">            ``True`` if data is ansible encrypted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">keyfile_data</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;$NACL&quot;</span><span class="p">)]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;$NACL&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile_data_is_encrypted_ansible">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile_data_is_encrypted_ansible">[docs]</a>
+<span class="k">def</span> <span class="nf">keyfile_data_is_encrypted_ansible</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns true if the keyfile data is ansible encrypted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The bytes to validate.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        is_ansible (bool): True if the data is ansible encrypted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">keyfile_data</span><span class="p">[:</span><span class="mi">14</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;$ANSIBLE_VAULT&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile_data_is_encrypted_legacy">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile_data_is_encrypted_legacy">[docs]</a>
+<span class="k">def</span> <span class="nf">keyfile_data_is_encrypted_legacy</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns true if the keyfile data is legacy encrypted.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The bytes to validate.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        is_legacy (bool): ``True`` if the data is legacy encrypted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">keyfile_data</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;gAAAAA&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile_data_is_encrypted">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile_data_is_encrypted">[docs]</a>
+<span class="k">def</span> <span class="nf">keyfile_data_is_encrypted</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns ``true`` if the keyfile data is encrypted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The bytes to validate.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        is_encrypted (bool): ``True`` if the data is encrypted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="n">keyfile_data_is_encrypted_ansible</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="n">keyfile_data_is_encrypted_legacy</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile_data_encryption_method">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile_data_encryption_method">[docs]</a>
+<span class="k">def</span> <span class="nf">keyfile_data_encryption_method</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns ``true`` if the keyfile data is encrypted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data ( bytes, required ):</span>
+<span class="sd">            Bytes to validate</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        encryption_method (bool):</span>
+<span class="sd">            ``True`` if data is encrypted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;NaCl&quot;</span>
+    <span class="k">elif</span> <span class="n">keyfile_data_is_encrypted_ansible</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Ansible Vault&quot;</span>
+    <span class="k">elif</span> <span class="n">keyfile_data_is_encrypted_legacy</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;legacy&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="legacy_encrypt_keyfile_data">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.legacy_encrypt_keyfile_data">[docs]</a>
+<span class="k">def</span> <span class="nf">legacy_encrypt_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">ask_password_to_encrypt</span><span class="p">()</span> <span class="k">if</span> <span class="n">password</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">password</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span>
+    <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span>
+        <span class="s2">&quot;:exclamation_mark: Encrypting key with legacy encrpytion method...&quot;</span>
+    <span class="p">):</span>
+        <span class="n">vault</span> <span class="o">=</span> <span class="n">Vault</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vault</span><span class="o">.</span><span class="n">vault</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="encrypt_keyfile_data">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.encrypt_keyfile_data">[docs]</a>
+<span class="k">def</span> <span class="nf">encrypt_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Encrypts the passed keyfile data using ansible vault.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The bytes to encrypt.</span>
+<span class="sd">        password (str, optional): The password used to encrypt the data. If ``None``, asks for user input.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        encrypted_data (bytes): The encrypted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">ask_password_to_encrypt</span><span class="p">()</span> <span class="k">if</span> <span class="n">password</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">password</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">kdf</span> <span class="o">=</span> <span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">kdf</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">kdf</span><span class="p">(</span>
+        <span class="n">secret</span><span class="o">.</span><span class="n">SecretBox</span><span class="o">.</span><span class="n">KEY_SIZE</span><span class="p">,</span>
+        <span class="n">password</span><span class="p">,</span>
+        <span class="n">NACL_SALT</span><span class="p">,</span>
+        <span class="n">opslimit</span><span class="o">=</span><span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">OPSLIMIT_SENSITIVE</span><span class="p">,</span>
+        <span class="n">memlimit</span><span class="o">=</span><span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">MEMLIMIT_SENSITIVE</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">SecretBox</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">encrypted</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;$NACL&quot;</span> <span class="o">+</span> <span class="n">encrypted</span></div>
+
+
+
+<div class="viewcode-block" id="get_coldkey_password_from_environment">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.get_coldkey_password_from_environment">[docs]</a>
+<span class="k">def</span> <span class="nf">get_coldkey_password_from_environment</span><span class="p">(</span><span class="n">coldkey_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieves the cold key password from the environment variables.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        coldkey_name (str): The name of the cold key.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        password (str): The password retrieved from the environment variables, or ``None`` if not found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">envs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">normalized_env_name</span><span class="p">:</span> <span class="n">env_value</span>
+        <span class="k">for</span> <span class="n">env_name</span><span class="p">,</span> <span class="n">env_value</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">normalized_env_name</span> <span class="o">:=</span> <span class="n">env_name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;BT_COLD_PW_&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">envs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BT_COLD_PW_</span><span class="si">{</span><span class="n">coldkey_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="decrypt_keyfile_data">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.decrypt_keyfile_data">[docs]</a>
+<span class="k">def</span> <span class="nf">decrypt_keyfile_data</span><span class="p">(</span>
+    <span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">coldkey_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decrypts the passed keyfile data using ansible vault.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        keyfile_data (bytes): The bytes to decrypt.</span>
+<span class="sd">        password (str, optional): The password used to decrypt the data. If ``None``, asks for user input.</span>
+<span class="sd">        coldkey_name (str, optional): The name of the cold key. If provided, retrieves the password from environment variables.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        decrypted_data (bytes): The decrypted data.</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        KeyFileError: Raised if the file is corrupted or if the password is incorrect.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">coldkey_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">password</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">get_coldkey_password_from_environment</span><span class="p">(</span><span class="n">coldkey_name</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter password to unlock key: &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">password</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">password</span>
+        <span class="p">)</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span>
+        <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;:key: Decrypting key...&quot;</span><span class="p">):</span>
+            <span class="c1"># NaCl SecretBox decrypt.</span>
+            <span class="k">if</span> <span class="n">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="n">password</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+                <span class="n">kdf</span> <span class="o">=</span> <span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">kdf</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">kdf</span><span class="p">(</span>
+                    <span class="n">secret</span><span class="o">.</span><span class="n">SecretBox</span><span class="o">.</span><span class="n">KEY_SIZE</span><span class="p">,</span>
+                    <span class="n">password</span><span class="p">,</span>
+                    <span class="n">NACL_SALT</span><span class="p">,</span>
+                    <span class="n">opslimit</span><span class="o">=</span><span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">OPSLIMIT_SENSITIVE</span><span class="p">,</span>
+                    <span class="n">memlimit</span><span class="o">=</span><span class="n">pwhash</span><span class="o">.</span><span class="n">argon2i</span><span class="o">.</span><span class="n">MEMLIMIT_SENSITIVE</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">box</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">SecretBox</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;$NACL&quot;</span><span class="p">)</span> <span class="p">:])</span>
+                <span class="k">except</span> <span class="n">CryptoError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span><span class="s2">&quot;Invalid password&quot;</span><span class="p">)</span>
+            <span class="c1"># Ansible decrypt.</span>
+            <span class="k">elif</span> <span class="n">keyfile_data_is_encrypted_ansible</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="n">vault</span> <span class="o">=</span> <span class="n">Vault</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">vault</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">AnsibleVaultError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span><span class="s2">&quot;Invalid password&quot;</span><span class="p">)</span>
+            <span class="c1"># Legacy decrypt.</span>
+            <span class="k">elif</span> <span class="n">keyfile_data_is_encrypted_legacy</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="n">__SALT</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">b</span><span class="s2">&quot;Iguesscyborgslikemyselfhaveatendencytobeparanoidaboutourorigins&quot;</span>
+                <span class="p">)</span>
+                <span class="n">kdf</span> <span class="o">=</span> <span class="n">PBKDF2HMAC</span><span class="p">(</span>
+                    <span class="n">algorithm</span><span class="o">=</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">(),</span>
+                    <span class="n">salt</span><span class="o">=</span><span class="n">__SALT</span><span class="p">,</span>
+                    <span class="n">length</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+                    <span class="n">iterations</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span>
+                    <span class="n">backend</span><span class="o">=</span><span class="n">default_backend</span><span class="p">(),</span>
+                <span class="p">)</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">kdf</span><span class="o">.</span><span class="n">derive</span><span class="p">(</span><span class="n">password</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>
+                <span class="n">cipher_suite</span> <span class="o">=</span> <span class="n">Fernet</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">cipher_suite</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+            <span class="c1"># Unknown.</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                    <span class="s2">&quot;keyfile data: </span><span class="si">{}</span><span class="s2"> is corrupt&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">InvalidSignature</span><span class="p">,</span> <span class="n">InvalidKey</span><span class="p">,</span> <span class="n">InvalidToken</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span><span class="s2">&quot;Invalid password&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">decrypted_keyfile_data</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">decrypted_keyfile_data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">decrypted_keyfile_data</span></div>
+
+
+
+<div class="viewcode-block" id="keyfile">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile">[docs]</a>
+<span class="k">class</span> <span class="nc">keyfile</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Defines an interface for a substrate interface keypair stored on device.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">stem</span>
+
+<div class="viewcode-block" id="keyfile.__str__">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.__str__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;keyfile (empty, </span><span class="si">{}</span><span class="s2">)&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_encrypted</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;Keyfile (</span><span class="si">{}</span><span class="s2"> encrypted, </span><span class="si">{}</span><span class="s2">)&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">keyfile_data_encryption_method</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;keyfile (decrypted, </span><span class="si">{}</span><span class="s2">)&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile.__repr__">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.__repr__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">keypair</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;bittensor.Keypair&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the keypair from path, decrypts data if the file is encrypted.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            keypair (bittensor.Keypair): The keypair stored under the path.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_keypair</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the keyfile data under path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            keyfile_data (bytes): The keyfile data stored under the path.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, or writable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">keyfile_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the keyfile data under path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            keyfile_data (bytes): The keyfile data stored under the path.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, or writable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+
+<div class="viewcode-block" id="keyfile.set_keypair">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.set_keypair">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_keypair</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">keypair</span><span class="p">:</span> <span class="s2">&quot;bittensor.Keypair&quot;</span><span class="p">,</span>
+        <span class="n">encrypt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the keypair to the file and optionally encrypts data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keypair (bittensor.Keypair): The keypair to store under the path.</span>
+<span class="sd">            encrypt (bool, optional): If ``True``, encrypts the file under the path. Default is ``True``.</span>
+<span class="sd">            overwrite (bool, optional): If ``True``, forces overwrite of the current file. Default is ``False``.</span>
+<span class="sd">            password (str, optional): The password used to encrypt the file. If ``None``, asks for user input.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, writable, or if the password is incorrect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_dirs</span><span class="p">()</span>
+        <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">serialized_keypair_to_keyfile_data</span><span class="p">(</span><span class="n">keypair</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">encrypt</span><span class="p">:</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">encrypt_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_keyfile_data_to_file</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile.get_keypair">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.get_keypair">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_keypair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;bittensor.Keypair&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the keypair from the path, decrypts data if the file is encrypted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): The password used to decrypt the file. If ``None``, asks for user input.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            keypair (bittensor.Keypair): The keypair stored under the path.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">keyfile_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+            <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">decrypt_keyfile_data</span><span class="p">(</span>
+                <span class="n">keyfile_data</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">coldkey_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">keyfile_data</span>
+        <span class="k">return</span> <span class="n">deserialize_keypair_from_keyfile_data</span><span class="p">(</span><span class="n">decrypted_keyfile_data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile.make_dirs">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.make_dirs">[docs]</a>
+    <span class="k">def</span> <span class="nf">make_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates directories for the path if they do not exist.&quot;&quot;&quot;</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile.exists_on_device">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.exists_on_device">[docs]</a>
+    <span class="k">def</span> <span class="nf">exists_on_device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if the file exists on the device.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            on_device (bool): ``True`` if the file is on the device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="keyfile.is_readable">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.is_readable">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_readable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if the file under path is readable.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            readable (bool): ``True`` if the file is readable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">R_OK</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="keyfile.is_writable">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.is_writable">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_writable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if the file under path is writable.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            writable (bool): ``True`` if the file is writable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">W_OK</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="keyfile.is_encrypted">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.is_encrypted">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_encrypted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ``True`` if the file under path is encrypted.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            encrypted (bool): ``True`` if the file is encrypted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_readable</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="keyfile._may_overwrite">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile._may_overwrite">[docs]</a>
+    <span class="k">def</span> <span class="nf">_may_overwrite</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asks the user if it is okay to overwrite the file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            may_overwrite (bool): ``True`` if the user allows overwriting the file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;File </span><span class="si">{}</span><span class="s2"> already exists. Overwrite? (y/N) &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span></div>
+
+
+<div class="viewcode-block" id="keyfile.check_and_update_encryption">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.check_and_update_encryption">[docs]</a>
+    <span class="k">def</span> <span class="nf">check_and_update_encryption</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">print_result</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">no_prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check the version of keyfile and update if needed.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            print_result (bool):</span>
+<span class="sd">                Print the checking result or not.</span>
+<span class="sd">            no_prompt (bool):</span>
+<span class="sd">                Skip if no prompt.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError:</span>
+<span class="sd">                Raised if the file does not exists, is not readable, writable.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            result (bool):</span>
+<span class="sd">                Return ``True`` if the keyfile is the most updated with nacl, else ``False``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Keyfile does not exist. </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_readable</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Keyfile is not redable. </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_writable</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Keyfile is not writable. </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">update_keyfile</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">no_prompt</span><span class="p">:</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+
+            <span class="c1"># If the key is not nacl encrypted.</span>
+            <span class="k">if</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span>
+                <span class="n">keyfile_data</span>
+            <span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="n">terminate</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;You may update the keyfile to improve the security for storing your keys.</span><span class="se">\n</span><span class="s2">While the key and the password stays the same, it would require providing your password once.</span><span class="se">\n</span><span class="s2">:key:</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="n">update_keyfile</span> <span class="o">=</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Update keyfile?&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">update_keyfile</span><span class="p">:</span>
+                    <span class="n">stored_mnemonic</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">while</span> <span class="ow">not</span> <span class="n">stored_mnemonic</span><span class="p">:</span>
+                        <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Please make sure you have the mnemonic stored in case an error occurs during the transfer.&quot;</span><span class="p">,</span>
+                            <span class="n">style</span><span class="o">=</span><span class="s2">&quot;white on red&quot;</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">stored_mnemonic</span> <span class="o">=</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Have you stored the mnemonic?&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">stored_mnemonic</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                            <span class="s2">&quot;You must proceed with a stored mnemonic, retry and continue this keyfile update?&quot;</span>
+                        <span class="p">):</span>
+                            <span class="n">terminate</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+
+                    <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="k">while</span> <span class="n">decrypted_keyfile_data</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">terminate</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span>
+                                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter password to update keyfile: &quot;</span>
+                            <span class="p">)</span>
+                            <span class="n">decrypted_keyfile_data</span> <span class="o">=</span> <span class="n">decrypt_keyfile_data</span><span class="p">(</span>
+                                <span class="n">keyfile_data</span><span class="p">,</span> <span class="n">coldkey_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span>
+                            <span class="p">)</span>
+                        <span class="k">except</span> <span class="n">KeyFileError</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+                                <span class="s2">&quot;Invalid password, retry and continue this keyfile update?&quot;</span>
+                            <span class="p">):</span>
+                                <span class="n">terminate</span> <span class="o">=</span> <span class="kc">True</span>
+                                <span class="k">break</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">terminate</span><span class="p">:</span>
+                        <span class="n">encrypted_keyfile_data</span> <span class="o">=</span> <span class="n">encrypt_keyfile_data</span><span class="p">(</span>
+                            <span class="n">decrypted_keyfile_data</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span>
+                        <span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_write_keyfile_data_to_file</span><span class="p">(</span>
+                            <span class="n">encrypted_keyfile_data</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span>
+                        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">print_result</span> <span class="ow">or</span> <span class="n">update_keyfile</span><span class="p">:</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                    <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Keyfile is not encrypted. </span><span class="se">\n</span><span class="s2">:key: </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">elif</span> <span class="n">keyfile_data_is_encrypted_nacl</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                    <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">:white_heavy_check_mark: Keyfile is updated. </span><span class="se">\n</span><span class="s2">:key: </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+                    <span class="n">bittensor</span><span class="o">.</span><span class="n">__console__</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">:cross_mark: Keyfile is outdated, please update with &quot;btcli wallet update&quot; </span><span class="se">\n</span><span class="s1">:key: </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s1">&#39;</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="keyfile.encrypt">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.encrypt">[docs]</a>
+    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Encrypts the file under the path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): The password for encryption. If ``None``, asks for user input.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, or writable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_readable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not readable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_writable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not writable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">keyfile_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+            <span class="n">as_keypair</span> <span class="o">=</span> <span class="n">deserialize_keypair_from_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">serialized_keypair_to_keyfile_data</span><span class="p">(</span><span class="n">as_keypair</span><span class="p">)</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">encrypt_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_keyfile_data_to_file</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile.decrypt">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile.decrypt">[docs]</a>
+    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decrypts the file under the path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): The password for decryption. If ``None``, asks for user input.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist, is not readable, writable, corrupted, or if the password is incorrect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_readable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not readable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_writable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not writable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">keyfile_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_keyfile_data_from_file</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">keyfile_data_is_encrypted</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">):</span>
+            <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">decrypt_keyfile_data</span><span class="p">(</span>
+                <span class="n">keyfile_data</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">coldkey_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">)</span>
+        <span class="n">as_keypair</span> <span class="o">=</span> <span class="n">deserialize_keypair_from_keyfile_data</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+        <span class="n">keyfile_data</span> <span class="o">=</span> <span class="n">serialized_keypair_to_keyfile_data</span><span class="p">(</span><span class="n">as_keypair</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_keyfile_data_to_file</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="keyfile._read_keyfile_data_from_file">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile._read_keyfile_data_from_file">[docs]</a>
+    <span class="k">def</span> <span class="nf">_read_keyfile_data_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads the keyfile data from the file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            keyfile_data (bytes): The keyfile data stored under the path.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file does not exist or is not readable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_readable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not readable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="keyfile._write_keyfile_data_to_file">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.keyfile._write_keyfile_data_to_file">[docs]</a>
+    <span class="k">def</span> <span class="nf">_write_keyfile_data_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyfile_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Writes the keyfile data to the file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keyfile_data (bytes): The byte data to store under the path.</span>
+<span class="sd">            overwrite (bool, optional): If ``True``, overwrites the data without asking for permission from the user. Default is ``False``.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyFileError: Raised if the file is not writable or the user responds No to the overwrite prompt.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check overwrite.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exists_on_device</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_may_overwrite</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">bittensor</span><span class="o">.</span><span class="n">KeyFileError</span><span class="p">(</span>
+                    <span class="s2">&quot;Keyfile at: </span><span class="si">{}</span><span class="s2"> is not writable&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">keyfile</span><span class="p">:</span>
+            <span class="n">keyfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">keyfile_data</span><span class="p">)</span>
+        <span class="c1"># Set file permissions.</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWUSR</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Mockkeyfile">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile">[docs]</a>
+<span class="k">class</span> <span class="nc">Mockkeyfile</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Mockkeyfile is a mock object representing a keyfile that does not exist on the device.</span>
+
+<span class="sd">    It is designed for use in testing scenarios and simulations where actual filesystem operations are not required.</span>
+<span class="sd">    The keypair stored in the Mockkeyfile is treated as non-encrypted and the data is stored as a serialized string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes a Mockkeyfile object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path (str): The path of the mock keyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mock_keypair</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mock_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Mockkeyfile.__str__">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.__str__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a string representation of the Mockkeyfile. The representation will indicate if the keyfile is empty, encrypted, or decrypted.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The string representation of the Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Mockkeyfile(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.__repr__">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.__repr__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a string representation of the Mockkeyfile, same as :func:`__str__()`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The string representation of the Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">keypair</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the mock keypair stored in the keyfile.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bittensor.Keypair: The mock keypair.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mock_keypair</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the serialized keypair data stored in the keyfile.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bytes: The serialized keypair data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mock_data</span>
+
+<div class="viewcode-block" id="Mockkeyfile.set_keypair">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.set_keypair">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_keypair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keypair</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the mock keypair in the keyfile. The ``encrypt`` and ``overwrite`` parameters are ignored.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            keypair (bittensor.Keypair): The mock keypair to be set.</span>
+<span class="sd">            encrypt (bool, optional): Ignored in this context. Defaults to ``True``.</span>
+<span class="sd">            overwrite (bool, optional): Ignored in this context. Defaults to ``False``.</span>
+<span class="sd">            password (str, optional): Ignored in this context. Defaults to ``None``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mock_keypair</span> <span class="o">=</span> <span class="n">keypair</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mock_data</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># You may need to serialize the keypair here</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.get_keypair">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.get_keypair">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_keypair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the mock keypair stored in the keyfile. The ``password`` parameter is ignored.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): Ignored in this context. Defaults to ``None``.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bittensor.Keypair: The mock keypair stored in the keyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mock_keypair</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.make_dirs">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.make_dirs">[docs]</a>
+    <span class="k">def</span> <span class="nf">make_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates the directories for the mock keyfile. Does nothing in this class, since no actual filesystem operations are needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.exists_on_device">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.exists_on_device">[docs]</a>
+    <span class="k">def</span> <span class="nf">exists_on_device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns ``True`` indicating that the mock keyfile exists on the device (although it is not created on the actual file system).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Always returns ``True`` for Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.is_readable">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.is_readable">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_readable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns ``True`` indicating that the mock keyfile is readable (although it is not read from the actual file system).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Always returns ``True`` for Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.is_writable">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.is_writable">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_writable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns ``True`` indicating that the mock keyfile is writable (although it is not written to the actual file system).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Always returns ``True`` for Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.is_encrypted">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.is_encrypted">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_encrypted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns ``False`` indicating that the mock keyfile is not encrypted.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Always returns ``False`` for Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.encrypt">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.encrypt">[docs]</a>
+    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Raises a ValueError since encryption is not supported for the mock keyfile.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): Ignored in this context. Defaults to ``None``.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: Always raises this exception for Mockkeyfile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot encrypt a Mockkeyfile&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.decrypt">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.decrypt">[docs]</a>
+    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns without doing anything since the mock keyfile is not encrypted.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            password (str, optional): Ignored in this context. Defaults to ``None``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Mockkeyfile.check_and_update_encryption">
+<a class="viewcode-back" href="../../autoapi/bittensor/keyfile/index.html#bittensor.Mockkeyfile.check_and_update_encryption">[docs]</a>
+    <span class="k">def</span> <span class="nf">check_and_update_encryption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_prompt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">print_result</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
