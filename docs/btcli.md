@@ -64,6 +64,10 @@ metagraph_cols:
   VTRUST: true
 ```
 
+:::caution alert
+If both `chain` and `network` config values are present in the `config.yml`, then `chain` has the higher precedence. The the `btcli` command uses the `chain` value.
+:::
+
 **Usage**:
 
 ```console
@@ -158,6 +162,10 @@ $ btcli config set [OPTIONS]
 - `--chain, --subtensor.chain_endpoint TEXT`: The subtensor chain endpoint to connect to.
 - `--cache, --cache / --no-cache, --no_cache`: Disable caching of certain commands. This will disable the `--reuse-last` and `html` flags on commands such as `subnets metagraph`, `stake show` and `subnets list`. [default: no-cache].
 - `--help`: Show this message and exit.
+
+:::caution alert
+If both `chain` and `network` config values are present in the `config.yml`, then `chain` has the higher precedence. The the `btcli` command uses the `chain` value.
+:::
 
 ---
 

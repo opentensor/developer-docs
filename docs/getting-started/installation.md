@@ -16,7 +16,7 @@ python3 -m pip install --upgrade bittensor
 
 ## Install on macOS and Linux
 
-You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**:
+You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**.
 - [Install using a Bash command](#install-using-a-bash-command).
 - [Install from source](#install-from-source)
 
