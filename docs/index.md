@@ -184,6 +184,10 @@ Ready to run your own subnet? Follow the below links.
 
 Use the Bittensor CLI and Bittensor SDK to develop and participate in the Bittensor network.
 
+:::caution looking for legacy bittensor 7.4.0 docs?
+See [Legacy Bittensor 7.4.0 Documentation](pathname:///legacy-python-api/html/index.html).
+:::
+
 <Cards>
     <Card 
     icon={GoCommandPalette}
