@@ -4,11 +4,11 @@ title: "Install BTCLI"
 
 # Install BTCLI
 
-Before you can start developing, you must install BTCLI and then create Bittensor wallet.
+Before you can start developing, you must install `btcli` and then create Bittensor wallet.
 
 ## Install on macOS and Linux
 
-You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**:
+You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**.
 
 ### Install from source
 :::warning For Ubuntu-Linux users
@@ -103,6 +103,10 @@ metagraph_cols:
   VAL: true
   VTRUST: true
 ```
+
+:::caution alert
+If both `chain` and `network` config values are present in the `config.yml`, then `chain` has the higher precedence. The the `btcli` command uses the `chain` value.
+:::
 
 **For more help:**
 
