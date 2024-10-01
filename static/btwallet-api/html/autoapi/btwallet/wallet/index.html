@@ -1,0 +1,1372 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>btwallet.wallet &#8212; BTCLI Docs 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/btwallet/wallet/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="bittensor_wallet" href="../../bittensor_wallet/index.html" />
+    <link rel="prev" title="btwallet.utils" href="../utils/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">btwallet</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../config/index.html">btwallet.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../errors/index.html">btwallet.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../keyfile/index.html">btwallet.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/index.html">btwallet.utils</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">btwallet.wallet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../bittensor_wallet/index.html">bittensor_wallet</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../bittensor_wallet/errors/index.html">bittensor_wallet.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bittensor_wallet/keyfile/index.html">bittensor_wallet.keyfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bittensor_wallet/utils/index.html">bittensor_wallet.utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bittensor_wallet/wallet/index.html">bittensor_wallet.wallet</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/blob/main/autoapi/btwallet/wallet/index.rst?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2Fautoapi/btwallet/wallet/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/autoapi/btwallet/wallet/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>btwallet.wallet</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.BT_WALLET_NAME"><code class="docutils literal notranslate"><span class="pre">BT_WALLET_NAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.BT_WALLET_PATH"><code class="docutils literal notranslate"><span class="pre">BT_WALLET_PATH</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet"><code class="docutils literal notranslate"><span class="pre">Wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.config"><code class="docutils literal notranslate"><span class="pre">Wallet.config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.name"><code class="docutils literal notranslate"><span class="pre">Wallet.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.path"><code class="docutils literal notranslate"><span class="pre">Wallet.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey_str"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey_str</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet._hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet._coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet._coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.__str__"><code class="docutils literal notranslate"><span class="pre">Wallet.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.__repr__"><code class="docutils literal notranslate"><span class="pre">Wallet.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.help"><code class="docutils literal notranslate"><span class="pre">Wallet.help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.add_args"><code class="docutils literal notranslate"><span class="pre">Wallet.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_if_non_existent"><code class="docutils literal notranslate"><span class="pre">Wallet.create_if_non_existent()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create"><code class="docutils literal notranslate"><span class="pre">Wallet.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.recreate"><code class="docutils literal notranslate"><span class="pre">Wallet.recreate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkey_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkeypub_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.set_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.set_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.set_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.get_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.get_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.get_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_coldkey_from_uri"><code class="docutils literal notranslate"><span class="pre">Wallet.create_coldkey_from_uri()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_hotkey_from_uri"><code class="docutils literal notranslate"><span class="pre">Wallet.create_hotkey_from_uri()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.new_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.new_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_new_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.create_new_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.new_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.new_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_new_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.create_new_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_hotkey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-btwallet.wallet">
+<span id="btwallet-wallet"></span><h1>btwallet.wallet<a class="headerlink" href="#module-btwallet.wallet" title="Link to this heading">#</a></h1>
+<p>Implementation of the wallet class, which manages balances with staking and transfer. Also manages hotkey and coldkey.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#btwallet.wallet.BT_WALLET_NAME" title="btwallet.wallet.BT_WALLET_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BT_WALLET_NAME</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#btwallet.wallet.BT_WALLET_PATH" title="btwallet.wallet.BT_WALLET_PATH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BT_WALLET_PATH</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wallet</span></code></a></p></td>
+<td><p>The wallet class in the Bittensor framework handles wallet functionality, crucial for participating in the Bittensor network.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#btwallet.wallet.display_mnemonic_msg" title="btwallet.wallet.display_mnemonic_msg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_mnemonic_msg</span></code></a>(keypair, key_type)</p></td>
+<td><p>Display the mnemonic and a warning message to keep the mnemonic safe.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="btwallet.wallet.BT_WALLET_NAME">
+<span class="sig-prename descclassname"><span class="pre">btwallet.wallet.</span></span><span class="sig-name descname"><span class="pre">BT_WALLET_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></em><a class="headerlink" href="#btwallet.wallet.BT_WALLET_NAME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="btwallet.wallet.BT_WALLET_PATH">
+<span class="sig-prename descclassname"><span class="pre">btwallet.wallet.</span></span><span class="sig-name descname"><span class="pre">BT_WALLET_PATH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'~/.bittensor/wallets/'</span></em><a class="headerlink" href="#btwallet.wallet.BT_WALLET_PATH" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="btwallet.wallet.display_mnemonic_msg">
+<span class="sig-prename descclassname"><span class="pre">btwallet.wallet.</span></span><span class="sig-name descname"><span class="pre">display_mnemonic_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.display_mnemonic_msg" title="Link to this definition">#</a></dt>
+<dd><p>Display the mnemonic and a warning message to keep the mnemonic safe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>Keypair</em>) – Keypair object.</p></li>
+<li><p><strong>key_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Type of the key (coldkey or hotkey).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">btwallet.wallet.</span></span><span class="sig-name descname"><span class="pre">Wallet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet" title="Link to this definition">#</a></dt>
+<dd><p>The wallet class in the Bittensor framework handles wallet functionality, crucial for participating in the Bittensor network.</p>
+<p>It manages two types of keys: coldkey and hotkey, each serving different purposes in network operations. Each wallet contains a coldkey and a hotkey.</p>
+<p>The coldkey is the user’s primary key for holding stake in their wallet and is the only way that users
+can access Tao. Coldkeys can hold tokens and should be encrypted on your device.</p>
+<p>The coldkey is the primary key used for securing the wallet’s stake in the Bittensor network (Tao) and
+is critical for financial transactions like staking and unstaking tokens. It’s recommended to keep the
+coldkey encrypted and secure, as it holds the actual tokens.</p>
+<p>The hotkey, in contrast, is used for operational tasks like subscribing to and setting weights in the
+network. It’s linked to the coldkey through the metagraph and does not directly hold tokens, thereby
+offering a safer way to interact with the network during regular operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name of the wallet, used to identify it among possibly multiple wallets.</p></li>
+<li><p><strong>hotkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – String identifier for the hotkey.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – File system path where wallet keys are stored.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="../config/index.html#btwallet.config.Config" title="btwallet.config.Config"><em>Config</em></a>) – Bittensor configuration object.</p></li>
+<li><p><strong>_hotkey</strong> (<em>Keypair</em>) – Internal representations of the hotkey and coldkey.</p></li>
+<li><p><strong>_coldkey</strong> (<em>Keypair</em>) – Internal representations of the hotkey and coldkey.</p></li>
+<li><p><strong>_coldkeypub</strong> (<em>Keypair</em>) – Internal representations of the hotkey and coldkey.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_if_non_existent,</span> <span class="pre">create,</span> <span class="pre">recreate</span></span></dt>
+<dd><p>Methods to handle the creation of wallet keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_coldkey,</span> <span class="pre">get_hotkey,</span> <span class="pre">get_coldkeypub</span></span></dt>
+<dd><p>Methods to retrieve specific keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_coldkey,</span> <span class="pre">set_hotkey,</span> <span class="pre">set_coldkeypub</span></span></dt>
+<dd><p>Methods to set or update keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hotkey_file,</span> <span class="pre">coldkey_file,</span> <span class="pre">coldkeypub_file</span></span></dt>
+<dd><p>Properties that return respective key file objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey,</span> <span class="pre">regenerate_hotkey,</span> <span class="pre">regenerate_coldkeypub</span></span></dt>
+<dd><p>Methods to regenerate keys from different sources.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Config,</span> <span class="pre">help,</span> <span class="pre">add_args</span></span></dt>
+<dd><p>Utility methods for configuration and assistance.</p>
+</dd></dl>
+
+<p>The wallet class is a fundamental component for users to interact securely with the Bittensor network, facilitating both operational tasks and transactions involving value transfer across the network.</p>
+<p>Example Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new wallet with default coldkey and hotkey names</span>
+<span class="n">my_wallet</span> <span class="o">=</span> <span class="n">wallet</span><span class="p">()</span>
+
+<span class="c1"># Access hotkey and coldkey</span>
+<span class="n">hotkey</span> <span class="o">=</span> <span class="n">my_wallet</span><span class="o">.</span><span class="n">get_hotkey</span><span class="p">()</span>
+<span class="n">coldkey</span> <span class="o">=</span> <span class="n">my_wallet</span><span class="o">.</span><span class="n">get_coldkey</span><span class="p">()</span>
+
+<span class="c1"># Set a new coldkey</span>
+<span class="n">my_wallet</span><span class="o">.</span><span class="n">new_coldkey</span><span class="p">(</span><span class="n">n_words</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span> <span class="c1"># number of seed words to use</span>
+
+<span class="c1"># Update wallet hotkey</span>
+<span class="n">my_wallet</span><span class="o">.</span><span class="n">set_hotkey</span><span class="p">(</span><span class="n">new_hotkey</span><span class="p">)</span>
+
+<span class="c1"># Print wallet details</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="p">)</span>
+
+<span class="c1"># Access coldkey property, must use password to unlock</span>
+<span class="n">my_wallet</span><span class="o">.</span><span class="n">coldkey</span>
+</pre></div>
+</div>
+<p>Initialize the bittensor wallet object containing a hot and coldkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the wallet to unlock for running bittensor. Defaults to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p></li>
+<li><p><strong>hotkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The name of hotkey used to running the miner. Defaults to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The path to your bittensor wallets. Defaults to <code class="docutils literal notranslate"><span class="pre">~/.bittensor/wallets/</span></code>.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="../config/index.html#btwallet.config.Config" title="btwallet.config.Config"><em>Config</em></a><em>, </em><em>optional</em>) – config.Config(). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#btwallet.wallet.Wallet.config" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#btwallet.wallet.Wallet.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.hotkey">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">substrateinterface.Keypair</span></em><a class="headerlink" href="#btwallet.wallet.Wallet.hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Loads the hotkey from wallet.path/wallet.name/hotkeys/wallet.hotkey or raises an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hotkey loaded from Config arguments.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>hotkey (Keypair)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#btwallet.errors.KeyFileError" title="btwallet.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrect password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.path">
+<span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#btwallet.wallet.Wallet.path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.hotkey_str">
+<span class="sig-name descname"><span class="pre">hotkey_str</span></span><a class="headerlink" href="#btwallet.wallet.Wallet.hotkey_str" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet._hotkey">
+<span class="sig-name descname"><span class="pre">_hotkey</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#btwallet.wallet.Wallet._hotkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet._coldkey">
+<span class="sig-name descname"><span class="pre">_coldkey</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#btwallet.wallet.Wallet._coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet._coldkeypub">
+<span class="sig-name descname"><span class="pre">_coldkeypub</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#btwallet.wallet.Wallet._coldkeypub" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Returns a human-readable string representation of the wallet object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.__repr__" title="Link to this definition">#</a></dt>
+<dd><p>Returns the string representation of the wallet object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.help">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.help" title="Link to this definition">#</a></dt>
+<dd><p>Print help to stdout.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.add_args">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.add_args" title="Link to this definition">#</a></dt>
+<dd><p>Accept specific arguments from parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.12)"><em>argparse.ArgumentParser</em></a>) – Argument parser object.</p></li>
+<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Argument prefix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create_if_non_existent">
+<span class="sig-name descname"><span class="pre">create_if_non_existent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create_if_non_existent" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys, and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys, and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.recreate">
+<span class="sig-name descname"><span class="pre">recreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coldkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.recreate" title="Link to this definition">#</a></dt>
+<dd><p>Checks for existing coldkeypub and hotkeys and creates them if non-existent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coldkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>hotkey_use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to use a password for hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The wallet object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.hotkey_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hotkey_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile"><span class="pre">btwallet.keyfile.Keyfile</span></a></em><a class="headerlink" href="#btwallet.wallet.Wallet.hotkey_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the hotkey file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The hotkey file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile">Keyfile</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.coldkey_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkey_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile"><span class="pre">btwallet.keyfile.Keyfile</span></a></em><a class="headerlink" href="#btwallet.wallet.Wallet.coldkey_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the coldkey file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The coldkey file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile">Keyfile</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.coldkeypub_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeypub_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile"><span class="pre">btwallet.keyfile.Keyfile</span></a></em><a class="headerlink" href="#btwallet.wallet.Wallet.coldkeypub_file" title="Link to this definition">#</a></dt>
+<dd><p>Property that returns the coldkeypub file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The coldkeypub file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile">Keyfile</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.set_hotkey">
+<span class="sig-name descname"><span class="pre">set_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.set_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Sets the hotkey for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>Keypair</em>) – The hotkey keypair.</p></li>
+<li><p><strong>encrypt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to encrypt the hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to overwrite an existing hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.set_coldkeypub">
+<span class="sig-name descname"><span class="pre">set_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.set_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Sets the coldkeypub for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>Keypair</em>) – The coldkeypub keypair.</p></li>
+<li><p><strong>encrypt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to encrypt the coldkeypub. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to overwrite an existing coldkeypub. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkeypub file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile">Keyfile</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.set_coldkey">
+<span class="sig-name descname"><span class="pre">set_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encrypt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.set_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Sets the coldkey for the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keypair</strong> (<em>Keypair</em>) – The coldkey keypair.</p></li>
+<li><p><strong>encrypt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to encrypt the coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to overwrite an existing coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>Returns</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../keyfile/index.html#btwallet.keyfile.Keyfile" title="btwallet.keyfile.Keyfile">btwallet.keyfile.Keyfile</a></p>
+</dd>
+</dl>
+<p>Keyfile: The coldkey file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.get_coldkey">
+<span class="sig-name descname"><span class="pre">get_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.get_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Gets the coldkey from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password to decrypt the coldkey. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkey keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.get_hotkey">
+<span class="sig-name descname"><span class="pre">get_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.get_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Gets the hotkey from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password to decrypt the hotkey. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The hotkey keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.get_coldkeypub">
+<span class="sig-name descname"><span class="pre">get_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.get_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Gets the coldkeypub from the wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – The password to decrypt the coldkeypub. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The coldkeypub keypair.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Keypair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.coldkey">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">substrateinterface.Keypair</span></em><a class="headerlink" href="#btwallet.wallet.Wallet.coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Loads the coldkey from wallet.path/wallet.name/coldkey or raises an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>coldkey loaded from Config arguments.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>coldkey (Keypair)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#btwallet.errors.KeyFileError" title="btwallet.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrect password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.coldkeypub">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coldkeypub</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">substrateinterface.Keypair</span></em><a class="headerlink" href="#btwallet.wallet.Wallet.coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Loads the coldkeypub from wallet.path/wallet.name/coldkeypub.txt or raises an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>coldkeypub loaded from Config arguments.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>coldkeypub (Keypair)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../errors/index.html#btwallet.errors.KeyFileError" title="btwallet.errors.KeyFileError"><strong>KeyFileError</strong></a> – Raised if the file is corrupt of non-existent.</p></li>
+<li><p><strong>CryptoKeyError</strong> – Raised if the user enters an incorrect password for an encrypted keyfile.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create_coldkey_from_uri">
+<span class="sig-name descname"><span class="pre">create_coldkey_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create_coldkey_from_uri" title="Link to this definition">#</a></dt>
+<dd><p>Creates coldkey from uri string, optionally encrypts it with the user-provided password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – (str, required): URI string to use i.e., <code class="docutils literal notranslate"><span class="pre">/Alice</span></code> or <code class="docutils literal notranslate"><span class="pre">/Bob</span></code>.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the coldkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/coldkey</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create_hotkey_from_uri">
+<span class="sig-name descname"><span class="pre">create_hotkey_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create_hotkey_from_uri" title="Link to this definition">#</a></dt>
+<dd><p>Creates hotkey from uri string, optionally encrypts it with the user-provided password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – (str, required): URI string to use i.e., <code class="docutils literal notranslate"><span class="pre">/Alice</span></code> or <code class="docutils literal notranslate"><span class="pre">/Bob</span></code></p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the hotkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/hotkeys/&lt;hotkey&gt;</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.unlock_coldkey">
+<span class="sig-name descname"><span class="pre">unlock_coldkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.unlock_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Unlocks the coldkey (prompts password if locked)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the unlocked coldkey Keypair.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>coldkey (Keypair)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.unlock_coldkeypub">
+<span class="sig-name descname"><span class="pre">unlock_coldkeypub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.unlock_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Unlocks the coldkeypub.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the unlocked coldkeypub Keypair.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>coldkeypub (Keypair)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.unlock_hotkey">
+<span class="sig-name descname"><span class="pre">unlock_hotkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.unlock_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Unlocks the hotkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the unlocked hotkey Keypair.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>hotkey (Keypair)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.new_coldkey">
+<span class="sig-name descname"><span class="pre">new_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.new_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new coldkey, optionally encrypts it with the user-provided password and saves to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_words</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – (int, optional): Number of mnemonic words to use.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the coldkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/coldkey</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create_new_coldkey">
+<span class="sig-name descname"><span class="pre">create_new_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create_new_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new coldkey, optionally encrypts it with the user-provided password and saves to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_words</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – (int, optional): Number of mnemonic words to use.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the coldkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/coldkey</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.new_hotkey">
+<span class="sig-name descname"><span class="pre">new_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.new_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new hotkey, optionally encrypts it with the user-provided password and saves to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_words</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – (int, optional): Number of mnemonic words to use.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the hotkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/hotkeys/&lt;hotkey&gt;</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.create_new_hotkey">
+<span class="sig-name descname"><span class="pre">create_new_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_words</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.create_new_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new hotkey, optionally encrypts it with the user-provided password and saves to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_words</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – (int, optional): Number of mnemonic words to use.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Will this operation overwrite the hotkey under the same path &lt;wallet path&gt;/&lt;wallet name&gt;/hotkeys/&lt;hotkey&gt;</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.regenerate_coldkeypub">
+<span class="sig-name descname"><span class="pre">regenerate_coldkeypub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btwallet.wallet.Wallet.regenerate_coldkeypub" title="Link to this definition">#</a></dt>
+<dd><p>Regenerates the coldkeypub from the passed <code class="docutils literal notranslate"><span class="pre">ss58_address</span></code> or public_key and saves the file. Requires either <code class="docutils literal notranslate"><span class="pre">ss58_address</span></code> or public_key to be passed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss58_address</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – (str, optional): Address as <code class="docutils literal notranslate"><span class="pre">ss58</span></code> string.</p></li>
+<li><p><strong>public_key</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a><em>]</em><em>]</em>) – (str | bytes, optional): Public key as hex string or bytes.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – False): Determines if this operation overwrites the coldkeypub (if exists) under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/coldkeypub</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Newly re-generated wallet with coldkeypub.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.regenerate_coldkey">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mnemonic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span><a class="headerlink" href="#btwallet.wallet.Wallet.regenerate_coldkey" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span></dt>
+<dd><p>Regenerates the coldkey from the passed mnemonic or seed, or JSON encrypts it with the user’s password and saves the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the coldkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/coldkey</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>kwargs</strong><strong>[</strong><strong>&quot;mnemonic&quot;</strong><strong>]</strong> – (Union[list, str], optional item of kwargs): Key mnemonic as list of words or string space separated words.</p></li>
+<li><p><strong>kwargs</strong><strong>[</strong><strong>&quot;seed&quot;</strong><strong>]</strong> – (str, optional item of kwargs): Seed as hex string.</p></li>
+<li><p><strong>kwargs</strong><strong>[</strong><strong>&quot;json&quot;</strong><strong>]</strong> – (Tuple[Union[str, Dict], str], optional item of kwargs): Restore from encrypted JSON backup as <code class="docutils literal notranslate"><span class="pre">(json_data:</span> <span class="pre">Union[str,</span> <span class="pre">Dict],</span> <span class="pre">passphrase:</span> <span class="pre">str)</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created coldkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Uses priority order: <code class="docutils literal notranslate"><span class="pre">mnemonic</span> <span class="pre">&gt;</span> <span class="pre">seed</span> <span class="pre">&gt;</span> <span class="pre">json</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="btwallet.wallet.Wallet.regenerate_hotkey">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mnemonic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span><a class="headerlink" href="#btwallet.wallet.Wallet.regenerate_hotkey" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">regenerate_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet"><span class="pre">Wallet</span></a></span></span></dt>
+<dd><p>Regenerates the hotkey from passed mnemonic or seed, encrypts it with the user’s password and saves the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mnemonic</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – Key mnemonic as list of words or string space separated words.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Seed as hex string.</p></li>
+<li><p><strong>json</strong> (<em>Tuple</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>Dict</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>, </em><em>optional</em>) – Restore from encrypted JSON backup as <code class="docutils literal notranslate"><span class="pre">(json_data:</span> <span class="pre">Union[str,</span> <span class="pre">Dict],</span> <span class="pre">passphrase:</span> <span class="pre">str)</span></code>.</p></li>
+<li><p><strong>use_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Is the created key password protected.</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Determines if this operation overwrites the hotkey under the same path <code class="docutils literal notranslate"><span class="pre">&lt;wallet</span> <span class="pre">path&gt;/&lt;wallet</span> <span class="pre">name&gt;/hotkeys/&lt;hotkey&gt;</span></code>.</p></li>
+<li><p><strong>suppress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, suppresses the display of the mnemonic message. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This object with newly created hotkey.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wallet (<a class="reference internal" href="#btwallet.wallet.Wallet" title="btwallet.wallet.Wallet">Wallet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../utils/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">btwallet.utils</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../bittensor_wallet/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">bittensor_wallet</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.BT_WALLET_NAME"><code class="docutils literal notranslate"><span class="pre">BT_WALLET_NAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.BT_WALLET_PATH"><code class="docutils literal notranslate"><span class="pre">BT_WALLET_PATH</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.display_mnemonic_msg"><code class="docutils literal notranslate"><span class="pre">display_mnemonic_msg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet"><code class="docutils literal notranslate"><span class="pre">Wallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.config"><code class="docutils literal notranslate"><span class="pre">Wallet.config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.name"><code class="docutils literal notranslate"><span class="pre">Wallet.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.path"><code class="docutils literal notranslate"><span class="pre">Wallet.path</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey_str"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey_str</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet._hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet._coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet._coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet._coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.__str__"><code class="docutils literal notranslate"><span class="pre">Wallet.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.__repr__"><code class="docutils literal notranslate"><span class="pre">Wallet.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.help"><code class="docutils literal notranslate"><span class="pre">Wallet.help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.add_args"><code class="docutils literal notranslate"><span class="pre">Wallet.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_if_non_existent"><code class="docutils literal notranslate"><span class="pre">Wallet.create_if_non_existent()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create"><code class="docutils literal notranslate"><span class="pre">Wallet.create()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.recreate"><code class="docutils literal notranslate"><span class="pre">Wallet.recreate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.hotkey_file"><code class="docutils literal notranslate"><span class="pre">Wallet.hotkey_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkey_file"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkey_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkeypub_file"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkeypub_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.set_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.set_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.set_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.set_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.get_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.get_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.get_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.get_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_coldkey_from_uri"><code class="docutils literal notranslate"><span class="pre">Wallet.create_coldkey_from_uri()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_hotkey_from_uri"><code class="docutils literal notranslate"><span class="pre">Wallet.create_hotkey_from_uri()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.unlock_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.unlock_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.new_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.new_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_new_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.create_new_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.new_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.new_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.create_new_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.create_new_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_coldkeypub"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_coldkeypub()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_coldkey"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#btwallet.wallet.Wallet.regenerate_hotkey"><code class="docutils literal notranslate"><span class="pre">Wallet.regenerate_hotkey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

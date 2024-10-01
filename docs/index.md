@@ -180,25 +180,28 @@ Ready to run your own subnet? Follow the below links.
 
 ---
 
-## Bittensor CLI and SDK
+## Bittensor CLI, SDK, Wallet SDK
 
-Use the Bittensor CLI and Bittensor SDK to develop and participate in the Bittensor network.
+Use the Bittensor CLI and SDK and Wallet SDK to develop and participate in the Bittensor network.
 
 :::caution looking for legacy bittensor 7.4.0 docs?
 See [Legacy Bittensor 7.4.0 Documentation](pathname:///legacy-python-api/html/index.html).
 :::
 
 <Cards>
-    <Card 
+    <CardSmall
     icon={GoCommandPalette}
-    title='Bittensor CLI'
+    title=''
     link='btcli'
-    body='With Bittensor CLI, you can stake or unstake funds, check network state and much more.' />
-    <Card
+    body='Bittensor CLI' />
+    <CardSmall
     icon={FaPython}
-    title='Bittensor SDK'
+    title=''
     link='bt-api-ref'
-    body='A comprehensive SDK reference documentation for the open-sourced Bittensor Python library.' />
+    body='Bittensor SDK' />
+    <CardSmall
+    icon={FaPython}
+    title=''
+    link='pathname:///btwallet-api/html/index.html'
+    body='Wallet SDK' />
 </Cards>
-
-
