@@ -6,6 +6,29 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Release 8.1.0
+
+`Released 02 September 2024`
+
+- Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
+
+  :::danger Compatibility note
+  To use this Wallet SDK version 2.0.0, you must upgrade both the Bittensor SDK and the BTCLI to 8.1.0.
+  :::
+
+  - **Wallet SDK Repo:** [https://github.com/opentensor/btwallet](https://github.com/opentensor/btwallet).
+
+- Updated the Bittensor SDK to Version 8.1.0, to be compatible with the new Wallet SDK 2.0.0. In addition: 
+
+  - Added new logging levels.
+  - Enhanced error handling.
+  - **Bittensor SDK Repo:** [https://github.com/opentensor/bittensor](https://github.com/opentensor/bittensor).
+
+- Updated the BTCLI Version to 8.1.0, to be compatible with the new Wallet SDK 2.0.0. In addition, minor bug fixes and improvements are made.
+  - **BTCLI Repo:** [https://github.com/opentensor/btcli](https://github.com/opentensor/btcli).
+
+---
+
 ## Release 8.0.0
 
 `Released 25 September 2024`
