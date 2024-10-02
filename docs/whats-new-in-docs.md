@@ -9,6 +9,12 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 02 October 2024
+
+- Added the release notes for [Release 8.1.0](./bittensor-rel-notes.md#release-810) are published.
+- A new [Install Wallet SDK](./getting-started/install-wallet-sdk.md) document is published.
+- A new [Wallet SDK reference](pathname:///btwallet-api/html/index.html) is published.
+
 ## 25 September 2024
 
 - The release notes for [Bittensor 8.0.0](./bittensor-rel-notes.md#release-800) are published.
