@@ -6,6 +6,10 @@ title: "Install BTCLI"
 
 Before you can start developing, you must install `btcli` and then create Bittensor wallet.
 
+## Developer reference
+
+For a full developer reference, see the [Bittensor CLI section](../btcli.md).
+
 ## Install on macOS and Linux
 
 You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**.

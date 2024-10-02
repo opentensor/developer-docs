@@ -14,6 +14,10 @@ If you already installed Bittensor SDK, make sure you upgrade to the latest vers
 python3 -m pip install --upgrade bittensor
 ```
 
+## Developer reference
+
+For a full developer reference, see the [Bittensor SDK section](../bt-api-ref.md).
+
 ## Install on macOS and Linux
 
 You can install Bittensor on your local machine in either of the following ways. **Make sure you verify your installation after you install**.
