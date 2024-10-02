@@ -13,7 +13,7 @@ The following are the release notes for the Bittensor software.
 - Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
 
   :::danger Compatibility note
-  To use this Wallet SDK version 2.0.0, you must upgrade both the Bittensor SDK and the BTCLI to 8.1.0.
+  To use this Wallet SDK version 2.0.0 with either Bittensor SDK or BTCLI, you must upgrade both the Bittensor SDK and the BTCLI to 8.1.0.
   :::
 
   - **Wallet SDK Repo:** [https://github.com/opentensor/btwallet](https://github.com/opentensor/btwallet).
