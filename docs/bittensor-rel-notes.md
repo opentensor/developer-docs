@@ -8,7 +8,7 @@ The following are the release notes for the Bittensor software.
 
 ## Release 8.1.0
 
-`Released 02 September 2024`
+`Released 03 October 2024`
 
 - Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
 
