@@ -25,11 +25,11 @@ The following are the release notes for the Bittensor software.
   - Added new logging levels.
   - Enhanced error handling.
   - **Bittensor SDK Repo:** [https://github.com/opentensor/bittensor](https://github.com/opentensor/bittensor).
-  - **For a full developer reference**, see the [Bittensor SDK section](../bt-api-ref.md).
+  - **For a full developer reference**, see the [Bittensor SDK section](./bt-api-ref.md).
 
 - Updated the BTCLI Version to 8.1.0, to be compatible with the new Wallet SDK 2.0.0. In addition, minor bug fixes and improvements are made.
   - **BTCLI Repo:** [https://github.com/opentensor/btcli](https://github.com/opentensor/btcli).
-  - **For a full developer reference**, see the [Bittensor CLI section](../btcli.md).
+  - **For a full developer reference**, see the [Bittensor CLI section](./btcli.md).
 
 ---
 
