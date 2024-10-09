@@ -11,7 +11,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 See also [Staking](../subnets/register-validate-mine.md#staking).
 :::
 
-TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. Delegation on the Bittensor network works like this:
+TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. 
+
+:::tip Minimum required stake for nominators
+Minimum required stake for nominators is 0.1 TAO.
+:::
+
+Delegation on the Bittensor network works like this:
 
 - A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator. This supports the delegate as the delegate's effective stake becomes larger, increasing the delegate's impact on the network.
 - The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
