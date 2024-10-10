@@ -10,7 +10,8 @@ The following are the release notes for the Bittensor software.
 
 `Released 10 October 2024`
 
-**Release PR**: [https://github.com/opentensor/btcli/pull/178](https://github.com/opentensor/btcli/pull/178).
+- **BTCLI Release PR**: [https://github.com/opentensor/btcli/pull/178](https://github.com/opentensor/btcli/pull/178).
+- **Bittensor SDK Release PR**: [https://github.com/opentensor/bittensor/pull/2349](https://github.com/opentensor/bittensor/pull/2349).
 
 ### New features and enhancements
 

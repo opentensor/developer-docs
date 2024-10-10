@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 10 October 2024
+
+- Added the release notes for [Release 8.2.0](./bittensor-rel-notes.md#release-820) are published.
+
 ## 03 October 2024
 
 - Added the release notes for [Release 8.1.0](./bittensor-rel-notes.md#release-810) are published.
