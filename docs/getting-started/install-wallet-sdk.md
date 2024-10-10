@@ -12,13 +12,11 @@ For a full developer reference, see the [Bittensor Wallet SDK section](pathname:
 
 ---
 
-## Before you proceed
+## Compatibility notes
 
-If you installed either Bittensor SDK version `8.1.0` or BTCLI version `8.1.0` then the Wallet SDK 2.0.0 is already installed. The below installation steps are only for a standalone installation of the Wallet SDK 2.0.0 package.
+- If you installed either Bittensor SDK version `8.2.0` or BTCLI version `8.2.0` then the Wallet SDK `2.0.2` is already installed. The below installation steps are only for a standalone installation of the Wallet SDK `2.0.2` package.
 
-:::danger Compatibility note
-  To use this Wallet SDK version 2.0.0 with either Bittensor SDK or BTCLI, you must upgrade both the Bittensor SDK and the BTCLI to 8.1.0.
-:::
+- The Bittensor SDK version `8.2.0` and later versions and BTCLI version `8.2.0` and later versions are compatible only with the Wallet SDK versions `>=2.0.2`.
 
 ## Install
 
