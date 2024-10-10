@@ -10,10 +10,17 @@ The following are the release notes for the Bittensor software.
 
 `Released 10 October 2024`
 
+The following are the new versions in this release: 
+
+- Bittensor SDK 8.2.0
+- BTCLI 8.2.0
+- Wallet SDK 2.0.2
+
 ### Release PRs
 
 - **BTCLI Release PR**: [https://github.com/opentensor/btcli/pull/178](https://github.com/opentensor/btcli/pull/178).
 - **Bittensor SDK Release PR**: [https://github.com/opentensor/bittensor/pull/2349](https://github.com/opentensor/bittensor/pull/2349).
+- **Wallet SDK Release PR**: [https://github.com/opentensor/btwallet/pull/50](https://github.com/opentensor/btwallet/pull/50).
 
 ###  Upgrade steps
 
