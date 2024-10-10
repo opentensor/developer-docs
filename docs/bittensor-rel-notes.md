@@ -33,8 +33,8 @@ The following are the release notes for the Bittensor software.
   ```bash
   btcli w faucet --subtensor.chain_endpoint ws://127.0.0.1:9945 --subtensor.network local
   ``` 
-  will be correctly interpreted as indicating `ws://127.0.0.1:9945.`  
-- Added support in the `btcli` tool for numbered mnemonic. You can now provide the mnemonic with the numbered style like: `1-wordOne 2-wordTwo 3-wordThree ...`
+  will be correctly interpreted as indicating `ws://127.0.0.1:9945`.  
+- Added support in the `btcli` tool for numbered mnemonics. You can now provide the mnemonic with the numbered style like: `1-wordOne 2-wordTwo 3-wordThree ...`
 
 - Enhanced `btcli` by removing the requirement for passing the port number in the chain endpoint URL. For example, before this version the chain URL must include the port number, like: `ws://127.0.0.1:9945`. With this version the chain URL can exclude the port number, like: `wss://my.bittensor.chain.point`. 
 - Added support to pass an ss58 address in `btcli wallet balance`. Hence, `btcli wallet balance --ss58 <coldkey ss58 address>` will work.
@@ -44,8 +44,8 @@ The following are the release notes for the Bittensor software.
 
 ### Fixed issues
 
-- Fixed the TAO conversion to correct place in the `btcli stake remove` operation.
-- Fixed `network` instantiation in `btcli root list-delegates` command.
+- Fixed the TAO conversion to the correct place in the `btcli stake remove` operation.
+- Fixed the `network` instantiation in `btcli root list-delegates` command.
 - Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
 
 
