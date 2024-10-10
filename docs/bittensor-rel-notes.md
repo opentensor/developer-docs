@@ -27,15 +27,15 @@ The following are the release notes for the Bittensor software.
   will be correctly interpreted as indicating `ws://127.0.0.1:9945.`  
 - Added support in the `btcli` tool for numbered mnemonic. You can now provide the mnemonic with the numbered style like: `1-wordOne 2-wordTwo 3-wordThree ...`
 
-- Enhanced `btcli` by removing the requirement for passing the port number in the chain endpoint URL. For example, before this version the chain URL must include the port number, like: `ws://127.0.0.1:9945`. With this version the chain URLL can exclude the port number, like: `ws://127.0.0.1`. 
+- Enhanced `btcli` by removing the requirement for passing the port number in the chain endpoint URL. For example, before this version the chain URL must include the port number, like: `ws://127.0.0.1:9945`. With this version the chain URL can exclude the port number, like: `wss://my.bittensor.chain.point`. 
 - Added support to pass an ss58 address in `btcli wallet balance`. Hence, `btcli wallet balance --ss58 <coldkey ss58 address>` will work.
-- Better handling of the `btcli` error: `git not installed`. 
-- Better handling of the `btcli error: `Decrypting ... Task exception was never received`. 
-- Enhanced the error handling by adding support for handling custom errors from subtensor. In addition to catching the typical error messages the `btcli` encounters, we now also catch errors embedded in `SubstrateRequestExceptions`. This is done by catching these exceptions explicitly and parsing the literal dicts out of the args.
+- Enhanced `btcli` so that now it no longer requires `git` to be installed. 
+- Enhanced `btcli` by adding a more graceful shutdown for subtensor connection when errors are encountered.
+- Enhanced the `btcli` error handling by adding support for handling custom errors from subtensor.
 
 ### Fixed issues
 
-- Fixed the TAO conversion to correct place in the "btcli stake remove" operation.
+- Fixed the TAO conversion to correct place in the `btcli stake remove` operation.
 - Fixed `network` instantiation in `btcli root list-delegates` command.
 - Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
 
