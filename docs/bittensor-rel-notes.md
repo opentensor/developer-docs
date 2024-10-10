@@ -6,6 +6,40 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Release 8.2.0
+
+`Released 10 October 2024`
+
+**Release PR**: [https://github.com/opentensor/btcli/pull/178](https://github.com/opentensor/btcli/pull/178).
+
+### New features and enhancements
+
+- Added a new `btcli` command for RAO ⇄ TAO conversion: 
+  ```bash
+  btcli utils convert --rao <rao units> --tao <tao units>
+  ```
+  See [https://github.com/opentensor/btcli/pull/174](https://github.com/opentensor/btcli/pull/174) (documentation will be updated shortly).
+
+- Enhanced the `btcli` option handling so that a command with multiple options like: 
+  ```bash
+  btcli w faucet --subtensor.chain_endpoint ws://127.0.0.1:9945 --subtensor.network local
+  ``` 
+  will be correctly interpreted as indicating `ws://127.0.0.1:9945.`  
+- Added support in the `btcli` tool for numbered mnemonic. You can now provide the mnemonic with the numbered style like: `1-wordOne 2-wordTwo 3-wordThree ...`
+
+- Enhanced `btcli` by removing the requirement for passing the port number in the chain endpoint URL. For example, before this version the chain URL must include the port number, like: `ws://127.0.0.1:9945`. With this version the chain URLL can exclude the port number, like: `ws://127.0.0.1`. 
+- Added support to pass an ss58 address in `btcli wallet balance`. Hence, `btcli wallet balance --ss58 <coldkey ss58 address>` will work.
+- Better handling of the `btcli` error: `git not installed`. 
+- Better handling of the `btcli error: `Decrypting ... Task exception was never received`. 
+- Enhanced the error handling by adding support for handling custom errors from subtensor. In addition to catching the typical error messages the `btcli` encounters, we now also catch errors embedded in `SubstrateRequestExceptions`. This is done by catching these exceptions explicitly and parsing the literal dicts out of the args.
+
+### Fixed issues
+
+- Fixed the TAO conversion to correct place in the "btcli stake remove" operation.
+- Fixed `network` instantiation in `btcli root list-delegates` command.
+- Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
+
+
 ## Release 8.1.0
 
 `Released 03 October 2024`
