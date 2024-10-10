@@ -171,6 +171,11 @@ const config = {
             to: "subtensor-nodes",
           },
           {
+            position: "left",
+            label: "EVM Tutorials",
+            to: "evm-tutorials",
+          },
+          {
             type: "search",
             position: "left",
             className: "custom_algolia",
