@@ -96,7 +96,7 @@ Only the top 64 validators, when ranked by their stake amount in any particular 
 
 #### Calculate TAO required 
 
-The amount of TAO needed to acquire a validator permit depends on how the other largest 64 wallets distribute TAO across themselves. You can calculate the minimum using [bt.metagraph](../reference/bittensor-api-ref.md#btmetagraph):
+The amount of TAO needed to acquire a validator permit depends on how the other largest 64 wallets distribute TAO across themselves. You can calculate the minimum using [bt.metagraph](pathname:///python-api/html/autoapi/bittensor/core/metagraph/index.html):
 
 ```python
 import bittensor as bt

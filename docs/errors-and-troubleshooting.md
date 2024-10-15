@@ -61,3 +61,14 @@ ValueError: Call function 'Balances.transfer' not found
 ```
 
 **Likely cause and remedy**: You are working with an older version of Bittensor. Update your Bittensor to the latest version. See [Install Bittensor](./getting-started/installation.md).
+
+
+## Genesis mismatch
+
+```
+Reason: Genesis mismatch. Banned, disconnecting.
+```
+
+These messages are mostly harmless and you can ignore them. Your lite node will sync properly. See the "best" block numbers in the terminal log. If these block numbers are closer or approaching the current block as seen on either [https://bittensor.com/scan](https://bittensor.com/scan) or [Polkadot JS](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer), then your local node is syncing properly.
+
+You get these error messages very often because one or the other Bittensor blockchain validator nodes is running an older version of Polkadot SDK. When it says, "Banned, disconnecting", it is saying the mismatched blockchain validator node is being disconnected. This usually is fine because you don't need to be connected to all the blockchain validator nodes. 

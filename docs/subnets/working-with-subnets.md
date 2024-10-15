@@ -21,7 +21,7 @@ btcli subnets list
 
 ## Viewing state
 
-To display fine-grained information about each subnetwork use [bt.metagraph](../reference/bittensor-api-ref.md#btmetagraph):
+To display fine-grained information about each subnetwork use [bt.metagraph](pathname:///python-api/html/autoapi/bittensor/core/metagraph/index.html):
 
 ```python
 import bittensor as bt
