@@ -116,7 +116,7 @@ const config = {
           },
 	  {
             to: "/bt-api-ref",
-            from: "/reference/bittensor-api-ref/bt-api-ref",
+            from: "/reference/bittensor-api-ref",
           },
         ],
       },
