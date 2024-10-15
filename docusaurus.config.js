@@ -114,6 +114,10 @@ const config = {
             to: "/subnets/schedule-coldkey-swap",
             from: "/subnets/schedule-key-swap",
           },
+	  {
+            to: "/bt-api-ref",
+            from: "/reference/bittensor-api-ref/bt-api-ref",
+          },
         ],
       },
     ],
