@@ -40,26 +40,26 @@ This section presents tutorials for you to learn how to use the EVM feature on t
     <Card
     icon={GiOvermind}
     title='EVM Testnet with Metamask'
-    link='evm-tutorials/evm-testnet-with-metamask-wallet'
+    link='/evm-tutorials/evm-testnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM testnet.' />
     <Card
     icon={SiTrpc}
     title='EVM Localnet with Metamask'
-    link='evm-tutorials/evm-localnet-with-metamask-wallet'
+    link='/evm-tutorials/evm-localnet-with-metamask-wallet'
     body='Set up your Metamask wallet for a localnet with EVM feature.' />
     <Card
     icon={GiBrainTentacle}
     title='TAO transfer from Metamask to SS58'
-    link='evm-tutorials/transfer-from-metamask-to-ss58'
+    link='/evm-tutorials/transfer-from-metamask-to-ss58'
     body='Learn how to transfer TAO from Metamask to SS58.' />
     <Card
     icon={PiBrainFill}
     title='Transfer TAO between two H160 addresses'
-    link='evm-tutorials/transfer-between-two-h160-accounts'
+    link='/evm-tutorials/transfer-between-two-h160-accounts'
     body='Learn how to transfer TAO between two Ethereum H160 addresses.' />
     <Card
     icon={GiBrainStem}
     title='Stake with a smart contract'
-    link='evm-tutorials/staking-precompile'
+    link='/evm-tutorials/staking-precompile'
     body='Stake to a hotkey using precompiled smart contract.' />
 </Cards>
