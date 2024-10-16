@@ -34,6 +34,10 @@ import { GoNumber } from "react-icons/go";
 
 **Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. 
 
+:::tip looking for EVM docs?
+Check out the [tutorial docs for EVM on subtensor](./evm-tutorials/).
+:::
+
 <Cards>
     <CardSmall
     icon={FaRegNewspaper}
