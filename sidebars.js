@@ -119,7 +119,11 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        "evm-tutorials/evm-on-devnet",
+        "evm-tutorials/evm-testnet-with-metamask-wallet",
+        "evm-tutorials/evm-localnet-with-metamask-wallet",
+        "evm-tutorials/transfer-from-metamask-to-ss58",
+        "evm-tutorials/transfer-between-two-h160-accounts",
+        "evm-tutorials/staking-precompile",
       ],
     },
     "btcli",
