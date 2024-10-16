@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Transfer Between Two H160 Accounts
 
-The complete code for this example is located in file [examples/transfer-h160-to-h160.js](examples/transfer-h160-to-h160.js).
+The complete code for this example is located in file `examples/transfer-h160-to-h160.js` (ADD LINK).
 
 ## Prerequisite
 
