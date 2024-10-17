@@ -21,7 +21,7 @@ You must run either [EVM Localnet with Metamask Wallet](./evm-localnet-with-meta
 
 The private key or the seed for your SS58 is **not required** for this method.
 
-This step will transfer 0.5 TAO to your `ss58` destination address specified in the `withdraw.js` (ADD LINK) file. Look for the following lines:
+This step will transfer 0.5 TAO to your `ss58` destination address specified in the [`withdraw.js`](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js) file. Look for the following lines:
 
 ```javascript
 // Destination address can be replaced with any ss58 address here:
@@ -39,6 +39,10 @@ Next, run:
 ```bash
 node transfer.js
 ```
+
+:::tip 1 TAO = 1e18 on subtensor EVM
+While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+:::
 
 Then, run:
 
@@ -93,7 +97,7 @@ btcli wallet balance --ss58 5HgU7B3xfSfisR1A7wDMt7FHX5Uizj6xtWWHwhwJMZSrdN7y
 You will need the private key for your SS58 for this method.
 
 1. Copy your `ss58` address (for example: `5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty`). You need the private key for this address setup in Polkadot JS extension.
-2. Paste it into `ss58Address` in main function in `withdraw-address.js` (ADD LINK) script.
+2. Paste it into `ss58Address` in main function in [`withdraw-address.js`](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw-address.js) script.
 3. Run:
 
     ```bash

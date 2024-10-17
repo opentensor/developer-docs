@@ -33,7 +33,11 @@ Ethereum compatibility layer is now available on Bittensor. Using this EVM featu
 The EVM feature allows the subtensor blockchain to execute Ethereum-compatible smart contracts. Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 :::
 
-This section presents tutorials for you to learn how to use the EVM feature on the Bittensor blockchain. Follow the below links:
+This section presents tutorials for you to learn how to use the EVM feature on the Bittensor blockchain. 
+
+:::warning 1 TAO = 1e18 on subtensor EVM
+While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+:::
 
 <Cards>
     <Card 

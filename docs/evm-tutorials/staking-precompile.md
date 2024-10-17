@@ -49,7 +49,7 @@ Before you proceed, familiarize yourself with the Solidity code of the [`stake.s
 
 5. Connect Remix IDE to Injected Provider - Metamask and your Metamask address that has TAO balance. You will stake this TAO balance to the delegate hotkey's public key.
 
-6. Execute the Stake contract method `stake_from_this_contract_to_alice` and pass 1e^9 Wei to it (1 TAO).
+6. Execute the Stake contract method `stake_from_this_contract_to_alice` and pass 1e^9 to it (1 TAO).
 
 7. Check the stake balance of your delegate hotkey and confirm that it has increased by 1 TAO.
 

@@ -11,7 +11,7 @@ This precompile is deployed on the subtensor EVM at the address `0x0000000000000
 
 You can use this precompile to verify proof of `ss58` account ownership on the EVM side. For example, you may need to do such verification for an airdrop to TAO owners. While EVM functionality doesn't allow airdropping directly to `ss58` addresses (because EVM is using H160 address schema), one can implement an airdrop via claiming. An owner of `ss58` address eligible for an airdrop can send an EVM transaction which includes the proof of `ss58` address ownership, for example, a signed message, uniquely specific for a given airdrop.
 
-For a complete code example see `ed25519-verify.js` (ADD LINK).
+For a complete code example see [`ed25519-verify.js`](https://github.com/opentensor/evm-bittensor/blob/main/examples/ed25519-verify.js).
 
 ## Run
 
