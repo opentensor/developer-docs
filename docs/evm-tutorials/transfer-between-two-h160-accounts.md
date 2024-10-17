@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Transfer Between Two H160 Accounts
 
-The complete code for this example is located in file `examples/transfer-h160-to-h160.js` (ADD LINK).
+The complete code for this example is located in file [`examples/transfer-h160-to-h160.js`](https://github.com/opentensor/evm-bittensor/blob/main/examples/transfer-h160-to-h160.js).
 
 ## Prerequisite
 
@@ -30,8 +30,12 @@ You must run either [EVM Localnet with Metamask Wallet](./evm-localnet-with-meta
 
 3. Configure the amount to be sent. In this example we are using large numbers so that the result is visible in Metamask: Because Metamask doesn't respect decimals of 9 and always defaults to 18 decimals. In production environment 0.1 TAO will match to "100000000000" (10^8), while for this demonstration we have to use "100000000000000000" (10^17), which will appear as "0.1 TAO" in Metamask, but will actually be equal to 100000000 TAO (10^8 TAO).
 
+    :::tip 1 TAO = 1e18 on subtensor EVM
+    While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. Also see this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+    :::
+
     ```js
-        // Create a transfer transaction to send TAO
+        // Create a transfer transaction to send 0.1 TAO
         const tx = {
             to: destinationEthereumAddress,
             value: "100000000000000000",
