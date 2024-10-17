@@ -29,7 +29,7 @@ Ethereum compatibility layer is now available on Bittensor. Using this EVM featu
 - Deploy and interact with any Ethereum smart contract, without any need to change it, on the subtensor blockchain.
 - Access all the standard Ethereum JSON-RPC methods from this EVM compatibility layer on Bittensor.
 
-:::tip executes on subtensor blockchain
+:::tip EVM smart contract executes on subtensor blockchain
 The EVM feature allows the subtensor blockchain to execute Ethereum-compatible smart contracts. Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 :::
 
@@ -38,8 +38,8 @@ This section presents tutorials for you to learn how to use the EVM feature on t
 <Cards>
     <Card 
     icon={GiHiveMind}
-    title='Blog'
-    link='https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7'
+    title='EVM on Subtensor'
+    link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
     <Card
     icon={BiSolidNetworkChart}
