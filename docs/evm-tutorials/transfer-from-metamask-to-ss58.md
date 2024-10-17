@@ -34,6 +34,12 @@ and provide your `ss58` destination address as shown below:
 const destinationAddress = "5HgU7B3xfSfisR1A7wDMt7FHX5Uizj6xtWWHwhwJMZSrdN7y";
 ```
 
+Next, run:
+
+```bash
+node transfer.js
+```
+
 Then, run:
 
 ```bash
