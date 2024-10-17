@@ -23,12 +23,12 @@ In this tutorial you will learn how to interact with staking precompile in two w
 
 1. [Launch EVM localnet](./evm-localnet-with-metamask-wallet.md). Also, follow the instructions of running local chain all the way so that you have a Metamask address with some TAO balance.
 
-2. On this EVM localnet create one subnet and a delegate hotkey. The commands below may change with a different version of btcli:
+2. On this EVM localnet create one subnet and a delegate hotkey. The commands below will create a subnet, register a neuron and nominate your hotkey as a delegate, in that order:
 
     ```bash
-    btcli subnet create --subtensor.network localhost:9946
-    btcli subnet register --subtensor.network localhost:9946
-    btcli root nominate --subtensor.network localhost:9946 
+    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9946
+    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9946
+    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9946
     ```
 
 3. Save the delegate hotkey address. You will use this in the staking pool use case below.
