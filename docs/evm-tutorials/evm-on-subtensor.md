@@ -28,7 +28,7 @@ On the Ethereum network, nodes such as full nodes, validator nodes and archive n
 alt="Local blockchain vs public subtensor"
 sources={{
     light: useBaseUrl('/img/docs/2-EVM-block-diagram.svg'),
-    dark: useBaseUrl('/img/docs/2-EVM-block-diagram.svg'),
+    dark: useBaseUrl('/img/docs/dark-2-EVM-block-diagram.svg'),
   }}
 style={{width: 450}}
 />
@@ -161,7 +161,7 @@ When we say “smart contracts on Bittensor” it refers to the new EVM compabil
 alt="Local blockchain vs public subtensor"
 sources={{
     light: useBaseUrl('/img/docs/EVM-subtensor-block-diagram.svg'),
-    dark: useBaseUrl('/img/docs/EVM-subtensor-block-diagram.svg'),
+    dark: useBaseUrl('/img/docs/dark-EVM-subtensor-block-diagram.svg'),
   }}
 style={{width: 450}}
 />
