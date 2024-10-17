@@ -13,7 +13,7 @@ Ethereum compatibility layer is now available on the subtensor. Using this EVM f
 
 When this EVM feature is turned ON, it allows the subtensor blockchain to execute Ethereum-compatible smart contracts. 
 
-:::danger EVM smart contract executes on subtensor blockchain
+:::danger EVM smart contract executes on subtensor
 Note that all operations performed by the subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 :::
 
@@ -67,6 +67,9 @@ You will sign and send the deployment transaction to the Ethereum network.
 
 - When the block containing your transaction is processed, the EVM on each node executes your deployment transaction.
 - **Note that** the EVM doesn’t perform code verification in the sense of checking for correctness or security. It just ensures that the code execution doesn’t exceed the gas limit and that your smart contract code adheres to the EVM’s rules. It is your responsibility (as a developer) to ensure that your smart contract code is secure and performs functions as you intended.
+  :::tip Subnets for auditing smart contracts
+  Subnet 222 on testnet is for auditing smart contracts. Watch this subnet and others in the Bittensor ecosystem that are evolving rapidly to serve users in this area.
+  :::
 - The EVM creates a new contract account for your smart contract, with a unique address. Your smart contract’s bytecode is stored at this address on the Ethereum blockchain.
 
 ### Step 5: On-chain address for your smart contract
