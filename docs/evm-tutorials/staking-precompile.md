@@ -7,30 +7,35 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Staking Precompile
 
-Staking precompile allows EVM user code to interact with staking feature of Subtensor. For example, `add_stake` or `remove_stake` methods can be called in order to delegate or undelegate stake to/from a hotkey. Below steps describe how to interact with staking precompile via a smart contract or a Metamask wallet with a local testnet and Remix IDE.
+Staking precompile allows EVM user code to interact with staking feature of subtensor. For example, by using the staking precompile, the subtensor methods [`add_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/add_stake.rs) or [`remove_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/remove_stake.rs)  can be called in order to delegate stake to a hotkey or undelegate stake from a hotkey. 
+
+In this tutorial you will learn how to interact with staking precompile in two ways:
+
+1. With another smart contract.
+2. With a user's Metamask wallet on an EVM localnet and Remix IDE.
 
 ## Prerequisites
 
-1. You should be familiar with Bittensor and usage of `btcli` tool in order to understand staking process of Bittensor. If you are new to Bittensor ecosystem, please read [Bittensor Docs](https://docs.bittensor.com/) first and setup btcli locally. 
-
-2. You should also be comfortable using [Remix IDE](https://remix.ethereum.org/).
+You should also be comfortable using [Remix IDE](https://remix.ethereum.org/).
 
 ## Setup EVM localnet, subnet and delegate
 
-1. [Launch local testnet](./evm-testnet-with-metamask-wallet.md). Also, follow the instructions of running local chain all the way so that you have a Metamask address with some TAO balance.
+1. [Launch EVM localnet](./evm-localnet-with-metamask-wallet.md). Also, follow the instructions of running local chain all the way so that you have a Metamask address with some TAO balance.
 
-2. Setup a local testnet so that it contains one subnet and a delegate hotkey. The commands below may change with a different version of btcli:
+2. On this EVM localnet create one subnet and a delegate hotkey. The commands below may change with a different version of btcli:
 
-```bash
-btcli subnet create --subtensor.network localhost:9946
-btcli subnet register --subtensor.network localhost:9946
-btcli root nominate --subtensor.network localhost:9946 
-```
+    ```bash
+    btcli subnet create --subtensor.network localhost:9946
+    btcli subnet register --subtensor.network localhost:9946
+    btcli root nominate --subtensor.network localhost:9946 
+    ```
 
-Save the hotkey address that becomes the delegate. 
+3. Save the delegate hotkey address. 
 
 :::tip Keys used in this example
-In this example, we are going to use Alice key for simplicity: `5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY` and the public key that matches to this address: 0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d. You can convert ss58 address into a public key using [ss58.org](https://ss58.org/).
+In this example, we will use Alice key for simplicity: `5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY` and the public key that matches to this address: 0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d. 
+
+You can convert any ss58 address into a corresponding public key using [ss58.org](https://ss58.org/).
 :::
 
 ## Interaction via a smart contract (staking pool use case)

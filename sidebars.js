@@ -119,6 +119,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
+        "evm-tutorials/evm-on-subtensor",
         "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
         "evm-tutorials/transfer-from-metamask-to-ss58",
