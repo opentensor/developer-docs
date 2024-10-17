@@ -19,7 +19,7 @@ For all the EVM tutorials we will use the following:
 - **EVM Subtensor Chain ID:** 945 (This is UTF-8 encoding for alpha character)
 - **EVM Testnet Faucet URL:** https://evm-testnet.dev.opentensor.ai/faucet 
 - **Subtensor EVM block explorer URL:** https://evm-testscan.dev.opentensor.ai/
-- **Opentensor EVM-demo GitHub repo:** https://github.com/opentensor/evm-demo/tree/main
+- **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
  
 
 ## Step 1. Run EVM-enabled localnet
@@ -57,11 +57,11 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 ## Step 3. Configure private key and RPC endpoint
 
-In this step you will clone the EVM-demo repo, and copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
+In this step you will clone the EVM  repo, and copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
 
-1. Clone the Opentensor EVM-demo GitHub repo:
+1. Clone the Opentensor EVM-Bittensor GitHub repo:
    ```bash
-   git clone https://github.com/opentensor/evm-demo/tree/main
+   git clone https://github.com/opentensor/evm-bittensor.git
    ```
 
 2. Create `config.js` file by copying the `config-example.js` file:

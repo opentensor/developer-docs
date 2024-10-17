@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 17 October 2024
+
+- Published a new docs section [EVM Tutorials](./evm-tutorials/) with a basics doc and several tutorials on how to user EVM on subtensor.
+
 ## 10 October 2024
 
 - Added the release notes for [Release 8.2.0](./bittensor-rel-notes.md#release-820).
