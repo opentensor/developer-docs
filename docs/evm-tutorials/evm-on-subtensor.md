@@ -1,11 +1,11 @@
 ---
-title: "EVM on Bittensor"
+title: "EVM on Subtensor"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM on Bittensor
+# EVM on Subtensor
 
 Ethereum compatibility layer is now available on the subtensor. Using this EVM feature you can:
 - Deploy and interact with any Ethereum smart contract, without any need to change it, on the subtensor blockchain.
@@ -13,7 +13,7 @@ Ethereum compatibility layer is now available on the subtensor. Using this EVM f
 
 When this EVM feature is turned ON, it allows the subtensor blockchain to execute Ethereum-compatible smart contracts. 
 
-:::danger executes on subtensor blockchain
+:::danger EVM smart contract executes on subtensor blockchain
 Note that all operations performed by the subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 :::
 
