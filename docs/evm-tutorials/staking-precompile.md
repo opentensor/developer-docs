@@ -32,7 +32,13 @@ In this tutorial you will learn how to interact with staking precompile in two w
     ```
 
 3. Save the delegate hotkey address. You will use this in the staking pool use case below.
-4. Disable staking rate limits by setting `targetStakesPerInterval` to 1000. Open AppsUI using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/extrinsics/decode/0x0c00132fe803000000000000), then click on Submission tab, select Alice account in "using the selected account" field, and click on Submit Transaction, then Sign and Submit.
+
+4. Disable staking rate limits by setting `targetStakesPerInterval` to 1000. Follow these below steps:
+    - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/extrinsics/decode/0x0c00132fe803000000000000).
+    - Click on **Submission** tab.
+    - From the **using the selected account** field, select **ALICE**.
+    - Click on **Submit Transaction** at the bottom right. This will open the **authorize transaction** window.
+    - On this **authorize transaction** window, make sure the **sign and submit** toggle is ON and click on the **Sign and Submit** on the bottom right.
 
 ## Call the staking precompile from another smart contract (staking pool use case)
 
