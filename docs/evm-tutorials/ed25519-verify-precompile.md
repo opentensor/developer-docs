@@ -13,13 +13,22 @@ You can use this precompile to verify proof of `ss58` account ownership on the E
 
 For a complete code example see [`ed25519-verify.js`](https://github.com/opentensor/evm-bittensor/blob/main/examples/ed25519-verify.js).
 
+:::danger Stop. Did you install the dependencies?
+Before you proceed, make sure you finished the [Install](./install.md) step.
+:::
+
 ## Run
 
+Navigate to the `examples` directory of the EVM-Bittensor repo:
+
+  ```bash
+  cd examples
+  ```
 To run this precompile, execute:
 
-```bash
-node ed25519-verify.js
-```
+  ```bash
+  node ed25519-verify.js
+  ```
 
 This example demonstrates how to:
 

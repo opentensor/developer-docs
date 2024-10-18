@@ -57,30 +57,36 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 ## Step 3. Configure private key and RPC endpoint
 
-In this step you will clone the EVM  repo, and copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
+:::danger Stop. Did you install the dependencies?
+Before you proceed, make sure you finished the [Install](./install.md) step.
+:::
 
-1. Clone the Opentensor EVM-Bittensor GitHub repo:
-   ```bash
-   git clone https://github.com/opentensor/evm-bittensor.git
-   ```
+In this step you will copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
+
+
+1. Navigate to the `examples` directory of the EVM-Bittensor repo:
+
+    ```bash
+    cd examples
+    ```
 
 2. Create `config.js` file by copying the `config-example.js` file:
 
-```bash
-cp config-example.js config.js
-```
+    ```bash
+    cp config-example.js config.js
+    ```
 
 3. On Metamask wallet extension, your wallet account will have a H160 account address, starting with the `0x` prefix (for example: `0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf`), and also your wallet account name. 
 4. Click on your wallet account name, which will open the drop-down menu. 
 5. Click on the &#8942; (three vertical dots, i.e., vertical ellipsis) next to the wallet account and select **Account details**. It will open a view with a QR code, your wallet account H160 address and a **Show private key** button.
 6. Click on the **Show private key** button, enter the password. You will then see the private key for your wallet account. Copy this private key.
-7. Paste this private key into `ethPrivateKey` string in your `config.js` file as shown below (mangled for security):
+7.  Paste this private key into `ethPrivateKey` string in your `config.js` file as shown below (mangled for security):
 
-```javascript
-const ethPrivateKey = "02c1c4112233snipsnipsnipgh933aca491e090e0b7xxyy1b124b86d9382b01a8";
-```
+    ```javascript
+    const ethPrivateKey = "02c1c4112233snipsnipsnipgh933aca491e090e0b7xxyy1b124b86d9382b01a8";
+    ```
 
-8. Finally, edit the `module.exports` section of the `config.js` file to use the localnet URLs, as shown below:
+8.  Finally, edit the `module.exports` section of the `config.js` file to use the localnet URLs, as shown below:
     ```javascript
     module.exports = {
     ethPrivateKey,
@@ -90,4 +96,4 @@ const ethPrivateKey = "02c1c4112233snipsnipsnipgh933aca491e090e0b7xxyy1b124b86d9
     }
     ```
 
-Save the `config.js` file. Now your setup is ready to run the tutorials. 
+Save the `config.js` file. Now your setup is ready to run the tutorials with EVM localnet. 
