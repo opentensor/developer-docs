@@ -42,10 +42,20 @@ You must run either [EVM Localnet with Metamask Wallet](./evm-localnet-with-meta
         };
     ```
 
-4. Run:
+:::danger Stop. Did you install the dependencies?
+Before you proceed, make sure you finished the [Install](./install.md) step.
+:::
+
+4. Navigate to the `examples` directory of the EVM-Bittensor repo:
 
     ```bash
-    node examples/transfer-h160-to-h160.js
+    cd examples
     ```
 
-5. Observe the transaction receipt and the change of the recipient balance in logs. You can also look how the recipient balance changed in Metamask.
+5. Run:
+
+    ```bash
+    node transfer-h160-to-h160.js
+    ```
+
+6. Observe the transaction receipt and the change of the recipient balance in logs. You can also look how the recipient balance changed in Metamask.

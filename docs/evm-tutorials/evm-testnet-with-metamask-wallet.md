@@ -65,18 +65,24 @@ Next you will request and obtain 1 TAO from the EVM testnet faucet. You will use
 
 ## Step 4. Copy Metamask wallet private key into config
 
-In this step you will clone the EVM-Bittensor repo, and copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
+:::danger Stop. Did you install the dependencies?
+Before you proceed, make sure you finished the [Install](./install.md) step.
+:::
 
-1. Clone the Opentensor EVM-Bittensor GitHub repo:
-   ```bash
-   git clone https://github.com/opentensor/evm-bittensor.git
-   ```
+In this step you will copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
+
+
+1. Navigate to the `examples` directory of the EVM-Bittensor repo:
+
+    ```bash
+    cd examples
+    ```
 
 2. Create `config.js` file by copying the `config-example.js` file:
 
-```bash
-cp config-example.js config.js
-```
+    ```bash
+    cp config-example.js config.js
+    ```
 
 3. On Metamask wallet extension, your wallet account will have a H160 account address, starting with the `0x` prefix (for example: `0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf`), and also your wallet account name. 
 4. Click on your wallet account name, which will open the drop-down menu. 
@@ -87,4 +93,4 @@ cp config-example.js config.js
 ```javascript
 const ethPrivateKey = "02c1c4112233snipsnipsnipgh933aca491e090e0b7xxyy1b124b86d9382b01a8";
 ```
-Save the `config.js` file. Now your setup is ready to run the tutorials. 
+Save the `config.js` file. Now your setup is ready to run the tutorials with EVM testnet. 

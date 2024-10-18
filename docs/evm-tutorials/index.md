@@ -45,6 +45,11 @@ While working with the subtensor EVM, 1 TAO should be written as 1 followed by 1
     title='EVM on Subtensor: Basics'
     link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
+    <Card 
+    icon={GiHiveMind}
+    title='Install Dependencies'
+    link='/evm-tutorials/install'
+    body='Get started by installing dependencies first.' />
     <Card
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
