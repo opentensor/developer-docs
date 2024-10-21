@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to this documentation.
 
+## 21 October 2024
+
+- Updated the [Dissolve a Subnet](./subnets/dissolve-a-subnet.md) document to show that now `subtensorModule` > `scheduleDissolveNetwork(netuid)` should be used to schedule the subnet to be dissolved. The subnet will be dissolved after five (`5` days).
+
 ## 17 October 2024
 
 - Published a new docs section [EVM Tutorials](./evm-tutorials/) with a basics doc and several tutorials on how to user EVM on subtensor.
