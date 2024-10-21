@@ -123,7 +123,7 @@ You will need the private key for your SS58 for this method.
 5. Copy the "Ethereum mirror:" output address.
 6. Transfer the amount to this address that you wish to transfer using Metamask. Make sure to clear activity tab data if you restarted the network previously: **Settings** > **Advanced** > **Clear activity tab data**.
 7. Make sure your destination address is funded to run a transaction.
-8. Open the **Extrisics** section in Polkadot JS app: [https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/extrinsics](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/extrinsics).
+8. Open the **Extrisics** section in Polkadot JS app: [https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fevm-testnet.dev.opentensor.ai%3A443#/extrinsics](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fevm-testnet.dev.opentensor.ai%3A443#/extrinsics).
 9. Select `evm` pallet and `withdraw` extrinsic.
 10. Paste the "Ethereum mirror" output address into address field.
 11. Put the amount you are transferring into amount field. Note that Metamask balances are by 10^9 lower than Polkadot Apps UI balances because Metamask will not respect 10^9 decimals for native currency before we have a corresponding PR to https://github.com/ethereum-lists merged.
