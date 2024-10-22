@@ -6,9 +6,20 @@ title: "Commit Reveal"
 
 This guide describes the **commit reveal** feature. This feature will address the weight copying issue. 
 
-:::tip Available only in Bittensor 7.0.1 and later versions
-This feature is available in Bittensor 7.0.1 and later versions. Make sure you update to Bittensor 7.0.1 before using this feature.
-:::
+## Weight copying
+
+In a subnet, the consensus weights reached by the subnet validators is public information. This leads to an unfortunate outcome: Some subnet validators do not do the work of evaluating the subnet miners, but instead  copy the latest consensus, thereby free-riding on the work done by other subnet validators in the subnet. This is the weight-copying problem. 
+
+The commit reveal feature is designed to combat this weight-copying problem. The main idea is this: The consensus weights set by subnet validators are hidden for a certain interval. The weight-copiers would be able to view these weights only after this interval is elapsed. But by then these consensus weights would've become quite old and hence would create a loss for the weight-copier using these copied old weights. In specific, it works like this:  
+
+A subnet validator:
+1. Instead of setting the consensus weights normally using [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html), hashes these weights.
+2. Commits this hash to the blockchain.
+3. Waits for a certain interval.
+4. Then reveals these weights by finally submitting them to the blockchain.  
+
+On the chain side, the hash of the revealed weights are compared to the hash that was committed earlier.  If the hashes are the same, the chain will apply the weights.  The purpose of this is to allow honest validators to have an advantage over weight-copying validators by essentially hiding their weights for a certain interval, so by the time weight-copiers are able to view the honest validator’s weights, they will already be fairly old.
+
 
 ## Technical paper, blog and Python notebook
 
