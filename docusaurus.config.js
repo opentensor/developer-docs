@@ -167,12 +167,17 @@ const config = {
         items: [
           {
             position: "left",
-            label: "Subtensor Nodes",
+            label: "SUBTENSOR NODES",
             to: "subtensor-nodes",
           },
           {
             position: "left",
-            label: "EVM Tutorials",
+            label: "EVM TUTORIALS",
+            to: "evm-tutorials",
+          },
+          {
+            position: "left",
+            label: "RAO DOCS",
             to: "evm-tutorials",
           },
           {
