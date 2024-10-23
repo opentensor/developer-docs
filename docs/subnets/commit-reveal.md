@@ -74,8 +74,9 @@ For subnets that are very stable and have durable subnet miners who change ranks
 
 ---
 
-## Technical paper and blog
+## Technical papers and blog
 
+- ACM CCS2024 Poster PDF [Solving the Free-rider Problem In Bittensor](pathname:///papers/ACM_CCS2024_Poster.pdf).
 - See [Weight Copying in Bittensor, a technical paper (PDF)](pathname:///papers/BT_Weight_Copier-29May2024.pdf).
 - Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
 
