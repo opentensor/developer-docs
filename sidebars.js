@@ -132,6 +132,7 @@ const sidebars = {
         "evm-tutorials/ed25519-verify-precompile",
       ],
     },
+    "dtao-btcli",
     "btcli",
     "bt-api-ref",
     "emissions",
