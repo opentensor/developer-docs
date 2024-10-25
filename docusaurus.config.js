@@ -177,8 +177,8 @@ const config = {
           },
           {
             position: "left",
-            label: "RAO DOCS",
-            to: "evm-tutorials",
+            label: "DYNAMIC TAO",
+            to: "dtao-btcli",
           },
           {
             type: "search",
