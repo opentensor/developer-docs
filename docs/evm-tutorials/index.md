@@ -52,10 +52,10 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
     <Card 
-    icon={GiHiveMind}
+    icon={MdInstallDesktop}
     title='Install Dependencies'
     link='/evm-tutorials/install'
-    body='Get started by installing dependencies first.' />
+    body='Get started with tutorials by installing dependencies first.' />
     <Card
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
@@ -70,7 +70,7 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'
     link='/evm-tutorials/transfer-from-metamask-to-ss58'
-    body='Learn how to transfer TAO from Metamask to SS58.' />
+    body='Learn how to transfer TAO from Metamask to a SS58 address.' />
     <Card
     icon={FaMoneyBillTransfer}
     title='Transfer TAO between two H160 addresses'

@@ -7,7 +7,9 @@ title: "BTCLI with Dynamic TAO"
 Command line interface (CLI) for Bittensor with dynamic TAO. Uses the values in the configuration file. These values can be overriden by passing them explicitly in the command line.
 
 :::tip Looking for legacy BTCLI doc?
-This document includes dynamic TAO support with `btcli`. It does not include `btcli root` commands. For legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](./btcli.md). 
+This document includes dynamic TAO support with `btcli`. It does not include `btcli root` commands. Other commands that are disabled for dynamic TAO are marked in this document. 
+
+For legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](./btcli.md). 
 :::
 
 **Usage**:
@@ -707,7 +709,9 @@ btcli subnet lock-cost [OPTIONS]
 
 ### btcli subnet metagraph
 
-Shows the metagraph of a subnet.
+Disabled for dynamic TAO.
+
+<!-- Shows the metagraph of a subnet.
 
 The displayed metagraph, representing a snapshot of the subnet's state at the time of calling, contains detailed information about all the neurons (subnet validator and subnet miner nodes) participating in the subnet, including the neuron's stake, trust score, and more.
 
@@ -780,7 +784,7 @@ btcli subnet metagraph [OPTIONS]
 * `--html`: Display the table as HTML in the browser.
 * `--quiet`: Display only critical information on the console.
 * `--verbose`: Enable verbose output.
-* `--help`: Show this message and exit.
+* `--help`: Show this message and exit. -->
 
 ### btcli subnet pow-register
 
@@ -1332,7 +1336,9 @@ btcli wallet history [OPTIONS]
 
 ### btcli wallet inspect
 
-Displays the details of the user's wallet pairs (coldkey, hotkey) on the Bittensor network.
+Disabled for dynamic TAO.
+
+<!-- Displays the details of the user's wallet pairs (coldkey, hotkey) on the Bittensor network.
 
 The output is presented as a table with the below columns:
 
@@ -1385,7 +1391,7 @@ btcli wallet inspect [OPTIONS]
 * `-n, --netuids, --netuid TEXT`: Set the netuid(s) to exclude. Separate multiple netuids with a comma, for example: `-n 0,1,2`.
 * `--quiet`: Display only critical information on the console.
 * `--verbose`: Enable verbose output.
-* `--help`: Show this message and exit.
+* `--help`: Show this message and exit. -->
 
 ### btcli wallet list
 
@@ -1492,7 +1498,9 @@ btcli wallet new-hotkey [OPTIONS]
 
 ### btcli wallet overview
 
-Displays a detailed overview of the user's registered accounts on the Bittensor network.
+Disabled for dynamic TAO.
+
+<!-- Displays a detailed overview of the user's registered accounts on the Bittensor network.
 
 This command compiles and displays comprehensive information about each neuron associated with the user's wallets, including both hotkeys and coldkeys. It is especially useful for users managing multiple accounts or looking for a summary of their network activities and stake distributions.
 
@@ -1573,7 +1581,7 @@ btcli wallet overview [OPTIONS]
 * `--network, --subtensor.network, --chain, --subtensor.chain_endpoint TEXT`: The subtensor network to connect to. Default: finney.
 * `--quiet`: Display only critical information on the console.
 * `--verbose`: Enable verbose output.
-* `--help`: Show this message and exit.
+* `--help`: Show this message and exit. -->
 
 ### btcli wallet regen-coldkey
 
@@ -1825,7 +1833,9 @@ btcli wallet swap-hotkey [OPTIONS] [DESTINATION_HOTKEY_NAME]
 
 ### btcli wallet transfer
 
-Send TAO tokens from one wallet to another wallet on the Bittensor network.
+Disabled for dynamic TAO.
+
+<!-- Send TAO tokens from one wallet to another wallet on the Bittensor network.
 
 This command is used for transactions between different wallet accounts, enabling users to send tokens to other
 participants on the network. The command displays the user's current balance before prompting for the amount
@@ -1861,7 +1871,7 @@ btcli wallet transfer [OPTIONS]
 * `--prompt, --prompt / -y, --no-prompt, --yes, --no_prompt`: Enable or disable interactive prompts.  [default: prompt]
 * `--quiet`: Display only critical information on the console.
 * `--verbose`: Enable verbose output.
-* `--help`: Show this message and exit.
+* `--help`: Show this message and exit. -->
 
 ## btcli weights
 
