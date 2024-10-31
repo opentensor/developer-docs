@@ -51,12 +51,21 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='EVM on Subtensor: Basics'
     link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
+<<<<<<< HEAD
     <ResponsiveCard 
     icon={GiHiveMind}
     title='Install Dependencies'
     link='/evm-tutorials/install'
     body='Get started by installing dependencies first.' />
     <ResponsiveCard
+=======
+    <Card 
+    icon={MdInstallDesktop}
+    title='Install Dependencies'
+    link='/evm-tutorials/install'
+    body='Get started with tutorials by installing dependencies first.' />
+    <Card
+>>>>>>> acbaefb (Disabling a few btcli commands)
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
     link='/evm-tutorials/evm-testnet-with-metamask-wallet'
