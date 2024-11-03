@@ -45,50 +45,50 @@ EVM features on the mainnet will be available only after the Bittensor 8.4.0 is 
 
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
-<Cards>
-    <Card 
+<EVMTutorialCards>
+    <EVMTutorialCard 
     icon={GiHiveMind}
     title='EVM on Subtensor: Basics'
     link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
-    <Card 
+    <EVMTutorialCard 
     icon={GiHiveMind}
     title='Install Dependencies'
     link='/evm-tutorials/install'
     body='Get started by installing dependencies first.' />
-    <Card
+    <EVMTutorialCard
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
     link='/evm-tutorials/evm-testnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM testnet.' />
-    <Card
+    <EVMTutorialCard
     icon={SiTrpc}
     title='EVM Localnet with Metamask'
     link='/evm-tutorials/evm-localnet-with-metamask-wallet'
     body='Set up your Metamask wallet for a localnet with EVM feature.' />
-    <Card
+    <EVMTutorialCard
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'
     link='/evm-tutorials/transfer-from-metamask-to-ss58'
     body='Learn how to transfer TAO from Metamask to SS58.' />
-    <Card
+    <EVMTutorialCard
     icon={FaMoneyBillTransfer}
     title='Transfer TAO between two H160 addresses'
     link='/evm-tutorials/transfer-between-two-h160-accounts'
     body='Learn how to transfer TAO between two Ethereum H160 addresses.' />
-    <Card
+    <EVMTutorialCard
     icon={FaNetworkWired}
     title='Configure Hardhat for subtensor EVM'
     link='/evm-tutorials/hardhat-config-for-subtensor-evm'
     body='Using Hardhat? Configure it to work with subtensor EVM.' />
-    <Card
+    <EVMTutorialCard
     icon={GrStakeholder}
     title='Stake with a smart contract'
     link='/evm-tutorials/staking-precompile'
     body='Stake to a hotkey using precompiled smart contract.' />
-    <Card
+    <EVMTutorialCard
     icon={GoKey}
     title='Verify ed25519 with a precompile'
     link='/evm-tutorials/ed25519-verify-precompile'
     body='Verify an ed25519 signature on subtensor EVM.' />
-</Cards>
+</EVMTutorialCards>
