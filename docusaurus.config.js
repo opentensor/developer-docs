@@ -181,7 +181,7 @@ const config = {
           {
             position: "left",
             label: "DYNAMIC TAO",
-            to: "dtao-btcli",
+            to: "dynamic-tao",
           },
           {
             type: "search",

@@ -9,7 +9,7 @@ Command line interface (CLI) for Bittensor with dynamic TAO. Uses the values in 
 :::tip Looking for legacy BTCLI doc?
 This document includes dynamic TAO support with `btcli`. It does not include `btcli root` commands. Other commands that are disabled for dynamic TAO are marked in this document. 
 
-For legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](./btcli.md). 
+For legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](../btcli.md). 
 :::
 
 **Usage**:
