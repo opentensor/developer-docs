@@ -2,253 +2,81 @@
 title: "Commit Reveal"
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Commit Reveal
 
 This guide describes the **commit reveal** feature. This feature will address the weight copying issue. 
 
-:::tip Available only in Bittensor 7.0.1 and later versions
-This feature is available in Bittensor 7.0.1 and later versions. Make sure you update to Bittensor 7.0.1 before using this feature.
+## Weight copying
+
+In a subnet, the consensus weights reached by the subnet validators is public information. This leads to an unfortunate outcome: Some subnet validators do not do the work of evaluating the subnet miners, but instead  copy the latest consensus, thereby free-riding on the work done by other subnet validators in the subnet. This is the weight-copying problem. 
+
+The commit reveal feature is designed to combat this weight-copying problem by giving the weight-copiers access only to the old weights. The main idea is this: The consensus weights set by subnet validators are hidden for a certain interval. The weight-copiers would be able to view these weights only after this interval is elapsed. But by then these consensus weights would've become quite old, ineffective and hence would create a loss for the weight-copier using these copied old weights. As a result, weight-copiers would not have advantage over honest subnet validators.
+
+---
+
+## How it works
+
+When the subnet owner turns ON the commit reveal feature, it works like this:  
+
+<center>
+<ThemedImage
+alt="'1-Commit Reveal'"
+sources={{
+    light: useBaseUrl('/img/docs/2-commit-reveal.svg'),
+    dark: useBaseUrl('/img/docs/dark-2-commit-reveal.svg'),
+}}
+style={{width: 750}}
+/>
+</center>
+
+<br />
+
+1. A subnet validator sets the weights normally by using [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html). 
+2. But behind the scenes, the commit reveal feature will use an internal method called [`commit_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/commit_weights/index.html) to commit an encrypted hash of these consensus weights to the blockchain, instead of submitting weights openly to the chain where they can be seen by anyone.
+3. The commit reveal feature then waits for a certain interval. A subnet owner can control this interval by setting the subnet hyperparameter `commit_reveal_weights_interval`.
+4. After this interval is elapsed, the commit reveal automatically reveals these weights by submitting them again, but now openly for everyone to see, to the blockchain.
+5. On the blockchain, the committed hash from step 2 is compared to the hash of the openly submitted (revealed) weights from step 4. If the hashes are the same, the blockchain will apply the weights to the Yuma Consensus algorithm on-chain. If the hashes are not the same, the blockchain will issue an error and the weights are not applied. 
+
+:::tip Commit reveal works behind the scenes
+After the subnet owner turns ON the commit reveal feature, everything happens behind the scenes. A subnet validator will continue to set weights normally by using [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html).
 :::
 
-## Technical paper, blog and Python notebook
-
-- See [Weight Copying in Bittensor, a technical paper (PDF)](pathname:///papers/BT_Weight_Copier-29May2024.pdf).
-- Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
-
-## Collab notebooks
-
-A subnet owner can run the below Python notebook to experiment and choose the right values for the hyperparameter `commit_reveal_interval`.
-
-- For commit reveal diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/commit_reveal_diagnostic.ipynb?authuser=5
-- [GitHub directory with Python notebooks](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
-
-## Description
-
-The commit reveal feature changes the way the subnet validator weights are recorded on the chain. Instead of submitting weights openly to the chain where they can be seen by anyone, subnet validators will commit an encrypted hash of their weights to the chain. These same validators will then be encouraged to reveal these weights after the expiry of `commit_reveal_weights_interval`.
-
-The delay in revealing the weights is a parameter that can be set by the subnet owners. The delay is expressed in integer number of blocks. The optimal delay will be different for different subnets and depends mostly on the rate of turnover in the subnet miners. 
-
-### New subnet hyperparameters
-
-This feature is meant to be used by a subnet owner. To activate this feature, a subnet owner should set the `commit_reveal_weights_enabled` hyperparameter to `True`.
-
-In addition, the subnet owner should use the `commit_reveal_weights_interval` subnet hyperparameter to set the delay before revealing the weights.
-
-For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as copiers will not be able to independently score new miners.
-
-By giving weight copiers access only to old weights, the goal is to reduce the advantage gained by copying the current consensus. With commit-reveal we aim to make weight copying less attractive by decreasing the reward.
+---
 
 ## How to use commit reveal feature
 
-Here are summary steps to use the commit reveal feature. These steps are typically executed by a subnet owner:
+If you are a subnet owner, set the below hyperparameters to use the commit reveal feature:
 
-1. Enable the commit reveal feature by setting the new subnet hyperparameter `commit_reveal_weights_enabled` (bool) to `True`.
-2. Specify the desired number of blocks of delay before revealing the weights, by using the new subnet hyperparameter `commit_reveal_weights_interval` (integer). 
-3. Set the subnet hyperparameter `weights_rate_limit`.
-4. Generate your own salt. For example, you can use the following code snippet to generate salt. 
-    ```python
-        # Generate random salt
-        salt_length = 8
-        salt = list(os.urandom(salt_length))
-    ```
-5. Commit weights. You will use the above-generated salt.
-6. Reveal weights. You will use the above-generated salt.
+1. `commit_reveal_weights_enabled` (boolean): Set this to `True` to activate the commit reveal feature for the subnet. Default value is `False`.
+2. `commit_reveal_weights_interval` (int): Set this to an integer number. This is the number of subnet tempos to elapse before revealing the weights by submitting them again to the blockchain, but now openly for everyone to see. Default value is `1`.
 
-## Using in Python code
+That's all you have to do. The commit reveal feature will now start to work behind the scenes.
 
-### Method signatures
+All reveals will occur immediately at the beginning of the tempo after the `commit_reveal_weights_interval`. For example, if `commit_reveal_weights_interval` value is set to `3`, then the reveal will occur at the beginning of the fourth tempo from the current tempo. The current tempo is counted as the first tempo. See the below diagram for this example: 
 
-See below the Python definitions for the commit reveal feature:
+<center>
+<ThemedImage
+alt="'1-Commit Reveal'"
+sources={{
+    light: useBaseUrl('/img/docs/1-commit-reveal.svg'),
+    dark: useBaseUrl('/img/docs/dark-1-commit-reveal.svg'),
+}}
+style={{width: 750}}
+/>
+</center>
 
-```python
-import bittensor as bt
-    # Enable Commit Reveal
-    enabled_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=netuid,
-        parameter="commit_reveal_weights_enabled",
-        value=value,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Set interval
-    interval_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=netuid,
-        parameter="commit_reveal_weights_interval",
-        value=value,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Set rate limit
-    rate_limit_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=netuid,
-        parameter="weights_rate_limit",
-        value=value,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Run the commit weights operation
-    success, message = bt.subtensor.commit_weights(
-        wallet=wallet,
-        netuid=netuid,
-        uids=weight_uids,
-        weights=weight_vals,
-        salt=salt,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-    # Run the reveal weights operation.
-    success, message = bt.subtensor.reveal_weights(
-        wallet=wallet,
-        netuid=netuid,
-        uids=weight_uids,
-        weights=weight_vals,
-        salt=salt,
-        wait_for_inclusion=True,
-        wait_for_finalization=True,
-    )
-```
+<br />
 
-:::tip Optional parameters
-In the above `reveal_weights()` method, the `wait_for_inclusion=True`, and `wait_for_finalization=True` parameters are optionals.
-:::
+For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as weight copiers would not be able to independently score new miners.
 
-### Example Python code
-
-Below is the example Python code showing how to use the above definitions for the commit reveal feature:
-
-:::tip generating salt
-You are expected to generate your own salt and use it in the commit reveal feature. For example, you can use the following Python code snippet to generate your salt and use it:
-    ```python
-        # Generate random salt
-        salt_length = 8
-        salt = list(os.urandom(salt_length))
-    ```
-:::
-
-See the example Python code below:
-
-```python
-import bittensor as bt
-    # Enable Commit Reveal
-    enabled_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=1,
-        parameter="commit_reveal_weights_enabled",
-        value=True
-    )
-    # Set interval
-    interval_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=1,
-        parameter="commit_reveal_weights_interval",
-        value=370
-    )
-    # Set rate limit
-    rate_limit_result = bt.subtensor.set_hyperparameter(
-        wallet=wallet,
-        netuid=1,
-        parameter="weights_rate_limit",
-        value=0
-    )
-    # Run the commit weights operation
-    weights = [0.1,0.2,0.3,0.4]
-    weight_uids = [1, 2, 3, 4]
-    salt = [18, 179, 107, 0, 165, 211, 141, 197]
-    success, message = bt.subtensor.commit_weights(
-        wallet=wallet,
-        netuid=1,
-        uids=weight_uids,
-        weights=weights,
-        salt=salt
-    )
-    # Run the reveal weights operation.
-    success, message = bt.subtensor.reveal_weights(
-        wallet=wallet,
-        netuid=1,
-        uids=weight_uids,
-        weights=weights,
-        salt=salt
-    )
-```
 ---
 
-## Using `btcli`
+## Technical papers and blog
 
-### Set the subnet hyperparameters 
+- ACM CCS2024 Poster PDF [Solving the Free-rider Problem In Bittensor](pathname:///papers/ACM_CCS2024_Poster.pdf).
+- See [Weight Copying in Bittensor, a technical paper (PDF)](pathname:///papers/BT_Weight_Copier-29May2024.pdf).
+- Blog post, [Weight Copying in Bittensor](https://blog.bittensor.com/weight-copying-in-bittensor-422585ab8fa5).
 
-#### 1. Enable the commit reveal feature
-
-**Syntax**
-
-```bash
-btcli sudo set hyperparameters --netuid <NETUID> --param commit_reveal_weights_enabled --value <True or False>
-```
-
-**Example**
-
-For subnet 1 (`netuid` of `1`):
-
-```bash
-btcli sudo set hyperparameters --netuid 1 --param commit_reveal_weights_enabled --value True
-```
-
-#### 2. Set the interval
-
-**Syntax**
-
-```bash
-btcli sudo set hyperparameters --netuid <NETUID> --param commit_reveal_weights_interval --value <INTEGER>
-```
-
-**Example**
-
-Setting the interval of 370 blocks for subnet 1 (`netuid` of `1`):
-
-```bash
-btcli sudo set hyperparameters --netuid 1 --param commit_reveal_weights_interval --value 370
-```
-
-#### 3. Set the weights rate limit
-
-If you are a subnet owner, you may already have set the subnet hyperparameter `weights_rate_limit`. If you have not set it, then use the below command to set it. See the section in the [Subnet Hyperparameters](./subnet-hyperparameters.md#weights_rate_limit) document.
-
-```bash
-btcli sudo set
-```
-
-### Commit weights
-
-Example usage using the testnet:
-
-```bash
-btcli wt commit --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --subtensor.network wss://test.chain.opentensor.ai:443
-```
-The above command is used to commit weights for a specific subnet and requires the user to have the necessary permissions.
-
-Optional arguments:
-- ``--netuid`` (int): The netuid of the subnet for which weights are to be commited.
-- ``--uids`` (str): Corresponding UIDs for the specified netuid, in comma-separated format.
-- ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
-
-:::tip store the salt values 
-After executing the above command you will see the `salt` values displayed on the terminal. Store these values. You will need them to reveal weights (see below).
-:::
-
-### Reveal weights
-
-Example usage using the testnet:
-
-```bash
-btcli wt reveal --netuid 1 --uids 1,2,3,4 --weights 0.1,0.2,0.3,0.4 --salt 163,241,217,11,161,142,147,189 --subtensor.network wss://test.chain.opentensor.ai:443
-```
-
-The above command is used to reveal weights for a specific subnet and requires the user to have the necessary permissions.
-
-Optional arguments:
-- ``--netuid`` (int): The netuid of the subnet for which weights are to be revealed.
-- ``--uids`` (str): Corresponding UIDs for the specified netuid, in comma-separated format.
-- ``--weights`` (str): Corresponding weights for the specified UIDs, in comma-separated format.
-- ``--salt`` (str): Corresponding salt for the hash function, integers in comma-separated format. You will use the `salt` values you stored when executing the `btcli wt commit` command above.
