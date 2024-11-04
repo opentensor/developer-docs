@@ -21,7 +21,7 @@ The schedule coldkey swap feature works as follows:
 - When you use this feature, it will not immediately swap your coldkeys and swap your TAO funds from the old coldkey to the new coldkey. It will only schedule the swap event. 
 - All scheduled coldkey swaps will be executed on-chain. **Your scheduled coldkey swap will execute on the mainnet exactly 5 days after you successfully scheduled the coldkey swap using the method described in this document.**
 - The old coldkey you used in this method will be locked when you schedule the swap. After the 5-day period is elapsed your original coldkey will be unlocked entirely.
-- **Cost**: The cost of this coldkey swap transaction is 0.01 TAO. This must be available in your old coldkey.
+- **Cost**: The cost of this coldkey swap transaction is 0.1 TAO. This must be available in your old coldkey.
 - Any subnet ownership from your old coldkey will move to the new coldkey.
 - The delegated stake will be transferred from your old coldkey to the new coldkey.
 - For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
