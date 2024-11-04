@@ -85,6 +85,16 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "dynamic-tao/dtao-btcli",
+      ],
+    },
+    {
+      type: "category",
       label: "Staking and Delegation",
       collapsible: true,
       collapsed: false,
@@ -132,7 +142,6 @@ const sidebars = {
         "evm-tutorials/ed25519-verify-precompile",
       ],
     },
-    "dtao-btcli",
     "btcli",
     "bt-api-ref",
     "emissions",
