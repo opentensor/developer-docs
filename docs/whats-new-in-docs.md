@@ -16,6 +16,10 @@ Key updates to the documentation.
   - [Bittensor SDK 8.2.1](./bittensor-rel-notes.md#bittensor-sdk-821).  
   - [Bittensor SDK 8.3.0rc3](./bittensor-rel-notes.md#bittensor-sdk-830rc3).
 
+## 05 November 2024
+
+- Updated the [Chain Release Notes](./chain-rel-notes.md#mainnet).
+
 ## 21 October 2024
 
 - Updated the [Dissolve a Subnet](./subnets/dissolve-a-subnet.md) document to show that now `subtensorModule` > `scheduleDissolveNetwork(netuid)` should be used to schedule the subnet to be dissolved. The subnet will be dissolved after five (`5` days).
