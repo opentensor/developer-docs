@@ -6,9 +6,42 @@ title: "Chain Release Notes"
 
 The following are the release notes for the subtensor on-chain software.
 
+`Released 05 November 2024`
 ## Mainnet
 
+### Cost reduced for schedule coldkey swap
+
+- The cost to schedule coldkey swap is reduced to 0.1 TAO from 1.0 TAO. 
+- See the PR: [https://github.com/opentensor/subtensor/pull/897](https://github.com/opentensor/subtensor/pull/897). 
+- See the [Schedule Coldkey Swap](./subnets/schedule-coldkey-swap.md) documentation.
+- Mainnet spec version is now `205`.
+
+### New commit reveal feature
+
+- A revised commit reveal feature. 
+- See the PR: [https://github.com/opentensor/subtensor/pull/895](https://github.com/opentensor/subtensor/pull/895). 
+- See the updated [Commit Reveal](./subnets/commit-reveal.md) documentation.
+
+## Testnet
+
+### Permissioned EVM feature
+
+This feature is released on testnet only. 
+
+- **Permissioned deployment**: Until further notice, only white-listed parties can deploy a smart contract on subtensor. When you are ready to deploy, make a request in the **evm-bittensor** channel of Bittensor Discord: https://discord.com/channels/799672011265015819/1303125508791341057
+- **Permissionless interaction**: However, anyone can call a smart contract that was already deployed on subtensor, and interact with it in a permissionless way. 
+- [EVM Documentation](./evm-tutorials/index.md).
+- Testnet spec version is now `206`. 
+
+## Other
+
+Other quality of life enhancements that do not affect the runtime of the mainnet.
+
+---
+
 `Released 04 September 2024`
+
+## Mainnet
 
 ### New features
 
@@ -36,10 +69,10 @@ The following are the release notes for the subtensor on-chain software.
 
 - **Better neuron pruning**: A neuron with the worst pruning score is pruned first, but if multiple neurons have the same worst pruning score, then the oldest registered neuron is pruned first. 
 
-
-## Mainnet 1.2.3 
+---
 
 `Released 12 July 2024`
+## Mainnet 1.2.3 
 
 - All the items described in the below [Testnet 1.2.1-pre-release](#testnet-121-pre-release) are now available in the mainnet.
 
