@@ -6,6 +6,68 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## BTCLI 8.3.0
+
+### New features and enhancements
+
+- A new flag `--all` is added to `btcli wallet transfer` command. This transfers all the available balance in the provided wallet to the destination coldkey. 
+- You can now use either hotkey names or ss58 addresses in both `--include-hotkeys` and `--exclude-hotkeys` options for `btcli stake add` and `btcli stake remove` commands.
+- Enhanced the user experience by prompting the user for wallet path before prompting for wallet name.
+- Enhanced the error message when the user provides incorrect password.
+- For better user experience while using the `btcli wallet` with `regen_coldkey`, `regen_coldkeypub` and `regen_hotkey` subcommands, a success message and the regenerated wallet details are displayed when the command runs succesfully.
+- For better user experience, the `btcli stake remove` command now shows confirmation when `--no-prompt` is used.
+
+### Fixed issues
+
+- There was an error when using `btcli subnet pow-register` with `--cuda` option, where the `--num_processes` was being accessed before being set (only in CUDA use). This is now resolved. Now the `--num_processes` is set before accessing it.
+- Fixed the Taostats link.
+- Graceful handling of keyboard interrupt.
+- Several other bug fixes.
+
+## Bittensor SDK 8.2.1
+
+### New features and enhancements
+
+- Expanded the type registry to include all the available options.
+- Added `Subtensor.register`, `Subtensor.difficulty` methods. 
+- Added the following to Subtensor:
+  - `burned_register`
+  - `get_subnet_burn_cost`
+  - `recycle` and related extrinsics.
+- Added the following:
+  - Subtensor.get_delegate_by_hotkey
+  - Subtensor.root_set_weights
+  - Subtensor.root_register
+  - Subtensor.get_all_subnets_info
+  - Subtensor.get_delegate_take
+- Default port is changed from `9946` to `9944`.
+- Removed the unusued `prometheus` extrinsic.
+- Replaced `rich.console` with `btlogging.logging`.
+
+## Bittensor SDK 8.3.0rc3
+
+**CAUTION**: This is a release candidate only. Do not use it in your production environment.
+
+### New features and enhancements
+
+- Commit Reveal V2, including a new subprocess and related utilities that support the Commit Reveal V2 feature. 
+- A new `bittensor.core.async_subtensor.AsyncSubtensor` class is added.
+- The following `async` methods are added, along with the corresponding extrinsics to the `AsyncSubtensor` subtensor object:
+- Added `bittensor.utils.delegates_details.DelegatesDetails.`
+- Updated `bittensor/core/chain_data`.
+- Added `bittensor/core/extrinsics/async_registration`.
+- Added `bittensor/core/extrinsics/async_root`.
+- Added `bittensor/core/extrinsics/async_transfer`.
+- Added `get_current_block`, `get_transfer_fee`, `get_uid_for_hotkey_on_subnet`.
+- `set_weights`.
+- `commit_weights`.
+- Added the related async extrinsics.
+- Updated settings and utils.
+- Better handling of SSL EOF error, which is a connection issue. This is handled for both sync and async versions.
+- Removed the usage of `prompt` in SDK.
+
+---
+
 ## Release 8.2.0
 
 `Released 10 October 2024`
