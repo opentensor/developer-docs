@@ -12,10 +12,10 @@ The following are the release notes for the Bittensor software.
 
 - A new flag `--all` is added to `btcli wallet transfer` command. This transfers all the available balance in the provided wallet to the destination coldkey. 
 - You can now use either hotkey names or ss58 addresses in both `--include-hotkeys` and `--exclude-hotkeys` options for `btcli stake add` and `btcli stake remove` commands.
-- Enhanced the user experience by prompting the user for wallet path before prompting for wallet name.
+- Enhanced the user experience by not prompting the user for wallet path every time.
+- For better user experience, the `btcli stake remove` command now does not ask for confirmation when `--no-prompt` is used.
 - Enhanced the error message when the user provides incorrect password.
 - For better user experience while using the `btcli wallet` with `regen_coldkey`, `regen_coldkeypub` and `regen_hotkey` subcommands, a success message and the regenerated wallet details are displayed when the command runs succesfully.
-- For better user experience, the `btcli stake remove` command now shows confirmation when `--no-prompt` is used.
 
 ### Fixed issues
 
@@ -27,6 +27,8 @@ The following are the release notes for the Bittensor software.
 ## Bittensor SDK 8.2.1
 
 ### New features and enhancements
+
+For the below added methods, see [Bittensor SDK](./bt-api-ref.md) reference.
 
 - Expanded the type registry to include all the available options.
 - Added `Subtensor.register`, `Subtensor.difficulty` methods. 
@@ -44,7 +46,7 @@ The following are the release notes for the Bittensor software.
 - Removed the unusued `prometheus` extrinsic.
 - Replaced `rich.console` with `btlogging.logging`.
 
-## Bittensor SDK 8.3.0rc3
+## Bittensor SDK 8.3.0rc3 
 
 **CAUTION**: This is a release candidate only. Do not use it in your production environment.
 
