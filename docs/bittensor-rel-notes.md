@@ -6,6 +6,8 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+`Released 06 November 2024`
+
 ## BTCLI 8.3.0
 
 ### New features and enhancements
@@ -48,7 +50,9 @@ For the below added methods, see [Bittensor SDK](./bt-api-ref.md) reference.
 
 ## Bittensor SDK 8.3.0rc3 
 
-**CAUTION**: This is a release candidate only. Do not use it in your production environment.
+:::caution 
+This is a release candidate only. Do not use it in your production environment.
+:::
 
 ### New features and enhancements
 
@@ -70,9 +74,9 @@ For the below added methods, see [Bittensor SDK](./bt-api-ref.md) reference.
 
 ---
 
-## Release 8.2.0
-
 `Released 10 October 2024`
+
+## Release 8.2.0
 
 The following are the new versions in this release: 
 
@@ -119,10 +123,11 @@ The following are the new versions in this release:
 - Fixed the `network` instantiation in `btcli root list-delegates` command.
 - Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
 
-
-## Release 8.1.0
+---
 
 `Released 03 October 2024`
+
+## Release 8.1.0
 
 - Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
 
