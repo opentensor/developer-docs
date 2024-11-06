@@ -47,67 +47,137 @@ The TAO side of a subnet pool's reserves are denoted by τ_in, or **TAO reserve*
 
 ## Rate (τ_in/α_in)
 
-We use the term **rate** to refer to the exchange rate between TAO and a subnet dTAO token. The exchange rate of a dTAO token is calculated as a ratio of the subnet's pool reserves, i.e., TAO reserve(τ_in) / alpha reserves (α_in). This can change every block when staking or unstaking or emissions occur on this subnet.
+We use the term **rate** to refer to the exchange rate between TAO and a subnet dTAO token. This is calculated as a ratio of the subnet's pool reserves, i.e., TAO reserve(τ_in) / alpha reserves (α_in). 
+
+### Example
+For example, if for subnet ε, its subnet pool contains TAO reserves of 1000 TAO units and its alpha reserves of 16000 dTAO ε units, then the exchange rate between TAO and dTAO ε is:
+
+$$
+R = \frac{\tau_{in}}{\alpha_{in}} = \frac{1000}{16000} = 0.0625
+$$
+
+Hence, 
+$$
+\text{1 TAO} = 0.0625ε
+$$ 
+
+This exchange rate can change every block when staking or unstaking or emissions occur on this subnet.
 
 ---
 
+## Staking
 
+With dynamic TAO, staking would work like this. See the below diagram.
 
+<center>
+<ThemedImage
+alt="Staking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/staking-subnet-pools.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/staking-subnet-pools.svg'),
+  }}
+style={{width: 700}}
+/>
+</center>
 
-## Stake (α)                    
+<br />
 
-Stake this hotkey holds in the subnet, expressed in subnet's dynamic TAO currency. This can change whenever staking or unstaking occurs on this hotkey in this subnet.
+1. Under the dynamic TAO, as a TAO holder you would still stake to a  validator’s hotkey, but now you can also select a subnet (`netuid`) of your choice. When you run `btcli stake add` command, the TAO you want to stake first goes into the subnet pool.  
+2. The TAO to be staked is added to the TAO reserves side of the subnet pool.  
+3. The subnet pool algorithm uses the exchange rate and calculates the equivalent units of dTAO α, for the TAO that was just added to the TAO reserve side. This amount of dTAO α is taken out of the alpha reserve of the pool and is sent to the validator’s hotkey. 
+4. The validator’s hotkey holds the dTAO α. This is referred as **Stake (α)**. 
 
-## STAKE (α_out)
+:::tip Stake is always expressed in alpha units
+In dynamic TAO, the stake held by a hotkey in a subnet is always expressed in the subnet-specific dTAO α units and not TAO units.
+:::
+
+---
+
+## STAKE (α_out) or alpha out (α_out) 
  
-Total stake in the subnet, expressed in the subnet's dynamic TAO currency. This is the sum of all the stakes present in all the hotkeys in this subnet. This can change every block.
+Total stake in the subnet. This is the sum of all the [Stake (α)](#staking)  present in all the hotkeys in this subnet, including those of validators, miners and of the subnet owner. This is often referred as **α outstanding**. Compare this with [**α reserve**](#tao-reserve-τ_in-and-alpha-reserve-α_in), which is the amount of α in the subnet pool. The **α outstanding** can change every block.
 
-## TAO Reserves (τ_in)
+## Hotkey's stake share (α / α_out) 
 
-Units of TAO in the TAO reserves for this subnet. Attached to every subnet is a subnet pool, containing a TAO reserve and the alpha reserve. See also [Alpha Reserves (α_in)](#alpha-reserves-α_in) description. This can change every block when staking or unstaking or emissions occur on this subnet.
+A hotkey's share of the total outstanding alpha tokens in the subnet is calculated as:
 
-## Alpha Reserves (α_in)
+$$
+\text{A hotkey's stake share} = \frac{\text{hotkey's stake}(\alpha)}{\text{Total stake}(\alpha_{out})\text{ in the subnet}} 
+$$
 
-Units of subnet dTAO token in the dTAO pool reserves for this subnet. This reserve, together with [TAO Reserves(τ_in)](#tao-reserves-τ_in), form the subnet pool for every subnet. This can change every block when staking or unstaking or emissions occur on this subnet.
+:::tip Local staking power within the subnet
+The hotkey's stake share represents the local stake power of the hotkey within the subnet. 
+:::
 
- ## RATE (τ_in/α_in)
- 
- Exchange rate between TAO and subnet dTAO token. Calculated as (TAO Reserves(τ_in) / Alpha Reserves (α_in)). This can change every block when staking or unstaking or emissions occur on this subnet.
+---
 
- ## Alpha out (α_out)            
- 
- Total stake in the subnet, expressed in subnet's dynamic TAO currency. This is the sum of all the stakes present in all the hotkeys in this subnet. This can change every block.
+## Unstaking
 
- ## TAO Equiv (τ_in x α/α_out)
- 
- TAO-equivalent value of the hotkeys stake α (i.e., Stake(α)). Calculated as (TAO Reserves(τ_in) x (Stake(α) / ALPHA Out(α_out))). This value is weighted with (1-γ), where γ is the local weight coefficient, and used in determining the overall stake weight of the hotkey in this subnet. Also see the "Local weight coeff (γ)" column of "btcli subnet list" command output. This can change every block.
+Unstaking works, not surprisingly, as a reverse of the staking operation. See the below diagram.
 
- ## Exchange Value (α x τ/α)
- 
- This is the potential τ you will receive, without considering slippage, if you unstake from this hotkey now on this subnet. See Swap(α → τ) column description. Note: The TAO Equiv(τ_in x α/α_out) indicates validator stake weight while this Exchange Value shows τ you will receive if you unstake now. This can change every block.
+<center>
+<ThemedImage
+alt="Unstaking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/unstaking-subnet-pools.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/unstaking-subnet-pools.svg'),
+  }}
+style={{width: 700}}
+/>
+</center>
 
- ## Swap (α → τ)                 
- 
- This is the actual τ you will receive, after factoring in the slippage charge, if you unstake from this hotkey now on this subnet. The slippage is calculated as 1 - (Swap(α → τ)/Exchange Value(α x τ/α)), and is displayed in brackets. This can change every block.
+<br />
 
- ## Emission (α/block)
- 
- Shows the portion of the one α per block emission into this subnet that is received by this hotkey, according to YC2 in this subnet. This can change every block.
-
- ## Emission (τ)
- 
- Shows how the one τ per block emission is distributed among all the subnet pools. For each subnet, this fraction is first calculated by dividing the subnet's TAO Pool (τ_in) by the sum of all TAO Pool (τ_in) across all the subnets. This fraction is then added to the TAO Pool (τ_in) of the subnet. This can change every block.
-
+1. When you issue an unstake command, `btcli stake remove`, and specify the units of α token you want to unstake, this dTAO α is first taken out of the validator’s hotkey and added to the α reserves of the subnet pool. 
+2. The subnet pool algorithm then applies the latest exchange rate and calculates the equivalent TAO units for the α token units that were just added to the α reserves of the pool. 
+3. These equivalent TAO units are then taken out of the TAO reserves of the subnet pool and are sent to the TAO holder’s coldkey.
 
 
- ## RATE (τ_in/α_in)
- 
- Exchange rate between TAO and subnet dTAO token. Calculated as (TAO Pool (τ_in) / Alpha Pool (α_in)). This can change every block.
+---
 
- ## Tempo (k/n)
- 
- The tempo status of the subnet. Represented as (k/n) where "k" is the number of blocks elapsed since the last tempo and "n" is the total number of blocks in the tempo. The number "n" is a subnet hyperparameter and does not change every block.
+## TAO Equiv (τ_in x α/α_out)
 
- ## Local weight coeff (γ)
- 
- A multiplication factor between 0 and 1, applied to the relative proportion of a validator's stake in this subnet. Applied as (γ) × (a validator's α stake in this subnet) / (Total α stake in this subnet, i.e., Stake (α_out)). This γ-weighted relative proportion is used, in addition to other factors, in determining the overall stake weight of a validator in this subnet. This is a subnet parameter.
+A hotkey's stake, i.e., [stake(α)](#staking), represents subnet-specific stake. Moreover, a dTAO token of a subnet is not fungible with a dTAO token of another subnet. As a result, a [hotkey's stake share (α / α_out)](#hotkeys-stake-share-α--α_out) can only represent the validator's staking power **within the subnet**. For this very reason, the hotkey's stake share in one subnet cannot be simply added to the same hotkey's stake share in a different subnet. 
+
+This is where the TAO-equivalent value of the hotkeys stake share (α / α_out) comes into play. As we saw in the [Staking](#staking) section, any TAO staked into a subnet is added to the TAO reserves of the subnet pool, i.e., added to  τ_in. As a consequence, τ_in reserve represents the total voting power of the subnet. Hence, 
+
+$$ 
+\text{a subnet's total voting power}\times\text{hotkey's stake share in the subnet}
+$$
+
+represents the **hotkey's local voting power proportional to its stake share in the subnet**. It is calculated as:
+
+$$ 
+\tau_{in}\times\text{hotkey's stake share} = \tau_{in}\times\frac{\alpha}{\alpha_{out}}
+$$
+
+and is expressed in TAO units. This can change every block.
+
+## Exchange Value (α x τ/α)
+
+This is the potential instantaneous TAO you will receive, without considering slippage, if you unstake at this instant from this hotkey on this subnet. See Swap(α → τ) column description. This can change every block.
+
+:::tip Compare with TAO Equiv 
+Whereas the [TAO Equiv(τ_in x α/α_out)](#tao-equiv-τ_in-x-αα_out) indicates a validator's local stake weight, this Exchange Value shows TAO you will receive if you unstake now. 
+:::
+
+## Swap (α → τ)                 
+
+This is the actual τ you will receive, after factoring in the slippage charge, if you unstake from this hotkey now on this subnet. The slippage is calculated as 1 - (Swap(α → τ)/Exchange Value(α x τ/α)), and is displayed in brackets. This can change every block.
+
+## Emission (α/block)
+
+Shows the portion of the one α per block emission into this subnet that is received by this hotkey, according to YC2 in this subnet. This can change every block.
+
+## Emission (τ)
+
+Shows how the one τ per block emission is distributed among all the subnet pools. For each subnet, this fraction is first calculated by dividing the subnet's TAO Pool (τ_in) by the sum of all TAO Pool (τ_in) across all the subnets. This fraction is then added to the TAO Pool (τ_in) of the subnet. This can change every block.
+
+
+## Tempo (k/n)
+
+The tempo status of the subnet. Represented as (k/n) where "k" is the number of blocks elapsed since the last tempo and "n" is the total number of blocks in the tempo. The number "n" is a subnet hyperparameter and does not change every block.
+
+## Local weight coeff (γ)
+
+A multiplication factor between 0 and 1, applied to the relative proportion of a validator's stake in this subnet. Applied as (γ) × (a validator's α stake in this subnet) / (Total α stake in this subnet, i.e., Stake (α_out)). This γ-weighted relative proportion is used, in addition to other factors, in determining the overall stake weight of a validator in this subnet. This is a subnet parameter.
