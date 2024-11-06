@@ -6,6 +6,10 @@ title: "Bittensor CLI"
 
 Command line interface (CLI) for Bittensor. Uses the values in the configuration file. These values can be overriden by passing them explicitly in the command line.
 
+## Allowed networks
+
+In any `btcli` command, the `--network` flag accepts the following values: `finney`, `test`, `local`, and `subvortex`. If no value is specified, the default network is `finney`.
+
 **Usage**:
 
 ```console
@@ -927,8 +931,8 @@ $ btcli stake add [OPTIONS]
 - `--amount FLOAT`: The amount of TAO tokens to stake [default: 0.0].
 - `-m, --max-stake FLOAT`: Sets the maximum amount of TAO to have staked in each hotkey. [default: 0.0].
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to stake to.
-- `-in, --include-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
-- `-ex, --exclude-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
+- `-in, --include-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
+- `-ex, --exclude-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, stakes to all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys].
 - `--wallet-name, --name, --wallet_name, --wallet.name TEXT`: Name of wallet
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
@@ -1182,8 +1186,8 @@ $ btcli stake remove [OPTIONS]
 - `-a, --amount FLOAT`: The amount of TAO tokens to unstake. [default: 0.0]
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to unstake from.
 - `--max-stake, --max FLOAT`: Sets the maximum amount of TAO to remain staked in each hotkey. [default: 0.0]
-- `-in, --include-hotkeys TEXT`: Specifies the hotkeys by name or ss58 address to unstake from. For example, `-in hk1,hk2`
-- `-ex, --exclude-hotkeys TEXT`: Specifies the hotkeys by name or ss58 address not to unstake from (only use with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
+- `-in, --include-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
+- `-ex, --exclude-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, unstakes from all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys]
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt].
 - `--quiet`: Do not output to the console besides critical information.
@@ -2543,6 +2547,7 @@ $ btcli wallet transfer [OPTIONS]
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt]
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
+- `--all`: Transfer the whole balance.
 - `--help`: Show this message and exit.
 
 ---
