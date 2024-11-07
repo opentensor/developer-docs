@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.chain_data.axon_info &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.chain_data.axon_info &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -362,7 +364,8 @@ document.write(`
 <span class="c1"># DEALINGS IN THE SOFTWARE.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This module defines the :obj:`AxonInfo` class, a data structure used to represent information about an axon endpoint in the Bittensor network.</span>
+<span class="sd">This module defines the `AxonInfo` class, a data structure used to represent information about an axon endpoint</span>
+<span class="sd">in the bittensor network.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
@@ -379,7 +382,7 @@ document.write(`
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">AxonInfo</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The :obj:`AxonInfo` class represents information about an axon endpoint in the Bittensor network. This includes</span>
+<span class="sd">    The `AxonInfo` class represents information about an axon endpoint in the bittensor network. This includes</span>
 <span class="sd">    properties such as IP address, ports, and relevant keys.</span>
 
 <span class="sd">    Attributes:</span>
@@ -450,7 +453,7 @@ document.write(`
 <div class="viewcode-block" id="AxonInfo.to_string">
 <a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.axon_info.AxonInfo.to_string">[docs]</a>
     <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts the :obj:`AxonInfo` object to a string representation using JSON.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts the `AxonInfo` object to a string representation using JSON.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -463,18 +466,18 @@ document.write(`
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">json_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AxonInfo&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates an :obj:`AxonInfo` object from its string representation using JSON.</span>
+<span class="sd">        Creates an `AxonInfo` object from its string representation using JSON.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json_string (str): The JSON string representation of the :obj:`AxonInfo` object.</span>
+<span class="sd">            json_string (str): The JSON string representation of the AxonInfo object.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            AxonInfo: An instance of :obj:`AxonInfo` created from the JSON string. If decoding fails, returns a default :obj:`AxonInfo` object with default values.</span>
+<span class="sd">            AxonInfo: An instance of AxonInfo created from the JSON string. If decoding fails, returns a default `AxonInfo` object with default values.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            json.JSONDecodeError: If there is an error in decoding the JSON string.</span>
-<span class="sd">            TypeError: If there is a type error when creating the :obj:`AxonInfo` object.</span>
-<span class="sd">            ValueError: If there is a value error when creating the :obj:`AxonInfo` object.</span>
+<span class="sd">            TypeError: If there is a type error when creating the AxonInfo object.</span>
+<span class="sd">            ValueError: If there is a value error when creating the AxonInfo object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
@@ -493,13 +496,13 @@ document.write(`
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_neuron_info</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">neuron_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AxonInfo&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Converts a dictionary to an :obj:`AxonInfo` object.</span>
+<span class="sd">        Converts a dictionary to an `AxonInfo` object.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            neuron_info (dict): A dictionary containing the neuron information.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            instance (AxonInfo): An instance of :obj:`AxonInfo` created from the dictionary.</span>
+<span class="sd">            instance (AxonInfo): An instance of AxonInfo created from the dictionary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
             <span class="n">version</span><span class="o">=</span><span class="n">neuron_info</span><span class="p">[</span><span class="s2">&quot;axon_info&quot;</span><span class="p">][</span><span class="s2">&quot;version&quot;</span><span class="p">],</span>

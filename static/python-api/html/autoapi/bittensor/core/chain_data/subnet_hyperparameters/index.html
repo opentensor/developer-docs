@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.chain_data.subnet_hyperparameters &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.chain_data.subnet_hyperparameters &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -183,7 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/version/index.html">bittensor.utils.version</a></li>
@@ -475,169 +477,169 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rho</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The rate of decay of some value.</p></li>
-<li><p><strong>kappa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – A constant multiplier used in calculations.</p></li>
-<li><p><strong>immunity_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The period during which immunity is active.</p></li>
-<li><p><strong>min_allowed_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Minimum allowed weights.</p></li>
-<li><p><strong>max_weight_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Maximum weight limit.</p></li>
-<li><p><strong>tempo</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The tempo or rate of operation.</p></li>
-<li><p><strong>min_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Minimum difficulty for some operations.</p></li>
-<li><p><strong>max_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Maximum difficulty for some operations.</p></li>
-<li><p><strong>weights_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The version number of the weights used.</p></li>
-<li><p><strong>weights_rate_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Rate limit for processing weights.</p></li>
-<li><p><strong>adjustment_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Interval at which adjustments are made.</p></li>
-<li><p><strong>activity_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Activity cutoff threshold.</p></li>
-<li><p><strong>registration_allowed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Indicates if registration is allowed.</p></li>
-<li><p><strong>target_regs_per_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Target number of registrations per interval.</p></li>
-<li><p><strong>min_burn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Minimum burn value.</p></li>
-<li><p><strong>max_burn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Maximum burn value.</p></li>
-<li><p><strong>bonds_moving_avg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Moving average of bonds.</p></li>
-<li><p><strong>max_regs_per_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Maximum number of registrations per block.</p></li>
-<li><p><strong>serving_rate_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Limit on the rate of service.</p></li>
-<li><p><strong>max_validators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Maximum number of validators.</p></li>
-<li><p><strong>adjustment_alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Alpha value for adjustments.</p></li>
-<li><p><strong>difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Difficulty level.</p></li>
-<li><p><strong>commit_reveal_weights_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Interval for commit-reveal weights.</p></li>
-<li><p><strong>commit_reveal_weights_enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Flag indicating if commit-reveal weights are enabled.</p></li>
-<li><p><strong>alpha_high</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – High value of alpha.</p></li>
-<li><p><strong>alpha_low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Low value of alpha.</p></li>
-<li><p><strong>liquid_alpha_enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Flag indicating if liquid alpha is enabled.</p></li>
+<li><p><strong>rho</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The rate of decay of some value.</p></li>
+<li><p><strong>kappa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – A constant multiplier used in calculations.</p></li>
+<li><p><strong>immunity_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The period during which immunity is active.</p></li>
+<li><p><strong>min_allowed_weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Minimum allowed weights.</p></li>
+<li><p><strong>max_weight_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Maximum weight limit.</p></li>
+<li><p><strong>tempo</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The tempo or rate of operation.</p></li>
+<li><p><strong>min_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Minimum difficulty for some operations.</p></li>
+<li><p><strong>max_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum difficulty for some operations.</p></li>
+<li><p><strong>weights_version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The version number of the weights used.</p></li>
+<li><p><strong>weights_rate_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Rate limit for processing weights.</p></li>
+<li><p><strong>adjustment_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Interval at which adjustments are made.</p></li>
+<li><p><strong>activity_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Activity cutoff threshold.</p></li>
+<li><p><strong>registration_allowed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Indicates if registration is allowed.</p></li>
+<li><p><strong>target_regs_per_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Target number of registrations per interval.</p></li>
+<li><p><strong>min_burn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Minimum burn value.</p></li>
+<li><p><strong>max_burn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum burn value.</p></li>
+<li><p><strong>bonds_moving_avg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Moving average of bonds.</p></li>
+<li><p><strong>max_regs_per_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum number of registrations per block.</p></li>
+<li><p><strong>serving_rate_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Limit on the rate of service.</p></li>
+<li><p><strong>max_validators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum number of validators.</p></li>
+<li><p><strong>adjustment_alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Alpha value for adjustments.</p></li>
+<li><p><strong>difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Difficulty level.</p></li>
+<li><p><strong>commit_reveal_weights_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Interval for commit-reveal weights.</p></li>
+<li><p><strong>commit_reveal_weights_enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Flag indicating if commit-reveal weights are enabled.</p></li>
+<li><p><strong>alpha_high</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – High value of alpha.</p></li>
+<li><p><strong>alpha_low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Low value of alpha.</p></li>
+<li><p><strong>liquid_alpha_enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Flag indicating if liquid alpha is enabled.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.rho">
-<span class="sig-name descname"><span class="pre">rho</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.rho" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rho</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.rho" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.kappa">
-<span class="sig-name descname"><span class="pre">kappa</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.kappa" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kappa</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.kappa" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.immunity_period">
-<span class="sig-name descname"><span class="pre">immunity_period</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.immunity_period" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">immunity_period</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.immunity_period" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_allowed_weights">
-<span class="sig-name descname"><span class="pre">min_allowed_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_allowed_weights" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">min_allowed_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_allowed_weights" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_weight_limit">
-<span class="sig-name descname"><span class="pre">max_weight_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_weight_limit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_weight_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_weight_limit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.tempo">
-<span class="sig-name descname"><span class="pre">tempo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.tempo" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tempo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.tempo" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_difficulty">
-<span class="sig-name descname"><span class="pre">min_difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_difficulty" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">min_difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_difficulty" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_difficulty">
-<span class="sig-name descname"><span class="pre">max_difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_difficulty" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_difficulty" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_version">
-<span class="sig-name descname"><span class="pre">weights_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_version" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">weights_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_version" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_rate_limit">
-<span class="sig-name descname"><span class="pre">weights_rate_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_rate_limit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">weights_rate_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.weights_rate_limit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_interval">
-<span class="sig-name descname"><span class="pre">adjustment_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_interval" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">adjustment_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_interval" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.activity_cutoff">
-<span class="sig-name descname"><span class="pre">activity_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.activity_cutoff" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">activity_cutoff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.activity_cutoff" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.registration_allowed">
-<span class="sig-name descname"><span class="pre">registration_allowed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.registration_allowed" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">registration_allowed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.registration_allowed" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.target_regs_per_interval">
-<span class="sig-name descname"><span class="pre">target_regs_per_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.target_regs_per_interval" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">target_regs_per_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.target_regs_per_interval" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_burn">
-<span class="sig-name descname"><span class="pre">min_burn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_burn" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">min_burn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.min_burn" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_burn">
-<span class="sig-name descname"><span class="pre">max_burn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_burn" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_burn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_burn" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.bonds_moving_avg">
-<span class="sig-name descname"><span class="pre">bonds_moving_avg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.bonds_moving_avg" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bonds_moving_avg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.bonds_moving_avg" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_regs_per_block">
-<span class="sig-name descname"><span class="pre">max_regs_per_block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_regs_per_block" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_regs_per_block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_regs_per_block" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.serving_rate_limit">
-<span class="sig-name descname"><span class="pre">serving_rate_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.serving_rate_limit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serving_rate_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.serving_rate_limit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_validators">
-<span class="sig-name descname"><span class="pre">max_validators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_validators" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_validators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.max_validators" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_alpha">
-<span class="sig-name descname"><span class="pre">adjustment_alpha</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_alpha" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">adjustment_alpha</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.adjustment_alpha" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.difficulty">
-<span class="sig-name descname"><span class="pre">difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.difficulty" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">difficulty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.difficulty" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_interval">
-<span class="sig-name descname"><span class="pre">commit_reveal_weights_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_interval" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">commit_reveal_weights_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_interval" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_enabled">
-<span class="sig-name descname"><span class="pre">commit_reveal_weights_enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_enabled" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">commit_reveal_weights_enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.commit_reveal_weights_enabled" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_high">
-<span class="sig-name descname"><span class="pre">alpha_high</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_high" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">alpha_high</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_high" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_low">
-<span class="sig-name descname"><span class="pre">alpha_low</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_low" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">alpha_low</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.alpha_low" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.liquid_alpha_enabled">
-<span class="sig-name descname"><span class="pre">liquid_alpha_enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.liquid_alpha_enabled" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">liquid_alpha_enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.subnet_hyperparameters.SubnetHyperparameters.liquid_alpha_enabled" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -647,7 +649,7 @@ document.write(`
 <p>This method decodes the given vector of bytes using the <cite>bt_decode</cite> module and creates a new instance of <cite>SubnetHyperparameters</cite> with the decoded values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><em>bytes</em></a>) – A vector of bytes to decode into <cite>SubnetHyperparameters</cite>.</p>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>) – A vector of bytes to decode into <cite>SubnetHyperparameters</cite>.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An instance of <cite>SubnetHyperparameters</cite> if decoding is successful, None otherwise.</p>

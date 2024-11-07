@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.utils &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -362,10 +364,10 @@ document.write(`
 <span class="c1"># DEALINGS IN THE SOFTWARE.</span>
 
 <span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="kn">import</span> <span class="nn">scalecodec</span>
-<span class="kn">from</span> <span class="nn">substrateinterface</span> <span class="kn">import</span> <span class="n">Keypair</span>
+<span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Keypair</span>
 <span class="kn">from</span> <span class="nn">substrateinterface.utils</span> <span class="kn">import</span> <span class="n">ss58</span>
 
 <span class="kn">from</span> <span class="nn">bittensor.core.settings</span> <span class="kn">import</span> <span class="n">SS58_FORMAT</span>
@@ -623,7 +625,7 @@ document.write(`
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;public_key must be a string or bytes&quot;</span><span class="p">)</span>
 
-        <span class="n">keypair</span> <span class="o">=</span> <span class="n">Keypair</span><span class="p">(</span><span class="n">public_key</span><span class="o">=</span><span class="n">public_key</span><span class="p">,</span> <span class="n">ss58_format</span><span class="o">=</span><span class="n">SS58_FORMAT</span><span class="p">)</span>
+        <span class="n">keypair</span> <span class="o">=</span> <span class="n">Keypair</span><span class="p">(</span><span class="n">public_key</span><span class="o">=</span><span class="n">public_key</span><span class="p">)</span>
 
         <span class="n">ss58_addr</span> <span class="o">=</span> <span class="n">keypair</span><span class="o">.</span><span class="n">ss58_address</span>
         <span class="k">return</span> <span class="n">ss58_addr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>

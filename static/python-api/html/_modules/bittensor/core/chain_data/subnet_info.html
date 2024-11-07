@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.chain_data.subnet_info &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.chain_data.subnet_info &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -345,15 +347,12 @@ document.write(`
                   
   <h1>Source code for bittensor.core.chain_data.subnet_info</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">scalecodec.utils.ss58</span> <span class="kn">import</span> <span class="n">ss58_encode</span>
+<span class="kn">import</span> <span class="nn">bt_decode</span>
 
-<span class="kn">from</span> <span class="nn">bittensor.core.chain_data.utils</span> <span class="kn">import</span> <span class="n">from_scale_encoding</span><span class="p">,</span> <span class="n">ChainDataType</span>
-<span class="kn">from</span> <span class="nn">bittensor.core.settings</span> <span class="kn">import</span> <span class="n">SS58_FORMAT</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.chain_data.utils</span> <span class="kn">import</span> <span class="n">decode_account_id</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">u16_normalized_float</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.balance</span> <span class="kn">import</span> <span class="n">Balance</span>
-<span class="kn">from</span> <span class="nn">bittensor.utils.registration</span> <span class="kn">import</span> <span class="n">torch</span><span class="p">,</span> <span class="n">use_torch</span>
 
 
 <div class="viewcode-block" id="SubnetInfo">
@@ -376,93 +375,44 @@ document.write(`
     <span class="n">blocks_since_epoch</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">tempo</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">modality</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="c1"># netuid -&gt; topk percentile prunning score requirement (u16:MAX normalized.)</span>
     <span class="n">connection_requirements</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
     <span class="n">emission_value</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">burn</span><span class="p">:</span> <span class="n">Balance</span>
     <span class="n">owner_ss58</span><span class="p">:</span> <span class="nb">str</span>
 
-<div class="viewcode-block" id="SubnetInfo.from_vec_u8">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.SubnetInfo.from_vec_u8">[docs]</a>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;SubnetInfo&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a SubnetInfo object from a ``vec_u8``.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">from_scale_encoding</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">,</span> <span class="n">ChainDataType</span><span class="o">.</span><span class="n">SubnetInfo</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">decoded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="k">return</span> <span class="n">SubnetInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span></div>
-
-
 <div class="viewcode-block" id="SubnetInfo.list_from_vec_u8">
 <a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.SubnetInfo.list_from_vec_u8">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">list_from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SubnetInfo&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of SubnetInfo objects from a ``vec_u8``.&quot;&quot;&quot;</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">from_scale_encoding</span><span class="p">(</span>
-            <span class="n">vec_u8</span><span class="p">,</span> <span class="n">ChainDataType</span><span class="o">.</span><span class="n">SubnetInfo</span><span class="p">,</span> <span class="n">is_vec</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_option</span><span class="o">=</span><span class="kc">True</span>
-        <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">decoded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-        <span class="k">return</span> <span class="p">[</span><span class="n">SubnetInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="SubnetInfo.fix_decoded_values">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.SubnetInfo.fix_decoded_values">[docs]</a>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">fix_decoded_values</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">decoded</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SubnetInfo&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a SubnetInfo object from a decoded SubnetInfo dictionary.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">SubnetInfo</span><span class="p">(</span>
-            <span class="n">netuid</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;netuid&quot;</span><span class="p">],</span>
-            <span class="n">rho</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">],</span>
-            <span class="n">kappa</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;kappa&quot;</span><span class="p">],</span>
-            <span class="n">difficulty</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;difficulty&quot;</span><span class="p">],</span>
-            <span class="n">immunity_period</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;immunity_period&quot;</span><span class="p">],</span>
-            <span class="n">max_allowed_validators</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;max_allowed_validators&quot;</span><span class="p">],</span>
-            <span class="n">min_allowed_weights</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;min_allowed_weights&quot;</span><span class="p">],</span>
-            <span class="n">max_weight_limit</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;max_weights_limit&quot;</span><span class="p">],</span>
-            <span class="n">scaling_law_power</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;scaling_law_power&quot;</span><span class="p">],</span>
-            <span class="n">subnetwork_n</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;subnetwork_n&quot;</span><span class="p">],</span>
-            <span class="n">max_n</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;max_allowed_uids&quot;</span><span class="p">],</span>
-            <span class="n">blocks_since_epoch</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;blocks_since_last_step&quot;</span><span class="p">],</span>
-            <span class="n">tempo</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;tempo&quot;</span><span class="p">],</span>
-            <span class="n">modality</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;network_modality&quot;</span><span class="p">],</span>
-            <span class="n">connection_requirements</span><span class="o">=</span><span class="p">{</span>
-                <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">netuid</span><span class="p">)):</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">req</span><span class="p">))</span>
-                <span class="k">for</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;network_connect&quot;</span><span class="p">]</span>
-            <span class="p">},</span>
-            <span class="n">emission_value</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;emission_values&quot;</span><span class="p">],</span>
-            <span class="n">burn</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;burn&quot;</span><span class="p">]),</span>
-            <span class="n">owner_ss58</span><span class="o">=</span><span class="n">ss58_encode</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;owner&quot;</span><span class="p">],</span> <span class="n">SS58_FORMAT</span><span class="p">),</span>
-        <span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="SubnetInfo.to_parameter_dict">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.SubnetInfo.to_parameter_dict">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_parameter_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="s2">&quot;torch.nn.ParameterDict&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a torch tensor or dict of the subnet info.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">use_torch</span><span class="p">():</span>
-            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ParameterDict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span></div>
-
-
-<div class="viewcode-block" id="SubnetInfo.from_parameter_dict">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.SubnetInfo.from_parameter_dict">[docs]</a>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_parameter_dict</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="n">parameter_dict</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="s2">&quot;torch.nn.ParameterDict&quot;</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SubnetInfo&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a SubnetInfo instance from a parameter dictionary.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">use_torch</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">parameter_dict</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">parameter_dict</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">list_from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SubnetInfo&quot;</span><span class="p">]:</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">bt_decode</span><span class="o">.</span><span class="n">SubnetInfo</span><span class="o">.</span><span class="n">decode_vec_option</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">SubnetInfo</span><span class="p">(</span>
+                    <span class="n">netuid</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">netuid</span><span class="p">,</span>
+                    <span class="n">rho</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span>
+                    <span class="n">kappa</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">kappa</span><span class="p">,</span>
+                    <span class="n">difficulty</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">difficulty</span><span class="p">,</span>
+                    <span class="n">immunity_period</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">immunity_period</span><span class="p">,</span>
+                    <span class="n">max_allowed_validators</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">max_allowed_validators</span><span class="p">,</span>
+                    <span class="n">min_allowed_weights</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">min_allowed_weights</span><span class="p">,</span>
+                    <span class="n">max_weight_limit</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">max_weights_limit</span><span class="p">,</span>
+                    <span class="n">scaling_law_power</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">scaling_law_power</span><span class="p">,</span>
+                    <span class="n">subnetwork_n</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">subnetwork_n</span><span class="p">,</span>
+                    <span class="n">max_n</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">max_allowed_uids</span><span class="p">,</span>
+                    <span class="n">blocks_since_epoch</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">blocks_since_last_step</span><span class="p">,</span>
+                    <span class="n">tempo</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">tempo</span><span class="p">,</span>
+                    <span class="n">modality</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">network_modality</span><span class="p">,</span>
+                    <span class="n">connection_requirements</span><span class="o">=</span><span class="p">{</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">netuid</span><span class="p">)):</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">req</span><span class="p">))</span>
+                        <span class="k">for</span> <span class="p">(</span><span class="n">netuid</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">network_connect</span>
+                    <span class="p">},</span>
+                    <span class="n">emission_value</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">emission_values</span><span class="p">,</span>
+                    <span class="n">burn</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">burn</span><span class="p">),</span>
+                    <span class="n">owner_ss58</span><span class="o">=</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">owner</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 </div>
 
 </pre></div>

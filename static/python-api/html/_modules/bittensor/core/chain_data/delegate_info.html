@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.chain_data.delegate_info &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.chain_data.delegate_info &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -344,13 +346,12 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for bittensor.core.chain_data.delegate_info</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span></span><span class="kn">import</span> <span class="nn">bt_decode</span>
 
-<span class="kn">from</span> <span class="nn">scalecodec.utils.ss58</span> <span class="kn">import</span> <span class="n">ss58_encode</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">bittensor.core.chain_data.utils</span> <span class="kn">import</span> <span class="n">from_scale_encoding</span><span class="p">,</span> <span class="n">ChainDataType</span>
-<span class="kn">from</span> <span class="nn">bittensor.core.settings</span> <span class="kn">import</span> <span class="n">SS58_FORMAT</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.chain_data.utils</span> <span class="kn">import</span> <span class="n">decode_account_id</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">u16_normalized_float</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.balance</span> <span class="kn">import</span> <span class="n">Balance</span>
 
@@ -360,7 +361,7 @@ document.write(`
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">DelegateInfo</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Dataclass for delegate information. For a lighter version of this class, see :class:`bittensor.core.chain_data.delegate_info_lite`.</span>
+<span class="sd">    Dataclass for delegate information. For a lighter version of this class, see ``DelegateInfoLite``.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hotkey_ss58 (str): Hotkey of the delegate for which the information is being fetched.</span>
@@ -372,7 +373,6 @@ document.write(`
 <span class="sd">        validator_permits (list[int]): List of subnets that the delegate is allowed to validate on.</span>
 <span class="sd">        return_per_1000 (int): Return per 1000 TAO, for the delegate over a day.</span>
 <span class="sd">        total_daily_return (int): Total daily return of the delegate.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">hotkey_ss58</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Hotkey of delegate</span>
@@ -385,83 +385,89 @@ document.write(`
     <span class="n">validator_permits</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span>
         <span class="nb">int</span>
     <span class="p">]</span>  <span class="c1"># List of subnets that the delegate is allowed to validate on</span>
-    <span class="n">registrations</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>  <span class="c1"># List of subnets that the delegate is registered on</span>
+    <span class="n">registrations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>  <span class="c1"># list of subnets that the delegate is registered on</span>
     <span class="n">return_per_1000</span><span class="p">:</span> <span class="n">Balance</span>  <span class="c1"># Return per 1000 tao of the delegate over a day</span>
     <span class="n">total_daily_return</span><span class="p">:</span> <span class="n">Balance</span>  <span class="c1"># Total daily return of the delegate</span>
-
-<div class="viewcode-block" id="DelegateInfo.fix_decoded_values">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.delegate_info.DelegateInfo.fix_decoded_values">[docs]</a>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">fix_decoded_values</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">decoded</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DelegateInfo&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fixes the decoded values.&quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
-            <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">ss58_encode</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;delegate_ss58&quot;</span><span class="p">],</span> <span class="n">SS58_FORMAT</span><span class="p">),</span>
-            <span class="n">owner_ss58</span><span class="o">=</span><span class="n">ss58_encode</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;owner_ss58&quot;</span><span class="p">],</span> <span class="n">SS58_FORMAT</span><span class="p">),</span>
-            <span class="n">take</span><span class="o">=</span><span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;take&quot;</span><span class="p">]),</span>
-            <span class="n">nominators</span><span class="o">=</span><span class="p">[</span>
-                <span class="p">(</span>
-                    <span class="n">ss58_encode</span><span class="p">(</span><span class="n">nom</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">SS58_FORMAT</span><span class="p">),</span>
-                    <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">nom</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-                <span class="p">)</span>
-                <span class="k">for</span> <span class="n">nom</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;nominators&quot;</span><span class="p">]</span>
-            <span class="p">],</span>
-            <span class="n">total_stake</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span>
-                <span class="nb">sum</span><span class="p">([</span><span class="n">nom</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">nom</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;nominators&quot;</span><span class="p">]])</span>
-            <span class="p">),</span>
-            <span class="n">validator_permits</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;validator_permits&quot;</span><span class="p">],</span>
-            <span class="n">registrations</span><span class="o">=</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;registrations&quot;</span><span class="p">],</span>
-            <span class="n">return_per_1000</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;return_per_1000&quot;</span><span class="p">]),</span>
-            <span class="n">total_daily_return</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">decoded</span><span class="p">[</span><span class="s2">&quot;total_daily_return&quot;</span><span class="p">]),</span>
-        <span class="p">)</span></div>
-
 
 <div class="viewcode-block" id="DelegateInfo.from_vec_u8">
 <a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.delegate_info.DelegateInfo.from_vec_u8">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a DelegateInfo object from a ``vec_u8``.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">from_scale_encoding</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">,</span> <span class="n">ChainDataType</span><span class="o">.</span><span class="n">DelegateInfo</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">decoded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="k">return</span> <span class="n">DelegateInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">]:</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">bt_decode</span><span class="o">.</span><span class="n">DelegateInfo</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span>
+        <span class="n">hotkey</span> <span class="o">=</span> <span class="n">decode_account_id</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">delegate_ss58</span><span class="p">)</span>
+        <span class="n">owner</span> <span class="o">=</span> <span class="n">decode_account_id</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">owner_ss58</span><span class="p">)</span>
+        <span class="n">nominators</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">decoded</span><span class="o">.</span><span class="n">nominators</span>
+        <span class="p">]</span>
+        <span class="n">total_stake</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nominators</span><span class="p">))</span> <span class="k">if</span> <span class="n">nominators</span> <span class="k">else</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">DelegateInfo</span><span class="p">(</span>
+            <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">hotkey</span><span class="p">,</span>
+            <span class="n">total_stake</span><span class="o">=</span><span class="n">total_stake</span><span class="p">,</span>
+            <span class="n">nominators</span><span class="o">=</span><span class="n">nominators</span><span class="p">,</span>
+            <span class="n">owner_ss58</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span>
+            <span class="n">take</span><span class="o">=</span><span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">take</span><span class="p">),</span>
+            <span class="n">validator_permits</span><span class="o">=</span><span class="n">decoded</span><span class="o">.</span><span class="n">validator_permits</span><span class="p">,</span>
+            <span class="n">registrations</span><span class="o">=</span><span class="n">decoded</span><span class="o">.</span><span class="n">registrations</span><span class="p">,</span>
+            <span class="n">return_per_1000</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">return_per_1000</span><span class="p">),</span>
+            <span class="n">total_daily_return</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">total_daily_return</span><span class="p">),</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DelegateInfo.list_from_vec_u8">
 <a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.delegate_info.DelegateInfo.list_from_vec_u8">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">list_from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of DelegateInfo objects from a ``vec_u8``.&quot;&quot;&quot;</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">from_scale_encoding</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">,</span> <span class="n">ChainDataType</span><span class="o">.</span><span class="n">DelegateInfo</span><span class="p">,</span> <span class="n">is_vec</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">decoded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-        <span class="k">return</span> <span class="p">[</span><span class="n">DelegateInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">]</span></div>
+    <span class="k">def</span> <span class="nf">list_from_vec_u8</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">]:</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">bt_decode</span><span class="o">.</span><span class="n">DelegateInfo</span><span class="o">.</span><span class="n">decode_vec</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">:</span>
+            <span class="n">hotkey</span> <span class="o">=</span> <span class="n">decode_account_id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">delegate_ss58</span><span class="p">)</span>
+            <span class="n">owner</span> <span class="o">=</span> <span class="n">decode_account_id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">owner_ss58</span><span class="p">)</span>
+            <span class="n">nominators</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">nominators</span>
+            <span class="p">]</span>
+            <span class="n">total_stake</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nominators</span><span class="p">))</span> <span class="k">if</span> <span class="n">nominators</span> <span class="k">else</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">DelegateInfo</span><span class="p">(</span>
+                    <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">hotkey</span><span class="p">,</span>
+                    <span class="n">total_stake</span><span class="o">=</span><span class="n">total_stake</span><span class="p">,</span>
+                    <span class="n">nominators</span><span class="o">=</span><span class="n">nominators</span><span class="p">,</span>
+                    <span class="n">owner_ss58</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span>
+                    <span class="n">take</span><span class="o">=</span><span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">take</span><span class="p">),</span>
+                    <span class="n">validator_permits</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">validator_permits</span><span class="p">,</span>
+                    <span class="n">registrations</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">registrations</span><span class="p">,</span>
+                    <span class="n">return_per_1000</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">return_per_1000</span><span class="p">),</span>
+                    <span class="n">total_daily_return</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">total_daily_return</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span></div>
 
 
 <div class="viewcode-block" id="DelegateInfo.delegated_list_from_vec_u8">
 <a class="viewcode-back" href="../../../../autoapi/bittensor/index.html#bittensor.core.chain_data.delegate_info.DelegateInfo.delegated_list_from_vec_u8">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">delegated_list_from_vec_u8</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of Tuples of DelegateInfo objects, and Balance, from a ``vec_u8``.</span>
-
-<span class="sd">        This is the list of delegates that the user has delegated to, and the amount of stake delegated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="n">from_scale_encoding</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">,</span> <span class="n">ChainDataType</span><span class="o">.</span><span class="n">DelegatedInfo</span><span class="p">,</span> <span class="n">is_vec</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">decoded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">DelegateInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-            <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">decoded</span>
-        <span class="p">]</span></div>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">vec_u8</span><span class="p">:</span> <span class="nb">bytes</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="s2">&quot;DelegateInfo&quot;</span><span class="p">,</span> <span class="n">Balance</span><span class="p">]]:</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">bt_decode</span><span class="o">.</span><span class="n">DelegateInfo</span><span class="o">.</span><span class="n">decode_delegated</span><span class="p">(</span><span class="n">vec_u8</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">decoded</span><span class="p">:</span>
+            <span class="n">nominators</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">nominators</span>
+            <span class="p">]</span>
+            <span class="n">total_stake</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nominators</span><span class="p">))</span> <span class="k">if</span> <span class="n">nominators</span> <span class="k">else</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">delegate</span> <span class="o">=</span> <span class="n">DelegateInfo</span><span class="p">(</span>
+                <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">delegate_ss58</span><span class="p">),</span>
+                <span class="n">total_stake</span><span class="o">=</span><span class="n">total_stake</span><span class="p">,</span>
+                <span class="n">nominators</span><span class="o">=</span><span class="n">nominators</span><span class="p">,</span>
+                <span class="n">owner_ss58</span><span class="o">=</span><span class="n">decode_account_id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">owner_ss58</span><span class="p">),</span>
+                <span class="n">take</span><span class="o">=</span><span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">take</span><span class="p">),</span>
+                <span class="n">validator_permits</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">validator_permits</span><span class="p">,</span>
+                <span class="n">registrations</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">registrations</span><span class="p">,</span>
+                <span class="n">return_per_1000</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">return_per_1000</span><span class="p">),</span>
+                <span class="n">total_daily_return</span><span class="o">=</span><span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">total_daily_return</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">delegate</span><span class="p">,</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">results</span></div>
 </div>
 
 </pre></div>

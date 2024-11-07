@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.extrinsics.serving &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.extrinsics.serving &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -361,15 +363,13 @@ document.write(`
 <span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
 <span class="c1"># DEALINGS IN THE SOFTWARE.</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="kn">from</span> <span class="nn">retry</span> <span class="kn">import</span> <span class="n">retry</span>
-<span class="kn">from</span> <span class="nn">rich.prompt</span> <span class="kn">import</span> <span class="n">Confirm</span>
 
 <span class="kn">from</span> <span class="nn">bittensor.core.errors</span> <span class="kn">import</span> <span class="n">MetadataError</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.utils</span> <span class="kn">import</span> <span class="n">submit_extrinsic</span>
-<span class="kn">from</span> <span class="nn">bittensor.core.settings</span> <span class="kn">import</span> <span class="n">version_as_int</span><span class="p">,</span> <span class="n">bt_console</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.settings</span> <span class="kn">import</span> <span class="n">version_as_int</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">format_error_message</span><span class="p">,</span> <span class="n">networking</span> <span class="k">as</span> <span class="n">net</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.btlogging</span> <span class="kn">import</span> <span class="n">logging</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.networking</span> <span class="kn">import</span> <span class="n">ensure_connected</span>
@@ -451,7 +451,6 @@ document.write(`
     <span class="n">placeholder2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">wait_for_finalization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Subscribes a Bittensor endpoint to the subtensor chain.</span>
 
@@ -466,7 +465,6 @@ document.write(`
 <span class="sd">        placeholder2 (int): A placeholder for future use.</span>
 <span class="sd">        wait_for_inclusion (bool): If set, waits for the extrinsic to enter a block before returning ``true``, or returns ``false`` if the extrinsic fails to enter the block within the timeout.</span>
 <span class="sd">        wait_for_finalization (bool): If set, waits for the extrinsic to be finalized on the chain before returning ``true``, or returns ``false`` if the extrinsic fails to be finalized within the timeout.</span>
-<span class="sd">        prompt (bool): If ``true``, the call waits for confirmation from the user before proceeding.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        success (bool): Flag is ``true`` if extrinsic was finalized or uncluded in the block. If we did not wait for finalization / inclusion, the response is ``true``.</span>
@@ -509,15 +507,6 @@ document.write(`
             <span class="sa">f</span><span class="s2">&quot;Axon already served on: AxonInfo(</span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">) &quot;</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="k">if</span> <span class="n">prompt</span><span class="p">:</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">output</span><span class="p">[</span><span class="s2">&quot;coldkey&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span>
-        <span class="n">output</span><span class="p">[</span><span class="s2">&quot;hotkey&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">Confirm</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Do you want to serve axon:</span><span class="se">\n</span><span class="s2">  [bold white]</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="si">}</span><span class="s2">[/bold white]&quot;</span>
-        <span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
 
     <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;Serving axon with: AxonInfo(</span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -573,10 +562,9 @@ document.write(`
     <span class="k">if</span> <span class="n">axon</span><span class="o">.</span><span class="n">external_ip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">external_ip</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">get_external_ip</span><span class="p">()</span>
-            <span class="n">bt_console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;:white_heavy_check_mark: [green]Found external ip: </span><span class="si">{</span><span class="n">external_ip</span><span class="si">}</span><span class="s2">[/green]&quot;</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;:white_heavy_check_mark: &lt;green&gt;Found external ip:&lt;/green&gt; &lt;blue&gt;</span><span class="si">{</span><span class="n">external_ip</span><span class="si">}</span><span class="s2">&lt;/blue&gt;&quot;</span>
             <span class="p">)</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;External IP&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;&lt;blue&gt;</span><span class="si">{</span><span class="n">external_ip</span><span class="si">}</span><span class="s2">&lt;/blue&gt;&quot;</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Unable to attain your external ip. Check your internet connection. error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
