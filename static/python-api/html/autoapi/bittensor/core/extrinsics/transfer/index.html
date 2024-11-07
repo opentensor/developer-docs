@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.extrinsics.transfer &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.extrinsics.transfer &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -183,7 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/version/index.html">bittensor.utils.version</a></li>
@@ -451,10 +453,10 @@ document.write(`
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>self</strong> (<em>subtensor.core.subtensor.Subtensor</em>) – The Subtensor instance object.</p></li>
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – Wallet object.</p></li>
-<li><p><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Destination public key address.</p></li>
+<li><p><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Destination public key address.</p></li>
 <li><p><strong>transfer_balance</strong> (<a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>bittensor.utils.balance.Balance</em></a>) – Amount to transfer.</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, waits for inclusion.</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, waits for finalization.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, waits for inclusion.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, waits for finalization.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -463,33 +465,32 @@ block_hash (str): Block hash of the transfer. On success and if <a href="#id1"><
 error (dict): Error message from subtensor if transfer failed.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.transfer.transfer_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.transfer.</span></span><span class="sig-name descname"><span class="pre">transfer_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_alive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/transfer.html#transfer_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.transfer.transfer_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.transfer.</span></span><span class="sig-name descname"><span class="pre">transfer_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_alive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/transfer.html#transfer_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.transfer.transfer_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Transfers funds from this wallet to the destination public key address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>subtensor</strong> (<em>subtensor.core.subtensor.Subtensor</em>) – The Subtensor instance object.</p></li>
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – Bittensor wallet object to make transfer from.</p></li>
-<li><p><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>ss58_address</em><em> or </em><em>ed25519</em>) – Destination public key address of receiver.</p></li>
-<li><p><strong>amount</strong> (<em>Union</em><em>[</em><a class="reference internal" href="../../../index.html#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – Amount to stake as Bittensor balance, or <code class="docutils literal notranslate"><span class="pre">float</span></code> interpreted as Tao.</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If set, waits for the extrinsic to enter a block before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to enter the block within the timeout.</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If set, waits for the extrinsic to be finalized on the chain before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to be finalized within the timeout.</p></li>
-<li><p><strong>keep_alive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If set, keeps the account alive by keeping the balance above the existential deposit.</p></li>
-<li><p><strong>prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the call waits for confirmation from the user before proceeding.</p></li>
+<li><p><strong>dest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>ss58_address</em><em> or </em><em>ed25519</em>) – Destination public key address of receiver.</p></li>
+<li><p><strong>amount</strong> (<em>Union</em><em>[</em><a class="reference internal" href="../../../index.html#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Amount to stake as Bittensor balance, or <code class="docutils literal notranslate"><span class="pre">float</span></code> interpreted as Tao.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to enter a block before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to enter the block within the timeout.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to be finalized on the chain before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to be finalized within the timeout.</p></li>
+<li><p><strong>keep_alive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, keeps the account alive by keeping the balance above the existential deposit.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Flag is <code class="docutils literal notranslate"><span class="pre">true</span></code> if extrinsic was finalized or uncluded in the block. If we did not wait for finalization / inclusion, the response is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a>)</p>
+<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
 </dd>
 </dl>
 </dd></dl>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.utils.balance &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils.balance &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -183,7 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../version/index.html">bittensor.utils.version</a></li>
@@ -483,36 +485,36 @@ It provides methods to convert between these units, as well as to perform arithm
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A string representing the symbol for the tao unit.</p></li>
-<li><p><strong>rao_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A string representing the symbol for the rao unit.</p></li>
-<li><p><strong>rao</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – An integer that stores the balance in rao units.</p></li>
-<li><p><strong>tao</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – A float property that gives the balance in tao units.</p></li>
+<li><p><strong>unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – A string representing the symbol for the tao unit.</p></li>
+<li><p><strong>rao_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – A string representing the symbol for the rao unit.</p></li>
+<li><p><strong>rao</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – An integer that stores the balance in rao units.</p></li>
+<li><p><strong>tao</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – A float property that gives the balance in tao units.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>balance</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>)</p>
+<dd class="field-even"><p><strong>balance</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>)</p>
 </dd>
 </dl>
 <p>Initialize a Balance object. If balance is an int, it’s assumed to be in rao.
 If balance is a float, it’s assumed to be in tao.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>balance</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – The initial balance, in either rao (if an int) or tao (if a float).</p>
+<dd class="field-odd"><p><strong>balance</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The initial balance, in either rao (if an int) or tao (if a float).</p>
 </dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.unit">
-<span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.unit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.unit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao_unit">
-<span class="sig-name descname"><span class="pre">rao_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao_unit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rao_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao_unit" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao">
-<span class="sig-name descname"><span class="pre">rao</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rao</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -563,7 +565,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__eq__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -573,7 +575,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__ne__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__ne__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -583,7 +585,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__gt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__gt__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -593,7 +595,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__lt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__lt__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -603,7 +605,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__le__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__le__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -613,7 +615,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__ge__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__ge__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -623,7 +625,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__add__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__add__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -633,7 +635,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__radd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__radd__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__radd__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -643,7 +645,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__sub__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__sub__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -653,7 +655,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__rsub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rsub__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rsub__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -663,7 +665,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__mul__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -673,7 +675,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rmul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rmul__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -683,7 +685,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__truediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__truediv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__truediv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -693,7 +695,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__rtruediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rtruediv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rtruediv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -703,7 +705,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__floordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__floordiv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__floordiv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -713,7 +715,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__rfloordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rfloordiv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rfloordiv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -723,7 +725,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <span class="sig-name descname"><span class="pre">__nonzero__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__nonzero__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__nonzero__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -754,7 +756,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <dd class="field-odd"><p>A Balance object representing the given amount.</p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>)</p>
+<dd class="field-even"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -765,7 +767,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <dd><p>Given tao, return Balance object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – The amount in tao.</p>
+<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The amount in tao.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A Balance object representing the given amount.</p>
@@ -779,7 +781,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 <dd><p>Given rao, return Balance object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The amount in rao.</p>
+<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The amount in rao.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A Balance object representing the given amount.</p>

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.axon &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.axon &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -375,17 +377,18 @@ document.write(`
 <span class="kn">import</span> <span class="nn">uuid</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">signature</span><span class="p">,</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Parameter</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">uvicorn</span>
-<span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Wallet</span><span class="p">,</span> <span class="n">Keypair</span>
+
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">FastAPI</span>
 <span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">JSONResponse</span>
 <span class="kn">from</span> <span class="nn">fastapi.routing</span> <span class="kn">import</span> <span class="n">serialize_response</span>
 <span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span><span class="p">,</span> <span class="n">RequestResponseEndpoint</span>
 <span class="kn">from</span> <span class="nn">starlette.requests</span> <span class="kn">import</span> <span class="n">Request</span>
 <span class="kn">from</span> <span class="nn">starlette.responses</span> <span class="kn">import</span> <span class="n">Response</span>
-<span class="kn">from</span> <span class="nn">substrateinterface</span> <span class="kn">import</span> <span class="n">Keypair</span>
+
 
 <span class="kn">from</span> <span class="nn">bittensor.core.chain_data</span> <span class="kn">import</span> <span class="n">AxonInfo</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.config</span> <span class="kn">import</span> <span class="n">Config</span>
@@ -927,7 +930,7 @@ document.write(`
         <span class="p">]</span>
         <span class="k">if</span> <span class="n">blacklist_fn</span><span class="p">:</span>
             <span class="n">blacklist_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span>
-                <span class="n">expected_params</span><span class="p">,</span> <span class="n">return_annotation</span><span class="o">=</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+                <span class="n">expected_params</span><span class="p">,</span> <span class="n">return_annotation</span><span class="o">=</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
             <span class="p">)</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="n">signature</span><span class="p">(</span><span class="n">blacklist_fn</span><span class="p">)</span> <span class="o">==</span> <span class="n">blacklist_sig</span>

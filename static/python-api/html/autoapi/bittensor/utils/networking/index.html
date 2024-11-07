@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.utils.networking &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils.networking &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,15 +38,15 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/networking/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="bittensor.utils.registration" href="../registration/index.html" />
-    <link rel="prev" title="bittensor.utils.deprecated" href="../deprecated/index.html" />
+    <link rel="next" title="bittensor.utils.register_cuda" href="../register_cuda/index.html" />
+    <link rel="prev" title="bittensor.utils.formatting" href="../formatting/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -183,7 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../version/index.html">bittensor.utils.version</a></li>
@@ -487,13 +489,13 @@ document.write(`
 <dd class="field-odd"><p>The string representation of an ip. Of form <em>.</em>.*.* for ipv4 or <em>::</em>:<em>:</em>:* for ipv6</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str_val (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>)</p>
+<dd class="field-even"><p>str_val (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed int_vals is not a valid ip int value.</p>
+<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed int_vals is not a valid ip int value.</p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>int_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>)</p>
+<dd class="field-even"><p><strong>int_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -517,10 +519,10 @@ arg:</p>
 <dd class="field-even"><p>int_val  (<code class="xref py py-type docutils literal notranslate"><span class="pre">int128</span></code>, <cite>required</cite>)</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed str_val is not a valid ip string value.</p>
+<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed str_val is not a valid ip string value.</p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>str_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p>
+<dd class="field-even"><p><strong>str_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -544,10 +546,10 @@ arg:</p>
 <dd class="field-even"><p>int_val  (<code class="xref py py-type docutils literal notranslate"><span class="pre">int128</span></code>, <cite>required</cite>)</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed str_val is not a valid ip string value.</p>
+<dd class="field-odd"><p><strong>netaddr.core.AddrFormatError</strong><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><strong>Exception</strong></a><strong>)</strong> – Raised when the passed str_val is not a valid ip string value.</p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>str_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p>
+<dd class="field-even"><p><strong>str_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -559,9 +561,9 @@ arg:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ip_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>)</p></li>
-<li><p><strong>ip_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
-<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>)</p></li>
+<li><p><strong>ip_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>ip_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -570,7 +572,7 @@ arg:</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="bittensor.utils.networking.ExternalIPNotFound">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.networking.</span></span><span class="sig-name descname"><span class="pre">ExternalIPNotFound</span></span><a class="reference internal" href="../../../../_modules/bittensor/utils/networking.html#ExternalIPNotFound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.networking.ExternalIPNotFound" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Raised if we cannot attain your external ip from CURL/URLLIB/IPIFY/AWS</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
@@ -580,13 +582,13 @@ arg:</p>
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.networking.</span></span><span class="sig-name descname"><span class="pre">get_external_ip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/networking.html#get_external_ip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.networking.get_external_ip" title="Link to this definition">#</a></dt>
 <dd><p>Checks CURL/URLLIB/IPIFY/AWS for your external ip.
 :returns:     Your routers external facing ip as a string.
-:rtype: external_ip  (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> <cite>required</cite>)</p>
+:rtype: external_ip  (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> <cite>required</cite>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#bittensor.utils.networking.ExternalIPNotFound" title="bittensor.utils.networking.ExternalIPNotFound"><strong>ExternalIPNotFound</strong></a><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><strong>Exception</strong></a><strong>)</strong> – Raised if all external ip attempts fail.</p>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.utils.networking.ExternalIPNotFound" title="bittensor.utils.networking.ExternalIPNotFound"><strong>ExternalIPNotFound</strong></a><strong> (</strong><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><strong>Exception</strong></a><strong>)</strong> – Raised if all external ip attempts fail.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -603,10 +605,10 @@ Note: The port (or lack thereof) is left unchanged
 <dd class="field-odd"><p>The formatted endpoint url. In the form of ws://&lt;endpoint_url&gt; or wss://&lt;endpoint_url&gt;</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>formatted_endpoint_url (Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>])</p>
+<dd class="field-even"><p>formatted_endpoint_url (Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>])</p>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>endpoint_url</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>endpoint_url</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -632,20 +634,20 @@ Note: The port (or lack thereof) is left unchanged
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../deprecated/index.html"
+       href="../formatting/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">bittensor.utils.deprecated</p>
+        <p class="prev-next-title">bittensor.utils.formatting</p>
       </div>
     </a>
     <a class="right-next"
-       href="../registration/index.html"
+       href="../register_cuda/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.utils.registration</p>
+        <p class="prev-next-title">bittensor.utils.register_cuda</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
