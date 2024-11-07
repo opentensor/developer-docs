@@ -88,7 +88,7 @@ style={{width: 700}}
 4. The validator’s hotkey holds the dTAO α. This is referred as **Stake (α)**. 
 
 :::tip Stake is always expressed in alpha units
-In dynamic TAO, the stake held by a hotkey in a subnet is always expressed in the subnet-specific dTAO α units and not TAO units.
+In dynamic TAO, except for the stake held in [subnet zero](#subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific dTAO α units and not TAO units.
 :::
 
 ---
@@ -190,19 +190,157 @@ This means:
 In dynamic TAO, subnet zero is a special subnet. It is designed to provide the following benefits:
 
 - The subnet zero is the only subnet that does not have any subnet pool associated with it. TAO holders can only stake into subnet zero in TAO token denominations. Hence, TAO holders and validators who prefer not to think about either subnet-specific staking or about dTAO tokens can stake in subnet zero. Their stake will remain in TAO denomination in the validator hotkeys as there is no notion of alpha in subnet zero.
-- The subnet zero is also the only subnet that does not have any validating or mining defined on it. Incentive mechanisms cannot be run in subnet zero. 
+- The subnet zero is also the only subnet that does not have any validating or mining defined on it. Incentive mechanisms cannot be run in subnet zero. Nevertheless, a validator's hotkey registered in subnet zero will accept stake TAO. 
+- Because there is no subnet pool attached to the subnet zero, a validator hotkey's local weight in subnet zero is simply the raw TAO units that exist as stake in this hotkey. 
 
 :::caution Staking in subnet zero
-As a rule, you can only stake in TAO denomination in subnet zero, and only in alpha (dTAO) denomination in all other subnets. 
+As a rule, you can only stake in TAO denomination in subnet zero, and only in alpha (dTAO) denomination in all other subnets. Hence, stake in subnet zero is always expressed in TAO units.
 :::
 
 ---
 
 ## Global weight
 
-xxx
+Global weight of a validator hotkey is the sum of the [local weights](#local-weight-or-tao-equiv-τ_in-x-αα_out) for all the subnets, including subnet zero, where this hotkey is validating. 
+
+### Example
+
+Let's say that a validator's hotkey has the following positions in four different subnets, including in subnet zero. 
+
+- Subnet zero:
+  - validator's stake: 1000 TAO
+  - validator's stake share: 10% (i.e., out of all TAO stake in subnet zero, this validator holds 10% of it)
+- Gaming subnet:
+  - validator's [stake share](#hotkeys-stake-share-α--α_out) = (α / α_out) =  30%
+  - τ_in in this subnet pool = 10,000 TAO
+
+- AI subnet:
+  - validator's [stake share](#hotkeys-stake-share-α--α_out) = (α / α_out) =  40%
+  - τ_in in this subnet pool = 15,000 TAO
+
+- Storage subnet:
+  - validator's [stake share](#hotkeys-stake-share-α--α_out) = (α / α_out) =  20%
+  - τ_in in this subnet pool = 5,000 TAO
+
+Hence, the [local weights, or local voting power](#local-weight-or-tao-equiv-τ_in-x-αα_out) of this hotkey in each subnet are as below:
+
+- For subnet zero: 1000 TAO (TAO number used as is, without any multiplier, see [subnet zero](#subnet-zero))
+- Gaming subnet: $$\tau_{in}\times\text{hotkey's stake share}$$ = 0.30 × 10,000 = 3,000 TAO
+- Similarly, for AI subnet: 0.40 × 15,000 = 6,000 TAO
+- For Storage subnet: 0.20 × 5,000  = 1,000 TAO
+
+Hence the global weight of this hotkey is: 1000 + 3000 + 6000 + 1000 = 11,000 TAO.
+
+### Root weight
+
+Notice that in the above calculation, we used the hotkey's subnet zero stake of 1000 TAO as it is while calculating the global weight of the hotkey. However, in dynamic TAO it is normal to multiply the subnet zero stake TAO number by a factor called `root_weight` that varies from 0 to 1. 
+
+Hence, for `root_weight` of 0.5, the subnet zero stake of the hotkey will now be `root_weight` x 1000 = 0.5 x 1000 = 500 TAO. Hence, under this condition, the updated global weight of this hotkey is: 500 + 3000 + 6000 + 1000 = 10,500 TAO.
+
+### Global weight vs. local weight
+
+The two quantities defined above for a validator hotkey, i.e., the hotkey's global weight (across all subnets where it is validating) and its local weight (per subnet), are critically important. 
+:::caution global weight appears in every subnet
+In addition to the local weight of a hotkey in a subnet, this hotkey's global weight also appears in this subnet. This is why global weight of a validator's hotkey is critical.
+:::
+
+Note that in the above, **both local weight and global weight of a hotkey are expressed in TAO units.** However, to represent a validator hotkey's overall stake weight in a subnet, instead of using the two individual TAO units (one for global weight and second for local weight), a new quantity called [**validator's stake weight in a subnet**](#validator-stake-weight), is defined as follows:
+- The local weight of a hotkey is normalized with respect to the sum of all the local weights of all other hotkeys in this subnet, so that they all sum to 1.0. This normalized local weight represents the hotkey's relative proportion of its **influence in the subnet**.
+- Similarly the global weight of the hotkey is normalized with respect to the sum of all the global weights of all other hotkeys for the subnets in question, to sum to 1.0. This normalized global weight represents the hotkey's relative proportion of its **influence in the subnets in question**. 
 
 ---
+
+## Validator stake weight
+
+A validator hotkey's stake weight is defined for a subnet. It varies from 0 to 1. It is defined as the sum of the hotkey's normalized global and local weights, as follows:
+
+For any subnet $i$, the validator hotkey's stake weight is:
+
+$$ 
+\begin{split}
+& = \text{(global\_split}\times\text{normalized global weight)} + \text{(1-global\_split}\times\text{normalized local weight)}\\\\
+& = \text{global\_split}\times\frac{\text{hotkey's global weight}}{\text{sum of all global weights of all hotkeys in the subnets in question}}\\ \\
+& + \text{ (1-global\_split)}\times\frac{\text{hotkey's local weight}}{\text{sum of all local weights in the subnet}}
+\end{split}
+$$
+
+### Global split
+
+A parameter called `global_split`, which varies between 0 and 1, controls the balance between the normalized global and local weights. In effect, the `global_split` parameter controls the balance between the validator hotkeys local and global influence.
+
+### Example
+
+We will use the example from [Global weight](#global-weight) section and extend it to show the validator stake weight.
+
+#### Assumptions
+
+- Assume `root_weight` is 0.5.
+
+- Subnet zero:
+  - Total TAO outstanding = 10,000 TAO (this is the total TAO stake held by all the hotkeys in subnet zero)
+  - Hence, sum of all global weights in subnet zero = 10,000 TAO
+  - Validator's stake share = 10% × 10,000 = 1,000 TAO (also calculated in the above example)
+
+- Gaming Subnet:
+  - Assume total α_out = 50,000 α
+  - Validator's stake share = 30% × 50,000 = 15,000 α
+  - TAO reserve = 10,000 τ
+  - TAO reserve is also the sum of all global weights in this gaming subnet = 10,000 TAO
+  - Local weight = (15,000/50,000) × 10,000 = 3,000 τ (also calculated in the above example)
+
+- AI Subnet:
+  - Assume total α_out = 80,000 α
+  - Validator's stake share = 40% × 80,000 = 32,000 α
+  - TAO reserve = 15,000 τ
+  - TAO reserve is also the sum of all global weights in this AI subnet = 15,000 TAO
+  - Local weight = (32,000/80,000) × 15,000 = 6,000 τ (also calculated in the above example)
+
+- Storage Subnet:
+  - Assume total α_out = 30,000 α
+  - Validator's stake share = 20% × 30,000 = 6,000 α
+  - TAO reserve = 5,000 τ
+  - TAO reserve is also the sum of all global weights in this storage subnet = 5,000 TAO
+  - Local weight = (6,000/30,000) × 5,000 = 1,000 τ (also calculated in the above example)
+
+Hence, sum of all global weights in the all the above subnets is = (`root_weight` x subnet zero's total global weight) + sum of all global weights in gaming subnet + sum of all global weights in AI subnet + sum of all global weights in storage subnet
+
+= (0.5 x 10,000) + 10,000 + 15,000 + 5,000
+= 35,000 TAO. This is the global weights in all the subnets where this validator's hotkey is validating. 
+
+#### Validator stake weight for each subnet
+
+- Hotkey's global weight = 10,500 TAO (from the above [Root weight](#root-weight) section).
+- Total global subnet weights = 35,000 TAO (from above).
+- Assume `global_split` is 0.3.
+
+
+1. Gaming Subnet:
+   
+   - Local weight of the hotkey: 3000 TAO (from the above example)
+   - Sum of all local weights in this subnet = TAO reserve = 10,000 TAO
+   - Hence, the validator's stake weight in this gaming subnet = 0.3 × (10,500/35,000) + 0.7 × (3,000/10,000)
+                = 0.3 × 0.30 + 0.7 × 0.30
+                = 0.09 + 0.21
+                = 0.30 (30% influence in the gaming subnet)
+
+2. AI Subnet:
+   - Local weight of the hotkey: 6000 TAO (from the above example)
+   - Sum of all local weights in this subnet = TAO reserve = 15,000 TAO
+   - Hence, the validator's stake weight in this AI subnet = 0.3 × (10,500/35,000) + 0.7 × (6,000/15,000)
+              = 0.3 × 0.30 + 0.7 × 0.40
+              = 0.09 + 0.28
+              = 0.37 (37% influence in the AI subnet)
+
+3. Storage Subnet:
+   - Local weight of the hotkey: 1000 TAO (from the above example)
+   - Sum of all local weights in this subnet = TAO reserve = 5,000 TAO
+   - Hence, the validator's stake weight in this storage subnet = 0.3 × (10,500/35,000) + 0.7 × (1,000/5,000)
+                = 0.3 × 0.30 + 0.7 × 0.20
+                = 0.09 + 0.14
+                = 0.23 (23% influence in the storage subnet)
+
+4. Subnet zero: (special case - only local weight matters)
+   - Validator's stake weight = 1,000/10,000 = 0.10 (10% influence in the subnet zero)
 
 ---
 
