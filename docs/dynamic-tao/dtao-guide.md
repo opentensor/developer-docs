@@ -135,11 +135,11 @@ style={{width: 700}}
 
 ---
 
-## TAO Equiv (τ_in x α/α_out)
+## Local weight or TAO Equiv (τ_in x α/α_out)
 
-A hotkey's stake, i.e., [stake(α)](#staking), represents subnet-specific stake. Moreover, a dTAO token of a subnet is not fungible with a dTAO token of another subnet. As a result, a [hotkey's stake share (α / α_out)](#hotkeys-stake-share-α--α_out) can only represent the validator's staking power **within the subnet**. For this very reason, the hotkey's stake share in one subnet cannot be simply added to the same hotkey's stake share in a different subnet. 
+A hotkey's stake, i.e., [stake(α)](#staking), represents subnet-specific stake. As a result, a [hotkey's stake share (α / α_out)](#hotkeys-stake-share-α--α_out) can only represent the validator's staking power **within the subnet**. Moreover, a dTAO token of a subnet is not fungible with a dTAO token of another subnet. For this very reason, when a hotkey is validating in multiple subnets, the hotkey's stake share in one subnet cannot be simply added to the same hotkey's stake share in a different subnet. 
 
-This is where the TAO-equivalent value of the hotkeys stake share (α / α_out) comes into play. As we saw in the [Staking](#staking) section, any TAO staked into a subnet is added to the TAO reserves of the subnet pool, i.e., added to  τ_in. As a consequence, τ_in reserve represents the total voting power of the subnet. Hence, 
+This is where the TAO-equivalent value of the hotkeys stake share (α / α_out) comes into play. As we saw in the [Staking](#staking) section, any TAO staked into a subnet is added to the TAO reserves of the subnet pool, i.e., added to  τ_in. Similarly any TAO unstaked from a subnet is removed from the TAO reserves of the subnet pool. As a consequence, τ_in reserve represents the total voting power of the subnet as a whole. Hence, 
 
 $$ 
 \text{a subnet's total voting power}\times\text{hotkey's stake share in the subnet}
@@ -152,6 +152,59 @@ $$
 $$
 
 and is expressed in TAO units. This can change every block.
+
+:::caution Local voting power is also referred as local weight
+This local voting power or local weight represents the hotkey's influence in the subnet.
+:::
+
+### Example
+
+For example, for a validator's hotkey in a given subnet:
+
+- Total outstanding alpha (α_out) = 30,000 alpha tokens.
+- The hotkey's alpha stake (α) = 6,000 alpha tokens.
+- TAO reserve in the subnet's pool (τ_in) = 5,000 TAO.
+
+- Then, this validator's hotkey stake share = (6,000/30,000) = 0.2 or 20%.
+- Hence, this validator hotkey's local voting power, i.e., **local weight** = τ_in x hotkey's stake share = 5000 x 0.2 = 1000 TAO.
+
+:::tip Stake share → TAO-denominated voting power
+Hence, while the hotkey's stake share in this subnet is 20%, its actual local weight (local voting power) in the subnet is 1,000 TAO units. This is the power of dynamic TAO mechanism. It converts a hotkey's alpha stake share into an equivalent TAO-denominated voting power in the subnet. This makes alpha stakes comparable across different subnets, even though these subnets might have very different amounts of alpha tokens outstanding.
+:::
+
+---
+
+## Local weights vs τ_in
+
+In any subnet, if you add up the local weights of all alpha holders, you will always get exactly the TAO reserve (τ_in) of that subnet. 
+
+This means:
+
+- The total voting power in a subnet is fixed by its TAO reserve (τ_in).
+- For a given τ_in, if a validator's hotkey in a subnet increases their local weight, it must come at the expense of others. That is, you cannot create "extra" voting power, it's a zero-sum game within each subnet.
+
+---
+
+## Subnet zero
+
+In dynamic TAO, subnet zero is a special subnet. It is designed to provide the following benefits:
+
+- The subnet zero is the only subnet that does not have any subnet pool associated with it. TAO holders can only stake into subnet zero in TAO token denominations. Hence, TAO holders and validators who prefer not to think about either subnet-specific staking or about dTAO tokens can stake in subnet zero. Their stake will remain in TAO denomination in the validator hotkeys as there is no notion of alpha in subnet zero.
+- The subnet zero is also the only subnet that does not have any validating or mining defined on it. Incentive mechanisms cannot be run in subnet zero. 
+
+:::caution Staking in subnet zero
+As a rule, you can only stake in TAO denomination in subnet zero, and only in alpha (dTAO) denomination in all other subnets. 
+:::
+
+---
+
+## Global weight
+
+xxx
+
+---
+
+---
 
 ## Exchange Value (α x τ/α)
 
