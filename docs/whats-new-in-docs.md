@@ -7,7 +7,14 @@ hide_table_of_contents: false
 
 # What's New in Docs
 
-Key updates to this documentation.
+Key updates to the documentation.
+
+## 06 November 2024
+
+- Updated the release notes for:
+  - [BTCLI 8.3.0](./bittensor-rel-notes.md#btcli-830)
+  - [Bittensor SDK 8.2.1](./bittensor-rel-notes.md#bittensor-sdk-821).  
+  - [Bittensor SDK 8.3.0rc3](./bittensor-rel-notes.md#bittensor-sdk-830rc3).
 
 ## 05 November 2024
 
