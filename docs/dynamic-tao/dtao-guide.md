@@ -47,10 +47,11 @@ The TAO side of a subnet pool's reserves are denoted by τ_in, or **TAO reserve*
 
 ## Rate (τ_in/α_in)
 
-We use the term **rate** to refer to the exchange rate between TAO and a subnet dTAO token. This is calculated as a ratio of the subnet's pool reserves, i.e., TAO reserve(τ_in) / alpha reserves (α_in). 
+We use the term **rate** to refer to relative price of the dTAO token. This is calculated as a ratio of the subnet's pool reserves, i.e., TAO reserve(τ_in) / alpha reserves (α_in). This is commonly referred as the **exchange rate** between the subnet dTAO token and the TAO token. 
 
 ### Example
-For example, if for subnet ε, its subnet pool contains TAO reserves of 1000 TAO units and its alpha reserves of 16000 dTAO ε units, then the exchange rate between TAO and dTAO ε is:
+
+For example, if for subnet $ε$, its subnet pool contains TAO reserves of 1000 TAO units and its alpha reserves of 16000 dTAO $ε$ units, then the relative price of the dTAO $ε$ token is:
 
 $$
 R = \frac{\tau_{in}}{\alpha_{in}} = \frac{1000}{16000} = 0.0625
@@ -58,7 +59,7 @@ $$
 
 Hence, 
 $$
-\text{1 TAO} = 0.0625ε
+\text{1 dTAO ε} = 0.0625 \text{ TAO}
 $$ 
 
 This exchange rate can change every block when staking or unstaking or emissions occur on this subnet.
@@ -91,11 +92,80 @@ style={{width: 700}}
 In dynamic TAO, except for the stake held in [subnet zero](#subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific dTAO α units and not TAO units.
 :::
 
+### Constant product k 
+
+The subnet pool algorithm is set up to always maintain a **constant product** $k$ of the two reserves. That is, 
+
+$$
+k = \text{(TAO reserves)}\times\text{(dTAO α reserves)}
+$$
+
+Anytime either of the reserves **increases**, for example as a result of a random external action such as some stake TAO entering the pool, the subnet pool algorithm automatically recalculates, using the new reserves, how much the other reserve should **decrease** in order to maintain the same constant product $$k$$. 
+
+As described in the [Staking](#staking) section, a staking event results in the staked TAO being added to the τ_in reserves of the subnet pool. The subnet pool algorithm calculates the number of units by which the α_in reserves should decrease. These units are then taken out of the α_in reserves and sent to the validator’s hotkey in the subnet. See an example below.
+
+### Example
+
+:::caution slippage not considered in this example
+In order to convey the key idea of staking in a simple way, slippage is not considered in this example.
+:::
+
+The below example shows how staking 5 TAO works. 
+
+Let us assume the following initial state of TAO and dTAO α reserves in a subnet:
+- TAO reserves: 10 TAO tokens
+- dTAO α reserves: 100 dTAO α tokens
+
+Hence, the constant product 𝑘 = 10 × 100 =1000.
+
+- **Initial relative price** of dTAO α is = reserve ratio of subnet pool α = (TAO token reserves of pool α)/(dTAOα token reserves) = 10/100 = 0.1 TAO.
+- Stake 5 TAO: This adds 5 TAO into the TAO reserves of the pool. Hence, the new TAO reserve = 10 + 5 = 15 TAO tokens.
+- Using the new TAO reserve of 15, the subnet pool algorithm calculates what should be the new dTAO α reserves, in order to maintain k at 1000. 
+- Calculating: 
+$$
+\begin{split}
+& 15 \times\text{new dTAO α reserves} = 1000\\ 
+& \implies \text{new dTAO α reserves} = 1000/15 = 66.667 \text{ dTAO α}.
+\end{split}
+$$
+
+- Hence, the dTAO α that should be **taken out of** the $α_{in}$ reserve and sent to the validator’s hotkey is: 
+$$
+100 − 66.67 = 33.33 \text{ dTAO α}
+$$
+
+**New state of the reserves in the subnet pool after 5 TAO is staked**
+  - TAO reserves: 15 tokens
+  - dTAO α reserves: 66.67 dTAO α tokens
+  - Constant product 𝑘 = 15 × 66.67 = 1000 (unchanged)
+- **New relative price** of dTAO α after the staking event = reserve ratio of subnet pool α = (TAO token reserves of pool α)/(dTAO α token reserves) = 15/66.67 = 0.225 TAO.
+
+### Effect of staking
+
+Note that as a result of staking 5 TAO into subnet α, the relative price of dTAO α **increased** from 0.1 TAO to 0.225 TAO. All else being equal, staking into a subnet leads to an increase in its dTAO token relative price. This can be understood in two ways: 
+- By staking your TAO into this subnet, you are expressing an increase in demand for this dTAO α, thereby increasing the price of the dTAO α.
+- When your TAO stake is added to the pool, the TAO reserves in the pool have increased, with a net effect that the dTAO reserves have become scarcer relative to the new TAO reserves. The dTAO price is calculated as (TAO reserves / dTAO reserves), hence the denominator decreased, leading to increase in dTAO price.  
+
+
 ---
 
 ## STAKE (α_out) or alpha out (α_out) 
  
-Total stake in the subnet. This is the sum of all the [Stake (α)](#staking)  present in all the hotkeys in this subnet, including those of validators, miners and of the subnet owner. This is often referred as **α outstanding**. Compare this with [**α reserve**](#tao-reserve-τ_in-and-alpha-reserve-α_in), which is the amount of α in the subnet pool. The **α outstanding** can change every block.
+Total stake in the subnet is referred as $α_{out}$. This is the sum of all the [Stake (α)](#staking)  present in all the validator hotkeys in this subnet. This is often referred as **α outstanding**. Compare this with [**α reserve**](#tao-reserve-τ_in-and-alpha-reserve-α_in), which is the amount of $α_{in}$ in the subnet pool. The **α outstanding** can change every block. See a conceptual diagram below:
+
+
+<center>
+<ThemedImage
+alt="Staking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/alpha-and-alpha-out.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/alpha-and-alpha-out.svg'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />
 
 ## Hotkey's stake share (α / α_out) 
 
@@ -132,6 +202,42 @@ style={{width: 700}}
 2. The subnet pool algorithm then applies the latest exchange rate and calculates the equivalent TAO units for the α token units that were just added to the α reserves of the pool. 
 3. These equivalent TAO units are then taken out of the TAO reserves of the subnet pool and are sent to the TAO holder’s coldkey.
 
+### Example
+
+:::caution slippage not considered in this example
+In order to convey the key idea of unstaking in a simple way, slippage is not considered in this example.
+:::
+
+The below example shows how unstaking 20 dTAO α works. Let’s continue with the state of the TAO and dTAO α reserves after the [above staking operation](#example-1):
+
+- TAO reserves: 15 tokens
+- dTAO α reserves: 66.67 dTAO α tokens
+- Constant product 𝑘 = 15 × 66.67 = 1000
+- Relative price dTAO α is = reserve ratio of subnet pool α = (TAO token reserves of pool α)/(dTAOα token reserves) = 15/66.67 = 0.225 TAO (same as the relative price after the above staking operation)
+- Unstake 20 dTAO α: This adds 20 dTAO α to the dTAO side of the pool. New dTAO α reserves = 66.67 + 20 = 86.67 dTAO α tokens.
+- Using the new dTAO α reserve of 86.67, the subnet pool algorithm calculates what should be the new TAO reserve in order to maintain $k$ at 1000. 
+- Calculating: 
+
+$$  
+\begin{split}
+& 86.67 \times\text{new TAO reserves} = 1000\\
+& \implies \text{new TAO reserves} = 1000/86.67 = 11.54 \text{ TAO}.
+\end{split}
+$$
+
+- Hence, the TAO that should be taken out of the TAO reserves of the pool and sent to the TAO holder’s coldkey is: 15 − 11.54 = 3.46 TAO.
+
+**New state of the reserves in the subnet pool after 20 dTAO α is unstaked**
+- TAO reserves: 11.54 TAO tokens
+- dTAO α reserves: 86.67 dTAO α tokens
+- Constant product 𝑘 = 11.54 × 66.67 = 1000 (unchanged)
+- New relative price of dTAO α after the unstaking event = reserve ratio of subnet pool α = (TAO token reserves of pool α)/(dTAOα token reserves) = 11.54/86.67 = 0.133 TAO.
+
+### Effect of unstaking
+
+Note that as a result of unstaking 20 dTAO α from subnet α, the dTAO α price **decreased** from 0.225 TAO to 0.113 TAO. All else being equal, unstaking from a subnet leads to a decrease in its dTAO token's relative price. This can be understood in two ways: 
+- By unstaking your TAO from this subnet, you are expressing a decrease in demand for this dTAO, thereby decreasing the price of the dTAO.
+- When your stake TAO is removed from the subnet pool, the TAO reserves in the pool have decreased, with a net effect that the dTAO reserves have become more abundant relative to the new TAO reserves. The dTAO price is calculated as (TAO reserves / dTAO reserves), hence the denominator increased, leading to decrease in the dTAO price.  
 
 ---
 
