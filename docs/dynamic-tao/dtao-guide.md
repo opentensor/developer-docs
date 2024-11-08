@@ -17,6 +17,10 @@ Dynamic TAO is a sophisticated mechanism for both a TAO holder and a validator t
 
 The dynamic TAO elegantly solves the problem of managing influence across different subnet economies while maintaining mathematical consistency and economic incentives.
 
+:::tip looking for quick intuitions?
+Skip to [Intuitions of dynamic TAO](#intuitions-of-dynamic-tao).
+:::
+
 ## Subnet pool
 
 The heart of the dynamic TAO mechanism is a **subnet pool**, with the following properties:
@@ -374,6 +378,10 @@ $$
 
 A parameter called `global_split`, which varies between 0 and 1, controls the balance between the normalized global and local weights. In effect, the `global_split` parameter controls the balance between the validator hotkeys local and global influence.
 
+:::tip Why global stake matters
+Also see [Why global stake matters](#why-global-stake-matters).
+:::
+
 ### Example
 
 We will use the example from [Global weight](#global-weight) section and extend it to show the validator stake weight.
@@ -478,3 +486,66 @@ The tempo status of the subnet. Represented as (k/n) where "k" is the number of 
 ## Local weight coeff (γ)
 
 A multiplication factor between 0 and 1, applied to the relative proportion of a validator's stake in this subnet. Applied as (γ) × (a validator's α stake in this subnet) / (Total α stake in this subnet, i.e., Stake (α_out)). This γ-weighted relative proportion is used, in addition to other factors, in determining the overall stake weight of a validator in this subnet. This is a subnet parameter.
+
+---
+
+## Intuitions of dynamic TAO
+
+This section presents a summary of intuitions about dynamic TAO. It is intended to help in conceptually grasping the dynamic TAO mechanism.
+
+
+### TAO and dTAO
+
+- The entire TAO token emitted from the coinbase in the lifetime of Bittensor network exists:
+  - In coldkeys: In a TAO holder’s own coldkeys, for example, as subnet zero emissions into a subnet owner’s coldkey, and in exchange-owned coldkeys.
+  - In subnet zero hotkeys: In the validator hotkeys of subnet zero as staked TAO and dividends.
+  - In TAO reserves of subnet pools.
+  - TAO exists nowhere else.
+  - Furthermore, for the Bittensor network operations, only staked TAO matters, i.e., only the staked TAO in the validator hotkeys and in TAO reserves act as fuel in the Bittensor network operations. This means that for any discussions on consensus power, only the sum total of the entire staked TAO is considered&mdash;the TAO that is in the coldkeys or in exchanges does not contribute directly to Bittensor network operations.
+- Similarly, the entire dTAO token emitted from the coinbase in the lifetime of Bittensor network exists:
+  - **A dTAO token does not exist in a coldkey**. It only exists in the hotkeys of subnet validators, subnet miners and subnet owners.
+  - In the subnet pool reserves. 
+  - A dTAO token of one subnet is not fungible with a dTAO token of another subnet. 
+
+### Staking and unstaking
+
+- Staking and unstaking operations do not change the constant product $k$. On the contrary, emissions into a subnet pool do change the constant product $k$.
+- Staking and unstaking operations are always local to a subnet and its subnet pool. 
+- Stake is always held in dTAO token denominations. Furthermore, this dTAO stake exists only in the subnet validator hotkeys.
+
+### Pool reserves
+
+- No one directly owns the subnet pool reserves. These reserves exist to provide liquidity to the subnet pools.
+- However, as we saw in [Local weights vs τ_in](#local-weights-vs-τ_in) , a validator who holds X% of the dTAO stake in a subnet is said to own the same X% of the TAO reserve pool of that subnet. 
+
+### Subnet zero
+
+- Even though subnet zero does not run any incentive mechanism, a hotkey can be registered in subnet zero and can accept stake TAO. This stake TAO can be either from a TAO holder or from another hotkey. 
+
+### Why global stake matters
+
+When a validator’s stake is global it protects the Bittensor network much better. It does so by making it hard for a rogue validator (or for a cabal of rogue validators) to acquire 51% of the consensus voting power. Here is a simple example showing how it works: 
+
+Let's say we have 52 subnets and hypothetically a total 52,000 staked TAO tokens distributed amongst all the validators across these 52 subnets.
+
+
+<center>
+<ThemedImage
+alt="Staking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/fifty-one-percent-example.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-fifty-one-percent-example.svg'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />
+
+- When the stake is global, every validator’s stake is 100% global, hence every validator’s stake will appear in every subnet. A rogue validator would have to hold at least 51% of the total staked TAO, i.e., at least 26,500 TAO (51% of 52,000 TAO), to take control of the consensus power. This consensus power would appear in every subnet, giving the rogue validator a control over all the subnets. 
+
+- Let’s now make stake 100% local. This means that only the stake the validator has in a subnet is applicable for that subnet. This validator's stake in other subnets is not taken into account in this subnet. For simplicity, assume that all the validators’ stake is evenly spread among these 52 subnets. Then each subnet will have 1000 TAO tokens (52,000/52) as a combined stake of its validators. 
+
+- **But notice this**: In this case, when the stake is 100% local, a validator in a subnet only needs 500 TAO tokens + 1 to take over that subnet. Hence shifting stake from 100% global to 100% local has resulted in severely degrading the security of subnets. 
+
+As we saw in [Validator stake weight](#validator-stake-weight), the dynamic TAO scheme makes use of both global and local characteristics of the stake to strengthen the overall consensus security of the Bittensor network.
