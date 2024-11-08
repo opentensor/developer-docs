@@ -53,7 +53,7 @@ Check out the [docs for EVM on subtensor](./evm-tutorials/).
     icon={GoNumber}
     title='Current subnet limit'
     link=''
-    body='52' />
+    body='64' />
     <!-- <CardSmall
     icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>Δ</span>}
     title='Subnet 4'

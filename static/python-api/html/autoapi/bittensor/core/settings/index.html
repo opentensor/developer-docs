@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.settings &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.settings &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -183,7 +183,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
@@ -411,11 +413,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__version__"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__console__"><code class="docutils literal notranslate"><span class="pre">__console__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__use_console__"><code class="docutils literal notranslate"><span class="pre">__use_console__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.turn_console_off"><code class="docutils literal notranslate"><span class="pre">turn_console_off()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.turn_console_on"><code class="docutils literal notranslate"><span class="pre">turn_console_on()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.bt_console"><code class="docutils literal notranslate"><span class="pre">bt_console</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.HOME_DIR"><code class="docutils literal notranslate"><span class="pre">HOME_DIR</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.USER_BITTENSOR_DIR"><code class="docutils literal notranslate"><span class="pre">USER_BITTENSOR_DIR</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.WALLETS_DIR"><code class="docutils literal notranslate"><span class="pre">WALLETS_DIR</span></code></a></li>
@@ -423,10 +420,15 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.NETWORKS"><code class="docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULT_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULT_NETWORK"><code class="docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.FINNEY_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">FINNEY_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.FINNEY_TEST_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">FINNEY_TEST_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.ARCHIVE_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">ARCHIVE_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.LOCAL_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">LOCAL_ENTRYPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.SUBVORTEX_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">SUBVORTEX_ENTRYPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.NETWORK_MAP"><code class="docutils literal notranslate"><span class="pre">NETWORK_MAP</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.TAO_SYMBOL"><code class="docutils literal notranslate"><span class="pre">TAO_SYMBOL</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.RAO_SYMBOL"><code class="docutils literal notranslate"><span class="pre">RAO_SYMBOL</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.PIPADDRESS"><code class="docutils literal notranslate"><span class="pre">PIPADDRESS</span></code></a></li>
@@ -441,7 +443,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._BT_PRIORITY_MAX_WORKERS"><code class="docutils literal notranslate"><span class="pre">_BT_PRIORITY_MAX_WORKERS</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._BT_PRIORITY_MAXSIZE"><code class="docutils literal notranslate"><span class="pre">_BT_PRIORITY_MAXSIZE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULTS"><code class="docutils literal notranslate"><span class="pre">DEFAULTS</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.version_split"><code class="docutils literal notranslate"><span class="pre">version_split</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._version_info"><code class="docutils literal notranslate"><span class="pre">_version_info</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._version_int_base"><code class="docutils literal notranslate"><span class="pre">_version_int_base</span></code></a></li>
@@ -466,37 +468,37 @@ document.write(`
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="bittensor.core.settings.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id3" title="bittensor.core.settings.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.__console__" title="bittensor.core.settings.__console__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__console__</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.HOME_DIR" title="bittensor.core.settings.HOME_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HOME_DIR</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.__use_console__" title="bittensor.core.settings.__use_console__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__use_console__</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.USER_BITTENSOR_DIR" title="bittensor.core.settings.USER_BITTENSOR_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USER_BITTENSOR_DIR</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.bt_console" title="bittensor.core.settings.bt_console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bt_console</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.WALLETS_DIR" title="bittensor.core.settings.WALLETS_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WALLETS_DIR</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.HOME_DIR" title="bittensor.core.settings.HOME_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HOME_DIR</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.MINERS_DIR" title="bittensor.core.settings.MINERS_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MINERS_DIR</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.USER_BITTENSOR_DIR" title="bittensor.core.settings.USER_BITTENSOR_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USER_BITTENSOR_DIR</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="bittensor.core.settings.NETWORKS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.WALLETS_DIR" title="bittensor.core.settings.WALLETS_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WALLETS_DIR</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id1" title="bittensor.core.settings.DEFAULT_ENDPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.MINERS_DIR" title="bittensor.core.settings.MINERS_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MINERS_DIR</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id2" title="bittensor.core.settings.DEFAULT_NETWORK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.NETWORKS" title="bittensor.core.settings.NETWORKS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="bittensor.core.settings.NETWORKS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.DEFAULT_ENDPOINT" title="bittensor.core.settings.DEFAULT_ENDPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id1" title="bittensor.core.settings.DEFAULT_ENDPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.DEFAULT_NETWORK" title="bittensor.core.settings.DEFAULT_NETWORK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id2" title="bittensor.core.settings.DEFAULT_NETWORK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.FINNEY_ENTRYPOINT" title="bittensor.core.settings.FINNEY_ENTRYPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FINNEY_ENTRYPOINT</span></code></a></p></td>
@@ -509,6 +511,12 @@ document.write(`
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.LOCAL_ENTRYPOINT" title="bittensor.core.settings.LOCAL_ENTRYPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOCAL_ENTRYPOINT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.SUBVORTEX_ENTRYPOINT" title="bittensor.core.settings.SUBVORTEX_ENTRYPOINT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SUBVORTEX_ENTRYPOINT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.NETWORK_MAP" title="bittensor.core.settings.NETWORK_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NETWORK_MAP</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.TAO_SYMBOL" title="bittensor.core.settings.TAO_SYMBOL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TAO_SYMBOL</span></code></a></p></td>
@@ -553,7 +561,7 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.DEFAULTS" title="bittensor.core.settings.DEFAULTS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULTS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="bittensor.core.settings.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id3" title="bittensor.core.settings.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.version_split" title="bittensor.core.settings.version_split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_split</span></code></a></p></td>
@@ -576,12 +584,6 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.turn_console_off" title="bittensor.core.settings.turn_console_off"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_console_off</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.settings.turn_console_on" title="bittensor.core.settings.turn_console_on"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_console_on</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.settings.__apply_nest_asyncio" title="bittensor.core.settings.__apply_nest_asyncio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__apply_nest_asyncio</span></code></a>()</p></td>
 <td><p>Apply nest_asyncio if the environment variable NEST_ASYNCIO is set to &quot;1&quot; or not set.</p></td>
 </tr>
@@ -593,32 +595,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.__version__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'8.0.0'</span></em><a class="headerlink" href="#bittensor.core.settings.__version__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.settings.__console__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__console__</span></span><a class="headerlink" href="#bittensor.core.settings.__console__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.settings.__use_console__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__use_console__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#bittensor.core.settings.__use_console__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.settings.turn_console_off">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">turn_console_off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/settings.html#turn_console_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.settings.turn_console_off" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.settings.turn_console_on">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">turn_console_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/settings.html#turn_console_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.settings.turn_console_on" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.settings.bt_console">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">bt_console</span></span><a class="headerlink" href="#bittensor.core.settings.bt_console" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'8.2.1'</span></em><a class="headerlink" href="#bittensor.core.settings.__version__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -657,6 +634,21 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">NETWORKS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['finney',</span> <span class="pre">'test',</span> <span class="pre">'archive',</span> <span class="pre">'local',</span> <span class="pre">'subvortex']</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_ENDPOINT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'wss://entrypoint-finney.opentensor.ai:443'</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_NETWORK</span></span><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.FINNEY_ENTRYPOINT">
 <span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">FINNEY_ENTRYPOINT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'wss://entrypoint-finney.opentensor.ai:443'</span></em><a class="headerlink" href="#bittensor.core.settings.FINNEY_ENTRYPOINT" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -677,13 +669,23 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.settings.SUBVORTEX_ENTRYPOINT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">SUBVORTEX_ENTRYPOINT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ws://subvortex.info:9944'</span></em><a class="headerlink" href="#bittensor.core.settings.SUBVORTEX_ENTRYPOINT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.settings.NETWORK_MAP">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">NETWORK_MAP</span></span><a class="headerlink" href="#bittensor.core.settings.NETWORK_MAP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.TAO_SYMBOL">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">TAO_SYMBOL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.settings.TAO_SYMBOL" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">TAO_SYMBOL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.settings.TAO_SYMBOL" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.RAO_SYMBOL">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">RAO_SYMBOL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.settings.RAO_SYMBOL" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">RAO_SYMBOL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.settings.RAO_SYMBOL" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -718,7 +720,7 @@ document.write(`
 
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.TYPE_REGISTRY">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">TYPE_REGISTRY</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a></em><a class="headerlink" href="#bittensor.core.settings.TYPE_REGISTRY" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">TYPE_REGISTRY</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.settings.TYPE_REGISTRY" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -747,8 +749,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -768,7 +770,7 @@ document.write(`
 
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.settings.version_as_int">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">version_as_int</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.settings.version_as_int" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.settings.</span></span><span class="sig-name descname"><span class="pre">version_as_int</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.settings.version_as_int" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -830,11 +832,6 @@ If not set, warn the user that the default will change in the future.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__version__"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__console__"><code class="docutils literal notranslate"><span class="pre">__console__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.__use_console__"><code class="docutils literal notranslate"><span class="pre">__use_console__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.turn_console_off"><code class="docutils literal notranslate"><span class="pre">turn_console_off()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.turn_console_on"><code class="docutils literal notranslate"><span class="pre">turn_console_on()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.bt_console"><code class="docutils literal notranslate"><span class="pre">bt_console</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.HOME_DIR"><code class="docutils literal notranslate"><span class="pre">HOME_DIR</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.USER_BITTENSOR_DIR"><code class="docutils literal notranslate"><span class="pre">USER_BITTENSOR_DIR</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.WALLETS_DIR"><code class="docutils literal notranslate"><span class="pre">WALLETS_DIR</span></code></a></li>
@@ -842,10 +839,15 @@ If not set, warn the user that the default will change in the future.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.NETWORKS"><code class="docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULT_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULT_NETWORK"><code class="docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">NETWORKS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">DEFAULT_ENDPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">DEFAULT_NETWORK</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.FINNEY_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">FINNEY_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.FINNEY_TEST_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">FINNEY_TEST_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.ARCHIVE_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">ARCHIVE_ENTRYPOINT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.LOCAL_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">LOCAL_ENTRYPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.SUBVORTEX_ENTRYPOINT"><code class="docutils literal notranslate"><span class="pre">SUBVORTEX_ENTRYPOINT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.NETWORK_MAP"><code class="docutils literal notranslate"><span class="pre">NETWORK_MAP</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.TAO_SYMBOL"><code class="docutils literal notranslate"><span class="pre">TAO_SYMBOL</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.RAO_SYMBOL"><code class="docutils literal notranslate"><span class="pre">RAO_SYMBOL</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.PIPADDRESS"><code class="docutils literal notranslate"><span class="pre">PIPADDRESS</span></code></a></li>
@@ -860,7 +862,7 @@ If not set, warn the user that the default will change in the future.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._BT_PRIORITY_MAX_WORKERS"><code class="docutils literal notranslate"><span class="pre">_BT_PRIORITY_MAX_WORKERS</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._BT_PRIORITY_MAXSIZE"><code class="docutils literal notranslate"><span class="pre">_BT_PRIORITY_MAXSIZE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.DEFAULTS"><code class="docutils literal notranslate"><span class="pre">DEFAULTS</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings.version_split"><code class="docutils literal notranslate"><span class="pre">version_split</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._version_info"><code class="docutils literal notranslate"><span class="pre">_version_info</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.settings._version_int_base"><code class="docutils literal notranslate"><span class="pre">_version_int_base</span></code></a></li>

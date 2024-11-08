@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.subtensor &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.subtensor &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -182,7 +182,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
@@ -369,6 +371,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">ssl</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">Any</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -385,20 +388,26 @@ document.write(`
 <span class="kn">from</span> <span class="nn">bittensor.core</span> <span class="kn">import</span> <span class="n">settings</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.axon</span> <span class="kn">import</span> <span class="n">Axon</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.chain_data</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">custom_rpc_type_registry</span><span class="p">,</span>
+    <span class="n">DelegateInfo</span><span class="p">,</span>
     <span class="n">NeuronInfo</span><span class="p">,</span>
+    <span class="n">NeuronInfoLite</span><span class="p">,</span>
     <span class="n">PrometheusInfo</span><span class="p">,</span>
     <span class="n">SubnetHyperparameters</span><span class="p">,</span>
-    <span class="n">NeuronInfoLite</span><span class="p">,</span>
-    <span class="n">custom_rpc_type_registry</span><span class="p">,</span>
+    <span class="n">SubnetInfo</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.config</span> <span class="kn">import</span> <span class="n">Config</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.commit_weights</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">commit_weights_extrinsic</span><span class="p">,</span>
     <span class="n">reveal_weights_extrinsic</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.prometheus</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">do_serve_prometheus</span><span class="p">,</span>
-    <span class="n">prometheus_extrinsic</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.registration</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">burned_register_extrinsic</span><span class="p">,</span>
+    <span class="n">register_extrinsic</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.root</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">root_register_extrinsic</span><span class="p">,</span>
+    <span class="n">set_root_weights_extrinsic</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.extrinsics.serving</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">do_serve_axon</span><span class="p">,</span>
@@ -411,10 +420,10 @@ document.write(`
     <span class="n">transfer_extrinsic</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">bittensor.core.metagraph</span> <span class="kn">import</span> <span class="n">Metagraph</span>
-<span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">torch</span>
-<span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">u16_normalized_float</span><span class="p">,</span> <span class="n">networking</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">networking</span><span class="p">,</span> <span class="n">torch</span><span class="p">,</span> <span class="n">ss58_to_vec_u8</span><span class="p">,</span> <span class="n">u16_normalized_float</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.balance</span> <span class="kn">import</span> <span class="n">Balance</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.btlogging</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.registration</span> <span class="kn">import</span> <span class="n">legacy_torch_api_compat</span>
 <span class="kn">from</span> <span class="nn">bittensor.utils.weight_utils</span> <span class="kn">import</span> <span class="n">generate_weight_hash</span>
 
 <span class="n">KEY_NONCE</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -485,7 +494,7 @@ document.write(`
         <span class="n">network</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">_mock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">log_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">log_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">connection_timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -526,17 +535,18 @@ document.write(`
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;You are connecting to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2"> network with endpoint </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
                 <span class="s2">&quot;We strongly encourage running a local subtensor node whenever possible. &quot;</span>
                 <span class="s2">&quot;This increases decentralization and resilience of the network.&quot;</span>
             <span class="p">)</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
                 <span class="s2">&quot;In a future release, local subtensor will become the default endpoint. &quot;</span>
                 <span class="s2">&quot;To get ahead of this change, please run a local subtensor node and point to it.&quot;</span>
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log_verbose</span> <span class="o">=</span> <span class="n">log_verbose</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection_timeout</span> <span class="o">=</span> <span class="n">connection_timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="p">:</span> <span class="s2">&quot;SubstrateInterface&quot;</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_get_substrate</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Subtensor.__str__">
@@ -560,7 +570,8 @@ document.write(`
 <a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.close">[docs]</a>
     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cleans up resources for this subtensor instance like active websocket connection and active extensions.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Subtensor._get_substrate">
@@ -576,7 +587,7 @@ document.write(`
                 <span class="n">type_registry</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">TYPE_REGISTRY</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_verbose</span><span class="p">:</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;Connected to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2"> network and </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="si">}</span><span class="s2">.&quot;</span>
                 <span class="p">)</span>
 
@@ -585,14 +596,15 @@ document.write(`
             <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error setting timeout: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">except</span> <span class="ne">ConnectionRefusedError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ConnectionRefusedError</span><span class="p">,</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Could not connect to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2"> network with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="si">}</span><span class="s2"> chain endpoint.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="s2">&quot;You can check if you have connectivity by running this command: nc -vz localhost &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span></div>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ConnectionRefusedError</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Subtensor.config">
@@ -1112,16 +1124,8 @@ document.write(`
 
         <span class="k">if</span> <span class="n">network</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">network</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;archive&quot;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;finney&quot;</span><span class="p">:</span>
-                <span class="c1"># Kiru Finney staging network.</span>
-                <span class="k">return</span> <span class="n">network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">FINNEY_ENTRYPOINT</span>
-            <span class="k">elif</span> <span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">LOCAL_ENTRYPOINT</span>
-            <span class="k">elif</span> <span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">FINNEY_TEST_ENTRYPOINT</span>
-            <span class="k">elif</span> <span class="n">network</span> <span class="o">==</span> <span class="s2">&quot;archive&quot;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">ARCHIVE_ENTRYPOINT</span>
+        <span class="k">if</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">NETWORKS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">NETWORK_MAP</span><span class="p">[</span><span class="n">network</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span>
                 <span class="n">network</span> <span class="o">==</span> <span class="n">settings</span><span class="o">.</span><span class="n">FINNEY_ENTRYPOINT</span>
@@ -1141,8 +1145,7 @@ document.write(`
             <span class="k">elif</span> <span class="s2">&quot;127.0.0.1&quot;</span> <span class="ow">in</span> <span class="n">network</span> <span class="ow">or</span> <span class="s2">&quot;localhost&quot;</span> <span class="ow">in</span> <span class="n">network</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">network</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="n">network</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+                <span class="k">return</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="n">network</span></div>
 
 
 <div class="viewcode-block" id="Subtensor.get_netuids_for_hotkey">
@@ -1268,7 +1271,6 @@ document.write(`
         <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">version_as_int</span><span class="p">,</span>
         <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1282,7 +1284,6 @@ document.write(`
 <span class="sd">            version_key (int): Version key for compatibility with the network.  Default is ``int representation of Bittensor version.``.</span>
 <span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block. Default is ``False``.</span>
 <span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain. Default is ``False``.</span>
-<span class="sd">            prompt (bool): If ``True``, prompts for user confirmation before proceeding. Default is ``False``.</span>
 <span class="sd">            max_retries (int): The number of maximum attempts to set weights. Default is ``5``.</span>
 
 <span class="sd">        Returns:</span>
@@ -1311,7 +1312,6 @@ document.write(`
                     <span class="n">version_key</span><span class="o">=</span><span class="n">version_key</span><span class="p">,</span>
                     <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
                     <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
-                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error setting weights: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1319,6 +1319,163 @@ document.write(`
                 <span class="n">retries</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">message</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.root_set_weights">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.root_set_weights">[docs]</a>
+    <span class="nd">@legacy_torch_api_compat</span>
+    <span class="k">def</span> <span class="nf">root_set_weights</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">netuids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">],</span> <span class="s2">&quot;torch.LongTensor&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
+        <span class="n">weights</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
+        <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the weights for neurons on the root network. This action is crucial for defining the influence and interactions of neurons at the root level of the Bittensor network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wallet (bittensor_wallet.Wallet): The wallet associated with the neuron setting the weights.</span>
+<span class="sd">            netuids (Union[NDArray[np.int64], torch.LongTensor, list]): The list of neuron UIDs for which weights are being set.</span>
+<span class="sd">            weights (Union[NDArray[np.float32], torch.FloatTensor, list]): The corresponding weights to be set for each UID.</span>
+<span class="sd">            version_key (int, optional): Version key for compatibility with the network. Default is ``0``.</span>
+<span class="sd">            wait_for_inclusion (bool, optional): Waits for the transaction to be included in a block. Defaults to ``False``.</span>
+<span class="sd">            wait_for_finalization (bool, optional): Waits for the transaction to be finalized on the blockchain. Defaults to ``False``.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` if the setting of root-level weights is successful, False otherwise.</span>
+
+<span class="sd">        This function plays a pivotal role in shaping the root network&#39;s collective intelligence and decision-making processes, reflecting the principles of decentralized governance and collaborative learning in Bittensor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">set_root_weights_extrinsic</span><span class="p">(</span>
+            <span class="n">subtensor</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">netuids</span><span class="o">=</span><span class="n">netuids</span><span class="p">,</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span>
+            <span class="n">version_key</span><span class="o">=</span><span class="n">version_key</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.register">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.register">[docs]</a>
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">max_allowed_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">output_in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">cuda</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">dev_id</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">tpb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="n">num_processes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">update_interval</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registers a neuron on the Bittensor network using the provided wallet.</span>
+
+<span class="sd">        Registration is a critical step for a neuron to become an active participant in the network, enabling it to stake, set weights, and receive incentives.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wallet (bittensor_wallet.Wallet): The wallet associated with the neuron to be registered.</span>
+<span class="sd">            netuid (int): The unique identifier of the subnet.</span>
+<span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block. Defaults to `False`.</span>
+<span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain. Defaults to `True`.</span>
+<span class="sd">            max_allowed_attempts (int): Maximum number of attempts to register the wallet.</span>
+<span class="sd">            output_in_place (bool): If true, prints the progress of the proof of work to the console in-place. Meaning the progress is printed on the same lines. Defaults to `True`.</span>
+<span class="sd">            cuda (bool): If ``true``, the wallet should be registered using CUDA device(s). Defaults to `False`.</span>
+<span class="sd">            dev_id (Union[List[int], int]): The CUDA device id to use, or a list of device ids. Defaults to `0` (zero).</span>
+<span class="sd">            tpb (int): The number of threads per block (CUDA). Default to `256`.</span>
+<span class="sd">            num_processes (Optional[int]): The number of processes to use to register. Default to `None`.</span>
+<span class="sd">            update_interval (Optional[int]): The number of nonces to solve between updates.  Default to `None`.</span>
+<span class="sd">            log_verbose (bool): If ``true``, the registration process will log more information.  Default to `False`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` if the registration is successful, False otherwise.</span>
+
+<span class="sd">        This function facilitates the entry of new neurons into the network, supporting the decentralized</span>
+<span class="sd">        growth and scalability of the Bittensor ecosystem.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">register_extrinsic</span><span class="p">(</span>
+            <span class="n">subtensor</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+            <span class="n">max_allowed_attempts</span><span class="o">=</span><span class="n">max_allowed_attempts</span><span class="p">,</span>
+            <span class="n">output_in_place</span><span class="o">=</span><span class="n">output_in_place</span><span class="p">,</span>
+            <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+            <span class="n">dev_id</span><span class="o">=</span><span class="n">dev_id</span><span class="p">,</span>
+            <span class="n">tpb</span><span class="o">=</span><span class="n">tpb</span><span class="p">,</span>
+            <span class="n">num_processes</span><span class="o">=</span><span class="n">num_processes</span><span class="p">,</span>
+            <span class="n">update_interval</span><span class="o">=</span><span class="n">update_interval</span><span class="p">,</span>
+            <span class="n">log_verbose</span><span class="o">=</span><span class="n">log_verbose</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.root_register">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.root_register">[docs]</a>
+    <span class="k">def</span> <span class="nf">root_register</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registers the neuron associated with the wallet on the root network. This process is integral for participating in the highest layer of decision-making and governance within the Bittensor network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wallet (bittensor.wallet): The wallet associated with the neuron to be registered on the root network.</span>
+<span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block. Defaults to `False`.</span>
+<span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain. Defaults to `True`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` if the registration on the root network is successful, False otherwise.</span>
+
+<span class="sd">        This function enables neurons to engage in the most critical and influential aspects of the network&#39;s governance, signifying a high level of commitment and responsibility in the Bittensor ecosystem.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">root_register_extrinsic</span><span class="p">(</span>
+            <span class="n">subtensor</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.burned_register">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.burned_register">[docs]</a>
+    <span class="k">def</span> <span class="nf">burned_register</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registers a neuron on the Bittensor network by recycling TAO. This method of registration involves recycling TAO tokens, allowing them to be re-mined by performing work on the network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wallet (bittensor_wallet.Wallet): The wallet associated with the neuron to be registered.</span>
+<span class="sd">            netuid (int): The unique identifier of the subnet.</span>
+<span class="sd">            wait_for_inclusion (bool, optional): Waits for the transaction to be included in a block. Defaults to `False`.</span>
+<span class="sd">            wait_for_finalization (bool, optional): Waits for the transaction to be finalized on the blockchain. Defaults to `True`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` if the registration is successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">burned_register_extrinsic</span><span class="p">(</span>
+            <span class="n">subtensor</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Subtensor.serve_axon">
@@ -1456,7 +1613,6 @@ document.write(`
         <span class="n">amount</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Balance&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
         <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a transfer of funds from the provided wallet to the specified destination address. This function is used to move TAO tokens within the Bittensor network, facilitating transactions between neurons.</span>
@@ -1467,7 +1623,6 @@ document.write(`
 <span class="sd">            amount (Union[bittensor.utils.balance.Balance, float]): The amount of TAO to be transferred.</span>
 <span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block.  Default is ``True``.</span>
 <span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain.  Default is ``False``.</span>
-<span class="sd">            prompt (bool): If ``True``, prompts for user confirmation before proceeding. Default is ``False``.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            transfer_extrinsic (bool): ``True`` if the transfer is successful, False otherwise.</span>
@@ -1481,7 +1636,6 @@ document.write(`
             <span class="n">amount</span><span class="o">=</span><span class="n">amount</span><span class="p">,</span>
             <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
             <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
-            <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 
@@ -1550,40 +1704,6 @@ document.write(`
             <span class="k">return</span> <span class="n">NeuronInfo</span><span class="o">.</span><span class="n">get_null_neuron</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">NeuronInfo</span><span class="o">.</span><span class="n">from_vec_u8</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
-
-
-    <span class="c1"># Community uses this method</span>
-<div class="viewcode-block" id="Subtensor.serve_prometheus">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.serve_prometheus">[docs]</a>
-    <span class="k">def</span> <span class="nf">serve_prometheus</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
-        <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Serves Prometheus metrics by submitting an extrinsic to a blockchain network via the specified wallet. The function allows configuring whether to wait for the transaction&#39;s inclusion in a block and its finalization.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            wallet (bittensor_wallet.Wallet): Bittensor wallet instance used for submitting the extrinsic.</span>
-<span class="sd">            port (int): The port number on which Prometheus metrics are served.</span>
-<span class="sd">            netuid (int): The unique identifier of the subnetwork.</span>
-<span class="sd">            wait_for_inclusion (bool): If True, waits for the transaction to be included in a block. Defaults to ``False``.</span>
-<span class="sd">            wait_for_finalization (bool): If True, waits for the transaction to be finalized. Defaults to ``True``.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if the Prometheus extrinsic is successfully processed, otherwise False.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">prometheus_extrinsic</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
-            <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
-            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
-            <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
-            <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
-        <span class="p">)</span></div>
 
 
     <span class="c1"># Community uses this method</span>
@@ -1806,6 +1926,39 @@ document.write(`
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_result</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="Subtensor.get_all_subnets_info">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.get_all_subnets_info">[docs]</a>
+    <span class="nd">@networking</span><span class="o">.</span><span class="n">ensure_connected</span>
+    <span class="k">def</span> <span class="nf">get_all_subnets_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">SubnetInfo</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves detailed information about all subnets within the Bittensor network. This function provides comprehensive data on each subnet, including its characteristics and operational parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[SubnetInfo]: A list of SubnetInfo objects, each containing detailed information about a subnet.</span>
+
+<span class="sd">        Gaining insights into the subnets&#39; details assists in understanding the network&#39;s composition, the roles of different subnets, and their unique features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nd">@retry</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">backoff</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">make_substrate_call_with_retry</span><span class="p">():</span>
+            <span class="n">block_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">block</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">get_block_hash</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">rpc_request</span><span class="p">(</span>
+                <span class="n">method</span><span class="o">=</span><span class="s2">&quot;subnetInfo_getSubnetsInfo&quot;</span><span class="p">,</span>  <span class="c1"># custom rpc method</span>
+                <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">block_hash</span><span class="p">]</span> <span class="k">if</span> <span class="n">block_hash</span> <span class="k">else</span> <span class="p">[],</span>
+            <span class="p">)</span>
+
+        <span class="n">json_body</span> <span class="o">=</span> <span class="n">make_substrate_call_with_retry</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">result</span> <span class="o">:=</span> <span class="n">json_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">return</span> <span class="n">SubnetInfo</span><span class="o">.</span><span class="n">list_from_vec_u8</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
     <span class="c1"># Metagraph uses this method</span>
 <div class="viewcode-block" id="Subtensor.bonds">
 <a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.bonds">[docs]</a>
@@ -1833,6 +1986,33 @@ document.write(`
                 <span class="n">b_map</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">uid</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">serialize</span><span class="p">()))</span>
 
         <span class="k">return</span> <span class="n">b_map</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.get_subnet_burn_cost">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.get_subnet_burn_cost">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_subnet_burn_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the burn cost for registering a new subnet within the Bittensor network. This cost represents the amount of Tao that needs to be locked or burned to establish a new subnet.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The burn cost for subnet registration.</span>
+
+<span class="sd">        The subnet burn cost is an important economic parameter, reflecting the network&#39;s mechanisms for controlling the proliferation of subnets and ensuring their commitment to the network&#39;s long-term viability.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lock_cost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_runtime_api</span><span class="p">(</span>
+            <span class="n">runtime_api</span><span class="o">=</span><span class="s2">&quot;SubnetRegistrationRuntimeApi&quot;</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;get_network_registration_cost&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">[],</span>
+            <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">lock_cost</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">lock_cost</span></div>
 
 
     <span class="c1"># Metagraph uses this method</span>
@@ -2052,9 +2232,7 @@ document.write(`
                     <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span> <span class="n">keypair</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span>
                 <span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="n">settings</span><span class="o">.</span><span class="n">bt_console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;:cross_mark: [red]Failed to get payment info[/red]:[bold white]</span><span class="se">\n</span><span class="s2">  </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">[/bold white]&quot;</span>
-                <span class="p">)</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;red&gt;Failed to get payment info.&lt;/red&gt; </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">payment_info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;partialFee&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="mf">2e7</span><span class="p">)}</span>  <span class="c1"># assume  0.02 Tao</span>
 
             <span class="n">fee</span> <span class="o">=</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">payment_info</span><span class="p">[</span><span class="s2">&quot;partialFee&quot;</span><span class="p">])</span>
@@ -2108,7 +2286,6 @@ document.write(`
         <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">version_as_int</span><span class="p">,</span>
         <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2124,7 +2301,6 @@ document.write(`
 <span class="sd">            version_key (int): Version key for compatibility with the network. Default is ``int representation of Bittensor version.``.</span>
 <span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block. Default is ``False``.</span>
 <span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain. Default is ``False``.</span>
-<span class="sd">            prompt (bool): If ``True``, prompts for user confirmation before proceeding. Default is ``False``.</span>
 <span class="sd">            max_retries (int): The number of maximum attempts to commit weights. Default is ``5``.</span>
 
 <span class="sd">        Returns:</span>
@@ -2163,7 +2339,6 @@ document.write(`
                     <span class="n">commit_hash</span><span class="o">=</span><span class="n">commit_hash</span><span class="p">,</span>
                     <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
                     <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
-                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
                     <span class="k">break</span>
@@ -2188,7 +2363,6 @@ document.write(`
         <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">version_as_int</span><span class="p">,</span>
         <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">prompt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2204,7 +2378,6 @@ document.write(`
 <span class="sd">            version_key (int): Version key for compatibility with the network. Default is ``int representation of Bittensor version``.</span>
 <span class="sd">            wait_for_inclusion (bool): Waits for the transaction to be included in a block. Default is ``False``.</span>
 <span class="sd">            wait_for_finalization (bool): Waits for the transaction to be finalized on the blockchain. Default is ``False``.</span>
-<span class="sd">            prompt (bool): If ``True``, prompts for user confirmation before proceeding. Default is ``False``.</span>
 <span class="sd">            max_retries (int): The number of maximum attempts to reveal weights. Default is ``5``.</span>
 
 <span class="sd">        Returns:</span>
@@ -2231,7 +2404,6 @@ document.write(`
                     <span class="n">version_key</span><span class="o">=</span><span class="n">version_key</span><span class="p">,</span>
                     <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
                     <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
-                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
                     <span class="k">break</span>
@@ -2243,8 +2415,114 @@ document.write(`
         <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">message</span></div>
 
 
-    <span class="c1"># Subnet 27 uses this method</span>
-    <span class="n">_do_serve_prometheus</span> <span class="o">=</span> <span class="n">do_serve_prometheus</span>
+<div class="viewcode-block" id="Subtensor.difficulty">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.difficulty">[docs]</a>
+    <span class="k">def</span> <span class="nf">difficulty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the &#39;Difficulty&#39; hyperparameter for a specified subnet in the Bittensor network.</span>
+
+<span class="sd">        This parameter is instrumental in determining the computational challenge required for neurons to participate in consensus and validation processes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            netuid (int): The unique identifier of the subnet.</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[int]: The value of the &#39;Difficulty&#39; hyperparameter if the subnet exists, ``None`` otherwise.</span>
+
+<span class="sd">        The &#39;Difficulty&#39; parameter directly impacts the network&#39;s security and integrity by setting the computational effort required for validating transactions and participating in the network&#39;s consensus mechanism.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">call</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_hyperparameter</span><span class="p">(</span>
+            <span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;Difficulty&quot;</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">call</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">call</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.recycle">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.recycle">[docs]</a>
+    <span class="k">def</span> <span class="nf">recycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Balance&quot;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the &#39;Burn&#39; hyperparameter for a specified subnet. The &#39;Burn&#39; parameter represents the amount of Tao that is effectively recycled within the Bittensor network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            netuid (int): The unique identifier of the subnet.</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[Balance]: The value of the &#39;Burn&#39; hyperparameter if the subnet exists, None otherwise.</span>
+
+<span class="sd">        Understanding the &#39;Burn&#39; rate is essential for analyzing the network registration usage, particularly how it is correlated with user activity and the overall cost of participation in a given subnet.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">call</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_hyperparameter</span><span class="p">(</span><span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;Burn&quot;</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">call</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">call</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.get_delegate_take">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.get_delegate_take">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_delegate_take</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">hotkey_ss58</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the delegate &#39;take&#39; percentage for a neuron identified by its hotkey. The &#39;take&#39; represents the percentage of rewards that the delegate claims from its nominators&#39; stakes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hotkey_ss58 (str): The ``SS58`` address of the neuron&#39;s hotkey.</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[float]: The delegate take percentage, None if not available.</span>
+
+<span class="sd">        The delegate take is a critical parameter in the network&#39;s incentive structure, influencing the distribution of rewards among neurons and their nominators.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_subtensor</span><span class="p">(</span><span class="s2">&quot;Delegates&quot;</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="p">[</span><span class="n">hotkey_ss58</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_result</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">_result</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Subtensor.get_delegate_by_hotkey">
+<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.subtensor.Subtensor.get_delegate_by_hotkey">[docs]</a>
+    <span class="nd">@networking</span><span class="o">.</span><span class="n">ensure_connected</span>
+    <span class="k">def</span> <span class="nf">get_delegate_by_hotkey</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">hotkey_ss58</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DelegateInfo</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves detailed information about a delegate neuron based on its hotkey. This function provides a comprehensive view of the delegate&#39;s status, including its stakes, nominators, and reward distribution.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hotkey_ss58 (str): The ``SS58`` address of the delegate&#39;s hotkey.</span>
+<span class="sd">            block (Optional[int]): The blockchain block number for the query. Default is ``None``.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[DelegateInfo]: Detailed information about the delegate neuron, ``None`` if not found.</span>
+
+<span class="sd">        This function is essential for understanding the roles and influence of delegate neurons within the Bittensor network&#39;s consensus and governance structures.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nd">@retry</span><span class="p">(</span><span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">backoff</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_delay</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">make_substrate_call_with_retry</span><span class="p">(</span><span class="n">encoded_hotkey_</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+            <span class="n">block_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">block</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">get_block_hash</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">rpc_request</span><span class="p">(</span>
+                <span class="n">method</span><span class="o">=</span><span class="s2">&quot;delegateInfo_getDelegate&quot;</span><span class="p">,</span>  <span class="c1"># custom rpc method</span>
+                <span class="n">params</span><span class="o">=</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">encoded_hotkey_</span><span class="p">,</span> <span class="n">block_hash</span><span class="p">]</span> <span class="k">if</span> <span class="n">block_hash</span> <span class="k">else</span> <span class="p">[</span><span class="n">encoded_hotkey_</span><span class="p">]</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="n">encoded_hotkey</span> <span class="o">=</span> <span class="n">ss58_to_vec_u8</span><span class="p">(</span><span class="n">hotkey_ss58</span><span class="p">)</span>
+        <span class="n">json_body</span> <span class="o">=</span> <span class="n">make_substrate_call_with_retry</span><span class="p">(</span><span class="n">encoded_hotkey</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">result</span> <span class="o">:=</span> <span class="n">json_body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">DelegateInfo</span><span class="o">.</span><span class="n">from_vec_u8</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
     <span class="c1"># Subnet 27 uses this method name</span>
     <span class="n">_do_serve_axon</span> <span class="o">=</span> <span class="n">do_serve_axon</span></div>
 

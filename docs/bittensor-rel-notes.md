@@ -6,9 +6,77 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
-## Release 8.2.0
+`Released 06 November 2024`
+
+## BTCLI 8.3.0
+
+### New features and enhancements
+
+- A new flag `--all` is added to `btcli wallet transfer` command. This transfers all the available balance in the provided wallet to the destination coldkey. 
+- You can now use either hotkey names or ss58 addresses in both `--include-hotkeys` and `--exclude-hotkeys` options for `btcli stake add` and `btcli stake remove` commands.
+- Enhanced the user experience by not prompting the user for wallet path every time.
+- For better user experience, the `btcli stake remove` command now does not ask for confirmation when `--no-prompt` is used.
+- Enhanced the error message when the user provides incorrect password.
+- For better user experience while using the `btcli wallet` with `regen_coldkey`, `regen_coldkeypub` and `regen_hotkey` subcommands, a success message and the regenerated wallet details are displayed when the command runs succesfully.
+
+### Fixed issues
+
+- There was an error when using `btcli subnet pow-register` with `--cuda` option, where the `--num_processes` was being accessed before being set (only in CUDA use). This is now resolved. Now the `--num_processes` is set before accessing it.
+- Fixed the Taostats link.
+- Graceful handling of keyboard interrupt.
+- Several other bug fixes.
+
+## Bittensor SDK 8.2.1
+
+### New features and enhancements
+
+For the below added methods, see [Bittensor SDK](./bt-api-ref.md) reference.
+
+- Expanded the type registry to include all the available options.
+- Added `Subtensor.register`, `Subtensor.difficulty` methods. 
+- Added the following to Subtensor:
+  - `burned_register`
+  - `get_subnet_burn_cost`
+  - `recycle` and related extrinsics.
+- Added the following:
+  - Subtensor.get_delegate_by_hotkey
+  - Subtensor.root_set_weights
+  - Subtensor.root_register
+  - Subtensor.get_all_subnets_info
+  - Subtensor.get_delegate_take
+- Default port is changed from `9946` to `9944`.
+- Removed the unusued `prometheus` extrinsic.
+- Replaced `rich.console` with `btlogging.logging`.
+
+## Bittensor SDK 8.3.0rc3 
+
+:::caution 
+This is a release candidate only. Do not use it in your production environment.
+:::
+
+### New features and enhancements
+
+- Commit Reveal V2, including a new subprocess and related utilities that support the Commit Reveal V2 feature. 
+- A new `bittensor.core.async_subtensor.AsyncSubtensor` class is added.
+- The following `async` methods are added, along with the corresponding extrinsics to the `AsyncSubtensor` subtensor object:
+- Added `bittensor.utils.delegates_details.DelegatesDetails.`
+- Updated `bittensor/core/chain_data`.
+- Added `bittensor/core/extrinsics/async_registration`.
+- Added `bittensor/core/extrinsics/async_root`.
+- Added `bittensor/core/extrinsics/async_transfer`.
+- Added `get_current_block`, `get_transfer_fee`, `get_uid_for_hotkey_on_subnet`.
+- `set_weights`.
+- `commit_weights`.
+- Added the related async extrinsics.
+- Updated settings and utils.
+- Better handling of SSL EOF error, which is a connection issue. This is handled for both sync and async versions.
+- Removed the usage of `prompt` in SDK.
+
+---
 
 `Released 10 October 2024`
+
+## Release 8.2.0
 
 The following are the new versions in this release: 
 
@@ -55,10 +123,11 @@ The following are the new versions in this release:
 - Fixed the `network` instantiation in `btcli root list-delegates` command.
 - Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
 
-
-## Release 8.1.0
+---
 
 `Released 03 October 2024`
+
+## Release 8.1.0
 
 - Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
 
