@@ -517,6 +517,8 @@ This section presents a summary of intuitions about dynamic TAO. It is intended 
 
 - No one directly owns the subnet pool reserves. These reserves exist to provide liquidity to the subnet pools.
 - However, as we saw in [Local weights vs τ_in](#local-weights-vs-τ_in) , a validator who holds X% of the dTAO stake in a subnet is said to own the same X% of the TAO reserve pool of that subnet. 
+- In dynamic TAO the sum of α_in (also called alpha reserve) and α_out (all the alpha stake in the subnet) is treated as the the sum total of all alpha. **This is not not strictly true.** This sum total only represents the alpha associated with staking and unstaking. There is the another source of alpha, which is the emissions alpha. This emissions alpha is awarded to validators, subnet owners and miners. 
+- More important, these emissions alpha bypasses the subnet pool and gets into the subnet directly from the coinbase. Furthermore, the only way for this emissions alpha to come out of the subnet is via unstaking, even though they did not participate in staking. 
 
 ### Subnet zero
 
