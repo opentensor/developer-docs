@@ -31,7 +31,7 @@ The heart of the dynamic TAO mechanism is a **subnet pool**, with the following 
 alt="Subnet Pool"
 sources={{
     light: useBaseUrl('/img/docs/dynamic-tao/subnet-pools.svg'),
-    dark: useBaseUrl('/img/docs/dynamic-tao/subnet-pools.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-subnet-pools.svg'),
   }}
 style={{width: 450}}
 />
@@ -75,7 +75,7 @@ With dynamic TAO, staking would work like this. See the below diagram.
 alt="Staking"
 sources={{
     light: useBaseUrl('/img/docs/dynamic-tao/staking-subnet-pools.svg'),
-    dark: useBaseUrl('/img/docs/dynamic-tao/staking-subnet-pools.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-staking-subnet-pools.svg'),
   }}
 style={{width: 700}}
 />
@@ -125,7 +125,7 @@ Hence, the constant product 𝑘 = 10 × 100 =1000.
 $$
 \begin{split}
 & 15 \times\text{new dTAO α reserves} = 1000\\ 
-& \implies \text{new dTAO α reserves} = 1000/15 = 66.667 \text{ dTAO α}.
+\implies & \text{new dTAO α reserves} = 1000/15 = 66.667 \text{ dTAO α}.
 \end{split}
 $$
 
@@ -159,7 +159,7 @@ Total stake in the subnet is referred as $α_{out}$. This is the sum of all the 
 alt="Staking"
 sources={{
     light: useBaseUrl('/img/docs/dynamic-tao/alpha-and-alpha-out.svg'),
-    dark: useBaseUrl('/img/docs/dynamic-tao/alpha-and-alpha-out.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-alpha-and-alpha-out.svg'),
   }}
 style={{width: 650}}
 />
@@ -190,7 +190,7 @@ Unstaking works, not surprisingly, as a reverse of the staking operation. See th
 alt="Unstaking"
 sources={{
     light: useBaseUrl('/img/docs/dynamic-tao/unstaking-subnet-pools.svg'),
-    dark: useBaseUrl('/img/docs/dynamic-tao/unstaking-subnet-pools.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-unstaking-subnet-pools.svg'),
   }}
 style={{width: 700}}
 />
@@ -221,7 +221,7 @@ The below example shows how unstaking 20 dTAO α works. Let’s continue with th
 $$  
 \begin{split}
 & 86.67 \times\text{new TAO reserves} = 1000\\
-& \implies \text{new TAO reserves} = 1000/86.67 = 11.54 \text{ TAO}.
+\implies & \text{new TAO reserves} = 1000/86.67 = 11.54 \text{ TAO}.
 \end{split}
 $$
 
@@ -452,7 +452,7 @@ Hence, sum of all global weights in the all the above subnets is = (`root_weight
 
 ## Exchange Value (α x τ/α)
 
-This is the potential instantaneous TAO you will receive, without considering slippage, if you unstake at this instant from this hotkey on this subnet. See Swap(α → τ) column description. This can change every block.
+This is the potential instantaneous TAO you will receive, without considering slippage, if you [unstake](#unstaking) at this instant from this hotkey on this subnet. See [Swap(α → τ)](#swap-α--τ) description. This can change every block.
 
 :::tip Compare with TAO Equiv 
 Whereas the [TAO Equiv(τ_in x α/α_out)](#tao-equiv-τ_in-x-αα_out) indicates a validator's local stake weight, this Exchange Value shows TAO you will receive if you unstake now. 
