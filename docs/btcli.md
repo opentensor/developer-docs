@@ -981,11 +981,11 @@ The command compiles a table showing:
 #### Examples
 
 ```bash
-btcli stake get-children --netuid 1
+btcli stake child get --netuid 1
 ```
 
 ```bash
-btcli stake get-children --all-netuids
+btcli stake child get --all-netuids
 ```
 
 :::tip
