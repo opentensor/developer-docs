@@ -6,6 +6,44 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Released 13 November 2024
+
+The following are the new versions in this release: 
+
+- Bittensor SDK 8.x
+- BTCLI 8.3.1
+- Wallet SDK 2.1.0
+
+### Release PRs
+
+- **BTCLI Release PR**: [https://github.com/opentensor/btcli/pull/239](https://github.com/opentensor/btcli/pull/239).
+- **Bittensor SDK Release PR**: 
+- **Wallet SDK Release PR**: [https://github.com/opentensor/btwallet/pull/61](https://github.com/opentensor/btwallet/pull/61).
+
+###  Upgrade steps
+
+- **Bittensor SDK**: See [Install Bittensor SDK](./getting-started/installation.md).
+- **BTCLI**: See [Install BTCLI](./getting-started/install-btcli.md).
+- **Wallet SDK**: See [Install Wallet SDK](./getting-started/install-wallet-sdk.md).
+
+### New features and enhancements
+
+- **Bittensor SDK**: An **experimental class**, `AsyncSubtensor`, is included in this release. This class is not yet ready for your production uses. See an example code showing how to use this class, [asyncio](./subnets/asyncio.md).
+- **Wallet SDK**: Add the ability in the Wallet SDK to use local environment variables to store encrypted hotkey and coldkey passwords. See the PR [https://github.com/opentensor/btwallet/pull/46](https://github.com/opentensor/btwallet/pull/46).
+
+
+
+### Fixed issues
+
+- **Wallet SDK**: Fixed an issue where the `~` character in the wallet path was not being recognized properly. This is now resolved so that you can use `"~/.bittensor/wallets/"` in the wallet path. See the PR [https://github.com/opentensor/btwallet/pull/59](https://github.com/opentensor/btwallet/pull/59).
+
+- **BTCLI**: Fixed an issue where, if a nonexistent wallet path is passed to  `btcli wallet list`, the command did not gracefully handle it. This is now resolved so that the error is properly handled.
+
+- **BTCLI**: When using `btcli` with WebSockets version 14, an error occurred with the message: `TypeError: BaseEventLoop.create_connection() got an unexpected keyword argument 'read_limit'`. This issue is resolved. The error occured because `read_limit` kwarg does not exist in WebSockets 14+. This issue is fixed so that you can use `btcli` with WebSockets version 14.
+
+
+---
+
 `Released 06 November 2024`
 
 ## BTCLI 8.3.0
