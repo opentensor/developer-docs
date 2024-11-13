@@ -6,8 +6,6 @@ title: "AsyncIO"
 
 Below is an example of how you can use the `AsyncSubtensor` module to retrieve  balances from multiple coldkey SS58 addresses in various ways:
 
-Coldkey SS58 addresses in the below example are masked partially for security.
-
 ```python
 import asyncio
 
@@ -16,12 +14,12 @@ from bittensor.core.async_subtensor import AsyncSubtensor  # async
 
 from bittensor.utils.balance import Balance
 
-COLDKEY_PUB = "5EhCvxxxxxgXRCaN5LH2wxxx5su1vKsnVfYfjzkqfmPoCy2G"
+COLDKEY_PUB = "5EhCvSxpFRgXRCaN5LH2wRCD5su1vKsnVfYfjzkqfmPoCy2G"
 COLDKEY_PUBS = [
     COLDKEY_PUB,
-    "5CZxxxx3W6LGEopMw2zVxxxxxxFBmQDYne3TJc9XzZbTX2WR",
-    "5Dcmx3kNTKqExxxxxxVpBJ6HnD9JHxxxs8y2GFBgPLCaYn8d",
-    "5DZaBxxxGZBGaevi42bYxxxxxEuS3SYJ7GU3rQKYr7kjfa8v"
+    "5CZrQzo3W6LGEopMw2zVMugPcwFBmQDYne3TJc9XzZbTX2WR",
+    "5Dcmx3kNTKqExHoineVpBJ6HnD9JHApRs8y2GFBgPLCaYn8d",
+    "5DZaBZKKGZBGaevi42bYUK44tEuS3SYJ7GU3rQKYr7kjfa8v"
 ]
 
 
@@ -32,16 +30,16 @@ async def main():  # define a coroutine with `async def`
         # returns τ0.000000000
 
         async_balance: dict[str, Balance] = await async_subtensor.get_balance(COLDKEY_PUB)
-        # returns {'5EhCvxxxxxgXRCaN5LH2wxxx5su1vKsnVfYfjzkqfmPoCy2G': τ0.000000000}
+        # returns {'5EhCvSxpFRgXRCaN5LH2wRCD5su1vKsnVfYfjzkqfmPoCy2G': τ0.000000000}
         # get_balance now takes multiple addresses, and returns them as a dict
         # of {ss58: Balance}
         # for example:
         async_balances: dict[str, Balance] = await async_subtensor.get_balance(*COLDKEY_PUBS)
         # returns: {
-        #   '5EhCvxxxxxgXRCaN5LH2wxxx5su1vKsnVfYfjzkqfmPoCy2G': τ0.000000000,
-        #   '5CZxxxx3W6LGEopMw2zVxxxxxxFBmQDYne3TJc9XzZbTX2WR': τ0.000000000,
-        #   '5Dcmx3kNTKqExxxxxxVpBJ6HnD9JHxxxs8y2GFBgPLCaYn8d': τ0.000000000,
-        #   '5DZaBxxxGZBGaevi42bYxxxxxEuS3SYJ7GU3rQKYr7kjfa8v': τ0.000000000
+        #   '5EhCvSxpFRgXRCaN5LH2wRCD5su1vKsnVfYfjzkqfmPoCy2G': τ0.000000000,
+        #   '5CZrQzo3W6LGEopMw2zVMugPcwFBmQDYne3TJc9XzZbTX2WR': τ0.000000000,
+        #   '5Dcmx3kNTKqExHoineVpBJ6HnD9JHApRs8y2GFBgPLCaYn8d': τ0.000000000,
+        #   '5DZaBZKKGZBGaevi42bYUK44tEuS3SYJ7GU3rQKYr7kjfa8v': τ0.000000000
         #   }
         # This works the same with .get_total_stake_for_coldkey, .get_total_stake_for_hotkey
         # to do multiples with sync subtensor, we would do:
