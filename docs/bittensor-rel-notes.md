@@ -22,8 +22,9 @@ The following are the new versions in this release with their release PRs:
 
 ### New features and enhancements
 
-- **Bittensor SDK**: An **experimental class**, `AsyncSubtensor`, is included in this release. This class is not yet ready for your production uses. See an example code showing how to use this class, [asyncio](./subnets/asyncio.md).
+- **Bittensor SDK**: An **experimental class**, `AsyncSubtensor`, is included in this release. This class is not yet ready for your production use. See an example code showing how to use this class, [asyncio](./subnets/asyncio.md).
 - **Wallet SDK**: Add the ability in the Wallet SDK to use local environment variables to store encrypted hotkey and coldkey passwords. See the PR [https://github.com/opentensor/btwallet/pull/46](https://github.com/opentensor/btwallet/pull/46).
+- **BTCLI**: A `--verbose` flag is added to all `btcli` commands. Now if you encounter an error with `btcli`, you can rerun the command with `--verbose` to get a traceback for debugging.
 
 
 
