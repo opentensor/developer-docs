@@ -9,6 +9,14 @@ hide_table_of_contents: false
 
 Key updates to the documentation.
 
+## 13 November 2024
+
+- Added a new doc for [`AsyncSubtensor`](./subnets/asyncio.md).
+- Updated the [release notes](./bittensor-rel-notes.md#released-13-november-2024). These release notes are for the following:
+  - BTCLI 8.3.1.
+  - Bittensor SDK 8.3.0.
+  - Wallet SDK 2.1.0.
+
 ## 06 November 2024
 
 - Updated the release notes for:
