@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -413,13 +416,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.delegate_ss58"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.delegate_ss58</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.take</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.nominators"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.nominators</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.owner_ss58"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.owner_ss58</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.registrations"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.registrations</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.validator_permits</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.return_per_1000"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.return_per_1000</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.take</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.total_daily_return"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.total_daily_return</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.validator_permits</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -452,7 +455,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.delegate_info_lite.</span></span><span class="sig-name descname"><span class="pre">DelegateInfoLite</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/delegate_info_lite.html#DelegateInfoLite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.delegate_info_lite.</span></span><span class="sig-name descname"><span class="pre">DelegateInfoLite</span></span><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite" title="Link to this definition">#</a></dt>
 <dd><p>Dataclass for <cite>DelegateLiteInfo</cite>. This is a lighter version of :func:<code class="docutils literal notranslate"><span class="pre">DelegateInfo</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -474,11 +477,6 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take">
-<span class="sig-name descname"><span class="pre">take</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.nominators">
 <span class="sig-name descname"><span class="pre">nominators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.nominators" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -494,18 +492,23 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits">
-<span class="sig-name descname"><span class="pre">validator_permits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.return_per_1000">
 <span class="sig-name descname"><span class="pre">return_per_1000</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.return_per_1000" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take">
+<span class="sig-name descname"><span class="pre">take</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.total_daily_return">
 <span class="sig-name descname"><span class="pre">total_daily_return</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.total_daily_return" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits">
+<span class="sig-name descname"><span class="pre">validator_permits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -562,13 +565,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.delegate_ss58"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.delegate_ss58</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.take</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.nominators"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.nominators</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.owner_ss58"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.owner_ss58</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.registrations"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.registrations</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.validator_permits</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.return_per_1000"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.return_per_1000</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.take"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.take</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.total_daily_return"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.total_daily_return</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.delegate_info_lite.DelegateInfoLite.validator_permits"><code class="docutils literal notranslate"><span class="pre">DelegateInfoLite.validator_permits</span></code></a></li>
 </ul>
 </li>
 </ul>

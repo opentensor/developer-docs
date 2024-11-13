@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -414,22 +417,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType"><code class="docutils literal notranslate"><span class="pre">ChainDataType</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.StakeInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetHyperparameters</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.AccountId"><code class="docutils literal notranslate"><span class="pre">ChainDataType.AccountId</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.StakeInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetHyperparameters</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetInfo</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.custom_rpc_type_registry"><code class="docutils literal notranslate"><span class="pre">custom_rpc_type_registry</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.decode_account_id"><code class="docutils literal notranslate"><span class="pre">decode_account_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.process_stake_data"><code class="docutils literal notranslate"><span class="pre">process_stake_data()</span></code></a></li>
 </ul>
 </li>
@@ -473,14 +476,14 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.from_scale_encoding" title="bittensor.core.chain_data.utils.from_scale_encoding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_scale_encoding</span></code></a>(input_, type_name[, is_vec, is_option])</p></td>
-<td><p>Decodes <a href="#id1"><span class="problematic" id="id2">input_</span></a> data from SCALE encoding based on the specified type name and modifiers.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string" title="bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string</span></code></a>(input_, type_string)</p></td>
-<td><p>Decodes SCALE encoded data to a dictionary based on the provided type string.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.decode_account_id" title="bittensor.core.chain_data.utils.decode_account_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode_account_id</span></code></a>(account_id_bytes)</p></td>
 <td><p>Decodes an AccountId from bytes to a Base64 string using SS58 encoding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.from_scale_encoding" title="bittensor.core.chain_data.utils.from_scale_encoding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_scale_encoding</span></code></a>(input_, type_name[, is_vec, is_option])</p></td>
+<td><p>Decodes <a href="#id1"><span class="problematic" id="id2">input_</span></a> data from SCALE encoding based on the specified type name and modifiers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string" title="bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string</span></code></a>(input_, type_string)</p></td>
+<td><p>Decodes SCALE encoded data to a dictionary based on the provided type string.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.utils.process_stake_data" title="bittensor.core.chain_data.utils.process_stake_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_stake_data</span></code></a>(stake_data)</p></td>
 <td><p>Processes stake data to decode account IDs and convert stakes from rao to Balance objects.</p></td>
@@ -493,7 +496,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">ChainDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/utils.html#ChainDataType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">ChainDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
 <p>Create a collection of name/value pairs.</p>
 <p>Example enumeration:</p>
@@ -536,13 +539,8 @@ document.write(`
 <p>Methods can be added to enumerations, and members can have their own
 attributes – see the documentation for details.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.NeuronInfo">
-<span class="sig-name descname"><span class="pre">NeuronInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.SubnetInfo">
-<span class="sig-name descname"><span class="pre">SubnetInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.AccountId">
+<span class="sig-name descname"><span class="pre">AccountId</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.AccountId" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -551,18 +549,8 @@ attributes – see the documentation for details.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite">
-<span class="sig-name descname"><span class="pre">NeuronInfoLite</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo">
 <span class="sig-name descname"><span class="pre">DelegatedInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.StakeInfo">
-<span class="sig-name descname"><span class="pre">StakeInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -571,8 +559,13 @@ attributes – see the documentation for details.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters">
-<span class="sig-name descname"><span class="pre">SubnetHyperparameters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.NeuronInfo">
+<span class="sig-name descname"><span class="pre">NeuronInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite">
+<span class="sig-name descname"><span class="pre">NeuronInfoLite</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -581,15 +574,47 @@ attributes – see the documentation for details.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.AccountId">
-<span class="sig-name descname"><span class="pre">AccountId</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.AccountId" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.StakeInfo">
+<span class="sig-name descname"><span class="pre">StakeInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters">
+<span class="sig-name descname"><span class="pre">SubnetHyperparameters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.SubnetInfo">
+<span class="sig-name descname"><span class="pre">SubnetInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.custom_rpc_type_registry">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">custom_rpc_type_registry</span></span><a class="headerlink" href="#bittensor.core.chain_data.utils.custom_rpc_type_registry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.decode_account_id">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">decode_account_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account_id_bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.utils.decode_account_id" title="Link to this definition">#</a></dt>
+<dd><p>Decodes an AccountId from bytes to a Base64 string using SS58 encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>account_id_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>) – The AccountId in bytes that needs to be decoded.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decoded AccountId as a Base64 string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.from_scale_encoding">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">from_scale_encoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_vec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/utils.html#from_scale_encoding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.utils.from_scale_encoding" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">from_scale_encoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_vec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.utils.from_scale_encoding" title="Link to this definition">#</a></dt>
 <dd><p>Decodes <a href="#id3"><span class="problematic" id="id4">input_</span></a> data from SCALE encoding based on the specified type name and modifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -612,7 +637,7 @@ attributes – see the documentation for details.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.from_scale_encoding_using_type_string">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">from_scale_encoding_using_type_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/utils.html#from_scale_encoding_using_type_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">from_scale_encoding_using_type_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string" title="Link to this definition">#</a></dt>
 <dd><p>Decodes SCALE encoded data to a dictionary based on the provided type string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -634,31 +659,9 @@ attributes – see the documentation for details.</p>
 </dl>
 </dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.custom_rpc_type_registry">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">custom_rpc_type_registry</span></span><a class="headerlink" href="#bittensor.core.chain_data.utils.custom_rpc_type_registry" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.decode_account_id">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">decode_account_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account_id_bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/utils.html#decode_account_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.utils.decode_account_id" title="Link to this definition">#</a></dt>
-<dd><p>Decodes an AccountId from bytes to a Base64 string using SS58 encoding.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>account_id_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>) – The AccountId in bytes that needs to be decoded.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The decoded AccountId as a Base64 string.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.process_stake_data">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">process_stake_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stake_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/utils.html#process_stake_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.utils.process_stake_data" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.utils.</span></span><span class="sig-name descname"><span class="pre">process_stake_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stake_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.utils.process_stake_data" title="Link to this definition">#</a></dt>
 <dd><p>Processes stake data to decode account IDs and convert stakes from rao to Balance objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -726,22 +729,22 @@ attributes – see the documentation for details.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType"><code class="docutils literal notranslate"><span class="pre">ChainDataType</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.StakeInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetHyperparameters</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.AccountId"><code class="docutils literal notranslate"><span class="pre">ChainDataType.AccountId</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.StakeInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.StakeInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetHyperparameters"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetHyperparameters</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.SubnetInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.SubnetInfo</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.custom_rpc_type_registry"><code class="docutils literal notranslate"><span class="pre">custom_rpc_type_registry</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.decode_account_id"><code class="docutils literal notranslate"><span class="pre">decode_account_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.from_scale_encoding_using_type_string"><code class="docutils literal notranslate"><span class="pre">from_scale_encoding_using_type_string()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.process_stake_data"><code class="docutils literal notranslate"><span class="pre">process_stake_data()</span></code></a></li>
 </ul>
 </li>

@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
@@ -412,12 +415,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.wallet"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.wallet</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.dendrite"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.dendrite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.__call__"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.__call__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.dendrite"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.dendrite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.prepare_synapse"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.prepare_synapse()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.process_responses"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.process_responses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.query_api"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.query_api()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.wallet"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.wallet</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -450,7 +453,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.subnets.</span></span><span class="sig-name descname"><span class="pre">SubnetsAPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/subnets.html#SubnetsAPI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.subnets.</span></span><span class="sig-name descname"><span class="pre">SubnetsAPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>This class is not used within the bittensor package, but is actively used by the community.</p>
 <dl class="field-list simple">
@@ -458,9 +461,9 @@ document.write(`
 <dd class="field-odd"><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.wallet">
-<span class="sig-name descname"><span class="pre">wallet</span></span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.wallet" title="Link to this definition">#</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.__call__">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.__call__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -469,13 +472,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.__call__">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/subnets.html#SubnetsAPI.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.__call__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.prepare_synapse">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prepare_synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/subnets.html#SubnetsAPI.prepare_synapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.prepare_synapse" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prepare_synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.prepare_synapse" title="Link to this definition">#</a></dt>
 <dd><p>Prepare the synapse-specific payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -486,7 +484,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.process_responses">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/subnets.html#SubnetsAPI.process_responses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.process_responses" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_responses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">responses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.process_responses" title="Link to this definition">#</a></dt>
 <dd><p>Process the responses from the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -500,7 +498,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.query_api">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserialize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/subnets.html#SubnetsAPI.query_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.query_api" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserialize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.query_api" title="Link to this definition">#</a></dt>
 <dd><p>Queries the API nodes of a subnet using the given synapse and bespoke query function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -519,6 +517,11 @@ document.write(`
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.subnets.SubnetsAPI.wallet">
+<span class="sig-name descname"><span class="pre">wallet</span></span><a class="headerlink" href="#bittensor.utils.subnets.SubnetsAPI.wallet" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -573,12 +576,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.wallet"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.wallet</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.dendrite"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.dendrite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.__call__"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.__call__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.dendrite"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.dendrite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.prepare_synapse"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.prepare_synapse()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.process_responses"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.process_responses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.query_api"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.query_api()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.subnets.SubnetsAPI.wallet"><code class="docutils literal notranslate"><span class="pre">SubnetsAPI.wallet</span></code></a></li>
 </ul>
 </li>
 </ul>

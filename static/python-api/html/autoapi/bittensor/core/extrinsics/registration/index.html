@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -411,10 +414,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_pow_register"><code class="docutils literal notranslate"><span class="pre">_do_pow_register()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.register_extrinsic"><code class="docutils literal notranslate"><span class="pre">register_extrinsic()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_burned_register"><code class="docutils literal notranslate"><span class="pre">_do_burned_register()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_pow_register"><code class="docutils literal notranslate"><span class="pre">_do_pow_register()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic"><code class="docutils literal notranslate"><span class="pre">burned_register_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.register_extrinsic"><code class="docutils literal notranslate"><span class="pre">register_extrinsic()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -434,17 +437,17 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration._do_pow_register" title="bittensor.core.extrinsics.registration._do_pow_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_do_pow_register</span></code></a>(self, netuid, wallet, pow_result[, ...])</p></td>
-<td><p>Sends a (POW) register extrinsic to the chain.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration.register_extrinsic" title="bittensor.core.extrinsics.registration.register_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_extrinsic</span></code></a>(subtensor, wallet, netuid[, ...])</p></td>
-<td><p>Registers the wallet to the chain.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration._do_burned_register" title="bittensor.core.extrinsics.registration._do_burned_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_do_burned_register</span></code></a>(self, netuid, wallet[, ...])</p></td>
 <td><p>Performs a burned register extrinsic call to the Subtensor chain.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic" title="bittensor.core.extrinsics.registration.burned_register_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">burned_register_extrinsic</span></code></a>(subtensor, wallet, netuid[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration._do_pow_register" title="bittensor.core.extrinsics.registration._do_pow_register"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_do_pow_register</span></code></a>(self, netuid, wallet, pow_result[, ...])</p></td>
+<td><p>Sends a (POW) register extrinsic to the chain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic" title="bittensor.core.extrinsics.registration.burned_register_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">burned_register_extrinsic</span></code></a>(subtensor, wallet, netuid[, ...])</p></td>
 <td><p>Registers the wallet to chain by recycling TAO.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.registration.register_extrinsic" title="bittensor.core.extrinsics.registration.register_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_extrinsic</span></code></a>(subtensor, wallet, netuid[, ...])</p></td>
+<td><p>Registers the wallet to the chain.</p></td>
 </tr>
 </tbody>
 </table>
@@ -453,64 +456,8 @@ document.write(`
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.extrinsics.registration._do_pow_register">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">_do_pow_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pow_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/registration.html#_do_pow_register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.registration._do_pow_register" title="Link to this definition">#</a></dt>
-<dd><p>Sends a (POW) register extrinsic to the chain.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The subnet to register on.</p></li>
-<li><p><strong>wallet</strong> (<em>bittensor.wallet</em>) – The wallet to register.</p></li>
-<li><p><strong>pow_result</strong> (<a class="reference internal" href="../../../utils/registration/index.html#bittensor.utils.registration.POWSolution" title="bittensor.utils.registration.POWSolution"><em>POWSolution</em></a>) – The PoW result to register.</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the extrinsic to be included in a block. Default to <cite>False</cite>.</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the extrinsic to be finalized. Default to <cite>True</cite>.</p></li>
-<li><p><strong>self</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the extrinsic was included in a block.
-error (Optional[str]): <code class="docutils literal notranslate"><span class="pre">None</span></code> on success or not waiting for inclusion/finalization, otherwise the error message.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.extrinsics.registration.register_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">register_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_allowed_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/registration.html#register_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.registration.register_extrinsic" title="Link to this definition">#</a></dt>
-<dd><p>Registers the wallet to the chain.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>subtensor</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>) – Subtensor interface.</p></li>
-<li><p><strong>wallet</strong> (<em>bittensor.wallet</em>) – Bittensor wallet object.</p></li>
-<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The <code class="docutils literal notranslate"><span class="pre">netuid</span></code> of the subnet to register on.</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to enter a block before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to enter the block within the timeout.</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to be finalized on the chain before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to be finalized within the timeout.</p></li>
-<li><p><strong>max_allowed_attempts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum number of attempts to register the wallet.</p></li>
-<li><p><strong>output_in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If true, prints the progress of the proof of work to the console in-place. Meaning the progress is printed on the same lines. Defaults to <cite>True</cite>.</p></li>
-<li><p><strong>cuda</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the wallet should be registered using CUDA device(s).</p></li>
-<li><p><strong>dev_id</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The CUDA device id to use, or a list of device ids.</p></li>
-<li><p><strong>tpb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of threads per block (CUDA).</p></li>
-<li><p><strong>num_processes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of processes to use to register.</p></li>
-<li><p><strong>update_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of nonces to solve between updates.</p></li>
-<li><p><strong>log_verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the registration process will log more information.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Flag is <code class="docutils literal notranslate"><span class="pre">true</span></code> if extrinsic was finalized or uncluded in the block. If we did not wait for finalization / inclusion, the response is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.registration._do_burned_register">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">_do_burned_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/registration.html#_do_burned_register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.registration._do_burned_register" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">_do_burned_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.registration._do_burned_register" title="Link to this definition">#</a></dt>
 <dd><p>Performs a burned register extrinsic call to the Subtensor chain.</p>
 <p>This method sends a registration transaction to the Subtensor blockchain using the burned register mechanism. It
 retries the call up to three times with exponential backoff in case of failures.</p>
@@ -534,8 +481,33 @@ retries the call up to three times with exponential backoff in case of failures.
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.extrinsics.registration._do_pow_register">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">_do_pow_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pow_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.registration._do_pow_register" title="Link to this definition">#</a></dt>
+<dd><p>Sends a (POW) register extrinsic to the chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The subnet to register on.</p></li>
+<li><p><strong>wallet</strong> (<em>bittensor.wallet</em>) – The wallet to register.</p></li>
+<li><p><strong>pow_result</strong> (<a class="reference internal" href="../async_registration/index.html#bittensor.core.extrinsics.async_registration.POWSolution" title="bittensor.core.extrinsics.async_registration.POWSolution"><em>POWSolution</em></a>) – The PoW result to register.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the extrinsic to be included in a block. Default to <cite>False</cite>.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for the extrinsic to be finalized. Default to <cite>True</cite>.</p></li>
+<li><p><strong>self</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the extrinsic was included in a block.
+error (Optional[str]): <code class="docutils literal notranslate"><span class="pre">None</span></code> on success or not waiting for inclusion/finalization, otherwise the error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.registration.burned_register_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">burned_register_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/registration.html#burned_register_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">burned_register_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Registers the wallet to chain by recycling TAO.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -545,6 +517,37 @@ retries the call up to three times with exponential backoff in case of failures.
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The <code class="docutils literal notranslate"><span class="pre">netuid</span></code> of the subnet to register on.</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to enter a block before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to enter the block within the timeout.</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to be finalized on the chain before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to be finalized within the timeout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Flag is <code class="docutils literal notranslate"><span class="pre">true</span></code> if extrinsic was finalized or uncluded in the block. If we did not wait for finalization / inclusion, the response is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>success (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.extrinsics.registration.register_extrinsic">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.registration.</span></span><span class="sig-name descname"><span class="pre">register_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_allowed_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.registration.register_extrinsic" title="Link to this definition">#</a></dt>
+<dd><p>Registers the wallet to the chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>) – Subtensor interface.</p></li>
+<li><p><strong>wallet</strong> (<em>bittensor.wallet</em>) – Bittensor wallet object.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The <code class="docutils literal notranslate"><span class="pre">netuid</span></code> of the subnet to register on.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to enter a block before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to enter the block within the timeout.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set, waits for the extrinsic to be finalized on the chain before returning <code class="docutils literal notranslate"><span class="pre">true</span></code>, or returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the extrinsic fails to be finalized within the timeout.</p></li>
+<li><p><strong>max_allowed_attempts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum number of attempts to register the wallet.</p></li>
+<li><p><strong>output_in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If true, prints the progress of the proof of work to the console in-place. Meaning the progress is printed on the same lines. Defaults to <cite>True</cite>.</p></li>
+<li><p><strong>cuda</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the wallet should be registered using CUDA device(s).</p></li>
+<li><p><strong>dev_id</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The CUDA device id to use, or a list of device ids.</p></li>
+<li><p><strong>tpb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of threads per block (CUDA).</p></li>
+<li><p><strong>num_processes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of processes to use to register.</p></li>
+<li><p><strong>update_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The number of nonces to solve between updates.</p></li>
+<li><p><strong>log_verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">true</span></code>, the registration process will log more information.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -606,10 +609,10 @@ retries the call up to three times with exponential backoff in case of failures.
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_pow_register"><code class="docutils literal notranslate"><span class="pre">_do_pow_register()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.register_extrinsic"><code class="docutils literal notranslate"><span class="pre">register_extrinsic()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_burned_register"><code class="docutils literal notranslate"><span class="pre">_do_burned_register()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration._do_pow_register"><code class="docutils literal notranslate"><span class="pre">_do_pow_register()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.burned_register_extrinsic"><code class="docutils literal notranslate"><span class="pre">burned_register_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.registration.register_extrinsic"><code class="docutils literal notranslate"><span class="pre">register_extrinsic()</span></code></a></li>
 </ul>
 </li>
 </ul>

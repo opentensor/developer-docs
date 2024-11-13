@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../networking/index.html">bittensor.utils.networking</a></li>
@@ -413,29 +416,29 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._trace"><code class="docutils literal notranslate"><span class="pre">_trace()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._success"><code class="docutils literal notranslate"><span class="pre">_success()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.emoji_map"><code class="docutils literal notranslate"><span class="pre">emoji_map</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.color_map"><code class="docutils literal notranslate"><span class="pre">color_map</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.log_level_color_prefix"><code class="docutils literal notranslate"><span class="pre">log_level_color_prefix</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.format()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.formatTime()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.format()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.formatTime()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.set_trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.set_trace()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.trace</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_TRACE_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.formatTime()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.format()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.set_trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.set_trace()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.formatTime()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.format()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._success"><code class="docutils literal notranslate"><span class="pre">_success()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._trace"><code class="docutils literal notranslate"><span class="pre">_trace()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.color_map"><code class="docutils literal notranslate"><span class="pre">color_map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.emoji_map"><code class="docutils literal notranslate"><span class="pre">emoji_map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.log_level_color_prefix"><code class="docutils literal notranslate"><span class="pre">log_level_color_prefix</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -457,31 +460,31 @@ document.write(`
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM" title="bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT" title="bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_LOG_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM" title="bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT" title="bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_TRACE_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.emoji_map" title="bittensor.utils.btlogging.format.emoji_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">emoji_map</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.LOG_FORMATS" title="bittensor.utils.btlogging.format.LOG_FORMATS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.color_map" title="bittensor.utils.btlogging.format.color_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_map</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS" title="bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM" title="bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM" title="bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.color_map" title="bittensor.utils.btlogging.format.color_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">color_map</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.emoji_map" title="bittensor.utils.btlogging.format.emoji_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">emoji_map</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.log_level_color_prefix" title="bittensor.utils.btlogging.format.log_level_color_prefix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_level_color_prefix</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.LOG_FORMATS" title="bittensor.utils.btlogging.format.LOG_FORMATS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS" title="bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT" title="bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_LOG_FORMAT</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT" title="bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_TRACE_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -492,11 +495,11 @@ document.write(`
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.BtStreamFormatter" title="bittensor.utils.btlogging.format.BtStreamFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a></p></td>
-<td><p>A custom logging formatter for the Bittensor project that overrides the time formatting to include milliseconds,</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.BtFileFormatter" title="bittensor.utils.btlogging.format.BtFileFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.BtFileFormatter" title="bittensor.utils.btlogging.format.BtFileFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a></p></td>
 <td><p>BtFileFormatter</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format.BtStreamFormatter" title="bittensor.utils.btlogging.format.BtStreamFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a></p></td>
+<td><p>A custom logging formatter for the Bittensor project that overrides the time formatting to include milliseconds,</p></td>
 </tr>
 </tbody>
 </table>
@@ -506,10 +509,10 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format._trace" title="bittensor.utils.btlogging.format._trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_trace</span></code></a>(self, message, *args, **kws)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format._success" title="bittensor.utils.btlogging.format._success"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_success</span></code></a>(self, message, *args, **kws)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format._success" title="bittensor.utils.btlogging.format._success"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_success</span></code></a>(self, message, *args, **kws)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.format._trace" title="bittensor.utils.btlogging.format._trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_trace</span></code></a>(self, message, *args, **kws)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -518,70 +521,62 @@ document.write(`
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.TRACE_LEVEL_NUM">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">TRACE_LEVEL_NUM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">SUCCESS_LEVEL_NUM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format._trace">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format._trace" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">BtFileFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging.Formatter</span></code></a></p>
+<p>BtFileFormatter</p>
+<p>A custom logging formatter for the Bittensor project that overrides the time formatting to include milliseconds and
+centers the level name.</p>
+<p>Initialize the formatter with specified format strings.</p>
+<p>Initialize the formatter either with the specified format string, or a
+default as described above. Allow for specialized date formatting with
+the optional datefmt argument. If datefmt is omitted, you get an
+ISO8601-like (or RFC 3339-like) format.</p>
+<p>Use a style parameter of ‘%’, ‘{’ or ‘$’ to specify that you want to
+use one of %-formatting, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.13)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> (<code class="docutils literal notranslate"><span class="pre">{}</span></code>) formatting or
+<a class="reference external" href="https://docs.python.org/3/library/string.html#string.Template" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string.Template</span></code></a> formatting in your format string.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.2: </span>Added the <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter.format" title="Link to this definition">#</a></dt>
+<dd><p>Override format to center the level name.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The formatted log record.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>formated record (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format._success">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">_success</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#_success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format._success" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter.formatTime">
+<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter.formatTime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime" title="Link to this definition">#</a></dt>
+<dd><p>Override formatTime to add milliseconds.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p></li>
+<li><p><strong>datefmt</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The date format string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The formatted time string with milliseconds.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>s (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.emoji_map">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">emoji_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.emoji_map" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.color_map">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">color_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.color_map" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.log_level_color_prefix">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">log_level_color_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.log_level_color_prefix" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.LOG_FORMATS">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">LOG_FORMATS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.LOG_FORMATS" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.LOG_TRACE_FORMATS">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">LOG_TRACE_FORMATS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_LOG_FORMAT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TRACE_FORMAT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter">
@@ -600,10 +595,24 @@ use one of %-formatting, <a class="reference external" href="https://docs.python
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.2: </span>Added the <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter.</p>
 </div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.trace">
-<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtStreamFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format" title="Link to this definition">#</a></dt>
+<dd><p>Override format to apply custom formatting including emojis and colors.</p>
+<p>This method saves the original format, applies custom formatting based on the log level and trace flag, replaces
+text with emojis and colors, and then returns the formatted log record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The formatted log record.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.formatTime">
@@ -626,25 +635,6 @@ use one of %-formatting, <a class="reference external" href="https://docs.python
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtStreamFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format" title="Link to this definition">#</a></dt>
-<dd><p>Override format to apply custom formatting including emojis and colors.</p>
-<p>This method saves the original format, applies custom formatting based on the log level and trace flag, replaces
-text with emojis and colors, and then returns the formatted log record.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The formatted log record.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>result (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.set_trace">
 <span class="sig-name descname"><span class="pre">set_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtStreamFormatter.set_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtStreamFormatter.set_trace" title="Link to this definition">#</a></dt>
 <dd><p>Change formatter state.</p>
@@ -655,64 +645,77 @@ text with emojis and colors, and then returns the formatted log record.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtStreamFormatter.trace">
+<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">BtFileFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging.Formatter</span></code></a></p>
-<p>BtFileFormatter</p>
-<p>A custom logging formatter for the Bittensor project that overrides the time formatting to include milliseconds and
-centers the level name.</p>
-<p>Initialize the formatter with specified format strings.</p>
-<p>Initialize the formatter either with the specified format string, or a
-default as described above. Allow for specialized date formatting with
-the optional datefmt argument. If datefmt is omitted, you get an
-ISO8601-like (or RFC 3339-like) format.</p>
-<p>Use a style parameter of ‘%’, ‘{’ or ‘$’ to specify that you want to
-use one of %-formatting, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.13)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> (<code class="docutils literal notranslate"><span class="pre">{}</span></code>) formatting or
-<a class="reference external" href="https://docs.python.org/3/library/string.html#string.Template" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string.Template</span></code></a> formatting in your format string.</p>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 3.2: </span>Added the <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter.</p>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter.formatTime">
-<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter.formatTime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime" title="Link to this definition">#</a></dt>
-<dd><p>Override formatTime to add milliseconds.</p>
-<dl class="field-list simple">
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_LOG_FORMAT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TRACE_FORMAT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.LOG_FORMATS">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">LOG_FORMATS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.LOG_FORMATS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.LOG_TRACE_FORMATS">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">LOG_TRACE_FORMATS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">SUCCESS_LEVEL_NUM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.TRACE_LEVEL_NUM">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">TRACE_LEVEL_NUM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format._success">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">_success</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#_success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format._success" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p></li>
-<li><p><strong>datefmt</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The date format string.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The formatted time string with milliseconds.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>s (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
+<dd class="field-odd"><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.BtFileFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#BtFileFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format.BtFileFormatter.format" title="Link to this definition">#</a></dt>
-<dd><p>Override format to center the level name.</p>
-<dl class="field-list simple">
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format._trace">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/utils/btlogging/format.html#_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.format._trace" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>record</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.LogRecord" title="(in Python v3.13)"><em>logging.LogRecord</em></a>) – The log record.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The formatted log record.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>formated record (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>)</p>
+<dd class="field-odd"><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.color_map">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">color_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.color_map" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.emoji_map">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">emoji_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.emoji_map" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.format.log_level_color_prefix">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.format.</span></span><span class="sig-name descname"><span class="pre">log_level_color_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.utils.btlogging.format.log_level_color_prefix" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -766,29 +769,29 @@ use one of %-formatting, <a class="reference external" href="https://docs.python
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._trace"><code class="docutils literal notranslate"><span class="pre">_trace()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._success"><code class="docutils literal notranslate"><span class="pre">_success()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.emoji_map"><code class="docutils literal notranslate"><span class="pre">emoji_map</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.color_map"><code class="docutils literal notranslate"><span class="pre">color_map</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.log_level_color_prefix"><code class="docutils literal notranslate"><span class="pre">log_level_color_prefix</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.format()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.formatTime()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.format()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.formatTime()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.set_trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.set_trace()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.trace</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.DEFAULT_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.DEFAULT_TRACE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_TRACE_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.formatTime()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.format()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtStreamFormatter.set_trace"><code class="docutils literal notranslate"><span class="pre">BtStreamFormatter.set_trace()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.formatTime"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.formatTime()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.BtFileFormatter.format"><code class="docutils literal notranslate"><span class="pre">BtFileFormatter.format()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.LOG_TRACE_FORMATS"><code class="docutils literal notranslate"><span class="pre">LOG_TRACE_FORMATS</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.SUCCESS_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">SUCCESS_LEVEL_NUM</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.TRACE_LEVEL_NUM"><code class="docutils literal notranslate"><span class="pre">TRACE_LEVEL_NUM</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._success"><code class="docutils literal notranslate"><span class="pre">_success()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format._trace"><code class="docutils literal notranslate"><span class="pre">_trace()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.color_map"><code class="docutils literal notranslate"><span class="pre">color_map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.emoji_map"><code class="docutils literal notranslate"><span class="pre">emoji_map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.format.log_level_color_prefix"><code class="docutils literal notranslate"><span class="pre">log_level_color_prefix</span></code></a></li>
 </ul>
 </li>
 </ul>

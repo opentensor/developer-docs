@@ -6,6 +6,13 @@ title: "Install Wallet SDK"
 
 The Bittensor Wallet SDK is a Python interface for a powerful Rust-based Bittensor wallet functionality. You do not need to know Rust to use this Wallet SDK. However, if you want to contribute to the Rust components of this Wallet SDK, the Rust source is located in the `src` directory of [`btwallet](https://github.com/opentensor/btwallet) repo.
 
+
+## Supported Python versions
+
+- bittendor (SDK): Python 3.9-3.11 (reference: https://github.com/opentensor/bittensor/blob/master/setup.py#L86-L88)
+- bittensor-cli: Python 3.9-3.12 (reference: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94 )
+- bittensor-wallet: Python 3.9-3.12 (reference: https://github.com/opentensor/btwallet/blob/main/pyproject.toml#L34-L37)
+
 ## Developer reference
 
 For a full developer reference, see the [Bittensor Wallet SDK section](pathname:///btwallet-api/html/index.html).
