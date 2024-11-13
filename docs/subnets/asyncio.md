@@ -6,6 +6,10 @@ title: "AsyncIO"
 
 Below is an example of how you can use the `AsyncSubtensor` module to retrieve  balances from multiple coldkey SS58 addresses in various ways:
 
+:::tip Python reference
+Also see the Python reference for [AsyncSubtensor](pathname:///python-api/html/autoapi/bittensor/core/async_subtensor/index.html).
+:::
+
 ```python
 import asyncio
 
