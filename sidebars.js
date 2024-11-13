@@ -76,6 +76,7 @@ const sidebars = {
         "subnets/recycled-tao",
         "subnets/working-with-keys",
         "subnets/child-hotkeys",
+        "subnets/asyncio",
         "subnets/commit-reveal",
         "subnets/consensus-based-weights",
         "subnets/schedule-coldkey-swap",
