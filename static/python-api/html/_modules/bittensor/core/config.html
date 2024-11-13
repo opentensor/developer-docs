@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,8 +180,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -377,14 +380,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="InvalidConfigFile">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.InvalidConfigFile">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.InvalidConfigFile">[docs]</a>
 <span class="k">class</span> <span class="nc">InvalidConfigFile</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;In place of YAMLError&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="Config">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config">[docs]</a>
 <span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">DefaultMunch</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementation of the config class, which manages the configuration of different Bittensor modules.</span>
@@ -563,7 +566,7 @@ document.write(`
         <span class="p">}</span>
 
 <div class="viewcode-block" id="Config.__split_params__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.__split_params__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.__split_params__">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">__split_params__</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">,</span> <span class="n">_config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">):</span>
         <span class="c1"># Splits params on dot syntax i.e. neuron.axon_port and adds to _config</span>
@@ -586,7 +589,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.__parse_args__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.__parse_args__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.__parse_args__">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">__parse_args__</span><span class="p">(</span>
         <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
@@ -616,7 +619,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.__deepcopy__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.__deepcopy__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.__deepcopy__">[docs]</a>
     <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
         <span class="n">_default</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__default__</span>
 
@@ -633,13 +636,13 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.__repr__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.__repr__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.__repr__">[docs]</a>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Config._remove_private_keys">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config._remove_private_keys">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config._remove_private_keys">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_remove_private_keys</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
         <span class="k">if</span> <span class="s2">&quot;__parser&quot;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
@@ -653,7 +656,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.__str__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.__str__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.__str__">[docs]</a>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="c1"># remove the parser and is_set map from the visible config</span>
         <span class="n">visible</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toDict</span><span class="p">())</span>
@@ -664,13 +667,13 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.copy">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.copy">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.copy">[docs]</a>
     <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Config.to_string">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.to_string">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.to_string">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get string from items.&quot;&quot;&quot;</span>
@@ -678,7 +681,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.update_with_kwargs">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.update_with_kwargs">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.update_with_kwargs">[docs]</a>
     <span class="k">def</span> <span class="nf">update_with_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add config to self&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -686,7 +689,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config._merge">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config._merge">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config._merge">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_merge</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -705,7 +708,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.merge">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.merge">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.merge">[docs]</a>
     <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Merges the current config with another config.</span>
@@ -717,7 +720,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.merge_all">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.merge_all">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.merge_all">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">merge_all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">configs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Config&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -737,7 +740,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Config.is_set">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.Config.is_set">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.Config.is_set">[docs]</a>
     <span class="k">def</span> <span class="nf">is_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a boolean indicating whether the parameter has been set or is still the default.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">param_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;__is_set&quot;</span><span class="p">):</span>
@@ -769,12 +772,12 @@ document.write(`
 
 
 <div class="viewcode-block" id="DefaultConfig">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.DefaultConfig">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.DefaultConfig">[docs]</a>
 <span class="k">class</span> <span class="nc">DefaultConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A Config with a set of default values.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DefaultConfig.default">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.config.DefaultConfig.default">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/config/index.html#bittensor.core.config.DefaultConfig.default">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get default config.&quot;&quot;&quot;</span>

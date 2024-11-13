@@ -6,6 +6,12 @@ title: "Install Bittensor SDK"
 
 Before you can start developing, you must install Bittensor SDK and then create Bittensor wallet.
 
+## Supported Python versions
+
+- bittendor (SDK): Python 3.9-3.11 (reference: https://github.com/opentensor/bittensor/blob/master/setup.py#L86-L88)
+- bittensor-cli: Python 3.9-3.12 (reference: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94 )
+- bittensor-wallet: Python 3.9-3.12 (reference: https://github.com/opentensor/btwallet/blob/main/pyproject.toml#L34-L37)
+
 ## Upgrade
 
 If you already installed Bittensor SDK, make sure you upgrade to the latest version. Run the below command:

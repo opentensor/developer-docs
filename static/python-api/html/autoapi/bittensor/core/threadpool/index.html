@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -414,43 +417,43 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.BrokenThreadPool"><code class="docutils literal notranslate"><span class="pre">BrokenThreadPool</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._broken</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown_lock</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._thread_name_prefix</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.config"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.is_empty"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.is_empty</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.shutdown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -471,19 +474,19 @@ document.write(`
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.__author__" title="bittensor.core.threadpool.__author__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__author__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool.logger" title="bittensor.core.threadpool.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool._threads_queues" title="bittensor.core.threadpool._threads_queues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool._shutdown" title="bittensor.core.threadpool._shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_shutdown</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.NULL_ENTRY" title="bittensor.core.threadpool.NULL_ENTRY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool.__author__" title="bittensor.core.threadpool.__author__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__author__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool._shutdown" title="bittensor.core.threadpool._shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_shutdown</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool._threads_queues" title="bittensor.core.threadpool._threads_queues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.logger" title="bittensor.core.threadpool.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -505,11 +508,11 @@ document.write(`
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool._WorkItem" title="bittensor.core.threadpool._WorkItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_WorkItem</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor" title="bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor" title="bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a></p></td>
 <td><p>Base threadpool executor with a priority queue.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool._WorkItem" title="bittensor.core.threadpool._WorkItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_WorkItem</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -528,73 +531,6 @@ document.write(`
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.__author__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">__author__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Brian</span> <span class="pre">Quinlan</span> <span class="pre">(brian&#64;sweetapp.com)'</span></em><a class="headerlink" href="#bittensor.core.threadpool.__author__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.logger">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#bittensor.core.threadpool.logger" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._threads_queues">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_threads_queues</span></span><a class="headerlink" href="#bittensor.core.threadpool._threads_queues" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._shutdown">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_shutdown</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool._shutdown" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_WorkItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.future">
-<span class="sig-name descname"><span class="pre">future</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.future" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.fn">
-<span class="sig-name descname"><span class="pre">fn</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.fn" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.start_time">
-<span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.start_time" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.args">
-<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.args" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.kwargs">
-<span class="sig-name descname"><span class="pre">kwargs</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.kwargs" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.run" title="Link to this definition">#</a></dt>
-<dd><p>Run the given work item</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.NULL_ENTRY">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">NULL_ENTRY</span></span><a class="headerlink" href="#bittensor.core.threadpool.NULL_ENTRY" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._worker">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executor_reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_worker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._worker" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py exception">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.BrokenThreadPool">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">BrokenThreadPool</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#BrokenThreadPool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.BrokenThreadPool" title="Link to this definition">#</a></dt>
@@ -602,6 +538,11 @@ document.write(`
 <p>Raised when a worker thread in a <a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor">ThreadPoolExecutor</a> failed initializing.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.NULL_ENTRY">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">NULL_ENTRY</span></span><a class="headerlink" href="#bittensor.core.threadpool.NULL_ENTRY" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor">
@@ -620,19 +561,19 @@ execute the given calls.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">
+<span class="sig-name descname"><span class="pre">_adjust_thread_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._adjust_thread_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._broken">
+<span class="sig-name descname"><span class="pre">_broken</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._counter">
 <span class="sig-name descname"><span class="pre">_counter</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers">
-<span class="sig-name descname"><span class="pre">_max_workers</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue">
-<span class="sig-name descname"><span class="pre">_work_queue</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -641,13 +582,23 @@ execute the given calls.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._threads">
-<span class="sig-name descname"><span class="pre">_threads</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs">
+<span class="sig-name descname"><span class="pre">_initargs</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._broken">
-<span class="sig-name descname"><span class="pre">_broken</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer">
+<span class="sig-name descname"><span class="pre">_initializer</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">
+<span class="sig-name descname"><span class="pre">_initializer_failed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._initializer_failed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers">
+<span class="sig-name descname"><span class="pre">_max_workers</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -666,13 +617,13 @@ execute the given calls.</p></li>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer">
-<span class="sig-name descname"><span class="pre">_initializer</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._threads">
+<span class="sig-name descname"><span class="pre">_threads</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs">
-<span class="sig-name descname"><span class="pre">_initargs</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue">
+<span class="sig-name descname"><span class="pre">_work_queue</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -707,35 +658,6 @@ execute the given calls.</p></li>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor.submit">
-<span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor.submit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit" title="Link to this definition">#</a></dt>
-<dd><p>Submits a callable to be executed with the given arguments.</p>
-<p>Schedules the callable to be executed as fn(<a href="#id4"><span class="problematic" id="id5">*</span></a>args, <a href="#id6"><span class="problematic" id="id7">**</span></a>kwargs) and returns
-a Future instance representing the execution of the callable.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A Future representing the given call.</p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>fn</strong> (<em>Callable</em>)</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>concurrent.futures._base.Future</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">
-<span class="sig-name descname"><span class="pre">_adjust_thread_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._adjust_thread_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">
-<span class="sig-name descname"><span class="pre">_initializer_failed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._initializer_failed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown">
 <span class="sig-name descname"><span class="pre">shutdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor.shutdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown" title="Link to this definition">#</a></dt>
 <dd><p>Clean-up the resources associated with the Executor.</p>
@@ -755,7 +677,88 @@ cancelled.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor.submit">
+<span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor.submit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit" title="Link to this definition">#</a></dt>
+<dd><p>Submits a callable to be executed with the given arguments.</p>
+<p>Schedules the callable to be executed as fn(<a href="#id4"><span class="problematic" id="id5">*</span></a>args, <a href="#id6"><span class="problematic" id="id7">**</span></a>kwargs) and returns
+a Future instance representing the execution of the callable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Future representing the given call.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fn</strong> (<em>Callable</em>)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>concurrent.futures._base.Future</p>
+</dd>
+</dl>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_WorkItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.args">
+<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.args" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.fn">
+<span class="sig-name descname"><span class="pre">fn</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.fn" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.future">
+<span class="sig-name descname"><span class="pre">future</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.future" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.kwargs">
+<span class="sig-name descname"><span class="pre">kwargs</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.kwargs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.run" title="Link to this definition">#</a></dt>
+<dd><p>Run the given work item</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.start_time">
+<span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.start_time" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.__author__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">__author__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Brian</span> <span class="pre">Quinlan</span> <span class="pre">(brian&#64;sweetapp.com)'</span></em><a class="headerlink" href="#bittensor.core.threadpool.__author__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._shutdown">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_shutdown</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool._shutdown" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._threads_queues">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_threads_queues</span></span><a class="headerlink" href="#bittensor.core.threadpool._threads_queues" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.threadpool._worker">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executor_reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_worker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._worker" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.threadpool.logger">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#bittensor.core.threadpool.logger" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -810,43 +813,43 @@ cancelled.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.BrokenThreadPool"><code class="docutils literal notranslate"><span class="pre">BrokenThreadPool</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._broken</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown_lock</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._thread_name_prefix</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.config"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.is_empty"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.is_empty</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.shutdown()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
 </ul>

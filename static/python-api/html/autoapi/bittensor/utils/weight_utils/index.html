@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
@@ -412,15 +415,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U32_MAX"><code class="docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.normalize_max_weight"><code class="docutils literal notranslate"><span class="pre">normalize_max_weight()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U32_MAX"><code class="docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_bond_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit"><code class="docutils literal notranslate"><span class="pre">convert_weights_and_uids_for_emit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.process_weights_for_netuid"><code class="docutils literal notranslate"><span class="pre">process_weights_for_netuid()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.generate_weight_hash"><code class="docutils literal notranslate"><span class="pre">generate_weight_hash()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.normalize_max_weight"><code class="docutils literal notranslate"><span class="pre">normalize_max_weight()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.process_weights_for_netuid"><code class="docutils literal notranslate"><span class="pre">process_weights_for_netuid()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -441,10 +444,10 @@ document.write(`
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.U32_MAX" title="bittensor.utils.weight_utils.U32_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.U16_MAX" title="bittensor.utils.weight_utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.U16_MAX" title="bittensor.utils.weight_utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.U32_MAX" title="bittensor.utils.weight_utils.U32_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -455,26 +458,26 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.normalize_max_weight" title="bittensor.utils.weight_utils.normalize_max_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_max_weight</span></code></a>(x[, limit])</p></td>
-<td><p>Normalizes the tensor x so that sum(x) = 1 and the max value is not greater than the limit.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor</span></code></a>(n, uids, weights)</p></td>
-<td><p>Converts weights and uids from chain representation into a np.array (inverse operation from convert_weights_and_uids_for_emit).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor</span></code></a>(n, uids, ...)</p></td>
-<td><p>Converts root weights and uids from chain representation into a np.array or torch FloatTensor (inverse operation from convert_weights_and_uids_for_emit)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_bond_uids_and_vals_to_tensor</span></code></a>(n, uids, bonds)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_bond_uids_and_vals_to_tensor</span></code></a>(n, uids, bonds)</p></td>
 <td><p>Converts bond and uids from chain representation into a np.array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit" title="bittensor.utils.weight_utils.convert_weights_and_uids_for_emit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_weights_and_uids_for_emit</span></code></a>(uids, weights)</p></td>
-<td><p>Converts weights into integer u32 representation that sum to MAX_INT_WEIGHT.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor</span></code></a>(n, uids, ...)</p></td>
+<td><p>Converts root weights and uids from chain representation into a np.array or torch FloatTensor (inverse operation from convert_weights_and_uids_for_emit)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.process_weights_for_netuid" title="bittensor.utils.weight_utils.process_weights_for_netuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_weights_for_netuid</span></code></a>(uids, weights, netuid, ...)</p></td>
-<td><p>Processes weight tensors for a given subnet id using the provided weight and UID arrays, applying constraints and normalization based on the subtensor and metagraph data. This function can handle both NumPy arrays and PyTorch tensors.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor" title="bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor</span></code></a>(n, uids, weights)</p></td>
+<td><p>Converts weights and uids from chain representation into a np.array (inverse operation from convert_weights_and_uids_for_emit).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit" title="bittensor.utils.weight_utils.convert_weights_and_uids_for_emit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_weights_and_uids_for_emit</span></code></a>(uids, weights)</p></td>
+<td><p>Converts weights into integer u32 representation that sum to MAX_INT_WEIGHT.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.generate_weight_hash" title="bittensor.utils.weight_utils.generate_weight_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_weight_hash</span></code></a>(address, netuid, uids, values, ...)</p></td>
 <td><p>Generate a valid commit hash from the provided weights.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.normalize_max_weight" title="bittensor.utils.weight_utils.normalize_max_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_max_weight</span></code></a>(x[, limit])</p></td>
+<td><p>Normalizes the tensor x so that sum(x) = 1 and the max value is not greater than the limit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.weight_utils.process_weights_for_netuid" title="bittensor.utils.weight_utils.process_weights_for_netuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_weights_for_netuid</span></code></a>(uids, weights, netuid, ...)</p></td>
+<td><p>Processes weight tensors for a given subnet id using the provided weight and UID arrays, applying constraints and normalization based on the subtensor and metagraph data. This function can handle both NumPy arrays and PyTorch tensors.</p></td>
 </tr>
 </tbody>
 </table>
@@ -483,62 +486,39 @@ document.write(`
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.weight_utils.U32_MAX">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">U32_MAX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4294967295</span></em><a class="headerlink" href="#bittensor.utils.weight_utils.U32_MAX" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.weight_utils.U16_MAX">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">U16_MAX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65535</span></em><a class="headerlink" href="#bittensor.utils.weight_utils.U16_MAX" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.weight_utils.normalize_max_weight">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">normalize_max_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#normalize_max_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.normalize_max_weight" title="Link to this definition">#</a></dt>
-<dd><p>Normalizes the tensor x so that sum(x) = 1 and the max value is not greater than the limit.
-:param x: Tensor to be max_value normalized.
-:type x: <code class="xref py py-obj docutils literal notranslate"><span class="pre">np.float32</span></code>
-:param limit: float: Max value after normalization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Normalized x tensor.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>y (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.float32</span></code>)</p>
-</dd>
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>Union</em><em>[</em><em>numpy.typing.NDArray</em><em>[</em><em>numpy.float32</em><em>]</em><em>, </em><em>bittensor.utils.registration.torch.FloatTensor</em><em>]</em>)</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.weight_utils.U32_MAX">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">U32_MAX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4294967295</span></em><a class="headerlink" href="#bittensor.utils.weight_utils.U32_MAX" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_weight_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#convert_weight_uids_and_vals_to_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
-<dd><p>Converts weights and uids from chain representation into a np.array (inverse operation from convert_weights_and_uids_for_emit).</p>
+<dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_bond_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
+<dd><p>Converts bond and uids from chain representation into a np.array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of neurons on network.</p></li>
-<li><p><strong>uids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of uids as destinations for passed weights.</p></li>
-<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of weights.</p></li>
+<li><p><strong>uids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of uids as destinations for passed bonds.</p></li>
+<li><p><strong>bonds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of bonds.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Converted row weights.</p>
+<dd class="field-even"><p>Converted row bonds.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>row_weights (np.float32 or torch.FloatTensor)</p>
+<dd class="field-odd"><p>row_bonds (np.float32)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_root_weight_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subnets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#convert_root_weight_uids_and_vals_to_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_root_weight_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subnets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
 <dd><p>Converts root weights and uids from chain representation into a np.array or torch FloatTensor (inverse operation from convert_weights_and_uids_for_emit)
 :param n: number of neurons on network.
 :type n: int
@@ -567,29 +547,29 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_bond_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#convert_bond_uids_and_vals_to_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
-<dd><p>Converts bond and uids from chain representation into a np.array.</p>
+<dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_weight_uids_and_vals_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor" title="Link to this definition">#</a></dt>
+<dd><p>Converts weights and uids from chain representation into a np.array (inverse operation from convert_weights_and_uids_for_emit).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – number of neurons on network.</p></li>
-<li><p><strong>uids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of uids as destinations for passed bonds.</p></li>
-<li><p><strong>bonds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of bonds.</p></li>
+<li><p><strong>uids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of uids as destinations for passed weights.</p></li>
+<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – Tensor of weights.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Converted row bonds.</p>
+<dd class="field-even"><p>Converted row weights.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>row_bonds (np.float32)</p>
+<dd class="field-odd"><p>row_weights (np.float32 or torch.FloatTensor)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.weight_utils.convert_weights_and_uids_for_emit">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_weights_and_uids_for_emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#convert_weights_and_uids_for_emit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">convert_weights_and_uids_for_emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit" title="Link to this definition">#</a></dt>
 <dd><p>Converts weights into integer u32 representation that sum to MAX_INT_WEIGHT.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -609,32 +589,8 @@ weight_vals (list[int]): Weights as a list.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils.weight_utils.process_weights_for_netuid">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">process_weights_for_netuid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metagraph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_quantile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#process_weights_for_netuid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.process_weights_for_netuid" title="Link to this definition">#</a></dt>
-<dd><p>Processes weight tensors for a given subnet id using the provided weight and UID arrays, applying constraints and normalization based on the subtensor and metagraph data. This function can handle both NumPy arrays and PyTorch tensors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>uids</strong> (<em>Union</em><em>[</em><em>NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>&quot;torch.Tensor&quot;</em><em>]</em>) – Array of unique identifiers of the neurons.</p></li>
-<li><p><strong>weights</strong> (<em>Union</em><em>[</em><em>NDArray</em><em>[</em><em>np.float32</em><em>]</em><em>, </em><em>&quot;torch.Tensor&quot;</em><em>]</em>) – Array of weights associated with the user IDs.</p></li>
-<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network uid to process weights for.</p></li>
-<li><p><strong>subtensor</strong> (<a class="reference internal" href="../../core/subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>Subtensor</em></a>) – Subtensor instance to access blockchain data.</p></li>
-<li><p><strong>metagraph</strong> (<em>Optional</em><em>[</em><em>Metagraph</em><em>]</em>) – Metagraph instance for additional network data. If None, it is fetched from the subtensor using the netuid.</p></li>
-<li><p><strong>exclude_quantile</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Quantile threshold for excluding lower weights. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>tuple containing the array of user IDs and the corresponding normalized weights. The data type of the return matches the type of the input weights (NumPy or PyTorch).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Union[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[“torch.Tensor”, “torch.FloatTensor”], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[NDArray[np.int64], NDArray[np.float32]]]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.weight_utils.generate_weight_hash">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">generate_weight_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/weight_utils.html#generate_weight_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.weight_utils.generate_weight_hash" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">generate_weight_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.generate_weight_hash" title="Link to this definition">#</a></dt>
 <dd><p>Generate a valid commit hash from the provided weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -652,6 +608,53 @@ weight_vals (list[int]): Weights as a list.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.weight_utils.normalize_max_weight">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">normalize_max_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.normalize_max_weight" title="Link to this definition">#</a></dt>
+<dd><p>Normalizes the tensor x so that sum(x) = 1 and the max value is not greater than the limit.
+:param x: Tensor to be max_value normalized.
+:type x: <code class="xref py py-obj docutils literal notranslate"><span class="pre">np.float32</span></code>
+:param limit: float: Max value after normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Normalized x tensor.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>y (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.float32</span></code>)</p>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Union</em><em>[</em><em>numpy.typing.NDArray</em><em>[</em><em>numpy.float32</em><em>]</em><em>, </em><em>bittensor.utils.registration.torch.FloatTensor</em><em>]</em>)</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.weight_utils.process_weights_for_netuid">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.weight_utils.</span></span><span class="sig-name descname"><span class="pre">process_weights_for_netuid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metagraph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_quantile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.weight_utils.process_weights_for_netuid" title="Link to this definition">#</a></dt>
+<dd><p>Processes weight tensors for a given subnet id using the provided weight and UID arrays, applying constraints and normalization based on the subtensor and metagraph data. This function can handle both NumPy arrays and PyTorch tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uids</strong> (<em>Union</em><em>[</em><em>NDArray</em><em>[</em><em>np.int64</em><em>]</em><em>, </em><em>&quot;torch.Tensor&quot;</em><em>]</em>) – Array of unique identifiers of the neurons.</p></li>
+<li><p><strong>weights</strong> (<em>Union</em><em>[</em><em>NDArray</em><em>[</em><em>np.float32</em><em>]</em><em>, </em><em>&quot;torch.Tensor&quot;</em><em>]</em>) – Array of weights associated with the user IDs.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network uid to process weights for.</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../../core/subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>Subtensor</em></a>) – Subtensor instance to access blockchain data.</p></li>
+<li><p><strong>metagraph</strong> (<em>Optional</em><em>[</em><em>Metagraph</em><em>]</em>) – Metagraph instance for additional network data. If None, it is fetched from the subtensor using the netuid.</p></li>
+<li><p><strong>exclude_quantile</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Quantile threshold for excluding lower weights. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple containing the array of user IDs and the corresponding normalized weights. The data type of the return matches the type of the input weights (NumPy or PyTorch).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[“torch.Tensor”, “torch.FloatTensor”], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[NDArray[np.int64], NDArray[np.float32]]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -707,15 +710,15 @@ weight_vals (list[int]): Weights as a list.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U32_MAX"><code class="docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.normalize_max_weight"><code class="docutils literal notranslate"><span class="pre">normalize_max_weight()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.U32_MAX"><code class="docutils literal notranslate"><span class="pre">U32_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_bond_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_root_weight_uids_and_vals_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor"><code class="docutils literal notranslate"><span class="pre">convert_weight_uids_and_vals_to_tensor()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit"><code class="docutils literal notranslate"><span class="pre">convert_weights_and_uids_for_emit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.process_weights_for_netuid"><code class="docutils literal notranslate"><span class="pre">process_weights_for_netuid()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.generate_weight_hash"><code class="docutils literal notranslate"><span class="pre">generate_weight_hash()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.normalize_max_weight"><code class="docutils literal notranslate"><span class="pre">normalize_max_weight()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.weight_utils.process_weights_for_netuid"><code class="docutils literal notranslate"><span class="pre">process_weights_for_netuid()</span></code></a></li>
 </ul>
 </li>
 </ul>

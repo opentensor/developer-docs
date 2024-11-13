@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -412,11 +415,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.index</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.threshold</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.ayes"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.ayes</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.nays"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.nays</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.end</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.index</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.nays"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.nays</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.threshold</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -449,7 +452,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.proposal_vote_data.</span></span><span class="sig-name descname"><span class="pre">ProposalVoteData</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/proposal_vote_data.html#ProposalVoteData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.proposal_vote_data.</span></span><span class="sig-name descname"><span class="pre">ProposalVoteData</span></span><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
 <p>This TypedDict represents the data structure for a proposal vote in the Senate.</p>
 <dl class="field-list simple">
@@ -465,18 +468,18 @@ document.write(`
 </dl>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index">
-<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold">
-<span class="sig-name descname"><span class="pre">threshold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.ayes">
 <span class="sig-name descname"><span class="pre">ayes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.ayes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end">
+<span class="sig-name descname"><span class="pre">end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -485,8 +488,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end">
-<span class="sig-name descname"><span class="pre">end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold">
+<span class="sig-name descname"><span class="pre">threshold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -542,11 +545,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.index</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.threshold</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.ayes"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.ayes</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.nays"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.nays</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.end"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.end</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.index"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.index</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.nays"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.nays</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.proposal_vote_data.ProposalVoteData.threshold"><code class="docutils literal notranslate"><span class="pre">ProposalVoteData.threshold</span></code></a></li>
 </ul>
 </li>
 </ul>

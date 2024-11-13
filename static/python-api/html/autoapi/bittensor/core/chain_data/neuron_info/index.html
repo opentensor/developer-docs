@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -412,32 +415,32 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.hotkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.coldkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.uid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.active"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.active</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.bonds</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.consensus</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.dividends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.emission</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_vec_u8()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_weights_bonds_and_neuron_lite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.get_null_neuron()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.rank</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.stake_dict</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.total_stake</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.rank</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.emission</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.consensus</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.trust</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_trust</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.dividends</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.uid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_permit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.weights"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.weights</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.bonds</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_weights_bonds_and_neuron_lite()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.get_null_neuron()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_vec_u8()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -470,7 +473,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.neuron_info.</span></span><span class="sig-name descname"><span class="pre">NeuronInfo</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info.html#NeuronInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.neuron_info.</span></span><span class="sig-name descname"><span class="pre">NeuronInfo</span></span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo" title="Link to this definition">#</a></dt>
 <dd><p>Represents the metadata of a neuron including keys, UID, stake, rankings, and other attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
@@ -502,108 +505,8 @@ document.write(`
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey">
-<span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey">
-<span class="sig-name descname"><span class="pre">coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.uid">
-<span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.netuid">
-<span class="sig-name descname"><span class="pre">netuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.active">
 <span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.active" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.stake">
-<span class="sig-name descname"><span class="pre">stake</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict">
-<span class="sig-name descname"><span class="pre">stake_dict</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake">
-<span class="sig-name descname"><span class="pre">total_stake</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.rank">
-<span class="sig-name descname"><span class="pre">rank</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.emission">
-<span class="sig-name descname"><span class="pre">emission</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.incentive">
-<span class="sig-name descname"><span class="pre">incentive</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.consensus">
-<span class="sig-name descname"><span class="pre">consensus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.trust">
-<span class="sig-name descname"><span class="pre">trust</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.trust" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust">
-<span class="sig-name descname"><span class="pre">validator_trust</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.dividends">
-<span class="sig-name descname"><span class="pre">dividends</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.last_update">
-<span class="sig-name descname"><span class="pre">last_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit">
-<span class="sig-name descname"><span class="pre">validator_permit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.weights">
-<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.weights" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.bonds">
-<span class="sig-name descname"><span class="pre">bonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score">
-<span class="sig-name descname"><span class="pre">pruning_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info">
-<span class="sig-name descname"><span class="pre">prometheus_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../prometheus_info/index.html#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="bittensor.core.chain_data.prometheus_info.PrometheusInfo"><span class="pre">bittensor.core.chain_data.prometheus_info.PrometheusInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -612,13 +515,47 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.is_null">
-<span class="sig-name descname"><span class="pre">is_null</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.bonds">
+<span class="sig-name descname"><span class="pre">bonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey">
+<span class="sig-name descname"><span class="pre">coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.consensus">
+<span class="sig-name descname"><span class="pre">consensus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.dividends">
+<span class="sig-name descname"><span class="pre">dividends</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.emission">
+<span class="sig-name descname"><span class="pre">emission</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8" title="Link to this definition">#</a></dt>
+<dd><p>Instantiates NeuronInfo from a byte vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bittensor.core.chain_data.neuron_info.NeuronInfo" title="bittensor.core.chain_data.neuron_info.NeuronInfo">NeuronInfo</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_weights_bonds_and_neuron_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_lite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_as_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds_as_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info.html#NeuronInfo.from_weights_bonds_and_neuron_lite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_weights_bonds_and_neuron_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_lite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_as_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bonds_as_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite" title="Link to this definition">#</a></dt>
 <dd><p>Creates an instance of NeuronInfo from NeuronInfoLite and dictionaries of weights and bonds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -639,7 +576,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info.html#NeuronInfo.get_null_neuron"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron" title="Link to this definition">#</a></dt>
 <dd><p>Returns a null NeuronInfo instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -648,19 +585,85 @@ document.write(`
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info.html#NeuronInfo.from_vec_u8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8" title="Link to this definition">#</a></dt>
-<dd><p>Instantiates NeuronInfo from a byte vector.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#bittensor.core.chain_data.neuron_info.NeuronInfo" title="bittensor.core.chain_data.neuron_info.NeuronInfo">NeuronInfo</a></p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey">
+<span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.incentive">
+<span class="sig-name descname"><span class="pre">incentive</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.is_null">
+<span class="sig-name descname"><span class="pre">is_null</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.last_update">
+<span class="sig-name descname"><span class="pre">last_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.netuid">
+<span class="sig-name descname"><span class="pre">netuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info">
+<span class="sig-name descname"><span class="pre">prometheus_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../prometheus_info/index.html#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="bittensor.core.chain_data.prometheus_info.PrometheusInfo"><span class="pre">bittensor.core.chain_data.prometheus_info.PrometheusInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score">
+<span class="sig-name descname"><span class="pre">pruning_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.rank">
+<span class="sig-name descname"><span class="pre">rank</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.stake">
+<span class="sig-name descname"><span class="pre">stake</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict">
+<span class="sig-name descname"><span class="pre">stake_dict</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake">
+<span class="sig-name descname"><span class="pre">total_stake</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><span class="pre">bittensor.utils.balance.Balance</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.trust">
+<span class="sig-name descname"><span class="pre">trust</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.trust" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.uid">
+<span class="sig-name descname"><span class="pre">uid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit">
+<span class="sig-name descname"><span class="pre">validator_permit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust">
+<span class="sig-name descname"><span class="pre">validator_trust</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info.NeuronInfo.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.weights" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -715,32 +718,32 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.hotkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.coldkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.uid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.active"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.active</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.bonds</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.coldkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.consensus</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.dividends</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.emission</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_vec_u8()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_weights_bonds_and_neuron_lite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.get_null_neuron()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.rank</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.stake_dict"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.stake_dict</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.total_stake"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.total_stake</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.rank"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.rank</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.emission"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.emission</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.consensus"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.consensus</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.trust</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_trust</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.dividends"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.dividends</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.uid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.uid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_permit"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_permit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.validator_trust"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.validator_trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.weights"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.weights</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.bonds"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.bonds</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_weights_bonds_and_neuron_lite"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_weights_bonds_and_neuron_lite()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.get_null_neuron"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.get_null_neuron()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info.NeuronInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.from_vec_u8()</span></code></a></li>
 </ul>
 </li>
 </ul>

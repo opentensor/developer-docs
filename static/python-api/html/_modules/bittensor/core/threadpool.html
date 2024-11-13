@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,8 +180,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -480,7 +483,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor">[docs]</a>
 <span class="k">class</span> <span class="nc">PriorityThreadPoolExecutor</span><span class="p">(</span><span class="n">_base</span><span class="o">.</span><span class="n">Executor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base threadpool executor with a priority queue.&quot;&quot;&quot;</span>
 
@@ -528,7 +531,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_initargs</span> <span class="o">=</span> <span class="n">initargs</span>
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor.add_args">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Accept specific arguments from parser&quot;&quot;&quot;</span>
@@ -562,7 +565,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor.config">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.config">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.config">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get config from the argument parser.</span>
@@ -579,7 +582,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_work_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor.submit">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit">[docs]</a>
     <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_base</span><span class="o">.</span><span class="n">Future</span><span class="p">:</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown_lock</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broken</span><span class="p">:</span>
@@ -610,7 +613,7 @@ document.write(`
     <span class="n">submit</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_base</span><span class="o">.</span><span class="n">Executor</span><span class="o">.</span><span class="n">submit</span><span class="o">.</span><span class="vm">__doc__</span>
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor._adjust_thread_count">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">[docs]</a>
     <span class="k">def</span> <span class="nf">_adjust_thread_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># if idle threads are available, don&#39;t spin new threads</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idle_semaphore</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -641,7 +644,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor._initializer_failed">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">[docs]</a>
     <span class="k">def</span> <span class="nf">_initializer_failed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown_lock</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_broken</span> <span class="o">=</span> <span class="p">(</span>
@@ -658,7 +661,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor.shutdown">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown">[docs]</a>
     <span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown_lock</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown</span> <span class="o">=</span> <span class="kc">True</span>

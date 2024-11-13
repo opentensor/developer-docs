@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../networking/index.html">bittensor.utils.networking</a></li>
@@ -412,12 +415,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.BASE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">BASE_LOG_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DATE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME"><code class="docutils literal notranslate"><span class="pre">BITTENSOR_LOGGER_NAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DATE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_FILE_NAME</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_MAX_ROTATING_LOG_FILE_SIZE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_ROTATING_LOG_FILE_SIZE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -441,13 +444,13 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.BASE_LOG_FORMAT" title="bittensor.utils.btlogging.defines.BASE_LOG_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BASE_LOG_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT" title="bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME" title="bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITTENSOR_LOGGER_NAME</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.DATE_FORMAT" title="bittensor.utils.btlogging.defines.DATE_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME" title="bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITTENSOR_LOGGER_NAME</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT" title="bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_FILE_NAME" title="bittensor.utils.btlogging.defines.DEFAULT_LOG_FILE_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_LOG_FILE_NAME</span></code></a></p></td>
@@ -456,7 +459,7 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.DEFAULT_MAX_ROTATING_LOG_FILE_SIZE" title="bittensor.utils.btlogging.defines.DEFAULT_MAX_ROTATING_LOG_FILE_SIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_MAX_ROTATING_LOG_FILE_SIZE</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT" title="bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT" title="bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -471,8 +474,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">TRACE_LOG_FORMAT</span></span><a class="headerlink" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">BITTENSOR_LOGGER_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'bittensor'</span></em><a class="headerlink" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -481,8 +484,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">BITTENSOR_LOGGER_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'bittensor'</span></em><a class="headerlink" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -496,8 +499,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.defines.</span></span><span class="sig-name descname"><span class="pre">TRACE_LOG_FORMAT</span></span><a class="headerlink" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -551,12 +554,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.BASE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">BASE_LOG_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DATE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.BITTENSOR_LOGGER_NAME"><code class="docutils literal notranslate"><span class="pre">BITTENSOR_LOGGER_NAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DATE_FORMAT"><code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_FILE_NAME</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_MAX_ROTATING_LOG_FILE_SIZE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_ROTATING_LOG_FILE_SIZE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.DEFAULT_LOG_BACKUP_COUNT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_LOG_BACKUP_COUNT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.defines.TRACE_LOG_FORMAT"><code class="docutils literal notranslate"><span class="pre">TRACE_LOG_FORMAT</span></code></a></li>
 </ul>
 </li>
 </ul>

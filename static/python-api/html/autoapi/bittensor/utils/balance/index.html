@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/balance/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="bittensor.utils.deprecated" href="../deprecated/index.html" />
+    <link rel="next" title="bittensor.utils.delegates_details" href="../delegates_details/index.html" />
     <link rel="prev" title="bittensor.utils.axon_utils" href="../axon_utils/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
@@ -412,40 +415,40 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance"><code class="docutils literal notranslate"><span class="pre">Balance</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.unit"><code class="docutils literal notranslate"><span class="pre">Balance.unit</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao_unit"><code class="docutils literal notranslate"><span class="pre">Balance.rao_unit</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao"><code class="docutils literal notranslate"><span class="pre">Balance.rao</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.tao"><code class="docutils literal notranslate"><span class="pre">Balance.tao</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__int__"><code class="docutils literal notranslate"><span class="pre">Balance.__int__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__float__"><code class="docutils literal notranslate"><span class="pre">Balance.__float__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str__"><code class="docutils literal notranslate"><span class="pre">Balance.__str__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__str_rao__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich_rao__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__repr__"><code class="docutils literal notranslate"><span class="pre">Balance.__repr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__eq__"><code class="docutils literal notranslate"><span class="pre">Balance.__eq__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ne__"><code class="docutils literal notranslate"><span class="pre">Balance.__ne__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__gt__"><code class="docutils literal notranslate"><span class="pre">Balance.__gt__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__lt__"><code class="docutils literal notranslate"><span class="pre">Balance.__lt__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__le__"><code class="docutils literal notranslate"><span class="pre">Balance.__le__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ge__"><code class="docutils literal notranslate"><span class="pre">Balance.__ge__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__add__"><code class="docutils literal notranslate"><span class="pre">Balance.__add__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__radd__"><code class="docutils literal notranslate"><span class="pre">Balance.__radd__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__sub__"><code class="docutils literal notranslate"><span class="pre">Balance.__sub__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rsub__"><code class="docutils literal notranslate"><span class="pre">Balance.__rsub__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__mul__"><code class="docutils literal notranslate"><span class="pre">Balance.__mul__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rmul__"><code class="docutils literal notranslate"><span class="pre">Balance.__rmul__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__truediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__truediv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rtruediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rtruediv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__floordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__floordiv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rfloordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rfloordiv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__nonzero__"><code class="docutils literal notranslate"><span class="pre">Balance.__nonzero__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__neg__"><code class="docutils literal notranslate"><span class="pre">Balance.__neg__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__pos__"><code class="docutils literal notranslate"><span class="pre">Balance.__pos__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__abs__"><code class="docutils literal notranslate"><span class="pre">Balance.__abs__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__add__"><code class="docutils literal notranslate"><span class="pre">Balance.__add__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__eq__"><code class="docutils literal notranslate"><span class="pre">Balance.__eq__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__float__"><code class="docutils literal notranslate"><span class="pre">Balance.__float__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__floordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__floordiv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ge__"><code class="docutils literal notranslate"><span class="pre">Balance.__ge__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__gt__"><code class="docutils literal notranslate"><span class="pre">Balance.__gt__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__int__"><code class="docutils literal notranslate"><span class="pre">Balance.__int__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__le__"><code class="docutils literal notranslate"><span class="pre">Balance.__le__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__lt__"><code class="docutils literal notranslate"><span class="pre">Balance.__lt__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__mul__"><code class="docutils literal notranslate"><span class="pre">Balance.__mul__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ne__"><code class="docutils literal notranslate"><span class="pre">Balance.__ne__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__neg__"><code class="docutils literal notranslate"><span class="pre">Balance.__neg__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__nonzero__"><code class="docutils literal notranslate"><span class="pre">Balance.__nonzero__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__pos__"><code class="docutils literal notranslate"><span class="pre">Balance.__pos__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__radd__"><code class="docutils literal notranslate"><span class="pre">Balance.__radd__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__repr__"><code class="docutils literal notranslate"><span class="pre">Balance.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rfloordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rfloordiv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich_rao__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rmul__"><code class="docutils literal notranslate"><span class="pre">Balance.__rmul__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rsub__"><code class="docutils literal notranslate"><span class="pre">Balance.__rsub__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rtruediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rtruediv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str__"><code class="docutils literal notranslate"><span class="pre">Balance.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__str_rao__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__sub__"><code class="docutils literal notranslate"><span class="pre">Balance.__sub__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__truediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__truediv__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_float"><code class="docutils literal notranslate"><span class="pre">Balance.from_float()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_tao"><code class="docutils literal notranslate"><span class="pre">Balance.from_tao()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_rao"><code class="docutils literal notranslate"><span class="pre">Balance.from_rao()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_tao"><code class="docutils literal notranslate"><span class="pre">Balance.from_tao()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao"><code class="docutils literal notranslate"><span class="pre">Balance.rao</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao_unit"><code class="docutils literal notranslate"><span class="pre">Balance.rao_unit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.tao"><code class="docutils literal notranslate"><span class="pre">Balance.tao</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.unit"><code class="docutils literal notranslate"><span class="pre">Balance.unit</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -478,7 +481,7 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.balance.</span></span><span class="sig-name descname"><span class="pre">Balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.balance.</span></span><span class="sig-name descname"><span class="pre">Balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance" title="Link to this definition">#</a></dt>
 <dd><p>Represents the bittensor balance of the wallet, stored as rao (int).
 This class provides a way to interact with balances in two different units: rao and tao.
 It provides methods to convert between these units, as well as to perform arithmetic and comparison operations.</p>
@@ -502,107 +505,40 @@ If balance is a float, it’s assumed to be in tao.</p>
 <dd class="field-odd"><p><strong>balance</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The initial balance, in either rao (if an int) or tao (if a float).</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.unit">
-<span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.unit" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao_unit">
-<span class="sig-name descname"><span class="pre">rao_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao_unit" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao">
-<span class="sig-name descname"><span class="pre">rao</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.tao">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tao</span></span><a class="headerlink" href="#bittensor.utils.balance.Balance.tao" title="Link to this definition">#</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__abs__">
+<span class="sig-name descname"><span class="pre">__abs__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__abs__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__int__">
-<span class="sig-name descname"><span class="pre">__int__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__int__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__int__" title="Link to this definition">#</a></dt>
-<dd><p>Convert the Balance object to an int. The resulting value is in rao.</p>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__add__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__eq__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__float__">
-<span class="sig-name descname"><span class="pre">__float__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__float__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__float__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__float__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__float__" title="Link to this definition">#</a></dt>
 <dd><p>Convert the Balance object to a float. The resulting value is in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__str__" title="Link to this definition">#</a></dt>
-<dd><p>Returns the Balance object as a string in the format “symbolvalue”, where the value is in tao.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rich__">
-<span class="sig-name descname"><span class="pre">__rich__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rich__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rich__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__str_rao__">
-<span class="sig-name descname"><span class="pre">__str_rao__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__str_rao__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__str_rao__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rich_rao__">
-<span class="sig-name descname"><span class="pre">__rich_rao__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rich_rao__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rich_rao__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__repr__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__eq__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__ne__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__ne__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__gt__">
-<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__gt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__gt__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__lt__">
-<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__lt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__lt__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__le__">
-<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__le__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__le__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__floordiv__">
+<span class="sig-name descname"><span class="pre">__floordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__floordiv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -612,7 +548,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__ge__">
-<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__ge__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__ge__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__ge__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -621,8 +557,8 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__add__">
-<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__add__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__add__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__gt__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -631,8 +567,14 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__radd__">
-<span class="sig-name descname"><span class="pre">__radd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__radd__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__radd__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__int__">
+<span class="sig-name descname"><span class="pre">__int__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__int__" title="Link to this definition">#</a></dt>
+<dd><p>Convert the Balance object to an int. The resulting value is in rao.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__le__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -641,18 +583,8 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__sub__">
-<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__sub__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__sub__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rsub__">
-<span class="sig-name descname"><span class="pre">__rsub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rsub__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rsub__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__lt__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -662,17 +594,82 @@ If balance is a float, it’s assumed to be in tao.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__mul__">
-<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__mul__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__mul__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__ne__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__neg__">
+<span class="sig-name descname"><span class="pre">__neg__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__neg__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__nonzero__">
+<span class="sig-name descname"><span class="pre">__nonzero__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__nonzero__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__pos__">
+<span class="sig-name descname"><span class="pre">__pos__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__pos__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__radd__">
+<span class="sig-name descname"><span class="pre">__radd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__radd__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__repr__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rfloordiv__">
+<span class="sig-name descname"><span class="pre">__rfloordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rfloordiv__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rich__">
+<span class="sig-name descname"><span class="pre">__rich__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rich__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rich_rao__">
+<span class="sig-name descname"><span class="pre">__rich_rao__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rich_rao__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rmul__">
-<span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rmul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rmul__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rmul__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -681,8 +678,8 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__truediv__">
-<span class="sig-name descname"><span class="pre">__truediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__truediv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__truediv__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rsub__">
+<span class="sig-name descname"><span class="pre">__rsub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rsub__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -692,7 +689,7 @@ If balance is a float, it’s assumed to be in tao.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rtruediv__">
-<span class="sig-name descname"><span class="pre">__rtruediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rtruediv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rtruediv__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__rtruediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__rtruediv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -701,8 +698,19 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__floordiv__">
-<span class="sig-name descname"><span class="pre">__floordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__floordiv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__floordiv__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Returns the Balance object as a string in the format “symbolvalue”, where the value is in tao.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__str_rao__">
+<span class="sig-name descname"><span class="pre">__str_rao__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__str_rao__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__sub__">
+<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__sub__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
@@ -711,43 +719,18 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__rfloordiv__">
-<span class="sig-name descname"><span class="pre">__rfloordiv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__rfloordiv__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__rfloordiv__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__truediv__">
+<span class="sig-name descname"><span class="pre">__truediv__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.__truediv__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>other</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><em>Balance</em></a><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__nonzero__">
-<span class="sig-name descname"><span class="pre">__nonzero__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__nonzero__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__nonzero__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__neg__">
-<span class="sig-name descname"><span class="pre">__neg__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__neg__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__neg__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__pos__">
-<span class="sig-name descname"><span class="pre">__pos__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__pos__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__pos__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.__abs__">
-<span class="sig-name descname"><span class="pre">__abs__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.__abs__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.__abs__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.from_float">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.from_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.from_float" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.from_float" title="Link to this definition">#</a></dt>
 <dd><p>Given tao, return <a class="reference internal" href="#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance"><code class="xref py py-func docutils literal notranslate"><span class="pre">Balance()</span></code></a> object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))
 :param amount: The amount in tao.
 :type amount: float</p>
@@ -762,8 +745,22 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.from_rao">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_rao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.from_rao" title="Link to this definition">#</a></dt>
+<dd><p>Given rao, return Balance object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The amount in rao.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Balance object representing the given amount.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.balance.Balance.from_tao">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_tao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.from_tao"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.from_tao" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_tao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.balance.Balance.from_tao" title="Link to this definition">#</a></dt>
 <dd><p>Given tao, return Balance object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -775,19 +772,25 @@ If balance is a float, it’s assumed to be in tao.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.from_rao">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_rao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/balance.html#Balance.from_rao"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.balance.Balance.from_rao" title="Link to this definition">#</a></dt>
-<dd><p>Given rao, return Balance object with rao(<code class="docutils literal notranslate"><span class="pre">int</span></code>) and tao(<code class="docutils literal notranslate"><span class="pre">float</span></code>), where rao = int(tao*pow(10,9))</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The amount in rao.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A Balance object representing the given amount.</p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao">
+<span class="sig-name descname"><span class="pre">rao</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.rao_unit">
+<span class="sig-name descname"><span class="pre">rao_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.rao_unit" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.tao">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tao</span></span><a class="headerlink" href="#bittensor.utils.balance.Balance.tao" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.balance.Balance.unit">
+<span class="sig-name descname"><span class="pre">unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.utils.balance.Balance.unit" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -815,11 +818,11 @@ If balance is a float, it’s assumed to be in tao.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../deprecated/index.html"
+       href="../delegates_details/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.utils.deprecated</p>
+        <p class="prev-next-title">bittensor.utils.delegates_details</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -842,40 +845,40 @@ If balance is a float, it’s assumed to be in tao.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance"><code class="docutils literal notranslate"><span class="pre">Balance</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.unit"><code class="docutils literal notranslate"><span class="pre">Balance.unit</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao_unit"><code class="docutils literal notranslate"><span class="pre">Balance.rao_unit</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao"><code class="docutils literal notranslate"><span class="pre">Balance.rao</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.tao"><code class="docutils literal notranslate"><span class="pre">Balance.tao</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__int__"><code class="docutils literal notranslate"><span class="pre">Balance.__int__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__float__"><code class="docutils literal notranslate"><span class="pre">Balance.__float__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str__"><code class="docutils literal notranslate"><span class="pre">Balance.__str__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__str_rao__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich_rao__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__repr__"><code class="docutils literal notranslate"><span class="pre">Balance.__repr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__eq__"><code class="docutils literal notranslate"><span class="pre">Balance.__eq__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ne__"><code class="docutils literal notranslate"><span class="pre">Balance.__ne__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__gt__"><code class="docutils literal notranslate"><span class="pre">Balance.__gt__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__lt__"><code class="docutils literal notranslate"><span class="pre">Balance.__lt__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__le__"><code class="docutils literal notranslate"><span class="pre">Balance.__le__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ge__"><code class="docutils literal notranslate"><span class="pre">Balance.__ge__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__add__"><code class="docutils literal notranslate"><span class="pre">Balance.__add__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__radd__"><code class="docutils literal notranslate"><span class="pre">Balance.__radd__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__sub__"><code class="docutils literal notranslate"><span class="pre">Balance.__sub__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rsub__"><code class="docutils literal notranslate"><span class="pre">Balance.__rsub__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__mul__"><code class="docutils literal notranslate"><span class="pre">Balance.__mul__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rmul__"><code class="docutils literal notranslate"><span class="pre">Balance.__rmul__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__truediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__truediv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rtruediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rtruediv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__floordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__floordiv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rfloordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rfloordiv__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__nonzero__"><code class="docutils literal notranslate"><span class="pre">Balance.__nonzero__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__neg__"><code class="docutils literal notranslate"><span class="pre">Balance.__neg__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__pos__"><code class="docutils literal notranslate"><span class="pre">Balance.__pos__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__abs__"><code class="docutils literal notranslate"><span class="pre">Balance.__abs__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__add__"><code class="docutils literal notranslate"><span class="pre">Balance.__add__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__eq__"><code class="docutils literal notranslate"><span class="pre">Balance.__eq__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__float__"><code class="docutils literal notranslate"><span class="pre">Balance.__float__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__floordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__floordiv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ge__"><code class="docutils literal notranslate"><span class="pre">Balance.__ge__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__gt__"><code class="docutils literal notranslate"><span class="pre">Balance.__gt__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__int__"><code class="docutils literal notranslate"><span class="pre">Balance.__int__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__le__"><code class="docutils literal notranslate"><span class="pre">Balance.__le__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__lt__"><code class="docutils literal notranslate"><span class="pre">Balance.__lt__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__mul__"><code class="docutils literal notranslate"><span class="pre">Balance.__mul__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__ne__"><code class="docutils literal notranslate"><span class="pre">Balance.__ne__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__neg__"><code class="docutils literal notranslate"><span class="pre">Balance.__neg__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__nonzero__"><code class="docutils literal notranslate"><span class="pre">Balance.__nonzero__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__pos__"><code class="docutils literal notranslate"><span class="pre">Balance.__pos__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__radd__"><code class="docutils literal notranslate"><span class="pre">Balance.__radd__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__repr__"><code class="docutils literal notranslate"><span class="pre">Balance.__repr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rfloordiv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rfloordiv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rich_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__rich_rao__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rmul__"><code class="docutils literal notranslate"><span class="pre">Balance.__rmul__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rsub__"><code class="docutils literal notranslate"><span class="pre">Balance.__rsub__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__rtruediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__rtruediv__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str__"><code class="docutils literal notranslate"><span class="pre">Balance.__str__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__str_rao__"><code class="docutils literal notranslate"><span class="pre">Balance.__str_rao__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__sub__"><code class="docutils literal notranslate"><span class="pre">Balance.__sub__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.__truediv__"><code class="docutils literal notranslate"><span class="pre">Balance.__truediv__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_float"><code class="docutils literal notranslate"><span class="pre">Balance.from_float()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_tao"><code class="docutils literal notranslate"><span class="pre">Balance.from_tao()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_rao"><code class="docutils literal notranslate"><span class="pre">Balance.from_rao()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.from_tao"><code class="docutils literal notranslate"><span class="pre">Balance.from_tao()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao"><code class="docutils literal notranslate"><span class="pre">Balance.rao</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.rao_unit"><code class="docutils literal notranslate"><span class="pre">Balance.rao_unit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.tao"><code class="docutils literal notranslate"><span class="pre">Balance.tao</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.balance.Balance.unit"><code class="docutils literal notranslate"><span class="pre">Balance.unit</span></code></a></li>
 </ul>
 </li>
 </ul>

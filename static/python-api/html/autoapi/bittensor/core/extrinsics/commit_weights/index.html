@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="bittensor.core.extrinsics.registration" href="../registration/index.html" />
-    <link rel="prev" title="bittensor.core.extrinsics" href="../index.html" />
+    <link rel="prev" title="bittensor.core.extrinsics.async_weights" href="../async_weights/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,8 +181,10 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -411,8 +414,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="docutils literal notranslate"><span class="pre">do_commit_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic"><code class="docutils literal notranslate"><span class="pre">commit_weights_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="docutils literal notranslate"><span class="pre">do_commit_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_reveal_weights"><code class="docutils literal notranslate"><span class="pre">do_reveal_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.reveal_weights_extrinsic"><code class="docutils literal notranslate"><span class="pre">reveal_weights_extrinsic()</span></code></a></li>
 </ul>
@@ -435,11 +438,11 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights" title="bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_commit_weights</span></code></a>(self, wallet, netuid, commit_hash[, ...])</p></td>
-<td><p>Internal method to send a transaction to the Bittensor blockchain, committing the hash of a neuron's weights.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic" title="bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commit_weights_extrinsic</span></code></a>(subtensor, wallet, netuid, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic" title="bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commit_weights_extrinsic</span></code></a>(subtensor, wallet, netuid, ...)</p></td>
 <td><p>Commits a hash of the neuron's weights to the Bittensor blockchain using the provided wallet.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights" title="bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_commit_weights</span></code></a>(self, wallet, netuid, commit_hash[, ...])</p></td>
+<td><p>Internal method to send a transaction to the Bittensor blockchain, committing the hash of a neuron's weights.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.commit_weights.do_reveal_weights" title="bittensor.core.extrinsics.commit_weights.do_reveal_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">do_reveal_weights</span></code></a>(self, wallet, netuid, uids, values, ...)</p></td>
 <td><p>Internal method to send a transaction to the Bittensor blockchain, revealing the weights for a specific subnet.</p></td>
@@ -454,34 +457,8 @@ document.write(`
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.extrinsics.commit_weights.do_commit_weights">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">do_commit_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/commit_weights.html#do_commit_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights" title="Link to this definition">#</a></dt>
-<dd><p>Internal method to send a transaction to the Bittensor blockchain, committing the hash of a neuron’s weights.
-This method constructs and submits the transaction, handling retries and blockchain communication.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>self</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>) – The subtensor instance used for blockchain interaction.</p></li>
-<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – The wallet associated with the neuron committing the weights.</p></li>
-<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
-<li><p><strong>commit_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the neuron’s weights to be committed.</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple containing a success flag and an optional error message.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>, Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
-</dd>
-</dl>
-<p>This method ensures that the weight commitment is securely recorded on the Bittensor blockchain, providing a verifiable record of the neuron’s weight distribution at a specific point in time.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">commit_weights_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/commit_weights.html#commit_weights_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">commit_weights_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Commits a hash of the neuron’s weights to the Bittensor blockchain using the provided wallet.
 This function is a wrapper around the <cite>do_commit_weights</cite> method.</p>
 <dl class="field-list simple">
@@ -506,8 +483,34 @@ This function is a wrapper around the <cite>do_commit_weights</cite> method.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.extrinsics.commit_weights.do_commit_weights">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">do_commit_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights" title="Link to this definition">#</a></dt>
+<dd><p>Internal method to send a transaction to the Bittensor blockchain, committing the hash of a neuron’s weights.
+This method constructs and submits the transaction, handling retries and blockchain communication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>) – The subtensor instance used for blockchain interaction.</p></li>
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – The wallet associated with the neuron committing the weights.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
+<li><p><strong>commit_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the neuron’s weights to be committed.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing a success flag and an optional error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>, Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
+</dd>
+</dl>
+<p>This method ensures that the weight commitment is securely recorded on the Bittensor blockchain, providing a verifiable record of the neuron’s weight distribution at a specific point in time.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.commit_weights.do_reveal_weights">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">do_reveal_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/commit_weights.html#do_reveal_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.do_reveal_weights" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">do_reveal_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.do_reveal_weights" title="Link to this definition">#</a></dt>
 <dd><p>Internal method to send a transaction to the Bittensor blockchain, revealing the weights for a specific subnet.
 This method constructs and submits the transaction, handling retries and blockchain communication.</p>
 <dl class="field-list simple">
@@ -536,7 +539,7 @@ This method constructs and submits the transaction, handling retries and blockch
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.commit_weights.reveal_weights_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">reveal_weights_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/commit_weights.html#reveal_weights_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.reveal_weights_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.commit_weights.</span></span><span class="sig-name descname"><span class="pre">reveal_weights_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.commit_weights.reveal_weights_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Reveals the weights for a specific subnet on the Bittensor blockchain using the provided wallet.
 This function is a wrapper around the <cite>_do_reveal_weights</cite> method.</p>
 <dl class="field-list simple">
@@ -578,12 +581,12 @@ This function is a wrapper around the <cite>_do_reveal_weights</cite> method.</p
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../async_weights/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">bittensor.core.extrinsics</p>
+        <p class="prev-next-title">bittensor.core.extrinsics.async_weights</p>
       </div>
     </a>
     <a class="right-next"
@@ -613,8 +616,8 @@ This function is a wrapper around the <cite>_do_reveal_weights</cite> method.</p
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="docutils literal notranslate"><span class="pre">do_commit_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.commit_weights_extrinsic"><code class="docutils literal notranslate"><span class="pre">commit_weights_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_commit_weights"><code class="docutils literal notranslate"><span class="pre">do_commit_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.do_reveal_weights"><code class="docutils literal notranslate"><span class="pre">do_reveal_weights()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.commit_weights.reveal_weights_extrinsic"><code class="docutils literal notranslate"><span class="pre">reveal_weights_extrinsic()</span></code></a></li>
 </ul>
