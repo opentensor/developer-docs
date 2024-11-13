@@ -11,7 +11,7 @@ The following are the release notes for the Bittensor software.
 The following are the new versions in this release with their release PRs: 
 
 - **BTCLI 8.3.1 Release PR**: [https://github.com/opentensor/btcli/pull/239](https://github.com/opentensor/btcli/pull/239).
-- **Bittensor SDK 8.3.0 Release PR**: 
+- **Bittensor SDK 8.3.0 Release PR**: [https://github.com/opentensor/bittensor/pull/2417](https://github.com/opentensor/bittensor/pull/2417).
 - **Wallet SDK 2.1.0 Release PR**: [https://github.com/opentensor/btwallet/pull/61](https://github.com/opentensor/btwallet/pull/61).
 
 ###  Upgrade steps
@@ -25,7 +25,6 @@ The following are the new versions in this release with their release PRs:
 - **Bittensor SDK**: An **experimental class**, `AsyncSubtensor`, is included in this release. **This class is not yet ready for your production use**. See an example code showing how to use this class, [asyncio](./subnets/asyncio.md).
 - **Wallet SDK**: Added the ability in the Wallet SDK to use local environment variables to store encrypted hotkey and coldkey passwords. See the PR [https://github.com/opentensor/btwallet/pull/46](https://github.com/opentensor/btwallet/pull/46).
 - **BTCLI**: A `--verbose` flag is added to all `btcli` commands. Now if you encounter an error with `btcli`, you can rerun the command with `--verbose` to get a traceback for debugging.
-
 
 
 ### Fixed issues
