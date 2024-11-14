@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to the documentation.
 
+## 14 November 2024
+
+A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#released-14-november-2024) is added.
+
 ## 13 November 2024
 
 - Added a new doc for [`AsyncSubtensor`](./subnets/asyncio.md).
