@@ -6,6 +6,20 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Released 14 November 2024
+`Hotfix release`
+
+### Bittensor SDK 8.3.1
+
+See the details of this hotfix release below:
+
+- **Release PR**: [https://github.com/opentensor/bittensor/pull/2423](https://github.com/opentensor/bittensor/pull/2423)
+- **Hotfix description**: A reusable `hex_to_bytes` function is added to the following subtensor methods. This function is for converting hex results to bytes for passing to `bt-decode`. 
+  - get_all_subnets_info
+  - get_prometheus_info
+  - get_delegate_by_hotkey
+  - get_commitment
+
 ## Released 13 November 2024
 
 The following are the new versions in this release with their release PRs: 
