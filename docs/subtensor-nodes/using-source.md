@@ -76,7 +76,7 @@ rm -rf /tmp/blockchain
 5. Install Subtensor by compiling with Cargo:
 
 ```bash
-cargo build -p node-subtensor --profile=production --features=metadata-hash,runtime-benchmarks
+cargo build -p node-subtensor --profile=production --features=metadata-hash
 ```
 
 ## Run the subtensor node
