@@ -7,15 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Guide to Dynamic TAO
 
-Dynamic TAO is a sophisticated mechanism for both a TAO holder and a validator to manage their stake, influence, and governance across multiple subnets in the Bittensor network. More important, the dynamic TAO:
-
-- Eliminates the role of the centralized root network. 
-- Enables a TAO holder to participate in a subnet of their choice.
-- Creates a new measure of a subnet's performance via the subnet-specific dynamic TAO token (dTAO). A dTAO token is exchangeable with TAO.
-- Incorporates the consensus power of a validator into their dTAO token stake holdings. 
-- Uses a subnet's dTAO to determine emissions to the subnet. 
-
-The dynamic TAO elegantly solves the problem of managing influence across different subnet economies while maintaining mathematical consistency and economic incentives.
+Follow this guide to learn the essential concepts, features and mechanisms of dynamic TAO.
 
 :::tip looking for quick intuitions?
 Skip to [Intuitions of dynamic TAO](#intuitions-of-dynamic-tao).
