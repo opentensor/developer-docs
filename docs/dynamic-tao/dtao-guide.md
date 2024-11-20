@@ -98,6 +98,10 @@ $$
 
 Anytime either of the reserves **increases**, for example as a result of a random external action such as some stake TAO entering the pool, the subnet pool algorithm automatically recalculates, using the new reserves, how much the other reserve should **decrease** in order to maintain the same constant product $$k$$. 
 
+:::tip Staking and unstaking do not change the constant product
+Staking and unstaking operations do not change the constant product $k$. On the contrary, emissions into a subnet pool do change the constant product $k$. Also see [Emissions](#emissions).
+:::
+
 As described in the [Staking](#staking) section, a staking event results in the staked TAO being added to the τ_in reserves of the subnet pool. The subnet pool algorithm calculates the number of units by which the $\alpha_{in}$ reserves should decrease. These units are then taken out of the $\alpha_{in}$ reserves and sent to the validator’s hotkey in the subnet. See an example below.
 
 ### Example
@@ -472,7 +476,17 @@ This can change every block.
 
 ## Emissions
 
-Emissions in dynamic TAO work like this. TBD.
+### Liquidity provision
+
+Emissions are the liquidity injections into the subnet pools. The Bittensor blockchain is the liquidity provider in the dynamic TAO. Without the liquidity provider injecting reserves into a subnet pool, the pool may run out of the reserves of one or both the tokens, thereby halting the entire subnet pool operation. This mechanism of liquidity injection is normal. 
+
+While staking and unstaking operations are similar to trading on a pool, the emissions are liquidity providing operations. 
+
+:::tip Emissions change the constant product
+Emissions into a subnet pool do change the constant product $k$ for that pool. On the contrary, the staking and unstaking operations **do not** change the pool's constant product $k$. See [Staking](#staking) and [Unstaking](#unstaking).
+:::
+
+in dynamic TAO work like this. TBD.
 
 
 | <img style={{width: 400}} /> Every block, do this |<img style={{width: 400}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
@@ -480,7 +494,7 @@ Emissions in dynamic TAO work like this. TBD.
 | **Evaluate sum of all alpha prices** | Alpha prices are high across the Bittensor network | Alpha prices are not high|
 | **Emission into tao_in reserve**| Do nothing | Add a fraction of a TAO into TAO reserve. <br />$$\text{Fraction = } \frac{\text{this alpha token's relative price}}{\text{sum of all alpha prices}}$$ |
 | **Emission into alpha_in reserve** | Add one alpha token into alpha reserve | Do nothing |
-| **Effect of emissions**  | Increases this subnet pool’s alpha reserve, thereby **decreasing** this alpha token’s price  | Increases this subnet pool's TAO reserve, thereby **increasing** this alpha token's price |
+| **Effect of emissions into pool**  | Increases this subnet pool’s alpha reserve, thereby **decreasing** this alpha token’s price  | Increases this subnet pool's TAO reserve, thereby **increasing** this alpha token's price |
 | **Emission into alpha_out** | Add one alpha token into the subnet alpha outstanding  | Add one alpha token into the subnet alpha outstanding |
 
 
@@ -533,9 +547,16 @@ This section presents a summary of intuitions about dynamic TAO. It is intended 
 
 ### Staking and unstaking
 
-- Staking and unstaking operations do not change the constant product $k$. On the contrary, emissions into a subnet pool do change the constant product $k$.
+- Staking and unstaking operations do not change the constant product $k$. On the contrary, emissions into a subnet pool do change the constant product $k$. Also see [Emissions](#emissions).
 - Staking and unstaking operations are always local to a subnet and its subnet pool. 
 - Stake is always held in dTAO token denominations. Furthermore, this dTAO stake exists only in the subnet validator hotkeys.
+
+### Constant product vs. relative price
+
+The constant product $k$ is a critical concept to understand how the relative price of an alpha token works. See the following: 
+  - A subnet pool algorithm operates purely on the basis of maintaining the constant product $k$. The pool algorithm does not have any built-in mechanism to either target or maintain specific prices for the alpha tokens of a subnet. 
+  - The relative price of an alpha token is only **indirectly** determined by the ratio of the token reserves. Furthermore, controlling these relative prices is **not the goal of the pool algorithm**. 
+  - Hence, the relative price of a token **is a result, not a target,** of the token exchange activity.
 
 ### Pool reserves
 
