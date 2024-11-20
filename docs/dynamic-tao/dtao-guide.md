@@ -486,16 +486,110 @@ While staking and unstaking operations are similar to trading on a pool, the emi
 Emissions into a subnet pool do change the constant product $k$ for that pool. On the contrary, the staking and unstaking operations **do not** change the pool's constant product $k$. See [Staking](#staking) and [Unstaking](#unstaking).
 :::
 
-in dynamic TAO work like this. TBD.
+### Emissions algorithm
 
+The below table shows how emissions are injected into the subnet pools. 
 
-| <img style={{width: 400}} /> Every block, do this |<img style={{width: 400}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
+:::caution Alpha price is always relative price
+Note that the terms relative price, alpha token's price, alpha price are the same as [Rate](#rate-τ_inα_in).
+:::
+
+| <img style={{width: 500}} /> Every block, do this |<img style={{width: 500}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
 |:---------------------|:---|:---|
 | **Evaluate sum of all alpha prices** | Alpha prices are high across the Bittensor network | Alpha prices are not high|
-| **Emission into tao_in reserve**| Do nothing | Add a fraction of a TAO into TAO reserve. <br />$$\text{Fraction = } \frac{\text{this alpha token's relative price}}{\text{sum of all alpha prices}}$$ |
+| **Emission into tao_in reserve**| Do nothing | Add a fraction of a TAO into TAO reserve. <br />$$\text{Fraction = } \frac{\text{this alpha token's price}}{\text{sum of all alpha prices across all subnets}}$$ |
 | **Emission into alpha_in reserve** | Add one alpha token into alpha reserve | Do nothing |
 | **Effect of emissions into pool**  | Increases this subnet pool’s alpha reserve, thereby **decreasing** this alpha token’s price  | Increases this subnet pool's TAO reserve, thereby **increasing** this alpha token's price |
 | **Emission into alpha_out** | Add one alpha token into the subnet alpha outstanding  | Add one alpha token into the subnet alpha outstanding |
+
+### Example
+
+Consider the following subnets:
+
+#### Case 1: Sum of alpha prices greater than 1
+
+1. Gaming Subnet:
+   - TAO reserve (τ_in): 10,000 TAO
+   - Alpha reserve (α_in): 8,000 Alpha 
+   - Alpha outstanding (α_out): 50,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{10000}{8000} = 1.25 $$
+
+2. AI Subnet:
+   - TAO reserve (τ_in): 15,000 TAO
+   - Alpha reserve (α_in): 15,000 Alpha 
+   - Alpha outstanding (α_out): 80,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{15000}{15000} = 1.0 $$
+  
+3. Storage Subnet:
+   - TAO reserve (τ_in): 5,000 TAO
+   - Alpha reserve (α_in): 10,000 Alpha 
+   - Alpha outstanding (α_out): 30,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{5000}{10000} = 0.5 $$
+
+Hence, sum of all alpha prices $$ = 1.25 + 1.0 + 0.5 = 2.75 \gt 1.0 $$
+
+As a result, the emissions to the subnets are as follows:
+
+1. Emissions to the Gaming Subnet:
+   - Emission into TAO reserve (τ_in): 0 TAO
+   - Emission into alpha reserve (α_in): 1.0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+
+2. Emissions to the AI Subnet:
+   - Emission into TAO reserve (τ_in): 0 TAO
+   - Emission into alpha reserve (α_in): 1.0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+  
+3. Emissions to the Storage Subnet:
+   - Emission into TAO reserve (τ_in): 0 TAO
+   - Emission into alpha reserve (α_in): 1.0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+
+#### Case 2: Sum of alpha prices less than 1
+
+Let's change the state of the subnets to the below:
+
+1. Gaming Subnet:
+   - TAO reserve (τ_in): 10,000 TAO
+   - Alpha reserve (α_in): **40,000** Alpha 
+   - Alpha outstanding (α_out): 50,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{10000}{40000} = 0.25 $$
+
+2. AI Subnet:
+   - TAO reserve (τ_in): 15,000 TAO
+   - Alpha reserve (α_in): **50,000** Alpha 
+   - Alpha outstanding (α_out): 80,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{15000}{50000} = 0.3 $$
+  
+3. Storage Subnet:
+   - TAO reserve (τ_in): 5,000 TAO
+   - Alpha reserve (α_in): **25,000** Alpha 
+   - Alpha outstanding (α_out): 30,000 Alpha
+   - Hence alpha price = $$ R = \frac{\tau_{in}}{\alpha_{in}} = \frac{5000}{25000} = 0.2 $$
+
+Hence, sum of all alpha prices $$ = 0.25 + 0.3 + 0.2 = 0.75 \lt 1.0 $$
+
+As a result, the emissions to the subnets are as follows:
+
+1. Emissions to the Gaming Subnet:
+   - Emission into TAO reserve (τ_in): $$\;  \frac{0.25}{0.75} = 0.3333 \text{ TAO}$$
+   - Emission into alpha reserve (α_in): 0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+
+2. Emissions to the AI Subnet:
+   - Emission into TAO reserve (τ_in): $$\;  \frac{0.3}{0.75} = 0.4 \text{ TAO}$$
+   - Emission into alpha reserve (α_in): 0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+  
+3. Emissions to the Storage Subnet:
+   - Emission into TAO reserve (τ_in): $$\;  \frac{0.2}{0.75} = 0.2667 \text{ TAO}$$
+   - Emission into alpha reserve (α_in): 0 Alpha 
+   - Emission into alpha outstanding (α_out): 1.0 Alpha
+
+- Note that all the TAO emissions in the block sum to 1.0 (0.3333 + 0.4 + 0.2667).
+- Also note that the emissions change the constant product $k$. For example, for the Gaming subnet:
+  - The original $k$ was: $$(10,000)\times(40,000) = 400,000,000$$ 
+  - The new $k$ is: $$(10,000 + 0.3333)\times(40,000 + 0) = 400,013,332$$.
 
 
 ### Emission (α/block)

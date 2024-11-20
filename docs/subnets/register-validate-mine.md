@@ -189,7 +189,7 @@ btcli wallet overview --netuid
 After providing your wallet name at the prompt, you will see the following output:
 
 | Parameter   | Value                | Description                                                                   |
-| :-----------| :------:             | :----                                                                         |
+| :-----------| :------             | :----                                                                         |
 | COLDKEY     | my_coldkey           |    The name of the coldkey associated with your slot.                         |
 | HOTKEY      | my_first_hotkey      |    The name of the hotkey associated with your slot.                          |
 | UID         | 5                    |    The index of the uid out of available uids.                                |
