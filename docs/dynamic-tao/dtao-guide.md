@@ -147,7 +147,7 @@ Note that as a result of staking 5 TAO into subnet $\alpha$, the relative price 
 
 ## STAKE (α_out) or alpha out (α_out) 
  
-Total stake in the subnet is referred as $α_{out}$. This is the sum of all the [Stake (α)](#staking)  present in all the validator hotkeys in this subnet. This is often referred as **$\alpha$ outstanding**. Compare this with [** $\alpha$ reserve**](#tao-reserve-τ_in-and-alpha-reserve-α_in), which is the amount of $α_{in}$ in the subnet pool. The **$\alpha$ outstanding** can change every block. See a conceptual diagram below:
+Total stake in the subnet is referred as $α_{out}$. This is the sum of all the [Stake (α)](#staking)  present in all the validator hotkeys in this subnet. This is often referred as **$\alpha$ outstanding**. Compare this with [$\alpha$ reserve](#tao-reserve-τ_in-and-alpha-reserve-α_in), which is the amount of $α_{in}$ in the subnet pool. The $\alpha$ outstanding can change every block. See a conceptual diagram below:
 
 
 <center>
@@ -283,7 +283,7 @@ In any subnet, if you add up the local weights of all alpha holders, you will al
 This means:
 
 - The total voting power in a subnet is fixed by its TAO reserve (τ_in).
-- For a given τ_in, if a validator's hotkey in a subnet increases their local weight, it must come at the expense of others. That is, you cannot create "extra" voting power, it's a zero-sum game within each subnet.
+- For a given τ_in, if a validator's hotkey in a subnet increases their local weight, it must come at the expense of others.
 
 ---
 
@@ -460,15 +460,47 @@ Whereas the [TAO Equiv(τ_in x α/α_out)](#tao-equiv-τ_in-x-αα_out) indicate
 
 ## Swap (α → τ)                 
 
-This is the actual τ you will receive, after factoring in the slippage charge, if you unstake from this hotkey now on this subnet. The slippage is calculated as 1 - (Swap(α → τ)/Exchange Value(α x τ/α)), and is displayed in brackets. This can change every block.
+This is the actual τ you will receive, after subtracting in the slippage charge, if you unstake from this hotkey now on this subnet. The slippage is calculated as:
 
-## Emission (α/block)
+$$
+\text{Slippage} = 1 - \frac{\text{Swap(α → τ)}}{\text{Exchange Value}(α \times τ/α)}
+$$
 
-Shows the portion of the one $\alpha$ per block emission into this subnet that is received by this hotkey, according to YC2 in this subnet. This can change every block.
+This can change every block.
 
-## Emission (τ)
+---
 
-Shows how the one τ per block emission is distributed among all the subnet pools. For each subnet, this fraction is first calculated by dividing the subnet's TAO Pool (τ_in) by the sum of all TAO Pool (τ_in) across all the subnets. This fraction is then added to the TAO Pool (τ_in) of the subnet. This can change every block.
+## Emissions
+
+Emissions in dynamic TAO work like this. TBD.
+
+
+| <img style={{width: 400}} /> Every block, do this |<img style={{width: 400}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
+|:---------------------|:---|:---|
+| **Evaluate sum of all alpha prices** | Alpha prices are high across the Bittensor network | Alpha prices are not high|
+| **Emission into tao_in reserve**| Do nothing | Add a fraction of a TAO into TAO reserve. <br />$$\text{Fraction = } \frac{\text{this alpha token's relative price}}{\text{sum of all alpha prices}}$$ |
+| **Emission into alpha_in reserve** | Add one alpha token into alpha reserve | Do nothing |
+| **Effect of emissions**  | Increases this subnet pool’s alpha reserve, thereby **decreasing** this alpha token’s price  | Increases this subnet pool's TAO reserve, thereby **increasing** this alpha token's price |
+| **Emission into alpha_out** | Add one alpha token into the subnet alpha outstanding  | Add one alpha token into the subnet alpha outstanding |
+
+
+### Emission (α/block)
+
+Represents the portion of the one $\alpha$ per block emission into a subnet that is received by this hotkey in this subnet, according to YC2 in the subnet. This can change every block.
+
+:::caution Subnet zero does not receive any emissions
+Subnet zero does not receive any emissions, either of TAO or $\alpha$. This is consistent with the fact that subnet zero does not have a pool associated with it.
+:::
+
+### Emission (τ)
+
+Shows how a fraction of the one τ per block emission is distributed among all the subnet pools. For each subnet, this fraction is first calculated by dividing the subnet's TAO Pool (τ_in) by the sum of all TAO Pool (τ_in) across all the subnets. This fraction is then added to the TAO Pool (τ_in) of the subnet. This can change every block.
+
+:::caution Subnet zero does not receive any emissions
+Subnet zero does not receive any emissions, either of TAO or $\alpha$. This is consistent with the fact that subnet zero does not have a pool associated with it.
+:::
+
+---
 
 
 ## Tempo (k/n)
