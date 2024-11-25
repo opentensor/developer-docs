@@ -61,11 +61,11 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='EVM Testnet with Metamask'
     link='/evm-tutorials/evm-testnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM testnet.' />
-    <!-- <Card
+    <Card
     icon={SiTrpc}
     title='EVM Localnet with Metamask'
     link='/evm-tutorials/evm-localnet-with-metamask-wallet'
-    body='Set up your Metamask wallet for a localnet with EVM feature.' /> -->
+    body='Set up your Metamask wallet for a localnet with EVM feature.' />
     <Card
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'
