@@ -123,7 +123,6 @@ const sidebars = {
         "evm-tutorials/evm-on-subtensor",
         "evm-tutorials/install",
         "evm-tutorials/evm-testnet-with-metamask-wallet",
-        "evm-tutorials/evm-localnet-with-metamask-wallet",
         "evm-tutorials/transfer-from-metamask-to-ss58",
         "evm-tutorials/transfer-between-two-h160-accounts",
         "evm-tutorials/hardhat-config-for-subtensor-evm",

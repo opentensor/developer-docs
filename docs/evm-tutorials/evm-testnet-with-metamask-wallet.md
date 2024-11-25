@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # EVM Testnet with Metamask Wallet
 
-This tutorial is for how to set up your Metamask wallet to use with EVM testnet on Bittensor. You must run either this step or [EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
+This tutorial is for how to set up your Metamask wallet to use with the testnet on Bittensor. You must run this step before you can run other tutorials in this section. 
 
 :::tip blog post: EVM on Bittensor
 If you are new to EVM, read this [simplified blog post explaining this feature](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7).
@@ -14,29 +14,24 @@ If you are new to EVM, read this [simplified blog post explaining this feature](
 
 For all the EVM tutorials we will use the following:
 
-- This **Bittensor EVM Testnet URL:** https://evm-testnet.dev.opentensor.ai or [**EVM Localnet**](./evm-localnet-with-metamask-wallet.md)
+
+- The **Bittensor Testnet URL:** wss://test.finney.opentensor.ai:443
 - **EVM Subtensor Chain ID:** 945 (This is UTF-8 encoding for alpha character)
-- **EVM Testnet Faucet URL:** https://evm-testnet.dev.opentensor.ai/faucet 
-- **Subtensor EVM block explorer URL:** https://evm-testscan.dev.opentensor.ai/
 - **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
- 
+
+:::caution EVM on Mainnet
+
+EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
+::: 
 
 ## Step 1. Create a Metamask wallet 
 
 1. If you don't already have it, [install Metamask wallet](https://metamask.io/download/) browser extension.
 2. Create a new account.
 
-## Step 2. Add EVM Testnet to Metamask
+### Step 2. Add testnet to Metamask
 
-1. Open the [EVM Testnet Faucet page](https://evm-testnet.dev.opentensor.ai/faucet).
-2. Click **Add Chain to Metamask** button at the bottom left. If you have not created a Metamask wallet account this step will prompt you to do so. 
-3. The Metamask wallet will then connect to the Faucet page. 
-4. Next the Wallet will prompt you, **Allow this site to switch the network?**. Click **Switch network** button at the bottom right. 
-5. You may need to go back to the EVM Testnet Faucet page and click the **Connect** button below the Metamask logo in the **Hexadecimal Address (0x...)** field.
-
-### Step 2a. Alternate way of adding EVM Testnet to Metamask
-
-Alternately, you can also add the EVM testnet to Metamask from within the Metamask wallet. Follow the below steps:
+Add the testnet to Metamask from within the Metamask wallet. Follow the below steps:
 
 1. Open Metamask Wallet extension on your browser. Click on the &#8942; (three vertical dots, i.e., vertical ellipsis) at the top right. 
 2. Select **Settings** from the drop-down menu. 
@@ -44,24 +39,17 @@ Alternately, you can also add the EVM testnet to Metamask from within the Metama
 4. Click on **Add a network manually** at the bottom of the networks list.
 5. Enter the following details:
     - **Network name:** "Subtensor"
-    - **New RPC URL:** https://evm-testnet.dev.opentensor.ai
+    - **New RPC URL:** wss://evm.chain.opentensor.ai
     - **Chain ID:** 945 (This is UTF-8 encoding for Alpha character)
     - **Currency symbol:** TAO 
-    - **Block explorer URL:** https://evm-testscan.dev.opentensor.ai/
 6. Click **Save**.
 7. Then click on **Switch network**.
-8. You may need to go back to the EVM Testnet Faucet page and click the **Connect** button below the Metamask logo in the **Hexadecimal Address (0x...)** field.
 
-With the above steps, you have successfully configured your Metamask wallet with the EVM testnet. Next you will request test TAO from the EVM testnet faucet. This test TAO will be directly deposited into your connected Metamask wallet account.
+With the above steps, you have successfully configured your Metamask wallet with the testnet. 
 
-## Step 3. Request 1 TAO
+## Step 3
 
-Next you will request and obtain 1 TAO from the EVM testnet faucet. You will use this TAO to run through the tutorials. 
-
-1. After you see your Metamask wallet account's hexadecimal address in the EVM Testnet Faucet, click **REQUEST 1 TAO** button. Alternately, you can also paste your Metamask wallet account's hexadecimal address in the field above the **REQUEST 1 TAO** button and click it. 
-2. Confirm by checking your Metamask wallet account that you now have 1 TAO in it.
-3. You can also confirm by visiting the [Subtensor EVM block explorer URL](https://evm-testscan.dev.opentensor.ai/) and looking at **Blockchain** > **Transactions** page. You will see a **Coin transfer** transaction showing 1 TAO transfer to your Metamask wallet address. 
-
+Next, request testnet TAO in the Bittensor community Discord. 
 
 ## Step 4. Copy Metamask wallet private key into config
 

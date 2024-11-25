@@ -6,6 +6,41 @@ title: "Chain Release Notes"
 
 The following are the release notes for the subtensor on-chain software.
 
+## Mainnet
+
+`Released 25 November 2024`
+
+### Permissioned EVM feature
+
+- **IMPORTANT**: EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node to deploy your smart contracts on mainnet: `wss://evm.chain.opentensor.ai `to access EVM on the mainnet.
+- **Permissioned deployment**: The EVM layer is now on mainnet. Until further notice, only white-listed parties can deploy a smart contract on mainnet and testnet. When you are ready to deploy, make a request in the evm-bittensor channel of Bittensor Discord: ⁠https://discord.com/channels/799672011265015819/1303125508791341057
+- **Permissionless interaction**: Calling a smart contract is permissionless, either on mainnet or on testnet. Anyone can call a smart contract that was already deployed on mainnet or testnet, and interact with it in a permissionless way.
+- **Documentation**: https://docs.bittensor.com/evm-tutorials/
+
+### Added Rust Lint ForbidKeysRemoveCall
+- A new Rust lint `ForbidKeysRemoveCall` is added to the mainnet. This will ban `Keys::<T>::remove() `call to prevent accidentally breaking the neuron sequence.
+- If you need to replace neurons, use `SubtensorModule::replace_neuron()`.
+
+### Resolved the Child Hotkey Emission Distribution Issues
+Resolved the following child hotkey emission distribution issues:
+- Miner emission was erroneously distributed to the nominators. This is now fixed on both mainnet and testnet. 
+- Child hotkey take distribution was erroneously distributed to the nominators. This is now fixed on both mainnet and testnet.
+
+### Simplified Localnet for Development
+Running a localnet for development is simplified, by providing the `--dev` flag. With this flag, localnet will run with a single authority, hence no need for running scripts and multiple nodes to produce blocks. Now you just run `cargo run -- --dev`.
+
+### Transfer Limit Between EVM and Substrate removed
+- Previously, the EVM integration imposed a maximum transfer limit of 18.4 TAO to avoid precision loss when converting between EVM (18 decimals) and Substrate (9 decimals). This is now fixed on both mainnet and testnet. This resolution removes the transfer limit by truncating excess decimals from the least significant end during the conversion. As a result, large transfers are now allowed.
+- Infinitesimally small amounts of WEI (less than the precision of TAO) are discarded during this process, and a log entry is generated whenever such precision loss occurs.
+
+### Other Changes
+
+- Chainspec files are updated.
+- Mainnet spec version is updated to 210 and the testnet spec version is unchanged.
+- Various CI enhancements that do not impact the runtime.
+
+---
+
 `Released 05 November 2024`
 ## Mainnet
 
