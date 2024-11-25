@@ -38,6 +38,11 @@ Before you proceed to use EVM on subtensor, make a note of the following:
 3. **Permissionless interaction**: However, anyone call a smart contract that was already deployed on subtensor, and interact with it in a permissionless way. 
 4. **1 TAO = 1e18 on subtensor EVM**: While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
 
+:::caution EVM on Mainnet
+
+EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
+::: 
+
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
 <Cards>
@@ -56,11 +61,11 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='EVM Testnet with Metamask'
     link='/evm-tutorials/evm-testnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM testnet.' />
-    <Card
+    <!-- <Card
     icon={SiTrpc}
     title='EVM Localnet with Metamask'
     link='/evm-tutorials/evm-localnet-with-metamask-wallet'
-    body='Set up your Metamask wallet for a localnet with EVM feature.' />
+    body='Set up your Metamask wallet for a localnet with EVM feature.' /> -->
     <Card
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'

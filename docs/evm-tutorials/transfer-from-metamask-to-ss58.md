@@ -14,7 +14,7 @@ In this tutorial you will learn how to transfer TAO from your Metamask wallet to
 ## Prerequisite
 
 :::danger stop, did you set up your Metamask wallet for EVM?
-You must run either [EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run this tutorial. 
+You must run [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run this tutorial. 
 :::
 
 ## Method 1: Transfer using a precompiled contract

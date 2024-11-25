@@ -9,6 +9,10 @@ hide_table_of_contents: false
 
 Key updates to the documentation.
 
+## 25 November 2024
+
+The [release notes for the mainnet updates](./chain-rel-notes.md) is published.
+
 ## 14 November 2024
 
 A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#released-14-november-2024) is added.
