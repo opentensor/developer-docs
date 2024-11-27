@@ -1182,7 +1182,7 @@ th {
 table tr th {
 	color: var(--ifm-table-header-color) !important;
 	font-size: 15px !important;
-	text-align: center !important;
+	/* text-align: center !important; */
 	font-family: TTCommonsPro !important;
 	font-weight: 600 !important;
 }
