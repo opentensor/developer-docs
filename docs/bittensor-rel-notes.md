@@ -6,6 +6,56 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Released 27 November 2024
+
+### Wallet 2.1.2
+
+- Reduced the installed dependencies by ~450MB by removing the requirement for  Ansible. As a result, the install dependencies for BTCLI and Bittensor SDK are also reduced. 
+
+- Release PR: [https://github.com/opentensor/btwallet/pull/74](https://github.com/opentensor/btwallet/pull/74).
+
+### BTCLI 8.4.0
+
+
+- Upgraded WebSockets version to `14.1` or higher. 
+- Resolved an issue where `btcli` did not allow setting a few subnet hyperparameters. Now all existing subnet hyperparameters can be set using `btcli`.
+- Release PR: [https://github.com/opentensor/btcli/pull/254](https://github.com/opentensor/btcli/pull/254).
+
+### Bittensor SDK 8.4.0
+
+- Added the following extrinsic methods:
+  - Subtensor.add_stake
+  - Subtensor.add_stake_multiple
+  - Subtensor.unstake
+  - Subtensor.unstake_multiple
+
+- Added the following Subtensor methods:
+  - Subtensor.get_stake_for_coldkey_and_hotkey
+  - Subtensor.does_hotkey_exist
+  - Subtensor.get_hotkey_owner
+  - Subtensor.tx_rate_limit
+  - Subtensor.get_delegates
+  - Subtensor.is_hotkey_delegate
+
+- Added the extrinsics to the following files:
+  - bittensor/core/extrinsics/staking.py
+  - bittensor/core/extrinsics/unstaking.py
+
+- Several enhancements are made to `AsyncSubtensor`. See the documentation for [Asyncio](./subnets/asyncio.md) for details.
+- Added an ability to send neuron certificate and receive other neuron's certificates. This enhancement will enable setting up mutual TLS between neurons. PR: [https://github.com/opentensor/bittensor/pull/2267](https://github.com/opentensor/bittensor/pull/2267).
+- Enhanced the way Subtensor connects to the websocket server. PR: [https://github.com/opentensor/bittensor/pull/2455](https://github.com/opentensor/bittensor/pull/2455).
+
+- Added a new `BittensorConsole` class. The methods in this class allow displaying output messages to the terminal console without changing the logging level of the main logging (`btlogging`). See the detailed documentation on [Logging](./subnets/bt-logging-levels). 
+
+- Enhanced the reconnection logic. PR: [https://github.com/opentensor/bittensor/pull/2442](https://github.com/opentensor/bittensor/pull/2442).
+- Added support for Python 3.12.
+
+#### Fixed issues
+
+- Fixed an issue where logging was not working when setting weights. Also see  the detailed documentation on [Logging](./subnets/bt-logging-levels). 
+
+---
+
 ## Released 14 November 2024
 `Hotfix release`
 
@@ -19,6 +69,8 @@ See the details of this hotfix release below:
   - get_prometheus_info
   - get_delegate_by_hotkey
   - get_commitment
+
+---
 
 ## Released 13 November 2024
 
