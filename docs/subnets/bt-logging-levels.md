@@ -154,9 +154,9 @@ Emojis can be included in log messages for better visual cues. Certain text patt
 
 |Text|Emoji|
 |---|---|
-|:white_heavy_check_mark:|✅|
-|:cross_mark:|❌|
-|:satellite:|🛰️|
-|:warning:|⚠️|
-|:arrow_right:|➡️|
-|:hourglass:|⏳|
+|`:white_heavy_check_mark:`|✅|
+|`:cross_mark:`|❌|
+|`:satellite:`|🛰️|
+|`:warning:`|⚠️|
+|`:arrow_right:`|➡️|
+|`:hourglass:`|⏳|
