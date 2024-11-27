@@ -181,6 +181,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -1002,7 +1001,7 @@ signature using the sender’s public key.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.serve">
-<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.serve" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.serve" title="Link to this definition">#</a></dt>
 <dd><p>Serves the Axon on the specified subtensor connection using the configured wallet. This method
 registers the Axon with a specific subnet within the Bittensor network, identified by the <code class="docutils literal notranslate"><span class="pre">netuid</span></code>.
 It links the Axon to the broader network, allowing it to participate in the decentralized exchange
@@ -1012,6 +1011,7 @@ of information.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet to register on. This ID is essential for the Axon to correctly position itself within the Bittensor network topology.</p></li>
 <li><p><strong>subtensor</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a><em>]</em>) – The subtensor connection to use for serving. If not provided, a new connection is established based on default configurations.</p></li>
+<li><p><strong>certificate</strong> (<em>Optional</em><em>[</em><em>bittensor.utils.Certificate</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

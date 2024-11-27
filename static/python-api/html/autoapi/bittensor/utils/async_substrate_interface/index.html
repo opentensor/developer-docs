@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="bittensor.utils.axon_utils" href="../axon_utils/index.html" />
-    <link rel="prev" title="bittensor.utils.mock.subtensor_mock" href="../mock/subtensor_mock/index.html" />
+    <link rel="prev" title="bittensor.utils.registration.register_cuda" href="../registration/register_cuda/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,6 +181,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -421,6 +420,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__aenter__"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__aenter__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__aexit__"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__aexit__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__chain"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__chain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata_cache"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__metadata_cache</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface._forgettable_task"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface._forgettable_task</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface._get_block_handler"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface._get_block_handler()</span></code></a></li>
@@ -464,7 +464,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.make_payload"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.make_payload()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata_version_hex"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.metadata_version_hex</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.options"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.options</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query_map"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query_map()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query_multi"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query_multi()</span></code></a></li>
@@ -482,6 +481,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.transaction_version"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.transaction_version</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.type_registry"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.type_registry</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.type_registry_preset"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.type_registry_preset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.wait_for_block"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.wait_for_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.ws"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.ws</span></code></a></li>
 </ul>
 </li>
@@ -554,6 +554,7 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.ResultHandler"><code class="docutils literal notranslate"><span class="pre">ResultHandler</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime"><code class="docutils literal notranslate"><span class="pre">Runtime</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.__str__"><code class="docutils literal notranslate"><span class="pre">Runtime.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.apply_type_registry_presets"><code class="docutils literal notranslate"><span class="pre">Runtime.apply_type_registry_presets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.block_hash"><code class="docutils literal notranslate"><span class="pre">Runtime.block_hash</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.block_id"><code class="docutils literal notranslate"><span class="pre">Runtime.block_id</span></code></a></li>
@@ -582,7 +583,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket.__aenter__"><code class="docutils literal notranslate"><span class="pre">Websocket.__aenter__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket.__aexit__"><code class="docutils literal notranslate"><span class="pre">Websocket.__aexit__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._attempts"><code class="docutils literal notranslate"><span class="pre">Websocket._attempts</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._connect"><code class="docutils literal notranslate"><span class="pre">Websocket._connect()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._exit_task"><code class="docutils literal notranslate"><span class="pre">Websocket._exit_task</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._exit_with_timer"><code class="docutils literal notranslate"><span class="pre">Websocket._exit_with_timer()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._in_use"><code class="docutils literal notranslate"><span class="pre">Websocket._in_use</span></code></a></li>
@@ -621,6 +621,9 @@ document.write(`
                   
   <section id="module-bittensor.utils.async_substrate_interface">
 <span id="bittensor-utils-async-substrate-interface"></span><h1>bittensor.utils.async_substrate_interface<a class="headerlink" href="#module-bittensor.utils.async_substrate_interface" title="Link to this heading">#</a></h1>
+<p>This library comprises the asyncio-compatible version of the subtensor interface commands we use in bittensor, as
+well as its helper functions and classes. The docstring for the <cite>AsyncSubstrateInterface</cite> class goes more in-depth in
+regard to how to instantiate and use it.</p>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
@@ -648,7 +651,7 @@ document.write(`
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AsyncSubstrateInterface</span></code></a></p></td>
-<td><p>The asyncio-compatible version of the subtensor interface commands we use in bittensor</p></td>
+<td><p>The asyncio-compatible version of the subtensor interface commands we use in bittensor. It is important to</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt" title="bittensor.utils.async_substrate_interface.ExtrinsicReceipt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExtrinsicReceipt</span></code></a></p></td>
 <td><p>Object containing information of submitted extrinsic. Block hash where extrinsic is included is required</p></td>
@@ -690,11 +693,20 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.async_substrate_interface.</span></span><span class="sig-name descname"><span class="pre">AsyncSubstrateInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain_endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_remote_preset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_discover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_reconnect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ss58_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="Link to this definition">#</a></dt>
-<dd><p>The asyncio-compatible version of the subtensor interface commands we use in bittensor</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.async_substrate_interface.</span></span><span class="sig-name descname"><span class="pre">AsyncSubstrateInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain_endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_remote_preset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_discover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ss58_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="Link to this definition">#</a></dt>
+<dd><p>The asyncio-compatible version of the subtensor interface commands we use in bittensor. It is important to
+initialise this class asynchronously in an async context manager using <cite>async with AsyncSubstrateInterface()</cite>.
+Otherwise, some (most) methods will not work properly, and may raise exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>chain_endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chain_endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the URI of the chain to connect to</p></li>
+<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to pull the preset from GitHub</p></li>
+<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to automatically pull the presets based on the chain name and type registry</p></li>
+<li><p><strong>ss58_format</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – the specific SS58 format to use</p></li>
+<li><p><strong>type_registry</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>]</em>) – a dict of custom types</p></li>
+<li><p><strong>chain_name</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the name of the chain (the result of the rpc request for “system_chain”)</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">
@@ -710,6 +722,11 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__chain">
 <span class="sig-name descname"><span class="pre">__chain</span></span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__chain" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata">
+<span class="sig-name descname"><span class="pre">__metadata</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -733,7 +750,7 @@ document.write(`
 <li><p><strong>include_author</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>header_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>finalized_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>subscription_handler</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>)</p></li>
+<li><p><strong>subscription_handler</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>]</em><em>, </em><em>Awaitable</em><em>[</em><em>Any</em><em>]</em><em>]</em><em>]</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -895,9 +912,9 @@ automatically at moment of <cite>block_hash</cite>, or chain tip if omitted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>type_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – str Name of SCALE type to create</p></li>
-<li><p><strong>data</strong> (<em>Optional</em><em>[</em><em>scalecodec.base.ScaleBytes</em><em>]</em>) – ScaleBytes Optional ScaleBytes to decode</p></li>
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Optional block hash for moment of decoding, when omitted the chain tip will be used</p></li>
+<li><p><strong>type_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of SCALE type to create</p></li>
+<li><p><strong>data</strong> (<em>Optional</em><em>[</em><em>scalecodec.base.ScaleBytes</em><em>]</em>) – ScaleBytes: ScaleBytes to decode</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – block hash for moment of decoding, when omitted the chain tip will be used</p></li>
 <li><p><strong>kwargs</strong> – keyword args for the Scale Type constructor</p></li>
 </ul>
 </dd>
@@ -940,50 +957,42 @@ automatically at moment of <cite>block_hash</cite>, or chain tip if omitted.</p>
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.create_storage_key">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_storage_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.create_storage_key" title="Link to this definition">#</a></dt>
 <dd><p>Create a <cite>StorageKey</cite> instance providing storage function details. See <cite>subscribe_storage()</cite>.</p>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
-<p>pallet: name of pallet
-storage_function: name of storage function
-params: Optional list of parameters in case of a Mapped storage function</p>
-</section>
-<section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h3>
-<p>StorageKey</p>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pallet</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-<li><p><strong>storage_function</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-<li><p><strong>params</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>]</em>)</p></li>
-<li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>pallet</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – name of pallet</p></li>
+<li><p><strong>storage_function</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – name of storage function</p></li>
+<li><p><strong>params</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>]</em>) – list of parameters in case of a Mapped storage function</p></li>
+<li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the hash of the blockchain block whose runtime to use</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>substrateinterface.storage.StorageKey</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>StorageKey</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>substrateinterface.storage.StorageKey</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.decode_scale">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_scale_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.decode_scale" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.decode_scale" title="Link to this definition">#</a></dt>
 <dd><p>Helper function to decode arbitrary SCALE-bytes (e.g. 0x02000000) according to given RUST type_string
 (e.g. BlockNumber). The relevant versioning information of the type (if defined) will be applied if block_hash
 is set</p>
-<section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>type_string
-scale_bytes
-block_hash
-return_scale_obj: if True the SCALE object itself is returned, otherwise the serialized dict value of the object</p>
-</section>
-<section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scale_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type_string</strong> – the type string of the SCALE object for decoding</p></li>
+<li><p><strong>scale_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>) – the SCALE-bytes representation of the SCALE object to decode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Decoded object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1030,30 +1039,21 @@ return_scale_obj: if True the SCALE object itself is returned, otherwise the ser
 <dd><p>Retrieves a block and decodes its containing extrinsics and log digest items. If <cite>block_hash</cite> and <cite>block_number</cite>
 is omitted the chain tip will be retrieve, or the finalized head if <cite>finalized_only</cite> is set to true.</p>
 <p>Either <cite>block_hash</cite> or <cite>block_number</cite> should be set, or both omitted.</p>
-<section id="id3">
-<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>block_hash: the hash of the block to be retrieved
-block_number: the block number to retrieved
-ignore_decoding_errors: When set this will catch all decoding errors, set the item to None and continue decoding
-include_author: This will retrieve the block author from the validator set and add to the result
-finalized_only: when no <cite>block_hash</cite> or <cite>block_number</cite> is set, this will retrieve the finalized head</p>
-</section>
-<section id="id4">
-<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>A dict containing the extrinsic and digest logs data</p>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>block_number</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
-<li><p><strong>ignore_decoding_errors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>include_author</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>finalized_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the block to be retrieved</p></li>
+<li><p><strong>block_number</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – the block number to retrieved</p></li>
+<li><p><strong>ignore_decoding_errors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – When set this will catch all decoding errors, set the item to None and continue decoding</p></li>
+<li><p><strong>include_author</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – This will retrieve the block author from the validator set and add to the result</p></li>
+<li><p><strong>finalized_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – when no <cite>block_hash</cite> or <cite>block_number</cite> is set, this will retrieve the finalized head</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>]</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dict containing the extrinsic and digest logs data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1075,30 +1075,25 @@ finalized_only: when no <cite>block_hash</cite> or <cite>block_number</cite> is 
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_block_metadata">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_block_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_block_metadata" title="Link to this definition">#</a></dt>
 <dd><p>A pass-though to existing JSONRPC method <cite>state_getMetadata</cite>.</p>
-<section id="id5">
-<h3>Parameters<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>block_hash
-decode: True for decoded version</p>
-</section>
-<section id="id6">
-<h3>Returns<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>decode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the block to be queried against</p></li>
+<li><p><strong>decode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to decode the metadata or present it raw</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Union[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>, scalecodec.base.ScaleType]</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>metadata, either as a dict (not decoded) or ScaleType (decoded)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>, scalecodec.base.ScaleType]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_block_number">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_block_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_block_number" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_block_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_block_number" title="Link to this definition">#</a></dt>
 <dd><p>Async version of <cite>substrateinterface.base.get_block_number</cite> method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1128,8 +1123,8 @@ decode: True for decoded version</p>
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_chain_finalised_head">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_chain_finalised_head</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_chain_finalised_head" title="Link to this definition">#</a></dt>
 <dd><p>A pass-though to existing JSONRPC method <cite>chain_getFinalizedHead</cite></p>
-<section id="id7">
-<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h3>
 </section>
 </dd></dl>
 
@@ -1148,37 +1143,20 @@ decode: True for decoded version</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_constant" title="Link to this definition">#</a></dt>
 <dd><p>Returns the decoded <cite>ScaleType</cite> object of the constant for given module name, call function name and block_hash
 (or chaintip if block_hash is omitted)</p>
-<section id="id8">
-<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">param module_name<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Name of the module to query</p>
-</dd>
-<dt class="field-even">param constant_name<span class="colon">:</span></dt>
-<dd class="field-even"><p>Name of the constant to query</p>
-</dd>
-<dt class="field-odd">param block_hash<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Hash of the block at which to make the runtime API call</p>
-</dd>
-<dt class="field-even">param reuse_block_hash<span class="colon">:</span></dt>
-<dd class="field-even"><p>Reuse last-used block hash if set to true</p>
-</dd>
-<dt class="field-odd">return<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ScaleType from the runtime call</p>
-</dd>
-</dl>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>module_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-<li><p><strong>constant_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>reuse_block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>module_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the module to query</p></li>
+<li><p><strong>constant_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the constant to query</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Hash of the block at which to make the runtime API call</p></li>
+<li><p><strong>reuse_block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Reuse last-used block hash if set to true</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>scalecodec.base.ScaleType</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ScaleType from the runtime call</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[scalecodec.base.ScaleType]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1187,20 +1165,15 @@ decode: True for decoded version</p>
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_events">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_events" title="Link to this definition">#</a></dt>
 <dd><p>Convenience method to get events for a certain block (storage call for module ‘System’ and function ‘Events’)</p>
-<section id="id9">
-<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>block_hash</p>
-</section>
-<section id="id10">
-<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>list</p>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the block to be retrieved</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of events</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1232,41 +1205,38 @@ is omitted)</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_metadata_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_metadata_constant" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the details of a constant for given module name, call function name and block_hash
 (or chaintip if block_hash is omitted)</p>
-<section id="id11">
-<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>module_name
-constant_name
-block_hash</p>
-</section>
-<section id="id12">
-<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p>MetadataModuleConstants</p>
-</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module_name</strong> – name of the module you are querying</p></li>
+<li><p><strong>constant_name</strong> – name of the constant you are querying</p></li>
+<li><p><strong>block_hash</strong> – hash of the block at which to make the runtime API call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>MetadataModuleConstants</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_payment_info">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_payment_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">call</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keypair</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.get_payment_info" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves fee estimation via RPC for given extrinsic</p>
-<section id="id13">
-<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p>call: Call object to estimate fees for
-keypair: Keypair of the sender, does not have to include private key because no valid signature is required</p>
-</section>
-<section id="id14">
-<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
-<p>Dict with payment info</p>
-<p>E.g. <cite>{‘class’: ‘normal’, ‘partialFee’: 151000000, ‘weight’: {‘ref_time’: 143322000}}</cite></p>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>call</strong> (<em>scalecodec.types.GenericCall</em>)</p></li>
-<li><p><strong>keypair</strong> (<em>bittensor_wallet.Keypair</em>)</p></li>
+<li><p><strong>call</strong> (<em>scalecodec.types.GenericCall</em>) – Call object to estimate fees for</p></li>
+<li><p><strong>keypair</strong> (<em>bittensor_wallet.Keypair</em>) – Keypair of the sender, does not have to include private key because no valid signature is
+required</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, Any]</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict with payment info
+E.g. <cite>{‘class’: ‘normal’, ‘partialFee’: 151000000, ‘weight’: {‘ref_time’: 143322000}}</cite></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1288,8 +1258,8 @@ keypair: Keypair of the sender, does not have to include private key because no 
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.implements_scaleinfo">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">implements_scaleinfo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.implements_scaleinfo" title="Link to this definition">#</a></dt>
 <dd><p>Returns True if current runtime implementation a <cite>PortableRegistry</cite> (<cite>MetadataV14</cite> and higher)</p>
-<section id="id15">
-<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>Returns<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>bool</p>
 </section>
 <dl class="field-list simple">
@@ -1366,19 +1336,14 @@ In the future there could be support for caching backends like Redis to make thi
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata_version_hex">
 <span class="sig-name descname"><span class="pre">metadata_version_hex</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'0x0f000000'</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata_version_hex" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.options">
-<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.options" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1398,7 +1363,7 @@ you should use <code class="docutils literal notranslate"><span class="pre">self
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Union[scalecodec.base.ScaleType]</p>
+<dd class="field-even"><p>scalecodec.base.ScaleType</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1409,13 +1374,13 @@ you should use <code class="docutils literal notranslate"><span class="pre">self
 <dd><p>Iterates over all key-pairs located at the given module and storage_function. The storage
 item must be a map.</p>
 <p>Example:</p>
-<p><a href="#id16"><span class="problematic" id="id17">``</span></a>`
+<p><a href="#id2"><span class="problematic" id="id3">``</span></a>`
 result = await substrate.query_map(‘System’, ‘Account’, max_results=100)</p>
 <dl class="simple">
 <dt>async for account, account_info in result:</dt><dd><p>print(f”Free balance of account ‘{account.value}’: {account_info.value[‘data’][‘free’]}”)</p>
 </dd>
 </dl>
-<p><a href="#id18"><span class="problematic" id="id19">``</span></a><a href="#id20"><span class="problematic" id="id21">`</span></a></p>
+<p><a href="#id4"><span class="problematic" id="id5">``</span></a><a href="#id6"><span class="problematic" id="id7">`</span></a></p>
 <p>Note: it is important that you do not use <cite>for x in result.records</cite>, as this will sidestep possible
 pagination. You must do <cite>async for x in result</cite>.</p>
 <dl class="field-list simple">
@@ -1449,7 +1414,7 @@ if supplying a block_hash</p></li>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_multi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query_multi" title="Link to this definition">#</a></dt>
 <dd><p>Query multiple storage keys in one request.</p>
 <p>Example:</p>
-<p><a href="#id22"><span class="problematic" id="id23">``</span></a>`
+<p><a href="#id8"><span class="problematic" id="id9">``</span></a>`
 storage_keys = [</p>
 <blockquote>
 <div><dl class="simple">
@@ -1465,25 +1430,19 @@ substrate.create_storage_key(</p>
 </div></blockquote>
 <p>]</p>
 <p>result = substrate.query_multi(storage_keys)
-<a href="#id24"><span class="problematic" id="id25">``</span></a><a href="#id26"><span class="problematic" id="id27">`</span></a></p>
-<section id="id28">
-<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
-<p>storage_keys: list of StorageKey objects
-block_hash: Optional block_hash of state snapshot</p>
-</section>
-<section id="id29">
-<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
-<p>list of <cite>(storage_key, scale_obj)</cite> tuples</p>
-</section>
+<a href="#id10"><span class="problematic" id="id11">``</span></a><a href="#id12"><span class="problematic" id="id13">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>storage_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>substrateinterface.storage.StorageKey</em><em>]</em>)</p></li>
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>storage_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>substrateinterface.storage.StorageKey</em><em>]</em>) – list of StorageKey objects</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – hash of the block to query against</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of <cite>(storage_key, scale_obj)</cite> tuples</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1516,21 +1475,15 @@ block_hash: Optional block_hash of state snapshot</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.reload_type_registry">
 <span class="sig-name descname"><span class="pre">reload_type_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_remote_preset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_discover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.reload_type_registry" title="Link to this definition">#</a></dt>
-<dd><p>Reload type registry and preset used to instantiate the SubtrateInterface object. Useful to periodically apply
-changes in type definitions when a runtime upgrade occurred</p>
-<section id="id30">
-<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
-<p>use_remote_preset: When True preset is downloaded from Github master, otherwise use files from local installed scalecodec package
-auto_discover</p>
-</section>
-<section id="id31">
-<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
-</section>
+<dd><p>Reload type registry and preset used to instantiate the <cite>AsyncSubstrateInterface</cite> object. Useful to
+periodically apply changes in type definitions when a runtime upgrade occurred</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – When True preset is downloaded from Github master,
+otherwise use files from local installed scalecodec package</p></li>
+<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to automatically discover the type_registry
+presets based on the chain name and typer registry</p></li>
 </ul>
 </dd>
 </dl>
@@ -1539,16 +1492,16 @@ auto_discover</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.rpc_request">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rpc_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.rpc_request" title="Link to this definition">#</a></dt>
-<dd><p>Makes an RPC request to the subtensor. Use this only if <code class="docutils literal notranslate"><span class="pre">self.query</span></code> and <code class="docutils literal notranslate"><span class="pre">self.query_multiple</span></code> and
-<code class="docutils literal notranslate"><span class="pre">self.query_map</span></code> do not meet your needs.</p>
+<dd><p>Makes an RPC request to the subtensor. Use this only if <cite>self.query`</cite> and <cite>self.query_multiple</cite> and
+<cite>self.query_map</cite> do not meet your needs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – str the method in the RPC request</p></li>
 <li><p><strong>params</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>]</em>) – list of the params in the RPC request</p></li>
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – optional str, the hash of the block — only supply this if not supplying the block
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the block — only supply this if not supplying the block
 hash in the params, and not reusing the block hash</p></li>
-<li><p><strong>reuse_block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – optional bool, whether to reuse the block hash in the params — only mark as True
+<li><p><strong>reuse_block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to reuse the block hash in the params — only mark as True
 if not supplying the block hash in the params, or via the <cite>block_hash</cite> parameter</p></li>
 </ul>
 </dd>
@@ -1616,26 +1569,19 @@ if not supplying the block hash in the params, or via the <cite>block_hash</cite
 triggered events</p>
 </dd>
 </dl>
-<section id="id32">
-<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
-<p>extrinsic: Extrinsic The extrinsic to be sent to the network
-wait_for_inclusion: wait until extrinsic is included in a block (only works for websocket connections)
-wait_for_finalization: wait until extrinsic is finalized (only works for websocket connections)</p>
-</section>
-<section id="id33">
-<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
-<p>ExtrinsicReceipt</p>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>extrinsic</strong> (<em>scalecodec.GenericExtrinsic</em>)</p></li>
-<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>extrinsic</strong> (<em>scalecodec.GenericExtrinsic</em>) – Extrinsic The extrinsic to be sent to the network</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – wait until extrinsic is included in a block (only works for websocket connections)</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – wait until extrinsic is finalized (only works for websocket connections)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt" title="bittensor.utils.async_substrate_interface.ExtrinsicReceipt">ExtrinsicReceipt</a></p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ExtrinsicReceipt object of your submitted extrinsic</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt" title="bittensor.utils.async_substrate_interface.ExtrinsicReceipt">ExtrinsicReceipt</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1655,6 +1601,36 @@ wait_for_finalization: wait until extrinsic is finalized (only works for websock
 <span class="sig-name descname"><span class="pre">type_registry_preset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.type_registry_preset" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.wait_for_block">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wait_for_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.wait_for_block" title="Link to this definition">#</a></dt>
+<dd><p>Executes the result_handler when the chain has reached the block specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – block number</p></li>
+<li><p><strong>result_handler</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>]</em><em>, </em><em>Awaitable</em><em>[</em><em>Any</em><em>]</em><em>]</em>) – coroutine executed upon reaching the block number. This can be basically anything, but
+must accept one single arg, a dict with the block data; whether you use this data or not is entirely
+up to you.</p></li>
+<li><p><strong>task_return</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – True to immediately return the result of wait_for_block as an asyncio Task, False to wait
+for the block to be reached, and return the result of the result handler.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Either an asyncio.Task (which contains the running subscription, and whose <cite>result()</cite> will contain the</dt><dd><p>return of the result_handler), or the result itself, depending on <cite>task_return</cite> flag.
+Note that if your result_handler returns <cite>None</cite>, this method will return <cite>True</cite>, otherwise
+the return will be the result of your result_handler.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[<a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.Task" title="(in Python v3.13)">asyncio.Task</a>, Union[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.ws">
 <span class="sig-name descname"><span class="pre">ws</span></span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.ws" title="Link to this definition">#</a></dt>
@@ -1669,12 +1645,18 @@ wait_for_finalization: wait until extrinsic is finalized (only works for websock
 when retrieving triggered events or determine if extrinsic was successful</p>
 <p>Object containing information of submitted extrinsic. Block hash where extrinsic is included is required
 when retrieving triggered events or determine if extrinsic was successful</p>
-<section id="id34">
-<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
-<p>substrate
-extrinsic_hash
-block_hash
-finalized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>substrate</strong> (<a class="reference internal" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface"><em>AsyncSubstrateInterface</em></a>) – the AsyncSubstrateInterface instance</p></li>
+<li><p><strong>extrinsic_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the extrinsic</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the block on which this extrinsic exists</p></li>
+<li><p><strong>finalized</strong> – whether the extrinsic is finalized</p></li>
+<li><p><strong>block_number</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+<li><p><strong>extrinsic_idx</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.ExtrinsicReceipt.__error_message">
 <span class="sig-name descname"><span class="pre">__error_message</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.__error_message" title="Link to this definition">#</a></dt>
@@ -1752,8 +1734,8 @@ finalized</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">error_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.error_message" title="Link to this definition">#</a></dt>
 <dd><p>Returns the error message if the extrinsic failed in format e.g.:</p>
 <p><cite>{‘type’: ‘System’, ‘name’: ‘BadOrigin’, ‘docs’: ‘Bad origin’}</cite></p>
-<section id="id35">
-<h4>Returns<a class="headerlink" href="#id35" title="Link to this heading">#</a></h4>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>dict</p>
 </section>
 <dl class="field-list simple">
@@ -1772,8 +1754,8 @@ finalized</p>
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.ExtrinsicReceipt.extrinsic_idx">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extrinsic_idx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.extrinsic_idx" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the index of this extrinsic in containing block</p>
-<section id="id36">
-<h4>Returns<a class="headerlink" href="#id36" title="Link to this heading">#</a></h4>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>int</p>
 </section>
 <dl class="field-list simple">
@@ -1812,8 +1794,8 @@ str</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.is_success" title="Link to this definition">#</a></dt>
 <dd><p>Returns <cite>True</cite> if <cite>ExtrinsicSuccess</cite> event is triggered, <cite>False</cite> in case of <cite>ExtrinsicFailed</cite>
 In case of False <cite>error_message</cite> will contain more details about the error</p>
-<section id="id37">
-<h4>Returns<a class="headerlink" href="#id37" title="Link to this heading">#</a></h4>
+<section id="id16">
+<h3>Returns<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>bool</p>
 </section>
 <dl class="field-list simple">
@@ -1843,8 +1825,8 @@ In case of False <cite>error_message</cite> will contain more details about the 
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_fee_amount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.total_fee_amount" title="Link to this definition">#</a></dt>
 <dd><p>Contains the total fee costs deducted when executing this extrinsic. This includes fee for the validator (
 (<cite>Balances.Deposit</cite> event) and the fee deposited for the treasury (<cite>Treasury.Deposit</cite> event)</p>
-<section id="id38">
-<h4>Returns<a class="headerlink" href="#id38" title="Link to this heading">#</a></h4>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>int</p>
 </section>
 <dl class="field-list simple">
@@ -1859,8 +1841,8 @@ In case of False <cite>error_message</cite> will contain more details about the 
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">triggered_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.triggered_events" title="Link to this definition">#</a></dt>
 <dd><p>Gets triggered events for submitted extrinsic. block_hash where extrinsic is included is required, manually
 set block_hash or use <cite>wait_for_inclusion</cite> when submitting extrinsic</p>
-<section id="id39">
-<h4>Returns<a class="headerlink" href="#id39" title="Link to this heading">#</a></h4>
+<section id="id18">
+<h3>Returns<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>list</p>
 </section>
 <dl class="field-list simple">
@@ -1874,8 +1856,8 @@ set block_hash or use <cite>wait_for_inclusion</cite> when submitting extrinsic<
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.ExtrinsicReceipt.weight">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.ExtrinsicReceipt.weight" title="Link to this definition">#</a></dt>
 <dd><p>Contains the actual weight when executing this extrinsic</p>
-<section id="id40">
-<h4>Returns<a class="headerlink" href="#id40" title="Link to this heading">#</a></h4>
+<section id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>int (WeightV1) or dict (WeightV2)</p>
 </section>
 <dl class="field-list simple">
@@ -1885,18 +1867,6 @@ set block_hash or use <cite>wait_for_inclusion</cite> when submitting extrinsic<
 </dl>
 </dd></dl>
 
-</section>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>substrate</strong> (<a class="reference internal" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface"><em>AsyncSubstrateInterface</em></a>)</p></li>
-<li><p><strong>extrinsic_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>block_number</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
-<li><p><strong>extrinsic_idx</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
-</ul>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -2136,16 +2106,19 @@ request_id.</p>
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Runtime">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.async_substrate_interface.</span></span><span class="sig-name descname"><span class="pre">Runtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Runtime" title="Link to this definition">#</a></dt>
 <dd><dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Runtime.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Runtime.__str__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Runtime.apply_type_registry_presets">
 <span class="sig-name descname"><span class="pre">apply_type_registry_presets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_remote_preset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_discover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Runtime.apply_type_registry_presets" title="Link to this definition">#</a></dt>
-<dd><p>Applies type registry presets to the runtime
-:param use_remote_preset: bool, whether to use presets from remote
-:param auto_discover: bool, whether to use presets from local installed scalecodec package</p>
+<dd><p>Applies type registry presets to the runtime</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to use presets from remote</p></li>
+<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – whether to use presets from local installed scalecodec package</p></li>
 </ul>
 </dd>
 </dl>
@@ -2197,22 +2170,13 @@ request_id.</p>
 <span class="sig-name descname"><span class="pre">reload_type_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_remote_preset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_discover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Runtime.reload_type_registry" title="Link to this definition">#</a></dt>
 <dd><p>Reload type registry and preset used to instantiate the SubstrateInterface object. Useful to periodically apply
 changes in type definitions when a runtime upgrade occurred</p>
-<section id="id41">
-<h3>Parameters<a class="headerlink" href="#id41" title="Link to this heading">#</a></h3>
-<dl class="simple">
-<dt>use_remote_preset: When True preset is downloaded from Github master, otherwise use files from local installed</dt><dd><p>scalecodec package</p>
-</dd>
-</dl>
-<p>auto_discover</p>
-</section>
-<section id="id42">
-<h3>Returns<a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
-</section>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>use_remote_preset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – When True preset is downloaded from Github master, otherwise use files from local installed
+scalecodec package</p></li>
+<li><p><strong>auto_discover</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to automatically discover the type registry presets based on the chain name and the
+type registry</p></li>
 </ul>
 </dd>
 </dl>
@@ -2327,11 +2291,6 @@ calls.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Websocket._attempts">
 <span class="sig-name descname"><span class="pre">_attempts</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Websocket._attempts" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Websocket._connect">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Websocket._connect" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2454,7 +2413,7 @@ for reuse of the websocket connection.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.async_substrate_interface.Websocket.ws">
-<span class="sig-name descname"><span class="pre">ws</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">websockets.WebSocketClientProtocol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Websocket.ws" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ws</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">websockets.asyncio.client.ClientConnection</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.async_substrate_interface.Websocket.ws" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2484,12 +2443,12 @@ for reuse of the websocket connection.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../mock/subtensor_mock/index.html"
+       href="../registration/register_cuda/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">bittensor.utils.mock.subtensor_mock</p>
+        <p class="prev-next-title">bittensor.utils.registration.register_cuda</p>
       </div>
     </a>
     <a class="right-next"
@@ -2526,6 +2485,7 @@ for reuse of the websocket connection.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__aenter__"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__aenter__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__aexit__"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__aexit__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__chain"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__chain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.__metadata_cache"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.__metadata_cache</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface._forgettable_task"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface._forgettable_task</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface._get_block_handler"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface._get_block_handler()</span></code></a></li>
@@ -2569,7 +2529,6 @@ for reuse of the websocket connection.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.make_payload"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.make_payload()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.metadata_version_hex"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.metadata_version_hex</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.options"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.options</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query_map"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query_map()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.query_multi"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.query_multi()</span></code></a></li>
@@ -2587,6 +2546,7 @@ for reuse of the websocket connection.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.transaction_version"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.transaction_version</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.type_registry"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.type_registry</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.type_registry_preset"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.type_registry_preset</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.wait_for_block"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.wait_for_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface.ws"><code class="docutils literal notranslate"><span class="pre">AsyncSubstrateInterface.ws</span></code></a></li>
 </ul>
 </li>
@@ -2659,6 +2619,7 @@ for reuse of the websocket connection.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.ResultHandler"><code class="docutils literal notranslate"><span class="pre">ResultHandler</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime"><code class="docutils literal notranslate"><span class="pre">Runtime</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.__str__"><code class="docutils literal notranslate"><span class="pre">Runtime.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.apply_type_registry_presets"><code class="docutils literal notranslate"><span class="pre">Runtime.apply_type_registry_presets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.block_hash"><code class="docutils literal notranslate"><span class="pre">Runtime.block_hash</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Runtime.block_id"><code class="docutils literal notranslate"><span class="pre">Runtime.block_id</span></code></a></li>
@@ -2687,7 +2648,6 @@ for reuse of the websocket connection.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket.__aenter__"><code class="docutils literal notranslate"><span class="pre">Websocket.__aenter__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket.__aexit__"><code class="docutils literal notranslate"><span class="pre">Websocket.__aexit__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._attempts"><code class="docutils literal notranslate"><span class="pre">Websocket._attempts</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._connect"><code class="docutils literal notranslate"><span class="pre">Websocket._connect()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._exit_task"><code class="docutils literal notranslate"><span class="pre">Websocket._exit_task</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._exit_with_timer"><code class="docutils literal notranslate"><span class="pre">Websocket._exit_with_timer()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.async_substrate_interface.Websocket._in_use"><code class="docutils literal notranslate"><span class="pre">Websocket._in_use</span></code></a></li>

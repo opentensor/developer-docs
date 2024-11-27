@@ -181,6 +181,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -415,6 +414,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.certificate"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.certificate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.netuid</span></code></a></li>
@@ -463,10 +463,15 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.types.AxonServeCallParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.types.</span></span><span class="sig-name descname"><span class="pre">AxonServeCallParams</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/types.html#AxonServeCallParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.types.AxonServeCallParams" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.types.</span></span><span class="sig-name descname"><span class="pre">AxonServeCallParams</span></span><a class="headerlink" href="#bittensor.core.types.AxonServeCallParams" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
 <p>Axon serve chain call parameters.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.types.AxonServeCallParams.certificate">
+<span class="sig-name descname"><span class="pre">certificate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.utils.Certificate</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.types.AxonServeCallParams.certificate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.types.AxonServeCallParams.ip">
 <span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.types.AxonServeCallParams.ip" title="Link to this definition">#</a></dt>
@@ -496,7 +501,7 @@ document.write(`
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.types.PrometheusServeCallParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.types.</span></span><span class="sig-name descname"><span class="pre">PrometheusServeCallParams</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/types.html#PrometheusServeCallParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.types.PrometheusServeCallParams" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.types.</span></span><span class="sig-name descname"><span class="pre">PrometheusServeCallParams</span></span><a class="headerlink" href="#bittensor.core.types.PrometheusServeCallParams" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
 <p>Prometheus serve chain call parameters.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
@@ -578,6 +583,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.certificate"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.certificate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.types.AxonServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.netuid</span></code></a></li>

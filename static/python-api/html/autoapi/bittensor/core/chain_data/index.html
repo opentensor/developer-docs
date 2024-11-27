@@ -181,6 +181,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -477,6 +476,11 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.IPInfo.to_parameter_dict"><code class="docutils literal notranslate"><span class="pre">IPInfo.to_parameter_dict()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate.certificate"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate.certificate</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate.from_vec_u8()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.active"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.active</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
@@ -492,6 +496,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
@@ -653,6 +658,7 @@ information, SCALE encoding/decoding, and custom RPC type registry.</p>
 <li class="toctree-l1"><a class="reference internal" href="delegate_info/index.html">bittensor.core.chain_data.delegate_info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delegate_info_lite/index.html">bittensor.core.chain_data.delegate_info_lite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_info/index.html">bittensor.core.chain_data.ip_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neuron_certificate/index.html">bittensor.core.chain_data.neuron_certificate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="neuron_info/index.html">bittensor.core.chain_data.neuron_info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="neuron_info_lite/index.html">bittensor.core.chain_data.neuron_info_lite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prometheus_info/index.html">bittensor.core.chain_data.prometheus_info</a></li>
@@ -695,28 +701,31 @@ information, SCALE encoding/decoding, and custom RPC type registry.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.IPInfo" title="bittensor.core.chain_data.IPInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPInfo</span></code></a></p></td>
 <td><p>Dataclass representing IP information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronInfo" title="bittensor.core.chain_data.NeuronInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronCertificate" title="bittensor.core.chain_data.NeuronCertificate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuronCertificate</span></code></a></p></td>
+<td><p>Dataclass for neuron certificate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronInfo" title="bittensor.core.chain_data.NeuronInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a></p></td>
 <td><p>Represents the metadata of a neuron including keys, UID, stake, rankings, and other attributes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronInfoLite" title="bittensor.core.chain_data.NeuronInfoLite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuronInfoLite</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronInfoLite" title="bittensor.core.chain_data.NeuronInfoLite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuronInfoLite</span></code></a></p></td>
 <td><p>NeuronInfoLite is a dataclass representing neuron metadata without weights and bonds.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.PrometheusInfo" title="bittensor.core.chain_data.PrometheusInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrometheusInfo</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.PrometheusInfo" title="bittensor.core.chain_data.PrometheusInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrometheusInfo</span></code></a></p></td>
 <td><p>Dataclass representing information related to Prometheus.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.ProposalVoteData" title="bittensor.core.chain_data.ProposalVoteData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProposalVoteData</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.ProposalVoteData" title="bittensor.core.chain_data.ProposalVoteData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProposalVoteData</span></code></a></p></td>
 <td><p>This TypedDict represents the data structure for a proposal vote in the Senate.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.ScheduledColdkeySwapInfo" title="bittensor.core.chain_data.ScheduledColdkeySwapInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.ScheduledColdkeySwapInfo" title="bittensor.core.chain_data.ScheduledColdkeySwapInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo</span></code></a></p></td>
 <td><p>The <cite>ScheduledColdkeySwapInfo</cite> class is a dataclass representing information about scheduled cold key swaps.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.StakeInfo" title="bittensor.core.chain_data.StakeInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeInfo</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.StakeInfo" title="bittensor.core.chain_data.StakeInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeInfo</span></code></a></p></td>
 <td><p>Dataclass for representing stake information linked to hotkey and coldkey pairs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.SubnetHyperparameters" title="bittensor.core.chain_data.SubnetHyperparameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubnetHyperparameters</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.SubnetHyperparameters" title="bittensor.core.chain_data.SubnetHyperparameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubnetHyperparameters</span></code></a></p></td>
 <td><p>This class represents the hyperparameters for a subnet.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.chain_data.SubnetInfo" title="bittensor.core.chain_data.SubnetInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubnetInfo</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.chain_data.SubnetInfo" title="bittensor.core.chain_data.SubnetInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubnetInfo</span></code></a></p></td>
 <td><p>Dataclass for subnet info.</p></td>
 </tr>
 </tbody>
@@ -1199,6 +1208,31 @@ properties such as IP address, ports, and relevant keys.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronCertificate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.</span></span><span class="sig-name descname"><span class="pre">NeuronCertificate</span></span><a class="headerlink" href="#bittensor.core.chain_data.NeuronCertificate" title="Link to this definition">#</a></dt>
+<dd><p>Dataclass for neuron certificate.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronCertificate.certificate">
+<span class="sig-name descname"><span class="pre">certificate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.utils.Certificate</span></em><a class="headerlink" href="#bittensor.core.chain_data.NeuronCertificate.certificate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronCertificate.from_vec_u8">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.NeuronCertificate.from_vec_u8" title="Link to this definition">#</a></dt>
+<dd><p>Returns a NeuronCertificate object from a <code class="docutils literal notranslate"><span class="pre">vec_u8</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bittensor.core.chain_data.NeuronCertificate" title="bittensor.core.chain_data.NeuronCertificate">NeuronCertificate</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronInfo">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.</span></span><span class="sig-name descname"><span class="pre">NeuronInfo</span></span><a class="headerlink" href="#bittensor.core.chain_data.NeuronInfo" title="Link to this definition">#</a></dt>
 <dd><p>Represents the metadata of a neuron including keys, UID, stake, rankings, and other attributes.</p>
@@ -1331,6 +1365,19 @@ properties such as IP address, ports, and relevant keys.</p>
 <dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronInfo.last_update">
 <span class="sig-name descname"><span class="pre">last_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.NeuronInfo.last_update" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronInfo.list_from_vec_u8">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.NeuronInfo.list_from_vec_u8" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.core.chain_data.NeuronInfo" title="bittensor.core.chain_data.NeuronInfo">NeuronInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.NeuronInfo.netuid">
@@ -2315,6 +2362,11 @@ properties such as IP address, ports, and relevant keys.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.IPInfo.to_parameter_dict"><code class="docutils literal notranslate"><span class="pre">IPInfo.to_parameter_dict()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate.certificate"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate.certificate</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronCertificate.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronCertificate.from_vec_u8()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">NeuronInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.active"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.active</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.axon_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.axon_info</span></code></a></li>
@@ -2330,6 +2382,7 @@ properties such as IP address, ports, and relevant keys.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>

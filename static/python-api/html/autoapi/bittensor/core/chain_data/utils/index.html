@@ -181,6 +181,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -421,6 +420,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronCertificate"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronCertificate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>
@@ -556,6 +556,11 @@ attributes – see the documentation for details.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.IPInfo">
 <span class="sig-name descname"><span class="pre">IPInfo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.utils.ChainDataType.NeuronCertificate">
+<span class="sig-name descname"><span class="pre">NeuronCertificate</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronCertificate" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -733,6 +738,7 @@ attributes – see the documentation for details.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegateInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegateInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.DelegatedInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.DelegatedInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.IPInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.IPInfo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronCertificate"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronCertificate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfo</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.NeuronInfoLite"><code class="docutils literal notranslate"><span class="pre">ChainDataType.NeuronInfoLite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.utils.ChainDataType.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ChainDataType.ScheduledColdkeySwapInfo</span></code></a></li>

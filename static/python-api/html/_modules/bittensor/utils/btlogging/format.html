@@ -180,6 +180,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -187,8 +188,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -377,7 +376,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">Fore</span><span class="p">,</span> <span class="n">Back</span><span class="p">,</span> <span class="n">Style</span>
 
-<span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">init</span><span class="p">(</span><span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">TRACE_LEVEL_NUM</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">SUCCESS_LEVEL_NUM</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>
@@ -413,18 +412,23 @@ document.write(`
     <span class="s2">&quot;:satellite:&quot;</span><span class="p">:</span> <span class="s2">&quot;🛰️&quot;</span><span class="p">,</span>
     <span class="s2">&quot;:warning:&quot;</span><span class="p">:</span> <span class="s2">&quot;⚠️&quot;</span><span class="p">,</span>
     <span class="s2">&quot;:arrow_right:&quot;</span><span class="p">:</span> <span class="s2">&quot;➡️&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;:hourglass:&quot;</span><span class="p">:</span> <span class="s2">&quot;⏳&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 
 <span class="n">color_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;&lt;red&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;/red&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;blue&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;/blue&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;green&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;/green&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;magenta&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">MAGENTA</span><span class="p">,</span>
-    <span class="s2">&quot;&lt;/magenta&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[red]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span>
+    <span class="s2">&quot;[/red]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[blue]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+    <span class="s2">&quot;[/blue]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[green]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
+    <span class="s2">&quot;[/green]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[magenta]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">MAGENTA</span><span class="p">,</span>
+    <span class="s2">&quot;[/magenta]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[yellow]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+    <span class="s2">&quot;[/yellow]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;[orange]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+    <span class="s2">&quot;[/orange]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -598,7 +602,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            formated record (str): The formatted log record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="si">:</span><span class="s2">^16</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="si">:</span><span class="s2">^10</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span></div>
 </div>
 

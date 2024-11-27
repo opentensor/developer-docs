@@ -181,6 +181,7 @@
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -418,6 +417,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.Certificate"><code class="docutils literal notranslate"><span class="pre">Certificate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.RAOPERTAO"><code class="docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.SS58_FORMAT"><code class="docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
@@ -431,6 +431,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.format_error_message"><code class="docutils literal notranslate"><span class="pre">format_error_message()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_explorer_url_for_network"><code class="docutils literal notranslate"><span class="pre">get_explorer_url_for_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_hash"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
@@ -465,6 +466,7 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 </ul>
 </div>
 </section>
@@ -479,8 +481,6 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -491,25 +491,28 @@ document.write(`
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.RAOPERTAO" title="bittensor.utils.RAOPERTAO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.Certificate" title="bittensor.utils.Certificate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Certificate</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.SS58_FORMAT" title="bittensor.utils.SS58_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.RAOPERTAO" title="bittensor.utils.RAOPERTAO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.U16_MAX" title="bittensor.utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.SS58_FORMAT" title="bittensor.utils.SS58_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.U64_MAX" title="bittensor.utils.U64_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.U16_MAX" title="bittensor.utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.UnlockStatus" title="bittensor.utils.UnlockStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.U64_MAX" title="bittensor.utils.U64_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.logging" title="bittensor.utils.logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.UnlockStatus" title="bittensor.utils.UnlockStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.torch" title="bittensor.utils.torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.logging" title="bittensor.utils.logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.torch" title="bittensor.utils.torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -552,37 +555,40 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.get_hash" title="bittensor.utils.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(content[, encoding])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.is_valid_bittensor_address_or_public_key" title="bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key</span></code></a>(address)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.hex_to_bytes" title="bittensor.utils.hex_to_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hex_to_bytes</span></code></a>(hex_str)</p></td>
+<td><p>Converts a hex-encoded string into bytes. Handles 0x-prefixed and non-prefixed hex-encoded strings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.is_valid_bittensor_address_or_public_key" title="bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key</span></code></a>(address)</p></td>
 <td><p>Checks if the given address is a valid destination address.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.is_valid_ss58_address" title="bittensor.utils.is_valid_ss58_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_ss58_address</span></code></a>(address)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.is_valid_ss58_address" title="bittensor.utils.is_valid_ss58_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_ss58_address</span></code></a>(address)</p></td>
 <td><p>Checks if the given address is a valid ss58 address.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.ss58_address_to_bytes" title="bittensor.utils.ss58_address_to_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ss58_address_to_bytes</span></code></a>(ss58_address)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.ss58_address_to_bytes" title="bittensor.utils.ss58_address_to_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ss58_address_to_bytes</span></code></a>(ss58_address)</p></td>
 <td><p>Converts a ss58 address to a bytes object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.ss58_to_vec_u8" title="bittensor.utils.ss58_to_vec_u8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ss58_to_vec_u8</span></code></a>(ss58_address)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.ss58_to_vec_u8" title="bittensor.utils.ss58_to_vec_u8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ss58_to_vec_u8</span></code></a>(ss58_address)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.strtobool" title="bittensor.utils.strtobool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strtobool</span></code></a>(val)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.strtobool" title="bittensor.utils.strtobool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strtobool</span></code></a>(val)</p></td>
 <td><p>Converts a string to a boolean value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.u16_normalized_float" title="bittensor.utils.u16_normalized_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">u16_normalized_float</span></code></a>(x)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.u16_normalized_float" title="bittensor.utils.u16_normalized_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">u16_normalized_float</span></code></a>(x)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.u64_normalized_float" title="bittensor.utils.u64_normalized_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">u64_normalized_float</span></code></a>(x)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.u64_normalized_float" title="bittensor.utils.u64_normalized_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">u64_normalized_float</span></code></a>(x)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.unlock_key" title="bittensor.utils.unlock_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlock_key</span></code></a>(wallet[, unlock_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.unlock_key" title="bittensor.utils.unlock_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlock_key</span></code></a>(wallet[, unlock_type])</p></td>
 <td><p>Attempts to decrypt a wallet's coldkey or hotkey</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.use_torch" title="bittensor.utils.use_torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_torch</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.use_torch" title="bittensor.utils.use_torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_torch</span></code></a>()</p></td>
 <td><p>Force the use of torch over numpy for certain operations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.validate_chain_endpoint" title="bittensor.utils.validate_chain_endpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_chain_endpoint</span></code></a>(endpoint_url)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.validate_chain_endpoint" title="bittensor.utils.validate_chain_endpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_chain_endpoint</span></code></a>(endpoint_url)</p></td>
 <td><p>Validates if the provided endpoint URL is a valid WebSocket URL.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.version_checking" title="bittensor.utils.version_checking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_checking</span></code></a>([timeout])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.version_checking" title="bittensor.utils.version_checking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_checking</span></code></a>([timeout])</p></td>
 <td><p>Deprecated, kept for backwards compatibility. Use check_version() instead.</p></td>
 </tr>
 </tbody>
@@ -591,6 +597,11 @@ document.write(`
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">#</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.Certificate">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">Certificate</span></span><a class="headerlink" href="#bittensor.utils.Certificate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.RAOPERTAO">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">RAOPERTAO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000000000.0</span></em><a class="headerlink" href="#bittensor.utils.RAOPERTAO" title="Link to this definition">#</a></dt>
@@ -750,6 +761,20 @@ Or None if the network is not known.</p>
 <dt class="sig sig-object py" id="bittensor.utils.get_hash">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.get_hash" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.hex_to_bytes">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">hex_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hex_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.hex_to_bytes" title="Link to this definition">#</a></dt>
+<dd><p>Converts a hex-encoded string into bytes. Handles 0x-prefixed and non-prefixed hex-encoded strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hex_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)">bytes</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.is_valid_bittensor_address_or_public_key">
@@ -972,6 +997,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.Certificate"><code class="docutils literal notranslate"><span class="pre">Certificate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.RAOPERTAO"><code class="docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.SS58_FORMAT"><code class="docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
@@ -985,6 +1011,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.format_error_message"><code class="docutils literal notranslate"><span class="pre">format_error_message()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_explorer_url_for_network"><code class="docutils literal notranslate"><span class="pre">get_explorer_url_for_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_hash"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
