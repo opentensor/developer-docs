@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/mock/subtensor_mock/index';</script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="bittensor.utils.async_substrate_interface" href="../../async_substrate_interface/index.html" />
+    <link rel="next" title="bittensor.utils.registration" href="../../registration/index.html" />
     <link rel="prev" title="bittensor.utils.mock" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,6 +181,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../balance/index.html">bittensor.utils.balance</a></li>
@@ -188,8 +189,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -427,14 +426,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonInfoDict.version"><code class="docutils literal notranslate"><span class="pre">AxonInfoDict.version</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip_type</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.port"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.version"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.version</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.BlockNumber"><code class="docutils literal notranslate"><span class="pre">BlockNumber</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.InfoDict"><code class="docutils literal notranslate"><span class="pre">InfoDict</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.InfoDict.__getitem__"><code class="docutils literal notranslate"><span class="pre">InfoDict.__getitem__()</span></code></a></li>
@@ -456,7 +447,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor"><code class="docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.__dict__"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.__dict__</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._convert_to_balance"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._convert_to_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._get_axon_info"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_axon_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._get_most_recent_storage"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_most_recent_storage()</span></code></a></li>
@@ -465,6 +455,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._neuron_subnet_exists"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._neuron_subnet_exists()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.block_number"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.block_number</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.chain_state"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.chain_state</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.close_code"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.close_code</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.commit"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.commit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.create_subnet"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.create_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_block_step"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.do_block_step()</span></code></a></li>
@@ -479,7 +470,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.min_required_stake"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.min_required_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_substrate_interface"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_substrate_interface</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_websocket"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_constant"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.query_constant()</span></code></a></li>
@@ -520,14 +514,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict.version"><code class="docutils literal notranslate"><span class="pre">PrometheusInfoDict.version</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.ip_type</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.port"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.version"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.version</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.__GLOBAL_MOCK_STATE__"><code class="docutils literal notranslate"><span class="pre">__GLOBAL_MOCK_STATE__</span></code></a></li>
 </ul>
 </li>
@@ -565,35 +551,29 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.AxonInfoDict" title="bittensor.utils.mock.subtensor_mock.AxonInfoDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AxonInfoDict</span></code></a></p></td>
 <td><p>A Mapping is a generic container for associating key/value</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams" title="bittensor.utils.mock.subtensor_mock.AxonServeCallParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AxonServeCallParams</span></code></a></p></td>
-<td><p>Axon serve chain call parameters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.InfoDict" title="bittensor.utils.mock.subtensor_mock.InfoDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InfoDict</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.InfoDict" title="bittensor.utils.mock.subtensor_mock.InfoDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InfoDict</span></code></a></p></td>
 <td><p>A Mapping is a generic container for associating key/value</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockChainState" title="bittensor.utils.mock.subtensor_mock.MockChainState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockChainState</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockChainState" title="bittensor.utils.mock.subtensor_mock.MockChainState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockChainState</span></code></a></p></td>
 <td><p>dict() -&gt; new empty dictionary</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockMapResult" title="bittensor.utils.mock.subtensor_mock.MockMapResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockMapResult</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockMapResult" title="bittensor.utils.mock.subtensor_mock.MockMapResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockMapResult</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor" title="bittensor.utils.mock.subtensor_mock.MockSubtensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor" title="bittensor.utils.mock.subtensor_mock.MockSubtensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a></p></td>
 <td><p>A Mock Subtensor class for running tests.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensorState" title="bittensor.utils.mock.subtensor_mock.MockSubtensorState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensorState</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensorState" title="bittensor.utils.mock.subtensor_mock.MockSubtensorState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensorState</span></code></a></p></td>
 <td><p>dict() -&gt; new empty dictionary</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensorValue" title="bittensor.utils.mock.subtensor_mock.MockSubtensorValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensorValue</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSubtensorValue" title="bittensor.utils.mock.subtensor_mock.MockSubtensorValue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSubtensorValue</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSystemState" title="bittensor.utils.mock.subtensor_mock.MockSystemState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSystemState</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockSystemState" title="bittensor.utils.mock.subtensor_mock.MockSystemState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockSystemState</span></code></a></p></td>
 <td><p>dict() -&gt; new empty dictionary</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict" title="bittensor.utils.mock.subtensor_mock.PrometheusInfoDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrometheusInfoDict</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict" title="bittensor.utils.mock.subtensor_mock.PrometheusInfoDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrometheusInfoDict</span></code></a></p></td>
 <td><p>A Mapping is a generic container for associating key/value</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams" title="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrometheusServeCallParams</span></code></a></p></td>
-<td><p>Prometheus serve chain call parameters.</p></td>
 </tr>
 </tbody>
 </table>
@@ -652,39 +632,6 @@ methods except for __getitem__, __iter__, and __len__.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonInfoDict.version">
 <span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonInfoDict.version" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.mock.subtensor_mock.</span></span><span class="sig-name descname"><span class="pre">AxonServeCallParams</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
-<p>Axon serve chain call parameters.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip">
-<span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip_type">
-<span class="sig-name descname"><span class="pre">ip_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip_type" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams.netuid">
-<span class="sig-name descname"><span class="pre">netuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.netuid" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams.port">
-<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.port" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.AxonServeCallParams.version">
-<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.version" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -812,15 +759,11 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <li><p><strong>_mock</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, uses a mocked connection for testing purposes. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>log_verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to enable verbose logging. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, detailed log information about the connection and network operations will be provided. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>connection_timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The maximum time in seconds to keep the connection alive. Default is <code class="docutils literal notranslate"><span class="pre">600</span></code>.</p></li>
+<li><p><strong>websocket</strong> (<em>websockets.sync.client.ClientConnection</em>) – websockets sync (threading) client object connected to the network.</p></li>
 </ul>
 </dd>
 </dl>
 <p>This initialization sets up the connection to the specified Bittensor network, allowing for various blockchain operations such as neuron registration, stake management, and setting weights.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.__dict__">
-<span class="sig-name descname"><span class="pre">__dict__</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.__dict__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor._convert_to_balance">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_convert_to_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._convert_to_balance" title="Link to this definition">#</a></dt>
@@ -927,6 +870,11 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <span class="sig-name descname"><span class="pre">chain_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.MockChainState" title="bittensor.utils.mock.subtensor_mock.MockChainState"><span class="pre">MockChainState</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.chain_state" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.close_code">
+<span class="sig-name descname"><span class="pre">close_code</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.close_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.commit">
 <span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.commit" title="Link to this definition">#</a></dt>
@@ -975,7 +923,7 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p></li>
-<li><p><strong>call_params</strong> (<a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams" title="bittensor.utils.mock.subtensor_mock.AxonServeCallParams"><em>AxonServeCallParams</em></a>)</p></li>
+<li><p><strong>call_params</strong> (<a class="reference internal" href="../../../core/types/index.html#bittensor.core.types.AxonServeCallParams" title="bittensor.core.types.AxonServeCallParams"><em>bittensor.core.types.AxonServeCallParams</em></a>)</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
@@ -993,7 +941,7 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p></li>
-<li><p><strong>call_params</strong> (<a class="reference internal" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams" title="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams"><em>PrometheusServeCallParams</em></a>)</p></li>
+<li><p><strong>call_params</strong> (<a class="reference internal" href="../../../core/types/index.html#bittensor.core.types.PrometheusServeCallParams" title="bittensor.core.types.PrometheusServeCallParams"><em>bittensor.core.types.PrometheusServeCallParams</em></a>)</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
@@ -1167,6 +1115,16 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 update the amount in the mock without updating the tests</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_substrate_interface">
+<span class="sig-name descname"><span class="pre">mock_substrate_interface</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_substrate_interface" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_websocket">
+<span class="sig-name descname"><span class="pre">mock_websocket</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_websocket" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid">
 <span class="sig-name descname"><span class="pre">neuron_for_uid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid" title="Link to this definition">#</a></dt>
@@ -1187,6 +1145,23 @@ update the amount in the mock without updating the tests</p>
 </dd>
 </dl>
 <p>This function is crucial for analyzing individual neurons’ contributions and status within a specific subnet, offering insights into their roles in the network’s consensus and validation mechanisms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid_lite">
+<span class="sig-name descname"><span class="pre">neuron_for_uid_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid_lite" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[<a class="reference internal" href="../../../core/chain_data/index.html#bittensor.core.chain_data.NeuronInfoLite" title="bittensor.core.chain_data.NeuronInfoLite">bittensor.core.chain_data.NeuronInfoLite</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1255,7 +1230,7 @@ update the amount in the mock without updating the tests</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.query_map_subtensor">
-<span class="sig-name descname"><span class="pre">query_map_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_map_subtensor" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_map_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_map_subtensor" title="Link to this definition">#</a></dt>
 <dd><p>Note: Double map requires one param</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1273,7 +1248,7 @@ update the amount in the mock without updating the tests</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.MockSubtensor.query_subtensor">
-<span class="sig-name descname"><span class="pre">query_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_subtensor" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_subtensor" title="Link to this definition">#</a></dt>
 <dd><p>Queries named storage from the Subtensor module on the Bittensor blockchain. This function is used to retrieve specific data or parameters from the blockchain, such as stake, rank, or other neuron-specific attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1480,39 +1455,6 @@ methods except for __getitem__, __iter__, and __len__.</p>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.mock.subtensor_mock.</span></span><span class="sig-name descname"><span class="pre">PrometheusServeCallParams</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
-<p>Prometheus serve chain call parameters.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip">
-<span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip_type">
-<span class="sig-name descname"><span class="pre">ip_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip_type" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.netuid">
-<span class="sig-name descname"><span class="pre">netuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.netuid" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.port">
-<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.port" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.version">
-<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.version" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.mock.subtensor_mock.__GLOBAL_MOCK_STATE__">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.mock.subtensor_mock.</span></span><span class="sig-name descname"><span class="pre">__GLOBAL_MOCK_STATE__</span></span><a class="headerlink" href="#bittensor.utils.mock.subtensor_mock.__GLOBAL_MOCK_STATE__" title="Link to this definition">#</a></dt>
@@ -1542,11 +1484,11 @@ methods except for __getitem__, __iter__, and __len__.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../async_substrate_interface/index.html"
+       href="../../registration/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.utils.async_substrate_interface</p>
+        <p class="prev-next-title">bittensor.utils.registration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1581,14 +1523,6 @@ methods except for __getitem__, __iter__, and __len__.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonInfoDict.version"><code class="docutils literal notranslate"><span class="pre">AxonInfoDict.version</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.ip_type</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.port"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.AxonServeCallParams.version"><code class="docutils literal notranslate"><span class="pre">AxonServeCallParams.version</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.BlockNumber"><code class="docutils literal notranslate"><span class="pre">BlockNumber</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.InfoDict"><code class="docutils literal notranslate"><span class="pre">InfoDict</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.InfoDict.__getitem__"><code class="docutils literal notranslate"><span class="pre">InfoDict.__getitem__()</span></code></a></li>
@@ -1610,7 +1544,6 @@ methods except for __getitem__, __iter__, and __len__.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor"><code class="docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.__dict__"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.__dict__</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._convert_to_balance"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._convert_to_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._get_axon_info"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_axon_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._get_most_recent_storage"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_most_recent_storage()</span></code></a></li>
@@ -1619,6 +1552,7 @@ methods except for __getitem__, __iter__, and __len__.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor._neuron_subnet_exists"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._neuron_subnet_exists()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.block_number"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.block_number</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.chain_state"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.chain_state</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.close_code"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.close_code</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.commit"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.commit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.create_subnet"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.create_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_block_step"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.do_block_step()</span></code></a></li>
@@ -1633,7 +1567,10 @@ methods except for __getitem__, __iter__, and __len__.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.min_required_stake"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.min_required_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_substrate_interface"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_substrate_interface</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.mock_websocket"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_constant"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.query_constant()</span></code></a></li>
@@ -1672,14 +1609,6 @@ methods except for __getitem__, __iter__, and __len__.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict.ip_type"><code class="docutils literal notranslate"><span class="pre">PrometheusInfoDict.ip_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict.port"><code class="docutils literal notranslate"><span class="pre">PrometheusInfoDict.port</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict.version"><code class="docutils literal notranslate"><span class="pre">PrometheusInfoDict.version</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.ip_type"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.ip_type</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.netuid"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.port"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.PrometheusServeCallParams.version"><code class="docutils literal notranslate"><span class="pre">PrometheusServeCallParams.version</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.mock.subtensor_mock.__GLOBAL_MOCK_STATE__"><code class="docutils literal notranslate"><span class="pre">__GLOBAL_MOCK_STATE__</span></code></a></li>

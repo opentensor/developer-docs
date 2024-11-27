@@ -183,6 +183,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -190,8 +191,6 @@
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -428,6 +427,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/delegate_info/index.html">bittensor.core.chain_data.delegate_info</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/delegate_info_lite/index.html">bittensor.core.chain_data.delegate_info_lite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/ip_info/index.html">bittensor.core.chain_data.ip_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/neuron_certificate/index.html">bittensor.core.chain_data.neuron_certificate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/neuron_info/index.html">bittensor.core.chain_data.neuron_info</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/neuron_info_lite/index.html">bittensor.core.chain_data.neuron_info_lite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/chain_data/prometheus_info/index.html">bittensor.core.chain_data.prometheus_info</a></li>
@@ -449,7 +449,9 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/root/index.html">bittensor.core.extrinsics.root</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/serving/index.html">bittensor.core.extrinsics.serving</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/set_weights/index.html">bittensor.core.extrinsics.set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/staking/index.html">bittensor.core.extrinsics.staking</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/transfer/index.html">bittensor.core.extrinsics.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/unstaking/index.html">bittensor.core.extrinsics.unstaking</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/core/extrinsics/utils/index.html">bittensor.core.extrinsics.utils</a></li>
 </ul>
 </li>
@@ -470,6 +472,7 @@ document.write(`
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bittensor/utils/index.html">bittensor.utils</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/console/index.html">bittensor.utils.btlogging.console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/defines/index.html">bittensor.utils.btlogging.defines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/format/index.html">bittensor.utils.btlogging.format</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/btlogging/helpers/index.html">bittensor.utils.btlogging.helpers</a></li>
@@ -480,6 +483,12 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="bittensor/utils/mock/subtensor_mock/index.html">bittensor.utils.mock.subtensor_mock</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/async_pow/index.html">bittensor.utils.registration.async_pow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/pow/index.html">bittensor.utils.registration.pow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bittensor/utils/registration/register_cuda/index.html">bittensor.utils.registration.register_cuda</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -487,8 +496,6 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>

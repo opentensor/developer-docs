@@ -183,6 +183,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/balance/index.html">bittensor.utils.balance</a></li>
@@ -190,8 +191,6 @@
 <li class="toctree-l4"><a class="reference internal" href="utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils/register_cuda/index.html">bittensor.utils.register_cuda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -442,6 +441,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_hotkey_owner"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_hotkey_owner()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_hyperparameter"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_hyperparameter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_netuids_for_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_netuids_for_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_neuron_for_pubkey_and_subnet"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_neuron_for_pubkey_and_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_stake_info_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_info_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_burn_cost()</span></code></a></li>
@@ -660,7 +660,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Metagraph"><code class="docutils literal notranslate"><span class="pre">Metagraph</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor"><code class="docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.__dict__"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.__dict__</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._convert_to_balance"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._convert_to_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._get_axon_info"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_axon_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._get_most_recent_storage"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_most_recent_storage()</span></code></a></li>
@@ -669,6 +668,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._neuron_subnet_exists"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._neuron_subnet_exists()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.block_number"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.block_number</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.chain_state"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.chain_state</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.close_code"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.close_code</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.commit"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.commit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.create_subnet"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.create_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.do_block_step"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.do_block_step()</span></code></a></li>
@@ -683,7 +683,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.min_required_stake"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.min_required_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.mock_substrate_interface"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_substrate_interface</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.mock_websocket"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neuron_for_uid"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neuron_for_uid_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neurons"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neurons_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.query_constant"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.query_constant()</span></code></a></li>
@@ -710,6 +713,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
@@ -896,6 +900,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor._get_hyperparameter"><code class="docutils literal notranslate"><span class="pre">Subtensor._get_hyperparameter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor._get_substrate"><code class="docutils literal notranslate"><span class="pre">Subtensor._get_substrate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_args"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_stake"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_stake_multiple"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_stake_multiple()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.block"><code class="docutils literal notranslate"><span class="pre">Subtensor.block</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.blocks_since_last_update"><code class="docutils literal notranslate"><span class="pre">Subtensor.blocks_since_last_update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.bonds"><code class="docutils literal notranslate"><span class="pre">Subtensor.bonds()</span></code></a></li>
@@ -906,6 +912,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.config"><code class="docutils literal notranslate"><span class="pre">Subtensor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">Subtensor.determine_chain_endpoint_and_network()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.difficulty"><code class="docutils literal notranslate"><span class="pre">Subtensor.difficulty()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.does_hotkey_exist"><code class="docutils literal notranslate"><span class="pre">Subtensor.does_hotkey_exist()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_all_subnets_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_all_subnets_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_balance"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_block_hash"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_block_hash()</span></code></a></li>
@@ -913,10 +920,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegate_by_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_by_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegate_take"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_take()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegates"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegates()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_existential_deposit"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_existential_deposit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_hotkey_owner"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_hotkey_owner()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_minimum_required_stake"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_minimum_required_stake()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_netuids_for_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_netuids_for_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_neuron_certificate"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_neuron_certificate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_neuron_for_pubkey_and_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_neuron_for_pubkey_and_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_prometheus_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_prometheus_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_hyperparameters()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnets()</span></code></a></li>
@@ -925,6 +937,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_uid_for_hotkey_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_uid_for_hotkey_on_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.help"><code class="docutils literal notranslate"><span class="pre">Subtensor.help()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.immunity_period"><code class="docutils literal notranslate"><span class="pre">Subtensor.immunity_period()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_delegate"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_delegate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered_any"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_any()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_on_subnet()</span></code></a></li>
@@ -955,6 +968,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.substrate"><code class="docutils literal notranslate"><span class="pre">Subtensor.substrate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.tempo"><code class="docutils literal notranslate"><span class="pre">Subtensor.tempo()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.transfer"><code class="docutils literal notranslate"><span class="pre">Subtensor.transfer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.tx_rate_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.tx_rate_limit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.unstake"><code class="docutils literal notranslate"><span class="pre">Subtensor.unstake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.unstake_multiple"><code class="docutils literal notranslate"><span class="pre">Subtensor.unstake_multiple()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.websocket"><code class="docutils literal notranslate"><span class="pre">Subtensor.websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.weights"><code class="docutils literal notranslate"><span class="pre">Subtensor.weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.weights_rate_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.weights_rate_limit()</span></code></a></li>
 </ul>
@@ -1468,7 +1485,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.bonds">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.bonds" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.bonds" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the bond distribution set by neurons within a specific subnet of the Bittensor network.
 Bonds represent the investments or commitments made by neurons in one another, indicating a level of trust and perceived value. This bonding mechanism is integral to the network’s market-based approach to measuring and rewarding machine intelligence.</p>
 <dl class="field-list simple">
@@ -1476,6 +1493,7 @@ Bonds represent the investments or commitments made by neurons in one another, i
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network UID of the subnet to query.</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The hash of the blockchain block number for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1580,13 +1598,14 @@ This action serves as a commitment or snapshot of the neuron’s current weight 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_balance">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">addresses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_balance" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">addresses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_balance" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the balance for given coldkey(s)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>addresses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – coldkey addresses(s).</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the block hash, optional.</p></li>
+<li><p><strong>reuse_block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>]</em>) – whether to reuse the last-used block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1653,11 +1672,14 @@ This action serves as a commitment or snapshot of the neuron’s current weight 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_delegate_identities">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_delegate_identities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_delegate_identities" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_delegate_identities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_delegate_identities" title="Link to this definition">#</a></dt>
 <dd><p>Fetches delegates identities from the chain and GitHub. Preference is given to chain data, and missing info is filled-in by the info from GitHub. At some point, we want to totally move away from fetching this info from GitHub, but chain data is still limited in that regard.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the hash of the blockchain block for the query</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the hash of the blockchain block for the query</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>DelegatesDetails, …}</p>
@@ -1735,14 +1757,15 @@ Accounts with balances below this threshold can be reaped to conserve network re
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_hotkey_owner">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_hotkey_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_hotkey_owner" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_hotkey_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_hotkey_owner" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the owner of the given hotkey at a specific block hash.
 This function queries the blockchain for the owner of the provided hotkey. If the hotkey does not exist at the specified block hash, it returns None.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the hotkey.</p></li>
-<li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the block at which to check the hotkey ownership.</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The hash of the block at which to check the hotkey ownership.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1798,8 +1821,31 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_neuron_for_pubkey_and_subnet">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_neuron_for_pubkey_and_subnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_neuron_for_pubkey_and_subnet" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves information about a neuron based on its public key (hotkey SS58 address) and the specific subnet UID (netuid). This function provides detailed neuron information for a particular subnet within the Bittensor network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address of the neuron’s hotkey.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number at which to perform the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Detailed information about the neuron if found, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="core/chain_data/neuron_info/index.html#bittensor.core.chain_data.neuron_info.NeuronInfo" title="bittensor.core.chain_data.neuron_info.NeuronInfo">bittensor.core.chain_data.neuron_info.NeuronInfo</a>]</p>
+</dd>
+</dl>
+<p>This function is crucial for accessing specific neuron data and understanding its status, stake, and other attributes within a particular subnet of the Bittensor ecosystem.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_stake_for_coldkey_and_hotkey">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_stake_for_coldkey_and_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coldkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_stake_for_coldkey_and_hotkey" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_stake_for_coldkey_and_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coldkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_stake_for_coldkey_and_hotkey" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves stake information associated with a specific coldkey and hotkey.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1807,6 +1853,7 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 <li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the hotkey SS58 address to query</p></li>
 <li><p><strong>coldkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the coldkey SS58 address to query</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – the hash of the blockchain block number for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>]</em>) – whether to reuse the last-used block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1842,11 +1889,14 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_subnet_burn_cost">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnet_burn_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnet_burn_cost" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnet_burn_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnet_burn_cost" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the burn cost for registering a new subnet within the Bittensor network. This cost represents the amount of Tao that needs to be locked or burned to establish a new subnet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block_hash of the block id.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block_hash of the block id.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used block hash.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The burn cost for subnet registration.</p>
@@ -1860,13 +1910,14 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_subnet_hyperparameters">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnet_hyperparameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnet_hyperparameters" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnet_hyperparameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnet_hyperparameters" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the hyperparameters for a specific subnet within the Bittensor network. These hyperparameters define the operational settings and rules governing the subnet’s behavior.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network UID of the subnet to query.</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The hash of the blockchain block number for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1881,11 +1932,14 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_subnets">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnets" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_subnets" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the list of all subnet unique identifiers (netuids) currently present in the Bittensor network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The hash of the block to retrieve the subnet unique identifiers from.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The hash of the block to retrieve the subnet unique identifiers from.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used block hash.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of subnet netuids.</p>
@@ -1900,13 +1954,14 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_total_stake_for_coldkey">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_total_stake_for_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ss58_addresses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_total_stake_for_coldkey" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_total_stake_for_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ss58_addresses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_total_stake_for_coldkey" title="Link to this definition">#</a></dt>
 <dd><p>Returns the total stake held on a coldkey.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ss58_addresses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The SS58 address(es) of the coldkey(s)</p></li>
 <li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the block number to retrieve the stake from.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1941,11 +1996,14 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_total_subnets">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_total_subnets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_total_subnets" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_total_subnets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_total_subnets" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the total number of subnets within the Bittensor network as of a specific blockchain block.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The blockchain block_hash representation of block id.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The blockchain block_hash representation of block id.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used block hash.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The total number of subnets in the network.</p>
@@ -1981,7 +2039,7 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.get_uid_for_hotkey_on_subnet">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_uid_for_hotkey_on_subnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_uid_for_hotkey_on_subnet" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_uid_for_hotkey_on_subnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.get_uid_for_hotkey_on_subnet" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the unique identifier (UID) for a neuron’s hotkey on a specific subnet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1989,6 +2047,7 @@ offering insights into its diversity and scale.</p>
 <li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address of the neuron’s hotkey.</p></li>
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The blockchain block_hash representation of the block id.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2047,13 +2106,15 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.is_hotkey_registered">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hotkey_registered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.is_hotkey_registered" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hotkey_registered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.is_hotkey_registered" title="Link to this definition">#</a></dt>
 <dd><p>Checks to see if the hotkey is registered on a given netuid</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -2064,13 +2125,14 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.is_hotkey_registered_any">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hotkey_registered_any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.is_hotkey_registered_any" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hotkey_registered_any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.is_hotkey_registered_any" title="Link to this definition">#</a></dt>
 <dd><p>Checks if a neuron’s hotkey is registered on any subnet within the Bittensor network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address of the neuron’s hotkey.</p></li>
 <li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The blockchain block_hash representation of block id.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2085,7 +2147,7 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.neuron_for_uid">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neuron_for_uid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.neuron_for_uid" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neuron_for_uid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.neuron_for_uid" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves detailed information about a specific neuron identified by its unique identifier (UID) within a specified subnet (netuid) of the Bittensor network. This function provides a comprehensive view of a neuron’s attributes, including its stake, rank, and operational status.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2093,6 +2155,7 @@ offering insights into its diversity and scale.</p>
 <li><p><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the neuron.</p></li>
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
 <li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the blockchain block number for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2107,7 +2170,7 @@ offering insights into its diversity and scale.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.neurons">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neurons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.neurons" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neurons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.neurons" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves a list of all neurons within a specified subnet of the Bittensor network.
 This function provides a snapshot of the subnet’s neuron population, including each neuron’s attributes and network interactions.</p>
 <dl class="field-list simple">
@@ -2115,6 +2178,7 @@ This function provides a snapshot of the subnet’s neuron population, including
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
 <li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the blockchain block number for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2156,7 +2220,17 @@ This function provides a streamlined view of the neurons, focusing on key attrib
 <dd><p>Register neuron.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>processors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>update_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>output_in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>use_cuda</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>dev_id</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+<li><p><strong>threads_per_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2356,7 +2430,7 @@ enabling a deeper understanding of the network’s structure and composition.</p
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.weights">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.weights" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.weights" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the weight distribution set by neurons within a specific subnet of the Bittensor network.
 This function maps each neuron’s UID to the weights it assigns to other neurons, reflecting the network’s trust and value assignment mechanisms.</p>
 <dl class="field-list simple">
@@ -2364,6 +2438,7 @@ This function maps each neuron’s UID to the weights it assigns to other neuron
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network UID of the subnet to query.</p></li>
 <li><p><strong>block_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the blockchain block for the query.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2378,11 +2453,15 @@ This function maps each neuron’s UID to the weights it assigns to other neuron
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.AsyncSubtensor.weights_rate_limit">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights_rate_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.weights_rate_limit" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights_rate_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.AsyncSubtensor.weights_rate_limit" title="Link to this definition">#</a></dt>
 <dd><p>Returns network WeightsSetRateLimit hyperparameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnetwork.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnetwork.</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The blockchain block_hash representation of the block id.</p></li>
+<li><p><strong>reuse_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reuse the last-used blockchain block hash.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The value of the WeightsSetRateLimit hyperparameter, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the subnetwork does not exist or the parameter is not found.</p>
@@ -2857,7 +2936,7 @@ signature using the sender’s public key.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.Axon.serve">
-<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Axon.serve" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Axon.serve" title="Link to this definition">#</a></dt>
 <dd><p>Serves the Axon on the specified subtensor connection using the configured wallet. This method
 registers the Axon with a specific subnet within the Bittensor network, identified by the <code class="docutils literal notranslate"><span class="pre">netuid</span></code>.
 It links the Axon to the broader network, allowing it to participate in the decentralized exchange
@@ -2867,6 +2946,7 @@ of information.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet to register on. This ID is essential for the Axon to correctly position itself within the Bittensor network topology.</p></li>
 <li><p><strong>subtensor</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="core/subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a><em>]</em>) – The subtensor connection to use for serving. If not provided, a new connection is established based on default configurations.</p></li>
+<li><p><strong>certificate</strong> (<em>Optional</em><em>[</em><em>bittensor.utils.Certificate</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4365,15 +4445,11 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <li><p><strong>_mock</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, uses a mocked connection for testing purposes. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>log_verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to enable verbose logging. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, detailed log information about the connection and network operations will be provided. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>connection_timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The maximum time in seconds to keep the connection alive. Default is <code class="docutils literal notranslate"><span class="pre">600</span></code>.</p></li>
+<li><p><strong>websocket</strong> (<em>websockets.sync.client.ClientConnection</em>) – websockets sync (threading) client object connected to the network.</p></li>
 </ul>
 </dd>
 </dl>
 <p>This initialization sets up the connection to the specified Bittensor network, allowing for various blockchain operations such as neuron registration, stake management, and setting weights.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.MockSubtensor.__dict__">
-<span class="sig-name descname"><span class="pre">__dict__</span></span><a class="headerlink" href="#bittensor.MockSubtensor.__dict__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.MockSubtensor._convert_to_balance">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_convert_to_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor._convert_to_balance" title="Link to this definition">#</a></dt>
@@ -4480,6 +4556,11 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <span class="sig-name descname"><span class="pre">chain_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockChainState" title="bittensor.utils.mock.subtensor_mock.MockChainState"><span class="pre">MockChainState</span></a></em><a class="headerlink" href="#bittensor.MockSubtensor.chain_state" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.MockSubtensor.close_code">
+<span class="sig-name descname"><span class="pre">close_code</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bittensor.MockSubtensor.close_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.MockSubtensor.commit">
 <span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.commit" title="Link to this definition">#</a></dt>
@@ -4528,7 +4609,7 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p></li>
-<li><p><strong>call_params</strong> (<a class="reference internal" href="core/types/index.html#bittensor.core.types.AxonServeCallParams" title="bittensor.core.types.AxonServeCallParams"><em>AxonServeCallParams</em></a>)</p></li>
+<li><p><strong>call_params</strong> (<a class="reference internal" href="core/types/index.html#bittensor.core.types.AxonServeCallParams" title="bittensor.core.types.AxonServeCallParams"><em>bittensor.core.types.AxonServeCallParams</em></a>)</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
@@ -4546,7 +4627,7 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p></li>
-<li><p><strong>call_params</strong> (<a class="reference internal" href="core/types/index.html#bittensor.core.types.PrometheusServeCallParams" title="bittensor.core.types.PrometheusServeCallParams"><em>PrometheusServeCallParams</em></a>)</p></li>
+<li><p><strong>call_params</strong> (<a class="reference internal" href="core/types/index.html#bittensor.core.types.PrometheusServeCallParams" title="bittensor.core.types.PrometheusServeCallParams"><em>bittensor.core.types.PrometheusServeCallParams</em></a>)</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
@@ -4720,6 +4801,16 @@ e.g. We mock <cite>Subtensor.query_subtensor</cite> instead of all query methods
 update the amount in the mock without updating the tests</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.MockSubtensor.mock_substrate_interface">
+<span class="sig-name descname"><span class="pre">mock_substrate_interface</span></span><a class="headerlink" href="#bittensor.MockSubtensor.mock_substrate_interface" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.MockSubtensor.mock_websocket">
+<span class="sig-name descname"><span class="pre">mock_websocket</span></span><a class="headerlink" href="#bittensor.MockSubtensor.mock_websocket" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.MockSubtensor.neuron_for_uid">
 <span class="sig-name descname"><span class="pre">neuron_for_uid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.neuron_for_uid" title="Link to this definition">#</a></dt>
@@ -4740,6 +4831,23 @@ update the amount in the mock without updating the tests</p>
 </dd>
 </dl>
 <p>This function is crucial for analyzing individual neurons’ contributions and status within a specific subnet, offering insights into their roles in the network’s consensus and validation mechanisms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.MockSubtensor.neuron_for_uid_lite">
+<span class="sig-name descname"><span class="pre">neuron_for_uid_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.neuron_for_uid_lite" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[<a class="reference internal" href="core/chain_data/index.html#bittensor.core.chain_data.NeuronInfoLite" title="bittensor.core.chain_data.NeuronInfoLite">bittensor.core.chain_data.NeuronInfoLite</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -4808,7 +4916,7 @@ update the amount in the mock without updating the tests</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.MockSubtensor.query_map_subtensor">
-<span class="sig-name descname"><span class="pre">query_map_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.query_map_subtensor" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_map_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.query_map_subtensor" title="Link to this definition">#</a></dt>
 <dd><p>Note: Double map requires one param</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -4826,7 +4934,7 @@ update the amount in the mock without updating the tests</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.MockSubtensor.query_subtensor">
-<span class="sig-name descname"><span class="pre">query_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.query_subtensor" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.MockSubtensor.query_subtensor" title="Link to this definition">#</a></dt>
 <dd><p>Queries named storage from the Subtensor module on the Bittensor blockchain. This function is used to retrieve specific data or parameters from the blockchain, such as stake, rank, or other neuron-specific attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -5022,6 +5130,19 @@ update the amount in the mock without updating the tests</p>
 <dt class="sig sig-object py" id="bittensor.NeuronInfo.last_update">
 <span class="sig-name descname"><span class="pre">last_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.NeuronInfo.last_update" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.NeuronInfo.list_from_vec_u8">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.NeuronInfo.list_from_vec_u8" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.NeuronInfo" title="bittensor.NeuronInfo">NeuronInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.NeuronInfo.netuid">
@@ -6229,7 +6350,7 @@ It is called as the response is being streamed from the network, and should be i
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.Subtensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.</span></span><span class="sig-name descname"><span class="pre">Subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_mock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.</span></span><span class="sig-name descname"><span class="pre">Subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_mock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">websocket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor" title="Link to this definition">#</a></dt>
 <dd><p>The Subtensor class in Bittensor serves as a crucial interface for interacting with the Bittensor blockchain,
 facilitating a range of operations essential for the decentralized machine learning network.</p>
 <p>This class enables neurons (network participants) to engage in activities such as registering on the network,
@@ -6284,6 +6405,7 @@ principles and mechanisms described in the <a class="reference external" href="h
 <li><p><strong>_mock</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, uses a mocked connection for testing purposes. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>log_verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to enable verbose logging. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, detailed log information about the connection and network operations will be provided. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>connection_timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The maximum time in seconds to keep the connection alive. Default is <code class="docutils literal notranslate"><span class="pre">600</span></code>.</p></li>
+<li><p><strong>websocket</strong> (<em>websockets.sync.client.ClientConnection</em>) – websockets sync (threading) client object connected to the network.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6390,6 +6512,56 @@ principles and mechanisms described in the <a class="reference external" href="h
 <p>parser = argparse.ArgumentParser()
 Subtensor.add_args(parser)</p>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.add_stake">
+<span class="sig-name descname"><span class="pre">add_stake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.add_stake" title="Link to this definition">#</a></dt>
+<dd><p>Adds the specified amount of stake to a neuron identified by the hotkey <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address.
+Staking is a fundamental process in the Bittensor network that enables neurons to participate actively and earn incentives.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – The wallet to be used for staking.</p></li>
+<li><p><strong>hotkey_ss58</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address of the hotkey associated with the neuron.</p></li>
+<li><p><strong>amount</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The amount of TAO to stake.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the staking is successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>This function enables neurons to increase their stake in the network, enhancing their influence and potential rewards in line with Bittensor’s consensus and reward mechanisms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.add_stake_multiple">
+<span class="sig-name descname"><span class="pre">add_stake_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amounts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.add_stake_multiple" title="Link to this definition">#</a></dt>
+<dd><p>Adds stakes to multiple neurons identified by their hotkey SS58 addresses.
+This bulk operation allows for efficient staking across different neurons from a single wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – The wallet used for staking.</p></li>
+<li><p><strong>hotkey_ss58s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – List of <code class="docutils literal notranslate"><span class="pre">SS58</span></code> addresses of hotkeys to stake to.</p></li>
+<li><p><strong>amounts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em><em>]</em>) – Corresponding amounts of TAO to stake for each hotkey.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the staking is successful for all specified neurons, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>This function is essential for managing stakes across multiple neurons, reflecting the dynamic and collaborative nature of the Bittensor network.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -6510,15 +6682,13 @@ This action serves as a commitment or snapshot of the neuron’s current weight 
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the weight commitment is successful, False otherwise. And <cite>msg</cite>, a string
-value describing the success or potential error.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the weight commitment is successful, False otherwise. And <cite>msg</cite>, a string value describing the success or potential error.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
 </dd>
 </dl>
-<p>This function allows neurons to create a tamper-proof record of their weight distribution at a specific point in time,
-enhancing transparency and accountability within the Bittensor network.</p>
+<p>This function allows neurons to create a tamper-proof record of their weight distribution at a specific point in time, enhancing transparency and accountability within the Bittensor network.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6572,6 +6742,26 @@ enhancing transparency and accountability within the Bittensor network.</p>
 </dd>
 </dl>
 <p>The ‘Difficulty’ parameter directly impacts the network’s security and integrity by setting the computational effort required for validating transactions and participating in the network’s consensus mechanism.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.does_hotkey_exist">
+<span class="sig-name descname"><span class="pre">does_hotkey_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.does_hotkey_exist" title="Link to this definition">#</a></dt>
+<dd><p>Returns true if the hotkey is known by the chain and there are accounts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the hotkey.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The block number to check the hotkey against. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the latest block is used. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the hotkey is known by the chain and there are accounts, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -6710,6 +6900,24 @@ enhancing transparency and accountability within the Bittensor network.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.get_delegates">
+<span class="sig-name descname"><span class="pre">get_delegates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_delegates" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves a list of all delegate neurons within the Bittensor network. This function provides an overview of the neurons that are actively involved in the network’s delegation system.</p>
+<p>Analyzing the delegate population offers insights into the network’s governance dynamics and the distribution of trust and responsibility among participating neurons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number for the query.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of DelegateInfo objects detailing each delegate’s characteristics.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.DelegateInfo" title="bittensor.DelegateInfo">DelegateInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.Subtensor.get_existential_deposit">
 <span class="sig-name descname"><span class="pre">get_existential_deposit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_existential_deposit" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the existential deposit amount for the Bittensor blockchain. The existential deposit is the minimum amount of TAO required for an account to exist on the blockchain. Accounts with balances below this threshold can be reaped to conserve network resources.</p>
@@ -6725,6 +6933,44 @@ enhancing transparency and accountability within the Bittensor network.</p>
 </dd>
 </dl>
 <p>The existential deposit is a fundamental economic parameter in the Bittensor network, ensuring efficient use of storage and preventing the proliferation of dust accounts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.get_hotkey_owner">
+<span class="sig-name descname"><span class="pre">get_hotkey_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_hotkey_owner" title="Link to this definition">#</a></dt>
+<dd><p>Returns the coldkey owner of the passed hotkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the hotkey.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The block number to check the hotkey owner against. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the latest block is used. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The SS58 address of the coldkey owner, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the hotkey does not exist or the owner is not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.get_minimum_required_stake">
+<span class="sig-name descname"><span class="pre">get_minimum_required_stake</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_minimum_required_stake" title="Link to this definition">#</a></dt>
+<dd><p>Returns the minimum required stake for nominators in the Subtensor network.</p>
+<p>This method retries the substrate call up to three times with exponential backoff in case of failures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The minimum required stake as a Balance object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance">Balance</a></p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><strong>Exception</strong></a> – If the substrate call fails after the maximum number of retries.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -6745,6 +6991,29 @@ enhancing transparency and accountability within the Bittensor network.</p>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.get_neuron_certificate">
+<span class="sig-name descname"><span class="pre">get_neuron_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_neuron_certificate" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the TLS certificate for a specific neuron identified by its unique identifier (UID)
+within a specified subnet (netuid) of the Bittensor network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hotkey to query.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><em>optional</em>) – The blockchain block number for the query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the certificate of the neuron if found, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Certificate]</p>
+</dd>
+</dl>
+<p>This function is used for certificate discovery for setting up mutual tls communication between neurons</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6786,6 +7055,27 @@ enhancing transparency and accountability within the Bittensor network.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Optional[<a class="reference internal" href="core/chain_data/prometheus_info/index.html#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="bittensor.core.chain_data.prometheus_info.PrometheusInfo">bittensor.core.chain_data.prometheus_info.PrometheusInfo</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.get_stake_for_coldkey_and_hotkey">
+<span class="sig-name descname"><span class="pre">get_stake_for_coldkey_and_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coldkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.get_stake_for_coldkey_and_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Returns the stake under a coldkey - hotkey pairing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the hotkey.</p></li>
+<li><p><strong>coldkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the coldkey.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The block number to retrieve the stake from. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the latest block is used. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The stake under the coldkey - hotkey pairing, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the pairing does not exist or the stake is not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance">Balance</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6934,6 +7224,27 @@ enhancing transparency and accountability within the Bittensor network.</p>
 </dd>
 </dl>
 <p>The ‘ImmunityPeriod’ is a critical aspect of the network’s governance system, ensuring that new participants have a grace period to establish themselves and contribute to the network without facing immediate punitive actions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.is_hotkey_delegate">
+<span class="sig-name descname"><span class="pre">is_hotkey_delegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.is_hotkey_delegate" title="Link to this definition">#</a></dt>
+<dd><p>Determines whether a given hotkey (public key) is a delegate on the Bittensor network. This function checks if the neuron associated with the hotkey is part of the network’s delegation system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hotkey_ss58</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the neuron’s hotkey.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number for the query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the hotkey is a delegate, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>Being a delegate is a significant status within the Bittensor network, indicating a neuron’s involvement in consensus and governance processes.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7341,15 +7652,13 @@ This action serves as a revelation of the neuron’s previously committed weight
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the weight revelation is successful, False otherwise. And <cite>msg</cite>, a string
-value describing the success or potential error.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the weight revelation is successful, False otherwise. And <cite>msg</cite>, a string value describing the success or potential error.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
 </dd>
 </dl>
-<p>This function allows neurons to reveal their previously committed weight distribution, ensuring transparency
-and accountability within the Bittensor network.</p>
+<p>This function allows neurons to reveal their previously committed weight distribution, ensuring transparency and accountability within the Bittensor network.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7359,7 +7668,7 @@ and accountability within the Bittensor network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>wallet</strong> (<em>bittensor.wallet</em>) – The wallet associated with the neuron to be registered on the root network.</p></li>
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.wallet</em>) – The wallet associated with the neuron to be registered on the root network.</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block. Defaults to <cite>False</cite>.</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain. Defaults to <cite>True</cite>.</p></li>
 </ul>
@@ -7401,7 +7710,7 @@ and accountability within the Bittensor network.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.Subtensor.serve_axon">
-<span class="sig-name descname"><span class="pre">serve_axon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.serve_axon" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serve_axon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.serve_axon" title="Link to this definition">#</a></dt>
 <dd><p>Registers an <code class="docutils literal notranslate"><span class="pre">Axon</span></code> serving endpoint on the Bittensor network for a specific neuron. This function is used to set up the Axon, a key component of a neuron that handles incoming queries and data processing tasks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -7410,6 +7719,7 @@ and accountability within the Bittensor network.</p>
 <li><p><strong>axon</strong> (<a class="reference internal" href="core/axon/index.html#bittensor.core.axon.Axon" title="bittensor.core.axon.Axon"><em>bittensor.core.axon.Axon</em></a>) – The Axon instance to be registered for serving.</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>certificate</strong> (<em>Optional</em><em>[</em><em>bittensor.utils.Certificate</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7587,6 +7897,78 @@ configuration object. It evaluates the network and endpoint in the following ord
 </dl>
 <p>This function is essential for the fluid movement of tokens in the network, supporting various economic activities such as staking, delegation, and reward distribution.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.tx_rate_limit">
+<span class="sig-name descname"><span class="pre">tx_rate_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.tx_rate_limit" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the transaction rate limit for the Bittensor network as of a specific blockchain block.
+This rate limit sets the maximum number of transactions that can be processed within a given time frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number at which to perform the query.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The transaction rate limit of the network, None if not available.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>]</p>
+</dd>
+</dl>
+<p>The transaction rate limit is an essential parameter for ensuring the stability and scalability of the Bittensor network. It helps in managing network load and preventing congestion, thereby maintaining efficient and timely transaction processing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.unstake">
+<span class="sig-name descname"><span class="pre">unstake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.unstake" title="Link to this definition">#</a></dt>
+<dd><p>Removes a specified amount of stake from a single hotkey account. This function is critical for adjusting individual neuron stakes within the Bittensor network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.wallet</em>) – The wallet associated with the neuron from which the stake is being removed.</p></li>
+<li><p><strong>hotkey_ss58</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The <code class="docutils literal notranslate"><span class="pre">SS58</span></code> address of the hotkey account to unstake from.</p></li>
+<li><p><strong>amount</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The amount of TAO to unstake. If not specified, unstakes all.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the unstaking process is successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>This function supports flexible stake management, allowing neurons to adjust their network participation and potential reward accruals.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.Subtensor.unstake_multiple">
+<span class="sig-name descname"><span class="pre">unstake_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amounts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.Subtensor.unstake_multiple" title="Link to this definition">#</a></dt>
+<dd><p>Performs batch unstaking from multiple hotkey accounts, allowing a neuron to reduce its staked amounts efficiently. This function is useful for managing the distribution of stakes across multiple neurons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>) – The wallet linked to the coldkey from which the stakes are being withdrawn.</p></li>
+<li><p><strong>hotkey_ss58s</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – A list of hotkey <code class="docutils literal notranslate"><span class="pre">SS58</span></code> addresses to unstake from.</p></li>
+<li><p><strong>amounts</strong> (<em>List</em><em>[</em><em>Union</em><em>[</em><a class="reference internal" href="#bittensor.Balance" title="bittensor.Balance"><em>Balance</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em><em>]</em>) – The amounts of TAO to unstake from each hotkey. If not provided, unstakes all available stakes.</p></li>
+<li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be included in a block.</p></li>
+<li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Waits for the transaction to be finalized on the blockchain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the batch unstaking is successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p>This function allows for strategic reallocation or withdrawal of stakes, aligning with the dynamic stake management aspect of the Bittensor network.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.Subtensor.websocket">
+<span class="sig-name descname"><span class="pre">websocket</span></span><a class="headerlink" href="#bittensor.Subtensor.websocket" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.Subtensor.weights">
@@ -8890,6 +9272,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_hotkey_owner"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_hotkey_owner()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_hyperparameter"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_hyperparameter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_netuids_for_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_netuids_for_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_neuron_for_pubkey_and_subnet"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_neuron_for_pubkey_and_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_stake_info_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_info_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.AsyncSubtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_burn_cost()</span></code></a></li>
@@ -9108,7 +9491,6 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Metagraph"><code class="docutils literal notranslate"><span class="pre">Metagraph</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor"><code class="docutils literal notranslate"><span class="pre">MockSubtensor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.__dict__"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.__dict__</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._convert_to_balance"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._convert_to_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._get_axon_info"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_axon_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._get_most_recent_storage"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._get_most_recent_storage()</span></code></a></li>
@@ -9117,6 +9499,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor._neuron_subnet_exists"><code class="docutils literal notranslate"><span class="pre">MockSubtensor._neuron_subnet_exists()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.block_number"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.block_number</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.chain_state"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.chain_state</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.close_code"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.close_code</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.commit"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.commit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.create_subnet"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.create_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.do_block_step"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.do_block_step()</span></code></a></li>
@@ -9131,7 +9514,10 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.min_required_stake"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.min_required_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.mock_substrate_interface"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_substrate_interface</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.mock_websocket"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.mock_websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neuron_for_uid"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neuron_for_uid_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neuron_for_uid_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neurons"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.neurons_lite"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.neurons_lite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.MockSubtensor.query_constant"><code class="docutils literal notranslate"><span class="pre">MockSubtensor.query_constant()</span></code></a></li>
@@ -9158,6 +9544,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.last_update</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.NeuronInfo.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfo.pruning_score</span></code></a></li>
@@ -9344,6 +9731,8 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor._get_hyperparameter"><code class="docutils literal notranslate"><span class="pre">Subtensor._get_hyperparameter()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor._get_substrate"><code class="docutils literal notranslate"><span class="pre">Subtensor._get_substrate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_args"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_stake"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_stake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.add_stake_multiple"><code class="docutils literal notranslate"><span class="pre">Subtensor.add_stake_multiple()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.block"><code class="docutils literal notranslate"><span class="pre">Subtensor.block</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.blocks_since_last_update"><code class="docutils literal notranslate"><span class="pre">Subtensor.blocks_since_last_update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.bonds"><code class="docutils literal notranslate"><span class="pre">Subtensor.bonds()</span></code></a></li>
@@ -9354,6 +9743,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.config"><code class="docutils literal notranslate"><span class="pre">Subtensor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">Subtensor.determine_chain_endpoint_and_network()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.difficulty"><code class="docutils literal notranslate"><span class="pre">Subtensor.difficulty()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.does_hotkey_exist"><code class="docutils literal notranslate"><span class="pre">Subtensor.does_hotkey_exist()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_all_subnets_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_all_subnets_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_balance"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_balance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_block_hash"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_block_hash()</span></code></a></li>
@@ -9361,10 +9751,15 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_block()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegate_by_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_by_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegate_take"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_take()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_delegates"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegates()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_existential_deposit"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_existential_deposit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_hotkey_owner"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_hotkey_owner()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_minimum_required_stake"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_minimum_required_stake()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_netuids_for_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_netuids_for_hotkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_neuron_certificate"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_neuron_certificate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_neuron_for_pubkey_and_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_neuron_for_pubkey_and_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_prometheus_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_prometheus_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_hyperparameters()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnets()</span></code></a></li>
@@ -9373,6 +9768,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.get_uid_for_hotkey_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_uid_for_hotkey_on_subnet()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.help"><code class="docutils literal notranslate"><span class="pre">Subtensor.help()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.immunity_period"><code class="docutils literal notranslate"><span class="pre">Subtensor.immunity_period()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_delegate"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_delegate()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered_any"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_any()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.is_hotkey_registered_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_on_subnet()</span></code></a></li>
@@ -9403,6 +9799,10 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.substrate"><code class="docutils literal notranslate"><span class="pre">Subtensor.substrate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.tempo"><code class="docutils literal notranslate"><span class="pre">Subtensor.tempo()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.transfer"><code class="docutils literal notranslate"><span class="pre">Subtensor.transfer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.tx_rate_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.tx_rate_limit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.unstake"><code class="docutils literal notranslate"><span class="pre">Subtensor.unstake()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.unstake_multiple"><code class="docutils literal notranslate"><span class="pre">Subtensor.unstake_multiple()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.websocket"><code class="docutils literal notranslate"><span class="pre">Subtensor.websocket</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.weights"><code class="docutils literal notranslate"><span class="pre">Subtensor.weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.Subtensor.weights_rate_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.weights_rate_limit()</span></code></a></li>
 </ul>
