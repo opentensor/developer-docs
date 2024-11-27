@@ -16,7 +16,6 @@ The following are the release notes for the Bittensor software.
 
 ### BTCLI 8.4.0
 
-
 - Upgraded WebSockets version to `14.1` or higher. 
 - Resolved an issue where `btcli` did not allow setting a few subnet hyperparameters. Now all existing subnet hyperparameters can be set using `btcli`.
 - Release PR: [https://github.com/opentensor/btcli/pull/254](https://github.com/opentensor/btcli/pull/254).

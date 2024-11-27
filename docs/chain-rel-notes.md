@@ -6,13 +6,25 @@ title: "Chain Release Notes"
 
 The following are the release notes for the subtensor on-chain software.
 
+
+## Mainnet
+
+`Released 27 November 2024`
+
+### Hotfix for run_coinbase
+
+- A hotfix is released to the mainnet. This hotfix addresses a critical issue in the `run_coinbase` logic of the Subtensor pallet, ensuring that subnet emissions are properly gated by registration permissions. Additionally, a new test has been introduced to verify the behavior of emissions when registration is disabled for a subnet.
+- Mainnet spec version is updated to `211`.
+- Release tag: [https://github.com/opentensor/subtensor/releases/tag/v1.1.10](https://github.com/opentensor/subtensor/releases/tag/v1.1.10).
+
+
 ## Mainnet
 
 `Released 25 November 2024`
 
 ### Permissioned EVM feature
 
-- **IMPORTANT**: EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node to deploy your smart contracts on mainnet: `wss://evm.chain.opentensor.ai `to access EVM on the mainnet.
+- **IMPORTANT**: EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the meantime use this mainnet node to deploy your smart contracts on mainnet: `wss://evm.chain.opentensor.ai`.
 - **Permissioned deployment**: The EVM layer is now on mainnet. Until further notice, only white-listed parties can deploy a smart contract on mainnet and testnet. When you are ready to deploy, make a request in the evm-bittensor channel of Bittensor Discord: ⁠https://discord.com/channels/799672011265015819/1303125508791341057
 - **Permissionless interaction**: Calling a smart contract is permissionless, either on mainnet or on testnet. Anyone can call a smart contract that was already deployed on mainnet or testnet, and interact with it in a permissionless way.
 - **Documentation**: https://docs.bittensor.com/evm-tutorials/

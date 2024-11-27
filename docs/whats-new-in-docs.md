@@ -9,9 +9,14 @@ hide_table_of_contents: false
 
 Key updates to the documentation.
 
+## 27 November 2024
+
+- A [release note for the mainnet hotfix for `run_coinbase`](./chain-rel-notes.md) is published.
+- Release notes for Wallet 2.1.2, BTCLI 8.4.0 and Bittensor SDK 8.4.0 are [published here](./bittensor-rel-notes.md#released-27-november-2024).
+
 ## 25 November 2024
 
-The [release notes for the mainnet updates](./chain-rel-notes.md) is published.
+The [release notes for the mainnet updates](./chain-rel-notes.md) are published.
 
 ## 14 November 2024
 
