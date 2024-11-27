@@ -8,11 +8,11 @@ The following are the release notes for the Bittensor software.
 
 ## Released 27 November 2024
 
-### Wallet 2.1.2
+### Wallet 2.1.3
 
 - Reduced the installed dependencies by ~450MB by removing the requirement for  Ansible. As a result, the install dependencies for BTCLI and Bittensor SDK are also reduced. 
 
-- Release PR: [https://github.com/opentensor/btwallet/pull/74](https://github.com/opentensor/btwallet/pull/74).
+- Release PR: [https://github.com/opentensor/btwallet/pull/74](https://github.com/opentensor/btwallet/pull/79).
 
 ### BTCLI 8.4.0
 
