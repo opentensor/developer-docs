@@ -64,9 +64,9 @@ Generally speaking, you should use `AsyncSubstrateInterface` as a part of `Async
 
 `AsyncSubtensor` is the `asyncio` version of the Subtensor class. Under the hood, it utilises `AsyncSubstrateInterface`. 
 
-### AsyncSubtensor vs AsyncSubstrateInterface
+### AsyncSubtensor vs Subtensor
 
-Major differences between the two are:
+Major differences between `AsyncSubtensor` and `Subtensor` are:
 
 - `AsyncSubtensor` uses `block_hash` args rather than `block` args.
 - `AsyncSubtensor` uses the `reuse_block` arg.
