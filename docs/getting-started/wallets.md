@@ -123,7 +123,7 @@ Make a note of the above command option `regen_hotkey` showing how to regenerate
 
 By default, the hotkey is not encrypted on the device, whereas the coldkey is encrypted. To encrypt your hotkey, run this command:
 ```bash
-btcli wallet new_hotkey --use_password
+btcli wallet new_hotkey --use-password
 ```
 
 ## Creating a local wallet using Python
