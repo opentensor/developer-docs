@@ -588,6 +588,21 @@ Note that the terms relative price, alpha token's price, alpha price are the sam
 From the above table, we can see that while TAO emissions into the pool are proportional to each subnet's TAO reserve, the alpha emissions into the pool are flat 1 alpha per block. Furthermore, emissions into alpha outstanding are flat 1 alpha per block **regardless of sum of prices.**
 :::
 
+See the below diagram showing how emissions flow:
+
+<center>
+<ThemedImage
+alt="Unstaking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/emissions-dynamic-tao.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-emissions-dynamic-tao.svg'),
+  }}
+style={{width: 850}}
+/>
+</center>
+
+<br />
+
 ### Example
 
 Consider the following subnets:
