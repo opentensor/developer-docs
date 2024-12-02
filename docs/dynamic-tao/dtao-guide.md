@@ -428,6 +428,7 @@ Hence, for `root_weight` of 0.5, the subnet zero stake of the hotkey will now be
 ### Global weight vs. local weight
 
 The two quantities defined above for a validator hotkey, i.e., the hotkey's global weight (across all subnets where it is validating) and its local weight (per subnet), are critically important. 
+
 :::caution global weight appears in every subnet
 In addition to the local weight of a hotkey in a subnet, this hotkey's global weight also appears in this subnet. This is why global weight of a validator's hotkey is critical.
 :::
