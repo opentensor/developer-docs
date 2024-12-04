@@ -1049,7 +1049,7 @@ $ btcli stake child revoke [OPTIONS]
 
 #### btcli stake child set
 
-Set child hotkeys on a specified subnet on the Bittensor network. This command will **overwrite** previous child hotkey settings. Use this command only if you want to change the child hotkeys. 
+Set child hotkeys on a specified subnet on the Bittensor network. Use this command to set the child hotkeys. However, if you already have child hotkeys, this command will **overwrite** all these previous child hotkey settings. Use this command either to set the child hotkeys for the first time or to change all the existing child hotkeys. 
 
 This command is used to delegate authority to different hotkeys, securing their position and influence on the subnet.
 
