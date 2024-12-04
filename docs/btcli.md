@@ -893,7 +893,7 @@ $ btcli stake [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 - `add`: Stake TAO tokens to one or more hotkeys from a user's coldkey on the Bittensor network.
-- `child`: Child Hotkey commands, alias: `children`.
+- `child`: Child hotkey commands, alias: `children`.
 - `remove`: Unstake TAO tokens from one or more hotkeys and transfer them back to the user's coldkey.
 - `show`: List all stake accounts associated with a user's wallet on the Bittensor network.
 
@@ -955,13 +955,6 @@ $ btcli stake child [OPTIONS] COMMAND [ARGS]...
 **Options**:
 
 - `--help`: Show this message and exit.
-
-**Commands**:
-
-- `get`: Get all child hotkeys on a specified...
-- `revoke`: Remove all children hotkeys on a specified...
-- `set`: Add children hotkeys on a specified subnet...
-- `take`: Get and set your childkey take on a...
 
 #### btcli stake child get
 
@@ -1056,16 +1049,13 @@ $ btcli stake child revoke [OPTIONS]
 
 #### btcli stake child set
 
-Add children hotkeys on a specified subnet on the Bittensor network.
+Set child hotkeys on a specified subnet on the Bittensor network. This command will **overwrite** previous child hotkey settings. Use this command only if you want to change the child hotkeys. 
 
-This command is used to delegate authority to different hotkeys, securing their position and influence on the
-subnet.
+This command is used to delegate authority to different hotkeys, securing their position and influence on the subnet.
 
-Users can specify the amount or 'proportion' to delegate to child hotkeys (`SS58` address),
-the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
-than 1.
+Users can specify the amount or 'proportion' to delegate to child hotkeys (`SS58` address), the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater than 1.
 
-The command prompts for confirmation before executing the set_children operation.
+The command prompts for confirmation before executing the operation.
 
 #### Example
 
