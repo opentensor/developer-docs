@@ -152,6 +152,7 @@ const sidebars = {
     "governance",
     "senate",
     "utilities",
+    "media-assets",
     "glossary",
   ],
 };
