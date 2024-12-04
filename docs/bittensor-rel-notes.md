@@ -6,6 +6,13 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+
+## Released 04 December 2024
+
+
+
+---
+
 ## Released 27 November 2024
 
 ### Wallet 2.1.3
