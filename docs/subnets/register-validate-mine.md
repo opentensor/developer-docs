@@ -51,7 +51,7 @@ While wallet transactions like delegating, transfer, registering, and staking ca
 To become a subnet validator and be able to set weights, you must satisfy **all** the below conditions:
 1. Register your keys to the subnet (as described above).
 2. Stake sufficient TAO on your hotkey to secure a [validator permit](#validator-permit).
-3. You must have at least 1000 TAO in your validator stake to be able to set weights in the subnet. 
+3. You must have at least 1000 TAO in your validator stake to be able to [set weights in the subnet](#minimum-tao-for-setting-weights). 
 
 ### Staking
 
