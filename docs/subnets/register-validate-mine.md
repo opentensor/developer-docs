@@ -48,9 +48,10 @@ While wallet transactions like delegating, transfer, registering, and staking ca
 
 ## Running a subnet validator 
 
-To become a subnet validator, you must:
+To become a subnet validator, you must satisfy **all** the below conditions:
 1. Register your keys to the subnet (as described above).
 2. Stake sufficient TAO on your hotkey to secure a [validator permit](#validator-permit).
+3. You must have at least 1000 TAO in your validator stake to be able to set weights in the subnet. 
 
 ### Staking
 
@@ -115,6 +116,10 @@ wallet = bt.wallet( name = 'my_coldkey', hotkey = 'my_validator_hotkey' )
 my_uid = subnet.hotkeys.index( wallet.hotkey.ss58_address )
 print(f'Validator permit: {subnet.validator_permit(my_uid)}')
 ```
+
+### Minimum TAO for setting weights
+
+ You must have at least 1000 TAO in your validator stake to be able to set weights in the subnet. 
 
 ## Running a subnet miner
 
