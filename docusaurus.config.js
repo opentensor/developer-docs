@@ -65,7 +65,7 @@ const config = {
     ],
   ],
   plugins: [
-    "@gracefullight/docusaurus-plugin-vercel-analytics",
+    // "@gracefullight/docusaurus-plugin-vercel-analytics",
     [
       "@docusaurus/plugin-client-redirects",
       {
