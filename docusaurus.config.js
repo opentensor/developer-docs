@@ -8,8 +8,11 @@ const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
 // KaTex stuff
-const math = require("remark-math");
-const katex = require("rehype-katex");
+// const math = require("remark-math");
+// const katex = require("rehype-katex");
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -50,8 +53,8 @@ const config = {
         docs: {
           routeBasePath: "/",
           path: "docs",
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: true,
           showLastUpdateTime: true,
