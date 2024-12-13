@@ -546,7 +546,7 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.decode_hex_identity_dict" title="bittensor.utils.decode_hex_identity_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode_hex_identity_dict</span></code></a>(info_dictionary)</p></td>
 <td><p>Decodes hex-encoded strings in a dictionary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.format_error_message" title="bittensor.utils.format_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_error_message</span></code></a>(error_message, substrate)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.format_error_message" title="bittensor.utils.format_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_error_message</span></code></a>(error_message)</p></td>
 <td><p>Formats an error message from the Subtensor error information for use in extrinsics.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.get_explorer_url_for_network" title="bittensor.utils.get_explorer_url_for_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_explorer_url_for_network</span></code></a>(network, block_hash, ...)</p></td>
@@ -629,7 +629,7 @@ document.write(`
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="bittensor.utils.VersionCheckError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">VersionCheckError</span></span><a class="headerlink" href="#bittensor.utils.VersionCheckError" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">VersionCheckError</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#VersionCheckError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.VersionCheckError" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Exception raised for errors in the version check process.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
@@ -637,7 +637,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils._get_explorer_root_url_by_network_from_map">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_get_explorer_root_url_by_network_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils._get_explorer_root_url_by_network_from_map" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_get_explorer_root_url_by_network_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#_get_explorer_root_url_by_network_from_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils._get_explorer_root_url_by_network_from_map" title="Link to this definition">#</a></dt>
 <dd><p>Returns the explorer root url for the given network name from the given network map.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -658,7 +658,7 @@ Or None if the network is not in the network map.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils._is_valid_ed25519_pubkey">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_is_valid_ed25519_pubkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils._is_valid_ed25519_pubkey" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_is_valid_ed25519_pubkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#_is_valid_ed25519_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils._is_valid_ed25519_pubkey" title="Link to this definition">#</a></dt>
 <dd><p>Checks if the given public_key is a valid ed25519 key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -675,7 +675,7 @@ Or None if the network is not in the network map.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.check_version">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">check_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.check_version" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">check_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#check_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.check_version" title="Link to this definition">#</a></dt>
 <dd><p>Check if the current version of Bittensor is up-to-date with the latest version on PyPi.
 Raises a VersionCheckError if the version check fails.</p>
 <dl class="field-list simple">
@@ -716,15 +716,12 @@ decode_hex_identity_dict(input_dict)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.format_error_message">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">format_error_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substrate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.format_error_message" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">format_error_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#format_error_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.format_error_message" title="Link to this definition">#</a></dt>
 <dd><p>Formats an error message from the Subtensor error information for use in extrinsics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>error_message</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><em>Exception</em></a><em>]</em>) – A dictionary containing the error information from Subtensor, or a SubstrateRequestException
-containing dictionary literal args.</p></li>
-<li><p><strong>substrate</strong> (<em>Union</em><em>[</em><a class="reference internal" href="async_substrate_interface/index.html#bittensor.utils.async_substrate_interface.AsyncSubstrateInterface" title="bittensor.utils.async_substrate_interface.AsyncSubstrateInterface"><em>async_substrate_interface.AsyncSubstrateInterface</em></a><em>, </em><em>substrateinterface.SubstrateInterface</em><em>]</em>) – The initialised SubstrateInterface object to use.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>error_message</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><em>Exception</em></a><em>]</em>) – A dictionary containing the error information from Subtensor, or a SubstrateRequestException
+containing dictionary literal args.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A formatted error message string.</p>
@@ -737,7 +734,7 @@ containing dictionary literal args.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.get_explorer_url_for_network">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_explorer_url_for_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.get_explorer_url_for_network" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_explorer_url_for_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#get_explorer_url_for_network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.get_explorer_url_for_network" title="Link to this definition">#</a></dt>
 <dd><p>Returns the explorer url for the given block hash and network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -759,7 +756,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.get_hash">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.get_hash" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#get_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.get_hash" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -778,7 +775,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.is_valid_bittensor_address_or_public_key">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_bittensor_address_or_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.is_valid_bittensor_address_or_public_key" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_bittensor_address_or_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#is_valid_bittensor_address_or_public_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.is_valid_bittensor_address_or_public_key" title="Link to this definition">#</a></dt>
 <dd><p>Checks if the given address is a valid destination address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -795,7 +792,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.is_valid_ss58_address">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_ss58_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.is_valid_ss58_address" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_ss58_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#is_valid_ss58_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.is_valid_ss58_address" title="Link to this definition">#</a></dt>
 <dd><p>Checks if the given address is a valid ss58 address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -817,7 +814,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.ss58_address_to_bytes">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">ss58_address_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.ss58_address_to_bytes" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">ss58_address_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#ss58_address_to_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.ss58_address_to_bytes" title="Link to this definition">#</a></dt>
 <dd><p>Converts a ss58 address to a bytes object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -831,7 +828,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.ss58_to_vec_u8">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">ss58_to_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.ss58_to_vec_u8" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">ss58_to_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#ss58_to_vec_u8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.ss58_to_vec_u8" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ss58_address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
@@ -844,7 +841,7 @@ Or None if the network is not known.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.strtobool">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">strtobool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.strtobool" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">strtobool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#strtobool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.strtobool" title="Link to this definition">#</a></dt>
 <dd><p>Converts a string to a boolean value.</p>
 <p>truth-y values are ‘y’, ‘yes’, ‘t’, ‘true’, ‘on’, and ‘1’;
 false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0’.</p>
@@ -866,7 +863,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.u16_normalized_float">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">u16_normalized_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.u16_normalized_float" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">u16_normalized_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#u16_normalized_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.u16_normalized_float" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
@@ -879,7 +876,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.u64_normalized_float">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">u64_normalized_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.u64_normalized_float" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">u64_normalized_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#u64_normalized_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.u64_normalized_float" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
@@ -909,7 +906,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.use_torch">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">use_torch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.use_torch" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">use_torch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/registration.html#use_torch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.use_torch" title="Link to this definition">#</a></dt>
 <dd><p>Force the use of torch over numpy for certain operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -934,7 +931,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.version_checking">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">version_checking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.version_checking" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">version_checking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#version_checking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.version_checking" title="Link to this definition">#</a></dt>
 <dd><p>Deprecated, kept for backwards compatibility. Use check_version() instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

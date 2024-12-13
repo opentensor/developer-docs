@@ -376,7 +376,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">Fore</span><span class="p">,</span> <span class="n">Back</span><span class="p">,</span> <span class="n">Style</span>
 
-<span class="n">init</span><span class="p">(</span><span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">TRACE_LEVEL_NUM</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">SUCCESS_LEVEL_NUM</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>
@@ -410,25 +410,16 @@ document.write(`
     <span class="s2">&quot;:white_heavy_check_mark:&quot;</span><span class="p">:</span> <span class="s2">&quot;✅&quot;</span><span class="p">,</span>
     <span class="s2">&quot;:cross_mark:&quot;</span><span class="p">:</span> <span class="s2">&quot;❌&quot;</span><span class="p">,</span>
     <span class="s2">&quot;:satellite:&quot;</span><span class="p">:</span> <span class="s2">&quot;🛰️&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;:warning:&quot;</span><span class="p">:</span> <span class="s2">&quot;⚠️&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;:arrow_right:&quot;</span><span class="p">:</span> <span class="s2">&quot;➡️&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;:hourglass:&quot;</span><span class="p">:</span> <span class="s2">&quot;⏳&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 
 <span class="n">color_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;[red]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span>
-    <span class="s2">&quot;[/red]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;[blue]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-    <span class="s2">&quot;[/blue]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;[green]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
-    <span class="s2">&quot;[/green]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;[magenta]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">MAGENTA</span><span class="p">,</span>
-    <span class="s2">&quot;[/magenta]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;[yellow]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
-    <span class="s2">&quot;[/yellow]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
-    <span class="s2">&quot;[orange]&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
-    <span class="s2">&quot;[/orange]&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;red&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;/red&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;blue&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;/blue&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;green&gt;&quot;</span><span class="p">:</span> <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
+    <span class="s2">&quot;&lt;/green&gt;&quot;</span><span class="p">:</span> <span class="n">Style</span><span class="o">.</span><span class="n">RESET_ALL</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -602,7 +593,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            formated record (str): The formatted log record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="si">:</span><span class="s2">^10</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="si">:</span><span class="s2">^16</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span></div>
 </div>
 

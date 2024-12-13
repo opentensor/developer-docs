@@ -7,9 +7,18 @@ title: "Bittensor Release Notes"
 The following are the release notes for the Bittensor software.
 
 
-## Released 04 December 2024
+## Released 12 December 2024
 
+### Bittensor SDK 8.5.0
 
+- Release PR: [https://github.com/opentensor/bittensor/pull/2538](https://github.com/opentensor/bittensor/pull/2538).
+- Two new functions are added: 
+  - [`get_total_stake_for_coldkey`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html#bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey).
+  - [`get_total_stake_for_hotkey`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html#bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey).
+
+- Added the required logic to support Commit Reveal V3.
+
+- Fixed the bug that was in [`get_current_block`](pathname:///python-api/html/autoapi/bittensor/core/async_subtensor/index.html#bittensor.core.async_subtensor.AsyncSubtensor.get_current_block).
 
 ---
 

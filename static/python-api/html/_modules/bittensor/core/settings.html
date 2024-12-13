@@ -365,7 +365,7 @@ document.write(`
 <span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
 <span class="c1"># DEALINGS IN THE SOFTWARE.</span>
 
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;8.4.0&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -373,6 +373,36 @@ document.write(`
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span> <span class="nn">munch</span> <span class="kn">import</span> <span class="n">munchify</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">rich.traceback</span> <span class="kn">import</span> <span class="n">install</span>
+
+<span class="c1"># Rich console.</span>
+<span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Remove overdue locals in debug training.</span>
+<span class="n">install</span><span class="p">(</span><span class="n">show_locals</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">turn_console_off</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">__use_console__</span>
+    <span class="k">global</span> <span class="n">__console__</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+
+    <span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">StringIO</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">turn_console_on</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">__use_console__</span>
+    <span class="k">global</span> <span class="n">__console__</span>
+    <span class="n">__use_console__</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">__console__</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+
+
+<span class="n">turn_console_off</span><span class="p">()</span>
+
+<span class="n">bt_console</span> <span class="o">=</span> <span class="n">__console__</span>
 
 
 <span class="n">HOME_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
@@ -380,31 +410,22 @@ document.write(`
 <span class="n">WALLETS_DIR</span> <span class="o">=</span> <span class="n">USER_BITTENSOR_DIR</span> <span class="o">/</span> <span class="s2">&quot;wallets&quot;</span>
 <span class="n">MINERS_DIR</span> <span class="o">=</span> <span class="n">USER_BITTENSOR_DIR</span> <span class="o">/</span> <span class="s2">&quot;miners&quot;</span>
 
+<span class="c1"># Bittensor networks name</span>
+<span class="n">NETWORKS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;archive&quot;</span><span class="p">]</span>
+
+<span class="n">DEFAULT_ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://entrypoint-finney.opentensor.ai:443&quot;</span>
+<span class="n">DEFAULT_NETWORK</span> <span class="o">=</span> <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Create dirs if they don&#39;t exist</span>
 <span class="n">WALLETS_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">MINERS_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Bittensor networks name</span>
-<span class="n">NETWORKS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;archive&quot;</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="s2">&quot;subvortex&quot;</span><span class="p">]</span>
-
-<span class="n">DEFAULT_ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://entrypoint-finney.opentensor.ai:443&quot;</span>
-<span class="n">DEFAULT_NETWORK</span> <span class="o">=</span> <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Bittensor endpoints (Needs to use wss://)</span>
 <span class="n">FINNEY_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://entrypoint-finney.opentensor.ai:443&quot;</span>
 <span class="n">FINNEY_TEST_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://test.finney.opentensor.ai:443/&quot;</span>
 <span class="n">ARCHIVE_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;wss://archive.chain.opentensor.ai:443/&quot;</span>
-<span class="n">LOCAL_ENTRYPOINT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_SUBTENSOR_CHAIN_ENDPOINT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;ws://127.0.0.1:9944&quot;</span>
-<span class="n">SUBVORTEX_ENTRYPOINT</span> <span class="o">=</span> <span class="s2">&quot;ws://subvortex.info:9944&quot;</span>
-
-<span class="n">NETWORK_MAP</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">FINNEY_ENTRYPOINT</span><span class="p">,</span>
-    <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">FINNEY_TEST_ENTRYPOINT</span><span class="p">,</span>
-    <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ARCHIVE_ENTRYPOINT</span><span class="p">,</span>
-    <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">LOCAL_ENTRYPOINT</span><span class="p">,</span>
-    <span class="n">NETWORKS</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">SUBVORTEX_ENTRYPOINT</span><span class="p">,</span>
-<span class="p">}</span>
+<span class="n">LOCAL_ENTRYPOINT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_SUBTENSOR_CHAIN_ENDPOINT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;ws://127.0.0.1:9946&quot;</span>
 
 <span class="c1"># Currency Symbols Bittensor</span>
 <span class="n">TAO_SYMBOL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mh">0x03C4</span><span class="p">)</span>
@@ -441,28 +462,11 @@ document.write(`
 <span class="p">}</span>
 
 <span class="c1"># --- Type Registry ---</span>
-<span class="n">TYPE_REGISTRY</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">TYPE_REGISTRY</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;Balance&quot;</span><span class="p">:</span> <span class="s2">&quot;u64&quot;</span><span class="p">,</span>  <span class="c1"># Need to override default u128</span>
     <span class="p">},</span>
     <span class="s2">&quot;runtime_api&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;DelegateInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;get_delegated&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_delegates&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
         <span class="s2">&quot;NeuronInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">&quot;get_neuron_lite&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -487,64 +491,7 @@ document.write(`
                     <span class="p">],</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
                 <span class="p">},</span>
-                <span class="s2">&quot;get_neuron&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;uid&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_neurons&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
             <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;StakeInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;get_stake_info_for_coldkey&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey_account_vec&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_stake_info_for_coldkeys&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey_account_vecs&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;Vec&lt;u8&gt;&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-            <span class="p">},</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;ValidatorIPRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;get_associated_validator_ip_info_for_subnet&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-            <span class="p">},</span>
         <span class="p">},</span>
         <span class="s2">&quot;SubnetInfoRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -556,55 +503,11 @@ document.write(`
                         <span class="p">},</span>
                     <span class="p">],</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_subnet_info&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;netuid&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u16&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_subnets_info&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="s2">&quot;SubnetRegistrationRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;get_network_registration_cost&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;u64&quot;</span><span class="p">}}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;ColdkeySwapRuntimeApi&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;get_scheduled_coldkey_swap&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey_account_vec&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_remaining_arbitration_period&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey_account_vec&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;get_coldkey_swap_destinations&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coldkey_account_vec&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                        <span class="p">},</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Vec&lt;u8&gt;&quot;</span><span class="p">,</span>
-                <span class="p">},</span>
-            <span class="p">}</span>
         <span class="p">},</span>
     <span class="p">},</span>
 <span class="p">}</span>
