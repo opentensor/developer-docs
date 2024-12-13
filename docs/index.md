@@ -28,6 +28,7 @@ import { FaPython } from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa";
 import { SiFuturelearn } from "react-icons/si";
 import { GoNumber } from "react-icons/go";
+import { VscFileMedia } from "react-icons/vsc";
 
 
 # Bittensor Developer Documentation
@@ -35,7 +36,7 @@ import { GoNumber } from "react-icons/go";
 **Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. 
 
 :::tip looking for EVM docs?
-Check out the [tutorial docs for EVM on subtensor](./evm-tutorials/).
+Check out the [docs for EVM on subtensor](./evm-tutorials/).
 :::
 
 <Cards>
@@ -53,12 +54,12 @@ Check out the [tutorial docs for EVM on subtensor](./evm-tutorials/).
     icon={GoNumber}
     title='Current subnet limit'
     link=''
-    body='52' />
-    <!-- <CardSmall
-    icon={() => <span style={{ fontSize: '1.2rem', paddingBottom: '0.4rem', display: 'inline-block' }}>Δ</span>}
-    title='Subnet 4'
-    link='/subnet-pages/subnet-4'
-    body='Targon' /> -->
+    body='64' />
+    <CardSmall
+    icon={VscFileMedia}
+    title='Bittensor media assets'
+    link='media-assets'
+    body='Media assets' />
 </Cards>
 
 See the below diagram for a top-level view of the Bittensor ecosystem. 

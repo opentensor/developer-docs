@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.synapse &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.synapse &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,11 +181,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -410,28 +414,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.get_size"><code class="docutils literal notranslate"><span class="pre">get_size()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_int"><code class="docutils literal notranslate"><span class="pre">cast_int()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_float"><code class="docutils literal notranslate"><span class="pre">cast_float()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo"><code class="docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.model_config"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_code</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_message"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_message</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.process_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.ip"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.version</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.nonce</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.uuid"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.uuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.hotkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.signature"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.signature</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_process_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_version</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_nonce</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_status_code</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse"><code class="docutils literal notranslate"><span class="pre">Synapse</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.deserialize"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.__setattr__"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
@@ -440,34 +422,56 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.parse_headers_to_inputs"><code class="docutils literal notranslate"><span class="pre">Synapse.parse_headers_to_inputs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.from_headers"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.model_config"><code class="docutils literal notranslate"><span class="pre">Synapse.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.set_name_type"><code class="docutils literal notranslate"><span class="pre">Synapse.set_name_type()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.name"><code class="docutils literal notranslate"><span class="pre">Synapse.name</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.total_size"><code class="docutils literal notranslate"><span class="pre">Synapse.total_size</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.header_size"><code class="docutils literal notranslate"><span class="pre">Synapse.header_size</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.dendrite"><code class="docutils literal notranslate"><span class="pre">Synapse.dendrite</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.axon"><code class="docutils literal notranslate"><span class="pre">Synapse.axon</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.computed_body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.computed_body_hash</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.required_hash_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.required_hash_fields</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_total_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_total_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_header_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_header_size</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Synapse.get_total_size()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_success"><code class="docutils literal notranslate"><span class="pre">Synapse.is_success</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_failure"><code class="docutils literal notranslate"><span class="pre">Synapse.is_failure</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.is_timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_blacklist"><code class="docutils literal notranslate"><span class="pre">Synapse.is_blacklist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_total_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_total_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.axon"><code class="docutils literal notranslate"><span class="pre">Synapse.axon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.computed_body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.computed_body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.dendrite"><code class="docutils literal notranslate"><span class="pre">Synapse.dendrite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.failed_verification"><code class="docutils literal notranslate"><span class="pre">Synapse.failed_verification</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.get_required_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.get_required_fields()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Synapse.to_headers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Synapse.get_total_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.header_size"><code class="docutils literal notranslate"><span class="pre">Synapse.header_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_blacklist"><code class="docutils literal notranslate"><span class="pre">Synapse.is_blacklist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_failure"><code class="docutils literal notranslate"><span class="pre">Synapse.is_failure</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_success"><code class="docutils literal notranslate"><span class="pre">Synapse.is_success</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.is_timeout</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.model_config"><code class="docutils literal notranslate"><span class="pre">Synapse.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.name"><code class="docutils literal notranslate"><span class="pre">Synapse.name</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Synapse.parse_headers_to_inputs()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.required_hash_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.required_hash_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.set_name_type"><code class="docutils literal notranslate"><span class="pre">Synapse.set_name_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.timeout</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Synapse.to_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.total_size"><code class="docutils literal notranslate"><span class="pre">Synapse.total_size</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo"><code class="docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_nonce</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_port</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_process_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_version</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.ip"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.ip</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.model_config"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.nonce</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.port</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.process_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.signature"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.signature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_message"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.uuid"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.uuid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.version</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_float"><code class="docutils literal notranslate"><span class="pre">cast_float()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_int"><code class="docutils literal notranslate"><span class="pre">cast_int()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.get_size"><code class="docutils literal notranslate"><span class="pre">get_size()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -487,11 +491,11 @@ document.write(`
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a></p></td>
-<td><p>TerminalInfo encapsulates detailed information about a network synapse (node) involved in a communication process.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Synapse</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Synapse</span></code></a></p></td>
 <td><p>Represents a Synapse in the Bittensor network, serving as a communication schema between neurons (nodes).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a></p></td>
+<td><p>TerminalInfo encapsulates detailed information about a network synapse (node) involved in a communication process.</p></td>
 </tr>
 </tbody>
 </table>
@@ -501,14 +505,14 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.get_size" title="bittensor.core.synapse.get_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_size</span></code></a>(obj[, seen])</p></td>
-<td><p>Recursively finds size of objects.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.cast_float" title="bittensor.core.synapse.cast_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cast_float</span></code></a>(raw)</p></td>
+<td><p>Converts a string to a float, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.synapse.cast_int" title="bittensor.core.synapse.cast_int"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cast_int</span></code></a>(raw)</p></td>
 <td><p>Converts a string to an integer, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.cast_float" title="bittensor.core.synapse.cast_float"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cast_float</span></code></a>(raw)</p></td>
-<td><p>Converts a string to a float, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.synapse.get_size" title="bittensor.core.synapse.get_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_size</span></code></a>(obj[, seen])</p></td>
+<td><p>Recursively finds size of objects.</p></td>
 </tr>
 </tbody>
 </table>
@@ -516,205 +520,6 @@ document.write(`
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.synapse.get_size">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.get_size" title="Link to this definition">#</a></dt>
-<dd><p>Recursively finds size of objects.</p>
-<p>This function traverses every item of a given object and sums their sizes to compute the total size.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>obj</strong> (<em>Any</em>) – The object to get the size of.</p></li>
-<li><p><strong>seen</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><em>set</em></a><em>]</em>) – Set of object ids that have been calculated.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The total size of the object.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.synapse.cast_int">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_int" title="Link to this definition">#</a></dt>
-<dd><p>Converts a string to an integer, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>This function attempts to convert a string to an integer. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The string to convert.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The converted integer, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the input was <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a> or None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.synapse.cast_float">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_float" title="Link to this definition">#</a></dt>
-<dd><p>Converts a string to a float, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>This function attempts to convert a string to a float. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The string to convert.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The converted float, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the input was <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)">float</a> or None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">TerminalInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#TerminalInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
-<p>TerminalInfo encapsulates detailed information about a network synapse (node) involved in a communication process.</p>
-<p>This class serves as a metadata carrier,
-providing essential details about the state and configuration of a terminal during network interactions. This is a crucial class in the Bittensor framework.</p>
-<p>The TerminalInfo class contains information such as HTTP status codes and messages, processing times,
-IP addresses, ports, Bittensor version numbers, and unique identifiers. These details are vital for
-maintaining network reliability, security, and efficient data flow within the Bittensor network.</p>
-<p>This class includes Pydantic validators and root validators to enforce data integrity and format. It is
-designed to be used natively within Synapses, so that you will not need to call this directly, but rather
-is used as a helper class for Synapses.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>status_code</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – HTTP status code indicating the result of a network request. Essential for identifying the outcome of network interactions.</p></li>
-<li><p><strong>status_message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Descriptive message associated with the status code, providing additional context about the request’s result.</p></li>
-<li><p><strong>process_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Time taken by the terminal to process the call, important for performance monitoring and optimization.</p></li>
-<li><p><strong>ip</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – IP address of the terminal, crucial for network routing and data transmission.</p></li>
-<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Network port used by the terminal, key for establishing network connections.</p></li>
-<li><p><strong>version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Bittensor version running on the terminal, ensuring compatibility between different nodes in the network.</p></li>
-<li><p><strong>nonce</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Unique, monotonically increasing number for each terminal, aiding in identifying and ordering network interactions.</p></li>
-<li><p><strong>uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Unique identifier for the terminal, fundamental for network security and identification.</p></li>
-<li><p><strong>hotkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Encoded hotkey string of the terminal wallet, important for transaction and identity verification in the network.</p></li>
-<li><p><strong>signature</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Digital signature verifying the tuple of nonce, axon_hotkey, dendrite_hotkey, and uuid, critical for ensuring data authenticity and security.</p></li>
-<li><p><strong>data</strong> (<em>Any</em>)</p></li>
-</ul>
-</dd>
-</dl>
-<p>Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a TerminalInfo instance</span>
-<span class="kn">from</span> <span class="nn">bittensor.core.synapse</span> <span class="kn">import</span> <span class="n">TerminalInfo</span>
-
-<span class="n">terminal_info</span> <span class="o">=</span> <span class="n">TerminalInfo</span><span class="p">(</span>
-    <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">status_message</span><span class="o">=</span><span class="s2">&quot;Success&quot;</span><span class="p">,</span>
-    <span class="n">process_time</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;198.123.23.1&quot;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">=</span><span class="mi">9282</span><span class="p">,</span>
-    <span class="n">version</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
-    <span class="n">nonce</span><span class="o">=</span><span class="mi">111111</span><span class="p">,</span>
-    <span class="n">uuid</span><span class="o">=</span><span class="s2">&quot;5ecbd69c-1cec-11ee-b0dc-e29ce36fec1a&quot;</span><span class="p">,</span>
-    <span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;5EnjDGNqqWnuL2HCAdxeEtN2oqtXZw6BMBe936Kfy2PFz1J1&quot;</span><span class="p">,</span>
-    <span class="n">signature</span><span class="o">=</span><span class="s2">&quot;0x0813029319030129u4120u10841824y0182u091u230912u&quot;</span>
-<span class="p">)</span>
-
-<span class="c1"># Accessing TerminalInfo attributes</span>
-<span class="n">ip_address</span> <span class="o">=</span> <span class="n">terminal_info</span><span class="o">.</span><span class="n">ip</span>
-<span class="n">processing_duration</span> <span class="o">=</span> <span class="n">terminal_info</span><span class="o">.</span><span class="n">process_time</span>
-
-<span class="c1"># TerminalInfo can be used to monitor and verify network interactions, ensuring proper communication and security within the Bittensor network.</span>
-</pre></div>
-</div>
-<p>TerminalInfo plays a pivotal role in providing transparency and control over network operations, making it an indispensable tool for developers and users interacting with the Bittensor ecosystem.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.model_config" title="Link to this definition">#</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.status_code">
-<span class="sig-name descname"><span class="pre">status_code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.status_code" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.status_message">
-<span class="sig-name descname"><span class="pre">status_message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.status_message" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.process_time">
-<span class="sig-name descname"><span class="pre">process_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.process_time" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.ip">
-<span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.ip" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.port">
-<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.port" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.version">
-<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.version" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.nonce">
-<span class="sig-name descname"><span class="pre">nonce</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.nonce" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.uuid">
-<span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.uuid" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.hotkey">
-<span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.hotkey" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.signature">
-<span class="sig-name descname"><span class="pre">signature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.signature" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_process_time">
-<span class="sig-name descname"><span class="pre">_extract_process_time</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_process_time" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_port">
-<span class="sig-name descname"><span class="pre">_extract_port</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_port" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_version">
-<span class="sig-name descname"><span class="pre">_extract_version</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_version" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_nonce">
-<span class="sig-name descname"><span class="pre">_extract_nonce</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_nonce" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_status_code">
-<span class="sig-name descname"><span class="pre">_extract_status_code</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_status_code" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">Synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse" title="Link to this definition">#</a></dt>
@@ -820,14 +625,14 @@ the robustness of their applications.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – HTTP route name, set on <code class="xref py py-func docutils literal notranslate"><span class="pre">axon.attach()</span></code>.</p></li>
-<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Total query length, set by the dendrite terminal.</p></li>
-<li><p><strong>total_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Total size of request body in bytes.</p></li>
-<li><p><strong>header_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Size of request header in bytes.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – HTTP route name, set on <code class="xref py py-func docutils literal notranslate"><span class="pre">axon.attach()</span></code>.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Total query length, set by the dendrite terminal.</p></li>
+<li><p><strong>total_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Total size of request body in bytes.</p></li>
+<li><p><strong>header_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Size of request header in bytes.</p></li>
 <li><p><strong>dendrite</strong> (<a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><code class="xref py py-func docutils literal notranslate"><span class="pre">TerminalInfo()</span></code></a>) – Information about the dendrite terminal.</p></li>
 <li><p><strong>axon</strong> (<a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><code class="xref py py-func docutils literal notranslate"><span class="pre">TerminalInfo()</span></code></a>) – Information about the axon terminal.</p></li>
-<li><p><strong>computed_body_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Computed hash of the request body.</p></li>
-<li><p><strong>required_hash_fields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Fields required to compute the body hash.</p></li>
+<li><p><strong>computed_body_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Computed hash of the request body.</p></li>
+<li><p><strong>required_hash_fields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Fields required to compute the body hash.</p></li>
 <li><p><strong>data</strong> (<em>Any</em>)</p></li>
 </ul>
 </dd>
@@ -850,7 +655,7 @@ the robustness of their applications.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
 <li><p><strong>value</strong> (<em>Any</em>)</p></li>
 </ul>
 </dd>
@@ -863,7 +668,7 @@ the robustness of their applications.</p>
 <dd><p>Calculates and returns the total size of the object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -874,7 +679,7 @@ the robustness of their applications.</p>
 <dd><p>Constructs a dictionary of headers from instance properties.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -885,7 +690,7 @@ the robustness of their applications.</p>
 <dd><p>Computes a SHA3-256 hash of the serialized body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -896,10 +701,10 @@ the robustness of their applications.</p>
 <dd><p>Parses headers to construct an inputs dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>)</p>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -910,7 +715,7 @@ the robustness of their applications.</p>
 <dd><p>Creates an instance from a headers dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>)</p>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse">Synapse</a></p>
@@ -924,15 +729,84 @@ standardized communication in a decentralized environment.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
 <p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse.model_config" title="Link to this definition">#</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.__setattr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd><p>Override the <a class="reference internal" href="#id0" title="bittensor.core.synapse.Synapse.__setattr__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__setattr__()</span></code></a> method to make the <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> property read-only.</p>
+<p>This is a security mechanism such that the <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> property cannot be
+overridden by the user or malicious code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>value</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_header_size">
+<span class="sig-name descname"><span class="pre">_extract_header_size</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_header_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_timeout">
+<span class="sig-name descname"><span class="pre">_extract_timeout</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_timeout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_total_size">
+<span class="sig-name descname"><span class="pre">_extract_total_size</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_total_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.axon">
+<span class="sig-name descname"><span class="pre">axon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><span class="pre">TerminalInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.axon" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">body_hash</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd><p>Computes a SHA3-256 hash of the serialized body of the Synapse instance.</p>
+<p>This hash is used to
+ensure the data integrity and security of the Synapse instance when it’s transmitted across the
+network. It is a crucial feature for verifying that the data received is the same as the data sent.</p>
+<p>Process:</p>
+<ol class="arabic simple">
+<li><p>Iterates over each required field as specified in <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code>.</p></li>
+<li><p>Concatenates the string representation of these fields.</p></li>
+<li><p>Applies SHA3-256 hashing to the concatenated string to produce a unique fingerprint of the data.</p></li>
+</ol>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ExampleRoute&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">hash_value</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">body_hash</span>
+<span class="c1"># hash_value is the SHA3-256 hash of the serialized body of the Synapse instance</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The SHA3-256 hash as a hexadecimal string, providing a fingerprint of the Synapse instance’s data for integrity checks.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.computed_body_hash">
+<span class="sig-name descname"><span class="pre">computed_body_hash</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.computed_body_hash" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.dendrite">
+<span class="sig-name descname"><span class="pre">dendrite</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><span class="pre">TerminalInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.dendrite" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
 <dd><p>Deserializes the Synapse object.</p>
 <p>This method is intended to be overridden by subclasses for custom deserialization logic.
 In the context of the Synapse superclass, this method simply returns the instance itself.
@@ -969,173 +843,9 @@ Synapse’s deserialize method will be used, returning the object instance as-is
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.set_name_type">
-<span class="sig-name descname"><span class="pre">set_name_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.set_name_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.set_name_type" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.name" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.timeout">
-<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.timeout" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.total_size">
-<span class="sig-name descname"><span class="pre">total_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.total_size" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.header_size">
-<span class="sig-name descname"><span class="pre">header_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.header_size" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.dendrite">
-<span class="sig-name descname"><span class="pre">dendrite</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><span class="pre">TerminalInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.dendrite" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.axon">
-<span class="sig-name descname"><span class="pre">axon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#bittensor.core.synapse.TerminalInfo" title="bittensor.core.synapse.TerminalInfo"><span class="pre">TerminalInfo</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.axon" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.computed_body_hash">
-<span class="sig-name descname"><span class="pre">computed_body_hash</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.computed_body_hash" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.required_hash_fields">
-<span class="sig-name descname"><span class="pre">required_hash_fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Ellipsis</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.required_hash_fields" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_total_size">
-<span class="sig-name descname"><span class="pre">_extract_total_size</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_total_size" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_header_size">
-<span class="sig-name descname"><span class="pre">_extract_header_size</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_header_size" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse._extract_timeout">
-<span class="sig-name descname"><span class="pre">_extract_timeout</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse._extract_timeout" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.__setattr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
-<dd><p>Override the <a class="reference internal" href="#id1" title="bittensor.core.synapse.Synapse.__setattr__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__setattr__()</span></code></a> method to make the <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> property read-only.</p>
-<p>This is a security mechanism such that the <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> property cannot be
-overridden by the user or malicious code.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>)</p></li>
-<li><p><strong>value</strong> (<em>Any</em>)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.get_total_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
-<dd><p>Get the total size of the current object.</p>
-<p>This method first calculates the size of the current object, then assigns it
-to the instance variable <code class="xref py py-func docutils literal notranslate"><span class="pre">self.total_size()</span></code> and finally returns this value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The total size of the current object.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_success">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_success</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_success" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the dendrite’s status code indicates success.</p>
-<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">200</span></code>,
-which typically represents a successful HTTP request.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">200</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_failure">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_failure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_failure" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the dendrite’s status code indicates failure.</p>
-<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is not <code class="docutils literal notranslate"><span class="pre">200</span></code>,
-which would mean the HTTP request was not successful.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is not <code class="docutils literal notranslate"><span class="pre">200</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_timeout">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_timeout" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the dendrite’s status code indicates a timeout.</p>
-<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">408</span></code>,
-which is the HTTP status code for a request timeout.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">408</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_blacklist">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_blacklist</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_blacklist" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the dendrite’s status code indicates a blacklisted request.</p>
-<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">403</span></code>,
-which is the HTTP status code for a forbidden request.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">403</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.failed_verification">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">failed_verification</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.failed_verification" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">failed_verification</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.failed_verification" title="Link to this definition">#</a></dt>
 <dd><p>Checks if the dendrite’s status code indicates failed verification.</p>
 <p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">401</span></code>,
 which is the HTTP status code for unauthorized access.</p>
@@ -1144,7 +854,37 @@ which is the HTTP status code for unauthorized access.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">401</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.from_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd><p>Constructs a new Synapse instance from a given headers dictionary, enabling the re-creation of the Synapse’s state as it was prior to network transmission.</p>
+<p>This method is a key part of the
+deserialization process in the Bittensor network, allowing nodes to accurately reconstruct Synapse
+objects from received data.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">received_headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;bt_header_axon_address&#39;</span><span class="p">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bt_header_dendrite_port&#39;</span><span class="p">:</span> <span class="s1">&#39;8080&#39;</span><span class="p">,</span>
+    <span class="c1"># Other headers...</span>
+<span class="p">}</span>
+<span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="o">.</span><span class="n">from_headers</span><span class="p">(</span><span class="n">received_headers</span><span class="p">)</span>
+<span class="c1"># synapse is a new Synapse instance reconstructed from the received headers</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary of headers containing serialized Synapse information.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new instance of Synapse, reconstructed from the parsed header information, replicating the original instance’s state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse">bittensor.core.synapse.Synapse</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1156,63 +896,100 @@ which is the HTTP status code for unauthorized access.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.to_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
-<dd><p>Converts the state of a Synapse instance into a dictionary of HTTP headers.</p>
-<p>This method is essential for
-packaging Synapse data for network transmission in the Bittensor framework, ensuring that each key aspect of
-the Synapse is represented in a format suitable for HTTP communication.</p>
-<p>Process:</p>
-<ol class="arabic simple">
-<li><p>Basic Information: It starts by including the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">timeout</span></code> of the Synapse, which are fundamental for identifying the query and managing its lifespan on the network.</p></li>
-<li><p>Complex Objects: The method serializes the <code class="docutils literal notranslate"><span class="pre">axon</span></code> and <code class="docutils literal notranslate"><span class="pre">dendrite</span></code> objects, if present, into strings. This serialization is crucial for preserving the state and structure of these objects over the network.</p></li>
-<li><p>Encoding: Non-optional complex objects are serialized and encoded in base64, making them safe for HTTP transport.</p></li>
-<li><p>Size Metrics: The method calculates and adds the size of headers and the total object size, providing valuable information for network bandwidth management.</p></li>
-</ol>
-<p>Example Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ExampleSynapse&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">to_headers</span><span class="p">()</span>
-<span class="c1"># headers now contains a dictionary representing the Synapse instance</span>
-</pre></div>
-</div>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.get_total_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd><p>Get the total size of the current object.</p>
+<p>This method first calculates the size of the current object, then assigns it
+to the instance variable <code class="xref py py-func docutils literal notranslate"><span class="pre">self.total_size()</span></code> and finally returns this value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A dictionary containing key-value pairs representing the Synapse’s properties, suitable for HTTP communication.</p>
+<dd class="field-odd"><p>The total size of the current object.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.header_size">
+<span class="sig-name descname"><span class="pre">header_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.header_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_blacklist">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_blacklist</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_blacklist" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the dendrite’s status code indicates a blacklisted request.</p>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">403</span></code>,
+which is the HTTP status code for a forbidden request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">403</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id4">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">body_hash</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
-<dd><p>Computes a SHA3-256 hash of the serialized body of the Synapse instance.</p>
-<p>This hash is used to
-ensure the data integrity and security of the Synapse instance when it’s transmitted across the
-network. It is a crucial feature for verifying that the data received is the same as the data sent.</p>
-<p>Process:</p>
-<ol class="arabic simple">
-<li><p>Iterates over each required field as specified in <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code>.</p></li>
-<li><p>Concatenates the string representation of these fields.</p></li>
-<li><p>Applies SHA3-256 hashing to the concatenated string to produce a unique fingerprint of the data.</p></li>
-</ol>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ExampleRoute&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">hash_value</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">body_hash</span>
-<span class="c1"># hash_value is the SHA3-256 hash of the serialized body of the Synapse instance</span>
-</pre></div>
-</div>
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_failure">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_failure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_failure" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the dendrite’s status code indicates failure.</p>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is not <code class="docutils literal notranslate"><span class="pre">200</span></code>,
+which would mean the HTTP request was not successful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The SHA3-256 hash as a hexadecimal string, providing a fingerprint of the Synapse instance’s data for integrity checks.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is not <code class="docutils literal notranslate"><span class="pre">200</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_success">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_success</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_success" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the dendrite’s status code indicates success.</p>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">200</span></code>,
+which typically represents a successful HTTP request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">200</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.is_timeout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.is_timeout" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the dendrite’s status code indicates a timeout.</p>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the status code of the dendrite is <code class="docutils literal notranslate"><span class="pre">408</span></code>,
+which is the HTTP status code for a request timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if dendrite’s status code is <code class="docutils literal notranslate"><span class="pre">408</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.synapse.Synapse.model_config" title="Link to this definition">#</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id5">
@@ -1242,47 +1019,274 @@ data back into a Synapse instance, ensuring data consistency and integrity.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The headers dictionary to parse.</p>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The headers dictionary to parse.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A structured dictionary representing the inputs for constructing a Synapse instance.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.required_hash_fields">
+<span class="sig-name descname"><span class="pre">required_hash_fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Ellipsis</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.required_hash_fields" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.set_name_type">
+<span class="sig-name descname"><span class="pre">set_name_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.set_name_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.set_name_type" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.timeout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id6">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.from_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Link to this definition">#</a></dt>
-<dd><p>Constructs a new Synapse instance from a given headers dictionary, enabling the re-creation of the Synapse’s state as it was prior to network transmission.</p>
-<p>This method is a key part of the
-deserialization process in the Bittensor network, allowing nodes to accurately reconstruct Synapse
-objects from received data.</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">received_headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;bt_header_axon_address&#39;</span><span class="p">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;bt_header_dendrite_port&#39;</span><span class="p">:</span> <span class="s1">&#39;8080&#39;</span><span class="p">,</span>
-    <span class="c1"># Other headers...</span>
-<span class="p">}</span>
-<span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="o">.</span><span class="n">from_headers</span><span class="p">(</span><span class="n">received_headers</span><span class="p">)</span>
-<span class="c1"># synapse is a new Synapse instance reconstructed from the received headers</span>
+<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.to_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Link to this definition">#</a></dt>
+<dd><p>Converts the state of a Synapse instance into a dictionary of HTTP headers.</p>
+<p>This method is essential for
+packaging Synapse data for network transmission in the Bittensor framework, ensuring that each key aspect of
+the Synapse is represented in a format suitable for HTTP communication.</p>
+<p>Process:</p>
+<ol class="arabic simple">
+<li><p>Basic Information: It starts by including the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">timeout</span></code> of the Synapse, which are fundamental for identifying the query and managing its lifespan on the network.</p></li>
+<li><p>Complex Objects: The method serializes the <code class="docutils literal notranslate"><span class="pre">axon</span></code> and <code class="docutils literal notranslate"><span class="pre">dendrite</span></code> objects, if present, into strings. This serialization is crucial for preserving the state and structure of these objects over the network.</p></li>
+<li><p>Encoding: Non-optional complex objects are serialized and encoded in base64, making them safe for HTTP transport.</p></li>
+<li><p>Size Metrics: The method calculates and adds the size of headers and the total object size, providing valuable information for network bandwidth management.</p></li>
+</ol>
+<p>Example Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ExampleSynapse&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">to_headers</span><span class="p">()</span>
+<span class="c1"># headers now contains a dictionary representing the Synapse instance</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The dictionary of headers containing serialized Synapse information.</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing key-value pairs representing the Synapse’s properties, suitable for HTTP communication.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A new instance of Synapse, reconstructed from the parsed header information, replicating the original instance’s state.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse">bittensor.core.synapse.Synapse</a></p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.total_size">
+<span class="sig-name descname"><span class="pre">total_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.Synapse.total_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">TerminalInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#TerminalInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>TerminalInfo encapsulates detailed information about a network synapse (node) involved in a communication process.</p>
+<p>This class serves as a metadata carrier,
+providing essential details about the state and configuration of a terminal during network interactions. This is a crucial class in the Bittensor framework.</p>
+<p>The TerminalInfo class contains information such as HTTP status codes and messages, processing times,
+IP addresses, ports, Bittensor version numbers, and unique identifiers. These details are vital for
+maintaining network reliability, security, and efficient data flow within the Bittensor network.</p>
+<p>This class includes Pydantic validators and root validators to enforce data integrity and format. It is
+designed to be used natively within Synapses, so that you will not need to call this directly, but rather
+is used as a helper class for Synapses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status_code</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – HTTP status code indicating the result of a network request. Essential for identifying the outcome of network interactions.</p></li>
+<li><p><strong>status_message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Descriptive message associated with the status code, providing additional context about the request’s result.</p></li>
+<li><p><strong>process_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Time taken by the terminal to process the call, important for performance monitoring and optimization.</p></li>
+<li><p><strong>ip</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – IP address of the terminal, crucial for network routing and data transmission.</p></li>
+<li><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Network port used by the terminal, key for establishing network connections.</p></li>
+<li><p><strong>version</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Bittensor version running on the terminal, ensuring compatibility between different nodes in the network.</p></li>
+<li><p><strong>nonce</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Unique, monotonically increasing number for each terminal, aiding in identifying and ordering network interactions.</p></li>
+<li><p><strong>uuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Unique identifier for the terminal, fundamental for network security and identification.</p></li>
+<li><p><strong>hotkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Encoded hotkey string of the terminal wallet, important for transaction and identity verification in the network.</p></li>
+<li><p><strong>signature</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Digital signature verifying the tuple of nonce, axon_hotkey, dendrite_hotkey, and uuid, critical for ensuring data authenticity and security.</p></li>
+<li><p><strong>data</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a TerminalInfo instance</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.synapse</span> <span class="kn">import</span> <span class="n">TerminalInfo</span>
+
+<span class="n">terminal_info</span> <span class="o">=</span> <span class="n">TerminalInfo</span><span class="p">(</span>
+    <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">status_message</span><span class="o">=</span><span class="s2">&quot;Success&quot;</span><span class="p">,</span>
+    <span class="n">process_time</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;198.123.23.1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">9282</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
+    <span class="n">nonce</span><span class="o">=</span><span class="mi">111111</span><span class="p">,</span>
+    <span class="n">uuid</span><span class="o">=</span><span class="s2">&quot;5ecbd69c-1cec-11ee-b0dc-e29ce36fec1a&quot;</span><span class="p">,</span>
+    <span class="n">hotkey</span><span class="o">=</span><span class="s2">&quot;5EnjDGNqqWnuL2HCAdxeEtN2oqtXZw6BMBe936Kfy2PFz1J1&quot;</span><span class="p">,</span>
+    <span class="n">signature</span><span class="o">=</span><span class="s2">&quot;0x0813029319030129u4120u10841824y0182u091u230912u&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Accessing TerminalInfo attributes</span>
+<span class="n">ip_address</span> <span class="o">=</span> <span class="n">terminal_info</span><span class="o">.</span><span class="n">ip</span>
+<span class="n">processing_duration</span> <span class="o">=</span> <span class="n">terminal_info</span><span class="o">.</span><span class="n">process_time</span>
+
+<span class="c1"># TerminalInfo can be used to monitor and verify network interactions, ensuring proper communication and security within the Bittensor network.</span>
+</pre></div>
+</div>
+<p>TerminalInfo plays a pivotal role in providing transparency and control over network operations, making it an indispensable tool for developers and users interacting with the Bittensor ecosystem.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_nonce">
+<span class="sig-name descname"><span class="pre">_extract_nonce</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_nonce" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_port">
+<span class="sig-name descname"><span class="pre">_extract_port</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_port" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_process_time">
+<span class="sig-name descname"><span class="pre">_extract_process_time</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_process_time" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_status_code">
+<span class="sig-name descname"><span class="pre">_extract_status_code</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo._extract_version">
+<span class="sig-name descname"><span class="pre">_extract_version</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo._extract_version" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.hotkey">
+<span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.hotkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.ip">
+<span class="sig-name descname"><span class="pre">ip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.ip" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.model_config" title="Link to this definition">#</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.nonce">
+<span class="sig-name descname"><span class="pre">nonce</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.nonce" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.port" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.process_time">
+<span class="sig-name descname"><span class="pre">process_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.process_time" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.signature">
+<span class="sig-name descname"><span class="pre">signature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.signature" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.status_code">
+<span class="sig-name descname"><span class="pre">status_code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.status_message">
+<span class="sig-name descname"><span class="pre">status_message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.status_message" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.uuid">
+<span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.uuid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo.version" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.synapse.cast_float">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_float" title="Link to this definition">#</a></dt>
+<dd><p>Converts a string to a float, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This function attempts to convert a string to a float. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The string to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted float, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the input was <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.synapse.cast_int">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_int" title="Link to this definition">#</a></dt>
+<dd><p>Converts a string to an integer, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This function attempts to convert a string to an integer. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The string to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted integer, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the input was <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.synapse.get_size">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.get_size" title="Link to this definition">#</a></dt>
+<dd><p>Recursively finds size of objects.</p>
+<p>This function traverses every item of a given object and sums their sizes to compute the total size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Any</em>) – The object to get the size of.</p></li>
+<li><p><strong>seen</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.13)"><em>set</em></a><em>]</em>) – Set of object ids that have been calculated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total size of the object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1336,28 +1340,6 @@ objects from received data.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.get_size"><code class="docutils literal notranslate"><span class="pre">get_size()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_int"><code class="docutils literal notranslate"><span class="pre">cast_int()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_float"><code class="docutils literal notranslate"><span class="pre">cast_float()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo"><code class="docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.model_config"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_code</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_message"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_message</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.process_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.ip"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.version</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.nonce</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.uuid"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.uuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.hotkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.signature"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.signature</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_process_time</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_port</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_version</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_nonce</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_status_code</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse"><code class="docutils literal notranslate"><span class="pre">Synapse</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.deserialize"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.__setattr__"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
@@ -1366,34 +1348,56 @@ objects from received data.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.parse_headers_to_inputs"><code class="docutils literal notranslate"><span class="pre">Synapse.parse_headers_to_inputs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.from_headers"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.model_config"><code class="docutils literal notranslate"><span class="pre">Synapse.model_config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.set_name_type"><code class="docutils literal notranslate"><span class="pre">Synapse.set_name_type()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.name"><code class="docutils literal notranslate"><span class="pre">Synapse.name</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.total_size"><code class="docutils literal notranslate"><span class="pre">Synapse.total_size</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.header_size"><code class="docutils literal notranslate"><span class="pre">Synapse.header_size</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.dendrite"><code class="docutils literal notranslate"><span class="pre">Synapse.dendrite</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.axon"><code class="docutils literal notranslate"><span class="pre">Synapse.axon</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.computed_body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.computed_body_hash</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.required_hash_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.required_hash_fields</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_total_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_total_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_header_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_header_size</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Synapse.__setattr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Synapse.get_total_size()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_success"><code class="docutils literal notranslate"><span class="pre">Synapse.is_success</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_failure"><code class="docutils literal notranslate"><span class="pre">Synapse.is_failure</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.is_timeout</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_blacklist"><code class="docutils literal notranslate"><span class="pre">Synapse.is_blacklist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse._extract_total_size"><code class="docutils literal notranslate"><span class="pre">Synapse._extract_total_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.axon"><code class="docutils literal notranslate"><span class="pre">Synapse.axon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.computed_body_hash"><code class="docutils literal notranslate"><span class="pre">Synapse.computed_body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.dendrite"><code class="docutils literal notranslate"><span class="pre">Synapse.dendrite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Synapse.deserialize()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.failed_verification"><code class="docutils literal notranslate"><span class="pre">Synapse.failed_verification</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.get_required_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.get_required_fields()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Synapse.to_headers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Synapse.body_hash</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Synapse.get_total_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.header_size"><code class="docutils literal notranslate"><span class="pre">Synapse.header_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_blacklist"><code class="docutils literal notranslate"><span class="pre">Synapse.is_blacklist</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_failure"><code class="docutils literal notranslate"><span class="pre">Synapse.is_failure</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_success"><code class="docutils literal notranslate"><span class="pre">Synapse.is_success</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.is_timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.is_timeout</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.model_config"><code class="docutils literal notranslate"><span class="pre">Synapse.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.name"><code class="docutils literal notranslate"><span class="pre">Synapse.name</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Synapse.parse_headers_to_inputs()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Synapse.from_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.required_hash_fields"><code class="docutils literal notranslate"><span class="pre">Synapse.required_hash_fields</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.set_name_type"><code class="docutils literal notranslate"><span class="pre">Synapse.set_name_type()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.timeout"><code class="docutils literal notranslate"><span class="pre">Synapse.timeout</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Synapse.to_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.Synapse.total_size"><code class="docutils literal notranslate"><span class="pre">Synapse.total_size</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo"><code class="docutils literal notranslate"><span class="pre">TerminalInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_nonce</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_port</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_process_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo._extract_version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo._extract_version</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.hotkey"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.hotkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.ip"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.ip</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.model_config"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.nonce"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.nonce</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.port"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.port</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.process_time"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.process_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.signature"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.signature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_code"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.status_message"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.status_message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.uuid"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.uuid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.TerminalInfo.version"><code class="docutils literal notranslate"><span class="pre">TerminalInfo.version</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_float"><code class="docutils literal notranslate"><span class="pre">cast_float()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.cast_int"><code class="docutils literal notranslate"><span class="pre">cast_int()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.synapse.get_size"><code class="docutils literal notranslate"><span class="pre">get_size()</span></code></a></li>
 </ul>
 </li>
 </ul>

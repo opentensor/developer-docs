@@ -6,6 +6,10 @@ title: "Bittensor CLI"
 
 Command line interface (CLI) for Bittensor. Uses the values in the configuration file. These values can be overriden by passing them explicitly in the command line.
 
+## Allowed networks
+
+In any `btcli` command, the `--network` flag accepts the following values: `finney`, `test`, `local`, and `subvortex`. If no value is specified, the default network is `finney`.
+
 **Usage**:
 
 ```console
@@ -889,7 +893,7 @@ $ btcli stake [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 - `add`: Stake TAO tokens to one or more hotkeys from a user's coldkey on the Bittensor network.
-- `child`: Child Hotkey commands, alias: `children`.
+- `child`: Child hotkey commands, alias: `children`.
 - `remove`: Unstake TAO tokens from one or more hotkeys and transfer them back to the user's coldkey.
 - `show`: List all stake accounts associated with a user's wallet on the Bittensor network.
 
@@ -927,8 +931,8 @@ $ btcli stake add [OPTIONS]
 - `--amount FLOAT`: The amount of TAO tokens to stake [default: 0.0].
 - `-m, --max-stake FLOAT`: Sets the maximum amount of TAO to have staked in each hotkey. [default: 0.0].
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to stake to.
-- `-in, --include-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
-- `-ex, --exclude-hotkeys TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
+- `-in, --include-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
+- `-ex, --exclude-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, stakes to all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys].
 - `--wallet-name, --name, --wallet_name, --wallet.name TEXT`: Name of wallet
 - `-p, --wallet-path, --wallet_path, --wallet.path TEXT`: Filepath of root of wallets.
@@ -952,13 +956,6 @@ $ btcli stake child [OPTIONS] COMMAND [ARGS]...
 
 - `--help`: Show this message and exit.
 
-**Commands**:
-
-- `get`: Get all child hotkeys on a specified...
-- `revoke`: Remove all children hotkeys on a specified...
-- `set`: Add children hotkeys on a specified subnet...
-- `take`: Get and set your childkey take on a...
-
 #### btcli stake child get
 
 Get all child hotkeys on a specified subnet on the Bittensor network.
@@ -977,11 +974,11 @@ The command compiles a table showing:
 #### Examples
 
 ```bash
-btcli stake get-children --netuid 1
+btcli stake child get --netuid 1
 ```
 
 ```bash
-btcli stake get-children --all-netuids
+btcli stake child get --all-netuids
 ```
 
 :::tip
@@ -1052,16 +1049,13 @@ $ btcli stake child revoke [OPTIONS]
 
 #### btcli stake child set
 
-Add children hotkeys on a specified subnet on the Bittensor network.
+Set child hotkeys on a specified subnet on the Bittensor network. Use this command to set the child hotkeys. However, if you already have child hotkeys, this command will **overwrite** all these previous child hotkey settings. Use this command either to set the child hotkeys for the first time or to change all the existing child hotkeys. 
 
-This command is used to delegate authority to different hotkeys, securing their position and influence on the
-subnet.
+This command is used to delegate authority to different hotkeys, securing their position and influence on the subnet.
 
-Users can specify the amount or 'proportion' to delegate to child hotkeys (`SS58` address),
-the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater
-than 1.
+Users can specify the amount or 'proportion' to delegate to child hotkeys (`SS58` address), the user needs to have sufficient authority to make this call, and the sum of proportions cannot be greater than 1.
 
-The command prompts for confirmation before executing the set_children operation.
+The command prompts for confirmation before executing the operation.
 
 #### Example
 
@@ -1182,8 +1176,8 @@ $ btcli stake remove [OPTIONS]
 - `-a, --amount FLOAT`: The amount of TAO tokens to unstake. [default: 0.0]
 - `--hotkey-ss58-address TEXT`: The SS58 address of the hotkey to unstake from.
 - `--max-stake, --max FLOAT`: Sets the maximum amount of TAO to remain staked in each hotkey. [default: 0.0]
-- `-in, --include-hotkeys TEXT`: Specifies the hotkeys by name or ss58 address to unstake from. For example, `-in hk1,hk2`
-- `-ex, --exclude-hotkeys TEXT`: Specifies the hotkeys by name or ss58 address not to unstake from (only use with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
+- `-in, --include-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to stake to. For example, `-in hk1,hk2``.
+- `-ex, --exclude-hotkeys, --hotkey-ss58-address TEXT`: Specifies hotkeys by name or ss58 address to not to stake to (use this option only with `--all-hotkeys`) i.e. `--all-hotkeys -ex hk3,hk4`
 - `--all-hotkeys / --no-all-hotkeys`: When set, unstakes from all hotkeys associated with the wallet. Do not use if specifying hotkeys in `--include-hotkeys`. [default: no-all-hotkeys]
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt].
 - `--quiet`: Do not output to the console besides critical information.
@@ -2543,6 +2537,7 @@ $ btcli wallet transfer [OPTIONS]
 - `--prompt / --no-prompt`: Enable or disable interactive prompts. [default: prompt]
 - `--quiet`: Do not output to the console besides critical information.
 - `--verbose`: Enable verbose output.
+- `--all`: Transfer the whole balance.
 - `--help`: Show this message and exit.
 
 ---

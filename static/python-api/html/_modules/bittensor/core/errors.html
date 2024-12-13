@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.core.errors &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.errors &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,11 +180,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -367,56 +371,56 @@ document.write(`
 
 
 <div class="viewcode-block" id="ChainError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.ChainError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.ChainError">[docs]</a>
 <span class="k">class</span> <span class="nc">ChainError</span><span class="p">(</span><span class="ne">BaseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base error for any chain related errors.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="ChainConnectionError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.ChainConnectionError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.ChainConnectionError">[docs]</a>
 <span class="k">class</span> <span class="nc">ChainConnectionError</span><span class="p">(</span><span class="n">ChainError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error for any chain connection related errors.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="ChainTransactionError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.ChainTransactionError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.ChainTransactionError">[docs]</a>
 <span class="k">class</span> <span class="nc">ChainTransactionError</span><span class="p">(</span><span class="n">ChainError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error for any chain transaction related errors.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="ChainQueryError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.ChainQueryError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.ChainQueryError">[docs]</a>
 <span class="k">class</span> <span class="nc">ChainQueryError</span><span class="p">(</span><span class="n">ChainError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error for any chain query related errors.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="StakeError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.StakeError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.StakeError">[docs]</a>
 <span class="k">class</span> <span class="nc">StakeError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a stake transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="UnstakeError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.UnstakeError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.UnstakeError">[docs]</a>
 <span class="k">class</span> <span class="nc">UnstakeError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when an unstake transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="IdentityError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.IdentityError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.IdentityError">[docs]</a>
 <span class="k">class</span> <span class="nc">IdentityError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when an identity transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="NominationError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.NominationError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.NominationError">[docs]</a>
 <span class="k">class</span> <span class="nc">NominationError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a nomination transaction fails.&quot;&quot;&quot;</span></div>
 
@@ -430,42 +434,42 @@ document.write(`
 
 
 <div class="viewcode-block" id="TransferError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.TransferError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.TransferError">[docs]</a>
 <span class="k">class</span> <span class="nc">TransferError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a transfer transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="RegistrationError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.RegistrationError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.RegistrationError">[docs]</a>
 <span class="k">class</span> <span class="nc">RegistrationError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a neuron registration transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="NotRegisteredError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.NotRegisteredError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.NotRegisteredError">[docs]</a>
 <span class="k">class</span> <span class="nc">NotRegisteredError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a neuron is not registered, and the transaction requires it to be.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="NotDelegateError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.NotDelegateError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.NotDelegateError">[docs]</a>
 <span class="k">class</span> <span class="nc">NotDelegateError</span><span class="p">(</span><span class="n">StakeError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when a hotkey you are trying to stake to is not a delegate.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="MetadataError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.MetadataError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.MetadataError">[docs]</a>
 <span class="k">class</span> <span class="nc">MetadataError</span><span class="p">(</span><span class="n">ChainTransactionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error raised when metadata commitment transaction fails.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="InvalidRequestNameError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.InvalidRequestNameError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.InvalidRequestNameError">[docs]</a>
 <span class="k">class</span> <span class="nc">InvalidRequestNameError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request name is invalid. Usually indicates a broken URL.&quot;&quot;&quot;</span></div>
 
@@ -482,63 +486,63 @@ document.write(`
 
 
 <div class="viewcode-block" id="UnknownSynapseError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.UnknownSynapseError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.UnknownSynapseError">[docs]</a>
 <span class="k">class</span> <span class="nc">UnknownSynapseError</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request name is not found in the Axon&#39;s forward_fns dictionary.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="SynapseParsingError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.SynapseParsingError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.SynapseParsingError">[docs]</a>
 <span class="k">class</span> <span class="nc">SynapseParsingError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request headers are unable to be parsed into the synapse type.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="NotVerifiedException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.NotVerifiedException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.NotVerifiedException">[docs]</a>
 <span class="k">class</span> <span class="nc">NotVerifiedException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request is not verified.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="BlacklistedException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.BlacklistedException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.BlacklistedException">[docs]</a>
 <span class="k">class</span> <span class="nc">BlacklistedException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request is blacklisted.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="PriorityException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.PriorityException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.PriorityException">[docs]</a>
 <span class="k">class</span> <span class="nc">PriorityException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the request priority is not met.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="PostProcessException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.PostProcessException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.PostProcessException">[docs]</a>
 <span class="k">class</span> <span class="nc">PostProcessException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the response headers cannot be updated.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="RunException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.RunException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.RunException">[docs]</a>
 <span class="k">class</span> <span class="nc">RunException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the requested function cannot be executed. Indicates a server error.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="InternalServerError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.InternalServerError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.InternalServerError">[docs]</a>
 <span class="k">class</span> <span class="nc">InternalServerError</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This exception is raised when the requested function fails on the server. Indicates a server error.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="SynapseDendriteNoneException">
-<a class="viewcode-back" href="../../../autoapi/bittensor/index.html#bittensor.core.errors.SynapseDendriteNoneException">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/errors/index.html#bittensor.core.errors.SynapseDendriteNoneException">[docs]</a>
 <span class="k">class</span> <span class="nc">SynapseDendriteNoneException</span><span class="p">(</span><span class="n">SynapseException</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

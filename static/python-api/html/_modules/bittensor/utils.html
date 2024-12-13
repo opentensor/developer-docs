@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.utils &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,11 +180,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -382,7 +386,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="ss58_to_vec_u8">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.ss58_to_vec_u8">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.ss58_to_vec_u8">[docs]</a>
 <span class="k">def</span> <span class="nf">ss58_to_vec_u8</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
     <span class="n">ss58_bytes</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">ss58_address_to_bytes</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">)</span>
     <span class="n">encoded_address</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">byte</span><span class="p">)</span> <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">ss58_bytes</span><span class="p">]</span>
@@ -391,7 +395,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="strtobool">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.strtobool">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.strtobool">[docs]</a>
 <span class="k">def</span> <span class="nf">strtobool</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;==SUPRESS==&quot;</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Converts a string to a boolean value.</span>
@@ -412,7 +416,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="_get_explorer_root_url_by_network_from_map">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor._get_explorer_root_url_by_network_from_map">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils._get_explorer_root_url_by_network_from_map">[docs]</a>
 <span class="k">def</span> <span class="nf">_get_explorer_root_url_by_network_from_map</span><span class="p">(</span>
     <span class="n">network</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">network_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
@@ -437,7 +441,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="get_explorer_url_for_network">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.get_explorer_url_for_network">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.get_explorer_url_for_network">[docs]</a>
 <span class="k">def</span> <span class="nf">get_explorer_url_for_network</span><span class="p">(</span>
     <span class="n">network</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">network_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
@@ -476,7 +480,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="ss58_address_to_bytes">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.ss58_address_to_bytes">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.ss58_address_to_bytes">[docs]</a>
 <span class="k">def</span> <span class="nf">ss58_address_to_bytes</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a ss58 address to a bytes object.&quot;&quot;&quot;</span>
     <span class="n">account_id_hex</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">scalecodec</span><span class="o">.</span><span class="n">ss58_decode</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">,</span> <span class="n">SS58_FORMAT</span><span class="p">)</span>
@@ -485,21 +489,21 @@ document.write(`
 
 
 <div class="viewcode-block" id="u16_normalized_float">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.u16_normalized_float">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.u16_normalized_float">[docs]</a>
 <span class="k">def</span> <span class="nf">u16_normalized_float</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">U16_MAX</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="u64_normalized_float">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.u64_normalized_float">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.u64_normalized_float">[docs]</a>
 <span class="k">def</span> <span class="nf">u64_normalized_float</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">U64_MAX</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="get_hash">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.get_hash">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.get_hash">[docs]</a>
 <span class="k">def</span> <span class="nf">get_hash</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
     <span class="n">sha3</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha3_256</span><span class="p">()</span>
 
@@ -512,7 +516,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="format_error_message">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.format_error_message">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.format_error_message">[docs]</a>
 <span class="k">def</span> <span class="nf">format_error_message</span><span class="p">(</span>
     <span class="n">error_message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">substrate</span><span class="p">:</span> <span class="s2">&quot;SubstrateInterface&quot;</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -578,7 +582,7 @@ document.write(`
 
 <span class="c1"># Subnet 24 uses this function</span>
 <div class="viewcode-block" id="is_valid_ss58_address">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.is_valid_ss58_address">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.is_valid_ss58_address">[docs]</a>
 <span class="k">def</span> <span class="nf">is_valid_ss58_address</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the given address is a valid ss58 address.</span>
@@ -601,7 +605,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="_is_valid_ed25519_pubkey">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor._is_valid_ed25519_pubkey">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils._is_valid_ed25519_pubkey">[docs]</a>
 <span class="k">def</span> <span class="nf">_is_valid_ed25519_pubkey</span><span class="p">(</span><span class="n">public_key</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the given public_key is a valid ed25519 key.</span>
@@ -634,7 +638,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="is_valid_bittensor_address_or_public_key">
-<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.is_valid_bittensor_address_or_public_key">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bittensor/utils/index.html#bittensor.utils.is_valid_bittensor_address_or_public_key">[docs]</a>
 <span class="k">def</span> <span class="nf">is_valid_bittensor_address_or_public_key</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the given address is a valid destination address.</span>

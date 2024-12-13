@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.stream &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.stream &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,11 +181,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -414,17 +418,17 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.model_config"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.model_config</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.token_streamer</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.synapse</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.stream_response()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.__call__"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.stream_response()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.synapse</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.token_streamer</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.process_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.process_streaming_response()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.extract_response_json"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.extract_response_json()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.create_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.create_streaming_response()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.extract_response_json"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.extract_response_json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.model_config"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.process_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.process_streaming_response()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -483,7 +487,7 @@ validated to form a valid model.</p>
 <p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.stream.BTStreamingResponseModel.token_streamer">
-<span class="sig-name descname"><span class="pre">token_streamer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">starlette.types.Send</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.stream.BTStreamingResponseModel.token_streamer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">token_streamer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">starlette.types.Send</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#bittensor.core.stream.BTStreamingResponseModel.token_streamer" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -491,7 +495,7 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.stream.</span></span><span class="sig-name descname"><span class="pre">StreamingSynapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.synapse.Synapse</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.synapse.Synapse</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>The <a class="reference internal" href="#bittensor.core.stream.StreamingSynapse" title="bittensor.core.stream.StreamingSynapse"><code class="xref py py-func docutils literal notranslate"><span class="pre">StreamingSynapse()</span></code></a> class is designed to be subclassed for handling streaming responses in the Bittensor network.
 It provides abstract methods that must be implemented by the subclass to deserialize, process streaming responses,
 and extract JSON data. It also includes a method to create a streaming response object.</p>
@@ -504,12 +508,6 @@ validated to form a valid model.</p>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.model_config" title="Link to this definition">#</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BTStreamingResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.BTStreamingResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse" title="Link to this definition">#</a></dt>
@@ -530,28 +528,6 @@ provided by the subclass.</p>
 </ul>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer">
-<span class="sig-name descname"><span class="pre">token_streamer</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse">
-<span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.BTStreamingResponse.stream_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response" title="Link to this definition">#</a></dt>
-<dd><p>Asynchronously streams the response by sending headers and calling the token streamer.</p>
-<p>This method is responsible for initiating the response by sending the appropriate headers, including the content type for event-streaming. It then calls the token streamer to generate the content and sends the response body to the client.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>send</strong> (<em>starlette.types.Send</em>) – A callable to send the response, provided by the ASGI server.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.__call__">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receive</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">send</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.BTStreamingResponse.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.__call__" title="Link to this definition">#</a></dt>
@@ -568,6 +544,69 @@ provided by the subclass.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.BTStreamingResponse.stream_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response" title="Link to this definition">#</a></dt>
+<dd><p>Asynchronously streams the response by sending headers and calling the token streamer.</p>
+<p>This method is responsible for initiating the response by sending the appropriate headers, including the content type for event-streaming. It then calls the token streamer to generate the content and sends the response body to the client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>send</strong> (<em>starlette.types.Send</em>) – A callable to send the response, provided by the ASGI server.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse">
+<span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer">
+<span class="sig-name descname"><span class="pre">token_streamer</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.create_streaming_response">
+<span class="sig-name descname"><span class="pre">create_streaming_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_streamer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.create_streaming_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.create_streaming_response" title="Link to this definition">#</a></dt>
+<dd><p>Creates a streaming response using the provided token streamer.
+This method can be used by the subclass to create a response object that can be sent back to the client.
+The token streamer should be implemented to generate the content of the response according to the specific requirements of the subclass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>token_streamer</strong> (<em>Callable</em><em>[</em><em>[</em><em>starlette.types.Send</em><em>]</em><em>, </em><em>Awaitable</em><em>[</em><em>None</em><em>]</em><em>]</em>) – A callable that takes a send function and returns an awaitable. It’s responsible for generating the content of the response.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The streaming response object, ready to be sent to the client.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse" title="bittensor.core.stream.StreamingSynapse.BTStreamingResponse">BTStreamingResponse</a> (<a class="reference internal" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse" title="bittensor.core.stream.StreamingSynapse.BTStreamingResponse">bittensor.core.stream.StreamingSynapse.BTStreamingResponse</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.extract_response_json">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extract_response_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.extract_response_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.extract_response_json" title="Link to this definition">#</a></dt>
+<dd><p>Abstract method that must be implemented by the subclass.
+This method should provide logic to extract JSON data from the response, including headers and content.
+It is called after the response has been processed and is responsible for retrieving structured data that can be used by the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>response</strong> (<em>aiohttp.ClientResponse</em>) – The response object from which to extract JSON data.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.model_config" title="Link to this definition">#</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
 </dd></dl>
 
 <dl class="py method">
@@ -586,41 +625,6 @@ It is called as the response is being streamed from the network, and should be i
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>response</strong> (<em>aiohttp.ClientResponse</em>) – The response object to be processed, typically containing chunks of data.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.extract_response_json">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extract_response_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.extract_response_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.extract_response_json" title="Link to this definition">#</a></dt>
-<dd><p>Abstract method that must be implemented by the subclass.
-This method should provide logic to extract JSON data from the response, including headers and content.
-It is called after the response has been processed and is responsible for retrieving structured data that can be used by the application.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>response</strong> (<em>aiohttp.ClientResponse</em>) – The response object from which to extract JSON data.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)">dict</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.stream.StreamingSynapse.create_streaming_response">
-<span class="sig-name descname"><span class="pre">create_streaming_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_streamer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/stream.html#StreamingSynapse.create_streaming_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.stream.StreamingSynapse.create_streaming_response" title="Link to this definition">#</a></dt>
-<dd><p>Creates a streaming response using the provided token streamer.
-This method can be used by the subclass to create a response object that can be sent back to the client.
-The token streamer should be implemented to generate the content of the response according to the specific requirements of the subclass.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>token_streamer</strong> (<em>Callable</em><em>[</em><em>[</em><em>starlette.types.Send</em><em>]</em><em>, </em><em>Awaitable</em><em>[</em><em>None</em><em>]</em><em>]</em>) – A callable that takes a send function and returns an awaitable. It’s responsible for generating the content of the response.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The streaming response object, ready to be sent to the client.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse" title="bittensor.core.stream.StreamingSynapse.BTStreamingResponse">BTStreamingResponse</a> (<a class="reference internal" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse" title="bittensor.core.stream.StreamingSynapse.BTStreamingResponse">bittensor.core.stream.StreamingSynapse.BTStreamingResponse</a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -682,17 +686,17 @@ The token streamer should be implemented to generate the content of the response
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.model_config"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.model_config</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.token_streamer</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.synapse</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.stream_response()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.__call__"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.stream_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.stream_response()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.synapse"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.synapse</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.BTStreamingResponse.token_streamer"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.BTStreamingResponse.token_streamer</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.process_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.process_streaming_response()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.extract_response_json"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.extract_response_json()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.create_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.create_streaming_response()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.extract_response_json"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.extract_response_json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.model_config"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.model_config</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.stream.StreamingSynapse.process_streaming_response"><code class="docutils literal notranslate"><span class="pre">StreamingSynapse.process_streaming_response()</span></code></a></li>
 </ul>
 </li>
 </ul>

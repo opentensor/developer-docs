@@ -15,11 +15,14 @@ If you are new to EVM, read this [simplified blog post explaining this feature](
 
 For all the EVM tutorials we will use the following:
 
-- This **EVM Localnet** or **Bittensor EVM Testnet URL:** https://evm-testnet.dev.opentensor.ai
+- The **EVM Localnet** or **Bittensor Testnet URL:** wss://test.finney.opentensor.ai:443
 - **EVM Subtensor Chain ID:** 945 (This is UTF-8 encoding for alpha character)
-- **EVM Testnet Faucet URL:** https://evm-testnet.dev.opentensor.ai/faucet 
-- **Subtensor EVM block explorer URL:** https://evm-testscan.dev.opentensor.ai/
 - **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
+
+:::caution EVM on Mainnet
+
+EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
+:::
  
 
 ## Step 1. Run EVM-enabled localnet
@@ -48,10 +51,8 @@ Follow the below steps:
     - **New RPC URL:** http://localhost:9946/
     - **Chain ID:** 945 (This is UTF-8 encoding for Alpha character)
     - **Currency symbol:** TAO 
-    - **Block explorer URL:** https://evm-testscan.dev.opentensor.ai/
 6. Click **Save**.
 7. Then click on **Switch network**.
-8. You may need to go back to the EVM Testnet Faucet page and click the **Connect** button below the Metamask logo in the **Hexadecimal Address (0x...)** field.
 
 With the above steps, you have successfully configured your Metamask wallet with the EVM localnet. 
 

@@ -7,7 +7,40 @@ hide_table_of_contents: false
 
 # What's New in Docs
 
-Key updates to this documentation.
+Key updates to the documentation.
+
+## 27 November 2024
+
+- A [release note for the mainnet hotfix for `run_coinbase`](./chain-rel-notes.md) is published.
+- Release notes for Wallet 2.1.3, BTCLI 8.4.0 and Bittensor SDK 8.4.0 are [published here](./bittensor-rel-notes.md#released-27-november-2024).
+
+## 25 November 2024
+
+The [release notes for the mainnet updates](./chain-rel-notes.md) are published.
+
+## 14 November 2024
+
+A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#released-14-november-2024) is added.
+
+## 13 November 2024
+
+- Added a new doc for [`AsyncSubtensor`](./subnets/asyncio.md).
+- Updated the [Bittensor Networks doc](./bittensor-networks.md) with the experimental mainnet lite node URL.
+- Updated the [release notes](./bittensor-rel-notes.md#released-13-november-2024). These release notes are for the following:
+  - BTCLI 8.3.1.
+  - Bittensor SDK 8.3.0.
+  - Wallet SDK 2.1.0.
+
+## 06 November 2024
+
+- Updated the release notes for:
+  - [BTCLI 8.3.0](./bittensor-rel-notes.md#btcli-830)
+  - [Bittensor SDK 8.2.1](./bittensor-rel-notes.md#bittensor-sdk-821).  
+  - [Bittensor SDK 8.3.0rc3](./bittensor-rel-notes.md#bittensor-sdk-830rc3).
+
+## 05 November 2024
+
+- Updated the [Chain Release Notes](./chain-rel-notes.md#mainnet).
 
 ## 21 October 2024
 

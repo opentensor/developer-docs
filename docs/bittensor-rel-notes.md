@@ -6,9 +6,194 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
-## Release 8.2.0
+
+## Released 12 December 2024
+
+### Bittensor SDK 8.5.0
+
+- Release PR: [https://github.com/opentensor/bittensor/pull/2538](https://github.com/opentensor/bittensor/pull/2538).
+- Two new functions are added: 
+  - [`get_total_stake_for_coldkey`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html#bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey).
+  - [`get_total_stake_for_hotkey`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html#bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey).
+
+- Added the required logic to support Commit Reveal V3.
+
+- Fixed the bug that was in [`get_current_block`](pathname:///python-api/html/autoapi/bittensor/core/async_subtensor/index.html#bittensor.core.async_subtensor.AsyncSubtensor.get_current_block).
+
+### BTCLI 8.4.2
+
+- Minor bug fixes.
+
+---
+
+## Released 27 November 2024
+
+### Wallet 2.1.3
+
+- Reduced the installed dependencies by ~450MB by removing the requirement for  Ansible. As a result, the install dependencies for BTCLI and Bittensor SDK are also reduced. 
+
+- Release PR: [https://github.com/opentensor/btwallet/pull/74](https://github.com/opentensor/btwallet/pull/79).
+
+### BTCLI 8.4.0
+
+- Upgraded WebSockets version to `14.1` or higher. 
+- Resolved an issue where `btcli` did not allow setting a few subnet hyperparameters. Now all existing subnet hyperparameters can be set using `btcli`.
+- Release PR: [https://github.com/opentensor/btcli/pull/254](https://github.com/opentensor/btcli/pull/254).
+
+### Bittensor SDK 8.4.0
+
+- Added the following extrinsic methods:
+  - Subtensor.add_stake
+  - Subtensor.add_stake_multiple
+  - Subtensor.unstake
+  - Subtensor.unstake_multiple
+
+- Added the following Subtensor methods:
+  - Subtensor.get_stake_for_coldkey_and_hotkey
+  - Subtensor.does_hotkey_exist
+  - Subtensor.get_hotkey_owner
+  - Subtensor.tx_rate_limit
+  - Subtensor.get_delegates
+  - Subtensor.is_hotkey_delegate
+
+- Added the extrinsics to the following files:
+  - bittensor/core/extrinsics/staking.py
+  - bittensor/core/extrinsics/unstaking.py
+
+- Several enhancements are made to `AsyncSubtensor`. See the documentation for [Asyncio](./subnets/asyncio.md) for details.
+- Added an ability to send neuron certificate and receive other neuron's certificates. This enhancement will enable setting up mutual TLS between neurons. PR: [https://github.com/opentensor/bittensor/pull/2267](https://github.com/opentensor/bittensor/pull/2267).
+- Enhanced the way Subtensor connects to the websocket server. PR: [https://github.com/opentensor/bittensor/pull/2455](https://github.com/opentensor/bittensor/pull/2455).
+
+- Added a new `BittensorConsole` class. The methods in this class allow displaying output messages to the terminal console without changing the logging level of the main logging (`btlogging`). See the detailed documentation on [Logging](./subnets/bt-logging-levels). 
+
+- Enhanced the reconnection logic. PR: [https://github.com/opentensor/bittensor/pull/2442](https://github.com/opentensor/bittensor/pull/2442).
+- Added support for Python 3.12.
+
+#### Fixed issues
+
+- Fixed an issue where logging was not working when setting weights. Also see  the detailed documentation on [Logging](./subnets/bt-logging-levels). 
+
+---
+
+## Released 14 November 2024
+`Hotfix release`
+
+### Bittensor SDK 8.3.1
+
+See the details of this hotfix release below:
+
+- **Release PR**: [https://github.com/opentensor/bittensor/pull/2423](https://github.com/opentensor/bittensor/pull/2423)
+- **Hotfix description**: A reusable `hex_to_bytes` function is added to the following subtensor methods. This function is for converting hex results to bytes for passing to `bt-decode`. 
+  - get_all_subnets_info
+  - get_prometheus_info
+  - get_delegate_by_hotkey
+  - get_commitment
+
+---
+
+## Released 13 November 2024
+
+The following are the new versions in this release with their release PRs: 
+
+- **BTCLI 8.3.1 Release PR**: [https://github.com/opentensor/btcli/pull/239](https://github.com/opentensor/btcli/pull/239).
+- **Bittensor SDK 8.3.0 Release PR**: [https://github.com/opentensor/bittensor/pull/2417](https://github.com/opentensor/bittensor/pull/2417).
+- **Wallet SDK 2.1.0 Release PR**: [https://github.com/opentensor/btwallet/pull/61](https://github.com/opentensor/btwallet/pull/61).
+
+###  Upgrade steps
+
+- **Bittensor SDK**: See [Install Bittensor SDK](./getting-started/installation.md).
+- **BTCLI**: See [Install BTCLI](./getting-started/install-btcli.md).
+- **Wallet SDK**: See [Install Wallet SDK](./getting-started/install-wallet-sdk.md).
+
+### New features and enhancements
+
+- **Bittensor SDK**: An **experimental class**, `AsyncSubtensor`, is included in this release. **This class is not yet ready for your production use**. See an example code showing how to use this class, [asyncio](./subnets/asyncio.md).
+- **Wallet SDK**: Added the ability in the Wallet SDK to use local environment variables to store encrypted hotkey and coldkey passwords. See the PR [https://github.com/opentensor/btwallet/pull/46](https://github.com/opentensor/btwallet/pull/46).
+- **BTCLI**: A `--verbose` flag is added to all `btcli` commands. Now if you encounter an error with `btcli`, you can rerun the command with `--verbose` to get a traceback for debugging.
+
+
+### Fixed issues
+
+- **Wallet SDK**: Fixed an issue where the `~` character in the wallet path was not being recognized properly. This is now resolved so that you can use `"~/.bittensor/wallets/"` in the wallet path. See the PR [https://github.com/opentensor/btwallet/pull/59](https://github.com/opentensor/btwallet/pull/59).
+
+- **BTCLI**: Fixed an issue where, if a nonexistent wallet path is passed to  `btcli wallet list`, the command did not gracefully handle it. This is now resolved so that the error is properly handled.
+
+- **BTCLI**: When using `btcli` with WebSockets version 14, an error occurred with the message: `TypeError: BaseEventLoop.create_connection() got an unexpected keyword argument 'read_limit'`. This issue is resolved. The error occured because `read_limit` kwarg does not exist in WebSockets 14+. This issue is fixed so that you can use `btcli` with WebSockets version 14.
+
+
+---
+
+`Released 06 November 2024`
+
+## BTCLI 8.3.0
+
+### New features and enhancements
+
+- A new flag `--all` is added to `btcli wallet transfer` command. This transfers all the available balance in the provided wallet to the destination coldkey. 
+- You can now use either hotkey names or ss58 addresses in both `--include-hotkeys` and `--exclude-hotkeys` options for `btcli stake add` and `btcli stake remove` commands.
+- Enhanced the user experience by not prompting the user for wallet path every time.
+- For better user experience, the `btcli stake remove` command now does not ask for confirmation when `--no-prompt` is used.
+- Enhanced the error message when the user provides incorrect password.
+- For better user experience while using the `btcli wallet` with `regen_coldkey`, `regen_coldkeypub` and `regen_hotkey` subcommands, a success message and the regenerated wallet details are displayed when the command runs succesfully.
+
+### Fixed issues
+
+- There was an error when using `btcli subnet pow-register` with `--cuda` option, where the `--num_processes` was being accessed before being set (only in CUDA use). This is now resolved. Now the `--num_processes` is set before accessing it.
+- Fixed the Taostats link.
+- Graceful handling of keyboard interrupt.
+- Several other bug fixes.
+
+## Bittensor SDK 8.2.1
+
+### New features and enhancements
+
+For the below added methods, see [Bittensor SDK](./bt-api-ref.md) reference.
+
+- Expanded the type registry to include all the available options.
+- Added `Subtensor.register`, `Subtensor.difficulty` methods. 
+- Added the following to Subtensor:
+  - `burned_register`
+  - `get_subnet_burn_cost`
+  - `recycle` and related extrinsics.
+- Added the following:
+  - Subtensor.get_delegate_by_hotkey
+  - Subtensor.root_set_weights
+  - Subtensor.root_register
+  - Subtensor.get_all_subnets_info
+  - Subtensor.get_delegate_take
+- Default port is changed from `9946` to `9944`.
+- Removed the unusued `prometheus` extrinsic.
+- Replaced `rich.console` with `btlogging.logging`.
+
+## Bittensor SDK 8.3.0rc3 
+
+:::caution 
+This is a release candidate only. Do not use it in your production environment.
+:::
+
+### New features and enhancements
+
+- Commit Reveal V2, including a new subprocess and related utilities that support the Commit Reveal V2 feature. 
+- A new `bittensor.core.async_subtensor.AsyncSubtensor` class is added.
+- The following `async` methods are added, along with the corresponding extrinsics to the `AsyncSubtensor` subtensor object:
+- Added `bittensor.utils.delegates_details.DelegatesDetails.`
+- Updated `bittensor/core/chain_data`.
+- Added `bittensor/core/extrinsics/async_registration`.
+- Added `bittensor/core/extrinsics/async_root`.
+- Added `bittensor/core/extrinsics/async_transfer`.
+- Added `get_current_block`, `get_transfer_fee`, `get_uid_for_hotkey_on_subnet`.
+- `set_weights`.
+- `commit_weights`.
+- Added the related async extrinsics.
+- Updated settings and utils.
+- Better handling of SSL EOF error, which is a connection issue. This is handled for both sync and async versions.
+- Removed the usage of `prompt` in SDK.
+
+---
 
 `Released 10 October 2024`
+
+## Release 8.2.0
 
 The following are the new versions in this release: 
 
@@ -55,10 +240,11 @@ The following are the new versions in this release:
 - Fixed the `network` instantiation in `btcli root list-delegates` command.
 - Fixed the command `btcli root list-delegates` so that when the command is run on non-archive nodes (such as local chain) it will produce a valid output. See [https://github.com/opentensor/btcli/pull/175](https://github.com/opentensor/btcli/pull/175) (documentation will be updated soon).
 
-
-## Release 8.1.0
+---
 
 `Released 03 October 2024`
+
+## Release 8.1.0
 
 - Updated the Bittensor Wallet SDK to Version 2.0.0. This is the same Python interface you are familiar with, but now powered by a newly-written Rust engine. 
 

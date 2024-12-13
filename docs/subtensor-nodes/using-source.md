@@ -18,7 +18,7 @@ Install the basic requirements by running the below commands on a Linux terminal
 
 ```bash title="Linux"
 sudo apt-get update 
-sudo apt install -y build-essential clang curl git make libssl-dev llvm libudev-dev protobuf-compiler
+sudo apt install -y build-essential clang curl git make libssl-dev llvm libudev-dev protobuf-compiler pkg-config
 ```
 
 Install the basic requirements by running the below command on macOS.
@@ -76,7 +76,7 @@ rm -rf /tmp/blockchain
 5. Install Subtensor by compiling with Cargo:
 
 ```bash
-cargo build -p node-subtensor --profile=production --features=runtime-benchmarks
+cargo build -p node-subtensor --profile=production --features=metadata-hash
 ```
 
 ## Run the subtensor node

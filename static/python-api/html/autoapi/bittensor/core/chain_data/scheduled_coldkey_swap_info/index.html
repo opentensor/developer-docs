@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.chain_data.scheduled_coldkey_swap_info &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.chain_data.scheduled_coldkey_swap_info &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="reference internal" href="../index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,11 +181,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -410,13 +414,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.old_coldkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.new_coldkey</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.arbitration_block"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.arbitration_block</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.decode_account_id_list()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.fix_decoded_values"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.fix_decoded_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.list_from_vec_u8()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.decode_account_id_list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.new_coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.old_coldkey</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -454,26 +458,30 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>old_coldkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The old cold key before the swap.</p></li>
-<li><p><strong>new_coldkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The new cold key after the swap.</p></li>
-<li><p><strong>arbitration_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The block number at which the arbitration of the swap will take place.</p></li>
+<li><p><strong>old_coldkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The old cold key before the swap.</p></li>
+<li><p><strong>new_coldkey</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The new cold key after the swap.</p></li>
+<li><p><strong>arbitration_block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block number at which the arbitration of the swap will take place.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey">
-<span class="sig-name descname"><span class="pre">old_coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey">
-<span class="sig-name descname"><span class="pre">new_coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.arbitration_block">
-<span class="sig-name descname"><span class="pre">arbitration_block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.arbitration_block" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">arbitration_block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.arbitration_block" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_account_id_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/scheduled_coldkey_swap_info.html#ScheduledColdkeySwapInfo.decode_account_id_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list" title="Link to this definition">#</a></dt>
+<dd><p>Decodes a list of AccountIds from vec_u8.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.fix_decoded_values">
@@ -495,7 +503,7 @@ document.write(`
 <dd><p>Returns a ScheduledColdkeySwapInfo object from a <code class="docutils literal notranslate"><span class="pre">vec_u8</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Optional[<a class="reference internal" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo" title="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo">ScheduledColdkeySwapInfo</a>]</p>
@@ -509,27 +517,23 @@ document.write(`
 <dd><p>Returns a list of ScheduledColdkeySwapInfo objects from a <code class="docutils literal notranslate"><span class="pre">vec_u8</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>)</p>
+<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a>[<a class="reference internal" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo" title="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo">ScheduledColdkeySwapInfo</a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo" title="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo">ScheduledColdkeySwapInfo</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_account_id_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/scheduled_coldkey_swap_info.html#ScheduledColdkeySwapInfo.decode_account_id_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list" title="Link to this definition">#</a></dt>
-<dd><p>Decodes a list of AccountIds from vec_u8.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]]</p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey">
+<span class="sig-name descname"><span class="pre">new_coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey">
+<span class="sig-name descname"><span class="pre">old_coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -584,13 +588,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.old_coldkey</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.new_coldkey</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.arbitration_block"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.arbitration_block</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.decode_account_id_list()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.fix_decoded_values"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.fix_decoded_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.from_vec_u8"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.list_from_vec_u8"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.list_from_vec_u8()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.decode_account_id_list"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.decode_account_id_list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.new_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.new_coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.scheduled_coldkey_swap_info.ScheduledColdkeySwapInfo.old_coldkey"><code class="docutils literal notranslate"><span class="pre">ScheduledColdkeySwapInfo.old_coldkey</span></code></a></li>
 </ul>
 </li>
 </ul>

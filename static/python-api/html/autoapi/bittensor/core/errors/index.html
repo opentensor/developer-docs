@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.core.errors &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.core.errors &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,11 +181,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -409,38 +413,38 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainError"><code class="docutils literal notranslate"><span class="pre">ChainError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.BlacklistedException"><code class="docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainConnectionError"><code class="docutils literal notranslate"><span class="pre">ChainConnectionError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainTransactionError"><code class="docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainError"><code class="docutils literal notranslate"><span class="pre">ChainError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainQueryError"><code class="docutils literal notranslate"><span class="pre">ChainQueryError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.StakeError"><code class="docutils literal notranslate"><span class="pre">StakeError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnstakeError"><code class="docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainTransactionError"><code class="docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.IdentityError"><code class="docutils literal notranslate"><span class="pre">IdentityError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NominationError"><code class="docutils literal notranslate"><span class="pre">NominationError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TakeError"><code class="docutils literal notranslate"><span class="pre">TakeError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TransferError"><code class="docutils literal notranslate"><span class="pre">TransferError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RegistrationError"><code class="docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotRegisteredError"><code class="docutils literal notranslate"><span class="pre">NotRegisteredError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotDelegateError"><code class="docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InternalServerError"><code class="docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InvalidRequestNameError"><code class="docutils literal notranslate"><span class="pre">InvalidRequestNameError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NominationError"><code class="docutils literal notranslate"><span class="pre">NominationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotDelegateError"><code class="docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotRegisteredError"><code class="docutils literal notranslate"><span class="pre">NotRegisteredError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotVerifiedException"><code class="docutils literal notranslate"><span class="pre">NotVerifiedException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PostProcessException"><code class="docutils literal notranslate"><span class="pre">PostProcessException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PriorityException"><code class="docutils literal notranslate"><span class="pre">PriorityException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RegistrationError"><code class="docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RunException"><code class="docutils literal notranslate"><span class="pre">RunException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.StakeError"><code class="docutils literal notranslate"><span class="pre">StakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException.message"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException.message</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException"><code class="docutils literal notranslate"><span class="pre">SynapseException</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException.message"><code class="docutils literal notranslate"><span class="pre">SynapseException.message</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException.synapse"><code class="docutils literal notranslate"><span class="pre">SynapseException.synapse</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnknownSynapseError"><code class="docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseParsingError"><code class="docutils literal notranslate"><span class="pre">SynapseParsingError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotVerifiedException"><code class="docutils literal notranslate"><span class="pre">NotVerifiedException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.BlacklistedException"><code class="docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PriorityException"><code class="docutils literal notranslate"><span class="pre">PriorityException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PostProcessException"><code class="docutils literal notranslate"><span class="pre">PostProcessException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RunException"><code class="docutils literal notranslate"><span class="pre">RunException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InternalServerError"><code class="docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException.message"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException.message</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TakeError"><code class="docutils literal notranslate"><span class="pre">TakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TransferError"><code class="docutils literal notranslate"><span class="pre">TransferError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnknownSynapseError"><code class="docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnstakeError"><code class="docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -460,80 +464,80 @@ document.write(`
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p></td>
-<td><p>Base error for any chain related errors.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.BlacklistedException" title="bittensor.core.errors.BlacklistedException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></p></td>
+<td><p>This exception is raised when the request is blacklisted.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainConnectionError" title="bittensor.core.errors.ChainConnectionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainConnectionError</span></code></a></p></td>
 <td><p>Error for any chain connection related errors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p></td>
-<td><p>Error for any chain transaction related errors.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p></td>
+<td><p>Base error for any chain related errors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainQueryError" title="bittensor.core.errors.ChainQueryError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainQueryError</span></code></a></p></td>
 <td><p>Error for any chain query related errors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.StakeError" title="bittensor.core.errors.StakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeError</span></code></a></p></td>
-<td><p>Error raised when a stake transaction fails.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p></td>
+<td><p>Error for any chain transaction related errors.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.UnstakeError" title="bittensor.core.errors.UnstakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></p></td>
-<td><p>Error raised when an unstake transaction fails.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.IdentityError" title="bittensor.core.errors.IdentityError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityError</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.IdentityError" title="bittensor.core.errors.IdentityError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityError</span></code></a></p></td>
 <td><p>Error raised when an identity transaction fails.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.InternalServerError" title="bittensor.core.errors.InternalServerError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></p></td>
+<td><p>This exception is raised when the requested function fails on the server. Indicates a server error.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.InvalidRequestNameError" title="bittensor.core.errors.InvalidRequestNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvalidRequestNameError</span></code></a></p></td>
+<td><p>This exception is raised when the request name is invalid. Usually indicates a broken URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.MetadataError" title="bittensor.core.errors.MetadataError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetadataError</span></code></a></p></td>
+<td><p>Error raised when metadata commitment transaction fails.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.NominationError" title="bittensor.core.errors.NominationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NominationError</span></code></a></p></td>
 <td><p>Error raised when a nomination transaction fails.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.TakeError" title="bittensor.core.errors.TakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TakeError</span></code></a></p></td>
-<td><p>Error raised when an increase / decrease take transaction fails.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.TransferError" title="bittensor.core.errors.TransferError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransferError</span></code></a></p></td>
-<td><p>Error raised when a transfer transaction fails.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.RegistrationError" title="bittensor.core.errors.RegistrationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></p></td>
-<td><p>Error raised when a neuron registration transaction fails.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.NotDelegateError" title="bittensor.core.errors.NotDelegateError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></p></td>
+<td><p>Error raised when a hotkey you are trying to stake to is not a delegate.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.NotRegisteredError" title="bittensor.core.errors.NotRegisteredError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotRegisteredError</span></code></a></p></td>
 <td><p>Error raised when a neuron is not registered, and the transaction requires it to be.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.NotDelegateError" title="bittensor.core.errors.NotDelegateError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></p></td>
-<td><p>Error raised when a hotkey you are trying to stake to is not a delegate.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.MetadataError" title="bittensor.core.errors.MetadataError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetadataError</span></code></a></p></td>
-<td><p>Error raised when metadata commitment transaction fails.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.InvalidRequestNameError" title="bittensor.core.errors.InvalidRequestNameError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvalidRequestNameError</span></code></a></p></td>
-<td><p>This exception is raised when the request name is invalid. Usually indicates a broken URL.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p></td>
-<td><p>Common base class for all non-exit exceptions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.UnknownSynapseError" title="bittensor.core.errors.UnknownSynapseError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></p></td>
-<td><p>This exception is raised when the request name is not found in the Axon's forward_fns dictionary.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.SynapseParsingError" title="bittensor.core.errors.SynapseParsingError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseParsingError</span></code></a></p></td>
-<td><p>This exception is raised when the request headers are unable to be parsed into the synapse type.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.NotVerifiedException" title="bittensor.core.errors.NotVerifiedException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotVerifiedException</span></code></a></p></td>
 <td><p>This exception is raised when the request is not verified.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.BlacklistedException" title="bittensor.core.errors.BlacklistedException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></p></td>
-<td><p>This exception is raised when the request is blacklisted.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.PriorityException" title="bittensor.core.errors.PriorityException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityException</span></code></a></p></td>
-<td><p>This exception is raised when the request priority is not met.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.PostProcessException" title="bittensor.core.errors.PostProcessException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostProcessException</span></code></a></p></td>
 <td><p>This exception is raised when the response headers cannot be updated.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.PriorityException" title="bittensor.core.errors.PriorityException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityException</span></code></a></p></td>
+<td><p>This exception is raised when the request priority is not met.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.RegistrationError" title="bittensor.core.errors.RegistrationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></p></td>
+<td><p>Error raised when a neuron registration transaction fails.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.RunException" title="bittensor.core.errors.RunException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunException</span></code></a></p></td>
 <td><p>This exception is raised when the requested function cannot be executed. Indicates a server error.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.InternalServerError" title="bittensor.core.errors.InternalServerError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></p></td>
-<td><p>This exception is raised when the requested function fails on the server. Indicates a server error.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.StakeError" title="bittensor.core.errors.StakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeError</span></code></a></p></td>
+<td><p>Error raised when a stake transaction fails.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.SynapseDendriteNoneException" title="bittensor.core.errors.SynapseDendriteNoneException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseDendriteNoneException</span></code></a></p></td>
 <td><p>Common base class for all non-exit exceptions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p></td>
+<td><p>Common base class for all non-exit exceptions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.SynapseParsingError" title="bittensor.core.errors.SynapseParsingError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseParsingError</span></code></a></p></td>
+<td><p>This exception is raised when the request headers are unable to be parsed into the synapse type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.TakeError" title="bittensor.core.errors.TakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TakeError</span></code></a></p></td>
+<td><p>Error raised when an increase / decrease take transaction fails.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.TransferError" title="bittensor.core.errors.TransferError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransferError</span></code></a></p></td>
+<td><p>Error raised when a transfer transaction fails.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.errors.UnknownSynapseError" title="bittensor.core.errors.UnknownSynapseError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></p></td>
+<td><p>This exception is raised when the request name is not found in the Axon's forward_fns dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.errors.UnstakeError" title="bittensor.core.errors.UnstakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></p></td>
+<td><p>Error raised when an unstake transaction fails.</p></td>
 </tr>
 </tbody>
 </table>
@@ -541,183 +545,6 @@ document.write(`
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.ChainError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseException</span></code></a></p>
-<p>Base error for any chain related errors.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.ChainConnectionError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainConnectionError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainConnectionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainConnectionError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
-<p>Error for any chain connection related errors.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.ChainTransactionError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainTransactionError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainTransactionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainTransactionError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
-<p>Error for any chain transaction related errors.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.ChainQueryError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainQueryError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainQueryError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainQueryError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
-<p>Error for any chain query related errors.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.StakeError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">StakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#StakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.StakeError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when a stake transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.UnstakeError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">UnstakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#UnstakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.UnstakeError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when an unstake transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.IdentityError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">IdentityError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#IdentityError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.IdentityError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when an identity transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.NominationError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NominationError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NominationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NominationError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when a nomination transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.TakeError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">TakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#TakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.TakeError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when an increase / decrease take transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.TransferError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">TransferError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#TransferError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.TransferError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when a transfer transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.RegistrationError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">RegistrationError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#RegistrationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.RegistrationError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when a neuron registration transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.NotRegisteredError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotRegisteredError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotRegisteredError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotRegisteredError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when a neuron is not registered, and the transaction requires it to be.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.NotDelegateError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotDelegateError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotDelegateError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotDelegateError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.StakeError" title="bittensor.core.errors.StakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeError</span></code></a></p>
-<p>Error raised when a hotkey you are trying to stake to is not a delegate.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.MetadataError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">MetadataError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#MetadataError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.MetadataError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
-<p>Error raised when metadata commitment transaction fails.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.InvalidRequestNameError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">InvalidRequestNameError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#InvalidRequestNameError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.InvalidRequestNameError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>This exception is raised when the request name is invalid. Usually indicates a broken URL.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">SynapseException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#SynapseException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.SynapseException" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Common base class for all non-exit exceptions.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException.message">
-<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#bittensor.core.errors.SynapseException.message" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException.synapse">
-<span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.core.errors.SynapseException.synapse" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.UnknownSynapseError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">UnknownSynapseError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#UnknownSynapseError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.UnknownSynapseError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
-<p>This exception is raised when the request name is not found in the Axon’s forward_fns dictionary.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.SynapseParsingError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">SynapseParsingError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#SynapseParsingError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.SynapseParsingError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>This exception is raised when the request headers are unable to be parsed into the synapse type.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.NotVerifiedException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotVerifiedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotVerifiedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotVerifiedException" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
-<p>This exception is raised when the request is not verified.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py exception">
 <dt class="sig sig-object py" id="bittensor.core.errors.BlacklistedException">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">BlacklistedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#BlacklistedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.BlacklistedException" title="Link to this definition">#</a></dt>
@@ -732,10 +559,103 @@ document.write(`
 </dd></dl>
 
 <dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.PriorityException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">PriorityException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#PriorityException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.PriorityException" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.core.errors.ChainConnectionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainConnectionError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainConnectionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainConnectionError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
+<p>Error for any chain connection related errors.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.ChainError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseException</span></code></a></p>
+<p>Base error for any chain related errors.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.ChainQueryError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainQueryError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainQueryError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainQueryError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
+<p>Error for any chain query related errors.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.ChainTransactionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">ChainTransactionError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#ChainTransactionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.ChainTransactionError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainError" title="bittensor.core.errors.ChainError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainError</span></code></a></p>
+<p>Error for any chain transaction related errors.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.IdentityError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">IdentityError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#IdentityError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.IdentityError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when an identity transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.InternalServerError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">InternalServerError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#InternalServerError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.InternalServerError" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
-<p>This exception is raised when the request priority is not met.</p>
+<p>This exception is raised when the requested function fails on the server. Indicates a server error.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.InvalidRequestNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">InvalidRequestNameError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#InvalidRequestNameError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.InvalidRequestNameError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>This exception is raised when the request name is invalid. Usually indicates a broken URL.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.MetadataError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">MetadataError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#MetadataError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.MetadataError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when metadata commitment transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.NominationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NominationError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NominationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NominationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when a nomination transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.NotDelegateError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotDelegateError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotDelegateError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotDelegateError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.StakeError" title="bittensor.core.errors.StakeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StakeError</span></code></a></p>
+<p>Error raised when a hotkey you are trying to stake to is not a delegate.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.NotRegisteredError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotRegisteredError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotRegisteredError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotRegisteredError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when a neuron is not registered, and the transaction requires it to be.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.NotVerifiedException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">NotVerifiedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#NotVerifiedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.NotVerifiedException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
+<p>This exception is raised when the request is not verified.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -758,6 +678,27 @@ document.write(`
 </dd></dl>
 
 <dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.PriorityException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">PriorityException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#PriorityException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.PriorityException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
+<p>This exception is raised when the request priority is not met.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.RegistrationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">RegistrationError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#RegistrationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.RegistrationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when a neuron registration transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
 <dt class="sig sig-object py" id="bittensor.core.errors.RunException">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">RunException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#RunException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.RunException" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
@@ -771,16 +712,11 @@ document.write(`
 </dd></dl>
 
 <dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.errors.InternalServerError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">InternalServerError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#InternalServerError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.InternalServerError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
-<p>This exception is raised when the requested function fails on the server. Indicates a server error.</p>
+<dt class="sig sig-object py" id="bittensor.core.errors.StakeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">StakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#StakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.StakeError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when a stake transaction fails.</p>
 <p>Initialize self.  See help(type(self)) for accurate signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py exception">
@@ -799,6 +735,74 @@ document.write(`
 <span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#bittensor.core.errors.SynapseDendriteNoneException.message" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">SynapseException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#SynapseException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.SynapseException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>Common base class for all non-exit exceptions.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#bittensor.core.errors.SynapseException.message" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.errors.SynapseException.synapse">
+<span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.core.errors.SynapseException.synapse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.SynapseParsingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">SynapseParsingError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#SynapseParsingError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.SynapseParsingError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>This exception is raised when the request headers are unable to be parsed into the synapse type.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.TakeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">TakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#TakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.TakeError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when an increase / decrease take transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.TransferError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">TransferError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#TransferError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.TransferError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when a transfer transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.UnknownSynapseError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">UnknownSynapseError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Synapse</span> <span class="pre">Exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#UnknownSynapseError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.UnknownSynapseError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.SynapseException" title="bittensor.core.errors.SynapseException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseException</span></code></a></p>
+<p>This exception is raised when the request name is not found in the Axon’s forward_fns dictionary.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a><em> | </em><em>None</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="bittensor.core.errors.UnstakeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.errors.</span></span><span class="sig-name descname"><span class="pre">UnstakeError</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/errors.html#UnstakeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.errors.UnstakeError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bittensor.core.errors.ChainTransactionError" title="bittensor.core.errors.ChainTransactionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></p>
+<p>Error raised when an unstake transaction fails.</p>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 </section>
@@ -851,38 +855,38 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainError"><code class="docutils literal notranslate"><span class="pre">ChainError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.BlacklistedException"><code class="docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainConnectionError"><code class="docutils literal notranslate"><span class="pre">ChainConnectionError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainTransactionError"><code class="docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainError"><code class="docutils literal notranslate"><span class="pre">ChainError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainQueryError"><code class="docutils literal notranslate"><span class="pre">ChainQueryError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.StakeError"><code class="docutils literal notranslate"><span class="pre">StakeError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnstakeError"><code class="docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.ChainTransactionError"><code class="docutils literal notranslate"><span class="pre">ChainTransactionError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.IdentityError"><code class="docutils literal notranslate"><span class="pre">IdentityError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NominationError"><code class="docutils literal notranslate"><span class="pre">NominationError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TakeError"><code class="docutils literal notranslate"><span class="pre">TakeError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TransferError"><code class="docutils literal notranslate"><span class="pre">TransferError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RegistrationError"><code class="docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotRegisteredError"><code class="docutils literal notranslate"><span class="pre">NotRegisteredError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotDelegateError"><code class="docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InternalServerError"><code class="docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InvalidRequestNameError"><code class="docutils literal notranslate"><span class="pre">InvalidRequestNameError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NominationError"><code class="docutils literal notranslate"><span class="pre">NominationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotDelegateError"><code class="docutils literal notranslate"><span class="pre">NotDelegateError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotRegisteredError"><code class="docutils literal notranslate"><span class="pre">NotRegisteredError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotVerifiedException"><code class="docutils literal notranslate"><span class="pre">NotVerifiedException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PostProcessException"><code class="docutils literal notranslate"><span class="pre">PostProcessException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PriorityException"><code class="docutils literal notranslate"><span class="pre">PriorityException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RegistrationError"><code class="docutils literal notranslate"><span class="pre">RegistrationError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RunException"><code class="docutils literal notranslate"><span class="pre">RunException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.StakeError"><code class="docutils literal notranslate"><span class="pre">StakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException.message"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException.message</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException"><code class="docutils literal notranslate"><span class="pre">SynapseException</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException.message"><code class="docutils literal notranslate"><span class="pre">SynapseException.message</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseException.synapse"><code class="docutils literal notranslate"><span class="pre">SynapseException.synapse</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnknownSynapseError"><code class="docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseParsingError"><code class="docutils literal notranslate"><span class="pre">SynapseParsingError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.NotVerifiedException"><code class="docutils literal notranslate"><span class="pre">NotVerifiedException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.BlacklistedException"><code class="docutils literal notranslate"><span class="pre">BlacklistedException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PriorityException"><code class="docutils literal notranslate"><span class="pre">PriorityException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.PostProcessException"><code class="docutils literal notranslate"><span class="pre">PostProcessException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.RunException"><code class="docutils literal notranslate"><span class="pre">RunException</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.InternalServerError"><code class="docutils literal notranslate"><span class="pre">InternalServerError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.SynapseDendriteNoneException.message"><code class="docutils literal notranslate"><span class="pre">SynapseDendriteNoneException.message</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TakeError"><code class="docutils literal notranslate"><span class="pre">TakeError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.TransferError"><code class="docutils literal notranslate"><span class="pre">TransferError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnknownSynapseError"><code class="docutils literal notranslate"><span class="pre">UnknownSynapseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.errors.UnstakeError"><code class="docutils literal notranslate"><span class="pre">UnstakeError</span></code></a></li>
 </ul>
 </li>
 </ul>

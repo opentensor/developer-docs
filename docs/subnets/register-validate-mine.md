@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 To participate as a subnet validator or subnet miner, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.
 
-:::tip No need to create a subnet
+:::tip No need to create a subnet to mine or validate
 You **do not** have to create a subnet to mine or validate on the Bittensor network. See the [Checklist for Validating and Mining](./checklist-for-validating-mining.md) for information on mining and validating on Bittensor.
 :::
 
@@ -48,9 +48,10 @@ While wallet transactions like delegating, transfer, registering, and staking ca
 
 ## Running a subnet validator 
 
-To become a subnet validator, you must:
+To become a subnet validator and be able to set weights, you must satisfy **all** the below conditions:
 1. Register your keys to the subnet (as described above).
 2. Stake sufficient TAO on your hotkey to secure a [validator permit](#validator-permit).
+3. You must have at least 1000 TAO in your validator stake to be able to [set weights in the subnet](#minimum-tao-for-setting-weights). 
 
 ### Staking
 
@@ -115,6 +116,10 @@ wallet = bt.wallet( name = 'my_coldkey', hotkey = 'my_validator_hotkey' )
 my_uid = subnet.hotkeys.index( wallet.hotkey.ss58_address )
 print(f'Validator permit: {subnet.validator_permit(my_uid)}')
 ```
+
+### Minimum TAO for setting weights
+
+You must have at least 1000 TAO in your validator stake to be able to set weights in the subnet. 
 
 ## Running a subnet miner
 

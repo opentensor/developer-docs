@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bittensor.utils.deprecated &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils.deprecated &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -38,15 +38,15 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/deprecated/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="bittensor.utils.networking" href="../networking/index.html" />
-    <link rel="prev" title="bittensor.utils.balance" href="../balance/index.html" />
+    <link rel="next" title="bittensor.utils.formatting" href="../formatting/index.html" />
+    <link rel="prev" title="bittensor.utils.delegates_details" href="../delegates_details/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,8 +138,8 @@
       
     
     
-    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -163,6 +163,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -180,11 +181,14 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -408,30 +412,36 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.axon"><code class="docutils literal notranslate"><span class="pre">axon</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.subtensor"><code class="docutils literal notranslate"><span class="pre">subtensor</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.synapse"><code class="docutils literal notranslate"><span class="pre">synapse</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__archive_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__blocktime__"><code class="docutils literal notranslate"><span class="pre">__blocktime__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__network_explorer_map__"><code class="docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__pipaddress__"><code class="docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_format__"><code class="docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__type_registry__"><code class="docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_address_length__"><code class="docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__networks__"><code class="docutils literal notranslate"><span class="pre">__networks__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__finney_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__finney_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__finney_test_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__finney_test_entrypoint__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__archive_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__local_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__local_entrypoint__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__tao_symbol__"><code class="docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__network_explorer_map__"><code class="docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__networks__"><code class="docutils literal notranslate"><span class="pre">__networks__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__pipaddress__"><code class="docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__rao_symbol__"><code class="docutils literal notranslate"><span class="pre">__rao_symbol__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_address_length__"><code class="docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_format__"><code class="docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__tao_symbol__"><code class="docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__type_registry__"><code class="docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.async_subtensor"><code class="docutils literal notranslate"><span class="pre">async_subtensor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.axon"><code class="docutils literal notranslate"><span class="pre">axon</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.extrinsics_subpackage"><code class="docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.info"><code class="docutils literal notranslate"><span class="pre">info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.subtensor"><code class="docutils literal notranslate"><span class="pre">subtensor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.synapse"><code class="docutils literal notranslate"><span class="pre">synapse</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.trace"><code class="docutils literal notranslate"><span class="pre">trace()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.warning"><code class="docutils literal notranslate"><span class="pre">warning()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -454,6 +464,48 @@ features in recent versions, allowing users to maintain compatibility with older
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__archive_entrypoint__" title="bittensor.utils.deprecated.__archive_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__blocktime__" title="bittensor.utils.deprecated.__blocktime__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__blocktime__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__finney_entrypoint__" title="bittensor.utils.deprecated.__finney_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__finney_entrypoint__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__finney_test_entrypoint__" title="bittensor.utils.deprecated.__finney_test_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__finney_test_entrypoint__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__local_entrypoint__" title="bittensor.utils.deprecated.__local_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__local_entrypoint__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__network_explorer_map__" title="bittensor.utils.deprecated.__network_explorer_map__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__networks__" title="bittensor.utils.deprecated.__networks__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__networks__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__pipaddress__" title="bittensor.utils.deprecated.__pipaddress__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__rao_symbol__" title="bittensor.utils.deprecated.__rao_symbol__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__rao_symbol__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__ss58_address_length__" title="bittensor.utils.deprecated.__ss58_address_length__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__ss58_format__" title="bittensor.utils.deprecated.__ss58_format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__tao_symbol__" title="bittensor.utils.deprecated.__tao_symbol__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__type_registry__" title="bittensor.utils.deprecated.__type_registry__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.async_subtensor" title="bittensor.utils.deprecated.async_subtensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">async_subtensor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.axon" title="bittensor.utils.deprecated.axon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axon</span></code></a></p></td>
 <td><p></p></td>
 </tr>
@@ -463,65 +515,46 @@ features in recent versions, allowing users to maintain compatibility with older
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.dendrite" title="bittensor.utils.deprecated.dendrite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dendrite</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.keyfile" title="bittensor.utils.deprecated.keyfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.extrinsics_subpackage" title="bittensor.utils.deprecated.extrinsics_subpackage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.metagraph" title="bittensor.utils.deprecated.metagraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metagraph</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.keyfile" title="bittensor.utils.deprecated.keyfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keyfile</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.metagraph" title="bittensor.utils.deprecated.metagraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metagraph</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.mock_subpackage" title="bittensor.utils.deprecated.mock_subpackage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.subtensor" title="bittensor.utils.deprecated.subtensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subtensor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.synapse" title="bittensor.utils.deprecated.synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synapse</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.wallet" title="bittensor.utils.deprecated.wallet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wallet</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.subtensor" title="bittensor.utils.deprecated.subtensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subtensor</span></code></a></p></td>
-<td><p></p></td>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.debug" title="bittensor.utils.deprecated.debug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug</span></code></a>([on])</p></td>
+<td><p>Enables or disables debug logging.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.synapse" title="bittensor.utils.deprecated.synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synapse</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.info" title="bittensor.utils.deprecated.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>([on])</p></td>
+<td><p>Enables or disables info logging.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__blocktime__" title="bittensor.utils.deprecated.__blocktime__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__blocktime__</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.trace" title="bittensor.utils.deprecated.trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace</span></code></a>([on])</p></td>
+<td><p>Enables or disables trace logging.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__network_explorer_map__" title="bittensor.utils.deprecated.__network_explorer_map__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__pipaddress__" title="bittensor.utils.deprecated.__pipaddress__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__ss58_format__" title="bittensor.utils.deprecated.__ss58_format__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__type_registry__" title="bittensor.utils.deprecated.__type_registry__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__ss58_address_length__" title="bittensor.utils.deprecated.__ss58_address_length__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__networks__" title="bittensor.utils.deprecated.__networks__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__networks__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__finney_entrypoint__" title="bittensor.utils.deprecated.__finney_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__finney_entrypoint__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__finney_test_entrypoint__" title="bittensor.utils.deprecated.__finney_test_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__finney_test_entrypoint__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__archive_entrypoint__" title="bittensor.utils.deprecated.__archive_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__local_entrypoint__" title="bittensor.utils.deprecated.__local_entrypoint__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__local_entrypoint__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__tao_symbol__" title="bittensor.utils.deprecated.__tao_symbol__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.__rao_symbol__" title="bittensor.utils.deprecated.__rao_symbol__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__rao_symbol__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.mock_subpackage" title="bittensor.utils.deprecated.mock_subpackage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.extrinsics_subpackage" title="bittensor.utils.deprecated.extrinsics_subpackage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.warning" title="bittensor.utils.deprecated.warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warning</span></code></a>([on])</p></td>
+<td><p>Enables or disables warning logging.</p></td>
 </tr>
 </tbody>
 </table>
@@ -530,78 +563,13 @@ features in recent versions, allowing users to maintain compatibility with older
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.axon">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">axon</span></span><a class="headerlink" href="#bittensor.utils.deprecated.axon" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.config">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#bittensor.utils.deprecated.config" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.dendrite">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">dendrite</span></span><a class="headerlink" href="#bittensor.utils.deprecated.dendrite" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.keyfile">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">keyfile</span></span><a class="headerlink" href="#bittensor.utils.deprecated.keyfile" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.metagraph">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">metagraph</span></span><a class="headerlink" href="#bittensor.utils.deprecated.metagraph" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.wallet">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">wallet</span></span><a class="headerlink" href="#bittensor.utils.deprecated.wallet" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.subtensor">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">subtensor</span></span><a class="headerlink" href="#bittensor.utils.deprecated.subtensor" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.synapse">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.utils.deprecated.synapse" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__archive_entrypoint__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__archive_entrypoint__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__archive_entrypoint__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.deprecated.__blocktime__">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__blocktime__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__blocktime__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__network_explorer_map__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__network_explorer_map__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__network_explorer_map__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__pipaddress__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__pipaddress__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__pipaddress__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__ss58_format__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__ss58_format__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__ss58_format__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__type_registry__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__type_registry__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__type_registry__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__ss58_address_length__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__ss58_address_length__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__ss58_address_length__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__networks__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__networks__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__networks__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -615,18 +583,23 @@ features in recent versions, allowing users to maintain compatibility with older
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__archive_entrypoint__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__archive_entrypoint__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__archive_entrypoint__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.deprecated.__local_entrypoint__">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__local_entrypoint__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__local_entrypoint__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.__tao_symbol__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__tao_symbol__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__tao_symbol__" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__network_explorer_map__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__network_explorer_map__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__network_explorer_map__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__networks__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__networks__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__networks__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__pipaddress__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__pipaddress__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__pipaddress__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -635,14 +608,131 @@ features in recent versions, allowing users to maintain compatibility with older
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.deprecated.mock_subpackage">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">mock_subpackage</span></span><a class="headerlink" href="#bittensor.utils.deprecated.mock_subpackage" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__ss58_address_length__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__ss58_address_length__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__ss58_address_length__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__ss58_format__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__ss58_format__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__ss58_format__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__tao_symbol__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__tao_symbol__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__tao_symbol__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.__type_registry__">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">__type_registry__</span></span><a class="headerlink" href="#bittensor.utils.deprecated.__type_registry__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.async_subtensor">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">async_subtensor</span></span><a class="headerlink" href="#bittensor.utils.deprecated.async_subtensor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.axon">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">axon</span></span><a class="headerlink" href="#bittensor.utils.deprecated.axon" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.config">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#bittensor.utils.deprecated.config" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.debug">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.debug" title="Link to this definition">#</a></dt>
+<dd><p>Enables or disables debug logging.
+:param on: If True, enables debug logging. If False, disables debug logging.
+:type on: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.dendrite">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">dendrite</span></span><a class="headerlink" href="#bittensor.utils.deprecated.dendrite" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.deprecated.extrinsics_subpackage">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">extrinsics_subpackage</span></span><a class="headerlink" href="#bittensor.utils.deprecated.extrinsics_subpackage" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.info">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.info" title="Link to this definition">#</a></dt>
+<dd><p>Enables or disables info logging.
+:param on: If True, enables info logging. If False, disables info logging and sets default (WARNING) level.
+:type on: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.keyfile">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">keyfile</span></span><a class="headerlink" href="#bittensor.utils.deprecated.keyfile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.metagraph">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">metagraph</span></span><a class="headerlink" href="#bittensor.utils.deprecated.metagraph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.mock_subpackage">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">mock_subpackage</span></span><a class="headerlink" href="#bittensor.utils.deprecated.mock_subpackage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.subtensor">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">subtensor</span></span><a class="headerlink" href="#bittensor.utils.deprecated.subtensor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.synapse">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">synapse</span></span><a class="headerlink" href="#bittensor.utils.deprecated.synapse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.trace">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.trace" title="Link to this definition">#</a></dt>
+<dd><p>Enables or disables trace logging.
+:param on: If True, enables trace logging. If False, disables trace logging.
+:type on: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.wallet">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">wallet</span></span><a class="headerlink" href="#bittensor.utils.deprecated.wallet" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.warning">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.warning" title="Link to this definition">#</a></dt>
+<dd><p>Enables or disables warning logging.
+:param on: If True, enables warning logging. If False, disables warning logging and sets default (WARNING) level.
+:type on: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </section>
@@ -659,20 +749,20 @@ features in recent versions, allowing users to maintain compatibility with older
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../balance/index.html"
+       href="../delegates_details/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">bittensor.utils.balance</p>
+        <p class="prev-next-title">bittensor.utils.delegates_details</p>
       </div>
     </a>
     <a class="right-next"
-       href="../networking/index.html"
+       href="../formatting/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.utils.networking</p>
+        <p class="prev-next-title">bittensor.utils.formatting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -693,30 +783,36 @@ features in recent versions, allowing users to maintain compatibility with older
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.axon"><code class="docutils literal notranslate"><span class="pre">axon</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.subtensor"><code class="docutils literal notranslate"><span class="pre">subtensor</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.synapse"><code class="docutils literal notranslate"><span class="pre">synapse</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__archive_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__blocktime__"><code class="docutils literal notranslate"><span class="pre">__blocktime__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__network_explorer_map__"><code class="docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__pipaddress__"><code class="docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_format__"><code class="docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__type_registry__"><code class="docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_address_length__"><code class="docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__networks__"><code class="docutils literal notranslate"><span class="pre">__networks__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__finney_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__finney_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__finney_test_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__finney_test_entrypoint__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__archive_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__archive_entrypoint__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__local_entrypoint__"><code class="docutils literal notranslate"><span class="pre">__local_entrypoint__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__tao_symbol__"><code class="docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__network_explorer_map__"><code class="docutils literal notranslate"><span class="pre">__network_explorer_map__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__networks__"><code class="docutils literal notranslate"><span class="pre">__networks__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__pipaddress__"><code class="docutils literal notranslate"><span class="pre">__pipaddress__</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__rao_symbol__"><code class="docutils literal notranslate"><span class="pre">__rao_symbol__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_address_length__"><code class="docutils literal notranslate"><span class="pre">__ss58_address_length__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__ss58_format__"><code class="docutils literal notranslate"><span class="pre">__ss58_format__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__tao_symbol__"><code class="docutils literal notranslate"><span class="pre">__tao_symbol__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.__type_registry__"><code class="docutils literal notranslate"><span class="pre">__type_registry__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.async_subtensor"><code class="docutils literal notranslate"><span class="pre">async_subtensor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.axon"><code class="docutils literal notranslate"><span class="pre">axon</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.config"><code class="docutils literal notranslate"><span class="pre">config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.extrinsics_subpackage"><code class="docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.info"><code class="docutils literal notranslate"><span class="pre">info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.subtensor"><code class="docutils literal notranslate"><span class="pre">subtensor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.synapse"><code class="docutils literal notranslate"><span class="pre">synapse</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.trace"><code class="docutils literal notranslate"><span class="pre">trace()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.wallet"><code class="docutils literal notranslate"><span class="pre">wallet</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.warning"><code class="docutils literal notranslate"><span class="pre">warning()</span></code></a></li>
 </ul>
 </li>
 </ul>

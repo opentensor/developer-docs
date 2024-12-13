@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.utils.version &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils.version &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,11 +180,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -375,21 +379,21 @@ document.write(`
 
 
 <div class="viewcode-block" id="VersionCheckError">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.VersionCheckError">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils.VersionCheckError">[docs]</a>
 <span class="k">class</span> <span class="nc">VersionCheckError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised for errors in the version check process.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="_get_version_file_path">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor._get_version_file_path">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils._get_version_file_path">[docs]</a>
 <span class="k">def</span> <span class="nf">_get_version_file_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;.bittensor&quot;</span> <span class="o">/</span> <span class="s2">&quot;.last_known_version&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="_get_version_from_file">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor._get_version_from_file">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils._get_version_from_file">[docs]</a>
 <span class="k">def</span> <span class="nf">_get_version_from_file</span><span class="p">(</span><span class="n">version_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">mtime</span> <span class="o">=</span> <span class="n">version_file</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span>
@@ -411,7 +415,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="_get_version_from_pypi">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor._get_version_from_pypi">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils._get_version_from_pypi">[docs]</a>
 <span class="k">def</span> <span class="nf">_get_version_from_pypi</span><span class="p">(</span><span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Checking latest Bittensor version at: </span><span class="si">{</span><span class="n">PIPADDRESS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
@@ -425,7 +429,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="get_and_save_latest_version">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.get_and_save_latest_version">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils.get_and_save_latest_version">[docs]</a>
 <span class="k">def</span> <span class="nf">get_and_save_latest_version</span><span class="p">(</span><span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieves and saves the latest version of Bittensor.</span>
@@ -453,7 +457,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="check_version">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.check_version">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils.check_version">[docs]</a>
 <span class="k">def</span> <span class="nf">check_version</span><span class="p">(</span><span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if the current version of Bittensor is up-to-date with the latest version on PyPi.</span>
@@ -479,7 +483,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="version_checking">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.version_checking">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/version/index.html#bittensor.utils.version_checking">[docs]</a>
 <span class="k">def</span> <span class="nf">version_checking</span><span class="p">(</span><span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Deprecated, kept for backwards compatibility. Use check_version() instead.</span>
 

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bittensor.utils.balance &#8212; BTCLI Docs 1.0 documentation</title>
+    <title>bittensor.utils.balance &#8212; Bittensor SDK Docs  documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=a681ed88"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -137,8 +137,8 @@
       
     
     
-    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="BTCLI Docs 1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="BTCLI Docs 1.0 documentation - Home"/>`);</script>
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -162,6 +162,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
@@ -179,11 +180,14 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
@@ -367,7 +371,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance">[docs]</a>
 <span class="k">class</span> <span class="nc">Balance</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Represents the bittensor balance of the wallet, stored as rao (int).</span>
@@ -407,53 +411,53 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">/</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Balance.__int__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__int__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__int__">[docs]</a>
     <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the Balance object to an int. The resulting value is in rao.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span></div>
 
 
 <div class="viewcode-block" id="Balance.__float__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__float__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__float__">[docs]</a>
     <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the Balance object to a float. The resulting value is in tao.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tao</span></div>
 
 
 <div class="viewcode-block" id="Balance.__str__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__str__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__str__">[docs]</a>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Balance object as a string in the format &quot;symbolvalue&quot;, where the value is in tao.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}{</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tao</span><span class="p">)</span><span class="si">:</span><span class="s2">,.9f</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="Balance.__rich__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rich__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rich__">[docs]</a>
     <span class="k">def</span> <span class="nf">__rich__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">int_tao</span><span class="p">,</span> <span class="n">fract_tao</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tao</span><span class="p">),</span> <span class="s2">&quot;f&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[green]</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">[/green][green]</span><span class="si">{</span><span class="n">int_tao</span><span class="si">}</span><span class="s2">[/green][green].[/green][dim green]</span><span class="si">{</span><span class="n">fract_tao</span><span class="si">}</span><span class="s2">[/dim green]&quot;</span></div>
 
 
 <div class="viewcode-block" id="Balance.__str_rao__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__str_rao__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__str_rao__">[docs]</a>
     <span class="k">def</span> <span class="nf">__str_rao__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rao_unit</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="Balance.__rich_rao__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rich_rao__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rich_rao__">[docs]</a>
     <span class="k">def</span> <span class="nf">__rich_rao__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[green]</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rao_unit</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">)</span><span class="si">}</span><span class="s2">[/green]&quot;</span></div>
 
 
 <div class="viewcode-block" id="Balance.__repr__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__repr__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__repr__">[docs]</a>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Balance.__eq__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__eq__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__eq__">[docs]</a>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -470,13 +474,13 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__ne__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__ne__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__ne__">[docs]</a>
     <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span></div>
 
 
 <div class="viewcode-block" id="Balance.__gt__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__gt__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__gt__">[docs]</a>
     <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">rao</span>
@@ -490,7 +494,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__lt__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__lt__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__lt__">[docs]</a>
     <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">rao</span>
@@ -504,7 +508,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__le__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__le__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__le__">[docs]</a>
     <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span>
@@ -513,7 +517,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__ge__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__ge__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__ge__">[docs]</a>
     <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">other</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span>
@@ -522,7 +526,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__add__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__add__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__add__">[docs]</a>
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span>
@@ -535,7 +539,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__radd__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__radd__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__radd__">[docs]</a>
     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="n">other</span>
@@ -544,7 +548,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__sub__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__sub__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__sub__">[docs]</a>
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="o">-</span><span class="n">other</span>
@@ -553,7 +557,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__rsub__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rsub__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rsub__">[docs]</a>
     <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="bp">self</span> <span class="o">+</span> <span class="n">other</span>
@@ -562,7 +566,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__mul__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__mul__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__mul__">[docs]</a>
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span>
@@ -575,13 +579,13 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__rmul__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rmul__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rmul__">[docs]</a>
     <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">other</span></div>
 
 
 <div class="viewcode-block" id="Balance.__truediv__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__truediv__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__truediv__">[docs]</a>
     <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span>
@@ -594,7 +598,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__rtruediv__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rtruediv__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rtruediv__">[docs]</a>
     <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">rao</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span>
@@ -607,7 +611,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__floordiv__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__floordiv__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__floordiv__">[docs]</a>
     <span class="k">def</span> <span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tao</span> <span class="o">//</span> <span class="n">other</span><span class="o">.</span><span class="n">tao</span><span class="p">))</span>
@@ -620,7 +624,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__rfloordiv__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__rfloordiv__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__rfloordiv__">[docs]</a>
     <span class="k">def</span> <span class="fm">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;Balance&quot;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;rao&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">rao</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span>
@@ -633,31 +637,31 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.__nonzero__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__nonzero__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__nonzero__">[docs]</a>
     <span class="k">def</span> <span class="nf">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Balance.__neg__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__neg__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__neg__">[docs]</a>
     <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Balance.__pos__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__pos__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__pos__">[docs]</a>
     <span class="k">def</span> <span class="fm">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Balance.__abs__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.__abs__">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.__abs__">[docs]</a>
     <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rao</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Balance.from_float">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.from_float">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.from_float">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_float</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -673,7 +677,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.from_tao">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.from_tao">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.from_tao">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_tao</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -690,7 +694,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Balance.from_rao">
-<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.Balance.from_rao">[docs]</a>
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/balance/index.html#bittensor.utils.balance.Balance.from_rao">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_rao</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
