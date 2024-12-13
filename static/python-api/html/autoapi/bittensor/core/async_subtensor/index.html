@@ -420,6 +420,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.__str__"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.blocks_since_last_update"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.blocks_since_last_update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.bonds"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.bonds()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.commit_reveal_enabled"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.commit_reveal_enabled()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.commit_weights"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.commit_weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.does_hotkey_exist"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.does_hotkey_exist()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.encode_params"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.encode_params()</span></code></a></li>
@@ -440,6 +441,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_stake_info_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_info_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_hyperparameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_reveal_period_epochs"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_reveal_period_epochs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_total_stake_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_total_stake_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_total_stake_for_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_total_stake_for_hotkey()</span></code></a></li>
@@ -592,6 +594,26 @@ Bonds represent the investments or commitments made by neurons in one another, i
 </dd>
 </dl>
 <p>Understanding bond distributions is crucial for analyzing the trust dynamics and market behavior within the subnet. It reflects how neurons recognize and invest in each other’s intelligence and contributions, supporting diverse and niche systems within the Bittensor ecosystem.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.async_subtensor.AsyncSubtensor.commit_reveal_enabled">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">commit_reveal_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.async_subtensor.AsyncSubtensor.commit_reveal_enabled" title="Link to this definition">#</a></dt>
+<dd><p>Check if commit-reveal mechanism is enabled for a given network at a specific block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network identifier for which to check the commit-reveal mechanism.</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The block hash of block at which to check the parameter (default is None, which implies the current block).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the integer value of the hyperparameter if available; otherwise, returns None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1016,6 +1038,23 @@ This function queries the blockchain for the owner of the provided hotkey. If th
 </dd>
 </dl>
 <p>Understanding the hyperparameters is crucial for comprehending how subnets are configured and managed, and how they interact with the network’s consensus and incentive mechanisms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_reveal_period_epochs">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subnet_reveal_period_epochs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_reveal_period_epochs" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the SubnetRevealPeriodEpochs hyperparameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>block_hash</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1711,6 +1750,7 @@ for k, v in iterable:</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.__str__"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.blocks_since_last_update"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.blocks_since_last_update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.bonds"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.bonds()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.commit_reveal_enabled"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.commit_reveal_enabled()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.commit_weights"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.commit_weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.does_hotkey_exist"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.does_hotkey_exist()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.encode_params"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.encode_params()</span></code></a></li>
@@ -1731,6 +1771,7 @@ for k, v in iterable:</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_stake_info_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_stake_info_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_hyperparameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnet_reveal_period_epochs"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnet_reveal_period_epochs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_subnets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_total_stake_for_coldkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_total_stake_for_coldkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.async_subtensor.AsyncSubtensor.get_total_stake_for_hotkey"><code class="docutils literal notranslate"><span class="pre">AsyncSubtensor.get_total_stake_for_hotkey()</span></code></a></li>

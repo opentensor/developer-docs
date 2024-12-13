@@ -411,10 +411,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils._ThreadingTimeoutException"><code class="docutils literal notranslate"><span class="pre">_ThreadingTimeoutException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">EXTRINSIC_SUBMISSION_TIMEOUT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">submit_extrinsic()</span></code></a></li>
 </ul>
 </li>
@@ -432,12 +432,12 @@ document.write(`
   <section id="module-bittensor.core.extrinsics.utils">
 <span id="bittensor-core-extrinsics-utils"></span><h1>bittensor.core.extrinsics.utils<a class="headerlink" href="#module-bittensor.core.extrinsics.utils" title="Link to this heading">#</a></h1>
 <p>Module with helper functions for extrinsics.</p>
-<section id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils._ThreadingTimeoutException" title="bittensor.core.extrinsics.utils._ThreadingTimeoutException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_ThreadingTimeoutException</span></code></a></p></td>
-<td><p>Exception raised for timeout. Different from TimeoutException because this also triggers</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT" title="bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EXTRINSIC_SUBMISSION_TIMEOUT</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -447,7 +447,7 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="bittensor.core.extrinsics.utils.submit_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">submit_extrinsic</span></code></a>(substrate, extrinsic, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="bittensor.core.extrinsics.utils.submit_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">submit_extrinsic</span></code></a>(subtensor, extrinsic, ...)</p></td>
 <td><p>Submits an extrinsic to the substrate blockchain and handles potential exceptions.</p></td>
 </tr>
 </tbody>
@@ -456,18 +456,14 @@ document.write(`
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py exception">
-<dt class="sig sig-object py" id="bittensor.core.extrinsics.utils._ThreadingTimeoutException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">_ThreadingTimeoutException</span></span><a class="headerlink" href="#bittensor.core.extrinsics.utils._ThreadingTimeoutException" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Exception raised for timeout. Different from TimeoutException because this also triggers
-a websocket failure. This exception should only be used with <cite>threading</cite> timer..</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">EXTRINSIC_SUBMISSION_TIMEOUT</span></span><a class="headerlink" href="#bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.utils.submit_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">submit_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">substrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrinsic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">submit_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrinsic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/utils.html#submit_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Submits an extrinsic to the substrate blockchain and handles potential exceptions.</p>
 <p>This function attempts to submit an extrinsic to the substrate blockchain with specified options
 for waiting for inclusion in a block and/or finalization. If an exception occurs during submission,
@@ -475,7 +471,7 @@ it logs the error and re-raises the exception.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>substrate</strong> (<em>substrateinterface.SubstrateInterface</em>) – The substrate interface instance used to interact with the blockchain.</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>) – The Subtensor instance used to interact with the blockchain.</p></li>
 <li><p><strong>extrinsic</strong> (<em>scalecodec.types.GenericExtrinsic</em>) – The extrinsic to be submitted to the blockchain.</p></li>
 <li><p><strong>wait_for_inclusion</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to wait for the extrinsic to be included in a block.</p></li>
 <li><p><strong>wait_for_finalization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to wait for the extrinsic to be finalized on the blockchain.</p></li>
@@ -541,10 +537,10 @@ it logs the error and re-raises the exception.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils._ThreadingTimeoutException"><code class="docutils literal notranslate"><span class="pre">_ThreadingTimeoutException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.EXTRINSIC_SUBMISSION_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">EXTRINSIC_SUBMISSION_TIMEOUT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">submit_extrinsic()</span></code></a></li>
 </ul>
 </li>
