@@ -433,6 +433,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.extrinsics_subpackage"><code class="docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.info"><code class="docutils literal notranslate"><span class="pre">info()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
@@ -546,10 +547,13 @@ features in recent versions, allowing users to maintain compatibility with older
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.debug" title="bittensor.utils.deprecated.debug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug</span></code></a>([on])</p></td>
 <td><p>Enables or disables debug logging.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.trace" title="bittensor.utils.deprecated.trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace</span></code></a>([on])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.info" title="bittensor.utils.deprecated.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>([on])</p></td>
+<td><p>Enables or disables info logging.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.trace" title="bittensor.utils.deprecated.trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace</span></code></a>([on])</p></td>
 <td><p>Enables or disables trace logging.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.warning" title="bittensor.utils.deprecated.warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warning</span></code></a>([on])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.deprecated.warning" title="bittensor.utils.deprecated.warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warning</span></code></a>([on])</p></td>
 <td><p>Enables or disables warning logging.</p></td>
 </tr>
 </tbody>
@@ -661,6 +665,19 @@ features in recent versions, allowing users to maintain compatibility with older
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">extrinsics_subpackage</span></span><a class="headerlink" href="#bittensor.utils.deprecated.extrinsics_subpackage" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="bittensor.utils.deprecated.info">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.info" title="Link to this definition">#</a></dt>
+<dd><p>Enables or disables info logging.
+:param on: If True, enables info logging. If False, disables info logging and sets default (WARNING) level.
+:type on: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.deprecated.keyfile">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">keyfile</span></span><a class="headerlink" href="#bittensor.utils.deprecated.keyfile" title="Link to this definition">#</a></dt>
@@ -708,7 +725,7 @@ features in recent versions, allowing users to maintain compatibility with older
 <dt class="sig sig-object py" id="bittensor.utils.deprecated.warning">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.deprecated.</span></span><span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.deprecated.warning" title="Link to this definition">#</a></dt>
 <dd><p>Enables or disables warning logging.
-:param on: If True, enables warning logging. If False, disables warning logging and sets default (INFO) level.
+:param on: If True, enables warning logging. If False, disables warning logging and sets default (WARNING) level.
 :type on: bool</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -787,6 +804,7 @@ features in recent versions, allowing users to maintain compatibility with older
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.dendrite"><code class="docutils literal notranslate"><span class="pre">dendrite</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.extrinsics_subpackage"><code class="docutils literal notranslate"><span class="pre">extrinsics_subpackage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.info"><code class="docutils literal notranslate"><span class="pre">info()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.keyfile"><code class="docutils literal notranslate"><span class="pre">keyfile</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.metagraph"><code class="docutils literal notranslate"><span class="pre">metagraph</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.deprecated.mock_subpackage"><code class="docutils literal notranslate"><span class="pre">mock_subpackage</span></code></a></li>
