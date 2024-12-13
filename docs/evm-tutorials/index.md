@@ -39,50 +39,50 @@ This section presents tutorials for you to learn how to use the EVM feature on t
 While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
 :::
 
-<EVMTutorialCards>
-    <EVMTutorialCard 
+<ResponsiveCards>
+    <ResponsiveCard 
     icon={GiHiveMind}
     title='EVM on Subtensor: Basics'
     link='/evm-tutorials/evm-on-subtensor'
     body='A beginner-friendly introduction to EVM on Bittensor.' />
-    <EVMTutorialCard 
+    <ResponsiveCard 
     icon={GiHiveMind}
     title='Install Dependencies'
     link='/evm-tutorials/install'
     body='Get started by installing dependencies first.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
     link='/evm-tutorials/evm-testnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM testnet.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={SiTrpc}
     title='EVM Localnet with Metamask'
     link='/evm-tutorials/evm-localnet-with-metamask-wallet'
     body='Set up your Metamask wallet for a localnet with EVM feature.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'
     link='/evm-tutorials/transfer-from-metamask-to-ss58'
     body='Learn how to transfer TAO from Metamask to SS58.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={FaMoneyBillTransfer}
     title='Transfer TAO between two H160 addresses'
     link='/evm-tutorials/transfer-between-two-h160-accounts'
     body='Learn how to transfer TAO between two Ethereum H160 addresses.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={FaNetworkWired}
     title='Configure Hardhat for subtensor EVM'
     link='/evm-tutorials/hardhat-config-for-subtensor-evm'
     body='Using Hardhat? Configure it to work with subtensor EVM.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={GrStakeholder}
     title='Stake with a smart contract'
     link='/evm-tutorials/staking-precompile'
     body='Stake to a hotkey using precompiled smart contract.' />
-    <EVMTutorialCard
+    <ResponsiveCard
     icon={GoKey}
     title='Verify ed25519 with a precompile'
     link='/evm-tutorials/ed25519-verify-precompile'
     body='Verify an ed25519 signature on subtensor EVM.' />
-</EVMTutorialCards>
+</ResponsiveCards>
