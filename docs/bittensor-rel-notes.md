@@ -20,6 +20,10 @@ The following are the release notes for the Bittensor software.
 
 - Fixed the bug that was in [`get_current_block`](pathname:///python-api/html/autoapi/bittensor/core/async_subtensor/index.html#bittensor.core.async_subtensor.AsyncSubtensor.get_current_block).
 
+### BTCLI 8.4.2
+
+- Minor bug fixes.
+
 ---
 
 ## Released 27 November 2024
