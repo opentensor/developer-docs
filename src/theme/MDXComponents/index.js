@@ -4,8 +4,8 @@ import {
   Cards,
   Card,
   CardSmall,
-  EVMTutorialCards,
-  EVMTutorialCard,
+  ResponsiveCards,
+  ResponsiveCard,
 } from "./Cards/index";
 
 export default {
@@ -14,6 +14,6 @@ export default {
   Cards,
   Card,
   CardSmall,
-  EVMTutorialCards,
-  EVMTutorialCard,
+  ResponsiveCards,
+  ResponsiveCard,
 };

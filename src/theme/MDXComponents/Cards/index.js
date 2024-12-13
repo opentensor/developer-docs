@@ -6,9 +6,9 @@ import clsx from "clsx";
 export function Cards({ children }) {
   return <div className={styles.cards}>{children}</div>;
 }
-export function EVMTutorialCards({ children }) {
+export function ResponsiveCards({ children }) {
   return (
-    <div className={clsx(styles.cards, styles.evmTutorialCards)}>
+    <div className={clsx(styles.cards, styles.responsiveCards)}>
       {children}
     </div>
   );
@@ -27,9 +27,9 @@ export function Card({ icon: Icon, title, body, link }) {
   );
 }
 
-export function EVMTutorialCard({ icon: Icon, title, body, link }) {
+export function ResponsiveCard({ icon: Icon, title, body, link }) {
   return (
-    <div className={clsx(styles.card, styles.evmTutorialCard)}>
+    <div className={clsx(styles.card, styles.responsiveCard)}>
       {Icon ? <Icon size="2rem" /> : <p />}
       <div className={styles.title}>{title}</div>
       <div className={styles.body}>{body}</div>
