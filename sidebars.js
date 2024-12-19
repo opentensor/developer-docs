@@ -85,6 +85,17 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "dynamic-tao/dtao-guide",
+        "dynamic-tao/dtao-btcli",
+      ],
+    },
+    {
+      type: "category",
       label: "Staking and Delegation",
       collapsible: true,
       collapsed: false,
