@@ -438,6 +438,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.burned_register"><code class="docutils literal notranslate"><span class="pre">Subtensor.burned_register()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.close"><code class="docutils literal notranslate"><span class="pre">Subtensor.close()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit_reveal_enabled"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit_reveal_enabled()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit_weights"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit_weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.config"><code class="docutils literal notranslate"><span class="pre">Subtensor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">Subtensor.determine_chain_endpoint_and_network()</span></code></a></li>
@@ -448,6 +449,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_block_hash"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_block_hash()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_commitment"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_commitment()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_block()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_current_weight_commit_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_weight_commit_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegate_by_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_by_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegate_take"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_take()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegates"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegates()</span></code></a></li>
@@ -461,7 +463,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_hyperparameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_reveal_period_epochs"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_reveal_period_epochs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnets()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_stake_for_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_stake_for_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_subnets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_uid_for_hotkey_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_uid_for_hotkey_on_subnet()</span></code></a></li>
@@ -471,6 +476,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered_any"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_any()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_on_subnet()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.last_drand_round"><code class="docutils literal notranslate"><span class="pre">Subtensor.last_drand_round()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.log_verbose"><code class="docutils literal notranslate"><span class="pre">Subtensor.log_verbose</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.max_weight_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.max_weight_limit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.metagraph"><code class="docutils literal notranslate"><span class="pre">Subtensor.metagraph()</span></code></a></li>
@@ -724,8 +730,13 @@ principles and mechanisms described in the <a class="reference external" href="h
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor._get_substrate">
-<span class="sig-name descname"><span class="pre">_get_substrate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor._get_substrate" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_get_substrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor._get_substrate" title="Link to this definition">#</a></dt>
 <dd><p>Establishes a connection to the Substrate node using configured parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – forces a reconnection if this flag is set</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -897,6 +908,26 @@ This bulk operation allows for efficient staking across different neurons from a
 <li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnetwork.</p></li>
 <li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The data to be committed to the network.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.commit_reveal_enabled">
+<span class="sig-name descname"><span class="pre">commit_reveal_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.commit_reveal_enabled" title="Link to this definition">#</a></dt>
+<dd><p>Check if commit-reveal mechanism is enabled for a given network at a specific block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The network identifier for which to check the commit-reveal mechanism.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The block number at which to check the parameter (default is None, which implies the current block).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the integer value of the hyperparameter if available; otherwise, returns None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(Optional[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a>])</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1094,6 +1125,30 @@ This action serves as a commitment or snapshot of the neuron’s current weight 
 </dd>
 </dl>
 <p>Knowing the current block number is essential for querying real-time data and performing time-sensitive operations on the blockchain. It serves as a reference point for network activities and data synchronization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.get_current_weight_commit_info">
+<span class="sig-name descname"><span class="pre">get_current_weight_commit_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.get_current_weight_commit_info" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves CRV3 weight commit information for a specific subnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number for the query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of commit details, where each entry is a dictionary with keys ‘who’,</dt><dd><p>’serialized_commit’, and ‘reveal_round’, or an empty list if no data is found.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1359,6 +1414,23 @@ within a specified subnet (netuid) of the Bittensor network.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.get_subnet_reveal_period_epochs">
+<span class="sig-name descname"><span class="pre">get_subnet_reveal_period_epochs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.get_subnet_reveal_period_epochs" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the SubnetRevealPeriodEpochs hyperparameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.get_subnets">
 <span class="sig-name descname"><span class="pre">get_subnets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.get_subnets" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves a list of all subnets currently active within the Bittensor network. This function provides an overview of the various subnets and their identifiers.</p>
@@ -1374,6 +1446,46 @@ within a specified subnet (netuid) of the Bittensor network.</p>
 </dd>
 </dl>
 <p>This function is valuable for understanding the network’s structure and the diversity of subnets available for neuron participation and collaboration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey">
+<span class="sig-name descname"><span class="pre">get_total_stake_for_coldkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the total stake held by a coldkey across all associated hotkeys, including delegated stakes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss58_address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the coldkey account.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number at which to perform the query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total stake amount held by the coldkey, or None if the query fails.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="../../index.html#bittensor.Balance" title="bittensor.Balance">Balance</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey">
+<span class="sig-name descname"><span class="pre">get_total_stake_for_hotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the total stake associated with a hotkey.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss58_address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The SS58 address of the hotkey account.</p></li>
+<li><p><strong>block</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The blockchain block number at which to perform the query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The total stake amount held by the hotkey, or None if the query fails.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="../../index.html#bittensor.Balance" title="bittensor.Balance">Balance</a>]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1549,6 +1661,20 @@ within a specified subnet (netuid) of the Bittensor network.</p>
 </dd>
 </dl>
 <p>This function helps in assessing the participation of a neuron in a particular subnet, indicating its specific area of operation or influence within the network.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.subtensor.Subtensor.last_drand_round">
+<span class="sig-name descname"><span class="pre">last_drand_round</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.subtensor.Subtensor.last_drand_round" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the last drand round emitted in bittensor. This corresponds when committed weights will be revealed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The latest Drand round emitted in bittensor.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2324,6 +2450,7 @@ This rate limit sets the maximum number of transactions that can be processed wi
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.burned_register"><code class="docutils literal notranslate"><span class="pre">Subtensor.burned_register()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.close"><code class="docutils literal notranslate"><span class="pre">Subtensor.close()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit_reveal_enabled"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit_reveal_enabled()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.commit_weights"><code class="docutils literal notranslate"><span class="pre">Subtensor.commit_weights()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.config"><code class="docutils literal notranslate"><span class="pre">Subtensor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">Subtensor.determine_chain_endpoint_and_network()</span></code></a></li>
@@ -2334,6 +2461,7 @@ This rate limit sets the maximum number of transactions that can be processed wi
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_block_hash"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_block_hash()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_commitment"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_commitment()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_current_block"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_block()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_current_weight_commit_info"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_current_weight_commit_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegate_by_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_by_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegate_take"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegate_take()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_delegates"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_delegates()</span></code></a></li>
@@ -2347,7 +2475,10 @@ This rate limit sets the maximum number of transactions that can be processed wi
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_stake_for_coldkey_and_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_stake_for_coldkey_and_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_burn_cost"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_burn_cost()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_hyperparameters"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_hyperparameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnet_reveal_period_epochs"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnet_reveal_period_epochs()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_subnets()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_coldkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_stake_for_coldkey()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_stake_for_hotkey"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_stake_for_hotkey()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_total_subnets"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_total_subnets()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_transfer_fee"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_transfer_fee()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.get_uid_for_hotkey_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.get_uid_for_hotkey_on_subnet()</span></code></a></li>
@@ -2357,6 +2488,7 @@ This rate limit sets the maximum number of transactions that can be processed wi
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered_any"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_any()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.is_hotkey_registered_on_subnet"><code class="docutils literal notranslate"><span class="pre">Subtensor.is_hotkey_registered_on_subnet()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.last_drand_round"><code class="docutils literal notranslate"><span class="pre">Subtensor.last_drand_round()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.log_verbose"><code class="docutils literal notranslate"><span class="pre">Subtensor.log_verbose</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.max_weight_limit"><code class="docutils literal notranslate"><span class="pre">Subtensor.max_weight_limit()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.subtensor.Subtensor.metagraph"><code class="docutils literal notranslate"><span class="pre">Subtensor.metagraph()</span></code></a></li>

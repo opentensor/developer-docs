@@ -96,8 +96,8 @@ This documentation and the Bittensor codebase is for the Bittensor platform only
 
 If you are new to Bittensor, start by learning the concepts. Then install the Bittensor software and create a wallet. Follow the below links. 
 
-<Cards>
-    <Card 
+<ResponsiveCards>
+    <ResponsiveCard 
     icon={HiAcademicCap}
     title='Learn the concepts'
     link='learn/introduction'
@@ -108,7 +108,7 @@ If you are new to Bittensor, start by learning the concepts. Then install the Bi
     link='getting-started/installation'
     body='To validate or mine, or run your own subnet, install Bittensor and create wallet to get started.' />
     
-</Cards>
+</ResponsiveCards>
 
 :::tip How to participate
 A straightforward way to participate in the Bittensor network is to be a subnet miner or a subnet validator in an existing subnet. It is not necessary to create a subnet. Follow the below links in the [Validate or mine](#validate-or-mine) section. Alternately, if you want to create your own custom incentive mechanism, then you create your own subnet and launch your own competition. See the below [Running a subnet](#running-a-subnet) section.
@@ -120,39 +120,39 @@ A straightforward way to participate in the Bittensor network is to be a subnet 
 
 You can participate in an existing subnet as either a subnet validator or a subnet miner. Follow the below links.
 
-<Cards>
-    <Card 
+<ResponsiveCards>
+    <ResponsiveCard 
     icon={MdOutlineChecklistRtl}
     title='1. Checklist for validating and mining'
     link='subnets/checklist-for-validating-mining'
     body='When you are preparing to be a subnet validator or a subnet miner, use this checklist to get ready.' />
-    <Card
+    <ResponsiveCard
     icon={GiArchiveRegister}
     title='2. Register, validate and mine'
     link='subnets/register-validate-mine'
     body='Follow these steps to register and become a miner, or stake your TAO and become a validator.' />
-    <Card
+    <ResponsiveCard
     icon={BiMath}
     title='3. Emissions'
     link='emissions'
     body='Learn how dividends for the validators and incentives for the miners are calculated.' />
-    <Card
+    <ResponsiveCard
     icon={RiTeamLine}
     title='4. Staking and Delegation'
     link='staking-and-delegation'
     body='Get to know how staking and delegating your TAO works in the Bittensor network.' />
-    <Card
+    <ResponsiveCard
     icon={RiGovernmentLine}
     title='Governance'
     link='governance'
     body='Learn how the Bittensor governance works as it transitions into full community-ownership over time.' />
-    <Card
+    <ResponsiveCard
     icon={FaGalacticSenate}
     title='Senate'
     link='senate'
     body='Understand what Senate is, requirements to participate in a Senate and how voting works.' />
     
-</Cards>
+</ResponsiveCards>
 
 ---
 
@@ -160,28 +160,28 @@ You can participate in an existing subnet as either a subnet validator or a subn
 
 Ready to run your own subnet? Follow the below links.
 
-<Cards>
-    <Card 
+<ResponsiveCards>
+    <ResponsiveCard 
     icon={HiAcademicCap}
     title='Basic subnet tutorials'
     link='tutorials/basic-subnet-tutorials'
     body='Learn how to run a simple subnet locally or on testchain or mainchain.' />
-    <Card
+    <ResponsiveCard
     icon={GiStarFormation}
     title='Create a subnet'
     link='subnets/create-a-subnet'
     body='Step-by-step instructions for creating a local subnet or a subnet on testchain or mainchain.' />
-    <Card
+    <ResponsiveCard
     icon={HiOutlineAcademicCap}
     title='OCR subnet tutorial'
     link='tutorials/ocr-subnet-tutorial'
     body='Shows how to convert your Python notebook containing validated code for an incentive mechanism into a working subnet.' />
-    <Card
+    <ResponsiveCard
     icon={VscSymbolParameter}
     title='Subnet hyperparameters'
     link='subnets/subnet-hyperparameters'
     body='Get to know subnet hyperparameters and how to use them effectively. As a subnet owner, your success depends on this knowledge.' />
-</Cards>
+</ResponsiveCards>
 
 ---
 

@@ -431,6 +431,8 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.T"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.T</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.Tv"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.Tv</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.W"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.W</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__copy__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__copy__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__deepcopy__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__deepcopy__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__repr__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__repr__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__str__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin._assign_neurons"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin._assign_neurons()</span></code></a></li>
@@ -445,6 +447,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.axons"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.axons</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.block"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.block</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.bonds"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.bonds</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.chain_endpoint"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.chain_endpoint</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.coldkeys"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.coldkeys</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.consensus"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.consensus</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.dividends"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.dividends</span></code></a></li>
@@ -462,6 +465,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.save"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.save()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.stake"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.state_dict"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.state_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.subtensor"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.sync"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.sync()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.total_stake"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.trust"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.trust</span></code></a></li>
@@ -486,9 +490,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.load_from_path"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.load_from_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.n"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.n</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.netuid"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.network"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.network</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.ranks"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.ranks</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.stake"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.stake</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.subtensor"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.total_stake"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.trust"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.uids"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.uids</span></code></a></li>
@@ -512,9 +516,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.load_from_path"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.load_from_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.n"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.n</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.netuid"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.network"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.network</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.ranks"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.ranks</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.stake"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.stake</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.subtensor"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.total_stake"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.trust"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.uids"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.uids</span></code></a></li>
@@ -524,6 +528,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.weights"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.weights</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">determine_chain_endpoint_and_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.get_save_dir"><code class="docutils literal notranslate"><span class="pre">get_save_dir()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.latest_block_path"><code class="docutils literal notranslate"><span class="pre">latest_block_path()</span></code></a></li>
 </ul>
@@ -579,10 +584,13 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.metagraph.get_save_dir" title="bittensor.core.metagraph.get_save_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_save_dir</span></code></a>(network, netuid)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.metagraph.determine_chain_endpoint_and_network" title="bittensor.core.metagraph.determine_chain_endpoint_and_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">determine_chain_endpoint_and_network</span></code></a>(network)</p></td>
+<td><p>Determine the chain endpoint and network name from the passed arg</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.metagraph.get_save_dir" title="bittensor.core.metagraph.get_save_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_save_dir</span></code></a>(network, netuid)</p></td>
 <td><p>Returns a directory path given <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> inputs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.metagraph.latest_block_path" title="bittensor.core.metagraph.latest_block_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latest_block_path</span></code></a>(dir_path)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.metagraph.latest_block_path" title="bittensor.core.metagraph.latest_block_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latest_block_path</span></code></a>(dir_path)</p></td>
 <td><p>Get the latest block path from the provided directory path.</p></td>
 </tr>
 </tbody>
@@ -634,7 +642,7 @@ document.write(`
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">MetagraphMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finney'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">MetagraphMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">settings.DEFAULT_NETWORK</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>The metagraph class is a core component of the Bittensor network, representing the neural graph that forms the backbone of the decentralized machine learning system.</p>
 <p>The metagraph is a dynamic representation of the network’s state, capturing the interconnectedness and attributes of neurons (participants) in the Bittensor ecosystem. This class is not just a static structure but a live reflection of the network, constantly updated and synchronized with the state of the blockchain.</p>
@@ -667,6 +675,7 @@ decision-making processes.</p>
 <li><p><strong>axons</strong> (<em>List</em>) – Details about each neuron’s axon, critical for facilitating network communication.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -706,6 +715,7 @@ which is a central component in representing the state of the Bittensor network.
 <li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The name of the network, which can indicate specific configurations or versions of the Bittensor network.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to use a lite version of the metagraph. The lite version may contain less detailed information but can be quicker to initialize and sync.</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to synchronize the metagraph with the network upon initialization. Synchronization involves updating the metagraph’s parameters to reflect the current state of the network.</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -895,8 +905,18 @@ placed on that neuron’s contributions.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.__copy__">
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__copy__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.__deepcopy__">
+<span class="sig-name descname"><span class="pre">__deepcopy__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__deepcopy__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__repr__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__repr__" title="Link to this definition">#</a></dt>
 <dd><p>Provides a detailed string representation of the metagraph object, intended for unambiguous understanding and debugging purposes. This method simply calls the <a class="reference internal" href="#bittensor.core.metagraph.MetagraphMixin.__str__" title="bittensor.core.metagraph.MetagraphMixin.__str__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__str__()</span></code></a> method, ensuring
 consistency between the informal and formal string representations of the metagraph.</p>
 <dl class="field-list simple">
@@ -919,7 +939,7 @@ consistency between the informal and formal string representations of the metagr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__str__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Provides a human-readable string representation of the metagraph object. This representation includes key identifiers and attributes of the metagraph, making it easier to quickly understand
 the state and configuration of the metagraph in a simple format.</p>
 <dl class="field-list simple">
@@ -941,7 +961,7 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._assign_neurons">
-<span class="sig-name descname"><span class="pre">_assign_neurons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._assign_neurons" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_assign_neurons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._assign_neurons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._assign_neurons" title="Link to this definition">#</a></dt>
 <dd><p>Assigns neurons to the metagraph based on the provided block number and the lite flag.</p>
 <p>This method is responsible for fetching and setting the neuron data in the metagraph, which includes neuron attributes like UID, stake, trust, and other relevant information.</p>
 <dl class="field-list simple">
@@ -969,7 +989,7 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._create_tensor">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_create_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._create_tensor" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_create_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._create_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._create_tensor" title="Link to this definition">#</a></dt>
 <dd><p>Creates a numpy array with the given data and data type. This method is a utility function used internally to encapsulate data into a np.array, making it compatible with the metagraph’s numpy model structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -996,7 +1016,7 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._initialize_subtensor">
-<span class="sig-name descname"><span class="pre">_initialize_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._initialize_subtensor" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_initialize_subtensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._initialize_subtensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._initialize_subtensor" title="Link to this definition">#</a></dt>
 <dd><p>Initializes the subtensor to be used for syncing the metagraph.</p>
 <p>This method ensures that a subtensor instance is available and properly set up for data retrieval during the synchronization process.</p>
 <p>If no subtensor is provided, this method is responsible for creating a new instance of the subtensor, configured according to the current network settings.</p>
@@ -1022,7 +1042,7 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._process_root_weights">
-<span class="sig-name descname"><span class="pre">_process_root_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._process_root_weights" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_process_root_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._process_root_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._process_root_weights" title="Link to this definition">#</a></dt>
 <dd><p>Specifically processes the root weights data for the metagraph. This method is similar to <a class="reference internal" href="#bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds" title="bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds"><code class="xref py py-func docutils literal notranslate"><span class="pre">_process_weights_or_bonds()</span></code></a> but is tailored for processing root weights, which have a different structure and significance in the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1050,7 +1070,7 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds">
-<span class="sig-name descname"><span class="pre">_process_weights_or_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_process_weights_or_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._process_weights_or_bonds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds" title="Link to this definition">#</a></dt>
 <dd><p>Processes the raw weights or bonds data and converts it into a structured tensor format. This method handles the transformation of neuron connection data (<code class="docutils literal notranslate"><span class="pre">weights</span></code> or <code class="docutils literal notranslate"><span class="pre">bonds</span></code>) from a list or other unstructured format into a tensor that can be utilized within the metagraph model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1077,12 +1097,12 @@ the state and configuration of the metagraph in a simple format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._set_metagraph_attributes">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._set_metagraph_attributes" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._set_metagraph_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._set_metagraph_attributes" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin._set_weights_and_bonds">
-<span class="sig-name descname"><span class="pre">_set_weights_and_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._set_weights_and_bonds" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_set_weights_and_bonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin._set_weights_and_bonds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin._set_weights_and_bonds" title="Link to this definition">#</a></dt>
 <dd><p>Computes and sets the weights and bonds for each neuron in the metagraph. This method is responsible for processing the raw weight and bond data obtained from the network and converting it into a structured format suitable for the metagraph model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1138,6 +1158,11 @@ functioning of any distributed network.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.bonds">
 <span class="sig-name descname"><span class="pre">bonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.utils.registration.torch.nn.Parameter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span></em><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.bonds" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.chain_endpoint">
+<span class="sig-name descname"><span class="pre">chain_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.chain_endpoint" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -1209,7 +1234,7 @@ transactions. They are akin to public keys in cryptographic systems and are esse
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.load" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.load" title="Link to this definition">#</a></dt>
 <dd><p>Loads the state of the metagraph from the default save directory. This method is instrumental for restoring the metagraph to its last saved state. It automatically identifies the save directory based on the <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> properties of the metagraph, locates the latest block file in that directory, and loads all metagraph parameters from it.</p>
 <p>This functionality is particularly beneficial when continuity in the state of the metagraph is necessary
 across different runtime sessions, or after a restart of the system. It ensures that the metagraph reflects
@@ -1239,7 +1264,7 @@ the exact state it was in at the last save point, maintaining consistency in the
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.load_from_path">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.load_from_path" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.load_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.load_from_path" title="Link to this definition">#</a></dt>
 <dd><p>Loads the state of the metagraph from a specified directory path. This method is crucial for restoring the metagraph to a specific state based on saved data. It locates the latest block file in the given
 directory and loads all metagraph parameters from it. This is particularly useful for analyses that require historical states of the network or for restoring previous states of the metagraph in different
 execution environments.</p>
@@ -1274,7 +1299,7 @@ state files within it are accurate and consistent with the expected metagraph st
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.metadata" title="Link to this definition">#</a></dt>
 <dd><p>Retrieves the metadata of the metagraph, providing key information about the current state of the
 Bittensor network. This metadata includes details such as the network’s unique identifier (<code class="docutils literal notranslate"><span class="pre">netuid</span></code>),
 the total number of neurons (<code class="docutils literal notranslate"><span class="pre">n</span></code>), the current block number, the network’s name, and the version of
@@ -1323,7 +1348,7 @@ the Bittensor network.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.save" title="Link to this definition">#</a></dt>
 <dd><p>Saves the current state of the metagraph to a file on disk. This function is crucial for persisting the current state of the network’s metagraph, which can later be reloaded or analyzed. The save operation includes all neuron attributes and parameters, ensuring a complete snapshot of the metagraph’s state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1358,12 +1383,17 @@ the Bittensor network.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.state_dict">
-<span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.state_dict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.state_dict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.subtensor">
+<span class="sig-name descname"><span class="pre">subtensor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><span class="pre">bittensor.core.subtensor.Subtensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.subtensor" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.MetagraphMixin.sync">
-<span class="sig-name descname"><span class="pre">sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.sync" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#MetagraphMixin.sync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.MetagraphMixin.sync" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the metagraph with the Bittensor network’s current state. It updates the metagraph’s attributes to reflect the latest data from the network, ensuring the metagraph represents the most current state of the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1446,7 +1476,7 @@ the Bittensor network.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">NonTorchMetagraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finney'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">NonTorchMetagraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">settings.DEFAULT_NETWORK</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#NonTorchMetagraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bittensor.core.metagraph.MetagraphMixin" title="bittensor.core.metagraph.MetagraphMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetagraphMixin</span></code></a></p>
 <p>The metagraph class is a core component of the Bittensor network, representing the neural graph that forms the backbone of the decentralized machine learning system.</p>
 <p>The metagraph is a dynamic representation of the network’s state, capturing the interconnectedness and attributes of neurons (participants) in the Bittensor ecosystem. This class is not just a static structure but a live reflection of the network, constantly updated and synchronized with the state of the blockchain.</p>
@@ -1479,6 +1509,7 @@ decision-making processes.</p>
 <li><p><strong>axons</strong> (<em>List</em>) – Details about each neuron’s axon, critical for facilitating network communication.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1518,6 +1549,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The name of the network, which can indicate specific configurations or versions of the Bittensor network.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to use a lite version of the metagraph. The lite version may contain less detailed information but can be quicker to initialize and sync.</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to synchronize the metagraph with the network upon initialization. Synchronization involves updating the metagraph’s parameters to reflect the current state of the network.</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1532,7 +1564,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph._set_metagraph_attributes">
-<span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph._set_metagraph_attributes" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#NonTorchMetagraph._set_metagraph_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph._set_metagraph_attributes" title="Link to this definition">#</a></dt>
 <dd><p>Sets various attributes of the metagraph based on the latest network data fetched from the subtensor.</p>
 <p>This method updates parameters like the number of neurons, block number, stakes, trusts, ranks, and other neuron-specific information.</p>
 <dl class="field-list simple">
@@ -1599,7 +1631,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph.load_from_path">
-<span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.load_from_path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#NonTorchMetagraph.load_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.load_from_path" title="Link to this definition">#</a></dt>
 <dd><p>Loads the state of the Metagraph from a specified directory path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1632,11 +1664,6 @@ This method is the entry point for creating a metagraph object, which is a centr
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph.network">
-<span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.network" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph.ranks">
 <span class="sig-name descname"><span class="pre">ranks</span></span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.ranks" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1644,6 +1671,11 @@ This method is the entry point for creating a metagraph object, which is a centr
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph.stake">
 <span class="sig-name descname"><span class="pre">stake</span></span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.stake" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.NonTorchMetagraph.subtensor">
+<span class="sig-name descname"><span class="pre">subtensor</span></span><a class="headerlink" href="#bittensor.core.metagraph.NonTorchMetagraph.subtensor" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1685,7 +1717,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">TorchMetaGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finney'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">TorchMetaGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">settings.DEFAULT_NETWORK</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#TorchMetaGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bittensor.core.metagraph.MetagraphMixin" title="bittensor.core.metagraph.MetagraphMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetagraphMixin</span></code></a>, <a class="reference internal" href="#bittensor.core.metagraph.BaseClass" title="bittensor.core.metagraph.BaseClass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseClass</span></code></a></p>
 <p>The metagraph class is a core component of the Bittensor network, representing the neural graph that forms the backbone of the decentralized machine learning system.</p>
 <p>The metagraph is a dynamic representation of the network’s state, capturing the interconnectedness and attributes of neurons (participants) in the Bittensor ecosystem. This class is not just a static structure but a live reflection of the network, constantly updated and synchronized with the state of the blockchain.</p>
@@ -1718,6 +1750,7 @@ decision-making processes.</p>
 <li><p><strong>axons</strong> (<em>List</em>) – Details about each neuron’s axon, critical for facilitating network communication.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1757,6 +1790,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The name of the network, which can indicate specific configurations or versions of the Bittensor network.</p></li>
 <li><p><strong>lite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to use a lite version of the metagraph. The lite version may contain less detailed information but can be quicker to initialize and sync.</p></li>
 <li><p><strong>sync</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – A flag indicating whether to synchronize the metagraph with the network upon initialization. Synchronization involves updating the metagraph’s parameters to reflect the current state of the network.</p></li>
+<li><p><strong>subtensor</strong> (<a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1771,7 +1805,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph._set_metagraph_attributes">
-<span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph._set_metagraph_attributes" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_set_metagraph_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#TorchMetaGraph._set_metagraph_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph._set_metagraph_attributes" title="Link to this definition">#</a></dt>
 <dd><p>Sets various attributes of the metagraph based on the latest network data fetched from the subtensor.</p>
 <p>This method updates parameters like the number of neurons, block number, stakes, trusts, ranks, and other neuron-specific information.</p>
 <dl class="field-list simple">
@@ -1843,7 +1877,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph.load_from_path">
-<span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.load_from_path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#TorchMetaGraph.load_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.load_from_path" title="Link to this definition">#</a></dt>
 <dd><p>Loads the metagraph state from a specified directory path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1878,11 +1912,6 @@ This method is the entry point for creating a metagraph object, which is a centr
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph.network">
-<span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.network" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph.ranks">
 <span class="sig-name descname"><span class="pre">ranks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bittensor.utils.registration.torch.nn.Parameter</span></em><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.ranks" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1890,6 +1919,11 @@ This method is the entry point for creating a metagraph object, which is a centr
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph.stake">
 <span class="sig-name descname"><span class="pre">stake</span></span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.stake" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.TorchMetaGraph.subtensor">
+<span class="sig-name descname"><span class="pre">subtensor</span></span><a class="headerlink" href="#bittensor.core.metagraph.TorchMetaGraph.subtensor" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1930,8 +1964,26 @@ This method is the entry point for creating a metagraph object, which is a centr
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.metagraph.determine_chain_endpoint_and_network">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">determine_chain_endpoint_and_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.determine_chain_endpoint_and_network" title="Link to this definition">#</a></dt>
+<dd><p>Determine the chain endpoint and network name from the passed arg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The network name (e.g. ‘finney’, ‘test’) or
+chain endpoint (e.g. wss://entrypoint-finney.opentensor.ai:443)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(network name, chain endpoint)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.get_save_dir">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">get_save_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.get_save_dir" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">get_save_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#get_save_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.get_save_dir" title="Link to this definition">#</a></dt>
 <dd><p>Returns a directory path given <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">netuid</span></code> inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1951,7 +2003,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.metagraph.latest_block_path">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">latest_block_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.metagraph.latest_block_path" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.metagraph.</span></span><span class="sig-name descname"><span class="pre">latest_block_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/metagraph.html#latest_block_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.metagraph.latest_block_path" title="Link to this definition">#</a></dt>
 <dd><p>Get the latest block path from the provided directory path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2032,6 +2084,8 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.T"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.T</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.Tv"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.Tv</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.W"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.W</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__copy__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__copy__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__deepcopy__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__deepcopy__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__repr__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__repr__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.__str__"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin._assign_neurons"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin._assign_neurons()</span></code></a></li>
@@ -2046,6 +2100,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.axons"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.axons</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.block"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.block</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.bonds"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.bonds</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.chain_endpoint"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.chain_endpoint</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.coldkeys"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.coldkeys</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.consensus"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.consensus</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.dividends"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.dividends</span></code></a></li>
@@ -2063,6 +2118,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.save"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.save()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.stake"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.state_dict"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.state_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.subtensor"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.sync"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.sync()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.total_stake"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.MetagraphMixin.trust"><code class="docutils literal notranslate"><span class="pre">MetagraphMixin.trust</span></code></a></li>
@@ -2087,9 +2143,9 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.load_from_path"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.load_from_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.n"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.n</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.netuid"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.network"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.network</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.ranks"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.ranks</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.stake"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.stake</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.subtensor"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.total_stake"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.trust"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.NonTorchMetagraph.uids"><code class="docutils literal notranslate"><span class="pre">NonTorchMetagraph.uids</span></code></a></li>
@@ -2113,9 +2169,9 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.load_from_path"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.load_from_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.n"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.n</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.netuid"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.netuid</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.network"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.network</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.ranks"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.ranks</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.stake"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.stake</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.subtensor"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.subtensor</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.total_stake"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.total_stake</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.trust"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.trust</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.uids"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.uids</span></code></a></li>
@@ -2125,6 +2181,7 @@ This method is the entry point for creating a metagraph object, which is a centr
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.TorchMetaGraph.weights"><code class="docutils literal notranslate"><span class="pre">TorchMetaGraph.weights</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.determine_chain_endpoint_and_network"><code class="docutils literal notranslate"><span class="pre">determine_chain_endpoint_and_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.get_save_dir"><code class="docutils literal notranslate"><span class="pre">get_save_dir()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.metagraph.latest_block_path"><code class="docutils literal notranslate"><span class="pre">latest_block_path()</span></code></a></li>
 </ul>
