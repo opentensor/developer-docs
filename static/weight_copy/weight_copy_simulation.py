@@ -146,7 +146,10 @@ class WeightCopySimulation:
             print(file_name, E)
 
     def simulate(self, netuid, conceal_period, metas, alpha_low=0.9, alpha_high=0.9):
-        yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+        if self.setup.liquid_alpha:
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+        else:
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
 
         if os.path.isfile(yuma_file_name):
             return
@@ -263,24 +266,38 @@ class WeightCopySimulation:
         for netuid in self.setup.netuids:
             for conceal_period in self.setup.conceal_periods:
                 processes = []
-                for alpha_low in self.setup.alpha_lows:
-                    for alpha_high in self.setup.alpha_highs:
-                        if alpha_low > alpha_high:
-                            continue
+                if self.setup.liquid_alpha:
+                    for alpha_low in self.setup.alpha_lows:
+                        for alpha_high in self.setup.alpha_highs:
+                            if alpha_low > alpha_high:
+                                continue
 
-                        p = mp.Process(
-                            target=self.simulate,
-                            args=(
-                                netuid,
-                                conceal_period,
-                                self.metas[netuid],
-                                alpha_low,
-                                alpha_high,
-                            ),
-                            name="",
-                        )
-                        p.start()
-                        processes.append(p)
+                            p = mp.Process(
+                                target=self.simulate,
+                                args=(
+                                    netuid,
+                                    conceal_period,
+                                    self.metas[netuid],
+                                    alpha_low,
+                                    alpha_high,
+                                ),
+                                name="",
+                            )
+                            p.start()
+                            processes.append(p)
+                else:
+                    p = mp.Process(
+                        target=self.simulate,
+                        args=(
+                            netuid,
+                            conceal_period,
+                            self.metas[netuid],
+                        ),
+                        name="",
+                    )
+                    p.start()
+                    processes.append(p)
+
 
                 for p in processes:
                     p.join()

@@ -10,8 +10,8 @@ class ExperimentSetup:
         tempo: int = 360,  # the tempo on chain (blocks), how often are the chain calculating consensus.
         start_block: int = 3223749,  # (22 June) the block to refer to to start the experiment
         conceal_period: List = None,  # the range of conceal period for experiment
-        alpha_lows: List = None,  # the range of alpha lows for experiment
-        alpha_highs: List = None,  # the range of alpha highs for experiment
+        alpha_lows: List = [],  # the range of alpha lows for experiment
+        alpha_highs: List = [],  # the range of alpha highs for experiment
         data_points: int = 30,  # number of datapoints to collect for experiment
         netuids: List = None,
         metagraph_storage_path="./metagraph_diagnostic",
@@ -38,17 +38,18 @@ class ExperimentSetup:
         else:
             self.netuids = netuids
 
-        self.alpha_highs = (
-            alpha_highs
-            if alpha_highs
-            else [round(a, 2) for a in np.arange(0.1, 0.95, 0.2)]
-        )
+        if liquid_alpha:
+            self.alpha_highs = (
+                alpha_highs
+                if len(alpha_highs) > 0
+                else [round(a, 2) for a in np.arange(0.1, 0.95, 0.2)]
+            )
 
-        self.alpha_lows = (
-            alpha_lows
-            if alpha_lows
-            else [round(a, 2) for a in np.arange(0.1, 0.95, 0.2)]
-        )
+            self.alpha_lows = (
+                alpha_lows
+                if len(alpha_lows) > 0
+                else [round(a, 2) for a in np.arange(0.1, 0.95, 0.2)]
+            )
 
         self.create_directory()
 
