@@ -84,3 +84,25 @@ The number of registrations for the current interval exceeds the maximum allowed
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 5'
 }
 ```
+
+## Custom error: 6
+
+### Description
+
+The account calling the `batch_reveal_weights` does not meet the minimum stake requirement for revealing the weights.
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 6'
+}
+```
+
+## Custom error: 7
+
+### Description
+
+The account calling the `commit_crv3_weights` does not meet the minimum stake requirement for committing the weights.
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 7'
+}
+```
