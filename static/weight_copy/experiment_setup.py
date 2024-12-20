@@ -18,6 +18,7 @@ class ExperimentSetup:
         result_path="./results",
         liquid_alpha=False,
         consensus_precision=0.0001,
+        chain_endpoint = "wss://archive.chain.opentensor.ai:443"
     ):
         self.processes = processes
         self.tempo = tempo
@@ -27,6 +28,7 @@ class ExperimentSetup:
         self.result_path = result_path
         self.liquid_alpha = liquid_alpha
         self.consensus_precision = consensus_precision
+        self.chain_endpoint = chain_endpoint
 
         if conceal_period == None:
             self.conceal_periods = [0] + list(range(1, 16, 2))
