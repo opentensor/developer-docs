@@ -5,7 +5,12 @@ title: "Guide to Dynamic TAO"
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+
 # Guide to Dynamic TAO
+
+:::danger The Emissions section is preliminary
+The [Emissions section](#emissions) in this dynamic TAO guide is still not settled yet. Proceed with caution.
+:::
 
 Follow this guide to learn the essential concepts, features and mechanisms of dynamic TAO.
 
@@ -556,6 +561,10 @@ $$
 This can change every block.
 
 ---
+
+:::danger The Emissions section is preliminary
+The below Emissions section is still not settled yet. Proceed with caution.
+:::
 
 ## Emissions
 

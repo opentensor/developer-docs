@@ -155,6 +155,14 @@ const config = {
           hideable: false,
         },
       },
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     'The dynamic TAO docs are preliminary. Check <a target="_blank" rel="noopener noreferrer" href="#">this page for more.</a>',
+      //   backgroundColor: '#171717',
+      //   textColor: '#f43228',
+      //   isCloseable: false,
+      // },
 
       navbar: {
         logo: {
