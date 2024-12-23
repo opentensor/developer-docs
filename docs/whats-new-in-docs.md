@@ -25,7 +25,7 @@ Key updates to the documentation.
 ## 12 December 2024
 
 - Added [release notes for Bittensor SDK 8.5.0](./bittensor-rel-notes#released-12-december-2024).
-- Updated [Bittensor SDK reference](pathname:///legacy-python-api/html/index.html).
+- Updated [Bittensor SDK reference](pathname:///html/index.html).
 
 ## 27 November 2024
 
