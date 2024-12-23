@@ -17,12 +17,16 @@ Dynamic TAO is a sophisticated mechanism that brings the following benefits to t
 
 Furthermore, the dynamic TAO enables a TAO holder and a subnet validator to manage their stake, influence, and governance across multiple subnets in the Bittensor network. By making use of the global component of a subnet validator's stake weight, the dynamic TAO elegantly solves the problem of managing influence of a validator, hence of a TAO holder, across different subnet economies while maintaining mathematical consistency and economic incentives.
 
+:::danger The dynamic TAO guide is preliminary
+The [Emissions section](./dtao-guide.md#emissions) of the dynamic TAO guide is still not settled yet. Proceed with caution.
+:::
+
 <Cards>
     <Card 
     icon={HiAcademicCap}
     title='Guide to Dynamic TAO →'
     link='/dynamic-tao/dtao-guide'
-    body='A comprehensive introduction to dynamic TAO.' />
+    body='(PRELIMINARY ONLY, SUBJECT TO CHANGE) A comprehensive introduction to dynamic TAO.' />
     <Card 
     icon={HiOutlineCommandLine}
     title='BTCLI with Dynamic TAO →'
