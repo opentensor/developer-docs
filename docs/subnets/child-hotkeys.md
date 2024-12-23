@@ -74,9 +74,9 @@ The following rate limits apply for child hotkeys:
 
 ## Minimum stake
 
-The following minimum stake applies for providing stake to child hotkeys:
-- testnet: 100 testnet TAO
-- mainnet: 1000 TAO
+The minimum stake you can redelegate to a child hotkey is as follows:
+- **Testnet**: 100 testnet TAO.
+- **Mainnet**: 1000 TAO.
   
 ---
 
