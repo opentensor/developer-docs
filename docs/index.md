@@ -102,7 +102,7 @@ If you are new to Bittensor, start by learning the concepts. Then install the Bi
     title='Learn the concepts'
     link='learn/introduction'
     body='Start by learning the Bittensor concept, building blocks and incentive mechanism.' />
-    <Card
+    <ResponsiveCard
     icon={MdInstallDesktop}
     title='Install'
     link='getting-started/installation'
