@@ -11,7 +11,7 @@ Key updates to the documentation.
 
 ## 23 December 2024
 
-- Published the [Dynamic TAO](./dynamic-tao) documentation, including the [Guide to Dynamic TAO](./dynamic-tao/guide). **NOTE**: The [Emissions section](./dynamic-tao/guide#emissions) of the guide is still preliminary. Proceed with caution.
+- Published the [Dynamic TAO](./dynamic-tao) documentation, including the [Guide to Dynamic TAO](./dynamic-tao/dtao-guide). **NOTE**: The [Emissions section](./dynamic-tao/dtao-guide#emissions) of the guide is still preliminary. Proceed with caution.
 - Updated the commit reveal Python notebook [weight_copy directory](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy).
 - Added the [minimum required stake amount for redelegating to a child hotkey](./subnets/child-hotkeys#minimum-stake).
 
