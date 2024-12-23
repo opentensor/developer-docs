@@ -126,6 +126,7 @@ class WeightCopySimulation:
                     liquid_alpha=self.setup.liquid_alpha,
                     alpha_low=alpha_low,
                     alpha_high=alpha_high,
+                    precision = self.setup.consensus_precision
                 )
                 yuma_results[block] = yuma_result
 
@@ -146,7 +147,10 @@ class WeightCopySimulation:
             print(file_name, E)
 
     def simulate(self, netuid, conceal_period, metas, alpha_low=0.9, alpha_high=0.9):
-        yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+        if self.setup.liquid_alpha:
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+        else:
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
 
         if os.path.isfile(yuma_file_name):
             return
@@ -155,7 +159,6 @@ class WeightCopySimulation:
             if meta == None:
                 return
 
-        print(yuma_file_name)
 
         def _simulate(
             self,
@@ -221,6 +224,7 @@ class WeightCopySimulation:
                     liquid_alpha=self.setup.liquid_alpha,
                     alpha_low=alpha_low,
                     alpha_high=alpha_high,
+                    precision = self.setup.consensus_precision
                 )
                 yuma_results[late_block] = yuma_result
 
@@ -234,6 +238,7 @@ class WeightCopySimulation:
                 pickle.dump(yuma_results, f)
 
         try:
+            print('start', yuma_file_name)
             _simulate(
                 self,
                 yuma_file_name,
@@ -260,30 +265,43 @@ class WeightCopySimulation:
             p.join()
 
         # === All simulations for all use case ===
+        processes = []
         for netuid in self.setup.netuids:
             for conceal_period in self.setup.conceal_periods:
-                processes = []
-                for alpha_low in self.setup.alpha_lows:
-                    for alpha_high in self.setup.alpha_highs:
-                        if alpha_low > alpha_high:
-                            continue
+                if self.setup.liquid_alpha:
+                    for alpha_low in self.setup.alpha_lows:
+                        for alpha_high in self.setup.alpha_highs:
+                            if alpha_low > alpha_high:
+                                continue
 
-                        p = mp.Process(
-                            target=self.simulate,
-                            args=(
-                                netuid,
-                                conceal_period,
-                                self.metas[netuid],
-                                alpha_low,
-                                alpha_high,
-                            ),
-                            name="",
-                        )
-                        p.start()
-                        processes.append(p)
+                            p = mp.Process(
+                                target=self.simulate,
+                                args=(
+                                    netuid,
+                                    conceal_period,
+                                    self.metas[netuid],
+                                    alpha_low,
+                                    alpha_high,
+                                ),
+                                name="",
+                            )
+                            p.start()
+                            processes.append(p)
+                else:
+                    p = mp.Process(
+                        target=self.simulate,
+                        args=(
+                            netuid,
+                            conceal_period,
+                            self.metas[netuid],
+                        ),
+                        name="",
+                    )
+                    p.start()
+                    processes.append(p)
 
-                for p in processes:
-                    p.join()
+        for p in processes:
+            p.join()
 
 
 if __name__ == "__main__":
