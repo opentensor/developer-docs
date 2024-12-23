@@ -31,7 +31,7 @@ class ExperimentSetup:
         self.chain_endpoint = chain_endpoint
 
         if conceal_period == None:
-            self.conceal_periods = [0] + list(range(1, 16, 2))
+            self.conceal_periods = [0] + list(range(1, 30, 2))
         else:
             self.conceal_periods = conceal_period
 
