@@ -170,29 +170,3 @@ Output:
 >> Registering subnet...
 ✅ Registered subnetwork with netuid: 1 # Your subnet netuid will show here, save this for later.
 ```
-
----
-
-## Immunity period for a subnet
-
-The notion of [immunity_period](./subnet-hyperparameters.md#immunity_period) also applies to a subnet. It works like this:
-
-- Subnets are competitive, even though new and additional subnets are routinely created in the Bittensor network. As a result, subnet performance is continuously monitored, poor-performing subnets are deregistered, and the registration cost is returned to the deregistered subnet owner.
-
-- A subnet's performance is measured using the emissions earned by the subnet: The lower the emission earned by the subnet, the poorer the subnet's performance. See [Emissions](../emissions.md).
-
-- Furthermore, any subnet has an immunity period of `7 * 7200` blocks, which is seven days. See the line of code that defines [SubtensorInitialNetworkImmunity](https://github.com/opentensor/subtensor/blob/52882caa011c5244ad75f1d9d4e182a1a17958a2/runtime/src/lib.rs#L660). This initial network immunity period starts when the subnet is created and its `netuid` is issued to the subnet owner. During this immunity period, the subnet is not at risk of deregistered.
-
-- However, at the end of this immunity period, if the subnet's emissions are the lowest among all the subnets, then this subnet will be deregistered when a new subnet registration request arrives. If there are several subnets with the lowest emission, then the oldest subnet among the lowest will be deregistered first, followed by the second oldest, and so on.
-
-:::tip A newly created subnet starts with zero emission
-:::
-
-## Subnet deregistration
-
-:::danger poor-performing subnets risk deregistration
-Ensure your subnet's performance is high, or it risks being deregistered. Also, see the above section on [Immunity period for a subnet](#immunity-period-for-a-subnet).
-:::
-
-When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The new subnet at this `netuid` starts afresh, and any subnet miners and subnet validators for this new subnet must register using the standard registration step described in [Register](../subnets/register-validate-mine.md#register).
-

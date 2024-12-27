@@ -75,7 +75,8 @@ btcli sudo set
 
 ## max_weight_limit
 
-This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) type. 
+**Description**
+: This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) type. 
 
 **Value**
 : Set to `455` for Subnet-1. 
@@ -105,27 +106,53 @@ Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weight
 
 --- -->
 
+## commit_reveal_weights_enabled
+
+**Description**
+: Enables the [Commit Reveal](./commit-reveal.md) feature.
+
+**Value**
+: `True` or `False`. Enables or disables the feature, default: false.
+
+**Setting**
+: This parameter can be changed by the subnet owner.
+
+## commit_reveal_weights_interval
+
+**Description**
+: The interval, measured as a number of blocks, that elapses before unencrypted weights are revealed.
+
+**Value**
+: The commit reveal interval, as an integer count of blocks.
+
+**Setting**
+:  This parameter can be changed by the subnet owner, and must be tuned carefully for the subnet. It should always be greater than the [immunity period](#immunity_period) to avoid unintended miner deregistration&mdash;see [Commit Reveal and Immunity Period](./commit-reveal.md#commit-reveal-and-immunity-period).
+
 ## immunity_period
 
 **Description**
-: The immunity period is expressed in number of blocks. The immunity period is the number of blocks given to a subnet miner or a subnet validator at a UID before they are considered available for deregistration. 
+: The [Immunity Period](../glossary.md#immunity-period) within a subnet. This is a grace period, measured in blocks, granted to a miner or a validator when registered at a UID on a given subnet, that elapses before they are considered for deregistration due to performance.
+
+If the UID still does not perform well even after the expiry of the `immunity_period`, the miner or validator at that UID can be removed from the subnet when a new miner or validator requests to join.
+
+When a subnet miner or a subnet validator is deregistered, they must register again to rejoin the subnet.
 
 **Value**
-: Set to `7200` blocks for Subnet-1. The `immunity_period` at a UID starts when a subnet validator or a subnet miner is registered into the subnet. 
+: Default value: 5000 blocks. 
+
+Varies between subnets, for example 7200 blocks for Subnet-1.
 
 **Setting**
-: This parameter can be changed by the subnet owner. The value of this parameter varies from subnet to subnet. 
+: This parameter can be changed by the subnet owner, and must be tuned carefully for the subnet. 
 
-A subnet miner or a subnet validator at a UID can perform poorly during the `immunity_period` without risking deregistration. If the UID still does not perform well even after the expiry of the `immunity_period`, then the subnet miner or subnet validator at that UID can be removed from the subnet. They will be removed when a new entity, i.e., a subnet miner or a subnet validator, requests to join the subnet.
-
-When a subnet miner or a subnet validator is deregistered, they are required to register again to be considered for the subnet. 
+If [Commit Reveal](./commit-reveal.md) is enabled for the subnet, the value of the commit reveal interval should always be greater than the immunity period within the subnet, to avoid unintended miner deregistration&mdash;see [Commit Reveal and Immunity Period](./commit-reveal.md#commit-reveal-and-immunity-period).
 
 :::tip immunity period for a subnet
-Immunity period also exists for a subnet. See [Immunity period for a subnet](./create-a-subnet.md#immunity-period-for-a-subnet).
+
+Immunity Period for miners and validators *within* a subnet is distinct from the immunity period *for* a newly created subnet, before it can be deregistered from the Bittensor network. For the latter, see [Immunity period for a subnet](./create-a-subnet.md#immunity-period-for-a-subnet).
 :::
 
 ### Example
-
 Consider Subnet-1, that has its `immunity_period` set to 7200 blocks. The duration of a block is 12 seconds. Hence a subnet validator or a subnet miner at any UID in Subnet-1 has 24 hours (=7200 blocks) from the moment they have registered, before they will be considered for deregistration. 
 
 :::tip Managing node deregistration during major updates
