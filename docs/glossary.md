@@ -42,6 +42,12 @@ A component of a Bittensor wallet responsible for securely storing funds and per
 
 A combination of two keys, a coldkey for secure storage and high-risk operations, and a hotkey for less secure operations and network interactions.
 
+### Commit Reveal
+
+The commit reveal feature is designed to solve the weight-copying problem by giving would-be weight-copiers access only to stale weights. Copying stale weights should result in validators departing from consensus.
+
+See [Commit Reveal](./subnets/commit-reveal.md) for details.
+
 ### Consensus
 
 A measure of a subnet validator's agreement with other validators on the network, calculated based on their trust scores. This is a κ-centered sigmoid of trust, influencing the emission calculation.
@@ -120,7 +126,7 @@ Authentication mechanism for delegates and nominators and for delegates particip
 
 ### Immunity Period
 
-A grace period granted to a newly registered subnet miner or subnet validator, during which they cannot be deregistered regardless of their performance. During this immunity period a new subnet miner or subnet validator must improve their performance to avoid deregistration after the immunity period expires.
+A grace period granted to a newly registered subnet miner or subnet validator, during which they will not be deregistered due to performance. Allows a miner or validator new to the subnet to adapt and improve their performance, in order to avoid deregistration once the immunity period expires.
 
 ### Incentives
 
@@ -238,9 +244,6 @@ A denomination of TAO, representing one billionth (10<sup>-9</sup>) of a TAO.
 
 A measure of a subnet miner's performance relative to other subnet miners in the same subnet, calculated based on the subnet miner's trust and incentive scores. This is the sum of weighted stake, contributing to the emission process.
 
-### Ranking Weight Vector
-
-A weight vector used by subnet validators to rank subnet miners according to their performance. These ranking weight vectors are transmitted to the blockchain and used as input for the Yuma Consensus module.
 
 ### Regenerating a Key
 
@@ -282,7 +285,9 @@ The rewards earned by a delegate for performing subnet validation tasks. These r
 
 ### Subnet
 
-A network structure that closely follows how a classical feedforward neural network is connected. In a Bittensor subnet, nodes are represented as either subnet validators or subnet miners. Subnet validators or subnet miners are also referred to as neurons. In a subnet a group of validators and miners work together to perform specific tasks and earn TAO (τ) rewards.
+A Bittensor subnet is an incentive-based competition market that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality.
+
+Rewards&mdash;emmissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
 
 ### Subnet Incentive Mechanism
 
@@ -396,8 +401,12 @@ A matrix formed from the ranking weight vectors of all subnet validators in a su
 
 A vector maintained by each subnet validator, with each element representing the weight assigned to a subnet miner based on its performance.
 
+The ranking weight vectors for each subnet combine to form the [weight matrix](#weight-matrix), which is transmitted to the blockchain and used as input for the Yuma Consensus module.
+
 ## Y 
 
 ### Yuma Consensus
 
 The consensus mechanism in the Bittensor blockchain that distributes rewards to subnet validators and subnet miners. 
+
+See [Yuma Consensus](./yuma-consensus.md)
