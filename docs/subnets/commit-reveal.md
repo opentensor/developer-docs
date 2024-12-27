@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page describes the **commit reveal** feature: a configurable waiting period that elapses between a) when consensus weights set by subnet validators are first committed, and b) when they are revealed publicly and included in Yuma Consensus.
 
-This feature was designed address the issue of *weight copying* by validators. 
+This feature was designed to address the issue of *weight copying* by validators. 
 
 ## Weight copying
 
@@ -14,9 +14,9 @@ In each Bittensor subnet, each validator scores&mdash;or *'weights'*&mdash;each 
 
 The weight matrix is public information, and must be, so that the distribution of rewards in the Bittensor platform can be transparently fair. However, this transparency makes it possible for subnet validators to free-ride on the work of other validators by copying the latest consensus rather than independently evaluating subnet miners. This is unfair and potentially degrades the quality of validation work, undermining Bittensor's ability to reward the best miners and produce the best artificial intelligence as a whole.
 
-The commit reveal feature is designed to solve the weight-copying problem by giving would-be weight-copiers access only to stale weights. Copying stale weights should result in validators departing from consensus. However, it is critical to note that this only works if the consensus weight matrix is constantly changing on the time scale of the commit reveal interval. If the demands on miners are too static, and miner performance is very stable, weight-copying will still be successful.
+The commit reveal feature is designed to solve the weight copying problem by giving would-be weight copiers access only to stale weights. Copying stale weights should result in validators departing from consensus. However, it is critical to note that this only works if the consensus weight matrix is constantly changing on the time scale of the commit reveal interval. If the demands on miners are too static, and miner performance is very stable, weight copying will still be successful.
 
-The only solution for this is to continuously change demands on miners, requiring them to continuously evolve their behavior to maintain their scoring. Combined with a properly tuned Commit Reveal inverval, this will keep validators honest, as well as producing the best models.
+The only solution for this is to continuously change demands on miners, requiring them to continuously evolve their behavior to maintain their scoring. Combined with a properly tuned Commit Reveal interval, this will keep validators honest, as well as producing the best models.
 
 ## Commit Reveal and Immunity Period
 
@@ -65,16 +65,21 @@ style={{width: 750}}
 </center>
 
 
-## How to use commit reveal feature
+## How to use the commit reveal feature
 
-If you are a subnet owner, set the below hyperparameters to use the commit reveal feature:
+As a subnet owner, set the below hyperparameters to use the commit reveal feature:
 
 1. `commit_reveal_weights_enabled` (boolean): Set this to `True` to activate the commit reveal feature for the subnet. Default value is `False`.
 2. `commit_reveal_weights_interval` (int): Set this to an integer number. This is the number of subnet tempos to elapse before revealing the weights by submitting them again to the blockchain, but now openly for everyone to see. Default value is `1`.
 
-That's all you have to do. The commit reveal feature will now start to work behind the scenes.
+See [Setting subnet hyperparameters](subnet-hyperparameters#setting-the-hyperparameters).
 
-All reveals will occur immediately at the beginning of the tempo after the `commit_reveal_weights_interval`. For example, if `commit_reveal_weights_interval` value is set to `3`, then the reveal will occur at the beginning of the fourth tempo from the current tempo. The current tempo is counted as the first tempo. See the below diagram for this example: 
+:::danger Ensure that the commit reveal interval is less than your immunity period to avoid unintended miner de-registration!
+See [Commit Reveal and Immunity Period](#commit-reveal-and-immunity-period).
+:::
+
+
+Weights will be revealed immediately at the beginning of the tempo after the `commit_reveal_weights_interval`. For example, if `commit_reveal_weights_interval` value is set to `3`, then the reveal will occur at the beginning of the fourth tempo from the current tempo. The current tempo is counted as the first tempo. See the below diagram for this example: 
 
 <center>
 <ThemedImage
@@ -88,8 +93,6 @@ style={{width: 750}}
 </center>
 
 <br />
-
-For subnets that are very stable and have durable subnet miners who change ranks rarely, a longer delay interval would likely be more effective. For subnets with more frequent subnet miner registrations and deregistrations, a shorter interval could be effective as weight copiers would not be able to independently score new miners.
 
 
 ## Technical papers and blog
