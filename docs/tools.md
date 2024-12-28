@@ -16,7 +16,7 @@ The Bittensor SDK is a Python-based library that allows developers to interact p
 - Query and monitor network activity
 - Build applications on top of Bittensor’s decentralized AI infrastructure
 
-**Learn more in the [Bittensor SDK documentation](/docs/bittensor-sdk)** (link for illustration).
+**Learn more in the [Bittensor SDK documentation](./bt-api-ref.md)** (link for illustration).
 
 ---
 
@@ -29,7 +29,7 @@ The Bittensor command-line interface (`btcli`) provides a straightforward way to
 - View wallet information and network status
 
 It is designed for users who prefer quick terminal commands or those managing multiple nodes and subnet interactions.  
-**See [Bittensor CLI reference](/docs/btcli.md)** for detailed usage instructions.
+**See [Bittensor CLI reference](./btcli.md)** for detailed usage instructions.
 
 ---
 
@@ -42,12 +42,5 @@ Bittensor uses a dual-key wallet structure:
 - **Hotkey** for operational tasks like validation, mining, and day-to-day transactions
 
 Both keys are crucial for safeguarding and participating in the network.  
-**For a complete guide, see [Wallets & Keys](/docs/wallets-and-keys)** and [Working with Keys](/docs/working-with-keys).
+**For a complete guide, see [Wallets & Keys](./getting-started/wallets)** and [Working with Keys](./working-with-keys).
 
----
-
-**Next Steps**  
-- [Install Bittensor](/docs/installation)  
-- [Explore the Bittensor SDK](/docs/bittensor-sdk)  
-- [Create and manage your wallets and keys](/docs/wallets-and-keys)  
-- [Use the CLI for subnet and wallet operations](/docs/btcli.md)
