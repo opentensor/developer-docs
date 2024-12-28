@@ -1,12 +1,34 @@
 ---
 title: "Understanding Subnets"
 ---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Understanding Subnets
 
-In Bittensor, a subnet is an incentive-based competition market that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality.
+In Bittensor, a subnet is an incentive-based competition marketplace that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality. Often, parties that serve as validators do so in order to run applications that make use of the services provided by the miners.
 
 Rewards&mdash;emmissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
+
+## Anatomy of a subnet
+
+The illustration below shows the main components of a subnet:
+1. A subnet's [incentive mechanism] defines the work that miners must perform, and the work that validators must perform to evaluate the miners' work. The incentive mechanism is unique to the subnet, and maintained off-chain by the subnet owner in the form of a code-repository that defines the interface for miners and validators to participate. For example, see [Subnet 1](https://github.com/macrocosm-os/prompting).
+2. **Miners** perform some useful work as defined in the subnet's incentive mechanism. For example, in Subnet 1, miners serve chat prompt completion.
+3. **Validators** independently evaluate the task performed by the subnet miners, according to standards defined by the subnet's incentive mechanism.
+4. Validators each score the performance of of each miner over the most recent time period. The matrix of these scores, by each validator for each miner, serves as input to **Yuma Consensus**. 
+5. The Yuma Consensus algorithm operates on-chain, and determines the distribution of TAO (τ) rewards to miners, validators, and subnet owners across the platform, based on performance.
+
+<center>
+<ThemedImage
+alt="Simplified Bittensor Network"
+sources={{
+    light: useBaseUrl('/img/docs/subnet-high-level.svg'),
+    dark: useBaseUrl('/img/docs/dark-subnet-high-level.svg'),
+  }}
+style={{width: 600}}
+/>
+</center>
 
 ## Competition, de-registration, and immunity period
 
@@ -22,4 +44,3 @@ During this immunity period, the subnet is not at risk of deregistered. At the e
 See the line of code that defines [SubtensorInitialNetworkImmunity](https://github.com/opentensor/subtensor/blob/52882caa011c5244ad75f1d9d4e182a1a17958a2/runtime/src/lib.rs#L660).
 
 When a subnet is deregistered, all its UIDs are also deregistered along with it. As a result, the subnet's subnet miners and subnet validators are also deregistered. The new subnet at this `netuid` starts afresh, and any subnet miners and subnet validators for this new subnet must register using the standard registration step described in [Register](../subnets/register-validate-mine.md#register).
-
