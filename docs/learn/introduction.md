@@ -13,7 +13,7 @@ Welcome to Bittensor! This page will orient the reader with the major concepts a
 
 The Bittensor platform consists of the following components:
 
-1. A pool of ***subnets***. Each subnet is an incentive-based competition marketplace that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality, according to subnet-specific standards.
+1. A pool of ***subnets***. Each subnet is an incentive-based competition marketplace that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of ***miners*** who produce the commodity, and a community of ***validators*** who measure the miners' work to ensure its quality, according to subnet-specific standards.
 	
 	Each subnet is its own community, with its own goal, operating according to its own standards. For example, the [text prompting subnet](https://github.com/opentensor/prompting), developed by the Open Tensor foundation, incentivizes subnet miners that produce the best prompt completions in response to the prompts sent by the subnet validators in that subnet.
 	

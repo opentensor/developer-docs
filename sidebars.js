@@ -32,8 +32,8 @@ const sidebars = {
       items: [
         "learn/introduction",
         "questions-and-answers",
-        "learn/bittensor-building-blocks",
         "subnets/understanding-subnets", 
+        "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
         "root-network",

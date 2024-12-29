@@ -1,32 +1,18 @@
 ---
-title: "Anatomy of Incentive Mechanism"
+title: "Understanding Incentive Mechanisms"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Anatomy of Incentive Mechanism
+# Understanding Incentive Mechanisms
 
-This section describes a conceptual “anatomy” of a subnet incentive mechanism. Read this for how to think about a subnet incentive mechanism before you begin coding it.
+This page explores the concept and usage of incentive mechansisms in Bittensor. See [Components of the Bittensor platform] for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
 
-:::tip before you proceed
-Before you proceed, read the following sections:
-- [Introduction](./introduction.md) that describes how subnets form the heartbeat of the Bittensor network.
-- [Bittensor Building Blocks](./bittensor-building-blocks.md) that presents the basic building blocks you use to develop your incentive mechanism.
-:::
+Each subnet has its own *incentive mechanism*, which drives the behavior of its community of miners and validators by defining a standard model for how miner's work is to be evaluated. Miners are incentivized to meet this standard so validators will score (or 'weight') their work highly, resulting in higher TAO (τ) rewards for the miners. Validators are incentivized to accurately score miners' work according to this standard so that their scoring is close to consensus, resulting in higher TAO (τ) rewards for the validators.
 
-## Overview
-
-In a Bittensor subnet:
-
-- The task-performing entities are called **subnet miners**.
-- Entities that create the tasks, score the output of the subnet miners and reward them, are called **subnet validators**. 
-
-Incentive mechanisms are a fundamental part of Bittensor. They drive the behaviour of the subnet miners and govern the consensus amongst the subnet validators.
-Each subnet has its own incentive mechanism. Subnet developers should design incentive mechanisms carefully so that these mechanisms comprehensively and explicitly promote all the desired behaviors and penalize undesired behaviors. 
-
-:::tip Machine learning analogy
-In machine learning analogy, incentive mechanisms are effectively loss functions that steer the behaviour of subnet miners towards desirable outcomes. Miner earnings are dependent on their loss value, hence the miners are incentivized to act in ways that minimize such loss value. Furthermore, competition between subnet miners will drive the miners to seek optimal strategies within the given subnet incentive landscape.
+:::danger 
+A well-designed incentive mechanism is critical for a well-functioning subnet! Carefully consider and test the consequences of the behaviors you will be incentivizing and punishing before releasing your IM to your subnet on the main Bittensor network.
 :::
 
 A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will encourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
