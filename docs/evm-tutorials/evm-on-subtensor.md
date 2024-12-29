@@ -63,11 +63,6 @@ To deploy the contract, you will create an Ethereum transaction. Your deployment
 
 You will sign and send the deployment transaction to the Ethereum network. 
 
-:::danger IMPORTANT
-- **Permissioned deployment**: Until further notice, only white-listed parties can deploy a smart contract on subtensor. When you are ready to deploy, make a request in the [**evm-bittensor** channel of Bittensor Discord](https://discord.com/channels/799672011265015819/1296572984965726218).
-- **Permissionless interaction**: However, anyone call a smart contract that was already deployed on subtensor, and interact with it in a permissionless way. 
-:::
-
 ### Step 4: EVM processes the transaction
 
 - When the block containing your transaction is processed, the EVM on each node executes your deployment transaction.
