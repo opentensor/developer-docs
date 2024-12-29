@@ -36,11 +36,6 @@ Before you proceed to use EVM on subtensor, make a note of the following:
 1. **EVM smart contract executes on subtensor**: The EVM feature allows the subtensor blockchain to execute Ethereum-compatible smart contracts. Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 2. **1 TAO = 1e18 on subtensor EVM**: While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
 
-:::caution EVM on Mainnet
-
-EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
-::: 
-
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
 <ResponsiveCards>
