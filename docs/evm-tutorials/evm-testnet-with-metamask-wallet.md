@@ -12,8 +12,7 @@ This tutorial is for how to set up your Metamask wallet to use with the testnet 
 If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
 :::
 
-For all the EVM tutorials we will use the following:
-
+Key values:
 - The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
 - **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
 - **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
