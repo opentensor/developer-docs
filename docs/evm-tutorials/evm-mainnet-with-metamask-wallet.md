@@ -1,31 +1,31 @@
 ---
-title: "EVM Testnet with Metamask Wallet"
+title: "EVM Mainnet with Metamask Wallet"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM Testnet with Metamask Wallet
+# EVM Mainnet with Metamask Wallet
 
-This tutorial is for how to set up your Metamask wallet to use with the testnet on Bittensor. You must run this step before you can run other tutorials in this section. 
+This tutorial is for how to set up your Metamask wallet to use with the Mainnet (finney) on Bittensor. You must run this step before you can run other tutorials in this section. 
 
 :::tip blog post: EVM on Bittensor
 If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
 :::
 
 Key values:
-- The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
-- **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
+- The **Bittensor Mainnet URL:** `https://lite.chain.opentensor.ai`
+- **EVM Subtensor Chain ID:** `964` (UTF-8 encoded TAO symbol)
 - **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
- 
+
 
 ## Step 1. Create a Metamask wallet 
 
 1. If you don't already have it, [install Metamask wallet](https://metamask.io/download/) browser extension.
 2. Create a new account.
 
-### Step 2. Add testnet to Metamask
+### Step 2. Add Mainnet to Metamask
 
-Add the testnet to Metamask from within the Metamask wallet. Follow the below steps:
+Add the Mainnet to Metamask from within the Metamask wallet. Follow the below steps:
 
 1. Open Metamask Wallet extension on your browser. Click on the &#8942; (three vertical dots, i.e., vertical ellipsis) at the top right. 
 2. Select **Settings** from the drop-down menu. 
@@ -33,17 +33,15 @@ Add the testnet to Metamask from within the Metamask wallet. Follow the below st
 4. Click on **Add a network manually** at the bottom of the networks list.
 5. Enter the following details:
     - **Network name:** "Subtensor"
-    - **EVM RPC URL:** `https://test.chain.opentensor.ai`
-    - **Chain ID:** `945`
+    - **EVM RPC URL:** `https://lite.chain.opentensor.ai`
+    - **Chain ID:** `964`
     - **Currency symbol:** TAO 
 6. Click **Save**.
 7. Then click on **Switch network**.
 
-With the above steps, you have successfully configured your Metamask wallet with the testnet. 
+With the above steps, you have successfully configured your Metamask wallet with the Mainnet. 
 
 ## Step 3 Obtain TAO
-
-Next, request testnet TAO in the Bittensor community Discord. 
 
 ## Step 4. Copy Metamask wallet private key into config
 
@@ -75,4 +73,4 @@ In this step you will copy the private key from your Metamask wallet account and
 ```javascript
 const ethPrivateKey = "02c1c4112233snipsnipsnipgh933aca491e090e0b7xxyy1b124b86d9382b01a8";
 ```
-Save the `config.js` file. Now your setup is ready to run the tutorials with EVM testnet. 
+Save the `config.js` file. Now your setup is ready to run the tutorials with EVM Mainnet. 
