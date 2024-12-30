@@ -41,9 +41,7 @@ Add the Mainnet to Metamask from within the Metamask wallet. Follow the below st
 
 With the above steps, you have successfully configured your Metamask wallet with the Mainnet. 
 
-## Step 3
-
-Next, request Mainnet TAO in the Bittensor community Discord. 
+## Step 3 Obtain TAO
 
 ## Step 4. Copy Metamask wallet private key into config
 
