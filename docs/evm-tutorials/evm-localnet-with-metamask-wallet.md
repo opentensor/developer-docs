@@ -43,7 +43,7 @@ Follow the below steps:
 4. Click on **Add a network manually** at the bottom of the networks list.
 5. Enter the following details:
     - **Network name:** "Subtensor"
-    - **New RPC URL:** http://localhost:9946/
+    - **EVM RPC URL:** http://localhost:9946/
     - **Chain ID:** `964`
     - **Currency symbol:** TAO 
 6. Click **Save**.
