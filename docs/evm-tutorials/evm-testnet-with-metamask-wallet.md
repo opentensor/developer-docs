@@ -41,9 +41,9 @@ Add the testnet to Metamask from within the Metamask wallet. Follow the below st
 
 With the above steps, you have successfully configured your Metamask wallet with the testnet. 
 
-## Step 3
+## Step 3 Obtain TAO
 
-Next, request testnet TAO in the Bittensor community Discord. 
+Request testnet TAO in the Bittensor community Discord. 
 
 ## Step 4. Copy Metamask wallet private key into config
 
