@@ -34,7 +34,7 @@ Add the testnet to Metamask from within the Metamask wallet. Follow the below st
 4. Click on **Add a network manually** at the bottom of the networks list.
 5. Enter the following details:
     - **Network name:** "Subtensor"
-    - **New RPC URL:** `https://test.chain.opentensor.ai`
+    - **EVM RPC URL:** `https://test.chain.opentensor.ai`
     - **Chain ID:** `945`
     - **Currency symbol:** TAO 
 6. Click **Save**.
