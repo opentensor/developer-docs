@@ -13,10 +13,10 @@ This tutorial is for how to set up your Metamask wallet to use with EVM localnet
 If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
 :::
 
-For all the EVM tutorials we will use the following:
-
-- The **EVM Localnet** or **Bittensor Testnet URL:** wss://test.finney.opentensor.ai:443
-- **EVM Subtensor Chain ID:** `964` (UTF-8 encoded TAO symbol)
+Key values:
+- The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
+- The **Bittensor Mainnet URL:** `https://lite.chain.opentensor.ai`
+- **EVM Subtensor Chain ID:**: `964` (UTF-8 encoded TAO symbol) for Mainnet or `945` (UTF-8 encoded alpha character) for Testnet
 - **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
  
 
@@ -44,7 +44,7 @@ Follow the below steps:
 5. Enter the following details:
     - **Network name:** "Subtensor"
     - **EVM RPC URL:** http://localhost:9946/
-    - **Chain ID:** `964`
+    - **Chain ID:** `964` or `945`, to target Mainnet or Testnet
     - **Currency symbol:** TAO 
 6. Click **Save**.
 7. Then click on **Switch network**.
