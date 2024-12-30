@@ -15,7 +15,7 @@ If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bi
 For all the EVM tutorials we will use the following:
 
 - The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
-- **EVM Subtensor Chain ID:** `964` (UTF-8 encoded)
+- **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
 - **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
  
 
