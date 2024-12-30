@@ -10,19 +10,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 This tutorial is for how to set up your Metamask wallet to use with EVM localnet on Bittensor. You must run either this step or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
 
 :::tip blog post: EVM on Bittensor
-If you are new to EVM, read this [simplified blog post explaining this feature](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7).
+If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
 :::
 
 For all the EVM tutorials we will use the following:
 
 - The **EVM Localnet** or **Bittensor Testnet URL:** wss://test.finney.opentensor.ai:443
-- **EVM Subtensor Chain ID:** 945 (This is UTF-8 encoding for alpha character)
+- **EVM Subtensor Chain ID:** `964` (UTF-8 encoded)
 - **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
-
-:::caution EVM on Mainnet
-
-EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
-:::
  
 
 ## Step 1. Run EVM-enabled localnet
@@ -49,7 +44,7 @@ Follow the below steps:
 5. Enter the following details:
     - **Network name:** "Subtensor"
     - **New RPC URL:** http://localhost:9946/
-    - **Chain ID:** 945 (This is UTF-8 encoding for Alpha character)
+    - **Chain ID:** `964`
     - **Currency symbol:** TAO 
 6. Click **Save**.
 7. Then click on **Switch network**.
