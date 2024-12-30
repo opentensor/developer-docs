@@ -39,7 +39,7 @@ When commit reveal is enabled, it works as follows:
 
 2. Instead of publishing weights openly, an encrypted hash of these consensus weights is committed to the blockchain, using an internal method called [`commit_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/commit_weights/index.html).
 
-3. A waiting interval, specified as a number of tempos, elapses. Subnet owners configure this interval with the subnet hyperparameter `commit_reveal_weights_interval`.
+3. A waiting interval, specified as a number of blocks, elapses. Subnet owners configure this interval with the subnet hyperparameter `commit_reveal_weights_interval`.
 
 4. After this interval has elapsed, the unencrypted weights are published to the blockchain.
 
