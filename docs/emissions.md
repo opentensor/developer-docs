@@ -4,7 +4,7 @@ title: "Emissions"
 
 # Emissions
 
-In this document we describe how the network, via Yuma Consensus, calculates emissions for a subnet. This calculation is based on the weights that are provided by the root network (subnet 0).
+In this document we describe how the Bittensor network, via Yuma Consensus, calculates emissions for a subnet. This calculation is based on the weights that are provided by the root network (subnet 0).
 
 :::tip Before you proceed
 Read the [Root Network](./root-network.md) document before you proceed.

@@ -65,22 +65,7 @@ const sidebars = {
         "utilities",
       ],
     },
-    {
-      type: "category",
-      label: "Subtensor Nodes",
-      link: {type: "doc", id: "subtensor-nodes/index",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "subtensor-nodes/subtensor-node-requirements",
-        "subtensor-nodes/using-source",
-        "subtensor-nodes/using-docker",
-        "subtensor-nodes/subtensor-rate-limits",
-        "subtensor-nodes/subtensor-storage-query-examples",
-        "subtensor-nodes/subtensor-error-messages",
-      ],
-    },
-  "bittensor-networks",
+
     {
       type: "category",
       label: "Validating and Mining",
@@ -101,23 +86,13 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Dynamic TAO",
-      link: {type: "doc", id: "dynamic-tao/index",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "dynamic-tao/dtao-guide",
-        "dynamic-tao/dtao-btcli",
-      ],
-    },
-    {
-      type: "category",
       label: "Staking and Delegation",
       collapsible: true,
       collapsed: true,
       link: {type: "doc", id: "staking-and-delegation/index",},
       items: ["staking-and-delegation/staking-polkadot-js", "staking-and-delegation/delegation", "staking-and-delegation/using-ledger-hw-wallet"],
     },
+  "bittensor-networks",
     {
       type: "category",
       label: "Subnets",
@@ -140,6 +115,21 @@ const sidebars = {
       items: [
         "tutorials/basic-subnet-tutorials",
         "tutorials/ocr-subnet-tutorial",
+      ],
+    },
+    {
+      type: "category",
+      label: "Subtensor Nodes",
+      link: {type: "doc", id: "subtensor-nodes/index",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "subtensor-nodes/subtensor-node-requirements",
+        "subtensor-nodes/using-source",
+        "subtensor-nodes/using-docker",
+        "subtensor-nodes/subtensor-rate-limits",
+        "subtensor-nodes/subtensor-storage-query-examples",
+        "subtensor-nodes/subtensor-error-messages",
       ],
     },
     {
@@ -171,9 +161,22 @@ const sidebars = {
       "senate",
       ],
     },
+    {
+      type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "dynamic-tao/dtao-guide",
+        "dynamic-tao/dtao-btcli",
+      ],
+    },
+
     "errors-and-troubleshooting",
     "media-assets",
     "glossary",
+
   ],
 };
 
