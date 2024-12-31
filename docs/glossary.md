@@ -285,7 +285,7 @@ The rewards earned by a delegate for performing subnet validation tasks. These r
 
 ### Subnet
 
-A Bittensor subnet is an incentive-based competition market that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality.
+A Bittensor subnet is an incentive-based competition market that produces a specific kind of digital commodity. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality.
 
 Rewards&mdash;emmissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
 
@@ -401,7 +401,7 @@ A matrix formed from the ranking weight vectors of all subnet validators in a su
 
 A vector maintained by each subnet validator, with each element representing the weight assigned to a subnet miner based on its performance.
 
-The ranking weight vectors for each subnet combine to form the [weight matrix](#weight-matrix), which is transmitted to the blockchain and used as input for the Yuma Consensus module.
+The ranking weight vectors for each subnet are transmitted to the blockchain, where they combine to form the [weight matrix](#weight-matrix) that is input for Yuma Consensus.
 
 ## Y 
 
