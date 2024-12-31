@@ -116,7 +116,6 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
-        "subnets/understanding-subnets", 
         "subnets/create-a-subnet", 
         "subnets/dissolve-a-subnet",
         "subnets/subnet-hyperparameters",
