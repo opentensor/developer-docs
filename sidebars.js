@@ -34,7 +34,8 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Bittensor Concepts",
+      label: "Understand Bittensor",
+      link: {type: "doc", id: "learn/introduction"},
       collapsible: true,
       collapsed: true,
       items: [
