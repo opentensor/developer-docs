@@ -12,17 +12,15 @@ This feature was designed to address the issue of *weight copying* by validators
 
 In each Bittensor subnet, each validator scores&mdash;or *'weights'*&mdash;each miner, producing what is referred to as a [weight vector](../glossary.md#weight-vector). The weight vectors for each validator in a subnet are combined into a weight matrix. This matrix determines the distribution of rewards to miners in the subnet based on the consensus evaluation of their performance, according to [Yuma Consensus](../glossary.md#yuma-consensus).
 
-The weight matrix is public information, and must be, so that the distribution of rewards in the Bittensor platform can be transparently fair. However, this transparency makes it possible for subnet validators to free-ride on the work of other validators by copying the latest consensus rather than independently evaluating subnet miners. This is unfair and potentially degrades the quality of validation work, undermining Bittensor's ability to reward the best miners and produce the best artificial intelligence as a whole.
+The weight matrix is public information, and must be, so that the distribution of rewards in the Bittensor platform can be transparently fair. However, this transparency makes it possible for subnet validators to free-ride on the work of other validators by copying the latest consensus rather than independently evaluating subnet miners. This is unfair and potentially degrades the quality of validation work, undermining Bittensor's ability to reward the best miners and produce the best digital commodities overall.
 
-The commit reveal feature is designed to solve the weight copying problem by giving would-be weight copiers access only to stale weights. Copying stale weights should result in validators departing from consensus. However, it is critical to note that this only works if the consensus weight matrix is constantly changing on the time scale of the commit reveal interval. If the demands on miners are too static, and miner performance is very stable, weight copying will still be successful.
-
-The only solution for this is to continuously change demands on miners, requiring them to continuously evolve their behavior to maintain their scoring. Combined with a properly tuned Commit Reveal interval, this will keep validators honest, as well as producing the best models.
+The commit reveal feature is designed to solve the weight copying problem by giving would-be weight copiers access only to stale weights. Copying stale weights should result in validators departing from consensus. However, it is critical to note that this only works if the consensus weight matrix changes sufficiently on the time scale of the commit reveal interval. If the demands on miners are too static, and miner performance is very stable, weight copying will still be successful. The only solution for this is to demand continuous improvement from miners, requiring them to continuously evolve to maintain their scoring. Combined with a properly tuned Commit Reveal interval, this will keep validators honest, as well as producing the best models.
 
 ## Commit Reveal and Immunity Period
 
-The [Immunity Period](../glossary.md#immunity-period) is the interval (measured in blocks) during which a miner or validator newly registered on a subnet is 'immune' from deregistration due to performance, because their performance is not yet scored. The duration of this period value should always be larger than the Commit Reveal interval, otherwise the immunity period will expire before a given miner's scores are available, and they may be deregistered without having their work counted.
+The [Immunity Period](../glossary.md#immunity-period) is the interval (measured in blocks) during which a miner or validator newly registered on a subnet is 'immune' from deregistration due to performance. The duration of this period value should always be larger than the Commit Reveal interval, otherwise the immunity period will expire before a given miner's scores are available, and they may be deregistered without having their work counted.
 
-To ensure that the immunity period is always greater than the Commit Reveal interval, we recommend using the following logic when setting the Immunity Period or Commit Reveal interval hyperparameters for a subnet:
+When creating a new subnet, ensure that the miner immunity period is larger than the commit reveal interval. When updating the immunity period or commit reveal interval hyperparameters for a subnet, use the following formula:
 
 ```
 new_immunity_period = (new_commit_reveal_interval - old_commit_reveal_interval) + old_immunity_period
@@ -30,28 +28,24 @@ new_immunity_period = (new_commit_reveal_interval - old_commit_reveal_interval) 
 
 See [Subnet Hyperparameters](./subnet-hyperparameters.md).
 
-
 ## Commit reveal in detail
 
 When commit reveal is enabled, it works as follows:  
 
 1. A subnet validator sets the weights normally by using [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html). 
 
-2. Instead of publishing weights openly, an encrypted hash of these consensus weights is committed to the blockchain, using an internal method called [`commit_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/commit_weights/index.html).
+2. Instead of publishing weights openly, an encrypted copy of these weights is committed to the blockchain, using an internal method called [`commit_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/commit_weights/index.html).
 
-3. A waiting interval, specified as a number of tempos, elapses. Subnet owners configure this interval with the subnet hyperparameter `commit_reveal_weights_interval`.
+3. A waiting interval, specified as a number of blocks, elapses. Subnet owners configure this interval with the subnet hyperparameter `commit_reveal_weights_interval`.
 
-4. After this interval has elapsed, the unencrypted weights are published to the blockchain.
+4. After this interval has elapsed, the unencrypted weights are automatically revealed by the chain, using [Drand time-lock encryption](https://drand.love/docs/timelock-encryption/).
 
-5. On the blockchain, the committed hash from step 2 is compared to the hash of the openly submitted (revealed) weights from step 4:
-	* If the hashes are the same, the blockchain will apply the weights to the Yuma Consensus algorithm on-chain.
-	* If the hashes are not the same, the blockchain will issue an error and the weights are not applied. 
+5. The weights are now input to Yuma Consensus.
 
 <br />
 :::tip Commit reveal works behind the scenes
 After the subnet owner turns ON the commit reveal feature, everything happens behind the scenes. A subnet validator will continue to set weights normally by using [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html).
 :::
-
 
 <center>
 <ThemedImage
