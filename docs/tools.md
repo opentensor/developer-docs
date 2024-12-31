@@ -1,8 +1,8 @@
 ---
-title: "Bittensor tooling overiew"
+title: "Bittensor tools"
 ---
 
-# Bittensor tooling overiew
+# Bittensor tools
 
 Bittensor provides several tools to help developers, miners, and validators interact with the network and its features. Below is a quick overview of the core Bittensor tools, followed by links for further reading.
 

@@ -1,5 +1,5 @@
 ---
-title: "EVM Tutorials"
+title: "EVM smart contracts on Bittensor"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -23,11 +23,13 @@ import { BiSolidNetworkChart } from "react-icons/bi";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { GrStakeholder } from "react-icons/gr";
 
-# EVM Tutorials
+# EVM smart contracts on Bittensor
 
-Ethereum compatibility layer is now available on subtensor (the blockchain in Bittensor). Using this EVM feature you can:
-- Bring any Ethereum smart contract, deploy it on the subtensor without any need to change it, and interact with the smart contract on the subtensor blockchain.
-- Access all the standard Ethereum JSON-RPC methods from this EVM compatibility layer on subtensor.
+Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to:
+
+- Deploy any Ethereum smart contract on subtensor without changing the code
+- Interact with deployed smart contract on the subtensor blockchain
+- Access standard Ethereum JSON-RPC methods from this EVM compatibility layer on [Subtensor](https://github.com/opentensor/subtensor), Bittensor's substrate blockchain.
 
 ## Before you proceed
 

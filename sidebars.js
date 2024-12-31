@@ -21,9 +21,17 @@ const sidebars = {
     // 	className: 'sidebarSearch', //  based on Class name it will add search component
     // },
     "index",
-    "chain-rel-notes",
-    "bittensor-rel-notes",
-    "whats-new-in-docs",
+    {
+      type: "category",
+      label: "Release Notes and Updates",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "chain-rel-notes",
+        "bittensor-rel-notes",
+        "whats-new-in-docs",
+      ],
+    },
     {
       type: "category",
       label: "Bittensor Concepts",
@@ -40,10 +48,9 @@ const sidebars = {
         "yuma-consensus",        
       ],
     },
-    "errors-and-troubleshooting",
     {
       type: "category",
-      label: "Tools",
+      label: "Bittensor Tools",
       link: {type: "doc", id: "tools",},
       collapsible: true,
       collapsed: true,
@@ -113,6 +120,7 @@ const sidebars = {
     {
       type: "category",
       label: "Subnets",
+      link: {type: "doc", id: "subnets/understanding-subnets",},
       collapsible: true,
       collapsed: true,
       items: [
@@ -135,7 +143,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "EVM Tutorials",
+      label: "EVM smart contracts on Bittensor",
       link: {type: "doc", id: "evm-tutorials/index",},
       collapsible: true,
       collapsed: true,
@@ -162,6 +170,7 @@ const sidebars = {
       "senate",
       ],
     },
+    "errors-and-troubleshooting",
     "media-assets",
     "glossary",
   ],
