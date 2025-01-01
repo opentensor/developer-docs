@@ -43,6 +43,8 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 ## Step 3 Obtain TAO
 
+We cannot provide you with specific advice for where/how to obtain TAO; however, if you need to transfer tokens to the account you created in MetaMask, use a site like https://snow-address-converter.netlify.app/ to convert your H160-format address (the one that starts with "0x") to substrate's SS58 version (starting with "5").  When sending TAO to your account from an account managed via substrate wallet applications and/or exchange accounts, use the SH58 version of the address as the destination.
+
 ## Step 4. Copy Metamask wallet private key into config
 
 :::danger Stop. Did you install the dependencies?
