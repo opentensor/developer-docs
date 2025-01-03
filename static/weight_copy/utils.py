@@ -113,7 +113,7 @@ def get_experiment_weight_similarities(metas, validators, early_blocks, late_blo
     return similarity
 
 
-def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
+def metagraphs_commit_reveal_sim(metas, cr_interval, setup):
     start_block = setup.start_block
     data_points = setup.data_points
     tempo = setup.tempo
@@ -128,7 +128,7 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
         start_block + tempo * data_point for data_point in range(data_points)
     ]
     late_blocks = [
-        start_block + tempo * (data_point + conceal_period)
+        start_block + tempo * (data_point + cr_interval)
         for data_point in range(data_points)
     ]
 
@@ -144,7 +144,7 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
     similarity = torch.stack(similarity)
 
     print(
-        f"{time.time() - start_time:.2f} | netuid: {meta_0.netuid} | conceal_period: {conceal_period} | finished similarity calculation"
+        f"{time.time() - start_time:.2f} | netuid: {meta_0.netuid} | cr_interval: {cr_interval} | finished similarity calculation"
     )
     start_time = time.time()
     for i, block in enumerate(early_blocks):
@@ -186,7 +186,7 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
         stats[late_block] = stat
 
     print(
-        f"{time.time() - start_time:.2f} | netuid: {meta_0.netuid} | conceal_period: {conceal_period} | finished yuma calculation"
+        f"{time.time() - start_time:.2f} | netuid: {meta_0.netuid} | cr_interval: {cr_interval} | finished yuma calculation"
     )
     start_time = time.time()
     divident = [
@@ -205,13 +205,13 @@ def metagraphs_commit_reveal_sim(metas, conceal_period, setup):
     similarity = similarity.mean().item()
 
     with open(
-        f"{setup.result_path}/stats_netuid{meta_0.netuid}_conceal{conceal_period}.pkl",
+        f"{setup.result_path}/stats_netuid{meta_0.netuid}_conceal{cr_interval}.pkl",
         "wb",
     ) as f:
         pickle.dump(stats, f)
 
     print(
-        f"netuid: {meta_0.netuid}, conceal period (number of tempos): {conceal_period}, conceal period(hours): {conceal_period * tempo / 300:.2f}, similarity: {similarity:.3f}, lost in dividend: {div_lost:.3f}"
+        f"netuid: {meta_0.netuid}, conceal period (number of tempos): {cr_interval}, conceal period(hours): {cr_interval * tempo / 300:.2f}, similarity: {similarity:.3f}, lost in dividend: {div_lost:.3f}"
     )
     return similarity, div_lost
 

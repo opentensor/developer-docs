@@ -29,14 +29,14 @@ class DownloadMetagraph:
 
         args = []
         for netuid in self.setup.netuids:
-            for conceal_period in self.setup.conceal_periods:
+            for cr_interval in self.setup.cr_intervals:
                 for data_point in range(self.setup.data_points):
                     block = self.setup.start_block + self.setup.tempo * data_point
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                     args.append((netuid, block, file_name, self.setup.chain_endpoint))
 
                     block = self.setup.start_block + self.setup.tempo * (
-                        data_point + conceal_period
+                        data_point + cr_interval
                     )
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                     args.append((netuid, block, file_name, self.setup.chain_endpoint))

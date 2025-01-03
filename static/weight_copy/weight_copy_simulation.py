@@ -46,9 +46,9 @@ class WeightCopySimulation:
                 file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                 args.append((file_name, netuid, block))
 
-                for conceal_period in self.setup.conceal_periods:
+                for cr_interval in self.setup.cr_intervals:
                     block = self.setup.start_block + self.setup.tempo * (
-                        data_point + conceal_period
+                        data_point + cr_interval
                     )
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                     args.append((file_name, netuid, block))
@@ -145,11 +145,11 @@ class WeightCopySimulation:
         except Exception as E:
             print(file_name, E)
 
-    def simulate(self, netuid, conceal_period, metas, alpha_low=0.9, alpha_high=0.9):
+    def simulate(self, netuid, cr_interval, metas, alpha_low=0.9, alpha_high=0.9):
         if self.setup.liquid_alpha:
-            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{cr_interval}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
         else:
-            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{cr_interval}.pkl"
 
         if os.path.isfile(yuma_file_name):
             return
@@ -162,7 +162,7 @@ class WeightCopySimulation:
             self,
             yuma_file_name,
             netuid,
-            conceal_period,
+            cr_interval,
             metas,
             alpha_low=0.9,
             alpha_high=0.9,
@@ -184,7 +184,7 @@ class WeightCopySimulation:
 
             late_blocks = [
                 self.setup.start_block
-                + self.setup.tempo * (data_point + conceal_period)
+                + self.setup.tempo * (data_point + cr_interval)
                 for data_point in range(self.setup.data_points)
             ]
 
@@ -249,7 +249,7 @@ class WeightCopySimulation:
                 self,
                 yuma_file_name,
                 netuid,
-                conceal_period,
+                cr_interval,
                 metas,
                 alpha_low,
                 alpha_high,
@@ -270,17 +270,17 @@ class WeightCopySimulation:
         tasks = []
         if self.setup.liquid_alpha:
             for netuid in self.setup.netuids:
-                for conceal_period in self.setup.conceal_periods:
+                for cr_interval in self.setup.cr_intervals:
                     for alpha_low in self.setup.alpha_lows:
                         for alpha_high in self.setup.alpha_highs:
                             if alpha_low > alpha_high:
                                 continue
-                            tasks.append([netuid, conceal_period, self.metas[netuid], alpha_low, alpha_high])
+                            tasks.append([netuid, cr_interval, self.metas[netuid], alpha_low, alpha_high])
         
         else:
             for netuid in self.setup.netuids:
-                for conceal_period in self.setup.conceal_periods:
-                    tasks.append([netuid, conceal_period, self.metas[netuid]])
+                for cr_interval in self.setup.cr_intervals:
+                    tasks.append([netuid, cr_interval, self.metas[netuid]])
                 
         with ProcessPoolExecutor(max_workers=self.setup.processes) as exe:
             for task in tasks:

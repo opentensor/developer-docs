@@ -8,7 +8,7 @@ class ExperimentSetup:
         processes: int = 1,  # processes to run with
         tempo: int = 360,  # the tempo on chain (blocks), how often are the chain calculating consensus.
         start_block: int = 3223749,  # (22 June) the block to refer to to start the experiment
-        conceal_period: List = None,  # the range of conceal period for experiment
+        cr_intervals: List = None,  # the range of conceal period for experiment
         alpha_lows: List = [],  # the range of alpha lows for experiment
         alpha_highs: List = [],  # the range of alpha highs for experiment
         data_points: int = 30,  # number of datapoints to collect for experiment
@@ -29,10 +29,10 @@ class ExperimentSetup:
         self.consensus_precision = consensus_precision
         self.chain_endpoint = chain_endpoint
 
-        if conceal_period == None:
-            self.conceal_periods = [0] + list(range(1, 30, 2))
+        if cr_intervals == None:
+            self.cr_intervals = [0] + list(range(1, 30, 2))
         else:
-            self.conceal_periods = conceal_period
+            self.cr_intervals = cr_intervals
 
         if netuids == None:
             self.netuids = range(1, 38)
