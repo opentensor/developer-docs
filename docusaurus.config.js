@@ -155,6 +155,14 @@ const config = {
           hideable: false,
         },
       },
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     'The dynamic TAO docs are preliminary. Check <a target="_blank" rel="noopener noreferrer" href="#">this page for more.</a>',
+      //   backgroundColor: '#171717',
+      //   textColor: '#f43228',
+      //   isCloseable: false,
+      // },
 
       navbar: {
         logo: {
@@ -170,13 +178,18 @@ const config = {
         items: [
           {
             position: "left",
-            label: "Subtensor Nodes",
+            label: "SUBTENSOR NODES",
             to: "subtensor-nodes",
           },
           {
             position: "left",
-            label: "EVM Tutorials",
+            label: "EVM TUTORIALS",
             to: "evm-tutorials",
+          },
+          {
+            position: "left",
+            label: "DYNAMIC TAO",
+            to: "dynamic-tao",
           },
           {
             type: "search",

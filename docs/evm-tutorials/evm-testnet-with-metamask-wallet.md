@@ -9,20 +9,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 This tutorial is for how to set up your Metamask wallet to use with the testnet on Bittensor. You must run this step before you can run other tutorials in this section. 
 
 :::tip blog post: EVM on Bittensor
-If you are new to EVM, read this [simplified blog post explaining this feature](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7).
+If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
 :::
 
-For all the EVM tutorials we will use the following:
-
-
-- The **Bittensor Testnet URL:** wss://test.finney.opentensor.ai:443
-- **EVM Subtensor Chain ID:** 945 (This is UTF-8 encoding for alpha character)
-- **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
-
-:::caution EVM on Mainnet
-
-EVM features on the mainnet will be available only after the Bittensor 8.4.0 is released. In the mean time use this mainnet node: `wss://evm.chain.opentensor.ai` to access EVM on the mainnet. 
-::: 
+Key values:
+- The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
+- **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
+- **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
+ 
 
 ## Step 1. Create a Metamask wallet 
 
@@ -39,15 +33,15 @@ Add the testnet to Metamask from within the Metamask wallet. Follow the below st
 4. Click on **Add a network manually** at the bottom of the networks list.
 5. Enter the following details:
     - **Network name:** "Subtensor"
-    - **New RPC URL:** wss://evm.chain.opentensor.ai
-    - **Chain ID:** 945 (This is UTF-8 encoding for Alpha character)
+    - **EVM RPC URL:** `https://test.chain.opentensor.ai`
+    - **Chain ID:** `945`
     - **Currency symbol:** TAO 
 6. Click **Save**.
 7. Then click on **Switch network**.
 
 With the above steps, you have successfully configured your Metamask wallet with the testnet. 
 
-## Step 3
+## Step 3 Obtain TAO
 
 Next, request testnet TAO in the Bittensor community Discord. 
 

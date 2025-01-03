@@ -63,7 +63,7 @@ The child hotkey features are as follows:
 - A parent hotkey can have multiple child hotkeys. Similarly, a child hotkey can have more than one parent hotkey.
 - A child hotkey can exist as a registered hotkey in multiple netuids simultaneously.
 - **IMPORTANT**: For a given `netuid`, say, `netuid 5`, a single parent hotkey can have at most five (`5`) child hotkeys. Moreover, the same parent hotkey on a different `netuid 11` can have another set of `5` child hotkeys. Alternately, on this `netuid 11` the same parent hotkey can also have the same (`5`) child hotkeys that are in the netuid `5`.  
-- While setting the child hotkeys, the proportion field can have proportions that add to less than `1.0`. The proportion that was not assigned to the child hotkeys will remain with the parent hotkey. However, a proportion cannot be zero. A `0` proportion value will result in an error. 
+- While setting the child hotkeys, the proportion field can have proportions that add to less than `1.0`. The proportion that was not assigned to the child hotkeys will remain with the parent hotkey. However, a proportion cannot be zero. A `0` proportion value will result in an error. Furthermore, in a given subnet, the sum of all proportions must not exceed `1.0`. 
 
 ## Rate limits
 
@@ -72,6 +72,12 @@ The following rate limits apply for child hotkeys:
 - A child hotkey's take rate can only be adjusted once per 30 days.
 - One successful execution of `set_children` or `revoke_children` is allowed for every 720 blocks. 
 
+## Minimum stake
+
+The minimum stake you can redelegate to a child hotkey is as follows:
+- **Testnet**: 100 testnet TAO.
+- **Mainnet**: 1000 TAO.
+  
 ---
 
 ## Installing
@@ -107,7 +113,7 @@ btcli stake set_children --netuid <netuid> --children <a list of SS58 child hotk
   - Each floating value should be a number greater than zero and equal to or less than `1.0`. 
   - If a value is zero, the corresponding child hotkey will be revoked. 
   - If a value is greater than `1.0`, the command will issue an error message and stop. 
-  - All the proportions must sum to less than or equal to `1.0`. If the proportions sum to greater than `1.0`, the command will issue an error message and stop. 
+  - All the proportions for a given `netuid` must sum to less than or equal to `1.0`. If the proportions sum to greater than `1.0`, the command will issue an error message and stop. 
 - `--hotkey`: SS58. A single SS58 of the parent hotkey. This must be a delegate hotkey that is already registered in with any `netuid`. This `netuid` need not be the same `netuid` used in this command.
   - If this parent hotkey has zero stake, then the command will issue an error message and stop.
   - Note that this `--hotkey` parameter expects parent hotkey whereas the `--hotkey` parameter of the [Setting child hotkey take](#parameters-1) expects child hotkey.

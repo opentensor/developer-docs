@@ -12,7 +12,7 @@ You can use [Hardhat](https://hardhat.org/) development environment for the EVM 
 The below code configures two subtensor EVM networks for Hardhat: 
 
 1. EVM Localnet with URL: http://127.0.0.1:9946
-2. EVM Testnet with URL: https://evm-testnet.dev.opentensor.ai
+2. EVM Testnet with URL: https://test.chain.opentensor.ai
 
 :::tip Full example
 See [ERC-20 Example Token repository](https://github.com/gztensor/subtensor-erc20) for a complete example of `hardhat.config.ts` configuration.
@@ -24,7 +24,7 @@ const hardhatConfig: HardhatUserConfig = {
   defaultNetwork: "subevm",
   networks: {
     subevm: {
-      url: "https://evm-testnet.dev.opentensor.ai",
+      url: "https://test.chain.opentensor.ai",
       accounts: [config.ethPrivateKey]
     },
     local: {

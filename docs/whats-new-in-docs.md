@@ -9,6 +9,25 @@ hide_table_of_contents: false
 
 Key updates to the documentation.
 
+## 23 December 2024
+
+- Published the [Dynamic TAO](./dynamic-tao) documentation, including the [Guide to Dynamic TAO](./dynamic-tao/dtao-guide). **NOTE**: The [Emissions section](./dynamic-tao/dtao-guide#emissions) of the guide is still preliminary. Proceed with caution.
+- Updated the commit reveal Python notebook [weight_copy directory](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy).
+- Added the [minimum required stake amount for redelegating to a child hotkey](./subnets/child-hotkeys#minimum-stake).
+
+## 20 December 2024
+
+- Added Subtensor custom errors 6 and 7 to [Subtensor Error Messages](./subtensor-nodes/subtensor-error-messages).
+
+## 16 December 2024
+
+- Updated the chainspec files locations in Subtensor [Using Source](./subtensor-nodes/using-source).
+
+## 12 December 2024
+
+- Added [release notes for Bittensor SDK 8.5.0](./bittensor-rel-notes#released-12-december-2024).
+- Updated [Bittensor SDK reference](pathname:///python-api/html/index.html).
+
 ## 27 November 2024
 
 - A [release note for the mainnet hotfix for `run_coinbase`](./chain-rel-notes.md) is published.

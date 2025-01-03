@@ -85,6 +85,17 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "dynamic-tao/dtao-guide",
+        "dynamic-tao/dtao-btcli",
+      ],
+    },
+    {
+      type: "category",
       label: "Staking and Delegation",
       collapsible: true,
       collapsed: false,
@@ -107,6 +118,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
+        "subnets/understanding-subnets", 
         "subnets/create-a-subnet", 
         "subnets/dissolve-a-subnet",
         "subnets/subnet-hyperparameters",
@@ -125,6 +137,7 @@ const sidebars = {
         "evm-tutorials/install",
         "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
+        "evm-tutorials/evm-mainnet-with-metamask-wallet",
         "evm-tutorials/transfer-from-metamask-to-ss58",
         "evm-tutorials/transfer-between-two-h160-accounts",
         "evm-tutorials/hardhat-config-for-subtensor-evm",
