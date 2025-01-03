@@ -226,7 +226,7 @@ def Yuma2(
     liquid_alpha=False,
     alpha_high=0.9,
     alpha_low=0.7,
-    precision=0.00001,
+    precision=0.0001,
     override_consensus_high=None,
     override_consensus_low=None,
 ):
@@ -250,6 +250,7 @@ def Yuma2(
             c_mid = (c_high + c_low) / 2
 
             _c_sum = (miner_weight > c_mid) * S
+            
             if sum(_c_sum) > kappa:
                 c_low = c_mid
             else:
