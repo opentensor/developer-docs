@@ -1,19 +1,13 @@
 import bittensor as bt
-import scipy
 from utils import *
 import torch
 import time
-import copy
 from multiprocessing.pool import ThreadPool
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from experiment_setup import ExperimentSetup
-import time
 import os
 import pickle
 import argparse
-
-import torch.multiprocessing as mp
-
 
 class WeightCopySimulation:
     def __init__(self, setup=None):

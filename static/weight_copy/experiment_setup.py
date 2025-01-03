@@ -2,7 +2,6 @@ import os
 from typing import List
 import numpy as np
 
-
 class ExperimentSetup:
     def __init__(
         self,
