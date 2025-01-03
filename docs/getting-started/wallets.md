@@ -1,289 +1,102 @@
 ---
-title: "Create Wallet"
+title: "Wallets and keys in Bittensor"
 ---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create Wallet
+# Wallets and keys in Bittensor
 
-This section describes steps to create a Bittensor wallet, regenerate keys, and encrypt keys. If you are new to Bittensor wallets, see [Working with Keys](../subnets/working-with-keys.md) for an explanation of Bittensor wallet keys.
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your currency.
 
-## Ways of creating wallet
+This page introduces the core concepts of Bittensor cryptography. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
 
-You can create a Bittensor wallet either for basic uses like securely storing your TAO and receiving and sending them or for advanced uses like creating a subnet and participating as a subnet miner or a subnet validator:
+## Coldkey and hotkey
 
-- **For basic use**: Create an external wallet account by using the [Chrome Extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1). An external wallet account created in this way will allow you to use TAO **without installing Bittensor**. If your activities are limited to sending or receiving TAO, then this is a recommended option.
-- **For subnet participation**: Create a local wallet account using `btcli` command line tool on your computer. This requires that you install Bittensor on your machine. If you are interested in either creating a subnet or participating as a subnet miner or a subnet validator, then you must use this option.
+A Bittensor wallet consists of a **coldkey** and a **hotkey**. The coldkey and hotkey are used for different operations in the Bittensor ecosystem. These two keys are logically connected via the Bittensor API.
 
-## Creating a basic wallet
-
-:::tip Suitable for non-technical users
-Use this option if your activities are limited to sending and receiving TAO and you are not creating a subnet or participating as a subnet validator or a subnet miner. 
+:::tip Coldkey and hotkey each are pairings of separate private and public keys
+Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
 :::
 
-To create a basic wallet account, use the Chrome Extension for Bittensor Wallet. Follow the below steps:
+### Coldkey
 
-1. The Wallet will first create a wallet account address in the form of a 48-hexadecimal character string that usually starts with `5`. 
-2. Critically, the Wallet will show you a 12-word list arranged in a specific order. You are required to keep this list of words, without changing the word order, in a safe location. This list of ordered words is called by various names such as **mnemonic** or **seed phrase**.
-3. The Wallet will then prompt you for specific mnemonic words as a way of authentication.
-4. Next, you will assign a name and a password to your wallet account.
-5. Finally, to receive TAO from another party, you will give them your wallet account address from Step 1 (the 48-hexadecimal character string) as the destination address. Similarly, to send (transfer) TAO to another party, you will first ask them for their wallet address and send TAO to their wallet address. This way, you can create multiple wallet accounts, each with a different name and even a different password for each wallet account.
+The coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because one coldkey can have multiple hotkeys; hence, the wallet name is assigned to the coldkey.
 
-### Mnemonic
+**Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
 
-:::danger Always keep your mnemonic safe 
-Anyone who knows the mnemonic for your wallet account can access your TAO tokens. Hence, you must always keep this mnemonic in a safe and secure place known only to you. More importantly, if you lose your wallet address, you can use its mnemonic (stored away in safekeeping) to restore the wallet.
-:::
+**Purpose**: A coldkey is primarily for secure TAO storage and high-risk transactions, as described below (**Also see in the diagram in [Operational uses of keys](#operational-uses-of-keys))**:
 
-:::note Use Import option in Chrome Wallet Extension
-To restore your lost coldkey, use the **Import** option in Chrome Extension for Bittensor Wallet and provide your 12-word mnemonic.
-:::
+- Funds (TAO tokens) in your Bittensor wallet are held in its coldkey.
+- Delegating and undelegating your TAO tokens.
+- Creating a subnet and obtaining a `netuid` for the newly-created subnet. The `netuid` is associated with the coldkey only because all subnet owner operations require high security and thus use the coldkey, which is always encrypted.
+- Emissions to the subnet owner are deposited directly to the subnet owner's coldkey.
 
-:::tip Suitable for subnet participation
-Use this option if you are creating a subnet or participating as a subnet validator or a subnet miner. You must [install Bittensor](installation.md) for this option.
-:::
+**Security**: The highest level of protection. A coldkey is always encrypted on your device.
 
-After you have [installed Bittensor](installation.md), you can create a local wallet on your machine in the following two ways:
+A coldkey is like a highly secure key you use to access a safe where your valuables are stored. The coldkey is used less frequently than the hotkey, and is stored very securely to minimize the risk of unauthorized access.
 
-- [Using `btcli`](#creating-a-local-wallet-with-cli)
-- [Using Python](#creating-a-local-wallet-using-python)
+<!-- <center>
+<ThemedImage
+alt="Coldkey and hotkey pairings"
+sources={{
+    light: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
+    dark: useBaseUrl('/img/docs/coldkey-hotkey-pairing.svg'),
+  }}
+style={{width: 750}}
+/>
+</center>
 
-## Creating a local wallet with CLI
-
-### Coldkey and hotkey
-
-A Bittensor wallet consists of a **coldkey** and a **hotkey**. Only coldkey is created when you use the [Chrome Extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1). This is sufficient for normal storage and sending and receiving of TAO. However, to participate in a subnet, you will need a local coldkey and a local hotkey.
-
-:::tip Explanation of keys 
-See [Working with Keys](../subnets/working-with-keys.md) for an explanation of coldkey and hotkey.
-:::
-
-### Creating a coldkey using `btcli` 
-
-If you plan to perform any of the following tasks, you only need to create a coldkey:
-
-- Create a subnet.
-- Transfer TAO.
-- Delegate to a validator-delegate's hotkey.
-
-**However, if you want to validate or mine in a subnet, you will need to create hotkey also**. See the below section [Creating a hotkey using `btcli`](#creating-a-hotkey-using-btcli).
-
-Run the following command on your terminal by giving a name to your wallet, replacing the `<my_coldkey>`. 
-
-```bash
-btcli wallet new_coldkey --wallet.name <my_coldkey>
-```
-
-For example, 
-```bash
-btcli wallet new_coldkey --wallet.name test-coldkey
-```
-You will see the following terminal output. The mnemonic is hidden for security reasons.
-
-```text
-IMPORTANT: Store this mnemonic in a secure (preferably offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
-The mnemonic to the new coldkey is:
-**** *** **** **** ***** **** *** **** **** **** ***** *****
-You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli w regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
-```
-
-:::tip Regenerating the coldkey
-Make a note of the above command option `regen_coldkey` showing how to regenerate your coldkey in case you lose it.
-:::
-
-### Creating a hotkey using `btcli` 
-
-If you plan to validate or mine in a subnet, you must create both a coldkey and a hotkey.
-
-First, create a coldkey as described above in the [Creating a coldkey using `btcli`](#creating-a-coldkey-using-btcli). Then, provide this coldkey as a parameter to generate a hotkey. This will pair the hotkey with the coldkey. See below.
-
-Use the below command to generate the hotkey. Replace `<my_coldkey>` with the coldkey generated above, and `<my_hotkey>` with a name for your hotkey.
-
-```bash
-btcli wallet new_hotkey --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-
-For example, 
-```bash
-btcli wallet new_hotkey --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-You will see the terminal log like below. The mnemonic is hidden for security reasons.
-```text
-IMPORTANT: Store this mnemonic in a secure (preferably offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
-The mnemonic to the new hotkey is:
-**** *** **** **** ***** **** *** **** **** **** ***** *****
-You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli w regen_hotkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
-```
-:::tip Regenerating the hotkey
-Make a note of the above command option `regen_hotkey` showing how to regenerate your hotkey in case you lose it.
-:::
-
-### Encrypting the hotkey
-
-By default, the hotkey is not encrypted on the device, whereas the coldkey is encrypted. To encrypt your hotkey, run this command:
-```bash
-btcli wallet new_hotkey --use-password
-```
-
-## Creating a local wallet using Python
-
-Copy and paste the following three lines into your Python interpreter. Replace the string values for `name` (`my_coldkey`) and `hotkey` (`my_hotkey`) with your own.
-
-```python showLineNumbers
-import bittensor as bt
-wallet = bt.wallet(name = 'my_coldkey', hotkey = 'my_hotkey' )
-wallet.create_if_non_existent()
-```
-
-You will see a terminal output like this for an example wallet with `name` as `test-coldkey` and `hotkey` as `test-hotkey`. The mnemonic is hidden for security reasons.
-```text 
->>> import bittensor as bt
->>> wallet = bt.wallet(name = 'test-coldkey', hotkey = 'test-hotkey')
->>> wallet.create_if_non_existent()
-
-IMPORTANT: Store this mnemonic in a secure (preferable offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
-
-The mnemonic to the new coldkey is:
-
-**** **** **** **** **** **** **** **** **** **** **** ****
-
-You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli w regen_coldkey --mnemonic **** **** **** **** **** **** **** **** **** **** **** ****
-
-Specify password for key encryption:
-Retype your password:
-
-IMPORTANT: Store this mnemonic in a secure (preferable offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
-
-The mnemonic to the new hotkey is:
-
-**** **** **** **** **** **** **** **** **** **** **** ****
-
-You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
-btcli w regen_hotkey --mnemonic **** **** **** **** **** **** **** **** **** **** **** ****
-
-wallet(test-coldkey, test-hotkey, ~/.bittensor/wallets/)
-```
-
-## Location and addresses of the local wallets
-
-Local wallets are stored on your machine under `~/.bittensor/wallets`. Use the below command to list them:
-
-```bash
-tree ~/.bittensor/
-``` 
-
-You will see an output like this:
-
-```bash
-tree ~/.bittensor/
-/Users/docwriter/.bittensor/    # The Bittensor root directory.
-└── wallets                     # The folder contains all Bittensor wallets.
-    └── test-coldkey            # The name of the wallet.
-        ├── coldkey             # The password-encrypted coldkey.
-        ├── coldkeypub.txt      # The unencrypted version of the coldkey.
-        └── hotkeys             # The folder contains all this coldkey's hotkeys.
-            └── test-hotkey     # The unencrypted hotkey information.
-```
-
-and listing out the contents of the `coldkeypub.txt` file:
-
-```bash
-cd ~/.bittensor/wallets/test-coldkey
-cat coldkeypub.txt | jq
-{
-  "accountId": "0x36e49805b105af2b5572cfc86426247df111df2f584767ca739d9fa085246c51",
-  "publicKey": "0x36e49805b105af2b5572cfc86426247df111df2f584767ca739d9fa085246c51",
-  "privateKey": null,
-  "secretPhrase": null,
-  "secretSeed": null,
-  "ss58Address": "5DJgMDvzC27QTBfmgGQaNWBQd8CKP9z5A12yjbG6TZ5bxNE1"
-}
-```
-
-The contents of the `coldkeypub.txt` are to be interpreted as below:
-
-- The fields `accountId` and `publicKey` contain the same value. 
-- The `secretPhrase` and `secretSeed` are not included in the file due to the high-security nature of the coldkey. When you create your wallet, either using the Chrome extension or `btcli`, the mnemonic (`secretPhrase`) is shown only once, while `secretSeed` is not shown.
-- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your coldkey public wallet address to receive TAO from another party.**
-
-:::tip Conversion between publicKey and ss58Address
-Use this site [SS58.org](https://ss58.org/) to verify the conversions between `publicKey` and `ss58Address` fields.
-:::
-
-Similarly, listing out the contents of the `hotkeys/test-hotkey` file:
-
-```bash
-cat hotkeys/test-hotkey | jq
-{
-  "accountId": "0xc66695556006c79e278f487b01d44cf4bc611f195615a321bf3208f5e351621e",
-  "publicKey": "0xc66695556006c79e278f487b01d44cf4bc611f195615a321bf3208f5e351621e",
-  "privateKey": "0x38d3ae3b6e4b5df8415d15f44f * * * 0f975749f835fc221b * * * cbaac9f5ba6b1c90978e3858 * * * f0e0470be681c0b28fe2d64",
-  "secretPhrase": "pyramid xxx wide slush xxx hub xxx crew spin xxx easily xxx",
-  "secretSeed": "0x6c359cc52ff1256c9e5 * * * 5536c * * * 892e9ffe4e4066ad2a6e35561d6964e",
-  "ss58Address": "5GYqp3eKu6W7KxhCNrHrVaPjsJHHLuAs5jbYWfeNzVudH8DE"
-}
-```
-
-The contents of the `hotkeys/test-hotkey` file are to be interpreted as below:
-
-- The fields `accountId` and `publicKey` contain the same value, just as seen in `coldkeypub.txt`. 
-- The `secretPhrase` and `secretSeed` are shown because the hotkey is, by default, not encrypted.
-- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your hotkey public wallet address to receive TAO from another party.**
-
-## Listing all the local wallets
-
-You can list all the local wallets stored in Bittensor's root directly with:
-```bash
-btcli wallet list
-```
-You will see a terminal output like this:
-```text
-Wallets
-└─
-    test-coldkey (5DJgMDvzC27QTBfmgGQaNWBQd8CKP9z5A12yjbG6TZ5bxNE1)
-       └── test-hotkey (5GYqp3eKu6W7KxhCNrHrVaPjsJHHLuAs5jbYWfeNzVudH8DE)
-```
-
-The output will show only the `ss58Address` field values from the `coldkeypub.txt` and `test-hotkey` files of the wallets.
-
-:::tip Use the ss58Address keys as destinations for TAO
-Use the above shown `ss58Address` field values as your public wallet addresses, i.e., as destinations for TAO transfers from another wallet to your wallet. For example, when using a command: `btcli wallet transfer`.
-:::
-
-## Store your mnemonics safely
-
-:::danger If someone has your mnemonic, they own your TAO 
-If you lose the password to your wallet, or if you have lost access to the machine where the wallet is stored, you can regenerate the coldkey using the mnemonic you saved during the wallet creation steps above. You can **not** retrieve the wallet with the password alone. Remember that if someone has your mnemonic, they own your TAO.
-:::
-
-As a reminder, if you need to regenerate your wallets, you can use the `btcli` with your mnemonic, as shown below:
-
-```bash
-btcli wallet regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
-```
-
-## Existential deposit
+<br /> -->
+#### Existential deposit
 
 An existential deposit is a minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
-:::tip Existential deposit vs minimum required stake
-The existential deposit (500 RAO) is different from the minimum required stake. The minimum required stake for a nominator is 0.1 TAO, i.e., a nominator can stake only an amount equal to or greater than 0.1 TAO.
-::: 
+### Hotkey 
 
-## Updating legacy wallet
+**Relationship to coldkey**: You can create multiple hotkeys paired to your single coldkey. However, when you are validating or mining in a subnet, you are identified by a hotkey in that subnet, so that your coldkey is not exposed. Hence, you cannot use the same hotkey for two UIDs in a given subnet. You can, however, use the same hotkey for multiple UIDs but with each UID in a separate subnet. Also see [Register, Validate and Mine](../subnets/register-validate-mine.md#register).
 
-It is important that you update any legacy Bittensor wallets to the new NaCL format for security. You may accomplish this with the `btcli` using the `wallet update` subcommands.
+**Purpose**: Used for regular operational tasks in the Bittensor network, such as described below (**Also see in the diagram in [Operational uses of keys](#operational-uses-of-keys)**):
+  - Signing transactions.
+  - Registering and running subnet miners and subnet validators.
+  - If you are a subnet validator, then you can nominate your own hotkey so that the TAO holders can send their TAO to the hotkey.
+  - If you are a TAO holder, for example, with a coldkey where your TAO is stored, you can delegate your TAO to the hotkey of the validator-delegate. See item 10 in the diagram in [Operational uses of keys](#operational-uses-of-keys).
 
-See the below example command and the terminal output:
-```bash
-btcli wallet update
-```
-You will see an output like this:
-```bash
->> Do you want to update all legacy wallets? [y/n]: y
->> =====  wallet(test-coldkey, default, ~/.bittensor/wallets/)  =====
->> ✅ Keyfile is updated. 
->> 🔑 Keyfile (NaCl encrypted, /Users/docwriter/.bittensor/wallets/test-coldkey/coldkey)>
-```
+**Security**: A hotkey is less secure than a coldkey. A hotkey is, by default, unencrypted, but you can encrypt it.
+
+:::tip Why hotkey
+Think of a hotkey as an everyday key you carry for tasks that require regular access. Because a hotkey is used more frequently and should be readily accessible, the hotkey carries a higher risk of exposure to potential threats. However, the permissions and scope of operations that can be performed with the hotkey are limited to operational activities, minimizing the risk of significant loss of TAO.
+
+This dual-key system helps balance convenience and security, allowing you to participate actively in the Bittensor network without constantly exposing your primary TAO-holding coldkey.
+:::
+
+## Operational uses of keys
+
+The below diagram shows a few operations you can do with a hotkey and coldkey. Not all possible operations are shown below. You can use the `btcli` to perform any of these operations. See [Bitttensor Wallet CLI](../btcli.md#wallets) for command syntax.
+
+<center>
+<ThemedImage
+alt="Coldkey and hotkey pairings"
+sources={{
+    light: useBaseUrl('/img/docs/1-operational-uses-of-keys.svg'),
+    dark: useBaseUrl('/img/docs/dark-1-operational-uses-of-keys.svg'),
+  }}
+style={{width: 850}}
+/>
+</center>
+
+<br />
+
+The below numbered items describe the numbered sections in the above diagram:
+
+1. A coldkey can be paired with multiple hotkeys. A coldkey is a more secure key.
+2. In a given subnet, you can only use a hotkey for one UID. You cannot use the same hotkey for another UID in the same subnet. However, you can use a given hotkey for two different UIDs that are in two separate subnets. 
+3. Transfer of TAO is always between one coldkey and another coldkey. That is, between one wallet and another wallet. 
+4. When you create a subnet, the subnet registration costs are taken out of the subnet owner's cold key. The `netuid` of the subnet is associated with the coldkey only. This is because all subnet owner operations are highly secure and thus require the coldkey (which is always encrypted). The hotkey has no role here.
+5. When you register as a subnet miner or a subnet validator, the registration costs will come out of your coldkey, but the UID is attached to your hotkey. Note that this registration type differs from creating a subnet, which only requires your coldkey. See `(4)` above.
+6. Subnet owner emissions are deposited directly into the subnet owner's coldkey. The hotkey has no role here.
+7. Emissions to the subnet validator and subnet miner are deposited directly into the hotkey to which the UID is attached. See `(5)` above.
+8. As a validator, when you stake your TAO, your TAO will be transferred from your coldkey to your hotkey, which is attached to the UID. Similarly, unstaking will move the TAO from the hotkey attached to the UID into its coldkey.
+9. As a validator, you can nominate your hotkey attached to the UID. This will publish the hotkey. TAO holders will send their TAO to this hotkey. This is also referred to as TAO holders delegating their TAO, or staking their TAO, to you, the validator. Also see `(10)` below.
+10. As a TAO holder, you delegate your TAO to a validator's hotkey. The TAO you delegated will go from your coldkey into the validator's hotkey. This validator's hotkey is permanently attached to the validator's UID. Also see `(9)` above.
+
+

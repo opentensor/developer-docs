@@ -197,7 +197,7 @@ A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#rel
 
 ## 04 April 2024
 
-- A new doc [Working with Keys](./subnets/working-with-keys.md) that explains how to work with hotkey and coldkey is added. 
+- A new doc [Working with Keys](./working-with-keys.md) that explains how to work with hotkey and coldkey is added. 
 - The [Create Wallet](./getting-started/wallets.md) document is enhanced by distinguishing the cases when only coldkey is sufficient from the cases when a hotkey is also required. 
 
 ## 02 April 2024

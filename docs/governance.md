@@ -1,8 +1,8 @@
 ---
-title: "Governance"
+title: "Governance Overview"
 ---
 
-# Governance
+# Governance Overview
 
 Bittensor's governance protocol transitions the management of the network from centralization within the foundation to community ownership over time.
 

@@ -4,6 +4,8 @@ title: "Create a Subnet"
 
 # Create a Subnet
 
+This page describes the procedures for creating a Bittensor subnet. Read [Understanding Subnets](understanding-subnets) first to ensure you understand the concepts involved.
+
 :::tip Note to miners and validators
 You **do not** have to create a subnet to mine or validate on the Bittensor network. See the [Checklist for Validating and Mining](./checklist-for-validating-mining.md) for information on mining and validating on Bittensor.
 :::

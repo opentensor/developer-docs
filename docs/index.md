@@ -47,14 +47,14 @@ Check out the [docs for EVM on subtensor](./evm-tutorials/).
     body='Updates to Docs' />
     <CardSmall
     icon={SiFuturelearn}
-    title='A non-technical introduction'
-    link='questions-and-answers'
-    body='Q and A' />
+    title='Introduction'
+    link='learn/introduction'
+    body='Introduction to Bittensor' />
     <CardSmall
     icon={GoNumber}
-    title='Current subnet limit'
-    link=''
-    body='64' />
+    title='Subnet Listings'
+    link='https://taostats.io/'
+    body='Subnets on taostats.io' />
     <CardSmall
     icon={VscFileMedia}
     title='Bittensor media assets'
