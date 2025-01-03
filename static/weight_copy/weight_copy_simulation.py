@@ -1,19 +1,13 @@
 import bittensor as bt
-import scipy
 from utils import *
 import torch
 import time
-import copy
 from multiprocessing.pool import ThreadPool
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from experiment_setup import ExperimentSetup
-import time
 import os
 import pickle
 import argparse
-
-import torch.multiprocessing as mp
-
 
 class WeightCopySimulation:
     def __init__(self, setup=None):
@@ -52,9 +46,9 @@ class WeightCopySimulation:
                 file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                 args.append((file_name, netuid, block))
 
-                for conceal_period in self.setup.conceal_periods:
+                for cr_interval in self.setup.cr_intervals:
                     block = self.setup.start_block + self.setup.tempo * (
-                        data_point + conceal_period
+                        data_point + cr_interval
                     )
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
                     args.append((file_name, netuid, block))
@@ -89,10 +83,15 @@ class WeightCopySimulation:
                 return
 
         def _base_simulate(self, file_name, netuid, metas):
+            if netuid == 1: 
+                num_miners = 1024
+            else:
+                num_miners = 256
+            
             # === Simulate the early blocks ===
             yuma_results = {}
             meta_0 = list(metas.values())[0]
-            validators = meta_0.validator_trust > 0
+            validators = torch.zeros(num_miners, dtype = torch.int); validators[:len(meta_0.validator_trust)] = torch.tensor(meta_0.validator_trust > 0)
 
             # === Setup for the scope of simulation ===
             early_blocks = [
@@ -103,8 +102,8 @@ class WeightCopySimulation:
             start_time = time.time()
             for i, block in enumerate(early_blocks):
                 meta = metas[block]
-                S = torch.tensor(meta.S)
-                W = torch.tensor(meta.W)
+                S = torch.zeros(num_miners); S[:len(meta.S)] = torch.tensor(meta.S)
+                W = torch.zeros(num_miners, num_miners); W[:meta.W.shape[0], :meta.W.shape[1]] = torch.tensor(meta.W)
                 S_bad = torch.cat((S[validators], S[validators].median().view(1)))
 
                 if i == 0:
@@ -146,11 +145,11 @@ class WeightCopySimulation:
         except Exception as E:
             print(file_name, E)
 
-    def simulate(self, netuid, conceal_period, metas, alpha_low=0.9, alpha_high=0.9):
+    def simulate(self, netuid, cr_interval, metas, alpha_low=0.9, alpha_high=0.9):
         if self.setup.liquid_alpha:
-            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{cr_interval}_al{alpha_low:.1f}_ah{alpha_high:.1f}.pkl"
         else:
-            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{conceal_period}.pkl"
+            yuma_file_name = f"{self.setup.result_path}/yuma_result_netuid{netuid}_conceal{cr_interval}.pkl"
 
         if os.path.isfile(yuma_file_name):
             return
@@ -158,20 +157,24 @@ class WeightCopySimulation:
         for block, meta in metas.items():
             if meta == None:
                 return
-
-
+        
         def _simulate(
             self,
             yuma_file_name,
             netuid,
-            conceal_period,
+            cr_interval,
             metas,
             alpha_low=0.9,
             alpha_high=0.9,
         ):
+            if netuid == 1:
+                num_miners = 1024
+            else:
+                num_miners = 256
+            
             yuma_results = {}
             meta_0 = list(metas.values())[0]
-            validators = meta_0.validator_trust > 0
+            validators = torch.zeros(num_miners, dtype = torch.int); validators[:len(meta_0.validator_trust)] = torch.tensor(meta_0.validator_trust > 0)
 
             # === Setup for the scope of simulation ===
             early_blocks = [
@@ -181,11 +184,12 @@ class WeightCopySimulation:
 
             late_blocks = [
                 self.setup.start_block
-                + self.setup.tempo * (data_point + conceal_period)
+                + self.setup.tempo * (data_point + cr_interval)
                 for data_point in range(self.setup.data_points)
             ]
 
             yuma_results = self.get_base_simulate(netuid)
+
 
             # === Simulate for the late blocks ===
             start_time = time.time()
@@ -193,8 +197,10 @@ class WeightCopySimulation:
                 zip(early_blocks, late_blocks)
             ):
                 meta = metas[late_block]
-                S = torch.tensor(meta.S)
-                W = torch.tensor(meta.W)
+                S = torch.zeros(num_miners)
+                S[:len(meta.S)] = torch.tensor(meta.S)
+                W = torch.zeros(num_miners, num_miners)
+                W[:meta.W.shape[0], :meta.W.shape[1]] = torch.tensor(meta.W)
 
                 S_bad = torch.cat((S[validators], S[validators].median().view(1)))
 
@@ -243,7 +249,7 @@ class WeightCopySimulation:
                 self,
                 yuma_file_name,
                 netuid,
-                conceal_period,
+                cr_interval,
                 metas,
                 alpha_low,
                 alpha_high,
@@ -252,56 +258,34 @@ class WeightCopySimulation:
             print(yuma_file_name, E)
 
     def run_simulation(self):
-        # === Base simulation for all use case ===
-        processes = []
+        tasks = []
         for netuid in self.setup.netuids:
-            p = mp.Process(
-                target=self.base_simulate, args=(netuid, self.metas[netuid]), name=""
-            )
-            p.start()
-            processes.append(p)
+            tasks.append([netuid, self.metas[netuid]])
 
-        for p in processes:
-            p.join()
+        with ProcessPoolExecutor(max_workers=self.setup.processes) as exe:
+            for task in tasks:
+                exe.submit(self.base_simulate, *task)
 
-        # === All simulations for all use case ===
-        processes = []
-        for netuid in self.setup.netuids:
-            for conceal_period in self.setup.conceal_periods:
-                if self.setup.liquid_alpha:
+        # # === All simulations for all use case ===
+        tasks = []
+        if self.setup.liquid_alpha:
+            for netuid in self.setup.netuids:
+                for cr_interval in self.setup.cr_intervals:
                     for alpha_low in self.setup.alpha_lows:
                         for alpha_high in self.setup.alpha_highs:
                             if alpha_low > alpha_high:
                                 continue
+                            tasks.append([netuid, cr_interval, self.metas[netuid], alpha_low, alpha_high])
+        
+        else:
+            for netuid in self.setup.netuids:
+                for cr_interval in self.setup.cr_intervals:
+                    tasks.append([netuid, cr_interval, self.metas[netuid]])
+                
+        with ProcessPoolExecutor(max_workers=self.setup.processes) as exe:
+            for task in tasks:
+                exe.submit(self.simulate, *task)
 
-                            p = mp.Process(
-                                target=self.simulate,
-                                args=(
-                                    netuid,
-                                    conceal_period,
-                                    self.metas[netuid],
-                                    alpha_low,
-                                    alpha_high,
-                                ),
-                                name="",
-                            )
-                            p.start()
-                            processes.append(p)
-                else:
-                    p = mp.Process(
-                        target=self.simulate,
-                        args=(
-                            netuid,
-                            conceal_period,
-                            self.metas[netuid],
-                        ),
-                        name="",
-                    )
-                    p.start()
-                    processes.append(p)
-
-        for p in processes:
-            p.join()
 
 
 if __name__ == "__main__":
