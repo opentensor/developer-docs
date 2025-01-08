@@ -20,7 +20,7 @@ A subnet's economy therefore consists of three pools of currency:
 
 The *price* of a subnet's alpha token is determined by the ratio of TAO in that subnet's reserve to its alpha in reserve. Alpha currency that is not held in reserve but is which is held in the hotkeys of subnet participants is referred to as *alpha outstanding*.
 
-Each passing block, liquidity is injected into one or the other of each subnet's liquidity pools, tao or alpha, and rewards are distributed to the miners and validators working on the subnet, and their stakers. Whether the liquidity injected is TAO or alpha depends on which total supply is more plentiful in the network overall&mdash;see [Emission in Dynamic TAO](./dtao-emission.md) below for more detail. The rewards distributed to miners, validators, and stakers, is always in alpha.
+Each passing block, liquidity is injected into one or the other of each subnet's liquidity pools, tao or alpha, and rewards are distributed to the miners and validators working on the subnet, and their stakers. Whether the liquidity injected is TAO or alpha depends on which total supply is more plentiful in the network overall. The rewards distributed to miners, validators, and stakers is always in alpha.
 
 :::tip
 Each subnet has its own currency with its own name, but in the abstract a given subnet's token is referred to as its $\alpha$ token. With a set of subnets in mind, we refer to $\alpha$ as the token for subnet $\alpha$, $$\beta$$ as the token for subnet $$\beta$$, $$\gamma$$ as the token for subnet $$\gamma$$, and so on.
