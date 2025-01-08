@@ -9,7 +9,6 @@ This page documents the command line interface (CLI) for Bittensor with dynamic 
 Access the Dynamic TAO-enabled Bittensor test network at: `wss://rao.chain.opentensor.ai:443/`
 
 :::tip Looking for legacy BTCLI doc?
-
 For current/legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](../btcli.md). 
 :::
 

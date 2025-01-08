@@ -174,3 +174,11 @@ $$
 - **Price impact due to slippage**: As a result of slippage, unstaking 20  $\alpha$ changed the $\alpha$ price: it **decreased** from 0.225 TAO to 0.113 TAO. All else being equal, unstaking from a subnet leads to a decrease in its $\alpha$ token's relative price. 
 
 ---
+
+
+### Constant product vs. relative price
+
+The constant product $k$ is a critical concept to understand how the relative price of an alpha token works. See the following: 
+  - A subnet pool algorithm operates purely on the basis of maintaining the constant product $k$. The pool algorithm does not have any built-in mechanism to either target or maintain specific prices for the alpha tokens of a subnet. 
+  - The relative price of an alpha token is only **indirectly** determined by the ratio of the token reserves. Furthermore, controlling these relative prices is **not the goal of the pool algorithm**. 
+  - Hence, the relative price of a token **is a result, not a target,** of the token exchange activity.
