@@ -5,22 +5,49 @@ title: "Guide to Dynamic TAO"
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-
 # Guide to Dynamic TAO
 
-:::danger The Emissions section is preliminary
-The [Emissions section](#emissions) in this dynamic TAO guide is still not settled yet. Proceed with caution.
-:::
+Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization, in the following ways:
 
-Follow this guide to learn the essential concepts, features and mechanisms of dynamic TAO.
+1. It eliminates the role of the centralized root network:
 
-:::tip looking for quick intuitions?
-Skip to [Intuitions of dynamic TAO](#intuitions-of-dynamic-tao).
-:::
+    - Prior to D-TAO, relative weight among subnets within the Bittensor network is determined by Yuma Consensus over the evaluations of the Root Network validators. This weight is critically important as it determines the rewards to different subnets and their participant miners and validators through the process of [emission](../glossary.md#emission). This gives a fundamentally centralizing role to the holders of Root Network validator keys.
 
-## Subnet pool
+    - In D-TAO, the relative weight of subnets is determined by their share of the network's staked TAO.
 
-The heart of the dynamic TAO mechanism is a **subnet pool**, with the following properties:
+        TAO-holders can stake TAO into subnets in exchange for the subnet-specific dynamic currency, referred to as the subnet's alpha ($$\alpha$$) token. In this way, stakers 'vote with their TAO' for the value of the subnet, determining the emission payout to the validators and miners working in it.
+
+        A staker stands to gain by staking into a high-value subnet (i.e. buying that subnet's alpha token) because the price of the alpha token is determined by the amount of TAO staked into the subnet. Those tokens are bound to gain in value as others who judge the value to be high continue to stake in. Stakers also receive a portion of emissions
+
+
+ This token value represents the value of the commodities being produced by that subnet to the entire Bittensor network, and the people who buy TAO to stake into particular subnets.
+
+1. In D-TAO tokenomics, holders of TAO ($$\tau$$) can participate in a subnet of their choice by *staking*&mdash;exchanging TAO for the subnet specific dynamic token, or alpha ($$\alpha$$). By staking into specific subnets, TAO holders can express their evaluations of different subnets, and stand to gain through the increase of the relative value of their subnet's alpha token relative to TAO.
+
+1. D-TAO incorporates the consensus/voting function of subnet validators into the mechanism of their alpha token stake holdings.
+
+## Subnet liquidity pools
+
+A key mechanism introduced with Dynamic TAO mechanism is that each subnet has two liquidity reserves, one containing TAO, and one containing a subnet specific currency, referred to as that subnet's alpha token. The alpha token can be purchased by staking TAO into the reserve, which is initially empty. 
+
+Each block, liquidity is injected into one or the other of each subnet's liquidity pools, and distributed to the miners and validators working on the subnet, and their stakers. Whether the liquidity injected is TAO or alpha depends on which total supply is more plentiful in the network overall&mdash;see [Emissions in Dynamic TAO](#emissions-in-dynamic-tao) below for more detail.
+
+A subnet's TAO and alpha liquidity reserves have different functions. TAO 
+
+You stake in TAO and receive alpha.
+
+TAO reserves:
+The TAO side of a subnet pool's reserves are denoted by $$\tau_{in}$$, or **TAO reserve**, and are expressed in units of TAO. 
+
+
+
+
+Apha reserves:
+The $\alpha$ side of the pool reserves are denoted by $\alpha_{in}$, or **alpha reserves**. The terms $\alpha_{in}$ and **alpha reserves** are general terms and refer to the pool reserves of all subnets, including that of subnet $\alpha$.
+
+Miners and Validators in each subnet receive their rewards in alpha
+
+ with the following properties:
 
 - Associated with each subnet is a subnet pool. 
 - A subnet pool consists of two token reserves, a TAO token reserve and a subnet-specific $\alpha$ token reserve.
@@ -42,7 +69,6 @@ style={{width: 450}}
 
 ## TAO reserve and alpha reserve
 
-The TAO side of a subnet pool's reserves are denoted by $$\tau_{in}$$, or **TAO reserve**, and are expressed in units of TAO. Similarly, the $\alpha$ side of the pool reserves are denoted by $\alpha_{in}$, or **alpha reserves**. The terms $\alpha_{in}$ and **alpha reserves** are general terms and refer to the pool reserves of all subnets, including that of subnet $\alpha$.
 
 ---
 
@@ -96,101 +122,6 @@ style={{width: 700}}
 :::tip Stake is always expressed in alpha units
 In dynamic TAO, except for the stake held in [subnet zero](#subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific $\alpha$ units and not TAO units.
 :::
-
-### Constant product k 
-
-The subnet pool algorithm is set up to always maintain a **constant product** $k$ of the two reserves. That is, 
-
-$$
-k = \text{(TAO reserves)}\times\text{(α reserves)}
-$$
-
-Anytime either of the reserves **increases**, for example as a result of a random external action such as some stake TAO entering the pool, the subnet pool algorithm automatically recalculates, using the new reserves, how much the other reserve should **decrease** in order to maintain the same constant product $$k$$. 
-
-:::tip Staking and unstaking do not change the constant product
-Staking and unstaking operations do not change the constant product $k$, but result in **slippage** due to the fact that these are exchange (i.e., swap) operations. On the contrary, emissions into a subnet pool do change the constant product $k$ but do not result in slippage, due to the fact that these are not swap operations. See [Slippage](#slippage). Also see [Emissions](#emissions).
-:::
-
-### Slippage
-
-When we stake we exchange TAO for the alpha token in the pool. The following occurs while we stake:
-1. Prior to the staking operation, we know the expected price of the alpha token. This expected price is the reserve ratio, as described in [Rate](#rate-τ_inα_in), prior to the staking operation. 
-2. However, the very action of our staking changes the token reserve ratio, because we are adding TAO to the TAO reserves. 
-3. Mathematically the pool is required to maintain the constant product $k$. As a result, the pool algorithm automatically adjusts the alpha token reserves to keep the constant product $k$ unchanged. This results in a change in the reserve ratio.
-4. This means that the actual price at which our staking operation is executed is different from our original expected price of the alpha token. This difference between the original expected alpha token price and the actual actual token price at which staking operation is performed is called **slippage**.
-
-### Example
-
-As described in the [Staking](#staking) section, a staking event results in the staked TAO being added to the τ_in reserves of the subnet pool. The subnet pool algorithm calculates the number of units by which the $\alpha_{in}$ reserves should decrease. These units are then taken out of the $\alpha_{in}$ reserves and sent to the validator’s hotkey in the subnet. See an example below.
-
-The below example shows how staking 5 TAO works. 
-
-Let us assume the following initial state of TAO and $\alpha$ reserves in a subnet:
-- TAO reserves: 10 TAO tokens
-- $\alpha$ reserves: 100 $\alpha$ tokens
-
-Hence, the constant product 𝑘 = 10 × 100 =1000.
-
-**Without slippage**
-
-- Expected price of $$\alpha$$ token:
-
-$$
-= \frac{\text{TAO reserves}}{\text{α reserves}} = \frac{10}{100} = \text{0.1 TAO per α}
-$$
-
-- Hence, the expected number of α tokens:
-
-$$
-\text{} = \frac{\text{TAO staked}}{\text{Expected α price}} = \frac{5}{0.1} = \text{50 α tokens} 
-$$
-
-**With slippage**
-
-- **Initial relative price** of $\alpha$ is = reserve ratio of subnet pool $\alpha$ = (TAO token reserves of pool $\alpha$)/($\alpha$ token reserves) = 10/100 = 0.1 TAO.
-- Stake 5 TAO: This adds 5 TAO into the TAO reserves of the pool. Hence, the new TAO reserve = 10 + 5 = 15 TAO tokens.
-- Using the new TAO reserve of 15, the subnet pool algorithm calculates what should be the new $\alpha$ reserves, in order to maintain k at 1000. 
-- Calculating: 
-$$
-\begin{split}
-& 15 \times\text{new α reserves} = 1000\\ 
-\implies & \text{new α reserves} = 1000/15 = 66.667 \text{ α}.
-\end{split}
-$$
-
-- Hence, the $\alpha$ that is **taken out of** the $α_{in}$ reserve and sent to the validator’s hotkey is: 
-$$
-\text{Stake in α tokens} = 100 − 66.67 = 33.33 \text{ α}
-$$
-
-Hence, when you stake 5 TAO, your stake is $$33.33 \text{ α}$$, taking into account the slippage. As a result:
-
-- Slippage in terms of $$\alpha$$ tokens:
-
-$$
-\begin{split}
-\text{Slippage} & = \text{Expected α tokens} - \text{Actual α tokens obtained}\\
-& = 50-33.33 = 16.6667 α
-\end{split}
-$$
-
-- The percentage of slippage:
-
-$$
-\begin{split}
-\text{Percentage slippage} & = \frac{\text{Slippage α tokens}}{\text{Expected α tokens}}\times 100\% \\
-& = \frac{16.6667}{50}\times 100\% \\
-& = 33.333\% 
-\end{split}
-$$
-
-### Effect of slippage
-
-- TAO reserves: 15 tokens
-- $\alpha$ reserves: 66.67 $\alpha$ tokens
-- Constant product 𝑘 = 15 × 66.67 = 1000 (unchanged)
-- **New relative price** of $\alpha$ after the staking event = reserve ratio of subnet pool $\alpha$ = (TAO token reserves of pool $\alpha$)/($\alpha$ token reserves) = 15/66.67 = 0.225 TAO.
-- **Price impact due to slippage**: As a result of the slippage, staking 5 TAO into subnet $\alpha$ changed the relative price of $\alpha$ token: it **increased** from 0.1 TAO to 0.225 TAO. All else being equal, slippage leads to an increase in $\alpha$ token's relative price when we stake.
 
 ---
 
@@ -248,85 +179,6 @@ style={{width: 700}}
 3. These equivalent TAO units are then taken out of the TAO reserves of the subnet pool and are sent to the TAO holder’s coldkey.
 
 ### Example
-
-The below example shows how unstaking 20 $\alpha$ works. Let’s continue with the state of the TAO and $\alpha$ reserves after the [above staking operation](#example-1):
-
-- TAO reserves: 15 tokens
-- $\alpha$ reserves: 66.67 $\alpha$ tokens
-- Constant product 𝑘 = 15 × 66.67 = 1000
-
-**Without slippage**
-
-:::tip Don't know what slippage is?
-See [Slippage](#slippage) if you are not familiar with it. 
-:::
-
-- Expected price of $$\alpha$$ token before unstaking:
-
-$$
-= \frac{\text{TAO reserves}}{\text{α reserves}} = \frac{15}{66.667} = \text{0.225 TAO per α}
-$$
-
-- Hence, the expected number of TAO tokens:
-
-$$
-\begin{split}
-\text{} & = \text{α unstaked}\times{\text{Expected α price}}\\
-& = 20\times0.225 \\
-&= \text{4.5 TAO tokens} 
-\end{split}
-$$
-
-
-**With slippage**
-
-- Relative price $\alpha$ is = reserve ratio of subnet pool $\alpha$ = (TAO token reserves of pool $\alpha$)/($\alpha$ token reserves) = 15/66.67 = 0.225 TAO (same as the relative price after the above staking operation)
-- Unstake 20 $\alpha$: This adds 20 $\alpha$ to the $\alpha$ side of the pool. New $\alpha$ reserves = 66.67 + 20 = 86.67 $\alpha$ tokens.
-- Using the new $\alpha$ reserve of 86.67, the subnet pool algorithm calculates what should be the new TAO reserve in order to maintain $k$ at 1000. 
-- Calculating: 
-
-$$  
-\begin{split}
-& 86.67 \times\text{new TAO reserves} = 1000\\
-\implies & \text{new TAO reserves} = 1000/86.67 = 11.54 \text{ TAO}
-\end{split}
-$$
-
-- Hence, the TAO that is taken out of the TAO reserves of the pool and sent to the TAO holder’s coldkey is: 15 − 11.54 = 3.46 TAO.
-$$
-\text{Unstaked TAO tokens} = 15 − 11.54 = 3.46 \text{ TAO}
-$$
-
-Hence, when you unstake 20 $$\text{α}$$, your unstaked TAO is $$3.46 \text{ TAO}$$, taking into account the slippage. As a result:
-
-- Slippage in terms of TAO tokens:
-
-$$
-\begin{split}
-\text{Slippage} & = \text{Expected TAO tokens} - \text{Actual TAO tokens obtained}\\
-& = 4.5-3.46 = 1.04\text{ TAO}
-\end{split}
-$$
-
-- The percentage of slippage:
-
-$$
-\begin{split}
-\text{Percentage slippage} & = \frac{\text{Slippage TAO tokens}}{\text{Expected TAO tokens}}\times 100\% \\
-& = \frac{1.04}{4.5}\times 100\% \\
-& = 23.1\% 
-\end{split}
-$$
-
-### Effect of slippage
-
-- TAO reserves: 11.54 TAO tokens
-- $\alpha$ reserves: 86.67 $\alpha$ tokens
-- Constant product 𝑘 = 11.54 × 66.67 = 1000 (unchanged)
-- **New relative price** of $\alpha$ after the unstaking event = reserve ratio of subnet pool $\alpha$ = (TAO token reserves of pool $\alpha$)/($\alpha$ token reserves) = 11.54/86.67 = 0.133 TAO per $\alpha$.
-- **Price impact due to slippage**: As a result of slippage, unstaking 20  $\alpha$ changed the $\alpha$ price: it **decreased** from 0.225 TAO to 0.113 TAO. All else being equal, unstaking from a subnet leads to a decrease in its $\alpha$ token's relative price. 
-
----
 
 ## Local weight or TAO Equiv
 
@@ -566,52 +418,49 @@ This can change every block.
 The below Emissions section is still not settled yet. Proceed with caution.
 :::
 
-## Emissions
+## Emission in Dynamic TAO
 
-### Liquidity provision
 
-Emissions are the liquidity injections into the subnet pools. The Bittensor blockchain is the liquidity provider in the dynamic TAO. Without the liquidity provider injecting reserves into a subnet pool, the pool may run out of the reserves of one or both the tokens, thereby halting the entire subnet pool operation. This mechanism of liquidity injection is normal. 
+Emission is the process by which the Bittensor network rewards participants, including miners, validators, stakers, and subnet owners. It unfolds in two stages:
 
-While staking and unstaking operations are similar to trading on a pool, the emissions are liquidity providing operations. 
+The Bittensor blockchain is the liquidity provider in the dynamic TAO. Without the liquidity provider injecting reserves into a subnet pool, the pool may run out of the reserves of one or both the tokens, thereby halting the entire subnet pool operation. This mechanism of liquidity injection is normal. 
 
-:::tip Emissions change the constant product
-Emissions into a subnet pool do change the constant product $k$ for that pool. On the contrary, the staking and unstaking operations **do not** change the pool's constant product $k$. See [Staking](#staking) and [Unstaking](#unstaking).
-:::
 
-### Emissions algorithm
+- Injection into subnets
+- Distribution to participants
 
-The below table shows how emissions are injected into the subnet pools. 
+### Injection to subnets
 
-:::caution Alpha price is always relative price
-Note that the terms relative price, alpha token's price, alpha price are the same as [Rate](#rate).
-:::
 
-| <img style={{width: 500}} /> Every block, do this |<img style={{width: 500}} /> If (sum) $\geqslant$ 1 | <img style={{width: 400}} /> Else (If (sum) $\lt$ 1) |
-|:---------------------|:---|:---|
-| **Evaluate sum of all alpha prices** | Alpha prices are high across the Bittensor network | Alpha prices are not high|
-| **Emission into tao_in reserve**| Do nothing | Add a fraction of a TAO into TAO reserve. <br />$$\text{Fraction = } \frac{\text{this subnet's TAO reserve}}{\text{sum of all TAO reserves across all subnets}}$$ |
-| **Emission into alpha_in reserve** | Add one alpha token into alpha reserve | Do nothing |
-| **Effect of emissions into pool**  | Increases this subnet pool’s alpha reserve, thereby **decreasing** this alpha token’s price  | Increases this subnet pool's TAO reserve, thereby **increasing** this alpha token's price |
-| **Emission into alpha_out** | Add one alpha token into the subnet alpha outstanding  | Add one alpha token into the subnet alpha outstanding |
+The first stage of emissions is injection of liquidity injections into the subnet pools, which occurs each block. Either TAO or alpha (the subnet's own token) will be injected into the subnet's corresponding reserve. Which currency is injected depends on whether the subnet's token's price is lower than the proportion of the total network's TAO held in the subnet's reserve. This acts to prevent the constant emission of liquidity from having a biasing effect on the evolution of pricing.
 
-:::caution Proportional TAO emissions vs. Flat alpha emissions
-From the above table, we can see that while TAO emissions into the pool are proportional to each subnet's TAO reserve, the alpha emissions into the pool are flat 1 alpha per block. Furthermore, emissions into alpha outstanding are flat 1 alpha per block **regardless of sum of prices.**
-:::
+```
+total_tao_in = sum([sn.tao_reserve for sn in subnets]) 
+for i, sn in enumerate(subnets):
+    tao_in = sn.tao_reserve/total_tao_in 
+    if sn.alpha_price() < tao_in:
+       tao_in = sn.alpha_price()
+       alpha_in = 1 
+    else:
+        alpha_in = tao_in / sn.alpha_price()
+    alpha_out = 2 - alpha_in
+    sn.inject( tao_in, alpha_in, alpha_out )
+```
 
-See the below diagram showing how emissions flow:
+### Distribution 
 
-<center>
-<ThemedImage
-alt="Unstaking"
-sources={{
-    light: useBaseUrl('/img/docs/dynamic-tao/emissions-dynamic-tao.svg'),
-    dark: useBaseUrl('/img/docs/dynamic-tao/dark-emissions-dynamic-tao.svg'),
-  }}
-style={{width: 850}}
-/>
-</center>
 
-<br />
+
+Stakers do get dividends - but not like miners or valis
+
+If I have staked to OTF on root, any emission I get will be in TAO prop to my stake. 
+If I stake to a dynamic subnet (anything other than root), I will get dividends in that subnet’s alpha. 
+
+So the flow is something like this: 
+1, Sn owner gets 18% 
+Validators + miners get their due share
+Stakers (stakers in root and subnet itself)
+
 
 ### Example
 
@@ -799,3 +648,11 @@ style={{width: 650}}
 - **But notice this**: In this case, when the stake is 100% local, a validator in a subnet only needs 500 TAO tokens + 1 to take over that subnet. Hence shifting stake from 100% global to 100% local has resulted in severely degrading the security of subnets. 
 
 As we saw in [Validator stake weight](#validator-stake-weight), the dynamic TAO scheme makes use of both global and local characteristics of the stake to strengthen the overall consensus security of the Bittensor network.
+
+
+
+
+
+
+## ???
+Dynamic tau is a planned evolution of the bit tensor network, as part of its overall trajectory towards greater decentralization in the current iteration, which we can refer to as ‘static tau’. Subnets are evaluated by a committee of validators in the root network, the root validators. And this represents a way in which the project is fundamentally centralized and So during emissions, every tempo with the tensor network emits, a stock of tau, and this is divided between the sub networks and then allocated to the miners, validators and sub Network owners in this subnets, okay, based on the consensus of the root net validators over their subjective judgments of the value of the subnets and dynamic tail after The transition. There's no root network valid auditors. Instead, I the emissions are divided between the subnets based on the based on relative strength of their staking pools. So how much Tau has been staked into the pool, which now belongs to eat each subnet. So each subnet has a pool of tau as well as a pool of alpha, what we refer to as, in the general sense, alpha, but each subnet will have its own coke. So and so the weight of a sub network in dynamic tau is the proportion of the total tau staked into the bit tensor network that has been staked into the subnet. So the subnets weight is its the value of its staked tau divided by the total value of tau staked into the network. So I mean to say just tau in the network, the total amount of tau in the network not staked into the network. Well, no, it is. It's steak tau. It is the percentage of steak tau, because tau can tau can be staked either into a subnet. Well, yeah, a subnet, and so there's the root, no, instead of the yeah, there's subnet zero, which you can stake into. Yeah, so as a way of staking generically into tau, you can stake into subnet zero, right and right, yeah, there's this biasing variable between being staked into sudden net zero and other ones, because over the long term, you want to disincentivize people from being staked into the network. You want to incentivize them to put their money on specific projects, rather than just into the network. And you know, by by staking into subnet zero, you are, in effect, staking into just the network itself. Because, yeah, you're not staked. Yeah. You don't get an alpha in in exchange for your stake. You're just on the board with subnet zero. Okay? Right? And throughout, there's this concept of like proportional stake, as opposed to number of tokens being what matters, which is sort of weird, but Jake described it as more efficient, which I'm sure it is. I Right. But I guess it's like when you're when you right. So every block I in every block, there's a mission into the subnet, and every tempo, there's a mission from the subnet into the miners and validators. So it's this two stage emission process. So every block, what is it? One tau or one alpha goes into the subnet pool. And then, is there a mission? And then, when does a mission out happen? And is that from the pool, or is that from the fucking root network? Outstanding question there. Okay, and then also this affects governance, the governance models change. We need to find out about that, because that's completely unknown. I
