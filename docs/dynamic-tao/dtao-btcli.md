@@ -4,12 +4,13 @@ title: "BTCLI with Dynamic TAO"
 
 # BTCLI with Dynamic TAO
 
-Command line interface (CLI) for Bittensor with dynamic TAO. Uses the values in the configuration file. These values can be overriden by passing them explicitly in the command line.
+This page documents the command line interface (CLI) for Bittensor with dynamic TAO enabled. Dynamic TAO is a planned evolution of Bittensor currently being tested.
+
+Access the Dynamic TAO-enabled Bittensor test network at: `wss://rao.chain.opentensor.ai:443/`
 
 :::tip Looking for legacy BTCLI doc?
-This document includes dynamic TAO support with `btcli`. It does not include `btcli root` commands. Other commands that are disabled for dynamic TAO are marked in this document. 
 
-For legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](../btcli.md). 
+For current/legacy `btcli` doc that supports the `btcli root` commands, see [Bittensor CLI](../btcli.md). 
 :::
 
 **Usage**:
@@ -25,15 +26,14 @@ btcli [OPTIONS] COMMAND [ARGS]...
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.
 
-
 **Commands**:
 
 * `config`: Config commands, aliases: `c`, `conf`
-* `stake`: Stake commands, alias: `s`, `st`
-* `subnet`: Subnet commands, alias: `s`, `subnets`
-* `sudo`: Sudo commands, alias: `su`
-* `utils`: Utility commands.
 * `wallet`: Wallet commands, aliases: `wallets`, `w`
+* `stake`: Stake commands, alias: `s`, `st`
+* `sudo`: Sudo commands, alias: `su`
+* `subnet`: Subnet commands, alias: `s`, `subnets`
+* `utils`: Utility commands. ??? This seems to work but is not in the `--help` output ???
 * `weights`: Weights commands, aliases: `wt`, `weight`
 
 ## btcli config
