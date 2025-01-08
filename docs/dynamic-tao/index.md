@@ -9,25 +9,18 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
 
+You can experiment with Dynamic TAO today.
+
+
 <Cards>
     <Card 
     icon={HiAcademicCap}
-    title='Guide to Dynamic TAO →'
+    title='Conceptual guide to Dynamic TAO →'
     link='/dynamic-tao/dtao-guide'
-    body='(PRELIMINARY ONLY, SUBJECT TO CHANGE) A comprehensive introduction to dynamic TAO.' />
-    <Card 
+    body="Learn about the next phase in Bittensor's evolution" />
+    <Card
     icon={HiOutlineCommandLine}
-    title='BTCLI with Dynamic TAO →'
-    link='/dynamic-tao/dtao-btcli'
-    body='The command-line interface (CLI) for dynamic TAO and more.' />
-    <Card 
-    icon={HiOutlineCommandLine}
-    title='Emission in Dynamic TAO →'
-    link='/dynamic-tao/dtao-emission'
-    body='The command-line interface (CLI) for dynamic TAO and more.' />
-    <Card 
-    icon={HiOutlineCommandLine}
-    title='Staking and Unstaking in Dynamic TAO →'
-    link='/dynamic-tao/staking-unstaking-dtao'
-    body='The command-line interface (CLI) for dynamic TAO and more.' />
+    title='Try Dynamic TAO →'
+    link='/dynamic-tao/dtao-transition'
+    body='Experiment with the Dynamic TAO testnet' />    
 </Cards>

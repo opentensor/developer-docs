@@ -91,9 +91,7 @@ const sidebars = {
       collapsed: false,
       items: [
         "dynamic-tao/dtao-guide",
-        "dynamic-tao/dtao-btcli",
-        "dynamic-tao/dtao-emission",
-        "dynamic-tao/staking-unstaking-dtao",
+        "dynamic-tao/dtao-transition",
       ],
     },
     {
