@@ -30,27 +30,11 @@ Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and gover
 
 A key mechanism introduced with Dynamic TAO mechanism is that each subnet has two liquidity reserves, one containing TAO, and one containing a subnet specific currency, referred to as that subnet's alpha token. The alpha token can be purchased by staking TAO into the reserve, which is initially empty. 
 
-Each block, liquidity is injected into one or the other of each subnet's liquidity pools, and distributed to the miners and validators working on the subnet, and their stakers. Whether the liquidity injected is TAO or alpha depends on which total supply is more plentiful in the network overall&mdash;see [Emissions in Dynamic TAO](#emissions-in-dynamic-tao) below for more detail.
+The *price* of a subnet's alpha token is determined by the ratio of TAO in that subnet's reserve to its alpha in reserve. Alpha currency that is not held in reserve but is which is held in the hotkeys of subnet participants is referred to as *alpha outstanding*.
 
-A subnet's TAO and alpha liquidity reserves have different functions. TAO 
-
-You stake in TAO and receive alpha.
-
-TAO reserves:
-The TAO side of a subnet pool's reserves are denoted by $$\tau_{in}$$, or **TAO reserve**, and are expressed in units of TAO. 
+Each block, liquidity is injected into one or the other of each subnet's liquidity pools, and distributed to the miners and validators working on the subnet, and their stakers. Whether the liquidity injected is TAO or alpha depends on which total supply is more plentiful in the network overall&mdash;see [Emissions in Dynamic TAO](#emissions-in-dynamic-tao) below for more detail. The rewards distributed to miners, validators, and stakers, is always in alpha.
 
 
-
-
-Apha reserves:
-The $\alpha$ side of the pool reserves are denoted by $\alpha_{in}$, or **alpha reserves**. The terms $\alpha_{in}$ and **alpha reserves** are general terms and refer to the pool reserves of all subnets, including that of subnet $\alpha$.
-
-Miners and Validators in each subnet receive their rewards in alpha
-
- with the following properties:
-
-- Associated with each subnet is a subnet pool. 
-- A subnet pool consists of two token reserves, a TAO token reserve and a subnet-specific $\alpha$ token reserve.
 - Each subnet has its own $\alpha$ token. For example, $\alpha$ is the token for subnet $\alpha$, and $\beta$ is the token for subnet $\beta$, and so on. **Note that the term $\alpha$ is also used to refer to any $\alpha$ token, not just the token for the subnet $\alpha$.**
 - All token exchanges between TAO and $\alpha$ occur through the subnet pool. The subnet pool's reserve ratio determines the exchange rate.
 
@@ -430,7 +414,6 @@ The Bittensor blockchain is the liquidity provider in the dynamic TAO. Without t
 - Distribution to participants
 
 ### Injection to subnets
-
 
 The first stage of emissions is injection of liquidity injections into the subnet pools, which occurs each block. Either TAO or alpha (the subnet's own token) will be injected into the subnet's corresponding reserve. Which currency is injected depends on whether the subnet's token's price is lower than the proportion of the total network's TAO held in the subnet's reserve. This acts to prevent the constant emission of liquidity from having a biasing effect on the evolution of pricing.
 
