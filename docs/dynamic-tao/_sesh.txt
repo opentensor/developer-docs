@@ -1,0 +1,1364 @@
+01/07-20:44 :)  btcli wallet balance
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 addresses (comma-separated)
+(PracticeKey!):
+Using the specified network rao from config
+
+                          Wallet Coldkey Balance
+                              Network: rao
+    Wal…   Coldkey Address                          Fr…   Sta…   Tot…
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Pra…   5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGC…   τ …   τ 0…   τ 1…
+
+
+
+    Tot…                                            τ …   τ 0…   τ 1…
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+01/07-20:44 :)  btcli wallet balance
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 addresses (comma-separated) (PracticeKey!):
+Using the specified network rao from config
+
+                                                 Wallet Coldkey Balance
+                                                      Network: rao
+    Wallet Name     Coldkey Address                                    Free Balance   Staked Balance   Total Balance
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    PracticeKey!    5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq     τ 100.0000         τ 0.0000      τ 100.0000
+
+
+
+    Total Balance                                                        τ 100.0000         τ 0.0000      τ 100.0000
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+01/07-20:44 :)  btcli subnet register
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Netuid: 3
+Using the wallet name from config: PracticeKey!
+Using the wallet hotkey from config: stakinkey1
+Using the specified network rao from config
+
+                                                      Register to netuid: 3
+                                                           Network: rao
+
+ Netuid ┃ Symbol ┃ Cost (τ) ┃                      Hotkey                      ┃                     Coldkey
+━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3    │   γ    │ τ 0.1000 │ 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK │ 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+────────┼────────┼──────────┼──────────────────────────────────────────────────┼──────────────────────────────────────────────────
+        │        │          │                                                  │
+Your balance is: τ 100.0000
+The cost to register by recycle is τ 0.1000
+Do you want to continue? [y/n] (n): y
+Enter your password:
+Decrypting...
+Balance:
+  τ 100.0000 ➡ τ 99.9000
+✅ Registered on netuid 3 with UID 69
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey! --wallet-hotkey forrealkey
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Using the specified network rao from config
+
+                                                       Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)       ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5H8R3bL6UCFiwLjLk4J63SqCwbyVjbfkULmfvKDXyYyGh1oS │  τ 1.0000  │ 40.566266131581386 γ/τ  │ 39.2500 γ │ 3.2447 %
+────────┼──────────────────────────────────────────────────┼────────────┼─────────────────────────┼───────────┼──────────
+        │                                                  │            │                         │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+⠙
+📡 Staking on netuid(s): [3] ...[Error]:
+❌ Failed to stake 1.0 on Netuid 3 with error: Subtensor returned `HotKeyAccountNotExists(Module)` error. This means: `The hotkey does not
+exists`.
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey! --wallet-hotkey forrealkey
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: ^C%
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                        Subnet 3: templar
+                                                          Network: rao
+
+  # ┃ UID ┃ Stake (γ) ┃ Alpha (γ) ┃   Tao (τ) ┃ Dividends ┃ Incentive ┃ Emissions (γ) ┃ Hotkey ┃ Coldkey ┃ Identity
+━━━━╇━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━
+  1 │ 17  │  186.53 γ │  186.53 γ │    τ 0.00 │  0.00034  │  0.0000   │   0.02050 γ   │ 5CykWh │ 5CykWh  │ Owner3 (*Owner)
+  2 │ 154 │  15.25k γ │   44.68 γ │ τ 875.61k │  0.05362  │  0.0000   │   3.22527 γ   │ 5F4tQy │ 5HBtpw  │ Openτensor Foundaτion
+  3 │  7  │  14.10k γ │   99.67 γ │ τ 805.75k │  0.08519  │  0.0000   │   5.12416 γ   │ 5GKH9F │ 5GcCZ2  │ τaosτaτs and Corcel
+  4 │  4  │   9.76k γ │   47.57 γ │ τ 559.35k │  0.05612  │  0.0000   │   3.37568 γ   │ 5HEo56 │ 5E9fVY  │ Foundry
+  5 │ 238 │   8.81k γ │   34.70 γ │ τ 505.49k │  0.04291  │  0.0000   │   2.58102 γ   │ 5FxcZr │ 5GP8N5  │ Polychain
+  6 │ 192 │   7.81k γ │    3.46 γ │ τ 449.51k │  0.03307  │  0.0000   │   1.98900 γ   │ 5GP7c3 │ 5Dkwfx  │ Datura
+  7 │ 85  │   5.41k γ │   27.19 γ │ τ 309.85k │  0.03197  │  0.0000   │   1.92314 γ   │ 5CsvRJ │ 5EJAqc  │ Owl Ventures
+  8 │  6  │   5.37k γ │   56.50 γ │ τ 305.83k │  0.04762  │  0.0000   │   2.86421 γ   │ 5FFApa │ 5GZSAg  │ RoundTable21
+  9 │ 55  │   5.25k γ │   25.38 γ │ τ 300.89k │  0.02999  │  0.0000   │   1.80357 γ   │ 5HK5tp │ 5CAwB3  │ Bittensor Guru
+ 10 │ 182 │   5.05k γ │   24.49 γ │ τ 289.26k │  0.02888  │  0.0000   │   1.73729 γ   │ 5Dd8ga │ 5GBkWR  │ ~
+ 11 │ 13  │   4.00k γ │   19.25 γ │ τ 229.18k │  0.02265  │  0.0000   │   1.36234 γ   │ 5EhvL1 │ 5HJvTn  │ TAO-Validator.com
+ 12 │ 253 │   2.19k γ │    0.00 γ │ τ 126.04k │  0.00793  │  0.0000   │   0.47727 γ   │ 5Hp18g │ 5Fsaw8  │ ~
+────┼─────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────────┼────────┼─────────┼───────────────────────
+    │     │  92.79k γ │   1.06k γ │   5.28m γ │   1.000   │           │   60.1484 γ   │        │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): 2
+
+Selected delegate: 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 (Openτensor Foundaτion)
+
+                                                      Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)      ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 │  τ 1.0000  │ 41.68005291032637 γ/τ  │ 40.3400 γ │ 3.2150 %
+────────┼──────────────────────────────────────────────────┼────────────┼────────────────────────┼───────────┼──────────
+        │                                                  │            │                        │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+⠋
+📡 Staking on netuid(s): [3] ...^C%
+01/07-20:44 :)
+01/07-20:44 :)  git git
+01/07-20:44 :)
+01/07-20:44 :)
+01/07-20:44 :)  git pull
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 12 (delta 9), reused 10 (delta 7), pack-reused 0 (from 0)
+Unpacking objects: 100% (12/12), 931 bytes | 84.00 KiB/s, done.
+From https://github.com/opentensor/btcli
+   11fb7e6..10026e7  rao-games/pools -> origin/rao-games/pools
+Updating 11fb7e6..10026e7
+Fast-forward
+ bittensor_cli/src/bittensor/utils.py  | 2 +-
+ bittensor_cli/src/commands/subnets.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+01/07-20:44 :)  pip3 install .
+Defaulting to user installation because normal site-packages is not writeable
+Processing /Users/michaeltrestman/bittensor_workspace/btcli
+  DEPRECATION: A future pip version will change local packages to be built in-place without first copying to a temporary directory. We recommend you use --use-feature=in-tree-build to test your packages with this new behavior before it becomes the default.
+   pip 21.3 will remove support for this functionality. You can find discussion regarding this at https://github.com/pypa/pip/issues/7555.
+Requirement already satisfied: wheel in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from bittensor-cli==8.2.0rc5) (0.37.0)
+Requirement already satisfied: async-property==0.2.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.2.2)
+Requirement already satisfied: aiohttp~=3.10.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.10.11)
+Requirement already satisfied: backoff~=2.2.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.2.1)
+Requirement already satisfied: GitPython>=3.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.1.43)
+Requirement already satisfied: fuzzywuzzy~=0.18.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.18.0)
+Requirement already satisfied: netaddr~=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.3.0)
+Requirement already satisfied: numpy>=2.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.0.2)
+Requirement already satisfied: Jinja2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.1.4)
+Requirement already satisfied: pycryptodome in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.21.0)
+Requirement already satisfied: PyYAML~=6.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (6.0.2)
+Requirement already satisfied: pytest in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (8.3.4)
+Requirement already satisfied: python-Levenshtein in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.26.1)
+Requirement already satisfied: rich~=13.7 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (13.9.4)
+Requirement already satisfied: scalecodec==1.2.11 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.2.11)
+Requirement already satisfied: substrate-interface~=1.7.9 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.7.11)
+Requirement already satisfied: typer~=0.12 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.15.1)
+Requirement already satisfied: websockets>=14.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (14.1)
+Requirement already satisfied: bittensor-wallet>=2.0.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.1.3)
+Requirement already satisfied: bt-decode==0.4.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.4.0)
+Requirement already satisfied: toml==0.10.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bt-decode==0.4.0->bittensor-cli==8.2.0rc5) (0.10.0)
+Requirement already satisfied: more-itertools in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (10.5.0)
+Requirement already satisfied: requests>=2.24.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.32.3)
+Requirement already satisfied: base58>=2.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.1.1)
+Requirement already satisfied: multidict<7.0,>=4.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (6.1.0)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: frozenlist>=1.1.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (2.4.4)
+Requirement already satisfied: yarl<2.0,>=1.12.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.18.3)
+Requirement already satisfied: aiosignal>=1.1.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (24.3.0)
+Requirement already satisfied: py-bip39-bindings==0.1.11 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.1.11)
+Requirement already satisfied: cryptography~=43.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (43.0.3)
+Requirement already satisfied: password-strength in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.0.3.post2)
+Requirement already satisfied: termcolor in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.5.0)
+Requirement already satisfied: munch~=2.5.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.5.0)
+Requirement already satisfied: eth-utils<2.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.2.2)
+Requirement already satisfied: cffi>=1.12 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cryptography~=43.0.1->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.17.1)
+Requirement already satisfied: pycparser in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cffi>=1.12->cryptography~=43.0.1->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.22)
+Requirement already satisfied: cytoolz>=0.10.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.0.1)
+Requirement already satisfied: eth-typing>=3.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: eth-hash>=0.3.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.7.0)
+Requirement already satisfied: toolz>=0.8.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cytoolz>=0.10.1->eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.0.0)
+Requirement already satisfied: typing-extensions>=4.5.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-typing>=3.0.0->eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (4.12.2)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from GitPython>=3.0.0->bittensor-cli==8.2.0rc5) (4.0.11)
+Requirement already satisfied: smmap<6,>=3.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from gitdb<5,>=4.0.1->GitPython>=3.0.0->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: six in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from munch~=2.5.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.15.0)
+Requirement already satisfied: certifi>=2017.4.17 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2024.12.14)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.3.0)
+Requirement already satisfied: idna<4,>=2.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (3.10)
+Requirement already satisfied: charset-normalizer<4,>=2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (3.4.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from rich~=13.7->bittensor-cli==8.2.0rc5) (2.18.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from rich~=13.7->bittensor-cli==8.2.0rc5) (3.0.0)
+Requirement already satisfied: mdurl~=0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from markdown-it-py>=2.2.0->rich~=13.7->bittensor-cli==8.2.0rc5) (0.1.2)
+Requirement already satisfied: xxhash<4,>=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (3.5.0)
+Requirement already satisfied: ecdsa<1,>=0.17.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.19.0)
+Requirement already satisfied: py-sr25519-bindings<1,>=0.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.2.1)
+Requirement already satisfied: PyNaCl<2,>=1.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: py-ed25519-zebra-bindings<2,>=1.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.1.0)
+Requirement already satisfied: websocket-client<2,>=0.57.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.8.0)
+Requirement already satisfied: eth-keys<1,>=0.2.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.6.0)
+Requirement already satisfied: shellingham>=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from typer~=0.12->bittensor-cli==8.2.0rc5) (1.5.4)
+Requirement already satisfied: click>=8.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from typer~=0.12->bittensor-cli==8.2.0rc5) (8.1.7)
+Requirement already satisfied: propcache>=0.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from yarl<2.0,>=1.12.0->aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (0.2.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from Jinja2->bittensor-cli==8.2.0rc5) (3.0.2)
+Requirement already satisfied: packaging in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (24.2)
+Requirement already satisfied: iniconfig in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (2.0.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (1.2.2)
+Requirement already satisfied: tomli>=1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (2.2.1)
+Requirement already satisfied: pluggy<2,>=1.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: Levenshtein==0.26.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from python-Levenshtein->bittensor-cli==8.2.0rc5) (0.26.1)
+Requirement already satisfied: rapidfuzz<4.0.0,>=3.9.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from Levenshtein==0.26.1->python-Levenshtein->bittensor-cli==8.2.0rc5) (3.11.0)
+Building wheels for collected packages: bittensor-cli
+  Building wheel for bittensor-cli (setup.py) ... done
+  Created wheel for bittensor-cli: filename=bittensor_cli-8.2.0rc5-py3-none-any.whl size=194584 sha256=72dfe50199e768092ef8fb90a2d15eb2815844e80b4b22145dc1cbd1577dedcb
+  Stored in directory: /private/var/folders/9q/_0prfj296sl8z881x1zf0k2c0000gn/T/pip-ephem-wheel-cache-gdzb79my/wheels/6b/b4/85/a1c8f750330cf32c9cb0602da6dd5484288004d63c78ac40c4
+Successfully built bittensor-cli
+Installing collected packages: bittensor-cli
+  Attempting uninstall: bittensor-cli
+    Found existing installation: bittensor-cli 8.2.0rc5
+    Uninstalling bittensor-cli-8.2.0rc5:
+      Successfully uninstalled bittensor-cli-8.2.0rc5
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bittensor 8.3.1 requires bt-decode==0.2.0a0, but you have bt-decode 0.4.0 which is incompatible.
+Successfully installed bittensor-cli-8.2.0rc5
+WARNING: You are using pip version 21.2.4; however, version 24.3.1 is available.
+You should consider upgrading via the '/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip' command.
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                   Subnet 3: templar
+                                                      Network: rao
+
+┃ UID ┃ Stake (… ┃ Alpha (γ) ┃  Tao (τ) ┃ Dividends ┃ Incenti… ┃ Emissions (γ) ┃ Hotk… ┃ Coldkey ┃ Identity
+╇━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━
+│ 17  │ 188.64 γ │  188.64 γ │   τ 0.00 │  0.00034  │  0.0000  │   0.02050 γ   │ 5Cyk… │ 5CykWh  │ Owner3 (*Owner)
+│ 154 │ 15.25k γ │   44.68 γ │ τ 875.6… │  0.05362  │  0.0000  │   3.22527 γ   │ 5F4t… │ 5HBtpw  │ Openτensor Foundaτi…
+│  7  │ 14.10k γ │   99.67 γ │ τ 805.7… │  0.08519  │  0.0000  │   5.12416 γ   │ 5GKH… │ 5GcCZ2  │ τaosτaτs and Corcel
+│  4  │  9.76k γ │   47.57 γ │ τ 559.3… │  0.05612  │  0.0000  │   3.37568 γ   │ 5HEo… │ 5E9fVY  │ Foundry
+│ 238 │  8.81k γ │   34.70 γ │ τ 505.4… │  0.04291  │  0.0000  │   2.58102 γ   │ 5Fxc… │ 5GP8N5  │ Polychain
+│ 192 │  7.81k γ │    3.46 γ │ τ 449.5… │  0.03307  │  0.0000  │   1.98900 γ   │ 5GP7… │ 5Dkwfx  │ Datura
+│ 85  │  5.41k γ │   27.19 γ │ τ 309.8… │  0.03197  │  0.0000  │   1.92314 γ   │ 5Csv… │ 5EJAqc  │ Owl Ventures
+│  6  │  5.37k γ │   56.50 γ │ τ 305.8… │  0.04762  │  0.0000  │   2.86421 γ   │ 5FFA… │ 5GZSAg  │ RoundTable21
+│ 55  │  5.25k γ │   25.38 γ │ τ 300.8… │  0.02999  │  0.0000  │   1.80357 γ   │ 5HK5… │ 5CAwB3  │ Bittensor Guru
+│ 182 │  5.05k γ │   24.49 γ │ τ 289.2… │  0.02888  │  0.0000  │   1.73729 γ   │ 5Dd8… │ 5GBkWR  │ ~
+│ 13  │  4.00k γ │   19.25 γ │ τ 229.1… │  0.02265  │  0.0000  │   1.36234 γ   │ 5Ehv… │ 5HJvTn  │ TAO-Validator.com
+│ 253 │  2.19k γ │    0.00 γ │ τ 126.0… │  0.00793  │  0.0000  │   0.47727 γ   │ 5Hp1… │ 5Fsaw8  │ ~
+┼─────┼──────────┼───────────┼──────────┼───────────┼──────────┼───────────────┼───────┼─────────┼──────────────────────
+│     │ 92.79k γ │   1.06k γ │  5.28m γ │   1.000   │          │   60.1484 γ   │       │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): ^C%
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                        Subnet 3: templar
+                                                          Network: rao
+
+  # ┃ UID ┃ Stake (γ) ┃ Alpha (γ) ┃   Tao (τ) ┃ Dividends ┃ Incentive ┃ Emissions (γ) ┃ Hotkey ┃ Coldkey ┃ Identity
+━━━━╇━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━
+  1 │ 17  │  188.64 γ │  188.64 γ │    τ 0.00 │  0.00034  │  0.0000   │   0.02050 γ   │ 5CykWh │ 5CykWh  │ Owner3 (*Owner)
+  2 │ 154 │  15.25k γ │   44.68 γ │ τ 875.61k │  0.05362  │  0.0000   │   3.22527 γ   │ 5F4tQy │ 5HBtpw  │ Openτensor Foundaτion
+  3 │  7  │  14.10k γ │   99.67 γ │ τ 805.75k │  0.08519  │  0.0000   │   5.12416 γ   │ 5GKH9F │ 5GcCZ2  │ τaosτaτs and Corcel
+  4 │  4  │   9.76k γ │   47.57 γ │ τ 559.35k │  0.05612  │  0.0000   │   3.37568 γ   │ 5HEo56 │ 5E9fVY  │ Foundry
+  5 │ 238 │   8.81k γ │   34.70 γ │ τ 505.49k │  0.04291  │  0.0000   │   2.58102 γ   │ 5FxcZr │ 5GP8N5  │ Polychain
+  6 │ 192 │   7.81k γ │    3.46 γ │ τ 449.51k │  0.03307  │  0.0000   │   1.98900 γ   │ 5GP7c3 │ 5Dkwfx  │ Datura
+  7 │ 85  │   5.41k γ │   27.19 γ │ τ 309.85k │  0.03197  │  0.0000   │   1.92314 γ   │ 5CsvRJ │ 5EJAqc  │ Owl Ventures
+  8 │  6  │   5.37k γ │   56.50 γ │ τ 305.83k │  0.04762  │  0.0000   │   2.86421 γ   │ 5FFApa │ 5GZSAg  │ RoundTable21
+  9 │ 55  │   5.25k γ │   25.38 γ │ τ 300.89k │  0.02999  │  0.0000   │   1.80357 γ   │ 5HK5tp │ 5CAwB3  │ Bittensor Guru
+ 10 │ 182 │   5.05k γ │   24.49 γ │ τ 289.26k │  0.02888  │  0.0000   │   1.73729 γ   │ 5Dd8ga │ 5GBkWR  │ ~
+ 11 │ 13  │   4.00k γ │   19.25 γ │ τ 229.18k │  0.02265  │  0.0000   │   1.36234 γ   │ 5EhvL1 │ 5HJvTn  │ TAO-Validator.com
+ 12 │ 253 │   2.19k γ │    0.00 γ │ τ 126.05k │  0.00793  │  0.0000   │   0.47727 γ   │ 5Hp18g │ 5Fsaw8  │ ~
+────┼─────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────────┼────────┼─────────┼───────────────────────
+    │     │  92.79k γ │   1.06k γ │   5.28m γ │   1.000   │           │   60.1484 γ   │        │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): 2
+
+Selected delegate: 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 (Openτensor Foundaτion)
+
+                                                       Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)       ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 │  τ 1.0000  │ 42.470312932732675 γ/τ  │ 41.1183 γ │ 3.1835 %
+────────┼──────────────────────────────────────────────────┼────────────┼─────────────────────────┼───────────┼──────────
+        │                                                  │            │                         │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+Balance:
+  τ 99.9000 ➡ τ 98.9000
+Subnet: 3 Stake:
+  τ 0.0000 ➡ 41.1782 γ
+01/07-20:44 :)  btcli stake list
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 address (PracticeKey!):
+Using the specified network rao from config
+
+          Hotkey: Openτensor Foundaτion (5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3)
+                                            Network: rao
+
+                             See below for an explanation of the columns
+
+        ┃           ┃     Value ┃           ┃    Price    ┃                 ┃            ┃  Emission
+ Netuid ┃ Name      ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃   Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 3      │ γ templar │    τ 1.03 │  41.18 γ  │  0.03 τ/γ   │ τ 1.00 (3.179%) │        YES │  0.0037 γ
+────────┼───────────┼───────────┼───────────┼─────────────┼─────────────────┼────────────┼───────────
+ 1      │           │    τ 1.03 │           │             │          τ 1.00 │            │
+
+
+
+Wallet:
+  Coldkey SS58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+  Free Balance: τ 98.9000
+  Total TAO (τ): τ 1.13
+  Total Value (τ): τ 1.03
+01/07-20:44 :)  btcli st list --network rao --ss58 5HBtpwxuGNL1gwzwomwR7sjwUt8WXYSuWcLYN6f9KpTZkP4k
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+            Hotkey: Openτensor Foundaτion (5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3)
+                                              Network: rao
+
+                               See below for an explanation of the columns
+
+        ┃               ┃     Value ┃           ┃    Price    ┃                 ┃            ┃  Emission
+ Netuid ┃ Name          ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃   Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 0      │ τ root        │  τ 64.50k │ τ 64.50k  │  1.00 τ/τ   │    N/A (0.000%) │        YES │  τ 0.0000
+ 39     │ מ edge        │    τ 2.26 │ 102.06 מ  │  0.02 τ/מ   │ τ 2.10 (7.077%) │        YES │  0.0716 מ
+ 14     │ ξ palaidn     │    τ 2.01 │  90.79 ξ  │  0.02 τ/ξ   │ τ 1.88 (6.345%) │        YES │  0.0683 ξ
+ 15     │ ο deval       │    τ 1.95 │  88.17 ο  │  0.02 τ/ο   │ τ 1.83 (6.173%) │        YES │  0.0679 ο
+ 9      │ ι pretrain    │    τ 1.82 │  80.46 ι  │  0.02 τ/ι   │ τ 1.71 (5.712%) │        YES │  0.0541 ι
+ 34     │ י mind        │    τ 1.69 │  76.08 י  │  0.02 τ/י   │ τ 1.60 (5.372%) │        YES │  0.0514 י
+ 20     │ υ bitagent    │    τ 1.62 │  73.04 υ  │  0.02 τ/υ   │ τ 1.53 (5.169%) │        YES │  0.0537 υ
+ 13     │ ν dataverse   │    τ 1.60 │  72.17 ν  │  0.02 τ/ν   │ τ 1.52 (5.110%) │        YES │  0.0526 ν
+ 43     │ ע graphite    │    τ 1.59 │  71.56 ע  │  0.02 τ/ע   │ τ 1.51 (5.069%) │        YES │  0.0482 ע
+ 11     │ λ dippy       │    τ 1.56 │  70.52 λ  │  0.02 τ/λ   │ τ 1.48 (4.999%) │        YES │  0.0512 λ
+ 23     │ ψ social      │    τ 1.55 │  69.80 ψ  │  0.02 τ/ψ   │ τ 1.47 (4.951%) │        YES │  0.0515 ψ
+ 1      │ α apex        │    τ 1.53 │  69.07 α  │  0.02 τ/α   │ τ 1.46 (4.902%) │        YES │  0.0509 α
+ 29     │ ה coldint     │    τ 1.53 │  68.95 ה  │  0.02 τ/ה   │ τ 1.45 (4.894%) │        YES │  0.0499 ה
+ 2      │ β omron       │    τ 1.52 │  68.43 β  │  0.02 τ/β   │ τ 1.44 (4.858%) │        YES │  0.0493 β
+ 28     │ ד oracle      │    τ 1.51 │  68.29 ד  │  0.02 τ/ד   │ τ 1.44 (4.849%) │        YES │  0.0509 ד
+ 19     │ t inference   │    τ 1.51 │  67.99 t  │  0.02 τ/t   │ τ 1.43 (4.829%) │        YES │  0.0500 t
+ 32     │ ח itsai       │    τ 1.50 │  67.64 ח  │  0.02 τ/ח   │ τ 1.43 (4.805%) │        YES │  0.0504 ח
+ 18     │ σ cortex      │    τ 1.44 │  64.86 σ  │  0.02 τ/σ   │ τ 1.37 (4.616%) │        YES │  0.0487 σ
+ 25     │ א protein     │    τ 1.40 │  63.27 א  │  0.02 τ/א   │ τ 1.34 (4.508%) │        YES │  0.0475 א
+ 6      │ ζ infinite    │    τ 1.39 │  62.80 ζ  │  0.02 τ/ζ   │ τ 1.33 (4.476%) │        YES │  0.0448 ζ
+ 21     │ φ any-any     │    τ 1.27 │  57.18 φ  │  0.02 τ/φ   │ τ 1.22 (4.092%) │        YES │  0.0424 φ
+ 33     │ ט ready       │    τ 1.22 │  55.19 ט  │  0.02 τ/ט   │ τ 1.17 (3.956%) │        YES │  0.0447 ט
+ 8      │ θ ptn         │    τ 1.20 │  54.24 θ  │  0.02 τ/θ   │ τ 1.15 (3.890%) │        YES │  0.0387 θ
+ 4      │ δ targon      │    τ 1.00 │  45.18 δ  │  0.02 τ/δ   │ τ 0.97 (3.261%) │         NO │  0.0209 δ
+ 51     │ ת celium      │    τ 0.71 │  32.16 ת  │  0.02 τ/ת   │ τ 0.70 (2.343%) │         NO │  0.0111 ת
+ 45     │ פ gen42       │    τ 0.31 │  13.94 פ  │  0.02 τ/פ   │ τ 0.31 (1.029%) │        YES │  0.0072 פ
+ 12     │ μ horde       │    τ 0.30 │  13.45 μ  │  0.02 τ/μ   │ τ 0.30 (0.994%) │        YES │  0.0074 μ
+ 37     │ ל tuning      │    τ 0.23 │  10.37 ל  │  0.02 τ/ל   │ τ 0.23 (0.768%) │         NO │  0.0032 ל
+ 44     │ ף score       │    τ 0.20 │  9.00 ף   │  0.02 τ/ף   │ τ 0.20 (0.667%) │        YES │  0.0048 ף
+ 35     │ ך logic       │    τ 0.20 │  8.83 ך   │  0.02 τ/ך   │ τ 0.19 (0.655%) │        YES │  0.0046 ך
+ 16     │ π bitads      │    τ 0.20 │  8.81 π   │  0.02 τ/π   │ τ 0.19 (0.653%) │        YES │  0.0050 π
+ 30     │ ו bet         │    τ 0.19 │  8.72 ו   │  0.02 τ/ו   │ τ 0.19 (0.647%) │        YES │  0.0044 ו
+ 7      │ η subvortex   │    τ 0.19 │  8.67 η   │  0.02 τ/η   │ τ 0.19 (0.643%) │        YES │  0.0045 η
+ 5      │ ε kaito       │    τ 0.19 │  8.57 ε   │  0.02 τ/ε   │ τ 0.19 (0.635%) │        YES │  0.0045 ε
+ 27     │ ג compute     │    τ 0.19 │  8.45 ג   │  0.02 τ/ג   │ τ 0.19 (0.626%) │        YES │  0.0050 ג
+ 41     │ נ sportsensor │    τ 0.19 │  8.42 נ   │  0.02 τ/נ   │ τ 0.19 (0.624%) │        YES │  0.0045 נ
+ 42     │ ס masa        │    τ 0.18 │  8.18 ס   │  0.02 τ/ס   │ τ 0.18 (0.607%) │        YES │  0.0044 ס
+ 17     │ ρ 3gen        │    τ 0.18 │  7.99 ρ   │  0.02 τ/ρ   │ τ 0.18 (0.593%) │        YES │  0.0046 ρ
+ 40     │ ן chunk       │    τ 0.17 │  7.87 ן   │  0.02 τ/ן   │ τ 0.17 (0.584%) │        YES │  0.0041 ן
+ 10     │ κ sturdy      │    τ 0.17 │  7.73 κ   │  0.02 τ/κ   │ τ 0.17 (0.574%) │        YES │  0.0044 κ
+ 26     │ ב alchemy     │    τ 0.17 │  7.72 ב   │  0.02 τ/ב   │ τ 0.17 (0.573%) │        YES │  0.0045 ב
+ 22     │ χ meta        │    τ 0.17 │  7.70 χ   │  0.02 τ/χ   │ τ 0.17 (0.571%) │        YES │  0.0045 χ
+ 24     │ ω omega       │    τ 0.16 │  7.40 ω   │  0.02 τ/ω   │ τ 0.16 (0.549%) │        YES │  0.0043 ω
+ 3      │ γ templar     │    τ 0.16 │  6.55 γ   │  0.02 τ/γ   │ τ 0.16 (0.516%) │        YES │  0.0037 γ
+ 38     │ ם distributed │    τ 0.14 │  6.13 ם   │  0.02 τ/ם   │ τ 0.14 (0.456%) │         NO │  0.0026 ם
+ 31     │ ז naschain    │    τ 0.02 │  0.86 ז   │  0.02 τ/ז   │ τ 0.02 (0.064%) │        YES │  0.0004 ז
+────────┼───────────────┼───────────┼───────────┼─────────────┼─────────────────┼────────────┼───────────
+ 46     │               │  τ 64.54k │           │             │        τ 64.53k │            │
+
+
+
+Wallet:
+  Coldkey SS58: 5HBtpwxuGNL1gwzwomwR7sjwUt8WXYSuWcLYN6f9KpTZkP4k
+  Free Balance: τ 279.3878
+  Total TAO (τ): τ 64.55k
+  Total Value (τ): τ 64.54k
+01/07-20:44 :)
+
+
+
+
+
+
+01/07-20:44 :)  btcli wallet balance
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 addresses (comma-separated)
+(PracticeKey!):
+Using the specified network rao from config
+
+                          Wallet Coldkey Balance
+                              Network: rao
+    Wal…   Coldkey Address                          Fr…   Sta…   Tot…
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Pra…   5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGC…   τ …   τ 0…   τ 1…
+
+
+
+    Tot…                                            τ …   τ 0…   τ 1…
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+01/07-20:44 :)  btcli wallet balance
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 addresses (comma-separated) (PracticeKey!):
+Using the specified network rao from config
+
+                                                 Wallet Coldkey Balance
+                                                      Network: rao
+    Wallet Name     Coldkey Address                                    Free Balance   Staked Balance   Total Balance
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    PracticeKey!    5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq     τ 100.0000         τ 0.0000      τ 100.0000
+
+
+
+    Total Balance                                                        τ 100.0000         τ 0.0000      τ 100.0000
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+01/07-20:44 :)  btcli subnet register
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Netuid: 3
+Using the wallet name from config: PracticeKey!
+Using the wallet hotkey from config: stakinkey1
+Using the specified network rao from config
+
+                                                      Register to netuid: 3
+                                                           Network: rao
+
+ Netuid ┃ Symbol ┃ Cost (τ) ┃                      Hotkey                      ┃                     Coldkey
+━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3    │   γ    │ τ 0.1000 │ 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK │ 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+────────┼────────┼──────────┼──────────────────────────────────────────────────┼──────────────────────────────────────────────────
+        │        │          │                                                  │
+Your balance is: τ 100.0000
+The cost to register by recycle is τ 0.1000
+Do you want to continue? [y/n] (n): y
+Enter your password:
+Decrypting...
+Balance:
+  τ 100.0000 ➡ τ 99.9000
+✅ Registered on netuid 3 with UID 69
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey! --wallet-hotkey forrealkey
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Using the specified network rao from config
+
+                                                       Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)       ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5H8R3bL6UCFiwLjLk4J63SqCwbyVjbfkULmfvKDXyYyGh1oS │  τ 1.0000  │ 40.566266131581386 γ/τ  │ 39.2500 γ │ 3.2447 %
+────────┼──────────────────────────────────────────────────┼────────────┼─────────────────────────┼───────────┼──────────
+        │                                                  │            │                         │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+⠙
+📡 Staking on netuid(s): [3] ...[Error]:
+❌ Failed to stake 1.0 on Netuid 3 with error: Subtensor returned `HotKeyAccountNotExists(Module)` error. This means: `The hotkey does not
+exists`.
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey! --wallet-hotkey forrealkey
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: ^C%
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                        Subnet 3: templar
+                                                          Network: rao
+
+  # ┃ UID ┃ Stake (γ) ┃ Alpha (γ) ┃   Tao (τ) ┃ Dividends ┃ Incentive ┃ Emissions (γ) ┃ Hotkey ┃ Coldkey ┃ Identity
+━━━━╇━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━
+  1 │ 17  │  186.53 γ │  186.53 γ │    τ 0.00 │  0.00034  │  0.0000   │   0.02050 γ   │ 5CykWh │ 5CykWh  │ Owner3 (*Owner)
+  2 │ 154 │  15.25k γ │   44.68 γ │ τ 875.61k │  0.05362  │  0.0000   │   3.22527 γ   │ 5F4tQy │ 5HBtpw  │ Openτensor Foundaτion
+  3 │  7  │  14.10k γ │   99.67 γ │ τ 805.75k │  0.08519  │  0.0000   │   5.12416 γ   │ 5GKH9F │ 5GcCZ2  │ τaosτaτs and Corcel
+  4 │  4  │   9.76k γ │   47.57 γ │ τ 559.35k │  0.05612  │  0.0000   │   3.37568 γ   │ 5HEo56 │ 5E9fVY  │ Foundry
+  5 │ 238 │   8.81k γ │   34.70 γ │ τ 505.49k │  0.04291  │  0.0000   │   2.58102 γ   │ 5FxcZr │ 5GP8N5  │ Polychain
+  6 │ 192 │   7.81k γ │    3.46 γ │ τ 449.51k │  0.03307  │  0.0000   │   1.98900 γ   │ 5GP7c3 │ 5Dkwfx  │ Datura
+  7 │ 85  │   5.41k γ │   27.19 γ │ τ 309.85k │  0.03197  │  0.0000   │   1.92314 γ   │ 5CsvRJ │ 5EJAqc  │ Owl Ventures
+  8 │  6  │   5.37k γ │   56.50 γ │ τ 305.83k │  0.04762  │  0.0000   │   2.86421 γ   │ 5FFApa │ 5GZSAg  │ RoundTable21
+  9 │ 55  │   5.25k γ │   25.38 γ │ τ 300.89k │  0.02999  │  0.0000   │   1.80357 γ   │ 5HK5tp │ 5CAwB3  │ Bittensor Guru
+ 10 │ 182 │   5.05k γ │   24.49 γ │ τ 289.26k │  0.02888  │  0.0000   │   1.73729 γ   │ 5Dd8ga │ 5GBkWR  │ ~
+ 11 │ 13  │   4.00k γ │   19.25 γ │ τ 229.18k │  0.02265  │  0.0000   │   1.36234 γ   │ 5EhvL1 │ 5HJvTn  │ TAO-Validator.com
+ 12 │ 253 │   2.19k γ │    0.00 γ │ τ 126.04k │  0.00793  │  0.0000   │   0.47727 γ   │ 5Hp18g │ 5Fsaw8  │ ~
+────┼─────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────────┼────────┼─────────┼───────────────────────
+    │     │  92.79k γ │   1.06k γ │   5.28m γ │   1.000   │           │   60.1484 γ   │        │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): 2
+
+Selected delegate: 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 (Openτensor Foundaτion)
+
+                                                      Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)      ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 │  τ 1.0000  │ 41.68005291032637 γ/τ  │ 40.3400 γ │ 3.2150 %
+────────┼──────────────────────────────────────────────────┼────────────┼────────────────────────┼───────────┼──────────
+        │                                                  │            │                        │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+⠋
+📡 Staking on netuid(s): [3] ...^C%
+01/07-20:44 :)
+01/07-20:44 :)  git git
+01/07-20:44 :)
+01/07-20:44 :)
+01/07-20:44 :)  git pull
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 12 (delta 9), reused 10 (delta 7), pack-reused 0 (from 0)
+Unpacking objects: 100% (12/12), 931 bytes | 84.00 KiB/s, done.
+From https://github.com/opentensor/btcli
+   11fb7e6..10026e7  rao-games/pools -> origin/rao-games/pools
+Updating 11fb7e6..10026e7
+Fast-forward
+ bittensor_cli/src/bittensor/utils.py  | 2 +-
+ bittensor_cli/src/commands/subnets.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+01/07-20:44 :)  pip3 install .
+Defaulting to user installation because normal site-packages is not writeable
+Processing /Users/michaeltrestman/bittensor_workspace/btcli
+  DEPRECATION: A future pip version will change local packages to be built in-place without first copying to a temporary directory. We recommend you use --use-feature=in-tree-build to test your packages with this new behavior before it becomes the default.
+   pip 21.3 will remove support for this functionality. You can find discussion regarding this at https://github.com/pypa/pip/issues/7555.
+Requirement already satisfied: wheel in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from bittensor-cli==8.2.0rc5) (0.37.0)
+Requirement already satisfied: async-property==0.2.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.2.2)
+Requirement already satisfied: aiohttp~=3.10.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.10.11)
+Requirement already satisfied: backoff~=2.2.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.2.1)
+Requirement already satisfied: GitPython>=3.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.1.43)
+Requirement already satisfied: fuzzywuzzy~=0.18.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.18.0)
+Requirement already satisfied: netaddr~=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.3.0)
+Requirement already satisfied: numpy>=2.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.0.2)
+Requirement already satisfied: Jinja2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.1.4)
+Requirement already satisfied: pycryptodome in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (3.21.0)
+Requirement already satisfied: PyYAML~=6.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (6.0.2)
+Requirement already satisfied: pytest in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (8.3.4)
+Requirement already satisfied: python-Levenshtein in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.26.1)
+Requirement already satisfied: rich~=13.7 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (13.9.4)
+Requirement already satisfied: scalecodec==1.2.11 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.2.11)
+Requirement already satisfied: substrate-interface~=1.7.9 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (1.7.11)
+Requirement already satisfied: typer~=0.12 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.15.1)
+Requirement already satisfied: websockets>=14.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (14.1)
+Requirement already satisfied: bittensor-wallet>=2.0.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (2.1.3)
+Requirement already satisfied: bt-decode==0.4.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-cli==8.2.0rc5) (0.4.0)
+Requirement already satisfied: toml==0.10.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bt-decode==0.4.0->bittensor-cli==8.2.0rc5) (0.10.0)
+Requirement already satisfied: more-itertools in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (10.5.0)
+Requirement already satisfied: requests>=2.24.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.32.3)
+Requirement already satisfied: base58>=2.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.1.1)
+Requirement already satisfied: multidict<7.0,>=4.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (6.1.0)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: frozenlist>=1.1.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (2.4.4)
+Requirement already satisfied: yarl<2.0,>=1.12.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.18.3)
+Requirement already satisfied: aiosignal>=1.1.2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (24.3.0)
+Requirement already satisfied: py-bip39-bindings==0.1.11 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.1.11)
+Requirement already satisfied: cryptography~=43.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (43.0.3)
+Requirement already satisfied: password-strength in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.0.3.post2)
+Requirement already satisfied: termcolor in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.5.0)
+Requirement already satisfied: munch~=2.5.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.5.0)
+Requirement already satisfied: eth-utils<2.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.2.2)
+Requirement already satisfied: cffi>=1.12 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cryptography~=43.0.1->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.17.1)
+Requirement already satisfied: pycparser in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cffi>=1.12->cryptography~=43.0.1->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (2.22)
+Requirement already satisfied: cytoolz>=0.10.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.0.1)
+Requirement already satisfied: eth-typing>=3.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: eth-hash>=0.3.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (0.7.0)
+Requirement already satisfied: toolz>=0.8.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from cytoolz>=0.10.1->eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.0.0)
+Requirement already satisfied: typing-extensions>=4.5.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from eth-typing>=3.0.0->eth-utils<2.3.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (4.12.2)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from GitPython>=3.0.0->bittensor-cli==8.2.0rc5) (4.0.11)
+Requirement already satisfied: smmap<6,>=3.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from gitdb<5,>=4.0.1->GitPython>=3.0.0->bittensor-cli==8.2.0rc5) (5.0.1)
+Requirement already satisfied: six in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages (from munch~=2.5.0->bittensor-wallet>=2.0.2->bittensor-cli==8.2.0rc5) (1.15.0)
+Requirement already satisfied: certifi>=2017.4.17 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2024.12.14)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (2.3.0)
+Requirement already satisfied: idna<4,>=2.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (3.10)
+Requirement already satisfied: charset-normalizer<4,>=2 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from requests>=2.24.0->scalecodec==1.2.11->bittensor-cli==8.2.0rc5) (3.4.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from rich~=13.7->bittensor-cli==8.2.0rc5) (2.18.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from rich~=13.7->bittensor-cli==8.2.0rc5) (3.0.0)
+Requirement already satisfied: mdurl~=0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from markdown-it-py>=2.2.0->rich~=13.7->bittensor-cli==8.2.0rc5) (0.1.2)
+Requirement already satisfied: xxhash<4,>=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (3.5.0)
+Requirement already satisfied: ecdsa<1,>=0.17.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.19.0)
+Requirement already satisfied: py-sr25519-bindings<1,>=0.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.2.1)
+Requirement already satisfied: PyNaCl<2,>=1.0.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: py-ed25519-zebra-bindings<2,>=1.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.1.0)
+Requirement already satisfied: websocket-client<2,>=0.57.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (1.8.0)
+Requirement already satisfied: eth-keys<1,>=0.2.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from substrate-interface~=1.7.9->bittensor-cli==8.2.0rc5) (0.6.0)
+Requirement already satisfied: shellingham>=1.3.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from typer~=0.12->bittensor-cli==8.2.0rc5) (1.5.4)
+Requirement already satisfied: click>=8.0.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from typer~=0.12->bittensor-cli==8.2.0rc5) (8.1.7)
+Requirement already satisfied: propcache>=0.2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from yarl<2.0,>=1.12.0->aiohttp~=3.10.2->bittensor-cli==8.2.0rc5) (0.2.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from Jinja2->bittensor-cli==8.2.0rc5) (3.0.2)
+Requirement already satisfied: packaging in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (24.2)
+Requirement already satisfied: iniconfig in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (2.0.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (1.2.2)
+Requirement already satisfied: tomli>=1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (2.2.1)
+Requirement already satisfied: pluggy<2,>=1.5 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from pytest->bittensor-cli==8.2.0rc5) (1.5.0)
+Requirement already satisfied: Levenshtein==0.26.1 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from python-Levenshtein->bittensor-cli==8.2.0rc5) (0.26.1)
+Requirement already satisfied: rapidfuzz<4.0.0,>=3.9.0 in /Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages (from Levenshtein==0.26.1->python-Levenshtein->bittensor-cli==8.2.0rc5) (3.11.0)
+Building wheels for collected packages: bittensor-cli
+  Building wheel for bittensor-cli (setup.py) ... done
+  Created wheel for bittensor-cli: filename=bittensor_cli-8.2.0rc5-py3-none-any.whl size=194584 sha256=72dfe50199e768092ef8fb90a2d15eb2815844e80b4b22145dc1cbd1577dedcb
+  Stored in directory: /private/var/folders/9q/_0prfj296sl8z881x1zf0k2c0000gn/T/pip-ephem-wheel-cache-gdzb79my/wheels/6b/b4/85/a1c8f750330cf32c9cb0602da6dd5484288004d63c78ac40c4
+Successfully built bittensor-cli
+Installing collected packages: bittensor-cli
+  Attempting uninstall: bittensor-cli
+    Found existing installation: bittensor-cli 8.2.0rc5
+    Uninstalling bittensor-cli-8.2.0rc5:
+      Successfully uninstalled bittensor-cli-8.2.0rc5
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bittensor 8.3.1 requires bt-decode==0.2.0a0, but you have bt-decode 0.4.0 which is incompatible.
+Successfully installed bittensor-cli-8.2.0rc5
+WARNING: You are using pip version 21.2.4; however, version 24.3.1 is available.
+You should consider upgrading via the '/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip' command.
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                   Subnet 3: templar
+                                                      Network: rao
+
+┃ UID ┃ Stake (… ┃ Alpha (γ) ┃  Tao (τ) ┃ Dividends ┃ Incenti… ┃ Emissions (γ) ┃ Hotk… ┃ Coldkey ┃ Identity
+╇━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━
+│ 17  │ 188.64 γ │  188.64 γ │   τ 0.00 │  0.00034  │  0.0000  │   0.02050 γ   │ 5Cyk… │ 5CykWh  │ Owner3 (*Owner)
+│ 154 │ 15.25k γ │   44.68 γ │ τ 875.6… │  0.05362  │  0.0000  │   3.22527 γ   │ 5F4t… │ 5HBtpw  │ Openτensor Foundaτi…
+│  7  │ 14.10k γ │   99.67 γ │ τ 805.7… │  0.08519  │  0.0000  │   5.12416 γ   │ 5GKH… │ 5GcCZ2  │ τaosτaτs and Corcel
+│  4  │  9.76k γ │   47.57 γ │ τ 559.3… │  0.05612  │  0.0000  │   3.37568 γ   │ 5HEo… │ 5E9fVY  │ Foundry
+│ 238 │  8.81k γ │   34.70 γ │ τ 505.4… │  0.04291  │  0.0000  │   2.58102 γ   │ 5Fxc… │ 5GP8N5  │ Polychain
+│ 192 │  7.81k γ │    3.46 γ │ τ 449.5… │  0.03307  │  0.0000  │   1.98900 γ   │ 5GP7… │ 5Dkwfx  │ Datura
+│ 85  │  5.41k γ │   27.19 γ │ τ 309.8… │  0.03197  │  0.0000  │   1.92314 γ   │ 5Csv… │ 5EJAqc  │ Owl Ventures
+│  6  │  5.37k γ │   56.50 γ │ τ 305.8… │  0.04762  │  0.0000  │   2.86421 γ   │ 5FFA… │ 5GZSAg  │ RoundTable21
+│ 55  │  5.25k γ │   25.38 γ │ τ 300.8… │  0.02999  │  0.0000  │   1.80357 γ   │ 5HK5… │ 5CAwB3  │ Bittensor Guru
+│ 182 │  5.05k γ │   24.49 γ │ τ 289.2… │  0.02888  │  0.0000  │   1.73729 γ   │ 5Dd8… │ 5GBkWR  │ ~
+│ 13  │  4.00k γ │   19.25 γ │ τ 229.1… │  0.02265  │  0.0000  │   1.36234 γ   │ 5Ehv… │ 5HJvTn  │ TAO-Validator.com
+│ 253 │  2.19k γ │    0.00 γ │ τ 126.0… │  0.00793  │  0.0000  │   0.47727 γ   │ 5Hp1… │ 5Fsaw8  │ ~
+┼─────┼──────────┼───────────┼──────────┼───────────┼──────────┼───────────────┼───────┼─────────┼──────────────────────
+│     │ 92.79k γ │   1.06k γ │  5.28m γ │   1.000   │          │   60.1484 γ   │       │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): ^C%
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+01/07-20:44 :)  btcli stake add --amount 1 --wallet-name PracticeKey!
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet hotkey name or ss58 address to stake to (or Press Enter to view delegates):
+Using the specified network rao from config
+
+
+
+                                                        Subnet 3: templar
+                                                          Network: rao
+
+  # ┃ UID ┃ Stake (γ) ┃ Alpha (γ) ┃   Tao (τ) ┃ Dividends ┃ Incentive ┃ Emissions (γ) ┃ Hotkey ┃ Coldkey ┃ Identity
+━━━━╇━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━
+  1 │ 17  │  188.64 γ │  188.64 γ │    τ 0.00 │  0.00034  │  0.0000   │   0.02050 γ   │ 5CykWh │ 5CykWh  │ Owner3 (*Owner)
+  2 │ 154 │  15.25k γ │   44.68 γ │ τ 875.61k │  0.05362  │  0.0000   │   3.22527 γ   │ 5F4tQy │ 5HBtpw  │ Openτensor Foundaτion
+  3 │  7  │  14.10k γ │   99.67 γ │ τ 805.75k │  0.08519  │  0.0000   │   5.12416 γ   │ 5GKH9F │ 5GcCZ2  │ τaosτaτs and Corcel
+  4 │  4  │   9.76k γ │   47.57 γ │ τ 559.35k │  0.05612  │  0.0000   │   3.37568 γ   │ 5HEo56 │ 5E9fVY  │ Foundry
+  5 │ 238 │   8.81k γ │   34.70 γ │ τ 505.49k │  0.04291  │  0.0000   │   2.58102 γ   │ 5FxcZr │ 5GP8N5  │ Polychain
+  6 │ 192 │   7.81k γ │    3.46 γ │ τ 449.51k │  0.03307  │  0.0000   │   1.98900 γ   │ 5GP7c3 │ 5Dkwfx  │ Datura
+  7 │ 85  │   5.41k γ │   27.19 γ │ τ 309.85k │  0.03197  │  0.0000   │   1.92314 γ   │ 5CsvRJ │ 5EJAqc  │ Owl Ventures
+  8 │  6  │   5.37k γ │   56.50 γ │ τ 305.83k │  0.04762  │  0.0000   │   2.86421 γ   │ 5FFApa │ 5GZSAg  │ RoundTable21
+  9 │ 55  │   5.25k γ │   25.38 γ │ τ 300.89k │  0.02999  │  0.0000   │   1.80357 γ   │ 5HK5tp │ 5CAwB3  │ Bittensor Guru
+ 10 │ 182 │   5.05k γ │   24.49 γ │ τ 289.26k │  0.02888  │  0.0000   │   1.73729 γ   │ 5Dd8ga │ 5GBkWR  │ ~
+ 11 │ 13  │   4.00k γ │   19.25 γ │ τ 229.18k │  0.02265  │  0.0000   │   1.36234 γ   │ 5EhvL1 │ 5HJvTn  │ TAO-Validator.com
+ 12 │ 253 │   2.19k γ │    0.00 γ │ τ 126.05k │  0.00793  │  0.0000   │   0.47727 γ   │ 5Hp18g │ 5Fsaw8  │ ~
+────┼─────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────────┼────────┼─────────┼───────────────────────
+    │     │  92.79k γ │   1.06k γ │   5.28m γ │   1.000   │           │   60.1484 γ   │        │         │
+
+
+
+Enter the number of the delegate you want to stake to (or press Enter to cancel) (): 2
+
+Selected delegate: 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 (Openτensor Foundaτion)
+
+                                                       Staking to:
+                  Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                      Network: rao
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)       ┃ Received  ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3 │  τ 1.0000  │ 42.470312932732675 γ/τ  │ 41.1183 γ │ 3.1835 %
+────────┼──────────────────────────────────────────────────┼────────────┼─────────────────────────┼───────────┼──────────
+        │                                                  │            │                         │           │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+Balance:
+  τ 99.9000 ➡ τ 98.9000
+Subnet: 3 Stake:
+  τ 0.0000 ➡ 41.1782 γ
+01/07-20:44 :)  btcli stake list
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 address (PracticeKey!):
+Using the specified network rao from config
+
+          Hotkey: Openτensor Foundaτion (5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3)
+                                            Network: rao
+
+                             See below for an explanation of the columns
+
+        ┃           ┃     Value ┃           ┃    Price    ┃                 ┃            ┃  Emission
+ Netuid ┃ Name      ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃   Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 3      │ γ templar │    τ 1.03 │  41.18 γ  │  0.03 τ/γ   │ τ 1.00 (3.179%) │        YES │  0.0037 γ
+────────┼───────────┼───────────┼───────────┼─────────────┼─────────────────┼────────────┼───────────
+ 1      │           │    τ 1.03 │           │             │          τ 1.00 │            │
+
+
+
+Wallet:
+  Coldkey SS58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+  Free Balance: τ 98.9000
+  Total TAO (τ): τ 1.13
+  Total Value (τ): τ 1.03
+01/07-20:44 :)  btcli st list --network rao --ss58 5HBtpwxuGNL1gwzwomwR7sjwUt8WXYSuWcLYN6f9KpTZkP4k
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+            Hotkey: Openτensor Foundaτion (5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3)
+                                              Network: rao
+
+                               See below for an explanation of the columns
+
+        ┃               ┃     Value ┃           ┃    Price    ┃                 ┃            ┃  Emission
+ Netuid ┃ Name          ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃   Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 0      │ τ root        │  τ 64.50k │ τ 64.50k  │  1.00 τ/τ   │    N/A (0.000%) │        YES │  τ 0.0000
+ 39     │ מ edge        │    τ 2.26 │ 102.06 מ  │  0.02 τ/מ   │ τ 2.10 (7.077%) │        YES │  0.0716 מ
+ 14     │ ξ palaidn     │    τ 2.01 │  90.79 ξ  │  0.02 τ/ξ   │ τ 1.88 (6.345%) │        YES │  0.0683 ξ
+ 15     │ ο deval       │    τ 1.95 │  88.17 ο  │  0.02 τ/ο   │ τ 1.83 (6.173%) │        YES │  0.0679 ο
+ 9      │ ι pretrain    │    τ 1.82 │  80.46 ι  │  0.02 τ/ι   │ τ 1.71 (5.712%) │        YES │  0.0541 ι
+ 34     │ י mind        │    τ 1.69 │  76.08 י  │  0.02 τ/י   │ τ 1.60 (5.372%) │        YES │  0.0514 י
+ 20     │ υ bitagent    │    τ 1.62 │  73.04 υ  │  0.02 τ/υ   │ τ 1.53 (5.169%) │        YES │  0.0537 υ
+ 13     │ ν dataverse   │    τ 1.60 │  72.17 ν  │  0.02 τ/ν   │ τ 1.52 (5.110%) │        YES │  0.0526 ν
+ 43     │ ע graphite    │    τ 1.59 │  71.56 ע  │  0.02 τ/ע   │ τ 1.51 (5.069%) │        YES │  0.0482 ע
+ 11     │ λ dippy       │    τ 1.56 │  70.52 λ  │  0.02 τ/λ   │ τ 1.48 (4.999%) │        YES │  0.0512 λ
+ 23     │ ψ social      │    τ 1.55 │  69.80 ψ  │  0.02 τ/ψ   │ τ 1.47 (4.951%) │        YES │  0.0515 ψ
+ 1      │ α apex        │    τ 1.53 │  69.07 α  │  0.02 τ/α   │ τ 1.46 (4.902%) │        YES │  0.0509 α
+ 29     │ ה coldint     │    τ 1.53 │  68.95 ה  │  0.02 τ/ה   │ τ 1.45 (4.894%) │        YES │  0.0499 ה
+ 2      │ β omron       │    τ 1.52 │  68.43 β  │  0.02 τ/β   │ τ 1.44 (4.858%) │        YES │  0.0493 β
+ 28     │ ד oracle      │    τ 1.51 │  68.29 ד  │  0.02 τ/ד   │ τ 1.44 (4.849%) │        YES │  0.0509 ד
+ 19     │ t inference   │    τ 1.51 │  67.99 t  │  0.02 τ/t   │ τ 1.43 (4.829%) │        YES │  0.0500 t
+ 32     │ ח itsai       │    τ 1.50 │  67.64 ח  │  0.02 τ/ח   │ τ 1.43 (4.805%) │        YES │  0.0504 ח
+ 18     │ σ cortex      │    τ 1.44 │  64.86 σ  │  0.02 τ/σ   │ τ 1.37 (4.616%) │        YES │  0.0487 σ
+ 25     │ א protein     │    τ 1.40 │  63.27 א  │  0.02 τ/א   │ τ 1.34 (4.508%) │        YES │  0.0475 א
+ 6      │ ζ infinite    │    τ 1.39 │  62.80 ζ  │  0.02 τ/ζ   │ τ 1.33 (4.476%) │        YES │  0.0448 ζ
+ 21     │ φ any-any     │    τ 1.27 │  57.18 φ  │  0.02 τ/φ   │ τ 1.22 (4.092%) │        YES │  0.0424 φ
+ 33     │ ט ready       │    τ 1.22 │  55.19 ט  │  0.02 τ/ט   │ τ 1.17 (3.956%) │        YES │  0.0447 ט
+ 8      │ θ ptn         │    τ 1.20 │  54.24 θ  │  0.02 τ/θ   │ τ 1.15 (3.890%) │        YES │  0.0387 θ
+ 4      │ δ targon      │    τ 1.00 │  45.18 δ  │  0.02 τ/δ   │ τ 0.97 (3.261%) │         NO │  0.0209 δ
+ 51     │ ת celium      │    τ 0.71 │  32.16 ת  │  0.02 τ/ת   │ τ 0.70 (2.343%) │         NO │  0.0111 ת
+ 45     │ פ gen42       │    τ 0.31 │  13.94 פ  │  0.02 τ/פ   │ τ 0.31 (1.029%) │        YES │  0.0072 פ
+ 12     │ μ horde       │    τ 0.30 │  13.45 μ  │  0.02 τ/μ   │ τ 0.30 (0.994%) │        YES │  0.0074 μ
+ 37     │ ל tuning      │    τ 0.23 │  10.37 ל  │  0.02 τ/ל   │ τ 0.23 (0.768%) │         NO │  0.0032 ל
+ 44     │ ף score       │    τ 0.20 │  9.00 ף   │  0.02 τ/ף   │ τ 0.20 (0.667%) │        YES │  0.0048 ף
+ 35     │ ך logic       │    τ 0.20 │  8.83 ך   │  0.02 τ/ך   │ τ 0.19 (0.655%) │        YES │  0.0046 ך
+ 16     │ π bitads      │    τ 0.20 │  8.81 π   │  0.02 τ/π   │ τ 0.19 (0.653%) │        YES │  0.0050 π
+ 30     │ ו bet         │    τ 0.19 │  8.72 ו   │  0.02 τ/ו   │ τ 0.19 (0.647%) │        YES │  0.0044 ו
+ 7      │ η subvortex   │    τ 0.19 │  8.67 η   │  0.02 τ/η   │ τ 0.19 (0.643%) │        YES │  0.0045 η
+ 5      │ ε kaito       │    τ 0.19 │  8.57 ε   │  0.02 τ/ε   │ τ 0.19 (0.635%) │        YES │  0.0045 ε
+ 27     │ ג compute     │    τ 0.19 │  8.45 ג   │  0.02 τ/ג   │ τ 0.19 (0.626%) │        YES │  0.0050 ג
+ 41     │ נ sportsensor │    τ 0.19 │  8.42 נ   │  0.02 τ/נ   │ τ 0.19 (0.624%) │        YES │  0.0045 נ
+ 42     │ ס masa        │    τ 0.18 │  8.18 ס   │  0.02 τ/ס   │ τ 0.18 (0.607%) │        YES │  0.0044 ס
+ 17     │ ρ 3gen        │    τ 0.18 │  7.99 ρ   │  0.02 τ/ρ   │ τ 0.18 (0.593%) │        YES │  0.0046 ρ
+ 40     │ ן chunk       │    τ 0.17 │  7.87 ן   │  0.02 τ/ן   │ τ 0.17 (0.584%) │        YES │  0.0041 ן
+ 10     │ κ sturdy      │    τ 0.17 │  7.73 κ   │  0.02 τ/κ   │ τ 0.17 (0.574%) │        YES │  0.0044 κ
+ 26     │ ב alchemy     │    τ 0.17 │  7.72 ב   │  0.02 τ/ב   │ τ 0.17 (0.573%) │        YES │  0.0045 ב
+ 22     │ χ meta        │    τ 0.17 │  7.70 χ   │  0.02 τ/χ   │ τ 0.17 (0.571%) │        YES │  0.0045 χ
+ 24     │ ω omega       │    τ 0.16 │  7.40 ω   │  0.02 τ/ω   │ τ 0.16 (0.549%) │        YES │  0.0043 ω
+ 3      │ γ templar     │    τ 0.16 │  6.55 γ   │  0.02 τ/γ   │ τ 0.16 (0.516%) │        YES │  0.0037 γ
+ 38     │ ם distributed │    τ 0.14 │  6.13 ם   │  0.02 τ/ם   │ τ 0.14 (0.456%) │         NO │  0.0026 ם
+ 31     │ ז naschain    │    τ 0.02 │  0.86 ז   │  0.02 τ/ז   │ τ 0.02 (0.064%) │        YES │  0.0004 ז
+────────┼───────────────┼───────────┼───────────┼─────────────┼─────────────────┼────────────┼───────────
+ 46     │               │  τ 64.54k │           │             │        τ 64.53k │            │
+
+
+
+Wallet:
+  Coldkey SS58: 5HBtpwxuGNL1gwzwomwR7sjwUt8WXYSuWcLYN6f9KpTZkP4k
+  Free Balance: τ 279.3878
+  Total TAO (τ): τ 64.55k
+  Total Value (τ): τ 64.54k
+01/07-20:44 :)  btcli stake remove
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids: 3
+Enter the wallet name (PracticeKey!): ^C%
+01/07-20:44 :)  btcli stake remove
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the netuid to use. Leave blank for all netuids:
+Enter the wallet name (PracticeKey!):
+Enter the hotkey name or ss58 address to unstake from (or Press Enter to view existing staked hotkeys):
+Using the specified network rao from config
+
+
+
+                                    Hotkeys with Stakes
+
+ Index ┃ Identity              ┃ Netuids ┃ Hotkey Address
+━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     0 │ Openτensor Foundaτion │ 3       │ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3
+───────┼───────────────────────┼─────────┼──────────────────────────────────────────────────
+       │                       │         │
+
+Enter the index of the hotkey you want to unstake from [0]:  0
+
+
+
+                 Stakes for hotkey
+               Openτensor Foundaτion
+ 5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3
+
+ Subnet ┃ Symbol ┃ Stake Amount ┃ RATE (τ_in/α_in)
+━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━
+      3 │ γ      │ 41.1782 γ    │ 0.0247 τ/γ
+────────┼────────┼──────────────┼──────────────────
+        │        │              │
+
+
+
+Enter the netuids of the subnets to unstake from (comma-separated), or 'all' to unstake from all (all): 3
+Tip: Enter 'q' any time to skip further entries and process existing unstakes
+Unstake all: 41.1782 γ from Openτensor Foundaτion on netuid: 3?  [y/n/q] (n): y
+
+                                      Unstaking to:
+   Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                       Network: rao
+
+ Netuid ┃        Hotkey         ┃ Amount (α) ┃    Rate (τ/α)    ┃ Received (τ) ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━
+   3    │ Openτensor Foundaτion │ 41.1782 γ  │ 0.024674058(τ/γ) │   τ 0.9844   │ 3.1134 %
+────────┼───────────────────────┼────────────┼──────────────────┼──────────────┼──────────
+        │                       │            │                  │   τ 0.9844   │
+
+Description:
+The table displays information about the stake remove operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are unstaking from.
+    - Hotkey: The ss58 address or identity of the hotkey you are unstaking from.
+    - Amount: The stake amount you are removing from this key.
+    - Rate: The rate of exchange between TAO and the subnet's stake.
+    - Received: The amount of free balance TAO you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the unstake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+Balance:
+  τ 98.9000 ➡ τ 99.8796
+Subnet: 3 Stake:
+  41.1782 γ ➡ 0.0000 γ
+Unstaking operations completed.
+01/07-20:44 :)  btcli wallet balance
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Enter the wallet name or coldkey ss58 addresses (comma-separated) (PracticeKey!):
+Using the specified network rao from config
+
+                                                 Wallet Coldkey Balance
+                                                      Network: rao
+    Wallet Name     Coldkey Address                                    Free Balance   Staked Balance   Total Balance
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    PracticeKey!    5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq      τ 99.8796         τ 0.0000       τ 99.8796
+
+
+
+    Total Balance                                                         τ 99.8796         τ 0.0000       τ 99.8796
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+01/07-20:44 :)  btcli subnet show
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Netuid: 3
+Using the specified network rao from config
+
+
+
+                                                    Subnet 3: templar
+                                                       Network: rao
+
+ UID ┃ Stake (γ) ┃ Alpha (γ) ┃   Tao (τ) ┃ Dividends ┃ Incentive ┃ Emissions (γ) ┃ Hotk… ┃ Coldkey ┃ Identity
+━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━
+ 17  │  201.33 γ │  201.33 γ │    τ 0.00 │  0.00039  │  0.0000   │   0.02232 γ   │ 5Cyk… │ 5CykWh  │ Owner3 (*Owner)
+ 154 │  15.26k γ │   48.13 γ │ τ 875.62k │  0.05454  │  0.0000   │   3.14777 γ   │ 5F4t… │ 5HBtpw  │ Openτensor Foundaτi…
+  7  │  14.10k γ │  104.91 γ │ τ 805.75k │  0.08498  │  0.0000   │   4.90475 γ   │ 5GKH… │ 5GcCZ2  │ τaosτaτs and Corcel
+  4  │   9.77k γ │   50.81 γ │ τ 559.36k │  0.05613  │  0.0000   │   3.23988 γ   │ 5HEo… │ 5E9fVY  │ Foundry
+ 238 │   8.82k γ │   37.19 γ │ τ 505.49k │  0.04315  │  0.0000   │   2.49027 γ   │ 5Fxc… │ 5GP8N5  │ Polychain
+ 192 │   7.81k γ │    3.70 γ │ τ 449.52k │  0.03437  │  0.0000   │   1.98362 γ   │ 5GP7… │ 5Dkwfx  │ Datura
+ 85  │   5.41k γ │   29.03 γ │ τ 309.86k │  0.03197  │  0.0000   │   1.84510 γ   │ 5Csv… │ 5EJAqc  │ Owl Ventures
+  6  │   5.37k γ │   59.72 γ │ τ 305.83k │  0.04601  │  0.0000   │   2.65575 γ   │ 5FFA… │ 5GZSAg  │ RoundTable21
+ 55  │   5.25k γ │   27.11 γ │ τ 300.90k │  0.03000  │  0.0000   │   1.73132 γ   │ 5HK5… │ 5CAwB3  │ Bittensor Guru
+ 182 │   5.05k γ │   26.15 γ │ τ 289.26k │  0.02889  │  0.0000   │   1.66736 γ   │ 5Dd8… │ 5GBkWR  │ ~
+ 13  │   4.00k γ │   20.56 γ │ τ 229.19k │  0.02265  │  0.0000   │   1.30710 γ   │ 5Ehv… │ 5HJvTn  │ TAO-Validator.com
+ 253 │   2.19k γ │    0.00 γ │ τ 126.05k │  0.00836  │  0.0000   │   0.48234 γ   │ 5Hp1… │ 5Fsaw8  │ ~
+ 162 │   1.88k γ │   10.72 γ │ τ 107.68k │  0.01145  │  0.0000   │   0.66108 γ   │ 5G1N… │ 5DyMLU  │ ~
+ 14  │   1.53k γ │    5.76 γ │  τ 87.65k │  0.00636  │  0.0000   │   0.36728 γ   │ 5F2C… │ 5CMEwR  │ Rizzo
+ 247 │  972.89 γ │    0.69 γ │  τ 55.97k │  0.00583  │  0.0000   │   0.33647 γ   │ 5DQ2… │ 5DALJz  │ TAO Miner's Union
+ 252 │  933.88 γ │    0.00 γ │  τ 53.76k │  0.00361  │  0.0000   │   0.20865 γ   │ 5F27… │ 5GYXZB  │ Love
+  5  │  844.67 γ │    4.50 γ │  τ 48.37k │  0.00496  │  0.0000   │   0.28637 γ   │ 5HbS… │ 5F4Xca  │ ~
+ 98  │  751.48 γ │    4.01 γ │  τ 43.03k │  0.00442  │  0.0000   │   0.25537 γ   │ 5CVS… │ 5EsutA  │ Ary van der Touw
+ 197 │  611.21 γ │    3.14 γ │  τ 35.01k │  0.00353  │  0.0000   │   0.20382 γ   │ 5Fq5… │ 5EqnBs  │ NorthTensor
+ 140 │  577.41 γ │    0.00 γ │  τ 33.24k │  0.00219  │  0.0000   │   0.12615 γ   │ 5FFM… │ 5GyAMY  │ PRvalidator
+ 83  │  419.09 γ │    1.28 γ │  τ 24.05k │  0.00188  │  0.0000   │   0.10823 γ   │ 5D4o… │ 5HnDZj  │ Neos Lαbs
+ 82  │  369.24 γ │    0.00 γ │  τ 21.26k │  0.00144  │  0.0000   │   0.08312 γ   │ 5Gmv… │ 5Cyfk5  │ Neural Internet
+ 176 │  172.37 γ │    0.91 γ │   τ 9.87k │  0.00101  │  0.0000   │   0.05809 γ   │ 5ED6… │ 5CrBAG  │ Giga Corporation
+ 155 │  140.53 γ │  140.53 γ │    τ 0.00 │  0.15499  │  0.3100   │   8.94604 γ   │ 5GNc… │ 5DA9w1  │ ~
+ 186 │  110.68 γ │  110.68 γ │    τ 0.00 │  0.12206  │  0.2441   │   7.04491 γ   │ 5HdZ… │ 5DA9w1  │ ~
+ 200 │   72.05 γ │   72.05 γ │    τ 0.00 │  0.07941  │  0.1588   │   4.58334 γ   │ 5GsU… │ 5DA9w1  │ ~
+ 68  │   68.58 γ │    0.00 γ │   τ 3.95k │  0.00001  │  0.0000   │   0.00048 γ   │ 5HeK… │ 5GRPcZ  │ TaoStation
+ 36  │   38.27 γ │   38.24 γ │    τ 1.79 │  0.01189  │  0.0000   │   0.68641 γ   │ 5GYY… │ 5F953E  │ ~
+ 100 │   32.59 γ │   32.46 γ │    τ 7.17 │  0.03580  │  0.0716   │   2.06644 γ   │ 5CZw… │ 5HEAyV  │ ~
+ 97  │   28.32 γ │   28.19 γ │    τ 7.42 │  0.03109  │  0.0622   │   1.79421 γ   │ 5E2W… │ 5HEAyV  │ ~
+ 201 │   23.45 γ │   23.45 γ │    τ 0.00 │  0.02586  │  0.0517   │   1.49254 γ   │ 5FhB… │ 5DA9w1  │ ~
+ 202 │   12.64 γ │   12.64 γ │    τ 0.00 │  0.01392  │  0.0278   │   0.80323 γ   │ 5CDi… │ 5DA9w1  │ ~
+ 203 │   12.01 γ │   12.01 γ │    τ 0.00 │  0.01323  │  0.0265   │   0.76376 γ   │ 5GuM… │ 5DA9w1  │ ~
+ 148 │    3.98 γ │    0.00 γ │  τ 229.17 │  0.00000  │  0.0000   │   0.00024 γ   │ 5DM7… │ 5DkRoc  │ Corτex Foundaτion
+ 206 │    3.53 γ │    3.53 γ │    τ 0.00 │  0.00388  │  0.0078   │   0.22393 γ   │ 5CFz… │ 5DA9w1  │ ~
+ 204 │    3.24 γ │    3.24 γ │    τ 0.00 │  0.00357  │  0.0071   │   0.20582 γ   │ 5HMj… │ 5DA9w1  │ ~
+ 208 │    2.06 γ │    2.06 γ │    τ 0.00 │  0.00227  │  0.0045   │   0.13115 γ   │ 5EJ4… │ 5DA9w1  │ ~
+ 210 │    1.45 γ │    1.45 γ │    τ 0.00 │  0.00160  │  0.0032   │   0.09258 γ   │ 5DUF… │ 5DA9w1  │ ~
+ 138 │    1.21 γ │    1.21 γ │    τ 0.00 │  0.00133  │  0.0026   │   0.07655 γ   │ 5FX2… │ 5EjvHW  │ ~
+ 209 │    1.06 γ │    1.06 γ │    τ 0.00 │  0.00117  │  0.0023   │   0.06761 γ   │ 5G4e… │ 5DA9w1  │ ~
+ 126 │    0.93 γ │    0.93 γ │    τ 0.00 │  0.00102  │  0.0020   │   0.05915 γ   │ 5HZJ… │ 5EjvHW  │ ~
+ 121 │    0.82 γ │    0.82 γ │    τ 0.21 │  0.00090  │  0.0018   │   0.05200 γ   │ 5Exs… │ 5Ggjx5  │ ~
+ 130 │    0.62 γ │    0.62 γ │    τ 0.16 │  0.00069  │  0.0014   │   0.03959 γ   │ 5CtA… │ 5Ggjx5  │ ~
+ 205 │    0.61 γ │    0.61 γ │    τ 0.00 │  0.00067  │  0.0013   │   0.03864 γ   │ 5Fy3… │ 5EjvHW  │ ~
+ 23  │    0.58 γ │    0.58 γ │    τ 0.01 │  0.00064  │  0.0013   │   0.03694 γ   │ 5EJS… │ 5EjvHW  │ ~
+ 139 │    0.50 γ │    0.50 γ │    τ 0.10 │  0.00055  │  0.0011   │   0.03187 γ   │ 5HTv… │ 5Ggjx5  │ ~
+ 122 │    0.43 γ │    0.43 γ │    τ 0.21 │  0.00047  │  0.0009   │   0.02718 γ   │ 5FER… │ 5Ggjx5  │ ~
+ 236 │    0.40 γ │    0.40 γ │    τ 0.00 │  0.00044  │  0.0009   │   0.02558 γ   │ 5Ea7… │ 5EjvHW  │ ~
+ 149 │    0.37 γ │    0.37 γ │    τ 0.00 │  0.00041  │  0.0008   │   0.02367 γ   │ 5DP7… │ 5EjvHW  │ ~
+ 115 │    0.33 γ │    0.33 γ │    τ 0.00 │  0.00036  │  0.0007   │   0.02102 γ   │ 5H63… │ 5EjvHW  │ ~
+ 167 │    0.30 γ │    0.30 γ │    τ 0.00 │  0.00033  │  0.0007   │   0.01920 γ   │ 5Dy6… │ 5EjvHW  │ ~
+ 175 │    0.27 γ │    0.00 γ │   τ 15.28 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FHo… │ 5FEmR5  │ ~
+ 169 │    0.25 γ │    0.25 γ │    τ 0.00 │  0.00028  │  0.0005   │   0.01613 γ   │ 5HTY… │ 5EjvHW  │ ~
+ 166 │    0.25 γ │    0.25 γ │    τ 0.00 │  0.00027  │  0.0005   │   0.01557 γ   │ 5Gry… │ 5EjvHW  │ ~
+ 160 │    0.23 γ │    0.23 γ │    τ 0.05 │  0.00025  │  0.0005   │   0.01443 γ   │ 5CFb… │ 5Ggjx5  │ ~
+ 131 │    0.22 γ │    0.22 γ │    τ 0.00 │  0.00024  │  0.0005   │   0.01412 γ   │ 5G2A… │ 5EjvHW  │ ~
+ 141 │    0.20 γ │    0.20 γ │    τ 0.08 │  0.00022  │  0.0004   │   0.01252 γ   │ 5DDQ… │ 5Ggjx5  │ ~
+ 163 │    0.16 γ │    0.16 γ │    τ 0.04 │  0.00018  │  0.0004   │   0.01041 γ   │ 5HN3… │ 5Ggjx5  │ ~
+ 165 │    0.12 γ │    0.12 γ │    τ 0.02 │  0.00013  │  0.0002   │   0.00746 γ   │ 5DwQ… │ 5Ggjx5  │ ~
+ 136 │    0.11 γ │    0.11 γ │    τ 0.00 │  0.00012  │  0.0002   │   0.00704 γ   │ 5Et6… │ 5EjvHW  │ ~
+ 170 │    0.11 γ │    0.11 γ │    τ 0.02 │  0.00012  │  0.0002   │   0.00688 γ   │ 5FnR… │ 5Ggjx5  │ ~
+ 173 │    0.11 γ │    0.11 γ │    τ 0.00 │  0.00012  │  0.0002   │   0.00680 γ   │ 5HDh… │ 5EjvHW  │ ~
+ 108 │    0.09 γ │    0.03 γ │    τ 3.59 │  0.00003  │  0.0000   │   0.00169 γ   │ 5F54… │ 5FPMxT  │ ~
+ 168 │    0.08 γ │    0.08 γ │    τ 0.02 │  0.00009  │  0.0002   │   0.00517 γ   │ 5EPR… │ 5Ggjx5  │ ~
+ 234 │    0.08 γ │    0.08 γ │    τ 0.00 │  0.00008  │  0.0002   │   0.00486 γ   │ 5GnR… │ 5E57Cw  │ ~
+ 178 │    0.07 γ │    0.07 γ │    τ 0.02 │  0.00008  │  0.0002   │   0.00451 γ   │ 5FQz… │ 5Ggjx5  │ ~
+ 171 │    0.07 γ │    0.07 γ │    τ 0.00 │  0.00007  │  0.0001   │   0.00424 γ   │ 5CMM… │ 5EjvHW  │ ~
+ 156 │    0.07 γ │    0.07 γ │    τ 0.00 │  0.00007  │  0.0001   │   0.00420 γ   │ 5HbR… │ 5EjvHW  │ ~
+ 157 │    0.06 γ │    0.06 γ │    τ 0.09 │  0.00007  │  0.0001   │   0.00399 γ   │ 5DtD… │ 5E57Cw  │ ~
+ 60  │    0.05 γ │    0.00 γ │    τ 3.14 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HNC… │ 5DX5Ga  │ ~
+ 232 │    0.05 γ │    0.05 γ │    τ 0.00 │  0.00006  │  0.0001   │   0.00343 γ   │ 5GQT… │ 5CzBrs  │ ~
+ 184 │    0.05 γ │    0.05 γ │    τ 0.01 │  0.00006  │  0.0001   │   0.00343 γ   │ 5D7J… │ 5HYjMt  │ ~
+ 242 │    0.05 γ │    0.00 γ │    τ 2.98 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CZx… │ 5E57Cw  │ ~
+ 40  │    0.05 γ │    0.00 γ │    τ 2.93 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Cvy… │ 5CJwB8  │ ~
+ 124 │    0.05 γ │    0.05 γ │    τ 0.00 │  0.00005  │  0.0001   │   0.00314 γ   │ 5H48… │ 5EjvHW  │ ~
+ 183 │    0.05 γ │    0.05 γ │    τ 0.01 │  0.00005  │  0.0001   │   0.00313 γ   │ 5CAL… │ 5Ggjx5  │ ~
+ 143 │    0.05 γ │    0.05 γ │    τ 0.00 │  0.00005  │  0.0001   │   0.00300 γ   │ 5GEL… │ 5E57Cw  │ ~
+ 146 │    0.05 γ │    0.05 γ │    τ 0.00 │  0.00005  │  0.0001   │   0.00292 γ   │ 5DwJ… │ 5E57Cw  │ ~
+ 158 │    0.04 γ │    0.04 γ │    τ 0.00 │  0.00005  │  0.0001   │   0.00272 γ   │ 5HEi… │ 5EjvHW  │ ~
+ 134 │    0.04 γ │    0.04 γ │    τ 0.00 │  0.00005  │  0.0001   │   0.00261 γ   │ 5Hai… │ 5EjvHW  │ ~
+ 190 │    0.04 γ │    0.04 γ │    τ 0.00 │  0.00004  │  0.0001   │   0.00253 γ   │ 5Dny… │ 5CzBrs  │ ~
+ 72  │    0.04 γ │    0.04 γ │    τ 0.00 │  0.00004  │  0.0001   │   0.00242 γ   │ 5FNw… │ 5CzBrs  │ ~
+ 189 │    0.03 γ │    0.03 γ │    τ 0.01 │  0.00003  │  0.0001   │   0.00187 γ   │ 5FTU… │ 5E57Cw  │ ~
+ 137 │    0.03 γ │    0.03 γ │    τ 0.00 │  0.00003  │  0.0001   │   0.00186 γ   │ 5CCf… │ 5EjvHW  │ ~
+ 106 │    0.03 γ │    0.00 γ │    τ 1.57 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CtT… │ 5FPMxT  │ ~
+ 235 │    0.03 γ │    0.03 γ │    τ 0.00 │  0.00003  │  0.0000   │   0.00168 γ   │ 5Ekf… │ 5EjvHW  │ ~
+ 61  │    0.03 γ │    0.00 γ │    τ 1.49 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DCR… │ 5GxWBw  │ ~
+ 153 │    0.03 γ │    0.03 γ │    τ 0.00 │  0.00003  │  0.0000   │   0.00160 γ   │ 5Gbi… │ 5E57Cw  │ ~
+ 93  │    0.02 γ │    0.00 γ │    τ 1.42 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FvS… │ 5HE8Q3  │ ~
+ 80  │    0.02 γ │    0.00 γ │    τ 1.21 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GsL… │ 5FnBRk  │ ~
+ 24  │    0.02 γ │    0.02 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00132 γ   │ 5FhF… │ 5FX9vv  │ ~
+ 127 │    0.02 γ │    0.02 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00129 γ   │ 5FcT… │ 5HYjMt  │ ~
+ 224 │    0.02 γ │    0.00 γ │    τ 1.13 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GhG… │ 5E57Cw  │ ~
+ 107 │    0.02 γ │    0.00 γ │    τ 1.12 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HGc… │ 5FPMxT  │ ~
+ 246 │    0.02 γ │    0.02 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00123 γ   │ 5E1z… │ 5DZwsb  │ ~
+ 244 │    0.02 γ │    0.02 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00122 γ   │ 5FF1… │ 5DZwsb  │ ~
+ 133 │    0.02 γ │    0.01 γ │    τ 0.26 │  0.00001  │  0.0000   │   0.00079 γ   │ 5CJs… │ 5E57Cw  │ ~
+ 110 │    0.02 γ │    0.02 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00102 γ   │ 5Cic… │ 5EjvHW  │ ~
+ 111 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00002  │  0.0000   │   0.00094 γ   │ 5F1i… │ 5HYjMt  │ ~
+ 27  │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00080 γ   │ 5FHe… │ 5CCefw  │ ~
+ 233 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00080 γ   │ 5Dkd… │ 5FEmR5  │ ~
+ 62  │    0.01 γ │    0.00 γ │    τ 0.66 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fgc… │ 5DUjZP  │ ~
+ 245 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00072 γ   │ 5FH3… │ 5DZwsb  │ ~
+ 32  │    0.01 γ │    0.00 γ │    τ 0.65 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EUt… │ 5DUjZP  │ ~
+ 185 │    0.01 γ │    0.00 γ │    τ 0.61 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HjE… │ 5FEmR5  │ ~
+ 11  │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00062 γ   │ 5CdL… │ 5HYjMt  │ ~
+ 187 │    0.01 γ │    0.01 γ │    τ 0.04 │  0.00001  │  0.0000   │   0.00057 γ   │ 5Gj6… │ 5DZwsb  │ ~
+ 125 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00061 γ   │ 5CkK… │ 5EjvHW  │ ~
+ 161 │    0.01 γ │    0.01 γ │    τ 0.17 │  0.00001  │  0.0000   │   0.00036 γ   │ 5GvX… │ 5GHBNq  │ ~
+ 241 │    0.01 γ │    0.00 γ │    τ 0.25 │  0.00000  │  0.0000   │   0.00018 γ   │ 5FFP… │ 5HYjMt  │ ~
+ 142 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00044 γ   │ 5Hfy… │ 5E57Cw  │ ~
+ 151 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00040 γ   │ 5GRF… │ 5HYjMt  │ ~
+ 104 │    0.01 γ │    0.00 γ │    τ 0.34 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CyB… │ 5GHBNq  │ ~
+ 219 │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00035 γ   │ 5EnT… │ 5DA9w1  │ ~
+ 66  │    0.01 γ │    0.01 γ │    τ 0.00 │  0.00001  │  0.0000   │   0.00034 γ   │ 5D9v… │ 5E57Cw  │ ~
+ 144 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00029 γ   │ 5F6z… │ 5HYjMt  │ ~
+ 150 │    0.00 γ │    0.00 γ │    τ 0.25 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HR3… │ 5GHBNq  │ ~
+ 207 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00027 γ   │ 5EcP… │ 5EjvHW  │ ~
+ 180 │    0.00 γ │    0.00 γ │    τ 0.24 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CDP… │ 5HYjMt  │ ~
+ 109 │    0.00 γ │    0.00 γ │    τ 0.23 │  0.00000  │  0.0000   │   0.00000 γ   │ 5ETq… │ 5GHBNq  │ ~
+ 212 │    0.00 γ │    0.00 γ │    τ 0.22 │  0.00000  │  0.0000   │   0.00000 γ   │ 5He6… │ 5FEmR5  │ ~
+ 95  │    0.00 γ │    0.00 γ │    τ 0.22 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CGM… │ 5CCefw  │ ~
+ 51  │    0.00 γ │    0.00 γ │    τ 0.09 │  0.00000  │  0.0000   │   0.00012 γ   │ 5G3n… │ 5DhoTV  │ ~
+ 128 │    0.00 γ │    0.00 γ │    τ 0.17 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GE8… │ 5GHBNq  │ ~
+ 87  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00012 γ   │ 5FXD… │ 5DhoTV  │ ~
+ 194 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00016 γ   │ 5GYv… │ 5DZwsb  │ ~
+ 132 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00014 γ   │ 5DUL… │ 5E57Cw  │ ~
+ 135 │    0.00 γ │    0.00 γ │    τ 0.12 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FRy… │ 5EjvHW  │ ~
+ 99  │    0.00 γ │    0.00 γ │    τ 0.02 │  0.00000  │  0.0000   │   0.00011 γ   │ 5Gq7… │ 5GTJY1  │ ~
+ 237 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00012 γ   │ 5H64… │ 5EjvHW  │ ~
+ 46  │    0.00 γ │    0.00 γ │    τ 0.10 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Hj5… │ 5DFkmN  │ ~
+ 198 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00011 γ   │ 5FQp… │ 5E57Cw  │ ~
+ 114 │    0.00 γ │    0.00 γ │    τ 0.09 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G3u… │ 5EjvHW  │ ~
+ 231 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00010 γ   │ 5D7D… │ 5CzBrs  │ ~
+ 37  │    0.00 γ │    0.00 γ │    τ 0.09 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fbz… │ 5FCV9q  │ ~
+ 39  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00009 γ   │ 5FZV… │ 5GCU6U  │ ~
+ 92  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00009 γ   │ 5CSg… │ 5HYjMt  │ ~
+ 67  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00008 γ   │ 5Fez… │ 5EJ5tZ  │ ~
+ 218 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00008 γ   │ 5GGm… │ 5DA9w1  │ ~
+  3  │    0.00 γ │    0.00 γ │    τ 0.07 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G3p… │ 5CfHzL  │ ~
+ 52  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FFQ… │ 5CafoY  │ ~
+ 65  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5ERp… │ 5CafoY  │ ~
+ 18  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FcA… │ 5Hh4eN  │ ~
+ 96  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EFi… │ 5D2sT3  │ ~
+ 15  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FEY… │ 5EU3o3  │ ~
+ 53  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HR7… │ 5DhoTV  │ ~
+ 64  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FsY… │ 5CafoY  │ ~
+ 58  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5ERS… │ 5F4V6v  │ ~
+ 20  │    0.00 γ │    0.00 γ │    τ 0.06 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FyN… │ 5CafoY  │ ~
+ 34  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Cqi… │ 5CafoY  │ ~
+  9  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CJy… │ 5F4V6v  │ ~
+ 77  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DXf… │ 5ENfeW  │ ~
+ 48  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gxi… │ 5DhoTV  │ ~
+ 57  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fqa… │ 5F4V6v  │ ~
+ 86  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dcm… │ 5Hh4eN  │ ~
+ 50  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Ebh… │ 5DhoTV  │ ~
+ 19  │    0.00 γ │    0.00 γ │    τ 0.05 │  0.00000  │  0.0000   │   0.00000 γ   │ 5E7d… │ 5CafoY  │ ~
+ 29  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G6Y… │ 5CafoY  │ ~
+ 25  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HKB… │ 5CafoY  │ ~
+ 10  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GU1… │ 5F4V6v  │ ~
+ 28  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EvQ… │ 5CafoY  │ ~
+ 38  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GUC… │ 5DhoTV  │ ~
+ 31  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HpV… │ 5CafoY  │ ~
+ 41  │    0.00 γ │    0.00 γ │    τ 0.04 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FZq… │ 5CafoY  │ ~
+ 16  │    0.00 γ │    0.00 γ │    τ 0.03 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DFL… │ 5ENfeW  │ ~
+ 84  │    0.00 γ │    0.00 γ │    τ 0.03 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gb7… │ 5F4V6v  │ ~
+ 30  │    0.00 γ │    0.00 γ │    τ 0.03 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Cch… │ 5DhoTV  │ ~
+ 33  │    0.00 γ │    0.00 γ │    τ 0.02 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GWS… │ 5GTJY1  │ ~
+ 102 │    0.00 γ │    0.00 γ │    τ 0.02 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HC5… │ 5CCefw  │ ~
+ 230 │    0.00 γ │    0.00 γ │    τ 0.02 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FsR… │ 5FEmR5  │ ~
+ 103 │    0.00 γ │    0.00 γ │    τ 0.02 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EeM… │ 5GTJY1  │ ~
+ 47  │    0.00 γ │    0.00 γ │    τ 0.01 │  0.00000  │  0.0000   │   0.00000 γ   │ 5ENx… │ 5D2sT3  │ ~
+ 177 │    0.00 γ │    0.00 γ │    τ 0.01 │  0.00000  │  0.0000   │   0.00000 γ   │ 5C5h… │ 5FEmR5  │ ~
+  1  │    0.00 γ │    0.00 γ │    τ 0.01 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Eyj… │ 5GTJY1  │ ~
+ 174 │    0.00 γ │    0.00 γ │    τ 0.01 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DcN… │ 5FEmR5  │ ~
+ 79  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GU6… │ 5FUbEC  │ ~
+ 94  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FsA… │ 5ESAXG  │ ~
+ 73  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Hph… │ 5EWY94  │ ~
+ 145 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fbq… │ 5E57Cw  │ ~
+ 172 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gen… │ 5FEmR5  │ ~
+ 12  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DwQ… │ 5DtTBr  │ ~
+ 117 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5E4j… │ 5Ggjx5  │ ~
+ 193 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HKp… │ 5E57Cw  │ ~
+ 90  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dy7… │ 5FEmR5  │ ~
+ 239 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5C5S… │ 5DZwsb  │ ~
+ 119 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FEo… │ 5Ggjx5  │ ~
+ 81  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G6q… │ 5CCefw  │ ~
+ 43  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CV4… │ 5DX5Ga  │ ~
+ 26  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GWt… │ 5CCefw  │ ~
+ 22  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FTh… │ 5CCefw  │ ~
+ 54  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CD7… │ 5CCefw  │ ~
+ 88  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GYV… │ 5F9YqC  │ ~
+ 215 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Hmd… │ 5FEmR5  │ ~
+ 123 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FpS… │ 5Ggjx5  │ ~
+ 63  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GRi… │ 5EJ5tZ  │ ~
+ 129 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DwS… │ 5Ggjx5  │ ~
+ 112 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HGf… │ 5HYjMt  │ ~
+ 240 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GeX… │ 5HYjMt  │ ~
+ 89  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fxs… │ 5E57Cw  │ ~
+  2  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EDB… │ 5DhxiG  │ ~
+ 228 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FLR… │ 5HYjMt  │ ~
+ 21  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fn1… │ 5CCefw  │ ~
+ 116 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DSb… │ 5EjvHW  │ ~
+ 91  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CCh… │ 5HYjMt  │ ~
+ 105 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5D4U… │ 5CCefw  │ ~
+ 76  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DwD… │ 5EJ5tZ  │ ~
+  0  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dfj… │ 5DaE8L  │ ~
+  8  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DAZ… │ 5DaE8L  │ ~
+ 35  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FTc… │ 5HNiyq  │ ~
+ 42  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GKR… │ 5DaE8L  │ ~
+ 44  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GYV… │ 5HNiyq  │ ~
+ 45  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CLT… │ 5DaE8L  │ ~
+ 49  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FL5… │ 5EJ5tZ  │ ~
+ 56  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GTa… │ 5EJ5tZ  │ ~
+ 59  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HGH… │ 5EJ5tZ  │ ~
+ 69  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GEX… │ 5G4mxr  │ ~
+ 70  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DtU… │ 5EJ5tZ  │ ~
+ 71  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GgN… │ 5EJ5tZ  │ ~
+ 74  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HmE… │ 5EJ5tZ  │ ~
+ 75  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FYi… │ 5EJ5tZ  │ ~
+ 78  │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Ci7… │ 5DaE8L  │ ~
+ 101 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gea… │ 5EjvHW  │ ~
+ 113 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G9A… │ 5CzBrs  │ ~
+ 118 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FKm… │ 5CzBrs  │ ~
+ 120 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GVq… │ 5EjvHW  │ ~
+ 147 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CdQ… │ 5CzBrs  │ ~
+ 152 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EfR… │ 5EjvHW  │ ~
+ 159 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CwY… │ 5EjvHW  │ ~
+ 164 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DXG… │ 5EjvHW  │ ~
+ 179 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HBC… │ 5CzBrs  │ ~
+ 181 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FHy… │ 5EjvHW  │ ~
+ 188 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DF7… │ 5CzBrs  │ ~
+ 191 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5FcD… │ 5EjvHW  │ ~
+ 195 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gpy… │ 5EjvHW  │ ~
+ 196 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5DZG… │ 5EjvHW  │ ~
+ 199 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dqk… │ 5CzBrs  │ ~
+ 211 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HbC… │ 5DA9w1  │ ~
+ 213 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5H44… │ 5DA9w1  │ ~
+ 214 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5CiM… │ 5DA9w1  │ ~
+ 216 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EvS… │ 5DA9w1  │ ~
+ 217 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Gq8… │ 5DA9w1  │ ~
+ 220 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5EkK… │ 5DA9w1  │ ~
+ 221 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G6e… │ 5DA9w1  │ ~
+ 222 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5HBD… │ 5DA9w1  │ ~
+ 223 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dhb… │ 5DA9w1  │ ~
+ 225 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dta… │ 5DA9w1  │ ~
+ 226 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5ERV… │ 5DA9w1  │ ~
+ 227 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5G4U… │ 5DA9w1  │ ~
+ 229 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Hjn… │ 5DA9w1  │ ~
+ 243 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Hjd… │ 5DA9w1  │ ~
+ 248 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fvg… │ 5DA9w1  │ ~
+ 249 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5GYt… │ 5DA9w1  │ ~
+ 250 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Dtm… │ 5DA9w1  │ ~
+ 251 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Grn… │ 5DA9w1  │ ~
+ 254 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Fmx… │ 5DA9w1  │ ~
+ 255 │    0.00 γ │    0.00 γ │    τ 0.00 │  0.00000  │  0.0000   │   0.00000 γ   │ 5Chk… │ 5DA9w1  │ ~
+─────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────────┼───────┼─────────┼──────────────────────
+     │  92.86k γ │   1.13k γ │   5.28m γ │   1.000   │           │   57.7185 γ   │       │         │
+
+
+Subnet 3: templar
+  Owner: 5CykWht3gMs3c9a1jicuPZGvnNiMwJK2akyHE3iZwBbESgCz (Owner3)
+  Rate: 0.0220 τ/γ
+  Emission: τ 0.0197
+  TAO Pool: τ 31.42
+  Alpha Pool: 1.43k γ
+  Tempo: 65/99
+
+    Description:
+        The table displays the subnet participants and their metrics.
+        The columns are as follows:
+            - UID: The hotkey index in the subnet.
+            - TAO: The sum of all TAO balances for this hotkey accross all subnets.
+            - Stake: The stake balance of this hotkey on this subnet.
+            - Weight: The stake-weight of this hotkey on this subnet. Computed as an average of the normalized TAO and
+Stake columns of this subnet.
+            - Dividends: Validating dividends earned by the hotkey.
+            - Incentives: Mining incentives earned by the hotkey (always zero in the RAO demo.)
+            - Emission: The emission accrued to this hokey on this subnet every block (in staking units).
+            - Hotkey: The hotkey ss58 address.
+            - Coldkey: The coldkey ss58 address.
+
+01/07-20:44 :)  btcli subnet list
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Using the specified network rao from config
+
+                                                                 Subnets
+                                                               Network: rao
+
+
+        ┃               ┃ Price       ┃ Market Cap  ┃              ┃                         ┃               ┃              ┃
+ Netuid ┃ Name          ┃ (τ_in/α_in) ┃ (α * Price) ┃ Emission (τ) ┃ P (τ_in, α_in)          ┃ Stake (α_out) ┃ Supply (α)   ┃ Tempo (k/n)
+━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━
+   0    │ τ root        │ 1.00 τ/Τ    │ τ 5.93m     │ τ 0.0000     │ -, -                    │ Τ 5.93m       │ 5.93m Τ /21M │ -/-
+   3    │ γ templar     │ 0.02 τ/γ    │ τ 57.32     │ τ 0.0197     │ τ 31.44, 1.43k γ        │ 1.18k γ       │ 2.61k γ /21M │ 67/99
+   9    │ ι pretrain    │ 0.02 τ/ι    │ τ 55.38     │ τ 0.0194     │ τ 30.91, 1.46k ι        │ 1.16k ι       │ 2.61k ι /21M │ 73/99
+   1    │ α apex        │ 0.02 τ/α    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k α        │ 1.14k α       │ 2.61k α /21M │ 65/99
+   2    │ β omron       │ 0.02 τ/β    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k β        │ 1.14k β       │ 2.61k β /21M │ 66/99
+   4    │ δ targon      │ 0.02 τ/δ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k δ        │ 1.14k δ       │ 2.61k δ /21M │ 68/99
+   5    │ ε kaito       │ 0.02 τ/ε    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ε        │ 1.14k ε       │ 2.61k ε /21M │ 69/99
+   6    │ ζ infinite    │ 0.02 τ/ζ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ζ        │ 1.14k ζ       │ 2.61k ζ /21M │ 70/99
+   7    │ η subvortex   │ 0.02 τ/η    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k η        │ 1.14k η       │ 2.61k η /21M │ 71/99
+   8    │ θ ptn         │ 0.02 τ/θ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k θ        │ 1.14k θ       │ 2.61k θ /21M │ 72/99
+   10   │ κ sturdy      │ 0.02 τ/κ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k κ        │ 1.14k κ       │ 2.61k κ /21M │ 74/99
+   11   │ λ dippy       │ 0.02 τ/λ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k λ        │ 1.14k λ       │ 2.61k λ /21M │ 75/99
+   12   │ μ horde       │ 0.02 τ/μ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k μ        │ 1.14k μ       │ 2.61k μ /21M │ 76/99
+   13   │ ν dataverse   │ 0.02 τ/ν    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ν        │ 1.14k ν       │ 2.61k ν /21M │ 77/99
+   14   │ ξ palaidn     │ 0.02 τ/ξ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ξ        │ 1.14k ξ       │ 2.61k ξ /21M │ 78/99
+   15   │ ο deval       │ 0.02 τ/ο    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ο        │ 1.14k ο       │ 2.61k ο /21M │ 79/99
+   16   │ π bitads      │ 0.02 τ/π    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k π        │ 1.14k π       │ 2.61k π /21M │ 80/99
+   17   │ ρ 3gen        │ 0.02 τ/ρ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ρ        │ 1.14k ρ       │ 2.61k ρ /21M │ 81/99
+   18   │ σ cortex      │ 0.02 τ/σ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k σ        │ 1.14k σ       │ 2.61k σ /21M │ 82/99
+   19   │ t inference   │ 0.02 τ/t    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k t        │ 1.14k t       │ 2.61k t /21M │ 83/99
+   20   │ υ bitagent    │ 0.02 τ/υ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k υ        │ 1.14k υ       │ 2.61k υ /21M │ 84/99
+   21   │ φ any-any     │ 0.02 τ/φ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k φ        │ 1.14k φ       │ 2.61k φ /21M │ 85/99
+   22   │ χ meta        │ 0.02 τ/χ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k χ        │ 1.14k χ       │ 2.61k χ /21M │ 86/99
+   23   │ ψ social      │ 0.02 τ/ψ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ψ        │ 1.14k ψ       │ 2.61k ψ /21M │ 87/99
+   24   │ ω omega       │ 0.02 τ/ω    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ω        │ 1.14k ω       │ 2.61k ω /21M │ 88/99
+   25   │ א protein     │ 0.02 τ/א    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k א        │ 1.14k א       │ 2.61k א /21M │ 89/99
+   26   │ ב alchemy     │ 0.02 τ/ב    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ב        │ 1.14k ב       │ 2.61k ב /21M │ 90/99
+   27   │ ג compute     │ 0.02 τ/ג    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ג        │ 1.14k ג       │ 2.61k ג /21M │ 91/99
+   28   │ ד oracle      │ 0.02 τ/ד    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ד        │ 1.14k ד       │ 2.61k ד /21M │ 92/99
+   29   │ ה coldint     │ 0.02 τ/ה    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ה        │ 1.14k ה       │ 2.61k ה /21M │ 93/99
+   30   │ ו bet         │ 0.02 τ/ו    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ו        │ 1.14k ו       │ 2.61k ו /21M │ 94/99
+   31   │ ז naschain    │ 0.02 τ/ז    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ז        │ 1.14k ז       │ 2.61k ז /21M │ 95/99
+   32   │ ח itsai       │ 0.02 τ/ח    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ח        │ 1.14k ח       │ 2.61k ח /21M │ 96/99
+   33   │ ט ready       │ 0.02 τ/ט    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ט        │ 1.14k ט       │ 2.61k ט /21M │ 97/99
+   34   │ י mind        │ 0.02 τ/י    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k י        │ 1.14k י       │ 2.61k י /21M │ 98/99
+   35   │ ך logic       │ 0.02 τ/ך    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ך        │ 1.14k ך       │ 2.61k ך /21M │ 99/99
+   36   │ כ automata    │ 0.02 τ/כ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k כ        │ 1.14k כ       │ 2.61k כ /21M │ 0/99
+   37   │ ל tuning      │ 0.02 τ/ל    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ל        │ 1.14k ל       │ 2.61k ל /21M │ 1/99
+   38   │ ם distributed │ 0.02 τ/ם    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ם        │ 1.14k ם       │ 2.61k ם /21M │ 2/99
+   39   │ מ edge        │ 0.02 τ/מ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k מ        │ 1.14k מ       │ 2.61k מ /21M │ 3/99
+   40   │ ן chunk       │ 0.02 τ/ן    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ן        │ 1.14k ן       │ 2.61k ן /21M │ 4/99
+   41   │ נ sportsensor │ 0.02 τ/נ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k נ        │ 1.14k נ       │ 2.61k נ /21M │ 5/99
+   42   │ ס masa        │ 0.02 τ/ס    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ס        │ 1.14k ס       │ 2.61k ס /21M │ 6/99
+   43   │ ע graphite    │ 0.02 τ/ע    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ע        │ 1.14k ע       │ 2.61k ע /21M │ 7/99
+   44   │ ף score       │ 0.02 τ/ף    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ף        │ 1.14k ף       │ 2.61k ף /21M │ 8/99
+   45   │ פ gen42       │ 0.02 τ/פ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k פ        │ 1.14k פ       │ 2.61k פ /21M │ 9/99
+   46   │ ץ neural      │ 0.02 τ/ץ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ץ        │ 1.14k ץ       │ 2.61k ץ /21M │ 10/99
+   47   │ צ condense    │ 0.02 τ/צ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k צ        │ 1.14k צ       │ 2.61k צ /21M │ 11/99
+   48   │ ק nextplace   │ 0.02 τ/ק    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ק        │ 1.14k ק       │ 2.61k ק /21M │ 12/99
+   49   │ ר automl      │ 0.02 τ/ר    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ר        │ 1.14k ר       │ 2.61k ר /21M │ 13/99
+   50   │ ש audio       │ 0.02 τ/ש    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ש        │ 1.14k ש       │ 2.61k ש /21M │ 14/99
+   51   │ ת celium      │ 0.02 τ/ת    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ת        │ 1.14k ת       │ 2.61k ת /21M │ 15/99
+   52   │ ا dojo        │ 0.02 τ/ا    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k ا        │ 1.14k ا       │ 2.61k ا /21M │ 16/99
+────────┼───────────────┼─────────────┼─────────────┼──────────────┼─────────────────────────┼───────────────┼──────────────┼─────────────
+   53   │               │ τ 1.0846    │             │ τ 1.0        │ τ 1.59k/1.26k (126.36%) │               │              │
+01/07-20:44 :)
