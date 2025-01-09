@@ -20,13 +20,21 @@ Testnet tokens do not have any value.
 Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights).
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
 
-:::danger
-The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
+To update to the the Dynamic TAO-enbaled versions of the tooling, run:
 
+```
+# update the SDK to the most recent dTao enabled release candidate
+pip install bittensor==8.5.1rc1
+# update BTCLI to the most recent dTao enabled release candidate
+pip install bittensor-cli==8.2.0rc6
+```
+
+:::danger
 The changes to `btcli` and the Bittensor SDK are not backwards compatible.
+
+The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
 :::
 
-<!-- Need to confirm specific info on which release/branch to use -->
 
 See:
 - [Bittensor SDK release page](https://pypi.org/project/bittensor/)
@@ -63,4 +71,4 @@ For example:
 
 ### Gradual impact on consensus dynamics 
 
-The rollout of Dynamic TAO is calculated to have a gradual impact. When Dynamic TAO is first released, the weight of all validators (in terms of stake) will remain unchanged, because a biasing variable known as *global split*, which controls the relative weight of TAO and alpha currencies, will heavily favor TAO&mdash;which currently has 100% weight since alpha currencies don't exist. Over time (an estimated 100 days), this global split will shift to favor alpha currencies over TAO.
+The rollout of Dynamic TAO is calculated to have a gradual impact. When Dynamic TAO is first released, the weight of all validators (in terms of stake) will remain unchanged, because a biasing variable known as *TAO weight*, which controls the relative weight of TAO and alpha currencies, will heavily favor TAO&mdash;which currently has 100% weight since alpha currencies don't exist. Over time (an estimated 100 days), this *TAO Weight* will shift to favor alpha currencies over TAO.
