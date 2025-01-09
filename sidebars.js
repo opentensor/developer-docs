@@ -90,7 +90,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-
+      "dynamic-tao/dtao-guide",
       ],
     },
     {
