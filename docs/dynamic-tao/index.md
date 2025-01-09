@@ -9,18 +9,50 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
 
-You can experiment with Dynamic TAO today.
+Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
+
+:::tip
+Testnet tokens do not have any value.
+:::
+
+## What to expect with Dynamic TAO
+
+Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights).
+Simply updating the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
+
+See:
+- [Bittensor SDK release page](https://pypi.org/project/bittensor/)
+- [Bittensor CLI release page](https://pypi.org/project/bittensor-cli/)
+- [Upgrade the Bittensor SDK](../getting-started/installation.md#upgrade)
+
+:::tip
+Please help us evolve this technology and please inform us of any bugs on Discord!
+:::
+
+### Subnet tokens/liquidity pools
+
+After upgrading, the most visible difference is the addition of one new currency per subnet in the bittensor network.
+
+Run `btcli subnet list` to view information about the subnets and their currency reserves:
+
+For example: 
+```txt
+                                                                Subnets
+                                                               Network: rao
 
 
-<Cards>
-    <Card 
-    icon={HiAcademicCap}
-    title='Conceptual guide to Dynamic TAO →'
-    link='/dynamic-tao/dtao-guide'
-    body="Learn about the next phase in Bittensor's evolution" />
-    <Card
-    icon={HiOutlineCommandLine}
-    title='Try Dynamic TAO →'
-    link='/dynamic-tao/dtao-transition'
-    body='Experiment with the Dynamic TAO testnet' />    
-</Cards>
+        ┃               ┃ Price       ┃ Market Cap  ┃              ┃                         ┃               ┃              ┃
+ Netuid ┃ Name          ┃ (τ_in/α_in) ┃ (α * Price) ┃ Emission (τ) ┃ P (τ_in, α_in)          ┃ Stake (α_out) ┃ Supply (α)   ┃ Tempo (k/n)
+━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━
+   0    │ τ root        │ 1.00 τ/Τ    │ τ 5.93m     │ τ 0.0000     │ -, -                    │ Τ 5.93m       │ 5.93m Τ /21M │ -/-
+   3    │ γ templar     │ 0.02 τ/γ    │ τ 57.32     │ τ 0.0197     │ τ 31.44, 1.43k γ        │ 1.18k γ       │ 2.61k γ /21M │ 67/99
+   9    │ ι pretrain    │ 0.02 τ/ι    │ τ 55.38     │ τ 0.0194     │ τ 30.91, 1.46k ι        │ 1.16k ι       │ 2.61k ι /21M │ 73/99
+   1    │ α apex        │ 0.02 τ/α    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k α        │ 1.14k α       │ 2.61k α /21M │ 65/99
+   2    │ β omron       │ 0.02 τ/β    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k β        │ 1.14k β       │ 2.61k β /21M │ 66/99
+   4    │ δ targon      │ 0.02 τ/δ    │ τ 54.45     │ τ 0.0192     │ τ 30.65, 1.47k δ        │ 1.14k δ       │ 2.61k δ /21M │ 68/99
+   ...
+```
+
+### Gradual impact on consensus dynamics 
+
+The rollout of Dynamic TAO is calculated to have a gradual impact. When Dynamic TAO is first released to mainnet, the weight of all validators (in terms of stake) will remain unchanged, because a biasing variable known as *global split*, which controls the relative weight of TAO and alpha currencies, will heavily favor TAO&mdash;which currently has 100% weight since alpha currencies don't exist. Over time (an estimated 100 days), this global split will shift to favor alpha currencies over TAO.

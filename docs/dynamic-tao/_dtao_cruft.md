@@ -1,3 +1,38 @@
+
+The whole concept of DTAO is that your subnet will not contain a new token which is used along side TAO to reach consensus. 
+z
+TaoWeight, Gamma, Global Weight, Root Weight.
+TaoWeight.
+heres how to you change over no problem dont worry about it bro
+asterix btw, slowsly overtime the subnet token is designed to become more and more relevant in the consensus mechanism on your subnet. On day 1 the effect will be minimal and you dont need to worry about it. But, in 100 days the subnet token will come to dominate more than 50% of the stake weight in your network.
+
+consτ [τ, τ] — Today at 9:32 AM
+
+```
+do_unstake_all_alpha --> unstake_all_alpha
+
+            origin: OriginFor<T>,
+            hotkey: T::AccountId, 
+do_unstake_all --> unstake_all 
+origin: OriginFor<T>,
+            hotkey: T::AccountId,
+```
+
+
+
+Slow Transition: Alpha’s effect on consensus starts small, but after around 100 days, it will surpass Tau’s stake weight.
+No Governance Changes: This testnet upgrade does not alter governance or proposals—focus is only on consensus weights.
+Outdated dTau Docs: Older references to “Dynamic Tau” may be inaccurate. We’re removing them and replacing with this simplified explanation.
+Feedback Welcome: If you see issues with the upgrade, documentation gaps, or unusual subnet behavior, please share details with the team.
+Next Steps
+Complete Upgrades ASAP: The sooner your subnet upgrades, the smoother the test phase.
+Monitor Your Subnet: Watch node logs or dashboards for any anomalies.
+Join the Discussion: We’ll gather your questions to shape more in-depth dTau docs later.
+
+
+
+
+
 ### Constant product k 
 
 The subnet pool algorithm is set up to always maintain a **constant product** $k$ of the two reserves. That is, 
