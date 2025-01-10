@@ -14,9 +14,13 @@ This page introduces the core concepts of Bittensor wallets. Procedures for hand
 
 A Bittensor wallet consists of a **coldkey** and a **hotkey**. Coldkeys and hotkeys are used for different operations in the Bittensor ecosystem. These key types are associated with eachother on the blockchain and can be conveniently managed with `btcli`, the Bittensor SDK, or other Bittensor wallet software.
 
-:::tip Coldkey and hotkey each are pairings of separate private and public keys
-Each key is a pairing of two separate [Sr25519 (or Ed25519) cryptographic keypairs](https://wiki.polkadot.network/docs/learn-cryptography#keypairs-and-signing). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. And, while the private keys of each live in the wallet software, the public keys are used to record account information on the chain (e.g. balance and stake) and provide the private key-holder with certain permissions (e.g. transferring its balance).
+:::tip
+*Most* users won't need a hotkey&mdash;this is not required to hold TAO and delegate it to Validators hotkey.
+
+Miners and validators must have both. Miners are likely to have multiple hotkeys per coldkey.
 :::
+
+Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
 
 ### Coldkey
 
