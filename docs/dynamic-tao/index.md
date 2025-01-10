@@ -20,7 +20,7 @@ Testnet tokens do not have any value.
 Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights).
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
 
-To update to the the Dynamic TAO-enbaled versions of the tooling, run:
+To update to the Dynamic TAO-enabled versions of the tooling, run:
 
 ```
 # update the SDK to the most recent dTao enabled release candidate
