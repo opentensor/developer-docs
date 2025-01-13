@@ -4,13 +4,13 @@ title: "Chain Release Notes"
 
 # Chain Release Notes
 
-The following are the release notes for the subtensor on-chain software.
+Release notes for the Bittensor blockchain.
 
+## Dynamic TAO Testnet: release January 9, 2025
 
-## Mainnet
+A new entrypoint, enabled with [Dynamic TAO](./dynamic-tao/index.md), is available for testing and development!
 
-`Released 27 November 2024`
-
+## Mainnet: release November 27, 2024
 ### Hotfix for run_coinbase
 
 - A hotfix is released to the mainnet. This hotfix addresses a critical issue in the `run_coinbase` logic of the Subtensor pallet, ensuring that subnet emissions are properly gated by registration permissions. Additionally, a new test has been introduced to verify the behavior of emissions when registration is disabled for a subnet.
@@ -18,9 +18,7 @@ The following are the release notes for the subtensor on-chain software.
 - Release tag: [https://github.com/opentensor/subtensor/releases/tag/v1.1.10](https://github.com/opentensor/subtensor/releases/tag/v1.1.10).
 
 
-## Mainnet
-
-`Released 25 November 2024`
+## Mainnet: release Nov 25, 2025
 
 ### Permissioned EVM feature
 
@@ -53,8 +51,8 @@ Running a localnet for development is simplified, by providing the `--dev` flag.
 
 ---
 
-`Released 05 November 2024`
-## Mainnet
+
+## Mainnet: release 05 November 2024
 
 ### Cost reduced for schedule coldkey swap
 
@@ -86,9 +84,7 @@ Other quality of life enhancements that do not affect the runtime of the mainnet
 
 ---
 
-`Released 04 September 2024`
-
-## Mainnet
+## Mainnet Release 04 September 2024
 
 ### New features
 
@@ -118,8 +114,8 @@ Other quality of life enhancements that do not affect the runtime of the mainnet
 
 ---
 
-`Released 12 July 2024`
-## Mainnet 1.2.3 
+
+## Mainnet 1.2.3 Released 12 July 2024
 
 - All the items described in the below [Testnet 1.2.1-pre-release](#testnet-121-pre-release) are now available in the mainnet.
 

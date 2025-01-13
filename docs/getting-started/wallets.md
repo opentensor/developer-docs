@@ -6,34 +6,45 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wallets and keys in Bittensor
 
-In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your currency.
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your TAO.
 
-This page introduces the core concepts of Bittensor cryptography. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
+This page introduces the core concepts of Bittensor wallets. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
 
 ## Coldkey and hotkey
 
-A Bittensor wallet consists of a **coldkey** and a **hotkey**. The coldkey and hotkey are used for different operations in the Bittensor ecosystem. These two keys are logically connected via the Bittensor API.
+A Bittensor wallet consists of a **coldkey** and a **hotkey**. Coldkeys and hotkeys are used for different operations in the Bittensor ecosystem. These key types are associated with eachother on the blockchain and can be conveniently managed with `btcli`, the Bittensor SDK, or other Bittensor wallet software.
 
-:::tip Coldkey and hotkey each are pairings of separate private and public keys
-Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
+:::tip
+*Most* users won't need a hotkey&mdash;this is not required to hold TAO and delegate it to Validators hotkey.
+
+Miners and validators must have both. Miners are likely to have multiple hotkeys per coldkey.
 :::
+
+Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
 
 ### Coldkey
 
-The coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because one coldkey can have multiple hotkeys; hence, the wallet name is assigned to the coldkey.
+In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
-**Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
+**Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, delegate stake, or simply hold balance you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
 
 **Purpose**: A coldkey is primarily for secure TAO storage and high-risk transactions, as described below (**Also see in the diagram in [Operational uses of keys](#operational-uses-of-keys))**:
 
-- Funds (TAO tokens) in your Bittensor wallet are held in its coldkey.
+- Your wallet's funds (TAO) on the chain are controlled by a coldkey.
+- Transferring your TAO to other wallets/addresses.
 - Delegating and undelegating your TAO tokens.
-- Creating a subnet and obtaining a `netuid` for the newly-created subnet. The `netuid` is associated with the coldkey only because all subnet owner operations require high security and thus use the coldkey, which is always encrypted.
+- Creating a subnet and obtaining a `netuid` for the newly-created subnet. The `netuid` is associated with the coldkey because subnet owner operations should be secure and conducted infrequently. 
 - Emissions to the subnet owner are deposited directly to the subnet owner's coldkey.
 
-**Security**: The highest level of protection. A coldkey is always encrypted on your device.
+**Security**: A coldkey is always encrypted when in your device storage. Only ever decrypted in-memory and only when needed.
 
 A coldkey is like a highly secure key you use to access a safe where your valuables are stored. The coldkey is used less frequently than the hotkey, and is stored very securely to minimize the risk of unauthorized access.
+
+:::tip To keep your coldkey more secure, you may consider a hardware signer.
+A hardware signer is a secure method of storing your coldkey. It provides a separation between online devices and your private key. Some options include the [Polkadot Vault](https://wiki.polkadot.network/docs/polkadot-vault) application, a [Ledger wallet](https://www.ledger.com/), among others.   
+
+Additionally, you might consider using a [MultiSig (multiple signature) wallet](https://wiki.polkadot.network/docs/learn-account-multisig), or a [Proxy account setup](https://wiki.polkadot.network/docs/learn-proxies).
+:::
 
 <!-- <center>
 <ThemedImage
@@ -49,7 +60,7 @@ style={{width: 750}}
 <br /> -->
 #### Existential deposit
 
-An existential deposit is a minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
+An existential deposit is the minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the remaining TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
 ### Hotkey 
 

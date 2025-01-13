@@ -323,7 +323,7 @@ The importance assigned to each subnet by the root network validators, used to d
 
 ### Subtensor
 
-[Subtensor](https://github.com/opentensor/subtensor) is Bittensor's layer 1 blockchain substrate. This serves the Bittensor as a system of record for transactions and rankings, and it operates Yuma Consensus, by which the distribution of rewards is computed.
+[Subtensor](https://github.com/opentensor/subtensor) is Bittensor's layer 1 blockchain based on substrate (now PolkadotSDK). This serves Bittensor as a system of record for transactions and rankings, and it operates Yuma Consensus, by which the distribution of rewards is computed and distributed.
 
 The Bittensor SDK offers the [`bittensor.core.subtensor`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html) module to handle Subtensor blockchain interactions.
 
