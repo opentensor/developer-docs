@@ -46,8 +46,8 @@ going live to mainnet soon, global property of TAO Weight will gradually shift o
 ## Root
 
 ### Will perpetual issuance to root stakers continue after a year?  
-**Q:** “Why does the root network (the main chain) keep issuing new TAO to stakers after a certain period?”  
-**A:** The design includes **ongoing inflation** to maintain network security and incentivize consistent staking. Some participants question the long-term role of root issuance, but the consensus is that there must remain a baseline reward for the root network to keep validators and stakers engaged—especially as subnets proliferate.
+ “Why does the root network (the main chain) keep issuing new TAO to stakers after a certain period?”  
+
 
 
 ### Is there a chance we just remove or retire the “root” network?  Why keep
@@ -64,11 +64,7 @@ going live to mainnet soon, global property of TAO Weight will gradually shift o
 ## Miners and validators
 ###  How will miners (and validators) manage the proliferation of subnets? will this dilute rewards?  force them to carefully monitor and allocate their work based on subnet token value?
 
-Emissions on each subnet depend on that subnet’s stake and TAO reserves. If a subnet has little staked TAO (or minimal external contributions), its alpha supply and emissions may be small at first. Over time, subnets with higher TAO backing and real utility should see stronger demand for their alpha tokens, which can sustain meaningful miner rewards.
-
 ---
-
-
 
 
 
