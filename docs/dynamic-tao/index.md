@@ -9,15 +9,10 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
 
-<<<<<<< HEAD
 See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
 Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
 
-=======
-Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
-
->>>>>>> main
 :::tip
 Testnet tokens do not have any value.
 :::
@@ -28,21 +23,20 @@ Most operations will remain unchanged, including the main workflows for miners (
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 :::danger
 The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
 
 The changes to `btcli` and the Bittensor SDK are not backwards compatible.
 :::
 
-<!-- Need to confirm specific info on which release/branch to use -->
-=======
-To update to the the Dynamic TAO-enbaled versions of the tooling, run:
+To update to the Dynamic TAO-enabled versions of the tooling, run:
 
 ```
 # update the SDK to the most recent dTao enabled release candidate
-pip install bittensor==8.5.1rc5
+pip install bittensor==8.5.1rc6
 # update BTCLI to the most recent dTao enabled release candidate
-pip install bittensor-cli==8.2.0rc9
+pip install bittensor-cli==8.2.0rc10
 ```
 
 :::danger
@@ -50,8 +44,6 @@ The changes to `btcli` and the Bittensor SDK are not backwards compatible.
 
 The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
 :::
-
->>>>>>> main
 
 See:
 - [Bittensor SDK release page](https://pypi.org/project/bittensor/)
@@ -88,8 +80,4 @@ For example:
 
 ### Gradual impact on consensus dynamics 
 
-<<<<<<< HEAD
-The rollout of Dynamic TAO is calculated to have a gradual impact. When Dynamic TAO is first released, the weight of all validators (in terms of stake) will remain unchanged, because a biasing variable known as *global split*, which controls the relative weight of TAO and alpha currencies, will heavily favor TAO&mdash;which currently has 100% weight since alpha currencies don't exist. Over time (an estimated 100 days), this global split will shift to favor alpha currencies over TAO.
-=======
 The rollout of Dynamic TAO is calculated to have a gradual impact. When Dynamic TAO is first released, the weight of all validators (in terms of stake) will remain unchanged, because a biasing variable known as *TAO weight*, which controls the relative weight of TAO and alpha currencies, will heavily favor TAO&mdash;which currently has 100% weight since alpha currencies don't exist. Over time (an estimated 100 days), this *TAO Weight* will shift to favor alpha currencies over TAO.
->>>>>>> main

@@ -35,110 +35,79 @@ Proceed only after you successfully ran the above steps. The rest of this guide 
   2. Open Talisman wallet app and select **Add Account**.
   3. Select **Connect** and choose **Connect Ledger**.
 
-<center id="Talisman-1.3">
-<ThemedImage
-alt="Talisman-1.3"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
+      <center id="Talisman-1.3">
+      <ThemedImage
+      alt="Talisman-1.3"
+      sources={{
+          light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
+          dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.3.png'),
+        }}
+      style={{width: 900}}
+      />
+      </center>
+      <br />
 
   4. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
 
-<center id="Talisman-1.4">
-<ThemedImage
-alt="Talisman-1.4"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
+      <center id="Talisman-1.4">
+      <ThemedImage
+      alt="Talisman-1.4"
+      sources={{
+          light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
+          dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4.png'),
+        }}
+      style={{width: 900}}
+      />
+      </center>
+      <br />
 
-:::tip Failed to connect?
-If you see "Failed to connect to your Ledger" message, then unlock your Ledger device and open the Polkadot app, then click "Retry".
-:::
+      :::tip Failed to connect?
+      If you see "Failed to connect to your Ledger" message, then unlock your Ledger device and open the Polkadot app, then click "Retry".
+      :::
 
-<center id="Talisman-1.4a">
-<ThemedImage
-alt="Talisman-1.4a"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
+      <center id="Talisman-1.4a">
+      <ThemedImage
+      alt="Talisman-1.4a"
+      sources={{
+          light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
+          dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.4a.png'),
+        }}
+      style={{width: 900}}
+      />
+      </center>
+      <br />
 
-  5. When the above steps are complete, then you have successfully connected your Ledger hardware wallet device to the Polkadot app. Next, choose the Ledger hardware wallet addresses you would like to import to the Talisman wallet. 
+  5. When the above steps are complete, then you have successfully connected your Ledger hardware wallet device to the Polkadot app. Next, choose the Ledger hardware wallet addresses you would like to import to the Talisman wallet. Your Ledger hardware wallet device is now ready to be used with the Talisman Wallet app.
   
       The below screenshot shows multiple addresses in the Ledger hardware wallet device.
-   
-<center id="Talisman-1.4a">
-<ThemedImage
-alt="Talisman-1.4a"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
+             
+          <center id="Talisman-1.4a">
+          <ThemedImage
+          alt="Talisman-1.4a"
+          sources={{
+              light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
+              dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5.png'),
+            }}
+          style={{width: 900}}
+          />
+          </center>
+          <br />
 
-:::tip Failed to connect?
-If you had transferred TAO to the Ledger device already, then select **Custom** and modify the **Account index** to **0**. This will then show you the Ledger hardware wallet address to which you had transferred your TAO previously. You may try other values if needed.
-:::
+      :::tip Failed to connect?
+      If you had transferred TAO to the Ledger device already, then select **Custom** and modify the **Account index** to **0**. This will then show you the Ledger hardware wallet address to which you had transferred your TAO previously. You may try other values if needed.
+      :::
 
-<center id="Talisman-1.4a">
-<ThemedImage
-alt="Talisman-1.4a"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
-
-Your Ledger hardware wallet device is now ready to be used with the Talisman Wallet app.
-
-   6. Lastly, perform the following steps on your Talisman app. 
-   
-      **Settings** > **Networks & Tokens** > **Manage networks** > **Polkadot** > **Bittensor** > (checkbox) **This network supports CheckMetadataHash sign extension** > **Update Network**. See the below screenshots:
-
-<center id="Talisman-1.4a">
-<ThemedImage
-alt="Talisman-1.4a"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last2.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
-
-<center id="Talisman-1.4a">
-<ThemedImage
-alt="Talisman-1.4a"
-sources={{
-    light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
-    dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.last.png'),
-  }}
-style={{width: 900}}
-/>
-</center>
-<br />
-
+      <center id="Talisman-1.4a">
+      <ThemedImage
+      alt="Talisman-1.4a"
+      sources={{
+          light: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
+          dark: useBaseUrl('/img/docs/ledger-hw-wallet//Talisman/Talisman-1.5a.png'),
+        }}
+      style={{width: 900}}
+      />
+      </center>
+      <br />
 
 ---
 
