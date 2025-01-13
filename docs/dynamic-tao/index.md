@@ -24,9 +24,9 @@ To update to the Dynamic TAO-enabled versions of the tooling, run:
 
 ```
 # update the SDK to the most recent dTao enabled release candidate
-pip install bittensor==8.5.1rc5
+pip install bittensor==8.5.1rc6
 # update BTCLI to the most recent dTao enabled release candidate
-pip install bittensor-cli==8.2.0rc9
+pip install bittensor-cli==8.2.0rc10
 ```
 
 :::danger
