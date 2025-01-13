@@ -1,13 +1,11 @@
 ---
-title: "Questions and Answers"
+title: "Frequently asked questions (FAQ)"
 hide_table_of_contents: false 
 ---
 
-# Questions and Answers
+# Frequently asked questions (FAQ)
 
 ## General
-
-This General section presents a highly simplistic explanation of Bittensor. Do not expect to understand all the details after you read this Q and A section. Follow the links provided throughout this section for a more developer-level comprehension of the details. 
 
 ### Is Bittensor a blockchain or an AI platform?
 

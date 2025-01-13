@@ -178,17 +178,17 @@ const config = {
         items: [
           {
             position: "left",
-            label: "SUBTENSOR NODES",
-            to: "subtensor-nodes",
+            label: "What is Bittensor?",
+            to: "learn/introduction",
           },
           {
             position: "left",
-            label: "EVM TUTORIALS",
+            label: "EVM on Bittensor",
             to: "evm-tutorials",
           },
           {
             position: "left",
-            label: "DYNAMIC TAO",
+            label: "Understand Dynamic TAO",
             to: "dynamic-tao",
           },
           {
