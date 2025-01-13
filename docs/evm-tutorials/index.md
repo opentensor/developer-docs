@@ -27,6 +27,7 @@ import { GrStakeholder } from "react-icons/gr";
 
 Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to:
 
+
 - Deploy most EVM smart contracts on subtensor without changing the code
 - Interact with deployed smart contracts on the subtensor blockchain
 - Access standard Ethereum JSON-RPC methods from this EVM compatibility layer on [Subtensor](https://github.com/opentensor/subtensor), Bittensor's substrate blockchain.

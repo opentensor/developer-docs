@@ -170,8 +170,6 @@ const sidebars = {
       "senate",
       ],
     },
-
-
     "errors-and-troubleshooting",
     "media-assets",
     "glossary",
