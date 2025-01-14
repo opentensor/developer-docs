@@ -33,7 +33,13 @@ The schedule coldkey swap feature works as follows:
 
 Make sure you satisfy the below requirements before you proceed:
 
-1. You must be the owner of both old and new coldkeys to schedule the coldkey swap.
+1. You must be the owner of old coldkey to schedule the coldkey swap.
+
+:::danger If you do not own the new coldkey, you are **transferring complete ownership** of the coldkey.
+
+If the old coldkey is parent to any childkeys, **this process will transfer the childkeys and any TAO they are holding also**.  If the old coldkey is parent to any childkeys and **if you do not want to transfer the TAO tokens in the childkey accounts**, be sure to transfer TAO out of any childkeys **before** executing the extrinsic.
+:::
+
 2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` command does not yet support scheduling coldkey swap.
 3. You must import your old and new coldkeys into the Polkadot JS extension.
 4. You must connect the old coldkey account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
