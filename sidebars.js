@@ -92,6 +92,9 @@ const sidebars = {
       collapsed: false,
       items: [
       "dynamic-tao/dtao-guide",
+      "dynamic-tao/emission",
+      "dynamic-tao/staking-unstaking-dtao",
+      "dynamic-tao/dtao-faq",
       ],
     },
     {

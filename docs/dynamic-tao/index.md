@@ -29,6 +29,8 @@ The migration to Dynamic TAO includes breaking changes. Older versions of the SD
 The changes to `btcli` and the Bittensor SDK are not backwards compatible.
 :::
 
+## Using Dynamic TAO
+
 To update to the Dynamic TAO-enabled versions of the tooling, run:
 
 ```
