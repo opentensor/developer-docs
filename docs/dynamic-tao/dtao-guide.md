@@ -48,20 +48,27 @@ In Dynamic TAO, the relative weight of subnets is determined by their share of t
 TAO-holders can stake TAO into subnets in exchange for the subnet-specific dynamic currency, referred to as the subnet's alpha ($$\alpha$$) token. In this way, stakers 'vote with their TAO' for the value of the subnet, determining the emission payout to the validators and miners working in it. In return, stakers receive a portion of the rewards emitted to the subnet.
 
 
+## Subnet Zero
 
-## Subnet zero
+In dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does not have its own $\alpha$ currency, and no mining or validating activity takes place. It offers a way for $\tau$-holders to stake $\tau$ into a validator in a way that applies across all subnets in which that validator works. This works because the weight of a validator in a subnet includes both their share of that subnet's $\alpha$ and their share of staked TAO in Subnet Zero&mdash;a validator's stake weight equals their alpha stake plus their tau stake times the 'tao weight' parameter:
+$$
 
-In dynamic TAO, subnet zero is a special subnet. It is designed to provide the following benefits:
+\text{Validator stake weight} = \text{Alpha stake} (\alpha) + \text{TAO stake} (\tau) \times \text{TAO weight} 
 
-- The subnet zero is the only subnet that does not have any subnet pool associated with it. TAO holders can only stake into subnet zero in TAO token denominations. Hence, TAO holders and validators who prefer not to think about either subnet-specific staking or about $\alpha$ tokens can stake in subnet zero. Their stake will remain in TAO denomination in the validator hotkeys as there is no notion of alpha in subnet zero.
-- The subnet zero is also the only subnet that does not have any validating or mining defined on it. Incentive mechanisms cannot be run in subnet zero. Nevertheless, a validator's hotkey registered in subnet zero will accept stake TAO. 
-- Because there is no subnet pool attached to the subnet zero, a validator hotkey's local weight in subnet zero is simply the raw TAO units that exist as stake in this hotkey. 
+$$
+
+A validator's stake weight determines a subnet's voting power when evaluating miners as well as their share of the emissions.
 
 
-- Even though subnet zero does not run any incentive mechanism, a hotkey can be registered in subnet zero and can accept stake TAO. This stake TAO can be either from a TAO holder or from another hotkey. 
+ tokens can stake in Subnet Zero. Their stake will remain in TAO denomination in the validator hotkeys as there is no notion of alpha in Subnet Zero.
+- The Subnet Zero is also the only subnet that does not have any validating or mining defined on it. Incentive mechanisms cannot be run in Subnet Zero. Nevertheless, a validator's hotkey registered in Subnet Zero will accept stake TAO. 
+- Because there is no subnet pool attached to the Subnet Zero, a validator hotkey's local weight in Subnet Zero is simply the raw TAO units that exist as stake in this hotkey. 
 
-:::caution Staking in subnet zero
-As a rule, you can only stake in TAO denomination in subnet zero, and only in the subnet-specific $\alpha$ denomination in all other subnets. Hence, stake in subnet zero is always expressed in TAO units.
+
+- Even though Subnet Zero does not run any incentive mechanism, a hotkey can be registered in Subnet Zero and can accept stake TAO. This stake TAO can be either from a TAO holder or from another hotkey. 
+
+:::caution Staking in Subnet Zero
+As a rule, you can only stake in TAO denomination in Subnet Zero, and only in the subnet-specific $\alpha$ denomination in all other subnets. Hence, stake in Subnet Zero is always expressed in TAO units.
 :::
 
 
@@ -86,3 +93,59 @@ $$
 $$ 
 
 This exchange rate can change every block when staking or unstaking or emissions occur on this subnet.
+
+
+## Stake or alpha outstanding
+ 
+Total stake in the subnet is referred as $\alpha_{out}$. This is the sum of all the [Stake](#staking)  present in all the validator hotkeys in this subnet. This is often referred as **$\alpha$ outstanding**. Compare this with [$\alpha$ reserve](#tao-reserve-and-alpha-reserve), which is the amount of $α_{in}$ in the subnet pool. The $\alpha$ outstanding can change every block. See a conceptual diagram below:
+
+
+<center>
+<ThemedImage
+alt="Staking"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/alpha-and-alpha-out.svg'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/dark-alpha-and-alpha-out.svg'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />
+
+## Hotkey's stake share
+
+A hotkey's share of the total outstanding alpha tokens in the subnet is calculated as:
+
+$$
+\text{A hotkey's stake share} = \frac{\text{hotkey's stake}(\alpha)}{\text{Total stake}(\alpha_{out})\text{ in the subnet}} 
+$$
+
+:::tip Local staking power within the subnet
+The hotkey's stake share represents the local stake power of the hotkey within the subnet. 
+:::
+
+
+## Exchange Value
+
+This is the potential instantaneous TAO you will receive, without considering slippage, if you [unstake](#unstaking) at this instant from this hotkey on this subnet. See [Swap](#swap) description. This can change every block.
+
+:::tip Compare with TAO Equiv 
+Whereas the [TAO Equiv](#local-weight-or-tao-equiv) indicates a validator's local stake weight, this Exchange Value shows TAO you will receive if you unstake now. 
+:::
+
+## Swap
+
+This is the actual τ you will receive, after subtracting in the slippage charge, if you unstake from this hotkey now on this subnet. The slippage is calculated as:
+
+$$
+\text{Slippage} = 1 - \frac{\text{Swap(α → τ)}}{\text{Exchange Value}(α \times τ/α)}
+$$
+
+This can change every block.
+
+---
+
+:::danger The Emissions section is preliminary
+The below Emissions section is still not settled yet. Proceed with caution.
+:::
