@@ -5,39 +5,41 @@ title: "Dynamic TAO FAQ"
 ## Timing / Rollout
 
 ### **What is the rollout timeline for dTAO? What determines the timing?**
-- **Timeline**: The transition to dTAO on mainnet is expected soon (previously referenced as early to mid-February, but depends on multiple conditions: final code reviews, testing, and market readiness).
-- **Gradual Shift**: Once live, there will be a **100-day gradual shift** of TAO’s role in staking toward subnet tokens. Initially, TAO’s weight (in each subnet) is relatively high, but over time more weight flows toward the subnet tokens.
-- **Adaptive Mechanism**: The pace at which subnets gain weight is dynamic, driven by actual supply of subnet tokens and on-chain parameters. This means actual timing can differ slightly from the ideal 100-day curve if market forces shift faster or slower.
 
----
+- Dynamic TAO is currently live on testnet. It's rollout to Bittensor mainnet will depend on how things go, but is expected in the next few weeks.
+
+- The state of the network as far as ledger balances and consensus power will not change immediately upon upgrade. In Dynamic TAO, consensus power (for validators in setting weights) is determined by a combination of TAO and alpha token holdings, but initially nobody will hold alpha, and consensus power will be heavily weighted toward TAO anyway, so the first alpha circulation will have little impact on consensus. Over time, consensus power will shift to weight alpha over TAO, both due to organic tokenomic forces and a network-global control parameter called *TAO weight*, which can be used to ease the pace of this shift.
 
 ## TAO-holders / Stakers
 
 ### **What is the risk/reward of staking TAO into a subnet?**
+Each new subnet has its own market. Staking into subnets is higher-risk, higher-reward than simply holding or staking TAO on the root network.
+
 Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s token (e.g., α “alpha” tokens).  
+
 - **Reward**: Potentially higher returns (emissions in that subnet’s token) if the subnet grows in usage and value.  
 - **Risk**: Subnet tokens can fluctuate in price. If a subnet token drops in value relative to TAO, you risk a lower overall position when you swap back.  
-- **No Free Lunch**: Each new subnet has its own market. Staking into subnets is higher-risk, higher-reward than simply holding or staking TAO on the root network.
-
-### **How do you think about arbitrage between subnet tokens?**
-- **Individual Markets**: Each subnet token trades in its own market. Arbitrage opportunities arise if tokens become mispriced relative to each other and/or TAO.  
-- **Exchange Rate**: Over time, the relative values of subnet tokens and TAO adjust based on demand, emissions, and speculation. Arbitrageurs can profit by trading tokens across subnets, but this carries its own risks.
 
 ### **Can users transfer alpha tokens (subnet tokens)?**
-- **Yes**: Once subnet tokens are created, they are transferrable. In many subnets, you can send tokens freely between wallets that support that subnet.  
-- **Bridges / DEXes**: Over time, Bittensor community tools and third-party DEXes might appear that ease transferring and trading these tokens.
+???
+
+### **How do you think about arbitrage between subnet tokens?**
+???
 
 ### **How will dTAO affect governance of the network?**
-- **No Immediate Change to Proposals**: dTAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).  
-- **Staking Distribution**: In practice, the economic power of TAO may shift as more weight moves into subnet tokens. TAO holders who opt not to stake in subnets still retain TAO for governance, but fewer emissions will accrue solely to them.  
-- **Subnet-Level Governance**: Subnets may develop their own mini-governance structures (though that is at the discretion of each subnet’s design).  
+
+Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
 
 ### **Are we risking “over-inflation” and a price collapse?**
-- **Multiple Tokens**: Each subnet will issue its own token (alpha, beta, etc.). While it’s true that more tokens appear overall, each subnet’s token is a separate market.  
-- **Balancing Mechanism**: dTAO is designed so that TAO’s “global weight” in each subnet gradually declines in proportion to that subnet’s token supply. Subnet tokens compete for stake and labor (mining).  
-- **Market-Driven**: If many subnets print tokens without real usage, their tokens may devalue. Conversely, subnets with utility and demand could retain value. TAO itself remains the base asset for the entire Bittensor network.
 
----
+No! The tokenomics are designed to avoid this.
+
+Each subnet will issue its own token (alpha, beta, etc.). While it’s true that more tokens appear overall, each subnet’s token is a separate market.  
+
+dTAO is designed so that TAO’s “global weight” in each subnet gradually declines in proportion to that subnet’s token supply. Subnet tokens compete for stake and labor (mining).  
+
+If many subnets print tokens without real usage, their tokens may devalue. Conversely, subnets with utility and demand could retain value. TAO itself remains the base asset for the entire Bittensor network.
+
 
 ## Root (Subnet Zero)
 
