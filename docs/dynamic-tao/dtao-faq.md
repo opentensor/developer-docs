@@ -2,20 +2,33 @@
 title: "Dynamic TAO FAQ"
 ---
 
+
+### Is there a cap on alpha currency?
+
+Yes. There is a hard cap of 21 million alpha that can ever be in circulation.
+
 ## Timing / Rollout
 
 ### **What is the rollout timeline for dTAO? What determines the timing?**
 
-- Dynamic TAO is currently live on testnet. It's rollout to Bittensor mainnet will depend on how things go, but is expected in the next few weeks.
+Dynamic TAO is currently live on testnet. It's rollout to Bittensor mainnet will depend on how things go, but is expected in the next few weeks.
 
-- The state of the network as far as ledger balances and consensus power will not change immediately upon upgrade. In Dynamic TAO, consensus power (for validators in setting weights) is determined by a combination of TAO and alpha token holdings, but initially nobody will hold alpha, and consensus power will be heavily weighted toward TAO anyway, so the first alpha circulation will have little impact on consensus. Over time, consensus power will shift to weight alpha over TAO, both due to organic tokenomic forces and a network-global control parameter called *TAO weight*, which can be used to ease the pace of this shift.
+
+The state of the network as far as ledger balances and consensus power will not change immediately upon upgrade; it will occur gradually as subnet specific alpha tokens are emitted and staked into circulation.
+
+In Dynamic TAO, validator *weight*&mdash;a critical score that determines consensus power as well as dividend rewards&mdash;is determined by a combination of TAO and alpha token holdings. When Dymamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
+
+But far more alpha than TAO is introduced emitted into circulation every block, and rewards to miners, validators, and stakers are always in alpha. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
+
+
+In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*, which is currently planned to be 18% ???(is that even right)???
 
 ## TAO-holders / Stakers
 
 ### **What is the risk/reward of staking TAO into a subnet?**
 Each new subnet has its own market. Staking into subnets is higher-risk, higher-reward than simply holding or staking TAO on the root network.
 
-Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s token (e.g., α “alpha” tokens).  
+Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s alpha token.
 
 - **Reward**: Potentially higher returns (emissions in that subnet’s token) if the subnet grows in usage and value.  
 - **Risk**: Subnet tokens can fluctuate in price. If a subnet token drops in value relative to TAO, you risk a lower overall position when you swap back.  
