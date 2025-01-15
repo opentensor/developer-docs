@@ -28,7 +28,6 @@ new_immunity_period = (new_commit_reveal_interval - old_commit_reveal_interval) 
 
 See [Subnet Hyperparameters](./subnet-hyperparameters.md).
 
-
 ## Commit reveal in detail
 
 When commit reveal is enabled, it works as follows:  

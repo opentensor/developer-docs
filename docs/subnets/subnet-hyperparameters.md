@@ -76,6 +76,7 @@ btcli sudo set
 ## max_weight_limit
 
 **Description**
+
 : This is the maximum weight that can be set by a subnet validator for a subnet miner, expressed as a value between `0` and `65535`. This is a u16 (unsigned integer) representation of the range from 0 and 1.0. The normalized weights of all miners in a subnet must always sum to 1.
 
 **Value**
@@ -117,6 +118,7 @@ Consider Subnet-1 where `max_weight_limit` is set to 455 and `min_allowed_weight
 **Setting**
 : This parameter can be changed by the subnet owner.
 
+
 ## commit_reveal_weights_interval
 
 **Description**
@@ -137,7 +139,7 @@ If the UID still does not perform well even after the expiry of the `immunity_pe
 
 When a subnet miner or a subnet validator is deregistered, they must register again to rejoin the subnet.
 
-If all peers (miners or validators within a subnet) are in their immunity period, immunity is overriden, and the lowest scoring peer is de-registered.
+In case all peers (miners or validators within a subnet) are in their immunity period, immunity is overriden, and the lowest scoring peer is de-registered.
 
 In case the lowest ranking position is held by multiple peers with a tied score, the one who was registered first is de-registered. This step applies first to peers outside of their immunity period unless all are immune, in which case it applies to immune peers.
 
