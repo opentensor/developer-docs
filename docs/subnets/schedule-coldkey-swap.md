@@ -33,7 +33,7 @@ The schedule coldkey swap feature works as follows:
 
 Make sure you satisfy the below requirements before you proceed:
 
-1. You must be the owner of old coldkey to schedule the coldkey swap.
+1. You must be the owner of the old coldkey to schedule the coldkey swap.
 
 :::danger If you do not own the new coldkey, you are **transferring complete ownership** of the coldkey.
 
