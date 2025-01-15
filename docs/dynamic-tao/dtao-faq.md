@@ -21,10 +21,8 @@ Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s toke
 - **Risk**: Subnet tokens can fluctuate in price. If a subnet token drops in value relative to TAO, you risk a lower overall position when you swap back.  
 
 ### **Can users transfer alpha tokens (subnet tokens)?**
-???
 
-### **How do you think about arbitrage between subnet tokens?**
-???
+No this is not planned. TAO-holders can acquire alpha tokens can by staking TAO into a validator in the corresponding subnet. Miners, validators, and stakers receive alpha tokens through emission. There is no other way to acquire them.
 
 ### **How will dTAO affect governance of the network?**
 
@@ -39,7 +37,6 @@ Each subnet will issue its own token (alpha, beta, etc.). While it’s true that
 dTAO is designed so that TAO’s “global weight” in each subnet gradually declines in proportion to that subnet’s token supply. Subnet tokens compete for stake and labor (mining).  
 
 If many subnets print tokens without real usage, their tokens may devalue. Conversely, subnets with utility and demand could retain value. TAO itself remains the base asset for the entire Bittensor network.
-
 
 ## Root (Subnet Zero)
 

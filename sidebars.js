@@ -89,7 +89,7 @@ const sidebars = {
       label: "Dynamic TAO",
       link: {type: "doc", id: "dynamic-tao/index",},
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [
       "dynamic-tao/dtao-guide",
       "dynamic-tao/emission",

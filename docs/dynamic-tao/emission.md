@@ -34,9 +34,10 @@ for i, sn in enumerate(subnets):
 
 ### Distribution 
 
+Every tempo (a number of blocks configurable per subnet)
 
 1. 18% goes to subnet owner
 1. 41% each to miners and validators
-1. validators pay out stakers in TAO and ALPHA
+1. validators pay out stakers in TAO and ALPHA (what's the math???)
 
-This occurs every tempo (???).
+
