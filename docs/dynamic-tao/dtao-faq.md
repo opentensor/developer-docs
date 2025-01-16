@@ -49,47 +49,37 @@ No, this is deliberately not allowed. Alpha tokens cannot be transferred like TA
 
 Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
 
-## Root (Subnet Zero)
+
+
+## Subnet Zero
+
+In dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does not have its own $\alpha$ currency. No miners can register on subnet zero, and no validation work is performed. However validators can register, and $\tau$-holders can stake to those validators, as with any other subnet. This offers a mechanism for $\tau$-holders to stake $\tau$ into validators in a subnet-agnostic way. This works because the weight of a validator in a subnet includes both their share of that subnet's $\alpha$ and their share of staked TAO in Subnet Zero.
+
+Subnet Zero is sometimes called the root subnet, since it sort of replaces the root network in the pre-Dyanmic-TAO architecture. However, Subnet Zero does not perform consensus over subnets, which was the defining function of the root network.
 
 ### How do emissions to subnet 0 stakers work?
-- **Conceptual Only**: The root network (also called “subnet 0”) no longer hosts AI “work” or miner consensus. It is mainly a **conceptual** place where you can stake TAO if you do not wish to stake in subnets.  
-- **Dividends**: At launch of dTAO, root stakers still receive some TAO emissions, but this reward diminishes as more subnet tokens are minted.  
-- **Mechanics**: The reward to root stakers is dynamically determined by the total supply of subnet tokens (relative to the effective TAO stake). As subnet tokens grow, root’s share of global emissions will shrink.
 
-### Will perpetual issuance to root stakers continue after a year? Why does the root chain keep issuing new TAO at all?
-- **Gradual Decline**: The root network continues issuing TAO, but at an ever-decreasing proportion (eventually approaching a low baseline).  
-- **Historical Reason**: Initially, TAO stakers expected a dividend. dTAO honors that expectation but tapers it to encourage capital to flow into subnets.  
-- **Motivation**: Over time, subnets become the primary engines of innovation, usage, and reward—rather than the root itself.
-
-### Is there a chance we remove or retire the ‘root’ network (subnet 0)?
-- **Unlikely**: Subnet 0 is the canonical ledger of Bittensor. Even though it is largely a minimal chain under dTAO, it remains crucial for:  
-  1. **Baseline reference** for TAO balances.  
-  2. **Staking** for those who do not want to engage with subnets.  
-  3. **Governance**: TAO-based proposals and votes.  
-- **Separation of Values**: Subnet tokens represent local (subnet-specific) value, while TAO remains the base currency for the entire ecosystem.  
-
-### If each subnet gets its own token, doesn’t that reflect all of Bittensor’s value? Why keep a separate root chain at all?
-- **Umbrella Asset**: TAO still represents the network as a whole and has governance weight, bridging all subnets.  
-- **Subnet Diversity**: Each subnet token is more narrowly focused and can fail or succeed independently. This fosters competition and innovation.  
-- **Security & Interchange**: Root is the unifying ledger that ensures each subnet token integrates under the same overarching network.
+???
 
 ### Why does the root network keep issuing TAO instead of just alpha?
-- **Historic Supply & Contract**: Original TAO token holders and stakers expect ongoing emissions from the main chain.  
-- **Smooth Transition**: dTAO’s design gradually shifts weight and capital to subnets. TAO issuance tapers so that subnets can flourish, rather than abruptly cutting off all TAO rewards.
+
+Price stabilization? insert explanation here???
 
 ---
 
 ## Miners and Validators
 
 ### How will miners (and validators) manage the proliferation of subnets?
-- **Selective Participation**: Each subnet’s token incentives might differ. Miners and validators choose which subnets to commit resources to based on expected returns, risk, or personal interest.  
-- **Market-Driven Reward**: If a subnet has high demand and a valuable token, it may attract more miners. In a subnet with low demand or low token value, miners may leave or never join.
+
+Miners and validators must now consider the TAO value of the alpha token in which they receive emissions. Doing the same work in a subnet whose alpha token is half as valuable (in TAO) means getting paid half as much, if they need to exit value now, although not necessarily in the long run, since the price of the tokens may vary.
+
+However, because alpha is less valuable in subnets with lower TAO reserves, the competition for mining will be less intensive.
 
 ### Will this dilute miner rewards?
-- **Not Necessarily**: Miners can shift their compute among subnets. In theory, more subnets could mean more opportunities for specialized or higher-paying tasks.  
-- **Constant Monitoring**: Miners/validators may need to watch markets (token prices, volumes) to optimize their allocations, much as proof-of-work miners monitor different chains to see which is most profitable to mine.
 
----
+Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
+
+Miners/validators may need to watch markets (token prices, volumes) to optimize their allocations, much as proof-of-work miners in other crypto systems monitor different chains to see which is most profitable to mine.
 
 ## Subnet
 
@@ -104,6 +94,7 @@ Each validator’s weight in the subnet is a function of the TAO staked to them 
 See [validator stake weight](./dtao-guide.md#walidator-stake-weight).
 
 ### What happens when a subnet is abandoned?
+
 If no participants use or mine a subnet, its token will likely drop to negligible value. Other subnets and the root remain unaffected. Each subnet’s success or failure is largely self-contained.
 
 The protocol does not automatically retire subnets, and abandoned subnets may be revived.
