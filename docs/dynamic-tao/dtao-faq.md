@@ -33,18 +33,19 @@ Instead of staking TAO to a validator, in Dynamic TAO, you stake a dynamic token
 
 ### What is the risk/reward profile of staking into a subnet?
 
-Staking into subnets is higher-risk, higher-reward than simply holding or staking TAO on the root network.
+Staking to validators on specific subnets is higher-risk, but potentially offers higher-rewards compared to holding TAO or staking TAO to validators on Subnet Zero.
 
 Each new subnet has its own token, referred to as its alpha. When you stake into a validator within a given subnet, you exchange TAO for that subnet's alpha. When you unstake from the validator in that subnet, you exchange the alpha for TAO. Staking and unstaking is therefore sensitive to the price of the alpha. This price of a subnet's alpha is the ratio of TAO in its reserve to alpha in reserve. 
 
-Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s alpha token.
+Staking TAO into a subnet essentially exchanges TAO for that subnet’s alpha token. To exit value, alpha must be exchanged back for TAO at the going rate.
 
-- **Reward**: Potentially higher returns (emissions in that subnet’s token) if the subnet grows in usage and value.  
-- **Risk**: Subnet tokens can fluctuate in price. If a subnet token drops in value relative to TAO, you risk a lower overall position when you swap back.  
+Held stake (alpha tokens) may increase in value if the subnet increases its share of stake in the Bittensor network, and also earns dividends each tempo. However, if a subnet's alpha token drops in value, a staker may lose overall TAO value.
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
-No, this is deliberately not allowed. Alpha tokens cannot be transferred like TAO, only staked and unstaked. TAO-holders can acquire alpha tokens by staking TAO into a validator in the corresponding subnet. Miners, validators, and stakers receive alpha tokens through emission. There is no other way to acquire them.
+No, direct transfer of alpha tokens between wallets (other than when involved in staking) is not allowed in Bittensor. Alpha tokens cannot be transferred like TAO, only staked and unstaked.
+
+TAO-holders can acquire alpha tokens by staking TAO into a validator in the corresponding subnet. Miners, validators, and stakers receive alpha tokens through emission. There is no other way to acquire them.
 
 ### How will Dynamic TAO affect governance of the network?
 
@@ -91,7 +92,7 @@ See [Emission of rewards in Dynamic TAO](./emission.md)
 
 ### What happens to previously locked registration costs from pre-Dynamic-TAO subnets?
 
-They are returned to subnet owners.
+They are returned to subnet owners when Dynamic TAO is initiated.
 
 ## Miners and Validators
 
@@ -101,7 +102,7 @@ Miners and validators must now consider the TAO value of the alpha token in whic
 
 However, because alpha is less valuable in subnets with lower TAO reserves, the competition for mining will be less intensive.
 
-### Will this dilute miner rewards?
+### Will more subnets dilute miner rewards?
 
 Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
 
