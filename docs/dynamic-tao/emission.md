@@ -6,17 +6,36 @@ title: "Emission of rewards in Dynamic TAO"
 
 Emission is the process by which the Bittensor network rewards participants, including miners, validators, stakers, and subnet owners. It unfolds in two stages:
 
-The Bittensor blockchain is the liquidity provider in the dynamic TAO. Without the liquidity provider injecting reserves into a subnet pool, the pool may run out of the reserves of one or both the tokens, thereby halting the entire subnet pool operation. This mechanism of liquidity injection is normal. 
-
-
 - Injection into subnets
 - Distribution to participants
 
 ### Injection to subnets
 
-The first stage of emissions is injection of liquidity injections into the subnet pools, which occurs each block. Either TAO or alpha (the subnet's own token) will be injected into the subnet's corresponding reserve. Which currency is injected depends on whether the subnet's token's price is lower than the proportion of the total network's TAO held in the subnet's reserve. This acts to prevent the constant emission of liquidity from having a biasing effect on the evolution of pricing.
+The first stage of emissions is injection of liquidity injections into the subnet pools, which occurs each block. This liquidity is divided between the subnet's reserves of TAO and alpha, and to *alpha outgoing*, which is the accumulating reward to be divided among subnet participants at the end of each tempo.
 
-This occurs every block.
+See [Core Dynamic TAO Concepts: Subnet liquidity reserves](./dtao-guide.md#subnet-liquidity-reserves)
+
+Each block, 2 alpha are divided between the subnet's alpha reserves and alpha outgoing, and a small fraction of TAO is added to the subnet's TAO reserve. The quantities injected depend on whether the subnet's token's price is lower than the proportion of the total network's TAO held in the subnet's reserve. This acts to prevent the constant emission of liquidity from having a biasing effect on the evolution of pricing, and more generally to stabilize the price of each alpha token around a value close to its subnet's proportion of the total TAO staked into all subnets.
+
+**Injection Logic:**
+
+- If the subnet's token price is *lower* than its proportion of TAO in reserve (the subnet's TAO reserve divided by the total TAO reserve of all subnets, including Subnet Zero):
+
+  - The subnet's liquidity reserves recieve:
+      - TAO equivalent to the subnet's token price
+      - 1 alpha 
+
+  - The alpha outgoing (rewards for subnet participants) for the tempo receives 1 alpha
+
+- If the subnet's token price is greater or equal to its proportion of TAO in reserve:
+
+  - The subnet's liquidity reserves receive:
+
+    - TAO equivalent to the subnet's proportion of the network's TAO reserves
+    - alpha equivalent to subnet's proportion of TAO reserves divided by the subnet's token price
+
+  - The alpha outgoing (rewards for subnet participants) for the tempo receives 2 alpha minus the quantity of alpha bound for the subnet's alpha rserves
+
 
 
 ```

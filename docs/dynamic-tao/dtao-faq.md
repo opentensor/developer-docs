@@ -68,7 +68,8 @@ Subnet Zero is sometimes called the root subnet, since it sort of replaces the r
 
 ### What will it take to start and manage a subnet in Dyanmic TAO?
 
-### Why is subnet registration free?
+???
+
 
 ### How will Dynamic TAO affect subnet governance (weight-setting)?
 
@@ -92,7 +93,6 @@ See [Emission of rewards in Dynamic TAO](./emission.md)
 
 They are returned to subnet owners.
 
-
 ## Miners and Validators
 
 ### How will miners (and validators) manage the proliferation of subnets?
@@ -106,8 +106,6 @@ However, because alpha is less valuable in subnets with lower TAO reserves, the 
 Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
 
 Miners/validators may need to watch markets (token prices, volumes) to optimize their allocations, much as proof-of-work miners in other crypto systems monitor different chains to see which is most profitable to mine.
-
-
 
 ## Where can I find more technical details right now?
 
