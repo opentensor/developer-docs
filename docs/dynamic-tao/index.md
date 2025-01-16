@@ -7,7 +7,7 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 # Dynamic TAO
 
-Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
+Dynamic TAO is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
 
 See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
