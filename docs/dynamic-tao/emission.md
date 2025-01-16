@@ -51,9 +51,9 @@ for i, sn in enumerate(subnets):
     sn.inject( tao_in, alpha_in, alpha_out )
 ```
 
-### Distribution 
+### Distribution of rewards
 
-Every tempo (a number of blocks configurable per subnet)
+At the end of each tempo (a number of blocks configurable per subnet), the alpha accumulated during the injection over each block of the tempo is distributed among network participants as follows:
 
 1. 18% goes to subnet owner
 1. 41% each to miners and validators
