@@ -4,23 +4,24 @@ title: "Dynamic TAO FAQ"
 
 ## Timing / Rollout
 
-### What is the rollout timeline for dTAO? What determines the timing?
+### What is the rollout timeline for Dyanmic TAO? What determines the timing?
 
 Dynamic TAO is currently live on testnet. It's rollout to Bittensor mainnet will depend on how things go, but is expected in the next few weeks.
 
+### How will Dynamic TAO take effect?
 
 The state of the network as far as ledger balances and consensus power will not change immediately upon upgrade; it will occur gradually as subnet specific alpha tokens are emitted and staked into circulation.
-
-### How will Dynamic TAO take effect?
 
 In Dynamic TAO, validator *weight*&mdash;a critical score that determines consensus power as well as dividend rewards&mdash;is determined by a combination of TAO and alpha token holdings. When Dymamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
 
 But far more alpha than TAO is introduced emitted into circulation every block, and rewards to miners, validators, and stakers are always in alpha. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
 
+In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be ???%, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
+<!-- FACT CHECK ??? -->
 
-In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*, which is currently planned to be 18% ???(is that even right)???
+See [Emission of rewards in Dynamic TAO](./emission.md)
 
-### Is there a cap on alpha currency?
+### Will there be a cap on alpha currency?
 
 Yes. There is a hard cap of 21 million for any subnet's alpha token, the same as for TAO itself.
 
@@ -45,17 +46,9 @@ Staking TAO into a subnet essentially **exchanges** TAO for that subnet’s alph
 
 No, this is deliberately not allowed. Alpha tokens cannot be transferred like TAO, only staked and unstaked. TAO-holders can acquire alpha tokens by staking TAO into a validator in the corresponding subnet. Miners, validators, and stakers receive alpha tokens through emission. There is no other way to acquire them.
 
-### How will dTAO affect governance of the network?
+### How will Dynamic TAO affect governance of the network?
 
 Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
-
-
-
-## Subnet Zero
-
-In dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does not have its own $\alpha$ currency. No miners can register on subnet zero, and no validation work is performed. However validators can register, and $\tau$-holders can stake to those validators, as with any other subnet. This offers a mechanism for $\tau$-holders to stake $\tau$ into validators in a subnet-agnostic way. This works because the weight of a validator in a subnet includes both their share of that subnet's $\alpha$ and their share of staked TAO in Subnet Zero.
-
-Subnet Zero is sometimes called the root subnet, since it sort of replaces the root network in the pre-Dyanmic-TAO architecture. However, Subnet Zero does not perform consensus over subnets, which was the defining function of the root network.
 
 ### How do emissions to subnet 0 stakers work?
 
@@ -65,25 +58,15 @@ Subnet Zero is sometimes called the root subnet, since it sort of replaces the r
 
 Price stabilization? insert explanation here???
 
----
+## Subnets
 
-## Miners and Validators
+### Subnet Zero
 
-### How will miners (and validators) manage the proliferation of subnets?
+In dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does not have its own $\alpha$ currency. No miners can register on subnet zero, and no validation work is performed. However validators can register, and $\tau$-holders can stake to those validators, as with any other subnet. This offers a mechanism for $\tau$-holders to stake $\tau$ into validators in a subnet-agnostic way. This works because the weight of a validator in a subnet includes both their share of that subnet's $\alpha$ and their share of staked TAO in Subnet Zero.
 
-Miners and validators must now consider the TAO value of the alpha token in which they receive emissions. Doing the same work in a subnet whose alpha token is half as valuable (in TAO) means getting paid half as much, if they need to exit value now, although not necessarily in the long run, since the price of the tokens may vary.
+Subnet Zero is sometimes called the root subnet, since it sort of replaces the root network in the pre-Dyanmic-TAO architecture. However, Subnet Zero does not perform consensus over subnets, which was the defining function of the root network.
 
-However, because alpha is less valuable in subnets with lower TAO reserves, the competition for mining will be less intensive.
-
-### Will this dilute miner rewards?
-
-Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
-
-Miners/validators may need to watch markets (token prices, volumes) to optimize their allocations, much as proof-of-work miners in other crypto systems monitor different chains to see which is most profitable to mine.
-
-## Subnet
-
-### What will it take to start and manage a subnet in dTAO?
+### What will it take to start and manage a subnet in Dyanmic TAO?
 
 ### Why is subnet registration free?
 
@@ -109,7 +92,24 @@ See [Emission of rewards in Dynamic TAO](./emission.md)
 
 They are returned to subnet owners.
 
-### Where can I find more technical details right now?
+
+## Miners and Validators
+
+### How will miners (and validators) manage the proliferation of subnets?
+
+Miners and validators must now consider the TAO value of the alpha token in which they receive emissions. Doing the same work in a subnet whose alpha token is half as valuable (in TAO) means getting paid half as much, if they need to exit value now, although not necessarily in the long run, since the price of the tokens may vary.
+
+However, because alpha is less valuable in subnets with lower TAO reserves, the competition for mining will be less intensive.
+
+### Will this dilute miner rewards?
+
+Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
+
+Miners/validators may need to watch markets (token prices, volumes) to optimize their allocations, much as proof-of-work miners in other crypto systems monitor different chains to see which is most profitable to mine.
+
+
+
+## Where can I find more technical details right now?
 
 - Codebase: Refer to the Bittensor codebase, especially `run_coinbase.rs`, which calculates emissions logic for subnets and the root network.  
 - White paper TBD???
