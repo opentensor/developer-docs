@@ -26,15 +26,15 @@ At the end of each tempo (360 blocks), the alpha accumulated during the injectio
 
 1. 18% goes to subnet owner
 1. 41% goes to miners
-1. 41% goes to validators
-  1. Validators receive their take   
-  1. Stakers are paid out
-    - Stakers in TAO, i.e. on the root subnet receive TAO dividends
-    - Stakers in alpha, i.e. on the subnet, recieve alpha dividends
+1. 41% goes to validators:
+    1. Validators receive their take   
+    1.  Stakers are paid out:
+        1. Stakers in TAO, i.e. on the root subnet receive TAO dividends
+        1. Stakers in alpha, i.e. on the subnet, recieve alpha dividends
 
 <!-- What is the validator take percent? -->
-<!-- 
-Alpha and TAO dividends are emitted according to their relative prevalence in the economy, so...
+
+<!-- Alpha and TAO dividends are emitted according to their relative prevalence in the economy, so...
 
 ??? But is this per subnet or is this global evaluation? sub x as below or global?
 ???
@@ -43,7 +43,7 @@ proportion of root relative dividends goes to root
 
 
 $$
-\text{Proportion of a Validator's dividends that go to root} 
+\text{Proportion of a Validator's dividends that go to root???} 
 = \frac{\tau_{x} \, w_{\tau}}
        {\alpha_{x} + \tau_{x} \, w_{\tau}}
 $$
