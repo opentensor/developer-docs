@@ -25,6 +25,12 @@ Key values:
 
 ### Step 2. Add Mainnet to Metamask
 
+#### Option 1. Adding with Chainlist
+
+Open [Subtensor page on ChainList.org](https://chainlist.org/chain/964) and click on "Connect Wallet".
+
+#### Adding maunally
+
 Add the Mainnet to Metamask from within the Metamask wallet. Follow the below steps:
 
 1. Open Metamask Wallet extension on your browser. Click on the &#8942; (three vertical dots, i.e., vertical ellipsis) at the top right. 
