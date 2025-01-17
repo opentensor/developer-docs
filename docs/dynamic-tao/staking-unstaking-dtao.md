@@ -100,6 +100,7 @@ Using the specified network test from config
 
 ## Stake into a node
 
+Use `btcli stake add` to stake to a validator on a subnet. You'll be prompted to choose a subnet and validator, as well as specify an amount of TAO to stake into the validator's hotkey as alpha.
 
 ```shell
  btcli stake add
@@ -127,8 +128,31 @@ Using the specified network test from config
    │     │  48.92k Ⲁ │  41.62k Ⲁ │ 7.30k Ⲁ │   1.000   │           │   73.8524 Ⲁ   │        │         │
 
 
-Enter the number of the delegate you want to stake to (or press Enter to cancel) (): 
 ```
 
-Select the delegate and hit enter.
+
+## View your current stakes
+
+Use `btcli stake list` to view your currently held stakes. For each validator you have staked, you'll see how much stake you currently hold on each subnet.
+
+Stake is held in alpha, but note that value at the current price is also displayed, along with the computed **Swap** value and slippage rate of the current holdings.
+
+```console
+                       Hotkey: 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
+                                            Network: test
+
+                             See below for an explanation of the columns
+
+        ┃           ┃     Value ┃           ┃    Price    ┃                  ┃            ┃  Emission
+ Netuid ┃ Name      ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃    Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 250    │ ኤ unknown │   τ 18.38 │ 602.14 ኤ  │ 0.0305 τ/ኤ  │ τ 17.96 (2.287%) │        YES │  0.0000 ኤ
+ 119    │ Ⲃ vidac   │   τ 13.72 │  98.73 Ⲃ  │ 0.1390 τ/Ⲃ  │ τ 13.61 (0.815%) │        YES │  0.0000 Ⲃ
+────────┼───────────┼───────────┼───────────┼─────────────┼──────────────────┼────────────┼───────────
+ 2      │           │   τ 32.10 │           │             │          τ 31.57 │            │
+
+Press Enter to continue to the next hotkey...
+```
+
+
 

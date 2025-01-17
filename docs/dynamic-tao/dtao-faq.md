@@ -1,6 +1,8 @@
 ---
 title: "Dynamic TAO FAQ"
 --- 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Timing / Rollout
 
@@ -14,22 +16,40 @@ The state of the network as far as ledger balances and consensus power will not 
 
 In Dynamic TAO, validator *weight*&mdash;a critical score that determines consensus power as well as dividend rewards&mdash;is determined by a combination of TAO and alpha token holdings. When Dymamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
 
-But far more alpha than TAO is introduced emitted into circulation every block, and rewards to miners, validators, and stakers are always in alpha. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
+But far more alpha than TAO is emitted into circulation every block, and rewards to miners, validators, and stakers are always in alpha. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
 
-In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be ???%, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
-<!-- FACT CHECK ??? -->
+In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be **18%**, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
 
 See [Emission of rewards in Dynamic TAO](./emission.md)
+<center>
+<ThemedImage
+alt="Curves"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />
+
 
 ### Will there be a cap on alpha currency?
 
 Yes. There is a hard cap of 21 million for any subnet's alpha token, the same as for TAO itself.
 
+2 alpha tokens per subnet will be emitted each block, while only 1 TAO is emitted and shared across the whole network.
+
 ## TAO-holders / Stakers
 
 ### How has staking changed?
 
-Instead of staking TAO to a validator, in Dynamic TAO, you stake a dynamic token, the alpha of subnet on which the validator is working. This means that all staking is local to a subnet.
+Instead of staking TAO to a validator, in Dynamic TAO, you stake to a validator on a specific subnet. This can be either a mining subnet (most subnets) or the unique root subnet, a.k.a. Subnet Zero.
+
+- When you stake on a mining subnet, you exchange TAO for a dynamic token, the *alpha* of the subnet on which the validator is working, and stake that into the validator's hotkey.
+
+- When you stake on the root subnet, you stake TAO. But the root subnet is just another subnet, although one with some special properties. All staking is local to a subnet.
 
 ### What is the risk/reward profile of staking into a subnet?
 
@@ -39,7 +59,7 @@ Each new subnet has its own token, referred to as its alpha. When you stake into
 
 Staking TAO into a subnet essentially exchanges TAO for that subnet’s alpha token. To exit value, alpha must be exchanged back for TAO at the going rate.
 
-Held stake (alpha tokens) may increase in value if the subnet increases its share of stake in the Bittensor network, and also earns dividends each tempo. However, if a subnet's alpha token drops in value, a staker may lose overall TAO value.
+Held stake (alpha tokens) may increase or decrease in TAO value as the price of the alpha changes, but staked alpha will earns more dividends in the long run, as the balance of alpha to TAO in the network increases.
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
@@ -51,13 +71,13 @@ TAO-holders can acquire alpha tokens by staking TAO into a validator in the corr
 
 Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
 
-### How do emissions to subnet 0 stakers work?
+### How do dividends/emissions to root subnet/Subnet 0 stakers work?
 
-???
+Of the 41% of total emissions received by validators, each subnet gets a share based on the price of its token&mdash;but what about the root subnet, which has no token? Stake in the root subnet applies in *all* subnets in which a validator works
 
-### Why does the root network keep issuing TAO instead of just alpha?
+In each subnet, each validator receives a share of the TAO dividends proportional to its relative stake weight in the subnet. Refer to [Core Dynamic TAO Concepts: Validator stake weight](dtao-guide#validator-stake-weight).
 
-Price stabilization? insert explanation here???
+<!-- Fact check this, not sure I got this correct ??? ^^^ -->
 
 ## Subnets
 
@@ -68,9 +88,7 @@ In dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does
 Subnet Zero is sometimes called the root subnet, since it sort of replaces the root network in the pre-Dyanmic-TAO architecture. However, Subnet Zero does not perform consensus over subnets, which was the defining function of the root network.
 
 ### What will it take to start and manage a subnet in Dyanmic TAO?
-
-???
-
+The process of registering a subnet in Dynamic TAO will be very similar to the process of registering a submit previously, except that the cost to register the subnet is now burned, rather than being a lock cost returned to the subnet owner on de-registration. This is because subnets are not deregistered in Dynamic TAO.
 
 ### How will Dynamic TAO affect subnet governance (weight-setting)?
 
@@ -82,7 +100,9 @@ See [validator stake weight](./dtao-guide.md#walidator-stake-weight).
 
 If no participants use or mine a subnet, its token will likely drop to negligible value. Other subnets and the root remain unaffected. Each subnet’s success or failure is largely self-contained.
 
-The protocol does not automatically retire subnets, and abandoned subnets may be revived.
+:::Note
+Currently, the protocol does not automatically deregister subnets. Abandoned subnets may be revived.
+:::
 
 ### Do subnet owners control emissions for their own tokens?
 
@@ -92,17 +112,13 @@ See [Emission of rewards in Dynamic TAO](./emission.md)
 
 ### What happens to previously locked registration costs from pre-Dynamic-TAO subnets?
 
-They are returned to subnet owners when Dynamic TAO is initiated.
+They are returned to subnet owners when Dynamic TAO is initiated, on the same coldkey that registered.
 
 ## Miners and Validators
 
 ### How will miners (and validators) manage the proliferation of subnets?
 
-Miners and validators must now consider the TAO value of the alpha token in which they receive emissions. Doing the same work in a subnet whose alpha token is half as valuable (in TAO) means getting paid half as much, if they need to exit value now, although not necessarily in the long run, since the price of the tokens may vary.
-
-However, because alpha is less valuable in subnets with lower TAO reserves, the competition for mining will be less intensive.
-
-### Will more subnets dilute miner rewards?
+Miners and validators must now consider the TAO value of the alpha token in which they receive emissions.
 
 Miners can and must shift their work among subnets, depending on the value of the subnets and their own ability to compete. More subnets will mean more opportunities for specialized work.
 
@@ -111,4 +127,5 @@ Miners/validators may need to watch markets (token prices, volumes) to optimize 
 ## Where can I find more technical details right now?
 
 - Codebase: Refer to the Bittensor codebase, especially `run_coinbase.rs`, which calculates emissions logic for subnets and the root network.  
-- White paper TBD???
+- A forthcoming Dynamic TAO whitepaper!
+
