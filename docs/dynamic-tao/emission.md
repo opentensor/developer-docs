@@ -26,18 +26,18 @@ At the end of each tempo (360 blocks), the alpha accumulated during the injectio
 
 1. 18% goes to subnet owner
 1. 41% goes to incentives for miners
-1. 41% goes to dividencds to validators and their stakers:
+1. 41% goes to dividends to validators and their stakers:
     1. First, validators receive their take   
     1.  Then, stakers are paid out. Alpha and TAO dividends are emitted according to their relative weight:
         1. Stakers in TAO, i.e. on the root subnet receive TAO dividends in proportion to the validator's weight that is TAO:
           $$
-          \text{dividends that to root stakers} 
+          \text{dividends to root stakers} 
           = \frac{\tau_{x} \, w_{\tau}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
         1. Stakers in alpha, i.e. on the mining subnet itself, receive alpha dividends in proportion to the validator's weight that is alpha:
           $$
-          \text{dividends that go to alpha stakers} 
+          \text{dividends to alpha stakers} 
           = \frac{\alpha_{x}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
