@@ -7,7 +7,9 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 # Dynamic TAO
 
-Dynamic TAO (D-TAO) is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
+Dynamic TAO is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
+
+See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
 Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
 
@@ -19,6 +21,15 @@ Testnet tokens do not have any value.
 
 Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights).
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
+
+
+:::danger
+The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
+
+The changes to `btcli` and the Bittensor SDK are not backwards compatible.
+:::
+
+## Using Dynamic TAO
 
 To update to the Dynamic TAO-enabled versions of the tooling, run:
 
@@ -34,7 +45,6 @@ The changes to `btcli` and the Bittensor SDK are not backwards compatible.
 
 The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
 :::
-
 
 See:
 - [Bittensor SDK release page](https://pypi.org/project/bittensor/)
