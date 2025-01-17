@@ -1,6 +1,8 @@
 ---
 title: "Emission of rewards in Dynamic TAO"
 ---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Emission of rewards in Dynamic TAO
 
@@ -17,9 +19,6 @@ See [Core Dynamic TAO Concepts: Subnet liquidity reserves](./dtao-guide.md#subne
 
 Each block, 2 alpha are divided between the subnet's alpha reserves and alpha outstanding, and a small fraction of TAO is added to the subnet's TAO reserve.  TAO and alpha are injected according to a balancing algorithm, so that injection of liquidity does not not change its price.
 
-
-
-
 ### Distribution of rewards
 
 At the end of each tempo (360 blocks), the alpha accumulated during the injection over each block of the tempo is distributed among network participants as follows:
@@ -30,15 +29,39 @@ At the end of each tempo (360 blocks), the alpha accumulated during the injectio
     1. First, validators receive their take   
     1.  Then, stakers are paid out. Alpha and TAO dividends are emitted according to their relative weight. For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
 
-        Stakers in TAO, i.e. on the root subnet receive TAO dividends in proportion to the validator's weight that is TAO. 
+        Stakers in TAO, i.e. on the root subnet receive TAO dividends in proportion to the validator's stake weight's proportion of TAO. 
           $$
           \text{dividends to root stakers} 
           = \frac{\tau_{x}{} \, w_{\tau}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
-        Stakers in alpha, i.e. on the mining subnet itself, receive alpha dividends in proportion to the validator's weight that is alpha:
+        Stakers in alpha, i.e. on the mining subnet itself, receive alpha dividends in proportion to the validator's stake weight's proportion of alpha:
           $$
           \text{dividends to alpha stakers} 
           = \frac{\alpha_{x}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
+
+
+    See [Core Dynamic TAO Concepts: Validator stake weight](./dtao-guide.md#validator-stake-weight)
+
+### Note on evolution of dividends distribution
+
+When Dynamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
+
+But far more alpha than TAO is emitted into circulation every block, and rewards to miners, validators, and stakers are always in alpha. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
+
+In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be **18%**, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
+
+<center>
+<ThemedImage
+alt="Curves"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />
