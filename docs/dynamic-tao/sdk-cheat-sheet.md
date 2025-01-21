@@ -58,9 +58,9 @@ class DynamicInfo:
 ## Viewing subnets
 Subnets evolve substantially in Dynamic TAO! Each subnet has its own currency, known as its alpha token, and an internal economy comprising a currency reserve of TAO, a reserve of its own alpha token, and a ledger of staked balances, to keep track of all of its stakers&mdash;those who have put TAO into its reserve in exchange for alpha.
 
-### `subtensor.all_subnets`
+### `all_subnets`
 ```python
-async all_subnets(
+all_subnets(
     block_number: Optional[int] = None
 ) -> List[DynamicInfo]
 
@@ -69,9 +69,9 @@ async all_subnets(
 Description: Fetches information about all subnets at a certain block height (or current block if None).
 Returns: A list of DynamicInfo objects (detailed below).
 
-### `subtensor.subnet`
+### `subnet`
 ```python
-async subnet(
+subnet(
     netuid: int, 
     block_number: Optional[int] = None
 ) -> DynamicInfo
@@ -80,9 +80,9 @@ async subnet(
 Description: Fetches information about a single subnet identified by netuid.
 Returns: A DynamicInfo object describing the subnet’s current state (see section Subnet DynamicInfo).
 
-### `subtensor.metagraph`
+### `metagraph`
 ```python
-async metagraph(
+metagraph(
     netuid: int, 
     block: Optional[int] = None
 ) -> bittensor.Metagraph
@@ -90,7 +90,7 @@ async metagraph(
 Description: Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
 
 ## Calculating exchange rates
-### `DynamicInfo.tao_to_alpha`
+### `tao_to_alpha`
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
 ```
@@ -105,7 +105,7 @@ Description: Returns an 'ideal' estimate of how much TAO would be yielded by uns
 Parameters:
     `alpha`: Amount of Alpha to unstake.
 
-### `DynamicInfo.tao_to_alpha_with_slippage`
+### `tao_to_alpha_with_slippage`
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
 
@@ -117,7 +117,8 @@ Returns:
     Tuple of balances where the first part is the amount of Alpha received, and the
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
-### `DynamicInfo.alpha_to_tao_with_slippage`
+
+### `alpha_to_tao_with_slippage`
 
 Returns an estimate of how much TAO would a staker receive if they unstake their alpha using the current pool state.
 Parameters:
@@ -127,9 +128,27 @@ Returns:
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
 
-## Staking and unstaking
+## Managing stake
 
-### `subtensor.add_stake`
+### `get_stake`
+```python
+get_stake(
+    hotkey_ss58: str, 
+    coldkey_ss58: str, 
+    netuid: int
+) -> bittensor.Balance
+
+```
+
+Description: Retrieves the staked balance for a given (hotkey, coldkey) pair on a specific subnet. Returns a `bittensor.Balance` object with the staked amount.
+Parameters:
+- hotkey_ss58: Hotkey SS58 address.
+- coldkey_ss58: Coldkey SS58 address (owner).
+- netuid: Unique ID of the subnet.
+
+
+
+### `add_stake`
 
 ```python
 async add_stake(
@@ -147,9 +166,9 @@ Parameters:
 - netuid: Unique ID of the subnet on which you want to stake.
 - tao_amount: Amount to stake, can be a float, integer, or bittensor.Balance object.
 
-### `subtensor.unstake`
+### `unstake`
 ```python
-async unstake(
+unstake(
     wallet, 
     hotkey: str, 
     netuid: int, 
@@ -165,28 +184,10 @@ Parameters:
 - netuid: Unique ID of the subnet.
 - amount: Amount to unstake.
 
-### `subtensor.get_stake`
+
+### `get_balance`
 ```python
-async def get_stake(
-    hotkey_ss58: str, 
-    coldkey_ss58: str, 
-    netuid: int
-) -> bittensor.Balance
-
-```
-
-Description: Retrieves the staked balance for a given (hotkey, coldkey) pair on a specific subnet. Returns a `bittensor.Balance` object with the staked amount.
-Parameters:
-- hotkey_ss58: Hotkey SS58 address.
-- coldkey_ss58: Coldkey SS58 address (owner).
-- netuid: Unique ID of the subnet.
-
-
-
-
-### `subtensor.get_balance`
-```python
-async def get_balance(
+get_balance(
     address: str, 
     block: Optional[int] = None
 ) -> bittensor.Balance
@@ -202,15 +203,15 @@ Parameters:
 
 
 
-### `subtensor.get_current_block`
+### `get_current_block`
 ```python
-async def get_current_block() -> int
+get_current_block() -> int
 
 ```
 Description: Returns the current chain block number.
-### `subtensor.wait_for_block`
+### `wait_for_block`
 ```python
-async def wait_for_block(
+wait_for_block(
 block: Optional[int] = None
 )
 
