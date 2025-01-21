@@ -43,7 +43,8 @@ class DynamicInfo:
 
 ```
 
-### `all_subnets`
+
+### `async_subtensor.all_subnets`
 ```python
 async all_subnets(
     block_number: Optional[int] = None
@@ -54,7 +55,7 @@ async all_subnets(
 Description: Fetches information about all subnets at a certain block height (or current block if None).
 Returns: A list of DynamicInfo objects (detailed below).
 
-### `subnet`
+### `async_subtensor.subnet`
 ```python
 async subnet(
     netuid: int, 
@@ -65,7 +66,7 @@ async subnet(
 Description: Fetches information about a single subnet identified by netuid.
 Returns: A DynamicInfo object describing the subnet’s current state (see section Subnet DynamicInfo).
 
-### `metagraph`
+### `async_subtensor.metagraph`
 ```python
 async metagraph(
     netuid: int, 
@@ -74,7 +75,8 @@ async metagraph(
 ```
 Description: Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
 
-### `tao_to_alpha`
+## Alpha pricing
+### `DynamicInfo.tao_to_alpha`
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
 ```
@@ -89,7 +91,7 @@ Description: Returns an 'ideal' estimate of how much TAO would be yielded by uns
 Parameters:
     `alpha`: Amount of Alpha to unstake.
 
-### `tao_to_alpha_with_slippage`
+### `DynamicInfo.tao_to_alpha_with_slippage`
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
 
@@ -101,7 +103,7 @@ Returns:
     Tuple of balances where the first part is the amount of Alpha received, and the
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
-### `alpha_to_tao_with_slippage`
+### `DynamicInfo.alpha_to_tao_with_slippage`
 
 Returns an estimate of how much TAO would a staker receive if they unstake their alpha using the current pool state.
 Parameters:
@@ -113,7 +115,7 @@ Returns:
 
 ## Staking and unstaking
 
-### `add_stake`
+### `async_subtensor.add_stake`
 
 ```python
 async add_stake(
@@ -131,7 +133,7 @@ Parameters:
 - netuid: Unique ID of the subnet on which you want to stake.
 - tao_amount: Amount to stake, can be a float, integer, or bittensor.Balance object.
 
-### `unstake`
+### `async_subtensor.unstake`
 ```python
 async unstake(
     wallet, 
@@ -149,7 +151,7 @@ Parameters:
 - netuid: Unique ID of the subnet.
 - amount: Amount to unstake.
 
-### `get_stake`
+### `async_subtensor.get_stake`
 ```python
 async def get_stake(
     hotkey_ss58: str, 
@@ -167,7 +169,7 @@ Parameters:
 Returns: bittensor.Balance object with the staked amount.
 
 
-### `get_balance`
+### `async_subtensor.get_balance`
 ```python
 async def get_balance(
     address: str, 
@@ -184,13 +186,13 @@ Parameters:
 
 
 
-### `get_current_bloc`
+### `async_subtensor.get_current_block`
 ```python
 async def get_current_block() -> int
 
 ```
     Description: Returns the current chain block number.
-### `wait_for_block`
+### `async_subtensor.wait_for_block`
 ```python
 async def wait_for_block(
     block: Optional[int] = None
