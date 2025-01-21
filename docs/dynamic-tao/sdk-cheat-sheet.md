@@ -393,3 +393,63 @@ netuid 5 price τ0.001785179 stake ε33.619312896
 ...
 
 ```
+
+
+
+
+## Register on a subnet
+
+The following script registers a hotkey on a subnet. This is necessary for staking, mining or validating.
+
+```python
+import bittensor as bt
+logging = bt.logging
+logging.set_info()
+sub = bt.Subtensor(network="test")
+wallet = bt.wallet(
+    name="ExampleWalletName",
+    hotkey="ExampleHotkey",
+)
+wallet.unlock_coldkey()
+reg = sub.burned_register(wallet=wallet, netuid=3)
+```
+
+
+## View your wallet
+
+The `btcli` currently offers a nicer overview of the wallet than the SDK. This displays the registrations to subnets by hotkeys controlled by the wallet:
+
+
+
+
+```shell
+ Wallet
+
+                                                                         ExampleWalletName : 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                                                                  Network: test
+Subnet: 250: unknown ኤ
+
+  COLDKEY          HOTKEY           UID      ACTIVE     STAKE(ኤ)         RANK        TRUST    CONSENSUS    INCENTIVE    DIVIDENDS   EMISSION(…       VTRUST   VPE…   UPDAT…   AXON                HOTKEY_SS58
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ExampleWalletName     ExampleHotkey       8         False       706.38         0.00         0.00         0.00         0.00         0.00   4945923.0…         0.00    *      57118   none                5GEXJdUXxL
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                    1                   706.38 ኤ       0.0000       0.0000       0.0000       0.0000       0.0000     ρ4945923       0.0000
+
+Subnet: 3: gamma γ
+
+  COLDKEY          HOTKEY           UID      ACTIVE     STAKE(γ)         RANK        TRUST    CONSENSUS    INCENTIVE    DIVIDENDS   EMISSION(…       VTRUST   VPE…   UPDAT…   AXON                HOTKEY_SS58
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ExampleWalletName     ExampleHotkey       10        False         0.00         0.00         0.00         0.00         0.00         0.00       0.0000         0.00          32210…   none                5GEXJdUXxL
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                    1                     0.00 γ       0.0000       0.0000       0.0000       0.0000       0.0000           ρ0       0.0000
+
+Subnet: 119: vidac Ⲃ
+
+  COLDKEY          HOTKEY           UID      ACTIVE     STAKE(Ⲃ)         RANK        TRUST    CONSENSUS    INCENTIVE    DIVIDENDS   EMISSION(…       VTRUST   VPE…   UPDAT…   AXON                HOTKEY_SS58
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ExampleWalletName     ExampleHotkey       103       False       268.38         0.01         1.00         0.01         0.01         0.00   3470929.0…         0.00           57625   none                5GEXJdUXxL
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                    1                   268.38 Ⲃ       0.0094       1.0000       0.0093       0.0094       0.0000     ρ3470929       0.0000
+
+```
+
