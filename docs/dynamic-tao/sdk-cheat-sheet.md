@@ -217,40 +217,47 @@ block: Optional[int] = None
 ```
 Description: Waits for the next block to arrive or waits until a specified block number is reached if provided.
 
-
-## Examples
-example calling multiple staking operation
-
 Update: we have added proper nonce protection allowing you to run gather operations on stake/unstake/transfers 
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
+## Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
 
 ```python
-import bittensor
-wallet = bittensor.Wallet.new()
-to_buy = [1, 277, 18, 5]
+import bittensor as bt
+sub = bt.Subtensor(network="test")
+wallet = bt.wallet(name="ExampleWalletNameReplaceMe!")
+wallet.unlock_coldkey()
+
+to_buy = [119, 277, 18, 5]
 increment = 0.01
 total_spend = 0
 stake = {}
+
+
 while total_spend < 3:
     for netuid in to_buy:
-        subnet = await sub.subnet(netuid)
-        await sub.add_stake( 
+        subnet = sub.subnet(netuid)
+        print(subnet.slippage(100))
+        sub.add_stake( 
             wallet = wallet, 
             netuid = netuid, 
             hotkey = subnet.owner_hotkey, 
             tao_amount = increment, 
         )
-        current_stake = await sub.get_stake(
+        # sub.remove_stake( 
+        #     wallet = wallet, 
+        #     netuid = netuid, 
+        #     hotkey = subnet.owner_hotkey, 
+        #     amount = increment, 
+        # )
+        current_stake = sub.get_stake(
             coldkey_ss58 = wallet.coldkeypub.ss58_address,
             hotkey_ss58 = subnet.owner_hotkey,
             netuid = netuid,
         )
         stake[netuid] = current_stake
         total_spend += increment
-    print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
-    await sub.wait_for_block()
-
+        print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
+    sub.wait_for_block()
 ```
