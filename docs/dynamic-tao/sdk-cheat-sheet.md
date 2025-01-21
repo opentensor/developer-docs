@@ -2,7 +2,7 @@
 title: "Dynamic Tao SDK Cheat Sheet"
 ---
 
-This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md).
+This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md), and some example scripts to demonstrate functionality such as [viewing exchange rates](#example-viewing-exchange-rates) and [staking and unstaking](#example-staking-and-unstaking) into subnets.
 
 
 Updates to the `subtensor` and `async_subtensor` modules and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
@@ -22,6 +22,25 @@ pip install bittensor==8.5.1rc6
 1. Clone the Bittensor repository from GitHub: [`https://github.com/opentensor/bittensor`](https://github.com/opentensor/bittensor)
 1. Check out the `rao` branch.
 1. Run `pip install .`
+
+
+## Using the SDK for sync or async requests
+
+The Bittensor `subtensor` and `async_subtensor` modules offer the synchronous and asynchronous options for the same functionality.
+
+Import bittensor and alias the correct module, for example, the following configuration for async calls to the Bittensor test network:
+
+    ```python
+    import bittensor as bt
+    sub = bt.AsyncSubtensor(network="test")
+    ```
+
+Or the following configuration for synchronous calls to Bittensor mainnet ('finney'):
+
+    ```python
+    import bittensor as bt
+    sub = bt.Subtensor(network="finney")
+    ```
 
 
 ## The `DynamicInfo` object
@@ -237,7 +256,7 @@ Update: we have added proper nonce protection allowing you to run gather operati
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-## Example: Viewing slippage rates
+## Example: Viewing exchange rates
 
 The following script displays exchange rates for a subnet alpha token, with and without slippage.
 
