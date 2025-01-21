@@ -224,16 +224,16 @@ scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, 
 ## Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
 
 ```python
+
 import bittensor as bt
 sub = bt.Subtensor(network="test")
-wallet = bt.wallet(name="ExampleWalletNameReplaceMe!")
+wallet = bt.wallet(name="ExampleWalletName")
 wallet.unlock_coldkey()
 
 to_buy = [119, 277, 18, 5]
 increment = 0.01
 total_spend = 0
 stake = {}
-
 
 while total_spend < 3:
     for netuid in to_buy:
@@ -245,12 +245,7 @@ while total_spend < 3:
             hotkey = subnet.owner_hotkey, 
             tao_amount = increment, 
         )
-        # sub.remove_stake( 
-        #     wallet = wallet, 
-        #     netuid = netuid, 
-        #     hotkey = subnet.owner_hotkey, 
-        #     amount = increment, 
-        # )
+
         current_stake = sub.get_stake(
             coldkey_ss58 = wallet.coldkeypub.ss58_address,
             hotkey_ss58 = subnet.owner_hotkey,
