@@ -5,7 +5,7 @@ title: "Dynamic Tao SDK Cheat Sheet"
 This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md).
 
 
-Updates to the `async_subtensor` module and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
+Updates to the `subtensor` and `async_subtensor` modules and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
 
 ## Updating your SDK
 
@@ -58,7 +58,7 @@ class DynamicInfo:
 ## Viewing subnets
 Subnets evolve substantially in Dynamic TAO! Each subnet has its own currency, known as its alpha token, and an internal economy comprising a currency reserve of TAO, a reserve of its own alpha token, and a ledger of staked balances, to keep track of all of its stakers&mdash;those who have put TAO into its reserve in exchange for alpha.
 
-### `async_subtensor.all_subnets`
+### `subtensor.all_subnets`
 ```python
 async all_subnets(
     block_number: Optional[int] = None
@@ -69,7 +69,7 @@ async all_subnets(
 Description: Fetches information about all subnets at a certain block height (or current block if None).
 Returns: A list of DynamicInfo objects (detailed below).
 
-### `async_subtensor.subnet`
+### `subtensor.subnet`
 ```python
 async subnet(
     netuid: int, 
@@ -80,7 +80,7 @@ async subnet(
 Description: Fetches information about a single subnet identified by netuid.
 Returns: A DynamicInfo object describing the subnet’s current state (see section Subnet DynamicInfo).
 
-### `async_subtensor.metagraph`
+### `subtensor.metagraph`
 ```python
 async metagraph(
     netuid: int, 
@@ -129,7 +129,7 @@ Returns:
 
 ## Staking and unstaking
 
-### `async_subtensor.add_stake`
+### `subtensor.add_stake`
 
 ```python
 async add_stake(
@@ -147,7 +147,7 @@ Parameters:
 - netuid: Unique ID of the subnet on which you want to stake.
 - tao_amount: Amount to stake, can be a float, integer, or bittensor.Balance object.
 
-### `async_subtensor.unstake`
+### `subtensor.unstake`
 ```python
 async unstake(
     wallet, 
@@ -165,7 +165,7 @@ Parameters:
 - netuid: Unique ID of the subnet.
 - amount: Amount to unstake.
 
-### `async_subtensor.get_stake`
+### `subtensor.get_stake`
 ```python
 async def get_stake(
     hotkey_ss58: str, 
@@ -175,15 +175,16 @@ async def get_stake(
 
 ```
 
-Description: Retrieves the staked balance for a given (hotkey, coldkey) pair on a specific subnet.
+Description: Retrieves the staked balance for a given (hotkey, coldkey) pair on a specific subnet. Returns a `bittensor.Balance` object with the staked amount.
 Parameters:
-    hotkey_ss58: Hotkey SS58 address.
-    coldkey_ss58: Coldkey SS58 address (owner).
-    netuid: Unique ID of the subnet.
-Returns: bittensor.Balance object with the staked amount.
+- hotkey_ss58: Hotkey SS58 address.
+- coldkey_ss58: Coldkey SS58 address (owner).
+- netuid: Unique ID of the subnet.
 
 
-### `async_subtensor.get_balance`
+
+
+### `subtensor.get_balance`
 ```python
 async def get_balance(
     address: str, 
@@ -193,23 +194,24 @@ async def get_balance(
 ```
 
 Description: Returns the current (or specified block’s) coldkey TAO balance for an address.
+
 Parameters:
-    address: SS58 address to check.
-    block: Optional block number at which to fetch the balance. Uses the latest block if None.
+- address: SS58 address to check.
+- block: Optional block number at which to fetch the balance. Uses the latest block if None.
 
 
 
 
-### `async_subtensor.get_current_block`
+### `subtensor.get_current_block`
 ```python
 async def get_current_block() -> int
 
 ```
-    Description: Returns the current chain block number.
-### `async_subtensor.wait_for_block`
+Description: Returns the current chain block number.
+### `subtensor.wait_for_block`
 ```python
 async def wait_for_block(
-    block: Optional[int] = None
+block: Optional[int] = None
 )
 
 ```
@@ -226,6 +228,8 @@ scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, 
 Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
 
 ```python
+import bittensor
+wallet = bittensor.Wallet.new()
 to_buy = [1, 277, 18, 5]
 increment = 0.01
 total_spend = 0
