@@ -1,5 +1,5 @@
 ---
-title: "Dynamic Tao SDK Cheat Sheet"
+title: "Dynamic TAO SDK Cheat Sheet"
 ---
 
 This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md), and some example scripts to demonstrate functionality such as [viewing exchange rates](#example-viewing-exchange-rates) and [staking and unstaking](#example-staking-and-unstaking) into subnets.
