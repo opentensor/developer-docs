@@ -121,16 +121,15 @@ You can dissolve a subnet you own with the ['SubstrateInterface' python module](
 2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` tool does not support subnet deregistration.
 3. You must import your subnet coldkey (wallet) into the Polkadot JS extension and connect this coldkey (wallet) account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
 4. Before you dissolve your subnet, make sure you communicate your intent and timeline of the subnet dissolution to the subnet miners and subnet validators in your subnet, and to your community.
-<!-- node = SubstrateInterface(url="wss://entrypoint-finney.opentensor.ai:443") -->
 
-Use the following Python script to dissolve a subnet:
+Use the bittensor and substrateinterface Python modules to dissolve a subnet by submitting an extrinsic transaction to the blockchain:
 
 ```python
 from substrateinterface import SubstrateInterface
 import bittensor as bt
 
 
-node = SubstrateInterface(url="wss://entrypoint-test.opentensor.ai:443")???
+node = SubstrateInterface(url="wss://entrypoint-<YOUR ENTRYPOINT>.opentensor.ai:443")
 wallet = bt.wallet(name="<REPLACE WITH YOUR SUBNET ENDPOINT>")
 
 def print_extrinsic_receipt(receipt):
