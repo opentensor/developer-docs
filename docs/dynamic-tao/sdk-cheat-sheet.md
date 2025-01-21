@@ -7,14 +7,14 @@ This page provides a quick reference for the core functionalities for the Bitten
 
 Updates to the `async_subtensor` module and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
 
-## Install the bleeding edge rao stuff...
+## Updating your SDK
+
+### option 1: use the rc...
+### option 2: install from source...
 
 
-## Subnets
-Subnets evolve substantially in Dynamic TAO! Each subnet has its own currency, known as its alpha token, and an internal economy comprising a currency reserve of TAO, a reserve of its own alpha token, and a ledger of staked balances, to keep track of all of its stakers&mdash;those who have put TAO into its reserve in exchange for alpha.
 
-
-### The `DynamicInfo` object
+## The `DynamicInfo` object
 
 The state of a subnet, with all of the new attributes, is encapsulated in a `DynamicInfo` object. This is what is returned by the `subnet` and `all_subnets` methods.
 
@@ -45,7 +45,8 @@ class DynamicInfo:
     subnet_identity: Optional[SubnetIdentity]
 
 ```
-
+## Viewing subnets
+Subnets evolve substantially in Dynamic TAO! Each subnet has its own currency, known as its alpha token, and an internal economy comprising a currency reserve of TAO, a reserve of its own alpha token, and a ledger of staked balances, to keep track of all of its stakers&mdash;those who have put TAO into its reserve in exchange for alpha.
 
 ### `async_subtensor.all_subnets`
 ```python
@@ -78,7 +79,7 @@ async metagraph(
 ```
 Description: Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
 
-## Alpha pricing
+## Calculating exchange rates
 ### `DynamicInfo.tao_to_alpha`
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
