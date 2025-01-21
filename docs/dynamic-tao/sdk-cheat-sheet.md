@@ -221,7 +221,9 @@ Update: we have added proper nonce protection allowing you to run gather operati
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-## Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
+## Example Staking
+
+The following script incrementally stakes TAO into several subnets over many blocks:
 
 ```python
 
@@ -255,4 +257,16 @@ while total_spend < 3:
         total_spend += increment
         print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
     sub.wait_for_block()
+```
+```console
+Enter your password:
+Decrypting...
+5.484198655671355
+netuid 119 price τ0.027592398 stake Ⲃ1.449590749
+22.54931028877199
+netuid 277 price τ0.014734147 stake इ2.714201361
+48.319842544421064
+netuid 18 price τ0.001067641 stake σ28.105321031
+36.69607695087895
+netuid 5 price τ0.001784484 stake ε11.208213619
 ```
