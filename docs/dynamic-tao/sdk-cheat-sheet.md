@@ -221,9 +221,9 @@ Update: we have added proper nonce protection allowing you to run gather operati
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-## Example Staking
+## Example staking and unstaking
 
-The following script incrementally stakes TAO into several subnets over many blocks:
+The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
 ```python
 
@@ -240,6 +240,7 @@ stake = {}
 while total_spend < 3:
     for netuid in to_buy:
         subnet = sub.subnet(netuid)
+        print("slippage for subnet " + netuid)
         print(subnet.slippage(100))
         sub.add_stake( 
             wallet = wallet, 
@@ -269,4 +270,71 @@ netuid 277 price τ0.014734147 stake इ2.714201361
 netuid 18 price τ0.001067641 stake σ28.105321031
 36.69607695087895
 netuid 5 price τ0.001784484 stake ε11.208213619
+```
+
+
+
+The below script will reverse the effects of the above, by incrementally unstaking alpha tokens from the list of subnets to yield TAO.
+
+```
+
+import bittensor as bt
+sub = bt.Subtensor(network="test")
+wallet = bt.wallet(name="ExampleWalletName")
+wallet.unlock_coldkey()
+
+to_sell = [119, 277, 18, 5]
+increment = 0.01
+total_sell = 0
+stake = {}
+
+while total_sell < 3:
+    for netuid in to_sell:
+        subnet = sub.subnet(netuid)
+        print(subnet.slippage(100))
+
+        sub.remove_stake( 
+            wallet = wallet, 
+            netuid = netuid, 
+            hotkey = subnet.owner_hotkey, 
+            amount = increment, 
+        )
+        current_stake = sub.get_stake(
+            coldkey_ss58 = wallet.coldkeypub.ss58_address,
+            hotkey_ss58 = subnet.owner_hotkey,
+            netuid = netuid,
+        )
+        stake[netuid] = current_stake
+        total_sell += increment
+        print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
+    sub.wait_for_block()
+```
+```console
+Enter your password:
+Decrypting...
+5.480567515602973
+netuid 119 price τ0.027590441 stake Ⲃ2.899319570
+22.534224516416796
+netuid 277 price τ0.014730536 stake इ5.429337492
+48.29992457746112
+netuid 18 price τ0.001068362 stake σ65.558512653
+36.680744412524845
+netuid 5 price τ0.001785179 stake ε33.619312896
+5.4804915283858175
+netuid 119 price τ0.027590362 stake Ⲃ2.889319570
+22.533950779528286
+netuid 277 price τ0.014730370 stake इ5.419337492
+48.29970193148187
+netuid 18 price τ0.001068360 stake σ65.548512653
+36.68051473215936
+netuid 5 price τ0.001785176 stake ε33.609312896
+5.48041555111148
+netuid 119 price τ0.027590283 stake Ⲃ2.879319570
+22.53367183098513
+netuid 277 price τ0.014730205 stake इ5.409337492
+48.29947928981226
+netuid 18 price τ0.001068358 stake σ65.538512653
+36.68028505715634
+netuid 5 price τ0.001785173 stake ε33.599312896
+5.480339583646466
 ```
