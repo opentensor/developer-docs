@@ -9,9 +9,19 @@ Updates to the `async_subtensor` module and the `DynamicInfo` class provide new 
 
 ## Updating your SDK
 
-### option 1: use the rc...
-### option 2: install from source...
+### option 1: use the release candidate
 
+To update to the Dynamic TAO-enabled versions of the SDK, run:
+
+```
+pip install bittensor==8.5.1rc6
+```
+
+### option 2: install from source
+
+1. Clone the Bittensor repository from GitHub: [`https://github.com/opentensor/bittensor`](https://github.com/opentensor/bittensor)
+1. Check out the `rao` branch.
+1. Run `pip install .`
 
 
 ## The `DynamicInfo` object
@@ -213,14 +223,14 @@ Update: we have added proper nonce protection allowing you to run gather operati
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-example DCA'ing into multiple subnets
-```
-# DCA 1000 TAO into these subnets over many blocks
+Example: use simple dollar cost averaging (DCA) to stake TAO into several subnets over many blocks:
+
+```python
 to_buy = [1, 277, 18, 5]
 increment = 0.01
 total_spend = 0
 stake = {}
-while total_spend < 1000:
+while total_spend < 3:
     for netuid in to_buy:
         subnet = await sub.subnet(netuid)
         await sub.add_stake( 
@@ -238,8 +248,5 @@ while total_spend < 1000:
         total_spend += increment
     print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
     await sub.wait_for_block()
-
-
-
 
 ```
