@@ -76,37 +76,36 @@ Description: Returns the metagraph for a specified subnet netuid. The metagraph 
 
 ### `tao_to_alpha`
 ```python
-
-```
-Returns an estimate of how much Alpha would a staker receive if they stake their tao using the current pool state.
-        Args:
-            tao: Amount of TAO to stake.
-        Returns:
-            Tuple of balances where the first part is the amount of Alpha received, and the
-            second part (slippage) is the difference between the estimated amount and ideal
-            amount as if there was no slippage
-### `alpha_to_tao`
-```python
 tao_to_alpha(self, tao: Balance) -> Balance
 ```
-### `tao_to_alpha_with_slippage`
+Description: Returns an 'ideal' estimate of how much Alpha a staker would receive at the current price, *ignoring slippage*.
+Parameters:
+    `tao`: Amount of TAO to stake.
+### `alpha_to_tao`
 ```python
 alpha_to_tao(self, alpha: Balance) -> Balance
 ```
+Description: Returns an 'ideal' estimate of how much TAO would be yielded by unstaking at the current price, *ignoring slippage*.
+Parameters:
+    `alpha`: Amount of Alpha to unstake.
 
+### `tao_to_alpha_with_slippage`
+```python
+tao_to_alpha(self, tao: Balance) -> Balance
+
+```
 Returns an estimate of how much Alpha would a staker receive if they stake their tao using the current pool state.
-Args:
-    tao: Amount of TAO to stake.
+Parameters:
+    `tao`: Amount of TAO to stake.
 Returns:
     Tuple of balances where the first part is the amount of Alpha received, and the
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
 ### `alpha_to_tao_with_slippage`
 
-
 Returns an estimate of how much TAO would a staker receive if they unstake their alpha using the current pool state.
-Args:
-    alpha: Amount of Alpha to stake.
+Parameters:
+    `alpha`: Amount of Alpha to unstake.
 Returns:
     Tuple of balances where the first part is the amount of TAO received, and the
     second part (slippage) is the difference between the estimated amount and ideal
