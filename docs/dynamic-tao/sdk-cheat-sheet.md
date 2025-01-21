@@ -5,11 +5,14 @@ title: "Dynamic Tao SDK Cheat Sheet"
 This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md).
 
 
+Updates to the `async_subtensor` module and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
+
 ## Install the bleeding edge rao stuff...
 
 
 ## Subnets
 Subnets evolve substantially in Dynamic TAO! Each subnet has its own currency, known as its alpha token, and an internal economy comprising a currency reserve of TAO, a reserve of its own alpha token, and a ledger of staked balances, to keep track of all of its stakers&mdash;those who have put TAO into its reserve in exchange for alpha.
+
 
 ### The `DynamicInfo` object
 
