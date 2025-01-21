@@ -26,15 +26,15 @@ In this tutorial you will learn how to interact with staking precompile in two w
 2. On this EVM localnet create one subnet and a delegate hotkey. The commands below will create a subnet, register a neuron and nominate your hotkey as a delegate, in that order:
 
     ```bash
-    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9946
-    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9946
-    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9946
+    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9944
+    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9944
+    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9944
     ```
 
 3. Save the delegate hotkey address. You will use this in the staking pool use case below.
 
 4. Disable staking rate limits by setting `targetStakesPerInterval` to 1000. Follow these below steps:
-    - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/extrinsics/decode/0x0c00132fe803000000000000).
+    - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics/decode/0x0c00132fe803000000000000).
     - Click on **Submission** tab.
     - From the **using the selected account** field, select **ALICE**.
     - Click on **Submit Transaction** at the bottom right. This will open the **authorize transaction** window.
@@ -106,7 +106,7 @@ In this tutorial, you will interact directly with the staking precompile by usin
 
 3. Remix IDE will find the precompile at the precompile address on the subtensor EVM and show it in the list of deployed contracts. Expand the contract, then expand the `addStake` method, and paste the public key of your delegate hotkey into the `hotkey` field. Then click **transact** and wait for the transaction to be completed.
 
-4. Follow these steps to see that the stake record is updated in [Polkadot JS app](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9946#/chainstate): 
+4. Follow these steps to see that the stake record is updated in [Polkadot JS app](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate): 
 
    1.  Select **subtensorModule** + **stake** in the drop-down list.
    2.  Paste the delegate hotkey account ID in the first parameter.

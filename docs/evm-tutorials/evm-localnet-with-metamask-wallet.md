@@ -14,44 +14,47 @@ If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bi
 :::
 
 Key values:
-- The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
-- The **Bittensor Mainnet URL:** `https://lite.chain.opentensor.ai`
-- **EVM Subtensor Chain ID:**: `964` (UTF-8 encoded TAO symbol) for Mainnet or `945` (UTF-8 encoded alpha character) for Testnet
-- **Opentensor EVM-Bittensor GitHub repo:** https://github.com/opentensor/evm-bittensor/tree/main
- 
+- **EVM Subtensor Mainnet Chain ID:**: `964` (UTF-8 encoded TAO symbol) 
+- **EVM Subtensor Testnet Chain ID:**: `945` (UTF-8 encoded alpha character)
+- **Opentensor EVM-Bittensor GitHub repo with code examples:** https://github.com/opentensor/evm-bittensor/tree/main
 
 ## Step 1. Run EVM-enabled localnet
 
 ```bash
 git clone https://github.com/opentensor/subtensor
-git checkout feat/evm-devnet-ready
-./scripts/localnet.sh False
+./scripts/localnet.sh
 ```
 
-## Step 2. Create a Metamask wallet 
+## Step 2. Set Chain ID
+
+The bare local network doesn't have the Chain ID setup and it needs to be configured with an admin extrinsic. Use [sudo section of Polkadot AppsUI](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/sudo) to call this extrinsic to set the ChainID to 945 (to simulate Testnet) or 964 (to simulate Mainnet):
+
+```
+adminUtils >> sudoSetEvmChainId
+```
+
+## Step 3. Create a Metamask wallet 
 
 1. If you don't already have it, [install Metamask wallet](https://metamask.io/download/) browser extension.
 2. Create a new account.
 
-## Step 2. Add EVM localnet to Metamask
+## Step 4. Add EVM localnet to Metamask
 
 Follow the below steps:
 
-1. Open Metamask Wallet extension on your browser. Click on the &#8942; (three vertical dots, i.e., vertical ellipsis) at the top right. 
-2. Select **Settings** from the drop-down menu. 
-3. Select **Networks** > **Add network**.
-4. Click on **Add a network manually** at the bottom of the networks list.
-5. Enter the following details:
-    - **Network name:** "Subtensor"
-    - **EVM RPC URL:** http://localhost:9946/
-    - **Chain ID:** `964` or `945`, to target Mainnet or Testnet
+1. Open Metamask Wallet extension on your browser. Click on the drop-down **Select a network** menu at the top left. 
+2. Click on **+ Add a Custom Network** button. 
+3. Enter the following details:
+    - **Network name:** "Subtensor Local"
+    - **Default RPC URL:** http://localhost:9944/
+    - **Chain ID:** `964` or `945`, depending on your setting in Step 2
     - **Currency symbol:** TAO 
 6. Click **Save**.
-7. Then click on **Switch network**.
+7. Click on **Select a network** again and switch to the Subtensor Local network.
 
 With the above steps, you have successfully configured your Metamask wallet with the EVM localnet. 
 
-## Step 3. Configure private key and RPC endpoint
+## Step 5. Configure private key and RPC endpoint
 
 :::danger Stop. Did you install the dependencies?
 Before you proceed, make sure you finished the [Install](./install.md) step.
@@ -93,3 +96,13 @@ In this step you will copy the private key from your Metamask wallet account and
     ```
 
 Save the `config.js` file. Now your setup is ready to run the tutorials with EVM localnet. 
+
+## Step 6 (Optional). Disable white list for contract deployment
+
+If you are planning to deploy contracts locally, you need to disable the premission control. This can be done with the following extrinsic in [sudo section of Polkadot AppsUI](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/sudo):
+
+```
+evm >> disableWhitelist
+```
+
+Select **Yes** and then click Submit Sudo.

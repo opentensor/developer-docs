@@ -89,8 +89,13 @@ const sidebars = {
       label: "Dynamic TAO",
       link: {type: "doc", id: "dynamic-tao/index",},
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: [
+      "dynamic-tao/dtao-guide",
+      "dynamic-tao/dtao-faq",
+      "dynamic-tao/emission",
+      "dynamic-tao/staking-unstaking-dtao",
+      
       ],
     },
     {

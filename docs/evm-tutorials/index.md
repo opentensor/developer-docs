@@ -42,6 +42,21 @@ Before you proceed to use EVM on subtensor, make a note of the following:
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
 <ResponsiveCards>
+    <ResponsiveCard
+    icon={FaNetworkWired}
+    title='Subtensor Networks'
+    link='/evm-tutorials/subtensor-networks'
+    body='RPC endpoints and Chain IDs for Mainnet and Testnets.' />
+    <ResponsiveCard
+    icon={FaNetworkWired}
+    title='Configure Hardhat for subtensor EVM'
+    link='/evm-tutorials/hardhat-config-for-subtensor-evm'
+    body='Using Hardhat? Configure it to work with subtensor EVM.' />
+    <ResponsiveCard
+    icon={FaNetworkWired}
+    title='Configure Remix IDE for subtensor EVM'
+    link='/evm-tutorials/remix-config-for-subtensor-evm'
+    body='Remix IDE configuration to use with subtensor EVM.' />
     <ResponsiveCard 
     icon={GiHiveMind}
     title='EVM on Subtensor: Basics'
@@ -78,11 +93,6 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     link='/evm-tutorials/transfer-between-two-h160-accounts'
     body='Learn how to transfer TAO between two Ethereum H160 addresses.' />
     <ResponsiveCard
-    icon={FaNetworkWired}
-    title='Configure Hardhat for subtensor EVM'
-    link='/evm-tutorials/hardhat-config-for-subtensor-evm'
-    body='Using Hardhat? Configure it to work with subtensor EVM.' />
-    <ResponsiveCard
     icon={GrStakeholder}
     title='Stake with a smart contract'
     link='/evm-tutorials/staking-precompile'
@@ -92,4 +102,9 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='Verify ed25519 with a precompile'
     link='/evm-tutorials/ed25519-verify-precompile'
     body='Verify an ed25519 signature on subtensor EVM.' />
+    <ResponsiveCard
+    icon={GiHiveMind}
+    title='Troubleshooting'
+    link='/evm-tutorials/troubleshooting'
+    body='How to troubleshoot the most common issues.' />
 </ResponsiveCards>
