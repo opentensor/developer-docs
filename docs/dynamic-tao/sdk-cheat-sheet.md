@@ -11,15 +11,15 @@ See [Dynamic TAO Overview](./index.md).
 
 ## Updating your SDK
 
-### option 1: use the release candidate
+### Option 1: Use the release candidate
 
 To update to the Dynamic TAO-enabled versions of the SDK, run:
 
 ```
-pip install bittensor==8.5.1rc6
+pip install bittensor==8.5.1rc9
 ```
 
-### option 2: install from source
+### Option 2: Install from source
 
 1. Clone the Bittensor repository from GitHub: [`https://github.com/opentensor/bittensor`](https://github.com/opentensor/bittensor)
 1. Check out the `rao` branch.
@@ -36,11 +36,11 @@ Import Bittensor and alias the correct module, for example, the following config
     sub = bt.AsyncSubtensor(network="test")
     ```
 
-Or the following configuration for synchronous calls to Bittensor mainnet ('finney'):
+Or the following configuration for synchronous calls to Bittensor test network:
 
     ```python
     import bittensor as bt
-    sub = bt.Subtensor(network="finney")
+    sub = bt.Subtensor(network="test")
     ```
 
 
@@ -48,7 +48,7 @@ Or the following configuration for synchronous calls to Bittensor mainnet ('finn
 
 The state of a subnet, with all of the new attributes, is encapsulated in a `DynamicInfo` object. This is what is returned by the `subnet` and `all_subnets` methods.
 
-```
+```python
 @dataclass
 class DynamicInfo:
     netuid: int
@@ -116,6 +116,7 @@ Fetches information about a single subnet identified by netuid.
 
 Returns a DynamicInfo object describing the subnet’s current state.
 
+
 ### `metagraph`
 ```python
 metagraph(
@@ -128,11 +129,17 @@ metagraph(
 Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
 
 ## Calculating exchange rates
+You can query the DynamicInfo object for the exchange rates between TAO and alpha tokens.
+You can use `all_subnets` or `subnet` to get the DynamicInfo object.
+
+```python
+subnet = sub.subnet(netuid=1)
+```
 
 ### `tao_to_alpha`
 
 ```python
-tao_to_alpha(self, tao: Balance) -> Balance
+tao_to_alpha(self, tao: Union[Balance, float, int]) -> Balance:
 ```
 Description: Returns an 'ideal' estimate of how much Alpha a staker would receive at the current price, *ignoring slippage*.
 
@@ -141,7 +148,7 @@ Parameters:
 
 ### `alpha_to_tao`
 ```python
-alpha_to_tao(self, alpha: Balance) -> Balance
+alpha_to_tao(self, alpha: Union[Balance, float, int]) -> Balance:
 ```
 Description: Returns an 'ideal' estimate of how much TAO would be yielded by unstaking at the current price, *ignoring slippage*.
 Parameters:
@@ -149,26 +156,37 @@ Parameters:
 
 ### `tao_to_alpha_with_slippage`
 ```python
-tao_to_alpha(self, tao: Balance) -> Balance
-
+tao_to_alpha_with_slippage(tao: Union[Balance, float, int], percentage: bool = False) -> Union[tuple[Balance, Balance], float]:
 ```
 Returns an estimate of how much Alpha would a staker receive if they stake their TAO using the current pool state.
+
 Parameters:
     `tao`: Amount of TAO to stake.
+    `percentage`: If True, returns the percentage difference between the estimated amount and ideal amount as if there was no slippage.
+
 Returns:
     Tuple of balances where the first part is the amount of Alpha received, and the
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
+    OR
+    Percentage of the slippage as a float
 
 ### `alpha_to_tao_with_slippage`
-
+```python
+alpha_to_tao_with_slippage(alpha: Union[Balance, float, int], percentage: bool = False) -> Union[tuple[Balance, Balance], float]:
+```
 Returns an estimate of how much TAO would a staker receive if they unstake their alpha using the current pool state.
+
 Parameters:
     `alpha`: Amount of Alpha to unstake.
+    `percentage`: If True, returns the percentage difference between the estimated amount and ideal amount as if there was no slippage.
+
 Returns:
     Tuple of balances where the first part is the amount of TAO received, and the
     second part (slippage) is the difference between the estimated amount and ideal
     amount as if there was no slippage
+    OR
+    Percentage of the slippage as a float
 
 ## Managing stake
 
@@ -220,6 +238,7 @@ unstake(
 ```
 
 Description: Unstakes amount of TAO from the specified hotkey on a given netuid.
+
 Parameters:
 - wallet: Your Bittensor wallet object.
 - hotkey: The SS58 address (hotkey) from which you want to remove stake.
@@ -241,8 +260,6 @@ Description: Returns the current (or specified block’s) coldkey TAO balance fo
 Parameters:
 - address: SS58 address to check.
 - block: Optional block number at which to fetch the balance. Uses the latest block if None.
-
-
 
 
 ### `get_current_block`
@@ -268,7 +285,7 @@ scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, 
 
 The following script displays exchange rates for a subnet alpha token, with and without slippage.
 
-```
+```python
 import bittensor as bt
 
 sub = bt.Subtensor(network="test")
@@ -286,6 +303,7 @@ print("alpha_to_tao", subnet.alpha_to_tao(100))
 
 ## Example: staking and unstaking
 
+### Staking
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
 ```python
@@ -295,16 +313,15 @@ sub = bt.Subtensor(network="test")
 wallet = bt.wallet(name="ExampleWalletName")
 wallet.unlock_coldkey()
 
-to_buy = [119, 277, 18, 5]
-increment = 0.01
-total_spend = 0
-stake = {}
+to_buy = [119, 277, 18, 5] # list of netuids to stake into
+increment = 0.01 # amount of TAO to stake
+total_spend = 0 # total amount of TAO spent
+stake = {} # dictionary to store the stake for each netuid
 
 while total_spend < 3:
     for netuid in to_buy:
         subnet = sub.subnet(netuid)
-        print("slippage for subnet " + str(netuid))
-        print(subnet.slippage(100))
+        print(f"slippage for subnet {netuid}", subnet.slippage(increment))
         sub.add_stake( 
             wallet = wallet, 
             netuid = netuid, 
@@ -319,7 +336,7 @@ while total_spend < 3:
         )
         stake[netuid] = current_stake
         total_spend += increment
-        print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
+        print (f'netuid {netuid} price {subnet.price} stake {current_stake}')
     sub.wait_for_block()
 ```
 ```console
@@ -342,28 +359,26 @@ netuid 5 price τ0.001784484 stake ε11.208213619
 ...
 
 ```
-
-
+### Unstaking
 
 The below script will reverse the effects of the above, by incrementally unstaking alpha tokens from the list of subnets to yield TAO.
 
-```
+```python
 
 import bittensor as bt
 sub = bt.Subtensor(network="test")
 wallet = bt.wallet(name="ExampleWalletName")
 wallet.unlock_coldkey()
 
-to_sell = [119, 277, 18, 5]
-increment = 0.01
-total_sell = 0
-stake = {}
+to_sell = [119, 277, 18, 5] # list of netuids to unstake from
+increment = 0.01 # amount of alpha to unstake
+total_sell = 0 # total amount of alpha unstaked
+stake = {} # dictionary to store the stake for each netuid
 
 while total_sell < 3:
     for netuid in to_sell:
         subnet = sub.subnet(netuid)
-        print("slippage for subnet " + str(netuid))
-        print(subnet.slippage(100))
+        print(f"slippage for subnet {netuid}", subnet.alpha_slippage(increment))
 
         sub.remove_stake( 
             wallet = wallet, 
@@ -378,7 +393,7 @@ while total_sell < 3:
         )
         stake[netuid] = current_stake
         total_sell += increment
-        print ('netuid', netuid, 'price', subnet.price, 'stake', current_stake )
+        print (f'netuid {netuid} price {subnet.price} stake {current_stake}')
     sub.wait_for_block()
 ```
 ```console
@@ -402,13 +417,28 @@ netuid 5 price τ0.001785179 stake ε33.619312896
 
 ```
 
-
-
-
 ## Register on a subnet
 
-The following script registers a hotkey on a subnet. This is necessary for staking, mining or validating.
+You can register your hotkey on a subnet using the `burned_register` method. This is necessary for staking, mining or validating.
 
+### `burned_register`
+```python
+burned_register(
+    wallet, 
+    netuid: int, 
+) -> bool
+```
+
+Description: Registers a hotkey on a subnet.
+
+Parameters:
+- wallet: Your Bittensor wallet object.
+- netuid: Unique ID of the subnet.
+
+Returns:
+- bool: True if the registration was successful, False otherwise.
+
+Sample script:
 ```python
 import bittensor as bt
 logging = bt.logging
@@ -439,7 +469,33 @@ netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
 print(netuids)
 ```
 
-The `btcli` currently offers a nicer overview of the wallet than the SDK. This displays the registrations to subnets by hotkeys controlled by the wallet:
+### `get_netuids_for_hotkey`
+```python
+get_netuids_for_hotkey(
+    hotkey: str, 
+) -> list[int]
+
+```
+
+Description: Returns the netuids in which a hotkey is registered.
+
+Parameters:
+- hotkey: SS58 address to check.
+
+Example script:
+
+```python
+import bittensor as bt
+sub = bt.Subtensor(network="test")
+wallet = bt.wallet(name="ExampleWalletName")
+wallet.unlock_coldkey()
+netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
+print(netuids)
+```
+
+### `btcli wallet overview`
+You can also use the `btcli` to check subnet registrations using `btcli wallet overview`.
+This displays the registrations to subnets by hotkeys controlled by the wallet:
 
 
 ```shell
@@ -472,4 +528,3 @@ Subnet: 119: vidac Ⲃ
                                     1                   268.38 Ⲃ       0.0094       1.0000       0.0093       0.0094       0.0000     ρ3470929       0.0000
 
 ```
-
