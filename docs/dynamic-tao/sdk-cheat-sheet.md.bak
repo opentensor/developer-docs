@@ -5,9 +5,7 @@ title: "Dynamic TAO SDK Cheat Sheet"
 This page provides a quick reference for the core functionalities for the Bittensor Python SDK that have changed for [Dynamic TAO](./index.md), and some example scripts to demonstrate functionality such as [viewing exchange rates](#example-viewing-exchange-rates) and [staking and unstaking](#example-staking-and-unstaking) into subnets.
 
 
-Updates to the `subtensor` and `async_subtensor` modules and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices, token reserve amounts, and wallet balances. Functionality around staking and unstaking has been updated to reflect the new nature of staking/unstaking in Dynamic TAO.
-
-See [Dynamic TAO Overview](./index.md).
+Updates to the `subtensor` and `async_subtensor` modules and the `DynamicInfo` class provide new ways to view information related to new Dynamic TAO features, such as alpha token prices and token reserves amounts.
 
 ## Updating your SDK
 
@@ -25,11 +23,12 @@ pip install bittensor==8.5.1rc6
 1. Check out the `rao` branch.
 1. Run `pip install .`
 
+
 ## Using the SDK for sync or async requests
 
 The Bittensor `subtensor` and `async_subtensor` modules offer the synchronous and asynchronous options for the same functionality.
 
-Import Bittensor and alias the correct module, for example, the following configuration for async calls to the Bittensor test network:
+Import bittensor and alias the correct module, for example, the following configuration for async calls to the Bittensor test network:
 
     ```python
     import bittensor as bt
@@ -87,7 +86,6 @@ all_subnets(
 ```
 
 Description: Fetches information about all subnets at a certain block height (or current block if None).
-
 Returns: A list of DynamicInfo objects (detailed below).
 
 ### `get_netuids`
@@ -104,6 +102,7 @@ Returns:
 - `list`[int]: A list of network UIDs representing each active subnet.
 
 
+
 ### `subnet`
 ```python
 subnet(
@@ -112,9 +111,8 @@ subnet(
 ) -> DynamicInfo
 
 ```
-Fetches information about a single subnet identified by netuid.
-
-Returns a DynamicInfo object describing the subnet’s current state.
+Description: Fetches information about a single subnet identified by netuid.
+Returns: A DynamicInfo object describing the subnet’s current state (see section Subnet DynamicInfo).
 
 ### `metagraph`
 ```python
@@ -123,22 +121,16 @@ metagraph(
     block: Optional[int] = None
 ) -> bittensor.Metagraph
 ```
-
-
-Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
+Description: Returns the metagraph for a specified subnet netuid. The metagraph includes detailed data on the neurons in the subnet.
 
 ## Calculating exchange rates
-
 ### `tao_to_alpha`
-
 ```python
 tao_to_alpha(self, tao: Balance) -> Balance
 ```
 Description: Returns an 'ideal' estimate of how much Alpha a staker would receive at the current price, *ignoring slippage*.
-
 Parameters:
     `tao`: Amount of TAO to stake.
-
 ### `alpha_to_tao`
 ```python
 alpha_to_tao(self, alpha: Balance) -> Balance
@@ -152,7 +144,7 @@ Parameters:
 tao_to_alpha(self, tao: Balance) -> Balance
 
 ```
-Returns an estimate of how much Alpha would a staker receive if they stake their TAO using the current pool state.
+Returns an estimate of how much Alpha would a staker receive if they stake their tao using the current pool state.
 Parameters:
     `tao`: Amount of TAO to stake.
 Returns:
@@ -423,23 +415,11 @@ reg = sub.burned_register(wallet=wallet, netuid=3)
 ```
 
 
-## View your registered subnets
-
-The following script will display the subnets on which a hotkey is registered.
-
-```python
-import bittensor as bt
-sub = bt.Subtensor(network="test")
-wallet = bt.wallet(
-    name="ExampleWalletName",
-    hotkey="ExampleHotkey",
-)
-wallet.unlock_coldkey()
-netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
-print(netuids)
-```
+## View your wallet
 
 The `btcli` currently offers a nicer overview of the wallet than the SDK. This displays the registrations to subnets by hotkeys controlled by the wallet:
+
+
 
 
 ```shell
