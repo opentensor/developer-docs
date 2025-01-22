@@ -209,7 +209,7 @@ The contents of the `coldkeypub.txt` are to be interpreted as below:
 
 - The fields `accountId` and `publicKey` contain the same value. 
 - The `secretPhrase` and `secretSeed` are not included in the file due to the high-security nature of the coldkey. When you create your wallet, either using the Chrome extension or `btcli`, the mnemonic (`secretPhrase`) is shown only once, while `secretSeed` is not shown.
-- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your coldkey public wallet address to receive TAO from another party.**
+- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **This is your coldkey's public address, and can be used to transfer TAO from another wallet.**
 
 :::tip Conversion between publicKey and ss58Address
 Use this site [SS58.org](https://ss58.org/) to verify the conversions between `publicKey` and `ss58Address` fields.
@@ -233,7 +233,11 @@ The contents of the `hotkeys/test-hotkey` file are to be interpreted as below:
 
 - The fields `accountId` and `publicKey` contain the same value, just as seen in `coldkeypub.txt`. 
 - The `secretPhrase` and `secretSeed` are shown because the hotkey is, by default, not encrypted.
-- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **Send this as your hotkey public wallet address to receive TAO from another party.**
+- The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **This is your hotkey's public address and can be used to stake/delegate to your hotkey from other wallets.**
+
+:::danger
+Hotkeys are for staking. Do not *transfer* TAO to a hotkey!
+:::
 
 ## Listing all the local wallets
 

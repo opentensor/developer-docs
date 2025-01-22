@@ -77,8 +77,6 @@ Of the 41% of total emissions received by validators, each subnet gets a share b
 
 In each subnet, each validator receives a share of the TAO dividends proportional to its relative stake weight in the subnet. Refer to [Core Dynamic TAO Concepts: Validator stake weight](dtao-guide#validator-stake-weight).
 
-<!-- Fact check this, not sure I got this correct ??? ^^^ -->
-
 ## Subnets
 
 ### Subnet Zero
@@ -92,7 +90,7 @@ The process of registering a subnet in Dynamic TAO will be very similar to the p
 
 ### How will Dynamic TAO affect subnet governance (weight-setting)?
 
-Each validator’s weight in the subnet is a function of the TAO staked to them on the subnet plus the TAO staked to them in Subnet Zero, with the value of the TAO being multiplied by the TAO weight, which is between 0 and 1.
+Each validator’s weight in the subnet is a function of the alpha staked to them on the subnet, plus the TAO staked to them in Subnet Zero, with the value of the TAO being multiplied by the TAO weight, which is between 0 and 1.
 
 See [validator stake weight](./dtao-guide.md#walidator-stake-weight).
 
