@@ -188,6 +188,26 @@ Returns:
     OR
     Percentage of the slippage as a float
 
+### Example: Viewing exchange rates
+
+The following script displays exchange rates for a subnet alpha token, with and without slippage.
+
+```python
+import bittensor as bt
+
+sub = bt.Subtensor(network="test")
+subnet = sub.subnet(netuid=1)
+
+print("alpha_to_tao_with_slippage", subnet.alpha_to_tao_with_slippage(100))
+print("alpha_to_tao_with_slippage percentage", subnet.alpha_to_tao_with_slippage(100, percentage=True))
+
+print("tao_to_alpha_with_slippage", subnet.tao_to_alpha_with_slippage(100))
+print("tao_to_alpha_with_slippage percentage", subnet.tao_to_alpha_with_slippage(100, percentage=True))
+
+print("tao_to_alpha", subnet.tao_to_alpha(100))
+print("alpha_to_tao", subnet.alpha_to_tao(100))
+```
+
 ## Managing stake
 
 ### `get_stake`
@@ -281,29 +301,10 @@ Update: we have added proper nonce protection allowing you to run gather operati
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
 
 
-## Example: Viewing exchange rates
 
-The following script displays exchange rates for a subnet alpha token, with and without slippage.
+### Example: staking and unstaking
 
-```python
-import bittensor as bt
-
-sub = bt.Subtensor(network="test")
-subnet = sub.subnet(netuid=1)
-
-print("alpha_to_tao_with_slippage", subnet.alpha_to_tao_with_slippage(100))
-print("alpha_to_tao_with_slippage percentage", subnet.alpha_to_tao_with_slippage(100, percentage=True))
-
-print("tao_to_alpha_with_slippage", subnet.tao_to_alpha_with_slippage(100))
-print("tao_to_alpha_with_slippage percentage", subnet.tao_to_alpha_with_slippage(100, percentage=True))
-
-print("tao_to_alpha", subnet.tao_to_alpha(100))
-print("alpha_to_tao", subnet.alpha_to_tao(100))
-```
-
-## Example: staking and unstaking
-
-### Staking
+#### Staking
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
 ```python
@@ -359,7 +360,7 @@ netuid 5 price τ0.001784484 stake ε11.208213619
 ...
 
 ```
-### Unstaking
+#### Unstaking
 
 The below script will reverse the effects of the above, by incrementally unstaking alpha tokens from the list of subnets to yield TAO.
 
@@ -455,20 +456,6 @@ reg = sub.burned_register(wallet=wallet, netuid=3)
 
 ## View your registered subnets
 
-The following script will display the subnets on which a hotkey is registered.
-
-```python
-import bittensor as bt
-sub = bt.Subtensor(network="test")
-wallet = bt.wallet(
-    name="ExampleWalletName",
-    hotkey="ExampleHotkey",
-)
-wallet.unlock_coldkey()
-netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
-print(netuids)
-```
-
 ### `get_netuids_for_hotkey`
 ```python
 get_netuids_for_hotkey(
@@ -482,12 +469,14 @@ Description: Returns the netuids in which a hotkey is registered.
 Parameters:
 - hotkey: SS58 address to check.
 
-Example script:
-
+Example usage:
 ```python
 import bittensor as bt
 sub = bt.Subtensor(network="test")
-wallet = bt.wallet(name="ExampleWalletName")
+wallet = bt.wallet(
+    name="ExampleWalletName",
+    hotkey="ExampleHotkey",
+)
 wallet.unlock_coldkey()
 netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
 print(netuids)
