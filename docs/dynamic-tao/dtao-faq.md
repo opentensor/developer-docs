@@ -69,7 +69,16 @@ TAO-holders can acquire alpha tokens by staking TAO into a validator in the corr
 
 ### How will Dynamic TAO affect governance of the network?
 
-Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
+Dynamic TAO does not directly change Bittensor's on-chain governance mechanism (i.e., proposals and voting).
+
+### How do dividends/emissions to root subnet/Subnet 0 stakers work?
+
+When you stake TAO to validators in Subnet Zero (the root subnet), your stake has two key characteristics:
+
+1. **Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake earns rewards from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
+
+2. **TAO-only Rewards**: Unlike staking to other subnets where you receive alpha tokens, Subnet Zero stakers receive their rewards in TAO. See [Emission distribution of rewards](emission#distribution-of-rewards) for more details.
+
 
 ## Subnets
 
