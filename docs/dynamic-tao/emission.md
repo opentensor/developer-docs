@@ -21,7 +21,7 @@ Each block, 2 alpha are divided between the subnet's alpha reserves and alpha ou
 
 ### Distribution of rewards
 
-At the end of each tempo (360 blocks), the accumulated alpha outstanding during the injection over each block of the tempo is distributed among network participants as follows:
+At the end of each tempo (360 blocks), the accumulated alpha during the injection over each block of the tempo is distributed among network participants as follows:
 
 1. 18% goes to subnet owner
 1. 41% goes to incentives for miners
