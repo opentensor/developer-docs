@@ -19,7 +19,7 @@ Testnet tokens do not have any value.
 
 ## What to expect with Dynamic TAO
 
-Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights).
+Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights on miners).
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
 
 
