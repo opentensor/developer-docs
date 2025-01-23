@@ -21,7 +21,7 @@ Each block, 2 alpha are divided between the subnet's alpha reserves and alpha ou
 
 ### Distribution of rewards
 
-At the end of each tempo (360 blocks), the alpha accumulated during the injection over each block of the tempo is distributed among network participants as follows:
+At the end of each tempo (360 blocks), the quantity of alpha accumulated during the injection over each block of the tempo is distributed among network participants as follows:
 
 1. 18% goes to subnet owner
 1. 41% goes to incentives for miners
@@ -29,19 +29,20 @@ At the end of each tempo (360 blocks), the alpha accumulated during the injectio
     1. First, validators receive their take   
     1.  Then, stakers are paid out. Alpha and TAO dividends are emitted according to their relative weight. For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
 
-        Stakers in TAO, i.e. on the root subnet receive TAO dividends in proportion to the validator's stake weight's proportion of TAO. 
+        Stakers in TAO (on the root subnet) receive TAO dividends in proportion to the validator's stake weight's proportion of TAO. These TAO dividends are sourced from the protocol automatically swapping a portion of the alpha dividends to TAO through the subnet's liquidity pool during distribution.
           $$
-          \text{dividends to root stakers} 
+          \text{proportional dividends (\%) to root stakers} 
           = \frac{\tau_{x}{} \, w_{\tau}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
         Stakers in alpha, i.e. on the mining subnet itself, receive alpha dividends in proportion to the validator's stake weight's proportion of alpha:
           $$
-          \text{dividends to alpha stakers} 
+          \text{proportional dividends (\%) to alpha stakers} 
           = \frac{\alpha_{x}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
 
+        Validators who hold both root TAO and subnet alphas will receive dividends in both token types accordingly.
 
     See [Core Dynamic TAO Concepts: Validator stake weight](./dtao-guide.md#validator-stake-weight)
 

@@ -42,7 +42,7 @@ For example, for a validator's hotkey in a given subnet:
 - Hence, this validator hotkey's local voting power, i.e., **local weight** = τ_in x hotkey's stake share = 5000 x 0.2 = 1000 TAO.
 
 :::tip Stake share → TAO-denominated voting power
-Hence, while the hotkey's stake share in this subnet is 20%, its actual local weight (local voting power) in the subnet is 1,000 TAO units. This is the power of dynamic TAO mechanism. It converts a hotkey's alpha stake share into an equivalent TAO-denominated voting power in the subnet. This makes alpha stakes comparable across different subnets, even though these subnets might have very different amounts of alpha tokens outstanding.
+Hence, while the hotkey's stake share in this subnet is 20%, its actual local weight (local voting power) in the subnet is 1,000 TAO units. This is the power of Dynamic TAO mechanism. It converts a hotkey's alpha stake share into an equivalent TAO-denominated voting power in the subnet. This makes alpha stakes comparable across different subnets, even though these subnets might have very different amounts of alpha tokens outstanding.
 :::
 
 
@@ -80,7 +80,7 @@ Hence the global weight of this hotkey is: 1000 + 3000 + 6000 + 1000 = 11,000 TA
 
 ### Root weight
 
-Notice that in the above calculation, we used the hotkey's subnet zero stake of 1000 TAO as it is while calculating the global weight of the hotkey. However, in dynamic TAO it is normal to multiply the subnet zero stake TAO number by a factor called `root_weight` that varies from 0 to 1. 
+Notice that in the above calculation, we used the hotkey's subnet zero stake of 1000 TAO as it is while calculating the global weight of the hotkey. However, in Dynamic TAO it is normal to multiply the subnet zero stake TAO number by a factor called `root_weight` that varies from 0 to 1. 
 
 Hence, for `root_weight` of 0.5, the subnet zero stake of the hotkey will now be `root_weight` x 1000 = 0.5 x 1000 = 500 TAO. Hence, under this condition, the updated global weight of this hotkey is: 500 + 3000 + 6000 + 1000 = 10,500 TAO.
 
@@ -194,9 +194,9 @@ Hence, sum of all global weights in the all the above subnets is = (`root_weight
    - Validator's stake weight = 1,000/10,000 = 0.10 (10% influence in the subnet zero)
 
 
-## Intuitions of dynamic TAO
+## Intuitions of Dynamic TAO
 
-This section presents a summary of intuitions about dynamic TAO. It is intended to help in conceptually grasping the dynamic TAO mechanism.
+This section presents a summary of intuitions about Dynamic TAO. It is intended to help in conceptually grasping the Dynamic TAO mechanism.
 
 
 ### TAO and alpha
@@ -217,7 +217,7 @@ This section presents a summary of intuitions about dynamic TAO. It is intended 
 
 - No one directly owns the subnet pool reserves. These reserves exist to provide liquidity to the subnet pools.
 - However, as we saw in [Local weights vs TAO reserve](#local-weights-vs-tao-reserve) , a validator who holds X% of the $\alpha$ stake in a subnet is said to own the same X% of the TAO reserve pool of that subnet. 
-- In dynamic TAO the sum of α_in (also called alpha reserve) and α_out (all the alpha stake in the subnet) is treated as the the sum total of all alpha. **This is not not strictly true.** This sum total only represents the alpha associated with staking and unstaking. There is the another source of alpha, which is the emissions alpha. This emissions alpha is awarded to validators, subnet owners and miners. 
+- In Dynamic TAO the sum of α_in (also called alpha reserve) and α_out (all the alpha stake in the subnet) is treated as the the sum total of all alpha. **This is not not strictly true.** This sum total only represents the alpha associated with staking and unstaking. There is the another source of alpha, which is the emissions alpha. This emissions alpha is awarded to validators, subnet owners and miners. 
 - More important, these emissions alpha bypasses the subnet pool and gets into the subnet directly from the coinbase. Furthermore, the only way for this emissions alpha to come out of the subnet is via unstaking, even though they did not participate in staking. 
 
 
@@ -247,4 +247,4 @@ style={{width: 650}}
 
 - **But notice this**: In this case, when the stake is 100% local, a validator in a subnet only needs 500 TAO tokens + 1 to take over that subnet. Hence shifting stake from 100% global to 100% local has resulted in severely degrading the security of subnets. 
 
-As we saw in [Validator stake weight](#validator-stake-weight), the dynamic TAO scheme makes use of both global and local characteristics of the stake to strengthen the overall consensus security of the Bittensor network.
+As we saw in [Validator stake weight](#validator-stake-weight), the Dynamic TAO scheme makes use of both global and local characteristics of the stake to strengthen the overall consensus security of the Bittensor network.
