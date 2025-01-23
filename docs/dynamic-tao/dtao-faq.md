@@ -37,9 +37,9 @@ style={{width: 650}}
 
 ### Will there be a cap on alpha currency?
 
-Yes. There is a hard cap of 21 million for any subnet's alpha token, the same as for TAO itself.
+Yes. There is a hard cap of 21 million for any subnet's alpha token, the same as for TAO itself. Alpha tokens follow a halving schedule as well. 
 
-2 alpha tokens per subnet will be emitted each block, while only 1 TAO is emitted and shared across the whole network.
+At the time of writing, 2 alpha tokens per subnet will be emitted each block, while only 1 TAO is emitted and shared across the whole network.
 
 ## TAO-holders / Stakers
 
@@ -49,7 +49,7 @@ Instead of staking TAO to a validator, in Dynamic TAO, you stake to a validator 
 
 - When you stake on a mining subnet, you exchange TAO for a dynamic token, the *alpha* of the subnet on which the validator is working, and stake that into the validator's hotkey.
 
-- When you stake on the root subnet, you stake TAO. But the root subnet is just another subnet, although one with some special properties. All staking is local to a subnet.
+- When you stake on the root subnet, you stake TAO for TAO. You will receive TAO as dividends, unlike receiving alphas on other subnets.
 
 ### What is the risk/reward profile of staking into a subnet?
 
@@ -59,7 +59,7 @@ Each new subnet has its own token, referred to as its alpha. When you stake into
 
 Staking TAO into a subnet essentially exchanges TAO for that subnet’s alpha token. To exit value, alpha must be exchanged back for TAO at the going rate.
 
-Held stake (alpha tokens) may increase or decrease in TAO value as the price of the alpha changes, but staked alpha will earns more dividends in the long run, as the balance of alpha to TAO in the network increases.
+Held stake (alpha tokens) may increase or decrease in TAO value as the price of the alpha changes.
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
@@ -70,12 +70,6 @@ TAO-holders can acquire alpha tokens by staking TAO into a validator in the corr
 ### How will Dynamic TAO affect governance of the network?
 
 Dynamic TAO does not directly change Bittensor’s on-chain governance mechanism (i.e., proposals and voting).
-
-### How do dividends/emissions to root subnet/Subnet 0 stakers work?
-
-Of the 41% of total emissions received by validators, each subnet gets a share based on the price of its token&mdash;but what about the root subnet, which has no token? Stake in the root subnet applies in *all* subnets in which a validator works
-
-In each subnet, each validator receives a share of the TAO dividends proportional to its relative stake weight in the subnet. Refer to [Core Dynamic TAO Concepts: Validator stake weight](dtao-guide#validator-stake-weight).
 
 ## Subnets
 
