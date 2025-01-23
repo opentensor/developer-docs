@@ -70,9 +70,9 @@ Each block:
 - the chain emits TAO and injects it into the TAO reserves of the subnets.
 <!-- (how much TAO???) -->
 
-- the chain emits `2 ×` (2 times)  the alpha emission rate for each subnet. The alpha emission rate follows a halving schedule (exactly like Bitcoin), decreasing over time. The emitted alphas are distributed between:
-  - the subnet's alpha reserve (liquidity available for purchase)
-  - alpha outstanding (rewards distributed to miners, validators, and subnet owners)
+- the chain emits alpha tokens at twice the base alpha emission rate (which starts at 1 α/block and follows the same halving schedule as TAO). These emitted alpha tokens are distributed between:
+  - the subnet's alpha reserve (increasing available liquidity)
+  - alpha outstanding (rewards for miners, validators, and subnet owners)
 
 See the main article: [Emission in Dynamic TAO](./emission.md)
 
