@@ -77,7 +77,7 @@ When you stake TAO to validators in Subnet Zero (the root subnet), your stake ha
 
 1. **Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake earns rewards from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
 
-2. **TAO-only Rewards**: Unlike staking to other subnets where you receive alpha tokens, Subnet Zero stakers receive their rewards in TAO. See [Emission distribution of rewards](emission#distribution-of-rewards) for more details.
+2. **TAO-only Rewards**: Unlike staking to other subnets where you receive alpha tokens, Subnet Zero stakers receive their rewards in TAO. See [Emission in Dynamic TAO: Distribution of rewards](emission#distribution-of-rewards) for more details.
 
 
 ## Subnets
