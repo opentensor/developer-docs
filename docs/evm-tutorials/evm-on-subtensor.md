@@ -23,17 +23,26 @@ This document explains in simple terms what this EVM on subtensor is and how it 
 
 On the Ethereum network, nodes such as full nodes, validator nodes and archive nodes run the Ethereum Virtual Environment (EVM) run-time environment. Smart contracts operate under this EVM. See the below high-level diagram.
 
-<center>
+<left>
 <ThemedImage
 alt="Local blockchain vs public subtensor"
 sources={{
     light: useBaseUrl('/img/docs/2-EVM-block-diagram.svg'),
     dark: useBaseUrl('/img/docs/dark-2-EVM-block-diagram.svg'),
   }}
-style={{width: 450}}
+style={{width: 400}}
 />
-</center>
-
+</left>
+<right>
+<ThemedImage
+alt="Local blockchain vs public subtensor"
+sources={{
+    light: useBaseUrl('/img/docs/EVM-subtensor-block-diagram.svg'),
+    dark: useBaseUrl('/img/docs/dark-EVM-subtensor-block-diagram.svg'),
+  }}
+style={{width: 400}}
+/>
+</right>
 To understand what it means to have a smart contract in Bittensor, it helps if we go over how one creates, deploys and interacts with a smart contract. The below overview is not meant to be comprehensive.
 
 ## Creating and deploying a smart contract on Ethereum
@@ -156,16 +165,7 @@ When verifying a contract on platforms like Etherscan, developers typically uplo
 
 When we say “smart contracts on Bittensor” it refers to the new EVM compability feature in the Bittensor subtensor blockchain. When this EVM feature is turned ON, it allows the subtensor blockchain to execute Ethereum-compatible smart contracts. **Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.** See the below diagram showing how smart contracts on subtensor work:
 
-<center>
-<ThemedImage
-alt="Local blockchain vs public subtensor"
-sources={{
-    light: useBaseUrl('/img/docs/EVM-subtensor-block-diagram.svg'),
-    dark: useBaseUrl('/img/docs/dark-EVM-subtensor-block-diagram.svg'),
-  }}
-style={{width: 450}}
-/>
-</center>
+
 
 ### Tutorials 
 
