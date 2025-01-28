@@ -59,7 +59,7 @@ $$
 $$
 
 
-This means that if we choose to stake in a certain amount of TAO, i.e. if we specify the cost of the staking operation in TAO, then the yielded stake, i.e. the quantity of alpha to be removed from reserve and granted to the staked hotkey, is:
+This means that if we choose to stake in a certain amount of TAO (if we specify the cost), then the yielded stake (the quantity of alpha to be removed from reserve and granted to the staked hotkey) is:
 
 $$
 \text{Stake} = \alpha_{\text{in}} - \frac{\tau_{\text{in}} \alpha_{\text{in}}} {\tau_{\text{in}} + \text{cost}}
