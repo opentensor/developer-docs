@@ -8,9 +8,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page refers to the nature of staking and unstaking operations in the [Dynamic TAO model](./index.md), which is a planned evoluation of the Bittensor network.
 
-Staking is always local to a subnet. Each subnet has a reserve of TAO and a reserve of its currency, referred to in general as its alpha ($\alpha$) currency. Stake is held in $\alpha$ token denominations.
+Staking is always local to a subnet.
+
+Each subnet operates its own automated market-maker (AMM), meaning it mantains its own reserves of the two tokens being traded so that it can facilitate a trade of any desired quantity of liquidity (as long as its available), at a price that it automated calculates.
+
+Each subnet has a reserve of TAO and a reserve of its currency, referred to in general as its alpha ($\alpha$) currency. Stake is held in $\alpha$ token denominations.
 
 As a TAO holder you will stake to a validator’s hotkey (as previously), but now you select a subnet to stake to them within.
+
 
 **When you stake:**
 
@@ -33,6 +38,54 @@ To follow along, install the Dynamic TAO-enabled release candidate of the Bitten
 ```shell
 pip install bittensor-cli==8.2.0rc10
 ```
+:::
+
+
+## Understanding pricing and anticipating slippage
+
+Each Bittensor subnet operates as a *constant product AMM*, meaning that it will accept trades that conserve the product of the quantities of the two tokens in reserve, TAO and alpha. To calulate the price in one token of batch of the other token that a buyer wishes to acquire&mdash;alpha if they are staking, or TAO if they are unstaking&mdash;the algorithm assumes that the transaction does not change this product, so the product of TAO and alpha is the same before and after.
+
+When staking, the product K of TAO in reserve and alpha in reserve is the same before and after the transaction, so the initial product must be equal to the product after the cost in TAO is added to the reserve, and the stake is removed from the reserve and placed in the staked hotkey:
+
+$$
+\tau_{\mathrm{in}} \,\alpha_{\mathrm{in}} = k
+$$
+$$
+(\tau_{\mathrm{in}} + \text{cost}) \bigl(\alpha_{\mathrm{in}} - \text{stake}\bigr) = k
+$$
+$$
+(\tau_{\mathrm{in}} + \text{cost}) \bigl(\alpha_{\mathrm{in}} - \text{stake}\bigr) 
+  = \tau_{\mathrm{in}} \,\alpha_{\mathrm{in}}
+$$
+
+
+This means that if we choose to stake in a certain amount of TAO (if we specify the cost), then the yielded stake (the quantity of alpha to be removed from reserve and granted to the staked hotkey) is:
+
+$$
+\text{Stake} = \alpha_{\text{in}} - \frac{\tau_{\text{in}} \alpha_{\text{in}}} {\tau_{\text{in}} + \text{cost}}
+
+$$
+
+For example, suppose that a subnet has 100 alpha in reserve and 10 TAO, and we want to stake in 5 TAO.
+
+The price at this moment is 10 TAO / 100 alpha, or 10 alpha per TAO, so if we stake 5 TAO, we would expect 50 alpha, without taking slippage into account.
+
+With slippage, the yielded alpha stake will be:
+
+$$
+\text{Stake} = 100 - \frac{ 10 * 100} {10 + 5}
+
+$$
+
+or 33.333 alpha sent to the hotkey. So in this case, the slippage is the difference between the ideal expectation of 50 and the actual swap value of 33.33333:
+$$
+16.667 = 50 - 33.333
+$$
+
+This slippage is 50% of the actual swap value, which is extremely high, because we chose small values for the available liquidity. In general, slippage is high when available liquidity is limited compared to the magnitude of the transaction, since the transaction itself is changing the price significantly.
+
+:::tip
+`btcli` shows the slippage of staking and unstaking operations, so you don't need to calculate it yourself. See [Stake into a node](#stake-into-a-node).
 :::
 
 ## View subnet currency reserves
@@ -130,6 +183,43 @@ Using the specified network test from config
 
 ```
 
+After selecting a validator to delegate stake to, you'll see your wallet balance and be asked to specify the amount of TAO you wish to stake.
+
+
+```console
+
+Amount to stake (TAO τ): 5
+```
+
+
+You'll then see the details of the trade, including [slippage](#understanding-pricing-and-anticipating-slippage), and be asked to confirm execution.
+
+
+```console
+                                                        Staking to:
+                   Wallet: PracticeKey!, Coldkey ss58: 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq
+                                                       Network: test
+
+ Netuid ┃                      Hotkey                      ┃ Amount (τ) ┃      Rate (per τ)      ┃   Received   ┃ Slippage
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━
+   19   │ 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT │  τ 5.0000  │ 991.3160712161465 t/τ  │ 4,793.8697 t │ 3.2827 %
+────────┼──────────────────────────────────────────────────┼────────────┼────────────────────────┼──────────────┼──────────
+        │                                                  │            │                        │              │
+
+Description:
+The table displays information about the stake operation you are about to perform.
+The columns are as follows:
+    - Netuid: The netuid of the subnet you are staking to.
+    - Hotkey: The ss58 address of the hotkey you are staking to.
+    - Amount: The TAO you are staking into this subnet onto this hotkey.
+    - Rate: The rate of exchange between your TAO and the subnet's stake.
+    - Received: The amount of stake you will receive on this subnet after slippage.
+    - Slippage: The slippage percentage of the stake operation. (0% if the subnet is not dynamic i.e. root).
+
+Would you like to continue? [y/n]:
+```
+
+If you confirm, the staking operation will execute. After completion
 
 ## View your current stakes
 
