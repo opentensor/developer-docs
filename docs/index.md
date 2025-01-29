@@ -50,38 +50,36 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
 
 <ResponsiveCards>
     <ResponsiveCard 
+    icon={GiStarFormation}
+    title='Bittensor frequently asked questions (FAQ)'
+    link='learn/introduction'
+    body='Everything you are afraid to ask about Bittensor.' />
+    <ResponsiveCard 
     icon={HiAcademicCap}
-    title='Learn the concepts'
+    title='Learn Bittensor concepts'
     link='learn/introduction'
     body='Start by learning the Bittensor concept, building blocks and incentive mechanism.' />
     <ResponsiveCard
     icon={MdInstallDesktop}
     title='Guide to Bittensor tools'
     link='tools'
-    body='Opentensor Foundation maintains open source tools for the Bittensor ecosystem, including the Python SDK and `btcli`.' />    
-</ResponsiveCards>
-
-<Cards>
+    body='Opentensor Foundation maintains open source tools for the Bittensor ecosystem, including the Python SDK and `btcli`.' />  
+    <ResponsiveCard
+    icon={GoNumber}
+    title='Subnet Listings'
+    link='https://taostats.io/subnets'
+    body='Subnets on taostats.io' />  
     <CardSmall
     icon={FaRegNewspaper}
     title='See what is new'
     link='whats-new-in-docs'
     body='Updates to Docs' />
     <CardSmall
-    icon={GoNumber}
-    title='Subnet Listings'
-    link='https://taostats.io/subnets'
-    body='Subnets on taostats.io' />
-    <CardSmall
     icon={VscFileMedia}
     title='Bittensor media assets'
     link='media-assets'
     body='Media assets' />
-</Cards>
-
-
-
-
+</ResponsiveCards>
 
 
 
@@ -104,7 +102,7 @@ You can participate in an existing subnet as either a subnet validator or a subn
     icon={BiMath}
     title='3. Emissions'
     link='emissions'
-    body='Learn how dividends for the validators and incentives for the miners are calculated.' />
+    body='Learn how the emissions harvest for validators and miners is calculated.' />
     <ResponsiveCard
     icon={RiTeamLine}
     title='4. Staking and Delegation'
