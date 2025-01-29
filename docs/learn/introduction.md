@@ -59,11 +59,11 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
 - **Subnet miner**: When you are responsible for running the subnet miner.
 - **Blockchain operator**: When you run the blockchain. This mostly applies during the offline testing of your subnet and your incentive mechanism, when you need a local emulation of the Bittensor blockchain because you are disconnected from the Bittensor network.
  -->
-<!-- ## Participating in a subnet
+## Subnet development
 
-When creating a subnet you should always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
+Whether creating a new subnet or joining a pre-existing subnet, you should always start by first testing the subnet incentive mechanism **locally**, then on the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
 
-Testing the incentive mechanism means running one or more validators and miners to ensure that emissions are harvested in the intended way. 
+Testing the incentive mechanism means running one or more validators and miners to ensure that emissions are being harvested as understood and intended.
 
 :::tip Before you participate in a subnet
 We recommend all subnet participants to become familiar with the incentive mechanism before joining a subnet or creating a new subnet.
