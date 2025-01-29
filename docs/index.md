@@ -39,10 +39,10 @@ Digital commodities are produced in many distinct **subnets**. Each subnet is an
 
 The Bittensor network constantly emits liquidity in the form of its token, TAO ($\tau$), which is harvested by participants in proportion to the value of their contributions. Participants include:
 
-- Miners - Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
-- Validators - Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
-- Subnet creators - Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
-- Stakers - TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
+- **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
+- **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
+- **Subnet**&mdash;eators - Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
+- **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
 
 :::tip Browse the subnets
 Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
