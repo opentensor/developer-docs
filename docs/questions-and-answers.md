@@ -32,11 +32,11 @@ import { VscFileMedia } from "react-icons/vsc";
 
 ### Is Bittensor a blockchain or an AI platform?
 
-Yes, it is! Both, in fact!
+It is both!
 
 Bittensor is a platform for the production of digital commodities, including AI inference, training, and infrastructure, as well as others unrelated to artificial intelligence.
 
-Bittensor is backed by its own layer 1 blockchain, Subtensor. The distributed ledger of the Bittensor main network serves as the system of record for the Bittensor platform.
+Bittensor is backed by its own layer 1 blockchain, Subtensor. The distributed ledger of the Bittensor main network serves as the system of record, and the incentive to harvest TAO, Bittensor's cryptocurrency, drives activity across the platform.
 
 ### So what is a subnet?
 
