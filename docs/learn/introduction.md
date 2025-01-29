@@ -38,9 +38,9 @@ sources={{
 
 The following roles define the ways to participate in Bittensor, and which are covered in the documentation on this website:
 
-- **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
-- **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
-- **Subnet creators**&mdash;Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
+- **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](../subnets/checklist-for-validating-mining).
+- **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](../subnets/checklist-for-validating-mining)
+- **Subnet creators**&mdash;Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](../subnets/create-a-subnet)
 - **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
 
 
