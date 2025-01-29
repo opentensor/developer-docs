@@ -19,9 +19,9 @@ The Bittensor platform consists of the following components:
 	
 	To explore existing subnets, check out [the listings on Taostats](https://taostats.io/subnets), or engage with [Bittensor subnet communities on Discord](https://discord.com/channels/799672011265015819/830068283314929684).
 
-2. The ***Bittensor blockchain***, which a) serves as a system of record, and b) provides its token TAO (τ) as the currency of reward and exchange for the activities of the subnet marketplaces. Rewards in TAO (τ) are distributed among miners and validators based on their performance within subnets, and on the relative performance of subnets within Bittensor, hence rewarding the best and most valuable work most highly. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
+2. The ***Bittensor blockchain***, which a) serves as a system of record, and b) provides its token TAO (τ) as incentive for the activities of the subnet marketplaces. Miners and validators harvest TAO based on both their performance within subnets, and on the performance of those subnets within Bittensor. Hence, emission of TAO incentivizes miners and validators to do their best, creating the perfect conditions for continuous improvement. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
 
-3. The ***Bittensor API***, which supports interactions between miners and validators within subnets, and allows all parties to interact with the blockchain as necessary.
+3. The ***Bittensor SDK***, which supports interactions between miners and validators within subnets, and allows all parties to interact with the blockchain as necessary.
 	
 	Bittensor provides all the open source tools, codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem.
 	

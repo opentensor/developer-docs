@@ -33,68 +33,20 @@ import { VscFileMedia } from "react-icons/vsc";
 
 # Bittensor Developer Documentation
 
-**Welcome!** Bittensor is an open source platform on which you can produce competitive digital commodities. These digital commodities can be machine intelligence, storage space, compute power, protein folding, financial markets prediction, and many more. **You are rewarded in TAO** when you produce best digital commodities. 
+Welcome! Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
 
-:::tip looking for EVM docs?
-Check out the [docs for EVM on subtensor](./evm-tutorials/).
+Digital commodities are produced in many distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
+
+The Bittensor network constantly emits liquidity in the form of its token, TAO ($\tau$), which is harvested by participants in proportion to the value of their contributions. Participants include:
+
+- Miners - Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
+- Validators - Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
+- Subnet creators - Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
+- Stakers - TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
+
+:::tip Browse the subnets
+Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
 :::
-
-<Cards>
-    <CardSmall
-    icon={FaRegNewspaper}
-    title='See what is new'
-    link='whats-new-in-docs'
-    body='Updates to Docs' />
-    <CardSmall
-    icon={SiFuturelearn}
-    title='Introduction'
-    link='learn/introduction'
-    body='Introduction to Bittensor' />
-    <CardSmall
-    icon={GoNumber}
-    title='Subnet Listings'
-    link='https://taostats.io/'
-    body='Subnets on taostats.io' />
-    <CardSmall
-    icon={VscFileMedia}
-    title='Bittensor media assets'
-    link='media-assets'
-    body='Media assets' />
-</Cards>
-
-See the below diagram for a top-level view of the Bittensor ecosystem. 
-
-<center>
-<ThemedImage
-alt="Bittensor Platform Big Picture"
-sources={{
-    light: useBaseUrl('/img/docs/Bittensor-ecosystem-top-level.svg'),
-    dark: useBaseUrl('/img/docs/dark-Bittensor-ecosystem-top-level.svg'),
-  }}
-style={{width: 600}}
-/>
-</center>
-
-Each category of the digital commodity is produced in a distinct **subnet**. Applications are built on these specific subnets. End-users of these applications would be served by these applications.
-
-Subnets, which exist outside the blockchain and are connected to it, are off-chain competitions where only the best producers are rewarded. A subnet consists of off-chain **subnet validators** who initiate the competition for a specific digital commodity, and off-chain **subnet miners** who compete and respond by producing the best quality digital commodity. 
-
-Scores are assigned to the top subnet miners and subnet validators. The on-chain Yuma Consensus determines **the TAO rewards for these top performers**. The Bittensor blockchain, called **subtensor**, runs on decentralized validation nodes, just like any blockchain. 
-
-For example, in the [Subnet 1 Prompting](https://github.com/opentensor/prompting) the subnet miners compete to generate answers that are closest to a machine learning base model chosen by the subnet validators. 
-
-Opentensor Foundation provides all the open source tools, the codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem. 
-
-:::danger This documentation is for bittensor platform only
-
-This documentation and the Bittensor codebase is for the Bittensor platform only. For subnets and applications, refer to subnet-specific websites, which are maintained by subnet owners.
-:::
-
----
-
-## Start here
-
-If you are new to Bittensor, start by learning the concepts. Then install the Bittensor software and create a wallet. Follow the below links. 
 
 <ResponsiveCards>
     <ResponsiveCard 
@@ -104,17 +56,34 @@ If you are new to Bittensor, start by learning the concepts. Then install the Bi
     body='Start by learning the Bittensor concept, building blocks and incentive mechanism.' />
     <ResponsiveCard
     icon={MdInstallDesktop}
-    title='Install'
-    link='getting-started/installation'
-    body='To validate or mine, or run your own subnet, install Bittensor and create wallet to get started.' />
-    
+    title='Guide to Bittensor tools'
+    link='tools'
+    body='Opentensor Foundation maintains open source tools for the Bittensor ecosystem, including the Python SDK and `btcli`.' />    
 </ResponsiveCards>
 
-:::tip How to participate
-A straightforward way to participate in the Bittensor network is to be a subnet miner or a subnet validator in an existing subnet. It is not necessary to create a subnet. Follow the below links in the [Validate or mine](#validate-or-mine) section. Alternately, if you want to create your own custom incentive mechanism, then you create your own subnet and launch your own competition. See the below [Running a subnet](#running-a-subnet) section.
-:::
+<Cards>
+    <CardSmall
+    icon={FaRegNewspaper}
+    title='See what is new'
+    link='whats-new-in-docs'
+    body='Updates to Docs' />
+    <CardSmall
+    icon={GoNumber}
+    title='Subnet Listings'
+    link='https://taostats.io/subnets'
+    body='Subnets on taostats.io' />
+    <CardSmall
+    icon={VscFileMedia}
+    title='Bittensor media assets'
+    link='media-assets'
+    body='Media assets' />
+</Cards>
 
----
+
+
+
+
+
 
 ## Validate or mine
 
