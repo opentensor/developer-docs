@@ -17,7 +17,8 @@ class ExperimentSetup:
         result_path="./results",
         liquid_alpha=False,
         consensus_precision=0.0001,
-        chain_endpoint = "wss://archive.chain.opentensor.ai:443"
+        chain_endpoint = "wss://archive.chain.opentensor.ai:443",
+        log = False,
     ):
         self.processes = processes
         self.tempo = tempo
@@ -28,6 +29,7 @@ class ExperimentSetup:
         self.liquid_alpha = liquid_alpha
         self.consensus_precision = consensus_precision
         self.chain_endpoint = chain_endpoint
+        self.log = log
 
         if cr_intervals == None:
             self.cr_intervals = [0] + list(range(1, 30, 2))
@@ -54,6 +56,20 @@ class ExperimentSetup:
 
         self.create_directory()
 
+    def __str__(self):
+        return f"""
+processes\t{self.processes}
+tempo\t{self.tempo}
+start_block\t{self.start_block}
+data_points\t{self.data_points}
+metagraph_storage_path\t{self.metagraph_storage_path}
+result_paht\t{self.result_path}
+liquid_alpha\t{self.liquid_alpha} 
+consensus_precision\t{self.consensus_precision}
+chain_endpoint\t{self.chain_endpoint}
+cr_intervals\t{self.cr_intervals}
+netuids\t{self.netuids}
+"""
     def create_directory(self):
         if not os.path.isdir(self.metagraph_storage_path):
             os.makedirs(self.metagraph_storage_path)

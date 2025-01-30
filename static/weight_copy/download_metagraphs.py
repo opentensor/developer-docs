@@ -5,10 +5,10 @@ from multiprocessing import Pool
 from experiment_setup import ExperimentSetup
 
 
-def download_metagraph(netuid, block, file_name, chain_endpoint):
+def download_metagraph(netuid, block, file_name, chain_endpoint, log = False):
     if os.path.isfile(file_name):
         return
-    else:
+    elif log:
         print(f"Downloading {netuid}\t{block}\t{file_name}\t{chain_endpoint}\n")
     archive_subtensor = bt.subtensor(network = chain_endpoint)
     meta = archive_subtensor.metagraph(netuid=netuid, block=block, lite=False)
@@ -33,13 +33,13 @@ class DownloadMetagraph:
                 for data_point in range(self.setup.data_points):
                     block = self.setup.start_block + self.setup.tempo * data_point
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
-                    args.append((netuid, block, file_name, self.setup.chain_endpoint))
+                    args.append((netuid, block, file_name, self.setup.chain_endpoint, self.setup.log))
 
                     block = self.setup.start_block + self.setup.tempo * (
                         data_point + cr_interval
                     )
                     file_name = f"{self.setup.metagraph_storage_path}/netuid{netuid}_block{block}.pt"
-                    args.append((netuid, block, file_name, self.setup.chain_endpoint))
+                    args.append((netuid, block, file_name, self.setup.chain_endpoint, self.setup.log))
 
         args = set(args)
         with Pool(processes=self.setup.processes) as pool:
