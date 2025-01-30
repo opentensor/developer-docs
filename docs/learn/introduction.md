@@ -19,7 +19,7 @@ The Bittensor platform consists of the following components:
 	
 	To explore existing subnets, check out [the listings on Taostats](https://taostats.io/subnets), or engage with [Bittensor subnet communities on Discord](https://discord.com/channels/799672011265015819/830068283314929684).
 
-2. The ***Bittensor blockchain***, which a) serves as a system of record, and b) provides its token TAO (τ) as incentive for the activities of the subnet marketplaces. Miners and validators harvest TAO based on both their performance within subnets, and on the performance of those subnets within Bittensor. Hence, emission of TAO incentivizes miners and validators to do their best, creating the perfect conditions for continuous improvement. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
+2. The ***Bittensor blockchain*** serves as a system of record, and its token TAO (τ) serves as incentive for participation in subnet activities. Miners and validators harvest TAO based on both their performance within subnets, and on the performance of those subnets within Bittensor. Hence, emission of TAO incentivizes miners and validators to do their best, creating the perfect conditions for continuous improvement. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
 
 3. The ***Bittensor SDK***, which supports interactions between miners and validators within subnets, and allows all parties to interact with the blockchain as necessary.
 	

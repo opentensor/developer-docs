@@ -46,12 +46,12 @@ Anyone with the funds and technical know-how can create a subnet, or participate
 
 ### How does competition work in a subnet?
 
-The work to be performed by miners is set by the subnet ownerk in the form of the subnet's incentive mechanism. The subnet's miners compete to best perform the task, submitting their work to the validators. 
+The work to be performed by miners is set by the subnet ownerk in the form of the subnet's incentive mechanism. The miners compete to best perform the task, submitting their work to the validators. 
 
 The validators then rank the quality of the work done by the miners within the subnet.
 Miners harvest the TAO emitted to their subnet based on how well they perform, according to the aggregated scores of the validators. 
 
-At the same time, validators are also rewarded for doing their job well, because their harvest depends on how well their miner scorings agree with the general consensus of other validators.
+At the same time, validators are also incentivized to do their best work, because their harvest depends on how well their miner scorings agree with the general consensus of other validators.
 
 ### What exactly is the task of a subnet miner?
 
@@ -89,10 +89,11 @@ Yes indeed. In Bittensor, the work of validating the blockchain is performed by 
 
 Your incentive is that you harvest TAO. Every 12 seconds 1 TAO is minted, each subnet harvests a fraction of this newly-created TAO, based on Yuma Consensus over its scoring by Root Network validators. Each day, 7200 TAO (86,400 per day, one TAO per 12 seconds) are emitted into the network.
 
-The allocation of the harvest within each subnet is:
-- 18% of it goes to the subnet creator.
-- 41% goes to validators
-- 41% goes to the miners
+The allocation of the TAO harvest within each subnet is as follows:
+
+- 18% to the subnet creator.
+- 41% to validators
+- 41% to the miners
 
 See [Emissions](./emissions.md).
 
