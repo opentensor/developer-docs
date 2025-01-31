@@ -60,9 +60,7 @@ Browse the subnets on [taostats.io](https://taostats.io/subnets)
 
 ### So where does the blockchain come in?
 
-The subtensor blockchain records all the key activity of all the subnets in its ledger. It also continuously runs an algorithm called Yuma Consensus (YC), which determines the TAO to be emitted throughout the network and harvested by miners, validators, stakers, and subnet creators.
-
-Rankings of the subnet miners set by the subnet validators are input to YC, which  computes the harvest for each party, and emits TAO to their wallets.
+The blockchain records all the key activity of the subnets in its ledger. It also continuously runs an algorithm called Yuma Consensus (YC). YC takes in rankings of the subnet's miners by the subnet's validators, and computes the TAO emitted to miners, validators, stakers, and subnet creators.
 
 ### Do subnets talk to each other?
 
@@ -84,11 +82,11 @@ In Bittensor, "mining", within subnets, has nothing to do with adding blocks to 
 
 Yes indeed. In Bittensor, the work of validating the blockchain is performed by the Opentensor Foundation on a Proof-of-Authority model.
 
-### What is the incentive for me to be a miner or a validator, or even create a subnet? 
+### What is the incentive to be a miner or a validator, or create a subnet? 
 
-Your incentive is that you harvest TAO. Every 12 seconds 1 TAO is minted, each subnet harvests a fraction of this newly-created TAO, based on Yuma Consensus over its scoring by Root Network validators. Each day, 7200 TAO (86,400 per day, one TAO per 12 seconds) are emitted into the network.
+Bittensor incentivizes participation through emission of TAO. Each day, 7200 TAO are emitted into the network (one TAO every 12 seconds).
 
-The allocation of the TAO harvest within each subnet is as follows:
+The emission of TAO within each subnet is as follows:
 
 - 18% to the subnet creator.
 - 41% to validators

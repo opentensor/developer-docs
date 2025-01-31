@@ -100,7 +100,7 @@ You can participate in an existing subnet as either a subnet validator or a subn
     icon={BiMath}
     title='3. Emissions'
     link='emissions'
-    body='Learn how the emissions harvest for validators and miners is calculated.' />
+    body='Learn how emissions to validators and miners are calculated.' />
     <ResponsiveCard
     icon={RiTeamLine}
     title='4. Staking and Delegation'
