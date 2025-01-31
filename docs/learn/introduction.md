@@ -19,9 +19,9 @@ The Bittensor platform consists of the following components:
 	
 	To explore existing subnets, check out [the listings on Taostats](https://taostats.io/subnets), or engage with [Bittensor subnet communities on Discord](https://discord.com/channels/799672011265015819/830068283314929684).
 
-2. The ***Bittensor blockchain***, which a) serves as a system of record, and b) provides its token TAO (τ) as the currency of reward and exchange for the activities of the subnet marketplaces. Rewards in TAO (τ) are distributed among miners and validators based on their performance within subnets, and on the relative performance of subnets within Bittensor, hence rewarding the best and most valuable work most highly. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
+2. The ***Bittensor blockchain*** serves as a system of record, and its token TAO (τ) serves as incentive for participation in subnet activities. Miners and validators harvest TAO based on both their performance within subnets, and on the performance of those subnets within Bittensor. Hence, emission of TAO incentivizes miners and validators to do their best, creating the perfect conditions for continuous improvement. The Bittensor blockchain records balances and transactions for miners, validators and subnet-owners, and allows arbitrary parties to stake currency into subnets in order to support their work.
 
-3. The ***Bittensor API***, which supports interactions between miners and validators within subnets, and allows all parties to interact with the blockchain as necessary.
+3. The ***Bittensor SDK***, which supports interactions between miners and validators within subnets, and allows all parties to interact with the blockchain as necessary.
 	
 	Bittensor provides all the open source tools, codebase and the documentation, with step-by-step tutorials and guides, to enable you to participate in the Bittensor ecosystem.
 	
@@ -33,19 +33,37 @@ sources={{
   }}
 />
 
+
 ## Bittensor personas
-You can participate in the Bittensor ecosystem as the following personas:
+
+The following roles define the ways to participate in Bittensor, and which are covered in the documentation on this website:
+
+- **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](../subnets/checklist-for-validating-mining).
+- **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](../subnets/checklist-for-validating-mining)
+- **Subnet creators**&mdash;Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](../subnets/create-a-subnet)
+- **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](../staking-and-delegation).
+
+
+The documentation also describes the role of **Blockchain operator**. This applies during offline testing only, when the user runs a local instance of Subtensor as its own independent chain, not connected to either the Bittensor main or test network.
+
+See [Running a Subnet Locally](https://github.com/opentensor/bittensor-subnet-template/blob/main/docs/running_on_staging.md)
+
+:::tip Browse the subnets
+Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
+:::
+
+<!--
 
 - **Subnet owner**: When you only want to create a subnet but transfer the tasks of operating the subnet to others.
 - **Subnet validator**: When you are responsible for running the subnet validator.
 - **Subnet miner**: When you are responsible for running the subnet miner.
 - **Blockchain operator**: When you run the blockchain. This mostly applies during the offline testing of your subnet and your incentive mechanism, when you need a local emulation of the Bittensor blockchain because you are disconnected from the Bittensor network.
+ -->
+## Subnet development
 
-## Participating in a subnet
+Whether creating a new subnet or joining a pre-existing subnet, you should always start by first testing the subnet incentive mechanism **locally**, then on the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
 
-When creating a subnet you should always start by first developing and testing the subnet incentive mechanism **locally**, then connecting to the Bittensor **testchain** and finally go live by connecting to the Bittensor **mainchain**. See the below conceptual deployment diagram showing the three stages. 
-
-Testing the incentive mechanism means running one or more validators and miners to ensure that rewards are distributed in the intended way. 
+Testing the incentive mechanism means running one or more validators and miners to ensure that emissions are being harvested as understood and intended.
 
 :::tip Before you participate in a subnet
 We recommend all subnet participants to become familiar with the incentive mechanism before joining a subnet or creating a new subnet.
@@ -58,7 +76,7 @@ sources={{
     dark: useBaseUrl('/img/docs/dark-subnet-deploy-stages.svg'),
   }}
 />
-
+ -->
 <!-- to be fixed 
 
 When you are ready to participate in a subnet, follow these steps in the below order:
