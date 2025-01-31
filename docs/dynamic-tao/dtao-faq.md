@@ -14,7 +14,7 @@ Dynamic TAO is currently live on testnet. It's rollout to Bittensor mainnet will
 
 The state of the network as far as ledger balances and consensus power will not change immediately upon upgrade; it will occur gradually as subnet specific alpha tokens are emitted and staked into circulation.
 
-In Dynamic TAO, validator *weight*&mdash;a critical score that determines consensus power as well as the allocation of emissions (i.e. the [harvest](./emission.md#harvest))&mdash;is determined by a combination of TAO and alpha token holdings. When Dynamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
+In Dynamic TAO, validator *weight*&mdash;a critical score that determines consensus power as well as the allocation of emissions&mdash;is determined by a combination of TAO and alpha token holdings. When Dynamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
 
 But far more alpha than TAO is emitted into circulation every block. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
 
@@ -53,13 +53,17 @@ Instead of staking TAO to a validator, in Dynamic TAO, you stake to a validator 
 
 ### What is the risk/reward profile of staking into a subnet?
 
-Staking to validators on specific subnets is higher-risk, but potentially offers higher-rewards compared to holding TAO or staking TAO to validators on Subnet Zero.
-
 Each new subnet has its own token, referred to as its alpha. When you stake into a validator within a given subnet, you exchange TAO for that subnet's alpha. When you unstake from the validator in that subnet, you exchange the alpha for TAO. Staking and unstaking is therefore sensitive to the price of the alpha. This price of a subnet's alpha is the ratio of TAO in its reserve to alpha in reserve. 
 
 Staking TAO into a subnet essentially exchanges TAO for that subnet’s alpha token. To exit value, alpha must be exchanged back for TAO at the going rate.
 
 Held stake (alpha tokens) may increase or decrease in TAO value as the price of the alpha changes.
+
+### How do emissions to root subnet/Subnet 0 stakers work?
+
+**Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake extracts emissions from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
+
+**Proportional emission and TAO weight**: TAO and alpha are emitted to a validator's stakers in proportion to the validators' holdings in each token. See [Emission in Dynamic TAO: Extraction](./emission.md#extraction)
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
@@ -71,18 +75,9 @@ TAO-holders can acquire alpha tokens by staking TAO into a validator in the corr
 
 Dynamic TAO does not directly change Bittensor's on-chain governance mechanism (i.e., proposals and voting).
 
-### How do dividends/emissions to root subnet/Subnet 0 stakers work?
-
-When you stake TAO to validators in Subnet Zero (the root subnet), your stake has two key characteristics:
-
-1. **Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake earns rewards from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
-
-2. **TAO-only Rewards**: Unlike staking to other subnets where you receive alpha tokens, Subnet Zero stakers receive their rewards in TAO. See [Emission in Dynamic TAO: Distribution of rewards](emission#distribution-of-rewards) for more details.
-
-
 ## Subnets
 
-### Subnet Zero
+### Root Subnet/Subnet Zero
 
 In Dynamic TAO, Subnet Zero is a special subnet. It is the only subnet that does not have its own $\alpha$ currency. No miners can register on subnet zero, and no validation work is performed. However validators can register, and $\tau$-holders can stake to those validators, as with any other subnet. This offers a mechanism for $\tau$-holders to stake $\tau$ into validators in a subnet-agnostic way. This works because the weight of a validator in a subnet includes both their share of that subnet's $\alpha$ and their share of staked TAO in Subnet Zero.
 

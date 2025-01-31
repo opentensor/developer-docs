@@ -30,7 +30,7 @@ As a TAO holder you will stake to a validator’s hotkey (as previously), but no
 3. These equivalent TAO units are then taken out of the TAO reserves of the subnet pool and are sent to the TAO holder’s coldkey.
 
 :::tip Stake is always expressed in alpha units
-In Dynamic TAO, except for the stake held in [subnet zero](#subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific $\alpha$ units and not TAO units.
+In Dynamic TAO, except for the stake held in [the Root Subnet](#root-subnet-subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific $\alpha$ units. Root Subnet stake is expressed in $\tau$.
 :::
 
 :::tip Prereq
