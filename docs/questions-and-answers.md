@@ -36,7 +36,7 @@ It is both!
 
 Bittensor is a platform for the production of digital commodities, including AI inference, training, and infrastructure, as well as others unrelated to artificial intelligence.
 
-Bittensor is backed by its own layer 1 blockchain, Subtensor. The distributed ledger of the Bittensor main network serves as the system of record, and the incentive to harvest TAO, Bittensor's cryptocurrency, drives activity across the platform.
+Bittensor is backed by its own substrate blockchain, Subtensor. The distributed ledger of the Bittensor main network serves as the system of record, and TAO, Bittensor's cryptocurrency token, serves to incentivize activity across the platform.
 
 ### So what is a subnet?
 
@@ -46,12 +46,11 @@ Anyone with the funds and technical know-how can create a subnet, or participate
 
 ### How does competition work in a subnet?
 
-The work to be performed by miners is set by the subnet ownerk in the form of the subnet's incentive mechanism. The miners compete to best perform the task, submitting their work to the validators. 
+The work to be performed by miners is set by the subnet creator in the form of the subnet's incentive mechanism. The miners compete to best perform the task, submitting their work to the validators. 
 
-The validators then rank the quality of the work done by the miners within the subnet.
-Miners harvest the TAO emitted to their subnet based on how well they perform, according to the aggregated scores of the validators. 
+The validators then rank the quality of the work done by the miners within the subnet. The aggregated scores of the validators determine the quantity of TAO emitted to each miner.
 
-At the same time, validators are also incentivized to do their best work, because their harvest depends on how well their miner scorings agree with the general consensus of other validators.
+At the same time, validators are also incentivized to do their best work, because their emissionsk depend on how well their miner scorings agree with the general consensus of other validators.
 
 ### What exactly is the task of a subnet miner?
 
@@ -110,12 +109,12 @@ See also:
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 
-Unfortunately no. Not all subnets are run or managed by Opentensor Foundation, and the landscape of subnets is constantly evolving. 
+Unfortunately no. Subnets are not run or managed by Opentensor Foundation, and the landscape of subnets is constantly evolving. 
 
 Browse the subnets at [`taostats.io/subnets`](https://taostats.io/subnets), or on [Discord](https://discord.com/channels/799672011265015819/830068283314929684).
 
 ### Can I be a subnet miner or a subnet validator forever?
 
-You can keep trying forever, but your harvest depends on your performance. Mining and validating in a subnet is competitive. If a miner or validator is one of the three lowest in the subnet, it may be de-registered at the end of the tempo, and have to register again.
+You can keep trying forever, but your success depends on your performance. Mining and validating in a subnet is competitive. If a miner or validator is one of the three lowest in the subnet, it may be de-registered at the end of the tempo, and have to register again.
 
 See [miner deregistration](./subnets/register-validate-mine.md#miner-deregistration). 

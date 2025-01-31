@@ -33,11 +33,11 @@ import { VscFileMedia } from "react-icons/vsc";
 
 # Bittensor Developer Documentation
 
-Welcome! Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
+Bittensor is an open source platform where participants produce best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
 
-Digital commodities are produced in many distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
+Bittensor is composed of distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
 
-The Bittensor network constantly emits liquidity in the form of its token, TAO ($\tau$), which is harvested by participants in proportion to the value of their contributions. Participants include:
+The Bittensor network constantly emits liquidity, in the form of its token, TAO ($\tau$), to participants in proportion to the value of their contributions. Participants include:
 
 - **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
 - **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
@@ -80,8 +80,6 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
     link='media-assets'
     body='Media assets' />
 </ResponsiveCards>
-
-
 
 ## Validate or mine
 
@@ -147,7 +145,7 @@ Ready to run your own subnet? Follow the below links.
     icon={VscSymbolParameter}
     title='Subnet hyperparameters'
     link='subnets/subnet-hyperparameters'
-    body='Get to know subnet hyperparameters and how to use them effectively. As a subnet owner, your success depends on this knowledge.' />
+    body='Get to know subnet hyperparameters and how to use them effectively. As a subnet creator, your success depends on this knowledge.' />
 </ResponsiveCards>
 
 ---
