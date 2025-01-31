@@ -20,7 +20,7 @@ But far more alpha than TAO is emitted into circulation every block. As a result
 
 In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be **18%**, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
 
-See [Emission of rewards in Dynamic TAO](./emission.md)
+See [Emission in Dynamic TAO](./emission.md)
 <center>
 <ThemedImage
 alt="Curves"
