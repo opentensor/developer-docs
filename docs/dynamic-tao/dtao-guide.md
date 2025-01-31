@@ -69,7 +69,7 @@ Liquidity is steadily injected into the Bittensor token economy according to a d
 
 Each block:
 - the chain emits TAO and injects it into the TAO reserves of the subnets.
-<!-- (how much TAO???) -->
+<!-- (how much TAO, is this still 1/block for the whole network ???) -->
 - the chain emits alpha tokens at twice the base alpha emission rate (which starts at 1 α/block and follows the same halving schedule as TAO). These emitted alpha tokens are allocoated between:
   - the subnet's alpha reserve (increasing available liquidity)
   - alpha outstanding (incentives for miners, validators, and subnet creators)
