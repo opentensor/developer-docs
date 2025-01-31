@@ -104,7 +104,7 @@ Currently, the protocol does not automatically deregister subnets. Abandoned sub
 
 **No**. Emissions are calculated by protocol logic (e.g., in `run_coinbase.rs`) and are based on network-wide parameters. Subnet founders cannot arbitrarily print tokens&mdash;emission follows the same consistent rules across all subnets.
 
-See [Emission of rewards in Dynamic TAO](./emission.md)
+See [Emissions in Dynamic TAO](./emission.md)
 
 ### What happens to previously locked registration costs from pre-Dynamic-TAO subnets?
 
