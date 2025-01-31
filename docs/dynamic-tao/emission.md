@@ -10,8 +10,8 @@ Emission is the process by which the Bittensor network allocates TAO and alpha t
 
 It unfolds in two stages:
 
-- Generation into subnets
-- Harvest by participants
+- Injection into subnets
+- Extraction by participants
 
 ### Injection
 
@@ -32,7 +32,7 @@ At the end of each tempo (360 blocks), the quantity of alpha accumulated over ea
 1. 41% by miners
 1. 41% by validators and their stakers:
     1. First, validators extract their take.   
-    1. Then, TAO and alpha are emitted to stakers according to the relative weight of those tokens. TAO emissions are sourced by swapping a portion of alpha emissions to TAO through the subnet's liquidity pool.
+    1. Then, TAO and alpha are emitted to stakers in proportion to the validators' holdings in each token. TAO emissions are sourced by swapping a portion of alpha emissions to TAO through the subnet's liquidity pool.
 
         For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
 
