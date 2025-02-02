@@ -93,7 +93,20 @@ const sidebars = {
               "subnets/child-hotkeys",
       ],
     },
-
+    {
+      type: "category",
+      label: "Managing subnets",
+      link: {type: "doc", id: "subnets/index",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "subnets/create-a-subnet", 
+        "subnets/dissolve-a-subnet",
+        "subnets/subnet-hyperparameters",
+        "subnets/working-with-subnets",
+        "subnets/walkthrough-prompting",
+      ],
+    },
         {
       type: "category",
       label: "Special Features",
@@ -106,20 +119,7 @@ const sidebars = {
       ],
     },
   "bittensor-networks",
-    {
-      type: "category",
-      label: "Subnets",
-      link: {type: "doc", id: "subnets/understanding-subnets",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "subnets/create-a-subnet", 
-        "subnets/dissolve-a-subnet",
-        "subnets/subnet-hyperparameters",
-        "subnets/working-with-subnets",
-        "subnets/walkthrough-prompting",
-      ],
-    },
+
         {
       type: "category",
       label: "Bittensor Tools",
