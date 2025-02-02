@@ -105,6 +105,8 @@ const sidebars = {
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
+        "tutorials/basic-subnet-tutorials",
+        "tutorials/ocr-subnet-tutorial",
       ],
     },
         {
@@ -118,8 +120,6 @@ const sidebars = {
         "subnets/schedule-coldkey-swap",
       ],
     },
-  "bittensor-networks",
-
         {
       type: "category",
       label: "Bittensor Tools",
@@ -127,6 +127,7 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
+        "bittensor-networks",
         "getting-started/wallets",
         "working-with-keys",
         "getting-started/installation",
@@ -139,17 +140,7 @@ const sidebars = {
         "utilities",
       ],
     },
-    {
-      type: "category",
-      label: "Subnet Tutorials",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "tutorials/basic-subnet-tutorials",
-        "tutorials/ocr-subnet-tutorial",
-      ],
-    },
-    {
+{
       type: "category",
       label: "Subtensor Nodes",
       link: {type: "doc", id: "subtensor-nodes/index",},
@@ -164,6 +155,7 @@ const sidebars = {
         "subtensor-nodes/subtensor-error-messages",
       ],
     },
+    
     {
       type: "category",
       label: "EVM smart contracts on Bittensor",
