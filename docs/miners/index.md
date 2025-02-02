@@ -37,9 +37,6 @@ You **do not** have to create a subnet to mine on the Bittensor network.
 10. A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
 
 
-
-Registering works like this:
-
 - When you run the above command, you have purchased a UID slot in the subnet of your choice.
 - Your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
 

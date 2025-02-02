@@ -1,5 +1,5 @@
 ---
-title: "Validatoring in Bittensor"
+title: "Validating in Bittensor"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -32,7 +32,7 @@ When you are preparing to be a subnet validator, use the below checklist to get 
 1. Steps to register >> See below [Register](#register).
 2. Steps to run a subnet validator >> See below [Running a subnet validator](#running-a-subnet-validator).
 
-## Register
+## Validator registration
 
 To participate as a subnet validator, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.
 
@@ -74,13 +74,13 @@ To become a subnet validator and be able to set weights, you must satisfy **all*
 2. Stake sufficient TAO on your hotkey to secure a [validator permit](#validator-permit).
 3. You must have at least 1000 TAO in your validator stake to be able to [set weights in the subnet](#minimum-tao-for-setting-weights). 
 
-### Staking
+### Acquiring stake
 
 :::tip Delegation
 See also [Delegation](../staking-and-delegation/delegation.md)
 :::
 
-You stake by attaching TAO to your hotkey. Attaching TAO to your hotkey can be achieved in two ways:
+A validator's consensus weight and emissions depend on the stake attached to their hotkey. Stake can be acquired in two ways:
 
 #### Stake your own TAO
 
@@ -175,7 +175,7 @@ After providing your wallet name at the prompt, you will see output like:
 
 ### Meaning of ACTIVE
 
-In the above table, the `ACTIVE` row applies only to UIDs that are subnet validators. It shows whether the UID is actively setting weights within the [`activity_cutoff`](./subnet-hyperparameters#activity_cutoff) window. If the UID has not set weights on the blockchain for the `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator offline, i.e., turned off (`False`).
+In the above table, the `ACTIVE` row applies only to UIDs that are subnet validators. It shows whether the UID is actively setting weights within the [`activity_cutoff`](../subnets/subnet-hyperparameters#activity_cutoff) window. If the UID has not set weights on the blockchain for the `activity_cutoff` duration, then the Yuma Consensus will consider this subnet validator offline, i.e., turned off (`False`).
 
 ## Checking the registration status
 

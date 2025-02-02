@@ -90,6 +90,7 @@ const sidebars = {
       collapsed: true,
       link: {type: "doc", id: "validators/index",},
       items: [
+              "subnets/child-hotkeys",
       ],
     },
 
@@ -99,9 +100,6 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
-        "subnets/child-hotkeys",
-        "subnets/bt-logging-levels",
-        "subnets/asyncio",
         "subnets/commit-reveal",
         "subnets/consensus-based-weights",
         "subnets/schedule-coldkey-swap",
@@ -136,6 +134,8 @@ const sidebars = {
         "getting-started/install-wallet-sdk",        
         "btcli",
         "bt-api-ref",    
+        "subnets/bt-logging-levels",
+        "subnets/asyncio",
         "utilities",
       ],
     },

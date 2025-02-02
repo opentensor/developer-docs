@@ -101,12 +101,10 @@ See [Emissions](./emissions.md).
 
 Yes! Most participants will not create their own subnets, there are lots to choose from.
 
-Requirements for mining or validating are subnet-specific, so begin by browsing the subnets at [`taostats.io/subnets`](https://taostats.io/subnets), or on [Discord](https://discord.com/channels/799672011265015819/830068283314929684).
+See: 
 
-See also: 
-
-- [Checklist for Validating and Mining](./subnets/checklist-for-validating-mining.md)
-- [Register, Validate and Mine](./subnets/register-validate-mine.md).
+- [Validating in Bittensor](./validators/index.md)
+- [Mining in Bittensor](./miners/index.md).
 
 ### Is there a central place where I can see compute requirements for mining and validating for all subnets?
 
@@ -118,4 +116,4 @@ Browse the subnets at [`taostats.io/subnets`](https://taostats.io/subnets), or o
 
 You can keep trying forever, but your harvest depends on your performance. Mining and validating in a subnet is competitive. If a miner or validator is one of the three lowest in the subnet, it may be de-registered at the end of the tempo, and have to register again.
 
-See [miner deregistration](./subnets/register-validate-mine.md#miner-deregistration). 
+See [miner deregistration](./miners/index.md#miner-deregistration). 
