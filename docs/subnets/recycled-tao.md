@@ -1,17 +1,24 @@
+---
+title: "Recycled TAO"
+---
 
 # Recycled TAO
 
 This document explains the terms "recycled TAO" and related terms.
 
-## Recycling, burning, and locking
+## TAO is recycled
 
-"Recycling TAO" means that this TAO is put back into the Bittensor emissions system. Instead of minting new TAO this recycled TAO that is in the recycle bin will be used again in the new emissions.
+The phrase "recycled TAO" means that this TAO is put back into the Bittensor emissions system. Instead of minting new TAO this recycled TAO that is in the recycle bin will be used again in the new emissions. 
 
-This happens in two cases:
-
-- When you register either as a subnet validator or a subnet miner and get a `UID` in return, the registration cost TAO you pay is recycled. 
+- **UID registration costs**: When you register either as a subnet validator or a subnet miner and get a `UID` in return, the registration cost TAO you pay is recycled. 
 - Emissions are recycled for those subnets that have registration turned off or paused.
 
-When TAO is burned it is permanently removed from circulation, reducing total supply.
+## TAO is burned
 
-Locked TAO is neither recycled nor burned, but held unspent, without the ability to move it until it is unlocked. The cost for subnet registration is locked and returned if the subnet is deregistered.
+Any TAO that is burned is permanently removed from the circulation.
+
+## TAO is locked
+
+This is different from recycling TAO. The locked TAO is neither recycled nor burned. The locked TAO is held unspent, without the ability to move it until it is unlocked.
+
+**Netuid registration costs**: When you create a subnet and get a `netuid` in return, this subnet registration cost TAO you pay is returned to you when the subnet is deregistered. In the meantime this TAO is locked.  
