@@ -49,42 +49,7 @@ const sidebars = {
         "yuma-consensus",        
       ],
     },
-    {
-      type: "category",
-      label: "Bittensor Tools",
-      link: {type: "doc", id: "tools",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "getting-started/wallets",
-        "getting-started/installation",
-        "getting-started/install-btcli",
-        "getting-started/install-wallet-sdk",        
-        "btcli",
-        "bt-api-ref",    
-        "utilities",
-      ],
-    },
-
-    {
-      type: "category",
-      label: "Validating and Mining",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "subnets/checklist-for-validating-mining",
-        "subnets/register-validate-mine",
-        "subnets/recycled-tao",
-        "working-with-keys",
-        "subnets/child-hotkeys",
-        "subnets/bt-logging-levels",
-        "subnets/asyncio",
-        "subnets/commit-reveal",
-        "subnets/consensus-based-weights",
-        "subnets/schedule-coldkey-swap",
-      ],
-    },
-    {
+        {
       type: "category",
       label: "Dynamic TAO",
       link: {type: "doc", id: "dynamic-tao/index",},
@@ -99,13 +64,48 @@ const sidebars = {
       
       ],
     },
+
     {
       type: "category",
-      label: "Staking and Delegation",
+      label: "Staking",
       collapsible: true,
       collapsed: true,
       link: {type: "doc", id: "staking-and-delegation/index",},
       items: ["staking-and-delegation/staking-polkadot-js", "staking-and-delegation/delegation", "staking-and-delegation/using-ledger-hw-wallet"],
+    },
+    {
+      type: "category",
+      label: "Mining",
+      collapsible: true,
+      collapsed: true,
+      link: {type: "doc", id: "miners/index",},
+      items: [
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Validating",
+      collapsible: true,
+      collapsed: true,
+      link: {type: "doc", id: "validators/index",},
+      items: [
+      ],
+    },
+
+        {
+      type: "category",
+      label: "Special Features",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "subnets/child-hotkeys",
+        "subnets/bt-logging-levels",
+        "subnets/asyncio",
+        "subnets/commit-reveal",
+        "subnets/consensus-based-weights",
+        "subnets/schedule-coldkey-swap",
+      ],
     },
   "bittensor-networks",
     {
@@ -120,6 +120,23 @@ const sidebars = {
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
+      ],
+    },
+        {
+      type: "category",
+      label: "Bittensor Tools",
+      link: {type: "doc", id: "tools",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "getting-started/wallets",
+        "working-with-keys",
+        "getting-started/installation",
+        "getting-started/install-btcli",
+        "getting-started/install-wallet-sdk",        
+        "btcli",
+        "bt-api-ref",    
+        "utilities",
       ],
     },
     {
