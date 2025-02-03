@@ -31,9 +31,9 @@ import { GoNumber } from "react-icons/go";
 import { VscFileMedia } from "react-icons/vsc";
 
 
-# Bittensor Developer Documentation
+# Bittensor Documentation
 
-Welcome! Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
+Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
 
 Digital commodities are produced in many distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
 
