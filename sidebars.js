@@ -95,8 +95,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Managing subnets",
-      link: {type: "doc", id: "subnets/index",},
+      label: "Managing subnets",      
       collapsible: true,
       collapsed: true,
       items: [

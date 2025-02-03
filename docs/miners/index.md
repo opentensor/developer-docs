@@ -7,12 +7,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Mining in Bittensor
 
-
 ## Choosing a subnet
 
-All mining in Bittensor occurs within a subnet, with each subnet independently producing the digital commodities that are its purpose, and each subnet creator therefore defining a different *incentive mechanism* for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions the miners receive.
+All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [../emissions.md]
 
-Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is creative, active and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for *you* to mine, given your own expertise and access to hardware. 
+Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for *you* to mine, given your own expertise and access to hardware.
 
 Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
 
@@ -24,24 +23,21 @@ Mining is not supported on Windows.
 
 ## Miner registration
 
-To participate as a subnet miner, you must register first. Registration means registering your keys with your preferred subnet and purchasing a UID slot in that subnet.
+To participate as a miner, you must first register your keys with the subnet in order to receive a UID on that subnet.
 
 :::tip No need to create a subnet to mine
-You **do not** have to create a subnet to mine on the Bittensor network.
+You **do not** have to create a subnet to mine on the Bittensor network. Most miners work on established subnets.
 :::
+<!-- what determines the registration cost for a subnet??? is it burned, recycled, or locked??? this all needs a fact check... -->
 
+Registration has a cost in TAO. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. Nevertheless, you can be a subnet miner in as many subnets as you can afford and expect to be successful.
 
-7. Register on this subnet and secure a UID slot. This will cost you TAO.
-8. Know that when you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. Nevertheless, you can indeed be a subnet miner in as many subnets as you can afford and expect to be successful.
-9. Keep in mind that to become a subnet miner, you must secure a UID by paying the registration cost. You do **not** need to stake to be a subnet miner.
-10. A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
+A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
 
-
-- When you run the above command, you have purchased a UID slot in the subnet of your choice.
-- Your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
+Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
 
 :::tip Ownership belongs to a hotkey
-Ownership belongs to a hotkey. Hence, for example, when you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 
+When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 
 
 A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
 :::
@@ -58,12 +54,9 @@ For example, for subnet 1 (netuid of 1):
 btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test-hotkey
 ```
 
-
 ## Miner deregistration
 
-A subnet miner can be deregistered if its performance is poor. Mining is competitive—and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs.
-
-A poor-performing miner occupying a UID risks being replaced by a newly registered miner who takes over that UID. It works like this:
+A subnet miner can be deregistered if its performance is poor. Mining is competitive—and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs. Each tempo, the lowest ranked mine risks being replaced by a newly registered miner, who takes over that UID. 
 
 - Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
     :::tip See
