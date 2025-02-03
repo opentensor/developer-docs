@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Choosing a subnet
 
-All mining and validating in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. The validator's work is to apply this incentive mechanism to miners, using it to score their performance, and then to submit these weights to the Bittensor blockchain. It is validators scores of miners' performance that determines the proportion of the subnet's emissions allocated to each miner, according to the Yuma Consensus algorithm. See [../emissions.md].
+All mining and validating in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. The validator's work is to apply this incentive mechanism to miners, using it to score their performance, and then to submit these weights to the Bittensor blockchain. It is validators scores of miners' performance that determines the proportion of the subnet's emissions allocated to each miner, according to the Yuma Consensus algorithm. See [Emissions](../emissions.md).
 
 Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
 
