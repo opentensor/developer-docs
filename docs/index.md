@@ -33,11 +33,11 @@ import { VscFileMedia } from "react-icons/vsc";
 
 # Bittensor Documentation
 
-Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
+Bittensor is an open source platform where participants produce best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
 
-Digital commodities are produced in many distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
+Bittensor is composed of distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
 
-The Bittensor network constantly emits liquidity in the form of its token, TAO ($\tau$), which is harvested by participants in proportion to the value of their contributions. Participants include:
+The Bittensor network constantly emits liquidity, in the form of its token, TAO ($\tau$), to participants in proportion to the value of their contributions. Participants include:
 
 - **Miners**&mdash;Work to produce digital commodities. See [mining in Bittensor](./miners/index.md).
 - **Validators**&mdash;Evaluate the quality of miners' work. [See validating in Bittensor](./validators/index.md)
@@ -82,8 +82,8 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
 </ResponsiveCards>
 
 
-
 ## Participate
+
 
 You can participate in an existing subnet as either a subnet validator or a subnet miner, or by staking your TAO to running validators.
 
@@ -107,7 +107,7 @@ You can participate in an existing subnet as either a subnet validator or a subn
     icon={BiMath}
     title='Emissions'
     link='emissions'
-    body='Learn how emissions for validators and miners are calculated.' />
+    body='Learn how emissions are calculated.' />
     <ResponsiveCard
     icon={RiGovernmentLine}
     title='Governance'
@@ -147,7 +147,7 @@ Ready to run your own subnet? Follow the below links.
     icon={VscSymbolParameter}
     title='Subnet hyperparameters'
     link='subnets/subnet-hyperparameters'
-    body='Get to know subnet hyperparameters and how to use them effectively. As a subnet owner, your success depends on this knowledge.' />
+    body='Get to know subnet hyperparameters and how to use them effectively. As a subnet creator, your success depends on this knowledge.' />
 </ResponsiveCards>
 
 ---

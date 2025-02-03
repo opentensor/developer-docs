@@ -1,52 +1,61 @@
 ---
-title: "Emission of rewards in Dynamic TAO"
+title: "Emission in Dynamic TAO"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Emission of rewards in Dynamic TAO
+# Emission in Dynamic TAO
 
-Emission is the process by which the Bittensor network rewards participants, including miners, validators, stakers, and subnet owners. It unfolds in two stages:
+Emission is the process by which the Bittensor network allocates TAO and alpha to participants, including miners, validators, stakers, and subnet creators.
+
+It unfolds in two stages:
 
 - Injection into subnets
-- Distribution to participants
+- Extraction by participants
 
-### Injection to subnets
+### Injection
 
-The first stage of emissions is injection of liquidity into the subnet pools, which occurs each block. This liquidity is divided between the subnet's reserves of TAO and alpha, and to *alpha outstanding*, which is the accumulating reward to be divided among subnet participants at the end of each tempo.
+The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
+
+- 2 alpha are allocated between the subnet's alpha reserves and alpha outstanding
+- a small fraction of TAO is injection into the subnet's TAO reserve.
+
+TAO and alpha are injected according to a balancing algorithm, so that growth of a subnet's liquidity pools does not not change the price of the alpha token.
 
 See [Core Dynamic TAO Concepts: Subnet liquidity reserves](./dtao-guide.md#subnet-liquidity-reserves)
 
-Each block, 2 alpha are divided between the subnet's alpha reserves and alpha outstanding, and a small fraction of TAO is added to the subnet's TAO reserve.  TAO and alpha are injected according to a balancing algorithm, so that injection of liquidity does not not change its price.
+### Extraction
 
-### Distribution of rewards
+At the end of each tempo (360 blocks), the quantity of alpha accumulated over each block of the tempo is extracted by network participants in the following proportions:
 
-At the end of each tempo (360 blocks), the quantity of alpha accumulated during the injection over each block of the tempo is distributed among network participants as follows:
+1. 18% by subnet owner
+1. 41% by miners
+1. 41% by validators and their stakers:
+    1. First, validators extract their take.   
+    1. Then, TAO and alpha are emitted to stakers in proportion to the validators' holdings in each token. TAO emissions are sourced by swapping a portion of alpha emissions to TAO through the subnet's liquidity pool.
 
-1. 18% goes to subnet owner
-1. 41% goes to incentives for miners
-1. 41% goes to dividends to validators and their stakers:
-    1. First, validators receive their take   
-    1.  Then, stakers are paid out. Alpha and TAO dividends are emitted according to their relative weight. For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
+        For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
 
-        Stakers in TAO (on the root subnet) receive TAO dividends in proportion to the validator's stake weight's proportion of TAO. These TAO dividends are sourced from the protocol automatically swapping a portion of the alpha dividends to TAO through the subnet's liquidity pool during distribution.
+        - TAO is emitted to stakers on the root subnet (i.e. stakers in TAO) in proportion to the validator's stake weight's proportion of TAO.
+
           $$
-          \text{proportional dividends (\%) to root stakers} 
+          \text{proportional emissions (\%) to root stakers} 
           = \frac{\tau_{x}{} \, w_{\tau}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
-          $$        
-        Stakers in alpha, i.e. on the mining subnet itself, receive alpha dividends in proportion to the validator's stake weight's proportion of alpha:
           $$
-          \text{proportional dividends (\%) to alpha stakers} 
+
+        - Alpha is emitted to stakers on the mining subnet (i.e. stakers in alpha) in proportion to the validator's stake weight's proportion of alpha:
+          $$
+          \text{proportional emissions (\%) to alpha stakers} 
           = \frac{\alpha_{x}}
                  {\alpha_{x} + \tau_{x} \, w_{\tau}}
           $$        
 
-        Validators who hold both root TAO and subnet alphas will receive dividends in both token types accordingly.
+        Validators who hold both root TAO and subnet alphas will extract both types of token.
 
     See [Core Dynamic TAO Concepts: Validator stake weight](./dtao-guide.md#validator-stake-weight)
 
-### Note on evolution of dividends distribution
+### Note on evolution of Bittensor token economy
 
 When Dynamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
 
