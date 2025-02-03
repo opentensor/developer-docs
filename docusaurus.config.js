@@ -78,14 +78,6 @@ const config = {
             from: "/reference/btcli",
           },
           {
-            to: "/subnets/checklist-for-validating-mining",
-            from: "/subnets/checklist-for-subnet",
-          },
-          {
-            to: "/subnets/register-validate-mine",
-            from: "/subnets/register-and-participate",
-          },
-          {
             to: "/staking-and-delegation/delegation",
             from: "/delegation",
           },
@@ -96,6 +88,14 @@ const config = {
           {
             to: "/staking-and-delegation",
             from: "/staking",
+          },
+          {
+            from: "/subnets/register-validate-mine",
+            to: "validators/index"
+          },
+          {
+            from: "/recycled-tao",
+            to: "/glossary"
           },
           {
             to: "/subnets/walkthrough-prompting",

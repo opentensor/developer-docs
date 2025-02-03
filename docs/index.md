@@ -31,16 +31,16 @@ import { GoNumber } from "react-icons/go";
 import { VscFileMedia } from "react-icons/vsc";
 
 
-# Bittensor Developer Documentation
+# Bittensor Documentation
 
-Welcome! Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
+Bittensor is an open source platform where participants harvest TAO for producting best-in-class digital commodities, including compute power, storage space, artificial intelligence (AI) inference and training, protein folding, financial markets prediction, and many more.
 
 Digital commodities are produced in many distinct **subnets**. Each subnet is an independent community of miners (who produce the commodity), and validators (who evaluate the miners' work).
 
 The Bittensor network constantly emits liquidity in the form of its token, TAO ($\tau$), which is harvested by participants in proportion to the value of their contributions. Participants include:
 
-- **Miners**&mdash;Work to produce digital commodities. See [Validating and Mining](./subnets/checklist-for-validating-mining).
-- **Validators**&mdash;Evaluate the quality of miners' work. See [Validating and Mining](./subnets/checklist-for-validating-mining)
+- **Miners**&mdash;Work to produce digital commodities. See [mining in Bittensor](./miners/index.md).
+- **Validators**&mdash;Evaluate the quality of miners' work. [See validating in Bittensor](./validators/index.md)
 - **Subnet Creators**&mdash;Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
 - **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
 
@@ -83,31 +83,31 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
 
 
 
-## Validate or mine
+## Participate
 
-You can participate in an existing subnet as either a subnet validator or a subnet miner. Follow the below links.
+You can participate in an existing subnet as either a subnet validator or a subnet miner, or by staking your TAO to running validators.
 
 <ResponsiveCards>
-    <ResponsiveCard 
-    icon={MdOutlineChecklistRtl}
-    title='1. Checklist for validating and mining'
-    link='subnets/checklist-for-validating-mining'
-    body='When you are preparing to be a subnet validator or a subnet miner, use this checklist to get ready.' />
-    <ResponsiveCard
-    icon={GiArchiveRegister}
-    title='2. Register, validate and mine'
-    link='subnets/register-validate-mine'
-    body='Follow these steps to register and become a miner, or stake your TAO and become a validator.' />
-    <ResponsiveCard
-    icon={BiMath}
-    title='3. Emissions'
-    link='emissions'
-    body='Learn how the emissions harvest for validators and miners is calculated.' />
     <ResponsiveCard
     icon={RiTeamLine}
-    title='4. Staking and Delegation'
+    title='Staking and Delegation'
     link='staking-and-delegation'
-    body='Get to know how staking and delegating your TAO works in the Bittensor network.' />
+    body='Get to know how staking and delegating in the Bittensor network.' />
+    <ResponsiveCard 
+    icon={MdOutlineChecklistRtl}
+    title='Mining in Bittensor'
+    link='./miners'
+    body='Get ready to mine on Bittensor subnets' />
+    <ResponsiveCard
+    icon={GiArchiveRegister}
+    title='Mining in Bittensor'
+    link='./validators'
+    body='Get ready to validate on Bittensor subnets' />
+    <ResponsiveCard
+    icon={BiMath}
+    title='Emissions'
+    link='emissions'
+    body='Learn how emissions for validators and miners are calculated.' />
     <ResponsiveCard
     icon={RiGovernmentLine}
     title='Governance'
