@@ -17,8 +17,9 @@ It unfolds in two stages:
 
 The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
 
-- 2 alpha are allocated between the subnet's alpha reserves and alpha outstanding
-- a small fraction of TAO is injection into the subnet's TAO reserve.
+- TAO is injected into the subnet's TAO reserve.
+- alpha is injected into the subnet's alpha reserve.
+- alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
 TAO and alpha are injected according to a balancing algorithm, so that growth of a subnet's liquidity pools does not not change the price of the alpha token.
 
