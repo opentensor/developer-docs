@@ -15,7 +15,7 @@ It unfolds in two stages:
 
 ### Injection
 
-The first stage of emissions is *injection of liquidity* into the subnet pools:
+The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
 
 - TAO is injected into the subnet's TAO reserve.
 - alpha is injected into the subnet's alpha reserve.
