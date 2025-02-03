@@ -206,7 +206,7 @@ A [release note for the Bittensor SDK 8.3.1 hotfix](./bittensor-rel-notes.md#rel
 
 ## 22 March 2024
 
-- Added a section on [Checking the registration status of a given UID](./subnets/register-validate-mine.md#checking-the-registration-status).
+- Added a section on checking the registration status of a given UID.
 - Updated the Subnet 1 Prompting documentation and renamed the document to [Walkthrough of Subnet 1](./subnets/walkthrough-prompting).
 
 ## 11 March 2024
@@ -237,7 +237,7 @@ The following changes are documented:
 ## 22 February 2024
 
 - Updated [`btcli wallet` command options](./btcli.md#check-balance-in-all-wallets).
-- Added a note on [mining and validating on Windows](./subnets/register-validate-mine.md#register).
+- Added a note on mining and validating on Windows.
 - Added a note on running a [public subtensor on cloud](subtensor-nodes/using-source.md).
 
 ## 08 February 2024
@@ -255,7 +255,7 @@ The following changes are documented:
 
 - Enhanced the rendering of the [Python docstrings for Bittensor API](https://docs.bittensor.com/python-api/html/index.html).
 
-- Added a new section on [Miner deregistration](subnets/register-validate-mine.md#miner-deregistration).
+- Added a new section on [Miner deregistration](miners/index.md#miner-deregistration).
 
 - 
 
@@ -279,7 +279,7 @@ The following changes are documented:
 
 - A new [OCR Subnet Tutorial](./tutorials/ocr-subnet-tutorial.md) is published. This document presents a step-by-step guide to convert a Python Notebook code into Bittensor subnet code.
 - A new [Emissions](./emissions.md) document is published. This document presents how to calculate emissions, trust, rank and consensus for a subnet. 
-- A new section [Moving a subnet miner to a different machine](subnets/register-validate-mine.md#moving-a-subnet-miner-to-a-different-machine) is added.
+- A new section [Moving a subnet miner to a different machine](miners/index.md#moving-a-subnet-miner-to-a-different-machine) is added.
 - A new section for [Subnets](./btcli.md#subnets) is added in the CLI document.
 - Dark-mode display problems with [Bittensor API Reference (see navbar above)](https://docs.bittensor.com/python-api/html/index.html) are fixed.
 - Styling for this documentation site is enhanced to reflect Opentensor Foundation visual theme. 

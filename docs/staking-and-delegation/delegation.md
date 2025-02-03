@@ -1,31 +1,28 @@
 ---
-title: "Delegation"
+title: "Staking/Delegation"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Delegation
+# Staking/delegation
 
-:::tip Staking
-See also [Staking](../subnets/register-validate-mine.md#staking).
+TAO holders can **stake** or **delegate** any amount of liquidity to a validator. Delegation supports validators, as their total stake in the subnet determines their consensus power and the emissions they receive.
+
+A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator. This supports the delegate as the delegate's effective stake becomes larger, increasing the delegate's impact on the network.
+
+The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
+
+- After a percentage is deducted from the delegate, these staking rewards are given back to the delegate's nominators.
+
+:::tip Validator take %
+The default value of the delegate take is 18%. As a delegate, you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
 :::
-
-TAO holders can delegate any amount of their stake to a subnet validator through a process called **delegation**. 
+- The above percentage of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
 
 :::tip Minimum required stake for nominators
 Minimum required stake for nominators is 0.1 TAO.
 :::
-
-Delegation on the Bittensor network works like this:
-
-- A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator. This supports the delegate as the delegate's effective stake becomes larger, increasing the delegate's impact on the network.
-- The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks.
-- After a percentage is deducted from the delegate, these staking rewards are given back to the delegate's nominators.
-:::tip Delegate take %
-The default value of the delegate take is 18%. As a delegate, you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
-:::
-- The above percentage of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
 
 ## Example
 Consider the example below:

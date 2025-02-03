@@ -9,8 +9,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This document describes how you can stake to Opentensor Foundation using [Polkadot JS](https://polkadot.js.org/apps/?rpc=wss://entrypoint-finney.opentensor.ai:443#/accounts).
 
-:::tip Also see
-Also see [Staking](../subnets/register-validate-mine.md#staking).
+:::tip
+Also see [Delegation](./delegation.md).
 :::
 
 In addition to running your own subnet miner or subnet validator, you can delegate your TAO to the Opentensor Foundation validation pool. Delegating TAO simply means you are staking to the Opentensor Foundation's validator, instead of running your own subnet validator. To take back your staked TAO from the pool at any time, you can simply undelegate your TAO.

@@ -51,8 +51,12 @@ Go to the folder where Python is installed, e.g., in my case (Mac OS) it is inst
 KeyFileError: Keyfile at: /path/to/.bittensor/wallets/some-coldkey/hotkeys/somehotkey does not exist
 ```
 
-**Likely cause and remedy:** A key you are passing as a parameter in a `btcli` command is not registered in the network. Make sure you first register the keys in your desired network before using the keys. See [Register, Validate and Mine
-](./subnets/register-validate-mine.md#register).
+**Likely cause and remedy:** A key you are passing as a parameter in a `btcli` command is not registered in the network. Make sure you first register the keys in your desired network before using the keys.
+
+See:
+
+- [Miner registration](./miners/index.md#miner-registration)
+- [Validator registration](./validators/index.md#validator-registration)
 
 ## Balances.transfer not found
 
