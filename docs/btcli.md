@@ -240,7 +240,7 @@ $ btcli root boost [OPTIONS]
 
 Stakes TAO to a specified delegate on the Bittensor network.
 
-This action allocates the user's TAO to support a delegate, potentially earning staking rewards in return.
+This action allocates the user's TAO to support a delegate, giving them greater consensus weight and emissions. In return, stakers extract a portion of the delegate validator's emissions.
 
 The command interacts with the user to determine the delegate and the amount of TAO to be staked. If the
 `--all` flag is used, it delegates the entire available balance.
@@ -286,11 +286,7 @@ $ btcli root delegate-stake [OPTIONS]
 
 ### btcli root get-weights
 
-Retrieve the weights set for the root network on the Bittensor network. This command provides visibility into how network responsibilities and rewards are distributed among various
-subnets.
-
-The command outputs a table listing the weights assigned to each subnet within the root network. This
-information is crucial for understanding the current influence and reward distribution among the subnets.
+Retrieve the weights set for the root network on the Bittensor network. A subnet's weight determines its current influence and emissions releative to other subnets.
 
 #### Example
 
@@ -298,9 +294,6 @@ information is crucial for understanding the current influence and reward distri
 btcli root get-weights
 ```
 
-:::tip
-This command is essential for users interested in the governance and operational dynamics of the Bittensor network. It offers transparency into how network rewards and responsibilities are allocated across different subnets.
-:::
 
 **Usage**:
 
@@ -751,9 +744,9 @@ $ btcli root set-take [OPTIONS]
 
 ### btcli root set-weights
 
-Set the weights for the oot network on the Bittensor network.
+Set the weights for the root network on the Bittensor network.
 
-This command is used by network senators to influence the distribution of network rewards and responsibilities.
+This command is used by network senators to influence the weight of subnets within the network.
 
 The command allows setting weights for different subnets within the root network. Users need to specify the
 netuids (network unique identifiers) and corresponding weights they wish to assign.
@@ -764,8 +757,8 @@ netuids (network unique identifiers) and corresponding weights they wish to assi
 btcli root set-weights -w 0.3,0.3,0.4 -n 1,2,3 --chain ws://127.0.0.1:9945
 ```
 
-:::tip
-This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics. It is a powerful tool that directly impacts the network's operational mechanics and reward distribution.
+:::danger
+This command is particularly important for network senators and requires a comprehensive understanding of the network's dynamics.
 :::
 
 **Usage**:
@@ -850,7 +843,7 @@ send a transaction to the Bittensor network to process the undelegation.
 ```
 
 :::tip
-This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as undelegating can affect the delegate's total stake and potentially the user's staking rewards.
+This command can result in a change to the blockchain state and may incur transaction fees. It is interactive and requires confirmation from the user before proceeding. It should be used with care as it affects the delegate's total stake and emissions to the user.
 :::
 
 **Usage**:
@@ -1877,11 +1870,10 @@ Obtain test TAO tokens by performing Proof of Work (PoW).
 This command is particularly useful for users who need test tokens for operations on a local chain.
 
 :::warning Alert
-This command is disabled on finney (mainnet) and testnet.
+This command is disabled on finney (mainnet) and testnet. It is only used in local chain environments.
 :::
 
-The command uses the PoW mechanism to validate the user's effort and rewards them with test TAO tokens. It is
-typically used in local chain environments where real value transactions are not necessary.
+
 
 #### Example
 
@@ -2017,7 +2009,7 @@ The resulting table includes columns for:
 
 - _Stake_: The amount of stake held by both the coldkey and hotkey.
 
-- _Emission_: The emission or rewards earned from staking.
+- _Emission_: The quantity of emissions from staking.
 
 - _Netuid_: The network unique identifier of the subnet where the hotkey is active.
 

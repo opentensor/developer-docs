@@ -49,7 +49,7 @@ Instead of staking TAO to a validator, in Dynamic TAO, you stake to a validator 
 
 - When you stake on a mining subnet, you exchange TAO for a dynamic token, the *alpha* of the subnet on which the validator is working, and stake that into the validator's hotkey.
 
-- When you stake on the root subnet, you stake TAO for TAO. You will receive TAO as dividends, unlike receiving alphas on other subnets.
+- When you stake on the root subnet, you stake TAO for TAO. You will receive emissions in TAO.
 
 ### What is the risk/reward profile of staking into a subnet?
 

@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 In Bittensor, a subnet is an incentive-based competition marketplace that produces a specific kind of digital commodity related to artificial intelligence. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality. Often, parties that serve as validators do so in order to run applications that make use of the services provided by the miners.
 
-Rewards&mdash;emmissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
+Emissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
 
 ## Anatomy of a subnet
 
@@ -18,7 +18,7 @@ The illustration below shows the main components of a subnet:
 2. **Miners** perform some useful work as defined in the subnet's incentive mechanism. For example, in Subnet 1, miners serve chat prompt completion.
 3. **Validators** independently evaluate the task performed by the subnet miners, according to standards defined by the subnet's incentive mechanism.
 4. Validators each score the performance of of each miner over the most recent time period. The matrix of these scores, by each validator for each miner, serves as input to **Yuma Consensus**. 
-5. The Yuma Consensus algorithm operates on-chain, and determines the distribution of TAO (τ) rewards to miners, validators, and subnet owners across the platform, based on performance.
+5. The Yuma Consensus algorithm operates on-chain, and determines emissions to miners, validators, and subnet owners across the platform, based on performance.
 
 <center>
 <ThemedImage

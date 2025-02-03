@@ -86,10 +86,6 @@ The process of removing a subnet miner or a subnet validator from the subnet due
 
 The process by which newly minted TAO tokens (emissions) are allocated among subnet miners and subnet validators, based on their performance, the amount of stake associated with the subnet validators' UIDs, and the Yuma Consensus algorithm.
 
-### Dividends
-
-A portion of the TAO emission received by subnet validators as a reward for their participation in validating transactions and maintaining the integrity of a subnet.
-
 ## E 
 
 ### EdDSA Cryptographic Keypairs

@@ -19,9 +19,7 @@ The emission process works like this:
     :::tip Taostats
     See the [percentage numbers in each "**SN**" column on the root network page on Taostats](https://taostats.io/subnets/netuid-0/). These percentages for all SNs add up to `100`. 
     :::
-- At the end of every tempo, i.e., every 360 blocks in a user-created subnet, the TAO ($\tau$) accumulated for each subnet is emitted into the subnet. This emitted TAO for the subnet is then distributed within the subnet as:
-  - **Dividends** to the subnet validators, and 
-  - **Incentives** to the subnet miners.
+- At the end of every tempo, i.e., every 360 blocks in a user-created subnet, the TAO ($\tau$) accumulated for each subnet is injected into the subnet. This emitted TAO for the subnet is then allocated among the subnet's miners, validators, and their stakers, as well as the subnet creator.
 
 ## Before you proceed
 
