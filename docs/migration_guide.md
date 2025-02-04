@@ -65,7 +65,7 @@ There were some cases where the block arg was called `block_number` or `block_id
 
 No longer requires `block` arg, will fetch the latest block if not specified.
 
-### get_stake_for_coldkey_and_hotkey 
+### `get_stake_for_coldkey_and_hotkey`
 
 Arg order has changed. It now takes `(coldkey, hotkey)` to align with the method name.
 
