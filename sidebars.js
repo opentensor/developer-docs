@@ -23,14 +23,9 @@ const sidebars = {
     "index",
     {
       type: "category",
-      label: "Release Notes and Updates",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "chain-rel-notes",
-        "bittensor-rel-notes",
-        "whats-new-in-docs",
-      ],
+      label: "Bittensor 9.0 Migration Guide",
+      link: {type: "doc", id: "migration_guide"},
+      items:[]
     },
     {
       type: "category",
@@ -184,7 +179,17 @@ const sidebars = {
       "senate",
       ],
     },
-
+    {
+      type: "category",
+      label: "Release Notes and Updates",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "chain-rel-notes",
+        "bittensor-rel-notes",
+        "whats-new-in-docs",
+      ],
+    },
 
     "errors-and-troubleshooting",
     "media-assets",
