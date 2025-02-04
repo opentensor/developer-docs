@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Introduction to Bittensor
 
-This page will orients the reader with the major concepts and components of Bittensor, and provide the roadmap to developing in the ecosystem.
+This page will orient the reader with the major concepts and components of Bittensor, and provide the roadmap to developing in the ecosystem.
 
 ## Components of the Bittensor platform
 
