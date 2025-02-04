@@ -3,9 +3,17 @@ title: "Bittensor 9.0 Migration Guide"
 ---
 # Bittensor 9.0 Migration Guide
 
-This page notes breaking changes for the Bittensor python SDK v9.0
+This page notes breaking changes for the Bittensor python SDK `v9.0`. This version of Bittensor was developed to support Dynamic TAO, a major evolution of the Bittensor network's tokenomic architecture.
 
-## Subtensor module: removed functions
+See [Dynamic TAO: What to expect](../dynamic-tao).
+
+**Contents:**
+- [`Subtensor`: removed functions](#subtensor-removed-functions)
+- [`Subtensor`: type changes](#subtensor-type-changes)
+- [`AsyncSubtensor` parity with `Subtensor`](#asyncsubtensor)
+- [`py-substrate-interface` replaced with `async-substrate-interface`](#py-substrate-interface-replaced-with-async-substrate-interface)
+
+## Subtensor: removed functions
 
 ### `get_account_next_index`
 
@@ -15,7 +23,7 @@ This was only used for getting nonce, which can be achieved with `subtensor.subs
 
 We no longer use prometheus info.
 
-## Subtensor module: type changes
+## Subtensor: type changes
 
 ### `__init__`
 No longer takes `connection_timeout` or `websocket` args. This is due to `py-substrate-interface` being re-written as `async-substrate-interface`.
@@ -87,7 +95,7 @@ Always returns a `Balance` object, instead of `Optional[Balance]`.
 
 Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-decode` and `async-substrate-interface` that allows for arbitrary decoding of runtime calls.
 
-### `AsyncSubtensor`
+## `AsyncSubtensor`
 
 AsyncSubtensor now has interface parity with Subtensor (they have all the same methods).
 
