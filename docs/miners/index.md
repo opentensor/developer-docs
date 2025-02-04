@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Choosing a subnet
 
-All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [../emissions.md]
+All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [Emissions](../emissions.md).
 
 Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for *you* to mine, given your own expertise and access to hardware.
 
