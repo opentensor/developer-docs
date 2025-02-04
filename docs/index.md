@@ -42,7 +42,7 @@ The Bittensor network constantly emits liquidity, in the form of its token, TAO 
 - **Miners**&mdash;Work to produce digital commodities. See [mining in Bittensor](./miners/index.md).
 - **Validators**&mdash;Evaluate the quality of miners' work. [See validating in Bittensor](./validators/index.md)
 - **Subnet Creators**&mdash;Manage the incentive mechanisms that specify the work miners and validate must perform and evaluate, respectively. See [Create a Subnet](./subnets/create-a-subnet)
-- **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking and Delegation](./staking-and-delegation).
+- **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking](./staking-and-delegation/delegation).
 
 :::tip Browse the subnets
 Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
