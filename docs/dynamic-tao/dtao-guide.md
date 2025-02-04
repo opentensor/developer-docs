@@ -65,7 +65,7 @@ This exchange rate can change every block when staking or unstaking or emissions
 
 ## Emission in Dynamic TAO
 
-Liquidity is steadily injected into the Bittensor token economy according to a distribution algorithm intended to foster growth of while stabilizing prices and protecting them from manipulation.
+Liquidity is steadily emitted into the Bittensor token economy according to an algorithm intended to foster growth while stabilizing prices and protecting them from manipulation.
 
 Each block:
 - the chain emits TAO and injects it into the TAO reserves of the subnets.
