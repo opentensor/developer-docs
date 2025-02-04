@@ -97,7 +97,7 @@ Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-deco
 
 ## `AsyncSubtensor`
 
-AsyncSubtensor now has interface parity with Subtensor (they have all the same methods).
+`AsyncSubtensor` and `Subtensor` now have all and only the same methods.
 
 Check out the wiki entry on [Concurrency in Bittensor](https://github.com/opentensor/bittensor/wiki/Concurrency-in-Bittensor) to learn more.
 
@@ -105,7 +105,7 @@ Check out the wiki entry on [Concurrency in Bittensor](https://github.com/opente
 
 `py-substrate-interface` has been completely removed as a requirement, and has been rewritten as `async-substrate-interface`.
 
-While the main goal of this project was initially just providing an asyncio-compatible version of py-substrate-interface for our use in `btcli` and `AsyncSubtensor`, we noticed a lot of room for improvement, so we wrote not only the async part, but also a synchronous part.  We aimed to be as API-compatible as possible, but there are a few differences (mainly in runtime calls).
+While the main goal of this project was initially just providing an AsyncIO-compatible version of `py-substrate-interface` for our use in `btcli` and `AsyncSubtensor`, we noticed a lot of room for improvement, so we wrote not only the async part, but also a synchronous part.  We aimed to be as API-compatible as possible, but there are a few differences (mainly in runtime calls).
 
 `async-substrate-interface` is its own standalone package, as is a requirement for `bittensor` and `btcli`, replacing `py-substrate-interface`.
 
