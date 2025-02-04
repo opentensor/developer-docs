@@ -3,7 +3,7 @@ title: "Bittensor 9.0 Migration Guide"
 ---
 # Bittensor 9.0 Migration Guide
 
-This page notes breaking changes for the Bittensor python SDK `v9.0`. This version of Bittensor was developed to support Dynamic TAO, a major evolution of the Bittensor network's tokenomic architecture.
+This page notes breaking changes for the Bittensor Python SDK `v9.0`. This version supports Dynamic TAO, a major evolution of the Bittensor network's tokenomic architecture, so using it implies understanding the implications of this change.
 
 See [Dynamic TAO: What to expect](../dynamic-tao).
 
