@@ -65,7 +65,7 @@ These methods include the following, and their associated extrinsics:
  - `move_stake`
  - `swap_stake`
  - `transfer_stake`
- - get_transfer_fee
+ - `get_transfer_fee`
 
 
 For example, where `transfer` previously accepted float for the amount, it now takes a `Balance` object, which can be created on the fly:
