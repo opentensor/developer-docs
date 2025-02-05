@@ -23,11 +23,34 @@ This was only used for getting nonce, which can be achieved with `subtensor.subs
 
 We no longer use prometheus info.
 
+### `get_total_stake_for_coldkey`
+
+Not compatible with Dynamic TAO.
+
+Replaced with [`get_stake`](./dynamic-tao/sdk-cheat-sheet#get_stake), which returns a staked balance for a coldkey, hotkey pair on a specific subnet.
+
+### `get_total_stake_for_coldkeys`
+
+Not compatible with Dynamic TAO.
+
+Replaced with [`get_stake`](./dynamic-tao/sdk-cheat-sheet#get_stake), which returns a staked balance for a coldkey, hotkey pair on a specific subnet.
+
+### `get_total_stake_for_hotkey`
+
+Not compatible with Dynamic TAO.
+
+Replaced with [`get_stake`](./dynamic-tao/sdk-cheat-sheet#get_stake), which returns a staked balance for a coldkey, hotkey pair on a specific subnet.
+
+### `get_total_stake_for_hotkeys`
+
+Not compatible with Dynamic TAO.
+
+Replaced with [`get_stake`](./dynamic-tao/sdk-cheat-sheet#get_stake), which returns a staked balance for a coldkey, hotkey pair on a specific subnet.
+
 ## Subtensor: type changes
 
 ### `__init__`
 No longer takes `connection_timeout` or `websocket` args. This is due to `py-substrate-interface` being re-written as `async-substrate-interface`.
-
 
 ### `amount`
 
@@ -42,6 +65,7 @@ These methods include the following, and their associated extrinsics:
  - `move_stake`
  - `swap_stake`
  - `transfer_stake`
+ - get_transfer_fee
 
 
 For example, where `transfer` previously accepted float for the amount, it now takes a `Balance` object, which can be created on the fly:
@@ -94,6 +118,10 @@ Always returns a `Balance` object, instead of `Optional[Balance]`.
 ### `query_runtime_api` 
 
 Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-decode` and `async-substrate-interface` that allows for arbitrary decoding of runtime calls.
+
+### `get_subnet_burn_cost`
+
+This method now has the correct type hint (`int`) for its return value.
 
 ## `AsyncSubtensor`
 
