@@ -16,27 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -49,6 +52,7 @@
     <link rel="prev" title="bittensor.core.tensor" href="../tensor/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -109,7 +101,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,35 +132,81 @@
     
     
     <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../test_init/index.html">test_init</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../stream/index.html">bittensor.core.stream</a></li>
@@ -179,24 +218,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -207,9 +248,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -370,24 +416,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -414,24 +452,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.BrokenThreadPool"><code class="docutils literal notranslate"><span class="pre">BrokenThreadPool</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._broken</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown_lock</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._thread_name_prefix</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.config"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.is_empty"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.is_empty</span></code></a></li>
@@ -439,19 +463,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
@@ -476,16 +487,7 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.NULL_ENTRY" title="bittensor.core.threadpool.NULL_ENTRY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool.__author__" title="bittensor.core.threadpool.__author__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__author__</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool._shutdown" title="bittensor.core.threadpool._shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_shutdown</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool._threads_queues" title="bittensor.core.threadpool._threads_queues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.logger" title="bittensor.core.threadpool.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool.logger" title="bittensor.core.threadpool.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -509,20 +511,6 @@ document.write(`
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor" title="bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a></p></td>
 <td><p>Base threadpool executor with a priority queue.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.threadpool._WorkItem" title="bittensor.core.threadpool._WorkItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_WorkItem</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.threadpool._worker" title="bittensor.core.threadpool._worker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_worker</span></code></a>(executor_reference, work_queue, initializer, ...)</p></td>
-<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -561,71 +549,6 @@ execute the given calls.</p></li>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">
-<span class="sig-name descname"><span class="pre">_adjust_thread_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._adjust_thread_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._broken">
-<span class="sig-name descname"><span class="pre">_broken</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._counter">
-<span class="sig-name descname"><span class="pre">_counter</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore">
-<span class="sig-name descname"><span class="pre">_idle_semaphore</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs">
-<span class="sig-name descname"><span class="pre">_initargs</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer">
-<span class="sig-name descname"><span class="pre">_initializer</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">
-<span class="sig-name descname"><span class="pre">_initializer_failed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor._initializer_failed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers">
-<span class="sig-name descname"><span class="pre">_max_workers</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown">
-<span class="sig-name descname"><span class="pre">_shutdown</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock">
-<span class="sig-name descname"><span class="pre">_shutdown_lock</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix">
-<span class="sig-name descname"><span class="pre">_thread_name_prefix</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._threads">
-<span class="sig-name descname"><span class="pre">_threads</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue">
-<span class="sig-name descname"><span class="pre">_work_queue</span></span><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args" title="Link to this definition">#</a></dt>
 <dd><p>Accept specific arguments from parser</p>
@@ -643,7 +566,7 @@ execute the given calls.</p></li>
 <dt class="sig sig-object py" id="bittensor.core.threadpool.PriorityThreadPoolExecutor.config">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#PriorityThreadPoolExecutor.config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.config" title="Link to this definition">#</a></dt>
 <dd><p>Get config from the argument parser.</p>
-<p>Return: <a class="reference internal" href="../../index.html#bittensor.Config" title="bittensor.Config"><code class="xref py py-func docutils literal notranslate"><span class="pre">bittensor.Config()</span></code></a> object.</p>
+<p>Return: <code class="xref py py-func docutils literal notranslate"><span class="pre">bittensor.Config()</span></code> object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="../config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config">bittensor.core.config.Config</a></p>
@@ -697,63 +620,6 @@ a Future instance representing the execution of the callable.</p>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_WorkItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.args">
-<span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.args" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.fn">
-<span class="sig-name descname"><span class="pre">fn</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.fn" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.future">
-<span class="sig-name descname"><span class="pre">future</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.future" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.kwargs">
-<span class="sig-name descname"><span class="pre">kwargs</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.kwargs" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_WorkItem.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.run" title="Link to this definition">#</a></dt>
-<dd><p>Run the given work item</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._WorkItem.start_time">
-<span class="sig-name descname"><span class="pre">start_time</span></span><a class="headerlink" href="#bittensor.core.threadpool._WorkItem.start_time" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool.__author__">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">__author__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Brian</span> <span class="pre">Quinlan</span> <span class="pre">(brian&#64;sweetapp.com)'</span></em><a class="headerlink" href="#bittensor.core.threadpool.__author__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._shutdown">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_shutdown</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bittensor.core.threadpool._shutdown" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._threads_queues">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_threads_queues</span></span><a class="headerlink" href="#bittensor.core.threadpool._threads_queues" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.core.threadpool._worker">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">_worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executor_reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/threadpool.html#_worker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.threadpool._worker" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.core.threadpool.logger">
 <span class="sig-prename descclassname"><span class="pre">bittensor.core.threadpool.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#bittensor.core.threadpool.logger" title="Link to this definition">#</a></dt>
@@ -798,7 +664,8 @@ a Future instance representing the execution of the callable.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -810,24 +677,10 @@ a Future instance representing the execution of the callable.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.BrokenThreadPool"><code class="docutils literal notranslate"><span class="pre">BrokenThreadPool</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.NULL_ENTRY"><code class="docutils literal notranslate"><span class="pre">NULL_ENTRY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._adjust_thread_count()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._broken"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._broken</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._counter"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._counter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._idle_semaphore"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._idle_semaphore</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initargs"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._initializer_failed()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._max_workers"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._max_workers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._shutdown_lock"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._shutdown_lock</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._thread_name_prefix"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._thread_name_prefix</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._threads"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._threads</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor._work_queue"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor._work_queue</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.add_args"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.config"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.is_empty"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.is_empty</span></code></a></li>
@@ -835,19 +688,6 @@ a Future instance representing the execution of the callable.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.PriorityThreadPoolExecutor.submit"><code class="docutils literal notranslate"><span class="pre">PriorityThreadPoolExecutor.submit()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem"><code class="docutils literal notranslate"><span class="pre">_WorkItem</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.args"><code class="docutils literal notranslate"><span class="pre">_WorkItem.args</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.fn"><code class="docutils literal notranslate"><span class="pre">_WorkItem.fn</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.future"><code class="docutils literal notranslate"><span class="pre">_WorkItem.future</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.kwargs"><code class="docutils literal notranslate"><span class="pre">_WorkItem.kwargs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.run"><code class="docutils literal notranslate"><span class="pre">_WorkItem.run()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._WorkItem.start_time"><code class="docutils literal notranslate"><span class="pre">_WorkItem.start_time</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.__author__"><code class="docutils literal notranslate"><span class="pre">__author__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._shutdown"><code class="docutils literal notranslate"><span class="pre">_shutdown</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._threads_queues"><code class="docutils literal notranslate"><span class="pre">_threads_queues</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool._worker"><code class="docutils literal notranslate"><span class="pre">_worker()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.threadpool.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 </ul>
 </li>
@@ -899,8 +739,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

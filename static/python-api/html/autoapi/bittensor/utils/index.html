@@ -16,27 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -45,10 +48,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/utils/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="bittensor.utils.btlogging" href="btlogging/index.html" />
+    <link rel="next" title="bittensor.utils.axon_utils" href="axon_utils/index.html" />
     <link rel="prev" title="bittensor.core.types" href="../core/types/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -109,7 +101,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,35 +132,81 @@
     
     
     <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../test_init/index.html">test_init</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 has-children"><a class="reference internal" href="../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../core/chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/stream/index.html">bittensor.core.stream</a></li>
@@ -179,24 +218,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -207,9 +248,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -370,24 +416,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -411,40 +449,41 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.Certificate"><code class="docutils literal notranslate"><span class="pre">Certificate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.RAOPERTAO"><code class="docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.SS58_FORMAT"><code class="docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U64_MAX"><code class="docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus"><code class="docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus"><code class="docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus.message"><code class="docutils literal notranslate"><span class="pre">UnlockStatus.message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus.success"><code class="docutils literal notranslate"><span class="pre">UnlockStatus.success</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.VersionCheckError"><code class="docutils literal notranslate"><span class="pre">VersionCheckError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils._get_explorer_root_url_by_network_from_map"><code class="docutils literal notranslate"><span class="pre">_get_explorer_root_url_by_network_from_map()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils._is_valid_ed25519_pubkey"><code class="docutils literal notranslate"><span class="pre">_is_valid_ed25519_pubkey()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.check_version"><code class="docutils literal notranslate"><span class="pre">check_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.check_version"><code class="docutils literal notranslate"><span class="pre">check_version</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.decode_hex_identity_dict"><code class="docutils literal notranslate"><span class="pre">decode_hex_identity_dict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.format_error_message"><code class="docutils literal notranslate"><span class="pre">format_error_message()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_explorer_url_for_network"><code class="docutils literal notranslate"><span class="pre">get_explorer_url_for_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_hash"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_address_to_bytes"><code class="docutils literal notranslate"><span class="pre">ss58_address_to_bytes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_decode"><code class="docutils literal notranslate"><span class="pre">ss58_decode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_to_vec_u8"><code class="docutils literal notranslate"><span class="pre">ss58_to_vec_u8()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.strtobool"><code class="docutils literal notranslate"><span class="pre">strtobool()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.torch"><code class="docutils literal notranslate"><span class="pre">torch</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.u16_normalized_float"><code class="docutils literal notranslate"><span class="pre">u16_normalized_float()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.u64_normalized_float"><code class="docutils literal notranslate"><span class="pre">u64_normalized_float()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.unlock_key"><code class="docutils literal notranslate"><span class="pre">unlock_key()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.use_torch"><code class="docutils literal notranslate"><span class="pre">use_torch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.use_torch"><code class="docutils literal notranslate"><span class="pre">use_torch</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.validate_chain_endpoint"><code class="docutils literal notranslate"><span class="pre">validate_chain_endpoint()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.version_checking"><code class="docutils literal notranslate"><span class="pre">version_checking()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.version_checking"><code class="docutils literal notranslate"><span class="pre">version_checking</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -460,28 +499,21 @@ document.write(`
                   
   <section id="module-bittensor.utils">
 <span id="bittensor-utils"></span><h1>bittensor.utils<a class="headerlink" href="#module-bittensor.utils" title="Link to this heading">#</a></h1>
-<section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
-</ul>
-</div>
-</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l1"><a class="reference internal" href="networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
@@ -497,34 +529,46 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.RAOPERTAO" title="bittensor.utils.RAOPERTAO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.SS58_FORMAT" title="bittensor.utils.SS58_FORMAT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.U16_MAX" title="bittensor.utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.U16_MAX" title="bittensor.utils.U16_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.U64_MAX" title="bittensor.utils.U64_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.U64_MAX" title="bittensor.utils.U64_MAX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.VersionCheckError" title="bittensor.utils.VersionCheckError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionCheckError</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.UnlockStatus" title="bittensor.utils.UnlockStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.check_version" title="bittensor.utils.check_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_version</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.logging" title="bittensor.utils.logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.hex_to_bytes" title="bittensor.utils.hex_to_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hex_to_bytes</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.logging" title="bittensor.utils.logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.ss58_decode" title="bittensor.utils.ss58_decode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ss58_decode</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.torch" title="bittensor.utils.torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.use_torch" title="bittensor.utils.use_torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_torch</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.version_checking" title="bittensor.utils.version_checking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_checking</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.VersionCheckError" title="bittensor.utils.VersionCheckError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VersionCheckError</span></code></a></p></td>
-<td><p>Exception raised for errors in the version check process.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.UnlockStatus" title="bittensor.utils.UnlockStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -534,29 +578,17 @@ document.write(`
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils._get_explorer_root_url_by_network_from_map" title="bittensor.utils._get_explorer_root_url_by_network_from_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_explorer_root_url_by_network_from_map</span></code></a>(network, ...)</p></td>
-<td><p>Returns the explorer root url for the given network name from the given network map.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils._is_valid_ed25519_pubkey" title="bittensor.utils._is_valid_ed25519_pubkey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_is_valid_ed25519_pubkey</span></code></a>(public_key)</p></td>
-<td><p>Checks if the given public_key is a valid ed25519 key.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.check_version" title="bittensor.utils.check_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_version</span></code></a>([timeout])</p></td>
-<td><p>Check if the current version of Bittensor is up-to-date with the latest version on PyPi.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.decode_hex_identity_dict" title="bittensor.utils.decode_hex_identity_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode_hex_identity_dict</span></code></a>(info_dictionary)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.decode_hex_identity_dict" title="bittensor.utils.decode_hex_identity_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decode_hex_identity_dict</span></code></a>(info_dictionary)</p></td>
 <td><p>Decodes hex-encoded strings in a dictionary.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.format_error_message" title="bittensor.utils.format_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_error_message</span></code></a>(error_message)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.format_error_message" title="bittensor.utils.format_error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_error_message</span></code></a>(error_message)</p></td>
 <td><p>Formats an error message from the Subtensor error information for use in extrinsics.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.get_explorer_url_for_network" title="bittensor.utils.get_explorer_url_for_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_explorer_url_for_network</span></code></a>(network, block_hash, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.get_explorer_url_for_network" title="bittensor.utils.get_explorer_url_for_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_explorer_url_for_network</span></code></a>(network, block_hash, ...)</p></td>
 <td><p>Returns the explorer url for the given block hash and network.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.get_hash" title="bittensor.utils.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(content[, encoding])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.get_hash" title="bittensor.utils.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(content[, encoding])</p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.hex_to_bytes" title="bittensor.utils.hex_to_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hex_to_bytes</span></code></a>(hex_str)</p></td>
-<td><p>Converts a hex-encoded string into bytes. Handles 0x-prefixed and non-prefixed hex-encoded strings.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.is_valid_bittensor_address_or_public_key" title="bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key</span></code></a>(address)</p></td>
 <td><p>Checks if the given address is a valid destination address.</p></td>
@@ -582,14 +614,8 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.unlock_key" title="bittensor.utils.unlock_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlock_key</span></code></a>(wallet[, unlock_type])</p></td>
 <td><p>Attempts to decrypt a wallet's coldkey or hotkey</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.use_torch" title="bittensor.utils.use_torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_torch</span></code></a>()</p></td>
-<td><p>Force the use of torch over numpy for certain operations.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.utils.validate_chain_endpoint" title="bittensor.utils.validate_chain_endpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_chain_endpoint</span></code></a>(endpoint_url)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.validate_chain_endpoint" title="bittensor.utils.validate_chain_endpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_chain_endpoint</span></code></a>(endpoint_url)</p></td>
 <td><p>Validates if the provided endpoint URL is a valid WebSocket URL.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.version_checking" title="bittensor.utils.version_checking"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_checking</span></code></a>([timeout])</p></td>
-<td><p>Deprecated, kept for backwards compatibility. Use check_version() instead.</p></td>
 </tr>
 </tbody>
 </table>
@@ -608,11 +634,6 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="bittensor.utils.SS58_FORMAT">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">SS58_FORMAT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">42</span></em><a class="headerlink" href="#bittensor.utils.SS58_FORMAT" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.U16_MAX">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">U16_MAX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65535</span></em><a class="headerlink" href="#bittensor.utils.U16_MAX" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -622,74 +643,40 @@ document.write(`
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">U64_MAX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18446744073709551615</span></em><a class="headerlink" href="#bittensor.utils.U64_MAX" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py data">
+<dl class="py class">
 <dt class="sig sig-object py" id="bittensor.utils.UnlockStatus">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">UnlockStatus</span></span><a class="headerlink" href="#bittensor.utils.UnlockStatus" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">UnlockStatus</span></span><a class="headerlink" href="#bittensor.utils.UnlockStatus" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.UnlockStatus.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#bittensor.utils.UnlockStatus.message" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py exception">
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bittensor.utils.UnlockStatus.success">
+<span class="sig-name descname"><span class="pre">success</span></span><a class="headerlink" href="#bittensor.utils.UnlockStatus.success" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.VersionCheckError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">VersionCheckError</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#VersionCheckError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.VersionCheckError" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Exception raised for errors in the version check process.</p>
-<p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">VersionCheckError</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#VersionCheckError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.VersionCheckError" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils._get_explorer_root_url_by_network_from_map">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_get_explorer_root_url_by_network_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#_get_explorer_root_url_by_network_from_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils._get_explorer_root_url_by_network_from_map" title="Link to this definition">#</a></dt>
-<dd><p>Returns the explorer root url for the given network name from the given network map.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>network</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The network to get the explorer url for.</p></li>
-<li><p><strong>network_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – The network map to get the explorer url from.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The explorer url for the given network.
-Or None if the network is not in the network map.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bittensor.utils._is_valid_ed25519_pubkey">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">_is_valid_ed25519_pubkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#_is_valid_ed25519_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils._is_valid_ed25519_pubkey" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the given public_key is a valid ed25519 key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>public_key</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a><em>]</em>) – The public_key to check.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if the public_key is a valid ed25519 key, False otherwise.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.check_version">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">check_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#check_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.check_version" title="Link to this definition">#</a></dt>
-<dd><p>Check if the current version of Bittensor is up-to-date with the latest version on PyPi.
-Raises a VersionCheckError if the version check fails.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The timeout for the request to PyPI in seconds. Default is <code class="docutils literal notranslate"><span class="pre">15</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">check_version</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#check_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.check_version" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.decode_hex_identity_dict">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">decode_hex_identity_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.decode_hex_identity_dict" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">decode_hex_identity_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_dictionary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#decode_hex_identity_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.decode_hex_identity_dict" title="Link to this definition">#</a></dt>
 <dd><p>Decodes hex-encoded strings in a dictionary.</p>
-<p>This function traverses the given dictionary, identifies hex-encoded strings, and decodes them into readable strings. It handles nested dictionaries and lists within the dictionary.</p>
+<dl class="simple">
+<dt>This function traverses the given dictionary, identifies hex-encoded strings, and decodes them into readable</dt><dd><p>strings. It handles nested dictionaries and lists within the dictionary.</p>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>info_dictionary</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary containing hex-encoded strings to decode.</p>
@@ -759,19 +746,10 @@ Or None if the network is not known.</p>
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#get_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.get_hash" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py function">
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.hex_to_bytes">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">hex_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hex_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.hex_to_bytes" title="Link to this definition">#</a></dt>
-<dd><p>Converts a hex-encoded string into bytes. Handles 0x-prefixed and non-prefixed hex-encoded strings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>hex_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)">bytes</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">hex_to_bytes</span></span><a class="reference internal" href="../../../_modules/bittensor/utils.html#hex_to_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.hex_to_bytes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.is_valid_bittensor_address_or_public_key">
@@ -825,6 +803,11 @@ Or None if the network is not known.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bittensor.utils.ss58_decode">
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">ss58_decode</span></span><a class="headerlink" href="#bittensor.utils.ss58_decode" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.ss58_to_vec_u8">
@@ -889,7 +872,7 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.unlock_key">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">unlock_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unlock_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coldkey'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.unlock_key" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">unlock_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unlock_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coldkey'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#unlock_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.unlock_key" title="Link to this definition">#</a></dt>
 <dd><p>Attempts to decrypt a wallet’s coldkey or hotkey
 :param wallet: a Wallet object
 :param unlock_type: the key type, ‘coldkey’ or ‘hotkey’</p>
@@ -899,25 +882,19 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 <dd class="field-odd"><p><strong>wallet</strong> (<em>bittensor_wallet.Wallet</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>UnlockStatus</p>
+<dd class="field-even"><p><a class="reference internal" href="#bittensor.utils.UnlockStatus" title="bittensor.utils.UnlockStatus">UnlockStatus</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.use_torch">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">use_torch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/registration.html#use_torch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.use_torch" title="Link to this definition">#</a></dt>
-<dd><p>Force the use of torch over numpy for certain operations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">use_torch</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/registration/pow.html#use_torch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.use_torch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.utils.validate_chain_endpoint">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">validate_chain_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.validate_chain_endpoint" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">validate_chain_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils.html#validate_chain_endpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.validate_chain_endpoint" title="Link to this definition">#</a></dt>
 <dd><p>Validates if the provided endpoint URL is a valid WebSocket URL.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -929,16 +906,10 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.version_checking">
-<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">version_checking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#version_checking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.version_checking" title="Link to this definition">#</a></dt>
-<dd><p>Deprecated, kept for backwards compatibility. Use check_version() instead.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The timeout for calling :func:<code class="docutils literal notranslate"><span class="pre">check_version</span></code> function. Default is <code class="docutils literal notranslate"><span class="pre">15</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">bittensor.utils.</span></span><span class="sig-name descname"><span class="pre">version_checking</span></span><a class="reference internal" href="../../../_modules/bittensor/utils/version.html#version_checking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.version_checking" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -964,11 +935,11 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
       </div>
     </a>
     <a class="right-next"
-       href="btlogging/index.html"
+       href="axon_utils/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.utils.btlogging</p>
+        <p class="prev-next-title">bittensor.utils.axon_utils</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -979,7 +950,8 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -988,40 +960,41 @@ false-y values are ‘n’, ‘no’, ‘f’, ‘false’, ‘off’, and ‘0�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.Certificate"><code class="docutils literal notranslate"><span class="pre">Certificate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.RAOPERTAO"><code class="docutils literal notranslate"><span class="pre">RAOPERTAO</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.SS58_FORMAT"><code class="docutils literal notranslate"><span class="pre">SS58_FORMAT</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U16_MAX"><code class="docutils literal notranslate"><span class="pre">U16_MAX</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.U64_MAX"><code class="docutils literal notranslate"><span class="pre">U64_MAX</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus"><code class="docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus"><code class="docutils literal notranslate"><span class="pre">UnlockStatus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus.message"><code class="docutils literal notranslate"><span class="pre">UnlockStatus.message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.UnlockStatus.success"><code class="docutils literal notranslate"><span class="pre">UnlockStatus.success</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.VersionCheckError"><code class="docutils literal notranslate"><span class="pre">VersionCheckError</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils._get_explorer_root_url_by_network_from_map"><code class="docutils literal notranslate"><span class="pre">_get_explorer_root_url_by_network_from_map()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils._is_valid_ed25519_pubkey"><code class="docutils literal notranslate"><span class="pre">_is_valid_ed25519_pubkey()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.check_version"><code class="docutils literal notranslate"><span class="pre">check_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.check_version"><code class="docutils literal notranslate"><span class="pre">check_version</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.decode_hex_identity_dict"><code class="docutils literal notranslate"><span class="pre">decode_hex_identity_dict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.format_error_message"><code class="docutils literal notranslate"><span class="pre">format_error_message()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_explorer_url_for_network"><code class="docutils literal notranslate"><span class="pre">get_explorer_url_for_network()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.get_hash"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">hex_to_bytes</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_bittensor_address_or_public_key"><code class="docutils literal notranslate"><span class="pre">is_valid_bittensor_address_or_public_key()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.is_valid_ss58_address"><code class="docutils literal notranslate"><span class="pre">is_valid_ss58_address()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_address_to_bytes"><code class="docutils literal notranslate"><span class="pre">ss58_address_to_bytes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_decode"><code class="docutils literal notranslate"><span class="pre">ss58_decode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.ss58_to_vec_u8"><code class="docutils literal notranslate"><span class="pre">ss58_to_vec_u8()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.strtobool"><code class="docutils literal notranslate"><span class="pre">strtobool()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.torch"><code class="docutils literal notranslate"><span class="pre">torch</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.u16_normalized_float"><code class="docutils literal notranslate"><span class="pre">u16_normalized_float()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.u64_normalized_float"><code class="docutils literal notranslate"><span class="pre">u64_normalized_float()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.unlock_key"><code class="docutils literal notranslate"><span class="pre">unlock_key()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.use_torch"><code class="docutils literal notranslate"><span class="pre">use_torch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.use_torch"><code class="docutils literal notranslate"><span class="pre">use_torch</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.validate_chain_endpoint"><code class="docutils literal notranslate"><span class="pre">validate_chain_endpoint()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.version_checking"><code class="docutils literal notranslate"><span class="pre">version_checking()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.version_checking"><code class="docutils literal notranslate"><span class="pre">version_checking</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1072,8 +1045,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

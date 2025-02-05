@@ -15,27 +15,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -46,6 +49,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -61,19 +65,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -81,7 +74,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -89,8 +81,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -108,7 +100,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -138,35 +131,81 @@
     
     
     <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/test_init/index.html">test_init</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
@@ -178,24 +217,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -206,9 +247,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -304,24 +350,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -392,8 +430,6 @@ document.write(`
 <span class="n">_shutdown</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="_WorkItem">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool._WorkItem">[docs]</a>
 <span class="k">class</span> <span class="nc">_WorkItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">future</span> <span class="o">=</span> <span class="n">future</span>
@@ -402,8 +438,6 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
 
-<div class="viewcode-block" id="_WorkItem.run">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool._WorkItem.run">[docs]</a>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the given work item&quot;&quot;&quot;</span>
         <span class="c1"># Checks if future is canceled or if work item is stale</span>
@@ -419,16 +453,12 @@ document.write(`
             <span class="c1"># Break a reference cycle with the exception &#39;exc&#39;</span>
             <span class="bp">self</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
-</div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 
 <span class="n">NULL_ENTRY</span> <span class="o">=</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">,</span> <span class="n">_WorkItem</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="p">(),</span> <span class="p">{}))</span>
 
 
-<div class="viewcode-block" id="_worker">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool._worker">[docs]</a>
 <span class="k">def</span> <span class="nf">_worker</span><span class="p">(</span><span class="n">executor_reference</span><span class="p">,</span> <span class="n">work_queue</span><span class="p">,</span> <span class="n">initializer</span><span class="p">,</span> <span class="n">initargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -468,8 +498,7 @@ document.write(`
             <span class="k">del</span> <span class="n">executor</span>
     <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;work_item&quot;</span><span class="p">,</span> <span class="n">work_item</span><span class="p">)</span>
-        <span class="n">_base</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Exception in worker&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
-
+        <span class="n">_base</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Exception in worker&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="BrokenThreadPool">
@@ -573,7 +602,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
         <span class="n">PriorityThreadPoolExecutor</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Config</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[])</span></div>
+        <span class="k">return</span> <span class="n">Config</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span></div>
 
 
     <span class="nd">@property</span>
@@ -611,8 +640,6 @@ document.write(`
 
     <span class="n">submit</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_base</span><span class="o">.</span><span class="n">Executor</span><span class="o">.</span><span class="n">submit</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<div class="viewcode-block" id="PriorityThreadPoolExecutor._adjust_thread_count">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._adjust_thread_count">[docs]</a>
     <span class="k">def</span> <span class="nf">_adjust_thread_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># if idle threads are available, don&#39;t spin new threads</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idle_semaphore</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -639,11 +666,8 @@ document.write(`
             <span class="n">t</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_threads</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="n">_threads_queues</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_work_queue</span></div>
+            <span class="n">_threads_queues</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_work_queue</span>
 
-
-<div class="viewcode-block" id="PriorityThreadPoolExecutor._initializer_failed">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor._initializer_failed">[docs]</a>
     <span class="k">def</span> <span class="nf">_initializer_failed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shutdown_lock</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_broken</span> <span class="o">=</span> <span class="p">(</span>
@@ -656,8 +680,7 @@ document.write(`
                 <span class="k">except</span> <span class="n">queue</span><span class="o">.</span><span class="n">Empty</span><span class="p">:</span>
                     <span class="k">break</span>
                 <span class="k">if</span> <span class="n">work_item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">work_item</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="n">BrokenThreadPool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_broken</span><span class="p">))</span></div>
-
+                    <span class="n">work_item</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="n">BrokenThreadPool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_broken</span><span class="p">))</span>
 
 <div class="viewcode-block" id="PriorityThreadPoolExecutor.shutdown">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/threadpool/index.html#bittensor.core.threadpool.PriorityThreadPoolExecutor.shutdown">[docs]</a>
@@ -738,8 +761,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

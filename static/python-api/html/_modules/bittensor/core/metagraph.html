@@ -15,27 +15,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -46,6 +49,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -61,19 +65,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -81,7 +74,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -89,8 +81,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -108,7 +100,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -138,35 +131,81 @@
     
     
     <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/test_init/index.html">test_init</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
@@ -178,24 +217,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/bittensor/__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autoapi/chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -206,9 +247,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -304,24 +350,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -348,23 +386,7 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for bittensor.core.metagraph</h1><div class="highlight"><pre>
-<span></span><span class="c1"># The MIT License (MIT)</span>
-<span class="c1"># Copyright © 2024 Opentensor Foundation</span>
-<span class="c1">#</span>
-<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
-<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
-<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
-<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
-<span class="c1">#</span>
-<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
-<span class="c1"># the Software.</span>
-<span class="c1">#</span>
-<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
-<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
-<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
-<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
-<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
-
+<span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">typing</span>
@@ -487,6 +509,29 @@ document.write(`
 
 
 
+<div class="viewcode-block" id="determine_chain_endpoint_and_network">
+<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.determine_chain_endpoint_and_network">[docs]</a>
+<span class="k">def</span> <span class="nf">determine_chain_endpoint_and_network</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the chain endpoint and network name from the passed arg</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        network: The network name (e.g. &#39;finney&#39;, &#39;test&#39;) or</span>
+<span class="sd">            chain endpoint (e.g. wss://entrypoint-finney.opentensor.ai:443)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (network name, chain endpoint)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pathless_network</span> <span class="o">=</span> <span class="n">network</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">network</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">network</span>
+    <span class="k">if</span> <span class="n">pathless_network</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">NETWORK_MAP</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pathless_network</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">NETWORK_MAP</span><span class="p">[</span><span class="n">pathless_network</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">pathless_network</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">REVERSE_NETWORK_MAP</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">settings</span><span class="o">.</span><span class="n">REVERSE_NETWORK_MAP</span><span class="p">[</span><span class="n">pathless_network</span><span class="p">],</span> <span class="n">pathless_network</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span> <span class="n">network</span></div>
+
+
+
 <div class="viewcode-block" id="MetagraphMixin">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin">[docs]</a>
 <span class="k">class</span> <span class="nc">MetagraphMixin</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -569,6 +614,8 @@ document.write(`
     <span class="n">bonds</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">,</span> <span class="n">NDArray</span><span class="p">]</span>
     <span class="n">uids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">,</span> <span class="n">NDArray</span><span class="p">]</span>
     <span class="n">axons</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AxonInfo</span><span class="p">]</span>
+    <span class="n">chain_endpoint</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Subtensor&quot;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">,</span> <span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">]:</span>
@@ -765,7 +812,12 @@ document.write(`
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_NETWORK</span><span class="p">,</span>
+        <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a new instance of the metagraph object, setting up the basic structure and parameters based on the provided arguments.</span>
@@ -785,8 +837,6 @@ document.write(`
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MetagraphMixin.__str__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin.__str__">[docs]</a>
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provides a human-readable string representation of the metagraph object. This representation includes key identifiers and attributes of the metagraph, making it easier to quickly understand</span>
@@ -800,11 +850,8 @@ document.write(`
 
 <span class="sd">                print(metagraph)  # Output: &quot;metagraph(netuid:1, n:100, block:500, network:finney)&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;metagraph(netuid:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">netuid</span><span class="si">}</span><span class="s2">, n:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, block:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, network:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;metagraph(netuid:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">netuid</span><span class="si">}</span><span class="s2">, n:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, block:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">, network:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin.__repr__">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin.__repr__">[docs]</a>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Provides a detailed string representation of the metagraph object, intended for unambiguous understanding and debugging purposes. This method simply calls the :func:`__str__` method, ensuring</span>
@@ -819,8 +866,7 @@ document.write(`
 <span class="sd">                metagraph_repr = repr(metagraph)</span>
 <span class="sd">                print(metagraph_repr)  # Output mirrors that of __str__</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="MetagraphMixin.metadata">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin.metadata">[docs]</a>
@@ -881,8 +927,6 @@ document.write(`
         <span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="MetagraphMixin.sync">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin.sync">[docs]</a>
     <span class="k">def</span> <span class="nf">sync</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -931,7 +975,7 @@ document.write(`
 
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">subtensor</span><span class="o">.</span><span class="n">chain_endpoint</span> <span class="o">!=</span> <span class="n">settings</span><span class="o">.</span><span class="n">ARCHIVE_ENTRYPOINT</span>
-            <span class="ow">or</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="n">settings</span><span class="o">.</span><span class="n">NETWORKS</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="ow">or</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="s2">&quot;archive&quot;</span>
         <span class="p">):</span>
             <span class="n">cur_block</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_current_block</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">block</span> <span class="ow">and</span> <span class="n">block</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">cur_block</span> <span class="o">-</span> <span class="mi">300</span><span class="p">):</span>
@@ -948,11 +992,8 @@ document.write(`
 
         <span class="c1"># If not a &#39;lite&#39; version, compute and set weights and bonds for each neuron</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lite</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_set_weights_and_bonds</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_weights_and_bonds</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._initialize_subtensor">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._initialize_subtensor">[docs]</a>
     <span class="k">def</span> <span class="nf">_initialize_subtensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes the subtensor to be used for syncing the metagraph.</span>
@@ -972,17 +1013,19 @@ document.write(`
 
 <span class="sd">                subtensor = self._initialize_subtensor(subtensor)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">subtensor</span> <span class="ow">and</span> <span class="n">subtensor</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span> <span class="o">=</span> <span class="n">subtensor</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">subtensor</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span><span class="p">:</span>
+            <span class="n">subtensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">subtensor</span><span class="p">:</span>
             <span class="c1"># TODO: Check and test the initialization of the new subtensor</span>
             <span class="c1"># Lazy import due to circular import (subtensor -&gt; metagraph, metagraph -&gt; subtensor)</span>
             <span class="kn">from</span> <span class="nn">bittensor.core.subtensor</span> <span class="kn">import</span> <span class="n">Subtensor</span>
 
-            <span class="n">subtensor</span> <span class="o">=</span> <span class="n">Subtensor</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">subtensor</span></div>
+            <span class="n">subtensor</span> <span class="o">=</span> <span class="n">Subtensor</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span> <span class="o">=</span> <span class="n">subtensor</span>
+        <span class="k">return</span> <span class="n">subtensor</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._assign_neurons">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._assign_neurons">[docs]</a>
     <span class="k">def</span> <span class="nf">_assign_neurons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assigns neurons to the metagraph based on the provided block number and the lite flag.</span>
@@ -1008,11 +1051,8 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">neurons_lite</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">netuid</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">neurons</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">netuid</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lite</span> <span class="o">=</span> <span class="n">lite</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lite</span> <span class="o">=</span> <span class="n">lite</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._create_tensor">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._create_tensor">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_create_tensor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">,</span> <span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1035,11 +1075,8 @@ document.write(`
             <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
             <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._set_weights_and_bonds">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._set_weights_and_bonds">[docs]</a>
     <span class="k">def</span> <span class="nf">_set_weights_and_bonds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Optional[Subtensor]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes and sets the weights and bonds for each neuron in the metagraph. This method is responsible for processing the raw weight and bond data obtained from the network and converting it into a structured format suitable for the metagraph model.</span>
@@ -1065,11 +1102,8 @@ document.write(`
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_weights_or_bonds</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">neuron</span><span class="o">.</span><span class="n">bonds</span> <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">],</span> <span class="s2">&quot;bonds&quot;</span>
-            <span class="p">)</span></div>
+            <span class="p">)</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._process_weights_or_bonds">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._process_weights_or_bonds">[docs]</a>
     <span class="k">def</span> <span class="nf">_process_weights_or_bonds</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">,</span> <span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">]:</span>
@@ -1129,18 +1163,12 @@ document.write(`
             <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Empty </span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">_array on metagraph.sync(). The &#39;</span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">&#39; tensor is empty.&quot;</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">tensor_param</span></div>
+        <span class="k">return</span> <span class="n">tensor_param</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._set_metagraph_attributes">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._set_metagraph_attributes">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">_set_metagraph_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+        <span class="k">pass</span>
 
-
-<div class="viewcode-block" id="MetagraphMixin._process_root_weights">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin._process_root_weights">[docs]</a>
     <span class="k">def</span> <span class="nf">_process_root_weights</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">,</span> <span class="s2">&quot;torch.nn.Parameter&quot;</span><span class="p">]:</span>
@@ -1195,8 +1223,7 @@ document.write(`
             <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Empty </span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">_array on metagraph.sync(). The &#39;</span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">&#39; tensor is empty.&quot;</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">tensor_param</span></div>
-
+        <span class="k">return</span> <span class="n">tensor_param</span>
 
 <div class="viewcode-block" id="MetagraphMixin.save">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.MetagraphMixin.save">[docs]</a>
@@ -1297,7 +1324,31 @@ document.write(`
 <span class="sd">            contain valid data for the metagraph. It is essential to ensure that the directory path and the</span>
 <span class="sd">            state files within it are accurate and consistent with the expected metagraph structure.</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
-</div>
+
+
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">new_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">memo</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_instance</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;subtensor&quot;</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">memo</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">new_instance</span>
+
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
+        <span class="n">new_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;subtensor&quot;</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_instance</span></div>
 
 
 
@@ -1307,11 +1358,14 @@ document.write(`
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="TorchMetaGraph">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.TorchMetaGraph">[docs]</a>
 <span class="k">class</span> <span class="nc">TorchMetaGraph</span><span class="p">(</span><span class="n">MetagraphMixin</span><span class="p">,</span> <span class="n">BaseClass</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_NETWORK</span><span class="p">,</span>
+        <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a new instance of the metagraph object, setting up the basic structure and parameters based on the provided arguments.</span>
@@ -1332,9 +1386,11 @@ document.write(`
 <span class="sd">                metagraph = Metagraph(netuid=123, network=&quot;finney&quot;, lite=True, sync=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">MetagraphMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">lite</span><span class="p">,</span> <span class="n">sync</span><span class="p">)</span>
+        <span class="n">MetagraphMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">lite</span><span class="p">,</span> <span class="n">sync</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">netuid</span> <span class="o">=</span> <span class="n">netuid</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">network</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span> <span class="o">=</span> <span class="n">determine_chain_endpoint_and_network</span><span class="p">(</span>
+            <span class="n">network</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">settings</span><span class="o">.</span><span class="n">version_as_int</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
             <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1391,11 +1447,10 @@ document.write(`
             <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axons</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AxonInfo</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span> <span class="o">=</span> <span class="n">subtensor</span>
         <span class="k">if</span> <span class="n">sync</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lite</span><span class="o">=</span><span class="n">lite</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lite</span><span class="o">=</span><span class="n">lite</span><span class="p">,</span> <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TorchMetaGraph._set_metagraph_attributes">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.TorchMetaGraph._set_metagraph_attributes">[docs]</a>
     <span class="k">def</span> <span class="nf">_set_metagraph_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets various attributes of the metagraph based on the latest network data fetched from the subtensor.</span>
@@ -1460,11 +1515,8 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">stake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_tensor</span><span class="p">(</span>
             <span class="p">[</span><span class="n">neuron</span><span class="o">.</span><span class="n">stake</span> <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">axons</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">axon_info</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">]</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axons</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">axon_info</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">]</span>
 
-
-<div class="viewcode-block" id="TorchMetaGraph.load_from_path">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.TorchMetaGraph.load_from_path">[docs]</a>
     <span class="k">def</span> <span class="nf">load_from_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dir_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Metagraph&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Loads the metagraph state from a specified directory path.</span>
@@ -1526,16 +1578,19 @@ document.write(`
             <span class="p">)</span>
         <span class="k">if</span> <span class="s2">&quot;bonds&quot;</span> <span class="ow">in</span> <span class="n">state_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;bonds&quot;</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
-</div>
-
+        <span class="k">return</span> <span class="bp">self</span>
 
 
 <div class="viewcode-block" id="NonTorchMetagraph">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.NonTorchMetagraph">[docs]</a>
 <span class="k">class</span> <span class="nc">NonTorchMetagraph</span><span class="p">(</span><span class="n">MetagraphMixin</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;finney&quot;</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">network</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_NETWORK</span><span class="p">,</span>
+        <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">sync</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a new instance of the metagraph object, setting up the basic structure and parameters based on the provided arguments.</span>
@@ -1556,10 +1611,12 @@ document.write(`
 <span class="sd">                metagraph = Metagraph(netuid=123, network=&quot;finney&quot;, lite=True, sync=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># super(metagraph, self).__init__()</span>
-        <span class="n">MetagraphMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">lite</span><span class="p">,</span> <span class="n">sync</span><span class="p">)</span>
+        <span class="n">MetagraphMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">network</span><span class="p">,</span> <span class="n">lite</span><span class="p">,</span> <span class="n">sync</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">netuid</span> <span class="o">=</span> <span class="n">netuid</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">network</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span> <span class="o">=</span> <span class="n">determine_chain_endpoint_and_network</span><span class="p">(</span>
+            <span class="n">network</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">settings</span><span class="o">.</span><span class="n">version_as_int</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
@@ -1579,11 +1636,10 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">uids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axons</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AxonInfo</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subtensor</span> <span class="o">=</span> <span class="n">subtensor</span>
         <span class="k">if</span> <span class="n">sync</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lite</span><span class="o">=</span><span class="n">lite</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lite</span><span class="o">=</span><span class="n">lite</span><span class="p">,</span> <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NonTorchMetagraph._set_metagraph_attributes">
-<a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.NonTorchMetagraph._set_metagraph_attributes">[docs]</a>
     <span class="k">def</span> <span class="nf">_set_metagraph_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets various attributes of the metagraph based on the latest network data fetched from the subtensor.</span>
@@ -1644,8 +1700,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">stake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_tensor</span><span class="p">(</span>
             <span class="p">[</span><span class="n">neuron</span><span class="o">.</span><span class="n">stake</span> <span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">axons</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">axon_info</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">]</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">axons</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">axon_info</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span><span class="p">]</span>
 
 <div class="viewcode-block" id="NonTorchMetagraph.load_from_path">
 <a class="viewcode-back" href="../../../autoapi/bittensor/core/metagraph/index.html#bittensor.core.metagraph.NonTorchMetagraph.load_from_path">[docs]</a>
@@ -1669,12 +1724,11 @@ document.write(`
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">graph_filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">graph_file</span><span class="p">:</span>
                 <span class="n">state_dict</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">graph_file</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">pickle</span><span class="o">.</span><span class="n">UnpicklingError</span><span class="p">:</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">bt_console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                 <span class="s2">&quot;Unable to load file. Attempting to restore metagraph using torch.&quot;</span>
             <span class="p">)</span>
-            <span class="n">settings</span><span class="o">.</span><span class="n">bt_console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
-                <span class="s2">&quot;:warning:[yellow]Warning:[/yellow] This functionality exists to load &quot;</span>
-                <span class="s2">&quot;metagraph state from legacy saves, but will not be supported in the future.&quot;</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;:warning: This functionality exists to load metagraph state from legacy saves, but will not be supported in the future.&quot;</span>
             <span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">real_torch</span>
@@ -1684,7 +1738,7 @@ document.write(`
                     <span class="n">state_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
                 <span class="k">del</span> <span class="n">real_torch</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
-                <span class="n">settings</span><span class="o">.</span><span class="n">bt_console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Unable to load file. It may be corrupted.&quot;</span><span class="p">)</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unable to load file. It may be corrupted.&quot;</span><span class="p">)</span>
                 <span class="k">raise</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">]</span>
@@ -1781,8 +1835,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

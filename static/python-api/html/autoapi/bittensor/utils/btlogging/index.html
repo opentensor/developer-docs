@@ -16,27 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -46,9 +49,10 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="bittensor.utils.btlogging.console" href="console/index.html" />
-    <link rel="prev" title="bittensor.utils" href="../index.html" />
+    <link rel="prev" title="bittensor.utils.balance" href="../balance/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -109,7 +101,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,35 +132,81 @@
     
     
     <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../test_init/index.html">test_init</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/stream/index.html">bittensor.core.stream</a></li>
@@ -179,24 +218,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -207,9 +248,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -370,24 +416,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -413,93 +451,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine"><code class="docutils literal notranslate"><span class="pre">LoggingMachine</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Default</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Disabled"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Disabled</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.__call__"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.__call__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.__trace_on__"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.__trace_on__</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._configure_handlers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._configure_handlers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._create_and_start_listener"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._create_and_start_listener()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._create_file_handler"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._create_file_handler()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._deinitialize_bt_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._deinitialize_bt_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._enable_file_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._enable_file_logging()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._enable_initial_state"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._enable_initial_state()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._extract_logging_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._extract_logging_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._file_formatter"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._file_formatter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._handlers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._handlers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._initialize_bt_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._initialize_bt_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._listener"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._listener</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._logger</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._primary_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._primary_loggers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._queue"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._queue</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._stream_formatter"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._stream_formatter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.add_args"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.add_args()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_disable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_disable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_transition"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_transition()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_logging()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_console()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_transition"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_transition()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.check_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.check_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.console</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.critical"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.critical()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.deregister_primary_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.deregister_primary_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_logging</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_third_party_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_third_party_loggers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_console</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_default</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_third_party_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_third_party_loggers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.error"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.error()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.exception"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.exception()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_level"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_level()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_queue"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_queue()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.help"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.help()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.off"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.off()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.on"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.on()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.register_primary_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.register_primary_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_console()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.success"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.success()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.warning()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
 </ul>
 </li>
@@ -517,7 +469,8 @@ document.write(`
   <section id="module-bittensor.utils.btlogging">
 <span id="bittensor-utils-btlogging"></span><h1>bittensor.utils.btlogging<a class="headerlink" href="#module-bittensor.utils.btlogging" title="Link to this heading">#</a></h1>
 <p>btlogging sub-package standardized logging for Bittensor.</p>
-<p>This module provides logging functionality for the Bittensor package. It includes custom loggers, handlers, and formatters to ensure consistent logging throughout the project.</p>
+<p>This module provides logging functionality for the Bittensor package. It includes custom loggers, handlers, and
+formatters to ensure consistent logging throughout the project.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
@@ -541,624 +494,8 @@ document.write(`
 </table>
 </div>
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.utils.btlogging.LoggingMachine" title="bittensor.utils.btlogging.LoggingMachine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoggingMachine</span></code></a></p></td>
-<td><p>Handles logger states for bittensor and 3rd party libraries.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.</span></span><span class="sig-name descname"><span class="pre">LoggingMachine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BITTENSOR_LOGGER_NAME</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">statemachine.StateMachine</span></code>, <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging.Logger</span></code></a></p>
-<p>Handles logger states for bittensor and 3rd party libraries.</p>
-<p>Initialize the logger with a name and an optional level.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config"><em>bittensor.core.config.Config</em></a>)</p></li>
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Debug">
-<span class="sig-name descname"><span class="pre">Debug</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Debug" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Default">
-<span class="sig-name descname"><span class="pre">Default</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Default" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Disabled">
-<span class="sig-name descname"><span class="pre">Disabled</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Disabled" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Info">
-<span class="sig-name descname"><span class="pre">Info</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Info" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Trace">
-<span class="sig-name descname"><span class="pre">Trace</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Trace" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.Warning">
-<span class="sig-name descname"><span class="pre">Warning</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.Warning" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.__call__" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config"><em>bittensor.core.config.Config</em></a>)</p></li>
-<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>trace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>info</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>record_log</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>logging_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.__trace_on__">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__trace_on__</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.__trace_on__" title="Link to this definition">#</a></dt>
-<dd><p>Checks if the current state is in “Trace” mode.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if the current state is “Trace”, otherwise False.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._config">
-<span class="sig-name descname"><span class="pre">_config</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._config" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._configure_handlers">
-<span class="sig-name descname"><span class="pre">_configure_handlers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._configure_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._configure_handlers" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Handler" title="(in Python v3.13)">logging.Handler</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._create_and_start_listener">
-<span class="sig-name descname"><span class="pre">_create_and_start_listener</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handlers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._create_and_start_listener"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._create_and_start_listener" title="Link to this definition">#</a></dt>
-<dd><p>A listener to receive and publish log records.</p>
-<p>This listener receives records from a queue populated by the main bittensor logger, as well as 3rd party loggers</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._create_file_handler">
-<span class="sig-name descname"><span class="pre">_create_file_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._create_file_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._create_file_handler" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._deinitialize_bt_logger">
-<span class="sig-name descname"><span class="pre">_deinitialize_bt_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._deinitialize_bt_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._deinitialize_bt_logger" title="Link to this definition">#</a></dt>
-<dd><p>Find the logger by name and remove the queue handler associated with it.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._enable_file_logging">
-<span class="sig-name descname"><span class="pre">_enable_file_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._enable_file_logging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._enable_file_logging" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._enable_initial_state">
-<span class="sig-name descname"><span class="pre">_enable_initial_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._enable_initial_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._enable_initial_state" title="Link to this definition">#</a></dt>
-<dd><p>Set correct state action on initializing</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._extract_logging_config">
-<span class="sig-name descname"><span class="pre">_extract_logging_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._extract_logging_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._extract_logging_config" title="Link to this definition">#</a></dt>
-<dd><p>Extract btlogging’s config from bittensor config</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config"><em>bittensor.core.config.Config</em></a>) – Bittensor config instance.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>btlogging’s config from Bittensor config or Bittensor config.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._file_formatter">
-<span class="sig-name descname"><span class="pre">_file_formatter</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._file_formatter" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._handlers">
-<span class="sig-name descname"><span class="pre">_handlers</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._handlers" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._initialize_bt_logger">
-<span class="sig-name descname"><span class="pre">_initialize_bt_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine._initialize_bt_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._initialize_bt_logger" title="Link to this definition">#</a></dt>
-<dd><p>Initialize logging for bittensor.</p>
-<p>Since the initial state is Default, logging level for the module logger is INFO, and all third-party loggers are
-silenced. Subsequent state transitions will handle all logger outputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._listener">
-<span class="sig-name descname"><span class="pre">_listener</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._listener" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._logger">
-<span class="sig-name descname"><span class="pre">_logger</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._logger" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._primary_loggers">
-<span class="sig-name descname"><span class="pre">_primary_loggers</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._primary_loggers" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._queue">
-<span class="sig-name descname"><span class="pre">_queue</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._queue" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine._stream_formatter">
-<span class="sig-name descname"><span class="pre">_stream_formatter</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine._stream_formatter" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.add_args">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.add_args" title="Link to this definition">#</a></dt>
-<dd><p>Accept specific arguments fro parser</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.13)"><em>argparse.ArgumentParser</em></a>)</p></li>
-<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_disable_debug">
-<span class="sig-name descname"><span class="pre">after_disable_debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_disable_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_debug" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after disable Debug.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_disable_trace">
-<span class="sig-name descname"><span class="pre">after_disable_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_disable_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_trace" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after disable Trace.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_enable_debug">
-<span class="sig-name descname"><span class="pre">after_enable_debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_enable_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_debug" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after enable Debug.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_enable_default">
-<span class="sig-name descname"><span class="pre">after_enable_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_enable_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_default" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_enable_info">
-<span class="sig-name descname"><span class="pre">after_enable_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_info" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after enable info.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_enable_trace">
-<span class="sig-name descname"><span class="pre">after_enable_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_enable_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_trace" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after enable Trace.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_enable_warning">
-<span class="sig-name descname"><span class="pre">after_enable_warning</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_warning" title="Link to this definition">#</a></dt>
-<dd><p>Logs status after enable Warning.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.after_transition">
-<span class="sig-name descname"><span class="pre">after_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.after_transition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.after_transition" title="Link to this definition">#</a></dt>
-<dd><p>Starts listener after transition.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_disable_debug">
-<span class="sig-name descname"><span class="pre">before_disable_debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_disable_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_debug" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before disable Debug.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_disable_logging">
-<span class="sig-name descname"><span class="pre">before_disable_logging</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_disable_logging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_logging" title="Link to this definition">#</a></dt>
-<dd><p>Prepares the logging system for disabling.</p>
-<p>This method performs the following actions:
-1. Logs an informational message indicating that logging is being disabled.
-2. Disables trace mode in the stream formatter.
-3. Sets the logging level to CRITICAL for all loggers.</p>
-<p>This ensures that only critical messages will be logged after this method is called.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_disable_trace">
-<span class="sig-name descname"><span class="pre">before_disable_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_disable_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_trace" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before disable Trace.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_console">
-<span class="sig-name descname"><span class="pre">before_enable_console</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_console" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable Console.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_debug">
-<span class="sig-name descname"><span class="pre">before_enable_debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_enable_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_debug" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable Debug.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_default">
-<span class="sig-name descname"><span class="pre">before_enable_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_enable_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_default" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable Default.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_info">
-<span class="sig-name descname"><span class="pre">before_enable_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_info" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable info.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_trace">
-<span class="sig-name descname"><span class="pre">before_enable_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_enable_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_trace" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable Trace.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_enable_warning">
-<span class="sig-name descname"><span class="pre">before_enable_warning</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_warning" title="Link to this definition">#</a></dt>
-<dd><p>Logs status before enable Warning.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.before_transition">
-<span class="sig-name descname"><span class="pre">before_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.before_transition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.before_transition" title="Link to this definition">#</a></dt>
-<dd><p>Stops listener after transition.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.check_config">
-<span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.check_config" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config"><em>bittensor.core.config.Config</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.config">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.config" title="Link to this definition">#</a></dt>
-<dd><p>Get config from the argument parser.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>config object</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>config (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config">bittensor.core.config.Config</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.console">
-<span class="sig-name descname"><span class="pre">console</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.console" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.critical">
-<span class="sig-name descname"><span class="pre">critical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.critical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.critical" title="Link to this definition">#</a></dt>
-<dd><p>Wraps critical message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.debug">
-<span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.debug" title="Link to this definition">#</a></dt>
-<dd><p>Wraps debug message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.deregister_primary_logger">
-<span class="sig-name descname"><span class="pre">deregister_primary_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.deregister_primary_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.deregister_primary_logger" title="Link to this definition">#</a></dt>
-<dd><p>De-registers a primary logger</p>
-<p>This function removes the logger from the _primary_loggers
-set and deinitializes its queue handler</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the name of primary logger.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_debug">
-<span class="sig-name descname"><span class="pre">disable_debug</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_debug" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_info">
-<span class="sig-name descname"><span class="pre">disable_info</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_info" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_logging">
-<span class="sig-name descname"><span class="pre">disable_logging</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_logging" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_third_party_loggers">
-<span class="sig-name descname"><span class="pre">disable_third_party_loggers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.disable_third_party_loggers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_third_party_loggers" title="Link to this definition">#</a></dt>
-<dd><p>Disables logging for third-party loggers by removing all their handlers.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_trace">
-<span class="sig-name descname"><span class="pre">disable_trace</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_trace" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.disable_warning">
-<span class="sig-name descname"><span class="pre">disable_warning</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.disable_warning" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_console">
-<span class="sig-name descname"><span class="pre">enable_console</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_console" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_debug">
-<span class="sig-name descname"><span class="pre">enable_debug</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_debug" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_default">
-<span class="sig-name descname"><span class="pre">enable_default</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_default" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_info">
-<span class="sig-name descname"><span class="pre">enable_info</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_info" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_third_party_loggers">
-<span class="sig-name descname"><span class="pre">enable_third_party_loggers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.enable_third_party_loggers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_third_party_loggers" title="Link to this definition">#</a></dt>
-<dd><p>Enables logging for third-party loggers by adding a queue handler to each.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_trace">
-<span class="sig-name descname"><span class="pre">enable_trace</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_trace" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.enable_warning">
-<span class="sig-name descname"><span class="pre">enable_warning</span></span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.enable_warning" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.error">
-<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.error" title="Link to this definition">#</a></dt>
-<dd><p>Wraps error message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.exception">
-<span class="sig-name descname"><span class="pre">exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.exception" title="Link to this definition">#</a></dt>
-<dd><p>Wraps exception message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.get_config">
-<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.get_config" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.get_level">
-<span class="sig-name descname"><span class="pre">get_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.get_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.get_level" title="Link to this definition">#</a></dt>
-<dd><p>Returns Logging level.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.get_queue">
-<span class="sig-name descname"><span class="pre">get_queue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.get_queue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.get_queue" title="Link to this definition">#</a></dt>
-<dd><p>Get the queue the QueueListener is publishing from.</p>
-<p>To set up logging in a separate process, a QueueHandler must be added to all the desired loggers.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.help">
-<span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.help" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.info">
-<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.info" title="Link to this definition">#</a></dt>
-<dd><p>Wraps info message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.off">
-<span class="sig-name descname"><span class="pre">off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.off" title="Link to this definition">#</a></dt>
-<dd><p>Disables all states.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.on">
-<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.on" title="Link to this definition">#</a></dt>
-<dd><p>Enable default state.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.register_primary_logger">
-<span class="sig-name descname"><span class="pre">register_primary_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.register_primary_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.register_primary_logger" title="Link to this definition">#</a></dt>
-<dd><p>Register a logger as primary logger</p>
-<p>This adds a logger to the _primary_loggers set to ensure
-it doesn’t get disabled when disabling third-party loggers.
-A queue handler is also associated with it.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – the name for primary logger.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_config">
-<span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.set_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_config" title="Link to this definition">#</a></dt>
-<dd><p>Set config after initialization, if desired.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/config/index.html#bittensor.core.config.Config" title="bittensor.core.config.Config"><em>bittensor.core.config.Config</em></a>) – Bittensor config instance.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_console">
-<span class="sig-name descname"><span class="pre">set_console</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_console" title="Link to this definition">#</a></dt>
-<dd><p>Sets Console state.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_debug">
-<span class="sig-name descname"><span class="pre">set_debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.set_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_debug" title="Link to this definition">#</a></dt>
-<dd><p>Sets Debug state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_default">
-<span class="sig-name descname"><span class="pre">set_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_default" title="Link to this definition">#</a></dt>
-<dd><p>Sets Default state.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_info">
-<span class="sig-name descname"><span class="pre">set_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_info" title="Link to this definition">#</a></dt>
-<dd><p>Sets Info state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_trace">
-<span class="sig-name descname"><span class="pre">set_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.set_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_trace" title="Link to this definition">#</a></dt>
-<dd><p>Sets Trace state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.set_warning">
-<span class="sig-name descname"><span class="pre">set_warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.set_warning" title="Link to this definition">#</a></dt>
-<dd><p>Sets Warning state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>on</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.success">
-<span class="sig-name descname"><span class="pre">success</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.success" title="Link to this definition">#</a></dt>
-<dd><p>Wraps success message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.trace">
-<span class="sig-name descname"><span class="pre">trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.trace" title="Link to this definition">#</a></dt>
-<dd><p>Wraps trace message with prefix and suffix.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.utils.btlogging.LoggingMachine.warning">
-<span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/utils/btlogging/loggingmachine.html#LoggingMachine.warning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.utils.btlogging.LoggingMachine.warning" title="Link to this definition">#</a></dt>
-<dd><p>Wraps warning message with prefix and suffix.</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="bittensor.utils.btlogging.logging">
 <span class="sig-prename descclassname"><span class="pre">bittensor.utils.btlogging.</span></span><span class="sig-name descname"><span class="pre">logging</span></span><a class="headerlink" href="#bittensor.utils.btlogging.logging" title="Link to this definition">#</a></dt>
@@ -1179,12 +516,12 @@ A queue handler is also associated with it.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../balance/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">bittensor.utils</p>
+        <p class="prev-next-title">bittensor.utils.balance</p>
       </div>
     </a>
     <a class="right-next"
@@ -1203,7 +540,8 @@ A queue handler is also associated with it.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1214,93 +552,7 @@ A queue handler is also associated with it.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine"><code class="docutils literal notranslate"><span class="pre">LoggingMachine</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Default</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Disabled"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Disabled</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.Warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.Warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.__call__"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.__call__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.__trace_on__"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.__trace_on__</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._config</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._configure_handlers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._configure_handlers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._create_and_start_listener"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._create_and_start_listener()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._create_file_handler"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._create_file_handler()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._deinitialize_bt_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._deinitialize_bt_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._enable_file_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._enable_file_logging()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._enable_initial_state"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._enable_initial_state()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._extract_logging_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._extract_logging_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._file_formatter"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._file_formatter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._handlers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._handlers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._initialize_bt_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._initialize_bt_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._listener"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._listener</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._logger</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._primary_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._primary_loggers</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._queue"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._queue</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine._stream_formatter"><code class="docutils literal notranslate"><span class="pre">LoggingMachine._stream_formatter</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.add_args"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.add_args()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_disable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_disable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_enable_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.after_transition"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.after_transition()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_logging()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_disable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_console()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_enable_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.before_transition"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.before_transition()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.check_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.check_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.console</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.critical"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.critical()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.deregister_primary_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.deregister_primary_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_logging"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_logging</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_third_party_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_third_party_loggers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.disable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.disable_warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_console</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_debug</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_default</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_info</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_third_party_loggers"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_third_party_loggers()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_trace</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.enable_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.enable_warning</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.error"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.error()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.exception"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.exception()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_level"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_level()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.get_queue"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.get_queue()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.help"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.help()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.off"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.off()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.on"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.on()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.register_primary_logger"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.register_primary_logger()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_config"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_config()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_console"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_console()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_debug"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_debug()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_default"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_default()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_info"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_info()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.set_warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.set_warning()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.success"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.success()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.trace"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.trace()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.LoggingMachine.warning"><code class="docutils literal notranslate"><span class="pre">LoggingMachine.warning()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.utils.btlogging.logging"><code class="docutils literal notranslate"><span class="pre">logging</span></code></a></li>
 </ul>
 </li>
@@ -1352,8 +604,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

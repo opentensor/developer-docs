@@ -15,27 +15,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -46,6 +49,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -61,19 +65,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -81,7 +74,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -89,8 +81,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -108,7 +100,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -138,35 +131,81 @@
     
     
     <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../autoapi/tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/test_init/index.html">test_init</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
@@ -178,24 +217,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../autoapi/bittensor/__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -206,9 +247,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -304,24 +350,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -373,7 +411,6 @@ document.write(`
 
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">atexit</span>
-<span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">stdlogging</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -395,31 +432,38 @@ document.write(`
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.format</span> <span class="kn">import</span> <span class="n">BtFileFormatter</span><span class="p">,</span> <span class="n">BtStreamFormatter</span>
 <span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">all_loggers</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.btlogging.console</span> <span class="kn">import</span> <span class="n">BittensorConsole</span>
+
+<span class="c1"># https://github.com/python/cpython/issues/97941</span>
+<span class="n">CUSTOM_LOGGER_METHOD_STACK_LEVEL</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">else</span> <span class="mi">1</span>
 
 
-<div class="viewcode-block" id="_concat_message">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging._concat_message">[docs]</a>
 <span class="k">def</span> <span class="nf">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Concatenates a message with optional prefix and suffix.&quot;&quot;&quot;</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s1"> - &#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}{</span><span class="n">msg</span><span class="si">}{</span><span class="sa">f</span><span class="s1">&#39; - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">suffix</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">return</span> <span class="n">msg</span></div>
-
+    <span class="n">message_parts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="p">[</span><span class="n">prefix</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">suffix</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">component</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="p">]</span>
+    <span class="n">formatted_message</span> <span class="o">=</span> <span class="s2">&quot; - &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">message_parts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">formatted_message</span>
 
 
 <div class="viewcode-block" id="LoggingConfig">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingConfig">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingConfig">[docs]</a>
 <span class="k">class</span> <span class="nc">LoggingConfig</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Named tuple to hold the logging configuration.&quot;&quot;&quot;</span>
 
     <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">trace</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">record_log</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">logging_dir</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
 
 <div class="viewcode-block" id="LoggingMachine">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine">[docs]</a>
 <span class="k">class</span> <span class="nc">LoggingMachine</span><span class="p">(</span><span class="n">StateMachine</span><span class="p">,</span> <span class="n">Logger</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles logger states for bittensor and 3rd party libraries.&quot;&quot;&quot;</span>
 
@@ -427,31 +471,77 @@ document.write(`
     <span class="n">Debug</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
     <span class="n">Trace</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
     <span class="n">Disabled</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
+    <span class="ne">Warning</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
+    <span class="n">Info</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
 
     <span class="n">enable_default</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">enable_console</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">enable_info</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Info</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">enable_trace</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span> <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span> <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span> <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Trace</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">enable_debug</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span> <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span> <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span> <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Debug</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">enable_warning</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
+        <span class="o">|</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="n">disable_trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
 
     <span class="n">disable_debug</span> <span class="o">=</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
 
+    <span class="n">disable_warning</span> <span class="o">=</span> <span class="ne">Warning</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
+
+    <span class="n">disable_info</span> <span class="o">=</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Default</span><span class="p">)</span>
+
     <span class="n">disable_logging</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Trace</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Disabled</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Debug</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Disabled</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Default</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Disabled</span><span class="p">)</span>
         <span class="o">|</span> <span class="n">Disabled</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Disabled</span><span class="p">)</span>
+        <span class="o">|</span> <span class="n">Info</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">Disabled</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">BITTENSOR_LOGGER_NAME</span><span class="p">):</span>
@@ -481,21 +571,19 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_bt_logger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_third_party_loggers</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_enable_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">console</span> <span class="o">=</span> <span class="n">BittensorConsole</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LoggingMachine._enable_initial_state">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._enable_initial_state">[docs]</a>
     <span class="k">def</span> <span class="nf">_enable_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set correct state action on initializing&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">trace</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_trace</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_debug</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">info</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_info</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">enable_default</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_default</span><span class="p">()</span>
 
-
-<div class="viewcode-block" id="LoggingMachine._extract_logging_config">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._extract_logging_config">[docs]</a>
     <span class="k">def</span> <span class="nf">_extract_logging_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract btlogging&#39;s config from bittensor config</span>
 
@@ -505,14 +593,12 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            (dict): btlogging&#39;s config from Bittensor config or Bittensor config.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;logging&quot;</span><span class="p">):</span>
+        <span class="c1"># This is to handle nature of DefaultMunch</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;logging&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">logging</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">config</span></div>
+            <span class="k">return</span> <span class="n">config</span>
 
-
-<div class="viewcode-block" id="LoggingMachine._configure_handlers">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._configure_handlers">[docs]</a>
     <span class="k">def</span> <span class="nf">_configure_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">Handler</span><span class="p">]:</span>
         <span class="n">handlers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
@@ -528,36 +614,35 @@ document.write(`
             <span class="p">)</span>
             <span class="n">file_handler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_file_handler</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span>
             <span class="n">handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">handlers</span></div>
-
+        <span class="k">return</span> <span class="n">handlers</span>
 
 <div class="viewcode-block" id="LoggingMachine.get_config">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.get_config">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.get_config">[docs]</a>
     <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.set_config">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.set_config">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_config">[docs]</a>
     <span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set config after initialization, if desired.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            config (bittensor.core.config.Config): Bittensor config instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">config</span>
-        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">logging_dir</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">record_log</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_logging_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">logging_dir</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">record_log</span><span class="p">:</span>
             <span class="n">expanded_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">logging_dir</span><span class="p">)</span>
             <span class="n">logfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">expanded_dir</span><span class="p">,</span> <span class="n">DEFAULT_LOG_FILE_NAME</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_enable_file_logging</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">trace</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">trace</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">enable_trace</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">enable_debug</span><span class="p">()</span></div>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_debug</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">info</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_info</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="LoggingMachine._create_and_start_listener">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._create_and_start_listener">[docs]</a>
     <span class="k">def</span> <span class="nf">_create_and_start_listener</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handlers</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A listener to receive and publish log records.</span>
@@ -568,11 +653,10 @@ document.write(`
         <span class="n">listener</span> <span class="o">=</span> <span class="n">QueueListener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="p">,</span> <span class="o">*</span><span class="n">handlers</span><span class="p">,</span> <span class="n">respect_handler_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">listener</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">listener</span></div>
-
+        <span class="k">return</span> <span class="n">listener</span>
 
 <div class="viewcode-block" id="LoggingMachine.get_queue">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.get_queue">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.get_queue">[docs]</a>
     <span class="k">def</span> <span class="nf">get_queue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the queue the QueueListener is publishing from.</span>
@@ -582,8 +666,6 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span></div>
 
 
-<div class="viewcode-block" id="LoggingMachine._initialize_bt_logger">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._initialize_bt_logger">[docs]</a>
     <span class="k">def</span> <span class="nf">_initialize_bt_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize logging for bittensor.</span>
@@ -594,22 +676,16 @@ document.write(`
         <span class="n">logger</span> <span class="o">=</span> <span class="n">stdlogging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">queue_handler</span> <span class="o">=</span> <span class="n">QueueHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">queue_handler</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">logger</span></div>
+        <span class="k">return</span> <span class="n">logger</span>
 
-
-<div class="viewcode-block" id="LoggingMachine._deinitialize_bt_logger">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._deinitialize_bt_logger">[docs]</a>
     <span class="k">def</span> <span class="nf">_deinitialize_bt_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the logger by name and remove the queue handler associated with it.&quot;&quot;&quot;</span>
         <span class="n">logger</span> <span class="o">=</span> <span class="n">stdlogging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">QueueHandler</span><span class="p">):</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">logger</span></div>
+        <span class="k">return</span> <span class="n">logger</span>
 
-
-<div class="viewcode-block" id="LoggingMachine._create_file_handler">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._create_file_handler">[docs]</a>
     <span class="k">def</span> <span class="nf">_create_file_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span>
             <span class="n">logfile</span><span class="p">,</span>
@@ -618,11 +694,10 @@ document.write(`
         <span class="p">)</span>
         <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_formatter</span><span class="p">)</span>
         <span class="n">file_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">TRACE</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">file_handler</span></div>
-
+        <span class="k">return</span> <span class="n">file_handler</span>
 
 <div class="viewcode-block" id="LoggingMachine.register_primary_logger">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.register_primary_logger">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.register_primary_logger">[docs]</a>
     <span class="k">def</span> <span class="nf">register_primary_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Register a logger as primary logger</span>
@@ -639,7 +714,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.deregister_primary_logger">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.deregister_primary_logger">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.deregister_primary_logger">[docs]</a>
     <span class="k">def</span> <span class="nf">deregister_primary_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        De-registers a primary logger</span>
@@ -655,7 +730,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.enable_third_party_loggers">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.enable_third_party_loggers">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.enable_third_party_loggers">[docs]</a>
     <span class="k">def</span> <span class="nf">enable_third_party_loggers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables logging for third-party loggers by adding a queue handler to each.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="n">all_loggers</span><span class="p">():</span>
@@ -667,7 +742,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.disable_third_party_loggers">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.disable_third_party_loggers">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.disable_third_party_loggers">[docs]</a>
     <span class="k">def</span> <span class="nf">disable_third_party_loggers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Disables logging for third-party loggers by removing all their handlers.&quot;&quot;&quot;</span>
         <span class="c1"># remove all handlers</span>
@@ -678,8 +753,6 @@ document.write(`
                 <span class="n">logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="LoggingMachine._enable_file_logging">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine._enable_file_logging">[docs]</a>
     <span class="k">def</span> <span class="nf">_enable_file_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="c1"># preserve idempotency; do not create extra filehandlers</span>
         <span class="c1"># if one already exists</span>
@@ -689,19 +762,18 @@ document.write(`
             <span class="k">return</span>
         <span class="n">file_handler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_file_handler</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="p">)</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="p">)</span>
 
     <span class="c1"># state transitions</span>
 <div class="viewcode-block" id="LoggingMachine.before_transition">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_transition">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_transition">[docs]</a>
     <span class="k">def</span> <span class="nf">before_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Stops listener after transition.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.after_transition">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_transition">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_transition">[docs]</a>
     <span class="k">def</span> <span class="nf">after_transition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Starts listener after transition.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
@@ -709,10 +781,10 @@ document.write(`
 
     <span class="c1"># Default Logging</span>
 <div class="viewcode-block" id="LoggingMachine.before_enable_default">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_enable_default">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_default">[docs]</a>
     <span class="k">def</span> <span class="nf">before_enable_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable Default.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enabling default logging.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabling default logging (Warning level)&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="n">all_loggers</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primary_loggers</span><span class="p">:</span>
@@ -721,14 +793,52 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.after_enable_default">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_enable_default">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_enable_default">[docs]</a>
     <span class="k">def</span> <span class="nf">after_enable_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
 
+    <span class="c1"># Warning</span>
+<div class="viewcode-block" id="LoggingMachine.before_enable_warning">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_warning">[docs]</a>
+    <span class="k">def</span> <span class="nf">before_enable_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable Warning.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabling warning.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stream_formatter</span><span class="o">.</span><span class="n">set_trace</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="n">all_loggers</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingMachine.after_enable_warning">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_enable_warning">[docs]</a>
+    <span class="k">def</span> <span class="nf">after_enable_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after enable Warning.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Warning enabled.&quot;</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Info</span>
+<div class="viewcode-block" id="LoggingMachine.before_enable_info">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">before_enable_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable info.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabling info logging.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="n">all_loggers</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primary_loggers</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingMachine.after_enable_info">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_enable_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">after_enable_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after enable info.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Info enabled.&quot;</span><span class="p">)</span></div>
+
+
     <span class="c1"># Trace</span>
 <div class="viewcode-block" id="LoggingMachine.before_enable_trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_enable_trace">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_trace">[docs]</a>
     <span class="k">def</span> <span class="nf">before_enable_trace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable Trace.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabling trace.&quot;</span><span class="p">)</span>
@@ -738,23 +848,23 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.after_enable_trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_enable_trace">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_enable_trace">[docs]</a>
     <span class="k">def</span> <span class="nf">after_enable_trace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after enable Trace.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trace enabled.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.before_disable_trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_disable_trace">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_disable_trace">[docs]</a>
     <span class="k">def</span> <span class="nf">before_disable_trace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before disable Trace.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disabling trace.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disabling trace.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stream_formatter</span><span class="o">.</span><span class="n">set_trace</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">enable_default</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.after_disable_trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_disable_trace">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_disable_trace">[docs]</a>
     <span class="k">def</span> <span class="nf">after_disable_trace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after disable Trace.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trace disabled.&quot;</span><span class="p">)</span></div>
@@ -762,7 +872,7 @@ document.write(`
 
     <span class="c1"># Debug</span>
 <div class="viewcode-block" id="LoggingMachine.before_enable_debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_enable_debug">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_debug">[docs]</a>
     <span class="k">def</span> <span class="nf">before_enable_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable Debug.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabling debug.&quot;</span><span class="p">)</span>
@@ -771,15 +881,24 @@ document.write(`
             <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="LoggingMachine.before_enable_console">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_enable_console">[docs]</a>
+    <span class="k">def</span> <span class="nf">before_enable_console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before enable Console.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stream_formatter</span><span class="o">.</span><span class="n">set_trace</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="n">all_loggers</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">stdlogging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="LoggingMachine.after_enable_debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_enable_debug">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_enable_debug">[docs]</a>
     <span class="k">def</span> <span class="nf">after_enable_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after enable Debug.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Debug enabled.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.before_disable_debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_disable_debug">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_disable_debug">[docs]</a>
     <span class="k">def</span> <span class="nf">before_disable_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status before disable Debug.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disabling debug.&quot;</span><span class="p">)</span>
@@ -788,7 +907,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.after_disable_debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.after_disable_debug">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.after_disable_debug">[docs]</a>
     <span class="k">def</span> <span class="nf">after_disable_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Logs status after disable Debug.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Debug disabled.&quot;</span><span class="p">)</span></div>
@@ -796,7 +915,7 @@ document.write(`
 
     <span class="c1"># Disable Logging</span>
 <div class="viewcode-block" id="LoggingMachine.before_disable_logging">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.before_disable_logging">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.before_disable_logging">[docs]</a>
     <span class="k">def</span> <span class="nf">before_disable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prepares the logging system for disabling.</span>
@@ -827,71 +946,81 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Trace&quot;</span>
 
 <div class="viewcode-block" id="LoggingMachine.trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.trace">[docs]</a>
-    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.trace">[docs]</a>
+    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps trace message with prefix and suffix.&quot;&quot;&quot;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+            <span class="n">msg</span><span class="p">,</span>
+            <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="n">CUSTOM_LOGGER_METHOD_STACK_LEVEL</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.debug">[docs]</a>
-    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.debug">[docs]</a>
+    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps debug message with prefix and suffix.&quot;&quot;&quot;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.info">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.info">[docs]</a>
-    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.info">[docs]</a>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps info message with prefix and suffix.&quot;&quot;&quot;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.success">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.success">[docs]</a>
-    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.success">[docs]</a>
+    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps success message with prefix and suffix.&quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+            <span class="n">msg</span><span class="p">,</span>
+            <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="n">CUSTOM_LOGGER_METHOD_STACK_LEVEL</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.warning">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.warning">[docs]</a>
-    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.warning">[docs]</a>
+    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps warning message with prefix and suffix.&quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.error">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.error">[docs]</a>
-    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.error">[docs]</a>
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps error message with prefix and suffix.&quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.critical">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.critical">[docs]</a>
-    <span class="k">def</span> <span class="nf">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.critical">[docs]</a>
+    <span class="k">def</span> <span class="nf">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps critical message with prefix and suffix.&quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.exception">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.exception">[docs]</a>
-    <span class="k">def</span> <span class="nf">exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.exception">[docs]</a>
+    <span class="k">def</span> <span class="nf">exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps exception message with prefix and suffix.&quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">_concat_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.on">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.on">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.on">[docs]</a>
     <span class="k">def</span> <span class="nf">on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable default state.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logging enabled.&quot;</span><span class="p">)</span>
@@ -899,14 +1028,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.off">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.off">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.off">[docs]</a>
     <span class="k">def</span> <span class="nf">off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Disables all states.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_logging</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.set_debug">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.set_debug">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_debug">[docs]</a>
     <span class="k">def</span> <span class="nf">set_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Debug state.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">on</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Debug&quot;</span><span class="p">:</span>
@@ -917,7 +1046,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.set_trace">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.set_trace">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_trace">[docs]</a>
     <span class="k">def</span> <span class="nf">set_trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Trace state.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">on</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Trace&quot;</span><span class="p">:</span>
@@ -927,33 +1056,72 @@ document.write(`
                 <span class="bp">self</span><span class="o">.</span><span class="n">disable_trace</span><span class="p">()</span></div>
 
 
+<div class="viewcode-block" id="LoggingMachine.set_info">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Info state.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">on</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Info&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_info</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">on</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Info&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disable_info</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LoggingMachine.set_warning">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_warning">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">on</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Warning state.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">on</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Warning&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_warning</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">on</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Warning&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disable_warning</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LoggingMachine.set_default">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_default">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Default state.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Default&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_default</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LoggingMachine.set_console">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.set_console">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Console state.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state_value</span> <span class="o">==</span> <span class="s2">&quot;Console&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_console</span><span class="p">()</span></div>
+
+
 <div class="viewcode-block" id="LoggingMachine.get_level">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.get_level">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.get_level">[docs]</a>
     <span class="k">def</span> <span class="nf">get_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns Logging level.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">level</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.check_config">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.check_config">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.check_config">[docs]</a>
     <span class="k">def</span> <span class="nf">check_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">logging</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.help">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.help">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.help">[docs]</a>
     <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="LoggingMachine.add_args">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.add_args">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.add_args">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">add_args</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Accept specific arguments fro parser&quot;&quot;&quot;</span>
         <span class="n">prefix_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">default_logging_debug</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_DEBUG&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span>
+            <span class="n">default_logging_info</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_INFO&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span>
             <span class="n">default_logging_trace</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_TRACE&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span>
             <span class="n">default_logging_record_log</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BT_LOGGING_RECORD_LOG&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="kc">False</span>
             <span class="n">default_logging_logging_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span>
@@ -970,6 +1138,12 @@ document.write(`
                 <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Turn on bittensor trace level information&quot;&quot;&quot;</span><span class="p">,</span>
                 <span class="n">default</span><span class="o">=</span><span class="n">default_logging_trace</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+                <span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="n">prefix_str</span> <span class="o">+</span> <span class="s2">&quot;logging.info&quot;</span><span class="p">,</span>
+                <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+                <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Turn on bittensor info level information&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">default_logging_info</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
                 <span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="n">prefix_str</span> <span class="o">+</span> <span class="s2">&quot;logging.record_log&quot;</span><span class="p">,</span>
@@ -989,7 +1163,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="LoggingMachine.config">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.config">[docs]</a>
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.loggingmachine.LoggingMachine.config">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get config from the argument parser.</span>
@@ -999,22 +1173,23 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">add_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Config</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[])</span></div>
+        <span class="k">return</span> <span class="n">Config</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="LoggingMachine.__call__">
-<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/btlogging/loggingmachine/index.html#bittensor.utils.btlogging.LoggingMachine.__call__">[docs]</a>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;Config&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">trace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">record_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">logging_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cfg</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_logging_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">cfg</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+            <span class="k">elif</span> <span class="n">debug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">cfg</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
             <span class="k">elif</span> <span class="n">trace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">cfg</span><span class="o">.</span><span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span>
@@ -1024,10 +1199,13 @@ document.write(`
                 <span class="n">cfg</span><span class="o">.</span><span class="n">logging_dir</span> <span class="o">=</span> <span class="n">logging_dir</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">cfg</span> <span class="o">=</span> <span class="n">LoggingConfig</span><span class="p">(</span>
-                <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span> <span class="n">record_log</span><span class="o">=</span><span class="n">record_log</span><span class="p">,</span> <span class="n">logging_dir</span><span class="o">=</span><span class="n">logging_dir</span>
+                <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span>
+                <span class="n">trace</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span>
+                <span class="n">info</span><span class="o">=</span><span class="n">info</span><span class="p">,</span>
+                <span class="n">record_log</span><span class="o">=</span><span class="n">record_log</span><span class="p">,</span>
+                <span class="n">logging_dir</span><span class="o">=</span><span class="n">logging_dir</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span></div>
-</div>
 
 </pre></div>
 
@@ -1091,8 +1269,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

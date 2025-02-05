@@ -1,0 +1,1589 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tests.unit_tests.test_axon &#8212; Bittensor SDK Docs  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/tests/unit_tests/test_axon/index';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="tests.unit_tests.test_chain_data" href="../test_chain_data/index.html" />
+    <link rel="prev" title="tests.unit_tests.test_async_subtensor" href="../test_async_subtensor/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../test_init/index.html">test_init</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../chain_interactions/index.html">chain_interactions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/blob/main/autoapi/tests/unit_tests/test_axon/index.rst?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2Fautoapi/tests/unit_tests/test_axon/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/autoapi/tests/unit_tests/test_axon/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>tests.unit_tests.test_axon</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock"><code class="docutils literal notranslate"><span class="pre">AxonMock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.blacklist_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.blacklist_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.forward_class_types"><code class="docutils literal notranslate"><span class="pre">AxonMock.forward_class_types</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.forward_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.forward_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.priority_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.priority_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.status_code"><code class="docutils literal notranslate"><span class="pre">AxonMock.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.thread_pool"><code class="docutils literal notranslate"><span class="pre">AxonMock.thread_pool</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.verify_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.verify_fns</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey"><code class="docutils literal notranslate"><span class="pre">MockHotkey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey.sign"><code class="docutils literal notranslate"><span class="pre">MockHotkey.sign()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey.ss58_address"><code class="docutils literal notranslate"><span class="pre">MockHotkey.ss58_address</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockInfo"><code class="docutils literal notranslate"><span class="pre">MockInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockInfo.to_string"><code class="docutils literal notranslate"><span class="pre">MockInfo.to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet"><code class="docutils literal notranslate"><span class="pre">MockWallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.coldkey"><code class="docutils literal notranslate"><span class="pre">MockWallet.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">MockWallet.coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.hotkey"><code class="docutils literal notranslate"><span class="pre">MockWallet.hotkey</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseHTTPClient"><code class="docutils literal notranslate"><span class="pre">SynapseHTTPClient</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseHTTPClient.post_synapse"><code class="docutils literal notranslate"><span class="pre">SynapseHTTPClient.post_synapse()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock"><code class="docutils literal notranslate"><span class="pre">SynapseMock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.deserialize"><code class="docutils literal notranslate"><span class="pre">SynapseMock.deserialize()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.__setattr__"><code class="docutils literal notranslate"><span class="pre">SynapseMock.__setattr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.get_total_size"><code class="docutils literal notranslate"><span class="pre">SynapseMock.get_total_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.to_headers"><code class="docutils literal notranslate"><span class="pre">SynapseMock.to_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.body_hash"><code class="docutils literal notranslate"><span class="pre">SynapseMock.body_hash()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.parse_headers_to_inputs"><code class="docutils literal notranslate"><span class="pre">SynapseMock.parse_headers_to_inputs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.from_headers"><code class="docutils literal notranslate"><span class="pre">SynapseMock.from_headers()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.assert_headers"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.assert_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.axon"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.axon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.custom_synapse_cls"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.custom_synapse_cls()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.http_client"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.http_client()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_axon"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.no_verify_axon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_fn"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.no_verify_fn()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.streaming_synapse_cls"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.streaming_synapse_cls()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__no_dendrite"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_ping__no_dendrite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__without_verification"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_ping__without_verification()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__internal_error"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__internal_error()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_unknown_path"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_unknown_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware.setUp"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware.test_preprocess"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware.test_preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.axon_instance"><code class="docutils literal notranslate"><span class="pre">axon_instance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.blacklist_fn_fail"><code class="docutils literal notranslate"><span class="pre">blacklist_fn_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.blacklist_fn_pass"><code class="docutils literal notranslate"><span class="pre">blacklist_fn_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.is_nonce_within_allowed_window"><code class="docutils literal notranslate"><span class="pre">is_nonce_within_allowed_window()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.middleware"><code class="docutils literal notranslate"><span class="pre">middleware()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.mock_request"><code class="docutils literal notranslate"><span class="pre">mock_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.priority_fn_pass"><code class="docutils literal notranslate"><span class="pre">priority_fn_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.priority_fn_timeout"><code class="docutils literal notranslate"><span class="pre">priority_fn_timeout()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_allowed_nonce_window_ns"><code class="docutils literal notranslate"><span class="pre">test_allowed_nonce_window_ns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_attach"><code class="docutils literal notranslate"><span class="pre">test_attach()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_attach_initial"><code class="docutils literal notranslate"><span class="pre">test_attach_initial()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_axon_str_representation"><code class="docutils literal notranslate"><span class="pre">test_axon_str_representation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_blacklist_fail"><code class="docutils literal notranslate"><span class="pre">test_blacklist_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_blacklist_pass"><code class="docutils literal notranslate"><span class="pre">test_blacklist_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_create_error_response"><code class="docutils literal notranslate"><span class="pre">test_create_error_response()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_invalid_ip_address"><code class="docutils literal notranslate"><span class="pre">test_invalid_ip_address()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_log_and_handle_error"><code class="docutils literal notranslate"><span class="pre">test_log_and_handle_error()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_nonce_diff_seconds"><code class="docutils literal notranslate"><span class="pre">test_nonce_diff_seconds()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_nonce_within_allowed_window"><code class="docutils literal notranslate"><span class="pre">test_nonce_within_allowed_window()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_priority_pass"><code class="docutils literal notranslate"><span class="pre">test_priority_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_to_string"><code class="docutils literal notranslate"><span class="pre">test_to_string()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address"><code class="docutils literal notranslate"><span class="pre">test_valid_ipv4_and_ipv6_address()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_edge_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_error_cases"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_error_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_happy_path"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_happy_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_fail"><code class="docutils literal notranslate"><span class="pre">test_verify_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_pass"><code class="docutils literal notranslate"><span class="pre">test_verify_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.verify_fn_fail"><code class="docutils literal notranslate"><span class="pre">verify_fn_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.verify_fn_pass"><code class="docutils literal notranslate"><span class="pre">verify_fn_pass()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-tests.unit_tests.test_axon">
+<span id="tests-unit-tests-test-axon"></span><h1>tests.unit_tests.test_axon<a class="headerlink" href="#module-tests.unit_tests.test_axon" title="Link to this heading">#</a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.AxonMock" title="tests.unit_tests.test_axon.AxonMock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AxonMock</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.MockHotkey" title="tests.unit_tests.test_axon.MockHotkey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockHotkey</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.MockInfo" title="tests.unit_tests.test_axon.MockInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockInfo</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.MockWallet" title="tests.unit_tests.test_axon.MockWallet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MockWallet</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.SynapseHTTPClient" title="tests.unit_tests.test_axon.SynapseHTTPClient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseHTTPClient</span></code></a></p></td>
+<td><p>An HTTP client, with connection pooling, HTTP/2, redirects, cookie persistence, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.SynapseMock" title="tests.unit_tests.test_axon.SynapseMock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynapseMock</span></code></a></p></td>
+<td><p>Represents a Synapse in the Bittensor network, serving as a communication schema between neurons (nodes).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses" title="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.TestAxonMiddleware" title="tests.unit_tests.test_axon.TestAxonMiddleware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TestAxonMiddleware</span></code></a></p></td>
+<td><p>A class whose instances are single test cases.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.axon_instance" title="tests.unit_tests.test_axon.axon_instance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axon_instance</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.blacklist_fn_fail" title="tests.unit_tests.test_axon.blacklist_fn_fail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blacklist_fn_fail</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.blacklist_fn_pass" title="tests.unit_tests.test_axon.blacklist_fn_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blacklist_fn_pass</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.is_nonce_within_allowed_window" title="tests.unit_tests.test_axon.is_nonce_within_allowed_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_nonce_within_allowed_window</span></code></a>(synapse_nonce, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.middleware" title="tests.unit_tests.test_axon.middleware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">middleware</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.mock_request" title="tests.unit_tests.test_axon.mock_request"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mock_request</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.priority_fn_pass" title="tests.unit_tests.test_axon.priority_fn_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">priority_fn_pass</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.priority_fn_timeout" title="tests.unit_tests.test_axon.priority_fn_timeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">priority_fn_timeout</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_allowed_nonce_window_ns" title="tests.unit_tests.test_axon.test_allowed_nonce_window_ns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_allowed_nonce_window_ns</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_attach" title="tests.unit_tests.test_axon.test_attach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_attach</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_attach_initial" title="tests.unit_tests.test_axon.test_attach_initial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_attach_initial</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_axon_str_representation" title="tests.unit_tests.test_axon.test_axon_str_representation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_axon_str_representation</span></code></a>(ip, port, ss58_address, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_blacklist_fail" title="tests.unit_tests.test_axon.test_blacklist_fail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_blacklist_fail</span></code></a>(middleware)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_blacklist_pass" title="tests.unit_tests.test_axon.test_blacklist_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_blacklist_pass</span></code></a>(middleware)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_create_error_response" title="tests.unit_tests.test_axon.test_create_error_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_create_error_response</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_invalid_ip_address" title="tests.unit_tests.test_axon.test_invalid_ip_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_invalid_ip_address</span></code></a>(ip, port, expected_exception)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_log_and_handle_error" title="tests.unit_tests.test_axon.test_log_and_handle_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_log_and_handle_error</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_nonce_diff_seconds" title="tests.unit_tests.test_axon.test_nonce_diff_seconds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_nonce_diff_seconds</span></code></a>(nonce_offset_seconds)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_nonce_within_allowed_window" title="tests.unit_tests.test_axon.test_nonce_within_allowed_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_nonce_within_allowed_window</span></code></a>(nonce_offset_seconds, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_priority_pass" title="tests.unit_tests.test_axon.test_priority_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_priority_pass</span></code></a>(middleware)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_to_string" title="tests.unit_tests.test_axon.test_to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_to_string</span></code></a>(info_return, expected_output, test_id)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address" title="tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_valid_ipv4_and_ipv6_address</span></code></a>(ip, port, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases" title="tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_verify_body_integrity_edge_cases</span></code></a>(mock_request, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_verify_body_integrity_error_cases" title="tests.unit_tests.test_axon.test_verify_body_integrity_error_cases"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_verify_body_integrity_error_cases</span></code></a>(mock_request, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_verify_body_integrity_happy_path" title="tests.unit_tests.test_axon.test_verify_body_integrity_happy_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_verify_body_integrity_happy_path</span></code></a>(mock_request, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_verify_fail" title="tests.unit_tests.test_axon.test_verify_fail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_verify_fail</span></code></a>(middleware)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.test_verify_pass" title="tests.unit_tests.test_axon.test_verify_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_verify_pass</span></code></a>(middleware)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.verify_fn_fail" title="tests.unit_tests.test_axon.verify_fn_fail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verify_fn_fail</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tests.unit_tests.test_axon.verify_fn_pass" title="tests.unit_tests.test_axon.verify_fn_pass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verify_fn_pass</span></code></a>(synapse)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">AxonMock</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock" title="Link to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.blacklist_fns">
+<span class="sig-name descname"><span class="pre">blacklist_fns</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.blacklist_fns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.forward_class_types">
+<span class="sig-name descname"><span class="pre">forward_class_types</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.forward_class_types" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.forward_fns">
+<span class="sig-name descname"><span class="pre">forward_fns</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.forward_fns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.priority_fns">
+<span class="sig-name descname"><span class="pre">priority_fns</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.priority_fns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.status_code">
+<span class="sig-name descname"><span class="pre">status_code</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.thread_pool">
+<span class="sig-name descname"><span class="pre">thread_pool</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.thread_pool" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.AxonMock.verify_fns">
+<span class="sig-name descname"><span class="pre">verify_fns</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.AxonMock.verify_fns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockHotkey">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">MockHotkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.MockHotkey" title="Link to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockHotkey.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.MockHotkey.sign" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockHotkey.ss58_address">
+<span class="sig-name descname"><span class="pre">ss58_address</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.MockHotkey.ss58_address" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">MockInfo</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.MockInfo" title="Link to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockInfo.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.MockInfo.to_string" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockWallet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">MockWallet</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.MockWallet" title="Link to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockWallet.coldkey">
+<span class="sig-name descname"><span class="pre">coldkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.MockWallet.coldkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockWallet.coldkeypub">
+<span class="sig-name descname"><span class="pre">coldkeypub</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.MockWallet.coldkeypub" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.MockWallet.hotkey">
+<span class="sig-name descname"><span class="pre">hotkey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.MockWallet.hotkey" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseHTTPClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">SynapseHTTPClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'http://testserver'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_server_exceptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'asyncio'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cookies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">follow_redirects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseHTTPClient" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">fastapi.testclient.TestClient</span></code></p>
+<p>An HTTP client, with connection pooling, HTTP/2, redirects, cookie persistence, etc.</p>
+<p>It can be shared between threads.</p>
+<p>Usage:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">client</span> <span class="pre">=</span> <span class="pre">httpx.Client()</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">response</span> <span class="pre">=</span> <span class="pre">client.get('https://example.org')</span>
+<span class="pre">`</span></code></p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>auth</strong> - <em>(optional)</em> An authentication class to use when sending</p></li>
+</ul>
+<p>requests.
+* <strong>params</strong> - <em>(optional)</em> Query parameters to include in request URLs, as
+a string, dictionary, or sequence of two-tuples.
+* <strong>headers</strong> - <em>(optional)</em> Dictionary of HTTP headers to include when
+sending requests.
+* <strong>cookies</strong> - <em>(optional)</em> Dictionary of Cookie items to include when
+sending requests.
+* <strong>verify</strong> - <em>(optional)</em> Either <cite>True</cite> to use an SSL context with the
+default CA bundle, <cite>False</cite> to disable verification, or an instance of
+<cite>ssl.SSLContext</cite> to use a custom context.
+* <strong>http2</strong> - <em>(optional)</em> A boolean indicating if HTTP/2 support should be
+enabled. Defaults to <cite>False</cite>.
+* <strong>proxy</strong> - <em>(optional)</em> A proxy URL where all the traffic should be routed.
+* <strong>timeout</strong> - <em>(optional)</em> The timeout configuration to use when sending
+requests.
+* <strong>limits</strong> - <em>(optional)</em> The limits configuration to use.
+* <strong>max_redirects</strong> - <em>(optional)</em> The maximum number of redirect responses
+that should be followed.
+* <strong>base_url</strong> - <em>(optional)</em> A URL to use as the base when building
+request URLs.
+* <strong>transport</strong> - <em>(optional)</em> A transport class to use for sending requests
+over the network.
+* <strong>trust_env</strong> - <em>(optional)</em> Enables or disables usage of environment
+variables for configuration.
+* <strong>default_encoding</strong> - <em>(optional)</em> The default encoding to use for decoding
+response text, if no charset information is included in a response Content-Type
+header. Set to a callable for automatic character set detection. Default: “utf-8”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app</strong> (<em>starlette.types.ASGIApp</em>)</p></li>
+<li><p><strong>base_url</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>raise_server_exceptions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>root_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>backend</strong> (<em>Literal</em><em>[</em><em>'asyncio'</em><em>, </em><em>'trio'</em><em>]</em>)</p></li>
+<li><p><strong>backend_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>cookies</strong> (<em>httpx._types.CookieTypes</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>follow_redirects</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseHTTPClient.post_synapse">
+<span class="sig-name descname"><span class="pre">post_synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseHTTPClient.post_synapse" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../../../bittensor/core/synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">SynapseMock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../bittensor/core/synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.synapse.Synapse</span></code></a></p>
+<p>Represents a Synapse in the Bittensor network, serving as a communication schema between neurons (nodes).</p>
+<p>Synapses ensure the format and correctness of transmission tensors according to the Bittensor protocol.
+Each Synapse type is tailored for a specific machine learning (ML) task, following unique compression and
+communication processes. This helps maintain sanitized, correct, and useful information flow across the network.</p>
+<p>The Synapse class encompasses essential network properties such as HTTP route names, timeouts, request sizes, and
+terminal information. It also includes methods for serialization, deserialization, attribute setting, and hash
+computation, ensuring secure and efficient data exchange in the network.</p>
+<p>The class includes Pydantic validators and root validators to enforce data integrity and format. Additionally,
+properties like <code class="docutils literal notranslate"><span class="pre">is_success</span></code>, <code class="docutils literal notranslate"><span class="pre">is_failure</span></code>, <code class="docutils literal notranslate"><span class="pre">is_timeout</span></code>, etc., provide convenient status checks based on
+dendrite responses.</p>
+<p>Think of Bittensor Synapses as glorified pydantic wrappers that have been designed to be used in a distributed
+network. They provide a standardized way to communicate between neurons, and are the primary mechanism for
+communication between neurons in Bittensor.</p>
+<p>Key Features:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>HTTP Route Name (<code class="docutils literal notranslate"><span class="pre">name</span></code> attribute):</dt><dd><p>Enables the identification and proper routing of requests within the network. Essential for users
+defining custom routes for specific machine learning tasks.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Query Timeout (<code class="docutils literal notranslate"><span class="pre">timeout</span></code> attribute):</dt><dd><p>Determines the maximum duration allowed for a query, ensuring timely responses and network
+efficiency. Crucial for users to manage network latency and response times, particularly in
+time-sensitive applications.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Request Sizes (<code class="docutils literal notranslate"><span class="pre">total_size</span></code>, <code class="docutils literal notranslate"><span class="pre">header_size</span></code> attributes):</dt><dd><p>Keeps track of the size of request bodies and headers, ensuring efficient data transmission without
+overloading the network. Important for users to monitor and optimize the data payload, especially
+in bandwidth-constrained environments.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Terminal Information (<code class="docutils literal notranslate"><span class="pre">dendrite</span></code>, <code class="docutils literal notranslate"><span class="pre">axon</span></code> attributes):</dt><dd><p>Stores information about the dendrite (receiving end) and axon (sending end), facilitating communication
+between nodes. Users can access detailed information about the communication endpoints, aiding in
+debugging and network analysis.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Body Hash Computation (<code class="docutils literal notranslate"><span class="pre">computed_body_hash</span></code>, <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code>):</dt><dd><p>Ensures data integrity and security by computing hashes of transmitted data. Provides users with a
+mechanism to verify data integrity and detect any tampering during transmission.
+It is recommended that names of fields in <cite>required_hash_fields</cite> are listed in the order they are
+defined in the class.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Serialization and Deserialization Methods:</dt><dd><p>Facilitates the conversion of Synapse objects to and from a format suitable for network transmission.
+Essential for users who need to customize data formats for specific machine learning models or tasks.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Status Check Properties (<code class="docutils literal notranslate"><span class="pre">is_success</span></code>, <code class="docutils literal notranslate"><span class="pre">is_failure</span></code>, <code class="docutils literal notranslate"><span class="pre">is_timeout</span></code>, etc.):</dt><dd><p>Provides quick and easy methods to check the status of a request, improving error handling and
+response management. Users can efficiently handle different outcomes of network requests, enhancing
+the robustness of their applications.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a Synapse instance with default values</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.synapse</span> <span class="kn">import</span> <span class="n">Synapse</span>
+
+<span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="p">()</span>
+
+<span class="c1"># Setting properties and input</span>
+<span class="n">synapse</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mf">15.0</span>
+<span class="n">synapse</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MySynapse&quot;</span>
+
+<span class="c1"># Not setting fields that are not defined in your synapse class will result in an error, e.g.:</span>
+<span class="n">synapse</span><span class="o">.</span><span class="n">dummy_input</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># This will raise an error because dummy_input is not defined in the Synapse class</span>
+
+<span class="c1"># Get a dictionary of headers and body from the synapse instance</span>
+<span class="n">synapse_dict</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">()</span>
+
+<span class="c1"># Get a dictionary of headers from the synapse instance</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">to_headers</span><span class="p">()</span>
+
+<span class="c1"># Reconstruct the synapse from headers using the classmethod &#39;from_headers&#39;</span>
+<span class="n">synapse</span> <span class="o">=</span> <span class="n">Synapse</span><span class="o">.</span><span class="n">from_headers</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># Deserialize synapse after receiving it over the network, controlled by `deserialize` method</span>
+<span class="n">deserialized_synapse</span> <span class="o">=</span> <span class="n">synapse</span><span class="o">.</span><span class="n">deserialize</span><span class="p">()</span>
+
+<span class="c1"># Checking the status of the request</span>
+<span class="k">if</span> <span class="n">synapse</span><span class="o">.</span><span class="n">is_success</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Request succeeded&quot;</span><span class="p">)</span>
+
+<span class="c1"># Checking and setting the status of the request</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">synapse</span><span class="o">.</span><span class="n">axon</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="n">synapse</span><span class="o">.</span><span class="n">axon</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">408</span> <span class="c1"># Timeout</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – HTTP route name, set on <code class="xref py py-func docutils literal notranslate"><span class="pre">axon.attach()</span></code>.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Total query length, set by the dendrite terminal.</p></li>
+<li><p><strong>total_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Total size of request body in bytes.</p></li>
+<li><p><strong>header_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Size of request header in bytes.</p></li>
+<li><p><strong>dendrite</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">TerminalInfo()</span></code>) – Information about the dendrite terminal.</p></li>
+<li><p><strong>axon</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">TerminalInfo()</span></code>) – Information about the axon terminal.</p></li>
+<li><p><strong>computed_body_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Computed hash of the request body.</p></li>
+<li><p><strong>required_hash_fields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Fields required to compute the body hash.</p></li>
+<li><p><strong>data</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.deserialize">
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.deserialize" title="Link to this definition">#</a></dt>
+<dd><p>Custom deserialization logic for subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../bittensor/core/synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse">Synapse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.__setattr__">
+<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.__setattr__" title="Link to this definition">#</a></dt>
+<dd><p>Override method to make <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> read-only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>value</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.get_total_size">
+<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.get_total_size" title="Link to this definition">#</a></dt>
+<dd><p>Calculates and returns the total size of the object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.to_headers">
+<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.to_headers" title="Link to this definition">#</a></dt>
+<dd><p>Constructs a dictionary of headers from instance properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.body_hash">
+<span class="sig-name descname"><span class="pre">body_hash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.body_hash" title="Link to this definition">#</a></dt>
+<dd><p>Computes a SHA3-256 hash of the serialized body.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.parse_headers_to_inputs">
+<span class="sig-name descname"><span class="pre">parse_headers_to_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.parse_headers_to_inputs" title="Link to this definition">#</a></dt>
+<dd><p>Parses headers to construct an inputs dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.SynapseMock.from_headers">
+<span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.SynapseMock.from_headers" title="Link to this definition">#</a></dt>
+<dd><p>Creates an instance from a headers dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../bittensor/core/synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse">Synapse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>This class is a cornerstone in the Bittensor framework, providing the necessary tools for secure, efficient, and
+standardized communication in a decentralized environment.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">TestAxonHTTPAPIResponses</span></span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses" title="Link to this definition">#</a></dt>
+<dd><dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NonDeterministicHeaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
+<p>Helper class to verify headers.</p>
+<p>Size headers are non-determistic as for example, header_size depends on non-deterministic
+processing-time value.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time">
+<span class="sig-name descname"><span class="pre">bt_header_axon_process_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length">
+<span class="sig-name descname"><span class="pre">content_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size">
+<span class="sig-name descname"><span class="pre">header_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size">
+<span class="sig-name descname"><span class="pre">total_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.assert_headers">
+<span class="sig-name descname"><span class="pre">assert_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_headers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.assert_headers" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.axon">
+<span class="sig-name descname"><span class="pre">axon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.axon" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.custom_synapse_cls">
+<span class="sig-name descname"><span class="pre">custom_synapse_cls</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.custom_synapse_cls" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.http_client">
+<span class="sig-name descname"><span class="pre">http_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.http_client" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_axon">
+<span class="sig-name descname"><span class="pre">no_verify_axon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_axon" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_fn">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">no_verify_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_fn" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.streaming_synapse_cls">
+<span class="sig-name descname"><span class="pre">streaming_synapse_cls</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.streaming_synapse_cls" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__no_dendrite">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_ping__no_dendrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__no_dendrite" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__without_verification">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_ping__without_verification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__without_verification" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_synapse__exception_with_set_status_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_synapse_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_verify_axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_synapse__explicitly_set_status_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_synapse_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_verify_axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__internal_error">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_synapse__internal_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_synapse_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_verify_axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__internal_error" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_unknown_path">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_unknown_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_unknown_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonMiddleware">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">TestAxonMiddleware</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonMiddleware" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unittest.IsolatedAsyncioTestCase</span></code></a></p>
+<p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+‘runTest’.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test’s environment (‘fixture’) can be
+implemented by overriding the ‘setUp’ and ‘tearDown’ methods respectively.</p>
+<p>If it is necessary to override the __init__ method, the base class
+__init__ method must always be called. It is important that subclasses
+should not change the signature of their __init__ method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when</p>
+<blockquote>
+<div><p>the instance’s assertion methods fail; test methods raising this
+exception will be deemed to have ‘failed’ rather than ‘errored’.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>longMessage: determines whether long messages (including repr of</dt><dd><p>objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>maxDiff: sets the maximum length of a diff in failure messages</dt><dd><p>by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonMiddleware.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonMiddleware.setUp" title="Link to this definition">#</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.TestAxonMiddleware.test_preprocess">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_preprocess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.TestAxonMiddleware.test_preprocess" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.axon_instance">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">axon_instance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.axon_instance" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.blacklist_fn_fail">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">blacklist_fn_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.blacklist_fn_fail" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.blacklist_fn_pass">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">blacklist_fn_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.blacklist_fn_pass" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.is_nonce_within_allowed_window">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">is_nonce_within_allowed_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse_nonce</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_window_ns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.is_nonce_within_allowed_window" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.middleware">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">middleware</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.middleware" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.mock_request">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">mock_request</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.mock_request" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.priority_fn_pass">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">priority_fn_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.priority_fn_pass" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.priority_fn_timeout">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">priority_fn_timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.priority_fn_timeout" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_allowed_nonce_window_ns">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_allowed_nonce_window_ns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_allowed_nonce_window_ns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_attach">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_attach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_attach" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_attach_initial">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_attach_initial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_attach_initial" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_axon_str_representation">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_axon_str_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ss58_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">started</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_fns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_axon_str_representation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_blacklist_fail">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_blacklist_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">middleware</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_blacklist_fail" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_blacklist_pass">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_blacklist_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">middleware</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_blacklist_pass" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_create_error_response">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_create_error_response</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_create_error_response" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_invalid_ip_address">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_invalid_ip_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_exception</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_invalid_ip_address" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_log_and_handle_error">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_log_and_handle_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_log_and_handle_error" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_nonce_diff_seconds">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_nonce_diff_seconds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nonce_offset_seconds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_nonce_diff_seconds" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_nonce_within_allowed_window">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_nonce_within_allowed_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nonce_offset_seconds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_nonce_within_allowed_window" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_priority_pass">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_priority_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">middleware</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_priority_pass" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_to_string">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_return</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_to_string" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_valid_ipv4_and_ipv6_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_ip_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_verify_body_integrity_edge_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_exception_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_verify_body_integrity_error_cases">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_verify_body_integrity_error_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">computed_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_error</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_verify_body_integrity_error_cases" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_verify_body_integrity_happy_path">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_verify_body_integrity_happy_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_verify_body_integrity_happy_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_verify_fail">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_verify_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">middleware</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_verify_fail" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.test_verify_pass">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">test_verify_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">middleware</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.test_verify_pass" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.verify_fn_fail">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">verify_fn_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.verify_fn_fail" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.unit_tests.test_axon.verify_fn_pass">
+<span class="sig-prename descclassname"><span class="pre">tests.unit_tests.test_axon.</span></span><span class="sig-name descname"><span class="pre">verify_fn_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.unit_tests.test_axon.verify_fn_pass" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../test_async_subtensor/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tests.unit_tests.test_async_subtensor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../test_chain_data/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">tests.unit_tests.test_chain_data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock"><code class="docutils literal notranslate"><span class="pre">AxonMock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.blacklist_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.blacklist_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.forward_class_types"><code class="docutils literal notranslate"><span class="pre">AxonMock.forward_class_types</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.forward_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.forward_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.priority_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.priority_fns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.status_code"><code class="docutils literal notranslate"><span class="pre">AxonMock.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.thread_pool"><code class="docutils literal notranslate"><span class="pre">AxonMock.thread_pool</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.AxonMock.verify_fns"><code class="docutils literal notranslate"><span class="pre">AxonMock.verify_fns</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey"><code class="docutils literal notranslate"><span class="pre">MockHotkey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey.sign"><code class="docutils literal notranslate"><span class="pre">MockHotkey.sign()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockHotkey.ss58_address"><code class="docutils literal notranslate"><span class="pre">MockHotkey.ss58_address</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockInfo"><code class="docutils literal notranslate"><span class="pre">MockInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockInfo.to_string"><code class="docutils literal notranslate"><span class="pre">MockInfo.to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet"><code class="docutils literal notranslate"><span class="pre">MockWallet</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.coldkey"><code class="docutils literal notranslate"><span class="pre">MockWallet.coldkey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.coldkeypub"><code class="docutils literal notranslate"><span class="pre">MockWallet.coldkeypub</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.MockWallet.hotkey"><code class="docutils literal notranslate"><span class="pre">MockWallet.hotkey</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseHTTPClient"><code class="docutils literal notranslate"><span class="pre">SynapseHTTPClient</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseHTTPClient.post_synapse"><code class="docutils literal notranslate"><span class="pre">SynapseHTTPClient.post_synapse()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock"><code class="docutils literal notranslate"><span class="pre">SynapseMock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.deserialize"><code class="docutils literal notranslate"><span class="pre">SynapseMock.deserialize()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.__setattr__"><code class="docutils literal notranslate"><span class="pre">SynapseMock.__setattr__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.get_total_size"><code class="docutils literal notranslate"><span class="pre">SynapseMock.get_total_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.to_headers"><code class="docutils literal notranslate"><span class="pre">SynapseMock.to_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.body_hash"><code class="docutils literal notranslate"><span class="pre">SynapseMock.body_hash()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.parse_headers_to_inputs"><code class="docutils literal notranslate"><span class="pre">SynapseMock.parse_headers_to_inputs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.SynapseMock.from_headers"><code class="docutils literal notranslate"><span class="pre">SynapseMock.from_headers()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.bt_header_axon_process_time</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.content_length</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.header_size</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.timeout</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.NonDeterministicHeaders.total_size</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.assert_headers"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.assert_headers()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.axon"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.axon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.custom_synapse_cls"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.custom_synapse_cls()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.http_client"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.http_client()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_axon"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.no_verify_axon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.no_verify_fn"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.no_verify_fn()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.streaming_synapse_cls"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.streaming_synapse_cls()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__no_dendrite"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_ping__no_dendrite()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_ping__without_verification"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_ping__without_verification()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__exception_with_set_status_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__explicitly_set_status_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_synapse__internal_error"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_synapse__internal_error()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonHTTPAPIResponses.test_unknown_path"><code class="docutils literal notranslate"><span class="pre">TestAxonHTTPAPIResponses.test_unknown_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware.setUp"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware.setUp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.TestAxonMiddleware.test_preprocess"><code class="docutils literal notranslate"><span class="pre">TestAxonMiddleware.test_preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.axon_instance"><code class="docutils literal notranslate"><span class="pre">axon_instance()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.blacklist_fn_fail"><code class="docutils literal notranslate"><span class="pre">blacklist_fn_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.blacklist_fn_pass"><code class="docutils literal notranslate"><span class="pre">blacklist_fn_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.is_nonce_within_allowed_window"><code class="docutils literal notranslate"><span class="pre">is_nonce_within_allowed_window()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.middleware"><code class="docutils literal notranslate"><span class="pre">middleware()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.mock_request"><code class="docutils literal notranslate"><span class="pre">mock_request()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.priority_fn_pass"><code class="docutils literal notranslate"><span class="pre">priority_fn_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.priority_fn_timeout"><code class="docutils literal notranslate"><span class="pre">priority_fn_timeout()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_allowed_nonce_window_ns"><code class="docutils literal notranslate"><span class="pre">test_allowed_nonce_window_ns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_attach"><code class="docutils literal notranslate"><span class="pre">test_attach()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_attach_initial"><code class="docutils literal notranslate"><span class="pre">test_attach_initial()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_axon_str_representation"><code class="docutils literal notranslate"><span class="pre">test_axon_str_representation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_blacklist_fail"><code class="docutils literal notranslate"><span class="pre">test_blacklist_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_blacklist_pass"><code class="docutils literal notranslate"><span class="pre">test_blacklist_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_create_error_response"><code class="docutils literal notranslate"><span class="pre">test_create_error_response()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_invalid_ip_address"><code class="docutils literal notranslate"><span class="pre">test_invalid_ip_address()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_log_and_handle_error"><code class="docutils literal notranslate"><span class="pre">test_log_and_handle_error()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_nonce_diff_seconds"><code class="docutils literal notranslate"><span class="pre">test_nonce_diff_seconds()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_nonce_within_allowed_window"><code class="docutils literal notranslate"><span class="pre">test_nonce_within_allowed_window()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_priority_pass"><code class="docutils literal notranslate"><span class="pre">test_priority_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_to_string"><code class="docutils literal notranslate"><span class="pre">test_to_string()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_valid_ipv4_and_ipv6_address"><code class="docutils literal notranslate"><span class="pre">test_valid_ipv4_and_ipv6_address()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_edge_cases"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_edge_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_error_cases"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_error_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_body_integrity_happy_path"><code class="docutils literal notranslate"><span class="pre">test_verify_body_integrity_happy_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_fail"><code class="docutils literal notranslate"><span class="pre">test_verify_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.test_verify_pass"><code class="docutils literal notranslate"><span class="pre">test_verify_pass()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.verify_fn_fail"><code class="docutils literal notranslate"><span class="pre">verify_fn_fail()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests.unit_tests.test_axon.verify_fn_pass"><code class="docutils literal notranslate"><span class="pre">verify_fn_pass()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

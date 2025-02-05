@@ -1,0 +1,1515 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.utils.mock.subtensor_mock &#8212; Bittensor SDK Docs  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/utils/mock/subtensor_mock';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../autoapi/tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/test_init/index.html">test_init</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../autoapi/chain_interactions/index.html">chain_interactions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/utils/mock/subtensor_mock.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.utils.mock.subtensor_mock</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2024 Opentensor Foundation</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">SimpleNamespace</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TypedDict</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span><span class="p">,</span> <span class="n">patch</span>
+
+<span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<span class="kn">from</span> <span class="nn">substrateinterface.base</span> <span class="kn">import</span> <span class="n">SubstrateInterface</span>
+<span class="kn">from</span> <span class="nn">websockets.sync.client</span> <span class="kn">import</span> <span class="n">ClientConnection</span>
+
+<span class="kn">from</span> <span class="nn">bittensor.core.chain_data</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NeuronInfo</span><span class="p">,</span>
+    <span class="n">NeuronInfoLite</span><span class="p">,</span>
+    <span class="n">PrometheusInfo</span><span class="p">,</span>
+    <span class="n">AxonInfo</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.types</span> <span class="kn">import</span> <span class="n">AxonServeCallParams</span><span class="p">,</span> <span class="n">PrometheusServeCallParams</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.errors</span> <span class="kn">import</span> <span class="n">ChainQueryError</span>
+<span class="kn">from</span> <span class="nn">bittensor.core.subtensor</span> <span class="kn">import</span> <span class="n">Subtensor</span>
+<span class="kn">import</span> <span class="nn">bittensor.core.subtensor</span> <span class="k">as</span> <span class="nn">subtensor_module</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">RAOPERTAO</span><span class="p">,</span> <span class="n">u16_normalized_float</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.balance</span> <span class="kn">import</span> <span class="n">Balance</span>
+
+<span class="c1"># Mock Testing Constant</span>
+<span class="n">__GLOBAL_MOCK_STATE__</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="n">BlockNumber</span> <span class="o">=</span> <span class="nb">int</span>
+
+
+<div class="viewcode-block" id="InfoDict">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.InfoDict">[docs]</a>
+<span class="k">class</span> <span class="nc">InfoDict</span><span class="p">(</span><span class="n">Mapping</span><span class="p">):</span>
+<div class="viewcode-block" id="InfoDict.default">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.InfoDict.default">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="AxonInfoDict">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.AxonInfoDict">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">AxonInfoDict</span><span class="p">(</span><span class="n">InfoDict</span><span class="p">):</span>
+    <span class="n">block</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ip</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># integer representation of ip address</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ip_type</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">protocol</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">placeholder1</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># placeholder for future use</span>
+    <span class="n">placeholder2</span><span class="p">:</span> <span class="nb">int</span>
+
+<div class="viewcode-block" id="AxonInfoDict.default">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.AxonInfoDict.default">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">block</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ip_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">protocol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">placeholder1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">placeholder2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PrometheusInfoDict">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">PrometheusInfoDict</span><span class="p">(</span><span class="n">InfoDict</span><span class="p">):</span>
+    <span class="n">block</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ip</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># integer representation of ip address</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ip_type</span><span class="p">:</span> <span class="nb">int</span>
+
+<div class="viewcode-block" id="PrometheusInfoDict.default">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.PrometheusInfoDict.default">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ip_type</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MockSubtensorValue">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensorValue">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">MockSubtensorValue</span><span class="p">:</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="MockMapResult">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockMapResult">[docs]</a>
+<span class="k">class</span> <span class="nc">MockMapResult</span><span class="p">:</span>
+    <span class="n">records</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">MockSubtensorValue</span><span class="p">,</span> <span class="n">MockSubtensorValue</span><span class="p">]]]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">records</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+            <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">MockSubtensorValue</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">MockSubtensorValue</span><span class="p">]]]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">_records</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="n">MockSubtensorValue</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                    <span class="n">MockSubtensorValue</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">record</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                <span class="p">)</span>
+                <span class="c1"># Make sure record is a tuple of MockSubtensorValue (dict with value attr)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+                        <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">record</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">else</span> <span class="n">record</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span>
+        <span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">records</span> <span class="o">=</span> <span class="n">_records</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="MockSystemState">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSystemState">[docs]</a>
+<span class="k">class</span> <span class="nc">MockSystemState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">Account</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span>  <span class="c1"># address -&gt; block -&gt; balance</span></div>
+
+
+
+<div class="viewcode-block" id="MockSubtensorState">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensorState">[docs]</a>
+<span class="k">class</span> <span class="nc">MockSubtensorState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">Rho</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span>  <span class="c1"># netuid -&gt; block -&gt; rho</span>
+    <span class="n">Kappa</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span>  <span class="c1"># netuid -&gt; block -&gt; kappa</span>
+    <span class="n">Difficulty</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span>  <span class="c1"># netuid -&gt; block -&gt; difficulty</span>
+    <span class="n">ImmunityPeriod</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span>
+        <span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+    <span class="p">]</span>  <span class="c1"># netuid -&gt; block -&gt; immunity_period</span>
+    <span class="n">ValidatorBatchSize</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span>
+        <span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+    <span class="p">]</span>  <span class="c1"># netuid -&gt; block -&gt; validator_batch_size</span>
+    <span class="n">Active</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span>  <span class="c1"># (netuid, uid), block -&gt; active</span>
+    <span class="n">Stake</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span>  <span class="c1"># (hotkey, coldkey) -&gt; block -&gt; stake</span>
+
+    <span class="n">Delegates</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>  <span class="c1"># address -&gt; block -&gt; delegate_take</span>
+
+    <span class="n">NetworksAdded</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span>  <span class="c1"># netuid -&gt; block -&gt; added</span></div>
+
+
+
+<div class="viewcode-block" id="MockChainState">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockChainState">[docs]</a>
+<span class="k">class</span> <span class="nc">MockChainState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">System</span><span class="p">:</span> <span class="n">MockSystemState</span>
+    <span class="n">SubtensorModule</span><span class="p">:</span> <span class="n">MockSubtensorState</span></div>
+
+
+
+<div class="viewcode-block" id="MockSubtensor">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor">[docs]</a>
+<span class="k">class</span> <span class="nc">MockSubtensor</span><span class="p">(</span><span class="n">Subtensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Mock Subtensor class for running tests.</span>
+<span class="sd">    This should mock only methods that make queries to the chain.</span>
+<span class="sd">    e.g. We mock `Subtensor.query_subtensor` instead of all query methods.</span>
+
+<span class="sd">    This class will also store a local (mock) state of the chain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">chain_state</span><span class="p">:</span> <span class="n">MockChainState</span>
+    <span class="n">block_number</span><span class="p">:</span> <span class="nb">int</span>
+
+<div class="viewcode-block" id="MockSubtensor.reset">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.reset">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">__GLOBAL_MOCK_STATE__</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.setup">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.setup">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chain_state&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chain_state&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;System&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Account&quot;</span><span class="p">:</span> <span class="p">{}},</span>
+                <span class="s2">&quot;Balances&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;ExistentialDeposit&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">500</span><span class="p">}},</span>
+                <span class="s2">&quot;SubtensorModule&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;NetworksAdded&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Rho&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Kappa&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Difficulty&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ImmunityPeriod&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorBatchSize&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorSequenceLength&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorEpochsPerReset&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorEpochLength&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;MaxAllowedValidators&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;MinAllowedWeights&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;MaxWeightLimit&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;SynergyScalingLawPower&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ScalingLawPower&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;SubnetworkN&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;MaxAllowedUids&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;NetworkModality&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;BlocksSinceLastStep&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Tempo&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;NetworkConnect&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;EmissionValues&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Burn&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Active&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Uids&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Keys&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Owner&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;IsNetworkMember&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;LastUpdate&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Rank&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Emission&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Incentive&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Consensus&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Trust&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorTrust&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Dividends&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;PruningScores&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;ValidatorPermit&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Weights&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Bonds&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Stake&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;TotalStake&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+                    <span class="s2">&quot;TotalIssuance&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+                    <span class="s2">&quot;TotalHotkeyStake&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;TotalColdkeyStake&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;TxRateLimit&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>  <span class="c1"># No limit</span>
+                    <span class="s2">&quot;Delegates&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Axons&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Prometheus&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;SubnetOwner&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;Commits&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;AdjustmentAlpha&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                    <span class="s2">&quot;BondsMovingAverage&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="s2">&quot;mock&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_endpoint</span> <span class="o">=</span> <span class="s2">&quot;ws://mock_endpoint.bt&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">substrate</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">autospec</span><span class="o">=</span><span class="n">SubstrateInterface</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mock_substrate_interface</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">autospec</span><span class="o">=</span><span class="n">SubstrateInterface</span><span class="p">)</span>
+        <span class="n">mock_websocket</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">autospec</span><span class="o">=</span><span class="n">ClientConnection</span><span class="p">)</span>
+        <span class="n">mock_websocket</span><span class="o">.</span><span class="n">close_code</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span>
+            <span class="n">subtensor_module</span><span class="p">,</span>
+            <span class="s2">&quot;SubstrateInterface&quot;</span><span class="p">,</span>
+            <span class="n">return_value</span><span class="o">=</span><span class="n">mock_substrate_interface</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">websocket</span><span class="o">=</span><span class="n">mock_websocket</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="o">=</span> <span class="n">__GLOBAL_MOCK_STATE__</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chain_state&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chain_state&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+<div class="viewcode-block" id="MockSubtensor.get_block_hash">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_block_hash">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_block_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">sha256</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">block_id</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">64</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.create_subnet">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.create_subnet">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_subnet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="c1"># Per Subnet</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Rho&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Rho&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Kappa&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Kappa&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32_767</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Difficulty&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Difficulty&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10_000_000</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ImmunityPeriod&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ImmunityPeriod&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4096</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorBatchSize&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorBatchSize&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">32</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorSequenceLength&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorSequenceLength&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">256</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorEpochsPerReset&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorEpochsPerReset&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorEpochLength&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorEpochLength&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxAllowedValidators&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxAllowedValidators&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">128</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MinAllowedWeights&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MinAllowedWeights&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1024</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxWeightLimit&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxWeightLimit&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1_000</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;SynergyScalingLawPower&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;SynergyScalingLawPower&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ScalingLawPower&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ScalingLawPower&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;SubnetworkN&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;SubnetworkN&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxAllowedUids&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;MaxAllowedUids&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4096</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworkModality&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworkModality&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BlocksSinceLastStep&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BlocksSinceLastStep&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Tempo&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Tempo&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+
+            <span class="c1"># subtensor_state[&#39;NetworkConnect&#39;][netuid] = {}</span>
+            <span class="c1"># subtensor_state[&#39;NetworkConnect&#39;][netuid][0] = {}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;EmissionValues&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;EmissionValues&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Burn&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Burn&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Commits&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="c1"># Per-UID/Hotkey</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Uids&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Keys&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Owner&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;LastUpdate&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Active&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Rank&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Emission&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Incentive&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Consensus&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Trust&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorTrust&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Dividends&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;PruningScores&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;PruningScores&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorPermit&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Weights&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Bonds&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Axons&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Prometheus&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;AdjustmentAlpha&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;AdjustmentAlpha&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>
+
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BondsMovingAverage&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BondsMovingAverage&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Subnet already exists&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.set_difficulty">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.set_difficulty">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_difficulty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">difficulty</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Subnet does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Difficulty&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">]</span> <span class="o">=</span> <span class="n">difficulty</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_to_balance</span><span class="p">(</span><span class="n">balance</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Balance&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Balance&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">balance</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_tao</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">balance</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">balance</span>
+
+<div class="viewcode-block" id="MockSubtensor.force_set_balance">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.force_set_balance">[docs]</a>
+    <span class="k">def</span> <span class="nf">force_set_balance</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">ss58_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">balance</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Balance&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple[bool, Optional[str]]: (success, err_msg)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">balance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_to_balance</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ss58_address</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">][</span><span class="n">ss58_address</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;free&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+            <span class="p">}</span>
+
+        <span class="n">old_balance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">ss58_address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">)</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">balance</span><span class="o">.</span><span class="n">rao</span> <span class="o">-</span> <span class="n">old_balance</span><span class="o">.</span><span class="n">rao</span>
+
+        <span class="c1"># Update total issuance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;TotalIssuance&quot;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;TotalIssuance&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="o">+</span> <span class="n">diff</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">][</span><span class="n">ss58_address</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;free&quot;</span><span class="p">:</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">:</span> <span class="n">balance</span><span class="o">.</span><span class="n">rao</span><span class="p">}}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+    <span class="c1"># Alias for force_set_balance</span>
+    <span class="n">sudo_force_set_balance</span> <span class="o">=</span> <span class="n">force_set_balance</span>
+
+<div class="viewcode-block" id="MockSubtensor.do_block_step">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_block_step">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_block_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Doesn&#39;t do epoch</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">subnet</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BlocksSinceLastStep&quot;</span><span class="p">][</span><span class="n">subnet</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+                    <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;BlocksSinceLastStep&quot;</span><span class="p">][</span><span class="n">subnet</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="o">+</span> <span class="mi">1</span>
+            <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_handle_type_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+        <span class="n">defaults_mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;TotalStake&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;TotalHotkeyStake&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;TotalColdkeyStake&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;Stake&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">defaults_mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MockSubtensor.commit">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.commit">[docs]</a>
+    <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">uid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_uid_for_hotkey_on_subnet</span><span class="p">(</span>
+            <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">uid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Neuron not found&quot;</span><span class="p">)</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Commits&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span> <span class="p">{})[</span><span class="n">uid</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.get_commitment">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_commitment">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_commitment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">block</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">block</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Commits&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">block</span><span class="p">][</span><span class="n">uid</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.query_subtensor">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_subtensor">[docs]</a>
+    <span class="k">def</span> <span class="nf">query_subtensor</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MockSubtensorValue</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Use prefix</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">SimpleNamespace</span><span class="p">(</span>
+                            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_type_default</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+                        <span class="p">)</span>
+
+            <span class="c1"># Use block</span>
+            <span class="n">state_at_block</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">state_at_block</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">block</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">state_at_block</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">state_at_block</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">state_at_block</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_type_default</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_type_default</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.query_map_subtensor">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_map_subtensor">[docs]</a>
+    <span class="k">def</span> <span class="nf">query_map_subtensor</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MockMapResult</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Note: Double map requires one param</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Use prefix</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">MockMapResult</span><span class="p">([])</span>
+
+            <span class="c1"># Check if single map or double map</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">MockMapResult</span><span class="p">([])</span>
+
+            <span class="n">inner</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Should have at least one key</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inner</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid state&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Check if double map</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">inner</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="c1"># is double map</span>
+                <span class="k">raise</span> <span class="n">ChainQueryError</span><span class="p">(</span><span class="s2">&quot;Double map requires one param&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Iterate over each key and add value to list, max at block</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">block</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>  <span class="c1"># Skip if no result for this key at `block` or earlier</span>
+
+                <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">MockMapResult</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">MockMapResult</span><span class="p">([])</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.query_constant">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.query_constant">[docs]</a>
+    <span class="k">def</span> <span class="nf">query_constant</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">module_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">constant_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">object</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="n">state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">constant_name</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">constant_name</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="c1"># Use block</span>
+            <span class="n">state_at_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">state_at_block</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">SimpleNamespace</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">state_at_block</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">state_at_block</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;free&quot;</span><span class="p">]</span>  <span class="c1"># Can be None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.get_current_block">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_current_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_current_block</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span></div>
+
+
+    <span class="c1"># ==== Balance RPC methods ====</span>
+
+<div class="viewcode-block" id="MockSubtensor.get_balance">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_balance">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Balance&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">address</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="c1"># Use block</span>
+            <span class="n">balance_state</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;free&quot;</span><span class="p">]</span>
+            <span class="n">state_at_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+                <span class="n">balance_state</span><span class="p">,</span> <span class="n">block</span>
+            <span class="p">)</span>  <span class="c1"># Can be None</span>
+            <span class="k">if</span> <span class="n">state_at_block</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">bal_as_int</span> <span class="o">=</span> <span class="n">state_at_block</span>
+                <span class="k">return</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span><span class="n">bal_as_int</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ==== Neuron RPC methods ====</span>
+
+<div class="viewcode-block" id="MockSubtensor.neuron_for_uid">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid">[docs]</a>
+    <span class="k">def</span> <span class="nf">neuron_for_uid</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NeuronInfo</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">uid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NeuronInfo</span><span class="o">.</span><span class="n">get_null_neuron</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">neuron_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_neuron_subnet_exists</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">neuron_info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">neuron_info</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.neurons">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons">[docs]</a>
+    <span class="k">def</span> <span class="nf">neurons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">NeuronInfo</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Subnet does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">neurons</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">subnet_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;SubnetworkN&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subnet_n</span><span class="p">):</span>
+            <span class="n">neuron_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neuron_for_uid</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">neuron_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">neurons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neuron_info</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">neurons</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_most_recent_storage</span><span class="p">(</span>
+        <span class="n">storage</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">BlockNumber</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">block_number</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">block_number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">storage</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="n">items</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">block_number</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">block_number</span> <span class="ow">in</span> <span class="n">storage</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">storage</span><span class="p">[</span><span class="n">block_number</span><span class="p">]</span>
+
+                <span class="n">block_number</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_get_axon_info</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hotkey</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AxonInfoDict</span><span class="p">:</span>
+        <span class="c1"># Axons [netuid][hotkey][block_number]</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Axons&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">AxonInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">hotkey</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Axons&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">AxonInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Axons&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">hotkey</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">AxonInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_get_prometheus_info</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hotkey</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PrometheusInfoDict</span><span class="p">:</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Prometheus&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">PrometheusInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">hotkey</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Prometheus&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">PrometheusInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Prometheus&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">hotkey</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PrometheusInfoDict</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">_neuron_subnet_exists</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NeuronInfo</span><span class="p">]:</span>
+        <span class="n">subtensor_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span><span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;SubnetworkN&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">uid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">hotkey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span><span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Keys&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">hotkey</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">axon_info_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_axon_info</span><span class="p">(</span><span class="n">netuid</span><span class="p">,</span> <span class="n">hotkey</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+
+        <span class="n">prometheus_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_prometheus_info</span><span class="p">(</span><span class="n">netuid</span><span class="p">,</span> <span class="n">hotkey</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+
+        <span class="n">coldkey</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span><span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Owner&quot;</span><span class="p">][</span><span class="n">hotkey</span><span class="p">],</span> <span class="n">block</span><span class="p">)</span>
+        <span class="n">active</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Active&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Rank&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">emission</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Emission&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">incentive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Incentive&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">consensus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Consensus&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">trust</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Trust&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">validator_trust</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorTrust&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">dividends</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Dividends&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">pruning_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;PruningScores&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">last_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;LastUpdate&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">validator_permit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;ValidatorPermit&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Weights&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+        <span class="n">bonds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Bonds&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">][</span><span class="n">uid</span><span class="p">],</span> <span class="n">block</span>
+        <span class="p">)</span>
+
+        <span class="n">stake_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">coldkey</span><span class="p">:</span> <span class="n">Balance</span><span class="o">.</span><span class="n">from_rao</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+                    <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Stake&quot;</span><span class="p">][</span><span class="n">hotkey</span><span class="p">][</span><span class="n">coldkey</span><span class="p">],</span> <span class="n">block</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">coldkey</span> <span class="ow">in</span> <span class="n">subtensor_state</span><span class="p">[</span><span class="s2">&quot;Stake&quot;</span><span class="p">][</span><span class="n">hotkey</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">stake</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">stake_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">int</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">]</span>
+        <span class="n">bonds</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">int</span><span class="p">(</span><span class="n">bond</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">bond</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">]</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">rank</span><span class="p">)</span>
+        <span class="n">emission</span> <span class="o">=</span> <span class="n">emission</span> <span class="o">/</span> <span class="n">RAOPERTAO</span>
+        <span class="n">incentive</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">incentive</span><span class="p">)</span>
+        <span class="n">consensus</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">consensus</span><span class="p">)</span>
+        <span class="n">trust</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">trust</span><span class="p">)</span>
+        <span class="n">validator_trust</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">validator_trust</span><span class="p">)</span>
+        <span class="n">dividends</span> <span class="o">=</span> <span class="n">u16_normalized_float</span><span class="p">(</span><span class="n">dividends</span><span class="p">)</span>
+        <span class="n">prometheus_info</span> <span class="o">=</span> <span class="n">PrometheusInfo</span><span class="o">.</span><span class="n">fix_decoded_values</span><span class="p">(</span><span class="n">prometheus_info</span><span class="p">)</span>
+        <span class="n">axon_info_</span> <span class="o">=</span> <span class="n">AxonInfo</span><span class="o">.</span><span class="n">from_neuron_info</span><span class="p">(</span>
+            <span class="p">{</span><span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="n">hotkey</span><span class="p">,</span> <span class="s2">&quot;coldkey&quot;</span><span class="p">:</span> <span class="n">coldkey</span><span class="p">,</span> <span class="s2">&quot;axon_info&quot;</span><span class="p">:</span> <span class="n">axon_info_</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="n">neuron_info</span> <span class="o">=</span> <span class="n">NeuronInfo</span><span class="p">(</span>
+            <span class="n">hotkey</span><span class="o">=</span><span class="n">hotkey</span><span class="p">,</span>
+            <span class="n">coldkey</span><span class="o">=</span><span class="n">coldkey</span><span class="p">,</span>
+            <span class="n">uid</span><span class="o">=</span><span class="n">uid</span><span class="p">,</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+            <span class="n">active</span><span class="o">=</span><span class="n">active</span><span class="p">,</span>
+            <span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span>
+            <span class="n">emission</span><span class="o">=</span><span class="n">emission</span><span class="p">,</span>
+            <span class="n">incentive</span><span class="o">=</span><span class="n">incentive</span><span class="p">,</span>
+            <span class="n">consensus</span><span class="o">=</span><span class="n">consensus</span><span class="p">,</span>
+            <span class="n">trust</span><span class="o">=</span><span class="n">trust</span><span class="p">,</span>
+            <span class="n">validator_trust</span><span class="o">=</span><span class="n">validator_trust</span><span class="p">,</span>
+            <span class="n">dividends</span><span class="o">=</span><span class="n">dividends</span><span class="p">,</span>
+            <span class="n">pruning_score</span><span class="o">=</span><span class="n">pruning_score</span><span class="p">,</span>
+            <span class="n">last_update</span><span class="o">=</span><span class="n">last_update</span><span class="p">,</span>
+            <span class="n">validator_permit</span><span class="o">=</span><span class="n">validator_permit</span><span class="p">,</span>
+            <span class="n">stake</span><span class="o">=</span><span class="n">stake</span><span class="p">,</span>
+            <span class="n">stake_dict</span><span class="o">=</span><span class="n">stake_dict</span><span class="p">,</span>
+            <span class="n">total_stake</span><span class="o">=</span><span class="n">stake</span><span class="p">,</span>
+            <span class="n">prometheus_info</span><span class="o">=</span><span class="n">prometheus_info</span><span class="p">,</span>
+            <span class="n">axon_info</span><span class="o">=</span><span class="n">axon_info_</span><span class="p">,</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span>
+            <span class="n">bonds</span><span class="o">=</span><span class="n">bonds</span><span class="p">,</span>
+            <span class="n">is_null</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">neuron_info</span>
+
+<div class="viewcode-block" id="MockSubtensor.neurons_lite">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.neurons_lite">[docs]</a>
+    <span class="k">def</span> <span class="nf">neurons_lite</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">NeuronInfoLite</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Subnet does not exist&quot;</span><span class="p">)</span>
+
+        <span class="n">neurons</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">subnet_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_recent_storage</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;SubnetworkN&quot;</span><span class="p">][</span><span class="n">netuid</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subnet_n</span><span class="p">):</span>
+            <span class="n">neuron_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">neuron_for_uid_lite</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">neuron_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">neurons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neuron_info</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">neurons</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.neuron_for_uid_lite">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.neuron_for_uid_lite">[docs]</a>
+    <span class="k">def</span> <span class="nf">neuron_for_uid_lite</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NeuronInfoLite</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">uid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NeuronInfoLite</span><span class="o">.</span><span class="n">get_null_neuron</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span> <span class="o">&lt;</span> <span class="n">block</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot query block in the future&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+
+        <span class="k">if</span> <span class="n">netuid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">][</span><span class="s2">&quot;NetworksAdded&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">neuron_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_neuron_subnet_exists</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">netuid</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">neuron_info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># TODO Why does this return None here but a null neuron earlier?</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">NeuronInfoLite</span><span class="p">(</span>
+                <span class="n">hotkey</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">hotkey</span><span class="p">,</span>
+                <span class="n">coldkey</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">coldkey</span><span class="p">,</span>
+                <span class="n">uid</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span>
+                <span class="n">netuid</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">netuid</span><span class="p">,</span>
+                <span class="n">active</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">active</span><span class="p">,</span>
+                <span class="n">stake</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">stake</span><span class="p">,</span>
+                <span class="n">stake_dict</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">stake_dict</span><span class="p">,</span>
+                <span class="n">total_stake</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">total_stake</span><span class="p">,</span>
+                <span class="n">rank</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
+                <span class="n">emission</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">emission</span><span class="p">,</span>
+                <span class="n">incentive</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">incentive</span><span class="p">,</span>
+                <span class="n">consensus</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">consensus</span><span class="p">,</span>
+                <span class="n">trust</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">trust</span><span class="p">,</span>
+                <span class="n">validator_trust</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">validator_trust</span><span class="p">,</span>
+                <span class="n">dividends</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">dividends</span><span class="p">,</span>
+                <span class="n">last_update</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">last_update</span><span class="p">,</span>
+                <span class="n">validator_permit</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">validator_permit</span><span class="p">,</span>
+                <span class="n">prometheus_info</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">prometheus_info</span><span class="p">,</span>
+                <span class="n">axon_info</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">axon_info</span><span class="p">,</span>
+                <span class="n">pruning_score</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">pruning_score</span><span class="p">,</span>
+                <span class="n">is_null</span><span class="o">=</span><span class="n">neuron_info</span><span class="o">.</span><span class="n">is_null</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.get_transfer_fee">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.get_transfer_fee">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_transfer_fee</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Balance&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Balance&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Balance</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.do_transfer">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_transfer">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_transfer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">transfer_balance</span><span class="p">:</span> <span class="s2">&quot;Balance&quot;</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="n">bal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+        <span class="n">dest_bal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+        <span class="n">transfer_fee</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transfer_fee</span><span class="p">(</span><span class="n">wallet</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">transfer_balance</span><span class="p">)</span>
+
+        <span class="n">existential_deposit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_existential_deposit</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">bal</span> <span class="o">&lt;</span> <span class="n">transfer_balance</span> <span class="o">+</span> <span class="n">existential_deposit</span> <span class="o">+</span> <span class="n">transfer_fee</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Insufficient balance&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Remove from the free balance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">][</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span>
+            <span class="s2">&quot;free&quot;</span>
+        <span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">block_number</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">bal</span> <span class="o">-</span> <span class="n">transfer_balance</span> <span class="o">-</span> <span class="n">transfer_fee</span><span class="p">)</span><span class="o">.</span><span class="n">rao</span>
+
+        <span class="c1"># Add to the free balance</span>
+        <span class="k">if</span> <span class="n">dest</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">][</span><span class="n">dest</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;free&quot;</span><span class="p">:</span> <span class="p">{}}}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain_state</span><span class="p">[</span><span class="s2">&quot;System&quot;</span><span class="p">][</span><span class="s2">&quot;Account&quot;</span><span class="p">][</span><span class="n">dest</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;free&quot;</span><span class="p">][</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">block_number</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dest_bal</span> <span class="o">+</span> <span class="n">transfer_balance</span><span class="p">)</span><span class="o">.</span><span class="n">rao</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.min_required_stake">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.min_required_stake">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">min_required_stake</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        As the minimum required stake may change, this method allows us to dynamically</span>
+<span class="sd">        update the amount in the mock without updating the tests</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># valid minimum threshold as of 2024/05/01</span>
+        <span class="k">return</span> <span class="mi">100_000_000</span>  <span class="c1"># RAO</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.do_serve_prometheus">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_serve_prometheus">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_serve_prometheus</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="p">:</span> <span class="s2">&quot;PrometheusServeCallParams&quot;</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.do_set_weights">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_set_weights">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_set_weights</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">uids</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">vals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="MockSubtensor.do_serve_axon">
+<a class="viewcode-back" href="../../../../autoapi/bittensor/utils/mock/subtensor_mock/index.html#bittensor.utils.mock.subtensor_mock.MockSubtensor.do_serve_axon">[docs]</a>
+    <span class="k">def</span> <span class="nf">do_serve_axon</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="p">:</span> <span class="s2">&quot;AxonServeCallParams&quot;</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -16,27 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/bittensor-custom.css?v=c1dfe055" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -45,10 +48,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/core/axon/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="bittensor.core.config" href="../config/index.html" />
+    <link rel="next" title="bittensor.core.chain_data" href="../chain_data/index.html" />
     <link rel="prev" title="bittensor.core.async_subtensor" href="../async_subtensor/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -109,7 +101,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,35 +132,81 @@
     
     
     <img src="../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
-    <script>document.write(`<img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark" alt="Bittensor SDK Docs  documentation - Home"/>`);</script>
+    <img src="../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../setup/index.html">setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tests/index.html">tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/e2e_tests/index.html">tests.e2e_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/conftest/index.html">tests.e2e_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_axon/index.html">tests.e2e_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_reveal_v3/index.html">tests.e2e_tests.test_commit_reveal_v3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_commit_weights/index.html">tests.e2e_tests.test_commit_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_dendrite/index.html">tests.e2e_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_incentive/index.html">tests.e2e_tests.test_incentive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_liquid_alpha/index.html">tests.e2e_tests.test_liquid_alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_metagraph/index.html">tests.e2e_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_neuron_certificate/index.html">tests.e2e_tests.test_neuron_certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_root_set_weights/index.html">tests.e2e_tests.test_root_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_set_weights/index.html">tests.e2e_tests.test_set_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_subtensor_functions/index.html">tests.e2e_tests.test_subtensor_functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/e2e_tests/test_transfer/index.html">tests.e2e_tests.test_transfer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/helpers/index.html">tests.helpers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/helpers/index.html">tests.helpers.helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/helpers/integration_websocket_data/index.html">tests.helpers.integration_websocket_data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/integration_tests/index.html">tests.integration_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_metagraph_integration/index.html">tests.integration_tests.test_metagraph_integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/integration_tests/test_subtensor_integration/index.html">tests.integration_tests.test_subtensor_integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../tests/unit_tests/index.html">tests.unit_tests</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/conftest/index.html">tests.unit_tests.conftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/extrinsics/index.html">tests.unit_tests.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/factories/index.html">tests.unit_tests.factories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_async_subtensor/index.html">tests.unit_tests.test_async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_axon/index.html">tests.unit_tests.test_axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_chain_data/index.html">tests.unit_tests.test_chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_config/index.html">tests.unit_tests.test_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_dendrite/index.html">tests.unit_tests.test_dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_deprecated/index.html">tests.unit_tests.test_deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_logging/index.html">tests.unit_tests.test_logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_metagraph/index.html">tests.unit_tests.test_metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subnets/index.html">tests.unit_tests.test_subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_subtensor/index.html">tests.unit_tests.test_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_synapse/index.html">tests.unit_tests.test_synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/test_tensor/index.html">tests.unit_tests.test_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tests/unit_tests/utils/index.html">tests.unit_tests.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../test_init/index.html">test_init</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../chain_data/index.html">bittensor.core.chain_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../config/index.html">bittensor.core.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../dendrite/index.html">bittensor.core.dendrite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extrinsics/index.html">bittensor.core.extrinsics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../metagraph/index.html">bittensor.core.metagraph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../settings/index.html">bittensor.core.settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../stream/index.html">bittensor.core.stream</a></li>
@@ -179,24 +218,26 @@
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/async_substrate_interface/index.html">bittensor.utils.async_substrate_interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/registration/index.html">bittensor.utils.registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/version/index.html">bittensor.utils.version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../../__main__/index.html">bittensor.__main__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../e2e_test_utils/index.html">e2e_test_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../post_install_cli/index.html">post_install_cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../chain_interactions/index.html">chain_interactions</a></li>
 </ul>
 </details></li>
 </ul>
@@ -207,9 +248,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -370,24 +416,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -416,9 +454,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon"><code class="docutils literal notranslate"><span class="pre">Axon</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__del__"><code class="docutils literal notranslate"><span class="pre">Axon.__del__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__repr__"><code class="docutils literal notranslate"><span class="pre">Axon.__repr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__str__"><code class="docutils literal notranslate"><span class="pre">Axon.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.add_args"><code class="docutils literal notranslate"><span class="pre">Axon.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.app"><code class="docutils literal notranslate"><span class="pre">Axon.app</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.attach"><code class="docutils literal notranslate"><span class="pre">Axon.attach()</span></code></a></li>
@@ -436,8 +471,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.help"><code class="docutils literal notranslate"><span class="pre">Axon.help()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.info"><code class="docutils literal notranslate"><span class="pre">Axon.info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.ip"><code class="docutils literal notranslate"><span class="pre">Axon.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.log_level"><code class="docutils literal notranslate"><span class="pre">Axon.log_level</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.max_workers"><code class="docutils literal notranslate"><span class="pre">Axon.max_workers</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.middleware_cls"><code class="docutils literal notranslate"><span class="pre">Axon.middleware_cls</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.nonces"><code class="docutils literal notranslate"><span class="pre">Axon.nonces</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.port"><code class="docutils literal notranslate"><span class="pre">Axon.port</span></code></a></li>
@@ -467,7 +500,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer._wrapper_run"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer._wrapper_run()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.install_signal_handlers"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.install_signal_handlers()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.is_running"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.is_running</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.run_in_thread"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.run_in_thread()</span></code></a></li>
@@ -511,13 +543,13 @@ document.write(`
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.axon.Axon" title="bittensor.core.axon.Axon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Axon</span></code></a></p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">Axon</span></code> class in Bittensor is a fundamental component that serves as the server-side interface for a neuron within the Bittensor network.</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">Axon</span></code> class in Bittensor is a fundamental component that serves as the server-side interface for a neuron</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.axon.AxonMiddleware" title="bittensor.core.axon.AxonMiddleware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AxonMiddleware</span></code></a></p></td>
 <td><p>The <cite>AxonMiddleware</cite> class is a key component in the Axon server, responsible for processing all incoming requests.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.axon.FastAPIThreadedServer" title="bittensor.core.axon.FastAPIThreadedServer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code></a></p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code> class is a specialized server implementation for the Axon server in the Bittensor network.</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code> class is a specialized server implementation for the Axon server in the Bittensor</p></td>
 </tr>
 </tbody>
 </table>
@@ -541,8 +573,9 @@ document.write(`
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">Axon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon" title="Link to this definition">#</a></dt>
-<dd><p>The <code class="docutils literal notranslate"><span class="pre">Axon</span></code> class in Bittensor is a fundamental component that serves as the server-side interface for a neuron within the Bittensor network.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">Axon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon" title="Link to this definition">#</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">Axon</span></code> class in Bittensor is a fundamental component that serves as the server-side interface for a neuron
+within the Bittensor network.</p>
 <p>This class is responsible for managing
 incoming requests from other neurons and implements various mechanisms to ensure efficient
 and secure network interactions.</p>
@@ -662,14 +695,18 @@ allowing neurons to communicate effectively and securely.</p>
 </div>
 <dl class="simple">
 <dt>Importance and Functionality</dt><dd><dl class="simple">
-<dt>Endpoint Registration</dt><dd><p>This method dynamically registers API endpoints based on the Synapse used, allowing the Axon to respond to specific types of requests and synapses.</p>
+<dt>Endpoint Registration</dt><dd><p>This method dynamically registers API endpoints based on the Synapse used, allowing the Axon to respond to
+specific types of requests and synapses.</p>
 </dd>
 <dt>Customization of Request Handling</dt><dd><p>By attaching different functions, the Axon can customize how it
-handles, verifies, prioritizes, and potentially blocks incoming requests, making it adaptable to various network scenarios.</p>
+handles, verifies, prioritizes, and potentially blocks incoming requests, making it adaptable to various
+network scenarios.</p>
 </dd>
-<dt>Security and Efficiency</dt><dd><p>The method contributes to both the security (via verification and blacklisting) and efficiency (via prioritization) of request handling, which are crucial in a decentralized network environment.</p>
+<dt>Security and Efficiency</dt><dd><p>The method contributes to both the security (via verification and blacklisting) and efficiency (via
+prioritization) of request handling, which are crucial in a decentralized network environment.</p>
 </dd>
-<dt>Flexibility</dt><dd><p>The ability to define custom functions for different aspects of request handling provides great flexibility, allowing the Axon to be tailored to specific needs and use cases within the Bittensor network.</p>
+<dt>Flexibility</dt><dd><p>The ability to define custom functions for different aspects of request handling provides great flexibility,
+allowing the Axon to be tailored to specific needs and use cases within the Bittensor network.</p>
 </dd>
 <dt>Error Handling and Validation</dt><dd><p>The method ensures that the attached functions meet the required
 signatures, providing error handling to prevent runtime issues.</p>
@@ -687,43 +724,14 @@ signatures, providing error handling to prevent runtime issues.</p>
 <li><p><strong>ip</strong> (<code class="xref py py-type docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – Binding ip.</p></li>
 <li><p><strong>external_ip</strong> (<code class="xref py py-type docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The external ip of the server to broadcast to the network.</p></li>
 <li><p><strong>external_port</strong> (<code class="xref py py-type docutils literal notranslate"><span class="pre">Optional[int]</span></code>) – The external port of the server to broadcast to the network.</p></li>
-<li><p><strong>max_workers</strong> (<code class="xref py py-type docutils literal notranslate"><span class="pre">Optional[int]</span></code>) – Used to create the threadpool if not passed, specifies the number of active threads servicing requests.</p></li>
+<li><p><strong>max_workers</strong> (<code class="xref py py-type docutils literal notranslate"><span class="pre">Optional[int]</span></code>) – Used to create the threadpool if not passed, specifies the number of
+active threads servicing requests.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.axon.Axon.__del__">
-<span class="sig-name descname"><span class="pre">__del__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.__del__" title="Link to this definition">#</a></dt>
-<dd><p>This magic method is called when the Axon object is about to be destroyed.
-It ensures that the Axon server shuts down properly.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.axon.Axon.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.__repr__" title="Link to this definition">#</a></dt>
-<dd><p>Provides a machine-readable (unambiguous) representation of the Axon instance.
-It is made identical to __str__ in this case.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.axon.Axon.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.__str__" title="Link to this definition">#</a></dt>
-<dd><p>Provides a human-readable representation of the Axon instance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.add_args">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.add_args" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.add_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.add_args" title="Link to this definition">#</a></dt>
 <dd><p>Adds AxonServer-specific command-line arguments to the argument parser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -746,7 +754,7 @@ It is made identical to __str__ in this case.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.attach">
-<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blacklist_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.attach" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blacklist_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.attach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.attach" title="Link to this definition">#</a></dt>
 <dd><p>Attaches custom functions to the Axon server for handling incoming requests. This method enables
 the <code class="docutils literal notranslate"><span class="pre">Axon</span></code> to define specific behaviors for request forwarding, verification, blacklisting, and
 prioritization, thereby customizing its interaction within the Bittensor network.</p>
@@ -760,10 +768,17 @@ and ensuring efficient and secure handling of requests within the Bittensor netw
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>forward_fn</strong> (<em>Callable</em>) – Function to be called when the API endpoint is accessed. It should have at least one argument.</p></li>
-<li><p><strong>blacklist_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to filter out undesired requests. It should take the same arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a boolean value. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning no blacklist filter will be used.</p></li>
-<li><p><strong>priority_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to rank requests based on their priority. It should take the same arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a numerical value representing the request’s priority. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning no priority sorting will be applied.</p></li>
-<li><p><strong>verify_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to verify requests. It should take the same arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a boolean value. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">self.default_verify()</span></code> function will be used.</p></li>
+<li><p><strong>forward_fn</strong> (<em>Callable</em>) – Function to be called when the API endpoint is accessed. It should have at least one
+argument.</p></li>
+<li><p><strong>blacklist_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to filter out undesired requests. It should take the same
+arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a boolean value. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning no blacklist
+filter will be used.</p></li>
+<li><p><strong>priority_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to rank requests based on their priority. It should take the same
+arguments as <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a numerical value representing the request’s priority.
+Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning no priority sorting will be applied.</p></li>
+<li><p><strong>verify_fn</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – Function to verify requests. It should take the same arguments as
+<code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code> and return a boolean value. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">self.default_verify()</span></code> function will be
+used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -772,7 +787,8 @@ and ensuring efficient and secure handling of requests within the Bittensor netw
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The methods <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">blacklist_fn()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">priority_fn()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">verify_fn()</span></code> should be designed to receive the same parameters.</p>
+<p>The methods <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_fn()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">blacklist_fn()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">priority_fn()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">verify_fn()</span></code> should be
+designed to receive the same parameters.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -833,7 +849,7 @@ use cases.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.check_config">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.check_config" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.check_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.check_config" title="Link to this definition">#</a></dt>
 <dd><p>This method checks the configuration for the axon’s port and wallet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -847,12 +863,12 @@ use cases.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.config">
-<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.config" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">config</span></span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.config" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.default_verify">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.default_verify" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.default_verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.default_verify" title="Link to this definition">#</a></dt>
 <dd><p>This method is used to verify the authenticity of a received message using a digital signature.</p>
 <p>It ensures that the message was not tampered with and was sent by the expected sender.</p>
 <p>The <a class="reference internal" href="#bittensor.core.axon.Axon.default_verify" title="bittensor.core.axon.Axon.default_verify"><code class="xref py py-func docutils literal notranslate"><span class="pre">default_verify()</span></code></a> method in the Bittensor framework is a critical security function within the
@@ -862,8 +878,8 @@ indeed sent by the claimed sender. The method plays a pivotal role in maintainin
 and reliability of the communication within the Bittensor network.</p>
 <dl class="simple">
 <dt>Key Features</dt><dd><dl class="simple">
-<dt>Security Assurance</dt><dd><p>The default_verify method is crucial for ensuring the security of the Bittensor network. By verifying digital signatures, it guards against unauthorized access
-and data manipulation.</p>
+<dt>Security Assurance</dt><dd><p>The default_verify method is crucial for ensuring the security of the Bittensor network. By verifying
+digital signatures, it guards against unauthorized access and data manipulation.</p>
 </dd>
 <dt>Preventing Replay Attacks</dt><dd><p>The method checks for increasing nonce values, which is a vital
 step in preventing replay attacks. A replay attack involves an adversary reusing or
@@ -939,22 +955,22 @@ signature using the sender’s public key.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.full_address">
-<span class="sig-name descname"><span class="pre">full_address</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.full_address" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">full_address</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':'</span></em><a class="headerlink" href="#bittensor.core.axon.Axon.full_address" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.help">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.help" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.help" title="Link to this definition">#</a></dt>
 <dd><p>Prints the help text (list of command-line arguments and their descriptions) to stdout.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.info">
-<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.info" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.info" title="Link to this definition">#</a></dt>
 <dd><p>Returns the axon info object associated with this axon.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../chain_data/index.html#bittensor.core.chain_data.AxonInfo" title="bittensor.core.chain_data.AxonInfo">bittensor.core.chain_data.AxonInfo</a></p>
+<dd class="field-odd"><p>bittensor.core.chain_data.AxonInfo</p>
 </dd>
 </dl>
 </dd></dl>
@@ -962,16 +978,6 @@ signature using the sender’s public key.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.ip">
 <span class="sig-name descname"><span class="pre">ip</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.ip" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.axon.Axon.log_level">
-<span class="sig-name descname"><span class="pre">log_level</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.log_level" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bittensor.core.axon.Axon.max_workers">
-<span class="sig-name descname"><span class="pre">max_workers</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.max_workers" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1001,7 +1007,7 @@ signature using the sender’s public key.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.serve">
-<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.serve" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.serve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.serve" title="Link to this definition">#</a></dt>
 <dd><p>Serves the Axon on the specified subtensor connection using the configured wallet. This method
 registers the Axon with a specific subnet within the Bittensor network, identified by the <code class="docutils literal notranslate"><span class="pre">netuid</span></code>.
 It links the Axon to the broader network, allowing it to participate in the decentralized exchange
@@ -1009,8 +1015,10 @@ of information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet to register on. This ID is essential for the Axon to correctly position itself within the Bittensor network topology.</p></li>
-<li><p><strong>subtensor</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a><em>]</em>) – The subtensor connection to use for serving. If not provided, a new connection is established based on default configurations.</p></li>
+<li><p><strong>netuid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The unique identifier of the subnet to register on. This ID is essential for the Axon to
+correctly position itself within the Bittensor network topology.</p></li>
+<li><p><strong>subtensor</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../subtensor/index.html#bittensor.core.subtensor.Subtensor" title="bittensor.core.subtensor.Subtensor"><em>bittensor.core.subtensor.Subtensor</em></a><em>]</em>) – The subtensor connection to use for serving. If
+not provided, a new connection is established based on default configurations.</p></li>
 <li><p><strong>certificate</strong> (<em>Optional</em><em>[</em><em>bittensor.utils.Certificate</em><em>]</em>)</p></li>
 </ul>
 </dd>
@@ -1036,7 +1044,7 @@ to start receiving and processing requests from other neurons.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.start" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.start" title="Link to this definition">#</a></dt>
 <dd><p>Starts the Axon server and its underlying FastAPI server thread, transitioning the state of the
 Axon instance to <code class="docutils literal notranslate"><span class="pre">started</span></code>. This method initiates the server’s ability to accept and process
 incoming network requests, making it an active participant in the Bittensor network.</p>
@@ -1059,7 +1067,10 @@ within the Bittensor network.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>After invoking this method, the Axon is ready to handle requests as per its configured endpoints and custom logic.</p>
+<dl class="simple">
+<dt>After invoking this method, the Axon is ready to handle requests as per its configured endpoints and custom</dt><dd><p>logic.</p>
+</dd>
+</dl>
 </div>
 </dd></dl>
 
@@ -1070,7 +1081,7 @@ within the Bittensor network.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.stop" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.stop" title="Link to this definition">#</a></dt>
 <dd><p>Stops the Axon server and its underlying GRPC server thread, transitioning the state of the Axon
 instance to <code class="docutils literal notranslate"><span class="pre">stopped</span></code>. This method ceases the server’s ability to accept new network requests,
 effectively removing the neuron’s server-side presence in the Bittensor network.</p>
@@ -1094,7 +1105,8 @@ shut down or needs to temporarily go offline.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is advisable to ensure that all ongoing processes or requests are completed or properly handled before invoking this method.</p>
+<p>It is advisable to ensure that all ongoing processes or requests are completed or properly handled before
+invoking this method.</p>
 </div>
 </dd></dl>
 
@@ -1105,18 +1117,18 @@ shut down or needs to temporarily go offline.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.to_string">
-<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.to_string" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.to_string" title="Link to this definition">#</a></dt>
 <dd><p>Provides a human-readable representation of the AxonInfo for this Axon.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.uuid">
-<span class="sig-name descname"><span class="pre">uuid</span></span><a class="headerlink" href="#bittensor.core.axon.Axon.uuid" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">uuid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#bittensor.core.axon.Axon.uuid" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.Axon.verify_body_integrity">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verify_body_integrity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.Axon.verify_body_integrity" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verify_body_integrity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#Axon.verify_body_integrity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.Axon.verify_body_integrity" title="Link to this definition">#</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">verify_body_integrity</span></code> method in the Bittensor framework is a key security function within the
 Axon server’s middleware. It is responsible for ensuring the integrity of the body of incoming HTTP
 requests.</p>
@@ -1129,13 +1141,19 @@ a level of trust and security between the sender and receiver in the network.</p
 <dd class="field-odd"><p><strong>request</strong> (<em>Request</em>) – The incoming FastAPI request object containing both headers and the request body.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Returns the parsed body of the request as a dictionary if all the hash comparisons match, indicating that the body is intact and has not been tampered with.</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>Returns the parsed body of the request as a dictionary if all the hash comparisons match, indicating</dt><dd><p>that the body is intact and has not been tampered with.</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>JSONResponse</strong> – Raises a JSONResponse with a 400 status code if any of the hash comparisons fail, indicating a potential integrity issue with the incoming request payload. The response includes the detailed error message specifying which field has a hash mismatch.</p>
+<dd class="field-even"><p><strong>JSONResponse</strong> – Raises a JSONResponse with a 400 status code if any of the hash comparisons fail, indicating
+a potential integrity issue with the incoming request payload. The response includes the detailed error
+message specifying which field has a hash mismatch.</p>
 </dd>
 </dl>
 <p>This method performs several key functions:</p>
@@ -1148,7 +1166,9 @@ a level of trust and security between the sender and receiver in the network.</p
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The integrity verification is an essential step in ensuring the security of the data exchange within the Bittensor network. It helps prevent tampering and manipulation of data during transit, thereby maintaining the reliability and trust in the network communication.</p>
+<p>The integrity verification is an essential step in ensuring the security of the data exchange within the
+Bittensor network. It helps prevent tampering and manipulation of data during transit, thereby maintaining
+the reliability and trust in the network communication.</p>
 </div>
 </dd></dl>
 
@@ -1166,7 +1186,7 @@ a level of trust and security between the sender and receiver in the network.</p
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">AxonMiddleware</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">AxonMiddleware</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">starlette.middleware.base.BaseHTTPMiddleware</span></code></p>
 <p>The <cite>AxonMiddleware</cite> class is a key component in the Axon server, responsible for processing all incoming requests.</p>
 <p>It handles the essential tasks of verifying requests, executing blacklist checks,
@@ -1190,7 +1210,8 @@ then handling any postprocessing steps such as response header updating and logg
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>app</strong> (<a class="reference internal" href="#bittensor.core.axon.AxonMiddleware" title="bittensor.core.axon.AxonMiddleware"><em>bittensor.core.axon.AxonMiddleware</em></a>) – An instance of the application where the middleware processor is used.</p></li>
+<li><p><strong>app</strong> (<a class="reference internal" href="#bittensor.core.axon.AxonMiddleware" title="bittensor.core.axon.AxonMiddleware"><em>bittensor.core.axon.AxonMiddleware</em></a>) – An instance of the application where the middleware processor is
+used.</p></li>
 <li><p><strong>axon</strong> (<a class="reference internal" href="#bittensor.core.axon.Axon" title="bittensor.core.axon.Axon"><em>bittensor.core.axon.Axon</em></a>) – The axon instance used to process the requests.</p></li>
 </ul>
 </dd>
@@ -1202,7 +1223,7 @@ then handling any postprocessing steps such as response header updating and logg
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.blacklist">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">blacklist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.blacklist" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">blacklist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.blacklist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.blacklist" title="Link to this definition">#</a></dt>
 <dd><p>Checks if the request should be blacklisted. This method ensures that requests from disallowed
 sources or with malicious intent are blocked from processing. This can be extremely useful for
 preventing spam or other forms of abuse. The blacklist is a list of keys or identifiers that
@@ -1225,7 +1246,7 @@ are prohibited from accessing certain resources.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.dispatch">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_next</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.dispatch" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_next</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.dispatch" title="Link to this definition">#</a></dt>
 <dd><p>Asynchronously processes incoming HTTP requests and returns the corresponding responses. This
 method acts as the central processing unit of the AxonMiddleware, handling each step in the
 request lifecycle.</p>
@@ -1259,7 +1280,7 @@ appropriate responses are returned to the client.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.preprocess">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.preprocess" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.preprocess" title="Link to this definition">#</a></dt>
 <dd><p>Performs the initial processing of the incoming request. This method is responsible for
 extracting relevant information from the request and setting up the Synapse object, which
 represents the state and context of the request within the Axon server.</p>
@@ -1287,7 +1308,7 @@ ensuring that all necessary information is encapsulated within the Synapse objec
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.priority">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">priority</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.priority" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">priority</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.priority"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.priority" title="Link to this definition">#</a></dt>
 <dd><p>Executes the priority function for the request. This method assesses and assigns a priority
 level to the request, determining its urgency and importance in the processing queue.</p>
 <dl class="field-list simple">
@@ -1304,7 +1325,7 @@ critical requests are handled promptly.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.run">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.run" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.run" title="Link to this definition">#</a></dt>
 <dd><p>Executes the requested function as part of the request processing pipeline. This method calls
 the next function in the middleware chain to process the request and generate a response.</p>
 <dl class="field-list simple">
@@ -1328,7 +1349,7 @@ request takes place, leading to the generation of a response.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.synapse_to_response">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">synapse_to_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.synapse_to_response" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">synapse_to_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.synapse_to_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.synapse_to_response" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Async<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
@@ -1349,7 +1370,8 @@ request takes place, leading to the generation of a response.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a>) – The Synapse object representing the request.</p></li>
 <li><p><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The timestamp when the request processing started.</p></li>
-<li><p><strong>response_override</strong> (<em>Optional</em><em>[</em><em>starlette.responses.Response</em><em>]</em>) – Instead of serializing the synapse, mutate the provided response object. This is only really useful for StreamingSynapse responses.</p></li>
+<li><p><strong>response_override</strong> (<em>Optional</em><em>[</em><em>starlette.responses.Response</em><em>]</em>) – Instead of serializing the synapse, mutate the provided response object. This is only
+really useful for StreamingSynapse responses.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1365,7 +1387,7 @@ properly formatted and contains all necessary information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.AxonMiddleware.verify">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.verify" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#AxonMiddleware.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.AxonMiddleware.verify" title="Link to this definition">#</a></dt>
 <dd><p>Verifies the authenticity and integrity of the request. This method ensures that the incoming
 request meets the predefined security and validation criteria.</p>
 <dl class="field-list simple">
@@ -1389,27 +1411,37 @@ failure results in an appropriate exception being raised.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">FastAPIThreadedServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">FastAPIThreadedServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#FastAPIThreadedServer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">uvicorn.Server</span></code></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code> class is a specialized server implementation for the Axon server in the Bittensor network.</p>
-<p>It extends the functionality of <code class="xref py py-func docutils literal notranslate"><span class="pre">uvicorn.Server()</span></code> to run the FastAPI application in a separate thread, allowing the Axon server to handle HTTP requests concurrently and non-blocking.</p>
-<p>This class is designed to facilitate the integration of FastAPI with the Axon’s asynchronous architecture, ensuring efficient and scalable handling of network requests.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code> class is a specialized server implementation for the Axon server in the Bittensor
+network.
+It extends the functionality of <code class="xref py py-func docutils literal notranslate"><span class="pre">uvicorn.Server()</span></code> to run the FastAPI application in a separate thread, allowing
+the Axon server to handle HTTP requests concurrently and non-blocking.</p>
+<p>This class is designed to facilitate the integration of FastAPI with the Axon’s asynchronous architecture, ensuring
+efficient and scalable handling of network requests.</p>
 <dl class="simple">
 <dt>Importance and Functionality</dt><dd><dl class="simple">
-<dt>Threaded Execution</dt><dd><p>The class allows the FastAPI application to run in a separate thread, enabling concurrent handling of HTTP requests which is crucial for the performance and scalability of the Axon server.</p>
+<dt>Threaded Execution</dt><dd><p>The class allows the FastAPI application to run in a separate thread, enabling concurrent handling of HTTP
+requests which is crucial for the performance and scalability of the Axon server.</p>
 </dd>
-<dt>Seamless Integration</dt><dd><p>By running FastAPI in a threaded manner, this class ensures seamless integration of FastAPI’s capabilities with the Axon server’s asynchronous and multi-threaded architecture.</p>
+<dt>Seamless Integration</dt><dd><p>By running FastAPI in a threaded manner, this class ensures seamless integration of FastAPI’s capabilities
+with the Axon server’s asynchronous and multi-threaded architecture.</p>
 </dd>
-<dt>Controlled Server Management</dt><dd><p>The methods start and stop provide controlled management of the server’s lifecycle, ensuring that the server can be started and stopped as needed, which is vital for maintaining the Axon server’s reliability and availability.</p>
+<dt>Controlled Server Management</dt><dd><p>The methods start and stop provide controlled management of the server’s lifecycle, ensuring that the server
+can be started and stopped as needed, which is vital for maintaining the Axon server’s reliability and
+availability.</p>
 </dd>
-<dt>Signal Handling</dt><dd><p>Overriding the default signal handlers prevents potential conflicts with the Axon server’s main application flow, ensuring stable operation in various network conditions.</p>
+<dt>Signal Handling</dt><dd><p>Overriding the default signal handlers prevents potential conflicts with the Axon server’s main application
+flow, ensuring stable operation in various network conditions.</p>
 </dd>
 </dl>
 </dd>
 <dt>Use Cases</dt><dd><dl class="simple">
-<dt>Starting the Server</dt><dd><p>When the Axon server is initialized, it can use this class to start the FastAPI application in a separate thread, enabling it to begin handling HTTP requests immediately.</p>
+<dt>Starting the Server</dt><dd><p>When the Axon server is initialized, it can use this class to start the FastAPI application in a separate
+thread, enabling it to begin handling HTTP requests immediately.</p>
 </dd>
-<dt>Stopping the Server</dt><dd><p>During shutdown or maintenance of the Axon server, this class can be used to stop the FastAPI application gracefully, ensuring that all resources are properly released.</p>
+<dt>Stopping the Server</dt><dd><p>During shutdown or maintenance of the Axon server, this class can be used to stop the FastAPI application
+gracefully, ensuring that all resources are properly released.</p>
 </dd>
 </dl>
 </dd>
@@ -1433,17 +1465,14 @@ failure results in an appropriate exception being raised.</p>
 </ul>
 </dd>
 </dl>
-<p>The server overrides the default signal handlers to prevent interference with the main application flow and provides methods to start and stop the server in a controlled manner.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer._wrapper_run">
-<span class="sig-name descname"><span class="pre">_wrapper_run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer._wrapper_run" title="Link to this definition">#</a></dt>
-<dd><p>A wrapper method for the <a class="reference internal" href="#bittensor.core.axon.FastAPIThreadedServer.run_in_thread" title="bittensor.core.axon.FastAPIThreadedServer.run_in_thread"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_in_thread()</span></code></a> context manager. This method is used internally by the <code class="docutils literal notranslate"><span class="pre">start</span></code> method to initiate the server’s execution in a separate thread.</p>
-</dd></dl>
-
+<p>The server overrides the default signal handlers to prevent interference with the main application flow and provides
+methods to start and stop the server in a controlled manner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer.install_signal_handlers">
-<span class="sig-name descname"><span class="pre">install_signal_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.install_signal_handlers" title="Link to this definition">#</a></dt>
-<dd><p>Overrides the default signal handlers provided by <code class="docutils literal notranslate"><span class="pre">uvicorn.Server</span></code>. This method is essential to ensure that the signal handling in the threaded server does not interfere with the main application’s flow, especially in a complex asynchronous environment like the Axon server.</p>
+<span class="sig-name descname"><span class="pre">install_signal_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#FastAPIThreadedServer.install_signal_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.install_signal_handlers" title="Link to this definition">#</a></dt>
+<dd><p>Overrides the default signal handlers provided by <code class="docutils literal notranslate"><span class="pre">uvicorn.Server</span></code>. This method is essential to ensure that
+the signal handling in the threaded server does not interfere with the main application’s flow, especially in a
+complex asynchronous environment like the Axon server.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1453,8 +1482,10 @@ failure results in an appropriate exception being raised.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer.run_in_thread">
-<span class="sig-name descname"><span class="pre">run_in_thread</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.run_in_thread" title="Link to this definition">#</a></dt>
-<dd><p>Manages the execution of the server in a separate thread, allowing the FastAPI application to run asynchronously without blocking the main thread of the Axon server. This method is a key component in enabling concurrent request handling in the Axon server.</p>
+<span class="sig-name descname"><span class="pre">run_in_thread</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#FastAPIThreadedServer.run_in_thread"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.run_in_thread" title="Link to this definition">#</a></dt>
+<dd><p>Manages the execution of the server in a separate thread, allowing the FastAPI application to run asynchronously
+without blocking the main thread of the Axon server. This method is a key component in enabling concurrent
+request handling in the Axon server.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>None</em> – This method yields control back to the caller while the server is running in the background thread.</p>
@@ -1469,16 +1500,20 @@ failure results in an appropriate exception being raised.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.start" title="Link to this definition">#</a></dt>
-<dd><p>Starts the FastAPI server in a separate thread if it is not already running. This method sets up the server to handle HTTP requests concurrently, enabling the Axon server to efficiently manage incoming network requests.</p>
-<p>The method ensures that the server starts running in a non-blocking manner, allowing the Axon server to continue its other operations seamlessly.</p>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#FastAPIThreadedServer.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.start" title="Link to this definition">#</a></dt>
+<dd><p>Starts the FastAPI server in a separate thread if it is not already running. This method sets up the server to
+handle HTTP requests concurrently, enabling the Axon server to efficiently manage incoming network requests.</p>
+<p>The method ensures that the server starts running in a non-blocking manner, allowing the Axon server to continue
+its other operations seamlessly.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.axon.FastAPIThreadedServer.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.stop" title="Link to this definition">#</a></dt>
-<dd><p>Signals the FastAPI server to stop running. This method sets the <a class="reference internal" href="#bittensor.core.axon.FastAPIThreadedServer.should_exit" title="bittensor.core.axon.FastAPIThreadedServer.should_exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">should_exit()</span></code></a> flag to <code class="docutils literal notranslate"><span class="pre">True</span></code>, indicating that the server should cease its operations and exit the running thread.</p>
-<p>Stopping the server is essential for controlled shutdowns and resource management in the Axon server, especially during maintenance or when redeploying with updated configurations.</p>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#FastAPIThreadedServer.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.FastAPIThreadedServer.stop" title="Link to this definition">#</a></dt>
+<dd><p>Signals the FastAPI server to stop running. This method sets the <a class="reference internal" href="#bittensor.core.axon.FastAPIThreadedServer.should_exit" title="bittensor.core.axon.FastAPIThreadedServer.should_exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">should_exit()</span></code></a> flag to <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+indicating that the server should cease its operations and exit the running thread.</p>
+<p>Stopping the server is essential for controlled shutdowns and resource management in the Axon server, especially
+during maintenance or when redeploying with updated configurations.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1490,11 +1525,12 @@ failure results in an appropriate exception being raised.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.axon.create_error_response">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">create_error_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.create_error_response" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">create_error_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#create_error_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.create_error_response" title="Link to this definition">#</a></dt>
 <dd><p>Creates an error response based on the provided synapse object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a>) – The synapse object containing details about the request and the associated axon.</p>
+<dd class="field-odd"><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a>) – The synapse object containing details about the request and the
+associated axon.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A JSON response with a status code and content indicating the error message.</p>
@@ -1507,7 +1543,7 @@ failure results in an appropriate exception being raised.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.axon.log_and_handle_error">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">log_and_handle_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.axon.log_and_handle_error" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.axon.</span></span><span class="sig-name descname"><span class="pre">log_and_handle_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synapse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/axon.html#log_and_handle_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.axon.log_and_handle_error" title="Link to this definition">#</a></dt>
 <dd><p>Logs the error and updates the synapse object with the appropriate error details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1515,7 +1551,8 @@ failure results in an appropriate exception being raised.</p>
 <li><p><strong>synapse</strong> (<a class="reference internal" href="../synapse/index.html#bittensor.core.synapse.Synapse" title="bittensor.core.synapse.Synapse"><em>bittensor.core.synapse.Synapse</em></a>) – The synapse object to be updated with error information.</p></li>
 <li><p><strong>exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><em>Exception</em></a>) – The exception that was raised and needs to be logged and handled.</p></li>
 <li><p><strong>status_code</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – The HTTP status code to be set on the synapse object. Defaults to None.</p></li>
-<li><p><strong>start_time</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The timestamp marking the start of the processing, used to calculate process time. Defaults to None.</p></li>
+<li><p><strong>start_time</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – The timestamp marking the start of the processing, used to calculate process time.
+Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1551,11 +1588,11 @@ failure results in an appropriate exception being raised.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../config/index.html"
+       href="../chain_data/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.core.config</p>
+        <p class="prev-next-title">bittensor.core.chain_data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1566,7 +1603,8 @@ failure results in an appropriate exception being raised.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1580,9 +1618,6 @@ failure results in an appropriate exception being raised.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon"><code class="docutils literal notranslate"><span class="pre">Axon</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__del__"><code class="docutils literal notranslate"><span class="pre">Axon.__del__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__repr__"><code class="docutils literal notranslate"><span class="pre">Axon.__repr__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.__str__"><code class="docutils literal notranslate"><span class="pre">Axon.__str__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.add_args"><code class="docutils literal notranslate"><span class="pre">Axon.add_args()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.app"><code class="docutils literal notranslate"><span class="pre">Axon.app</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.attach"><code class="docutils literal notranslate"><span class="pre">Axon.attach()</span></code></a></li>
@@ -1600,8 +1635,6 @@ failure results in an appropriate exception being raised.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.help"><code class="docutils literal notranslate"><span class="pre">Axon.help()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.info"><code class="docutils literal notranslate"><span class="pre">Axon.info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.ip"><code class="docutils literal notranslate"><span class="pre">Axon.ip</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.log_level"><code class="docutils literal notranslate"><span class="pre">Axon.log_level</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.max_workers"><code class="docutils literal notranslate"><span class="pre">Axon.max_workers</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.middleware_cls"><code class="docutils literal notranslate"><span class="pre">Axon.middleware_cls</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.nonces"><code class="docutils literal notranslate"><span class="pre">Axon.nonces</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.Axon.port"><code class="docutils literal notranslate"><span class="pre">Axon.port</span></code></a></li>
@@ -1631,7 +1664,6 @@ failure results in an appropriate exception being raised.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer._wrapper_run"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer._wrapper_run()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.install_signal_handlers"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.install_signal_handlers()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.is_running"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.is_running</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.axon.FastAPIThreadedServer.run_in_thread"><code class="docutils literal notranslate"><span class="pre">FastAPIThreadedServer.run_in_thread()</span></code></a></li>
@@ -1693,8 +1725,8 @@ By Opentensor Foundation
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
