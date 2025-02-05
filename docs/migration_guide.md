@@ -107,21 +107,13 @@ In addition, to accomodate changes to staking in dynamic TAO, the function now a
 
 Type hint is updated to reflect it always returns an `int`, rather than an `Optional[int]`.
 
-### `get_total_stake_for_coldkey`
-
-Always returns a `Balance` object, instead of `Optional[Balance]`.
-
-### `get_total_stake_for_hotkey`
-
-Always returns a `Balance` object, instead of `Optional[Balance]`.
-
 ### `query_runtime_api` 
 
 Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-decode` and `async-substrate-interface` that allows for arbitrary decoding of runtime calls.
 
 ### `get_subnet_burn_cost`
 
-This method now has the correct type hint (`int`) for its return value.
+this method now returns an `Optional[Balance]` object rather than `Optional[int]` (previously it gave rao `int`)
 
 ## `AsyncSubtensor`
 
