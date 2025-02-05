@@ -113,11 +113,7 @@ Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-deco
 
 ### `get_subnet_burn_cost`
 
-<<<<<<< Updated upstream
-this method now returns an `Optional[Balance]` object rather than `Optional[int]` (previously it gave rao `int`)
-=======
-This method now has the correct type hint (`int`) for its return value.	
->>>>>>> Stashed changes
+Now returns an `Optional[Balance]` object rather than `Optional[int]` (previously it gave rao `int`)
 
 ## `AsyncSubtensor`
 
