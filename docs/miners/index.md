@@ -120,7 +120,7 @@ After providing your wallet name when prompted, you will see output such as:
 | COLDKEY     | my_coldkey          | The name of the coldkey associated with your slot.                          |
 | HOTKEY      | my_first_hotkey     | The name of the hotkey associated with your slot.                           |
 | UID         | 5                   | The index of the uid out of available uids.                                 |
-| ACTIVE      | True                | Whether or not the uid is considered active.                                |
+| ACTIVE      | True                | The validator has set weights within the subnet's activity_cutoff           |
 | STAKE(τ)    | 71.296              | The amount of stake in this wallet.                                         |
 | RANK        | 0.0629              | This miner's absolute ranking according to validators on the network.       |
 | TRUST       | 0.2629              | This miner's trust as a proportion of validators on the network.            |
@@ -129,7 +129,7 @@ After providing your wallet name when prompted, you will see output such as:
 | DIVIDENDS   | 0.001               | This validator's dividends, TAO emission, are attained via validating.      |
 | EMISSION    | 29_340_153          | This miner's total emission in RAO (10^(-9) TAO) per block.                 |
 | VTRUST      | 0.96936             | This validator's trust score as a validator.                                |
-| VPERMIT     | *                   | Whether this miner is considered active for validating on this subnetwork.  |
+| VPERMIT     | *                   | For validators: The uid is considered active for validating on this subnet. |
 | UPDATED     | 43                  | Blocks since this miner set weights on the chain.                           |
 | AXON        | 131.186.56.85:8091  | The entrypoint advertised by this miner on the bittensor blockchain.        |
 | HOTKEY_SS58 | 5F4tQyWr...         | The ss58-encoded address of the miner's hotkey.                             |
