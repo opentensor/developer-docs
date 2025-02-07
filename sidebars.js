@@ -28,8 +28,7 @@ const sidebars = {
       collapsed: true,
       items: [
         "chain-rel-notes",
-        "bittensor-rel-notes",
-        "whats-new-in-docs",
+        "bittensor-rel-notes"
       ],
     },
     {
@@ -67,11 +66,11 @@ const sidebars = {
 
     {
       type: "category",
-      label: "Staking",
+      label: "Staking/Delegation",
       collapsible: true,
       collapsed: true,
-      link: {type: "doc", id: "staking-and-delegation/index",},
-      items: ["staking-and-delegation/staking-polkadot-js", "staking-and-delegation/delegation", "staking-and-delegation/using-ledger-hw-wallet"],
+      link: {type: "doc", id: "staking-and-delegation/delegation",},
+      items: ["staking-and-delegation/delegation","staking-and-delegation/staking-polkadot-js", "staking-and-delegation/using-ledger-hw-wallet"],
     },
     {
       type: "category",
@@ -80,6 +79,7 @@ const sidebars = {
       collapsed: true,
       link: {type: "doc", id: "miners/index",},
       items: [
+      "miners/index"
       ],
     },
 
@@ -90,6 +90,7 @@ const sidebars = {
       collapsed: true,
       link: {type: "doc", id: "validators/index",},
       items: [
+      "validators/index",
               "subnets/child-hotkeys",
       ],
     },
