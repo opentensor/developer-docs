@@ -13,6 +13,8 @@ It unfolds in two stages:
 - Injection into subnets
 - Extraction by participants
 
+See the [Dynamic TAO Whitepaper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view) for a full explanation.
+
 ### Injection
 
 The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
@@ -21,9 +23,33 @@ The first stage of emissions is *injection of liquidity* into the subnet pools. 
 - alpha is injected into the subnet's alpha reserve.
 - alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
+The total injection to each subnet is in proportion to the price of its token. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
+
+For a subnet *i* in the set S of all subnets, and a total emission $\Delta\tau = 1$ emission $\Delta\tau_i$ is:
+
+$$
+\Delta\tau_i =
+\frac
+  {p_i}
+  {\sum_{j \in \text{S}}
+\bigl(p_j)}
+$$
+
 TAO and alpha are injected according to a balancing algorithm, so that growth of a subnet's liquidity pools does not not change the price of the alpha token.
 
-See [Core Dynamic TAO Concepts: Subnet liquidity reserves](./dtao-guide.md#subnet-liquidity-reserves)
+
+$$
+\Delta\tau_i =
+\frac
+  {p_i}
+  {\sum_{j \in \text{S}}
+\bigl(p_j)}
+$$
+
+
+
+
+See [Dynamic TAO Whitepaper: Section 3.2 Injections](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view)
 
 ### Extraction
 
