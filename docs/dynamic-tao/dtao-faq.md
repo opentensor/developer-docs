@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Dynamic TAO is currently live on testnet. Dynamic TAO will be introduced to the Bittensor blockchain as an upgrade according to the following procedure:
 
-The Bittensor governing triumvirate will propose an upgrade (on February), and the Senate will have 6 days to pass the vote (requiring 7 of 12 votes) or propose modifications to the upgrade.
+The Bittensor governing triumvirate will propose an upgrade, and the Senate will have 6 days to pass the vote (requiring 7 of 12 votes) or propose modifications to the upgrade.
 
 If the vote clears, the upgrade will be applied to the main Bittensor chain.
 
