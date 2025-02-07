@@ -9,9 +9,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
 
-something here about different ways to stake...
-
-tao holders with individual keys may want to do this with hardweare wallets...
 See also:
 - [Staking with Polkadot JS](./staking-polkadot-js.md).
 - See also [Validators: Acquiring stake](../validators/index.md#acquiring-stake).
@@ -73,7 +70,7 @@ Emissions to stakers are proportional to their contribution to delegated stake:
         { 100\tau + 70\tau + 30\tau } = 15\%
       $$ 
 
-The delegate validator would keep 80% of the emissions, based on their 80% proportion of the total stake (0.8). In addition, the validator would keep their take of 18% of the emissions earned on the delegated stake.
+The delegate validator would keep 80% of the emissions, based on their 80% proportion of the total stake (0.8). In addition, the validator would keep their 18% take of the emissions earned on the delegated stake.
 
 As a result:
   - Total emissions to the delegate are: $0.8 + 0.2*0.18= .836 = 83.6\%$ of the received emissions.
