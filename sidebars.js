@@ -28,8 +28,7 @@ const sidebars = {
       collapsed: true,
       items: [
         "chain-rel-notes",
-        "bittensor-rel-notes",
-        "whats-new-in-docs",
+        "bittensor-rel-notes"
       ],
     },
     {
