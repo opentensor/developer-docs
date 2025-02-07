@@ -16,7 +16,6 @@ import { CiWallet } from "react-icons/ci";
 import { SiTrpc } from "react-icons/si";
 
 
-
 # Bittensor SDK
 
 This section presents the Bittensor SDK reference documentation. Follow the below links to specific Python modules or [click here for SDK reference homepage](pathname:///python-api/html/index.html). 
