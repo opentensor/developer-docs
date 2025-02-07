@@ -12,9 +12,9 @@ TAO holders can **stake** any amount of the liquidity they hold to a validator. 
 something here about different ways to stake...
 
 tao holders with individual keys may want to do this with hardweare wallets...
-
-- For staking with Polkadot JS, see [Staking with Polkadot JS](./staking-polkadot-js.md).
-- For staking to become a validator, see [Staking](../validators/index.md#acquiring-stake).
+See also:
+- [Staking with Polkadot JS](./staking-polkadot-js.md).
+- See also [Validators: Acquiring stake](../validators/index.md#acquiring-stake).
 
 
 :::tip tips
@@ -73,62 +73,21 @@ Emissions to stakers are proportional to their contribution to delegated stake:
         { 100\tau + 70\tau + 30\tau } = 15\%
       $$ 
 
-- The delegate would keep 80% of the emissions, based on their 80% proportion of the total stake (0.8).
-- In addition, the delegate would keep 18% of the emissions earned on the delegated stake (the delegated stake is 20%). This is the delegate's take %.
-- As a result:
-  - Total emissions to the delegate are: `0.8 + 0.2*0.18=0.836` of the received emissions.
-  - Each nominator receives the following portions of the received emissions, based on their contribution percentages:
-    - Nominator 1 receives: `(1-0.8)*(1-0.18)*50% = 0.082`.
-    - Nominator 2 receives: `(1-0.8)*(1-0.18)*35% = 0.0574`. 
-    - Nominator 3 receives: `(1-0.8)*(1-0.18)*15% = 0.0246`.
+The delegate validator would keep 80% of the emissions, based on their 80% proportion of the total stake (0.8). In addition, the validator would keep their take of 18% of the emissions earned on the delegated stake.
+
+As a result:
+  - Total emissions to the delegate are: $0.8 + 0.2*0.18= .836 = 83.6\%$ of the received emissions.
+  - Each nominator receives the following portions of the validator's total emissions, based on their contribution percentages:
+    - Nominator 1 emissions: $(1-0.8)*(1-0.18)*.5 = .082 = 8.2\%$
+    - Nominator 2 emissions: $(1-0.8)*(1-0.18)*.35 = .0574 = 5.74\%$
+    - Nominator 3 emissions: $(1-0.8)*(1-0.18)*.15 = .0246 = 2.46\%$
     
 
 :::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically, a nominator is an owner of TAO funds who wants to invest in the Bittensor network without performing any validating tasks.
 :::
 
-## Delegate examples
-
-### Becoming a delegate
-
-If you are a registered subnet validator, you can become a delegate. To become a delegate:
-1. You must make your hotkey available for the nominators. 
-2. You must provide and sign your delegate information.
-
-The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
-
-#### Step 1: Nominate yourself as a delegate
-
-Run the below command (for self-nominating as a delegate):
-
-```bash
-btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-Example:
-```bash
-btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-#### Step 2: Provide your delegate information 
-
-Next, provide your delegate information, such as your delegate name, URL, and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates.
-
-To provide and sign this information, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
-
-### Setting your delegate take
-
-As a delegate, you can set your delegate percentage by running the below command:
-
-```bash
-btcli root set_delegate_take --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey> --take <floating point number between 0 and 1>
-```
-Example:
-```bash
-btcli root set_delegate_take --wallet.name test-coldkey --wallet.hotkey test-hotkey --take 0.1
-```
-where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take to 10%.
-
-## Nominator examples
+## Staking operations
 
 ### Viewing available delegates 
 
@@ -204,4 +163,43 @@ owner            5GTMADbd...  τ120,999.9999    τ0.000   1      τ0.000000000  
 Total delegated Tao: τ120,999.999999000
 ```
 
+## Delegate operations
 
+### Becoming a delegate
+
+If you are a registered subnet validator, you can become a delegate. To become a delegate:
+1. You must make your hotkey available for the nominators. 
+2. You must provide and sign your delegate information.
+
+The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
+
+#### Step 1: Nominate yourself as a delegate
+
+Run the below command (for self-nominating as a delegate):
+
+```bash
+btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
+```
+Example:
+```bash
+btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
+```
+
+#### Step 2: Provide your delegate information 
+
+Next, provide your delegate information, such as your delegate name, URL, and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates.
+
+To provide and sign this information, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
+
+### Setting your delegate take
+
+As a delegate, you can set your delegate percentage by running the below command:
+
+```bash
+btcli root set_delegate_take --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey> --take <floating point number between 0 and 1>
+```
+Example:
+```bash
+btcli root set_delegate_take --wallet.name test-coldkey --wallet.hotkey test-hotkey --take 0.1
+```
+where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take to 10%.
