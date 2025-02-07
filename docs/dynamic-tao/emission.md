@@ -23,33 +23,39 @@ The first stage of emissions is *injection of liquidity* into the subnet pools. 
 - alpha is injected into the subnet's alpha reserve.
 - alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
-The total injection to each subnet is in proportion to the price of its token. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
+Liquidity injection to each subnet is in proportion to the price of its token compared to the price other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
 
-For a subnet *i* in the set S of all subnets, and a total emission $\Delta\tau = 1$ emission $\Delta\tau_i$ is:
+#### TAO reserve injection
+Given set S of all subnets, and a total per block TAO emission $\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
 $$
-\Delta\tau_i =
+\Delta\tau_i = \Delta\bar{\tau} \times
 \frac
   {p_i}
   {\sum_{j \in \text{S}}
 \bigl(p_j)}
 $$
 
-TAO and alpha are injected according to a balancing algorithm, so that growth of a subnet's liquidity pools does not not change the price of the alpha token.
+#### Alpha reserve injection
+
+Alpha is then injected in proportion to the TAO injection for the block according the price of the token. This is so that growth of a subnet's liquidity pools does not not change the price of the alpha token. 
+
+However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
 
 
 $$
-\Delta\tau_i =
-\frac
-  {p_i}
-  {\sum_{j \in \text{S}}
-\bigl(p_j)}
+\Delta\alpha_i = \min\left\{
+  \frac
+    {p_i}
+    {\sum_{j \in \text{S}}
+  \bigl(p_j)},
+  \Delta\bar{\alpha_i} \right\}
+
 $$
 
+#### Alpha outgoing injection
 
-
-
-See [Dynamic TAO Whitepaper: Section 3.2 Injections](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view)
+Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). This is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for each subnet $i$.
 
 ### Extraction
 
