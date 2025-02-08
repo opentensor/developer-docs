@@ -26,7 +26,8 @@ The first stage of emissions is *injection of liquidity* into the subnet pools. 
 Liquidity injection to each subnet is in proportion to the price of its token compared to the price other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
 
 #### TAO reserve injection
-Given set S of all subnets, and a total per block TAO emission $\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
+
+Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
 $$
 \Delta\tau_i = \Delta\bar{\tau} \times
@@ -46,7 +47,7 @@ However, alpha injection is capped to prevent runaway inflation. The cap, or *al
 $$
 \Delta\alpha_i = \min\left\{
   \frac
-    {p_i}
+    {\Delta\bar{\tau}}
     {\sum_{j \in \text{S}}
   \bigl(p_j)},
   \Delta\bar{\alpha_i} \right\}

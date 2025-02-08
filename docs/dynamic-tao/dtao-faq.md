@@ -66,7 +66,7 @@ Staking TAO into a subnet essentially exchanges TAO for that subnet’s alpha to
 Held stake (alpha tokens) may increase or decrease in TAO value as the price of the alpha changes.
 
 ### How do emissions to root subnet/Subnet 0 stakers work?
-
+	
 **Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake extracts emissions from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
 
 **Proportional emission and TAO weight**: TAO and alpha are emitted to a validator's stakers in proportion to the validators' holdings in each token. See [Emission in Dynamic TAO: Extraction](./emission.md#extraction)
