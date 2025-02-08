@@ -39,7 +39,7 @@ $$
 
 #### Alpha reserve injection
 
-Alpha is then injected in proportion to the TAO injection for the block according the price of the token, so that growth of a subnet's liquidity pools does not not change the price of the alpha token. However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
+Alpha is then injected in proportion to the price of the token (canceling the price $p_i$ out of the equation), so that growth of a subnet's liquidity pools does not not change the price of the alpha token. However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
 
 Alpha emission $\Delta\alpha_i$ is:
 
