@@ -14,7 +14,7 @@ The Bittensor governing triumvirate will propose an upgrade, and the Senate will
 
 If the vote clears, the upgrade will be applied to the main Bittensor chain.
 
-Any subsequent modificationsi requre new proposals.
+Any subsequent modifications require a new proposal to be introduced to a new upgrade following the same process.
 
 ### How will Dynamic TAO take effect?
 
