@@ -56,7 +56,7 @@ $$
 
 #### Alpha outgoing injection
 
-Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). This is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$.
+Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). The quantity per block is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$.
 
 ### Extraction
 
