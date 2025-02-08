@@ -27,7 +27,7 @@ Liquidity injection to each subnet is in proportion to the price of its token co
 
 #### TAO reserve injection
 
-Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
+Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, TAO emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
 $$
 \Delta\tau_i = \Delta\bar{\tau} \times
@@ -39,9 +39,9 @@ $$
 
 #### Alpha reserve injection
 
-Alpha is then injected in proportion to the TAO injection for the block according the price of the token. This is so that growth of a subnet's liquidity pools does not not change the price of the alpha token. 
+Alpha is then injected in proportion to the TAO injection for the block according the price of the token, so that growth of a subnet's liquidity pools does not not change the price of the alpha token. However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
 
-However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
+Alpha emission $\Delta\alpha_i$ is:
 
 
 $$
@@ -56,7 +56,7 @@ $$
 
 #### Alpha outgoing injection
 
-Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). This is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for each subnet $i$.
+Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). This is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$.
 
 ### Extraction
 
