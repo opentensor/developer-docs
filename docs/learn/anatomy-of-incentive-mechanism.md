@@ -8,19 +8,24 @@ This page explores the concept and usage of incentive mechanisms in Bittensor.
 
 See [Components of the Bittensor platform](../learn/bittensor-building-blocks) for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
 
-Each subnet has its own *incentive mechanism*, which drives the behavior of its community of miners and validators by defining a standard model for how miners’ work is to be evaluated. Miners are incentivized to meet this standard so validators will score (or 'weight') their work highly, resulting in higher emissions. Validators are incentivized to accurately score miners' work according to this standard because the algorithm penalizes departure from consensus in miner scores with lower emissions.
+Each subnet has its own *incentive mechanism*, a scoring model that drives the behavior of its participants, and the production of the subnet's digital commodity, by defining **how validators are to evaluate miners’ work**. Miners are incentivized to optimize for this model so validators will score (or 'weight') their work highly, resulting in higher emissions. Validators are incentivized to accurately score miners' work according to the model because the algorithm penalizes departure from consensus in miner scores with lower emissions.
 
-A well-designed incentive mechanism is critical for a well-functioning subnet! Carefully consider and test the consequences of the behaviors you will be incentivizing and punishing before releasing your IM to your subnet on the main Bittensor network.
+Each validator on a subnet is responsible for periodically computing a vector of weights assigned to each miner, representing an aggregate ranking based on miners' performance. Validators transmit these **weight vectors** to the blockchain. Typically, each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks.
 
-A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high-quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will encourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
+The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** from these ranking/weight vectors, which is then provided as input to the Yuma Consensus module on-chain. Yuma Consensus (YC) uses this weight matrix, along with the amount of stake associated with each UID on the subnet, to calculate emissions to each subnet and each participant within each subnet. These emissions are finalized and debited to participants' hotkeys at the end of each *tempo* or 360 blocks.
+
+:::tip note
+The tempo duration (360 blocks) is the same for all the user-created subnets. However, the timing of tempos can differ among subnets, depending on when they were created.
+:::
+
 
 ## Subnet creator responsibilities
 
-A subnet creator is responsible for:
+In order for a subnet to succeed, the creator must:
 
-- Design an incentive mechanism that aligns miners with the desired task outcomes.
-- Enable participation
-- Discourage exploits
+- Design an incentive mechanism that guides miners' relentless tendency to opimize their scores (and hence emissions) toward the desired outcomes
+- Enable miner and validator participation
+- Discourage miner and validator exploits
 
 ::: note
 Though a subnet incentive mechanism works in conjunction with the Yuma Consensus in the Bittensor network, you must design your subnet incentive mechanism **by treating Yuma Consensus as a black box**. 
@@ -87,15 +92,6 @@ Miners will continuously compete to achieve the highest score possible, since it
 Subnets should be endlessly improving.
 :::
 
-## Allocation of emissions
-
-1. Each validator on the subnet computes a vector of weights assigned to each miner, representing an aggregate ranking based on their performance. Validators transmit these **weight vectors** to the blockchain. Typically, each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks.
-2. The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** from these ranking/weight vectors, which is then provided as input to the Yuma Consensus module on-chain.
-3. The Yuma Consensus (YC) uses this weight matrix, along with the amount of stake associated with each UID on the subnet, to calculate emissions to each subnet and each participant within each subnet. These emissions are finalized and debited to participants' hotkeys at the end of each *tempo* or 360 blocks.
-
-:::tip note
-The tempo duration (360 blocks) is the same for all the user-created subnets. However, the timing of tempos can differ among subnets, depending on when they were created.
-:::
 
 ## Additional Considerations for Subnet Incentive Design
 
