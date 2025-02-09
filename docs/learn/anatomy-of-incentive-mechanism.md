@@ -20,15 +20,16 @@ A subnet incentive mechanism, when running optimally on a subnet, will continuou
 ## Subnet creator responsibilities
 
 A subnet creator is responsible for:
-- Defining the specific digital task to be performed by the subnet miners.
-- Implementing an incentive mechanism that aligns miners with the desired task outcomes.
 
+- Design an incentive mechanism that aligns miners with the desired task outcomes.
+- Enable participation
+- Discourage exploits
 
-### Design with Yuma Consensus as a black box
-
+:::	note
 Though a subnet incentive mechanism works in conjunction with the Yuma Consensus in the Bittensor network, you must design your subnet incentive mechanism **by treating Yuma Consensus as a black box**. 
+:::
 
-### Make it easy for participation
+### Enable participation
 
 To attract high-performing subnet miners and subnet validators, make sure that you publish sufficient documentation on your subnet. 
 
@@ -40,6 +41,18 @@ After a subnet validator registers into your subnet, they will run the validator
 
 - [Running a validator](https://github.com/opentensor/prompting/blob/main/docs/SN1_validation.md).
 - [Running a miner](https://github.com/opentensor/prompting/blob/main/docs/stream_miner_template.md).
+
+### Discourage exploits
+
+The incentive mechanism is ultimately the judge of subnet miner performance. When the incentive mechanism is well calibrated, it can result in a virtuous cycle in which the subnet miners continuously improve at the desired task due to competition. 
+
+On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
+
+### Design incentive mechanism
+
+Research what other subnet creators are doing are doing.
+
+Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets), and learn about the latest research on subnet design, which is an active area.
 
 ## Components of incentive mechanism
 
@@ -56,16 +69,13 @@ A subnet creator must define a protocol for how validators are to query miners, 
 
 See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
 
-
 ### Subnet task
 
 The task is one of the key components of any incentive mechanism as it defines what miners will perform as work. The task should be chosen so that miners are maximally effective at the intended use case for the subnet.
 
 In other words, **the task should mimic an intended user interaction with a subnet**. Examples of tasks are responding to natural language prompts and storing encrypted files.
 
-:::tip Aligning miners with the subnet goals
 The task defines the scope of work that miners will undertake, and what utility the subnet can provide to users. In some cases this should be very specific (such as storage) and in other cases it can be varied (many types of natural language query). 
-:::
 
 ### Subnet scoring model
 
@@ -81,14 +91,7 @@ Miners will continuously compete to achieve the highest score possible, since it
 Subnets should be endlessly improving.
 :::
 
-### Discourage exploits
-The incentive mechanism is ultimately the judge of subnet miner performance. When the incentive mechanism is well calibrated, it can result in a virtuous cycle in which the subnet miners continuously improve at the desired task due to competition. 
-
-On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
-
-
 ## Allocation of emissions
-
 
 1. Each validator on the subnet computes a vector of weights assigned to each miner, representing an aggregate ranking based on their performance. Validators transmit these **weight vectors** to the blockchain. Typically each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks. 
 2. The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** formed from these ranking/weight vectors is then provided as input to the Yuma Consensus module on-chain.
