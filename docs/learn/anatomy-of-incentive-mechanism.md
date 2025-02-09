@@ -7,19 +7,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Understanding Incentive Mechanisms
 
-This page explores the concept and usage of incentive mechansisms in Bittensor. See [Components of the Bittensor platform] for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
+This page explores the concept and usage of incentive mechansisms in Bittensor
 
-Each subnet has its own *incentive mechanism*, which drives the behavior of its community of miners and validators by defining a standard model for how miner's work is to be evaluated. Miners are incentivized to meet this standard so validators will score (or 'weight') their work highly, resulting in higher TAO (τ) rewards for the miners. Validators are incentivized to accurately score miners' work according to this standard so that their scoring is close to consensus, resulting in higher TAO (τ) rewards for the validators.
+See [Components of the Bittensor platform](../learn/bittensor-building-blocks) for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
 
-:::danger 
+Each subnet has its own *incentive mechanism*, which drives the behavior of its community of miners and validators by defining a standard model for how miner's work is to be evaluated. Miners are incentivized to meet this standard so validators will score (or 'weight') their work highly, resulting in higher emissions. Validators are incentivized to accurately score miners' work according to this standard because the algorithm penalizes departure from consensus in miner scores with lower emissions.
+
 A well-designed incentive mechanism is critical for a well-functioning subnet! Carefully consider and test the consequences of the behaviors you will be incentivizing and punishing before releasing your IM to your subnet on the main Bittensor network.
-:::
 
 A subnet incentive mechanism, when running optimally on a subnet, will continuously produce high quality results because the subnet miners and subnet validators are incentivized to do so. Furthermore, a good incentive mechanism will encourage **continuous improvement** of the subnet as a whole by leveraging the competition between miners to attain ever higher scores.
 
-## Subnet owner responsibilities
+## Subnet creator responsibilities
 
-A subnet owner is responsible for:
+A subnet creator is responsible for:
 - Defining the specific digital task to be performed by the subnet miners.
 - Implementing an incentive mechanism that aligns miners with the desired task outcomes.
 
@@ -43,40 +43,39 @@ After a subnet validator registers into your subnet, they will run the validator
 
 ## Components of incentive mechanism
 
-A subnet incentive mechanism must contain the definition and implementation of the following behaviors. See the numbered items in the below diagram:
+A subnet incentive mechanism must provide the following:
 
-<ThemedImage
-alt="Components of Incentive Mechanism"
-sources={{
-    light: useBaseUrl('/img/docs/components-of-incentive-mechanism.svg'),
-    dark: useBaseUrl('/img/docs/dark-components-of-incentive-mechanism.svg'),
-  }}
-/>
+- A protocol for how validators query miners and how miners respond
+- A task definition for the work miners are to perform
+- A scoring mechanism for validators to use in evaluating miners' work
 
-### Subnet protocol
-See **1** and **3** in the above diagram. A subnet protocol, which is unique to the subnet, must define how a subnet validator will query the subnet miners, and how a subnet miner should respond to the query. 
 
-:::tip Axon, dendrite and Synapse building blocks
-Use the Bittensor building blocks Axon, dendrite and Synapse to develop your subnet protocol. See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
-:::
+### Miner-validator protocol
 
-For example, a subnet validator might send a query containing the task description to the subnet miners. The subnet miners will perform the task and then respond to the subnet validators with the results of the task the miners performed. Note, however, that query-response is only one of the ways of subnet miner-and-subnet validator interaction. An alternative example is when the subnet validators and subnet miners use additional shared resources such as databases, and these resources can be used to evaluate miner performance.
+A subnet creator must define a protocol for how validators are to query miners, and how miners should respond. Protocols are built using the Axon-Dendrite client-server model and and Synapse data objects.
+
+See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
+
 
 ### Subnet task
-See **2** in the above diagram. The task is one of the key components of any incentive mechanism as it defines what miners will perform as work. The task should be chosen so that miners are maximally effective at the intended use case for the subnet. In other words, **the task should mimic an intended user interaction with a subnet**. Examples of tasks are responding to natural language prompts and storing encrypted files.
+
+The task is one of the key components of any incentive mechanism as it defines what miners will perform as work. The task should be chosen so that miners are maximally effective at the intended use case for the subnet.
+
+In other words, **the task should mimic an intended user interaction with a subnet**. Examples of tasks are responding to natural language prompts and storing encrypted files.
 
 :::tip Aligning miners with the subnet goals
 The task defines the scope of work that miners will undertake, and what utility the subnet can provide to users. In some cases this should be very specific (such as storage) and in other cases it can be varied (many types of natural language query). 
 :::
 
-### Subnet reward model
-See **4** and **5** in the above diagram. Just as the task describes **what** miners should do, the reward model dictates **how** it should be done. Similarly, just as tasks should mimic user interactions, reward models should mimic user preferences or desired outcomes.
+### Subnet scoring model
 
-As with any machine learning model, a subnet has an objective function that it is continuously optimizing. The reward model defines the quality of all miner behaviour in the subnet (both intended and unintended). 
+Where the task describes **what** miners should do, the scoring model dictates **how** it should be done. Similarly, just as tasks should mimic user interactions, scoring models should mimic user preferences or desired outcomes.
 
-Operationally, it is the mathematical object that converts miner responses into numerical scores. A reward model can in fact contain as many different reward mechanisms as are necessary to align miners with the intended task. 
+As with any machine learning model, a subnet has an objective function that it is continuously optimizing. The scoring model defines the quality of all miner behaviour in the subnet (both intended and unintended). 
 
-Miners will continuously compete to achieve the highest reward possible. If the reward is capped at an upper limit, miners may not be motivated to improve further. Hence care should be taken to enable continuous improvement of the miner, rather than stagnation.
+Operationally, it is the mathematical object that converts miner responses into numerical scores. A scoring model can in fact contain as many different scoring mechanisms as are necessary to align miners with the intended task. 
+
+Miners will continuously compete to achieve the highest score possible, since it determines their emissions. If the score is capped at an upper limit, miners may not be motivated to improve further. Hence care should be taken to enable continuous improvement of the miner, rather than stagnation.
 
 :::tip The zen of incentive mechanisms
 Subnets should be endlessly improving.
@@ -88,38 +87,13 @@ The incentive mechanism is ultimately the judge of subnet miner performance. Whe
 On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
 
 
-## Distribution of rewards
+## Allocation of emissions
 
-### Example
 
-Distribution of rewards among the subnet miners and subnet validators works like this. Consider an example subnet:
-- Three subnet miners occupy the UID slots 37, 42 and 27 in the subnet.
-- Four subnet validators occupy the UID slots 10, 32, 93 and 74 in the subnet, as shown in the below simplified conceptual diagram. Assume that the **subnet protocol** box in the diagram includes all the components of the incentive mechanism that were identified above.
+1. Each validator on the subnet computes a vector of weights assigned to each miner, representing an aggregate ranking based on their performance. Validators transmit these **weight vectors** to the blockchain. Typically each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks. 
+2. The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** formed from these ranking/weight vectors is then provided as input to the Yuma Consensus module on-chain.
+3. The Yuma Consensus (YC) uses this weight matrix, along with the amount of stake associated with each UID on the subnet, to calculate emissions to each subnet and each participant within each subnet, which are finalized and debited to participants' hotkeys at the end of each *tempo* or 360 blocks.
 
-<ThemedImage
-alt="Incentive Mechanism Big Picture"
-sources={{
-    light: useBaseUrl('/img/docs/distribution-of-rewards-big-picture.svg'),
-    dark: useBaseUrl('/img/docs/dark-distribution-of-rewards-big-picture.svg'),
-  }}
-/>
-
-The item numbers below correspond to the circled numbers in the above diagram.
-
-1. Each subnet validator maintains a vector of weights. Each element of the vector represents the weight assigned to a subnet miner. This weight represents how well the subnet miner is performing **according to this subnet validator**. 
-   
-   Each subnet validator ranks all the subnet miners by means of this weight vector. Each subnet validator within the subnet, acting independently, transmits its miner ranking weight vector to the blockchain. These ranking weight vectors can arrive at the blockchain at different times. Typically each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks. 
-2. The blockchain (subtensor) waits until the latest ranking weight vectors from all the subnet validators of the given subnet arrive at the blockchain. A ranking weight matrix formed from these ranking weight vectors is then provided as input to the Yuma Consensus module on-chain.
-3. The Yuma Consensus (YC) on-chain then uses this weight matrix, along with the amount of stake associated with the UIDs on this subnet, to calculate rewards. The YC calculates how the reward TAO tokens should be distributed amongst the subnet validators and subnet miners in the subnet, i.e., amongst each UID in the subnet.  
-   
-:::tip All reward TAO tokens are newly minted. 
+:::tip note
+The tempo duration (360 blocks) is the same for all the user-created subnets. However, the timing of tempos can differ among subnets, depending on when they were created.
 :::
-4. Finally, the YC calculates a consensus distribution of TAO (the ‘emission’) and distributes the newly minted reward TAO immediately into the accounts associated with the UIDs. 
-
-### Tempo
-
-Note that subnet validators can transmit their rank weight vectors to the blockchain any time. However, for any user-created subnet, the YC for the subnet begins at every 360 blocks (=4320 seconds or 72 minutes, at 12 seconds per block) using the latest weight matrix available at the YC for the subnet. 
-
-If a ranking weight vector from the subnet validator arrives after the start of a 360-block period, then this weight vector will be used in the subsequent YC start, i.e., after the current 360 blocks have elapsed. 
-
-At the end of any 360-block period, called **tempo**, the YC concludes and the emissions (distribution of reward TAO) are complete.  This tempo value of 360 blocks is the same for all the user-created subnets. However, the YC-starts for each user-created subnet can commence at different times. 
