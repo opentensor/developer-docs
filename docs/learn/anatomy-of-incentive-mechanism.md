@@ -51,7 +51,7 @@ Research what other subnet creators are doing.
 
 Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets), and learn about the latest research on subnet design, which is an active area.
 
-## Components of incentive mechanism
+## Components of an incentive mechanism
 
 A subnet incentive mechanism must provide the following:
 
@@ -83,7 +83,7 @@ Miners will continuously compete to achieve the highest score possible, since it
 Subnets should be endlessly improving.
 :::
 
-## Additional Considerations for Subnet Incentive Design
+## Additional Considerations for incentive mechanism design
 
 - Take miner hardware into account, where it may cause differences in output, or in judging performance.
 - Set tight similarity thresholds if exact reproducibility is challenging. For example, compare embeddings (like CLIP) or apply perceptual hashing.  
