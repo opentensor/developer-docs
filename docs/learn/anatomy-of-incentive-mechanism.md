@@ -10,26 +10,21 @@ See [Components of the Bittensor platform](../learn/bittensor-building-blocks) f
 
 Each subnet has its own *incentive mechanism*, a scoring model that drives the behavior of its participants, and the production of the subnet's digital commodity, by defining **how validators are to evaluate miners’ work**. Miners are incentivized to optimize for this model so validators will score (or 'weight') their work highly, resulting in higher emissions. Validators are incentivized to accurately score miners' work according to the model because the algorithm penalizes departure from consensus in miner scores with lower emissions.
 
-Each validator on a subnet is responsible for periodically computing a vector of weights assigned to each miner, representing an aggregate ranking based on miners' performance. Validators transmit these **weight vectors** to the blockchain. Typically, each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks.
+Each validator on a subnet is responsible for periodically computing a vector of weights assigned to each miner, representing an aggregate ranking based on the miners' performance. Validators transmit these **weight vectors** to the blockchain. Typically, each subnet validator transmits an updated ranking weight vector to the blockchain every 100-200 blocks.
 
-The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** from these ranking/weight vectors, which is then provided as input to the Yuma Consensus module on-chain. Yuma Consensus (YC) uses this weight matrix, along with the amount of stake associated with each UID on the subnet, to calculate emissions to each subnet and each participant within each subnet. These emissions are finalized and debited to participants' hotkeys at the end of each *tempo* or 360 blocks.
+The Bittensor blockchain waits for the latest ranking weight vectors from all the subnet validators of a given subnet, then forms a **weight matrix** from these ranking/weight vectors, which is then provided as input to the Yuma Consensus module on-chain. Yuma Consensus (YC) uses this weight matrix, along with the amount of stake associated with each UID on the subnet, to calculate emissions to each participant within each subnet. These emissions are finalized and debited to participants' hotkeys at the end of each *tempo* or 360 blocks.
 
 :::tip note
 The tempo duration (360 blocks) is the same for all the user-created subnets. However, the timing of tempos can differ among subnets, depending on when they were created.
 :::
-
 
 ## Subnet creator responsibilities
 
 In order for a subnet to succeed, the creator must:
 
 - Design an incentive mechanism that guides miners' relentless tendency to opimize their scores (and hence emissions) toward the desired outcomes
-- Enable miner and validator participation
-- Discourage miner and validator exploits
-
-::: note
-Though a subnet incentive mechanism works in conjunction with the Yuma Consensus in the Bittensor network, you must design your subnet incentive mechanism **by treating Yuma Consensus as a black box**. 
-:::
+- Facilitate miner and validator participation
+- Prevent miner and validator exploits
 
 ### Enable participation
 
@@ -46,9 +41,9 @@ After a subnet validator registers into your subnet, they will run the validator
 
 ### Discourage exploits
 
-The incentive mechanism is ultimately the judge of subnet miner performance. When the incentive mechanism is well calibrated, it can result in a virtuous cycle in which the subnet miners continuously improve at the desired task due to competition.
+A well-designed incentive mechanism fosters a virtuous cycle, where competition drives continuous miner improvement. Conversely, a flawed mechanism encourages shortcuts and exploits that degrade the subnet’s integrity and undermine participation.
 
-On the contrary, a poorly designed incentive mechanism can result in exploits and shortcuts, which can detrimentally impact the overall quality of the subnet and discourage fair miners.
+Ensure that your IM is proofed against gaming or unintended shortcuts through thorough modeling, testing, and community vetting. As a subnet creator, expect to continuously monitor miner performance and update your IM to fine-tune it as needed.
 
 ### Design incentive mechanism
 
@@ -72,11 +67,7 @@ See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-ne
 
 ### Subnet task
 
-The task is one of the key components of any incentive mechanism as it defines what miners will perform as work. The task should be chosen so that miners are maximally effective at the intended use case for the subnet.
-
-In other words, **the task should mimic an intended user interaction with a subnet**. Examples of tasks are responding to natural language prompts and storing encrypted files.
-
-The task defines the scope of work that miners will undertake, and what utility the subnet can provide to users. In some cases this should be very specific (such as storage) and in other cases it can be varied (many types of natural language query).
+The task is one of the key components of any incentive mechanism as it defines what miners will perform as work. Examples of tasks are responding to natural language prompts and storing encrypted files. The task should be designed to capture intended use case for commodity to be produced by the subnet. Generally, the task should realistically mimic an intended user interaction with a subnet. 
 
 ### Subnet scoring model
 
@@ -91,7 +82,6 @@ Miners will continuously compete to achieve the highest score possible, since it
 :::tip The zen of incentive mechanisms
 Subnets should be endlessly improving.
 :::
-
 
 ## Additional Considerations for Subnet Incentive Design
 
