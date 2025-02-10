@@ -8,13 +8,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### What is the rollout timeline for Dyanmic TAO? What determines the timing?
 
-Dynamic TAO is currently live on testnet. Dynamic TAO will be introduced to the Bittensor blockchain as an upgrade according to the following procedure:
+Dynamic TAO is currently live on testnet, and its introduction to mainnet is live as a vote in the senate, after having been introduced on Feb 7.
 
-The Bittensor governing triumvirate will propose an upgrade, and the Senate will have 6 days to pass the vote (requiring 7 of 12 votes) or propose modifications to the upgrade.
+The Senate will have 6 days to pass the vote (requiring 7 of 12 votes) or propose modifications to the upgrade.
 
 If the vote clears, the upgrade will be applied to the main Bittensor chain.
 
 Any subsequent modifications require a new proposal to be introduced to a new upgrade following the same process.
+
+:::tip
+Run `btcli root proposals --network finney` to view current proposals and votes that have been cast.
+:::
 
 ### How will Dynamic TAO take effect?
 
