@@ -13,10 +13,10 @@ See the [Dynamic TAO Whitepaper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6
 
 See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
-Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
+Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks), and is currently being voted on in the senate as an upgrade to mainnet.
 
 :::tip
-Testnet tokens do not have any value.
+Run `btcli root proposals --network finney` to view current proposals and votes that have been cast.
 :::
 
 ## What to expect with Dynamic TAO
