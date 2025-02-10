@@ -14,11 +14,11 @@ Emissions of TAO (τ) from Bittensor&mdash;are distributed among miners and vali
 ## Anatomy of a subnet
 
 The illustration below shows the main components of a subnet:
-1. A subnet's [incentive mechanism] defines the work that miners must perform, and the work that validators must perform to evaluate the miners' work. The incentive mechanism is unique to the subnet, and maintained off-chain by the subnet owner in the form of a code-repository that defines the interface for miners and validators to participate. For example, see [Subnet 1](https://github.com/macrocosm-os/prompting).
+1. A subnet's [incentive mechanism](../learn/anatomy-of-incentive-mechanism) defines the work that miners must perform, and the work that validators must perform to evaluate the miners' work. The incentive mechanism is unique to the subnet, and maintained off-chain by the subnet creator in the form of a code-repository that defines the interface for miners and validators to participate. For example, see [Subnet 1](https://github.com/macrocosm-os/prompting).
 2. **Miners** perform some useful work as defined in the subnet's incentive mechanism. For example, in Subnet 1, miners serve chat prompt completion.
 3. **Validators** independently evaluate the task performed by the subnet miners, according to standards defined by the subnet's incentive mechanism.
 4. Validators each score the performance of of each miner over the most recent time period. The matrix of these scores, by each validator for each miner, serves as input to **Yuma Consensus**. 
-5. The Yuma Consensus algorithm operates on-chain, and determines emissions to miners, validators, and subnet owners across the platform, based on performance.
+5. The Yuma Consensus algorithm operates on-chain, and determines emissions to miners, validators, and subnet creators across the platform, based on performance.
 
 <center>
 <ThemedImage
@@ -42,7 +42,7 @@ Subnets must compete for weight within the Bittensor network. New subnets are cr
 
 A subnet's performance is determined by Yuma Consensus over the weights given to it by [root network validators](../root-network). This group evaluates subnets based on many criteria and sets the weight competitively/relative to the other subnets, playing the same role for subnetworks that validators within each subnetwork play for miners.
 
-Any subnet has an 'immunity period' of `7 * 7200` blocks, which is equivalent to  seven days. This initial network immunity period starts when the subnet is created and its `netuid` is issued to the subnet owner. A newly created subnet starts with zero emission.
+Any subnet has an 'immunity period' of `7 * 7200` blocks, which is equivalent to  seven days. This initial network immunity period starts when the subnet is created and its `netuid` is issued to the subnet creator. A newly created subnet starts with zero emission.
 
 During this immunity period, the subnet is not at risk of being deregistered. At the end of this immunity period, if the subnet's emissions are the lowest among all the subnets, then this subnet will be deregistered when a new subnet registration request arrives. If there are several subnets with the lowest emission, then the oldest subnet among the lowest will be deregistered first, followed by the second oldest, and so on.
 
