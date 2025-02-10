@@ -83,7 +83,7 @@ Miners will continuously compete to achieve the highest score possible, since it
 Subnets should be endlessly improving.
 :::
 
-## Additional Considerations for incentive mechanism design
+## Additional considerations for incentive mechanism design
 
 - Take miner hardware into account, where it may cause differences in output, or in judging performance.
 - Set tight similarity thresholds if exact reproducibility is challenging. For example, compare embeddings (like CLIP) or apply perceptual hashing.  
