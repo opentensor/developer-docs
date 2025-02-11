@@ -1,11 +1,11 @@
 ---
-title: "Staking in Bittensor"
+title: "Staking/delegation overview"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Staking in Bittensor
+# Staking/delegation overview
 
 TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
 
@@ -18,6 +18,38 @@ See also:
 Validators/delegates can configure their take. The default value is 18%. See [Setting your delegate take](#setting-your-delegate-take).
 
 Minimum required stake for nominators is 0.1 TAO.
+:::
+
+
+Staking is always local to a subnet.
+
+Each subnet operates its own automated market-maker (AMM), meaning it mantains its own reserves of the two tokens being traded so that it can facilitate a trade of any desired quantity of liquidity (as long as its available), at a price that it automated calculates.
+
+Each subnet has a reserve of TAO and a reserve of its currency, referred to in general as its alpha ($\alpha$) currency. Stake is held in $\alpha$ token denominations.
+
+As a TAO holder you will stake to a validator’s hotkey on a specific subnet. Staking to a given validator's hotkeys on different subnets is independent.
+
+**When you stake:**
+
+1. First, your TAO stake goes into the subnet's TAO reserve of its AMM (automated market maker) pool.
+1. Then, the subnet AMM pool algorithm uses the exchange rate and calculates the equivalent units of $\alpha$, for the TAO that was just added to the TAO reserve side. This amount of $\alpha$ is taken out of the alpha reserve of the pool and is sent to the validator’s hotkey. 
+1. The validator’s hotkey holds the $\alpha$. The sum of stake among all hotkeys is referred as **$\alpha$ outstanding** for that subnet. 
+
+**When you unstake:**
+
+1. When you issue an unstake command, `btcli stake remove`, and specify the units of $\alpha$ token you want to unstake, this $\alpha$ is first taken out of the validator’s hotkey and added to the $\alpha$ reserves of the subnet pool. 
+2. The subnet AMM pool algorithm then applies the latest exchange rate and calculates the equivalent TAO units for the $\alpha$ token units that were just added to the $\alpha$ reserves of the pool. 
+3. These equivalent TAO units are then taken out of the TAO reserves of the subnet pool and are sent to the TAO holder’s coldkey.
+
+:::tip Stake is always expressed in alpha units
+In Dynamic TAO, except for the stake held in [the Root Subnet](#root-subnet-subnet-zero), the stake held by a hotkey in a subnet is always expressed in the subnet-specific $\alpha$ units. Root Subnet stake is expressed in $\tau$.
+:::
+
+:::tip Prereq
+To follow along, install the Dynamic TAO-enabled release candidate of the Bittensor command line interface `btcli`, by running:
+```shell
+pip install bittensor-cli==8.2.0rc10
+```
 :::
 
 
@@ -84,119 +116,3 @@ As a result:
 A nominator is the same as a delegating authority. Typically, a nominator is an owner of TAO funds who wants to invest in the Bittensor network without performing any validating tasks.
 :::
 
-## Staking operations
-
-### Viewing available delegates 
-
-If you are looking for trusted delegate(s) to whom you can delegate your funds, start by seeing a list of already active delegates on the Bittensor network. Run the below command on your terminal:
-
-```bash
-btcli root list_delegates
-```
-
-You will get an output like this (click on the image to zoom):
-
-[![List Delegates](/img/docs/list_delegates_screenshot.png 'Output of List Delegates')](/img/docs/list_delegates_screenshot.png)
-
-See below for an explanation of the column headings in the above terminal output:
-
-| Column                | Meaning                                                                                                                                                                                                                            |
-| :------               |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| INDEX                 | Delegates with a larger total stake are higher on the list.                                                                                                                                                                        |
-| DELEGATE              | The name of the delegate. Click on the name to visit the delegate website. It only shows if the delegate has registered.                                                                                                           |
-| SS58                  | The [SS58 hotkey of the delegate](/getting-started/wallets#listing-all-the-local-wallets).                                                                                                                                          |
-| NOMINATORS            | The number of nominators, i.e., delegators, who have delegated to this delegate. This is also the number of unique cold keys (i.e., number of nominators) nominated **to** this hotkey (i.e., to this delegate).                   |
-| DELEGATE STAKE(τ)     | The amount of the delegate's own stake (not the TAO delegated from any nominators). This is the amount of stake that the delegate-owned coldkey has delegated to this delegate's hotkey (distinct from TAO delegated from others). |
-| TOTAL STAKE(τ)        | The total amount of stake delegated to this delegator's hotkey.                                                                                                                                                                    |
-| CHANGE/(4h)           | The percent change in the total stake delegated to this delegate within the past 4 hours.                                                                                                                                          |
-| VPERMIT               | Shows the subnets for which the delegate holds the validator permits.                                                                                                                                                              |
-| TAKE                  | Shows the delegate take percentage.                                                                                                                                                                                                |
-| NOMINATOR/(24h)/kτ    | Stake allocated to this delegate's nominators within the past 24-hour period (per 1000 TAO).                                                                                                                              |
-| DELEGATE/(24h)        | Stake cut taken by this delegate within the past 24 hours.                                                                                                                                                                  |
-| Desc                  | A description of the delegate.                                                                                                                                                                                                     |
-
-### Delegating tao
-
-The below command will show a list of delegates sorted by their total stake. Select a delegate from this list to whom you can send your stake.
-```bash 
-btcli root delegate
-```
-Output:
-```bash
-INDEX DELEGATE SS58          NOMINATORS   DELEGATE STAKE(τ)    TOTAL STAKE(τ)    CHANGE/(4h)   VPERMIT     TAKE     NOMINATOR/(24h)/kτ    DELEGATE/(24h)   Desc
-0              5GTMADbd...   0            τ0.000000000         τ0.000000000      NA            [0, 1]      18.0%    τ0.000                τ0.000
-
-Enter delegate index: 0
-Enter wallet name (default):
-Stake all Tao from account: 'default'? [y/n]: y
-Enter password to unlock key:
-Do you want to delegate:
-  amount: τ120,999.999999000
-  to: 5GTMADb *** 39Gp
- default: 5CzJxoM8 *** oRD [y/n]: y
-✅ Finalized
-Balance:
-  τ121,000.000000000 ➡ τ0.000001000
-Stake:
-  τ0.000000000 ➡ τ120,999.999999000
-```
-
-### Show your delegations 
-
-To show all your previously made delegations:
-
-:::tip
-Use `--all` option to show delegations across all your wallets.
-:::
-
-```bash
-btcli root my_delegates
-```
-Output:
-```bash
-Wallet    OWNER  SS58         Delegation       τ/24h    NOMS   OWNER STAKE(τ)     TOTAL STAKE(τ)    SUBNETS    VPERMIT      24h/kτ     Desc
-owner            5GTMADbd...  τ120,999.9999    τ0.000   1      τ0.000000000       τ120,999.9999     [0, 1]     ['', '*']    0.0
-
-Total delegated Tao: τ120,999.999999000
-```
-
-## Delegate operations
-
-### Becoming a delegate
-
-If you are a registered subnet validator, you can become a delegate. To become a delegate:
-1. You must make your hotkey available for the nominators. 
-2. You must provide and sign your delegate information.
-
-The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
-
-#### Step 1: Nominate yourself as a delegate
-
-Run the below command (for self-nominating as a delegate):
-
-```bash
-btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-Example:
-```bash
-btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-#### Step 2: Provide your delegate information 
-
-Next, provide your delegate information, such as your delegate name, URL, and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates.
-
-To provide and sign this information, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
-
-### Setting your delegate take
-
-As a delegate, you can set your delegate percentage by running the below command:
-
-```bash
-btcli root set_delegate_take --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey> --take <floating point number between 0 and 1>
-```
-Example:
-```bash
-btcli root set_delegate_take --wallet.name test-coldkey --wallet.hotkey test-hotkey --take 0.1
-```
-where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take to 10%.

@@ -70,7 +70,11 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       link: {type: "doc", id: "staking-and-delegation/delegation",},
-      items: ["staking-and-delegation/delegation","staking-and-delegation/staking-polkadot-js", "staking-and-delegation/using-ledger-hw-wallet"],
+      items: [
+      "staking-and-delegation/delegation",
+      "staking-and-delegation/managing-stake-btcli",
+      "staking-and-delegation/staking-polkadot-js",
+      "staking-and-delegation/using-ledger-hw-wallet"],
     },
     {
       type: "category",
