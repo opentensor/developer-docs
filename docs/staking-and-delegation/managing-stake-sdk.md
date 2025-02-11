@@ -4,11 +4,19 @@ title: "Managing stake with Bittensor Python SDK"
 
 # Managing stake with Bittensor Python SDK
 
+## Check your TAO balance
 
-## Create wallet
-
-...
-
+```python
+import bittensor as bt
+sub = bt.Subtensor(network="test")
+wallet = bt.wallet(
+    name="PracticeKey!",
+    hotkey="stakinkey1",
+)
+wallet.unlock_coldkey()
+balance = sub.get_balance(wallet.coldkey.ss58_address)
+print(balance)
+```
 
 ## View exchange rates
 
