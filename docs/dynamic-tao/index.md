@@ -9,12 +9,14 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 Dynamic TAO is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
 
+See the [Dynamic TAO Whitepaper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view) for a full explanation.
+
 See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
-Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks)!
+Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks), and is currently being voted on in the senate as an upgrade to mainnet.
 
 :::tip
-Testnet tokens do not have any value.
+Run `btcli root proposals --network finney` to view current proposals and votes that have been cast.
 :::
 
 ## What to expect with Dynamic TAO

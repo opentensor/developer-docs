@@ -70,11 +70,6 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
     link='https://taostats.io/subnets'
     body='Subnets on taostats.io' />  
     <CardSmall
-    icon={FaRegNewspaper}
-    title='See what is new'
-    link='whats-new-in-docs'
-    body='Updates to Docs' />
-    <CardSmall
     icon={VscFileMedia}
     title='Bittensor media assets'
     link='media-assets'
@@ -91,7 +86,7 @@ You can participate in an existing subnet as either a subnet validator or a subn
     <ResponsiveCard
     icon={RiTeamLine}
     title='Staking and Delegation'
-    link='staking-and-delegation'
+    link='staking-and-delegation/delegation'
     body='Get to know how staking and delegating in the Bittensor network.' />
     <ResponsiveCard 
     icon={MdOutlineChecklistRtl}

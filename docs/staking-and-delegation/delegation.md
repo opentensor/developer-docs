@@ -1,110 +1,90 @@
 ---
-title: "Staking/Delegation"
+title: "Staking in Bittensor"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Staking/delegation
+# Staking in Bittensor
 
-TAO holders can **stake** or **delegate** any amount of liquidity to a validator. Delegation supports validators, as their total stake in the subnet determines their consensus power and the emissions they receive.
+TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
 
-A TAO holder, i.e., a delegator, also called a **nominator**, stakes with a subnet validator, making this subnet validator a **delegate** of the nominator. This supports the delegate as the delegate's effective stake becomes larger, increasing the delegate's impact on the network.
+See also:
+- [Staking with Polkadot JS](./staking-polkadot-js.md).
+- See also [Validators: Acquiring stake](../validators/index.md#acquiring-stake).
 
-The delegate (the subnet validator) then pools all such delegated stake, along with their own stake, and uses this total stake to perform validation tasks in one or more subnets. Daily staking rewards, in proportion to the total stake of the delegate, are credited to the delegate as a result of such validation tasks. After a percentage is deducted from the delegate, these staking rewards are credited back to the delegate's nominators.
 
-:::tip Validator take %
-The default value of the delegate take is 18%. As a delegate, you can set your own delegate take % by using the `btcli root set_delegate_take` command. See [Setting your delegate take](#setting-your-delegate-take).
-:::
-- The above percentage of the staking reward is distributed among the delegate's nominators in proportion to the nominators' staked TAO amount with this delegate.
+:::tip tips
+Validators/delegates can configure their take. The default value is 18%. See [Setting your delegate take](#setting-your-delegate-take).
 
-:::tip Minimum required stake for nominators
 Minimum required stake for nominators is 0.1 TAO.
 :::
 
+
 ## Example
-Consider the example below:
-- A delegate holds their own TAO of 800.
-- Three nominators delegate their TAO to the delegate as follows: 
-  - Nominator 1 delegates 100 TAO.
-  - Nominator 2 delegates 70 TAO.
-  - Nominator 3 delegates 30 TAO.
-- The effective stake of the delegate is 1000 TAO (100+70+30 of the delegated TAO plus their own 800 TAO), consisting of 80% of the delegate's own and the remaining 20% from the nominators.
-- Finally, the individual nominator contributions of the total delegated TAO are as follows:
-  - Nominator 1 contributes 50% of total delegated TAO (i.e., 100/(100+70+30)).
-  - Nominator 2 contributes 35% of the total delegated TAO.
-  - Nominator 3 contributes 15% of the total delegated TAO.
 
-<center>
-<ThemedImage
-alt="Delegate example"
-sources={{
-    light: useBaseUrl('/img/docs/delegate-example.svg'),
-    dark: useBaseUrl('/img/docs/dark-delegate-example.svg'),
-}}
-style={{width: 700}}
-/>
-</center>
+Suppose a validator holds 800 TAO of their own.
 
-<br />
+Then three nominators stake to the validator as follows: 
+  - Nominator 1: 100 TAO.
+  - Nominator 2: 70 TAO.
+  - Nominator 3: 30 TAO.
 
-When the staking dividends are received, the dividends are shared in the following way (see the above picture):
-- The delegate would keep 80% of the dividends, based on their 80% proportion of the total stake (0.8).
-- In addition, the delegate would keep 18% of the dividends earned on the delegated stake (the delegated stake is 20%). This is the delegate's take %.
-- As a result:
-  - Total dividends to the delegate are: `0.8 + 0.2*0.18=0.836` of the received dividends.
-  - Each nominator receives the following portions of the received dividends, based on their contribution percentages:
-    - Nominator 1 receives: `(1-0.8)*(1-0.18)*50% = 0.082`.
-    - Nominator 2 receives: `(1-0.8)*(1-0.18)*35% = 0.0574`. 
-    - Nominator 3 receives: `(1-0.8)*(1-0.18)*15% = 0.0246`.
+The validator's effective stake is the total sum of their own and all delegated stake.
+
+   $$
+   \text{delegated stake} = 100\tau + 70\tau + 30\tau = 200\tau
+   $$
+   $$
+   \text{total stake} = \text{self-stake} + \text{delegated stake} = 800\tau + 200\tau = 1000 \tau
+   $$
+
+Emissions to stakers are proportional to their contribution to delegated stake:
+
+    $$
+    \text{emission for staker x from validator V} = 
+      \frac
+      { stake_x }
+      { \sum_{i \in \text{V's stakers}} \bigl(stake_i) }
+    $$
+- Nominator 1 represents 50% of total delegated TAO:
+
+    $$
+    \text{emission for staker x from validator V} = 
+      \frac
+      { 100\tau }
+      { 100\tau + 70\tau + 30\tau } = 50\%
+    $$ 
+- Nominator 2 contributes 35% of the total delegated TAO.
+      $$
+      \text{emission for staker x from validator V} = 
+        \frac
+        { 70\tau }
+        { 100\tau + 70\tau + 30\tau } = 35\%
+      $$ 
+- Nominator 3 contributes 15% of the total delegated TAO.
+      $$
+      \text{emission for staker x from validator V} = 
+        \frac
+        { 30\tau }
+        { 100\tau + 70\tau + 30\tau } = 15\%
+      $$ 
+
+The delegate validator would keep 80% of the emissions, based on their 80% proportion of the total stake (0.8). In addition, the validator would keep their 18% take of the emissions earned on the delegated stake.
+
+As a result:
+  - Total emissions to the delegate are: $0.8 + 0.2*0.18= .836 = 83.6\%$ of the received emissions.
+  - Each nominator receives the following portions of the validator's total emissions, based on their contribution percentages:
+    - Nominator 1 emissions: $(1-0.8)*(1-0.18)*.5 = .082 = 8.2\%$
+    - Nominator 2 emissions: $(1-0.8)*(1-0.18)*.35 = .0574 = 5.74\%$
+    - Nominator 3 emissions: $(1-0.8)*(1-0.18)*.15 = .0246 = 2.46\%$
     
 
 :::info A nominator is a delegating authority
 A nominator is the same as a delegating authority. Typically, a nominator is an owner of TAO funds who wants to invest in the Bittensor network without performing any validating tasks.
 :::
 
-## Delegate examples
-
-### Becoming a delegate
-
-If you are a registered subnet validator, you can become a delegate. To become a delegate:
-1. You must make your hotkey available for the nominators. 
-2. You must provide and sign your delegate information.
-
-The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
-
-#### Step 1: Nominate yourself as a delegate
-
-Run the below command (for self-nominating as a delegate):
-
-```bash
-btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-Example:
-```bash
-btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-#### Step 2: Provide your delegate information 
-
-Next, provide your delegate information, such as your delegate name, URL, and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates.
-
-To provide and sign this information, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
-
-### Setting your delegate take
-
-As a delegate, you can set your delegate percentage by running the below command:
-
-```bash
-btcli root set_delegate_take --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey> --take <floating point number between 0 and 1>
-```
-Example:
-```bash
-btcli root set_delegate_take --wallet.name test-coldkey --wallet.hotkey test-hotkey --take 0.1
-```
-where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take to 10%.
-
-## Nominator examples
+## Staking operations
 
 ### Viewing available delegates 
 
@@ -131,8 +111,8 @@ See below for an explanation of the column headings in the above terminal output
 | CHANGE/(4h)           | The percent change in the total stake delegated to this delegate within the past 4 hours.                                                                                                                                          |
 | VPERMIT               | Shows the subnets for which the delegate holds the validator permits.                                                                                                                                                              |
 | TAKE                  | Shows the delegate take percentage.                                                                                                                                                                                                |
-| NOMINATOR/(24h)/kτ    | Stake reward distributed to this delegate's nominators within the past 24-hour period (per 1000 TAO).                                                                                                                              |
-| DELEGATE/(24h)        | Stake reward cut taken by this delegate within the past 24 hours.                                                                                                                                                                  |
+| NOMINATOR/(24h)/kτ    | Stake allocated to this delegate's nominators within the past 24-hour period (per 1000 TAO).                                                                                                                              |
+| DELEGATE/(24h)        | Stake cut taken by this delegate within the past 24 hours.                                                                                                                                                                  |
 | Desc                  | A description of the delegate.                                                                                                                                                                                                     |
 
 ### Delegating tao
@@ -180,4 +160,43 @@ owner            5GTMADbd...  τ120,999.9999    τ0.000   1      τ0.000000000  
 Total delegated Tao: τ120,999.999999000
 ```
 
+## Delegate operations
 
+### Becoming a delegate
+
+If you are a registered subnet validator, you can become a delegate. To become a delegate:
+1. You must make your hotkey available for the nominators. 
+2. You must provide and sign your delegate information.
+
+The nominators will then delegate their TAO to this hotkey, i.e., the nominators will use your delegate hotkey as a wallet destination for their delegated TAO transfers.
+
+#### Step 1: Nominate yourself as a delegate
+
+Run the below command (for self-nominating as a delegate):
+
+```bash
+btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
+```
+Example:
+```bash
+btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
+```
+
+#### Step 2: Provide your delegate information 
+
+Next, provide your delegate information, such as your delegate name, URL, and description. This information will then be available in the list of active delegates, for example, when a nominator runs `btcli root list_delegates` to see available delegates.
+
+To provide and sign this information, follow the instructions on this [Bittensor Delegates repo](https://github.com/opentensor/bittensor-delegates#2023-03-23---first-version).
+
+### Setting your delegate take
+
+As a delegate, you can set your delegate percentage by running the below command:
+
+```bash
+btcli root set_delegate_take --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey> --take <floating point number between 0 and 1>
+```
+Example:
+```bash
+btcli root set_delegate_take --wallet.name test-coldkey --wallet.hotkey test-hotkey --take 0.1
+```
+where the value for the `--take` option is a floating point number between 0 and 1. In the above example, `--take 0.1` sets the delegate take to 10%.
