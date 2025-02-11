@@ -92,10 +92,6 @@ A subnet miner's emission may not always appear as a smooth curve. Emission migh
 
 Once your subnet miner has begun mining, you can move it to a different machine, but proceed with caution.
 
-:::tip Always minimize subnet miner downtime
-Always minimize any downtime for your subnet miner. Missing validation requests can significantly damage the incentive and rewards of your subnet miner.
-:::
-
 To move a subnet miner from one machine to another, follow these steps in order:
 
 1. Start the subnet miner on the new machine.

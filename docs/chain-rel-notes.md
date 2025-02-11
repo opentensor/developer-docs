@@ -135,7 +135,7 @@ A bug is fixed where, when a subnet's registration is turned off, the chain was 
 
 #### Consensus-based weights
 
-A new feature, called **consensus-based weights** is available in the testnet 1.2.1-pre-release. Currently, while calculating the dividends to a subnet validator, a quantity called exponential moving average bond value of a subnet validator, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
+A new feature, called **consensus-based weights** is available in the testnet 1.2.1-pre-release. Currently, while calculating the emissions to a subnet validator, a quantity called exponential moving average bond value of a subnet validator, weighted over the current epoch and several previous epochs, is used. See the below equation for how this moving average is computed.
 
 $$
 B_{ij}^{(t)} = \alpha\cdot\Delta B_{ij}^{(t)} + (1-\alpha)\cdot B_{ij}^{(t-1)}
