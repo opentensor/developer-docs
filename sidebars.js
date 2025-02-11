@@ -58,7 +58,6 @@ const sidebars = {
       "dynamic-tao/dtao-guide",
       "dynamic-tao/dtao-faq",
       "dynamic-tao/emission",
-      "dynamic-tao/staking-unstaking-dtao",
       "dynamic-tao/sdk-cheat-sheet",
       
       ],
@@ -72,7 +71,9 @@ const sidebars = {
       link: {type: "doc", id: "staking-and-delegation/delegation",},
       items: [
       "staking-and-delegation/delegation",
+      "dynamic-tao/staking-unstaking-dtao",
       "staking-and-delegation/managing-stake-btcli",
+      "staking-and-delegation/managing-stake-sdk",
       "staking-and-delegation/staking-polkadot-js",
       "staking-and-delegation/using-ledger-hw-wallet"],
     },
