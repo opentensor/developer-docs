@@ -42,12 +42,6 @@ pip install bittensor==8.5.1rc6
 pip install bittensor-cli==8.2.0rc10
 ```
 
-:::danger
-The changes to `btcli` and the Bittensor SDK are not backwards compatible.
-
-The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
-:::
-
 See:
 - [Bittensor SDK release page](https://pypi.org/project/bittensor/)
 - [Bittensor CLI release page](https://pypi.org/project/bittensor-cli/)
