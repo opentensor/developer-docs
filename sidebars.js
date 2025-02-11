@@ -189,7 +189,6 @@ const sidebars = {
       items: [
         "chain-rel-notes",
         "bittensor-rel-notes",
-        "whats-new-in-docs",
       ],
     },
 
