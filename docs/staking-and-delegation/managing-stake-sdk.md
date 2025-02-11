@@ -7,6 +7,9 @@ title: "Managing stake with Bittensor Python SDK"
 
 ## Create wallet
 
+...
+
+
 ## View exchange rates
 
 The following script displays exchange rates for a subnet alpha token, with and without slippage.
