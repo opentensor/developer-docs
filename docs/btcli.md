@@ -1358,7 +1358,7 @@ List all subnets and their detailed information.
 This command is designed to provide users with comprehensive information about each subnet within the
 network, including its unique identifier (netuid), the number of neurons, maximum neuron capacity,
 emission rate, tempo, recycle register cost (burn), proof of work (PoW) difficulty, and the name or
-SS58 address of the subnet owner.
+SS58 address of the subnet creator.
 
 Upon invocation, the command performs the following actions:
 
@@ -1369,7 +1369,7 @@ Upon invocation, the command performs the following actions:
 3. The command compiles this data into a table format, displaying key information about each subnet.
 
 In addition to the basic subnet details, the command also fetches delegate information to provide the
-name of the subnet owner where available. If the owner's name is not available, the owner's `SS58`
+name of the subnet creator where available. If the owner's name is not available, the owner's `SS58`
 address is displayed.
 
 The command structure includes:
@@ -1565,7 +1565,7 @@ btcli pow-register --netuid 1 --num_processes 4 --cuda
 This command is suited for users with adequate computational resources to participate in PoW registration. It requires a sound understanding of the network's operations and PoW mechanics. Users should ensure their systems meet the necessary hardware and software requirements, particularly when opting for CUDA-based GPU acceleration.
 :::
 
-This command may be disabled according to the subnet owner's directive. For example, on netuid 1 this is
+This command may be disabled according to the subnet creator's directive. For example, on netuid 1 this is
 permanently disabled.
 
 **Usage**:
@@ -1708,7 +1708,7 @@ $ btcli sudo get [OPTIONS]
 
 Used to set hyperparameters for a specific subnet on the Bittensor network.
 
-This command allows subnet owners to modify various hyperparameters of theirs subnet, such as its tempo,
+This command allows subnet creators to modify various hyperparameters of theirs subnet, such as its tempo,
 emission rates, and other network-specific settings.
 
 The command first prompts the user to enter the hyperparameter they wish to change and its new value.
