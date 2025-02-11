@@ -42,24 +42,6 @@ print("alpha_to_tao", subnet.alpha_to_tao(100))
 
 You can register your hotkey on a subnet using the `burned_register` method. This is necessary for staking, mining or validating.
 
-### `burned_register`
-```python
-burned_register(
-    wallet, 
-    netuid: int, 
-) -> bool
-```
-
-Description: Registers a hotkey on a subnet.
-
-Parameters:
-- wallet: Your Bittensor wallet object.
-- netuid: Unique ID of the subnet.
-
-Returns:
-- bool: True if the registration was successful, False otherwise.
-
-Sample script:
 ```python
 import bittensor as bt
 logging = bt.logging
@@ -75,20 +57,6 @@ reg = sub.burned_register(wallet=wallet, netuid=3)
 
 ## View your registered subnets
 
-### `get_netuids_for_hotkey`
-```python
-get_netuids_for_hotkey(
-    hotkey: str, 
-) -> list[int]
-
-```
-
-Description: Returns the netuids in which a hotkey is registered.
-
-Parameters:
-- hotkey: SS58 address to check.
-
-Example usage:
 ```python
 import bittensor as bt
 sub = bt.Subtensor(network="test")
@@ -103,99 +71,8 @@ print(netuids)
 
 ## Managing stake
 
-### `get_stake`
-```python
-get_stake(
-    hotkey_ss58: str, 
-    coldkey_ss58: str, 
-    netuid: int
-) -> bittensor.Balance
 
-```
-
-Description: Retrieves the staked balance for a given (hotkey, coldkey) pair on a specific subnet. Returns a `bittensor.Balance` object with the staked amount.
-Parameters:
-- hotkey_ss58: Hotkey SS58 address.
-- coldkey_ss58: Coldkey SS58 address (owner).
-- netuid: Unique ID of the subnet.
-
-
-
-### `add_stake`
-
-```python
-async add_stake(
-    wallet, 
-    hotkey: str, 
-    netuid: int, 
-    tao_amount: Union[float, bittensor.Balance, int]
-)
-```
-Description: Adds (stakes) an amount of TAO (tao_amount) to a specific subnet (netuid) under the provided hotkey.
-
-Parameters:
-- wallet: Your Bittensor wallet object.
-- hotkey: The SS58 address (hotkey) to be staked.
-- netuid: Unique ID of the subnet on which you want to stake.
-- tao_amount: Amount to stake, can be a float, integer, or bittensor.Balance object.
-
-### `unstake`
-```python
-unstake(
-    wallet, 
-    hotkey: str, 
-    netuid: int, 
-    amount: Union[float, bittensor.Balance, int]
-)
-
-```
-
-Description: Unstakes amount of TAO from the specified hotkey on a given netuid.
-
-Parameters:
-- wallet: Your Bittensor wallet object.
-- hotkey: The SS58 address (hotkey) from which you want to remove stake.
-- netuid: Unique ID of the subnet.
-- amount: Amount to unstake.
-
-
-### `get_balance`
-```python
-get_balance(
-    address: str, 
-    block: Optional[int] = None
-) -> bittensor.Balance
-
-```
-
-Description: Returns the current (or specified block’s) coldkey TAO balance for an address.
-
-Parameters:
-- address: SS58 address to check.
-- block: Optional block number at which to fetch the balance. Uses the latest block if None.
-
-
-### `get_current_block`
-```python
-get_current_block() -> int
-
-```
-Description: Returns the current chain block number.
-### `wait_for_block`
-```python
-wait_for_block(
-block: Optional[int] = None
-)
-
-```
-Description: Waits for the next block to arrive or waits until a specified block number is reached if provided.
-
-Update: we have added proper nonce protection allowing you to run gather operations on stake/unstake/transfers 
-scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
-
-
-
-## Staking
+### Staking
 
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
@@ -253,7 +130,7 @@ netuid 5 price τ0.001784484 stake ε11.208213619
 
 ```
 
-## Unstaking
+### Unstaking
 
 The below script will reverse the effects of the above, by incrementally unstaking alpha tokens from the list of subnets to yield TAO.
 
