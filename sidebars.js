@@ -44,7 +44,6 @@ const sidebars = {
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
-        "root-network",
         "yuma-consensus",        
       ],
     },
