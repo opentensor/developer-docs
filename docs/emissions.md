@@ -1,169 +1,111 @@
 ---
-title: "Emissions"
+title: "Emission"
 ---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Emissions
+# Emission
 
-In this document we describe how the Bittensor network, via Yuma Consensus, calculates emissions for a subnet. This calculation is based on the weights that are provided by the root network (subnet 0).
+Emission is the process by which the Bittensor network allocates TAO and alpha to participants, including miners, validators, stakers, and subnet creators.
 
-:::tip Before you proceed
-Read the [Root Network](./root-network.md) document before you proceed.
-:::
+It unfolds in two stages:
 
-## Summary 
+- Injection into subnets
+- Extraction by participants
 
-The emission process works like this:
+See the [Dynamic TAO Whitepaper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view) for a full explanation.
 
-- Every block, i.e., every 12 seconds on the Bittensor blockchain, a single TAO ($\tau$) is minted, i.e., newly created.
-- A percentage portion of this single TAO ($\tau$) is allocated to each subnet in accordance with the subnet's performance. The root network determines the percentage portion for each subnet. Hence, all such partial percentage allocations will sum to 100%, i.e., one TAO ($\tau$). 
-    :::tip Taostats
-    See the [percentage numbers in each "**SN**" column on the root network page on Taostats](https://taostats.io/subnets/netuid-0/). These percentages for all SNs add up to `100`. 
-    :::
-- At the end of every tempo, i.e., every 360 blocks in a user-created subnet, the TAO ($\tau$) accumulated for each subnet is injected into the subnet. This emitted TAO for the subnet is then allocated among the subnet's miners, validators, and their stakers, as well as the subnet creator.
+### Injection
 
-## Before you proceed
+The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
 
-Read the [Root Network](./root-network.md) document before you proceed.
+- TAO is injected into the subnet's TAO reserve.
+- alpha is injected into the subnet's alpha reserve.
+- alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
-In the rest of this document we consider the subnet weights (set by the root validators) as **inputs** and proceed to present emission calculations as **outputs**. 
+Liquidity injection to each subnet is in proportion to the price of its token compared to the price other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
 
-## Subnet weights, trust, rank, consensus, emission 
+#### TAO reserve injection
 
-### Read root network metagraph
-
-Consider a snapshot of root network at a given block. You can read the root network metagraph with the below `metagraph` call:
-
-```python
-import torch
-metagraph = bt.metagraph(netuid=0, lite=False)
-metagraph.weights.shape
-```
-
-Running the above code will give you the shape of the weight matrix of the root network. For example, when total number of subnets are 32 (there is no limit to the number of subnets):
-
-```python
-torch.Size([64, 33])
-```
-
-As expected, the shape of the weights reflects the 64 root network validators that set the weights for the example case of 32 subnets. The root network itself is counted, hence `33` in the above output, instead of the example number 32.
-
-You can then read the weights matrix $W$ from the metagraph as below. See the [`metagraph` API documentation](https://docs.bittensor.com/python-api/html/autoapi/bittensor/metagraph/index.html#bittensor.metagraph.metagraph.W).
-
-```python
-# Create a weight matrix with FP32 resolution
-W = metagraph.W.float()
-```
-
-Next, read the stake vector $S$. See [`metagraph` property `S` documentation](https://docs.bittensor.com/python-api/html/autoapi/bittensor/metagraph/index.html#bittensor.metagraph.metagraph.S).
-
-```python
-# Create "normalized" stake vector
-Sn = (metagraph.S/metagraph.S.sum()).clone().float()
-```
-
-Next, we describe how to compute the below quantities that are defined on a subnet.  
-
-- **Trust** ($T$)
-- **Consensus** ($C$)
-- **Rank** ($R$)
-- **Emission** ($E$)
-
-### Trust
-
-Trust is defined as a sum of only those stakes that set non-zero weights. 
+Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, TAO emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
 $$
-T = W_n^T \cdot S
+\Delta\tau_i = \Delta\bar{\tau} \times
+\frac
+  {p_i}
+  {\sum_{j \in \text{S}}
+\bigl(p_j)}
 $$
 
-where $W_n$ is defined as:
+#### Alpha reserve injection
+
+Alpha is then injected in proportion to the price of the token (canceling the price $p_i$ out of the equation), so that growth of a subnet's liquidity pools does not not change the price of the alpha token. However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
+
+Alpha emission $\Delta\alpha_i$ is:
+
 
 $$
-W_n(i, j) = \begin{cases} 
-1 & \text{if } W(i, j) > \text{threshold} \\
-0 & \text{otherwise} 
-\end{cases}
-$$
-
-#### Python
-
-```python
-T = trust(W, Sn)
-```
-where, `trust()` is defined as below:
-
-```python
-def trust(W, S, threshold=0):
-    """Trust vector for subnets with variable threshold"""
-    Wn = (W > threshold).float()
-    return Wn.T @ S
-```
-
-### Rank
-
-Rank $R$ is the sum of weighted stake $S$.
+\Delta\alpha_i = \min\left\{
+  \frac
+    {\Delta\bar{\tau}}
+    {\sum_{j \in \text{S}}
+  \bigl(p_j)},
+  \Delta\bar{\alpha_i} \right\}
 
 $$
-R = \frac{W^T \cdot S}{\sum (W^T \cdot S)}
-$$
 
-#### Python
+#### Alpha outgoing injection
 
-```python
-R = rank(W, Sn)
-```
-where `rank()` is defined as below:
+Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). The quantity per block is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$.
 
-```python
-def rank(W, S):
-    """Rank vector for subnets"""
-    R = W.T @ S
-    return R / R.sum()
-```
+### Extraction
 
-### Consensus
+At the end of each tempo (360 blocks), the quantity of alpha accumulated over each block of the tempo is extracted by network participants in the following proportions:
 
-Consensus $C$ is $\kappa$-centered sigmoid of trust. 
+1. 18% by subnet owner
+1. 41% by miners
+1. 41% by validators and their stakers:
+    1. First, validators extract their take.   
+    1. Then, TAO and alpha are emitted to stakers in proportion to the validators' holdings in each token. TAO emissions are sourced by swapping a portion of alpha emissions to TAO through the subnet's liquidity pool.
 
-$$
-C = \text{sigmoid}(\rho \cdot (T - \kappa))
-$$
-where:
-$$
-\text{sigmoid}(x) = \frac{1}{1 + e^{-x}}
-$$
+        For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
 
-#### Python
+        - TAO is emitted to stakers on the root subnet (i.e. stakers in TAO) in proportion to the validator's stake weight's proportion of TAO.
 
-```python
-C = consensus(T)
-```
-where `consensus()` is defined as:
+          $$
+          \text{proportional emissions (\%) to root stakers} 
+          = \frac{\tau_{x}{} \, w_{\tau}}
+                 {\alpha_{x} + \tau_{x} \, w_{\tau}}
+          $$
 
-```python
-def consensus(T, kappa=0.5, rho=10):
-    """Yuma Consensus 1"""
-    return torch.sigmoid( rho * (T - kappa) )
-```
+        - Alpha is emitted to stakers on the mining subnet (i.e. stakers in alpha) in proportion to the validator's stake weight's proportion of alpha:
+          $$
+          \text{proportional emissions (\%) to alpha stakers} 
+          = \frac{\alpha_{x}}
+                 {\alpha_{x} + \tau_{x} \, w_{\tau}}
+          $$        
 
-### Emission
+        Validators who hold both root TAO and subnet alphas will extract both types of token.
 
-Emission $E$ is rank $R$ scaled by consensus $C$.
+    See [Core Dynamic TAO Concepts: Validator stake weight](../subnets/understanding-subnets#validator-stake-weight)
 
-$$
-E = \frac{C \cdot R}{\sum (C \cdot R)}
-$$
+### Note on evolution of Bittensor token economy
 
-#### Python
+When Dynamic TAO is initiated, there will be no alpha in circulation, so validator's stake weights will be entirely determined by their share of TAO stake.
 
-```python
-E = emission(C, R)
-```
-where `emission()` method is defined as below:
+But far more alpha than TAO is emitted into circulation every block. As a result, over time there will be more alpha relative to TAO in overall circulation, and the relative weight of a validator in a given subnet will depend more on their alpha stake share relative to their share of the TAO stake on Subnet Zero.
 
-```python
-def emission(C, R):
-    """Emission vector for subnets"""
-    E = C*R
-    return E / E.sum()
-```
+In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be **18%**, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
+
+<center>
+<ThemedImage
+alt="Curves"
+sources={{
+    light: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+    dark: useBaseUrl('/img/docs/dynamic-tao/curves.png'),
+  }}
+style={{width: 650}}
+/>
+</center>
+
+<br />

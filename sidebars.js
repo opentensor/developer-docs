@@ -57,7 +57,6 @@ const sidebars = {
       items: [
       "dynamic-tao/dtao-guide",
       "dynamic-tao/dtao-faq",
-      "dynamic-tao/emission",
       "dynamic-tao/staking-unstaking-dtao",
       "dynamic-tao/sdk-cheat-sheet",
       
