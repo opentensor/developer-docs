@@ -7,23 +7,18 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 # Dynamic TAO
 
-Dynamic TAO is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization.
+Dynamic TAO is a recent major evolution of Bittensor's integrated tokenomic and governance model, representing a significant step in Bittensor's trajectory toward more thorough decentralization.
+
+It was introduced by proposal, approved by senate vote, and introduced as an upgrade to Bittensor main network in February, 2025 after a year of research, development, and testing.
 
 See the [Dynamic TAO Whitepaper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view) for a full explanation.
 
 See: [Conceptual guide to Dynamic TAO](./dtao-guide.md)
 
-Dynamic TAO is now live on Bittensor [testnet](../bittensor-networks), and is currently being voted on in the senate as an upgrade to mainnet.
-
-:::tip
-Run `btcli root proposals --network finney` to view current proposals and votes that have been cast.
-:::
-
 ## What to expect with Dynamic TAO
 
 Most operations will remain unchanged, including the main workflows for miners (e.g., registering on subnets) and validators (e.g., setting weights on miners).
 Simply update the Bittensor SDK and/or `btcli`, and you will be prepared to work with the Dynamic TAO-enabled Bittensor test network.
-
 
 :::danger
 The migration to Dynamic TAO includes breaking changes. Older versions of the SDK and `btcli` are not compatible with Dynamic TAO. If a participant on your subnet does not upgrade their tooling, they will fall out of consensus.
@@ -33,27 +28,17 @@ The changes to `btcli` and the Bittensor SDK are not backwards compatible.
 
 ## Using Dynamic TAO
 
-To update to the Dynamic TAO-enabled versions of the tooling, run:
-
-```
-# update the SDK to the most recent dTao enabled release candidate
-pip install bittensor==8.5.1rc6
-# update BTCLI to the most recent dTao enabled release candidate
-pip install bittensor-cli==8.2.0rc10
-```
+To use Dynamic TAO, make sure you upgrade to the most recent stable versions of the Bittensor SDK and `btcli`.
 
 See:
 - [Bittensor SDK release page](https://pypi.org/project/bittensor/)
 - [Bittensor CLI release page](https://pypi.org/project/bittensor-cli/)
 - [Upgrade the Bittensor SDK](../getting-started/installation.md#upgrade)
 
-:::tip
-Please help us evolve this technology! If you notice bugs or have clarifying questions, let us know on Discord.
-:::
 
 ### Subnet tokens/liquidity pools
 
-After upgrading, the most visible difference is the addition of one new token per subnet in the bittensor network.
+The most visible difference introduced with Dynamic TAO is the addition of one new token per subnet in the bittensor network.
 
 Run `btcli subnet list` to view information about the subnets and their currency reserves:
 

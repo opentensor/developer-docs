@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Core Dynamic TAO Concepts
 
-Dynamic TAO is a planned evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization, by eliminating the centralized role of the root network in judging the value of subnetworks. Instead, in the Dynamic TAO model, the relative value of subnets is determined in a wholly distributed fashion: by the amount of TAO that users have staked into their currency reserves.
+Dynamic TAO is a recent evolution of the integrated tokenomic and governance model that underlies the Bittensor network. It represents a significant step in Bittensor's trajectory toward more thorough decentralization, by eliminating the centralized role of the root network in judging the value of subnetworks. Instead, in the Dynamic TAO model, the relative value of subnets is determined in a wholly distributed fashion: by the amount of TAO that users have staked into their currency reserves.
 
 ## Subnet liquidity reserves
 
