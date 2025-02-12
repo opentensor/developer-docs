@@ -4,7 +4,29 @@ title: "Managing stake with Bittensor Python SDK"
 
 # Managing stake with Bittensor Python SDK
 
+This pages demonstrates usage of `btcli`, the Bittensor CLI, for managing stake.
+
+TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
+
+See also:
+
+- [Staking/delegation overview](./delegation)
+- [Understanding pricing and anticipating slippage](../dynamic-tao/staking-unstaking-dtao)
+
+
+:::tip
+Minimum transaction amount for stak/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
+:::
+
 ## Check your TAO balance
+
+To stake, you'll first need some TAO. Inquire in Discord to obtain TAO on Bittensor test network.
+
+:::danger
+The funds in a crypto wallet are only as secure as your private key and/or seed phrase, and the devices that have access to these.
+
+Test network tokens have no real value. Before managing liquidity on Bittensor mainnet, carefully consider all aspects of secrets management and endpoint security!
+:::
 
 ```python
 import bittensor as bt
@@ -69,10 +91,7 @@ netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
 print(netuids)
 ```
 
-## Managing stake
-
-
-### Staking
+## Stake
 
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
@@ -130,7 +149,7 @@ netuid 5 price τ0.001784484 stake ε11.208213619
 
 ```
 
-### Unstaking
+## Unstake
 
 The below script will reverse the effects of the above, by incrementally unstaking alpha tokens from the list of subnets to yield TAO.
 
@@ -189,7 +208,7 @@ netuid 5 price τ0.001785179 stake ε33.619312896
 ```
 
 
-### Moving stake
+## Move stake
 
 ...
 

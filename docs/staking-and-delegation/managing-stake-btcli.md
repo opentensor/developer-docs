@@ -2,8 +2,22 @@
 title: "Managing stake with BTCLI"
 ---
 
+# Managing stake with `btcli`
 
-## Create a wallet
+This pages demonstrates usage of `btcli`, the Bittensor CLI, for managing stake.
+
+TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
+
+See also:
+
+- [Staking/delegation overview](./delegation)
+- [Understanding pricing and anticipating slippage](../dynamic-tao/staking-unstaking-dtao)
+
+:::tip
+Minimum transaction amount for stak/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
+:::
+
+## Pre-requisite: Create a wallet
 
 To manage stake you will need a wallet. For practice, create one with `btcli`.
 
@@ -16,8 +30,6 @@ The funds in a crypto wallet are only as secure as your private key and/or seed 
 
 Test network tokens have no real value. Before managing liquidity on Bittensor mainnet, carefully consider all aspects of secrets management and endpoint security!
 :::
-
-
 
 ## View TAO balance
 
@@ -204,5 +216,101 @@ Stake is held in alpha, but note that value at the current price is also display
 
 Press Enter to continue to the next hotkey...
 ```
+
+
+## Transferring stake
+
+
+The `btcli stake transfer` command is used to transfer ownership of stake from one wallet (coldkey) to another.
+
+:::tip
+Don't confuse this with `btcli stake move`, which does not transfer ownership to another wallet/coldkey, but moves stake between validators or subnets, effectively unstaking and restaking it in a single operation.
+:::
+
+This operation effectively comprises a series of operations, which occur as an atomic transaction:
+- first, the specified amount is unstaked from the subnet alpha token into TAO
+- that amount of TAO is then transferred to the ownership of the recipient
+- the recipient then automatically stakes the newly received TAO into the subnet, receiving the alpha tokens in return
+
+```
+btcli stake transfer
+
+
+This command transfers stake from one coldkey to another while keeping the same hotkey.
+Using the wallet name from config: PracticeKey!
+Using the wallet hotkey from config: stakinkey1
+Enter the destination wallet name or coldkey SS58 address: zingo
+Using the specified network test from config
+
+                    Available Stakes to Transfer
+                         for wallet hotkey:
+    stakinkey1: 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
+
+  Index ┃ Netuid ┃ Name                 ┃ Stake Amount ┃ Registered
+━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━
+      0 │ 0      │ τ root               │ τ 76.1340    │     NO
+      1 │ 3      │ γ templar            │ 0.0008 γ     │    YES
+      2 │ 119    │ Ⲃ vida               │ 0.0009 Ⲃ     │    YES
+      3 │ 250    │ ኤ ethiopic_glottal_e │ 11.2528 ኤ    │    YES
+
+Enter the index of the stake you want to transfer [0/1/2/3]: 3
+
+Enter the amount to transfer ኤ (max: 11.2528 ኤ) or 'all' for entire balance: all
+
+Enter the netuid of the subnet you want to move stake to (0-308): 250
+
+                             Moving stake from: ኤ(Netuid: 250) to: ኤ(Netuid: 250)
+                                                 Network: test
+
+ origin netuid ┃ origin hotkey ┃ dest netuid ┃ dest hotkey ┃ amount (ኤ) ┃ rate (ኤ/ኤ) ┃ received (ኤ) ┃ slippage
+━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━
+    ኤ(250)     │   5GE...1kK   │   ኤ(250)    │  5GE...1kK  │ 11.2528 ኤ  │   1.0ኤ/ኤ   │  11.2502 ኤ   │ 0.0228%
+───────────────┼───────────────┼─────────────┼─────────────┼────────────┼────────────┼──────────────┼──────────
+               │               │             │             │            │            │              │
+Would you like to continue? [y/n]: y
+Enter your password:
+Decrypting...
+Origin Stake:
+  11.2528 ኤ ➡ 0.0000 ኤ
+Destination Stake:
+  0.0000 ኤ ➡ 11.2502 ኤ
+```
+
+When the recipient check's their `stake list`, they'll now see the transferred stake:
+
+```console
+btcli stake list --wallet_name zingo
+
+
+Using the specified network test from config
+
+                            Hotkey: 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
+                                                 Network: test
+
+
+        ┃                      ┃     Value ┃           ┃    Price    ┃                 ┃            ┃  Emission
+ Netuid ┃ Name                 ┃ (α x τ/α) ┃ Stake (α) ┃ (τ_in/α_in) ┃   Swap (α -> τ) ┃ Registered ┃ (α/block)
+━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━
+ 0      │ τ root               │    τ 2.34 │  τ 2.34   │ 1.0000 τ/τ  │    N/A (0.000%) │         NO │  τ 0.0000
+ 250    │ ኤ ethiopic_glottal_e │    τ 0.22 │  11.25 ኤ  │ 0.0195 τ/ኤ  │ τ 0.22 (0.006%) │        YES │  0.0000 ኤ
+────────┼──────────────────────┼───────────┼───────────┼─────────────┼─────────────────┼────────────┼───────────
+ 2      │                      │    τ 2.56 │           │             │          τ 2.56 │            │
+
+
+
+Wallet:
+  Coldkey SS58: 5F1TCdVcRWLYyKiS2kF2nBZ21EwQDDFr8hEqrDhRL6YvdtgQ
+  Free Balance: τ 0.0000
+  Total TAO (τ): τ 2.51
+  Total Value (τ): τ 2.56
+```
+
+## Moving stake
+
+The `btcli stake move` command is used to moves stake between validators or subnets, effectively unstaking and restaking it in a single operation. It does not change ownership of the stake, which remains with the same wallet/coldkey.
+
+:::tip
+Don't confuse this with `btcli stake transfer`, which is used to transfer ownership of stake from one wallet (coldkey) to another.
+:::
 
 

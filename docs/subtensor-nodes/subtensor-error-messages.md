@@ -41,6 +41,9 @@ your coldkey is set to be swapped. No transfer operations are possible.
 
 the amount you are staking/unstaking/moving is below the minimum TAO equivalent.
 
+The transaction minimum is 500,000 RAO or 0.0005 TAO.
+
+
 ## Custom error: 2
 
 ### Description
@@ -118,7 +121,6 @@ tthe slippage is higher than you have set the limit at. Try reducing the amount.
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 8'
 }
 ```
-
 
 
 ## Custom error: 9
