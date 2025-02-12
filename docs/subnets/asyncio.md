@@ -49,7 +49,6 @@ async def main():
 asyncio.run(main())
 
 ```
-
 ## Coroutine vs function
 
 The usage of `async def` creates an asyncio *coroutine* rather than a function.

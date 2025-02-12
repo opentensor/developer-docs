@@ -5,13 +5,15 @@ title: "Bittensor 9.0 Migration Guide"
 
 This page notes breaking changes for the Bittensor Python SDK `v9.0`. This version supports Dynamic TAO, a major evolution of the Bittensor network's tokenomic architecture.
 
-See [Dynamic TAO: What to expect](../dynamic-tao).
+See: [Dynamic TAO: What to expect](../dynamic-tao).
 
 **Contents:**
 - [`Subtensor`: removed functions](#subtensor-removed-functions)
 - [`Subtensor`: type changes](#subtensor-type-changes)
 - [`AsyncSubtensor` parity with `Subtensor`](#asyncsubtensor)
 - [`py-substrate-interface` replaced with `async-substrate-interface`](#py-substrate-interface-replaced-with-async-substrate-interface)
+
+See: [Concurrency with AyncIO and AsyncSubtensor](./subnets/asyncio)
 
 ## Subtensor: removed functions
 
