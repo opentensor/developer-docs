@@ -172,7 +172,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -498,7 +498,7 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">Synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">Synapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
 <p>Represents a Synapse in the Bittensor network, serving as a communication schema between neurons (nodes).</p>
 <p>Synapses ensure the format and correctness of transmission tensors according to the Bittensor protocol.
@@ -615,7 +615,7 @@ the robustness of their applications.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.deserialize">
-<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.deserialize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.deserialize" title="Link to this definition">#</a></dt>
 <dd><p>Custom deserialization logic for subclasses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -626,7 +626,7 @@ the robustness of their applications.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.__setattr__">
-<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.__setattr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.__setattr__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.__setattr__" title="Link to this definition">#</a></dt>
 <dd><p>Override method to make <code class="docutils literal notranslate"><span class="pre">required_hash_fields</span></code> read-only.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -640,7 +640,7 @@ the robustness of their applications.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.get_total_size">
-<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.get_total_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.get_total_size" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.get_total_size" title="Link to this definition">#</a></dt>
 <dd><p>Calculates and returns the total size of the object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -651,7 +651,7 @@ the robustness of their applications.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.to_headers">
-<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.to_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.to_headers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.to_headers" title="Link to this definition">#</a></dt>
 <dd><p>Constructs a dictionary of headers from instance properties.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -673,7 +673,7 @@ the robustness of their applications.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.parse_headers_to_inputs">
-<span class="sig-name descname"><span class="pre">parse_headers_to_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.parse_headers_to_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.parse_headers_to_inputs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">parse_headers_to_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.parse_headers_to_inputs" title="Link to this definition">#</a></dt>
 <dd><p>Parses headers to construct an inputs dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -687,7 +687,7 @@ the robustness of their applications.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.from_headers">
-<span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.from_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.from_headers" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.from_headers" title="Link to this definition">#</a></dt>
 <dd><p>Creates an instance from a headers dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -755,7 +755,7 @@ network. It is a crucial feature for verifying that the data received is the sam
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
 <dd><p>Deserializes the Synapse object.</p>
 <p>This method is intended to be overridden by subclasses for custom deserialization logic.
 In the context of the Synapse superclass, this method simply returns the instance itself.
@@ -812,7 +812,7 @@ which is the HTTP status code for unauthorized access.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id2">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.from_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
 <dd><p>Constructs a new Synapse instance from a given headers dictionary, enabling the re-creation of the Synapse’s
 state as it was prior to network transmission.</p>
 <p>This method is a key part of the
@@ -847,13 +847,13 @@ objects from received data.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.get_required_fields">
-<span class="sig-name descname"><span class="pre">get_required_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.get_required_fields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.get_required_fields" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_required_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.get_required_fields" title="Link to this definition">#</a></dt>
 <dd><p>Get the required fields from the model’s JSON schema.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.get_total_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_total_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
 <dd><p>Get the total size of the current object.</p>
 <p>This method first calculates the size of the current object, then assigns it
 to the instance variable <code class="xref py py-func docutils literal notranslate"><span class="pre">self.total_size()</span></code> and finally returns this value.</p>
@@ -949,7 +949,7 @@ which is the HTTP status code for a request timeout.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id4">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_headers_to_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.parse_headers_to_inputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_headers_to_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
 <dd><p>Interprets and transforms a given dictionary of headers into a structured dictionary, facilitating the
 reconstruction of Synapse objects.</p>
 <p>This method is essential for parsing network-transmitted
@@ -997,7 +997,7 @@ data back into a Synapse instance, ensuring data consistency and integrity.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.synapse.Synapse.set_name_type">
-<span class="sig-name descname"><span class="pre">set_name_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.set_name_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.Synapse.set_name_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_name_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.Synapse.set_name_type" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
@@ -1015,7 +1015,7 @@ data back into a Synapse instance, ensuring data consistency and integrity.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#Synapse.to_headers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_headers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
 <dd><p>Converts the state of a Synapse instance into a dictionary of HTTP headers.</p>
 <p>This method is essential for
 packaging Synapse data for network transmission in the Bittensor framework, ensuring that each key aspect of
@@ -1054,7 +1054,7 @@ communication.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.synapse.TerminalInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">TerminalInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#TerminalInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">TerminalInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.TerminalInfo" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel" title="(in Pydantic v0.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></a></p>
 <p>TerminalInfo encapsulates detailed information about a network synapse (node) involved in a communication process.</p>
 <p>This class serves as a metadata carrier,
@@ -1183,7 +1183,7 @@ validated to form a valid model.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.synapse.cast_float">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_float" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.cast_float" title="Link to this definition">#</a></dt>
 <dd><p>Converts a string to a float, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>This function attempts to convert a string to a float. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
@@ -1201,7 +1201,7 @@ validated to form a valid model.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.synapse.cast_int">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#cast_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.cast_int" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">cast_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.cast_int" title="Link to this definition">#</a></dt>
 <dd><p>Converts a string to an integer, if the string is not <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>This function attempts to convert a string to an integer. If the string is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it simply returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
@@ -1219,7 +1219,7 @@ validated to form a valid model.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.synapse.get_size">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/bittensor/core/synapse.html#get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.synapse.get_size" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.synapse.</span></span><span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.synapse.get_size" title="Link to this definition">#</a></dt>
 <dd><p>Recursively finds size of objects.</p>
 <p>This function traverses every item of a given object and sums their sizes to compute the total size.</p>
 <dl class="field-list simple">

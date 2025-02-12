@@ -172,7 +172,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -412,7 +412,6 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.last_update</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.pruning_score</span></code></a></li>
@@ -456,8 +455,9 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.neuron_info_lite.</span></span><span class="sig-name descname"><span class="pre">NeuronInfoLite</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info_lite.html#NeuronInfoLite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite" title="Link to this definition">#</a></dt>
-<dd><p>NeuronInfoLite is a dataclass representing neuron metadata without weights and bonds.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.neuron_info_lite.</span></span><span class="sig-name descname"><span class="pre">NeuronInfoLite</span></span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../info_base/index.html#bittensor.core.chain_data.info_base.InfoBase" title="bittensor.core.chain_data.info_base.InfoBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.chain_data.info_base.InfoBase</span></code></a></p>
+<p>NeuronInfoLite is a dataclass representing neuron metadata without weights and bonds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -487,7 +487,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.get_null_neuron">
-<span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info_lite.html#NeuronInfoLite.get_null_neuron"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.get_null_neuron" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.get_null_neuron" title="Link to this definition">#</a></dt>
 <dd><p>Returns a NeuronInfoLite object representing a null neuron.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -498,16 +498,8 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.list_from_vec_u8">
-<span class="sig-name descname"><span class="pre">list_from_vec_u8</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info_lite.html#NeuronInfoLite.list_from_vec_u8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.list_from_vec_u8" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">list_from_vec_u8</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.list_from_vec_u8" title="Link to this definition">#</a></dt>
 <dd><p>Decodes a bytes object into a list of NeuronInfoLite instances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite" title="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite">NeuronInfoLite</a>]</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -542,7 +534,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info_lite.html#NeuronInfoLite.get_null_neuron"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_null_neuron</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd><p>Returns a null NeuronInfoLite instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -570,23 +562,6 @@
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.last_update">
 <span class="sig-name descname"><span class="pre">last_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.last_update" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_from_vec_u8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec_u8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/neuron_info_lite.html#NeuronInfoLite.list_from_vec_u8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
-<dd><p>Decodes a bytes object into a list of NeuronInfoLite instances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vec_u8</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.13)"><em>bytes</em></a>) – The bytes object to decode into NeuronInfoLite instances.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of NeuronInfoLite instances decoded from the provided bytes object.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite" title="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite">NeuronInfoLite</a>]</p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.netuid">
@@ -710,7 +685,6 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.incentive"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.incentive</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.is_null"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.is_null</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.last_update"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.last_update</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.list_from_vec_u8()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.netuid"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.netuid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.prometheus_info"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.prometheus_info</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.neuron_info_lite.NeuronInfoLite.pruning_score"><code class="docutils literal notranslate"><span class="pre">NeuronInfoLite.pruning_score</span></code></a></li>

@@ -172,7 +172,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -399,6 +399,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.async_submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">async_submit_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.get_old_stakes"><code class="docutils literal notranslate"><span class="pre">get_old_stakes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">submit_extrinsic()</span></code></a></li>
 </ul>
 </li>
@@ -423,7 +424,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.async_submit_extrinsic" title="bittensor.core.extrinsics.utils.async_submit_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">async_submit_extrinsic</span></code></a>(subtensor, extrinsic, ...)</p></td>
 <td><p>Submits an extrinsic to the substrate blockchain and handles potential exceptions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="bittensor.core.extrinsics.utils.submit_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">submit_extrinsic</span></code></a>(subtensor, extrinsic, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.get_old_stakes" title="bittensor.core.extrinsics.utils.get_old_stakes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_old_stakes</span></code></a>(wallet, hotkey_ss58s, netuids, all_stakes)</p></td>
+<td><p>Retrieve the previous staking balances for a wallet's hotkeys across given netuids.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="bittensor.core.extrinsics.utils.submit_extrinsic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">submit_extrinsic</span></code></a>(subtensor, extrinsic, ...)</p></td>
 <td><p>Submits an extrinsic to the substrate blockchain and handles potential exceptions.</p></td>
 </tr>
 </tbody>
@@ -461,8 +465,33 @@ it logs the error and re-raises the exception.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bittensor.core.extrinsics.utils.get_old_stakes">
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">get_old_stakes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wallet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hotkey_ss58s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netuids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_stakes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.utils.get_old_stakes" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the previous staking balances for a wallet’s hotkeys across given netuids.</p>
+<p>This function searches through the provided staking data to find the stake amounts
+for the specified hotkeys and netuids associated with the wallet’s coldkey. If no match
+is found for a particular hotkey and netuid combination, a default balance of zero is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>Wallet</em>) – The wallet containing the coldkey to compare with stake data.</p></li>
+<li><p><strong>hotkey_ss58s</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – List of hotkey SS58 addresses for which stakes are retrieved.</p></li>
+<li><p><strong>netuids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>) – List of network unique identifiers (netuids) corresponding to the hotkeys.</p></li>
+<li><p><strong>all_stakes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference internal" href="../../chain_data/stake_info/index.html#bittensor.core.chain_data.stake_info.StakeInfo" title="bittensor.core.chain_data.stake_info.StakeInfo"><em>StakeInfo</em></a><em>]</em>) – A collection of all staking information to search through.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of Balances, each representing the stake for a given hotkey and netuid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="../../../utils/balance/index.html#bittensor.utils.balance.Balance" title="bittensor.utils.balance.Balance">Balance</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bittensor.core.extrinsics.utils.submit_extrinsic">
-<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">submit_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrinsic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/extrinsics/utils.html#submit_extrinsic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bittensor.core.extrinsics.utils.</span></span><span class="sig-name descname"><span class="pre">submit_extrinsic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subtensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrinsic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_inclusion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_finalization</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.extrinsics.utils.submit_extrinsic" title="Link to this definition">#</a></dt>
 <dd><p>Submits an extrinsic to the substrate blockchain and handles potential exceptions.</p>
 <p>This function attempts to submit an extrinsic to the substrate blockchain with specified options
 for waiting for inclusion in a block and/or finalization. If an exception occurs during submission,
@@ -540,6 +569,7 @@ it logs the error and re-raises the exception.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.async_submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">async_submit_extrinsic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.get_old_stakes"><code class="docutils literal notranslate"><span class="pre">get_old_stakes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.extrinsics.utils.submit_extrinsic"><code class="docutils literal notranslate"><span class="pre">submit_extrinsic()</span></code></a></li>
 </ul>
 </li>

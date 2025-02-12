@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/bittensor/core/chain_data/axon_info/index';</script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="bittensor.core.chain_data.delegate_info" href="../delegate_info/index.html" />
+    <link rel="next" title="bittensor.core.chain_data.chain_identity" href="../chain_identity/index.html" />
     <link rel="prev" title="bittensor.core.chain_data" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,7 +172,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -449,8 +449,9 @@ in the bittensor network.</p>
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.axon_info.</span></span><span class="sig-name descname"><span class="pre">AxonInfo</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo" title="Link to this definition">#</a></dt>
-<dd><p>The <cite>AxonInfo</cite> class represents information about an axon endpoint in the bittensor network. This includes
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.axon_info.</span></span><span class="sig-name descname"><span class="pre">AxonInfo</span></span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../info_base/index.html#bittensor.core.chain_data.info_base.InfoBase" title="bittensor.core.chain_data.info_base.InfoBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.chain_data.info_base.InfoBase</span></code></a></p>
+<p>The <cite>AxonInfo</cite> class represents information about an axon endpoint in the bittensor network. This includes
 properties such as IP address, ports, and relevant keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
@@ -474,7 +475,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.from_neuron_info">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_neuron_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_info</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.from_neuron_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_neuron_info" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_neuron_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_neuron_info" title="Link to this definition">#</a></dt>
 <dd><p>Converts a dictionary to an <cite>AxonInfo</cite> object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -491,7 +492,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.from_parameter_dict">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_parameter_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.from_parameter_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_parameter_dict" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_parameter_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_parameter_dict" title="Link to this definition">#</a></dt>
 <dd><p>Returns an axon_info object from a torch parameter_dict or a parameter dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -505,7 +506,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.from_string">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.from_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_string" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.from_string" title="Link to this definition">#</a></dt>
 <dd><p>Creates an <cite>AxonInfo</cite> object from its string representation using JSON.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -543,7 +544,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.ip_str">
-<span class="sig-name descname"><span class="pre">ip_str</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.ip_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.ip_str" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ip_str</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.ip_str" title="Link to this definition">#</a></dt>
 <dd><p>Return the whole IP as string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -590,7 +591,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.to_parameter_dict">
-<span class="sig-name descname"><span class="pre">to_parameter_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.to_parameter_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.to_parameter_dict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_parameter_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.to_parameter_dict" title="Link to this definition">#</a></dt>
 <dd><p>Returns a torch tensor or dict of the subnet info, depending on the USE_TORCH flag set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -601,7 +602,7 @@ properties such as IP address, ports, and relevant keys.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.axon_info.AxonInfo.to_string">
-<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/axon_info.html#AxonInfo.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.to_string" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bittensor.core.chain_data.axon_info.AxonInfo.to_string" title="Link to this definition">#</a></dt>
 <dd><p>Converts the <cite>AxonInfo</cite> object to a string representation using JSON.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -641,11 +642,11 @@ properties such as IP address, ports, and relevant keys.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../delegate_info/index.html"
+       href="../chain_identity/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">bittensor.core.chain_data.delegate_info</p>
+        <p class="prev-next-title">bittensor.core.chain_data.chain_identity</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

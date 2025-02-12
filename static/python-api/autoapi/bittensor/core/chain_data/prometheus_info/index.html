@@ -172,7 +172,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/balance/index.html">bittensor.utils.balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/formatting/index.html">bittensor.utils.formatting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/mock/index.html">bittensor.utils.mock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../utils/networking/index.html">bittensor.utils.networking</a></li>
@@ -400,7 +400,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.block"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.block</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.fix_decoded_values"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.fix_decoded_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.ip"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.ip</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.ip_type"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.ip_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.port"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.port</span></code></a></li>
@@ -437,8 +436,9 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.prometheus_info.PrometheusInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.prometheus_info.</span></span><span class="sig-name descname"><span class="pre">PrometheusInfo</span></span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/prometheus_info.html#PrometheusInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="Link to this definition">#</a></dt>
-<dd><p>Dataclass representing information related to Prometheus.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bittensor.core.chain_data.prometheus_info.</span></span><span class="sig-name descname"><span class="pre">PrometheusInfo</span></span><a class="headerlink" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../info_base/index.html#bittensor.core.chain_data.info_base.InfoBase" title="bittensor.core.chain_data.info_base.InfoBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bittensor.core.chain_data.info_base.InfoBase</span></code></a></p>
+<p>Dataclass representing information related to Prometheus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -454,20 +454,6 @@
 <dt class="sig sig-object py" id="bittensor.core.chain_data.prometheus_info.PrometheusInfo.block">
 <span class="sig-name descname"><span class="pre">block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.block" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="bittensor.core.chain_data.prometheus_info.PrometheusInfo.fix_decoded_values">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fix_decoded_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prometheus_info_decoded</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../_modules/bittensor/core/chain_data/prometheus_info.html#PrometheusInfo.fix_decoded_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.fix_decoded_values" title="Link to this definition">#</a></dt>
-<dd><p>Returns a PrometheusInfo object from a prometheus_info_decoded dictionary.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>prometheus_info_decoded</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo" title="bittensor.core.chain_data.prometheus_info.PrometheusInfo">PrometheusInfo</a></p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bittensor.core.chain_data.prometheus_info.PrometheusInfo.ip">
@@ -544,7 +530,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.block"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.block</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.fix_decoded_values"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.fix_decoded_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.ip"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.ip</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.ip_type"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.ip_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bittensor.core.chain_data.prometheus_info.PrometheusInfo.port"><code class="docutils literal notranslate"><span class="pre">PrometheusInfo.port</span></code></a></li>
