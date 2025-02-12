@@ -192,10 +192,16 @@ const config = {
             to: "dynamic-tao",
           },
           {
+            position: "left",
+            label: "Bittensor 9.0 Migration Guide",
+            to: "migration_guide",
+          },
+          {
             type: "search",
             position: "left",
             className: "custom_algolia",
           },
+
           // {
           //   href: "https://github.com/opentensor/developer-docs",
           //   label: "Docs GitHub",

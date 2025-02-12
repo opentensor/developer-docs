@@ -23,16 +23,6 @@ const sidebars = {
     "index",
     {
       type: "category",
-      label: "Release Notes and Updates",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "chain-rel-notes",
-        "bittensor-rel-notes"
-      ],
-    },
-    {
-      type: "category",
       label: "Understand Bittensor",
       link: {type: "doc", id: "learn/introduction"},
       collapsible: true,
@@ -127,6 +117,7 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
+        "migration_guide",
         "bittensor-networks",
         "getting-started/wallets",
         "working-with-keys",
@@ -185,7 +176,16 @@ const sidebars = {
       "senate",
       ],
     },
-
+    {
+      type: "category",
+      label: "Release Notes and Updates",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "chain-rel-notes",
+        "bittensor-rel-notes",
+      ],
+    },
 
     "errors-and-troubleshooting",
     "media-assets",
