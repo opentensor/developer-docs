@@ -195,38 +195,32 @@ netuid 5 price τ0.001785179 stake ε33.619312896
 
 ```python
 import asyncio
+from concurrent.futures import ThreadPoolExecutor
 import bittensor as bt
+from bittensor.core.subtensor import Subtensor
+from bittensor.core.async_subtensor import AsyncSubtensor
 
 async def main():
-    # Connect to the test network
-    sub = bt.AsyncSubtensor(network="test")
-
-    # Unlock your coldkey for signing
-    wallet = bt.wallet(
-        name="ExampleWalletName",
-        hotkey="ExistingHotkey",
-    )
-    wallet.unlock_coldkey()
-
-    # Move 1 TAO worth of stake from one hotkey/subnet to another
-    success = await sub.move_stake(
-        wallet = wallet,
-        origin_hotkey = "ExistingHotkey",
-        origin_netuid = 1,   # Current subnet
-        destination_hotkey = "NewHotkey",
-        destination_netuid = 3,   # Destination subnet
-        amount = bt.Balance.from_tao(1.0),
-        wait_for_inclusion = True,
-        wait_for_finalization = False,
-    )
-
-    if success:
-        print("Stake was successfully moved!")
-    else:
-        print("Failed to move stake.")
-
+    async with AsyncSubtensor("test") as subtensor:
+        wallet = bt.wallet(
+            name="PracticeKey!",
+            hotkey="stakinkey1",
+        )
+        wallet.unlock_coldkey()
+        success = await subtensor.move_stake(wallet = wallet,
+            origin_hotkey = "5DyHnV9Wz6cnefGfczeBkQCzHZ5fJcVgy7x1eKVh8otMEd31",
+            origin_netuid = 5,
+            destination_hotkey = "5HidY9Danh9NhNPHL2pfrf97Zboew3v7yz4abuibZszcKEMv",
+            destination_netuid = 18,
+            amount = bt.Balance.from_tao(1.0),
+            wait_for_inclusion = True,
+            wait_for_finalization = False,
+        )
+        if success:
+            print("Stake was successfully moved!")
+        else:
+            print("Failed to move stake.")
 # Because move_stake is asynchronous, we run it in an event loop:
 asyncio.run(main())
-
 
 ```
