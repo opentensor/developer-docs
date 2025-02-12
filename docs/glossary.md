@@ -62,17 +62,15 @@ A subnet validator that receives staked TAO tokens from delegators and performs 
 
 The amount of TAO staked by the delegate themselves.
 
-### Delegate Take %
+### Validator Take %
 
-The commission percentage a delegate keeps from rewards before distributing the remaining rewards to the delegate's nominators.
+The percentage of emissions a validator takes, of the portion that depends on delegated stake (not including their emissions in proportion to their own self-stake), before the remainder is extracted back to the stakers.
+
+See [Emissions](./emissions).
 
 ### Delegation
 
-The process of delegating TAO to a subnet validator (delegate), allowing the validator to increase its stake and secure a validator permit.
-
-### Delegator
-
-A participant in the Bittensor network who delegates their TAO to a subnet validator (delegate), helping the validator increase their stake and secure a validator permit. Also known as a nominator.
+Also known as staking, delegating TAO to a validator (who is thereby the delegate), increases the validator's stake and secure a validator permit.
 
 ### Dendrite  
 
@@ -81,10 +79,6 @@ A client instance used by subnet validators and subnet miners to transmit inform
 ### Deregistration
 
 The process of removing a subnet miner or a subnet validator from the subnet due to poor performance.
-
-### Distribution of rewards
-
-The process by which newly minted TAO tokens (emissions) are allocated among subnet miners and subnet validators, based on their performance, the amount of stake associated with the subnet validators' UIDs, and the Yuma Consensus algorithm.
 
 ## E 
 
@@ -98,7 +92,11 @@ The total staked TAO amount of a delegate, including their own TAO tokens and th
 
 ### Emission
 
-The total amount of newly minted TAO (in RAO) emitted as rewards to subnet miners and subnet validators. The distribution of emission is based on the consensus distribution calculated by the Yuma Consensus module taking into account the weight matrix and stake associated with each UID.
+Every block, currency is injected into each subnet in Bittensor, and every tempo (or 360 blocks), it is extracted by participants (miners, validators, stakers, and subnet creators).
+
+Emission is this process of generating and allocating currency to participants. The amount allocated to a given participant over some duration of time is also often referred to as 'their emissions' for the period.
+
+See [emissions](./emissions).
 
 ### Encrypting the Hotkey
 
@@ -163,14 +161,6 @@ A data structure that contains comprehensive information about the current state
 ### Miner Deregistration
 
 The process of removing a poor-performing subnet miner from a UID slot, making room for a newly registered miner.
-
-### Miner Earnings
-
-Incentives. The rewards earned by subnet miners based on their performance in completing tasks and minimizing loss values.
-
-### Miner Module
-
-The software component that subnet miners run to perform task operations and competing for rewards in a subnet, and to interact with the subnet validators.
 
 ### Mnemonic
 
@@ -281,21 +271,17 @@ A group of elected delegates formed from the top K delegate hotkeys, responsible
 
 ### Stake
 
-The amount of TAO tokens associated with a UID in a subnet, either delegated or self-staked by a delegate. Stake influences the calculation of rewards by the Yuma Consensus module.
+The amount of currency tokens delegated to a validator UID in a subnet. Includes both self-stake (from the validator's own cold-key) and stake delegated from others. 
+
+Stake determines a validator's weight in consensus as well as their emissions.
 
 ### Staking
 
 The process of attaching TAO to a hotkey, i.e., locking TAO to a hotkey, to participate as a subnet validator, and to secure a validator permit.
 
-### Staking rewards
-
-The rewards earned by a delegate for performing subnet validation tasks. These rewards are distributed among the delegate and their nominators.
-
 ### Subnet
 
 A Bittensor subnet is an incentive-based competition market that produces a specific kind of digital commodity. It consists of a community of miners that produce the commodity, and a community of validators that measures the miners' work to ensure its quality.
-
-Rewards&mdash;emmissions of TAO (τ) from Bittensor&mdash;are distributed among miners and validators based on their performance within subnets, and based on the relative performance of subnets within Bittensor.
 
 ### Subnet Incentive Mechanism
 
@@ -305,7 +291,7 @@ The framework that governs the behavior of subnet miners and ensures consensus a
 
 The task-performing entity within a Bittensor subnet. A subnet miner is a type of node in a Bittensor subnet that is connected only to subnet validators. Subnet miners are isolated from the external world and communicate bidirectionally with subnet validators. A subnet miner is responsible for performing tasks given to them by the subnet validators in that subnet. 
 
-### Subnet Owner
+### Subnet Creator
 
 The individual or entity responsible for defining the specific digital task to be performed by subnet miners, implementing an incentive mechanism, and providing sufficient documentation for participation in the subnet.
 
@@ -313,9 +299,9 @@ The individual or entity responsible for defining the specific digital task to b
 
 A unique set of rules defining interactions between subnet validators and miners, including how tasks are queried and responses are provided.
 
-### Subnet Reward Model
+### Subnet scoring model
 
-A component of the incentive mechanism that defines how subnet miners' responses are evaluated and rewarded, aiming to align subnet miner behavior with the subnet's goals and user preferences. It is a mathematical object that converts miner responses into numerical scores, enabling continuous improvement and competition among miners.
+A component of the incentive mechanism that defines how subnet miners' responses are evaluated, aiming to align subnet miner behavior with the subnet's goals and user preferences. It is a mathematical object that converts miner responses into numerical scores, enabling continuous improvement and competition among miners.
 
 ### Subnet Task
 
@@ -331,9 +317,9 @@ The importance assigned to each subnet by the root network validators, used to d
 
 ### Subtensor
 
-[Subtensor](https://github.com/opentensor/subtensor) is Bittensor's layer 1 blockchain based on substrate (now PolkadotSDK). This serves Bittensor as a system of record for transactions and rankings, and it operates Yuma Consensus, by which the distribution of rewards is computed and distributed.
+[Subtensor](https://github.com/opentensor/subtensor) is Bittensor's layer 1 blockchain based on substrate (now PolkadotSDK). This serves Bittensor as a system of record for transactions and rankings, operates Yuma Consensus, and emits liquidity to participants to incentivize their participation in network activities.
 
-The Bittensor SDK offers the [`bittensor.core.subtensor`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html) module to handle Subtensor blockchain interactions.
+The Bittensor SDK offers the [`bittensor.core.subtensor`](pathname:///python-api/html/autoapi/bittensor/core/subtensor/index.html) and [`bittensor.core.async_subtensor`](pathname:///python-api/html/autoapi/bittensor/core/async_subtensor/index.html) modules to handle Subtensor blockchain interactions.
 
 ### Sudo
 
@@ -347,11 +333,11 @@ A data object used by subnet validators and subnet miners as the main vehicle to
 
 ### TAO (τ)
 
-The native cryptocurrency of the Bittensor network, used to reward subnet miners and validators. A single TAO is newly created (i.e., minted) every 12 seconds on the Bittensor blockchain.
+The cryptocurrency of the Bittensor network, used to incentivize participation in network activities (mining, validation, subnet creation and management). A single TAO is newly created (i.e., minted) every 12 seconds on the Bittensor blockchain.
 
 ### Tempo
 
-A 360-block period during which the Yuma Consensus calculates and distributes reward TAO tokens to subnet participants based on the latest available ranking weight matrix. A single block is processed every 12 seconds, hence a 360-block tempo occurs every 4320 seconds or 72 minutes. 
+A 360-block period during which the Yuma Consensus calculates emissions to subnet participants based on the latest available ranking weight matrix. A single block is processed every 12 seconds, hence a 360-block tempo occurs every 4320 seconds or 72 minutes. 
 
 ### Transfer
 
@@ -401,7 +387,7 @@ The directory path where the generated Bittensor wallets are stored locally on t
 
 ### Weight Matrix
 
-A matrix formed from the ranking weight vectors of all subnet validators in a subnet, used as input for the Yuma Consensus module to calculate rewards for that subnet.
+A matrix formed from the ranking weight vectors of all subnet validators in a subnet, used as input for the Yuma Consensus module to calculate emissions to that subnet.
 
 ### Weight Vector
 
@@ -413,6 +399,6 @@ The ranking weight vectors for each subnet are transmitted to the blockchain, wh
 
 ### Yuma Consensus
 
-The consensus mechanism in the Bittensor blockchain that distributes rewards to subnet validators and subnet miners. 
+The consensus mechanism in the Bittensor blockchain that computes emissions to participants. 
 
 See [Yuma Consensus](./yuma-consensus.md)
