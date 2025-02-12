@@ -33,7 +33,7 @@ with ThreadPoolExecutor() as executor:
 
 ```
 
-Using `asyncio`, the code below accomplishes concurrent requests with a single websocket connection:
+Using Python’s [asyncio](https://docs.python.org/3/library/asyncio.html) (Asynchronous Input/Output) module, the code below accomplishes concurrent requests with a single websocket connection:
 
 ```python
 from bittensor.core.async_subtensor import AsyncSubtensor
@@ -50,43 +50,11 @@ asyncio.run(main())
 
 ```
 
-## AsyncIO
-
-Python’s [asyncio](https://docs.python.org/3/library/asyncio.html) (Asynchronous Input/Output) allows us to execute code concurrently. It is similar to, but distinct from, Python’s threading library, and offers a number of benefits over it. See below a few code examples:
-
-```python showLineNumbers
-import requests
-
-URLS = ["https://example.com/1", "https://example.com/2", "https://example.com/3"]
-
-# sync version
-def retrieve_data_sync():
-    my_data = []
-    for url in URLS:
-        my_data.append(requests.get(url))
-
-# threading (there are multiple ways, but this probably the most popular)
-from concurrent.futures import ThreadPoolExecutor
-def retrieve_data_threading():
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        my_data = executor.map(requests.get, URLS)
-
-# asyncio
-import asyncio
-import aiohttp
-async def retrieve_data_async():
-    async with aiohttp.ClientSession() as session:
-        my_data = await asyncio.gather(*[session.get(url) for url in URLs])
-
-asyncio.run(retrieve_data_async())
-```
-:::tip Coroutine
-Notice the `async def` part of `retrieve_data_async` in the above code example. This indicates that you are creating a coroutine rather than a function. Think of a coroutine as a function, but asyncio-only. 
-:::
-
 ## Coroutine vs function
 
-The main difference between coroutines and functions is that coroutines need to be awaited and run in event loops. The coroutine doesn’t do anything until it is awaited. While the above simple example above may seem like `asyncio` is the most complicated of the three, it is significantly easier to scale than threading, in addition to having a significantly lower overhead, due to running on a single system thread. 
+The usage of `async def` creates an asyncio *coroutine* rather than a function.
+
+Coroutines differ from functions in that coroutines are run in event loops using `await`.
 
 :::caution Coroutines must always be awaited
 Coroutines always need to be awaited, and generally speaking, “asyncio objects” are instantiated with `async with`. See [Python documentation on asyncio](https://docs.python.org/3/library/asyncio.html) for a comprehensive section with examples.
