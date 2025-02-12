@@ -23,12 +23,6 @@ const sidebars = {
     "index",
     {
       type: "category",
-      label: "Bittensor 9.0 Migration Guide",
-      link: {type: "doc", id: "migration_guide"},
-      items:[]
-    },
-    {
-      type: "category",
       label: "Understand Bittensor",
       link: {type: "doc", id: "learn/introduction"},
       collapsible: true,
@@ -123,6 +117,7 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
+        "migration_guide",
         "bittensor-networks",
         "getting-started/wallets",
         "working-with-keys",
