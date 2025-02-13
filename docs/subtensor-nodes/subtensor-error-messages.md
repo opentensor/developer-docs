@@ -28,7 +28,7 @@ Below are the detailed error messages:
 
 ### Description
 
-your coldkey is set to be swapped. No transfer operations are possible.
+Your coldkey is set to be swapped. No transfer operations are possible.
 
 ## Custom error: 1
 
@@ -39,7 +39,7 @@ your coldkey is set to be swapped. No transfer operations are possible.
 
 ### Description
 
-the amount you are staking/unstaking/moving is below the minimum TAO equivalent.
+The amount you are staking/unstaking/moving is below the minimum TAO equivalent.
 
 The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
@@ -48,7 +48,7 @@ The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
 ### Description
 
-the amount of stake you have is less than you have requested
+The amount of stake you have is less than you have requested
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 2'
@@ -59,7 +59,7 @@ the amount of stake you have is less than you have requested
 
 ### Description
 
-his subnet does not exist
+This subnet does not exist.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 3'
@@ -70,7 +70,7 @@ his subnet does not exist
 
 ### Description
 
-this hotkey is not registered 
+This hotkey is not registered.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 4'
@@ -81,7 +81,7 @@ this hotkey is not registered
 
 ### Description
 
-you do not have enough TAO equivalent stake to remove/move/transfer, including the unstake fee.
+You do not have enough TAO equivalent stake to remove/move/transfer, including the unstake fee.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 5'
@@ -92,7 +92,7 @@ you do not have enough TAO equivalent stake to remove/move/transfer, including t
 
 ### Description
 
-you are staking/unstaking/etc too fast
+You are staking/unstaking/etc too fast.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 6'
@@ -103,7 +103,7 @@ you are staking/unstaking/etc too fast
 
 ### Description
 
-this pool does not have sufficient liquidity for this amount
+This pool does not have sufficient liquidity for this amount.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 7'
@@ -115,7 +115,7 @@ this pool does not have sufficient liquidity for this amount
 
 ### Description
 
-tthe slippage is higher than you have set the limit at. Try reducing the amount.
+The slippage is higher than you have set the limit at. Try reducing the amount.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 8'
@@ -127,7 +127,7 @@ tthe slippage is higher than you have set the limit at. Try reducing the amount.
 
 ### Description
 
-this subnet does not allow transfer stake.
+This subnet does not allow transfer stake.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 9'
