@@ -23,7 +23,7 @@ The first stage of emissions is *injection of liquidity* into the subnet pools. 
 - alpha is injected into the subnet's alpha reserve.
 - alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
-Liquidity injection to each subnet is in proportion to the price of its token compared to the price other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
+Liquidity is injected to each subnet in proportion to the price of its token compared to the price of other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
 
 #### TAO reserve injection
 
@@ -42,7 +42,6 @@ $$
 Alpha is then injected in proportion to the price of the token (canceling the price $p_i$ out of the equation), so that growth of a subnet's liquidity pools does not not change the price of the alpha token. However, alpha injection is capped to prevent runaway inflation. The cap, or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
 
 Alpha emission $\Delta\alpha_i$ is:
-
 
 $$
 \Delta\alpha_i = \min\left\{

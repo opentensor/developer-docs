@@ -38,7 +38,7 @@ See:
 
 ### Subnet tokens/liquidity pools
 
-The most visible difference introduced with Dynamic TAO is the addition of one new token per subnet in the bittensor network.
+The most visible difference introduced with Dynamic TAO is the addition of one new token per subnet in the Bittensor network.
 
 Run `btcli subnet list` to view information about the subnets and their currency reserves:
 
