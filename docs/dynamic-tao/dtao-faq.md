@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### What is the rollout timeline for Dyanmic TAO? What determines the timing?
 
-Dynamic TAO was introduced by proposal, approved by senate vote, and deployed as an upgrade to Bittensor main network in February, 2025 after a year of research, development, and testing.
+Dynamic TAO was introduced by proposal, approved by senate vote, and deployed as an upgrade to Bittensor main network on February 13, 2025 after a year of research, development, and testing.
 
 Any subsequent modifications require a new proposal to be introduced to a new upgrade following the same process.
 

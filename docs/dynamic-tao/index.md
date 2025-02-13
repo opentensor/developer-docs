@@ -9,7 +9,7 @@ import { HiAcademicCap } from "react-icons/hi2";
 
 Dynamic TAO is a recent major evolution of Bittensor's integrated tokenomic and governance model, representing a significant step in Bittensor's trajectory toward more thorough decentralization.
 
-It was introduced by proposal, approved by senate vote, and introduced as an upgrade to Bittensor main network in February, 2025 after a year of research, development, and testing.
+It was introduced by proposal, approved by senate vote, and introduced as an upgrade to Bittensor main network on February 13, 2025 after a year of research, development, and testing.
 
 See the [Dynamic TAO White Paper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view) for a full explanation.
 
