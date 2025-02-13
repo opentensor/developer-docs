@@ -28,7 +28,7 @@ Below are the detailed error messages:
 
 ### Description
 
-The account is attempting to call any of `dissolve_network`, `transfer_keep_alive`, `transfer_allow_death` or `transfer_all` while a coldkey swap is scheduled for the calling account.
+your coldkey is set to be swapped. No transfer operations are possible.
 
 ## Custom error: 1
 
@@ -39,13 +39,16 @@ The account is attempting to call any of `dissolve_network`, `transfer_keep_aliv
 
 ### Description
 
-The account that is attempting to call `commit_weights` does not meet the minimum stake requirement for weights.
+the amount you are staking/unstaking/moving is below the minimum TAO equivalent.
+
+The transaction minimum is 500,000 RAO or 0.0005 TAO.
+
 
 ## Custom error: 2
 
 ### Description
 
-The account that is attempting to call `reveal_weights` does not meet the minimum stake requirement for weights.
+the amount of stake you have is less than you have requested
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 2'
@@ -56,7 +59,7 @@ The account that is attempting to call `reveal_weights` does not meet the minimu
 
 ### Description
 
-The account that is attempting to call `set_weights` does not meet the minimum stake requirement for weights.
+his subnet does not exist
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 3'
@@ -67,7 +70,7 @@ The account that is attempting to call `set_weights` does not meet the minimum s
 
 ### Description
 
-The hotkey account passed to the `set_root_weights` call does not meet the minimum stake requirement for weights.
+this hotkey is not registered 
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 4'
@@ -78,7 +81,7 @@ The hotkey account passed to the `set_root_weights` call does not meet the minim
 
 ### Description
 
-The number of registrations for the current interval exceeds the maximum allowed for the given `netuid`. This applies to the `register` and `burned_register` calls.
+you do not have enough TAO equivalent stake to remove/move/transfer, including the unstake fee.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 5'
@@ -89,7 +92,7 @@ The number of registrations for the current interval exceeds the maximum allowed
 
 ### Description
 
-The account calling the `batch_reveal_weights` does not meet the minimum stake requirement for revealing the weights.
+you are staking/unstaking/etc too fast
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 6'
@@ -100,9 +103,45 @@ The account calling the `batch_reveal_weights` does not meet the minimum stake r
 
 ### Description
 
-The account calling the `commit_crv3_weights` does not meet the minimum stake requirement for committing the weights.
+this pool does not have sufficient liquidity for this amount
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 7'
 }
 ```
+
+
+## Custom error: 8
+
+### Description
+
+tthe slippage is higher than you have set the limit at. Try reducing the amount.
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 8'
+}
+```
+
+
+## Custom error: 9
+
+### Description
+
+this subnet does not allow transfer stake.
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 9'
+}
+```
+
+## Custom error: 255
+
+### Description
+
+Unknown error.
+
+```bash
+{'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 255'
+}
+```
+

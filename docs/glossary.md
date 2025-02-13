@@ -251,13 +251,6 @@ The process of recreating a lost or deleted coldkey or hotkey using the associat
 
 The process of registering keys with a subnet and purchasing a UID slot.
 
-### Root Network
-
-A special subnet that determines the emission allocations for all other subnets. The root network has a netuid of 0. It is responsible for determining the emission allocations, i.e., the percentage allocation of newly minted TAO (τ), to each subnet based on their performance.
-
-### Root Network Validators
-
-Validators in the root network. The largest 64 subnet validators across all active subnets, in terms of the subnet validator stake, are by default the  validators in the root network.
 
 ## S 
 
@@ -313,7 +306,7 @@ A type of node in a subnet that creates tasks, evaluates the performance of subn
 
 ### Subnet Weights
 
-The importance assigned to each subnet by the root network validators, used to determine the percentage allocation of TAO (τ) to each subnet.
+The importance assigned to each subnet determined by relative price among subnets and used to determine the percentage emissions to subnets.
 
 ### Subtensor
 
@@ -371,9 +364,6 @@ Validator permits held by the delegate for specific subnets.
 
 The software component that subnet validators run to perform their subnet validation operations within a subnet.
 
-### Validator Permit
-
-A permission granted to the largest 64 subnet validators in terms of stake, allowing them to be validators in the root network. 
 
 ## W 
 

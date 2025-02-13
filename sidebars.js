@@ -23,16 +23,6 @@ const sidebars = {
     "index",
     {
       type: "category",
-      label: "Release Notes and Updates",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "chain-rel-notes",
-        "bittensor-rel-notes"
-      ],
-    },
-    {
-      type: "category",
       label: "Understand Bittensor",
       link: {type: "doc", id: "learn/introduction"},
       collapsible: true,
@@ -44,7 +34,6 @@ const sidebars = {
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
-        "root-network",
         "yuma-consensus",        
       ],
     },
@@ -57,8 +46,6 @@ const sidebars = {
       items: [
       "dynamic-tao/dtao-guide",
       "dynamic-tao/dtao-faq",
-      "dynamic-tao/emission",
-      "dynamic-tao/staking-unstaking-dtao",
       "dynamic-tao/sdk-cheat-sheet",
       
       ],
@@ -70,7 +57,13 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       link: {type: "doc", id: "staking-and-delegation/delegation",},
-      items: ["staking-and-delegation/delegation","staking-and-delegation/staking-polkadot-js", "staking-and-delegation/using-ledger-hw-wallet"],
+      items: [
+      "staking-and-delegation/delegation",
+      "dynamic-tao/staking-unstaking-dtao",
+      "staking-and-delegation/managing-stake-btcli",
+      "staking-and-delegation/managing-stake-sdk",
+      "staking-and-delegation/staking-polkadot-js",
+      "staking-and-delegation/using-ledger-hw-wallet"],
     },
     {
       type: "category",
@@ -127,14 +120,19 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
+        "migration_guide",
         "bittensor-networks",
         "getting-started/wallets",
+        
         "working-with-keys",
-        "getting-started/installation",
+
+        
         "getting-started/install-btcli",
-        "getting-started/install-wallet-sdk",        
         "btcli",
-        "bt-api-ref",    
+        
+        "getting-started/installation",
+                "bt-api-ref",    
+        "getting-started/install-wallet-sdk",        
         "subnets/bt-logging-levels",
         "subnets/asyncio",
         "utilities",
@@ -185,7 +183,16 @@ const sidebars = {
       "senate",
       ],
     },
-
+    {
+      type: "category",
+      label: "Release Notes and Updates",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "chain-rel-notes",
+        "bittensor-rel-notes",
+      ],
+    },
 
     "errors-and-troubleshooting",
     "media-assets",

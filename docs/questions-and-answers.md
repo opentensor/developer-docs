@@ -30,6 +30,10 @@ import { VscFileMedia } from "react-icons/vsc";
 
 ## General
 
+## Where can I get answers to my questions about Dynamic TAO?
+
+This [Dynamic TAO FAQ](./dynamic-tao/dtao-faq).
+
 ### Is Bittensor a blockchain or an AI platform?
 
 It is both!
