@@ -2,7 +2,7 @@
 title: "Managing stake with Bittensor Python SDK"
 ---
 
-# Managing stake with Bittensor Python SDK
+# Managing Stake with Bittensor Python SDK
 
 This pages demonstrates usage of `btcli`, the Bittensor CLI, for managing stake.
 

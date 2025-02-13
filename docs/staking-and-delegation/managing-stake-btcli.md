@@ -1,5 +1,5 @@
 ---
-title: "Managing stake with BTCLI"
+title: "Managing Stake with BTCLI"
 ---
 
 # Managing stake with `btcli`
