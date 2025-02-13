@@ -16,7 +16,7 @@ See [Dynamic TAO Overview](./index.md).
 To update to the Dynamic TAO-enabled versions of the SDK, run:
 
 ```
-pip install bittensor==8.5.1rc9
+pip install bittensor
 ```
 
 ### Option 2: Install from source
