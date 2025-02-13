@@ -20,7 +20,6 @@ Validators/delegates can configure their take. The default value is 18%. See [Se
 Minimum required stake for nominators is 0.1 TAO.
 :::
 
-
 Staking is always local to a subnet.
 
 Each subnet operates its own automated market-maker (AMM), meaning it mantains its own reserves of the two tokens being traded so that it can facilitate a trade of any desired quantity of liquidity (as long as its available), at a price that it automated calculates.
