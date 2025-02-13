@@ -117,6 +117,10 @@ Now accepts params as `Any`, returns `Any`. This is due to an update in `bt-deco
 
 Now returns an `Optional[Balance]` object rather than `Optional[int]` (previously it gave rao `int`)
 
+### `get_children`
+
+Now returns `tuple[bool, list[tuple[float, str]], str]` instead of `tuple[bool, list[tuple[int, str]], str]`, as the proportions are now normalised floats.
+
 ## `AsyncSubtensor`
 
 `AsyncSubtensor` and `Subtensor` now have all and only the same methods.
