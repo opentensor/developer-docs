@@ -166,7 +166,7 @@ After selecting a validator to delegate stake to, you'll see your wallet balance
 Amount to stake (TAO τ): 5
 ```
 
-You'll then see the details of the trade, including [slippage](./delegation#understanding-pricing-and-anticipating-slippage), and be asked to confirm execution.
+You'll then see the details of the trade, including [slippage](./dynamic-tao/staking-unstaking-dtao), and be asked to confirm execution.
 
 ```console
                                                         Staking to:
