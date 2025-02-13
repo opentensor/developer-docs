@@ -8,17 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### What is the rollout timeline for Dyanmic TAO? What determines the timing?
 
-Dynamic TAO is currently live on testnet, and its introduction to mainnet is live as a vote in the senate, after having been introduced on Feb 7.
-
-The Senate will have 6 days to pass the vote (requiring 7 of 12 votes) or propose modifications to the upgrade.
-
-If the vote clears, the upgrade will be applied to the main Bittensor chain.
+Dynamic TAO was introduced by proposal, approved by senate vote, and deployed as an upgrade to Bittensor main network in February, 2025 after a year of research, development, and testing.
 
 Any subsequent modifications require a new proposal to be introduced to a new upgrade following the same process.
-
-:::tip
-Run `btcli root proposals --network finney` to view current proposals and votes that have been cast.
-:::
 
 ### How will Dynamic TAO take effect?
 
@@ -43,7 +35,6 @@ style={{width: 650}}
 </center>
 
 <br />
-
 
 ### Will there be a cap on alpha currency?
 
@@ -139,5 +130,5 @@ Miners/validators may need to watch markets (token prices, volumes) to optimize 
 ## Where can I find more technical details right now?
 
 - Codebase: Refer to the Bittensor codebase, especially `run_coinbase.rs`, which calculates emissions logic for subnets and the root network.  
-- A forthcoming Dynamic TAO whitepaper!
+- The [Dynamic TAO White Paper](https://drive.google.com/file/d/1vkuxOFPJyUyoY6dQzfIWwZm2_XL3AEOx/view)
 
