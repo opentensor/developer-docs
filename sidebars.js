@@ -123,12 +123,16 @@ const sidebars = {
         "migration_guide",
         "bittensor-networks",
         "getting-started/wallets",
+        
         "working-with-keys",
-        "getting-started/installation",
+
+        
         "getting-started/install-btcli",
-        "getting-started/install-wallet-sdk",        
         "btcli",
-        "bt-api-ref",    
+        
+        "getting-started/installation",
+                "bt-api-ref",    
+        "getting-started/install-wallet-sdk",        
         "subnets/bt-logging-levels",
         "subnets/asyncio",
         "utilities",
