@@ -25,7 +25,7 @@ btcli [OPTIONS] COMMAND [ARGS]...
 * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -59,7 +59,7 @@ btcli config [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -132,7 +132,6 @@ btcli config get [OPTIONS]
 
 Clears the fields in the config file and sets them to 'None'.
 
-# EXAMPLE
 
     - To clear the 'chain' and 'network' fields:
 
@@ -192,7 +191,7 @@ btcli conf [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -265,7 +264,6 @@ btcli conf get [OPTIONS]
 
 Clears the fields in the config file and sets them to 'None'.
 
-# EXAMPLE
 
     - To clear the 'chain' and 'network' fields:
 
@@ -325,7 +323,7 @@ btcli c [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -398,7 +396,6 @@ btcli c get [OPTIONS]
 
 Clears the fields in the config file and sets them to 'None'.
 
-# EXAMPLE
 
     - To clear the 'chain' and 'network' fields:
 
@@ -458,7 +455,7 @@ btcli wallet [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -497,7 +494,6 @@ The output display shows each wallet and its associated `ss58` addresses for the
 Upon invocation, the command scans the wallet directory and prints a list of all the wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# EXAMPLE
 
 ```
 btcli wallet list --path ~/.bittensor
@@ -643,7 +639,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -1275,7 +1270,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -1466,7 +1460,7 @@ btcli w [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -1505,7 +1499,6 @@ The output display shows each wallet and its associated `ss58` addresses for the
 Upon invocation, the command scans the wallet directory and prints a list of all the wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# EXAMPLE
 
 ```
 btcli wallet list --path ~/.bittensor
@@ -1651,7 +1644,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -2283,7 +2275,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -2474,7 +2465,7 @@ btcli wallets [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -2513,7 +2504,6 @@ The output display shows each wallet and its associated `ss58` addresses for the
 Upon invocation, the command scans the wallet directory and prints a list of all the wallets, indicating whether the
 public keys are available (`?` denotes unavailable or encrypted keys).
 
-# EXAMPLE
 
 ```
 btcli wallet list --path ~/.bittensor
@@ -2659,7 +2649,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -3291,7 +3280,6 @@ USAGE
 
 Users can provide a mnemonic, seed string, or a JSON file to regenerate the hotkey. The command supports optional password protection and can overwrite an existing hotkey.
 
-# Example usage:
 
 ```
 btcli wallet regen_hotkey --seed 0x1234...
@@ -3482,7 +3470,7 @@ btcli stake [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -4156,7 +4144,7 @@ btcli st [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -4831,7 +4819,7 @@ btcli sudo [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -5139,7 +5127,7 @@ btcli su [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -5447,7 +5435,7 @@ btcli subnets [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -5845,7 +5833,7 @@ btcli s [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -6243,7 +6231,7 @@ btcli subnet [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -6641,7 +6629,7 @@ btcli weights [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -6727,7 +6715,7 @@ btcli wt [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -6813,7 +6801,7 @@ btcli weight [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
@@ -6899,7 +6887,7 @@ btcli utils [OPTIONS] COMMAND [ARGS]...
 
 * `--help`: Show this message and exit.
 
-Made with [bold red]:heart:[/bold red] by The Openτensor Foundaτion
+Made with :heart: by The Openτensor Foundaτion
 
 **Commands**:
 
