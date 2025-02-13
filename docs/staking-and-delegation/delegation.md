@@ -1,5 +1,5 @@
 ---
-title: "Staking/delegation overview"
+title: "Staking/Delegation Overview"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -45,12 +45,8 @@ In Dynamic TAO, except for the stake held in [the Root Subnet](#root-subnet-subn
 :::
 
 :::tip Prereq
-To follow along, install the Dynamic TAO-enabled release candidate of the Bittensor command line interface `btcli`, by running:
-```shell
-pip install bittensor-cli==8.2.0rc10
-```
+To follow along, install the [latest release of `btcli`](https://pypi.org/project/bittensor-cli/).
 :::
-
 
 ## Example
 
