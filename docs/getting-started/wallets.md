@@ -1,10 +1,10 @@
 ---
-title: "Wallets and keys in Bittensor"
+title: "Wallets, Coldkeys and Hotkeys in Bittensor"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Wallets and keys in Bittensor
+# Wallets, Coldkeys and Hotkeys in Bittensor
 
 In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your TAO.
 
