@@ -60,9 +60,28 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 4. AlphaValues
+## 4. AlphaDividendsPerSubnet
 
-- **Description**: Alpha values for the network.
+- **Description**: Last total alpha dividend for a hotkey on a subnet.
+- **Query Type**: `(u16, AccountId) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+  - `hotkey`: `AccountId`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    hotkey = Keypair.create_from_uri('//Alice').ss58_address
+    result = substrate.query('SubtensorModule', 'AlphaDividendsPerSubnet', [netuid, hotkey])
+    print(result.value)
+    ```
+
+## 5. AlphaValues
+
+- **Description**: Alpha values for the network (lower and upper alpha).
 - **Query Type**: `u16 -> (u16, u16)`
 - **Parameters**:
   - `netuid`: `u16`
@@ -77,7 +96,21 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 5. Axons
+## 6. AvgTempo
+
+- **Description**: Global average tempo.
+- **Query Type**: `u16`
+- **Default Value**: `30`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'AvgTempo')
+    print(result.value)
+    ```
+
+## 7. Axons
 
 - **Description**: Axon information for a given hotkey within a network.
 - **Query Type**: `(u16, AccountId) -> AxonInfoOf`
@@ -88,7 +121,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
@@ -96,7 +129,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 6. BlockAtRegistration
+## 8. BlockAtRegistration
 
 - **Description**: Block number at registration for a given UID.
 - **Query Type**: `(u16, u16) -> u64`
@@ -107,7 +140,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     uid = 123
@@ -115,7 +148,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 7. BlockEmission
+## 9. BlockEmission
 
 - **Description**: The total block emission value.
 - **Query Type**: `u64`
@@ -123,13 +156,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'BlockEmission')
     print(result.value)
     ```
 
-## 8. BlocksSinceLastStep
+## 10. BlocksSinceLastStep
 
 - **Description**: Number of blocks since the last mechanism step.
 - **Query Type**: `u16 -> u64`
@@ -139,14 +172,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'BlocksSinceLastStep', [netuid])
     print(result.value)
     ```
 
-## 9. Bonds
+## 11. Bonds
 
 - **Description**: Bond values of UIDs in a network.
 - **Query Type**: `(u16, u16) -> Vec<(u16, u16)>`
@@ -157,7 +190,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     uid = 123
@@ -165,7 +198,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 10. BondsMovingAverage
+## 12. BondsMovingAverage
 
 - **Description**: Moving average of bonds in the network.
 - **Query Type**: `u16 -> u64`
@@ -182,26 +215,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 11. Burn
+## 13. BondsPenalty
 
-- **Description**: Burn value for a given network.
-- **Query Type**: `u16 -> u64`
-- **Parameters**:
-  - `netuid`: `u16`
-- **Default Value**: `1000000000`
-- **Python Example**:
-    ```python
-    from substrateinterface import SubstrateInterface
-
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    netuid = 1
-    result = substrate.query('SubtensorModule', 'Burn', [netuid])
-    print(result.value)
-    ```
-
-## 12. BurnRegistrationsThisInterval
-
-- **Description**: Number of burn registrations in this interval.
+- **Description**: Bonds penalty setting for a subnet.
 - **Query Type**: `u16 -> u16`
 - **Parameters**:
   - `netuid`: `u16`
@@ -212,11 +228,64 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
+    result = substrate.query('SubtensorModule', 'BondsPenalty', [netuid])
+    print(result.value)
+    ```
+
+## 14. Burn
+
+- **Description**: Burn value for a given network.
+- **Query Type**: `u16 -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `1000000000`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'Burn', [netuid])
+    print(result.value)
+    ```
+
+## 15. BurnRegistrationsThisInterval
+
+- **Description**: Number of burn registrations in this interval.
+- **Query Type**: `u16 -> u16`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
     result = substrate.query('SubtensorModule', 'BurnRegistrationsThisInterval', [netuid])
     print(result.value)
     ```
 
-## 13. ChildKeys
+## 16. ChildkeyTake
+
+- **Description**: Returns the childkey take for a given hotkey on a specific subnet.
+- **Query Type**: `(AccountId, u16) -> u16`
+- **Parameters**:
+  - `hotkey`: `AccountId`
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    hotkey = Keypair.create_from_uri('//Alice').ss58_address
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'ChildkeyTake', [hotkey, netuid])
+    print(result.value)
+    ```
+
+## 17. ChildKeys
 
 - **Description**: Maps parent keys to child keys with proportions.
 - **Query Type**: `(AccountId, u16) -> Vec<(u64, AccountId)>`
@@ -227,7 +296,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     parent = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
@@ -235,7 +304,21 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 14. CommitRevealWeightsEnabled
+## 18. ColdkeySwapScheduleDuration
+
+- **Description**: The block duration for which a coldkey swap schedule must wait before execution.
+- **Query Type**: `u32`
+- **Default Value**: `36000` (approx. 5 days at 12s blocks)
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'ColdkeySwapScheduleDuration')
+    print(result.value)
+    ```
+
+## 19. CommitRevealWeightsEnabled
 
 - **Description**: Indicates whether the commit-reveal process for weights is enabled for a given network.
 - **Query Type**: `u16 -> bool`
@@ -252,7 +335,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 15. Consensus
+## 20. Consensus
 
 - **Description**: Consensus values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -269,7 +352,26 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 16. Delegates
+## 21. CRV3WeightCommits
+
+- **Description**: Stores a queue of v3 commits for an account on a given netuid and epoch.
+- **Query Type**: `(u16, u64) -> VecDeque<(AccountId, Vec<u8>, u64)>`
+- **Parameters**:
+  - `netuid`: `u16`
+  - `commit_epoch`: `u64`
+- **Default Value**: `[]`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    commit_epoch = 100
+    result = substrate.query('SubtensorModule', 'CRV3WeightCommits', [netuid, commit_epoch])
+    print(result.value)
+    ```
+
+## 22. Delegates
 
 - **Description**: Returns the hotkey delegation take, signaling that this key is open for delegation.
 - **Query Type**: `AccountId -> u16`
@@ -279,14 +381,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Delegates', [hotkey])
     print(result.value)
     ```
 
-## 17. Difficulty
+## 23. Difficulty
 
 - **Description**: Difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
@@ -296,14 +398,28 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Difficulty', [netuid])
     print(result.value)
     ```
 
-## 18. Dividends
+## 24. DissolveNetworkScheduleDuration
+
+- **Description**: The block duration required before a network dissolve schedule executes.
+- **Query Type**: `u32`
+- **Default Value**: `36000`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'DissolveNetworkScheduleDuration')
+    print(result.value)
+    ```
+
+## 25. Dividends
 
 - **Description**: Dividend values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -313,14 +429,28 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Dividends', [netuid])
     print(result.value)
     ```
 
-## 19. Emission
+## 26. DynamicBlock
+
+- **Description**: Block number when the dynamic logic was enabled.
+- **Query Type**: `u64`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'DynamicBlock')
+    print(result.value)
+    ```
+
+## 27. Emission
 
 - **Description**: Emission values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u64>`
@@ -330,14 +460,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Emission', [netuid])
     print(result.value)
     ```
 
-## 20. EmissionValues
+## 28. EmissionValues
 
 - **Description**: Emission values of the network.
 - **Query Type**: `u16 -> u64`
@@ -347,14 +477,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'EmissionValues', [netuid])
     print(result.value)
     ```
 
-## 21. HasMigrationRun
+## 29. HasMigrationRun
 
 - **Description**: Storage for migration run status.
 - **Query Type**: `Vec<u8> -> bool`
@@ -364,45 +494,31 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     key = b"migrate_identities"
     result = substrate.query('SubtensorModule', 'HasMigrationRun', [key])
     print(result.value)
     ```
 
-## 22. HotkeyEmissionTempo
+## 30. IdentitiesV2
 
-- **Description**: The emission tempo of hotkeys.
-- **Query Type**: `u64`
-- **Default Value**: `7200`
-- **Python Example**:
-    ```python
-    from substrateinterface import SubstrateInterface
-
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    result = substrate.query('SubtensorModule', 'HotkeyEmissionTempo')
-    print(result.value)
-    ```
-
-## 23. Identities
-
-- **Description**: Identity information for a given coldkey.
-- **Query Type**: `AccountId -> ChainIdentityOf`
+- **Description**: Identity information for a given coldkey (v2 format).
+- **Query Type**: `AccountId -> ChainIdentityOfV2`
 - **Parameters**:
   - `coldkey`: `AccountId`
 - **Default Value**: `None`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    coldkey = Keypair.create_from_uri('//Bob').ss58_address
-    result = substrate.query('SubtensorModule', 'Identities', [coldkey])
+    coldkey = Keypair.create_from_uri('//Charlie').ss58_address
+    result = substrate.query('SubtensorModule', 'IdentitiesV2', [coldkey])
     print(result.value)
     ```
 
-## 24. ImmunityPeriod
+## 31. ImmunityPeriod
 
 - **Description**: Immunity period for networks.
 - **Query Type**: `u16 -> u16`
@@ -412,14 +528,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ImmunityPeriod', [netuid])
     print(result.value)
     ```
 
-## 25. Incentive
+## 32. Incentive
 
 - **Description**: Incentive values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -429,14 +545,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Incentive', [netuid])
     print(result.value)
     ```
 
-## 26. IsNetworkMember
+## 33. IsNetworkMember
 
 - **Description**: Whether a hotkey is a member of a network.
 - **Query Type**: `(AccountId, u16) -> bool`
@@ -447,7 +563,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
@@ -455,7 +571,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 27. Kappa
+## 34. Kappa
 
 - **Description**: Kappa parameter of the network.
 - **Query Type**: `u16 -> u16`
@@ -470,20 +586,20 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     netuid = 1
     result = substrate.query('SubtensorModule', 'Kappa', [netuid])
     print(result.value)
-    ```    
+    ```
 
-## 28. Keys
+## 35. Keys
 
 - **Description**: Maps UID to hotkey within a network.
 - **Query Type**: `(u16, u16) -> AccountId`
 - **Parameters**:
   - `netuid`: `u16`
   - `uid`: `u16`
-- **Default Value**: `AccountId derived from trailing zeroes`
+- **Default Value**: `AccountId` derived from trailing zeroes
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     uid = 123
@@ -491,7 +607,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 29. LastAddStakeIncrease
+## 36. LastAddStakeIncrease
 
 - **Description**: Last block number when stake was increased for a hotkey-coldkey pair.
 - **Query Type**: `(AccountId, AccountId) -> u64`
@@ -502,7 +618,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
@@ -510,7 +626,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 30. LastAdjustmentBlock
+## 37. LastAdjustmentBlock
 
 - **Description**: Block number of the last adjustment for a given network.
 - **Query Type**: `u16 -> u64`
@@ -520,14 +636,54 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'LastAdjustmentBlock', [netuid])
     print(result.value)
     ```
 
-## 31. LastHotkeyEmissionDrain
+## 38. LastColdkeyHotkeyStakeBlock
+
+- **Description**: Last block at which stake was added/removed for a coldkey-hotkey pair.
+- **Query Type**: `(AccountId, AccountId) -> u64`
+- **Parameters**:
+  - `coldkey`: `AccountId`
+  - `hotkey`: `AccountId`
+- **Default Value**: `None`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    coldkey = Keypair.create_from_uri('//Alice').ss58_address
+    hotkey = Keypair.create_from_uri('//Bob').ss58_address
+    result = substrate.query('SubtensorModule', 'LastColdkeyHotkeyStakeBlock', [coldkey, hotkey])
+    print(result.value)
+    ```
+
+## 39. LastHotkeyColdkeyEmissionOnNetuid
+
+- **Description**: Last emission block for a hotkey-coldkey pair on a given netuid.
+- **Query Type**: `(AccountId, AccountId, u16) -> u64`
+- **Parameters**:
+  - `hotkey`: `AccountId`
+  - `coldkey`: `AccountId`
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    hotkey = Keypair.create_from_uri('//Alice').ss58_address
+    coldkey = Keypair.create_from_uri('//Bob').ss58_address
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'LastHotkeyColdkeyEmissionOnNetuid', [hotkey, coldkey, netuid])
+    print(result.value)
+    ```
+
+## 40. LastHotkeyEmissionDrain
 
 - **Description**: Last block we drained this hotkey's emission.
 - **Query Type**: `AccountId -> u64`
@@ -537,14 +693,33 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastHotkeyEmissionDrain', [hotkey])
     print(result.value)
     ```
 
-## 32. LastMechansimStepBlock
+## 41. LastHotkeyEmissionOnNetuid
+
+- **Description**: Last emission block for a hotkey on a given netuid.
+- **Query Type**: `(AccountId, u16) -> u64`
+- **Parameters**:
+  - `hotkey`: `AccountId`
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    hotkey = Keypair.create_from_uri('//Alice').ss58_address
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'LastHotkeyEmissionOnNetuid', [hotkey, netuid])
+    print(result.value)
+    ```
+
+## 42. LastMechansimStepBlock
 
 - **Description**: Last block when the mechanism step was performed.
 - **Query Type**: `u16 -> u64`
@@ -554,14 +729,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
-    result = substrate.query('SubtensorModule', 'LastMechansimStepBlock', [netuid])  # ..nsim [sic] typo on the chain
+    result = substrate.query('SubtensorModule', 'LastMechansimStepBlock', [netuid])
     print(result.value)
     ```
 
-## 33. LastTxBlock
+## 43. LastTxBlock
 
 - **Description**: Last block for a transaction key.
 - **Query Type**: `AccountId -> u64`
@@ -571,14 +746,31 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     key = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastTxBlock', [key])
     print(result.value)
     ```
 
-## 34. LastTxBlockDelegateTake
+## 44. LastTxBlockChildKeyTake
+
+- **Description**: Last block for a childkey take transaction.
+- **Query Type**: `AccountId -> u64`
+- **Parameters**:
+  - `key`: `AccountId`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    key = Keypair.create_from_uri('//Alice').ss58_address
+    result = substrate.query('SubtensorModule', 'LastTxBlockChildKeyTake', [key])
+    print(result.value)
+    ```
+
+## 45. LastTxBlockDelegateTake
 
 - **Description**: Last block for a delegate take transaction key.
 - **Query Type**: `AccountId -> u64`
@@ -588,14 +780,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     key = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastTxBlockDelegateTake', [key])
     print(result.value)
     ```
 
-## 35. LastUpdate
+## 46. LastUpdate
 
 - **Description**: Last update values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u64>`
@@ -612,7 +804,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 36. LiquidAlphaOn
+## 47. LiquidAlphaOn
 
 - **Description**: Whether Liquid Alpha is enabled.
 - **Query Type**: `u16 -> bool`
@@ -629,7 +821,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 37. LoadedEmission
+## 48. LoadedEmission
 
 - **Description**: Emission data loaded for a network.
 - **Query Type**: `u16 -> Vec<(AccountId, u64, u64)>`
@@ -639,14 +831,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'LoadedEmission', [netuid])
     print(result.value)
     ```
 
-## 38. MaxAllowedUids
+## 49. MaxAllowedUids
 
 - **Description**: Maximum allowed UIDs for networks.
 - **Query Type**: `u16 -> u16`
@@ -656,14 +848,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxAllowedUids', [netuid])
     print(result.value)
     ```
 
-## 39. MaxAllowedValidators
+## 50. MaxAllowedValidators
 
 - **Description**: Maximum allowed validators for networks.
 - **Query Type**: `u16 -> u16`
@@ -673,14 +865,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxAllowedValidators', [netuid])
     print(result.value)
     ```
 
-## 40. MaxBurn
+## 51. MaxBurn
 
 - **Description**: Maximum burn value for a given network.
 - **Query Type**: `u16 -> u64`
@@ -690,14 +882,42 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxBurn', [netuid])
     print(result.value)
     ```
 
-## 41. MaxDifficulty
+## 52. MaxChildkeyTake
+
+- **Description**: Maximum childkey take (percentage * 65535) for child-keys.
+- **Query Type**: `u16`
+- **Default Value**: `11796`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'MaxChildkeyTake')
+    print(result.value)
+    ```
+
+## 53. MaxDelegateTake
+
+- **Description**: Maximum delegate take (percentage * 65535) for delegations.
+- **Query Type**: `u16`
+- **Default Value**: `11796`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'MaxDelegateTake')
+    print(result.value)
+    ```
+
+## 54. MaxDifficulty
 
 - **Description**: Maximum difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
@@ -714,7 +934,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 42. MaxRegistrationsPerBlock
+## 55. MaxRegistrationsPerBlock
 
 - **Description**: Maximum registrations allowed per block.
 - **Query Type**: `u16 -> u16`
@@ -724,28 +944,28 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     block = 100
     result = substrate.query('SubtensorModule', 'MaxRegistrationsPerBlock', [block])
     print(result.value)
     ```
 
-## 43. MaxTake
+## 56. MaxTempo
 
-- **Description**: Maximum take percentage for delegations.
+- **Description**: Global maximum tempo.
 - **Query Type**: `u16`
-- **Default Value**: `11796`
+- **Default Value**: `30`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    result = substrate.query('SubtensorModule', 'MaxTake')
+    result = substrate.query('SubtensorModule', 'MaxTempo')
     print(result.value)
     ```
 
-## 44. MaxWeightsLimit
+## 57. MaxWeightsLimit
 
 - **Description**: Maximum weight limit for networks.
 - **Query Type**: `u16 -> u16`
@@ -755,14 +975,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxWeightsLimit', [netuid])
     print(result.value)
     ```
 
-## 45. MinAllowedWeights
+## 58. MinAllowedWeights
 
 - **Description**: Minimum allowed weights for networks.
 - **Query Type**: `u16 -> u16`
@@ -772,14 +992,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MinAllowedWeights', [netuid])
     print(result.value)
     ```
 
-## 46. MinBurn
+## 59. MinBurn
 
 - **Description**: Minimum burn value for a given network.
 - **Query Type**: `u16 -> u64`
@@ -789,14 +1009,42 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MinBurn', [netuid])
     print(result.value)
     ```
 
-## 47. MinDifficulty
+## 60. MinChildkeyTake
+
+- **Description**: Minimum childkey take (percentage * 65535) for child-keys.
+- **Query Type**: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'MinChildkeyTake')
+    print(result.value)
+    ```
+
+## 61. MinDelegateTake
+
+- **Description**: Minimum delegate take (percentage * 65535) for delegations.
+- **Query Type**: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'MinDelegateTake')
+    print(result.value)
+    ```
+
+## 62. MinDifficulty
 
 - **Description**: Minimum difficulty parameter for a given network.
 - **Query Type**: `u16 -> u64`
@@ -813,35 +1061,35 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 48. MinTake
+## 63. MinStake
 
-- **Description**: Minimum take percentage for delegations.
-- **Query Type**: `u16`
-- **Default Value**: `5898`
+- **Description**: Minimum stake requirement (global).
+- **Query Type**: `u64`
+- **Default Value**: `500000`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    result = substrate.query('SubtensorModule', 'MinTake')
+    result = substrate.query('SubtensorModule', 'MinStake')
     print(result.value)
     ```
 
-## 49. NetworkImmunityPeriod
+## 64. NetworkImmunityPeriod
 
-- **Description**: Immunity period for networks.
+- **Description**: Immunity period for networks (global).
 - **Query Type**: `u64`
 - **Default Value**: `50400`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkImmunityPeriod')
     print(result.value)
     ```
 
-## 50. NetworkLastLockCost
+## 65. NetworkLastLockCost
 
 - **Description**: Last lock cost for networks.
 - **Query Type**: `u64`
@@ -849,13 +1097,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkLastLockCost')
     print(result.value)
     ```
 
-## 51. NetworkLastRegistered
+## 66. NetworkLastRegistered
 
 - **Description**: Last registered block number for networks.
 - **Query Type**: `u64`
@@ -863,13 +1111,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkLastRegistered')
     print(result.value)
     ```
 
-## 52. NetworkLockReductionInterval
+## 67. NetworkLockReductionInterval
 
 - **Description**: Lock reduction interval for networks.
 - **Query Type**: `u64`
@@ -877,44 +1125,44 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkLockReductionInterval')
     print(result.value)
     ```
 
-## 53. NetworkMaxStake
+## 68. NetworkMaxStake
 
 - **Description**: Max stake allowed on a subnet.
 - **Query Type**: `u16 -> u64`
 - **Parameters**:
   - `netuid`: `u16`
-- **Default Value**: `500000000000000`
+- **Default Value**: `18446744073709551615`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkMaxStake', [netuid])
     print(result.value)
     ```
 
-## 54. NetworkMinAllowedUids
+## 69. NetworkMinAllowedUids
 
-- **Description**: Minimum allowed UIDs for networks.
+- **Description**: Minimum allowed UIDs for networks (global).
 - **Query Type**: `u16`
 - **Default Value**: `128`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkMinAllowedUids')
     print(result.value)
     ```
 
-## 55. NetworkMinLockCost
+## 70. NetworkMinLockCost
 
 - **Description**: Minimum lock cost for networks.
 - **Query Type**: `u64`
@@ -922,13 +1170,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkMinLockCost')
     print(result.value)
     ```
 
-## 56. NetworkModality
+## 71. NetworkModality
 
 - **Description**: Modality of the network (0: TEXT, 1: IMAGE, 2: TENSOR).
 - **Query Type**: `u16 -> u16`
@@ -938,14 +1186,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkModality', [netuid])
     print(result.value)
     ```
 
-## 57. NetworkPowRegistrationAllowed
+## 72. NetworkPowRegistrationAllowed
 
 - **Description**: Whether PoW registration is allowed in the network.
 - **Query Type**: `u16 -> bool`
@@ -955,28 +1203,28 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkPowRegistrationAllowed', [netuid])
     print(result.value)
     ```
 
-## 58. NetworkRateLimit
+## 73. NetworkRateLimit
 
 - **Description**: Network rate limit.
 - **Query Type**: `u64`
-- **Default Value**: `7200` (`0` if `pow-faucet` feature is enabled)
+- **Default Value**: `7200`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NetworkRateLimit')
     print(result.value)
     ```
 
-## 59. NetworkRegisteredAt
+## 74. NetworkRegisteredAt
 
 - **Description**: Block number when the network was registered.
 - **Query Type**: `u16 -> u64`
@@ -993,7 +1241,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 60. NetworkRegistrationAllowed
+## 75. NetworkRegistrationAllowed
 
 - **Description**: Whether registration is allowed in the network.
 - **Query Type**: `u16 -> bool`
@@ -1010,7 +1258,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 61. NetworksAdded
+## 76. NetworksAdded
 
 - **Description**: Whether the network has been added.
 - **Query Type**: `u16 -> bool`
@@ -1020,14 +1268,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworksAdded', [netuid])
     print(result.value)
     ```
 
-## 62. NeuronsToPruneAtNextEpoch
+## 77. NeuronsToPruneAtNextEpoch
 
 - **Description**: UIDs of neurons to be pruned at the next epoch.
 - **Query Type**: `u16 -> u16`
@@ -1044,7 +1292,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 63. NominatorMinRequiredStake
+## 78. NominatorMinRequiredStake
 
 - **Description**: Minimum required stake for nominators.
 - **Query Type**: `u64`
@@ -1052,30 +1300,30 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'NominatorMinRequiredStake')
     print(result.value)
     ```
 
-## 64. Owner
+## 79. Owner
 
 - **Description**: Returns the controlling coldkey for a hotkey.
 - **Query Type**: `AccountId -> AccountId`
 - **Parameters**:
   - `hotkey`: `AccountId`
-- **Default Value**: `AccountId derived from trailing zeroes`
+- **Default Value**: `AccountId` derived from trailing zeroes
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Owner', [hotkey])
     print(result.value)
     ```
 
-## 65. OwnedHotkeys
+## 80. OwnedHotkeys
 
 - **Description**: Returns the vector of hotkeys controlled by this coldkey.
 - **Query Type**: `AccountId -> Vec<AccountId>`
@@ -1085,14 +1333,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'OwnedHotkeys', [coldkey])
     print(result.value)
     ```
 
-## 66. ParentKeys
+## 81. ParentKeys
 
 - **Description**: Maps child keys to parent keys with proportions.
 - **Query Type**: `(AccountId, u16) -> Vec<(u64, AccountId)>`
@@ -1103,7 +1351,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     child = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
@@ -1111,7 +1359,26 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 67. PendingEmission
+## 82. PendingChildKeys
+
+- **Description**: Pending child keys to be applied after cooldown.
+- **Query Type**: `(u16, AccountId) -> (Vec<(u64, AccountId)>, u64)`
+- **Parameters**:
+  - `netuid`: `u16`
+  - `parent`: `AccountId`
+- **Default Value**: `( [], 0 )`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    parent = Keypair.create_from_uri('//Alice').ss58_address
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'PendingChildKeys', [netuid, parent])
+    print(result.value)
+    ```
+
+## 83. PendingEmission
 
 - **Description**: Pending emission of the network.
 - **Query Type**: `u16 -> u64`
@@ -1121,14 +1388,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'PendingEmission', [netuid])
     print(result.value)
     ```
 
-## 68. PendingdHotkeyEmission
+## 84. PendingdHotkeyEmission
 
 - **Description**: Accumulated hotkey emission.
 - **Query Type**: `AccountId -> u64`
@@ -1138,14 +1405,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
-    result = substrate.query('SubtensorModule', 'PendingdHotkeyEmission', [hotkey])  # ..ingdHot.. [sic] as on the chain
+    result = substrate.query('SubtensorModule', 'PendingdHotkeyEmission', [hotkey])
     print(result.value)
     ```
 
-## 69. POWRegistrationsThisInterval
+## 85. POWRegistrationsThisInterval
 
 - **Description**: Number of PoW registrations in this interval.
 - **Query Type**: `u16 -> u16`
@@ -1155,14 +1422,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'POWRegistrationsThisInterval', [netuid])
     print(result.value)
     ```
 
-## 70. PruningScores
+## 86. PruningScores
 
 - **Description**: Pruning scores of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -1172,14 +1439,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'PruningScores', [netuid])
     print(result.value)
     ```
 
-## 71. RAORecycledForRegistration
+## 87. RAORecycledForRegistration
 
 - **Description**: Global RAO recycled for registration.
 - **Query Type**: `u16 -> u64`
@@ -1189,14 +1456,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'RAORecycledForRegistration', [netuid])
     print(result.value)
     ```
 
-## 72. Rank
+## 88. Rank
 
 - **Description**: Rank values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -1206,14 +1473,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Rank', [netuid])
     print(result.value)
     ```
 
-## 73. RegistrationsThisBlock
+## 89. RegistrationsThisBlock
 
 - **Description**: Number of registrations in the current block for a given network.
 - **Query Type**: `u16 -> u16`
@@ -1223,14 +1490,31 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'RegistrationsThisBlock', [netuid])
     print(result.value)
     ```
 
-## 74. Rho
+## 90. RevealPeriodEpochs
+
+- **Description**: Number of epochs allowed for commit-reveal periods on a given netuid.
+- **Query Type**: `u16 -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `1`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'RevealPeriodEpochs', [netuid])
+    print(result.value)
+    ```
+
+## 91. Rho
 
 - **Description**: Rho parameter of the network.
 - **Query Type**: `u16 -> u16`
@@ -1240,14 +1524,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Rho', [netuid])
     print(result.value)
     ```
 
-## 75. ScalingLawPower
+## 92. ScalingLawPower
 
 - **Description**: Scaling law power for the network.
 - **Query Type**: `u16 -> u16`
@@ -1264,7 +1548,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 76. SenateRequiredStakePercentage
+## 93. SenateRequiredStakePercentage
 
 - **Description**: The percentage of stake required by the Senate.
 - **Query Type**: `u64`
@@ -1278,7 +1562,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 77. ServingRateLimit
+## 94. ServingRateLimit
 
 - **Description**: Rate limit for serving in the network.
 - **Query Type**: `u16 -> u64`
@@ -1295,42 +1579,40 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 78. Stake
+## 95. StakingFee
 
-- **Description**: Returns the stake under a coldkey prefixed by hotkey.
-- **Query Type**: `(AccountId, AccountId) -> u64`
-- **Parameters**:
-  - `hotkey`: `AccountId`
-  - `coldkey`: `AccountId`
-- **Default Value**: `0`
-- **Python Example**:
-    ```python
-    from substrateinterface import SubstrateInterface, Keypair
-
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    hotkey = Keypair.create_from_uri('//Alice').ss58_address
-    coldkey = Keypair.create_from_uri('//Bob').ss58_address
-    result = substrate.query('SubtensorModule', 'Stake', [hotkey, coldkey])
-    print(result.value)
-    ```
-
-## 79. StakeInterval
-
-- **Description**: Interval for stakes.
+- **Description**: Staking fee (global).
 - **Query Type**: `u64`
-- **Default Value**: `360`
+- **Default Value**: `50000`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    result = substrate.query('SubtensorModule', 'StakeInterval')
+    result = substrate.query('SubtensorModule', 'StakingFee')
     print(result.value)
     ```
 
-## 80. StakeWeight
+## 96. StakingHotkeys
 
-- **Description**: Weight for stake used in YC.
+- **Description**: Maps coldkey to hotkeys that stake to it.
+- **Query Type**: `AccountId -> Vec<AccountId>`
+- **Parameters**:
+  - `coldkey`: `AccountId`
+- **Default Value**: `[]`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    coldkey = Keypair.create_from_uri('//Bob').ss58_address
+    result = substrate.query('SubtensorModule', 'StakingHotkeys', [coldkey])
+    print(result.value)
+    ```
+
+## 97. StakeWeight
+
+- **Description**: Weight for stake used in YC (consensus).
 - **Query Type**: `u16 -> Vec<u16>`
 - **Parameters**:
   - `netuid`: `u16`
@@ -1345,24 +1627,109 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 81. StakingHotkeys
+## 98. SubnetAlphaEmissionSell
 
-- **Description**: Maps coldkey to hotkeys that stake to it.
-- **Query Type**: `AccountId -> Vec<AccountId>`
+- **Description**: Alpha sold per block in the subnet.
+- **Query Type**: `(u16) -> u64`
 - **Parameters**:
-  - `coldkey`: `AccountId`
-- **Default Value**: `[]`
+  - `netuid`: `u16`
+- **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-
+    from substrateinterface import SubstrateInterface
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    coldkey = Keypair.create_from_uri('//Bob').ss58_address
-    result = substrate.query('SubtensorModule', 'StakingHotkeys', [coldkey])
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetAlphaEmissionSell', [netuid])
     print(result.value)
     ```
 
-## 82. SubnetLimit
+## 99. SubnetAlphaIn
+
+- **Description**: Amount of alpha in the subnet's liquidity pool.
+- **Query Type**: `(u16) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetAlphaIn', [netuid])
+    print(result.value)
+    ```
+
+## 100. SubnetAlphaInEmission
+
+- **Description**: Amount of alpha entering a subnet per block.
+- **Query Type**: `(u16) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetAlphaInEmission', [netuid])
+    print(result.value)
+    ```
+
+## 101. SubnetAlphaOut
+
+- **Description**: Amount of alpha in the subnet itself.
+- **Query Type**: `(u16) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetAlphaOut', [netuid])
+    print(result.value)
+    ```
+
+## 102. SubnetAlphaOutEmission
+
+- **Description**: Amount of alpha leaving a subnet per block.
+- **Query Type**: `(u16) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetAlphaOutEmission', [netuid])
+    print(result.value)
+    ```
+
+## 103. SubnetIdentitiesV2
+
+- **Description**: Identity information for a subnet (v2 format).
+- **Query Type**: `u16 -> SubnetIdentityOfV2`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `None`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetIdentitiesV2', [netuid])
+    print(result.value)
+    ```
+
+## 104. SubnetLimit
 
 - **Description**: Maximum number of networks.
 - **Query Type**: `u16`
@@ -1370,13 +1737,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'SubnetLimit')
     print(result.value)
     ```
 
-## 83. SubnetLocked
+## 105. SubnetLocked
 
 - **Description**: Locked amount in the subnet.
 - **Query Type**: `u16 -> u64`
@@ -1386,31 +1753,96 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetLocked', [netuid])
     print(result.value)
     ```
 
-## 84. SubnetOwner
+## 106. SubnetMechanism
 
-- **Description**: Owner of the subnet.
-- **Query Type**: `u16 -> AccountId`
+- **Description**: Mechanism identifier for the subnet.
+- **Query Type**: `u16 -> u16`
 - **Parameters**:
   - `netuid`: `u16`
-- **Default Value**: `AccountId derived from trailing zeroes`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetMechanism', [netuid])
+    print(result.value)
+    ```
+
+## 107. SubnetMovingAlpha
+
+- **Description**: Moving alpha parameter for the dynamic subnet price.
+- **Query Type**: `I96F32`
+- **Default Value**: `0.000003`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'SubnetMovingAlpha')
+    print(result.value)
+    ```
+
+## 108. SubnetMovingPrice
+
+- **Description**: The moving average price for a subnet.
+- **Query Type**: `(u16) -> I96F32`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0.0`
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetMovingPrice', [netuid])
+    print(result.value)
+    ```
+
+## 109. SubnetName
+
+- **Description**: The name of the subnet.
+- **Query Type**: `u16 -> Vec<u8>`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `𝜏`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetName', [netuid])
+    print(result.value)
+    ```
+
+## 110. SubnetOwner
+
+- **Description**: Owner of the subnet.
+- **Query Type**: `u16 -> AccountId`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `AccountId` derived from trailing zeroes
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetOwner', [netuid])
     print(result.value)
     ```
 
-## 85. SubnetOwnerCut
+## 111. SubnetOwnerCut
 
 - **Description**: Subnet owner cut percentage.
 - **Query Type**: `u16`
@@ -1418,16 +1850,16 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'SubnetOwnerCut')
     print(result.value)
     ```
 
-## 86. SubnetworkN
+## 112. SubnetTAO
 
-- **Description**: Number of UIDs in the network.
-- **Query Type**: `u16 -> u16`
+- **Description**: Amount of TAO in a given subnet's pool.
+- **Query Type**: `(u16) -> u64`
 - **Parameters**:
   - `netuid`: `u16`
 - **Default Value**: `0`
@@ -1437,11 +1869,78 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetTAO', [netuid])
+    print(result.value)
+    ```
+
+## 113. SubnetVolume
+
+- **Description**: Total volume of TAO bought/sold for a subnet.
+- **Query Type**: `(u16) -> u128`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'SubnetVolume', [netuid])
+    print(result.value)
+    ```
+
+## 114. SubnetworkN
+
+- **Description**: Number of UIDs in the network.
+- **Query Type**: `u16 -> u16`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetworkN', [netuid])
     print(result.value)
     ```
 
-## 87. TargetRegistrationsPerInterval
+## 115. TaoDividendsPerSubnet
+
+- **Description**: Last total root dividend for a hotkey on a subnet.
+- **Query Type**: `(u16, AccountId) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+  - `hotkey`: `AccountId`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    hotkey = Keypair.create_from_uri('//Alice').ss58_address
+    result = substrate.query('SubtensorModule', 'TaoDividendsPerSubnet', [netuid, hotkey])
+    print(result.value)
+    ```
+
+## 116. TaoWeight
+
+- **Description**: A global parameter representing "Tao weight" in the system.
+- **Query Type**: `u64`
+- **Default Value**: `971718665099567868`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'TaoWeight')
+    print(result.value)
+    ```
+
+## 117. TargetRegistrationsPerInterval
 
 - **Description**: Target registrations per interval for the network.
 - **Query Type**: `u16 -> u16`
@@ -1458,7 +1957,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 88. TargetStakesPerInterval
+## 118. TargetStakesPerInterval
 
 - **Description**: Target stakes per interval.
 - **Query Type**: `u64`
@@ -1466,13 +1965,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TargetStakesPerInterval')
     print(result.value)
     ```
 
-## 89. Tempo
+## 119. Tempo
 
 - **Description**: Tempo of the network.
 - **Query Type**: `u16 -> u16`
@@ -1482,14 +1981,31 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Tempo', [netuid])
     print(result.value)
     ```
 
-## 90. TotalColdkeyStake
+## 120. TokenSymbol
+
+- **Description**: The token symbol for a subnet.
+- **Query Type**: `u16 -> Vec<u8>`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `"\xF0\x9D\x9C\x8F"`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'TokenSymbol', [netuid])
+    print(result.value)
+    ```
+
+## 121. TotalColdkeyStake
 
 - **Description**: Returns the total amount of stake under a coldkey.
 - **Query Type**: `AccountId -> u64`
@@ -1499,33 +2015,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'TotalColdkeyStake', [coldkey])
     print(result.value)
     ```
 
-## 91. TotalHotkeyColdkeyStakesThisInterval
-
-- **Description**: Returns a tuple (u64: stakes, u64: block_number) for a given hotkey and coldkey.
-- **Query Type**: `(AccountId, AccountId) -> (u64, u64)`
-- **Parameters**:
-  - `hotkey`: `AccountId`
-  - `coldkey`: `AccountId`
-- **Default Value**: `(0, 0)`
-- **Python Example**:
-    ```python
-    from substrateinterface import SubstrateInterface, Keypair
-
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    hotkey = Keypair.create_from_uri('//Alice').ss58_address
-    coldkey = Keypair.create_from_uri('//Bob').ss58_address
-    result = substrate.query('SubtensorModule', 'TotalHotkeyColdkeyStakesThisInterval', [hotkey, coldkey])
-    print(result.value)
-    ```
-
-## 92. TotalHotkeyStake
+## 122. TotalHotkeyStake
 
 - **Description**: Returns the total amount of stake under a hotkey.
 - **Query Type**: `AccountId -> u64`
@@ -1535,14 +2032,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'TotalHotkeyStake', [hotkey])
     print(result.value)
     ```
 
-## 93. TotalIssuance
+## 123. TotalIssuance
 
 - **Description**: Represents the total issuance of tokens on the Bittensor network.
 - **Query Type**: `u64`
@@ -1550,13 +2047,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TotalIssuance')
     print(result.value)
     ```
 
-## 94. TotalNetworks
+## 124. TotalNetworks
 
 - **Description**: Total number of existing networks.
 - **Query Type**: `u16`
@@ -1564,13 +2061,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TotalNetworks')
     print(result.value)
     ```
 
-## 95. TotalStake
+## 125. TotalStake
 
 - **Description**: The total amount of tokens staked in the system.
 - **Query Type**: `u64`
@@ -1578,13 +2075,30 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TotalStake')
     print(result.value)
     ```
 
-## 96. TransactionKeyLastBlock
+## 126. TotalStakeAtDynamic
+
+- **Description**: Total stake in the system at the moment of subnet registration under dynamic pricing.
+- **Query Type**: `(u16) -> u64`
+- **Parameters**:
+  - `netuid`: `u16`
+- **Default Value**: `0`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    result = substrate.query('SubtensorModule', 'TotalStakeAtDynamic', [netuid])
+    print(result.value)
+    ```
+
+## 127. TransactionKeyLastBlock
 
 - **Description**: Last block of a transaction for a given key, netuid, and name.
 - **Query Type**: `(AccountId, u16, u16) -> u64`
@@ -1596,7 +2110,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
@@ -1605,7 +2119,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 97. Trust
+## 128. Trust
 
 - **Description**: Trust values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -1622,7 +2136,21 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 98. TxDelegateTakeRateLimit
+## 129. TxChildkeyTakeRateLimit
+
+- **Description**: Transaction childkey take rate limit.
+- **Query Type**: `u64`
+- **Default Value**: `0` or chain-defined
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    result = substrate.query('SubtensorModule', 'TxChildkeyTakeRateLimit')
+    print(result.value)
+    ```
+
+## 130. TxDelegateTakeRateLimit
 
 - **Description**: Transaction delegate take rate limit.
 - **Query Type**: `u64`
@@ -1630,13 +2158,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TxDelegateTakeRateLimit')
     print(result.value)
     ```
 
-## 99. TxRateLimit
+## 131. TxRateLimit
 
 - **Description**: Transaction rate limit.
 - **Query Type**: `u64`
@@ -1644,13 +2172,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TxRateLimit')
     print(result.value)
     ```
 
-## 100. Uids
+## 132. Uids
 
 - **Description**: Maps hotkey to UID within a network.
 - **Query Type**: `(u16, AccountId) -> u16`
@@ -1661,7 +2189,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface, Keypair
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
@@ -1669,7 +2197,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 101. UsedWork
+## 133. UsedWork
 
 - **Description**: Global used work storage.
 - **Query Type**: `Vec<u8> -> u64`
@@ -1686,7 +2214,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 102. ValidatorPermit
+## 134. ValidatorPermit
 
 - **Description**: Validator permit values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<bool>`
@@ -1696,14 +2224,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ValidatorPermit', [netuid])
     print(result.value)
     ```
 
-## 103. ValidatorPruneLen
+## 135. ValidatorPruneLen
 
 - **Description**: Length of validator pruning.
 - **Query Type**: `u16 -> u64`
@@ -1720,7 +2248,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 104. ValidatorTrust
+## 136. ValidatorTrust
 
 - **Description**: Validator trust values of UIDs in a network.
 - **Query Type**: `u16 -> Vec<u16>`
@@ -1730,33 +2258,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ValidatorTrust', [netuid])
     print(result.value)
     ```
 
-## 105. WeightCommits
-
-- **Description**: Returns the hash and weight committed by an account for a given netuid.
-- **Query Type**: `(u16, AccountId) -> (H256, u64)`
-- **Parameters**:
-  - `netuid`: `u16`
-  - `who`: `AccountId`
-- **Default Value**: `None`
-- **Python Example**:
-    ```python
-    from substrateinterface import SubstrateInterface, Keypair
-
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
-    netuid = 1
-    who = Keypair.create_from_uri('//Alice').ss58_address
-    result = substrate.query('SubtensorModule', 'WeightCommits', [netuid, who])
-    print(result.value)
-    ```
-
-## 106. WeightCommitRevealInterval
+## 137. WeightCommitRevealInterval
 
 - **Description**: Interval for the commit-reveal process of weights.
 - **Query Type**: `u16 -> u64`
@@ -1766,14 +2275,33 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightCommitRevealInterval', [netuid])
     print(result.value)
     ```
 
-## 107. Weights
+## 138. WeightCommits
+
+- **Description**: Returns the commit data for an account on a given netuid (commit-reveal).
+- **Query Type**: `(u16, AccountId) -> VecDeque<(H256, u64, u64, u64)>`
+- **Parameters**:
+  - `netuid`: `u16`
+  - `who`: `AccountId`
+- **Default Value**: `None`
+- **Python Example**:
+    ```python
+    from substrateinterface import SubstrateInterface, Keypair
+    
+    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    netuid = 1
+    who = Keypair.create_from_uri('//Alice').ss58_address
+    result = substrate.query('SubtensorModule', 'WeightCommits', [netuid, who])
+    print(result.value)
+    ```
+
+## 139. Weights
 
 - **Description**: Weight values of UIDs in a network.
 - **Query Type**: `(u16, u16) -> Vec<(u16, u16)>`
@@ -1784,7 +2312,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     uid = 123
@@ -1792,7 +2320,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
     print(result.value)
     ```
 
-## 108. WeightsMinStake
+## 140. WeightsMinStake
 
 - **Description**: Minimum stake required for weights.
 - **Query Type**: `u64`
@@ -1800,13 +2328,13 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'WeightsMinStake')
     print(result.value)
     ```
 
-## 109. WeightsSetRateLimit
+## 141. WeightsSetRateLimit
 
 - **Description**: Rate limit for setting weights in the network.
 - **Query Type**: `u16 -> u64`
@@ -1816,14 +2344,14 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightsSetRateLimit', [netuid])
     print(result.value)
     ```
 
-## 110. WeightsVersionKey
+## 142. WeightsVersionKey
 
 - **Description**: Version key for weights in the network.
 - **Query Type**: `u16 -> u64`
@@ -1833,7 +2361,7 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Python Example**:
     ```python
     from substrateinterface import SubstrateInterface
-
+    
     substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightsVersionKey', [netuid])
