@@ -149,6 +149,7 @@ const sidebars = {
         "subtensor-nodes/using-source",
         "subtensor-nodes/using-docker",
         "subtensor-nodes/subtensor-rate-limits",
+        "subtensor-nodes/subtensor-storage-query-examples",
         "subtensor-nodes/subtensor-error-messages",
       ],
     },
