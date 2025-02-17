@@ -17,15 +17,17 @@ See the [Dynamic TAO White Paper](https://drive.google.com/file/d/1vkuxOFPJyUyoY
 
 ### Injection
 
-The first stage of emissions is *injection of liquidity* into the subnet pools. Each block:
+The first stage of emissions is *injection of liquidity* into the subnet pools. Liquidity is injected to each subnet in proportion to the price of its token compared to the price of other subnet tokens. This is designed to incentivize development on the most valuable subnets.
 
-- TAO is injected into the subnet's TAO reserve.
-- alpha is injected into the subnet's alpha reserve.
-- alpha is allocated to *alpha outstanding*, to be extracted by participants.
+Each block:
 
-Liquidity is injected to each subnet in proportion to the price of its token compared to the price of other subnet tokens. This is designed to incentivize development on the most valuable subnets. Recall that price is equal to the ratio of the subnet's TAO in reserve to alpha in reserve.
+- TAO is injected into the subnet's **TAO reserve**.
+- Alpha is injected into the subnet's **alpha reserve**.
+- Alpha is allocated to *alpha outstanding*, to be extracted by participants.
 
 #### TAO reserve injection
+
+A subnet's TAO reserve injection is computed in proportion to the price of its alpha token over the sum of prices for all the subnets in Bittensor.
 
 Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, TAO emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
@@ -82,7 +84,7 @@ $$
 
 The cap or *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$, starts at 1 and follows a halving schedule identical to that of TAO, beginning when subnet $i$ is created.
 
-#### Alpha outgoing injection
+#### Alpha outstanding injection
 
 Each block, liquidity is also set aside to be emitted to participants (validators, miners, stakers, and subnet creator). The quantity per block is equal to the *alpha emission rate* $\Delta\bar{\alpha_i}$ for subnet $i$.
 
