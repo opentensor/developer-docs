@@ -39,7 +39,17 @@ $$
 
 #### Alpha reserve injection
 
-Alpha is then injected in proportion to the price of the token, so that growth of a subnet's liquidity pools does not not change the price of the alpha token. 
+Alpha is then injected in proportion to the price of the token, so that growth of a subnet's liquidity pools does not not change the price of the alpha token.
+
+Recall that token price for a subnet is its TAO in reserve divided by its alpha reserve:
+
+$$
+p_i  = \frac
+                  {\tau_i}
+                  {\alpha_i}
+$$
+
+So in order to inject alpha without changing the price, it should follow:
 
 $$
 \Delta\alpha_i = \frac
@@ -47,9 +57,18 @@ $$
                   {p_i}
 $$
 
-When we fill in the equation with the formula for $\Delta\tau_i$, the price $p_i$ is cancelled out of the equation, as below. However, alpha injection is also capped at 1 by the algorithm, to prevent runaway inflation.
+When we fill in this equation with the previous formula for $\Delta\tau_i$, the price $p_i$ is cancelled out of the equation, yielding:
 
-Therefore, with cap or *alpha emission rate* $\Delta\bar{\alpha_i}$, emission $\Delta\alpha_i$ to subnet $i$ is:
+$$
+\Delta\alpha_i = 
+  \frac
+    {\Delta\bar{\tau}}
+    {\sum_{j \in \text{S}}
+  \bigl(p_j)}
+$$
+
+
+However, alpha injection is also capped at 1 by the algorithm, to prevent runaway inflation. Therefore, with cap or *alpha emission rate* $\Delta\bar{\alpha_i}$, emission $\Delta\alpha_i$ to subnet $i$ is:
 
 $$
 \Delta\alpha_i = \min\left\{
