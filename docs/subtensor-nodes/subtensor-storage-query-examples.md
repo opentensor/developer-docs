@@ -18,9 +18,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `5000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ActivityCutoff', [netuid])
     print(result.value)
@@ -35,9 +35,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'AdjustmentAlpha', [netuid])
     print(result.value)
@@ -52,9 +52,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `100`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'AdjustmentInterval', [netuid])
     print(result.value)
@@ -70,9 +70,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'AlphaDividendsPerSubnet', [netuid, hotkey])
@@ -88,9 +88,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `(45875, 58982)`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'AlphaValues', [netuid])
     print(result.value)
@@ -103,9 +103,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `30`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'AvgTempo')
     print(result.value)
     ```
@@ -120,9 +120,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Axons', [netuid, hotkey])
@@ -139,9 +139,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     uid = 123
     result = substrate.query('SubtensorModule', 'BlockAtRegistration', [netuid, uid])
@@ -155,9 +155,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'BlockEmission')
     print(result.value)
     ```
@@ -171,9 +171,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'BlocksSinceLastStep', [netuid])
     print(result.value)
@@ -189,9 +189,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     uid = 123
     result = substrate.query('SubtensorModule', 'Bonds', [netuid, uid])
@@ -207,9 +207,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `900000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'BondsMovingAverage', [netuid])
     print(result.value)
@@ -224,9 +224,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'BondsPenalty', [netuid])
     print(result.value)
@@ -241,9 +241,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Burn', [netuid])
     print(result.value)
@@ -258,9 +258,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'BurnRegistrationsThisInterval', [netuid])
     print(result.value)
@@ -276,9 +276,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'ChildkeyTake', [hotkey, netuid])
@@ -295,9 +295,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     parent = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'ChildKeys', [parent, netuid])
@@ -311,9 +311,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `36000` (approx. 5 days at 12s blocks)
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'ColdkeySwapScheduleDuration')
     print(result.value)
     ```
@@ -327,9 +327,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'CommitRevealWeightsEnabled', [netuid])
     print(result.value)
@@ -344,9 +344,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Consensus', [netuid])
     print(result.value)
@@ -362,9 +362,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     commit_epoch = 100
     result = substrate.query('SubtensorModule', 'CRV3WeightCommits', [netuid, commit_epoch])
@@ -380,9 +380,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `11796`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Delegates', [hotkey])
     print(result.value)
@@ -397,9 +397,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `10000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Difficulty', [netuid])
     print(result.value)
@@ -412,9 +412,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `36000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'DissolveNetworkScheduleDuration')
     print(result.value)
     ```
@@ -428,9 +428,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Dividends', [netuid])
     print(result.value)
@@ -443,9 +443,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'DynamicBlock')
     print(result.value)
     ```
@@ -459,9 +459,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Emission', [netuid])
     print(result.value)
@@ -476,9 +476,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'EmissionValues', [netuid])
     print(result.value)
@@ -493,9 +493,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     key = b"migrate_identities"
     result = substrate.query('SubtensorModule', 'HasMigrationRun', [key])
     print(result.value)
@@ -510,9 +510,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     coldkey = Keypair.create_from_uri('//Charlie').ss58_address
     result = substrate.query('SubtensorModule', 'IdentitiesV2', [coldkey])
     print(result.value)
@@ -527,9 +527,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `4096`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'ImmunityPeriod', [netuid])
     print(result.value)
@@ -544,9 +544,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Incentive', [netuid])
     print(result.value)
@@ -562,9 +562,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'IsNetworkMember', [hotkey, netuid])
@@ -580,9 +580,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `32767`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Kappa', [netuid])
     print(result.value)
@@ -598,9 +598,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `AccountId` derived from trailing zeroes
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     uid = 123
     result = substrate.query('SubtensorModule', 'Keys', [netuid, uid])
@@ -617,9 +617,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'LastAddStakeIncrease', [hotkey, coldkey])
@@ -635,9 +635,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'LastAdjustmentBlock', [netuid])
     print(result.value)
@@ -653,9 +653,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     coldkey = Keypair.create_from_uri('//Alice').ss58_address
     hotkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'LastColdkeyHotkeyStakeBlock', [coldkey, hotkey])
@@ -673,9 +673,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     netuid = 1
@@ -692,9 +692,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastHotkeyEmissionDrain', [hotkey])
     print(result.value)
@@ -710,9 +710,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
+    from async_substrate_interface import SubstrateInterface, Keypair
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'LastHotkeyEmissionOnNetuid', [hotkey, netuid])
@@ -728,9 +728,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'LastMechansimStepBlock', [netuid])
     print(result.value)
@@ -745,9 +745,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     key = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastTxBlock', [key])
     print(result.value)
@@ -762,9 +762,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     key = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastTxBlockChildKeyTake', [key])
     print(result.value)
@@ -779,9 +779,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     key = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'LastTxBlockDelegateTake', [key])
     print(result.value)
@@ -796,9 +796,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'LastUpdate', [netuid])
     print(result.value)
@@ -813,9 +813,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'LiquidAlphaOn', [netuid])
     print(result.value)
@@ -830,9 +830,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'LoadedEmission', [netuid])
     print(result.value)
@@ -847,9 +847,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `4096`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxAllowedUids', [netuid])
     print(result.value)
@@ -864,9 +864,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `128`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxAllowedValidators', [netuid])
     print(result.value)
@@ -881,9 +881,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `100000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxBurn', [netuid])
     print(result.value)
@@ -896,9 +896,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `11796`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MaxChildkeyTake')
     print(result.value)
     ```
@@ -910,9 +910,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `11796`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MaxDelegateTake')
     print(result.value)
     ```
@@ -926,9 +926,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `u64::MAX / 4`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxDifficulty', [netuid])
     print(result.value)
@@ -943,9 +943,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     block = 100
     result = substrate.query('SubtensorModule', 'MaxRegistrationsPerBlock', [block])
     print(result.value)
@@ -958,9 +958,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `30`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MaxTempo')
     print(result.value)
     ```
@@ -974,9 +974,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MaxWeightsLimit', [netuid])
     print(result.value)
@@ -991,9 +991,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1024`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MinAllowedWeights', [netuid])
     print(result.value)
@@ -1008,9 +1008,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'MinBurn', [netuid])
     print(result.value)
@@ -1023,9 +1023,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MinChildkeyTake')
     print(result.value)
     ```
@@ -1037,9 +1037,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MinDelegateTake')
     print(result.value)
     ```
@@ -1053,9 +1053,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `10000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'MinDifficulty', [netuid])
     print(result.value)
@@ -1068,9 +1068,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `500000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'MinStake')
     print(result.value)
     ```
@@ -1082,9 +1082,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `50400`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkImmunityPeriod')
     print(result.value)
     ```
@@ -1096,9 +1096,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkLastLockCost')
     print(result.value)
     ```
@@ -1110,9 +1110,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkLastRegistered')
     print(result.value)
     ```
@@ -1124,9 +1124,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `100800`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkLockReductionInterval')
     print(result.value)
     ```
@@ -1140,9 +1140,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `18446744073709551615`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkMaxStake', [netuid])
     print(result.value)
@@ -1155,9 +1155,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `128`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkMinAllowedUids')
     print(result.value)
     ```
@@ -1169,9 +1169,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000000000000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkMinLockCost')
     print(result.value)
     ```
@@ -1185,9 +1185,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkModality', [netuid])
     print(result.value)
@@ -1202,9 +1202,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkPowRegistrationAllowed', [netuid])
     print(result.value)
@@ -1217,9 +1217,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `7200`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NetworkRateLimit')
     print(result.value)
     ```
@@ -1233,9 +1233,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkRegisteredAt', [netuid])
     print(result.value)
@@ -1250,9 +1250,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworkRegistrationAllowed', [netuid])
     print(result.value)
@@ -1267,9 +1267,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `false`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'NetworksAdded', [netuid])
     print(result.value)
@@ -1284,9 +1284,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'NeuronsToPruneAtNextEpoch', [netuid])
     print(result.value)
@@ -1299,9 +1299,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'NominatorMinRequiredStake')
     print(result.value)
     ```
@@ -1315,9 +1315,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `AccountId` derived from trailing zeroes
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Owner', [hotkey])
     print(result.value)
@@ -1332,9 +1332,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'OwnedHotkeys', [coldkey])
     print(result.value)
@@ -1350,9 +1350,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     child = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'ParentKeys', [child, netuid])
@@ -1369,9 +1369,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `( [], 0 )`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
+    from async_substrate_interface import SubstrateInterface, Keypair
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     parent = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     result = substrate.query('SubtensorModule', 'PendingChildKeys', [netuid, parent])
@@ -1387,9 +1387,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'PendingEmission', [netuid])
     print(result.value)
@@ -1404,9 +1404,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'PendingdHotkeyEmission', [hotkey])
     print(result.value)
@@ -1421,9 +1421,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'POWRegistrationsThisInterval', [netuid])
     print(result.value)
@@ -1438,9 +1438,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'PruningScores', [netuid])
     print(result.value)
@@ -1455,9 +1455,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'RAORecycledForRegistration', [netuid])
     print(result.value)
@@ -1472,9 +1472,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Rank', [netuid])
     print(result.value)
@@ -1489,9 +1489,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'RegistrationsThisBlock', [netuid])
     print(result.value)
@@ -1506,9 +1506,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'RevealPeriodEpochs', [netuid])
     print(result.value)
@@ -1523,9 +1523,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `10`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Rho', [netuid])
     print(result.value)
@@ -1540,9 +1540,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `50`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ScalingLawPower', [netuid])
     print(result.value)
@@ -1555,9 +1555,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'SenateRequiredStakePercentage')
     print(result.value)
     ```
@@ -1571,9 +1571,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `50`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ServingRateLimit', [netuid])
     print(result.value)
@@ -1586,9 +1586,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `50000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'StakingFee')
     print(result.value)
     ```
@@ -1602,9 +1602,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'StakingHotkeys', [coldkey])
     print(result.value)
@@ -1619,9 +1619,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'StakeWeight', [netuid])
     print(result.value)
@@ -1636,9 +1636,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetAlphaEmissionSell', [netuid])
     print(result.value)
@@ -1653,9 +1653,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetAlphaIn', [netuid])
     print(result.value)
@@ -1670,9 +1670,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetAlphaInEmission', [netuid])
     print(result.value)
@@ -1687,9 +1687,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetAlphaOut', [netuid])
     print(result.value)
@@ -1704,9 +1704,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetAlphaOutEmission', [netuid])
     print(result.value)
@@ -1721,9 +1721,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetIdentitiesV2', [netuid])
     print(result.value)
@@ -1736,9 +1736,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `12`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'SubnetLimit')
     print(result.value)
     ```
@@ -1752,9 +1752,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetLocked', [netuid])
     print(result.value)
@@ -1769,9 +1769,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetMechanism', [netuid])
     print(result.value)
@@ -1784,9 +1784,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0.000003`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'SubnetMovingAlpha')
     print(result.value)
     ```
@@ -1800,9 +1800,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0.0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetMovingPrice', [netuid])
     print(result.value)
@@ -1817,9 +1817,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `𝜏`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetName', [netuid])
     print(result.value)
@@ -1834,9 +1834,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `AccountId` derived from trailing zeroes
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetOwner', [netuid])
     print(result.value)
@@ -1849,9 +1849,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `11796`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'SubnetOwnerCut')
     print(result.value)
     ```
@@ -1865,9 +1865,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetTAO', [netuid])
     print(result.value)
@@ -1882,9 +1882,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetVolume', [netuid])
     print(result.value)
@@ -1899,9 +1899,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'SubnetworkN', [netuid])
     print(result.value)
@@ -1917,9 +1917,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
+    from async_substrate_interface import SubstrateInterface, Keypair
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'TaoDividendsPerSubnet', [netuid, hotkey])
@@ -1933,9 +1933,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `971718665099567868`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     result = substrate.query('SubtensorModule', 'TaoWeight')
     print(result.value)
     ```
@@ -1949,9 +1949,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `2`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'TargetRegistrationsPerInterval', [netuid])
     print(result.value)
@@ -1964,9 +1964,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TargetStakesPerInterval')
     print(result.value)
     ```
@@ -1980,9 +1980,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `99`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'Tempo', [netuid])
     print(result.value)
@@ -1997,9 +1997,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `"\xF0\x9D\x9C\x8F"`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'TokenSymbol', [netuid])
     print(result.value)
@@ -2014,9 +2014,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     coldkey = Keypair.create_from_uri('//Bob').ss58_address
     result = substrate.query('SubtensorModule', 'TotalColdkeyStake', [coldkey])
     print(result.value)
@@ -2031,9 +2031,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'TotalHotkeyStake', [hotkey])
     print(result.value)
@@ -2046,9 +2046,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TotalIssuance')
     print(result.value)
     ```
@@ -2060,9 +2060,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TotalNetworks')
     print(result.value)
     ```
@@ -2074,9 +2074,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TotalStake')
     print(result.value)
     ```
@@ -2090,9 +2090,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'TotalStakeAtDynamic', [netuid])
     print(result.value)
@@ -2109,9 +2109,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     netuid = 1
     name = 1
@@ -2128,9 +2128,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'Trust', [netuid])
     print(result.value)
@@ -2143,9 +2143,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0` or chain-defined
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TxChildkeyTakeRateLimit')
     print(result.value)
     ```
@@ -2157,9 +2157,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `216000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TxDelegateTakeRateLimit')
     print(result.value)
     ```
@@ -2171,9 +2171,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'TxRateLimit')
     print(result.value)
     ```
@@ -2188,9 +2188,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     hotkey = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'Uids', [netuid, hotkey])
@@ -2206,9 +2206,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     key = b"some_key"
     result = substrate.query('SubtensorModule', 'UsedWork', [key])
     print(result.value)
@@ -2223,9 +2223,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'ValidatorPermit', [netuid])
     print(result.value)
@@ -2240,9 +2240,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
+    from async_substrate_interface import SubstrateInterface
+    substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
 
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
     netuid = 1
     result = substrate.query('SubtensorModule', 'ValidatorPruneLen', [netuid])
     print(result.value)
@@ -2257,9 +2257,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'ValidatorTrust', [netuid])
     print(result.value)
@@ -2274,9 +2274,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `1000`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightCommitRevealInterval', [netuid])
     print(result.value)
@@ -2292,9 +2292,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `None`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface, Keypair
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface, Keypair
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     who = Keypair.create_from_uri('//Alice').ss58_address
     result = substrate.query('SubtensorModule', 'WeightCommits', [netuid, who])
@@ -2311,9 +2311,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `[]`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     uid = 123
     result = substrate.query('SubtensorModule', 'Weights', [netuid, uid])
@@ -2327,9 +2327,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     result = substrate.query('SubtensorModule', 'WeightsMinStake')
     print(result.value)
     ```
@@ -2343,9 +2343,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `100`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightsSetRateLimit', [netuid])
     print(result.value)
@@ -2360,9 +2360,9 @@ Some of the below may not be accurate due to the recent Dynamic TAO release. The
 - **Default Value**: `0`
 - **Python Example**:
     ```python
-    from substrateinterface import SubstrateInterface
-    
-    substrate = SubstrateInterface(url="ws://127.0.0.1:9945")
+    from async_substrate_interface import SubstrateInterface
+        substrate = SubstrateInterface(url="wss://test.finney.opentensor.ai:443")
+
     netuid = 1
     result = substrate.query('SubtensorModule', 'WeightsVersionKey', [netuid])
     print(result.value)
