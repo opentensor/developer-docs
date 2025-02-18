@@ -68,9 +68,9 @@ Held stake (alpha tokens) may increase or decrease in TAO value as the price of 
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
-No, direct transfer of alpha tokens between wallets (other than when involved in staking) is not allowed in Bittensor. Alpha tokens cannot be transferred like TAO, only staked and unstaked.
+It is up to the subnet creator, and is configured using the `TransferToggle` hyperparameter.
 
-TAO-holders can acquire alpha tokens by staking TAO into a validator in the corresponding subnet. Miners, validators, and stakers receive alpha tokens through emission. There is no other way to acquire them.
+When enabled, a holder of alpha stake can transfer its ownership to another coldkey/wallet using [`btcli stake transfer`](../staking-and-delegation/managing-stake-btcli#transferring-stake) or [`transfer_stake`](pathname:///python-api/autoapi/bittensor/core/async_subtensor/index.html#bittensor.core.async_subtensor.AsyncSubtensor.transfer_stake).
 
 ### How will Dynamic TAO affect governance of the network?
 

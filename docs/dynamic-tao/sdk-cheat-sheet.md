@@ -297,10 +297,10 @@ block: Optional[int] = None
 ```
 Description: Waits for the next block to arrive or waits until a specified block number is reached if provided.
 
-Update: we have added proper nonce protection allowing you to run gather operations on stake/unstake/transfers 
+Update: we have added proper nonce protection allowing you to run gather operations on stake/unstake/transfers, such as:
+```python
 scatter_stake = await asyncio.gather(*[ sub.add_stake( hotkey, coldkey, netuid, amount ) for netuid in range(64) ] )
-
-
+```
 
 ### Example: staking and unstaking
 
