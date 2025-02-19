@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Dissolve a Subnet
 
-If you are a subnet owner you can dissolve your subnet by manually scheduling your subnet to be dissolved. Your subnet will be dissolved five (`5`) days after you successfully schedule your subnet to be dissolved. If your subnet is deregistered before the 5 days are elapsed, then you will receive your [locked subnet registration costs](./recycled-tao.md#tao-is-locked) back without having to wait for the full 5 days.
+If you are a subnet owner you can dissolve your subnet by manually scheduling your subnet to be dissolved. Your subnet will be dissolved five (`5`) days after you successfully schedule your subnet to be dissolved. If your subnet is deregistered before the 5 days are elapsed, then you will receive your locked subnet registration costs back without having to wait for the full 5 days.
 
 Follow the below steps to dissolve your subnet. 
 

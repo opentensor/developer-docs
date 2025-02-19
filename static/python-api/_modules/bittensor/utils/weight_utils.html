@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.utils.weight_utils &#8212; Bittensor SDK Docs  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/utils/weight_utils';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <img src="../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/delegates_details/index.html">bittensor.utils.delegates_details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/deprecated/index.html">bittensor.utils.deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/utils/weight_utils.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.utils.weight_utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># The MIT License (MIT)</span>
+<span class="c1"># Copyright © 2024 Opentensor Foundation</span>
+<span class="c1">#</span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated</span>
+<span class="c1"># documentation files (the “Software”), to deal in the Software without restriction, including without limitation</span>
+<span class="c1"># the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,</span>
+<span class="c1"># and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span>
+<span class="c1">#</span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in all copies or substantial portions of</span>
+<span class="c1"># the Software.</span>
+<span class="c1">#</span>
+<span class="c1"># THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO</span>
+<span class="c1"># THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL</span>
+<span class="c1"># THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION</span>
+<span class="c1"># OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER</span>
+<span class="c1"># DEALINGS IN THE SOFTWARE.</span>
+
+<span class="sd">&quot;&quot;&quot;Conversion for weight between chain representation and np.array or torch.Tensor&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">numpy.typing</span> <span class="kn">import</span> <span class="n">NDArray</span>
+<span class="kn">from</span> <span class="nn">scalecodec</span> <span class="kn">import</span> <span class="n">U16</span><span class="p">,</span> <span class="n">ScaleBytes</span><span class="p">,</span> <span class="n">Vec</span>
+<span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Keypair</span>
+
+<span class="kn">from</span> <span class="nn">bittensor.utils.btlogging</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.registration</span> <span class="kn">import</span> <span class="n">legacy_torch_api_compat</span><span class="p">,</span> <span class="n">torch</span><span class="p">,</span> <span class="n">use_torch</span>
+
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">bittensor.core.metagraph</span> <span class="kn">import</span> <span class="n">Metagraph</span>
+    <span class="kn">from</span> <span class="nn">bittensor.core.subtensor</span> <span class="kn">import</span> <span class="n">Subtensor</span>
+
+
+<span class="n">U32_MAX</span> <span class="o">=</span> <span class="mi">4294967295</span>
+<span class="n">U16_MAX</span> <span class="o">=</span> <span class="mi">65535</span>
+
+
+<span class="c1"># Uses in `bittensor.utils.weight_utils.process_weights_for_netuid`</span>
+<div class="viewcode-block" id="normalize_max_weight">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.normalize_max_weight">[docs]</a>
+<span class="nd">@legacy_torch_api_compat</span>
+<span class="k">def</span> <span class="nf">normalize_max_weight</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">],</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalizes the tensor x so that sum(x) = 1 and the max value is not greater than the limit.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (:obj:`np.float32`): Tensor to be max_value normalized.</span>
+<span class="sd">        limit: float: Max value after normalization.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        y (:obj:`np.float32`): Normalized x tensor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-7</span>  <span class="c1"># For numerical stability after normalization</span>
+
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">limit</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">estimation</span> <span class="o">=</span> <span class="n">values</span> <span class="o">/</span> <span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">estimation</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">weights</span> <span class="o">/</span> <span class="n">weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Find the cumulative sum and sorted tensor</span>
+        <span class="n">cumsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">estimation</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Determine the index of cutoff</span>
+        <span class="n">estimation_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">estimation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))]</span>
+        <span class="p">)</span>
+        <span class="n">n_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">estimation</span> <span class="o">/</span> <span class="p">(</span><span class="n">estimation_sum</span> <span class="o">+</span> <span class="n">cumsum</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Determine the cutoff based on the index</span>
+        <span class="n">cutoff_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">limit</span> <span class="o">*</span> <span class="n">cumsum</span><span class="p">[</span><span class="n">n_values</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">limit</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimation</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_values</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="n">cutoff</span> <span class="o">=</span> <span class="n">cutoff_scale</span> <span class="o">*</span> <span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Applying the cutoff</span>
+        <span class="n">weights</span><span class="p">[</span><span class="n">weights</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span> <span class="o">=</span> <span class="n">cutoff</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">/</span> <span class="n">weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">y</span></div>
+
+
+
+<span class="c1"># Metagraph uses this function.</span>
+<div class="viewcode-block" id="convert_weight_uids_and_vals_to_tensor">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.convert_weight_uids_and_vals_to_tensor">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_weight_uids_and_vals_to_tensor</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">uids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">weights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts weights and uids from chain representation into a np.array (inverse operation from convert_weights_and_uids_for_emit).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): number of neurons on network.</span>
+<span class="sd">        uids (list[int]): Tensor of uids as destinations for passed weights.</span>
+<span class="sd">        weights (list[int]): Tensor of weights.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        row_weights (np.float32 or torch.FloatTensor): Converted row weights.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">row_weights</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">uid_j</span><span class="p">,</span> <span class="n">wij</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">uids</span><span class="p">,</span> <span class="n">weights</span><span class="p">)):</span>
+        <span class="n">row_weights</span><span class="p">[</span><span class="n">uid_j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="n">wij</span>
+        <span class="p">)</span>  <span class="c1"># assumes max-upscaled values (w_max = U16_MAX).</span>
+    <span class="n">row_sum</span> <span class="o">=</span> <span class="n">row_weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">row_sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">row_weights</span> <span class="o">/=</span> <span class="n">row_sum</span>  <span class="c1"># normalize</span>
+    <span class="k">return</span> <span class="n">row_weights</span></div>
+
+
+
+<span class="c1"># Metagraph uses this function.</span>
+<div class="viewcode-block" id="convert_root_weight_uids_and_vals_to_tensor">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.convert_root_weight_uids_and_vals_to_tensor">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_root_weight_uids_and_vals_to_tensor</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">uids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">weights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">subnets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts root weights and uids from chain representation into a np.array or torch FloatTensor (inverse operation from convert_weights_and_uids_for_emit)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): number of neurons on network.</span>
+<span class="sd">        uids (list[int]): Tensor of uids as destinations for passed weights.</span>
+<span class="sd">        weights (list[int]): Tensor of weights.</span>
+<span class="sd">        subnets (list[int]): list of subnets on the network.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        row_weights (np.float32): Converted row weights.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">row_weights</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">uid_j</span><span class="p">,</span> <span class="n">wij</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">uids</span><span class="p">,</span> <span class="n">weights</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">uid_j</span> <span class="ow">in</span> <span class="n">subnets</span><span class="p">:</span>
+            <span class="n">index_s</span> <span class="o">=</span> <span class="n">subnets</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">uid_j</span><span class="p">)</span>
+            <span class="n">row_weights</span><span class="p">[</span><span class="n">index_s</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+                <span class="n">wij</span>
+            <span class="p">)</span>  <span class="c1"># assumes max-upscaled values (w_max = U16_MAX).</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Incorrect Subnet uid </span><span class="si">{</span><span class="n">uid_j</span><span class="si">}</span><span class="s2"> in Subnets </span><span class="si">{</span><span class="n">subnets</span><span class="si">}</span><span class="s2">. The subnet is unavailable at the moment.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">continue</span>
+    <span class="n">row_sum</span> <span class="o">=</span> <span class="n">row_weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">row_sum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">row_weights</span> <span class="o">/=</span> <span class="n">row_sum</span>  <span class="c1"># normalize</span>
+    <span class="k">return</span> <span class="n">row_weights</span></div>
+
+
+
+<span class="c1"># Metagraph uses this function.</span>
+<div class="viewcode-block" id="convert_bond_uids_and_vals_to_tensor">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.convert_bond_uids_and_vals_to_tensor">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_bond_uids_and_vals_to_tensor</span><span class="p">(</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">uids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">bonds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">],</span> <span class="s2">&quot;torch.LongTensor&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts bond and uids from chain representation into a np.array.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): number of neurons on network.</span>
+<span class="sd">        uids (list[int]): Tensor of uids as destinations for passed bonds.</span>
+<span class="sd">        bonds (list[int]): Tensor of bonds.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        row_bonds (np.float32): Converted row bonds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">row_bonds</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">uid_j</span><span class="p">,</span> <span class="n">bij</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">uids</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)):</span>
+        <span class="n">row_bonds</span><span class="p">[</span><span class="n">uid_j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bij</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">row_bonds</span></div>
+
+
+
+<span class="c1"># This is used by the community via `bittensor.api.extrinsics.set_weights.set_weights_extrinsic`</span>
+<div class="viewcode-block" id="convert_weights_and_uids_for_emit">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.convert_weights_and_uids_for_emit">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_weights_and_uids_for_emit</span><span class="p">(</span>
+    <span class="n">uids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">],</span> <span class="s2">&quot;torch.LongTensor&quot;</span><span class="p">],</span>
+    <span class="n">weights</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts weights into integer u32 representation that sum to MAX_INT_WEIGHT.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        uids (np.int64):Tensor of uids as destinations for passed weights.</span>
+<span class="sd">        weights (np.float32):Tensor of weights.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        weight_uids (list[int]): Uids as a list.</span>
+<span class="sd">        weight_vals (list[int]): Weights as a list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Checks.</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">uids</span> <span class="o">=</span> <span class="n">uids</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passed weight is negative cannot exist on chain </span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">uids</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passed uid is negative cannot exist on chain </span><span class="si">{</span><span class="n">uids</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uids</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Passed weights and uids must have the same length, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uids</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[],</span> <span class="p">[]</span>  <span class="c1"># Nothing to set on chain.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_weight</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">weights</span><span class="p">))</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_weight</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">weights</span>
+        <span class="p">]</span>  <span class="c1"># max-upscale values (max_weight = 1).</span>
+
+    <span class="n">weight_vals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">weight_uids</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">weight_i</span><span class="p">,</span> <span class="n">uid_i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">uids</span><span class="p">))):</span>
+        <span class="n">uint16_val</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">weight_i</span><span class="p">)</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">U16_MAX</span><span class="p">)</span>
+        <span class="p">)</span>  <span class="c1"># convert to int representation.</span>
+
+        <span class="c1"># Filter zeros</span>
+        <span class="k">if</span> <span class="n">uint16_val</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Filter zeros</span>
+            <span class="n">weight_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uint16_val</span><span class="p">)</span>
+            <span class="n">weight_uids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uid_i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">weight_uids</span><span class="p">,</span> <span class="n">weight_vals</span></div>
+
+
+
+<span class="c1"># The community uses / bittensor does not</span>
+<div class="viewcode-block" id="process_weights_for_netuid">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.process_weights_for_netuid">[docs]</a>
+<span class="k">def</span> <span class="nf">process_weights_for_netuid</span><span class="p">(</span>
+    <span class="n">uids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">],</span> <span class="s2">&quot;torch.Tensor&quot;</span><span class="p">],</span>
+    <span class="n">weights</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="s2">&quot;torch.Tensor&quot;</span><span class="p">],</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;Subtensor&quot;</span><span class="p">,</span>
+    <span class="n">metagraph</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Metagraph&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">exclude_quantile</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="s2">&quot;torch.Tensor&quot;</span><span class="p">,</span> <span class="s2">&quot;torch.FloatTensor&quot;</span><span class="p">],</span>
+    <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">],</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">]],</span>
+<span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Processes weight tensors for a given subnet id using the provided weight and UID arrays, applying constraints and normalization based on the subtensor and metagraph data. This function can handle both NumPy arrays and PyTorch tensors.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        uids (Union[NDArray[np.int64], &quot;torch.Tensor&quot;]): Array of unique identifiers of the neurons.</span>
+<span class="sd">        weights (Union[NDArray[np.float32], &quot;torch.Tensor&quot;]): Array of weights associated with the user IDs.</span>
+<span class="sd">        netuid (int): The network uid to process weights for.</span>
+<span class="sd">        subtensor (Subtensor): Subtensor instance to access blockchain data.</span>
+<span class="sd">        metagraph (Optional[Metagraph]): Metagraph instance for additional network data. If None, it is fetched from the subtensor using the netuid.</span>
+<span class="sd">        exclude_quantile (int): Quantile threshold for excluding lower weights. Defaults to ``0``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Union[tuple[&quot;torch.Tensor&quot;, &quot;torch.FloatTensor&quot;], tuple[NDArray[np.int64], NDArray[np.float32]]]: tuple containing the array of user IDs and the corresponding normalized weights. The data type of the return matches the type of the input weights (NumPy or PyTorch).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;process_weights_for_netuid()&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;weights: </span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;netuid </span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;subtensor: </span><span class="si">{</span><span class="n">subtensor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;metagraph: </span><span class="si">{</span><span class="n">metagraph</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get latest metagraph from chain if metagraph is None.</span>
+    <span class="k">if</span> <span class="n">metagraph</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">metagraph</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">metagraph</span><span class="p">(</span><span class="n">netuid</span><span class="p">)</span>
+
+    <span class="c1"># Cast weights to floats.</span>
+    <span class="k">if</span> <span class="n">use_torch</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">):</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c1"># Network configuration parameters from an subtensor.</span>
+    <span class="c1"># These parameters determine the range of acceptable weights for each neuron.</span>
+    <span class="n">quantile</span> <span class="o">=</span> <span class="n">exclude_quantile</span> <span class="o">/</span> <span class="n">U16_MAX</span>
+    <span class="n">min_allowed_weights</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">min_allowed_weights</span><span class="p">(</span><span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">)</span>
+    <span class="n">max_weight_limit</span> <span class="o">=</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">max_weight_limit</span><span class="p">(</span><span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;quantile: </span><span class="si">{</span><span class="n">quantile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;min_allowed_weights: </span><span class="si">{</span><span class="n">min_allowed_weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max_weight_limit: </span><span class="si">{</span><span class="n">max_weight_limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Find all non zero weights.</span>
+    <span class="n">non_zero_weight_idx</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">weights</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">weights</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">non_zero_weight_uids</span> <span class="o">=</span> <span class="n">uids</span><span class="p">[</span><span class="n">non_zero_weight_idx</span><span class="p">]</span>
+    <span class="n">non_zero_weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">non_zero_weight_idx</span><span class="p">]</span>
+    <span class="n">nzw_size</span> <span class="o">=</span> <span class="n">non_zero_weights</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span> <span class="k">else</span> <span class="n">non_zero_weights</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">if</span> <span class="n">nzw_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">min_allowed_weights</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No non-zero weights returning all ones.&quot;</span><span class="p">)</span>
+        <span class="n">final_weights</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">n</span>
+            <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+            <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="o">/</span> <span class="n">metagraph</span><span class="o">.</span><span class="n">n</span>
+        <span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final_weights: </span><span class="si">{</span><span class="n">final_weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">final_weights_count</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">final_weights</span><span class="p">))))</span>
+            <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+            <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">final_weights</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">final_weights_count</span><span class="p">,</span> <span class="n">final_weights</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">(</span><span class="n">final_weights_count</span><span class="p">,</span> <span class="n">final_weights</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">nzw_size</span> <span class="o">&lt;</span> <span class="n">min_allowed_weights</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;No non-zero weights less then min allowed weight, returning all ones.&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># ( const ): Should this be np.zeros( ( metagraph.n ) ) to reset everyone to build up weight?</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+            <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+            <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">metagraph</span><span class="o">.</span><span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>
+        <span class="p">)</span>  <span class="c1"># creating minimum even non-zero weights</span>
+        <span class="n">weights</span><span class="p">[</span><span class="n">non_zero_weight_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">non_zero_weights</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final_weights: </span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">normalized_weights</span> <span class="o">=</span> <span class="n">normalize_max_weight</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">max_weight_limit</span><span class="p">)</span>
+        <span class="n">nw_arange</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normalized_weights</span><span class="p">))))</span>
+            <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+            <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">normalized_weights</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">nw_arange</span><span class="p">,</span> <span class="n">normalized_weights</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;non_zero_weights: </span><span class="si">{</span><span class="n">non_zero_weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Compute the exclude quantile and find the weights in the lowest quantile</span>
+    <span class="n">max_exclude</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_zero_weights</span><span class="p">)</span> <span class="o">-</span> <span class="n">min_allowed_weights</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span>
+        <span class="n">non_zero_weights</span>
+    <span class="p">)</span>
+    <span class="n">exclude_quantile</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">quantile</span><span class="p">,</span> <span class="n">max_exclude</span><span class="p">])</span>
+    <span class="n">lowest_quantile</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">non_zero_weights</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">exclude_quantile</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_torch</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">non_zero_weights</span><span class="p">,</span> <span class="n">exclude_quantile</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max_exclude: </span><span class="si">{</span><span class="n">max_exclude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exclude_quantile: </span><span class="si">{</span><span class="n">exclude_quantile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lowest_quantile: </span><span class="si">{</span><span class="n">lowest_quantile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Exclude all weights below the allowed quantile.</span>
+    <span class="n">non_zero_weight_uids</span> <span class="o">=</span> <span class="n">non_zero_weight_uids</span><span class="p">[</span><span class="n">lowest_quantile</span> <span class="o">&lt;=</span> <span class="n">non_zero_weights</span><span class="p">]</span>
+    <span class="n">non_zero_weights</span> <span class="o">=</span> <span class="n">non_zero_weights</span><span class="p">[</span><span class="n">lowest_quantile</span> <span class="o">&lt;=</span> <span class="n">non_zero_weights</span><span class="p">]</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;non_zero_weight_uids: </span><span class="si">{</span><span class="n">non_zero_weight_uids</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;non_zero_weights: </span><span class="si">{</span><span class="n">non_zero_weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Normalize weights and return.</span>
+    <span class="n">normalized_weights</span> <span class="o">=</span> <span class="n">normalize_max_weight</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">non_zero_weights</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">max_weight_limit</span>
+    <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;final_weights: </span><span class="si">{</span><span class="n">normalized_weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">non_zero_weight_uids</span><span class="p">,</span> <span class="n">normalized_weights</span></div>
+
+
+
+<div class="viewcode-block" id="generate_weight_hash">
+<a class="viewcode-back" href="../../../autoapi/bittensor/utils/weight_utils/index.html#bittensor.utils.weight_utils.generate_weight_hash">[docs]</a>
+<span class="k">def</span> <span class="nf">generate_weight_hash</span><span class="p">(</span>
+    <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">uids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">version_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">salt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a valid commit hash from the provided weights.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        address (str): The account identifier. Wallet ss58_address.</span>
+<span class="sd">        netuid (int): The network unique identifier.</span>
+<span class="sd">        uids (list[int]): The list of UIDs.</span>
+<span class="sd">        salt (list[int]): The salt to add to hash.</span>
+<span class="sd">        values (list[int]): The list of weight values.</span>
+<span class="sd">        version_key (int): The version key.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The generated commit hash.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Encode data using SCALE codec</span>
+    <span class="n">wallet_address</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">Keypair</span><span class="p">(</span><span class="n">ss58_address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span><span class="o">.</span><span class="n">public_key</span><span class="p">)</span>
+    <span class="n">netuid</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">netuid</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">))</span>
+
+    <span class="n">vec_uids</span> <span class="o">=</span> <span class="n">Vec</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sub_type</span><span class="o">=</span><span class="s2">&quot;U16&quot;</span><span class="p">)</span>
+    <span class="n">vec_uids</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">U16</span><span class="p">(</span><span class="n">ScaleBytes</span><span class="p">(</span><span class="n">uid</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">)))</span> <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="n">uids</span><span class="p">]</span>
+    <span class="n">uids</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">vec_uids</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">vec_values</span> <span class="o">=</span> <span class="n">Vec</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sub_type</span><span class="o">=</span><span class="s2">&quot;U16&quot;</span><span class="p">)</span>
+    <span class="n">vec_values</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">U16</span><span class="p">(</span><span class="n">ScaleBytes</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">)))</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span>
+    <span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">vec_values</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">version_key</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">version_key</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">))</span>
+
+    <span class="n">vec_salt</span> <span class="o">=</span> <span class="n">Vec</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sub_type</span><span class="o">=</span><span class="s2">&quot;U16&quot;</span><span class="p">)</span>
+    <span class="n">vec_salt</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">U16</span><span class="p">(</span><span class="n">ScaleBytes</span><span class="p">(</span><span class="n">salts</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;little&quot;</span><span class="p">)))</span> <span class="k">for</span> <span class="n">salts</span> <span class="ow">in</span> <span class="n">salt</span><span class="p">]</span>
+    <span class="n">salt</span> <span class="o">=</span> <span class="n">ScaleBytes</span><span class="p">(</span><span class="n">vec_salt</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">wallet_address</span> <span class="o">+</span> <span class="n">netuid</span> <span class="o">+</span> <span class="n">uids</span> <span class="o">+</span> <span class="n">values</span> <span class="o">+</span> <span class="n">salt</span> <span class="o">+</span> <span class="n">version_key</span>
+
+    <span class="c1"># Generate Blake2b hash of the data tuple</span>
+    <span class="n">blake2b_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">blake2b</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digest_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+
+    <span class="c1"># Convert the hash to hex string and add &quot;0x&quot; prefix</span>
+    <span class="n">commit_hash</span> <span class="o">=</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">blake2b_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">commit_hash</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

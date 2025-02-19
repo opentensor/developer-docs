@@ -9,11 +9,24 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This document describes how you can stake to Opentensor Foundation using [Polkadot JS](https://polkadot.js.org/apps/?rpc=wss://entrypoint-finney.opentensor.ai:443#/accounts).
 
-:::tip Also see
-Also see [Staking](../subnets/register-validate-mine.md#staking).
+:::tip
+Also see [Delegation](./delegation.md).
 :::
 
 In addition to running your own subnet miner or subnet validator, you can delegate your TAO to the Opentensor Foundation validation pool. Delegating TAO simply means you are staking to the Opentensor Foundation's validator, instead of running your own subnet validator. To take back your staked TAO from the pool at any time, you can simply undelegate your TAO.
+
+:::danger
+Consider your endpoint security before following the procedure documented below!
+
+The following procedure involves adding a coldkey wallet seed phrase into a digital device (a computer capable of running the Polkdadot Extension for Chrome).
+
+Anyone who obtains your seed phrase in any way owns your TAO.
+
+Any time you enter a seed phrase onto a digital device, the wallet is *permanently* rendered no more secure than the device&mdash;anyone who obtains it in the future can attempt to scan it for any seed phrases that have ever been input into it.
+
+Consider [Using a Ledger Hardware Wallet](./using-ledger-hw-wallet) to manage your Bittensor coldkey and sign transactions.
+:::
+
 
 Follow the below steps:
 

@@ -10,9 +10,9 @@ This feature was designed to address the issue of *weight copying* by validators
 
 ## Weight copying
 
-In each Bittensor subnet, each validator scores&mdash;or *'weights'*&mdash;each miner, producing what is referred to as a [weight vector](../glossary.md#weight-vector). The weight vectors for each validator in a subnet are combined into a weight matrix. This matrix determines the distribution of rewards to miners in the subnet based on the consensus evaluation of their performance, according to [Yuma Consensus](../glossary.md#yuma-consensus).
+In each Bittensor subnet, each validator scores&mdash;or *'weights'*&mdash;each miner, producing what is referred to as a [weight vector](../glossary.md#weight-vector). The weight vectors for each validator in a subnet are combined into a weight matrix. This matrix determines emissions to miners in the subnet based on the consensus evaluation of their performance, according to [Yuma Consensus](../glossary.md#yuma-consensus).
 
-The weight matrix is public information, and must be, so that the distribution of rewards in the Bittensor platform can be transparently fair. However, this transparency makes it possible for subnet validators to free-ride on the work of other validators by copying the latest consensus rather than independently evaluating subnet miners. This is unfair and potentially degrades the quality of validation work, undermining Bittensor's ability to reward the best miners and produce the best digital commodities overall.
+The weight matrix is public information, and must be, so that emissions in the Bittensor platform can be transparently fair. However, this transparency makes it possible for subnet validators to free-ride on the work of other validators by copying the latest consensus rather than independently evaluating subnet miners. This is unfair and potentially degrades the quality of validation work, undermining Bittensor's ability to incentivize the best miners and produce the best digital commodities overall.
 
 The commit reveal feature is designed to solve the weight copying problem by giving would-be weight copiers access only to stale weights. Copying stale weights should result in validators departing from consensus. However, it is critical to note that this only works if the consensus weight matrix changes sufficiently on the time scale of the commit reveal interval. If the demands on miners are too static, and miner performance is very stable, weight copying will still be successful. The only solution for this is to demand continuous improvement from miners, requiring them to continuously evolve to maintain their scoring. Combined with a properly tuned Commit Reveal interval, this will keep validators honest, as well as producing the best models.
 
@@ -27,7 +27,6 @@ new_immunity_period = (new_commit_reveal_interval - old_commit_reveal_interval) 
 ```
 
 See [Subnet Hyperparameters](./subnet-hyperparameters.md).
-
 
 ## Commit reveal in detail
 

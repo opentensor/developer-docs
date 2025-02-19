@@ -78,14 +78,6 @@ const config = {
             from: "/reference/btcli",
           },
           {
-            to: "/subnets/checklist-for-validating-mining",
-            from: "/subnets/checklist-for-subnet",
-          },
-          {
-            to: "/subnets/register-validate-mine",
-            from: "/subnets/register-and-participate",
-          },
-          {
             to: "/staking-and-delegation/delegation",
             from: "/delegation",
           },
@@ -94,8 +86,16 @@ const config = {
             from: "/staking/staking-polkadot-js",
           },
           {
-            to: "/staking-and-delegation",
+            to: "/staking-and-delegation/delegation",
             from: "/staking",
+          },
+          {
+            from: "/subnets/register-validate-mine",
+            to: "validators/index"
+          },
+          {
+            from: "/recycled-tao",
+            to: "/glossary"
           },
           {
             to: "/subnets/walkthrough-prompting",
@@ -178,24 +178,30 @@ const config = {
         items: [
           {
             position: "left",
-            label: "SUBTENSOR NODES",
-            to: "subtensor-nodes",
+            label: "What is Bittensor?",
+            to: "learn/introduction",
           },
           {
             position: "left",
-            label: "EVM TUTORIALS",
+            label: "EVM on Bittensor",
             to: "evm-tutorials",
           },
           {
             position: "left",
-            label: "DYNAMIC TAO",
+            label: "Understand Dynamic TAO",
             to: "dynamic-tao",
+          },
+          {
+            position: "left",
+            label: "Bittensor 9.0 Migration Guide",
+            to: "migration_guide",
           },
           {
             type: "search",
             position: "left",
             className: "custom_algolia",
           },
+
           // {
           //   href: "https://github.com/opentensor/developer-docs",
           //   label: "Docs GitHub",

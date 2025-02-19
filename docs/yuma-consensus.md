@@ -27,11 +27,11 @@ print ('weights', subnet.W )
 
 ## Ranks, trust, consensus, incentive 
 
-The Yuma Consensus algorithm translates the weight matrix $W$ into incentives for the subnet miners and dividends for the subnet validators.
+The Yuma Consensus algorithm translates the weight matrix $W$ into incentives for the subnet's miners and validators.
 
 However, radical divergence from consensus view points is dangerous, especially if bad actor validators manipulate incentives in ways that benefits themselves, for example, lying about the value produced by miners. 
 
-To avoid this scenario Bittensor uses a mechanism called Yuma Consensus. The Yuma Consensus rewards subnet validators with **dividends** for producing miner-value evaluations that are in agreement with the subjective evaluations produced by other subnet validators, weighted by **stake**.
+To avoid this scenario Bittensor uses a mechanism called Yuma Consensus. The Yuma Consensus incentivizes subnet validators to produce miner-value evaluations that are in agreement with those of other subnet validators, weighted by **stake**.
 
 The below example code prints the values of `S`, subnet validator stake, and `W`, subnet validator weights for a subnet with the `netuid` of `1`:
 

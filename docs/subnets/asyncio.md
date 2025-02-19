@@ -1,45 +1,59 @@
 ---
-title: "AsyncIO"
+title: "Concurrency with AyncIO and AsyncSubtensor"
 ---
 
-# AsyncIO
+This page provides some tips for working with concurrent async functions in Bittensor.
 
-Python’s [asyncio](https://docs.python.org/3/library/asyncio.html) (Asynchronous Input/Output) allows us to execute code concurrently. It is similar to, but distinct from, Python’s threading library, and offers a number of benefits over it. See below a few code examples:
+Calls to the blockchain can be slow, and routines that make many calls in series become very slow. For example, suppose we want to check a list of UIDS for subnets and see if they exist. In series, we could execute the following, but it will take longer in proportion to the list of netuids, since it makes a separate call for each.
 
-```python showLineNumbers
-import requests
+```python
+from bittensor.core.subtensor import Subtensor
 
-URLS = ["https://example.com/1", "https://example.com/2", "https://example.com/3"]
-
-# sync version
-def retrieve_data_sync():
-    my_data = []
-    for url in URLS:
-        my_data.append(requests.get(url))
-
-# threading (there are multiple ways, but this probably the most popular)
-from concurrent.futures import ThreadPoolExecutor
-def retrieve_data_threading():
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        my_data = executor.map(requests.get, URLS)
-
-# asyncio
-import asyncio
-import aiohttp
-async def retrieve_data_async():
-    async with aiohttp.ClientSession() as session:
-        my_data = await asyncio.gather(*[session.get(url) for url in URLs])
-
-asyncio.run(retrieve_data_async())
+subtensor = Subtensor("test")
+for netuid in range(1, 8):
+    print("subnet " + str(netuid) + " exists: " + str(subtensor.subnet_exists(netuid=netuid)))
 ```
 
-:::tip Coroutine
-Notice the `async def` part of `retrieve_data_async` in the above code example. This indicates that you are creating a coroutine rather than a function. Think of a coroutine as a function, but asyncio-only. 
-:::
+To avoid this, we could create a separate thread with a new `Subtensor` object on each thread, as below. This is faster, but can cause problems by hogging as many web sockets as UIDS in the list of subnets to check.
 
+
+```python
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+from bittensor.core.subtensor import Subtensor
+
+def subnet_exists(netuid: int):
+    subtensor = Subtensor("test")
+    result = subtensor.subnet_exists(netuid=netuid)
+    subtensor.close()
+    print("subnet " + str(netuid) + " exists: " + str(result) )
+
+with ThreadPoolExecutor() as executor:
+    subnets = executor.map(subnet_exists, range(1, 8))
+
+```
+
+Using Python’s [asyncio](https://docs.python.org/3/library/asyncio.html) (Asynchronous Input/Output) module, the code below accomplishes concurrent requests with a single websocket connection:
+
+```python
+from bittensor.core.async_subtensor import AsyncSubtensor
+import asyncio
+
+async def main():
+    async with AsyncSubtensor("test") as subtensor:
+        block_hash = await subtensor.get_block_hash()
+        subnets = await asyncio.gather(*[subtensor.subnet_exists(netuid, block_hash=block_hash) for netuid in range(1, 8)])
+        for i, subnet in enumerate(subnets):
+            print("subnet " + str(1+i) + " exists: " + str(subnet))             
+
+asyncio.run(main())
+
+```
 ## Coroutine vs function
 
-The main difference between coroutines and functions is that coroutines need to be awaited and run in event loops. The coroutine doesn’t do anything until it is awaited. While the above simple example above may seem like `asyncio` is the most complicated of the three, it is significantly easier to scale than threading, in addition to having a significantly lower overhead, due to running on a single system thread. 
+The usage of `async def` creates an asyncio *coroutine* rather than a function.
+
+Coroutines differ from functions in that coroutines are run in event loops using `await`.
 
 :::caution Coroutines must always be awaited
 Coroutines always need to be awaited, and generally speaking, “asyncio objects” are instantiated with `async with`. See [Python documentation on asyncio](https://docs.python.org/3/library/asyncio.html) for a comprehensive section with examples.

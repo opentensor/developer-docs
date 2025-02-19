@@ -67,7 +67,7 @@ The numbered items in the below description correspond to the numbered sections 
     See the below [Challenge generation](#challenge-generation) section for how a challenge is generated. 
 2. The subnet miners respond to the subnet validator after performing the challenge **task**. Most tasks require subnet miners to make use of APIs or tools to perform well.
 3. The subnet validator then **scores** each subnet miner by comparing the subnet miner's response with a locally generated **reference** answer. The subnet validator uses this reference as the ground truth for this step. The reference is generated using data from APIs and tools to ensure factual correctness and to provide citations.
-4. Finally, the subnet validator **sets the weights** for the subnet miners by sending the weights to the blockchain. In the Bittensor blockchain the Yuma Consensus allocates the rewards to the participating subnet miners and subnet validators. 
+4. Finally, the subnet validator **sets the weights** for the subnet miners by sending the weights to the blockchain. In the Bittensor blockchain the Yuma Consensus allocates emissions to the participating subnet miners and subnet validators. 
 
 :::tip Use of large language models 
 In this subnet both the subnet validator and the subnet miners use large language models (LLMs) to create the challenges (subnet validator) and respond to the prompts (subnet miners).
