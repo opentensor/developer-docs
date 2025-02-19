@@ -90,19 +90,6 @@ Description: Fetches information about all subnets at a certain block height (or
 
 Returns: A list of DynamicInfo objects (detailed below).
 
-### `get_netuids`
-```python
-get_netuids(self, block: Optional[int] = None) -> list[int]
-
-```
-Retrieves a list of all subnets currently active within the Bittensor network. This function provides an overview of the various subnets and their identifiers.
-
-Parameters:
-    - block (Optional[int]): The blockchain block number for the query.
-
-Returns:
-- `list`[int]: A list of network UIDs representing each active subnet.
-
 
 ### `subnet`
 ```python
