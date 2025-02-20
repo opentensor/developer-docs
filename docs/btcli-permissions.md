@@ -1,6 +1,6 @@
 ## Workstation config
 
-Permissionless, but some wallet ops need the ck or hk (???)
+Permissionless
 
 ### `btcli config set`
 ### `btcli config get`
