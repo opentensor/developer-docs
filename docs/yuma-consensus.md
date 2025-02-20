@@ -12,16 +12,9 @@ The output weight vector for miners is designed to represent the combined intell
 
 Each of a subnet's validators submit a vector of weights indicating the utility of each miner they've evaluated. These weights are then aggregated into two emissions vectors: one each for **miners** and **validators**.
 
-The process has two main steps:
+## Calculating Emissions
 
-1. **Consensus Clipping** – Ensures no minority of validators can unfairly inflate (or deflate) any particular miner’s emissions.
-
-2. **Bonding & Validator Rewards** – Rewards validators who align with the consensus view and penalizes those who diverge excessively.
-
-
-### Miner Emissions
-
-#### Clipping
+### Clipping
 
 For each miner $j$, gather all validator weights $W_{ij}$. Sort them according to each validator’s **stake** $S_i$. We then find the maximum weight level supported by at least $\kappa$ fraction of total stake (usually $\kappa = 0.5$):
 
@@ -35,7 +28,7 @@ $$
 Any validator’s original weight $W_{ij}$ above $\overline{W_j}$ is clipped to $\overline{W_j}$. This clipping protects against collusive “self-boosting” by a few validators.
 
 
-#### Aggregating miner rankings
+### Aggregating miner rankings
 
 Miner emissions are based on an aggregate ranking which is the summed rankings of validators, weighted by validators' stake.
 
@@ -50,16 +43,14 @@ M_j \;=\; \frac{\,R_j\,}{\sum_{k} R_k}.
 $$
 
 
-### Validator emissions
-
-#### **Penalty for Out-of-Consensus Weights:**  
+#### Penalty for out-of-consensus validator stake
 A validator whose raw weight $W_{ij}$ greatly exceeds the consensus $\overline{W_j}$ does not just see it clipped for miner incentives; it can also affect that validator’s **bond**. A penalty factor $\beta$ determines how much a validator’s inflated weighting is “slashed” when calculating bonds:
 $$
 \widetilde{W_{ij}} 
 \;=\; (1-\beta)\,W_{ij} \;+\;\beta\,\overline{W_{ij}}.
 $$
 
-#### **Bonding Mechanics:**  
+#### Bonding  mechanics
 The **instant bond** $\Delta B_{ij}$ is a fraction of the validator’s stake $\,S_i$ allocated to miner $j$, normalized by the total for that miner:
 $$
 \Delta B_{ij} = \frac{\,S_i \,\cdot\, \widetilde{W_{ij}}\,}{
@@ -74,7 +65,7 @@ $$
 
 The EMA smooths out abrupt swings in validator behavior and rewards consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 
-#### **Validator Rewards:**  
+#### Validator emissions
 A validator’s total **emissions** $V_i$ is:
 $$
 V_i \;=\; \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
@@ -91,15 +82,10 @@ The Bittensor API is designed to enable subnet owners to write their own incenti
 7. Facilitates the economic market in which producers (subnet miners) are constantly driven to make their knowledge output more useful in terms of speed, intelligence and diversity.
 8. And also decentralizes Bittensor's governance across multiple diverse stakeholders, ensuring that no single group has full control over what is learned.
 
-## Weights
 
-A subnet validator in a subnet expresses their perspective about how performant subnet miners in the subnet are, through a set of weights $w_i$. 
+## Examples
 
-Such weights $w_i$ are aggregated across all the subnet validators in the subnet,  to produce a weight matrix $W$. Subnet validators learn their row in $W$ by running the validator module and continuously verifying the responses produced by the subnet miners in terms of speed, intelligence and diversity.
-
-### Example
-
-For example, the below code prints the $W$ matrix of a subnet with the `netuid` of `1`. You can print such $W$ matrix for any other subnet by passing its `netuid`.
+Print the weight matrix of subnet `1`.
 
 ```python
 import bittensor as bt
@@ -107,15 +93,7 @@ subnet = bt.metagraph( netuid = 1, lite = False)
 print ('weights', subnet.W )
 ```
 
-## Ranks, trust, consensus, incentive 
-
-The Yuma Consensus algorithm translates the weight matrix $W$ into incentives for the subnet's miners and validators.
-
-However, radical divergence from consensus view points is dangerous, especially if bad actor validators manipulate incentives in ways that benefits themselves, for example, lying about the value produced by miners. 
-
-To avoid this scenario Bittensor uses a mechanism called Yuma Consensus. The Yuma Consensus incentivizes subnet validators to produce miner-value evaluations that are in agreement with those of other subnet validators, weighted by **stake**.
-
-The below example code prints the values of `S`, subnet validator stake, and `W`, subnet validator weights for a subnet with the `netuid` of `1`:
+Prints the values of `S`, subnet validator stake, and `W`, subnet validator weights for subnet `1`:
 
 ```python
 import bittensor as bt
