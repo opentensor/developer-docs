@@ -17,10 +17,11 @@ Permissionless, but some wallet ops need the ck or hk (???)
 ### `btcli c metagraph`
 
 
-
 ## Wallet management
 
-Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
+Mostly target a coldkey; should be performed on a secure CK workstation, NOT a mining workstation or any other insecure endpoint.
+
+HKs should be created on secure CK workstation and then carefully provisioned to less secure working nodes for mining and validation.
 
 ### `btcli wallet list`
 ### `btcli wallet swap-hotkey`
@@ -100,12 +101,11 @@ Mostly target a coldkey; should be performed on a max CK workstation, NOT a mini
 ### `btcli wallets get_identity`
 
 
-
 ## Stake Management
 
 Coldkey w sufficient TAO or w stake for unstaking/moving
 
-Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
+Mostly target a coldkey; should be performed on a secure CK workstation, NOT a mining workstation or any other insecure endpoint.
 
 ### `btcli stake add`
 ### `btcli stake remove`
@@ -143,8 +143,14 @@ Mostly target a coldkey; should be performed on a max CK workstation, NOT a mini
 
 ## Subnet Management and Governance
 
-Setters need CK with creator permissions, getters are typically permissionsless (???)
+Complicated!
+
+Subnet management: Setters need CK with creator permissions, getters are typically permissionsless (???)
+
 Senate stuff: CK? have to be a [Senator](./senate#requirements)
+
+miner/validator registration stuff: setters HK, but getters permissionless or maybe HK?
+
 
 ### `btcli sudo set`
 ### `btcli sudo get`
