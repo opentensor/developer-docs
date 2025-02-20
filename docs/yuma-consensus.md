@@ -6,11 +6,13 @@ title: "Yuma Consensus"
 
 ## Introduction
 
-Yuma Consensus is a critical algorithmic process within Bittensor, which runs on-chain within Subtensor. Its responsibility is to compute validator and miner emissions from validators' rankings of miners. It inputs the varied perspectives of each of the validators within a subnet&mdash;each of which consists of a rating of each miner whose work they've validated%mdash;and resolves this matrix of rankings (a ranking for each miner for each validator) into two emissions vectors, which determine the allocation of the subnet's emissions to miners and validators.
+Yuma Consensus is a critical algorithmic process within Bittensor, which runs on-chain within Subtensor. Its responsibility is to compute validator and miner emissions from validators' rankings of miners. It inputs the varied perspectives of each of the validators within a subnet&mdash;each of which consists of a rating of each miner whose work they've validated&mdash;and resolves this matrix of rankings (a ranking for each miner for each validator) into two emissions vectors, which determine the allocation of the subnet's emissions to miners and validators.
 
 See [Subtensor Docs: Yuma Consensus](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md)
 
-The output weight vector for miners is designed to represent the combined intelligence of the validators, which means weighting the inputs of the validators more depending on how trustworthy they appear to be in order to ignore the portion of the validation signal that is less trustworthy. The output weight vector for validators is meant to reward validators for being trustworthy, i.e. for giving reliable evaluations of miners. By design, miners should be rewarded by their combined evaluation by the community of validators, at the same time validators are being rewarded for evaluating miners in a way that predicts the convergence of other validators' evaluations.
+The output weight vector for miners is designed to represent the combined intelligence of the validators, which means weighting the inputs of the validators more depending on how trustworthy they appear to be in order to ignore the portion of the validation signal that is less trustworthy. The output weight vector for validators is meant to incentivize validators to be trustworthy, i.e. to work hard to give fast, honest evaluations of miners.
+
+By design, miners should be incentivized to work hard for the highest combined evaluation by the community of validators. Validators should be incentivized to evaluate miners in a way that predicts the convergence of other validators' evaluations.
 
 Each of a subnet's validators submit a vector of weights indicating the utility of each miner they've evaluated. These weights are then aggregated into two emissions vectors: one each for **miners** and **validators**.
 
@@ -67,7 +69,7 @@ $$
 B_{ij}^{(t)} = \alpha \,\Delta B_{ij} \;+\; (1-\alpha)\,B_{ij}^{(t-1)}.
 $$
 
-The EMA smooths out abrupt swings in validator behavior and rewards consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
+The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 
 ### Validator emissions
 
@@ -76,7 +78,7 @@ $$
 V_i \;=\; \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
 $$
 
-Validators who stay near consensus build stronger EMA bonds and thus claim higher rewards, while any attempt to overstate a particular miner’s performance is penalized.
+Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized.
 
 ## Examples
 
