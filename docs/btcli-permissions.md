@@ -150,7 +150,7 @@ Mostly target a coldkey; should be performed on a max CK workstation, NOT a mini
 ## Subnet Management and Governance
 
 Setters need CK with creator permissions, getters are typically permissionsless (???)
-Senate stuff: CK? have to be a Senator? (how does that work?)
+Senate stuff: CK? have to be a [Senator](./senate#requirements)
 
 ### `btcli sudo set`
 ### `btcli sudo get`
