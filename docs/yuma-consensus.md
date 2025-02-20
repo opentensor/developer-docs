@@ -20,6 +20,12 @@ Each of a subnet's validators submit a vector of weights indicating the utility 
 
 ### Clipping
 
+
+Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
+
+In short, a median (or other value of $\kappa$) evalution of a specific by the most trusted validators serves as a benchmark, and evaluations above this are *clipped*. Clipping means neither the miner nor the validator receives emissions for 
+
+
 For each miner $j$, gather all validator weights $W_{ij}$. Sort them according to each validator’s **stake** $S_i$. We then find the maximum weight level supported by at least $\kappa$ fraction of total stake (usually $\kappa = 0.5$):
 
 $$
