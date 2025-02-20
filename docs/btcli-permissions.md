@@ -1,6 +1,9 @@
-## Workstation config and wallet management
+## Workstation config
 
 Permissionless, but some wallet ops need the ck or hk (???)
+
+
+
 
 ### `btcli config set`
 ### `btcli config get`
@@ -17,6 +20,10 @@ Permissionless, but some wallet ops need the ck or hk (???)
 ### `btcli c clear`
 ### `btcli c metagraph`
 
+## wallet management
+
+
+Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
 
 
 ### `btcli wallet list`
@@ -44,7 +51,6 @@ Permissionless, but some wallet ops need the ck or hk (???)
 ### `btcli wallet new_coldkey`
 ### `btcli wallet set_identity`
 ### `btcli wallet get_identity`
-
 
 
 ### `btcli w list`
@@ -103,6 +109,8 @@ Permissionless, but some wallet ops need the ck or hk (???)
 ## Stake Management
 
 Coldkey w sufficient TAO or w stake for unstaking/moving
+
+Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
 
 
 ### `btcli stake add`
