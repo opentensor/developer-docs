@@ -43,10 +43,10 @@ $$
 R_j \;=\; \sum_{i} S_i \,\cdot\, \overline{W_{ij}},
 $$
 
-where $\overline{W_{ij}}$ is the post-clip weight. We normalize across all miners to get each miner’s **incentive share**, which is the proportion they receive of the subnet's miner-emissions (41% of overall emissions).
+where $\overline{W_{ij}}$ is the post-clip weight. We normalize across all miners to get each miner, $j$’s share $M_j$ of the subnet's miner-emissions (41% of overall emissions).
 
 $$
-I_j \;=\; \frac{\,R_j\,}{\sum_{k} R_k}.
+M_j \;=\; \frac{\,R_j\,}{\sum_{k} R_k}.
 $$
 
 
@@ -66,22 +66,20 @@ $$
    \sum_{k} S_k \,\cdot\, \widetilde{W_{kj}}
 }.
 $$
-This then updates an **exponential moving average (EMA) bond**, typically:
+This then updates an **exponential moving average (EMA) bond**:
+
 $$
 B_{ij}^{(t)} = \alpha \,\Delta B_{ij} \;+\; (1-\alpha)\,B_{ij}^{(t-1)}.
 $$
-The EMA smooths out abrupt swings in validator behavior and rewards consistent alignment with the consensus.
+
+The EMA smooths out abrupt swings in validator behavior and rewards consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 
 #### **Validator Rewards:**  
-Each miner $j$ pays out $I_j$ in emission. A validator $i$ earns from miner $j$ an amount proportional to the bond $B_{ij}$. Summed across all miners, the validator’s total **dividend** $D_i$ is:
+A validator’s total **emissions** $V_i$ is:
 $$
-D_i \;=\; \sum_{j} \Bigl(\,B_{ij} \,\times\, I_j\Bigr).
+V_i \;=\; \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
 $$
-The validators collectively receive the $\xi$-fraction of total emission; thus validator $i$ receives
-$$
-\xi \times D_i
-$$
-out of the subnet’s emission pool.
+
 
 **In essence**, validators who stay near consensus build stronger EMA bonds and thus claim higher rewards, while any attempt to overstate a miner’s performance (or understate honest miners) leads to penalty in both the aggregator process (via clipping) and in bonding (via $\beta$ slashing).
 
