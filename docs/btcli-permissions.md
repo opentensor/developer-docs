@@ -2,9 +2,6 @@
 
 Permissionless, but some wallet ops need the ck or hk (???)
 
-
-
-
 ### `btcli config set`
 ### `btcli config get`
 ### `btcli config clear`
@@ -14,17 +11,16 @@ Permissionless, but some wallet ops need the ck or hk (???)
 ### `btcli conf clear`
 ### `btcli conf metagraph`
 
-
 ### `btcli c set`
 ### `btcli c get`
 ### `btcli c clear`
 ### `btcli c metagraph`
 
-## wallet management
 
+
+## Wallet management
 
 Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
-
 
 ### `btcli wallet list`
 ### `btcli wallet swap-hotkey`
@@ -51,7 +47,6 @@ Mostly target a coldkey; should be performed on a max CK workstation, NOT a mini
 ### `btcli wallet new_coldkey`
 ### `btcli wallet set_identity`
 ### `btcli wallet get_identity`
-
 
 ### `btcli w list`
 ### `btcli w swap-hotkey`
@@ -112,7 +107,6 @@ Coldkey w sufficient TAO or w stake for unstaking/moving
 
 Mostly target a coldkey; should be performed on a max CK workstation, NOT a mining workstation or any other insecure endpoint.
 
-
 ### `btcli stake add`
 ### `btcli stake remove`
 ### `btcli stake list`
@@ -165,7 +159,6 @@ Senate stuff: CK? have to be a [Senator](./senate#requirements)
 ### `btcli su set`
 ### `btcli su get`
 
-
 ### `btcli su senate`
 ### `btcli su proposals`
 ### `btcli su senate-vote`
@@ -174,7 +167,6 @@ Senate stuff: CK? have to be a [Senator](./senate#requirements)
 ### `btcli su senate_vote`
 ### `btcli su get_take`
 ### `btcli su set_take`
-
 
 ### `btcli subnets hyperparameters`
 ### `btcli subnets list`
@@ -212,6 +204,7 @@ Senate stuff: CK? have to be a [Senator](./senate#requirements)
 ### `btcli weights reveal`
 ### `btcli weights commit`
 
+
 ## Weights
 
 Setters require HK w validator permit. getters permissionless (???)
@@ -220,6 +213,7 @@ Setters require HK w validator permit. getters permissionless (???)
 ### `btcli wt commit`
 ### `btcli weight reveal`
 ### `btcli weight commit`
+
 
 ## Utils ???
 
