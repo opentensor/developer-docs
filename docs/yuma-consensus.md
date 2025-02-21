@@ -57,9 +57,12 @@ M_j = \frac{\,R_j\,}{\sum_{k} R_k}
 $$
 
 
-### Penalizing for out-of-consensus validator stake
+### Penalizing out-of-consensus bonds
 
-If a validator's evaluation of a miner is too high, it is penalized. If a submitted weight $W_{ij}$ by validator $i$ for miner $j$ exceeds the $j$'s consensus evaluation, $\overline{W_j}$, its bond value is penalized by factor $\beta$:
+If a validator's evaluation of a miner is too high, it is penalized. If a submitted weight $W_{ij}$ by validator $i$ for miner $j$ exceeds the $j$'s consensus evaluation, $\overline{W_j}$, its bond value is penalized by factor $\beta$.
+
+Bond-weight $\widetilde{W_{ij}}$ is:
+
 $$
 \widetilde{W_{ij}} 
 = (1-\beta)\,W_{ij} +\beta\,\overline{W_{ij}}
@@ -67,7 +70,7 @@ $$
 
 ### Bonding mechanics
 
-The **instant bond** $\Delta B_{ij}$ is a fraction of the validator’s stake $\,S_i$ allocated to miner $j$, normalized by the total for that miner:
+The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight from all validators:
 $$
 \Delta B_{ij} = \frac{\,S_i \,\cdot\, \widetilde{W_{ij}}\,}{
    \sum_{k} S_k \,\cdot\, \widetilde{W_{kj}}
