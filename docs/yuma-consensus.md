@@ -23,42 +23,46 @@ Each of a subnet's validators submit a vector of weights indicating the utility 
 
 Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
 
-In short, a median (or other value of $\kappa$) evalution of a specific by the most trusted validators serves as a benchmark, and evaluations above this are *clipped*. Clipping means neither the miner nor the validator receives emissions for 
-
+In short, proportion $\kappa$ of the most trusted validators (as measured by stake) serves as a benchmark, and evaluations (bonds) that exceed this are *clipped*, meaning neither the miner nor the validator receives emissions for them.
 
 For each miner $j$, gather all validator weights $W_{ij}$. Sort them according to each validator’s **stake** $S_i$. We then find the maximum weight level supported by at least $\kappa$ fraction of total stake (usually $\kappa = 0.5$):
 
 $$
-\overline{W_j} \;=\; \arg \max_{w} 
+\overline{W_j} = \arg \max_{w} 
 \Bigl(\,
-   \sum_{i} S_i \,\cdot\, \bigl\{\,W_{ij}\,\ge w \bigr\} \;\ge\; \kappa
+   \sum_{i} S_i \,\cdot\, \bigl\{\,W_{ij}\,\ge w \bigr\} \ge \kappa
 \Bigr).
 $$
 
-Any validator’s original weight $W_{ij}$ above $\overline{W_j}$ is clipped to $\overline{W_j}$. This clipping protects against collusive “self-boosting” by a few validators.
+Any validator’s original weight $W_{ij}$ above $\overline{W_j}$ is clipped to:
 
+$$
+\overline{W_{ij}} = \min( W_{ij}, \overline{W_j} )
+$$
+
+This clipping protects against collusive “self-boosting” by a few validators.
 
 ### Miner emissions
 
-Miner emissions are based on an aggregate ranking which is the summed rankings of validators, weighted by validators' stake.
+Miner emissions are based on an aggregate ranking which is the summed rankings of validators, weighted by validators' stake, where $\overline{W_{ij}}$ is the post-clip weight.
 
 $$
-R_j \;=\; \sum_{i} S_i \,\cdot\, \overline{W_{ij}},
+R_j = \sum_{i} S_i \,\cdot\, \overline{W_{ij}}
 $$
 
-where $\overline{W_{ij}}$ is the post-clip weight. We normalize across all miners to get each miner, $j$’s share $M_j$ of the subnet's miner-emissions (41% of overall emissions).
+Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of overall emissions) is:
 
 $$
-M_j \;=\; \frac{\,R_j\,}{\sum_{k} R_k}.
+M_j = \frac{\,R_j\,}{\sum_{k} R_k}
 $$
 
 
 ### Penalizing for out-of-consensus validator stake
 
-A validator whose raw weight $W_{ij}$ greatly exceeds the consensus $\overline{W_j}$ does not just see it clipped for miner incentives; it can also affect that validator’s **bond**. A penalty factor $\beta$ determines how much a validator’s inflated weighting is “slashed” when calculating bonds:
+If a validator's evaluation of a miner is too high, it is penalized. If a submitted weight $W_{ij}$ by validator $i$ for miner $j$ exceeds the $j$'s consensus evaluation, $\overline{W_j}$, its bond value is penalized by factor $\beta$:
 $$
 \widetilde{W_{ij}} 
-\;=\; (1-\beta)\,W_{ij} \;+\;\beta\,\overline{W_{ij}}.
+= (1-\beta)\,W_{ij} +\beta\,\overline{W_{ij}}
 $$
 
 ### Bonding mechanics
@@ -72,7 +76,7 @@ $$
 This then updates an **exponential moving average (EMA) bond**:
 
 $$
-B_{ij}^{(t)} = \alpha \,\Delta B_{ij} \;+\; (1-\alpha)\,B_{ij}^{(t-1)}.
+B_{ij}^{(t)} = \alpha \,\Delta B_{ij} + (1-\alpha)\,B_{ij}^{(t-1)}.
 $$
 
 The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
@@ -81,7 +85,7 @@ The EMA smooths out abrupt swings in validator behavior and incentivizes consist
 
 A validator’s total **emissions** $V_i$ is:
 $$
-V_i \;=\; \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
+V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
 $$
 
 Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized.
