@@ -80,11 +80,12 @@ $$
 B_{ij}^{(t)} = \alpha \,\Delta B_{ij} + (1-\alpha)\,B_{ij}^{(t-1)}.
 $$
 
-Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized. The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. 
+Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized. The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus.
 
 :::tip note
 The $\alpha$ variable here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 :::
+
 ## Validator emissions
 
 Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's total emissions) is the sum of all of its bonds to miners, weighted by the miner's total emissions:
@@ -92,23 +93,3 @@ Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's 
 $$
 V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
 $$
-
-
-## Examples
-
-Print the weight matrix of subnet `1`.
-
-```python
-import bittensor as bt
-subnet = bt.metagraph( netuid = 1, lite = False)
-print ('weights', subnet.W )
-```
-
-Prints the values of `S`, subnet validator stake, and `W`, subnet validator weights for subnet `1`:
-
-```python
-import bittensor as bt
-subnet = bt.metagraph( netuid = 1, lite = False)
-print ('subnet 1 validator stake', subnet.S )
-print ('subnet 1 validator weights', subnet.W )
-```
