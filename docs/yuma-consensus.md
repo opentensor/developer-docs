@@ -48,7 +48,7 @@ $$
 R_j = \sum_{i} S_i \,\cdot\, \overline{W_{ij}}
 $$
 
-Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of overall emissions) is:
+Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of each subnet's overall emissions) is:
 
 $$
 M_j = \frac{\,R_j\,}{\sum_{k} R_k}
@@ -84,7 +84,7 @@ Validators who stay near consensus build stronger EMA bonds and thus extract mor
 
 ## Validator emissions
 
-A validator’s total **emissions** $V_i$ is the sum of all of its bonds to miners, weighted by the miner's total emissions.
+Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's total emissions) is the sum of all of its bonds to miners, weighted by the miner's total emissions:
 
 $$
 V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
