@@ -23,9 +23,9 @@ Each of a subnet's validators submit a vector of weights indicating the utility 
 
 Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
 
-In short, proportion $\kappa$ of the most trusted validators (as measured by stake) serves as a benchmark, and evaluations (bonds) that exceed this are *clipped*, meaning neither the miner nor the validator receives emissions for them.
+In short, the judgment of proportion kappa ($\kappa$) of the most trusted validators (as measured by stake) serves as a benchmark. Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. Evaluations (bonds) that exceed this benchmark are *clipped*, meaning neither the miner nor the validator receives emissions for them.
 
-For each miner $j$, gather all validator weights $W_{ij}$. Sort them according to each validator’s **stake** $S_i$. We then find the maximum weight level supported by at least $\kappa$ fraction of total stake (usually $\kappa = 0.5$):
+To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least $\kappa$ fraction of total stake. 
 
 $$
 \overline{W_j} = \arg \max_{w} 
@@ -40,7 +40,7 @@ $$
 \overline{W_{ij}} = \min( W_{ij}, \overline{W_j} )
 $$
 
-This clipping protects against collusive “self-boosting” by a few validators.
+This clipping protects against erroneous or collusive over-evaluation of miners by validators.
 
 ### Miner emissions
 
