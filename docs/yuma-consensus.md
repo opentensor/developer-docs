@@ -8,7 +8,9 @@ title: "Yuma Consensus"
 
 Yuma Consensus is a critical algorithmic process within Bittensor, which runs on-chain within Subtensor. Its responsibility is to compute validator and miner emissions from validators' rankings of miners. It inputs the varied perspectives of each of the validators within a subnet&mdash;each of which consists of a rating of each miner whose work they've validated&mdash;and resolves this matrix of rankings (a ranking for each miner for each validator) into two emissions vectors, which determine the allocation of the subnet's emissions to miners and validators.
 
-See [Subtensor Docs: Yuma Consensus](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md)
+See:
+- [Emissions](./emissions)
+- [Subtensor Docs: Yuma Consensus](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md)
 
 The output weight vector for miners is designed to represent the combined intelligence of the validators, which means weighting the inputs of the validators more depending on how trustworthy they appear to be in order to ignore the portion of the validation signal that is less trustworthy. The output weight vector for validators is meant to incentivize validators to be trustworthy, i.e. to work hard to give fast, honest evaluations of miners.
 
