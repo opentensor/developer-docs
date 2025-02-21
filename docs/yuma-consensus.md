@@ -80,16 +80,16 @@ $$
 B_{ij}^{(t)} = \alpha \,\Delta B_{ij} + (1-\alpha)\,B_{ij}^{(t-1)}.
 $$
 
-The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
+Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized. The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 
 ## Validator emissions
 
-A validator’s total **emissions** $V_i$ is:
+A validator’s total **emissions** $V_i$ is the sum of all of its bonds to miners, weighted by the miner's total emissions.
+
 $$
 V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
 $$
 
-Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized.
 
 ## Examples
 
