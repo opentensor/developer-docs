@@ -16,9 +16,7 @@ By design, miners should be incentivized to work hard for the highest combined e
 
 Each of a subnet's validators submit a vector of weights indicating the utility of each miner they've evaluated. These weights are then aggregated into two emissions vectors: one each for **miners** and **validators**.
 
-## Calculating Emissions
-
-### Clipping
+## Clipping
 
 
 Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
@@ -42,7 +40,7 @@ $$
 
 This clipping protects against erroneous or collusive over-evaluation of miners by validators.
 
-### Miner emissions
+## Miner emissions
 
 Miner emissions are based on an aggregate ranking which is the summed rankings of validators, weighted by validators' stake, where $\overline{W_{ij}}$ is the post-clip weight.
 
@@ -57,7 +55,7 @@ M_j = \frac{\,R_j\,}{\sum_{k} R_k}
 $$
 
 
-### Penalizing out-of-consensus bonds
+## Penalizing out-of-consensus bonds
 
 If a validator's evaluation of a miner is too high, it is penalized. If a submitted weight $W_{ij}$ by validator $i$ for miner $j$ exceeds the $j$'s consensus evaluation, $\overline{W_j}$, its bond value is penalized by factor $\beta$.
 
@@ -68,7 +66,7 @@ $$
 = (1-\beta)\,W_{ij} +\beta\,\overline{W_{ij}}
 $$
 
-### Bonding mechanics
+## Bonding mechanics
 
 The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight from all validators:
 $$
@@ -84,7 +82,7 @@ $$
 
 The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus. The $\alpha$ varialbe here is unrelated to the concept of subnet specific currencies, referred to as alpha $\alpha$ tokens. Here $\alpha$ refers to a factor used in this EMA smoothing function&mdash;see [consensus-based weights, a.k.a. liquid alpha](./subnets/consensus-based-weights.md).
 
-### Validator emissions
+## Validator emissions
 
 A validator’s total **emissions** $V_i$ is:
 $$
