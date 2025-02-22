@@ -10,7 +10,7 @@ Yuma Consensus (YC) is a critical algorithmic process within Bittensor, which ru
 
 Each of a subnet's validators periodically submit a vector of weights ranking the value of the work of each miner they've evaluated. The YC algorithm resolves this matrix of rankings into two **emissions vectors** that allocate emissions over participants based on their performance: one each for **miners** and **validators**.
 
-The algorithm is designed to more heavily weight the inputs of more trusted validators, in order to ignore the portion of the validation signal that is less reliable. By disregarding unreliable weight-settings, YC incentivizes validators to be worthy of trust by working hard to give fast, honest evaluations of miners that predict the eventual convergence of other validators' evaluations. YC incentivizes miners to work hard for the highest combined evaluation by the community of validators.
+The algorithm is designed to more heavily weight the inputs of more trusted validators, in order to ignore the portion of the validation signal that is less reliable. By disregarding unreliable weight-settings, YC incentivizes validators to be worthy of trust by working hard to give consistent, fast, honest evaluations of miners that predict the eventual convergence of other validators' evaluations. YC incentivizes miners to work hard for the highest combined evaluation by the community of validators.
 
 See:
 - [Emissions](./emissions)
