@@ -1,6 +1,7 @@
 ---
 title: "Emission"
 ---
+
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -93,9 +94,10 @@ Each block, liquidity is also set aside to be emitted to participants (validator
 At the end of each tempo (360 blocks), the quantity of alpha accumulated over each block of the tempo is extracted by network participants in the following proportions:
 
 1. 18% by subnet owner
-1. 41% by miners
-1. 41% by validators and their stakers:
-    1. First, validators extract their take.   
+1. 41% of emissions go to miners. The allocation to particular miners is determined by [Yuma Consensus: Miner emissions#miner-emissions](./yuma-consensus).
+1. 41% by validators and their stakers.
+    1. First, the allocation to validators miners is determined by [Yuma Consensus: Validator Emissions](./yuma-consensus#validator-emissions).
+    1. Then, validators extract their take from that allocation.
     1. Then, TAO and alpha are emitted to stakers in proportion to the validators' holdings in each token. TAO emissions are sourced by swapping a portion of alpha emissions to TAO through the subnet's liquidity pool.
 
         For validator x's TAO stake $\tau_x$, and alpha stake $\alpha_x$, and the global TAO weight $w_{\tau}$:
