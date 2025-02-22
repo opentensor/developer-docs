@@ -24,7 +24,7 @@ To achieve this, the judgment of the most trusted validators (as measured by sta
 
 This clipping protects against erroneous or collusive over-evaluation of miners by validators.
 
-To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least a fraction $\kappa$ of total stake. Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. 
+To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least a fraction $\kappa$ of total stake.
 
 $$
 \overline{W_j} = \arg \max_{w} 
@@ -39,7 +39,9 @@ $$
 \overline{W_{ij}} = \min( W_{ij}, \overline{W_j} )
 $$
 
-
+:::tip note
+Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. 
+:::
 
 ## Miner emissions
 
@@ -66,6 +68,10 @@ $$
 \widetilde{W_{ij}} 
 = (1-\beta)\,W_{ij} +\beta\,\overline{W_{ij}}
 $$
+
+:::tip note
+Penalty factor $\beta$ is a configurable hyperparameter. 
+:::
 
 ## Bonding mechanics
 
