@@ -6,26 +6,25 @@ title: "Yuma Consensus"
 
 ## Introduction
 
-Yuma Consensus is a critical algorithmic process within Bittensor, which runs on-chain within Subtensor. Its responsibility is to compute validator and miner emissions from validators' rankings of miners. It inputs the varied perspectives of each of the validators within a subnet&mdash;each of which consists of a rating of each miner whose work they've validated&mdash;and resolves this matrix of rankings (a ranking for each miner for each validator) into two emissions vectors, which determine the allocation of the subnet's emissions to miners and validators.
+Yuma Consensus (YC) is a critical algorithmic process within Bittensor, which runs on-chain within Subtensor. Its responsibility is to compute validator and miner emissions from validators' rankings of miners.
+
+Each of a subnet's validators periodically submit a vector of weights ranking the value of the work of each miner they've evaluated. The YC algorithm resolves this matrix of rankings into two **emissions vectors** that allocate emissions over participants based on their performance: one each for **miners** and **validators**.
+
+The algorithm is designed to more heavily weight the inputs of more trusted validators, in order to ignore the portion of the validation signal that is less reliable. By disregarding unreliable weight-settings, YC incentivizes validators to be worthy of trust by working hard to give fast, honest evaluations of miners that predict the eventual convergence of other validators' evaluations. YC incentivizes miners to work hard for the highest combined evaluation by the community of validators.
 
 See:
 - [Emissions](./emissions)
 - [Subtensor Docs: Yuma Consensus](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md)
 
-The output weight vector for miners is designed to represent the combined intelligence of the validators, which means weighting the inputs of the validators more depending on how trustworthy they appear to be in order to ignore the portion of the validation signal that is less trustworthy. The output weight vector for validators is meant to incentivize validators to be trustworthy, i.e. to work hard to give fast, honest evaluations of miners.
-
-By design, miners should be incentivized to work hard for the highest combined evaluation by the community of validators. Validators should be incentivized to evaluate miners in a way that predicts the convergence of other validators' evaluations.
-
-Each of a subnet's validators submit a vector of weights indicating the utility of each miner they've evaluated. These weights are then aggregated into two emissions vectors: one each for **miners** and **validators**.
-
 ## Clipping
-
 
 Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
 
-In short, the judgment of proportion kappa ($\kappa$) of the most trusted validators (as measured by stake) serves as a benchmark. Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. Evaluations (bonds) that exceed this benchmark are *clipped*, meaning neither the miner nor the validator receives emissions for them.
+To achieve this, the judgment of the most trusted validators (as measured by stake) serves as a benchmark. Evaluations (bonds) that exceed this benchmark are *clipped*, meaning neither the miner nor the validator receives emissions for them.
 
-To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least $\kappa$ fraction of total stake. 
+This clipping protects against erroneous or collusive over-evaluation of miners by validators.
+
+To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least a fraction $\kappa$ of total stake. Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. 
 
 $$
 \overline{W_j} = \arg \max_{w} 
@@ -40,7 +39,7 @@ $$
 \overline{W_{ij}} = \min( W_{ij}, \overline{W_j} )
 $$
 
-This clipping protects against erroneous or collusive over-evaluation of miners by validators.
+
 
 ## Miner emissions
 
@@ -73,13 +72,12 @@ $$
 The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight from all validators:
 $$
 \Delta B_{ij} = \frac{\,S_i \,\cdot\, \widetilde{W_{ij}}\,}{
-   \sum_{k} S_k \,\cdot\, \widetilde{W_{kj}}
-}.
+   \sum_{k} S_k \,\cdot\, \widetilde{W_{kj}}}
 $$
 This then updates an **exponential moving average (EMA) bond**:
 
 $$
-B_{ij}^{(t)} = \alpha \,\Delta B_{ij} + (1-\alpha)\,B_{ij}^{(t-1)}.
+B_{ij}^{(t)} = \alpha \,\Delta B_{ij} + (1-\alpha)\,B_{ij}^{(t-1)}
 $$
 
 Validators who stay near consensus build stronger EMA bonds and thus extract more emissions, while any attempt to overstate a particular miner’s performance is penalized. The EMA smooths out abrupt swings in validator behavior and incentivizes consistent alignment with the consensus.
@@ -93,5 +91,5 @@ The $\alpha$ variable here is unrelated to the concept of subnet specific curren
 Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's total emissions) is the sum of all of its bonds to miners, weighted by the miner's total emissions:
 
 $$
-V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr).
+V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr)
 $$
