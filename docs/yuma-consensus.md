@@ -51,12 +51,11 @@ $$
 R_j = \sum_{i} S_i \,\cdot\, \overline{W_{ij}}
 $$
 
-Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of each subnet's overall emissions) is:
+Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of each subnet's overall emissions) is equal to their proportion of the total aggregate miner ranking. Where $\mathbb{M}$ is the subnet's miners:
 
 $$
-M_j = \frac{\,R_j\,}{\sum_{k} R_k}
+M_j = \frac{\,R_j\,}{\sum_{k \in \mathbb{M}} R_k}
 $$
-
 
 ## Penalizing out-of-consensus bonds
 
@@ -75,11 +74,13 @@ Penalty factor $\beta$ is a configurable hyperparameter.
 
 ## Bonding mechanics
 
-The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight from all validators:
+The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight for all $\mathbb{V}$ of the subnet's validators:
+
 $$
 \Delta B_{ij} = \frac{\,S_i \,\cdot\, \widetilde{W_{ij}}\,}{
-   \sum_{k} S_k \,\cdot\, \widetilde{W_{kj}}}
+   \sum_{k \in \mathbb{V}} S_k \,\cdot\, \widetilde{W_{kj}}}
 $$
+
 This then updates an **exponential moving average (EMA) bond**:
 
 $$
@@ -95,7 +96,6 @@ The $\alpha$ variable here is unrelated to the concept of subnet specific curren
 ## Validator emissions
 
 Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's total emissions) is the sum of all of its bonds to miners, weighted by the miner's total emissions:
-
 $$
-V_i = \sum_{j} \Bigl(\,B_{ij} \,\times\, M_j\Bigr)
+V_i = \sum_{j \in \mathbb{M}} \Bigl(\,B_{ij} \,\times\, M_j\Bigr)
 $$
