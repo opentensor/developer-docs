@@ -30,13 +30,13 @@ Each block:
 
 A subnet's TAO reserve injection is computed in proportion to the price of its alpha token over the sum of prices for all the subnets in Bittensor.
 
-Given set S of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, TAO emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
+Given set $\mathbb{S}$ of all subnets, and a total per block TAO emission $\Delta\bar{\tau}$, which begins at 1 TAO and follows a halving schedule, TAO emission $\Delta\tau_i$ to subnet $i$ with price $p_i$ is:
 
 $$
 \Delta\tau_i = \Delta\bar{\tau} \times
 \frac
   {p_i}
-  {\sum_{j \in \text{S}}
+  {\sum_{j \in \mathbb{S}}
 \bigl(p_j)}
 $$
 
@@ -66,7 +66,7 @@ $$
 \Delta\alpha_i = 
   \frac
     {\Delta\bar{\tau}}
-    {\sum_{j \in \text{S}}
+    {\sum_{j \in \mathbb{S}}
   \bigl(p_j)}
 $$
 
@@ -77,7 +77,7 @@ $$
 \Delta\alpha_i = \min\left\{
   \frac
     {\Delta\bar{\tau}}
-    {\sum_{j \in \text{S}}
+    {\sum_{j \in \mathbb{S}}
   \bigl(p_j)},
   \Delta\bar{\alpha_i} \right\}
 
