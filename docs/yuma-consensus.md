@@ -24,12 +24,12 @@ To achieve this, the judgment of the most trusted validators (as measured by sta
 
 This clipping protects against erroneous or collusive over-evaluation of miners by validators.
 
-To compute the benchmark $\overline{W_j}$ for miner $j$, we gather all validator weights $W_{ij}$, sort them by the validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least a fraction $\kappa$ of total stake.
+To compute the benchmark $\overline{W_j}$ for miner $j$ and set $\mathbb{V}$ of the subnet's validators, we gather all validator weights $W_{ij}$ for any validator $i \in \mathbb{V}$, sort them by validator’s **stake** $S_i$, and then find the maximum weight level $w$ supported by at least a fraction $\kappa$ of total stake.
 
 $$
 \overline{W_j} = \arg \max_{w} 
 \Bigl(\,
-   \sum_{i} S_i \,\cdot\, \bigl\{\,W_{ij}\,\ge w \bigr\} \ge \kappa
+   \sum_{i \in \mathbb{V}} S_i \,\cdot\, \bigl\{\,W_{ij}\,\ge w \bigr\} \ge \kappa
 \Bigr).
 $$
 
@@ -48,7 +48,7 @@ Kappa is a configurable hyperparameter with default: $\kappa = 0.5$.
 Miner emissions are based on an aggregate ranking which is the summed rankings of validators, weighted by validators' stake, where $\overline{W_{ij}}$ is the post-clip weight.
 
 $$
-R_j = \sum_{i} S_i \,\cdot\, \overline{W_{ij}}
+R_j = \sum_{i \in \mathbb{V}} S_i \,\cdot\, \overline{W_{ij}}
 $$
 
 Each miner $j$’s share $M_j$ of the subnet's miner-emissions (41% of each subnet's overall emissions) is equal to their proportion of the total aggregate miner ranking. Where $\mathbb{M}$ is the subnet's miners:
@@ -74,7 +74,7 @@ Penalty factor $\beta$ is a configurable hyperparameter.
 
 ## Bonding mechanics
 
-The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is $i$’s stake $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight for all $\mathbb{V}$ of the subnet's validators:
+The **instant bond** $\Delta B_{ij}$ of validator $i$ to miner $j$ is equal to $i$’s stake, $\,S_i$ times $i$'s bond-weight for $j$ normalized by $j$'s total bond-weight for all $\mathbb{V}$ of the subnet's validators:
 
 $$
 \Delta B_{ij} = \frac{\,S_i \,\cdot\, \widetilde{W_{ij}}\,}{
