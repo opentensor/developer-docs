@@ -1,21 +1,31 @@
+
 ## Workstation config
+
+<details>
+  <summary>btcli config</summary>
+
+  btcli config [options]
+  - btcli config set
+  - btcli config get
+  - ...
+  - btcli conf metagraph
 
 Permissionless
 
-### `btcli config set`
-### `btcli config get`
-### `btcli config clear`
-### `btcli config metagraph`
-### `btcli conf set`
-### `btcli conf get`
-### `btcli conf clear`
-### `btcli conf metagraph`
+- `btcli config set`
+- `btcli config get`
+- `btcli config clear`
+- `btcli config metagraph`
+- `btcli conf set`
+- `btcli conf get`
+- `btcli conf clear`
+- `btcli conf metagraph`
 
-### `btcli c set`
-### `btcli c get`
-### `btcli c clear`
-### `btcli c metagraph`
-
+- `btcli c set`
+- `btcli c get`
+- `btcli c clear`
+- `btcli c metagraph`
+</details>
 
 ## Wallet management
 
