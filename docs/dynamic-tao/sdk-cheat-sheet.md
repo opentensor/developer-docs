@@ -454,6 +454,9 @@ reg = sub.burned_register(wallet=wallet, netuid=3)
 ```
 
 
+
+
+
 ## View your registered subnets
 
 ### `get_netuids_for_hotkey`
@@ -515,5 +518,61 @@ Subnet: 119: vidac Ⲃ
   ExampleWalletName     ExampleHotkey       103       False       268.38         0.01         1.00         0.01         0.01         0.00   3470929.0…         0.00           57625   none                5GEXJdUXxL
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                     1                   268.38 Ⲃ       0.0094       1.0000       0.0093       0.0094       0.0000     ρ3470929       0.0000
+
+```
+
+
+## View last 24 day's emissions for a Hotkey
+
+```python
+from bittensor.core.async_subtensor import AsyncSubtensor
+import sys
+import asyncio
+
+HOTKEY = "5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3"
+NETUIDS = range(0,64)
+BLOCKTIME = 12
+subtensor_address = "finney"  # or try locally via ws://127.0.0.1:9944
+
+
+
+
+async def main():
+    async with AsyncSubtensor(f"{subtensor_address}") as subtensor:
+        all_sn_dynamic_info_list = await subtensor.all_subnets()
+
+        all_sn_dynamic_info = {info.netuid: info for info in all_sn_dynamic_info_list}
+        daily_blocks = (60 * 60 * 24) / BLOCKTIME  # Number of blocks per day
+        
+
+        print(f"Hotkey: {HOTKEY}")
+
+        subnets = await asyncio.gather(*[subtensor.subnet_exists(netuid) for netuid in range(1, 8)])
+        metagraphs = await asyncio.gather(*[ subtensor.metagraph(netuid=id) for id in NETUIDS])
+        for id in NETUIDS:
+            print(f"UID: {id}")
+            
+            metagraph = metagraphs[id]
+            tempo_multiplier = daily_blocks / metagraph.tempo
+            
+            subnet_info = all_sn_dynamic_info.get(id)
+
+            uid = metagraph.hotkeys.index(HOTKEY) if HOTKEY in metagraph.hotkeys else None
+
+            if uid is None:
+                print(f"Hotkey {HOTKEY} not found in the metagraph")
+            else:
+                daily_rewards_alpha = float(metagraph.emission[uid] * tempo_multiplier)
+                daily_rewards_tao = float(daily_rewards_alpha * subnet_info.price.tao)
+                alpha_to_tao_with_slippage, slippage = subnet_info.alpha_to_tao_with_slippage(
+                    alpha=daily_rewards_alpha
+                )
+
+
+                print(f"Daily Rewards Alpha: {daily_rewards_alpha}")
+                print(f"Daily Rewards Tao: {daily_rewards_tao}")
+                print(f"Alpha to Tao with Slippage: {alpha_to_tao_with_slippage}")
+
+asyncio.run(main())
 
 ```
