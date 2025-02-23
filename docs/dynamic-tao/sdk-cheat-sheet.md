@@ -533,13 +533,14 @@ from bittensor.core.async_subtensor import AsyncSubtensor
 import sys
 import asyncio
 
+# This is the validator HK for Opentensor Foundation, substitute with the hotkey of the miner/validator you wish to inspect
 HOTKEY = "5F4tQyWrhfGVcNhoqeiNsR6KjD4wMZ2kfhLj4oHYuyHbZAc3"
+
+# Speicfy which subnets you wish to inspect, by UID
 NETUIDS = range(0,64)
 BLOCKTIME = 12
-subtensor_address = "finney"  # or try locally via ws://127.0.0.1:9944
 
-
-
+subtensor_address = "finney"  # or "test" or locally with "ws://127.0.0.1:9944"
 
 async def main():
     async with AsyncSubtensor(f"{subtensor_address}") as subtensor:
@@ -571,7 +572,6 @@ async def main():
                 alpha_to_tao_with_slippage, slippage = subnet_info.alpha_to_tao_with_slippage(
                     alpha=daily_rewards_alpha
                 )
-
 
                 print(f"Daily Rewards Alpha: {daily_rewards_alpha}")
                 print(f"Daily Rewards Tao: {daily_rewards_tao}")
