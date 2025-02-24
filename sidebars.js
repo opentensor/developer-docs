@@ -73,7 +73,6 @@ const sidebars = {
       link: {type: "doc", id: "miners/index",},
       items: [
       "miners/index",
-      // "miners/miners-guide-wallets-keys"
       ],
     },
 
@@ -149,7 +148,6 @@ const sidebars = {
           items: [
             "getting-started/wallets",
             "working-with-keys",
-            // "keys-questions",
           ]
         },
 {
