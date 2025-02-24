@@ -135,7 +135,7 @@ The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
 **Error**: `TransferDisallowed`
 
-**Description**: This subnet does not allow transfer stake.
+**Description**: This subnet does not allow stake transfer.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 9'
