@@ -101,22 +101,7 @@ const sidebars = {
         "tutorials/ocr-subnet-tutorial",
       ],
     },
-        {
-      type: "category",
-      label: "Tools and Special Features",
-      link: {type: "doc", id: "tools",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "bittensor-networks",
-        "subnets/commit-reveal",
-        "subnets/consensus-based-weights",
-        "subnets/schedule-coldkey-swap",
-        "subnets/asyncio",
-          "subnets/bt-logging-levels",        
-        "utilities",
-      ],
-    },
+
         {
           type: "category",
           label: "BTCLI: The Bittensor CLI",
@@ -150,6 +135,22 @@ const sidebars = {
             "working-with-keys",
           ]
         },
+                {
+      type: "category",
+      label: "Tools and Special Features",
+      link: {type: "doc", id: "tools",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "bittensor-networks",
+        "subnets/commit-reveal",
+        "subnets/consensus-based-weights",
+        "subnets/schedule-coldkey-swap",
+        "subnets/asyncio",
+          "subnets/bt-logging-levels",        
+        "utilities",
+      ],
+    },
 {
       type: "category",
       label: "Subtensor Nodes",
