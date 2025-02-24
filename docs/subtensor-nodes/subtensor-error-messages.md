@@ -4,10 +4,11 @@ title: "Subtensor Error Messages"
 
 # Subtensor Error Messages
 
-When [Subtensor](./index.md) gives you errors, either when using [`btcli`](../btcli.md) or [Bittensor API](../bt-api-ref.md), consult this document to understand the meaning of these error messages. 
+Subtensor is Bittensor's blockchain component.
 
-The code for these error messages can be examined [here.](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/lib.rs#L1686
-)
+This page documents errors from [Subtensor](./index.md) surface, which may surface through [`btcli`](../btcli.md) or the [Bittensor Python SDK](../bt-api-ref.md).
+
+See: error codes in [the Subtensor code repo.](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/lib.rs#L1686)
 
 
 ## Subtensor error message format
