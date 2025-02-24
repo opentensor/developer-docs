@@ -72,7 +72,7 @@ const sidebars = {
       collapsed: true,
       link: {type: "doc", id: "miners/index",},
       items: [
-      "miners/index"
+      "miners/index",
       ],
     },
 
@@ -93,8 +93,7 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
-        "subnets/create-a-subnet", 
-        "subnets/dissolve-a-subnet",
+        "subnets/create-a-subnet",
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
@@ -102,39 +101,53 @@ const sidebars = {
         "tutorials/ocr-subnet-tutorial",
       ],
     },
+
         {
-      type: "category",
-      label: "Special Features",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "subnets/commit-reveal",
-        "subnets/consensus-based-weights",
-        "subnets/schedule-coldkey-swap",
-      ],
-    },
+          type: "category",
+          label: "BTCLI: The Bittensor CLI",
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "getting-started/install-btcli",
+            "btcli",
+          ]
+        },
         {
+          type: "category",
+          label: "Bittensor Python SDK",
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "getting-started/installation",
+            "bt-api-ref",    
+            "getting-started/install-wallet-sdk",        
+            "migration_guide",
+          ]
+        },        
+        
+        {
+          type: "category",
+          label: "Wallets and Keys",
+          collapsible: true,
+          collapsed: true,
+          items: [
+            "getting-started/wallets",
+            "working-with-keys",
+          ]
+        },
+                {
       type: "category",
-      label: "Bittensor Tools",
+      label: "Tools and Special Features",
       link: {type: "doc", id: "tools",},
       collapsible: true,
       collapsed: true,
       items: [
-        "migration_guide",
         "bittensor-networks",
-        "getting-started/wallets",
-        
-        "working-with-keys",
-
-        
-        "getting-started/install-btcli",
-        "btcli",
-        
-        "getting-started/installation",
-                "bt-api-ref",    
-        "getting-started/install-wallet-sdk",        
-        "subnets/bt-logging-levels",
+        "subnets/commit-reveal",
+        "subnets/consensus-based-weights",
+        "subnets/schedule-coldkey-swap",
         "subnets/asyncio",
+          "subnets/bt-logging-levels",        
         "utilities",
       ],
     },
