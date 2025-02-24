@@ -6,6 +6,10 @@ title: "Subtensor Error Messages"
 
 When [Subtensor](./index.md) gives you errors, either when using [`btcli`](../btcli.md) or [Bittensor API](../bt-api-ref.md), consult this document to understand the meaning of these error messages. 
 
+The code for these error messages can be examined [here.](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/lib.rs#L1686
+)
+
+
 ## Subtensor error message format
 
 Subtensor presents the errors in the following format:
@@ -21,34 +25,37 @@ Below are the detailed error messages:
 
 ## Custom error: 0
 
+**Error**: `ColdkeyInSwapSchedule`
+
+**Description**: Your coldkey is set to be swapped. No transfer operations are possible.
+
+
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 0'
 }
 ```
 
-### Description
-
-Your coldkey is set to be swapped. No transfer operations are possible.
 
 ## Custom error: 1
+**Error**: `StakeAmountTooLow`
+
+**Description**: The amount you are staking/unstaking/moving is below the minimum TAO equivalent.
+
+The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 1'
 }
 ```
 
-### Description
 
-The amount you are staking/unstaking/moving is below the minimum TAO equivalent.
-
-The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
 
 ## Custom error: 2
 
-### Description
+**Error**: `BalanceTooLow`
 
-The amount of stake you have is less than you have requested
+**Description**: The amount of stake you have is less than you have requested
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 2'
@@ -57,9 +64,9 @@ The amount of stake you have is less than you have requested
 
 ## Custom error: 3
 
-### Description
+**Error**: `SubnetDoesntExist`
 
-This subnet does not exist.
+**Description**: This subnet does not exist.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 3'
@@ -68,9 +75,9 @@ This subnet does not exist.
 
 ## Custom error: 4
 
-### Description
+**Error**: `HotkeyAccountDoesntExist`
 
-This hotkey is not registered.
+**Description**: Hotkey is not registered on Bittensor network.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 4'
@@ -79,9 +86,9 @@ This hotkey is not registered.
 
 ## Custom error: 5
 
-### Description
+**Error**: `NotEnoughStakeToWithdraw`
 
-You do not have enough TAO equivalent stake to remove/move/transfer, including the unstake fee.
+**Description**: You do not have enough TAO equivalent stake to remove/move/transfer, including the unstake fee.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 5'
@@ -90,9 +97,9 @@ You do not have enough TAO equivalent stake to remove/move/transfer, including t
 
 ## Custom error: 6
 
-### Description
+**Error**: `RateLimitExceeded`
 
-You are staking/unstaking/etc too fast.
+**Description**: Too many transactions submitted (other than Axon serve/publish extrinsic).
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 6'
@@ -101,9 +108,9 @@ You are staking/unstaking/etc too fast.
 
 ## Custom error: 7
 
-### Description
+**Error**: `InsufficientLiquidity`
 
-This pool does not have sufficient liquidity for this amount.
+**Description**: The subnet's pool does not have sufficient liquidity for this transaction.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 7'
@@ -113,9 +120,9 @@ This pool does not have sufficient liquidity for this amount.
 
 ## Custom error: 8
 
-### Description
+**Error**: `SlippageTooHigh`
 
-The slippage is higher than you have set the limit at. Try reducing the amount.
+**Description**: The slippage is higher than you have set the limit at. Try reducing the amount.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 8'
@@ -125,20 +132,41 @@ The slippage is higher than you have set the limit at. Try reducing the amount.
 
 ## Custom error: 9
 
-### Description
+**Error**: `TransferDisallowed`
 
-This subnet does not allow transfer stake.
+**Description**: This subnet does not allow transfer stake.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 9'
 }
 ```
 
+## Custom error: 10
+**Error**: `HotKeyNotRegisteredInNetwork`
+
+**Description**: The hotkey is not registered in the selected subnet.
+
+## Custom error: 11
+**Error**: `InvalidIpAddress`
+
+**Description**: Axon connection info cannot be parsed into a valid IP address.
+
+
+## Custom error: 12
+**Error**: `ServingRateLimitExceeded`
+
+**Description**: Rate limit exceeded for axon serve/publish extrinsic.
+
+## Custom error: 13
+**Error**: `InvalidPort`
+
+**Description**: Axon connection info cannot be parsed into a valid port.
+
 ## Custom error: 255
 
-### Description
+**Error**: `BadRequest`
 
-Unknown error.
+**Description**: Unclassified error.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 255'
