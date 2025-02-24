@@ -4,6 +4,17 @@ title: "Wallets, Coldkeys and Hotkeys in Bittensor"
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+
+How do you recommend miners to store their cold keys?
+Ideally on an air gapped device or at least a device with minimal access / security risk involved. The coldkey must not be placed on a server used for mining as subnet code should not be considered safe code. Though most subnets take appropriate steps to ensure the security of their codebases, any time you have a port open and requests coming in there is risk.
+How often do miners have to use them and for what ops?
+The only operation miners need these for is to register onto the subnet. This should be done securely and not on servers that will be used for mining ops.
+And then so hotkeys as well, how in practical terms are people managing and propagating them
+Hotkeys are not encrypted by default (unlike coldkeys) and therefore have less security implications. Hotkeys do need to be present for a variety of operations which miner and validator software interact with such as axon serving, on-chain data commitments, and other functions. These essentially need to be present in the unsafe environment that is running subnet code on a machine but come with less risks if they do get compromised.
+What about rotation?
+Key rotation can add risk if the original coldkey is stored in a secure manner and is likely not too recommended unless there is a suspcicion or possibility that the original key has been or could have been compromised. An important note here is that specifically for validators, it is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
+
+
 # Wallets, Coldkeys and Hotkeys in Bittensor
 
 In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your TAO.
@@ -82,20 +93,9 @@ This dual-key system helps balance convenience and security, allowing you to par
 
 ## Operational uses of keys
 
-The below diagram shows a few operations you can do with a hotkey and coldkey. Not all possible operations are shown below. You can use the `btcli` to perform any of these operations. See [Bitttensor Wallet CLI](../btcli.md#wallets) for command syntax.
 
-<center>
-<ThemedImage
-alt="Coldkey and hotkey pairings"
-sources={{
-    light: useBaseUrl('/img/docs/1-operational-uses-of-keys.svg'),
-    dark: useBaseUrl('/img/docs/dark-1-operational-uses-of-keys.svg'),
-  }}
-style={{width: 850}}
-/>
-</center>
+WIP
 
-<br />
 
 The below numbered items describe the numbered sections in the above diagram:
 
