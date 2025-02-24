@@ -123,7 +123,7 @@ The transaction minimum is 500,000 RAO or 0.0005 TAO.
 
 **Error**: `SlippageTooHigh`
 
-**Description**: The slippage is higher than you have set the limit at. Try reducing the amount.
+**Description**: The slippage exceeds your limit. Try reducing the transaction amount.
 
 ```bash
 {'code': 1010, 'message': 'Invalid Transaction', 'data': 'Custom error: 8'
