@@ -25,7 +25,7 @@ Below are the detailed error messages:
 
 ## Custom error: 0
 
-**Error**: `ColdkeyInSwapSchedule`
+**Error**: `ColdKeyInSwapSchedule`
 
 **Description**: Your coldkey is set to be swapped. No transfer operations are possible.
 
