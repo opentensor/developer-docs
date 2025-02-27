@@ -6,6 +6,11 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
+## Bittensor SDK 9.0
+
+Major release to support chain upgrade to [Dynamic TAO](dynamic-tao/dtao-guide.md). Also introduces concurrency enhancements.
+
+See [Bittensor 9.0 Migration Guide](./migration_guide.md).
 
 ## Released 12 December 2024
 
