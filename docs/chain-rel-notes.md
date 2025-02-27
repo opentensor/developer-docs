@@ -8,7 +8,7 @@ Release notes for the Bittensor blockchain.
 
 ## Dynamic TAO Mainnet release: February 13, 2025
 
-See: [Conceptual guide to Dynamic TAO](./dynamic-tao/dtao-guide.md).
+See: [Dynamic TAO](./dynamic-tao/index.md).
 
 ## Dynamic TAO Testnet: release January 9, 2025
 
