@@ -1,5 +1,48 @@
+---
+title: "Bittensor CLI: Permissions Guide"
+---
+
+The Bittensor CLI, `btcli` provides a wide range of functionality: some commands require a coldkey to authenticate, some require a hotkey, and some require neither. Additionally, different functions require different levels of permissions. Some require the user to have special status like being registered with a node, have a validator permit, or be an active member of the senate.
+
+This page details the requirements for all of the `btcli` commands. It is organized by Bittensor *persona*, on the assumption that everyone who uses `btcli` is in one or more of the following roles:
+
+- stakers:
+- miners:
+- validators:
+- subnet creators: 
+- governance:
+
+
+## Stakers
+
+Stakers enter value into the Bittensor network by acquiring TAO and staking or *delegating* it to validators to support their work. As validators extract emissions, a certain percentage goes back to stakers.
+
+See [Staking/Delegation Overview](../staking-and-delegation/delegation.md).
+
+Stakers must be familiar with operations related to managing the TAO and staked alpha tokens in their Bittensor wallet balance.
+
+Performing these functions requires using a coldkey, and hence must be performed in a highly secure environment for any wallet connected to real (mainnet) TAO balance.
+
+Accounts can be viewed without using a coldkey...
+
+## Miners
+
+## Validators
+
+## Subnet Creators
+
+## Requirements:
+
+### Coldkey
+### Hotkey
+
+### Available liquidity
+
+### Validator Permit
 
 ## Workstation config
+
+
 
 <details>
   <summary>btcli config</summary>
