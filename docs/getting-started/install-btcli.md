@@ -20,53 +20,57 @@ For a full developer reference, see the [Bittensor CLI section](../btcli.md).
 
 You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**.
 
-### Install Python package 
+### Install from Python Package Indexer 
 
-Check for the [latest release at the Python Package Index](https://pypi.org/project/bittensor-cli/).
+Check for the latest release at the Python Package Index: [https://pypi.org/project/bittensor-cli/](https://pypi.org/project/bittensor-cli/).
 
-Run `pip install bittensor-cli==<VERSION>` to install the desired version.
+Use pip to install the desired version:
+
+```shell
+pip install bittensor-cli==<VERSION>`
+```
 
 :::warning Update frequently!
 Check frequently to make sure you are using the latest version of `btcli`.
 :::
 
 ### Install from source
-:::warning For Ubuntu-Linux users
-If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
-:::
-:::tip Create and activate a virtual environment
+
+
+1. Create and activate a virtual environment.
+    :::tip Create and activate a virtual environment
 
     - Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 
     - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
-:::
+    :::
+    :::warning For Ubuntu-Linux users
+    If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+    :::
 
-
-1. Create and activate a virtual environment.
-
-```bash
-python3 -m venv btcli_venv
-source btcli_venv/bin/activate
-```
+    ```bash
+    python3 -m venv btcli_venv
+    source btcli_venv/bin/activate
+    ```
 
 2. Clone the Bittensor CLI repo.
 
-```bash
-git clone https://github.com/opentensor/btcli.git
-```
+    ```bash
+    git clone https://github.com/opentensor/btcli.git
+    ```
 
 3. `cd` into `btcli` directory.
 
-```bash
-cd btcli
-```
+    ```bash
+    cd btcli
+    ```
 
 4.  Install
 
 
-```bash
-pip3 install .
-```
+    ```bash
+    pip3 install .
+    ```
 
 ## Install on Windows
 
@@ -76,7 +80,7 @@ After you installed the above, follow the same installation steps described abov
 
 :::danger Limited support on Windows
 While wallet transactions like delegating, transfer, registering, staking can be performed on a Windows machine using WSL 2, the mining and validating operations are not recommended and are not supported on Windows machines.
- :::
+:::
 
 
 ## Verify the installation
