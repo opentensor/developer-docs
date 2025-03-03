@@ -14,7 +14,7 @@ See: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94
 
 ## Developer reference
 
-For a full developer reference, see the [Bittensor CLI reference document(../btcli.md).
+For a full developer reference, see the [Bittensor CLI reference document](../btcli.md).
 
 ## Install on macOS and Linux
 
