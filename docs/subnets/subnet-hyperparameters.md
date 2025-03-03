@@ -4,21 +4,7 @@ title: "Subnet Hyperparameters"
 
 # Subnet Hyperparameters
 
-## Things I want to note
 
-**Permissions**
-
-who can set these? who can view (everybody/everything is public I think?)
-
-root vs subnet creators...
-
-**Audience**
-
-who needs to know what about which params?
-- Stakers
-- Miners
-- Validators
-- Subnet creators
 
 ## Manage hyperparams with `btcli`
 ### View the hyperparameters
@@ -40,72 +26,1331 @@ btcli sudo set
 ```
 
 
-## Table of Hyperparameters (attempt to consolidate)
+## Consolidated list
 
-| **Name**| **Type**  | **Default / Example** | **Setter Extrinsic**| **Required Permission** | **Audience**|
-|---------------------------------------------------------------------------------------------------|----------|-----------------------------------|---------------------------------------------------------|-------------------------|-----------------------------------------|
-| [ActivityCutoff](#activitycutoff)  | `u16` | `5000` | `sudo_set_activity_cutoff`| sn_owner| Validators (Valis) |
-| [AdjustmentAlpha ???](#adjustmentalpha)| `int` | Unknown| `sudo_set_adjustment_alpha`  | sn_owner| Miners|
-| [AdjustmentInterval](#adjustmentinterval)| `u16` | `100`  | `sudo_set_adjustment_interval`  | root | Subnet Owner, Miners  |
-| [AlphaHigh ???](#alphahigh)| `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
-| [AlphaLow ???](#alphalow)  | `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
-| [BondsMovingAverage](#bondsmovingaverage)| `u64` | `900000`  | `sudo_set_bonds_moving_average`| sn_owner| Validators (Valis) |
-| [BondsPenalty](#bondspenalty)| `u16` | `0` | `sudo_set_bonds_penalty` | sn_owner| Validators (Valis) |
-| [Burn](#burn) | `u64` | `100000000000` (100 TAO) | *None* | *N/A*| *N/A*  |
-| [ColdkeySwapScheduleDuration](#coldkeyswapscheduleduration)| `int` | N/A | `sudo_set_coldkey_swap_schedule_duration`| root | N/A |
-| [CommitRevealPeriod](#commitrevealperiod)| `int` | N/A | `sudo_set_commit_reveal_weights_interval`| sn_owner| Subnet Owner, Validators|
-| [CommitRevealWeightsEnabled](#commitrevealweightsenabled)  | `bool`| `false` (example)  | `sudo_set_commit_reveal_weights_enabled` | sn_owner| Subnet Owner, Validators|
-| [Difficulty](#difficulty) | `u64` | `671088640000000` | `sudo_set_difficulty` | root | Subnet Owner, Miners  |
-| [DissolveNetworkScheduleDuration](#dissolvenetworkscheduleduration) | `int` | N/A | `sudo_set_dissolve_network_schedule_duration`  | root | N/A |
-| [EmissionValue](#emissionvalue) | `u64` | `857777000`  | *None* | *N/A*| *N/A*  |
-| [EvmChainId](#evmchainid) | `int` | N/A | `sudo_set_evm_chain_id`  | root | EVM users |
-| [HotkeyEmissionTempo](#hotkeyemissiontempo) | `int` | N/A | `sudo_set_hotkey_emission_tempo`  | root | N/A |
-| [ImmunityPeriod](#immunityperiod)  | `u16` | `4096` | `sudo_set_immunity_period`  | sn_owner| Miners|
-| [Issuance](#issuance)  | `u64` | `0` | *None* | *N/A*| *N/A*  |
-| [Kappa](#kappa)  | `u16` | `32767`| `sudo_set_kappa`| sn_owner| Validators, Miners  |
-| [LiquidAlphaEnabled](#liquidalphaenabled)| `bool`| `false` (example)  | `sudo_set_liquid_alpha_enabled`| sn_owner| N/A |
-| [LockReductionInterval](#lockreductioninterval)| `int` | N/A | `sudo_set_lock_reduction_interval`| root | N/A |
-| [MaxAllowedUids](#maxalloweduids)  | `u16` | `4096` | `sudo_set_max_allowed_uids` | root | Subnet Owner |
-| [MaxAllowedValidators](#maxallowedvalidators)  | `u16` | `128`  | `sudo_set_max_allowed_validators` | root | Subnet Owner, Potential Validators|
-| [MaxBurn](#maxburn) | `u64` | `21000000000000000` (21M TAO)  | `sudo_set_max_burn`  | sn_owner| Miners|
-| [MaxDifficulty](#maxdifficulty) | `u64` | `u64::MAX / 4`  | `sudo_set_max_difficulty`  | sn_owner| Miners|
-| [MaxRegistrationsPerBlock](#maxregistrationsperblock)| `u16` | `1` | `sudo_set_max_registrations_per_block`  | root | N/A |
-| [MaxWeightLimit](#maxweightlimit)  | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner| Validators|
-| [MinAllowedWeights](#minallowedweights)  | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner| Validators|
-| [MinBurn](#minburn) | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root | Subnet Owner, Miners  |
-| [MinDifficulty](#mindifficulty) | `u64` | `10000000`| `sudo_set_min_difficulty`  | root | Subnet Owner, Miners  |
-| [NetworkMaxStake](#networkmaxstake)| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
-| [NetworkMinLockCost](#networkminlockcost)| `int` | N/A | `sudo_set_network_min_lock_cost`  | root | Potential Subnet Owners  |
-| [NetworkPowRegistrationAllowed](#networkpowregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_pow_registration_allowed`| sn_owner| Miners|
-| [NetworkRateLimit](#networkratelimit) | `int` | N/A | `sudo_set_network_rate_limit`  | root | Potential Subnet Owners  |
-| [NetworkRegistrationAllowed](#networkregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_registration_allowed` | sn_owner| Miners|
-| [NominatorMinRequiredStake](#nominatorminrequiredstake) | `int` | N/A | `sudo_set_nominator_min_required_stake` | root | Validators, Stakers|
-| [PruningScore](#pruningscore)| `u16` | `65535` (u16::MAX) | *None* | *N/A*| *N/A*  |
-| [Rho](#rho)| `u16` | `10`| `sudo_set_rho`  | sn_owner| Validators, Miners  |
-| [ScalingLawPower](#scalinglawpower)| `u16` | `50` | *None* | *N/A*| *N/A*  |
-| [ScheduleGrandpaChange](#schedulegrandpachange)| *N/A* | N/A | `schedule_grandpa_change`| root | Root|
-| [ServingRateLimit](#servingratelimit) | `u64` | `250`  | `sudo_set_serving_rate_limit`  | root/sn_owner | Miners|
-| [StakeThreshold](#stakethreshold)  | `int` | N/A | `sudo_set_stake_threshold`  | root | Validators|
-| [SubnetLimit](#subnetlimit)  | `int` | N/A | `sudo_set_subnet_limit`  | root | Potential Subnet Owners  |
-| [SubnetMovingAlpha](#subnetmovingalpha)  | `int` | N/A | `sudo_set_subnet_moving_alpha` | root | N/A |
-| [SubnetOwnerCut](#subnetownercut)  | `int` | N/A | `sudo_set_subnet_owner_cut` | root | Subnet Owners|
-| [SynergyScalingLawPower](#synergyscalinglawpower) | `u16` | `50` | *None* | *N/A*| *N/A*  |
-| [TargetRegistrationsPerInterval](#targetregistrationsperinterval)| `u16` | `2` | `sudo_set_target_registrations_per_interval`  | root | Subnet Owner, Miners  |
-| [TargetStakesPerInterval](#targetstakesperinterval)  | `int` | N/A | `sudo_set_target_stakes_per_interval`| root | Stakers|
-| [Tempo](#tempo)  | `u16` | `99`| `sudo_set_tempo`| root | Subnet Owners|
-| [ToggleTransfer](#toggletransfer)  | `bool`| `true` (example)| `sudo_set_toggle_transfer`  | sn_owner| Subnet Owner, Stakers |
-| [TxDelegateTakeRateLimit](#txdelegatetakeratelimit)  | `int` | N/A | `sudo_set_tx_delegate_take_rate_limit`  | root | Validators, Stakers|
-| [TxRateLimit](#txratelimit)  | `int` | N/A | `sudo_set_tx_rate_limit` | root | Depends on usage category|
-| [ValidatorBatchSize](#validatorbatchsize)| `u16` | `32`| *None* | *N/A*| *N/A*  |
-| [ValidatorEpochLen](#validatorepochlen)  | `u16` | `250`  | *None* | *N/A*| *N/A*  |
-| [ValidatorEpochsPerReset](#validatorepochsperreset)  | `u16` | `60`| *None* | *N/A*| *N/A*  |
-| [ValidatorExcludeQuantile](#validatorexcludequantile)| `u16` | `3277` (~5% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
-| [ValidatorLogitsDivergence](#validatorlogitsdivergence) | `u16` | `1310` (~2% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
-| [ValidatorPruneLen](#validatorprunelen)  | `u64` | `1` | *None* | *N/A*| *N/A*  |
-| [ValidatorSequenceLen](#validatorsequencelen)  | `u16` | `256`  | *None* | *N/A*| *N/A*  |
-| [WeightsRateLimit](#weightsratelimit) | `u64` | `250`  | `sudo_set_weights_set_rate_limit` | sn_owner| Validators|
-| [WeightsVersion](#weightsversion)  | `u64` | `400`  | `sudo_set_weights_version_key` | sn_owner| Validators|
+### ActivityCutoff
 
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_activity_cutoff`
+
+**Permissions required to set**: Subnet Creator
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### AdjustmentAlpha ???](#adjustmentalpha)
+
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_activity_cutoff`
+
+**Permissions required to set**: Subnet Creator
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### AdjustmentInterval](#adjustmentinterval)   
+
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_adjustment_interval`
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### AlphaHigh ???
+
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### AlphaLow ???](#alphalow) 
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### BondsMovingAverage](#bondsmovingaverage)
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**:  `sudo_set_bonds_moving_average`
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### BondsPenalty](#bondspenalty)
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_bonds_penalty`
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### Burn
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### ColdkeySwapScheduleDuration](#coldkeyswapscheduleduration)
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### CommitRevealPeriod](#commitrevealperiod)
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
+
+**Permissions required to set**: Subnet Creator ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### CommitRevealWeightsEnabled
+
+**Type**: ???
+
+**Default**: ???
+
+**settable with `btcli`**: 
+
+**Setter extrinsic**: `sudo_set_commit_reveal_weights_enabled`
+
+**Permissions required to set**: Subnet Creator
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### Difficulty](#difficulty)
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: `sudo_set_difficulty` 
+
+**Permissions required to set**: Subnet Creator
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### DissolveNetworkScheduleDuration
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**:  `sudo_set_dissolve_network_schedule_duration`
+
+**Permissions required to set**: root
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### EmissionValue
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### EvmChainId
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+ `sudo_set_evm_chain_id`  | root 
+
+### HotkeyEmissionTempo
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_hotkey_emission_tempo`  | root 
+
+### ImmunityPeriod](#immunityperiod) 
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_immunity_period`  | sn_owner
+
+### Issuance
+
+
+
+**Type**: u64
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### Kappa
+
+
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  | `u16` | `32767`| `sudo_set_kappa`|  ???
+
+the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-consensus)
+
+
+
+### LiquidAlphaEnabled](#liquidalphaenabled)
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: `sudo_set_liquid_alpha_enabled`
+
+**Permissions required to set**: SN creator
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### LockReductionInterval
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+`sudo_set_lock_reduction_interval`| root 
+
+### MaxAllowedUids
+
+
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_max_allowed_uids` |
+
+### MaxAllowedValidators
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_max_allowed_validators` | root 
+
+### MaxBurn
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_max_burn`  | sn_owner
+
+### MaxDifficulty
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_max_difficulty`  | sn_owner
+
+### MaxRegistrationsPerBlock
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+| `u16` | `1` | `sudo_set_max_registrations_per_block`  | root 
+
+### MaxWeightLimit
+
+
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner
+
+### MinAllowedWeights
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner
+
+### MinBurn
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root 
+
+### MinDifficulty
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ | `u64` | `10000000`| `sudo_set_min_difficulty`  | root 
+
+### NetworkMaxStake
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
+
+### NetworkMinLockCost
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+| `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
+
+### NetworkPowRegistrationAllowed
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_network_pow_registration_allowed`| sn_owner
+
+### NetworkRateLimit
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ | `int` | N/A | `sudo_set_network_rate_limit`  | root 
+
+### NetworkRegistrationAllowed
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_network_registration_allowed` | sn_owner
+
+### NominatorMinRequiredStake
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ | `int` | N/A | `sudo_set_nominator_min_required_stake` | root
+
+### PruningScore
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### Rho
+
+
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_rho`  | sn_owner
+
+### ScalingLawPower
+
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+
+### ScheduleGrandpaChange
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `schedule_grandpa_change`| root 
+
+### ServingRateLimit
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_serving_rate_limit`  | root/sn_owner 
+
+### StakeThreshold
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+`sudo_set_stake_threshold`  | root
+
+### SubnetLimit
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+   `sudo_set_subnet_limit`  | root 
+
+### SubnetMovingAlpha
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+   `sudo_set_subnet_moving_alpha` | root 
+
+### SubnetOwnerCut
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+   `sudo_set_subnet_owner_cut` | root 
+
+### SynergyScalingLawPower
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ 
+
+### TargetRegistrationsPerInterval
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+ `sudo_set_target_registrations_per_interval`  | root 
+
+### TargetStakesPerInterval
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+   `sudo_set_target_stakes_per_interval`| root 
+
+### Tempo
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_tempo`| root
+
+### ToggleTransfer
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_toggle_transfer`  | sn_owner
+
+### TxDelegateTakeRateLimit
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  `sudo_set_tx_delegate_take_rate_limit`  | root 
+
+### TxRateLimit
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+   `sudo_set_tx_rate_limit` | root 
+
+### ValidatorBatchSize
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### ValidatorEpochLen
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  | `u16` | `250`  | *None* | *N/A*| *N/A*  |
+
+### ValidatorEpochsPerReset
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+  | `u16` | `60`| *None* | *N/A*| *N/A*  |
+
+### ValidatorExcludeQuantile
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### ValidatorLogitsDivergence
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+### ValidatorPruneLen
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### ValidatorSequenceLen
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
+
+
+### WeightsRateLimit
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: `sudo_set_weights_set_rate_limit`
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators 
+
+### WeightsVersion
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: `sudo_set_weights_version_key`
+
+**Permissions required to set**: ???
+
+**Description (who needs to know what?)**:
+
+	- Stakers
+	- Miners
+	- Validators
+	- Subnet creators
 
 
 ## Hyperparameters list (based on Python side)
@@ -250,192 +1495,6 @@ Description: Flag indicating if liquid alpha is enabled.
 
 Below is a more concise table of **all** known Bittensor Subnet hyperparameters, without the “Description” column. After the table, you will find individual sections (in the same order) with **H3** headings that include the parameter descriptions. Each hyperparameter name in the table links down to its corresponding description section.
 
-
-## Hyperparameter List (based on Subtensor)
-
-
-### ActivityCutoff
-- **Description**:
-
-### AdjustmentAlpha
-- **Description**:
-
-### AdjustmentInterval
-- **Description**:
-
-### AlphaHigh
-- **Description**:
-
-### AlphaLow
-- **Description**:
-
-### BondsMovingAverage
-- **Description**:
-
-### BondsPenalty
-- **Description**:
-
-### Burn
-- **Description**:
-
-### ColdkeySwapScheduleDuration
-- **Description**:
-
-### CommitRevealPeriod
-- **Description**:
-
-### CommitRevealWeightsEnabled
-- **Description**:
-
-### Difficulty
-- **Description**:
-
-### DissolveNetworkScheduleDuration
-- **Description**:
-
-### EmissionValue
-- **Description**:
-
-### EvmChainId
-- **Description**:
-
-### HotkeyEmissionTempo
-- **Description**:
-
-### ImmunityPeriod
-- **Description**:
-
-### Issuance
-- **Description**:
-
-### Kappa
-- **Description**:
-
-### LiquidAlphaEnabled
-- **Description**:
-
-### LockReductionInterval
-- **Description**:
-
-### MaxAllowedUids
-- **Description**:
-
-### MaxAllowedValidators
-- **Description**:
-
-### MaxBurn
-- **Description**:
-
-### MaxDifficulty
-- **Description**:
-
-### MaxRegistrationsPerBlock
-- **Description**:
-
-### MaxWeightLimit
-- **Description**:
-
-### MinAllowedWeights
-- **Description**:
-
-### MinBurn
-- **Description**:
-
-### MinDifficulty
-- **Description**:
-
-### NetworkMaxStake
-- **Description**:
-
-### NetworkMinLockCost
-- **Description**:
-
-### NetworkPowRegistrationAllowed
-- **Description**:
-
-### NetworkRateLimit
-- **Description**:
-
-### NetworkRegistrationAllowed
-- **Description**:
-
-### NominatorMinRequiredStake
-- **Description**:
-
-### PruningScore
-- **Description**:
-
-### Rho
-- **Description**:
-
-### ScalingLawPower
-- **Description**:
-
-### ScheduleGrandpaChange
-- **Description**:
-
-### ServingRateLimit
-- **Description**:
-
-### StakeThreshold
-- **Description**:
-
-### SubnetLimit
-- **Description**:
-
-### SubnetMovingAlpha
-- **Description**:
-
-### SubnetOwnerCut
-- **Description**:
-
-### SynergyScalingLawPower
-- **Description**:
-
-### TargetRegistrationsPerInterval
-- **Description**:
-
-### TargetStakesPerInterval
-- **Description**:
-
-### Tempo
-- **Description**:
-
-### ToggleTransfer
-- **Description**:
-
-### TxDelegateTakeRateLimit
-- **Description**:
-
-### TxRateLimit
-- **Description**:
-
-### ValidatorBatchSize
-- **Description**:
-
-### ValidatorEpochLen
-- **Description**:
-
-### ValidatorEpochsPerReset
-- **Description**:
-
-### ValidatorExcludeQuantile
-- **Description**:
-
-### ValidatorLogitsDivergence
-- **Description**:
-
-### ValidatorPruneLen
-- **Description**:
-
-### ValidatorSequenceLen
-- **Description**:
-
-### WeightsRateLimit
-- **Description**:
-
-### WeightsVersion
-- **Description**:
 
 
 
