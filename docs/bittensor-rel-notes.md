@@ -10,9 +10,7 @@ The following are the release notes for the Bittensor software.
 
 This version adds the new dashboard feature to the Bittensor CLI.
 
-Run `btcli view dashboard` to 
-
-Released 
+Upgrade and run `btcli view dashboard` to check it out.
 
 ## Bittensor SDK 9.0, including `btcli` version 9.0.0: Released February 13, 2025
 
