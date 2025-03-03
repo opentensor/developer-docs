@@ -4,19 +4,30 @@ title: "Install BTCLI"
 
 # Install BTCLI
 
-Before you can start developing, you must install `btcli` and then create Bittensor wallet.
+This page contains installation details for `btcli`, the Bittensor CLI.
 
-## Supported Python versions
+## Prerequisite
 
-Python 3.9-3.12 (reference: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94).
+To install `btcli`, you must have Python version 3.9-3.12
+
+See: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94
 
 ## Developer reference
 
-For a full developer reference, see the [Bittensor CLI section](../btcli.md).
+For a full developer reference, see the [Bittensor CLI reference document(../btcli.md).
 
 ## Install on macOS and Linux
 
-You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**.
+You can install `btcli` on your local machine directly from source.
+
+Verify your installation and its version by running:
+```shell
+btcli --version
+```
+Example output:
+```console
+BTCLI version: 9.1.0
+```
 
 ### Install from Python Package Indexer 
 
