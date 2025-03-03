@@ -5,8 +5,12 @@ title: "Subnet Hyperparameters"
 # Subnet Hyperparameters
 
 
-
 ## Manage hyperparams with `btcli`
+
+:::note
+Some hyperparameters can be viewed and set with `btcli`, but some can only be configured directly on chain using extrinsic transactions.
+:::
+
 ### View the hyperparameters
 
 ```bash
@@ -19,12 +23,11 @@ btcli subnet hyperparameters
 
 ### Set hyperparameters
 
-Use the below command to set these hyperparameters:
+Use the below command to set these hyperparameters. Note that subnet creator permissions are required to set subnet hyperparameters using `btcli`.
 
 ```bash
 btcli sudo set
 ```
-
 
 ## Consolidated list
 
@@ -34,7 +37,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -54,7 +57,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -75,7 +78,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_adjustment_interval`
 
@@ -96,7 +99,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: 
 
@@ -115,7 +118,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: 
 
@@ -134,7 +137,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**:  `sudo_set_bonds_moving_average`
 
@@ -153,7 +156,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_bonds_penalty`
 
@@ -172,7 +175,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: 
 
@@ -191,7 +194,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
 
@@ -210,7 +213,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
 
@@ -229,7 +232,7 @@ btcli sudo set
 
 **Default**: ???
 
-**settable with `btcli`**: 
+**`btcli` method**: 
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_enabled`
 
