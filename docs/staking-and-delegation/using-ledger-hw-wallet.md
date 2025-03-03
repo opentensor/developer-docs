@@ -7,16 +7,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Using Ledger Hardware Wallet
 
-This guide describes how to set up your Ledger hardware wallet for managing your TAO on the Bittensor network. 
+This guide describes how to set up your Ledger hardware wallet for managing your TAO on the Bittensor network.
 
 ## Requirements
 
-Set up your Ledger hardware wallet as per Ledger instructions. 
+Set up your Ledger hardware wallet as per Ledger instructions.
 
 - [Ledger device (Nano S/S+/X, Flex, Stax)](https://www.ledger.com/).
 - [Ledger Live app](https://www.ledger.com/ledger-live).
 
-This guide assumes that you have a Ledger device and the Ledger Live app installed already. 
+This guide assumes that you have a Ledger device and the Ledger Live app installed already.
 
 ## Common Steps
 
@@ -25,12 +25,12 @@ This guide assumes that you have a Ledger device and the Ledger Live app install
 3. Install the **Polkadot (DOT)** app from Ledger Live.
 4. To manage your TAO from your Ledger hardware wallet, you must install a wallet app that supports TAO and also supports the Ledger hardware wallet. [Talisman](https://www.talisman.xyz/), [Nova Wallet](https://novawallet.io/), and [Subwallet](https://www.subwallet.app/) apps satisfy this condition. Install any of these wallet apps, and make sure you have configured these wallet apps to also use the Bittensor network. This is required for either transferring TAO using your Ledger, or finding the correct address to receive TAO on your Ledger device.
 
-:::danger Stop. Did you run the above steps? 
+:::danger Stop. Did you run the above steps?
 Proceed only after you successfully ran the above steps. The rest of this guide is described using Talisman wallet app.
 :::
 
-## Step 1. Connect Talisman app to Ledger device 
-  
+## Step 1. Connect Talisman app to Ledger device
+
   1. Connect Ledger hardware wallet device to your computer.
   2. Open Talisman wallet app and select **Add Account**.
   3. Select **Connect** and choose **Connect Ledger**.
@@ -47,7 +47,7 @@ Proceed only after you successfully ran the above steps. The rest of this guide 
       </center>
       <br />
 
-  4. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Polkadot** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
+  4. Select **Polkadot**. Then in the **Choose Network** drop-down select  **Bittensor** as the network, and in the **Choose Ledger App** section select **Polkadot App**.
 
       <center id="Talisman-1.4">
       <ThemedImage
@@ -78,9 +78,9 @@ Proceed only after you successfully ran the above steps. The rest of this guide 
       <br />
 
   5. When the above steps are complete, then you have successfully connected your Ledger hardware wallet device to the Polkadot app. Next, choose the Ledger hardware wallet addresses you would like to import to the Talisman wallet. Your Ledger hardware wallet device is now ready to be used with the Talisman Wallet app.
-  
+
       The below screenshot shows multiple addresses in the Ledger hardware wallet device.
-             
+
           <center id="Talisman-1.4a">
           <ThemedImage
           alt="Talisman-1.4a"
@@ -111,7 +111,7 @@ Proceed only after you successfully ran the above steps. The rest of this guide 
 
 ---
 
-## Step 2. Transfer TAO from Ledger hardware wallet 
+## Step 2. Transfer TAO from Ledger hardware wallet
 
 To transfer TAO from your connected Ledger hardware wallet, execute the following steps:
 
@@ -161,7 +161,7 @@ style={{width: 550}}
 </center>
 <br />
 
-5. Input the transaction amount and **Review** the transaction. In the below screenshot, an example transfer screen for sending 1.337 TAO from the connected Ledger hardware wallet device to a destination address that starts with `5EHVUN...` is shown. 
+5. Input the transaction amount and **Review** the transaction. In the below screenshot, an example transfer screen for sending 1.337 TAO from the connected Ledger hardware wallet device to a destination address that starts with `5EHVUN...` is shown.
 
 <center id="Talisman-1.4a">
 <ThemedImage
@@ -271,7 +271,7 @@ style={{width: 550}}
 
 ## Copying TAO address from Ledger device
 
-While using any crypto wallet, you might need to bring over your Ledger device's TAO address to this wallet. Follow the below steps. 
+While using any crypto wallet, you might need to bring over your Ledger device's TAO address to this wallet. Follow the below steps.
 
 1. From your Talisman Wallet app, drop-down on **All Accounts** and select the Ledger account.
 
@@ -301,7 +301,7 @@ style={{width: 900}}
 </center>
 <br />
 
-3. Click the **Copy to clipboard** button under **Substrate (Generic)**.
+3. Search for **Bittensor** network and click the **Copy to clipboard** button under **Bittensor**.
 
 <center id="Talisman-1.4a">
 <ThemedImage
@@ -315,6 +315,6 @@ style={{width: 900}}
 </center>
 <br />
 
-You have successfully copied the TAO address on the Ledger hardware wallet to the clipboard. You can then paste this TAO address into any crypto wallet you use. 
+You have successfully copied the TAO address on the Ledger hardware wallet to the clipboard. You can then paste this TAO address into any crypto wallet you use.
 
 ---

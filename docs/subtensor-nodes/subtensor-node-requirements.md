@@ -8,9 +8,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 To run a public subtensor, make sure that your computer satisfies the following system requirements: 
 
-- Currently only x86_64 Linux architecture is supported. 
-- Subtensor requires approximately ~286 MiB to run.
-- Only Linux OS and macOS are supported.
+- Currently only x86_64 Linux architecture and macOS arm64 (Apple Silicon) are supported. 
+- Subtensor requires 4 CPU cores and 16GB RAM to run. More resources may be required based on utilization.
 
 ## Linux x86_64
 
@@ -19,16 +18,16 @@ Requirements:
 - Linux kernel 2.6.32+.
 - glibc 2.11+.
 
-## macOS x86_64
+## macOS arm64 (Apple Silicon)
 
 Requirements:
 
-- macOS 10.7+
+- macOS 11+ (Big Sur+) for Apple Silicon (M1, M2, and later) with arm64 architecture support.
 
 ## Storage requirements
 
 - **Lite node**: 128 GB is sufficient.
-- **Archive node**: Minimum 1 TB for the current size of the chain, as of block # 3443567 on 22 July 2024. We recommend 1.5 TB to ensure your archive node does not run out of storage space in the near term. 
+- **Archive node**: Minimum 2 TB for the current size of the chain, as of block # 5029000 on 28 Feb 2025.
 
 
 ## Network requirements and port settings
