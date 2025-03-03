@@ -6,7 +6,13 @@ title: "Bittensor Release Notes"
 
 The following are the release notes for the Bittensor software.
 
-## Bittensor SDK 9.0
+## Bittensor-CLI 9.1.0: February 28
+
+This version adds the new dashboard feature to the Bittensor CLI.
+
+Upgrade and run `btcli view dashboard` to check it out.
+
+## Bittensor SDK 9.0, including `btcli` version 9.0.0: Released February 13, 2025
 
 Major release to support chain upgrade to [Dynamic TAO](dynamic-tao/dtao-guide.md). Also introduces concurrency enhancements.
 
