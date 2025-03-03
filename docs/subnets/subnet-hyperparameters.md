@@ -29,7 +29,7 @@ Use the below command to set these hyperparameters. Note that subnet creator per
 btcli sudo set
 ```
 
-## Consolidated list
+## Hyperparameters list
 
 ### ActivityCutoff
 
@@ -44,6 +44,8 @@ btcli sudo set
 **Permissions required to set**: Subnet Creator
 
 **Description**:
+
+is the number of blocks for the stake to become inactive for the purpose of epoch function (YUMA). If a validator doesn't submit weights within ActivityCutoff by the time epoch runs, it will not be given any stake weight.
 
 
 
@@ -60,7 +62,7 @@ btcli sudo set
 **Permissions required to set**: Subnet Creator
 
 **Description**:
-
+is the rate at which difficulty and burn are adjusted up or down.
 
 
 
@@ -78,38 +80,8 @@ btcli sudo set
 
 **Description**:
 
+AdjustmentInterval is number of blocks that pass between difficulty and burn adjustments. So, I was wrong about "next block" when I said that if root sets difficulty outside of range, it will get back in range. Difficulty will get back in range at most after AdjustmentInterval blocks pass.
 
-
-
-### AlphaHigh ???
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: Subnet Creator ???
-
-**Description**:
-
-Alpha is this decay-over-time factor thingy in [yuma](../yuma-consensus#bonding-mechanics) ??? And I guess the high and low is the range for liquid alpha?
-
-### AlphaLow ???
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: Subnet Creator ???
-
-**Description**:
 
 
 
@@ -217,7 +189,6 @@ See [Commit Reveal](./commit-reveal)
 
 ### Difficulty
 
-
 **Type**: ???
 
 **Default**: ???
@@ -281,30 +252,8 @@ Measure of the POW requirement for POW registration for miners on subnets. Need 
 
 **Description**:
 
-???
+The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 
-
- `sudo_set_evm_chain_id`  | root 
-
-### HotkeyEmissionTempo
-
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
- `sudo_set_hotkey_emission_tempo`  | root 
 
 ### ImmunityPeriod
 
@@ -322,9 +271,7 @@ Measure of the POW requirement for POW registration for miners on subnets. Need 
 
 **Description**:
 
-
-How long miners get to not be dereged for...
-
+number of blocks when miner is protected from deregistration
 
 
  `sudo_set_immunity_period`  | sn_owner
@@ -1294,17 +1241,7 @@ Type: bool
 
 Description: Flag indicating if commit-reveal weights are enabled.
 
-### `alpha_high`
 
-Type: int
-
-Description: High value of alpha.
-
-### `alpha_low`
-
-Type: int
-
-Description: Low value of alpha.
 
 ### `liquid_alpha_enabled`
 
