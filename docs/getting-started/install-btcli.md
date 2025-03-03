@@ -18,7 +18,15 @@ For a full developer reference, see the [Bittensor CLI reference document](../bt
 
 ## Install on macOS and Linux
 
-You can install `btcli` on your local machine directly from source.
+### Install from Python Package Indexer 
+
+Check for the latest release at the Python Package Index: [https://pypi.org/project/bittensor-cli/](https://pypi.org/project/bittensor-cli/).
+
+Use pip to install the desired version:
+
+```shell
+pip install bittensor-cli==<VERSION>
+```
 
 Verify your installation and its version by running:
 ```shell
@@ -29,19 +37,10 @@ Example output:
 BTCLI version: 9.1.0
 ```
 
-### Install from Python Package Indexer 
-
-Check for the latest release at the Python Package Index: [https://pypi.org/project/bittensor-cli/](https://pypi.org/project/bittensor-cli/).
-
-Use pip to install the desired version:
-
-```shell
-pip install bittensor-cli==<VERSION>`
-```
-
 :::warning Update frequently!
 Check frequently to make sure you are using the latest version of `btcli`.
 :::
+
 
 ### Install from source
 
