@@ -4,7 +4,24 @@ title: "Subnet Hyperparameters"
 
 # Subnet Hyperparameters
 
-This document presents the description of the allowed subnet hyperparameters. For any subnet, you can see the subnet hyperparameters by running this below command and selecting the `netuid` (i.e., selecting the subnet):
+## Things I want to note
+
+**Permissions**
+
+who can set these? who can view (everybody/everything is public I think?)
+
+root vs subnet creators...
+
+**Audience**
+
+who needs to know what about which params?
+- Stakers
+- Miners
+- Validators
+- Subnet creators
+
+## Manage hyperparams with `btcli`
+### View the hyperparameters
 
 ```bash
 btcli subnet hyperparameters
@@ -14,7 +31,7 @@ btcli subnet hyperparameters
 **Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable**. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters.
 ::: 
 
-## Setting the hyperparameters
+### Set hyperparameters
 
 Use the below command to set these hyperparameters:
 
@@ -22,7 +39,76 @@ Use the below command to set these hyperparameters:
 btcli sudo set
 ```
 
-## Hyperparameters list
+
+## Table of Hyperparameters (attempt to consolidate)
+
+| **Name**| **Type**  | **Default / Example** | **Setter Extrinsic**| **Required Permission** | **Audience**|
+|---------------------------------------------------------------------------------------------------|----------|-----------------------------------|---------------------------------------------------------|-------------------------|-----------------------------------------|
+| [ActivityCutoff](#activitycutoff)  | `u16` | `5000` | `sudo_set_activity_cutoff`| sn_owner| Validators (Valis) |
+| [AdjustmentAlpha ???](#adjustmentalpha)| `int` | Unknown| `sudo_set_adjustment_alpha`  | sn_owner| Miners|
+| [AdjustmentInterval](#adjustmentinterval)| `u16` | `100`  | `sudo_set_adjustment_interval`  | root | Subnet Owner, Miners  |
+| [AlphaHigh ???](#alphahigh)| `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
+| [AlphaLow ???](#alphalow)  | `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
+| [BondsMovingAverage](#bondsmovingaverage)| `u64` | `900000`  | `sudo_set_bonds_moving_average`| sn_owner| Validators (Valis) |
+| [BondsPenalty](#bondspenalty)| `u16` | `0` | `sudo_set_bonds_penalty` | sn_owner| Validators (Valis) |
+| [Burn](#burn) | `u64` | `100000000000` (100 TAO) | *None* | *N/A*| *N/A*  |
+| [ColdkeySwapScheduleDuration](#coldkeyswapscheduleduration)| `int` | N/A | `sudo_set_coldkey_swap_schedule_duration`| root | N/A |
+| [CommitRevealPeriod](#commitrevealperiod)| `int` | N/A | `sudo_set_commit_reveal_weights_interval`| sn_owner| Subnet Owner, Validators|
+| [CommitRevealWeightsEnabled](#commitrevealweightsenabled)  | `bool`| `false` (example)  | `sudo_set_commit_reveal_weights_enabled` | sn_owner| Subnet Owner, Validators|
+| [Difficulty](#difficulty) | `u64` | `671088640000000` | `sudo_set_difficulty` | root | Subnet Owner, Miners  |
+| [DissolveNetworkScheduleDuration](#dissolvenetworkscheduleduration) | `int` | N/A | `sudo_set_dissolve_network_schedule_duration`  | root | N/A |
+| [EmissionValue](#emissionvalue) | `u64` | `857777000`  | *None* | *N/A*| *N/A*  |
+| [EvmChainId](#evmchainid) | `int` | N/A | `sudo_set_evm_chain_id`  | root | EVM users |
+| [HotkeyEmissionTempo](#hotkeyemissiontempo) | `int` | N/A | `sudo_set_hotkey_emission_tempo`  | root | N/A |
+| [ImmunityPeriod](#immunityperiod)  | `u16` | `4096` | `sudo_set_immunity_period`  | sn_owner| Miners|
+| [Issuance](#issuance)  | `u64` | `0` | *None* | *N/A*| *N/A*  |
+| [Kappa](#kappa)  | `u16` | `32767`| `sudo_set_kappa`| sn_owner| Validators, Miners  |
+| [LiquidAlphaEnabled](#liquidalphaenabled)| `bool`| `false` (example)  | `sudo_set_liquid_alpha_enabled`| sn_owner| N/A |
+| [LockReductionInterval](#lockreductioninterval)| `int` | N/A | `sudo_set_lock_reduction_interval`| root | N/A |
+| [MaxAllowedUids](#maxalloweduids)  | `u16` | `4096` | `sudo_set_max_allowed_uids` | root | Subnet Owner |
+| [MaxAllowedValidators](#maxallowedvalidators)  | `u16` | `128`  | `sudo_set_max_allowed_validators` | root | Subnet Owner, Potential Validators|
+| [MaxBurn](#maxburn) | `u64` | `21000000000000000` (21M TAO)  | `sudo_set_max_burn`  | sn_owner| Miners|
+| [MaxDifficulty](#maxdifficulty) | `u64` | `u64::MAX / 4`  | `sudo_set_max_difficulty`  | sn_owner| Miners|
+| [MaxRegistrationsPerBlock](#maxregistrationsperblock)| `u16` | `1` | `sudo_set_max_registrations_per_block`  | root | N/A |
+| [MaxWeightLimit](#maxweightlimit)  | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner| Validators|
+| [MinAllowedWeights](#minallowedweights)  | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner| Validators|
+| [MinBurn](#minburn) | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root | Subnet Owner, Miners  |
+| [MinDifficulty](#mindifficulty) | `u64` | `10000000`| `sudo_set_min_difficulty`  | root | Subnet Owner, Miners  |
+| [NetworkMaxStake](#networkmaxstake)| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
+| [NetworkMinLockCost](#networkminlockcost)| `int` | N/A | `sudo_set_network_min_lock_cost`  | root | Potential Subnet Owners  |
+| [NetworkPowRegistrationAllowed](#networkpowregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_pow_registration_allowed`| sn_owner| Miners|
+| [NetworkRateLimit](#networkratelimit) | `int` | N/A | `sudo_set_network_rate_limit`  | root | Potential Subnet Owners  |
+| [NetworkRegistrationAllowed](#networkregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_registration_allowed` | sn_owner| Miners|
+| [NominatorMinRequiredStake](#nominatorminrequiredstake) | `int` | N/A | `sudo_set_nominator_min_required_stake` | root | Validators, Stakers|
+| [PruningScore](#pruningscore)| `u16` | `65535` (u16::MAX) | *None* | *N/A*| *N/A*  |
+| [Rho](#rho)| `u16` | `10`| `sudo_set_rho`  | sn_owner| Validators, Miners  |
+| [ScalingLawPower](#scalinglawpower)| `u16` | `50` | *None* | *N/A*| *N/A*  |
+| [ScheduleGrandpaChange](#schedulegrandpachange)| *N/A* | N/A | `schedule_grandpa_change`| root | Root|
+| [ServingRateLimit](#servingratelimit) | `u64` | `250`  | `sudo_set_serving_rate_limit`  | root/sn_owner | Miners|
+| [StakeThreshold](#stakethreshold)  | `int` | N/A | `sudo_set_stake_threshold`  | root | Validators|
+| [SubnetLimit](#subnetlimit)  | `int` | N/A | `sudo_set_subnet_limit`  | root | Potential Subnet Owners  |
+| [SubnetMovingAlpha](#subnetmovingalpha)  | `int` | N/A | `sudo_set_subnet_moving_alpha` | root | N/A |
+| [SubnetOwnerCut](#subnetownercut)  | `int` | N/A | `sudo_set_subnet_owner_cut` | root | Subnet Owners|
+| [SynergyScalingLawPower](#synergyscalinglawpower) | `u16` | `50` | *None* | *N/A*| *N/A*  |
+| [TargetRegistrationsPerInterval](#targetregistrationsperinterval)| `u16` | `2` | `sudo_set_target_registrations_per_interval`  | root | Subnet Owner, Miners  |
+| [TargetStakesPerInterval](#targetstakesperinterval)  | `int` | N/A | `sudo_set_target_stakes_per_interval`| root | Stakers|
+| [Tempo](#tempo)  | `u16` | `99`| `sudo_set_tempo`| root | Subnet Owners|
+| [ToggleTransfer](#toggletransfer)  | `bool`| `true` (example)| `sudo_set_toggle_transfer`  | sn_owner| Subnet Owner, Stakers |
+| [TxDelegateTakeRateLimit](#txdelegatetakeratelimit)  | `int` | N/A | `sudo_set_tx_delegate_take_rate_limit`  | root | Validators, Stakers|
+| [TxRateLimit](#txratelimit)  | `int` | N/A | `sudo_set_tx_rate_limit` | root | Depends on usage category|
+| [ValidatorBatchSize](#validatorbatchsize)| `u16` | `32`| *None* | *N/A*| *N/A*  |
+| [ValidatorEpochLen](#validatorepochlen)  | `u16` | `250`  | *None* | *N/A*| *N/A*  |
+| [ValidatorEpochsPerReset](#validatorepochsperreset)  | `u16` | `60`| *None* | *N/A*| *N/A*  |
+| [ValidatorExcludeQuantile](#validatorexcludequantile)| `u16` | `3277` (~5% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
+| [ValidatorLogitsDivergence](#validatorlogitsdivergence) | `u16` | `1310` (~2% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
+| [ValidatorPruneLen](#validatorprunelen)  | `u64` | `1` | *None* | *N/A*| *N/A*  |
+| [ValidatorSequenceLen](#validatorsequencelen)  | `u16` | `256`  | *None* | *N/A*| *N/A*  |
+| [WeightsRateLimit](#weightsratelimit) | `u64` | `250`  | `sudo_set_weights_set_rate_limit` | sn_owner| Validators|
+| [WeightsVersion](#weightsversion)  | `u64` | `400`  | `sudo_set_weights_version_key` | sn_owner| Validators|
+
+
+
+## Hyperparameters list (based on Python side)
 
 ### `max_weight_limit`
 
@@ -164,386 +250,196 @@ Description: Flag indicating if liquid alpha is enabled.
 
 Below is a more concise table of **all** known Bittensor Subnet hyperparameters, without the “Description” column. After the table, you will find individual sections (in the same order) with **H3** headings that include the parameter descriptions. Each hyperparameter name in the table links down to its corresponding description section.
 
----
 
-## Table of Hyperparameters
+## Hyperparameter List (based on Subtensor)
 
-| **Name**| **Type**  | **Default / Example** | **Setter Extrinsic**| **Required Permission** | **Audience**|
-|---------------------------------------------------------------------------------------------------|----------|-----------------------------------|---------------------------------------------------------|-------------------------|-----------------------------------------|
-| [ActivityCutoff](#activitycutoff)  | `u16` | `5000` | `sudo_set_activity_cutoff`| sn_owner| Validators (Valis) |
-| [AdjustmentAlpha](#adjustmentalpha)| `int` | Unknown| `sudo_set_adjustment_alpha`  | sn_owner| Miners|
-| [AdjustmentInterval](#adjustmentinterval)| `u16` | `100`  | `sudo_set_adjustment_interval`  | root | Subnet Owner, Miners  |
-| [AlphaHigh](#alphahigh)| `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
-| [AlphaLow](#alphalow)  | `int` | N/A | `sudo_set_alpha_values`| sn_owner| N/A |
-| [BondsMovingAverage](#bondsmovingaverage)| `u64` | `900000`  | `sudo_set_bonds_moving_average`| sn_owner| Validators (Valis) |
-| [BondsPenalty](#bondspenalty)| `u16` | `0` | `sudo_set_bonds_penalty` | sn_owner| Validators (Valis) |
-| [Burn](#burn) | `u64` | `100000000000` (100 TAO) | *None* | *N/A*| *N/A*  |
-| [ColdkeySwapScheduleDuration](#coldkeyswapscheduleduration)| `int` | N/A | `sudo_set_coldkey_swap_schedule_duration`| root | N/A |
-| [CommitRevealPeriod](#commitrevealperiod)| `int` | N/A | `sudo_set_commit_reveal_weights_interval`| sn_owner| Subnet Owner, Validators|
-| [CommitRevealWeightsEnabled](#commitrevealweightsenabled)  | `bool`| `false` (example)  | `sudo_set_commit_reveal_weights_enabled` | sn_owner| Subnet Owner, Validators|
-| [Difficulty](#difficulty) | `u64` | `671088640000000` | `sudo_set_difficulty` | root | Subnet Owner, Miners  |
-| [DissolveNetworkScheduleDuration](#dissolvenetworkscheduleduration) | `int` | N/A | `sudo_set_dissolve_network_schedule_duration`  | root | N/A |
-| [EmissionValue](#emissionvalue) | `u64` | `857777000`  | *None* | *N/A*| *N/A*  |
-| [EvmChainId](#evmchainid) | `int` | N/A | `sudo_set_evm_chain_id`  | root | EVM users |
-| [HotkeyEmissionTempo](#hotkeyemissiontempo) | `int` | N/A | `sudo_set_hotkey_emission_tempo`  | root | N/A |
-| [ImmunityPeriod](#immunityperiod)  | `u16` | `4096` | `sudo_set_immunity_period`  | sn_owner| Miners|
-| [Issuance](#issuance)  | `u64` | `0` | *None* | *N/A*| *N/A*  |
-| [Kappa](#kappa)  | `u16` | `32767`| `sudo_set_kappa`| sn_owner| Validators, Miners  |
-| [LiquidAlphaEnabled](#liquidalphaenabled)| `bool`| `false` (example)  | `sudo_set_liquid_alpha_enabled`| sn_owner| N/A |
-| [LockReductionInterval](#lockreductioninterval)| `int` | N/A | `sudo_set_lock_reduction_interval`| root | N/A |
-| [MaxAllowedUids](#maxalloweduids)  | `u16` | `4096` | `sudo_set_max_allowed_uids` | root | Subnet Owner |
-| [MaxAllowedValidators](#maxallowedvalidators)  | `u16` | `128`  | `sudo_set_max_allowed_validators` | root | Subnet Owner, Potential Validators|
-| [MaxBurn](#maxburn) | `u64` | `21000000000000000` (21M TAO)  | `sudo_set_max_burn`  | sn_owner| Miners|
-| [MaxDifficulty](#maxdifficulty) | `u64` | `u64::MAX / 4`  | `sudo_set_max_difficulty`  | sn_owner| Miners|
-| [MaxRegistrationsPerBlock](#maxregistrationsperblock)| `u16` | `1` | `sudo_set_max_registrations_per_block`  | root | N/A |
-| [MaxWeightLimit](#maxweightlimit)  | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner| Validators|
-| [MinAllowedWeights](#minallowedweights)  | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner| Validators|
-| [MinBurn](#minburn) | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root | Subnet Owner, Miners  |
-| [MinDifficulty](#mindifficulty) | `u64` | `10000000`| `sudo_set_min_difficulty`  | root | Subnet Owner, Miners  |
-| [NetworkMaxStake](#networkmaxstake)| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
-| [NetworkMinLockCost](#networkminlockcost)| `int` | N/A | `sudo_set_network_min_lock_cost`  | root | Potential Subnet Owners  |
-| [NetworkPowRegistrationAllowed](#networkpowregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_pow_registration_allowed`| sn_owner| Miners|
-| [NetworkRateLimit](#networkratelimit) | `int` | N/A | `sudo_set_network_rate_limit`  | root | Potential Subnet Owners  |
-| [NetworkRegistrationAllowed](#networkregistrationallowed)  | `bool`| `true` (example)| `sudo_set_network_registration_allowed` | sn_owner| Miners|
-| [NominatorMinRequiredStake](#nominatorminrequiredstake) | `int` | N/A | `sudo_set_nominator_min_required_stake` | root | Validators, Stakers|
-| [PruningScore](#pruningscore)| `u16` | `65535` (u16::MAX) | *None* | *N/A*| *N/A*  |
-| [Rho](#rho)| `u16` | `10`| `sudo_set_rho`  | sn_owner| Validators, Miners  |
-| [ScalingLawPower](#scalinglawpower)| `u16` | `50` | *None* | *N/A*| *N/A*  |
-| [ScheduleGrandpaChange](#schedulegrandpachange)| *N/A* | N/A | `schedule_grandpa_change`| root | Root|
-| [ServingRateLimit](#servingratelimit) | `u64` | `250`  | `sudo_set_serving_rate_limit`  | root/sn_owner | Miners|
-| [StakeThreshold](#stakethreshold)  | `int` | N/A | `sudo_set_stake_threshold`  | root | Validators|
-| [SubnetLimit](#subnetlimit)  | `int` | N/A | `sudo_set_subnet_limit`  | root | Potential Subnet Owners  |
-| [SubnetMovingAlpha](#subnetmovingalpha)  | `int` | N/A | `sudo_set_subnet_moving_alpha` | root | N/A |
-| [SubnetOwnerCut](#subnetownercut)  | `int` | N/A | `sudo_set_subnet_owner_cut` | root | Subnet Owners|
-| [SynergyScalingLawPower](#synergyscalinglawpower) | `u16` | `50` | *None* | *N/A*| *N/A*  |
-| [TargetRegistrationsPerInterval](#targetregistrationsperinterval)| `u16` | `2` | `sudo_set_target_registrations_per_interval`  | root | Subnet Owner, Miners  |
-| [TargetStakesPerInterval](#targetstakesperinterval)  | `int` | N/A | `sudo_set_target_stakes_per_interval`| root | Stakers|
-| [Tempo](#tempo)  | `u16` | `99`| `sudo_set_tempo`| root | Subnet Owners|
-| [ToggleTransfer](#toggletransfer)  | `bool`| `true` (example)| `sudo_set_toggle_transfer`  | sn_owner| Subnet Owner, Stakers |
-| [TxDelegateTakeRateLimit](#txdelegatetakeratelimit)  | `int` | N/A | `sudo_set_tx_delegate_take_rate_limit`  | root | Validators, Stakers|
-| [TxRateLimit](#txratelimit)  | `int` | N/A | `sudo_set_tx_rate_limit` | root | Depends on usage category|
-| [ValidatorBatchSize](#validatorbatchsize)| `u16` | `32`| *None* | *N/A*| *N/A*  |
-| [ValidatorEpochLen](#validatorepochlen)  | `u16` | `250`  | *None* | *N/A*| *N/A*  |
-| [ValidatorEpochsPerReset](#validatorepochsperreset)  | `u16` | `60`| *None* | *N/A*| *N/A*  |
-| [ValidatorExcludeQuantile](#validatorexcludequantile)| `u16` | `3277` (~5% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
-| [ValidatorLogitsDivergence](#validatorlogitsdivergence) | `u16` | `1310` (~2% of `u16::MAX`)  | *None* | *N/A*| *N/A*  |
-| [ValidatorPruneLen](#validatorprunelen)  | `u64` | `1` | *None* | *N/A*| *N/A*  |
-| [ValidatorSequenceLen](#validatorsequencelen)  | `u16` | `256`  | *None* | *N/A*| *N/A*  |
-| [WeightsRateLimit](#weightsratelimit) | `u64` | `250`  | `sudo_set_weights_set_rate_limit` | sn_owner| Validators|
-| [WeightsVersion](#weightsversion)  | `u64` | `400`  | `sudo_set_weights_version_key` | sn_owner| Validators|
-
----
-
-## Hyperparameter Descriptions
-
-Below are individual descriptions for each hyperparameter, listed in the same order as in the table above.
 
 ### ActivityCutoff
-- **Description**: Activity cutoff threshold. Nodes with an activity score below this may be pruned.
+- **Description**:
 
 ### AdjustmentAlpha
-- **Description**: Alpha parameter for difficulty or emission adjustments.
+- **Description**:
 
 ### AdjustmentInterval
-- **Description**: Interval (in blocks) at which difficulty or other dynamic parameters are adjusted.
+- **Description**:
 
 ### AlphaHigh
-- **Description**: High bound for the “liquid alpha” mechanism.
+- **Description**:
 
 ### AlphaLow
-- **Description**: Low bound for the “liquid alpha” mechanism.
+- **Description**:
 
 ### BondsMovingAverage
-- **Description**: Moving average factor applied to bonding weights.
+- **Description**:
 
 ### BondsPenalty
-- **Description**: Penalty factor for bonding. Higher penalty may reduce bond-based rewards.
+- **Description**:
 
 ### Burn
-- **Description**: Typical burn value (e.g., 100 TAO). This is not currently set via an extrinsic.
+- **Description**:
 
 ### ColdkeySwapScheduleDuration
-- **Description**: Number of blocks (duration) for coldkey swap schedules (if used).
+- **Description**:
 
 ### CommitRevealPeriod
-- **Description**: Interval (in blocks) for the commit-reveal weights scheme (if enabled).
+- **Description**:
 
 ### CommitRevealWeightsEnabled
-- **Description**: If `true`, validators must commit weights, then reveal them after a set period.
+- **Description**:
 
 ### Difficulty
-- **Description**: Base PoW difficulty for miners/hotkeys when registering via PoW.
+- **Description**:
 
 ### DissolveNetworkScheduleDuration
-- **Description**: Number of blocks (duration) for dissolving a network or subnet.
+- **Description**:
 
 ### EmissionValue
-- **Description**: Emission value parameter (if used in token issuance).
+- **Description**:
 
 ### EvmChainId
-- **Description**: Chain ID for EVM compatibility. Typically set once and never changed.
+- **Description**:
 
 ### HotkeyEmissionTempo
-- **Description**: Interval or “tempo” for hotkey-based emission schedules (if supported).
+- **Description**:
 
 ### ImmunityPeriod
-- **Description**: Number of blocks that newly registered hotkeys are immune to pruning or difficulty changes.
+- **Description**:
 
 ### Issuance
-- **Description**: Global issuance setting (if used for token issuance).
+- **Description**:
 
 ### Kappa
-- **Description**: Factor used in certain block emission or difficulty scaling calculations.
+- **Description**:
 
 ### LiquidAlphaEnabled
-- **Description**: Toggles the “liquid alpha” parameter adjustments.
+- **Description**:
 
 ### LockReductionInterval
-- **Description**: Interval at which required locked stake can be gradually reduced.
+- **Description**:
 
 ### MaxAllowedUids
-- **Description**: Maximum number of UIDs (hotkeys) allowed to register in the subnet.
+- **Description**:
 
 ### MaxAllowedValidators
-- **Description**: Maximum number of validator hotkeys.
+- **Description**:
 
 ### MaxBurn
-- **Description**: Maximum burn allowed in a burn-based registration scenario.
+- **Description**:
 
 ### MaxDifficulty
-- **Description**: Upper bound for PoW difficulty in subnet registration.
+- **Description**:
 
 ### MaxRegistrationsPerBlock
-- **Description**: Limit of how many new registrations can happen within a single block.
+- **Description**:
 
 ### MaxWeightLimit
-- **Description**: Maximum weight limit (scaled factor) a validator can set.
+- **Description**:
 
 ### MinAllowedWeights
-- **Description**: Minimum number of weights that a validator must set.
+- **Description**:
 
 ### MinBurn
-- **Description**: Minimum required burn (e.g., 1 TAO) to register via burn.
+- **Description**:
 
 ### MinDifficulty
-- **Description**: Lower bound for PoW difficulty in the subnet.
+- **Description**:
 
 ### NetworkMaxStake
-- **Description**: Maximum stake allowed in the network (if enforced).
+- **Description**:
 
 ### NetworkMinLockCost
-- **Description**: Minimum lock cost for network creation or participation.
+- **Description**:
 
 ### NetworkPowRegistrationAllowed
-- **Description**: Whether PoW-based registration is permitted in this subnet.
+- **Description**:
 
 ### NetworkRateLimit
-- **Description**: Rate limit for network-level extrinsics or usage.
+- **Description**:
 
 ### NetworkRegistrationAllowed
-- **Description**: Whether new (non-PoW) registrations are allowed on this subnet.
+- **Description**:
 
 ### NominatorMinRequiredStake
-- **Description**: Minimum stake required by nominators.
+- **Description**:
 
 ### PruningScore
-- **Description**: Score threshold above which nodes are pruned. Set internally, not user-editable.
+- **Description**:
 
 ### Rho
-- **Description**: Rho factor for block emission or difficulty scaling.
+- **Description**:
 
 ### ScalingLawPower
-- **Description**: Exponent used for synergy/emission scaling (e.g., 0.5 if stored as 50 in `u16`).
+- **Description**:
 
 ### ScheduleGrandpaChange
-- **Description**: Schedules a GRANDPA authority change (not a hyperparameter per se, but an extrinsic).
+- **Description**:
 
 ### ServingRateLimit
-- **Description**: Rate limit for serving requests (e.g., forward/backward calls).
+- **Description**:
 
 ### StakeThreshold
-- **Description**: Minimum threshold stake to become a validator or maintain validator status.
+- **Description**:
 
 ### SubnetLimit
-- **Description**: Maximum number of subnets that can be created.
+- **Description**:
 
 ### SubnetMovingAlpha
-- **Description**: “Moving alpha” factor for dynamically adjusting subnet parameters.
+- **Description**:
 
 ### SubnetOwnerCut
-- **Description**: Cut or portion of rewards/fees allocated to the subnet owner.
+- **Description**:
 
 ### SynergyScalingLawPower
-- **Description**: Exponent specifically for synergy scaling, parallel to `ScalingLawPower`.
+- **Description**:
 
 ### TargetRegistrationsPerInterval
-- **Description**: Target number of registrations per difficulty/emission adjustment interval.
+- **Description**:
 
 ### TargetStakesPerInterval
-- **Description**: Target number of staked positions or delegations within each interval.
+- **Description**:
 
 ### Tempo
-- **Description**: Network “tempo,” typically relating to block timing or intervals.
+- **Description**:
 
 ### ToggleTransfer
-- **Description**: Whether token transfers are enabled in the subnet.
+- **Description**:
 
 ### TxDelegateTakeRateLimit
-- **Description**: Rate limit for changes to delegate “take” percentages.
+- **Description**:
 
 ### TxRateLimit
-- **Description**: Network transaction rate limit.
+- **Description**:
 
 ### ValidatorBatchSize
-- **Description**: Batch size for validator calls or checks (e.g., forward calls).
+- **Description**:
 
 ### ValidatorEpochLen
-- **Description**: Number of blocks in each validator epoch.
+- **Description**:
 
 ### ValidatorEpochsPerReset
-- **Description**: Number of epochs before a reset occurs (e.g., to remove stale states).
+- **Description**:
 
 ### ValidatorExcludeQuantile
-- **Description**: Quantile threshold for excluding underperforming validators.
+- **Description**:
 
 ### ValidatorLogitsDivergence
-- **Description**: Divergence threshold for validator logits or scores.
+- **Description**:
 
 ### ValidatorPruneLen
-- **Description**: How many blocks (or epochs) after which validator pruning is triggered.
+- **Description**:
 
 ### ValidatorSequenceLen
-- **Description**: Sequence length for validator queries.
+- **Description**:
 
 ### WeightsRateLimit
-- **Description**: Rate limit for setting validator weights.
+- **Description**:
 
 ### WeightsVersion
-- **Description**: Version key for submitted weights to prevent replay or stale weights.
+- **Description**:
 
 
 
-
-## Scrable of Hyperparameters
-
-| **Name**  | **Type** | **Default / Example** | **Description**| **Setter Extrinsic**  | **Required Permission** | **Audience**  |
-|-------------------------------|---------:|--------------------------------------|---------------------------------------------------------------------|------------------------------------------------------|-------------------------|-----------------------------------------|
-| **ActivityCutoff** |`u16`  | `5000` | Activity cutoff threshold. Nodes with lower activity may be pruned. | `sudo_set_activity_cutoff` | sn_owner| Validators (Valis)  |
-| **AdjustmentAlpha**|`int`  | Unknown| Alpha parameter for difficulty/adjustment tuning. | `sudo_set_adjustment_alpha`| sn_owner| Miners|
-| **AdjustmentInterval**  |`u16`  | `100`  | Interval (in blocks) at which difficulty adjustments are made. | `sudo_set_adjustment_interval`  | root | Subnet Owner, Miners|
-| **AlphaHigh** |`int`  | N/A | High bound for “liquid alpha” mechanism.| `sudo_set_alpha_values` | sn_owner| N/A  |
-| **AlphaLow**  |`int`  | N/A | Low bound for “liquid alpha” mechanism. | `sudo_set_alpha_values` | sn_owner| N/A  |
-| **BondsMovingAverage**  |  `u64`| `900000` | Moving average applied to bonding weights. | `sudo_set_bonds_moving_average`| sn_owner| Validators (Valis)  |
-| **BondsPenalty**|`u16`  | `0` | Penalty factor in bonding weights calculation.  | `sudo_set_bonds_penalty`  | sn_owner| Validators (Valis)  |
-| **Burn** |  `u64`| `100000000000` (100 TAO)| Fixed burn (if used); not currently exposed in extrinsics.| *None* | *N/A*| *N/A*|
-| **ColdkeySwapScheduleDuration** | `int` | N/A | Duration for the coldkey swap schedule (if enabled). | `sudo_set_coldkey_swap_schedule_duration` | root | N/A  |
-| **CommitRevealPeriod**  |`int`  | N/A | Interval (in blocks) for commit-reveal weights scheme. | `sudo_set_commit_reveal_weights_interval` | sn_owner| Subnet Owner, Validators |
-| **CommitRevealWeightsEnabled** | `bool` | `false` (example)| Enables the commit-reveal weight update mechanism.| `sudo_set_commit_reveal_weights_enabled`  | sn_owner| Subnet Owner, Validators |
-| **Difficulty**|  `u64`| `671088640000000`| Base PoW difficulty for registration. | `sudo_set_difficulty`| root | Subnet Owner, Miners|
-| **DissolveNetworkScheduleDuration** | `int` | N/A | Blocks until a “dissolve network” schedule completes.| `sudo_set_dissolve_network_schedule_duration`  | root | N/A  |
-| **EmissionValue**  |  `u64`| `857777000` | Emission value parameter (if used in token issuance).| *None* | *N/A*| *N/A*|
-| **EvmChainId**|`int`  | N/A | Chain ID for EVM compatibility. Typically not changed. | `sudo_set_evm_chain_id`| root | EVM users |
-| **HotkeyEmissionTempo** |`int`  | N/A | Tempo (interval) for hotkey-based emission (if implemented).| `sudo_set_hotkey_emission_tempo` | root | N/A  |
-| **ImmunityPeriod** |`u16`  | `4096` | Period (in blocks) that newly registered hotkeys are immune.| `sudo_set_immunity_period`| sn_owner| Miners|
-| **Issuance**  |  `u64`| `0` | Global issuance setting (if used). | *None* | *N/A*| *N/A*|
-| **Kappa**|`u16`  | `32767`| Kappa factor for block emission or difficulty scaling. | `sudo_set_kappa`| sn_owner| Validators, Miners|
-| **LiquidAlphaEnabled**  |  `bool`  | `false` (example)| Toggles “liquid alpha” mechanism.| `sudo_set_liquid_alpha_enabled`| sn_owner| N/A  |
-| **LockReductionInterval** |`int`  | N/A | Interval for gradually reducing locked stake requirements.| `sudo_set_lock_reduction_interval`  | root | N/A  |
-| **MaxAllowedUids**|`u16`  | `4096` | Maximum number of UIDs (hotkeys) allowed in the subnet.| `sudo_set_max_allowed_uids` | root | Subnet Owner|
-| **MaxAllowedValidators**|`u16`  | `128`  | Maximum number of validator hotkeys.  | `sudo_set_max_allowed_validators`| root | Subnet Owner, Potential Validators |
-| **MaxBurn**|  `u64`| `21000000000000000` (21M TAO)| Maximum burn allowed for PoW or other burns.| `sudo_set_max_burn` | sn_owner| Miners|
-| **MaxDifficulty**  |  `u64`| `u64::MAX / 4`| Maximum difficulty limit.| `sudo_set_max_difficulty`| sn_owner| Miners|
-| **MaxRegistrationsPerBlock** |`u16`  | `1` | Max # of new registrations in one block.| `sudo_set_max_registrations_per_block`| root | N/A  |
-| **MaxWeightLimit** |`u16`  | `655`  | Max weight limit (scaled factor for validator weights).| `sudo_set_max_weight_limit` | sn_owner| Validators|
-| **MinAllowedWeights**|`u16`  | `50`| Minimum number of weights a validator must set. | `sudo_set_min_allowed_weights` | sn_owner| Validators|
-| **MinBurn**|  `u64`| `1000000000` (1 TAO)  | Minimum burn required (e.g., to register via burn).  | `sudo_set_min_burn` | root | Subnet Owner, Miners|
-| **MinDifficulty**  |  `u64`| `10000000`  | Minimum difficulty for PoW-based registrations. | `sudo_set_min_difficulty`| root | Subnet Owner, Miners|
-| **NetworkMaxStake**|`int`  | N/A | Maximum stake allowed network-wide (if enforced). | `sudo_set_network_max_stake`| root | N/A  |
-| **NetworkMinLockCost**  |`int`  | N/A | Minimum lock cost for network creation or participation.  | `sudo_set_network_min_lock_cost` | root | Potential Subnet Owners  |
-| **NetworkPowRegistrationAllowed** | `bool` | `true` (example) | Whether PoW-based registrations are allowed. | `sudo_set_network_pow_registration_allowed`| sn_owner| Miners|
-| **NetworkRateLimit** |`int`  | N/A | Global rate limit for network extrinsics/usage. | `sudo_set_network_rate_limit`  | root | Potential Subnet Owners  |
-| **NetworkRegistrationAllowed** (formerly *RegistrationAllowed*) | `bool` | `true` (example) | Whether new registrations (non-PoW) are allowed on this subnet.| `sudo_set_network_registration_allowed`  | sn_owner| Miners|
-| **NominatorMinRequiredStake** |  `int`  | N/A | Minimum stake required by nominators. | `sudo_set_nominator_min_required_stake`  | root | Validators, Stakers |
-| **PruningScore**|`u16`  | `65535` (u16::MAX) | Score threshold for pruning.| *None* | *N/A*| *N/A*|
-| **Rho**  |`u16`  | `10`| Rho factor for block emission or difficulty scaling. | `sudo_set_rho`  | sn_owner| Validators, Miners|
-| **ScalingLawPower**|`u16`  | `50` (represents 0.5 if scaled) | Exponent for synergy or emission scaling.  | *None* | *N/A*| *N/A*|
-| **ScheduleGrandpaChange** | *N/A* | N/A | Schedules a GRANDPA authority change (not a param).  | `schedule_grandpa_change` | root | Root |
-| **ServingRateLimit** |  `u64`| `250`  | Rate limit for serving requests (e.g. forward or backward calls). | `sudo_set_serving_rate_limit`  | root or sn_owner  | Miners|
-| **StakeThreshold** |`int`  | N/A | Threshold stake required to participate (if enforced).| `sudo_set_stake_threshold`| root | Validators|
-| **SubnetLimit** |`int`  | N/A | Maximum number of subnets.  | `sudo_set_subnet_limit`| root | Potential Subnet Owners  |
-| **SubnetMovingAlpha**|`int`  | N/A | “Moving alpha” for dynamic subnet param adjustment.  | `sudo_set_subnet_moving_alpha` | root | N/A  |
-| **SubnetOwnerCut** |`int`  | N/A | The “cut” or portion for subnet owners on fees/rewards.  | `sudo_set_subnet_owner_cut` | root | Subnet Owners  |
-| **SynergyScalingLawPower**|`u16`  | `50` (represents 0.5 if scaled) | Exponent for synergy scaling. | *None* | *N/A*| *N/A*|
-| **TargetRegistrationsPerInterval** | `u16`| `2` | Target # of registrations per adjustment interval.| `sudo_set_target_registrations_per_interval`  | root | Subnet Owner, Miners|
-| **TargetStakesPerInterval**  |`int`  | N/A | Target # of stake increases/delegations per interval.| `sudo_set_target_stakes_per_interval` | root | Stakers|
-| **Tempo**|`u16`  | `99`| Network “tempo” in block intervals (e.g. block time multiplier). | `sudo_set_tempo` | root | Subnet Owners  |
-| **ToggleTransfer** |  `bool`  | `true` (example) | Toggles token transfers in the subnet on/off.| `sudo_set_toggle_transfer`| sn_owner| Subnet Owner, Stakers |
-| **TxDelegateTakeRateLimit**  |`int`  | N/A | Rate limit for delegate “take” updates. | `sudo_set_tx_delegate_take_rate_limit`| root | Validators, Stakers |
-| **TxRateLimit** |`int`  | N/A | Network transaction rate limit.  | `sudo_set_tx_rate_limit`  | root | Depends on usage category|
-| **ValidatorBatchSize**  |`u16`  | `32`| Batch size for validator queries (e.g. forward calls). | *None* | *N/A*| *N/A*|
-| **ValidatorEpochLen**|`u16`  | `250`  | Blocks per validator epoch. | *None* | *N/A*| *N/A*|
-| **ValidatorEpochsPerReset**  |`u16`  | `60`| # of epochs per reset cycle for validators.| *None* | *N/A*| *N/A*|
-| **ValidatorExcludeQuantile** |`u16`  | `3277` (~5% of `u16::MAX`) | Quantile threshold for validator exclusion.| *None* | *N/A*| *N/A*|
-| **ValidatorLogitsDivergence**|`u16`  | `1310` (~2% of `u16::MAX`) | Divergence threshold for validator logits. | *None* | *N/A*| *N/A*|
-| **ValidatorPruneLen**|`u64`  | `1` | Number of blocks/epochs after which pruning is triggered. | *None* | *N/A*| *N/A*|
-| **ValidatorSequenceLen**|`u16`  | `256`  | Sequence length for validator queries or updates. | *None* | *N/A*| *N/A*|
-| **WeightsRateLimit** |  `u64`| `250`  | Rate limit for setting validator weights.  | `sudo_set_weights_set_rate_limit`| sn_owner| Validators|
-| **WeightsVersion** |  `u64`| `400`  | Version key for weights (prevents stale weight submissions).| `sudo_set_weights_version_key` | sn_owner| Validators|
-
----
-
-## Notes
-
-1. **Editable vs. Non-Editable**  
-Many parameters have a corresponding `sudo_set_*` extrinsic. Those without any listed extrinsic may be read-only or not yet exposed for editing.
-
-2. **Permissions**  
-- **root**: Full-chain access (often associated with the governance root/sudo account).
-- **sn_owner**: Owner (or controller) of a specific subnet.
-
-3. **Audience**  
-- **Miners**: Parties primarily affected in PoW-based registrations or mining operations.  
-- **Validators (Valis)**: Nodes involved in the validation and weighting process.  
-- **Subnet Owners (sn_owners)**: Entities that created or manage subnets.  
-- **Potential Subnet Owners**: Anyone interested in creating new subnets or controlling them.  
-- **Stakers**: Parties that stake tokens or nominate validators.  
-
-4. **Additional Hyperparameters**  
-Some extrinsics, such as `sudo_set_default_take` or `sudo_set_subnet_owner_cut`, may govern additional economics or reward distribution parameters not explicitly detailed in the snippet above. Where a parameter is not shown in the table, it may be network-specific, newly introduced, or simply not documented here.
-
-5. **Getting Current Values**  
-To view the current hyperparameter values for a subnet, use:
-```bash
-btcli subnet hyperparameters
-```
-Then select the appropriate `netuid` (subnet ID).
-
-6. **Setting Hyperparameters**  
-To set any hyperparameter that **is** editable, you typically use:
-```bash
-btcli sudo set ...
-```
-which will internally call the relevant `sudo_set_*` extrinsic, assuming you have the required permissions.
-
----
-
-### Quick Examples
-
-- **Setting `MaxWeightLimit`** (as `sn_owner`):
-  ```bash
-  btcli sudo set --key <sn_owner_key> --netuid <subnet_id> max_weight_limit 700
-  ```
-- **Setting `Tempo`** (as `root`):
-  ```bash
-  btcli sudo set --key <root_key> --netuid <subnet_id> tempo 120
-  ```
-
-(Ensure your wallet/key has the proper on-chain privileges: `root` or `sn_owner`.)
-
----
-
-
-# Setter Extrinsics
+## Setter Extrinsics
 
 /// =============// required permissions; audience
 swap_authorities // root; root
