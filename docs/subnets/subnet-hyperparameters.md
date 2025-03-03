@@ -47,7 +47,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### AdjustmentAlpha ???](#adjustmentalpha)
+### AdjustmentAlpha ???
 
 
 **Type**: ???
@@ -68,7 +68,7 @@ btcli sudo set
 	- Subnet creators
 
 
-### AdjustmentInterval](#adjustmentinterval)   
+### AdjustmentInterval
 
 
 **Type**: ???
@@ -109,7 +109,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### AlphaLow ???](#alphalow) 
+### AlphaLow ???
 
 **Type**: ???
 
@@ -128,7 +128,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### BondsMovingAverage](#bondsmovingaverage)
+### BondsMovingAverage
 
 **Type**: ???
 
@@ -147,7 +147,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### BondsPenalty](#bondspenalty)
+### BondsPenalty
 
 **Type**: ???
 
@@ -185,7 +185,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### ColdkeySwapScheduleDuration](#coldkeyswapscheduleduration)
+### ColdkeySwapScheduleDuration
 
 **Type**: ???
 
@@ -204,7 +204,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### CommitRevealPeriod](#commitrevealperiod)
+### CommitRevealPeriod
 
 **Type**: ???
 
@@ -242,7 +242,7 @@ btcli sudo set
 	- Validators
 	- Subnet creators
 
-### Difficulty](#difficulty)
+### Difficulty
 
 
 **Type**: ???
@@ -348,7 +348,7 @@ btcli sudo set
 
  `sudo_set_hotkey_emission_tempo`  | root 
 
-### ImmunityPeriod](#immunityperiod) 
+### ImmunityPeriod
 
 
 
@@ -420,8 +420,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 
 
-### LiquidAlphaEnabled](#liquidalphaenabled)
-
+### LiquidAlphaEnabled
 
 
 **Type**: ???
