@@ -101,15 +101,16 @@ const sidebars = {
         "tutorials/ocr-subnet-tutorial",
       ],
     },
-
         {
           type: "category",
           label: "BTCLI: The Bittensor CLI",
           collapsible: true,
           collapsed: true,
+          link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
             "btcli",
+            "staking-and-delegation/managing-stake-btcli",
           ]
         },
         {
