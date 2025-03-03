@@ -43,7 +43,7 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -59,7 +59,7 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -76,7 +76,7 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -93,9 +93,9 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+Alpha is this decay-over-time factor thingy in [yuma](./yuma-consensus#bonding-mechanics) ??? And I guess the high and low is the range for liquid alpha?
 
 ### AlphaLow ???
 
@@ -109,7 +109,7 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -125,8 +125,11 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
+This has something to do with this but exactly what ???
+
+ [Yuma Consensus: bonding mechanics](yuma-consensus#bonding-mechanics) ???
 
 
 ### BondsPenalty
@@ -141,8 +144,8 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
-
+**Description**:
+This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-consensus bonds](yuma-consensus#penalizing-out-of-consensus-bonds) ???
 
 
 ### Burn
@@ -157,8 +160,9 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
+???
 
 
 ### ColdkeySwapScheduleDuration
@@ -173,9 +177,9 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+???
 
 ### CommitRevealPeriod
 
@@ -189,9 +193,11 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
+This is how long the consensus weights for a subnet remain time-lock encrypted, preventing weight-copying on that time-scale.
 
+See [Commit Reveal](./subnets/commit-reveal)
 
 ### CommitRevealWeightsEnabled
 
@@ -205,8 +211,8 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator
 
-**Description (who needs to know what?)**:
-
+**Description**:
+ Enables [Commit Reveal](./subnets/commit-reveal)
 
 
 ### Difficulty
@@ -222,9 +228,9 @@ btcli sudo set
 
 **Permissions required to set**: Subnet Creator
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+Measure of the POW requirement for POW registration for miners on subnets. Need to clarify ???
 
 ### DissolveNetworkScheduleDuration
 
@@ -239,9 +245,9 @@ btcli sudo set
 
 **Permissions required to set**: root
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+???
 
 ### EmissionValue
 
@@ -256,9 +262,9 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+???
 
 ### EvmChainId
 
@@ -273,9 +279,9 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+???
 
 
  `sudo_set_evm_chain_id`  | root 
@@ -294,7 +300,7 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -314,7 +320,10 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
+
+
+How long miners get to not be dereged for...
 
 
 
@@ -334,10 +343,10 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
-
+???
 
 ### Kappa
 
@@ -353,13 +362,13 @@ btcli sudo set
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
   | `u16` | `32767`| `sudo_set_kappa`|  ???
 
-the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-consensus)
+the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consensus)
 
 
 
@@ -376,9 +385,9 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: SN creator
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+enables [liquid alpha ](./consensus-based-weights)
 
 
 ### LockReductionInterval
@@ -395,9 +404,9 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
-
+???
 
 `sudo_set_lock_reduction_interval`| root 
 
@@ -415,7 +424,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -435,7 +444,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -455,7 +464,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -475,7 +484,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -495,7 +504,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -515,7 +524,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -535,7 +544,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -555,7 +564,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -575,7 +584,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -595,7 +604,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -615,7 +624,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -635,7 +644,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -655,7 +664,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -673,7 +682,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -693,7 +702,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -713,7 +722,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -732,7 +741,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -752,7 +761,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -771,7 +780,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -790,7 +799,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -809,7 +818,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -828,7 +837,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -847,7 +856,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -866,7 +875,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -885,7 +894,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -904,7 +913,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -923,7 +932,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -942,7 +951,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -961,7 +970,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -980,7 +989,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -999,7 +1008,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1018,7 +1027,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1036,7 +1045,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1053,7 +1062,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1070,7 +1079,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1088,7 +1097,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1105,7 +1114,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1123,7 +1132,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
@@ -1141,7 +1150,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
  
 
@@ -1158,7 +1167,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Permissions required to set**: ???
 
-**Description (who needs to know what?)**:
+**Description**:
 
 
 
