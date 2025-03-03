@@ -1,5 +1,5 @@
 ---
-title: "Consensus-based Weights"
+title: "Consensus-based Weights/Liquid alpha"
 ---
 
 # Consensus-based Weights

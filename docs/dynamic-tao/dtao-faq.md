@@ -22,7 +22,8 @@ But far more alpha than TAO is emitted into circulation every block. As a result
 
 In order to hasten the process of alpha gaining the majority of stake power in the network, the contribution of TAO stake to validator stake weight is reduced by a global parameter called *TAO weight*. Currently, this is planned to be **18%**, in order to achieve a weight parity between TAO and total alpha in approximately 100 days.
 
-See [Emission in Dynamic TAO](./emission.md)
+See [Emissions](../emissions.md)
+
 <center>
 <ThemedImage
 alt="Curves"
@@ -64,7 +65,7 @@ Held stake (alpha tokens) may increase or decrease in TAO value as the price of 
 	
 **Network-wide Impact**: Your stake contributes weight across all subnets where your validator operates. This means your stake extracts emissions from multiple subnets simultaneously. See [Validator stake weight](dtao-guide#validator-stake-weight) for more details.
 
-**Proportional emission and TAO weight**: TAO and alpha are emitted to a validator's stakers in proportion to the validators' holdings in each token. See [Emission in Dynamic TAO: Extraction](./emission.md#extraction)
+**Proportional emission and TAO weight**: TAO and alpha are emitted to a validator's stakers in proportion to the validators' holdings in each token. See [Emission in Dynamic TAO: Extraction](../emissions.md#extraction)
 
 ### Can users transfer alpha tokens (subnet tokens)?
 
@@ -111,7 +112,7 @@ Currently, the protocol does not automatically deregister subnets. Abandoned sub
 
 **No**. Emissions are calculated by protocol logic (e.g., in `run_coinbase.rs`) and are based on network-wide parameters. Subnet founders cannot arbitrarily print tokens&mdash;emission follows the same consistent rules across all subnets.
 
-See [Emissions in Dynamic TAO](./emission.md)
+See [Emissions in Dynamic TAO](../emissions.md)
 
 ### What happens to previously locked registration costs from pre-Dynamic-TAO subnets?
 
