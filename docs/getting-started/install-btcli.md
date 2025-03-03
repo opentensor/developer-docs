@@ -25,7 +25,7 @@ Check for the latest release at the Python Package Index: [https://pypi.org/proj
 Use pip to install the desired version:
 
 ```shell
-pip install bittensor-cli==<VERSION>
+pip install bittensor-cli==9.1.0 # Use latest or desired version
 ```
 
 Verify your installation and its version by running:
