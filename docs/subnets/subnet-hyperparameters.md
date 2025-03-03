@@ -95,7 +95,7 @@ btcli sudo set
 
 **Description**:
 
-Alpha is this decay-over-time factor thingy in [yuma](./yuma-consensus#bonding-mechanics) ??? And I guess the high and low is the range for liquid alpha?
+Alpha is this decay-over-time factor thingy in [yuma](../yuma-consensus#bonding-mechanics) ??? And I guess the high and low is the range for liquid alpha?
 
 ### AlphaLow ???
 
@@ -129,7 +129,7 @@ Alpha is this decay-over-time factor thingy in [yuma](./yuma-consensus#bonding-m
 
 This has something to do with this but exactly what ???
 
- [Yuma Consensus: bonding mechanics](yuma-consensus#bonding-mechanics) ???
+ [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics) ???
 
 
 ### BondsPenalty
@@ -145,7 +145,7 @@ This has something to do with this but exactly what ???
 **Permissions required to set**: Subnet Creator ???
 
 **Description**:
-This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-consensus bonds](yuma-consensus#penalizing-out-of-consensus-bonds) ???
+This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penalizing-out-of-consensus-bonds) ???
 
 
 ### Burn
@@ -197,7 +197,7 @@ This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-conse
 
 This is how long the consensus weights for a subnet remain time-lock encrypted, preventing weight-copying on that time-scale.
 
-See [Commit Reveal](./subnets/commit-reveal)
+See [Commit Reveal](./commit-reveal)
 
 ### CommitRevealWeightsEnabled
 
@@ -212,7 +212,7 @@ See [Commit Reveal](./subnets/commit-reveal)
 **Permissions required to set**: Subnet Creator
 
 **Description**:
- Enables [Commit Reveal](./subnets/commit-reveal)
+ Enables [Commit Reveal](./commit-reveal)
 
 
 ### Difficulty
