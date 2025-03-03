@@ -431,6 +431,16 @@ btcli c metagraph [OPTIONS]
 * `--reset`: Restore the display of metagraph columns to show all columns.
 * `--help`: Show this message and exit.
 
+## `btcli view dashboard`
+
+Display html dashboard with subnets list, stake, and neuron information.
+
+**Usage**:
+
+```console
+btcli view dashboard
+```
+
 ## `btcli wallet`
 
 **Usage**:

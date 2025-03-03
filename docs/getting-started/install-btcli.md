@@ -20,6 +20,16 @@ For a full developer reference, see the [Bittensor CLI section](../btcli.md).
 
 You can install `btcli` on your local machine directly from source. **Make sure you verify your installation after you install**.
 
+### Install Python package 
+
+Check for the [latest release at the Python Package Index](https://pypi.org/project/bittensor-cli/).
+
+Run `pip install bittensor-cli==<VERSION>` to install the desired version.
+
+:::warning Update frequently!
+Check frequently to make sure you are using the latest version of `btcli`.
+:::
+
 ### Install from source
 :::warning For Ubuntu-Linux users
 If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
