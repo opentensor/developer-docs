@@ -36,7 +36,6 @@ Example output:
 ```console
 BTCLI version: 9.1.0
 ```
-
 :::warning Update frequently!
 Check frequently to make sure you are using the latest version of `btcli`.
 :::
