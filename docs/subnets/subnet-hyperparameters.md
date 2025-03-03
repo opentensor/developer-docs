@@ -45,13 +45,9 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### AdjustmentAlpha ???
-
 
 **Type**: ???
 
@@ -65,14 +61,10 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### AdjustmentInterval
-
 
 **Type**: ???
 
@@ -86,14 +78,10 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### AlphaHigh ???
-
 
 **Type**: ???
 
@@ -107,10 +95,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### AlphaLow ???
 
@@ -126,10 +111,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### BondsMovingAverage
 
@@ -145,10 +127,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### BondsPenalty
 
@@ -164,10 +143,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### Burn
 
@@ -183,10 +159,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### ColdkeySwapScheduleDuration
 
@@ -202,10 +175,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### CommitRevealPeriod
 
@@ -221,10 +191,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### CommitRevealWeightsEnabled
 
@@ -240,10 +207,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### Difficulty
 
@@ -260,10 +224,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### DissolveNetworkScheduleDuration
 
@@ -280,10 +241,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### EmissionValue
 
@@ -300,10 +258,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### EvmChainId
 
@@ -320,10 +275,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
  `sudo_set_evm_chain_id`  | root 
@@ -344,10 +296,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_hotkey_emission_tempo`  | root 
 
@@ -367,10 +316,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_immunity_period`  | sn_owner
 
@@ -390,10 +336,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### Kappa
@@ -412,10 +355,7 @@ btcli sudo set
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   | `u16` | `32767`| `sudo_set_kappa`|  ???
 
@@ -438,10 +378,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### LockReductionInterval
@@ -460,10 +397,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 `sudo_set_lock_reduction_interval`| root 
 
@@ -483,10 +417,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_max_allowed_uids` |
 
@@ -506,10 +437,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_max_allowed_validators` | root 
 
@@ -529,10 +457,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_max_burn`  | sn_owner
 
@@ -552,10 +477,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_max_difficulty`  | sn_owner
 
@@ -575,10 +497,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 | `u16` | `1` | `sudo_set_max_registrations_per_block`  | root 
 
@@ -598,10 +517,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner
 
@@ -621,10 +537,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner
 
@@ -644,10 +557,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root 
 
@@ -667,10 +577,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  | `u64` | `10000000`| `sudo_set_min_difficulty`  | root 
 
@@ -690,10 +597,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 | `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
 
@@ -713,10 +617,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 | `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
 
@@ -736,10 +637,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_network_pow_registration_allowed`| sn_owner
 
@@ -759,16 +657,11 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  | `int` | N/A | `sudo_set_network_rate_limit`  | root 
 
 ### NetworkRegistrationAllowed
-
-
 
 **Type**: ???
 
@@ -782,10 +675,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_network_registration_allowed` | sn_owner
 
@@ -805,10 +695,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  | `int` | N/A | `sudo_set_nominator_min_required_stake` | root
 
@@ -828,10 +715,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### Rho
@@ -850,10 +734,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_rho`  | sn_owner
 
@@ -873,10 +754,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 
@@ -895,10 +773,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `schedule_grandpa_change`| root 
 
@@ -917,10 +792,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_serving_rate_limit`  | root/sn_owner 
 
@@ -939,10 +811,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 `sudo_set_stake_threshold`  | root
 
@@ -961,10 +830,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
    `sudo_set_subnet_limit`  | root 
 
@@ -983,10 +849,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
    `sudo_set_subnet_moving_alpha` | root 
 
@@ -1005,10 +868,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
    `sudo_set_subnet_owner_cut` | root 
 
@@ -1027,10 +887,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  
 
@@ -1049,10 +906,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
  `sudo_set_target_registrations_per_interval`  | root 
 
@@ -1071,10 +925,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
    `sudo_set_target_stakes_per_interval`| root 
 
@@ -1093,10 +944,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_tempo`| root
 
@@ -1115,10 +963,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_toggle_transfer`  | sn_owner
 
@@ -1137,10 +982,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
   `sudo_set_tx_delegate_take_rate_limit`  | root 
 
@@ -1159,10 +1001,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
    `sudo_set_tx_rate_limit` | root 
 
@@ -1181,16 +1020,13 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### ValidatorEpochLen
 
 
-**Type**: ???
+**Type**: u16
 
 **Default**: ???
 
@@ -1202,17 +1038,12 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
 
-  | `u16` | `250`  | *None* | *N/A*| *N/A*  |
 
 ### ValidatorEpochsPerReset
 
 
-**Type**: ???
+**Type**: u16
 
 **Default**: ???
 
@@ -1224,12 +1055,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
 
-  | `u16` | `60`| *None* | *N/A*| *N/A*  |
 
 ### ValidatorExcludeQuantile
 
@@ -1246,10 +1072,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### ValidatorLogitsDivergence
@@ -1267,10 +1090,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 ### ValidatorPruneLen
 
@@ -1287,10 +1107,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### ValidatorSequenceLen
@@ -1308,10 +1125,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ### WeightsRateLimit
@@ -1329,10 +1143,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators 
+ 
 
 ### WeightsVersion
 
@@ -1349,10 +1160,7 @@ the consensus threshold, important but arcane... see [Yuma Consensus](../yuma-co
 
 **Description (who needs to know what?)**:
 
-	- Stakers
-	- Miners
-	- Validators
-	- Subnet creators
+
 
 
 ## Hyperparameters list (based on Python side)
