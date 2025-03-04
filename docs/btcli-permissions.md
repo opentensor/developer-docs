@@ -18,7 +18,7 @@ See also the `btcli` permissions guides for specific Bittensor personas:
 Other resources:
 
 - [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets)
-
+- [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
 
 ## Requirements for `btcli` functions
 
