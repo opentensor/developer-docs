@@ -3,7 +3,7 @@ title: "Subnet Hyperparameters"
 ---
 
 # Subnet Hyperparameters
-
+https://github.com/opentensor/subtensor/blob/5073ade602c367471f5124329b9d7ccf8e972d69/runtime/src/lib.rs#L1038
 
 ## Manage hyperparams with `btcli`
 
@@ -317,6 +317,20 @@ number of blocks when miner is protected from deregistration
 
 the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consensus)
 
+
+### DefaultValidatorTake
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` method**: 
+
+**Setter extrinsic**: sudo_set_default_take ???
+
+**Permissions required to set**: ???
+
+**Description**:
 
 
 ### LiquidAlphaEnabled
