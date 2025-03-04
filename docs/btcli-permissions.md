@@ -39,6 +39,11 @@ Accounts can be viewed without using a coldkey, but any changes to stake, transf
   - `btcli stake add`, `btcli stake remove`, `btcli stake list`, `btcli stake move`, `btcli stake transfer`, `btcli stake swap`
   - `btcli stake child ...` / `btcli stake children ...` (get, set, revoke, take)
   - Short aliases: `btcli st add`, `btcli st remove`, etc.
+- **Subnet Discovery**:
+  - `btcli subnets list`, `btcli subnets show`, `btcli subnets metagraph`: Permissionless *reads* to see available subnets or node info. 
+  - `btcli subnets price`, `btcli subnets burn-cost`, `btcli subnets burn_cost`: Show the required burn to register in a particular subnet. Permissionless read.
+- **Config**:
+  - `btcli config set`, `btcli config get`, etc. (Permissionless) to configure a `btcli` environment.
 
 In summary, **stakers only need a coldkey**. Staking commands should **never** be run on an insecure or public-facing machine since the coldkey manages your TAO holdings.
 
@@ -49,17 +54,12 @@ Miners run processes that serve or forward inference requests on the network. Th
 - Hotkey creation can be done on a secure machine (paired with your coldkey). **However, day-to-day mining** is done with the hotkey in a less secure environment (the “mining rig” or server), since it needs to be online to serve inference requests.
 - Miners *can* also stake TAO, but that typically requires using the coldkey in a secure environment to move or delegate stake. Once staked, the miner can remain on their hotkey-based environment to continue operation.
 
-### Commands most relevant to miners:
-- **Subnet Registration / Info**:
-  - `btcli subnets list`, `btcli subnets show`, `btcli subnets metagraph`: Generally permissionless *reads* to see available subnets or node info. 
-  - `btcli subnets price`, `btcli subnets burn-cost`, `btcli subnets burn_cost`: Show the required burn to register in a particular subnet. Permissionless read.
+### Additional Commands most relevant to miners:
   - `btcli subnets pow-register`, `btcli subnets pow_register`, `btcli subnets register`: Miner uses these to register themselves on the subnet, typically from a machine with the hotkey. **However,** the associated transaction cost must come from the coldkey. So you either sign it with your coldkey (secure environment) or set up a valid signature flow. 
     - The **registration** places the hotkey on the chain with a UID in that subnet.
 - **Wallet**:
   - `btcli wallet new-hotkey` / `btcli wallet regen-hotkey`: Creation/regeneration of hotkeys. Typically do these on a secure machine (paired to your coldkey), then transfer the hotkey file or mnemonic to the mining machine. 
   - `btcli wallet balance` and `btcli wallet overview`: Might be used to check the hotkey’s on-chain state or small balances. (Hotkey on a less secure machine is lower risk, but still treat it with caution.)
-- **Config**:
-  - `btcli config set`, `btcli config get`, etc. (Permissionless) to configure endpoints or chain settings as you run a miner.
 
 Miners primarily rely on **hotkeys** for daily operations. The **coldkey** is only needed when you need to create or fund that hotkey, or if you want to stake additional TAO or pay the burn for certain registrations.
 
