@@ -111,6 +111,7 @@ const sidebars = {
             "getting-started/install-btcli",
             "btcli",
             "staking-and-delegation/managing-stake-btcli",
+            "btcli-permissions"
           ]
         },
         {
