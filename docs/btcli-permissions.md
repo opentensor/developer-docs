@@ -92,12 +92,12 @@ These commands don't require any permissions to run, but you'll run these comman
 - **Coldkey workstation**: Contains coldkey in the `wallet_path`. For any coldkey associated with mainnet TAO, this should only be done on a secure workstation. 
 
     :::tip coldkey workstation security
-    ...
+    See [Coldkey workstation security](./getting-started/coldkey-hotkey-security#coldkey-workstation-security)
     :::
 
 - **Hotkey workstation**: Can include servers used for mining or validation. Contains only hotkeys in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or register and submit crappy work ??? if you are a miner, which can be costly. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
     :::tip hotkey workstation security
-    ...
+    See [Hotkey workstation security](./getting-started/coldkey-hotkey-security#hotkey-workstation-security)
     :::
 
 <details>
