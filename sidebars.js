@@ -139,6 +139,7 @@ const sidebars = {
           items: [
             "getting-started/wallets",
             "working-with-keys",
+            "getting-started/coldkey-hotkey-security"
           ]
         },
                 {

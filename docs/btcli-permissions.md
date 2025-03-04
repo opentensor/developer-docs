@@ -73,6 +73,10 @@ In order to participate in the Senate, a coldkey must:
 - Have a hotkey stake value is greater than 2% of the network's total stake amount, through delegation or self-stake.
 - Have elected to participate in the Senate. 
 
+
+
+
+
 ## `btcli` commands
 
 ### `config`

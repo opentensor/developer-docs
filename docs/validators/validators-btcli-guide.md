@@ -8,11 +8,13 @@ Validators evaluate miner performance, and post their evaluations to the blockch
 
 This page discusses btcli stuff specifically for Validators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
+## Requirements
+
+- **Coldkey** is needed for any stake management or large fund transfers.
+
 - **Hotkey**: 
 
 	Used to set weights
-
-- **Coldkey** is needed for any stake management or large fund transfers.
 
 - **Weight-setting requirements**:
 

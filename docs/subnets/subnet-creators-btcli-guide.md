@@ -6,7 +6,7 @@ title: "Subnet Creator's Guide to `BTCLI`"
 
 Subnet creators define and manage new subnets, specifying parameters like burn cost, hyperparameters, or other chain-level configurations. This role inherently requires a **coldkey** with sufficient balance/permissions to create or update subnets. 
 
-This page discusses btcli stuff specifically for Subnet Creators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions.md)
+This page discusses btcli stuff specifically for Subnet Creators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
 
 **Subnet Creator Requirements:**
