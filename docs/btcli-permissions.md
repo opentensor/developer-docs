@@ -25,18 +25,23 @@ Other resources:
 Different functions have different requirements.
 
 ### Coldkey
-Your primary, fully privileged key. Required for:
+Your primary, fully privileged key. Must be used on a secure **coldkey workstation** to avoid catastrophic loss or malicious actions if compromised.
+
+Required for:
 - Managing stake (add/remove/move).
 - Moving or transferring TAO (i.e., `wallet transfer`).
 - Creating or modifying subnets (`btcli subnets create`).
 - Voting or proposing in governance.
-Must be used on a **high-security machine** to avoid catastrophic loss if compromised.
+
 
 ### Hotkey
-Used for daily operations with lower privileges:
-- Running miners (signing inference, staying online).
-- Running validators (weight commits, daily on-chain actions).
-Usually stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
+Used for daily operations with lower privileges. Usually stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
+
+- Running miners: serving requests from validators
+- Running validators:
+  - making requests to miners weight
+  - setting weights
+
 
 ### Available liquidity
 
@@ -48,8 +53,8 @@ Make sure your coldkey wallet has sufficient on-chain TAO to pay fees, stake, or
 
 Operations to unstake alpha into TAO, and move or transfer stake, have minimum liquidity requirements ( is this flat or subnet configured or what ???).
 
-
 ### Validator Permit
+
 To set weights as a validator in a subnet, you must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
 
     $$
