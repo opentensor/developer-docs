@@ -59,6 +59,7 @@ const sidebars = {
       link: {type: "doc", id: "staking-and-delegation/delegation",},
       items: [
       "staking-and-delegation/delegation",
+      "staking-and-delegation/stakers-btcli-guide",
       "dynamic-tao/staking-unstaking-dtao",
       "staking-and-delegation/managing-stake-btcli",
       "staking-and-delegation/managing-stake-sdk",
@@ -73,6 +74,7 @@ const sidebars = {
       link: {type: "doc", id: "miners/index",},
       items: [
       "miners/index",
+      "miners/miners-btcli-guide"
       ],
     },
 
@@ -84,7 +86,8 @@ const sidebars = {
       link: {type: "doc", id: "validators/index",},
       items: [
       "validators/index",
-              "subnets/child-hotkeys",
+      "subnets/child-hotkeys",
+      "validators/validators-btcli-guide"
       ],
     },
     {
@@ -94,6 +97,7 @@ const sidebars = {
       collapsed: true,
       items: [
         "subnets/create-a-subnet",
+        "subnets/subnet-creators-btcli-guide",
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
@@ -196,6 +200,7 @@ const sidebars = {
       items: [
       "governance",
       "senate",
+      "governance/senators-btcli-guide"
       ],
     },
     {
