@@ -15,9 +15,10 @@ See also the `btcli` permissions guides for specific Bittensor personas:
 - [Senator's Guide to `BTCLI`](./governance/senators-btcli-guide)
 
 
-:::info
-For additional background on the difference between **coldkeys** and **hotkeys**, please refer to the [Wallets, Coldkeys and Hotkeys in Bittensor](#wallets-coldkeys-and-hotkeys-in-bittensor-reference) section below (summarized from [the separate doc](./working-with-keys.md)).
-:::
+Other resources:
+
+- [Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
+
 
 ## Requirements for `btcli` functions
 
@@ -38,17 +39,57 @@ Used for daily operations with lower privileges:
 Usually stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
 
 ### Available liquidity
-Make sure your coldkey wallet has sufficient on-chain TAO to pay fees, stake, or register subnets. Insufficient balance will cause transactions to fail.
+
+Make sure your coldkey wallet has sufficient on-chain TAO to pay fees, stake, or register subnets.
+
+- POW vs POS reg
+- Subnet reg
+- ???
+
+Operations to unstake alpha into TAO, and move or transfer stake, have minimum liquidity requirements ( is this flat or subnet configured or what ???).
+
 
 ### Validator Permit
-An on-chain permission required for hotkeys that want to operate as validators. Without it, you can’t sign or submit weight commits.
+To set weights as a validator in a subnet, you must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+
+    $$
+
+    \text{Validator stake weight} = \alpha +  0.18 \times \tau 
+
+    $$
 
 
-## `btcli` commands and their permissions
+### Senate requirements
 
-### `btcli config`
-- **Coldkey workstation**: Minimal exposure, ideally offline or with strong security controls. Used only for signing critical transactions (e.g., staking, governance, subnet creation).
-- **Hotkey workstation**: Online servers used for mining or validation. Contains only hotkeys.
+In order to participate in the Senate, a coldkey must:
+
+- Have registered with any subnetwork as a hotkey-coldkey pair.
+- Have nominated themselves as a delegate for anyone to stake their $TAO with.
+- Have a hotkey stake value is greater than 2% of the network's total stake amount, through delegation or self-stake.
+- Have elected to participate in the Senate. 
+
+## `btcli` commands
+
+### `config`
+
+The `btcli config ...` commands are used to configure `btcli`, including:
+- selecting the targeted network (`finney` a.k.a. mainnet or `test` for test network)
+- setting the directory where your Bittensor wallet coldkeys and/or hotkeys are stored
+
+These commands don't require any permissions to run, but you'll run these commands on all `btcli` workstations:
+
+- **Permissionless workstation**: You don't need a key to view subnets and stuff. You do need a coldkey apparently for `btcli view dashboard`, but it can be a throwaway key, it doesn't need any TAO or anything else attached to it.
+
+- **Coldkey workstation**: Contains coldkey in the `wallet_path`. For any coldkey associated with mainnet TAO, this should only be done on a secure workstation. 
+
+    :::tip coldkey workstation security
+    ...
+    :::
+
+- **Hotkey workstation**: Can include servers used for mining or validation. Contains only hotkeys in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or register and submit crappy work ??? if you are a miner, which can be costly. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
+    :::tip hotkey workstation security
+    ...
+    :::
 
 <details>
   <summary>btcli config</summary>
@@ -76,7 +117,7 @@ Permissionless
 - `btcli c metagraph`
 </details>
 
-### `btcli wallet`
+### `wallet`
 
 Mostly target a coldkey; should be performed on a secure CK workstation, NOT a mining workstation or any other insecure endpoint.
 
@@ -202,7 +243,7 @@ Mostly target a coldkey; should be performed on a secure CK workstation, NOT a m
 ##### `btcli st children take`
 </details>
 
-### `btcli sudo`
+### `sudo`
 
 
 CK with senator role for proposals and votes, or CK with sudo privileges for certain chain-level commands.
@@ -235,7 +276,7 @@ Validator take...
 #### `btcli su get_take`
 #### `btcli su set_take`
 </details>
-### `btcli subnets`
+### `subnets`
 
 Setters need CK with creator permissions, getters are typically permissionless (for listing or reading). Creating or modifying subnets (burn cost, price, hyperparameters) requires a coldkey with sufficient balance and permissions.
 
@@ -276,7 +317,7 @@ Setters need CK with creator permissions, getters are typically permissionless (
 #### `btcli subnet pow_register`
 
 </details>
-### Weights
+### `weights`
 
 Setters require an active hotkey that has a validator permit. Reading or querying weights is generally permissionless, but committing or revealing them is only for registered validators.
 <details>
@@ -290,7 +331,7 @@ Setters require an active hotkey that has a validator permit. Reading or queryin
 #### `btcli weight commit`
 </details>
 
-### Utils ???
+### `utils`
 
 #### `btcli utils convert`
 This is a convenience command for performing conversions between minimal units (RAO) and TAO, or other chain-specific conversions. Permissionless (no key required) because it performs no on-chain operation, just a local calculation.
