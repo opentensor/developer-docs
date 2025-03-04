@@ -6,7 +6,9 @@ title: "Staker's Guide to `BTCLI`"
 
 Stakers enter value into the Bittensor network by acquiring TAO and staking or *delegating* it to validators to support their work. As validators extract emissions, a certain percentage goes back to stakers.
 
-See [Staking/Delegation Overview](./delegation.md).
+See also:
+- [Staking/Delegation Overview](./delegation.md)
+- [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
 Stakers must be familiar with operations related to managing the TAO and staked alpha tokens in their Bittensor wallet balance.
 

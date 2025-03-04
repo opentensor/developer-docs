@@ -6,6 +6,8 @@ title: "Senator's Guide to `BTCLI`"
 
 Governance participants (senate members, sudo-level accounts) can propose changes, cast votes, or execute privileged commands that affect the entire network. They must have a **coldkey** with the relevant governance role (senate membership or sudo privileges).
 
+This page discusses btcli stuff specifically for Senators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+
 **Senate requirements:** In order to participate in the Senate, a coldkey must:
 
 - Have registered with any subnetwork as a hotkey-coldkey pair.
