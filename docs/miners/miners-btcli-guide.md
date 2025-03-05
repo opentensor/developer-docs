@@ -4,23 +4,55 @@ title: "Miner's Guide to `BTCLI`"
 
 # Miner's Guide to `BTCLI`
 
-Miners run processes that serve or forward inference requests on the network. They register with the chain using a **hotkey** to obtain a UID for the subnet(s) in which they operate. In addition, they must use a coldkey to manage their TAO and any alpha currencies, essentially perforoming all the functions of stakers.
+This page discusses `btcli` security and usage considerations specifically for Bittensor miners. For general coverage of `btcli` security and usage considerations across persona, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
-This page discusses btcli stuff specifically for Miners. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+Miners in Bittensor work hard to produce digital commondities. To securely serve these commodities to validators, miners use their registered hotkey to sign requests. Miners must also manage their own TAO and alpha stake (to exit the emissions that accure to them), and hence should familiarize themselves with staking operations.
 
-Hotkeys and coldkeys are different yada yada...
+**Overview of miner operations by workstation/env:**
 
-Miners primarily rely on **hotkeys** for daily operations. The **coldkey** is only needed when you need to create or fund that hotkey, or if you want to stake additional TAO or pay the burn for certain registrations.
+Unpermissioned workstation (public keys only):
+- Check balances
+- Monitor emissions and other metagraph info
+- Check subnet alpha prices across Bittensor
+
+Coldkey workstation:
+- Create/import coldkey
+- Create hotkeys
+- Manage TAO and alpha stake
+- Transfer/rotate TAO and alpha stake in case of key compromise
+- Rotate hotkeys in case of compromise
+- Register a hotkey to mine on a subnet
+
+Hotkey workstation:
+- import/provision hotkey
+- serve w axon
+
+See:
+
+- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets)
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
+- [Staking/Delegation Overview](../staking-and-delegation/delegation)
+- [Staker's Guide to `BTCLI`](../staking-and-delegation/stakers-btcli-guide)
+
+
+Miners primarily rely on **hotkeys** for daily operations. The **coldkey** is only needed when you need to create or fund that hotkey, or if you want to stake additional TAO or pay the burn for registrations.
 
 Hotkey creation can be done on a secure machine (paired with your coldkey). **However, day-to-day mining** is done with the hotkey in a less secure environment (the “mining rig” or server), since it needs to be online to serve inference requests.
 
-Coldkey operations should be performed in a secure environments...
+Hotkeys do need to be present for a variety of operations which miner and validator software interact with such as axon serving, on-chain data commitments, and other functions. These essentially need to be present in the unsafe environment that is running subnet code on a machine but come with less risks if they do get compromised.
 
-**Additional Commands most relevant to miners:**
+Coldkey operations should be performed in a secure environments, ideally on an air gapped device or at least a device with minimal access / security risk involved. The coldkey must not be placed on a server used for mining as subnet code should not be considered safe code. Though most subnets take appropriate steps to ensure the security of their codebases, any time you have a port open and requests coming in there is risk.
 
-- **Hotkey management**:
-- `btcli wallet new-hotkey` / `btcli wallet regen-hotkey`: Creation/regeneration of hotkeys. Typically do these on a secure machine (paired to your coldkey), then transfer the hotkey file or mnemonic to the mining machine. 
-- `btcli wallet balance` and `btcli wallet overview`: Might be used to check the hotkey’s on-chain state or small balances. (Hotkey on a less secure machine is lower risk, but still treat it with caution.)
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
-_ **Subnet registration**:
-- `btcli subnets pow-register`, `btcli subnets pow_register`, `btcli subnets register`: Miner uses these to register themselves on the subnet, typically from a machine with the hotkey. **However,** the associated transaction cost must come from the coldkey. So you either sign it with your coldkey (secure environment) or set up a valid signature flow. The **registration** associates the hotkey with a miner UID on the subnet.
+:::tip Coldkeys do not mine
+
+Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Ensure there is a clear boundary: The coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
+:::
+
+## `btcli` commands for miners:
+
+`btcli wallet balance` and `btcli wallet overview`: Might be used to check the hotkey’s on-chain state or small balances. Suitable for low-sec on permissionless (public key only) workstation.
+
+`btcli wallet new-hotkey` , `btcli subnets pow-register`, `btcli subnets pow_register`, `btcli subnets register`, `btcli wallet regen-hotkey`: Create and register a hotkey on a secure coldkey workstation (since this requires the coldkey), then transfer the hotkey file or mnemonic to the mining workstation. 
+

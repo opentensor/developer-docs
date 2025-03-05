@@ -19,9 +19,10 @@ Treat your coldkey as the ultimate authority over your Bittensor wallet. A compr
 
 The first principle is to isolate coldkey operations from day-to-day or internet-exposed systems. This often means using a dedicated, air-gapped machine or at least a workstation that is minimally connected to the internet, and has only highly trusted software installed to minimize the risk of malware or keyloggers intercepting your coldkey or recovery seed phrase.
 
-### Coldkeys do not mine
+:::tip Coldkeys do not mine
 
 Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Ensure there is a clear boundary: The coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
+:::
 
 ### Air-gapped machines
 

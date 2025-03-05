@@ -4,6 +4,10 @@ title: "Validator's Guide to `BTCLI`"
 
 # Validator's Guide to `BTCLI`
 
+It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
+
+
+
 Validators evaluate miner performance, and post their evaluations to the blockchain.
 
 This page discusses btcli stuff specifically for Validators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
