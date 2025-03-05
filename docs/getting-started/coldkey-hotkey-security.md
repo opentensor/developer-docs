@@ -13,7 +13,11 @@ See also:
 
 ## Coldkey workstation security
 
-Treat your coldkey as the ultimate authority over your Bittensor wallet. A compromised coldkey allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Because of these high stakes, many best practices from both cryptocurrency storage and modern DevOps/MLOps environments apply here. Prioritize confidentiality and integrity over convenience when handling a coldkey.
+Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. A stolen coldkey allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed.
+
+Conversely, there is no way to recover...
+
+Because of these high stakes, many best practices from both cryptocurrency storage and modern DevOps/MLOps environments apply here. Prioritize confidentiality and integrity over convenience when handling coldkeys.
 
 ### Isolation of coldkey operations
 

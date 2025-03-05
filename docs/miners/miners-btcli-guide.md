@@ -4,11 +4,40 @@ title: "Miner's Guide to `BTCLI`"
 
 # Miner's Guide to `BTCLI`
 
-This page discusses `btcli` security and usage considerations specifically for Bittensor miners. For general coverage of `btcli` security and usage considerations across persona, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+This page discusses `btcli` security and usage considerations specifically for Bittensor miners.
 
-Miners in Bittensor work hard to produce digital commondities. To securely serve these commodities to validators, miners use their registered hotkey to sign requests. Miners must also manage their own TAO and alpha stake (to exit the emissions that accure to them), and hence should familiarize themselves with staking operations.
+For general coverage of `btcli` security and usage considerations across persona, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
-**Overview of miner operations by workstation/env:**
+See also:
+
+- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets) for an introduction to the authentication technology used in Bittensor.
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for contrete security details about managing keys material.
+
+
+## Intro
+
+Miners in Bittensor work to produce digital commondities. To securely serve these commodities to validators, miners use their registered hotkey to sign requests. Therefore, miners primarily rely on **hotkeys** for daily operations.
+
+The **coldkey** is only needed when you need to create or fund that hotkey, or if you want to stake additional TAO or pay the burn for registrations.
+
+
+Miners must also manage their own TAO and alpha stake (to exit the emissions that accure to them), and hence should familiarize themselves with staking operations.
+
+See:
+- [Staking/Delegation Overview](../staking-and-delegation/delegation)
+- [Staker's Guide to `BTCLI`](../staking-and-delegation/stakers-btcli-guide)
+
+
+Hotkey creation can be done on a secure machine (paired with your coldkey). **However, day-to-day mining** is done with the hotkey in a less secure environment (the “mining rig” or server), since it needs to be online to serve inference requests.
+
+Hotkeys do need to be present for a variety of operations which miner and validator software interact with such as axon serving, on-chain data commitments, and other functions. These essentially need to be present in the unsafe environment that is running subnet code on a machine but come with less risks if they do get compromised.
+
+Coldkey operations should be performed in a secure environments, ideally on an air gapped device or at least a device with minimal access / security risk involved. The coldkey must not be placed on a server used for mining as subnet code should not be considered safe code. Though most subnets take appropriate steps to ensure the security of their codebases, any time you have a port open and requests coming in there is risk.
+
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
+
+
+## Miner operations by workstation/env:
 
 Unpermissioned workstation (public keys only):
 - Check balances
@@ -27,23 +56,8 @@ Hotkey workstation:
 - import/provision hotkey
 - serve w axon
 
-See:
-
-- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets)
-- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
-- [Staking/Delegation Overview](../staking-and-delegation/delegation)
-- [Staker's Guide to `BTCLI`](../staking-and-delegation/stakers-btcli-guide)
 
 
-Miners primarily rely on **hotkeys** for daily operations. The **coldkey** is only needed when you need to create or fund that hotkey, or if you want to stake additional TAO or pay the burn for registrations.
-
-Hotkey creation can be done on a secure machine (paired with your coldkey). **However, day-to-day mining** is done with the hotkey in a less secure environment (the “mining rig” or server), since it needs to be online to serve inference requests.
-
-Hotkeys do need to be present for a variety of operations which miner and validator software interact with such as axon serving, on-chain data commitments, and other functions. These essentially need to be present in the unsafe environment that is running subnet code on a machine but come with less risks if they do get compromised.
-
-Coldkey operations should be performed in a secure environments, ideally on an air gapped device or at least a device with minimal access / security risk involved. The coldkey must not be placed on a server used for mining as subnet code should not be considered safe code. Though most subnets take appropriate steps to ensure the security of their codebases, any time you have a port open and requests coming in there is risk.
-
-See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 :::tip Coldkeys do not mine
 
