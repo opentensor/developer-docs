@@ -14,13 +14,11 @@ In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for 
 
 There are many different *wallet applications*, but the core of your wallet is one or more cryptographic key-pairs, referred to as **coldkey** and **hotkey**. Each is actually a cryptographic [key-pair](https://en.wikipedia.org/wiki/Public-key_cryptography), a private and a public key. The public key is mathematically derived from the private key, and is a closely held secret: it allows the owner to sign transactions and decrypt secrets, essentially serving as a cryptographic authentication or identity. This is a general feature of decentralized, trustless systems like distributed ledgers/blockchains: your private key *is* your identity, in that theft or loss of your key results in *unrecoverable* loss of access.
 
-In Bittensor, the coldkey and hotkey are used for different operations.
+In Bittensor, the coldkey and hotkey are used for different operations. In short, the hotkey is for mining and validation, and the coldkey for everything else; if you neither mine nor validate, you have no need for a hotkey, but you will identify validators and miners by their hotkey public keys.
 
-In short, the coldkey private key is needed to authorize highly sensitive operations involved in transferring TAO balances and managing stake, operations related to subnet management and governance, and management of hotkeys. The hotkey private key is needed to authorize miners to serve requests in subnets, and by validators to send requests to miners and to submit weights to the blockchain.
+The coldkey private key is needed to authorize highly sensitive operations involved in transferring TAO balances and managing stake, operations related to subnet management and governance, and management of hotkeys. The hotkey private key is needed to authorize miners to serve requests in subnets, and by validators to send requests to miners and to submit weights to the blockchain.
 
 The coldkey public key identifies a wallet to the internet. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
-
-To stake to a validator, you need their hotkey public key.
 
 ## Wallet applications
 
@@ -41,7 +39,8 @@ You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldk
 
 ### `btcli` and the Bittensor Python SDK
 
-### Coldkey
+
+## Coldkey details
 
 In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
@@ -77,11 +76,11 @@ style={{width: 750}}
 </center>
 
 <br /> -->
-#### Existential deposit
+### Existential deposit
 
 An existential deposit is the minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the remaining TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
-### Hotkey 
+## Hotkey details
 
 **Relationship to coldkey**: You can create multiple hotkeys paired to your single coldkey. However, when you are validating or mining in a subnet, you are identified by a hotkey in that subnet, so that your coldkey is not exposed. Hence, you cannot use the same hotkey for two UIDs in a given subnet. You can, however, use the same hotkey for multiple UIDs but with each UID in a separate subnet.
 
