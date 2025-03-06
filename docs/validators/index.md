@@ -24,14 +24,14 @@ Validating is not supported on Windows.
 To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
-- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+- You must have a stake weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
 
 	$$
 
 	\text{Validator stake weight} = \alpha +  0.18 \times \tau 
 
 	$$
-- You must be one of the top 64 validators in the subnet, ranked by stake.
+- You must be one of the top 64 validators in the subnet, ranked by stake weight.
 
 ## Validator registration
 
@@ -40,11 +40,8 @@ To participate as a validator, you must first register your keys with the subnet
 :::tip No need to create a subnet
 You **do not** have to create a subnet to validate on the Bittensor network. Most validators work on established subnets.
 :::
-<!-- what determines the registration cost for a subnet??? is it burned, recycled, or locked??? this all needs a fact check... -->
 
-Registration has a cost in TAO. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. Nevertheless, you can be a subnet miner in as many subnets as you can afford and expect to be successful.
-
-A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
+A subnet can have a maximum of 64 active subnet validator UIDs and 192 subnet miner UIDs (256 total).
 
 Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
 
@@ -54,29 +51,24 @@ When you delegate your TAO to a subnet validator, you attach your delegated TAO 
 A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
 :::
 
-
 ```bash
 btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --hotkey <your hotkey>
 ```
 
-
 ## Acquiring stake
 
-A validator's consensus weight and emissions depend on the stake attached to their hotkey.
+A validator's consensus weight and emissions depend on their hotkey's stake weight. You can stake your own TAO to your validator hotkey, or advertise your hotkey to others and seek stake. Any wallet's coldkey can stake to any hotkey, subsequently receiving emissions from that stake.
 
 :::tip Delegation
 See [StakingDelegation](../staking-and-delegation/delegation.md)
 :::
 
-Stake can be acquired in two ways:
+### Add stake
 
-### Stake your own TAO
-
-You can do this by staking your own TAO funds to your hotkey, which holds the UID in the subnet where you want to validate.
 
 ```bash
 # Stake funds to your hotkey account within the subnet.
-btcli stake add --wallet.name <wallet name> --wallet.hotkey <your hotkey>
+btcli stake add --wallet.name <wallet name> --wallet.hotkey <your validating hotkey>
 ```
 
 ### Calculate TAO required 
