@@ -36,19 +36,10 @@ To have a **validator permit** in a given subnet and be listed as `active`, allo
 
 To participate as a validator, you must first register your keys with the subnet in order to receive a UID on that subnet.
 
-:::tip No need to create a subnet
-You **do not** have to create a subnet to validate on the Bittensor network. Most validators work on established subnets.
-:::
-
 A subnet can have a maximum of 64 active subnet validator UIDs and 192 subnet miner UIDs (256 total).
 
-Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
+Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
 
-:::tip Ownership belongs to a hotkey
-When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 
-
-A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
-:::
 
 ```bash
 btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --hotkey <your hotkey>
