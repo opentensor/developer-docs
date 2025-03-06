@@ -24,7 +24,13 @@ Validating is not supported on Windows.
 To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
-- You must at least 1000 TAO staked to your hotkey
+- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+
+	$$
+
+	\text{Validator stake weight} = \alpha +  0.18 \times \tau 
+
+	$$
 - You must be one of the top 64 validators in the subnet, ranked by stake.
 
 ## Validator registration
@@ -48,16 +54,9 @@ When you delegate your TAO to a subnet validator, you attach your delegated TAO 
 A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
 :::
 
-Run the following command on your terminal, replacing `<your_preferred_netuid>`, `<my_coldkey>`, `<my_hotkey>`. 
-`<your_preferred_netuid>` is the `netuid` of your preferred subnet.
 
 ```bash
-btcli subnet register --netuid <your_preferred_netuid>  --wallet.name  <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-
-For example, for subnet 1 (netuid of 1):
-```bash
-btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test-hotkey
+btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --hotkey <your hotkey>
 ```
 
 
@@ -77,30 +76,8 @@ You can do this by staking your own TAO funds to your hotkey, which holds the UI
 
 ```bash
 # Stake funds to your hotkey account within the subnet.
-btcli stake add --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
+btcli stake add --wallet.name <wallet name> --wallet.hotkey <your hotkey>
 ```
-Example:
-```bash
-btcli stake add --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-### Attract delegated stake 
-
-You can also increase your stake by attracting delegated stake from nominators. For this, you must first nominate your hotkey as a delegate and then advertise this hotkey. The nominators can then delegate their TAO to your hotkey.
-
-```bash
-# Nominate your hotkey as a delegate
-btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-Example:
-```bash
-btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-:::tip See also
-See [Becoming a delegate](../staking-and-delegation/delegation.md#becoming-a-delegate) for specific steps.
-:::
-
 
 ### Calculate TAO required 
 
