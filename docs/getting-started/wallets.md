@@ -6,21 +6,40 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wallets, Coldkeys and Hotkeys in Bittensor
 
-In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your TAO.
-
 This page introduces the core concepts of Bittensor wallets. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
 
-## Coldkey and hotkey
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets.
 
-A Bittensor wallet consists of a **coldkey** and a **hotkey**. Coldkeys and hotkeys are used for different operations in the Bittensor ecosystem. These key types are associated with eachother on the blockchain and can be conveniently managed with `btcli`, the Bittensor SDK, or other Bittensor wallet software.
+## What are wallets and keys?
 
-:::tip
-*Most* users won't need a hotkey&mdash;this is not required to hold TAO and delegate it to Validators hotkey.
+There are many different *wallet applications*, but the core of your wallet is one or more cryptographic key-pairs, referred to as **coldkey** and **hotkey**. Each is actually a cryptographic [key-pair](https://en.wikipedia.org/wiki/Public-key_cryptography), a private and a public key. The public key is mathematically derived from the private key, and is a closely held secret: it allows the owner to sign transactions and decrypt secrets, essentially serving as a cryptographic authentication or identity. This is a general feature of decentralized, trustless systems like distributed ledgers/blockchains: your private key *is* your identity, in that theft or loss of your key results in *unrecoverable* loss of access.
 
-Miners and validators must have both. Miners are likely to have multiple hotkeys per coldkey.
-:::
+In Bittensor, the coldkey and hotkey are used for different operations.
 
-Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
+In short, the coldkey private key is needed to authorize highly sensitive operations involved in transferring TAO balances and managing stake, operations related to subnet management and governance, and management of hotkeys. The hotkey private key is needed to authorize miners to serve requests in subnets, and by validators to send requests to miners and to submit weights to the blockchain.
+
+The coldkey public key identifies a wallet to the internet. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
+
+To stake to a validator, you need their hotkey public key.
+
+## Wallet applications
+
+There are many different applications that can interact with your wallet in some way.
+
+### Permissionless wallet apps
+
+You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldkey public key view public information about any wallet. The browser hence is able to act as a kind of permissionless wallet application to display public information about wallets.
+
+- `btcli`
+
+### Staker apps
+
+- phone app
+- chrome extension
+- ...
+- HW support
+
+### `btcli` and the Bittensor Python SDK
 
 ### Coldkey
 

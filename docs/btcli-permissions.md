@@ -25,7 +25,7 @@ Other resources:
 Different functions have different requirements.
 
 ### Coldkey
-Your primary, fully privileged key. Must be used on a secure **coldkey workstation** to avoid catastrophic loss or malicious actions if compromised.
+Your primary, fully privileged key. Should be used on a secure **coldkey workstation** to avoid catastrophic loss or malicious actions if compromised.
 
 Required for:
 - Managing stake (add/remove/move).
@@ -35,7 +35,7 @@ Required for:
 
 
 ### Hotkey
-Used for daily operations with lower privileges. Usually stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
+Used by miners and validators for signing operations. Normally stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
 
 - Running miners: serving requests from validators
 - Running validators:
