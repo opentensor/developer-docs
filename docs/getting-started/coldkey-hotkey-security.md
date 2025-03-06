@@ -17,7 +17,7 @@ Your coldkey private key, accessible with your recovery seed phrase, is the comp
 
 Conversely, there is no way to recover...
 
-Because of these high stakes, many best practices from both cryptocurrency storage and modern DevOps/MLOps environments apply here. Prioritize confidentiality and integrity over convenience when handling coldkeys.
+Because of these high stakes, best practices should be diligently followed. Prioritize confidentiality and integrity over convenience when handling coldkeys.
 
 ### Isolation of coldkey operations
 
