@@ -6,23 +6,47 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wallets, Coldkeys and Hotkeys in Bittensor
 
-In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for managing the cryptographic key-pairs required to prove your identity, sign transactions, and access your TAO.
-
 This page introduces the core concepts of Bittensor wallets. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
 
-## Coldkey and hotkey
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets.
 
-A Bittensor wallet consists of a **coldkey** and a **hotkey**. Coldkeys and hotkeys are used for different operations in the Bittensor ecosystem. These key types are associated with eachother on the blockchain and can be conveniently managed with `btcli`, the Bittensor SDK, or other Bittensor wallet software.
+## What are wallets and keys?
 
-:::tip
-*Most* users won't need a hotkey&mdash;this is not required to hold TAO and delegate it to Validators hotkey.
+There are many different *wallet applications*, but the core of your wallet is one or more cryptographic key-pairs, referred to as **coldkey** and **hotkey**. Each is actually a cryptographic [key-pair](https://en.wikipedia.org/wiki/Public-key_cryptography), a private and a public key. The public key is mathematically derived from the private key, and is a closely held secret: it allows the owner to sign transactions and decrypt secrets, essentially serving as a cryptographic authentication or identity. This is a general feature of decentralized, trustless systems like distributed ledgers/blockchains: your private key *is* your identity, in that theft or loss of your key results in *unrecoverable* loss of access.
 
-Miners and validators must have both. Miners are likely to have multiple hotkeys per coldkey.
-:::
+In Bittensor, the coldkey and hotkey are used for different operations. In short, the hotkey is for mining and validation, and the coldkey for everything else; if you neither mine nor validate, you have no need for a hotkey, but you will identify validators and miners by their hotkey public keys.
 
-Each key is a pairing of two separate [EdDSA cryptographic keypairs](https://en.wikipedia.org/wiki/EdDSA#Ed25519). Hence, a coldkey is a pairing of a private key and a public key. Similarly, a hotkey is a pairing of another set of private key and public key. In this sense, a coldkey or a hotkey is each analogous to an account on a blockchain, where the account is defined by a pair of a public and a private key.
+The coldkey private key is needed to authorize highly sensitive operations involved in transferring TAO balances and managing stake, operations related to subnet management and governance, and management of hotkeys. The hotkey private key is needed to authorize miners to serve requests in subnets, and by validators to send requests to miners and to submit weights to the blockchain.
 
-### Coldkey
+The coldkey public key identifies a wallet to the internet. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
+
+## Wallet applications
+
+There are many different applications that can interact with your wallet in some way.
+
+### Permissionless wallet apps
+
+You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldkey public key view public information about any wallet. The browser hence is able to act as a kind of permissionless wallet application to display public information about wallets.
+
+- `btcli`
+
+### Staker apps
+
+- phone app
+- chrome extension
+- ...
+- HW support
+
+### `btcli` and the Bittensor Python SDK
+
+
+## Coldkey details
+
+
+
+[Coldkey workstation security](../getting-started/coldkey-hotkey-security#coldkey-workstation-security)
+
+
 
 In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
@@ -58,11 +82,17 @@ style={{width: 750}}
 </center>
 
 <br /> -->
-#### Existential deposit
+
+### Existential deposit
 
 An existential deposit is the minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the remaining TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
-### Hotkey 
+## Hotkey details
+
+Hotkeys are used to register on a subnet as a miner or validator.
+
+[Hotkey workstation security](../getting-started/coldkey-hotkey-security#hotkey-workstation-security)
+
 
 **Relationship to coldkey**: You can create multiple hotkeys paired to your single coldkey. However, when you are validating or mining in a subnet, you are identified by a hotkey in that subnet, so that your coldkey is not exposed. Hence, you cannot use the same hotkey for two UIDs in a given subnet. You can, however, use the same hotkey for multiple UIDs but with each UID in a separate subnet.
 
@@ -72,13 +102,6 @@ An existential deposit is the minumum required TAO in a wallet (i.e., in a coldk
   - If you are a subnet validator, then you can nominate your own hotkey so that the TAO holders can send their TAO to the hotkey.
   - If you are a TAO holder, for example, with a coldkey where your TAO is stored, you can delegate your TAO to the hotkey of the validator-delegate. See item 10 in the diagram in [Operational uses of keys](#operational-uses-of-keys).
 
-**Security**: A hotkey is less secure than a coldkey. A hotkey is, by default, unencrypted, but you can encrypt it.
-
-:::tip Why hotkey
-Think of a hotkey as an everyday key you carry for tasks that require regular access. Because a hotkey is used more frequently and should be readily accessible, the hotkey carries a higher risk of exposure to potential threats. However, the permissions and scope of operations that can be performed with the hotkey are limited to operational activities, minimizing the risk of significant loss of TAO.
-
-This dual-key system helps balance convenience and security, allowing you to participate actively in the Bittensor network without constantly exposing your primary TAO-holding coldkey.
-:::
 
 ## Operational uses of keys
 
