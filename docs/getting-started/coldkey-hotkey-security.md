@@ -68,12 +68,6 @@ Even on a minimal or air-gapped machine, follow standard security hygiene:
 - Maintain logs and check for unusual activity or tampering.  
 - Disable all network services (SSH, RDP, or anything else) if you don’t strictly need them.
 
-### Secure Key Backups
-
-You must keep redundant backups of your coldkey, but those backups must be just as secure as the primary. Common approaches:
-- **Paper backups** of the mnemonic phrase, sealed in tamper-evident envelopes, stored in multiple physically secure locations.  
-- **Encrypted USB drives** (with strong passphrases) stored in a safety deposit box or safe.  
-- **Multi-geography strategy** so that a single disaster (fire or flood) doesn’t destroy all copies.
 
 ### Signing Policy and Governance
 
@@ -142,3 +136,9 @@ let the community know somehow?
 In some Bittensor setups, a small group or an organization might manage a pool of validators/miners. How do you manage permissions over keys within your org? probably you should have a good strategy though...
 
 
+## Backing up your keys
+
+You must keep redundant backups of your coldkey, but those backups must be just as secure as the primary. Common approaches:
+- **Paper backups** of the mnemonic phrase, sealed in tamper-evident envelopes, stored in multiple physically secure locations.  
+- **Encrypted USB drives** (with strong passphrases) stored in a safety deposit box or safe.  
+- **Multi-geography strategy** so that a single disaster (fire or flood) doesn’t destroy all copies.
