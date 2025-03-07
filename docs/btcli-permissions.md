@@ -25,37 +25,46 @@ Other resources:
 Different functions have different requirements.
 
 ### Coldkey
-Your primary, fully privileged key. Should be used on a secure **coldkey workstation** to avoid catastrophic loss or malicious actions if compromised.
+
+Important for all users. Your primary, fully privileged key. Should be used on a secure **coldkey workstation** to avoid catastrophic loss or malicious actions if compromised.
+
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 Required for:
-- Managing stake (add/remove/move).
 - Moving or transferring TAO (i.e., `wallet transfer`).
+- Managing stake (add/remove/move).
+- Creating hotkeys.
 - Creating or modifying subnets (`btcli subnets create`).
 - Voting or proposing in governance.
 
 
 ### Hotkey
-Used by miners and validators for signing operations. Normally stored on a less secure environment than the coldkey because it must be online and accessible for repeated use.
 
+Most users do not need their own hotkey. This is used by **miners** and **validators** for signing operations. Stakers use validators' hotkey public key to identify them in order to delegate stake to them.
+
+Required for:
 - Running miners: serving requests from validators
 - Running validators:
   - making requests to miners weight
   - setting weights
-
+  - being discoverable my stakers
 
 ### Available liquidity
 
-Make sure your coldkey wallet has sufficient on-chain TAO to pay fees, stake, or register subnets.
+Some operations require a TAO balance or alpha stake balance.
 
-- POW vs POS reg
-- Subnet reg
-- ???
-
-Operations to unstake alpha into TAO, and move or transfer stake, have minimum liquidity requirements ( is this flat or subnet configured or what ???).
+- Transfers of TAO will fail if you lack the specified amount
+- Staking and unstaking operations fail if they specify more than the owner has
+- Registering a hotkey on a subnet to mine or validate has a fee that can be paid with TAO or proof-of-work.
+- Creating a subnet requires a fee, which is computed dynamically. The price to create a subnet doubles when someone creates a subnet, and then gradually decreases. This system is designed as a kind of distrubuted auction, where price is determined by what people are willing to pay given the uncertain estimation of what others are willign to pay.
+<!-- what else -->’’’‘‘
 
 ### Validator Permit
 
-To set weights as a validator in a subnet, you must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+To have a **validator permit** in a given subnet and be listed as `active`, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
+
+- Your hotkey must be registered, granting you a UID on the subnet
+- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
 
     $$
 
@@ -63,6 +72,7 @@ To set weights as a validator in a subnet, you must have a stake-weight on the s
 
     $$
 
+- You must be one of the top 64 validators in the subnet, ranked by stake weight.
 
 ### Senate requirements
 
@@ -72,10 +82,6 @@ In order to participate in the Senate, a coldkey must:
 - Have nominated themselves as a delegate for anyone to stake their $TAO with.
 - Have a hotkey stake value is greater than 2% of the network's total stake amount, through delegation or self-stake.
 - Have elected to participate in the Senate. 
-
-
-
-
 
 ## `btcli` commands
 
