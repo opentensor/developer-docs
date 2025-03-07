@@ -48,4 +48,4 @@ the delegate:
 - Runs `btcli root senate_vote` and passes the proposal hash, either with the argument `--proposal` or when prompted to enter the proposal hash by the command. 
 - After they've entered a proposal hash, they will then be prompted to either cast an approval or a disapproval. Once confirmed, the vote will be included in the next block and counted in the vote. This can be confirmed with both `btcli root proposals`.
 
-<!-- Can you transfer senate magic? What happens if your key gets leaked? -->
+<!-- Can you transfer senate magic? What happens if your key gets leaked? Just transfer your TAO... -->

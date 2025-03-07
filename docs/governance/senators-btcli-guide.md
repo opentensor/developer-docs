@@ -28,6 +28,3 @@ See: [Senate](../senate).
   - `btcli sudo set-take`, `btcli sudo get-take`
   - `btcli sudo set_take`, `btcli sudo get_take`
   - Aliases: `btcli su set`, `btcli su get`, etc.
-
-Because these commands can significantly change chain parameters or enact critical changes, they require a fully privileged coldkey in a maximally secure environment.
-
