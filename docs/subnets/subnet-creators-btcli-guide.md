@@ -8,21 +8,23 @@ Subnet creators define and manage new subnets, specifying parameters like burn c
 
 This page discusses btcli stuff specifically for Subnet Creators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
+See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
-**Subnet Creator Requirements:**
-- to create a new subnet
-- to sudo on your own subnet
+## Subnet Creator Requirements
 
-**Commands most relevant to subnet creators:**
-- **Subnet Creation / Configuration** (all require **coldkey** in a secure environment to sign on-chain transactions):
-  - `btcli subnets create`
-  - `btcli subnets hyperparameters`
-  - `btcli subnets burn-cost` / `btcli subnets burn_cost`
-  - `btcli subnets price`
-  - `btcli subnets set` (some advanced usage might come in via `sudo` or governance commands)
-  - Similarly, short forms like `btcli s create`, `btcli s burn-cost`, `btcli subnet create`, etc. 
-- **Reads** (permissionless in many cases):
-  - `btcli subnets list`, `btcli subnets show`, `btcli subnets metagraph`
-  - The short forms `btcli s list`, `btcli s show`, `btcli subnet list`, and so on.  
+To create a new subnet, you need a coldkey with sufficient TAO to pay the burn cost for creating a subnet 
 
-The core difference is that *creating* or *altering* a subnet’s parameters requires a secure environment and a coldkey that has enough TAO and the appropriate on-chain privileges.
+To modify a subnet, you need the coldkey associated with ownership of the subnet
+
+## `btcli` commands for subnet creators
+### monitor subnet
+Permissionless, use `btcli subnet show` or `btcli view dashboard`.
+
+### create subnet
+Requires coldkey with sufficient TAO.
+`btcli subnet create`
+### configure subnet
+
+Configure your subnet's hyperparameters with `btcli sudo set`. Requires the coldkey the created the subnet.
+
+<!-- Can you transfer ownership? What happens if your key gets leaked? -->

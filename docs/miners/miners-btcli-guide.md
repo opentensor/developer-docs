@@ -28,14 +28,9 @@ See:
 - [Staker's Guide to `BTCLI`](../staking-and-delegation/stakers-btcli-guide)
 
 
-Hotkey creation can be done on a secure machine (paired with your coldkey). **However, day-to-day mining** is done with the hotkey in a less secure environment (the “mining rig” or server), since it needs to be online to serve inference requests.
-
-Hotkeys do need to be present for a variety of operations which miner and validator software interact with such as axon serving, on-chain data commitments, and other functions. These essentially need to be present in the unsafe environment that is running subnet code on a machine but come with less risks if they do get compromised.
-
-Coldkey operations should be performed in a secure environments, ideally on an air gapped device or at least a device with minimal access / security risk involved. The coldkey must not be placed on a server used for mining as subnet code should not be considered safe code. Though most subnets take appropriate steps to ensure the security of their codebases, any time you have a port open and requests coming in there is risk.
+Hotkey creation requires a coldkey private key, and should be done on a secure [coldkey workstation](../getting-started/coldkey-hotkey-security#coldkey-workstation-security). However, using hotkeys for signing requests when mining does not require a coldkey, which should never be present on a mining server, i.e. a hotkey workstation. The coldkey should not be placed on a machine used for mining because the software dependencies for mining should not be considered safe/trusted code to the standards of a coldkey workstation. 
 
 See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
-
 
 ## Miner operations by workstation/env:
 
@@ -56,17 +51,15 @@ Hotkey workstation:
 - import/provision hotkey
 - serve w axon
 
-
-
-
 :::tip Coldkeys do not mine
 
 Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Ensure there is a clear boundary: The coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
 :::
 
-## `btcli` commands for miners:
+## `btcli` commandsfor miners:
 
-`btcli wallet balance` and `btcli wallet overview`: Might be used to check the hotkey’s on-chain state or small balances. Suitable for low-sec on permissionless (public key only) workstation.
+### Hotkey Managementd
 
-`btcli wallet new-hotkey` , `btcli subnets pow-register`, `btcli subnets pow_register`, `btcli subnets register`, `btcli wallet regen-hotkey`: Create and register a hotkey on a secure coldkey workstation (since this requires the coldkey), then transfer the hotkey file or mnemonic to the mining workstation. 
+`btcli wallet new-hotkey` , `btcli wallet regen-hotkey`,  : Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the mining workstation. 
 
+`btcli subnets register`, `btcli subnets pow-register`: register a UID

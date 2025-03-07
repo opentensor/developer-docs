@@ -6,14 +6,12 @@ title: "Senator's Guide to `BTCLI`"
 
 Governance participants (senate members, sudo-level accounts) can propose changes, cast votes, or execute privileged commands that affect the entire network. They must have a **coldkey** with the relevant governance role (senate membership or sudo privileges).
 
-This page discusses btcli stuff specifically for Senators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+See [Requirements for Senate participation](./senate)
 
-**Senate requirements:** In order to participate in the Senate, a coldkey must:
+This page discusses btcli considerations specifically for Senators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
-- Have registered with any subnetwork as a hotkey-coldkey pair.
-- Have nominated themselves as a delegate for anyone to stake their $TAO with.
-- Have a hotkey stake value is greater than 2% of the network's total stake amount, through delegation or self-stake.
-- Have elected to participate in the Senate. 
+See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
+
 
 See: [Senate](../senate).
 
@@ -31,4 +29,5 @@ See: [Senate](../senate).
   - `btcli sudo set_take`, `btcli sudo get_take`
   - Aliases: `btcli su set`, `btcli su get`, etc.
 
-Because these commands can significantly change chain parameters or enact critical changes, they require a fully privileged coldkey in a **very** secure environment.
+Because these commands can significantly change chain parameters or enact critical changes, they require a fully privileged coldkey in a maximally secure environment.
+

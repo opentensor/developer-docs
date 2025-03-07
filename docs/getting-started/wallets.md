@@ -42,6 +42,12 @@ You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldk
 
 ## Coldkey details
 
+
+
+[Coldkey workstation security](../getting-started/coldkey-hotkey-security#coldkey-workstation-security)
+
+
+
 In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
 **Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, delegate stake, or simply hold balance you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
@@ -76,11 +82,17 @@ style={{width: 750}}
 </center>
 
 <br /> -->
+
 ### Existential deposit
 
 An existential deposit is the minumum required TAO in a wallet (i.e., in a coldkey). If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the remaining TAO in it is destroyed. **This is set to 500 RAO for any Bittensor wallet**. Also see [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
 ## Hotkey details
+
+Hotkeys are used to register on a subnet as a miner or validator.
+
+[Hotkey workstation security](../getting-started/coldkey-hotkey-security#hotkey-workstation-security)
+
 
 **Relationship to coldkey**: You can create multiple hotkeys paired to your single coldkey. However, when you are validating or mining in a subnet, you are identified by a hotkey in that subnet, so that your coldkey is not exposed. Hence, you cannot use the same hotkey for two UIDs in a given subnet. You can, however, use the same hotkey for multiple UIDs but with each UID in a separate subnet.
 
@@ -90,13 +102,6 @@ An existential deposit is the minumum required TAO in a wallet (i.e., in a coldk
   - If you are a subnet validator, then you can nominate your own hotkey so that the TAO holders can send their TAO to the hotkey.
   - If you are a TAO holder, for example, with a coldkey where your TAO is stored, you can delegate your TAO to the hotkey of the validator-delegate. See item 10 in the diagram in [Operational uses of keys](#operational-uses-of-keys).
 
-**Security**: A hotkey is less secure than a coldkey. A hotkey is, by default, unencrypted, but you can encrypt it.
-
-:::tip Why hotkey
-Think of a hotkey as an everyday key you carry for tasks that require regular access. Because a hotkey is used more frequently and should be readily accessible, the hotkey carries a higher risk of exposure to potential threats. However, the permissions and scope of operations that can be performed with the hotkey are limited to operational activities, minimizing the risk of significant loss of TAO.
-
-This dual-key system helps balance convenience and security, allowing you to participate actively in the Bittensor network without constantly exposing your primary TAO-holding coldkey.
-:::
 
 ## Operational uses of keys
 

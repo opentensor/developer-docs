@@ -4,13 +4,13 @@ title: "Validator's Guide to `BTCLI`"
 
 # Validator's Guide to `BTCLI`
 
-It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
-
-
 
 Validators evaluate miner performance, and post their evaluations to the blockchain.
 
 This page discusses btcli stuff specifically for Validators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+
+See also:
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 ## Requirements
 
@@ -34,18 +34,23 @@ To have a **validator permit** in a given subnet, allowing you to submit miner e
 		$$
 	- You must be one of the top 64 validators in the subnet, ranked by stake.
 
+:::tip 
+It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
+:::
 
-**Commands most relevant to validators:**
-- **Weights**:
-  - `btcli weights reveal`, `btcli weights commit`  
-  - `btcli wt reveal`, `btcli wt commit`  
-  - `btcli weight reveal`, `btcli weight commit`  
-  These require a hotkey with an active validator permit on the subnet. Typically run in a live environment (the validator node).
-  
-- **Stake Management** (if you stake TAO to your validator hotkey or accept delegations):
-  - `btcli stake add`, `btcli stake remove`, `btcli stake move`, etc.
-  Requires the coldkey in a **secure environment** if you are adding or removing stake from your own coldkey to your validator hotkey.
-- **Subnet Registration**:
-  - If you are validating on a particular subnet, you often must register with `btcli subnets register` or `btcli subnets pow-register`, same as miners. This also typically involves your coldkey to pay any required fees, while awarding your hotkey the validator status/UID in that subnet.
+## `btcli` commands for validators
+### Hotkey Management
 
-In short, validators use their **hotkey** for daily validation and weights. The coldkey is still needed for any staking or managing TAO, so you keep it offline or in a more secure environment whenever possible.
+Coldkey workstation.
+
+`btcli wallet new-hotkey` , `btcli wallet regen-hotkey`,  : Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the validator workstation. 
+
+`btcli subnets register`, `btcli subnets pow-register`: register a UID
+
+### Weights
+These require a hotkey with an active validator permit on the subnet. Run in a live environment (the validator node), which is a hotkey workstation.
+
+- `btcli weights reveal`, `btcli weights commit`  
+- `btcli wt reveal`, `btcli wt commit`  
+- `btcli weight reveal`, `btcli weight commit`  
+

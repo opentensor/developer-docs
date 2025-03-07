@@ -82,7 +82,7 @@ Maintain a secure software environment:
 - Run vulnerability scans on any machine that touches your coldkey.  
 - Conduct an internal or external penetration test if you operate at scale.
 
-### Hybrid MLOps Considerations
+### MLOps workflow
 
 In Bittensor, your coldkey might be used to stake and then a hotkey is placed in a production environment for machine learning workloads. Ensure there is a clear boundary: The coldkey environment should **never** install or run untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.  
 
@@ -129,7 +129,8 @@ Because Bittensor nodes often run deep learning frameworks (like PyTorch or Tens
 
 If you detect or suspect a hotkey compromise...
 
-let the community know somehow?
+`btcli wallet swap-hotkey` ...
+
 
 ### Team Collaboration
 
