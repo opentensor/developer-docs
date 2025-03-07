@@ -32,14 +32,14 @@ Hotkey creation requires a coldkey private key, and should be done on a secure [
 
 See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
-## Miner operations by workstation/env:
+## Requirements for mining functions
 
-Unpermissioned workstation (public keys only):
+### Unpermissioned workstation (public keys only):
 - Check balances
 - Monitor emissions and other metagraph info
 - Check subnet alpha prices across Bittensor
 
-Coldkey workstation:
+### Coldkey workstation:
 - Create/import coldkey
 - Create hotkeys
 - Manage TAO and alpha stake
@@ -47,7 +47,7 @@ Coldkey workstation:
 - Rotate hotkeys in case of compromise
 - Register a hotkey to mine on a subnet
 
-Hotkey workstation:
+### Mining node (Hotkey workstation):
 - import/provision hotkey
 - serve w axon
 

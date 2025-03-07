@@ -4,23 +4,41 @@ title: "Validator's Guide to `BTCLI`"
 
 # Validator's Guide to `BTCLI`
 
+Validators evaluate miner performance, and post their evaluations to the blockchain. This page discusses considerations specific to validators when using `btcli`.
 
-Validators evaluate miner performance, and post their evaluations to the blockchain.
+For general coverage of `btcli` permissions and requirements, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
-This page discusses btcli stuff specifically for Validators. For general coverage of BTCLI and permissions stuff, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
-See also:
-- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
+:::tip 
+It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
+:::
 
-## Requirements
+## Requirements for validator functions
 
-- **Coldkey** is needed for any stake management or large fund transfers.
+### Unpermissioned workstation (public keys only):
+- Check balances
+- Monitor emissions and other metagraph info
+- Check subnet alpha prices across Bittensor
 
-- **Hotkey**: 
+### Coldkey workstation:
+- Create/import coldkey
+- Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the validator workstation: `btcli wallet new-hotkey` , `btcli wallet regen-hotkey`
+- Register a UID: ,`btcli subnets register`, `btcli subnets pow-register`
+- Manage TAO and alpha stake
+- Transfer/rotate TAO and alpha stake in case of key compromise
+- Rotate hotkeys in case of compromise
+- Register a hotkey to mine on a subnet
 
-	Used to set weights
+### Validator node (hotkey workstation)
 
-- **Weight-setting requirements**:
+These require a hotkey with an active validator permit on the subnet. Run in a live environment (the validator node), which is a hotkey workstation.
+
+- `btcli weights reveal`, `btcli weights commit`  
+- `btcli wt reveal`, `btcli wt commit`  
+- `btcli weight reveal`, `btcli weight commit`  
+
+### Weight-setting requirements
 
 To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
 
@@ -33,24 +51,4 @@ To have a **validator permit** in a given subnet, allowing you to submit miner e
 
 		$$
 	- You must be one of the top 64 validators in the subnet, ranked by stake.
-
-:::tip 
-It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
-:::
-
-## `btcli` commands for validators
-### Hotkey Management
-
-Coldkey workstation.
-
-`btcli wallet new-hotkey` , `btcli wallet regen-hotkey`,  : Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the validator workstation. 
-
-`btcli subnets register`, `btcli subnets pow-register`: register a UID
-
-### Weights
-These require a hotkey with an active validator permit on the subnet. Run in a live environment (the validator node), which is a hotkey workstation.
-
-- `btcli weights reveal`, `btcli weights commit`  
-- `btcli wt reveal`, `btcli wt commit`  
-- `btcli weight reveal`, `btcli weight commit`  
 
