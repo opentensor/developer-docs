@@ -17,7 +17,7 @@ Accounts can be viewed without using a coldkey, but any changes to stake, transf
 
 See:
 - [Staking/Delegation Overview](./delegation.md)
-- [Bittensor CLI: Permissions Guide](.../btcli-permissions)
+- [Bittensor CLI: Permissions Guide](../btcli-permissions)
 - [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets)
 - [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
 
