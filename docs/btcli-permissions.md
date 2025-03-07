@@ -101,7 +101,8 @@ These commands don't require any permissions to run, but you'll run these comman
     See [Coldkey workstation security](./getting-started/coldkey-hotkey-security#coldkey-workstation-security)
     :::
 
-- **Hotkey workstation**: Can include servers used for mining or validation. Contains only hotkeys in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or register and submit crappy work ??? if you are a miner, which can be costly. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
+- **Hotkey workstation**: Servers used for mining or validation. Contains only hotkey private key in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or bad work. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
+
     :::tip hotkey workstation security
     See [Hotkey workstation security](./getting-started/coldkey-hotkey-security#hotkey-workstation-security)
     :::
@@ -134,9 +135,14 @@ Permissionless
 
 ### `wallet`
 
-Mostly target a coldkey; should be performed on a secure CK workstation, NOT a mining workstation or any other insecure endpoint.
+Many wallet subcommands require a coldkey and hence should be performed on a secure coldkey workstation, NOT a mining workstation or any other insecure endpoint.
 
-HKs should be created on secure CK workstation and then carefully provisioned to less secure working nodes for mining and validation.
+Hotkeys should be created on secure coldkey workstation and then carefully provisioned to less secure working nodes for mining and validation.
+
+:::tip mind your keys
+See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
+:::
+
 <details>
   <summary>`btcli wallet`</summary>
 #### `btcli wallet list`
@@ -219,9 +225,12 @@ HKs should be created on secure CK workstation and then carefully provisioned to
 
 ### `stake`
 
-Coldkey w sufficient TAO or w stake for unstaking/moving
+Many `stake` subcommands require a coldkey and hence should be performed on a secure coldkey workstation, NOT a mining workstation or any other insecure endpoint.
 
-Mostly target a coldkey; should be performed on a secure CK workstation, NOT a mining workstation or any other insecure endpoint.
+:::tip mind your keys
+See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
+:::
+
 <details>
   <summary>btcli stake</summary>
 #### `btcli stake add`
@@ -260,10 +269,10 @@ Mostly target a coldkey; should be performed on a secure CK workstation, NOT a m
 
 ### `sudo`
 
+Many `sudo` subcommands require a coldkey and hence should be performed on a secure coldkey workstation, NOT a mining workstation or any other insecure endpoint.
 
 CK with senator role for proposals and votes, or CK with sudo privileges for certain chain-level commands.
 
-miner/validator registration stuff: typically uses a hotkey for the registration extrinsic, though the creation of subnets (which set registration parameters) requires a coldkey.
 
 Validator take...
 
@@ -291,9 +300,19 @@ Validator take...
 #### `btcli su get_take`
 #### `btcli su set_take`
 </details>
+
 ### `subnets`
 
-Setters need CK with creator permissions, getters are typically permissionless (for listing or reading). Creating or modifying subnets (burn cost, price, hyperparameters) requires a coldkey with sufficient balance and permissions.
+Getters are typically permissionless for listing or reading subnets, prices, hyperparams, burn cost, etc.
+
+:::tip
+hyperparams are set with `btcli sudo`.
+:::
+
+Creating subnets requires a coldkey with sufficient balance.
+
+Miner and validator registering a hotkey uses a coldkey, has a TAO cost unless proof-of-work
+<!-- how does POW work??? -->
 
 <details>
   <summary>`btcli subnets`</summary>
@@ -332,9 +351,26 @@ Setters need CK with creator permissions, getters are typically permissionless (
 #### `btcli subnet pow_register`
 
 </details>
+
 ### `weights`
 
-Setters require an active hotkey that has a validator permit. Reading or querying weights is generally permissionless, but committing or revealing them is only for registered validators.
+Reading or querying weights is permissionless.
+
+Committing weights require an active hotkey that has a validator permit.
+
+To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
+
+  - Your hotkey must be registered, granting you a UID on the subnet
+  - You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+
+    $$
+
+    \text{Validator stake weight} = \alpha +  0.18 \times \tau 
+
+    $$
+  - You must be one of the top 64 validators in the subnet, ranked by stake.
+
+
 <details>
   <summary>`btcli weight`</summary>
 #### `btcli weights reveal`
