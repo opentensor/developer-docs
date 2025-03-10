@@ -57,7 +57,7 @@ Some operations require a TAO balance or alpha stake balance.
 - Staking and unstaking operations fail if they specify more than the owner has
 - Registering a hotkey on a subnet to mine or validate has a fee that can be paid with TAO or proof-of-work.
 - Creating a subnet requires a fee, which is computed dynamically. The price to create a subnet doubles when someone creates a subnet, and then gradually decreases. This system is designed as a kind of distrubuted auction, where price is determined by what people are willing to pay given the uncertain estimation of what others are willign to pay.
-<!-- what else -->’’’‘‘
+<!-- what else -->
 
 ### Validator Permit
 

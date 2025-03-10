@@ -17,6 +17,10 @@ Your coldkey private key, accessible with your recovery seed phrase, is the comp
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
 
+:::tip
+Note that you can check balances on an unsecure device without entering your coldkey private key. For example, using [https://bittensor.com/scan](https://bittensor.com/scan).
+:::
+
 ### Isolation of coldkey operations
 
 The first principle is to isolate coldkey operations from day-to-day or internet-exposed systems. This means using a dedicated machine that is minimally connected to the internet, protected with full disk encryption, and has only highly trusted software installed to minimize the risk of malware or keyloggers intercepting your coldkey.
@@ -30,21 +34,28 @@ Ensure a clear boundary between coldkey operations and the working environment y
 Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Ensure there is a clear boundary: The coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
 :::
 
-<!--  Is it possible to transfer an unsigned extrinsic to a USB key, plug that into your coldkey workstation, sign offline, then move the signed payload back to an online machine to broadcast it ???
- -->
+### Coldkey mobile device
 
+You can use the Bittensor mobile wallet app: [bittensor.com/wallet](https://bittensor.com/wallet). If so, it is recommended to use a dedicated mobile phone for the purpose that you do not install other software on, to minimize the risk of the coldkey or seed phrase being leaked.
+
+This option is suitable for alpha staking and TAO balance management.
+
+### Coldkey laptop
+
+This is required for using `btcli` or the Bittensor Python SDK for advanced use cases such as hotkey management and scripting.
 
 <!-- What is a minimal (?) recommended operating system for a bittensor coldkey workstation ??? -->
+<!--  Is it possible to transfer an unsigned extrinsic to a USB key, plug that into your coldkey workstation, sign offline, then move the signed payload back to an online machine to broadcast it ???
+ -->
 
 ### Operational Hygiene
 
 Even on a minimal or air-gapped machine, follow standard security hygiene:
-- **Use strong passwords** for your encryption passphrases.  
-- **Never reuse credentials** across different environments.  
-- Keep your workstation’s firmware (UEFI/BIOS) and OS updated.  
-- Maintain logs and check for unusual activity or tampering.  
-- Disable all network services (SSH, RDP, or anything else) if you don’t strictly need them.
-
+- Use strong passwords for your encryption passphrases.  
+- Do not reuse credentials across different environments.  
+- Keep your workstation’s operating system and critical software updated with the latest security patches.
+- Disable all network services (SSH, RDP, or anything else) that are not strictly needed.
+- Maintain logs of important oprations.
 
 ### Do not leak your seed-phrase
 
@@ -53,8 +64,8 @@ Even on a minimal or air-gapped machine, follow standard security hygiene:
 	- messaging
 	- email
 	- online word processors
-1. Beware key-loggers.
-1. Beward cameras and eye-balls (the "over the shoulder" attack).
+1. Beware key-loggers, especially if you enter your seed phrase.
+1. Beward cameras and eye-balls (the "over the shoulder" attack) if you generate and export your seed phrase.
 
 ### Do not lose your keys/seed-phrase
 
@@ -63,26 +74,23 @@ You must keep redundant backups of your coldkey. If you lose all access to your 
 Common approaches:
 - **Paper backups** of the mnemonic phrase, sealed in tamper-evident envelopes and locked in a safety deposit box or safe.
 - **Encrypted USB drives** with strong passphrases stored in a safety deposit box or safe.  
-- **Multiple locations strategy** so that a single disaster (fire or flood) doesn’t destroy all copies.
+- **Multiple locations strategy** so that a single disaster (fire or flood) cannot destroy all copies.
 
-<!-- ### Hardware Security Modules (HSMs) and Hardware Wallets
+### Hardware Wallets and Hardware Security Modules (HSMs)
 
-Ledger... 
+Ledger can be integrated with the Bittensor Chrome Extension. This may be a good option for managing stake and TAO balances, but does not allow for advanced functions such as hotkey management, subnet configuration, and governance.
 
-dtao enabled?
+See [Using Ledger Hardware Wallet](../staking-and-delegation/).
 
-Dedicated cell phone with mobile app?
-
-Enterprise-level hardware security modules? Are there services where you store private keys for signing without every exposing them and the company is insured for your value with them, does that exist?
- -->
+<!-- Enterprise-level hardware security modules? Are there services where you store private keys for signing without every exposing them and the company is insured for your value with them, does that exist? Do people use it?
 
 What about Hashicorp Vault? Can you use that with HSM? AWS CloudHSM or Azure Key Vault with HSM-backed keys? How would the integration with `btcli` go
 
-For more on hardware wallets and HSMs, see:
-- [Ledger’s official security overview](https://www.ledger.com/academy/securely-manage-your-crypto)  
-- [AWS CloudHSM documentation](https://aws.amazon.com/cloudhsm/)  
-- oblique reference to [HashiCorp Vault with HSM integration](https://developer.hashicorp.com/vault/docs/configuration/seal)
+See:
 
+- [AWS CloudHSM documentation](https://aws.amazon.com/cloudhsm/)  
+- Oblique reference to [HashiCorp Vault with HSM integration](https://developer.hashicorp.com/vault/docs/configuration/seal)
+ -->
 
 ### Signing Policy and Governance
 
@@ -95,8 +103,7 @@ If you work within a team or DAO environment that collectively manages a coldkey
 Maintain a secure software environment:
 - Keep an eye on newly discovered OS or hardware vulnerabilities.  
 - Run vulnerability scans on any machine that touches your coldkey.  
-- Conduct redteam exercises and penetration testing to identify weaknesses in your setup.
-
+- Conduct red team exercises and penetration testing to identify weaknesses in your setup.
 
 ## Hotkey workstation security
 

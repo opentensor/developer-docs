@@ -22,42 +22,27 @@ The coldkey public key identifies a wallet to the internet. To transfer ownershi
 
 ## Wallet applications
 
-There are many different applications that can interact with your wallet in some way.
+There are many different applications that can interact with your public and/or private keys in some way.
 
 ### Permissionless wallet apps
 
 You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldkey public key view public information about any wallet. The browser hence is able to act as a kind of permissionless wallet application to display public information about wallets.
 
-- `btcli`
-
 ### Staker apps
 
 Several applications exist that can interact securely with your coldkey, meaning essentially that you can load your coldkey into the application without having to have the key stored in unencrypted form on your disk. In theory this means that without your encryption password, it is impossible to steal your key even if someone accesses your device.
 
-However, it must be considered that using your coldkey on a device offers other ways for attackers to steal your key, even without decrypting it. See [Coldkey workstation security](../coldkey-hotkey-security#coldkey-workstation-security)
+However, it must be considered that using your coldkey on a device offers other ways for attackers to steal your key, even without decrypting it. See [Coldkey workstation security](./coldkey-hotkey-security#coldkey-workstation-security)
 
-
-
-- phone app
-- chrome extension
-- ...
-- HW support
-
-
-
+This includes:
+- The Bittensor wallet app for mobile: [bittensor.com/wallet](https://bittensor.com/wallet)
+- [The Chrome extension](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc), which is also compatible with use of a Ledger hardware wallet. See [Using Ledger Hardware Wallet](../staking-and-delegation/using-ledger-hw-wallet.md)
 
 ### `btcli` and the Bittensor Python SDK
 
-
 ## Coldkey details
 
-
-
-[Coldkey workstation security](../getting-started/coldkey-hotkey-security#coldkey-workstation-security)
-
-
-
-In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
+In `btcli`, the coldkey is equivalent to the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
 **Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, delegate stake, or simply hold balance you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
 
@@ -69,15 +54,22 @@ In `btcli`, the coldkey is synonymous with the wallet name. For example, the `--
 - Creating a subnet and obtaining a `netuid` for the newly-created subnet. The `netuid` is associated with the coldkey because subnet owner operations should be secure and conducted infrequently. 
 - Emissions to the subnet owner are deposited directly to the subnet owner's coldkey.
 
-**Security**: A coldkey is always encrypted when in your device storage. Only ever decrypted in-memory and only when needed.
+**Encryption**: A coldkey is always encrypted when in your device storage. Only ever decrypted in-memory and only when needed.
 
 A coldkey is like a highly secure key you use to access a safe where your valuables are stored. The coldkey is used less frequently than the hotkey, and is stored very securely to minimize the risk of unauthorized access.
 
-:::tip To keep your coldkey more secure, you may consider a hardware signer.
-A hardware signer is a secure method of storing your coldkey. It provides a separation between online devices and your private key. Some options include the [Polkadot Vault](https://wiki.polkadot.network/docs/polkadot-vault) application, a [Ledger wallet](https://www.ledger.com/), among others.   
+:::tip Learn more about coldkey security
 
-Additionally, you might consider using a [MultiSig (multiple signature) wallet](https://wiki.polkadot.network/docs/learn-account-multisig), or a [Proxy account setup](https://wiki.polkadot.network/docs/learn-proxies).
+For general coverage of `btcli` security and usage considerations across persona, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
+
+See also:
+
+- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets) for an introduction to the authentication technology used in Bittensor.
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for contrete security details about managing keys material.
+
+
 :::
+
 
 <!-- <center>
 <ThemedImage
@@ -110,7 +102,6 @@ Hotkeys are used to register on a subnet as a miner or validator.
   - Registering and running subnet miners and subnet validators.
   - If you are a subnet validator, then you can nominate your own hotkey so that the TAO holders can send their TAO to the hotkey.
   - If you are a TAO holder, for example, with a coldkey where your TAO is stored, you can delegate your TAO to the hotkey of the validator-delegate. See item 10 in the diagram in [Operational uses of keys](#operational-uses-of-keys).
-
 
 ## Operational uses of keys
 
