@@ -80,7 +80,7 @@ Common approaches:
 
 Ledger can be integrated with the Bittensor Chrome Extension. This may be a good option for managing stake and TAO balances, but does not allow for advanced functions such as hotkey management, subnet configuration, and governance.
 
-See [Using Ledger Hardware Wallet](../staking-and-delegation/).
+See [Using Ledger Hardware Wallet](../staking-and-delegation/using-ledger-hw-wallet).
 
 <!-- Enterprise-level hardware security modules? Are there services where you store private keys for signing without every exposing them and the company is insured for your value with them, does that exist? Do people use it?
 
