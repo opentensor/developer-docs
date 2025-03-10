@@ -32,10 +32,19 @@ You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldk
 
 ### Staker apps
 
+Several applications exist that can interact securely with your coldkey, meaning essentially that you can load your coldkey into the application without having to have the key stored in unencrypted form on your disk. In theory this means that without your encryption password, it is impossible to steal your key even if someone accesses your device.
+
+However, it must be considered that using your coldkey on a device offers other ways for attackers to steal your key, even without decrypting it. See [Coldkey workstation security](../coldkey-hotkey-security#coldkey-workstation-security)
+
+
+
 - phone app
 - chrome extension
 - ...
 - HW support
+
+
+
 
 ### `btcli` and the Bittensor Python SDK
 

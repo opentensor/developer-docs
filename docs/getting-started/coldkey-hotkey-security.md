@@ -17,7 +17,6 @@ Your coldkey private key, accessible with your recovery seed phrase, is the comp
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
 
-
 ### Isolation of coldkey operations
 
 The first principle is to isolate coldkey operations from day-to-day or internet-exposed systems. This means using a dedicated machine that is minimally connected to the internet, protected with full disk encryption, and has only highly trusted software installed to minimize the risk of malware or keyloggers intercepting your coldkey.
