@@ -354,7 +354,7 @@ Miner and validator registering a hotkey uses a coldkey, has a TAO cost unless p
 
 ### `weights`
 
-Reading or querying weights is permissionless.
+Reading weights is permissionless.
 
 Committing weights require an active hotkey that has a validator permit.
 
