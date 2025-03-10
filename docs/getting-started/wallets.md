@@ -18,7 +18,7 @@ In Bittensor, the coldkey and hotkey are used for different operations. In short
 
 The coldkey private key is needed to authorize highly sensitive operations involved in transferring TAO balances and managing stake, operations related to subnet management and governance, and management of hotkeys. The hotkey private key is needed to authorize miners to serve requests in subnets, and by validators to send requests to miners and to submit weights to the blockchain.
 
-The coldkey public key identifies a wallet to the internet. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
+The coldkey public key identifies a wallet to the internet, serving as an address. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
 
 ## Wallet applications
 
