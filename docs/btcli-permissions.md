@@ -14,15 +14,12 @@ See also the `btcli` permissions guides for specific Bittensor personas:
 - [Subnet Creator's Guide to `BTCLI`](./subnets/subnet-creators-btcli-guide)
 - [Senator's Guide to `BTCLI`](./governance/senators-btcli-guide)
 
-
 Other resources:
 
 - [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets)
 - [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
 
 ## Requirements for `btcli` functions
-
-Different functions have different requirements.
 
 ### Coldkey
 

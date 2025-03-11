@@ -6,9 +6,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wallets, Coldkeys and Hotkeys in Bittensor
 
-This page introduces the core concepts of Bittensor wallets. Procedures for handling wallets and keys are described in: [Working with keys](../working-with-keys.md)
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets. This page introduces the core concepts involved.
 
-In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets.
+For detailed procedures for handling wallets and keys, see: [Working with keys](../working-with-keys.md)
+
+For detailed security considerations, see: [Coldkey and Hotkey Workstation Security](./coldkey-hotkey-security.md)
 
 ## What are wallets and keys?
 
@@ -28,7 +30,7 @@ There are many different applications that can interact with your public and/or 
 
 You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldkey public key view public information about any wallet. The browser hence is able to act as a kind of permissionless wallet application to display public information about wallets.
 
-### Staker apps
+### Staking apps
 
 Several applications exist that can interact securely with your coldkey, meaning essentially that you can load your coldkey into the application without having to have the key stored in unencrypted form on your disk. In theory this means that without your encryption password, it is impossible to steal your key even if someone accesses your device.
 
@@ -40,35 +42,24 @@ This includes:
 
 ### `btcli` and the Bittensor Python SDK
 
+The Bittensor Command Line Interface (BTCLI) and Bittensor Python SDK offer more extended functionality, and are required for advanced functionality including:
+
+- Scripting
+- Managing hotkeys for mining and validating
+- Creating and configuring subnets
+- Participating in governance
+
 ## Coldkey details
 
 In `btcli`, the coldkey is equivalent to the wallet name. For example, the `--wallet.name` option in a `btcli` command always accepts only `<coldkey>` as its value and the `--wallet.hotkey` option only accepts `<hotkey>` as its value. This is because the coldkey holds the permissions and ownership over multiple hotkeys on-chain; hence, the wallet name is assigned to the coldkey.
 
 **Relationship to hotkey**: A coldkey can exist without a hotkey or have multiple hotkeys. For example, to create a subnet, delegate stake, or simply hold balance you only need a coldkey, but if you want to validate or mine in a subnet, you need a hotkey paired with this coldkey.
 
-**Purpose**: A coldkey is primarily for secure TAO storage and high-risk transactions, as described below (**Also see in the diagram in [Operational uses of keys](#operational-uses-of-keys))**:
+**Purpose**: A coldkey is required for all operations that affect balances, such as transfer of TAO, staking and unstaking. It is also required for creating and registering hotkeys, and for subnet management and governance functions.
 
-- Your wallet's funds (TAO) on the chain are controlled by a coldkey.
-- Transferring your TAO to other wallets/addresses.
-- Delegating and undelegating your TAO tokens.
-- Creating a subnet and obtaining a `netuid` for the newly-created subnet. The `netuid` is associated with the coldkey because subnet owner operations should be secure and conducted infrequently. 
-- Emissions to the subnet owner are deposited directly to the subnet owner's coldkey.
+**Encryption**: A coldkey is only stored on your disk in encrypted form, and requires an encryption password.
 
-**Encryption**: A coldkey is always encrypted when in your device storage. Only ever decrypted in-memory and only when needed.
-
-A coldkey is like a highly secure key you use to access a safe where your valuables are stored. The coldkey is used less frequently than the hotkey, and is stored very securely to minimize the risk of unauthorized access.
-
-:::tip Learn more about coldkey security
-
-For general coverage of `btcli` security and usage considerations across persona, see: [Bittensor CLI: Permissions Guide](../btcli-permissions)
-
-See also:
-
-- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets) for an introduction to the authentication technology used in Bittensor.
-- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for contrete security details about managing keys material.
-
-
-:::
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for contrete security details about 
 
 
 <!-- <center>
@@ -103,34 +94,37 @@ Hotkeys are used to register on a subnet as a miner or validator.
   - If you are a subnet validator, then you can nominate your own hotkey so that the TAO holders can send their TAO to the hotkey.
   - If you are a TAO holder, for example, with a coldkey where your TAO is stored, you can delegate your TAO to the hotkey of the validator-delegate. See item 10 in the diagram in [Operational uses of keys](#operational-uses-of-keys).
 
-## Operational uses of keys
+## Key usage FAQ
 
-The below diagram shows a few operations you can do with a hotkey and coldkey. Not all possible operations are shown below. You can use the `btcli` to perform any of these operations. See [Bitttensor Wallet CLI](../btcli.md#wallets) for command syntax.
+### Can a coldkey be paired with multiple hotkeys?
 
-<center>
-<ThemedImage
-alt="Coldkey and hotkey pairings"
-sources={{
-    light: useBaseUrl('/img/docs/1-operational-uses-of-keys.svg'),
-    dark: useBaseUrl('/img/docs/dark-1-operational-uses-of-keys.svg'),
-  }}
-style={{width: 850}}
-/>
-</center>
+Yes. A miner or validator may use a single coldkey go manage a number of hotkeys for mining or validation in different subnets.
 
-<br />
+### Can I use the same hotkey for multiple UIDs in the same subnet?
 
-The below numbered items describe the numbered sections in the above diagram:
+No. In a given subnet, each hotkey can only be used for one UID. However, you can reuse the same hotkey for UIDs in different subnets.
 
-1. A coldkey can be paired with multiple hotkeys. A coldkey is a more secure key.
-2. In a given subnet, you can only use a hotkey for one UID. You cannot use the same hotkey for another UID in the same subnet. However, you can use a given hotkey for two different UIDs that are in two separate subnets. 
-3. Transfer of TAO is always between one coldkey and another coldkey. That is, between one wallet and another wallet. 
-4. When you create a subnet, the subnet registration costs are taken out of the subnet owner's cold key. The `netuid` of the subnet is associated with the coldkey only. This is because all subnet owner operations are highly secure and thus require the coldkey (which is always encrypted). The hotkey has no role here.
-5. When you register as a subnet miner or a subnet validator, the registration costs will come out of your coldkey, but the UID is attached to your hotkey. Note that this registration type differs from creating a subnet, which only requires your coldkey. See `(4)` above.
-6. Subnet owner emissions are deposited directly into the subnet owner's coldkey. The hotkey has no role here.
-7. Emissions to the subnet validator and subnet miner are deposited directly into the hotkey to which the UID is attached. See `(5)` above.
-8. As a validator, when you stake your TAO, your TAO will be transferred from your coldkey to your hotkey, which is attached to the UID. Similarly, unstaking will move the TAO from the hotkey attached to the UID into its coldkey.
-9. As a validator, you can nominate your hotkey attached to the UID. This will publish the hotkey. TAO holders will send their TAO to this hotkey. This is also referred to as TAO holders delegating their TAO, or staking their TAO, to you, the validator. Also see `(10)` below.
-10. As a TAO holder, you delegate your TAO to a validator's hotkey. The TAO you delegated will go from your coldkey into the validator's hotkey. This validator's hotkey is permanently attached to the validator's UID. Also see `(9)` above.
+### Can I transfer TAO to a hotkey?
+
+No! If you try, you may irreversably lose your funds&mdash;transfer of TAO is always *to* a coldkey; the coldkey public key serves as the public address of the wallet.
+
+### Is a coldkey associated with a subnet?
+
+Yes! When a subnet is created, netuid is bound to the coldkey that pays the subnet registration fee. This coldkey is required to change subnet configuration settings (hyperparameters), and 18% portion of the subnets emissions as allocated to this coldkey.
 
 
+### Where are subnet validator and subnet miner emissions deposited?
+
+Validator and miner emissions are received in the alpha token of the subnet in which they are validating/mining, in the form of stake to their hotkey owned by their coldkey, which can then be unstaked back into a TAO balance for that coldkey.
+
+### How do I delegate my TAO to a validator’s hotkey?
+
+As a TAO holder, you can stake or delegate to a validator on a subnet by exchanging your TAO for a stake balance in the subnet's alpha $\alpha$ token, which is always tied to a hotkey in the subnet, i.e. that of the validator.
+
+See [Staking/Delegation Overview](../staking-and-delegation/delegation)
+
+
+
+
+by sending it from your own coldkey to the validator’s hotkey (the hotkey 
+that’s tied to their UID). This is also referred to as staking your TAO to a validator.

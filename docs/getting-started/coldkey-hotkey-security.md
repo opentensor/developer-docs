@@ -8,7 +8,7 @@ This page goes into detail of security concerns for working with coldkeys and ho
 
 See also:
 
-- [Intro: Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
+- [Intro to Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
 ## Coldkey workstation security
