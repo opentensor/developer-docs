@@ -12,7 +12,7 @@ See also:
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
 ## Coldkey workstation security
-
+<!-- TODO: Add rotation/ what to do if key is compromised ??? -->
 Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seedphrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
