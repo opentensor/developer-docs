@@ -89,7 +89,7 @@ btcli sudo set
 
 **Default**: 5000
 
-**`btcli` access**: `btcli sudo set --param activity_cutoff`
+**`btcli` setter**: `btcli sudo set --param activity_cutoff`
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -105,7 +105,7 @@ The number of blocks for the stake to become inactive for the purpose of epoch i
 
 **Default**: 0
 
-**`btcli` access**: `btcli sudo set --param adjustment_alpha`
+**`btcli` setter**: `btcli sudo set --param adjustment_alpha`
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -121,7 +121,7 @@ The number of blocks for the stake to become inactive for the purpose of epoch i
 
 **Default**: 360
 
-**`btcli` access**: `btcli sudo set --param adjustment_interval`
+**`btcli` setter**: `btcli sudo set --param adjustment_interval`
 
 **Setter extrinsic**: `sudo_set_adjustment_interval`
 
@@ -138,11 +138,11 @@ The number of blocks for the stake to become inactive for the purpose of epoch i
 
 **Default**: 
 
-**`btcli` access**: 
+**`btcli` setter**: bonds_moving_avg
 
-**Setter extrinsic**:  `sudo_set_bonds_moving_average`
+**`btcli` setter**: `btcli sudo set --param sudo_set_bonds_moving_average`
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: Subnet Creator
 
 **Description**:
 
@@ -153,37 +153,20 @@ See [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics).
 
 ### BondsPenalty
 
-**Type**: 
+**Type**: u16
 
-**Default**: 
+**Default**: 0
 
-**`btcli` access**: 
+**`btcli` setter**: none
 
 **Setter extrinsic**: `sudo_set_bonds_penalty`
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: root/subnet creator ???
 
 **Description**:
 The magnitude of the penalty subtracted from weights for exceeding consensus, for a specific subnet.
 
 See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penalizing-out-of-consensus-bonds).
-
-
-### Burn
-
-**Type**:
-
-**Default**:
-
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: Subnet Creator
-
-**Description**:
-
-???
 
 
 
@@ -193,7 +176,7 @@ See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penali
 
 **Default**: 
 
-**`btcli` access**: no
+**`btcli` setter**: no
 
 **Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
 
@@ -210,7 +193,7 @@ The number of blocks that need to pass from the moment when the coldkey swap is 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
 
@@ -228,7 +211,7 @@ See [Commit Reveal](./commit-reveal)
 
 **Default**: false
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_enabled`
 
@@ -241,11 +224,11 @@ See [Commit Reveal](./commit-reveal)
 
 ### Difficulty
 
-**Type**: ???
+**Type**: u64
 
-**Default**: ???
+**Default**: 10000000
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_difficulty` 
 
@@ -253,32 +236,17 @@ See [Commit Reveal](./commit-reveal)
 
 **Description**:
 
-Measure of the POW requirement for POW registration for miners on subnets. Need to clarify ???
+Measure of the proof-of-work (POW) requirement for POW hotkey registration.
 
 ### DissolveNetworkScheduleDuration
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` access**: no
-
-**Setter extrinsic**:  `sudo_set_dissolve_network_schedule_duration`
-
-**Permissions required to set**: root
-
-**Description**:
 
 Deprecated
 
 ### EmissionValue
 
-**Permissions required to set**: root
-]
 **Description**:
 
-Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and SubnetTaoInEmission. These values indicate how much alpha-in, alpha-out, and tao-in the subnet is getting per block (updated every block and is equal to last block gain).
+Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and SubnetTaoInEmission. 
 
 ### EvmChainId
 
@@ -287,7 +255,7 @@ Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and Sub
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -306,7 +274,7 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 
 **Default**: ???
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_immunity_period` 
 
@@ -316,7 +284,6 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 
 The number of blocks after registration when a miner is protected from deregistration
 
- 
 
 ### Issuance
 
@@ -333,7 +300,7 @@ Refers to total issuance, the amount of TAO in circulation.
 
 **Default**:  32767 ( or approximately 0.5 normalized )
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_kappa`
 
@@ -354,7 +321,7 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 
 **Default**: ???
 
-**`btcli` access**: no
+**`btcli` setter**: no
 
 **Setter extrinsic**: sudo_set_default_take ???
 
@@ -365,12 +332,11 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 
 ### LiquidAlphaEnabled
 
+**Type**: Bool
 
-**Type**: int
+**Default**: False
 
-**Default**: ???
-
-**`btcli` access**: 
+**`btcli` setter**: `btcli sudo set --param liquid_alpha_enabled`
 
 **Setter extrinsic**: `sudo_set_liquid_alpha_enabled`
 
@@ -381,35 +347,14 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 Enables the [liquid alpha ](./consensus-based-weights) feature.
 
 
-### LockReductionInterval
-
-
-**Type**: int
-
-**Default**: ???
-
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: root
-
-**Description**:
-
-The number of blocks that need to pass in order for the network lock cost to half.
-
-
-
-`sudo_set_lock_reduction_interval`| root 
-
 ### MaxAllowedUids
 
 
-**Type**: 
+**Type**: u16
 
 **Default**: ???
 
-**`btcli` access**: no
+**`btcli` setter**: no
 
 **Setter extrinsic**: `sudo_set_max_allowed_uids`
 
@@ -417,18 +362,17 @@ The number of blocks that need to pass in order for the network lock cost to hal
 
 **Description**:
 
-is the maximum neurons on a subnet.
+Maximum neurons on a subnet.
 
  
-
 ### MaxAllowedValidators
 
 
-**Type**: ???
+**Type**: u16
 
-**Default**: ???
+**Default**: 64
 
-**`btcli` access**: 
+**`btcli` setter**: `btcli sudo set --param max_validators`
 
 **Setter extrinsic**: `sudo_set_max_allowed_validators`
 
@@ -436,38 +380,31 @@ is the maximum neurons on a subnet.
 
 **Description**:
 
-the maximum validators on a subnet.
+Maximum validators on a subnet.
 
 
 ### MaxBurn
 
+**Type**: u64
 
+**Default**: 100000000000 normalized to 100.0000(τ)
 
-**Type**: ???
+**`btcli` setter**: `btcli sudo set --param max_burn`
 
-**Default**: ???
-
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
+**Setter extrinsic**: `sudo_set_max_burn`
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
-
-
- `sudo_set_max_burn`  | sn_owner
+ 
 
 ### MaxDifficulty
 
+**Type**: u64
 
+**Default**: 18446744073709551615 normalized to 1
 
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` access**: 
+**`btcli` setter**: `btcli sudo set --param min_difficulty`
 
 **Setter extrinsic**: 
 
@@ -482,20 +419,19 @@ the maximum validators on a subnet.
 ### MaxRegistrationsPerBlock
 
 
-
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` access**:  no
+**`btcli` setter**: `btcli sudo set --param max_regs_per_block`
 
 **Setter extrinsic**: `sudo_set_max_registrations_per_block`
 
-**Permissions required to set**: root
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
-the maximum neuron registrations per block. Doesn't mean that this limit can be acieved though because there is also target regisrations per interval limit.
+Maximum neuron registrations per block. Note: Actual limit may be lower, as there is also per interval limit `TargetRegistrationsPerInterval`.
 
 
 ### MaxWeightLimit
@@ -506,7 +442,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_max_weight_limit`
 
@@ -523,7 +459,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**: `sudo_set_min_allowed_weights`
 
@@ -538,62 +474,37 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 ### MinBurn
 
 
+**Type**: u64
 
-**Type**: ???
+**Default**: 500000 normalized to 0.0005(τ)
 
-**Default**: ???
+**`btcli` setter**: `btcli sudo set --param min_burn`
 
-**`btcli` access**: 
+**Setter extrinsic**: `sudo_set_min_burn`
 
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
+**Permissions required to set**: Subnet creator
+ 
 **Description**:
 
-
-
- | `u64` | `1000000000` (1 TAO)  | `sudo_set_min_burn`  | root 
+???
 
 ### MinDifficulty
 
+**Type**: u64
 
+**Default**: 10000000 normalized to 5.421010862e-13
 
-**Type**: ???
+**`btcli` setter**: `btcli sudo set --param min_difficulty`
 
-**Default**: ???
+**Setter extrinsic**: `sudo_set_min_difficulty`
 
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
+???
 
 
- | `u64` | `10000000`| `sudo_set_min_difficulty`  | root 
-
-### NetworkMaxStake
-
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-`NetworkMaxStake` is deprecated
-
-| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
 
 ### NetworkMinLockCost
 
@@ -603,7 +514,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -623,7 +534,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -643,7 +554,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -661,7 +572,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -682,7 +593,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -701,7 +612,7 @@ the maximum neuron registrations per block. Doesn't mean that this limit can be 
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -719,7 +630,7 @@ Allegedly unused, but is in `btcli`???
 
 **Default**: ???
 
-**`btcli` access**: yes
+**`btcli` setter**: yes
 
 **Setter extrinsic**:  `sudo_set_rho`
 
@@ -738,7 +649,7 @@ Allegedly unused, but is in `btcli`???
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_serving_rate_limit` 
 
@@ -755,7 +666,7 @@ is the rate limit for calling `serve_axon` and `serve_prometheus` extrinsics
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -775,7 +686,7 @@ The minimum possible stake value.
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_subnet_limit` 
 
@@ -793,7 +704,7 @@ Deprecated
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_subnet_moving_alpha` 
 
@@ -812,19 +723,17 @@ Deprecated
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
-**Permissions required to set**: ???
+**Permissions required to set**: root 
 
 **Description**:
 
 the ratio of all subnet alpha emissions that is given to subnet owner as stake. (global, fixed at 18%)
 
-   `sudo_set_subnet_owner_cut` | root 
-
-
+   `sudo_set_subnet_owner_cut` | 
 
  
 
@@ -839,51 +748,29 @@ the ratio of all subnet alpha emissions that is given to subnet owner as stake. 
 
 **Setter extrinsic**: `sudo_set_target_registrations_per_interval`
 
-**Permissions required to set**: sn_owner
+**Permissions required to set**: root
 
 **Description**:
 maximum number of neuron registrations allowed per interval. Interval is `AdjustmentInterval`
 
 
-   | root 
-
-### TargetStakesPerInterval
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` access**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-`TargetStakesPerInterval` is deprecated.
-
-   `sudo_set_target_stakes_per_interval`| root 
 
 ### Tempo
 
-
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: `btcli sudo set --param tempo`
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_tempo`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
-`Tempo` is the length of subnet epoch in blocks
+Length of subnet epoch in blocks.
 
-  `sudo_set_tempo`| root
 
 ### ToggleTransfer
 
@@ -892,7 +779,7 @@ maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: none
 
 **Setter extrinsic**: `sudo_set_toggle_transfer` 
 
@@ -900,9 +787,8 @@ maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 **Description**:
 
-`TransferToggle` (`ToggleTransfer` in docs) is the flag the allows/disallows all kinds of stake transferring (moving, swapping, etc.)
+Allows/disallows transfer of stake between coldkeys.
 
-  
 
 ### TxDelegateTakeRateLimit
 
@@ -911,7 +797,7 @@ maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -930,7 +816,7 @@ maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: 
 
@@ -953,13 +839,64 @@ Rate limit for `swap_hotkey` extrinsic
 
 **Default**: ???
 
-**`btcli` access**: 
+**`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_weights_version_key`
 
 **Permissions required to set**: ???
 
 **Description**:
+
+
+
+
+
+
+
+
+
+
+## Global Chain State Variables
+
+### LockReductionInterval
+
+
+**Type**: int
+
+**Default**: ???
+
+**`btcli` setter**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: root
+
+**Description**:
+
+The number of blocks that need to pass in order for the network lock cost to half.
+
+`sudo_set_lock_reduction_interval`| root 
+
+
+### NetworkMaxStake
+
+
+**Type**: ???
+
+**Default**: ???
+
+**`btcli` setter**: 
+
+**Setter extrinsic**: 
+
+**Permissions required to set**: ???
+
+**Description**:
+
+`NetworkMaxStake` is deprecated
+
+| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
+
 
 
 
@@ -1190,3 +1127,4 @@ Burn: u64 = 100_000_000_000; // 100 tao [100 tao @ 26,310]
 MinBurn: u64 = 1_000_000_000; // 1 tao [1 tao @ 26,310]
 MaxBurn: u64 = 21_000_000_000_000_000; // 21M tao [21M tao @ 26,310]
 WeightsSetRateLimit: u64 = 250; // [250 @ 7,168]
+
