@@ -119,7 +119,7 @@ Bittensor miners must handle hotkeys in MLOps workflows. Hotkeys must be created
 - Use ephemeral secret injection (CI/CD pipelines like GitLab or GitHub Actions allow storing secrets and injecting them at runtime).  
 - Never putting keys in code repositories
 
-<!-- What are best practices?   -->
+<!-- What are best practices ^^ ???   -->
 
 <!--
 
@@ -145,12 +145,7 @@ Note that this operation incurs a $1 \tau$ recycling fee.
 
 ### Minimize dependency risk
 
-Because Bittensor nodes often run deep learning frameworks (like PyTorch or TensorFlow) to serve inference, that software stack can be large and complex, increasing the attack surface. Strategies to reduce risk:
+Bittensor nodes often run complex software stacks with many dependencies. Take steps to reduce risk:
 - Keep your Python environment or Docker images updated with the latest patches.  
 - Avoid installing unnecessary packages that might contain vulnerabilities.  
 - Consider sandboxing the ML library if possible, using solutions like [PyPy sandboxing](https://doc.pypy.org/en/latest/sandbox.html) or custom Docker seccomp profiles.  
-
-
-<!-- ### Team Collaboration
-
-In some Bittensor setups, a small group or an organization might manage a pool of validators/miners. How do you manage permissions over keys within your org? probably you should have a good strategy though. Like vault with permissions granted over a pool of hotkeys with access logged -->
