@@ -227,6 +227,7 @@ See [Commit Reveal](./commit-reveal)
 **Permissions required to set**: Subnet Creator
 
 **Description**:
+
  Enables [Commit Reveal](./commit-reveal)
 
 
@@ -297,40 +298,27 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` method**: `btcli subnet hyperparameters`
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_immunity_period` 
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
-number of blocks when miner is protected from deregistration
+The number of blocks after registration when a miner is protected from deregistration
 
-
- `sudo_set_immunity_period`  | sn_owner
+ 
 
 ### Issuance
 
-
-
 **Type**: u64
 
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
 **Description**:
+Refers to total issuance, the amount of TAO in circulation.
 
-
-???
 
 ### Kappa
-
 
 
 **Type**: u16
@@ -345,7 +333,7 @@ number of blocks when miner is protected from deregistration
 
 **Description**:
 
-
+The consensus majority ratio: The weights set by validators who have lower normalized stake than Kappa are not used in calculating consensus, which affects ranks, which affect incentives.
 
   | `u16` | `32767`| `sudo_set_kappa`|  ???
 
