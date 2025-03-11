@@ -1,26 +1,30 @@
 ---
-title: "Subnet Hyperparameters"
+title: "Subnet Configuration (Hyperparameters)"
 ---
 
-# Subnet Hyperparameters
-https://github.com/opentensor/subtensor/blob/5073ade602c367471f5124329b9d7ccf8e972d69/runtime/src/lib.rs#L1038
+# Subnet Configuration (Hyperparameters)
+
+Bittensor subnets are configured with a set of state variables (known as hyperparameters) that are recorded on the blockchain. Many of these can be accessed (viewed and set) using the Bittensor CLI `btcli`, but some of them must be checked or set using the SDK or with Subtensor extrinsics, as noted.
+
+Note that the names of the variables may be slightly different in various representations, e.g. in `btcli` and in the [chain codebase](https://github.com/opentensor/subtensor/blob/main/runtime/src/lib.rs#L1038).
 
 ## Manage hyperparams with `btcli`
 
 :::note
-Some hyperparameters can be viewed and set with `btcli`, but some can only be configured directly on chain using extrinsic transactions.
+Not all hyperparameters can be viewed and set with `btcli`.
 :::
 
 ### View the hyperparameters
 
+Anyone can view the parameters of any subnet.
+
+**Example**
+
 ```bash
-btcli subnet hyperparameters
+btcli subnet hyperparameters --netuid 19
 ```
 
 ```console
- btcli subnet hyperparameters
-/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
-  warnings.warn(
 Netuid: 19
 Using the specified network test from config
 
@@ -63,12 +67,15 @@ Using the specified network test from config
 :::tip
 
 `btcli` does not include all of the chain state variables, some of which can only be accessed through the Bittensor Python SDK or directly through extrinsic calls.
-
 :::
 
 ### Set hyperparameters
 
-Use the below command to set these hyperparameters. Note that subnet creator permissions are required to set subnet hyperparameters using `btcli`.
+Use the below command to set these hyperparameters.
+
+:::tip
+Only the coldkey that created the subnet can set the hyperparameters.
+:::
 
 ```bash
 btcli sudo set
@@ -78,11 +85,11 @@ btcli sudo set
 
 ### ActivityCutoff
 
-**Type**: ???
+**Type**: u16
 
-**Default**: ???
+**Default**: 5000
 
-**`btcli` method**: 
+**`btcli` access**: `btcli sudo set --param activity_cutoff`
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -92,13 +99,13 @@ btcli sudo set
 
 The number of blocks for the stake to become inactive for the purpose of epoch in Yuma Consensus. If a validator doesn't submit weights within the first `ActivityCutoff` blocks of the epoch, it will not be able to participate until the start of the next epoch.
 
-### AdjustmentAlpha ???
+### AdjustmentAlpha
 
-**Type**: ???
+**Type**: u64
 
-**Default**: ???
+**Default**: 0
 
-**`btcli` method**: 
+**`btcli` access**: `btcli sudo set --param adjustment_alpha`
 
 **Setter extrinsic**: `sudo_set_activity_cutoff`
 
@@ -110,15 +117,15 @@ The number of blocks for the stake to become inactive for the purpose of epoch i
 
 ### AdjustmentInterval
 
-**Type**: Int
+**Type**: u16
 
-**Default**: ???
+**Default**: 360
 
-**`btcli` method**: 
+**`btcli` access**: `btcli sudo set --param adjustment_interval`
 
 **Setter extrinsic**: `sudo_set_adjustment_interval`
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: Subnet Creator
 
 **Description**:
 
@@ -127,11 +134,11 @@ The number of blocks for the stake to become inactive for the purpose of epoch i
 
 ### BondsMovingAverage
 
-**Type**: ???
+**Type**: 
 
-**Default**: ???
+**Default**: 
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**:  `sudo_set_bonds_moving_average`
 
@@ -146,11 +153,11 @@ See [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics).
 
 ### BondsPenalty
 
-**Type**: ???
+**Type**: 
 
-**Default**: ???
+**Default**: 
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: `sudo_set_bonds_penalty`
 
@@ -164,28 +171,29 @@ See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penali
 
 ### Burn
 
-**Type**: ???
+**Type**:
 
-**Default**: ???
+**Default**:
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: Subnet Creator
 
 **Description**:
 
 ???
 
 
+
 ### ColdkeySwapScheduleDuration
 
 **Type**: int
 
-**Default**: ???
+**Default**: 
 
-**`btcli` method**: none
+**`btcli` access**: no
 
 **Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
 
@@ -202,7 +210,7 @@ The number of blocks that need to pass from the moment when the coldkey swap is 
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
 
@@ -210,7 +218,7 @@ The number of blocks that need to pass from the moment when the coldkey swap is 
 
 **Description**:
 
-This is how long the consensus weights for a subnet remain time-lock encrypted, preventing weight-copying on that time-scale.
+How long, in blocks, the consensus weights for a subnet remain time-lock encrypted, preventing weight-copying.
 
 See [Commit Reveal](./commit-reveal)
 
@@ -220,7 +228,7 @@ See [Commit Reveal](./commit-reveal)
 
 **Default**: false
 
-**`btcli` method**: `btcli subnet hyperparameters`
+**`btcli` access**: yes
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_enabled`
 
@@ -237,7 +245,7 @@ See [Commit Reveal](./commit-reveal)
 
 **Default**: ???
 
-**`btcli` method**: `btcli subnet hyperparameters`
+**`btcli` access**: yes
 
 **Setter extrinsic**: `sudo_set_difficulty` 
 
@@ -254,7 +262,7 @@ Measure of the POW requirement for POW registration for miners on subnets. Need 
 
 **Default**: ???
 
-**`btcli` method**: none
+**`btcli` access**: no
 
 **Setter extrinsic**:  `sudo_set_dissolve_network_schedule_duration`
 
@@ -279,7 +287,7 @@ Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and Sub
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -298,7 +306,7 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 
 **Default**: ???
 
-**`btcli` method**: `btcli subnet hyperparameters`
+**`btcli` access**: yes
 
 **Setter extrinsic**: `sudo_set_immunity_period` 
 
@@ -323,11 +331,11 @@ Refers to total issuance, the amount of TAO in circulation.
 
 **Type**: u16
 
-**Default**: ???
+**Default**:  32767 ( or approximately 0.5 normalized )
 
-**`btcli` method**: 
+**`btcli` access**: yes
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_kappa`
 
 **Permissions required to set**: ???
 
@@ -335,7 +343,7 @@ Refers to total issuance, the amount of TAO in circulation.
 
 The consensus majority ratio: The weights set by validators who have lower normalized stake than Kappa are not used in calculating consensus, which affects ranks, which affect incentives.
 
-  | `u16` | `32767`| `sudo_set_kappa`|  ???
+   
 
 the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consensus)
 
@@ -346,7 +354,7 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: no
 
 **Setter extrinsic**: sudo_set_default_take ???
 
@@ -358,11 +366,11 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 ### LiquidAlphaEnabled
 
 
-**Type**: ???
+**Type**: int
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: `sudo_set_liquid_alpha_enabled`
 
@@ -370,68 +378,66 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 
 **Description**:
 
-enables [liquid alpha ](./consensus-based-weights)
+Enables the [liquid alpha ](./consensus-based-weights) feature.
 
 
 ### LockReductionInterval
 
 
-
-**Type**: ???
+**Type**: int
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
-???
+The number of blocks that need to pass in order for the network lock cost to half.
+
+
 
 `sudo_set_lock_reduction_interval`| root 
 
 ### MaxAllowedUids
 
 
-
-**Type**: u16
+**Type**: 
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: no
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_max_allowed_uids`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root or sn ???
 
 **Description**:
 
+is the maximum neurons on a subnet.
 
-
- `sudo_set_max_allowed_uids` |
+ 
 
 ### MaxAllowedValidators
-
 
 
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_max_allowed_validators`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root or sn ???
 
 **Description**:
 
+the maximum validators on a subnet.
 
-
-  `sudo_set_max_allowed_validators` | root 
 
 ### MaxBurn
 
@@ -441,7 +447,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -461,7 +467,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -481,17 +487,16 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**:  no
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_max_registrations_per_block`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
+the maximum neuron registrations per block. Doesn't mean that this limit can be acieved though because there is also target regisrations per interval limit.
 
-
-| `u16` | `1` | `sudo_set_max_registrations_per_block`  | root 
 
 ### MaxWeightLimit
 
@@ -501,34 +506,31 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: yes
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_max_weight_limit`
 
-**Permissions required to set**: ???
+**Permissions required to set**: sn_owner
 
 **Description**:
+`MaxWeightsLimit` (there should be "s" at the end of word Weight): The limit for the u16-normalized weights. If some weight is greater than this limit when all weights are normalized so that maximum weight is 65535, then it will not be used.
 
-
-
-  | `u16` | `655`  | `sudo_set_max_weight_limit` | sn_owner
 
 ### MinAllowedWeights
-
 
 
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: yes
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_min_allowed_weights`
 
-**Permissions required to set**: ???
+**Permissions required to set**: sn_owner
 
 **Description**:
-
+`MinAllowedWeights` is the minimum number of weights for a validator to set when setting weights.
 
 
   | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner
@@ -541,7 +543,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -561,7 +563,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -581,7 +583,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -589,7 +591,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+`NetworkMaxStake` is deprecated
 
 | `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
 
@@ -601,7 +603,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -609,7 +611,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+`NetworkMinLockCost` is the minimum TAO to pay for subnet registration
 
 | `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
 
@@ -621,7 +623,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -629,7 +631,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+`NetworkPowRegistrationAllowed` is a flag that toggles PoW registrations on a subnet
 
   `sudo_set_network_pow_registration_allowed`| sn_owner
 
@@ -641,14 +643,14 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
 **Permissions required to set**: ???
 
 **Description**:
-
+`NetworkRateLimit` is the rate limit for network registrations expressed in blocks
 
 
  | `int` | N/A | `sudo_set_network_rate_limit`  | root 
@@ -659,7 +661,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -667,6 +669,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
+`NetworkRegistrationAllowed` determines if burned registrations are allowed. If both burned and pow registrations are disabled, the subnet will not get emissions.
 
 
   `sudo_set_network_registration_allowed` | sn_owner
@@ -679,14 +682,14 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
 **Permissions required to set**: ???
 
 **Description**:
-
+`NominatorMinRequiredStake` is deprecated
 
 
  | `int` | N/A | `sudo_set_nominator_min_required_stake` | root
@@ -694,12 +697,11 @@ enables [liquid alpha ](./consensus-based-weights)
 ### PruningScore
 
 
-
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -707,67 +709,27 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
-
+???
 
 ### Rho
 
-
+Allegedly unused, but is in `btcli`???
 
 **Type**: u16
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: yes
 
-**Setter extrinsic**: 
+**Setter extrinsic**:  `sudo_set_rho`
 
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
- `sudo_set_rho`  | sn_owner
-
-### ScalingLawPower
-
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
+**Permissions required to set**: sn_owner
 
 **Description**:
 
 
 
 
-
-### ScheduleGrandpaChange
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
- `schedule_grandpa_change`| root 
 
 ### ServingRateLimit
 
@@ -776,17 +738,15 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_serving_rate_limit` 
 
 **Permissions required to set**: ???
 
 **Description**:
+is the rate limit for calling `serve_axon` and `serve_prometheus` extrinsics
 
-
-
-  `sudo_set_serving_rate_limit`  | root/sn_owner 
 
 ### StakeThreshold
 
@@ -795,7 +755,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -803,6 +763,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
+The minimum possible stake value.
 
 
 `sudo_set_stake_threshold`  | root
@@ -814,17 +775,16 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_subnet_limit` 
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
+Deprecated
 
-
-
-   `sudo_set_subnet_limit`  | root 
+   
 
 ### SubnetMovingAlpha
 
@@ -833,17 +793,17 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_subnet_moving_alpha` 
 
 **Permissions required to set**: ???
 
 **Description**:
 
+`SubnetMovingAlpha` is a parameter that is used to calculate `SubnetMovingPrice` from current subnet price. The higher `SubnetMovingAlpha`, the faster the moving price diverges to the current price.
 
-
-   `sudo_set_subnet_moving_alpha` | root 
+   
 
 ### SubnetOwnerCut
 
@@ -852,7 +812,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -860,24 +820,9 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+the ratio of all subnet alpha emissions that is given to subnet owner as stake. (global, fixed at 18%)
 
    `sudo_set_subnet_owner_cut` | root 
-
-### SynergyScalingLawPower
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
 
 
 
@@ -890,17 +835,17 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` command**: `btcli sudo set --param target_regs_per_interval`
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_target_registrations_per_interval`
 
-**Permissions required to set**: ???
+**Permissions required to set**: sn_owner
 
 **Description**:
+maximum number of neuron registrations allowed per interval. Interval is `AdjustmentInterval`
 
 
-
- `sudo_set_target_registrations_per_interval`  | root 
+   | root 
 
 ### TargetStakesPerInterval
 
@@ -909,7 +854,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -917,7 +862,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+`TargetStakesPerInterval` is deprecated.
 
    `sudo_set_target_stakes_per_interval`| root 
 
@@ -928,7 +873,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -936,7 +881,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Description**:
 
-
+`Tempo` is the length of subnet epoch in blocks
 
   `sudo_set_tempo`| root
 
@@ -947,17 +892,17 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_toggle_transfer` 
 
-**Permissions required to set**: ???
+**Permissions required to set**: sn_owner
 
 **Description**:
 
+`TransferToggle` (`ToggleTransfer` in docs) is the flag the allows/disallows all kinds of stake transferring (moving, swapping, etc.)
 
-
-  `sudo_set_toggle_transfer`  | sn_owner
+  
 
 ### TxDelegateTakeRateLimit
 
@@ -966,14 +911,14 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
 **Permissions required to set**: ???
 
 **Description**:
-
+ rate limit of how frequently can a delegate take be increased
 
 
   `sudo_set_tx_delegate_take_rate_limit`  | root 
@@ -985,7 +930,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: 
 
@@ -994,148 +939,12 @@ enables [liquid alpha ](./consensus-based-weights)
 **Description**:
 
 
+Rate limit for `swap_hotkey` extrinsic
 
    `sudo_set_tx_rate_limit` | root 
 
-### ValidatorBatchSize
 
 
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-
-### ValidatorEpochLen
-
-
-**Type**: u16
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-### ValidatorEpochsPerReset
-
-
-**Type**: u16
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-### ValidatorExcludeQuantile
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-
-### ValidatorLogitsDivergence
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-### ValidatorPruneLen
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-
-### ValidatorSequenceLen
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
-
-
-### WeightsRateLimit
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: `sudo_set_weights_set_rate_limit`
-
-**Permissions required to set**: ???
-
-**Description**:
-
- 
 
 ### WeightsVersion
 
@@ -1144,7 +953,7 @@ enables [liquid alpha ](./consensus-based-weights)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` access**: 
 
 **Setter extrinsic**: `sudo_set_weights_version_key`
 
