@@ -17,9 +17,54 @@ Some hyperparameters can be viewed and set with `btcli`, but some can only be co
 btcli subnet hyperparameters
 ```
 
-:::tip Current hyperparameters list
-**Not all the hyperparameters in the output of `btcli subnet hyperparameters` are editable**. See [this line of code](https://github.com/opentensor/bittensor/blob/30d3d646571ed462e36c65c399c09ec866de7c79/bittensor/commands/network.py#L293) for the editable hyperparameters.
-::: 
+```console
+ btcli subnet hyperparameters
+/Users/michaeltrestman/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Netuid: 19
+Using the specified network test from config
+
+                          Subnet Hyperparameters
+                  NETUID: 19 (inference) - Network: test
+
+
+ HYPERPARAMETER                    VALUE                  NORMALIZED
+ ────────────────────────────────────────────────────────────────────────
+   rho                             10                     10
+   kappa                           32767                  0.4999923705
+   immunity_period                 5000                   5000
+   min_allowed_weights             1                      1
+   max_weights_limit               65535                  65535
+   tempo                           99                     99
+   min_difficulty                  10000000               5.421010862e-13
+   max_difficulty                  18446744073709551615   1
+   weights_version                 0                      0
+   weights_rate_limit              100                    100
+   adjustment_interval             360                    360
+   activity_cutoff                 5000                   5000
+   registration_allowed            True                   True
+   target_regs_per_interval        1                      1
+   min_burn                        500000                 τ 0.0005
+   max_burn                        100000000000           τ 100.0000
+   bonds_moving_avg                900000                 4.878909776e-14
+   max_regs_per_block              1                      1
+   serving_rate_limit              50                     50
+   max_validators                  64                     64
+   adjustment_alpha                58000                  3.1441863e-15
+   difficulty                      10000000               5.421010862e-13
+   commit_reveal_period            1                      1
+   commit_reveal_weights_enabled   False                  False
+   alpha_high                      58982                  0.9000076295
+   alpha_low                       45875                  0.7000076295
+   liquid_alpha_enabled            False                  False
+ ────────────────────────────────────────────────────────────────────────
+ ```
+
+:::tip
+
+`btcli` does not include all of the chain state variables, some of which can only be accessed through the Bittensor Python SDK or directly through extrinsic calls.
+
+:::
 
 ### Set hyperparameters
 
@@ -45,9 +90,7 @@ btcli sudo set
 
 **Description**:
 
-is the number of blocks for the stake to become inactive for the purpose of epoch function (YUMA). If a validator doesn't submit weights within ActivityCutoff by the time epoch runs, it will not be given any stake weight.
-
-
+The number of blocks for the stake to become inactive for the purpose of epoch in Yuma Consensus. If a validator doesn't submit weights within the first `ActivityCutoff` blocks of the epoch, it will not be able to participate until the start of the next epoch.
 
 ### AdjustmentAlpha ???
 
@@ -62,13 +105,12 @@ is the number of blocks for the stake to become inactive for the purpose of epoc
 **Permissions required to set**: Subnet Creator
 
 **Description**:
-is the rate at which difficulty and burn are adjusted up or down.
-
+`AdjustmentAlpha` is the rate at which difficulty and burn are adjusted up or down.
 
 
 ### AdjustmentInterval
 
-**Type**: ???
+**Type**: Int
 
 **Default**: ???
 
@@ -80,9 +122,7 @@ is the rate at which difficulty and burn are adjusted up or down.
 
 **Description**:
 
-AdjustmentInterval is number of blocks that pass between difficulty and burn adjustments. So, I was wrong about "next block" when I said that if root sets difficulty outside of range, it will get back in range. Difficulty will get back in range at most after AdjustmentInterval blocks pass.
-
-
+`AdjustmentInterval` is number of blocks that pass between difficulty and burn adjustments. So, I was wrong about "next block" when I said that if root sets difficulty outside of range, it will get back in range. Difficulty will get back in range at most after `AdjustmentInterval` blocks pass.
 
 
 ### BondsMovingAverage
@@ -99,9 +139,9 @@ AdjustmentInterval is number of blocks that pass between difficulty and burn adj
 
 **Description**:
 
-This has something to do with this but exactly what ???
+The moving average of bonds. The higher bonds yield to higher dividends for validators.
 
- [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics) ???
+See [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics).
 
 
 ### BondsPenalty
@@ -117,7 +157,9 @@ This has something to do with this but exactly what ???
 **Permissions required to set**: Subnet Creator ???
 
 **Description**:
-This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penalizing-out-of-consensus-bonds) ???
+The magnitude of the penalty subtracted from weights for exceeding consensus, for a specific subnet.
+
+See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penalizing-out-of-consensus-bonds).
 
 
 ### Burn
@@ -139,19 +181,20 @@ This is probably the penalty $\Beta$ in [Yuma Consensus: Penalizing out-of-conse
 
 ### ColdkeySwapScheduleDuration
 
-**Type**: ???
+**Type**: int
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` method**: none
 
 **Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: Root ??? Sounds like a whole network thing, not per subnet.
 
 **Description**:
 
-???
+The number of blocks that need to pass from the moment when the coldkey swap is scheduled and the actual swap.
+
 
 ### CommitRevealPeriod
 
@@ -173,11 +216,11 @@ See [Commit Reveal](./commit-reveal)
 
 ### CommitRevealWeightsEnabled
 
-**Type**: ???
+**Type**: Boolean
 
-**Default**: ???
+**Default**: false
 
-**`btcli` method**: 
+**`btcli` method**: `btcli subnet hyperparameters`
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_enabled`
 
@@ -193,7 +236,7 @@ See [Commit Reveal](./commit-reveal)
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` method**: `btcli subnet hyperparameters`
 
 **Setter extrinsic**: `sudo_set_difficulty` 
 
@@ -210,7 +253,7 @@ Measure of the POW requirement for POW registration for miners on subnets. Need 
 
 **Default**: ???
 
-**`btcli` method**: 
+**`btcli` method**: none
 
 **Setter extrinsic**:  `sudo_set_dissolve_network_schedule_duration`
 
@@ -218,24 +261,15 @@ Measure of the POW requirement for POW registration for miners on subnets. Need 
 
 **Description**:
 
-???
+Deprecated
 
 ### EmissionValue
 
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` method**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
+**Permissions required to set**: root
+]
 **Description**:
 
-???
+Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and SubnetTaoInEmission. These values indicate how much alpha-in, alpha-out, and tao-in the subnet is getting per block (updated every block and is equal to last block gain).
 
 ### EvmChainId
 
