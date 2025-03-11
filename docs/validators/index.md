@@ -7,7 +7,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Validating in Bittensor
 
-## Choosing a subnet
 
 All mining and validating in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. The validator's work is to apply this incentive mechanism to miners, using it to score their performance, and then to submit these weights to the Bittensor blockchain. It is validators scores of miners' performance that determines the proportion of the subnet's emissions allocated to each miner, according to the Yuma Consensus algorithm. See [Emissions](../emissions.md).
 
@@ -19,88 +18,48 @@ Each subnet may have distinct hardware requirements, but this [minimum requireme
 Validating is not supported on Windows.
 :::
 
-### Requirements for active validation
+## Requirements for validation
 
-To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
+To have a **validator permit** in a given subnet and be listed as `active`, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
-- You must at least 1000 TAO staked to your hotkey
-- You must be one of the top 64 validators in the subnet, ranked by stake.
+- You must have a stake weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+
+	$$
+
+	\text{Validator stake weight} = \alpha +  0.18 \times \tau 
+
+	$$
+- You must be one of the top 64 validators in the subnet, ranked by stake weight.
 
 ## Validator registration
 
 To participate as a validator, you must first register your keys with the subnet in order to receive a UID on that subnet.
 
-:::tip No need to create a subnet
-You **do not** have to create a subnet to validate on the Bittensor network. Most validators work on established subnets.
-:::
-<!-- what determines the registration cost for a subnet??? is it burned, recycled, or locked??? this all needs a fact check... -->
+A subnet can have a maximum of 64 active subnet validator UIDs and 192 subnet miner UIDs (256 total).
 
-Registration has a cost in TAO. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. Nevertheless, you can be a subnet miner in as many subnets as you can afford and expect to be successful.
+Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
 
-A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
-
-Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
-
-:::tip Ownership belongs to a hotkey
-When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 
-
-A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
-:::
-
-Run the following command on your terminal, replacing `<your_preferred_netuid>`, `<my_coldkey>`, `<my_hotkey>`. 
-`<your_preferred_netuid>` is the `netuid` of your preferred subnet.
 
 ```bash
-btcli subnet register --netuid <your_preferred_netuid>  --wallet.name  <my_coldkey> --wallet.hotkey <my_hotkey>
+btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --hotkey <your hotkey>
 ```
-
-For example, for subnet 1 (netuid of 1):
-```bash
-btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
 
 ## Acquiring stake
 
-A validator's consensus weight and emissions depend on the stake attached to their hotkey.
+A validator's consensus weight and emissions depend on their hotkey's stake weight. You can stake your own TAO to your validator hotkey, or advertise your hotkey to others and seek stake. Any wallet's coldkey can stake to any hotkey, subsequently receiving emissions from that stake.
 
 :::tip Delegation
 See [StakingDelegation](../staking-and-delegation/delegation.md)
 :::
 
-Stake can be acquired in two ways:
+### Add stake
 
-### Stake your own TAO
-
-You can do this by staking your own TAO funds to your hotkey, which holds the UID in the subnet where you want to validate.
 
 ```bash
 # Stake funds to your hotkey account within the subnet.
-btcli stake add --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
+btcli stake add --wallet.name <wallet name> --wallet.hotkey <your validating hotkey>
 ```
-Example:
-```bash
-btcli stake add --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-### Attract delegated stake 
-
-You can also increase your stake by attracting delegated stake from nominators. For this, you must first nominate your hotkey as a delegate and then advertise this hotkey. The nominators can then delegate their TAO to your hotkey.
-
-```bash
-# Nominate your hotkey as a delegate
-btcli root nominate --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
-```
-Example:
-```bash
-btcli root nominate --wallet.name test-coldkey --wallet.hotkey test-hotkey
-```
-
-:::tip See also
-See [Becoming a delegate](../staking-and-delegation/delegation.md#becoming-a-delegate) for specific steps.
-:::
-
 
 ### Calculate TAO required 
 
