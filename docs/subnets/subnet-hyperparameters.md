@@ -414,14 +414,13 @@ Maximum validators on a subnet.
 
 
 
- `sudo_set_max_difficulty`  | sn_owner
+ `sudo_set_max_difficulty`  | Subnet creator
 
 ### MaxRegistrationsPerBlock
 
+**Type**: u16
 
-**Type**: ???
-
-**Default**: ???
+**Default**: 1
 
 **`btcli` setter**: `btcli sudo set --param max_regs_per_block`
 
@@ -434,42 +433,35 @@ Maximum validators on a subnet.
 Maximum neuron registrations per block. Note: Actual limit may be lower, as there is also per interval limit `TargetRegistrationsPerInterval`.
 
 
-### MaxWeightLimit
-
+### MaxWeightsLimit
 
 
 **Type**: u16
 
-**Default**: ???
+**Default**: 65535
 
-**`btcli` setter**: yes
+**`btcli` setter**: `btcli sudo set --param max_weights_limit`
 
 **Setter extrinsic**: `sudo_set_max_weight_limit`
 
-**Permissions required to set**: sn_owner
+**Permissions required to set**: Subnet creator
 
-**Description**:
-`MaxWeightsLimit` (there should be "s" at the end of word Weight): The limit for the u16-normalized weights. If some weight is greater than this limit when all weights are normalized so that maximum weight is 65535, then it will not be used.
-
+**Description**: The limit for the u16-normalized weights. If some weight is greater than this limit when all weights are normalized so that maximum weight is 65535, then it will not be used.
 
 ### MinAllowedWeights
 
+**Type**: u16
 
-**Type**: ???
+**Default**: 1
 
-**Default**: ???
-
-**`btcli` setter**: yes
+**`btcli` setter**: `btcli sudo set --param min_allowed_weights`
 
 **Setter extrinsic**: `sudo_set_min_allowed_weights`
 
-**Permissions required to set**: sn_owner
+**Permissions required to set**: Subnet creator
 
 **Description**:
-`MinAllowedWeights` is the minimum number of weights for a validator to set when setting weights.
-
-
-  | `u16` | `50`| `sudo_set_min_allowed_weights` | sn_owner
+Minimum number of weights for a validator to set when setting weights.
 
 ### MinBurn
 
@@ -502,52 +494,28 @@ Maximum neuron registrations per block. Note: Actual limit may be lower, as ther
 
 **Description**:
 
-???
+Some kind of measure of difficulty for POW registration. how does this work? what do miners/valis need to know about this? 
 
-
-
-### NetworkMinLockCost
-
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-`NetworkMinLockCost` is the minimum TAO to pay for subnet registration
-
-| `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
 
 ### NetworkPowRegistrationAllowed
 
 
-
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_network_pow_registration_allowed`
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
 `NetworkPowRegistrationAllowed` is a flag that toggles PoW registrations on a subnet
 
-  `sudo_set_network_pow_registration_allowed`| sn_owner
 
 ### NetworkRateLimit
-
 
 
 **Type**: ???
@@ -583,7 +551,7 @@ Maximum neuron registrations per block. Note: Actual limit may be lower, as ther
 `NetworkRegistrationAllowed` determines if burned registrations are allowed. If both burned and pow registrations are disabled, the subnet will not get emissions.
 
 
-  `sudo_set_network_registration_allowed` | sn_owner
+  `sudo_set_network_registration_allowed` | Subnet creator
 
 ### NominatorMinRequiredStake
 
@@ -634,7 +602,7 @@ Allegedly unused, but is in `btcli`???
 
 **Setter extrinsic**:  `sudo_set_rho`
 
-**Permissions required to set**: sn_owner
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
@@ -783,31 +751,14 @@ Length of subnet epoch in blocks.
 
 **Setter extrinsic**: `sudo_set_toggle_transfer` 
 
-**Permissions required to set**: sn_owner
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
 Allows/disallows transfer of stake between coldkeys.
 
 
-### TxDelegateTakeRateLimit
 
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
- rate limit of how frequently can a delegate take be increased
-
-
-  `sudo_set_tx_delegate_take_rate_limit`  | root 
 
 ### TxRateLimit
 
@@ -835,25 +786,21 @@ Rate limit for `swap_hotkey` extrinsic
 ### WeightsVersion
 
 
-**Type**: ???
+**Type**: u12
 
-**Default**: ???
+**Default**: 0
 
-**`btcli` setter**: 
+**`btcli` setter**: `btcli sudo set --param weights_version`
 
 **Setter extrinsic**: `sudo_set_weights_version_key`
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet Creator
 
 **Description**:
 
+If the version key specified in `set_weights` extrinsic is lower than this system-wide setting (WeightsVersionKey), the transaction will fail. This is a fool-proofing protection for validators to update, not a security feature.
 
-
-
-
-
-
-
+<!-- need more explanation/clarification ??? -->
 
 
 ## Global Chain State Variables
@@ -898,233 +845,41 @@ The number of blocks that need to pass in order for the network lock cost to hal
 | `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
 
 
+### NetworkMinLockCost
 
+**Type**: ???
 
+**Default**: ???
 
-## Hyperparameters list (based on Python side)
+**`btcli` setter**: 
 
-### `max_weight_limit`
+**Setter extrinsic**: 
 
-Type: float
+**Permissions required to set**: ???
 
-Description: Maximum weight limit.
+**Description**:
 
-### `tempo`
+`NetworkMinLockCost` is the minimum TAO to pay for subnet registration
 
-Type: int
+| `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
 
-Description: The tempo or rate of operation.
 
-### `min_difficulty`
+### TxDelegateTakeRateLimit
 
-Type: int
 
-Description: Minimum difficulty for some operations.
+**Type**: u64
 
-### `max_difficulty`
+**Default**: 216000
 
-Type: int
+**`btcli` setter**: 
 
-Description: Maximum difficulty for some operations.
+**Setter extrinsic**: 
 
-### `weights_version`
+**Permissions required to set**: root
 
-Type: int
+**Description**:
 
-Description: The version number of the weights used.
+Rate limit of how frequently can a delegate take be increased
 
-### `weights_rate_limit`
-
-Type: int
-
-Description: Rate limit for processing weights.
-
-### `adjustment_interval`
-
-Type: int
-
-Description: Interval at which adjustments are made.
-
-### `activity_cutoff`
-
-Type: int
-
-Description: Activity cutoff threshold.
-
-### `registration_allowed`
-
-Type: bool
-
-Description: Indicates if registration is allowed.
-
-### `target_regs_per_interval`
-
-Type: int
-
-Description: Target number of registrations per interval.
-
-### `min_burn`
-
-Type: int
-
-Description: Minimum burn value.
-
-### `max_burn`
-
-Type: int
-
-Description: Maximum burn value.
-
-### `bonds_moving_avg`
-
-Type: int
-
-Description: Moving average of bonds.
-
-### `max_regs_per_block`
-
-Type: int
-
-Description: Maximum number of registrations per block.
-
-### `serving_rate_limit`
-
-Type: int
-
-Description: Limit on the rate of service.
-
-### `max_validators`
-
-Type: int
-
-Description: Maximum number of validators.
-
-### `adjustment_alpha`
-
-Type: int
-
-Description: Alpha value for adjustments.
-
-### `difficulty`
-
-Type: int
-
-Description: Difficulty level.
-
-### `commit_reveal_period`
-
-Type: int
-
-Description: Interval for commit-reveal weights.
-
-### `commit_reveal_weights_enabled`
-
-Type: bool
-
-Description: Flag indicating if commit-reveal weights are enabled.
-
-
-
-### `liquid_alpha_enabled`
-
-Type: bool
-
-Description: Flag indicating if liquid alpha is enabled.
-
-Below is a more concise table of **all** known Bittensor Subnet hyperparameters, without the “Description” column. After the table, you will find individual sections (in the same order) with **H3** headings that include the parameter descriptions. Each hyperparameter name in the table links down to its corresponding description section.
-
-
-
-
-## Setter Extrinsics
-
-/// =============// required permissions; audience
-swap_authorities // root; root
-sudo_set_default_take // root; root
-sudo_set_tx_rate_limit // root; depends on rate limit category
-
-sudo_set_serving_rate_limit // root/sn_owner; miners
-sudo_set_min_difficulty // root; sn_owner, miners
-sudo_set_max_difficulty // sn_owner; miners
-sudo_set_weights_version_key // sn_owner; valis
-sudo_set_weights_set_rate_limit // sn_owner; valis
-sudo_set_adjustment_interval // root; sn_owner, miners
-sudo_set_adjustment_alpha // sn_owner; miners
-sudo_set_max_weight_limit // sn_owner; valis
-sudo_set_immunity_period // sn_owner; miners
-sudo_set_min_allowed_weights // sn_owner; valis
-sudo_set_max_allowed_uids // root; sn_owner
-sudo_set_kappa // sn_owner; valis, miners
-sudo_set_rho // sn_owner; valis, miners
-sudo_set_activity_cutoff // sn_owner; valis
-sudo_set_network_registration_allowed // sn_owner; miners
-sudo_set_network_pow_registration_allowed // sn_owner; miners
-sudo_set_target_registrations_per_interval // root; sn_owner, miners
-sudo_set_min_burn // root; sn_owner, miners
-sudo_set_max_burn // sn_owner; miners
-sudo_set_difficulty // root; sn_owner, miners
-sudo_set_max_allowed_validators // root; sn_owner, potential valis
-sudo_set_bonds_moving_average // sn_owner; valis
-sudo_set_bonds_penalty // sn_owner; valis
-sudo_set_max_registrations_per_block // root
-sudo_set_subnet_owner_cut // root; sn_owners
-sudo_set_network_rate_limit // root; potential sn_owners
-sudo_set_tempo // root; sn_owners
-sudo_set_network_min_lock_cost // root; potential sn_owners
-sudo_set_subnet_limit // root; potential sn_owners
-sudo_set_lock_reduction_interval // root; potential sn_owners
-sudo_set_stake_threshold // root; valis
-sudo_set_nominator_min_required_stake // root; valis, stakers
-sudo_set_tx_delegate_take_rate_limit // root; valis, stakers
-sudo_set_min_delegate_take // root; valis, stakers
-sudo_set_target_stakes_per_interval // root; stakers
-sudo_set_commit_reveal_weights_enabled // sn_owner; sn_owner, valis
-sudo_set_liquid_alpha_enabled // sn_owner
-sudo_set_alpha_values // sn_owner
-sudo_set_hotkey_emission_tempo // root
-sudo_set_network_max_stake // root
-sudo_set_coldkey_swap_schedule_duration // root
-sudo_set_dissolve_network_schedule_duration // root
-sudo_set_commit_reveal_weights_interval // sn_owner; sn_owner, valis
-sudo_set_evm_chain_id // root; EVM users (won't change)
-schedule_grandpa_change // root; root
-sudo_set_toggle_transfer // sn_owner; sn_owner, stakers
-sudo_set_subnet_moving_alpha // root
-
-# Hyperparameters with values
-Rho: u16 = 10;
-Kappa: u16 = 32_767; // 0.5 = 65535/2
-MaxAllowedUids: u16 = 4096;
-Issuance: u64 = 0;
-MinAllowedWeights: u16 = 50;
-EmissionValue: u64 = 857_777_000;
-MaxWeightsLimit: u16 = 655; // 655/2^16 = 0.01 [655 @ 7,160]
-ValidatorBatchSize: u16 = 32; // 32
-ValidatorSequenceLen: u16 = 256; // 256
-ValidatorEpochLen: u16 = 250; // [250 @ 7,161]
-ValidatorEpochsPerReset: u16 = 60;
-ValidatorExcludeQuantile: u16 = 3277; // 5% of u16 [3277 @ 65,065]
-ValidatorPruneLen: u64 = 1;
-ValidatorLogitsDivergence: u16 = 1310; // 2% of u16
-ScalingLawPower: u16 = 50; // 0.5
-SynergyScalingLawPower: u16 = 50; // 0.5
-MaxAllowedValidators: u16 = 128;
-Tempo: u16 = 99;
-Difficulty: u64 = 671_088_640_000_000; // Same as nakamoto at block = 3606775 [671T @ 26,310]
-AdjustmentInterval: u16 = 100;
-TargetRegistrationsPerInterval: u16 = 2;
-ImmunityPeriod: u16 = 4096;
-ActivityCutoff: u16 = 5000; // [5000 @ 7,163]
-MaxRegistrationsPerBlock: u16 = 1;
-PruningScore : u16 = u16::MAX;
-BondsMovingAverage: u64 = 900_000;
-BondsPenalty: u16 = 0;
-WeightsVersionKey: u64 = 400;
-MinDifficulty: u64 = 10_000_000;
-MaxDifficulty: u64 = u64::MAX / 4;
-ServingRateLimit: u64 = 250; // [250 @ 7,166]
-Burn: u64 = 100_000_000_000; // 100 tao [100 tao @ 26,310]
-MinBurn: u64 = 1_000_000_000; // 1 tao [1 tao @ 26,310]
-MaxBurn: u64 = 21_000_000_000_000_000; // 21M tao [21M tao @ 26,310]
-WeightsSetRateLimit: u64 = 250; // [250 @ 7,168]
+<!-- fact check what is this on chain -->
 
