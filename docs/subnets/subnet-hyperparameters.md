@@ -553,28 +553,8 @@ Some kind of measure of difficulty for POW registration. how does this work? wha
 
   `sudo_set_network_registration_allowed` | Subnet creator
 
-### NominatorMinRequiredStake
-
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-`NominatorMinRequiredStake` is deprecated
-
-
- | `int` | N/A | `sudo_set_nominator_min_required_stake` | root
 
 ### PruningScore
-
 
 **Type**: ???
 
@@ -589,6 +569,8 @@ Some kind of measure of difficulty for POW registration. how does this work? wha
 **Description**:
 
 ???
+Probably deprecated and need to chop
+
 
 ### Rho
 
@@ -606,25 +588,25 @@ Allegedly unused, but is in `btcli`???
 
 **Description**:
 
-
-
-
+Probably deprecated and need to chop
 
 ### ServingRateLimit
 
 
-**Type**: ???
+**Type**: u16
 
-**Default**: ???
+**Default**: 50
 
 **`btcli` setter**: 
 
 **Setter extrinsic**: `sudo_set_serving_rate_limit` 
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
-is the rate limit for calling `serve_axon` and `serve_prometheus` extrinsics
+
+Rate limit for calling `serve_axon` and `serve_prometheus` extrinsics.
+
 
 
 ### StakeThreshold
@@ -634,36 +616,18 @@ is the rate limit for calling `serve_axon` and `serve_prometheus` extrinsics
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_stake_threshold`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
 The minimum possible stake value.
 
+Is this global? Per subnet?
 
-`sudo_set_stake_threshold`  | root
-
-### SubnetLimit
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: `sudo_set_subnet_limit` 
-
-**Permissions required to set**: root
-
-**Description**:
-Deprecated
-
-   
 
 ### SubnetMovingAlpha
 
@@ -682,35 +646,31 @@ Deprecated
 
 `SubnetMovingAlpha` is a parameter that is used to calculate `SubnetMovingPrice` from current subnet price. The higher `SubnetMovingAlpha`, the faster the moving price diverges to the current price.
 
-   
 
 ### SubnetOwnerCut
 
 
 **Type**: ???
 
-**Default**: ???
+**Default**: 
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_subnet_owner_cut`
 
 **Permissions required to set**: root 
 
 **Description**:
 
-the ratio of all subnet alpha emissions that is given to subnet owner as stake. (global, fixed at 18%)
+The ratio of all subnet alpha emissions that is given to subnet owner as stake. (Global, fixed at 18%.)
 
-   `sudo_set_subnet_owner_cut` | 
-
- 
 
 ### TargetRegistrationsPerInterval
 
 
-**Type**: ???
+**Type**: u16
 
-**Default**: ???
+**Default**: 1
 
 **`btcli` command**: `btcli sudo set --param target_regs_per_interval`
 
@@ -719,8 +679,8 @@ the ratio of all subnet alpha emissions that is given to subnet owner as stake. 
 **Permissions required to set**: root
 
 **Description**:
-maximum number of neuron registrations allowed per interval. Interval is `AdjustmentInterval`
 
+Maximum number of neuron registrations allowed per interval. Interval is `AdjustmentInterval`
 
 
 ### Tempo
@@ -759,7 +719,6 @@ Allows/disallows transfer of stake between coldkeys.
 
 
 
-
 ### TxRateLimit
 
 
@@ -767,24 +726,20 @@ Allows/disallows transfer of stake between coldkeys.
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_tx_rate_limit`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
-
-Rate limit for `swap_hotkey` extrinsic
-
-   `sudo_set_tx_rate_limit` | root 
-
+Rate limit for `swap_hotkey` extrinsic. Is this global or per subnet?
+???
 
 
 
 ### WeightsVersion
-
 
 **Type**: u12
 
