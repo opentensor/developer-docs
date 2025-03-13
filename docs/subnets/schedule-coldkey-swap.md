@@ -1,57 +1,53 @@
 ---
-title: "Schedule Coldkey Swap"
+title: "Rotate/Swap your Coldkey"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Schedule Coldkey Swap
+# Rotate/Swap your Coldkey
 
-This guide describes how to use the schedule coldkey swap feature. This feature schedules your funds transfer from one coldkey (wallet) to a new coldkey. 
+This page describes how to *rotate* or *swap* the coldkey in your wallet. This is required if you suspect your coldkey has been leaked. Your coldkey secures your identity on Bittensor.
 
-:::danger No btcli support yet
-The `btcli` command does not yet support this schedule coldkey swap feature. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/).
-:::
+See:
+
+- [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets)
+- [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
+
 
 ## Description
 
+The `btcli` command does not yet support this schedule coldkey swap feature. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/).
 
 See [code for coldkey swap](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/swap/swap_coldkey.rs).
 
-
 The schedule coldkey swap feature works as follows:
 
-- The schedule coldkey swap feature enables you to schedule the swapping of old coldkey to a new coldkey. If you feel your existing coldkey is potentially compromised, then use this feature to schedule a swap to a new coldkey.
-- When you use this feature, it will not immediately swap your coldkeys and swap your TAO funds from the old coldkey to the new coldkey. It will only schedule the swap event. 
+- The schedule coldkey swap feature enables you to schedule the swapping of source coldkey to a destination coldkey. If you feel your existing coldkey is potentially compromised, then use this feature to schedule a swap to a destination coldkey.
+- When you use this feature, it will not immediately swap your coldkeys and swap your TAO funds from the source coldkey to the destination coldkey. It will only schedule the swap event. 
 - All scheduled coldkey swaps will be executed on-chain. **Your scheduled coldkey swap will execute on the mainnet exactly 5 days after you successfully scheduled the coldkey swap using the method described in this document.**
-- The old coldkey you used in this method will be locked when you schedule the swap. After the 5-day period is elapsed your original coldkey will be unlocked entirely.
-- **Cost**: The cost of this coldkey swap transaction is 0.1 TAO. This must be available in your old coldkey.
-- Any subnet ownership from your old coldkey will move to the new coldkey.
-- The delegated stake will be transferred from your old coldkey to the new coldkey.
-- For those who were staking to a validator from their old coldkey, their staking TAO will transfer to the new coldkey. 
+- The source coldkey you used in this method will be locked when you schedule the swap. After the 5-day period is elapsed your original coldkey will be unlocked entirely.
+- **Cost**: The cost of this coldkey swap transaction is 0.1 TAO. This must be available in your source coldkey.
+- Any subnet ownership from your source coldkey will move to the destination coldkey.
+- The delegated stake will be transferred from your source coldkey to the destination coldkey.
+- For those who were staking to a validator from their source coldkey, their staking TAO will transfer to the destination coldkey. 
 
 :::danger Do not schedule coldkey swap more than once using the same coldkey
 :::
 
-## Before you proceed
+## Requirements
 
-Make sure you satisfy the below requirements before you proceed:
-
-1. You must be the owner of the old coldkey to schedule the coldkey swap.
-
-:::danger If you do not own the new coldkey, you are **transferring complete ownership** of the coldkey.
-
-If the old coldkey is parent to any childkeys, **this process will transfer the childkeys and any TAO they are holding also**.  If the old coldkey is parent to any childkeys and **if you do not want to transfer the TAO tokens in the childkey accounts**, be sure to transfer TAO out of any childkeys **before** executing the extrinsic.
-:::
+1. To execute this operation, you must own the source coldkey.
+1. Confirm the identity of the destination coldkey. A mistake here will result in loss of all of the source coldkey's assets and identity.
+	- If you are rotating the coldkey to maintain ownership, you must control the destination coldkey privatekey. Otherwise you will lose control over all of the source coldkey's assets and identity.
+	- If you are transferring ownership to someone else, confirm that they have secure control of the destination coldkey private key. 
 
 2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` command does not yet support scheduling coldkey swap.
-3. You must import your old and new coldkeys into the Polkadot JS extension.
-4. You must connect the old coldkey account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
+3. You must import your source and destination coldkeys into the Polkadot JS extension.
+4. You must connect the source coldkey account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 
 
   :::danger If you do not do this step, then you will not see **Developer** > **Extrinsics** option on the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/extrinsics) website. 
   :::
-
-Proceed only after you satisfy the above requirements.
 
 ## Steps
 
@@ -76,11 +72,11 @@ Open your web browser and navigate to the Polkadot.js Apps website (https://polk
 
 ### Step 2: Navigate to the Extrinsics page
 
-From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. If you do not see this option, then make sure you successfully imported your old coldkey into the Polkadot JS extension, and connected this old coldkey account to the Polkadot.js Apps website. 
+From the top navigation menu, proceed to **Developer** > **Extrinsics** to open the Extrinsics page. If you do not see this option, then make sure you successfully imported your source coldkey into the Polkadot JS extension, and connected this source coldkey account to the Polkadot.js Apps website. 
 
-### Step 3: Select your old coldkey account
+### Step 3: Select your source coldkey account
 
-Locate the drop-down section labeled **using the selected account** and select your connected account. This account should be your old coldkey account.
+Locate the drop-down section labeled **using the selected account** and select your connected account. This account should be your source coldkey account.
 
 ### Step 4: Select the `subtensorModule`
 
@@ -90,16 +86,16 @@ Locate the drop-down section labeled **submit the following extrinsic** and sele
 
 After selecting the `subtensorModule`, a second drop-down menu will appear on the right side of it. From this drop-down select the `scheduleSwapColdkey`  option. 
 
-### Step 6: Provide the new coldkey 
+### Step 6: Provide the destination coldkey 
 
-Provide your new coldkey in the `newColdkey: AccountId32` field.
+Provide your destination coldkey in the `newColdkey: AccountId32` field.
 
 ### Step 7: Submit the transaction
 
-Check again that you have provided the correct old and new coldkeys. 
+Check again that you have provided the correct source and destination coldkeys. 
 
 Scroll down to the bottom of the page and click on the **Submit Transaction** button. Polkadot.js will prompt you to sign the transaction using the selected account. After you sign the transaction, the signed transaction will be broadcast to the Subtensor.
 
 ## Verify
 
-Your scheduled coldkey swap will execute on the mainnet 5 days after you successfully scheduled the coldkey swap using the above method. Check your new coldkey after 5 days to verify.
+Your scheduled coldkey swap will execute on the mainnet 5 days after you successfully scheduled the coldkey swap using the above method. Check your destination coldkey after 5 days to verify.

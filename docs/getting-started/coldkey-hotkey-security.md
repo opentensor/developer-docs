@@ -122,6 +122,15 @@ Maintain a secure software environment:
 - Run vulnerability scans on any machine that touches your coldkey.  
 - Conduct red team exercises and penetration testing to identify weaknesses in your setup.
 
+
+
+
+
+
+
+
+
+
 ## Hotkey workstation security
 
 Hotkeys in Bittensor serve as the operational keys for mining, validation, and weight commits, which require moderately high availability. Because these keys do not control direct movement of TAO balances, they pose a lower risk if compromised. Nonetheless, a malicious actor who gains control of your hotkey can damage your reputation, submit invalid weights (if you are a validator) or serve malicious responses to requests as a miner.
