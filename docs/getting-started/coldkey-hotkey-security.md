@@ -45,8 +45,6 @@ This option is suitable for alpha staking and TAO balance management.
 This is required for using `btcli` or the Bittensor Python SDK for advanced use cases such as hotkey management and scripting.
 
 <!-- What is a minimal (?) recommended operating system for a bittensor coldkey workstation ??? -->
-<!--  Is it possible to transfer an unsigned extrinsic to a USB key, plug that into your coldkey workstation, sign offline, then move the signed payload back to an online machine to broadcast it ???
- -->
 
 ### Operational Hygiene
 
