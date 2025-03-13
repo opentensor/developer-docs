@@ -59,7 +59,7 @@ In `btcli`, the coldkey is equivalent to the wallet name. For example, the `--wa
 
 **Encryption**: A coldkey is only stored on your disk in encrypted form, and requires an encryption password.
 
-See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for contrete security details about 
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security) for concrete security details about working with coldkeys.
 
 
 <!-- <center>

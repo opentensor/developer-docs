@@ -1,28 +1,61 @@
 ---
-title: "Working with Keys"
+title: "Creating/Importing a Bittensor Wallet"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Working with Keys
+# Creating/Importing a Bittensor Wallet
 
-This page describes how to create and manage cryptographic material (wallets, cold and hot keys) for use in Bittensor. For an introduction to the core concepts, see [wallets and keys in Bittensor](getting-started/wallets.md).
+In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets. 
 
-## Ways of creating wallet
+This page describes several different ways to instantiate your wallet keypairs into a wallet application, in order to interact with the Bittensor blockchain.
 
-You can create a Bittensor wallet either for basic uses like securely storing your TAO and receiving and sending them or for advanced uses like creating a subnet and participating as a subnet miner or a subnet validator:
+For an introduction to the core concepts, see [wallets and keys in Bittensor](getting-started/wallets.md).
+For discussion of security considerations about working with Bittensor wallets, see [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
 
-- **For basic use**: Create an external wallet account by using the [Chrome Extension for Bittensor Wallet](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc?pli=1). An external wallet account created in this way will allow you to use TAO **without installing Bittensor**. If your activities are limited to sending or receiving TAO, then this is a recommended option.
-- **For subnet participation**: Create a local wallet account using `btcli` command line tool on your computer. This requires that you install Bittensor on your machine. If you are interested in either creating a subnet or participating as a subnet miner or a subnet validator, then you must use this option.
+## Wallets and wallet applications
 
-## Creating a basic wallet
+To start, we must distinguish between a Bittensor wallet in two senses :
+
+- The **cryptographic wallet** is one or more cryptographic key pairs that comprise an identity, and allow a person to sign transactions or be referred to in transactions signed by others. In this sense, the wallet is more or less synonymous with the unique **coldkey** that controls access to your assets and serves as your public identity.
+
+- The **wallet application** is software that runs on your device and allows you to interact with the blockchain by entering your keys. There are several officially supported Bittensor wallet applications:
+
+  - The Bittensor wallet app for mobile: [bittensor.com/wallet](https://bittensor.com/wallet)
+  - [The Chrome extension](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc), which is also compatible with use of a Ledger hardware wallet. See [Using Ledger Hardware Wallet](./staking-and-delegation/using-ledger-hw-wallet.md)
+  - The Bittensor Python SDK, which includes the secure [Bittensor Wallet module](https://docs.bittensor.com/btwallet-api/html/autoapi/btwallet/wallet/index.html).
+  - The Bittensor CLI, `btcli`, which uses the Bittensor Wallet module under the hood. 
+
+Every Bittensor user has one or more cryptographic wallets, i.e. one or more coldkey. Any cryptographic wallet can be loaded into any number of wallet applications. If every wallet application that has been initialized with your cryptographic wallet (i.e. signed into with your coldkey private key) is closed, logged out, etc., and the device incinerated, your cryptographic wallet exists on the blockchain, and can be recovered with your *seed phrase*.
+
+The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (at least 12) words that is generated together with your wallet's cryptographic key pair, and which can be used to recover the coldkey private key. This seed phrase is therefore a human-usable way to save access to the cryptographic wallet offline, and to import the cryptographic wallet into a wallet application. 
+
+Make sure you understand the role of the seed phase in the fundamental scheme of [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets).
+
+The options wallet applications have different levels of functionality:
+
+- The mobile app and Chrome extension allow for staking and transfer of TAO balalnces, but do not include any hotkey management or advanced functionality, which require  `btcli` or the SDK.
+
+  Note that the Chome extension is compatible with a hardware wallet, which can be a strong security option.
+
+  The mobile app depends on having a secure phone.
+
+- `btcli` and the SDK allow for hotkey management and other advanced functionality. These require a laptop.
+
+:::tip
+Note that you can also check balances on an unsecure device without entering your coldkey private key. For example, using [https://bittensor.com/scan](https://bittensor.com/scan). These website can be considered permissionless wallet applications.
+:::
+
+
+## Creating a Wallet with the Chrome Extension
+
+[The Chrome extension...](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc)
 
 :::tip Suitable for non-technical users
 Use this option if your activities are limited to sending and receiving TAO and you are not creating a subnet or participating as a subnet validator or a subnet miner. 
 :::
 
-To create a basic wallet account, use the Chrome Extension for Bittensor Wallet. Follow the below steps:
 
 1. The Wallet will first create a wallet account address in the form of a 48-hexadecimal character string that usually starts with `5`. 
 2. Critically, the Wallet will show you a 12-word list arranged in a specific order. You are required to keep this list of words, without changing the word order, in a safe location. This list of ordered words is called by various names such as **mnemonic** or **seed phrase**.

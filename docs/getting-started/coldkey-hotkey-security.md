@@ -57,6 +57,10 @@ Even on a minimal or air-gapped machine, follow standard security hygiene:
 - Disable all network services (SSH, RDP, or anything else) that are not strictly needed.
 - Maintain logs of important oprations.
 
+### Your seed phrase
+
+The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (at least 12) words that is generated together with your wallet's cryptographic key pair, and which can be used to recover the coldkey private key. This seed phrase is therefore a human-usable way to save access to the cryptographic wallet offline, and to import the cryptographic wallet into a wallet application. 
+
 ### Do not leak your seed-phrase
 
 1. Do not keep paper/analog copies somewhere they can be accessed without your knowledge.

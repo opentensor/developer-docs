@@ -11,8 +11,8 @@ This page describes how to *rotate* or *swap* the coldkey in your wallet. This i
 
 See:
 
-- [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets)
-- [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
+- [Wallets, Coldkeys and Hotkeys in Bittensor](../getting-started/wallets)
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
 
 
 ## Description
