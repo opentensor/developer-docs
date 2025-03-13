@@ -138,7 +138,7 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/wallets",
-            "getting-started/coldkey-hotkey-security"
+            "getting-started/coldkey-hotkey-security",
             "working-with-keys",
             "subnets/schedule-coldkey-swap",
           ]
