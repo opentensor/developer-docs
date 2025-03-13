@@ -15,6 +15,10 @@ The `btcli` command does not yet support this schedule coldkey swap feature. You
 
 ## Description
 
+
+See [code for coldkey swap](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/swap/swap_coldkey.rs).
+
+
 The schedule coldkey swap feature works as follows:
 
 - The schedule coldkey swap feature enables you to schedule the swapping of old coldkey to a new coldkey. If you feel your existing coldkey is potentially compromised, then use this feature to schedule a swap to a new coldkey.

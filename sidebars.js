@@ -113,9 +113,9 @@ const sidebars = {
           link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
-            "btcli",
-            "staking-and-delegation/managing-stake-btcli",
             "btcli-permissions"
+            "btcli",
+            "staking-and-delegation/managing-stake-btcli",            
           ]
         },
         {
@@ -138,8 +138,9 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/wallets",
-            "working-with-keys",
             "getting-started/coldkey-hotkey-security"
+            "working-with-keys",
+            "subnets/schedule-coldkey-swap",
           ]
         },
                 {
@@ -151,8 +152,7 @@ const sidebars = {
       items: [
         "bittensor-networks",
         "subnets/commit-reveal",
-        "subnets/consensus-based-weights",
-        "subnets/schedule-coldkey-swap",
+        "subnets/consensus-based-weights",        
         "subnets/asyncio",
           "subnets/bt-logging-levels",        
         "utilities",
