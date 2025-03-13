@@ -78,29 +78,19 @@ Common approaches:
 
 ### Rotating your coldkey
 
-If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. 
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. The cost of this coldkey swap transaction is 0.1 TAO.
 
 See [Schedule a Coldkey Swap](../subnets/schedule-coldkey-swap)
 
-Effectively, this transfers all of your TAO and alpha stake balances, as well as your `sudo` control over any subnets you have created.
+Effectively, this transfers all of your TAO and alpha stake balances, as well as your `sudo` control over any subnets you have created:
 
-1. Swap TotalHotkeyColdkeyStakesThisInterval:
-   - For each hotkey owned by the old coldkey, transfer its stake and block data to the new coldkey.
-2. Swap subnet ownership:
-   - For each subnet, if the old coldkey is the owner, transfer ownership to the new coldkey.
-3. Swap Stakes:
-   - For each hotkey staking for the old coldkey, transfer its stake to the new coldkey.
-4. Swap total coldkey stake:
-   - Transfer the total stake from the old coldkey to the new coldkey.
-5. Swap StakingHotkeys:
-   - Transfer the list of staking hotkeys from the old coldkey to the new coldkey.
-6. Swap hotkey owners:
-   - For each hotkey owned by the old coldkey, transfer ownership to the new coldkey.
-   - Update the list of owned hotkeys for both old and new coldkeys.
-7. Transfer remaining balance:
-   - Transfer any remaining balance from the old coldkey to the new coldkey.
-
-
+- For each hotkey owned by the old coldkey, its stake and block transfer to the new coldkey.
+- For each subnet, if the old coldkey is the owner, ownership transfers to the new coldkey.
+- For each hotkey staking for the old coldkey, transfer its stake to the new coldkey.
+- Total stake transfers from the old coldkey to the new coldkey.
+- The list of staking hotkeys transfers from the old coldkey to the new coldkey.
+- For each hotkey owned by the old coldkey, ownership transfers to the new coldkey. The list of owned hotkeys for both old and new coldkeys updates.
+- Any remaining balances transfer from the old coldkey to the new coldkey.
 
 
 ### Hardware Wallets and Hardware Security Modules (HSMs)
