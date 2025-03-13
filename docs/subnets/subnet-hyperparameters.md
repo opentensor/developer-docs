@@ -81,7 +81,11 @@ Only the coldkey that created the subnet can set the hyperparameters.
 btcli sudo set
 ```
 
-## Hyperparameters list
+## Subnet Hyperparameters
+
+The following variables are configurable by the subnet creator.
+
+**Permissions required to set**: Subnet Creator
 
 ### ActivityCutoff
 
@@ -170,30 +174,13 @@ See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penali
 
 
 
-### ColdkeySwapScheduleDuration
-
-**Type**: int
-
-**Default**: 
-
-**`btcli` setter**: no
-
-**Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
-
-**Permissions required to set**: Root ??? Sounds like a whole network thing, not per subnet.
-
-**Description**:
-
-The number of blocks that need to pass from the moment when the coldkey swap is scheduled and the actual swap.
-
-
 ### CommitRevealPeriod
 
 **Type**: ???
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: `btcli sudo set --param commit_reveal_period`
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
 
@@ -228,15 +215,18 @@ See [Commit Reveal](./commit-reveal)
 
 **Default**: 10000000
 
-**`btcli` setter**: yes
+**`btcli` setter**: none
 
 **Setter extrinsic**: `sudo_set_difficulty` 
 
-**Permissions required to set**: Subnet Creator
+**Permissions required to set**: Root
 
 **Description**:
 
-Measure of the proof-of-work (POW) requirement for POW hotkey registration.
+Current dynamically computed value for the proof-of-work (POW) requirement for POW hotkey registration. Decreases over time but increases after new registrations, between the min and the maximum set by the subnet creator. see [#max-difficulty].
+
+<!-- What are the units here? What does this actually mean, how are miners supposed to read/understand this? -->
+
 
 ### DissolveNetworkScheduleDuration
 
@@ -392,10 +382,12 @@ Maximum validators on a subnet.
 **`btcli` setter**: `btcli sudo set --param max_burn`
 
 **Setter extrinsic**: `sudo_set_max_burn`
+
 **Permissions required to set**: Subnet creator
 
 **Description**:
 
+The maximum of the dynamic range for TAO cost of burn registration on the subnet.
  
 
 ### MaxDifficulty
@@ -412,9 +404,7 @@ Maximum validators on a subnet.
 
 **Description**:
 
-
-
- `sudo_set_max_difficulty`  | Subnet creator
+The maximum of the dynamic range for difficulty of proof-of-work registration on the subnet.
 
 ### MaxRegistrationsPerBlock
 
@@ -478,7 +468,7 @@ Minimum number of weights for a validator to set when setting weights.
  
 **Description**:
 
-???
+The minimum of the range of the dynamic burn cost for registering on the subnet.
 
 ### MinDifficulty
 
@@ -494,8 +484,7 @@ Minimum number of weights for a validator to set when setting weights.
 
 **Description**:
 
-Some kind of measure of difficulty for POW registration. how does this work? what do miners/valis need to know about this? 
-
+The minimum of the range of the proof-of-work for registering on the subnet
 
 ### NetworkPowRegistrationAllowed
 
@@ -588,8 +577,9 @@ Allegedly unused, but is in `btcli`???
 
 **Description**:
 
-Probably deprecated and need to chop
+Deprecated.
 
+<!-- will this be chopped from btcli? -->
 ### ServingRateLimit
 
 
@@ -626,7 +616,7 @@ Rate limit for calling `serve_axon` and `serve_prometheus` extrinsics.
 
 The minimum possible stake value.
 
-Is this global? Per subnet?
+<!-- Is this global? Per subnet? -->
 
 
 ### SubnetMovingAlpha
@@ -730,7 +720,7 @@ Allows/disallows transfer of stake between coldkeys.
 
 **Setter extrinsic**: `sudo_set_tx_rate_limit`
 
-**Permissions required to set**: root
+**Permissions required to set**: root ???
 
 **Description**:
 
@@ -757,8 +747,44 @@ If the version key specified in `set_weights` extrinsic is lower than this syste
 
 <!-- need more explanation/clarification ??? -->
 
+### WeightsRateLimit / CommitmentRateLimit
 
-## Global Chain State Variables
+**Type**: u12
+
+**Default**: 100
+
+**`btcli` setter**: `btcli sudo set --param weights_rate_limit`
+
+**Setter extrinsic**: ???
+
+**Permissions required to set**: Root
+
+**Description**:
+
+How long, in blocks, a validator must wait between weight commits on a subnet.
+
+
+
+## Global/Root State Variables
+
+The following variables are global and/or can only be configured with `root` permissions, which are held by a triumvirate of Opentensor Foundation employees.
+
+### ColdkeySwapScheduleDuration ???
+
+**Type**: int
+
+**Default**: 
+
+**`btcli` setter**: no
+
+**Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
+
+**Permissions required to set**: Root ??? Sounds like a whole network thing, not per subnet.
+
+**Description**:
+
+The number of blocks that need to pass from the moment when the coldkey swap is scheduled and the actual swap.
+
 
 ### LockReductionInterval
 
@@ -780,7 +806,7 @@ The number of blocks that need to pass in order for the network lock cost to hal
 `sudo_set_lock_reduction_interval`| root 
 
 
-### NetworkMaxStake
+### NetworkMaxStake ???
 
 
 **Type**: ???
@@ -795,7 +821,7 @@ The number of blocks that need to pass in order for the network lock cost to hal
 
 **Description**:
 
-`NetworkMaxStake` is deprecated
+`NetworkMaxStake` is deprecated, chop ???
 
 | `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
 
@@ -806,17 +832,15 @@ The number of blocks that need to pass in order for the network lock cost to hal
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_network_min_lock_cost`
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
 
 `NetworkMinLockCost` is the minimum TAO to pay for subnet registration
-
-| `int` | N/A | `sudo_set_network_min_lock_cost`  | root 
 
 
 ### TxDelegateTakeRateLimit
