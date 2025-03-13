@@ -176,9 +176,9 @@ See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penali
 
 ### CommitRevealPeriod
 
-**Type**: ???
-
-**Default**: ???
+**Type**: u16 
+<!-- fact check ^^ for some reason I could not identify this in https://github.com/opentensor/subtensor/blob/main/runtime/src/lib.rs#L1038 -->
+**Default**: 1
 
 **`btcli` setter**: `btcli sudo set --param commit_reveal_period`
 
@@ -259,10 +259,9 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 ### ImmunityPeriod
 
 
+**Type**: u16
 
-**Type**: ???
-
-**Default**: ???
+**Default**: 5000
 
 **`btcli` setter**: yes
 
@@ -273,14 +272,6 @@ The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
 **Description**:
 
 The number of blocks after registration when a miner is protected from deregistration
-
-
-### Issuance
-
-**Type**: u64
-
-**Description**:
-Refers to total issuance, the amount of TAO in circulation.
 
 
 ### Kappa
@@ -495,6 +486,8 @@ The minimum of the range of the proof-of-work for registering on the subnet
 
 **`btcli` setter**: none
 
+<!-- Is it weird this one doesn't have a  btcli setter like registration_allowed ??? -->
+
 **Setter extrinsic**: `sudo_set_network_pow_registration_allowed`
 
 **Permissions required to set**: Subnet creator
@@ -511,17 +504,16 @@ The minimum of the range of the proof-of-work for registering on the subnet
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: none
 
 **Setter extrinsic**: 
 
-**Permissions required to set**: ???
+**Permissions required to set**: root
 
 **Description**:
-`NetworkRateLimit` is the rate limit for network registrations expressed in blocks
 
+Rate limit for network registrations expressed in blocks
 
- | `int` | N/A | `sudo_set_network_rate_limit`  | root 
 
 ### NetworkRegistrationAllowed
 
@@ -529,18 +521,16 @@ The minimum of the range of the proof-of-work for registering on the subnet
 
 **Default**: ???
 
-**`btcli` setter**: 
+**`btcli` setter**: `btcli sudo set --param registration_allowed`
 
-**Setter extrinsic**: 
+**Setter extrinsic**: `sudo_set_network_registration_allowed` 
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
 `NetworkRegistrationAllowed` determines if burned registrations are allowed. If both burned and pow registrations are disabled, the subnet will not get emissions.
 
-
-  `sudo_set_network_registration_allowed` | Subnet creator
 
 
 ### PruningScore
@@ -595,8 +585,7 @@ Deprecated.
 
 **Description**:
 
-Rate limit for calling `serve_axon` and `serve_prometheus` extrinsics.
-
+Rate limit for calling `serve_axon` and `serve_prometheus` extrinsics used by miners.
 
 
 ### StakeThreshold
@@ -675,9 +664,9 @@ Maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 ### Tempo
 
-**Type**: ???
+**Type**: u16
 
-**Default**: ???
+**Default**: 360
 
 **`btcli` setter**: `btcli sudo set --param tempo`
 
@@ -687,8 +676,8 @@ Maximum number of neuron registrations allowed per interval. Interval is `Adjust
 
 **Description**:
 
-Length of subnet epoch in blocks.
-
+Length of subnet tempo in blocks.
+See [Emission](../emissions.md)
 
 ### ToggleTransfer
 
@@ -712,26 +701,26 @@ Allows/disallows transfer of stake between coldkeys.
 ### TxRateLimit
 
 
-**Type**: ???
+**Type**: u64
 
-**Default**: ???
+**Default**: 1000
 
 **`btcli` setter**: none
 
 **Setter extrinsic**: `sudo_set_tx_rate_limit`
 
-**Permissions required to set**: root ???
+**Permissions required to set**: root
 
 **Description**:
 
-Rate limit for `swap_hotkey` extrinsic. Is this global or per subnet?
-???
+Rate limit for `swap_hotkey` extrinsic.
+
 
 
 
 ### WeightsVersion
 
-**Type**: u12
+**Type**: u16
 
 **Default**: 0
 
@@ -786,12 +775,22 @@ The following variables are global and/or can only be configured with `root` per
 The number of blocks that need to pass from the moment when the coldkey swap is scheduled and the actual swap.
 
 
+What is a coldkey swap ??? This sounds important, is that a way to rotate your coldkey private key??? 
+
+### Issuance
+
+**Type**: u64
+
+**Description**:
+Refers to total issuance, the amount of TAO in circulation.
+
+
 ### LockReductionInterval
 
 
-**Type**: int
+**Type**: u64
 
-**Default**: ???
+**Default**: 14 * 7200
 
 **`btcli` setter**: 
 
