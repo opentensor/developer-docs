@@ -12,7 +12,7 @@ See also:
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
 ## Coldkey workstation security
-<!-- TODO: Add rotation/ what to do if key is compromised ??? -->
+
 Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seedphrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
@@ -75,6 +75,33 @@ Common approaches:
 - **Paper backups** of the mnemonic phrase, sealed in tamper-evident envelopes and locked in a safety deposit box or safe.
 - **Encrypted USB drives** with strong passphrases stored in a safety deposit box or safe.  
 - **Multiple locations strategy** so that a single disaster (fire or flood) cannot destroy all copies.
+
+### Rotating your coldkey
+
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. 
+
+See [Schedule a Coldkey Swap](../subnets/schedule-coldkey-swap)
+
+Effectively, this transfers all of your TAO and alpha stake balances, as well as your `sudo` control over any subnets you have created.
+
+1. Swap TotalHotkeyColdkeyStakesThisInterval:
+   - For each hotkey owned by the old coldkey, transfer its stake and block data to the new coldkey.
+2. Swap subnet ownership:
+   - For each subnet, if the old coldkey is the owner, transfer ownership to the new coldkey.
+3. Swap Stakes:
+   - For each hotkey staking for the old coldkey, transfer its stake to the new coldkey.
+4. Swap total coldkey stake:
+   - Transfer the total stake from the old coldkey to the new coldkey.
+5. Swap StakingHotkeys:
+   - Transfer the list of staking hotkeys from the old coldkey to the new coldkey.
+6. Swap hotkey owners:
+   - For each hotkey owned by the old coldkey, transfer ownership to the new coldkey.
+   - Update the list of owned hotkeys for both old and new coldkeys.
+7. Transfer remaining balance:
+   - Transfer any remaining balance from the old coldkey to the new coldkey.
+
+
+
 
 ### Hardware Wallets and Hardware Security Modules (HSMs)
 
