@@ -113,7 +113,7 @@ const sidebars = {
           link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
-            "btcli-permissions"
+            "btcli-permissions",
             "btcli",
             "staking-and-delegation/managing-stake-btcli",            
           ]
