@@ -15,16 +15,16 @@ See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-h
 
 See: [Senate](../senate).
 
-**Commands most relevant to governance:**
-
-- **Senate / Proposals** (coldkey with senator role):
+## **Commands most relevant to governance:**
+**Senate / Proposals** (coldkey with senator role):
   - `btcli sudo senate`
   - `btcli sudo proposals`
   - `btcli sudo senate-vote`
   - `btcli sudo senate_vote`
-  - Aliases: `btcli su senate`, `btcli su proposals`, etc.
-- **Sudo Commands** (coldkey with sudo privileges):
-  - `btcli sudo set`, `btcli sudo get`
-  - `btcli sudo set-take`, `btcli sudo get-take`
-  - `btcli sudo set_take`, `btcli sudo get_take`
-  - Aliases: `btcli su set`, `btcli su get`, etc.
+
+## Key rotation
+
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. The cost of this coldkey swap transaction is 0.1 TAO.
+
+See [Rotate/Swap your Coldkey](../subnets/schedule-coldkey-swap)
+

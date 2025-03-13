@@ -28,3 +28,10 @@ Requires coldkey with sufficient TAO.
 Configure your subnet's hyperparameters with `btcli sudo set`. Requires the coldkey the created the subnet.
 
 <!-- Can you transfer ownership? What happens if your key gets leaked? -->
+
+## Key rotation
+
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. The cost of this coldkey swap transaction is 0.1 TAO.
+
+See [Rotate/Swap your Coldkey](../subnets/schedule-coldkey-swap)
+

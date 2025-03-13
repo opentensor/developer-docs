@@ -23,12 +23,12 @@ It is highly recommended to use a unique hotkey per subnet and rotate these when
 
 ### Coldkey workstation:
 - Create/import coldkey
-- Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the validator workstation: `btcli wallet new-hotkey` , `btcli wallet regen-hotkey`
-- Register a UID: ,`btcli subnets register`, `btcli subnets pow-register`
 - Manage TAO and alpha stake
+- Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the validator workstation: `btcli wallet new-hotkey` , `btcli wallet regen-hotkey`
 - Transfer/rotate TAO and alpha stake in case of key compromise
 - Rotate hotkeys in case of compromise
-- Register a hotkey to mine on a subnet
+- Register a hotkey on a subnet with `btcli subnets register`, `btcli subnets pow-register`
+- Set validator take with `btcli sudo set-take`
 
 ### Validator node (hotkey workstation)
 
@@ -51,4 +51,11 @@ To have a **validator permit** in a given subnet, allowing you to submit miner e
 
 		$$
 	- You must be one of the top 64 validators in the subnet, ranked by stake.
+
+
+## Key rotation
+
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. The cost of this coldkey swap transaction is 0.1 TAO.
+
+See [Rotate/Swap your Coldkey](../subnets/schedule-coldkey-swap)
 

@@ -63,3 +63,11 @@ Miners will need coldkeys to manage their TAO and alpha currency, as well as hot
 `btcli wallet new-hotkey` , `btcli wallet regen-hotkey`,  : Create and register a hotkey on a secure coldkey workstation  then transfer the hotkey file or mnemonic to the mining workstation. 
 
 `btcli subnets register`, `btcli subnets pow-register`: register a UID
+
+
+## Key rotation
+
+If you suspect your coldkey may have been leaked, you can request to swap it out of your wallet, using an extrinsic blockchain transaction. This operation has a 5 day waiting period, during which your coldkey will be locked. The cost of this coldkey swap transaction is 0.1 TAO.
+
+See [Rotate/Swap your Coldkey](../subnets/schedule-coldkey-swap)
+
