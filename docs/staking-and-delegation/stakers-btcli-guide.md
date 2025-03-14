@@ -39,7 +39,7 @@ See:
   - Transfer TAO from your coldkey to another address. Requires a coldkey signature (secure environment).
 
 ### Subnet Discovery
-  - `btcli subnets list`, `btcli subnets show`, `btcli subnets metagraph`: Permissionless *reads* to see available subnets or node info. 
+  - `btcli subnets list`, `btcli subnets show`, `btcli subnets metagraph`:  See available subnets or node info. Permissionless read.
   - `btcli subnets price`, `btcli subnets burn-cost`, `btcli subnets burn_cost`: Show the required burn to register in a particular subnet. Permissionless read.
 
 ### Staking (All require **coldkey** except for list):
