@@ -11,7 +11,7 @@ For general coverage of `btcli` permissions and requirements, see: [Bittensor CL
 See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 :::tip 
-It is highly recommended to use a unique hotkey per subnet and rotate these when new subnets register. The reason being if a validator's single hotkey does get compromised, damage can be done by the attacker setting incorrect weights for miners or introducing a deadlock condition, effectively preventing normal operation.
+It is highly recommended to use a unique hotkey per subnet.
 :::
 
 ## Requirements for validator functions

@@ -34,8 +34,7 @@ See:
 
 ### Wallets
   - View balances and stake&mdash;only coldkey public key is required (permissionless)
-  - Create or generate a new coldkey (coldkey required).
-  - transfer TAO
+  - Create or generate a new coldkey.
   - Transfer TAO from your coldkey to another address. Requires a coldkey signature (secure environment).
 
 ### Subnet Discovery
