@@ -10,8 +10,10 @@ For general coverage of `btcli` permissions and requirements, see: [Bittensor CL
 
 See also: [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
-:::tip 
+:::tip tips
 It is highly recommended to use a unique hotkey per subnet.
+
+Note that hotkeys are not encrypted by default, but can be password [optionally encrypted](../working-with-keys#encrypting-the-hotkey).
 :::
 
 ## Requirements for validator functions
