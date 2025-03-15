@@ -38,10 +38,10 @@ The schedule coldkey swap feature works as follows:
 ## Requirements
 
 1. To execute this operation, you must own the source coldkey.
-1. Confirm the identity of the destination coldkey. A mistake here will result in loss of all of the source coldkey's assets and identity.
+1. The destination (new) coldkey public key must not already be assigned to a hotkey *or a coldkey that is associated with any hotkeys*.
+1. Confirm the identity of the destination coldkey. A mistake here can result in loss of all of the source coldkey's assets and identity.
 	- If you are rotating the coldkey to maintain ownership, you must control the destination coldkey privatekey. Otherwise you will lose control over all of the source coldkey's assets and identity.
 	- If you are transferring ownership to someone else, confirm that they have secure control of the destination coldkey private key. 
-
 2. You must use the [Polkadot JS extension](https://polkadot.js.org/extension/). The `btcli` command does not yet support scheduling coldkey swap.
 3. You must import your source and destination coldkeys into the Polkadot JS extension.
 4. You must connect the source coldkey account to the [polkadot.js.org/apps](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fentrypoint-finney.opentensor.ai%3A443#/explorer) website. 

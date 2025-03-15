@@ -23,11 +23,10 @@ Permissionless, use `btcli subnet show` or `btcli view dashboard`.
 ### create subnet
 Requires coldkey with sufficient TAO.
 `btcli subnet create`
+
 ### configure subnet
 
 Configure your subnet's hyperparameters with `btcli sudo set`. Requires the coldkey the created the subnet.
-
-<!-- Can you transfer ownership? What happens if your key gets leaked? -->
 
 ## Key rotation
 

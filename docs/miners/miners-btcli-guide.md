@@ -48,8 +48,8 @@ See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-
 - Register a hotkey to mine on a subnet
 
 ### Mining node (Hotkey workstation):
-- import/provision hotkey
-- serve w axon
+- Import/provision hotkey
+- Provide hotkey to subnet codebase for operations such as axon serving, commitment creation etc
 
 :::tip Coldkeys do not mine
 

@@ -106,7 +106,7 @@ No. In a given subnet, each hotkey can only be used for one UID. However, you ca
 
 ### Can I transfer TAO to a hotkey?
 
-No! If you try, you may irreversably lose your funds&mdash;transfer of TAO is always *to* a coldkey; the coldkey public key serves as the public address of the wallet.
+Technically yes but no you should not do it! This is contrary to design, and if you try, you may irreversably lose your funds&mdash;transfer of TAO is always *to* a coldkey; the coldkey public key serves as the public address of the wallet.
 
 ### Is a coldkey associated with a subnet?
 

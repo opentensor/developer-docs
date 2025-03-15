@@ -42,18 +42,7 @@ These require a hotkey with an active validator permit on the subnet. Run in a l
 
 ### Weight-setting requirements
 
-To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
-
-	- Your hotkey must be registered, granting you a UID on the subnet
-	- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
-
-		$$
-
-		\text{Validator stake weight} = \alpha +  0.18 \times \tau 
-
-		$$
-	- You must be one of the top 64 validators in the subnet, ranked by stake.
-
+To set weights, a validator must meet several requirements. See [Requirements for validation](./index#requirements-for-validation).
 
 ## Key rotation
 
