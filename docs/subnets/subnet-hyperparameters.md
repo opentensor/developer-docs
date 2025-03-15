@@ -517,7 +517,7 @@ Rate limit for network registrations expressed in blocks
 
 ### NetworkRegistrationAllowed
 
-**Type**: ???
+**Type**: ????
 
 **Default**: ???
 
