@@ -194,8 +194,6 @@ is there some way to monitor **all the activity** associated with a hotkey over 
 
 If you suspect that a hotkey (but not a coldkey) has been leaked, rotate it as soon as possible using `btcli wallet swap-hotkey`. This moves the registration to a newly created hotkey owned by the same coldkey, including all of the stake delegated by other users.
 
-<!-- Fact check ^^ -->
-
 Note that this operation incurs a $1 \tau$ recycling fee.
 
 
