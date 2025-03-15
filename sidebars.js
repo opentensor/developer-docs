@@ -92,7 +92,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Managing subnets",      
+      label: "Managing Subnets",
       collapsible: true,
       collapsed: true,
       items: [
