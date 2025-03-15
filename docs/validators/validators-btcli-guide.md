@@ -42,7 +42,7 @@ These require a hotkey with an active validator permit on the subnet. Run in a l
 
 ### Weight-setting requirements
 
-To set weights, a validator must meet several requirements. See [Requirements for validation](./index#requirements-for-validation).
+To set weights, a validator must meet several requirements. See [Requirements for validation](./#requirements-for-validation).
 
 ## Key rotation
 

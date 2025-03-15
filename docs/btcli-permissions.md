@@ -61,7 +61,7 @@ Some operations require a TAO balance or alpha stake balance.
 
 ### Validator Permit
 
-To set weights, a validator must meet several requirements. See [Requirements for validation](./index#requirements-for-validation).
+To set weights, a validator must meet several requirements. See [Requirements for validation](./validators/#requirements-for-validation).
 
 ### Senate requirements
 
