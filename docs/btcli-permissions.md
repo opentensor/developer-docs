@@ -33,6 +33,7 @@ Required for:
 - Creating hotkeys.
 - Creating or modifying subnets (`btcli subnets create`).
 - Voting or proposing in governance.
+- Registering hotkeys in subnets
 
 
 ### Hotkey
@@ -40,11 +41,13 @@ Required for:
 Most users do not need their own hotkey. This is used by **miners** and **validators** for signing operations. Stakers use validators' hotkey public key to identify them in order to delegate stake to them.
 
 Required for:
-- Running miners: serving requests from validators
+- Running miners: 
+  - Serving requests from validators
+  - Making on-chain data commitments (if applicable)
 - Running validators:
-  - making requests to miners weight
+  - making signed requests to miners
   - setting weights
-  - being discoverable my stakers
+  - being discoverable by stakers and miners
 
 ### Available liquidity
 
@@ -53,7 +56,7 @@ Some operations require a TAO balance or alpha stake balance.
 - Transfers of TAO will fail if you lack the specified amount
 - Staking and unstaking operations fail if they specify more than the owner has
 - Registering a hotkey on a subnet to mine or validate has a fee that can be paid with TAO or proof-of-work.
-- Creating a subnet requires a fee, which is computed dynamically. The price to create a subnet doubles when someone creates a subnet, and then gradually decreases. This system is designed as a kind of distrubuted auction, where price is determined by what people are willing to pay given the uncertain estimation of what others are willign to pay.
+- Creating a subnet requires a fee, which is computed dynamically. The price to create a subnet doubles when someone creates a subnet, and then gradually decreases. This system is designed as a kind of distributed auction, where price is determined by what people are willing to pay given the uncertain estimation of what others are willing to pay.
 <!-- what else -->
 
 ### Validator Permit
@@ -98,7 +101,7 @@ These commands don't require any permissions to run, but you'll run these comman
     See [Coldkey workstation security](./getting-started/coldkey-hotkey-security#coldkey-workstation-security)
     :::
 
-- **Hotkey workstation**: Servers used for mining or validation. Contains only hotkey private key in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or bad work. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
+- **Hotkey workstation**: Servers used for mining or validation. Contains only hotkey private key in the `wallet_path` in the `btcli config`. Compromised hotkeys can damage your reputation if they are used to maliciously submit false weights (if you are a validator), or bad work as a miner. However, ownership of TAO or alpha stake can only be transferred with a coldkey.
 
     :::tip hotkey workstation security
     See [Hotkey workstation security](./getting-started/coldkey-hotkey-security#hotkey-workstation-security)
