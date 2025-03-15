@@ -28,7 +28,7 @@ See:
 - [Staker's Guide to `BTCLI`](../staking-and-delegation/stakers-btcli-guide)
 
 
-Hotkey creation requires a coldkey private key, and should be done on a secure [coldkey workstation](../getting-started/coldkey-hotkey-security#coldkey-workstation-security). However, using hotkeys for signing requests when mining does not require a coldkey, which should never be present on a mining server, i.e. a hotkey workstation. The coldkey should not be placed on a machine used for mining because the software dependencies for mining should not be considered safe/trusted code to the standards of a coldkey workstation. 
+Creating hotkeys requires a coldkey private key, and should be done on a secure [coldkey workstation](../getting-started/coldkey-hotkey-security#coldkey-workstation-security). However, using hotkeys for signing requests when mining does not require a coldkey, which should never be present on a mining server, i.e. a hotkey workstation. The coldkey should not be placed on a machine used for mining because the software dependencies for mining should not be considered safe/trusted code to the standards of a coldkey workstation. 
 
 See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
