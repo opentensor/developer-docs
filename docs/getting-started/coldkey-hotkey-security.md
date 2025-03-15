@@ -11,15 +11,43 @@ See also:
 - [Intro to Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
+
+
+
+## Permissionless workstation
+
+You can check public information about Bittensor wallets (including your TAO and alpha stake balances), subnets, validators, and more *without* using a (coldkey or hotkey) private key. This is because transaction information is public on the Bittensor blockchain, with parties being identified by their wallet's coldkey public key.
+
+When you use a website and apps with *only your public key*, this is considered "permissionless" work. Whenever possible, you should do permissionless work on a **permissionless workstation**, meaning a device (laptop or desktop computer,  mobile phone, tablet, etc.) that does *not* have your coldkey private key loaded into it.
+
+In other words, don't use your coldkey private key when you don't have to, and avoiding loading it into devices unnecessarily. Every device that *does* have your coldkey private key loaded into it is a **coldkey workstation**, and should be used with security precautions.
+
+When you just want to read/check the state of the blockchain (balances, emissions, token prices, etc.) and you don't need to use your coldkey to *change* anything (for exmaple, to transfer TAO or move stake), it is preferable to use a permissionless workstation.
+
+To use the Bittensor CLI `btcli` as a permissionless workstation:
+
+1. Importing your coldkey ***public key*** (not private key) with:
+	```shell
+	btcli w regen-coldkeypub --ss58 <YOUR COLDKEY PUBLIC KEY>
+	```
+
+1. View your balances and stakes, as well as information about the Bittensor blockchain, subnets, miners, validators, etc., simply by running: 
+	```shell
+	btcli view dashboard
+	```
+
+Websites that offer permissionless browsing of Bittensor data include:
+
+- [bittensor.com/scan](https://bittensor.com/scan)
+- [taostats.io](https://taostats.io/)
+
 ## Coldkey workstation security
 
 Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seedphrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
 
-:::tip
-Note that you can check balances on an unsecure device without entering your coldkey private key. For example, using [https://bittensor.com/scan](https://bittensor.com/scan).
-:::
+
 
 ### Isolation of coldkey operations
 

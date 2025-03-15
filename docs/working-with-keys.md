@@ -11,8 +11,10 @@ In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for 
 
 This page describes several different ways to instantiate your wallet keypairs into a wallet application, in order to interact with the Bittensor blockchain.
 
-For an introduction to the core concepts, see [wallets and keys in Bittensor](getting-started/wallets.md).
-For discussion of security considerations about working with Bittensor wallets, see [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
+Recommended background reading:
+- For an introduction to the core concepts, see [wallets and keys in Bittensor](getting-started/wallets.md).
+
+- For discussion of security considerations about working with Bittensor wallets, see [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
 
 ## Wallets and wallet applications
 
@@ -33,18 +35,20 @@ The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (
 
 Make sure you understand the role of the seed phase in the fundamental scheme of [Wallets, Coldkeys and Hotkeys in Bittensor](./getting-started/wallets).
 
-The options wallet applications have different levels of functionality:
+Different wallet applications have different levels of functionality:
 
-- The mobile app and Chrome extension allow for staking and transfer of TAO balalnces, but do not include any hotkey management or advanced functionality, which require  `btcli` or the SDK.
+- The mobile app and Chrome extension allow for staking and transfer of TAO balalnces, but do not include any hotkey management or advanced functionality.
 
-  Note that the Chome extension is compatible with a hardware wallet, which can be a strong security option.
+  - Note that the Chome extension is compatible with a hardware wallet, which can be a strong security option. This implies using a laptop as your [coldkey workstation](../getting-started/coldkey-hotkey-security).
 
-  The mobile app depends on having a secure phone.
+  - The mobile app depends on using a secure phone as a [coldkey workstation](../getting-started/coldkey-hotkey-security).
 
-- `btcli` and the SDK allow for hotkey management and other advanced functionality. These require a laptop.
+- `btcli` and the SDK allow for hotkey management and other advanced functionality. These require a laptop as a [coldkey workstation](../getting-started/coldkey-hotkey-security).
 
 :::tip
 Note that you can also check balances on an unsecure device without entering your coldkey private key. For example, using [https://bittensor.com/scan](https://bittensor.com/scan). These website can be considered permissionless wallet applications.
+
+See [Coldkey and Hotkey Workstation Security: Permissionless workstation](../getting-started/coldkey-hotkey-security#permissionless-workstation)
 :::
 
 
