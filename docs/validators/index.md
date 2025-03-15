@@ -20,16 +20,17 @@ Validating is not supported on Windows.
 
 ## Requirements for validation
 
-To have a **validator permit** in a given subnet and be listed as `active`, allowing you to submit miner evaluations using the [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html) function, you must meet the following requirements:
+To have a **validator permit** in a given subnet, allowing you to submit miner evaluations using `btcli weights commit` or the SDK's [`set_weights`](pathname:///python-api/autoapi/bittensor/core/extrinsics/set_weights/index.html#module-bittensor.core.extrinsics.set_weights) function, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
-- You must have a stake weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
 
-	$$
+		$$
 
-	\text{Validator stake weight} = \alpha +  0.18 \times \tau 
+		\text{Validator stake weight} = \alpha +  0.18 \times \tau 
 
-	$$
+		$$
+
 - You must be one of the top 64 validators in the subnet, ranked by stake weight.
 
 ## Validator registration

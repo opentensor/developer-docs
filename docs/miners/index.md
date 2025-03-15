@@ -28,13 +28,12 @@ To participate as a miner, you must first register your keys with the subnet in 
 :::tip No need to create a subnet to mine
 You **do not** have to create a subnet to mine on the Bittensor network. Most miners work on established subnets.
 :::
-<!-- what determines the registration cost for a subnet??? is it burned, recycled, or locked??? this all needs a fact check... -->
 
-Registration has a cost in TAO. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost. Nevertheless, you can be a subnet miner in as many subnets as you can afford and expect to be successful.
+Registration has a cost in TAO, which fluctuates dynamically based on time since last registration. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost.
 
 A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
 
-Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot. **The terms "account" and "hotkey" are used synonymously.**
+Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
 
 :::tip Ownership belongs to a hotkey
 When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 

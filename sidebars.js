@@ -59,6 +59,7 @@ const sidebars = {
       link: {type: "doc", id: "staking-and-delegation/delegation",},
       items: [
       "staking-and-delegation/delegation",
+      "staking-and-delegation/stakers-btcli-guide",
       "dynamic-tao/staking-unstaking-dtao",
       "staking-and-delegation/managing-stake-btcli",
       "staking-and-delegation/managing-stake-sdk",
@@ -73,6 +74,7 @@ const sidebars = {
       link: {type: "doc", id: "miners/index",},
       items: [
       "miners/index",
+      "miners/miners-btcli-guide"
       ],
     },
 
@@ -84,16 +86,18 @@ const sidebars = {
       link: {type: "doc", id: "validators/index",},
       items: [
       "validators/index",
-              "subnets/child-hotkeys",
+      "subnets/child-hotkeys",
+      "validators/validators-btcli-guide"
       ],
     },
     {
       type: "category",
-      label: "Managing subnets",      
+      label: "Managing Subnets",
       collapsible: true,
       collapsed: true,
       items: [
         "subnets/create-a-subnet",
+        "subnets/subnet-creators-btcli-guide",
         "subnets/subnet-hyperparameters",
         "subnets/working-with-subnets",
         "subnets/walkthrough-prompting",
@@ -109,8 +113,9 @@ const sidebars = {
           link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
+            "btcli-permissions",
             "btcli",
-            "staking-and-delegation/managing-stake-btcli",
+            "staking-and-delegation/managing-stake-btcli",            
           ]
         },
         {
@@ -133,7 +138,9 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/wallets",
+            "getting-started/coldkey-hotkey-security",
             "working-with-keys",
+            "subnets/schedule-coldkey-swap",
           ]
         },
                 {
@@ -145,8 +152,7 @@ const sidebars = {
       items: [
         "bittensor-networks",
         "subnets/commit-reveal",
-        "subnets/consensus-based-weights",
-        "subnets/schedule-coldkey-swap",
+        "subnets/consensus-based-weights",        
         "subnets/asyncio",
           "subnets/bt-logging-levels",        
         "utilities",
@@ -195,6 +201,7 @@ const sidebars = {
       items: [
       "governance",
       "senate",
+      "governance/senators-btcli-guide"
       ],
     },
     {
