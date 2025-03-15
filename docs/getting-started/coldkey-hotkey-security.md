@@ -11,9 +11,6 @@ See also:
 - [Intro to Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
-
-
-
 ## Permissionless workstation
 
 You can check public information about Bittensor wallets (including your TAO and alpha stake balances), subnets, validators, and more *without* using a (coldkey or hotkey) private key. This is because transaction information is public on the Bittensor blockchain, with parties being identified by their wallet's coldkey public key.
@@ -173,22 +170,7 @@ Bittensor miners must handle hotkeys in MLOps workflows. Hotkeys must be created
 
 - Secure secrets management solution (like [HashiCorp Vault](https://www.vaultproject.io/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), or [GCP Secret Manager](https://cloud.google.com/secret-manager)) to provision the hotkey private key or seedphrase to the mining server.
 - Use ephemeral secret injection (CI/CD pipelines like GitLab or GitHub Actions allow storing secrets and injecting them at runtime).  
-- Never putting keys in code repositories
-
-<!-- What are best practices ^^ ???   -->
-
-<!--
-
-### Monitoring and Logging
-
-Need some input guidance here. But presumably validators would want some kind of monitoring to make sure their hotkey isn't being used to submit bogus weights, or that just that they aren't dropping out of consensus... 
-
-miners too...
-
-is there some way to monitor **all the activity** associated with a hotkey over the last period to use it for something like audit logging? Or how would one do that?
-
-
- -->
+- Never put keys in code repositories 
 
 ### Hotkey rotation
 
