@@ -52,7 +52,7 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
     <ResponsiveCard 
     icon={GiStarFormation}
     title='Bittensor frequently asked questions (FAQ)'
-    link='learn/introduction'
+    link='questions-and-answers'
     body='Everything you are afraid to ask about Bittensor.' />
     <ResponsiveCard 
     icon={HiAcademicCap}

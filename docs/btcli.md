@@ -1,8 +1,8 @@
 ---
-title: "Bittensor CLI: btcli"
+title: "Bittensor CLI: btcli Reference Document"
 ---
 
-# Bittensor CLI: `btcli`
+# Bittensor CLI: `btcli` Reference Document
 
 Command line interface (CLI) for Bittensor. Uses the values in the configuration file. These values can be overriden by passing them explicitly in the command line.
 
@@ -3475,7 +3475,7 @@ btcli stake [OPTIONS] COMMAND [ARGS]...
 
 Stake TAO to one or more hotkeys on specific netuids with your coldkey.
 
-Stake is always added through your coldkey's free balance. For stake movement, please see the `btcli stake move` command.
+Stake is always added through your coldkey's free balance. For stake movement, see the `btcli stake move` command.
 
 Common Examples:
 1. Interactive staking (guided prompts):
@@ -4147,7 +4147,7 @@ btcli st [OPTIONS] COMMAND [ARGS]...
 
 Stake TAO to one or more hotkeys on specific netuids with your coldkey.
 
-Stake is always added through your coldkey's free balance. For stake movement, please see 
+Stake is always added through your coldkey's free balance. For stake movement, see 
 the `btcli stake move` command.
 
 
