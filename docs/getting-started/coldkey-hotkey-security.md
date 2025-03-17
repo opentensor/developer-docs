@@ -11,6 +11,15 @@ See also:
 - [Intro to Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
 
+
+Interacting with Bittensor generally falls into one of three levels of security, depending on whether you need to use your coldkey private key, hotkey private key, or neither.
+
+The workstations you use to do this work can be referred to as a permissionless workstation (requiring neither private key), a coldkey workstation or a hotkey workstation, depending on which private key is provisioned.
+
+- [Permisionless workstation](#permissionless-workstation)
+- [Coldkey workstation](#permissionless-workstation)
+- [Hotkey workstation](#permissionless-workstation)
+
 ## Permissionless workstation
 
 You can check public information about Bittensor wallets (including your TAO and alpha stake balances), subnets, validators, and more *without* using a (coldkey or hotkey) private key. This is because transaction information is public on the Bittensor blockchain, with parties being identified by their wallet's coldkey public key.
@@ -38,13 +47,11 @@ Websites that offer permissionless browsing of Bittensor data include:
 - [bittensor.com/scan](https://bittensor.com/scan)
 - [taostats.io](https://taostats.io/)
 
-## Coldkey workstation security
+## Coldkey workstation
 
 Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seedphrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
-
-
 
 ### Isolation of coldkey operations
 
@@ -156,9 +163,7 @@ Maintain a secure software environment:
 
 
 
-
-
-## Hotkey workstation security
+## Hotkey workstation
 
 Hotkeys in Bittensor serve as the operational keys for mining, validation, and weight commits, which require moderately high availability. Because these keys do not control direct movement of TAO balances, they pose a lower risk if compromised. Nonetheless, a malicious actor who gains control of your hotkey can damage your reputation, submit invalid weights (if you are a validator) or serve malicious responses to requests as a miner.
 

@@ -34,7 +34,7 @@ You can visit [bittensor.com/scan](https://bittensor.com/scan) and enter a coldk
 
 Several applications exist that can interact securely with your coldkey, meaning essentially that you can load your coldkey into the application without having to have the key stored in unencrypted form on your disk. In theory this means that without your encryption password, it is impossible to steal your key even if someone accesses your device.
 
-However, it must be considered that using your coldkey on a device offers other ways for attackers to steal your key, even without decrypting it. See [Coldkey workstation security](./coldkey-hotkey-security#coldkey-workstation-security)
+However, it must be considered that using your coldkey on a device offers other ways for attackers to steal your key, even without decrypting it. See [Coldkey workstation security](./coldkey-hotkey-security#coldkey-workstation)
 
 This includes:
 - The Bittensor wallet app for mobile: [bittensor.com/wallet](https://bittensor.com/wallet)
@@ -83,7 +83,7 @@ An existential deposit is the minumum required TAO in a wallet (i.e., in a coldk
 
 Hotkeys are used to register on a subnet as a miner or validator.
 
-[Hotkey workstation security](../getting-started/coldkey-hotkey-security#hotkey-workstation-security)
+[Hotkey workstation security](../getting-started/coldkey-hotkey-security#hotkey-workstation)
 
 
 **Relationship to coldkey**: You can create multiple hotkeys paired to your single coldkey. However, when you are validating or mining in a subnet, you are identified by a hotkey in that subnet, so that your coldkey is not exposed. Hence, you cannot use the same hotkey for two UIDs in a given subnet. You can, however, use the same hotkey for multiple UIDs but with each UID in a separate subnet.
