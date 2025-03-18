@@ -57,7 +57,7 @@ Because of these high stakes, best practices should be diligently followed. Alwa
 
 The first principle is to isolate coldkey operations from day-to-day or internet-exposed systems. This means using a dedicated machine that is minimally connected to the internet, protected with full disk encryption, and has only highly trusted software installed to minimize the risk of malware or keyloggers intercepting your coldkey.
 
-In short, you should approach all operations involving your coldkey management as high-value, mission-critical, and laden with inherant risk.
+In short, you should approach all operations involving your coldkey management as high-value, mission-critical, and laden with inherent risk.
 
 Ensure a clear boundary between coldkey operations and the working environment you use to carry them out, and everything else. 
 
