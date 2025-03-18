@@ -132,11 +132,11 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 
 1. **`btcli wallet regen-coldkeypub`**: Initializes a wallet for a **permissionless workstation** with a public key only. This allows you to read all information about your wallet, which is public information, but not to sign any transactions, hence not to make any *changes* to the state of the blockchain, including any of your balances or stakes. 
 
-1. **`new coldkey`** is used to initialize a coldkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherant risk of handling the seed phrase.
-1. **`regen coldkey`** is used to initialize a coldkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherant risk of handling the seed phrase.
+1. **`new coldkey`** is used to initialize a coldkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
+1. **`regen coldkey`** is used to initialize a coldkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
 
-1. **`new hotkey`** is used to initialize a hotkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherant risk of handling the seed phrase. Hotkeys should be created on secure coldkey workstation and then carefully provisioned to working nodes for mining and validation.
-1. **`regen hotkey`** is used to initialize a hotkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherant risk of handling the seed phrase.
+1. **`new hotkey`** is used to initialize a hotkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase. Hotkeys should be created on secure coldkey workstation and then carefully provisioned to working nodes for mining and validation.
+1. **`regen hotkey`** is used to initialize a hotkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
 
 #### Permissionless operations 
 

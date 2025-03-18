@@ -165,13 +165,13 @@ See [Yuma Consensus: bonding mechanics](../yuma-consensus#bonding-mechanics).
 
 **Setter extrinsic**: `sudo_set_bonds_penalty`
 
-**Permissions required to set**: root/subnet creator ???
+**Permissions required to set**: root
+<!-- Is this configurable??? ^^ -->
 
 **Description**:
 The magnitude of the penalty subtracted from weights for exceeding consensus, for a specific subnet.
 
 See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penalizing-out-of-consensus-bonds).
-
 
 
 ### CommitRevealPeriod
@@ -228,34 +228,6 @@ Current dynamically computed value for the proof-of-work (POW) requirement for P
 <!-- What are the units here? What does this actually mean, how are miners supposed to read/understand this? -->
 
 
-### DissolveNetworkScheduleDuration
-
-Deprecated
-
-### EmissionValue
-
-**Description**:
-
-Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and SubnetTaoInEmission. 
-
-### EvmChainId
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
-
-
 ### ImmunityPeriod
 
 
@@ -295,22 +267,6 @@ The consensus majority ratio: The weights set by validators who have lower norma
 
 the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consensus)
 
-
-### DefaultValidatorTake
-
-**Type**: u16
-
-**Default**: ???
-
-**`btcli` setter**: no
-
-**Setter extrinsic**: sudo_set_default_take ???
-
-**Permissions required to set**: ???
-
-**Description**:
-
-
 ### LiquidAlphaEnabled
 
 **Type**: Bool
@@ -328,22 +284,6 @@ the consensus threshold for bond-clipping during [Yuma Consensus](../yuma-consen
 Enables the [liquid alpha ](./consensus-based-weights) feature.
 
 
-### MaxAllowedUids
-
-
-**Type**: u16
-
-**Default**: ???
-
-**`btcli` setter**: no
-
-**Setter extrinsic**: `sudo_set_max_allowed_uids`
-
-**Permissions required to set**: root or sn ???
-
-**Description**:
-
-Maximum neurons on a subnet.
 
  
 ### MaxAllowedValidators
@@ -479,10 +419,9 @@ The minimum of the range of the proof-of-work for registering on the subnet
 
 ### NetworkPowRegistrationAllowed
 
+**Type**: Boolean
 
-**Type**: ???
-
-**Default**: ???
+**Default**: False
 
 **`btcli` setter**: none
 
@@ -500,9 +439,9 @@ The minimum of the range of the proof-of-work for registering on the subnet
 ### NetworkRateLimit
 
 
-**Type**: ???
+**Type**: u64
 
-**Default**: ???
+**Default**: 7200
 
 **`btcli` setter**: none
 
@@ -517,9 +456,9 @@ Rate limit for network registrations expressed in blocks
 
 ### NetworkRegistrationAllowed
 
-**Type**: ????
+**Type**: Boolean
 
-**Default**: ???
+**Default**: True
 
 **`btcli` setter**: `btcli sudo set --param registration_allowed`
 
@@ -533,31 +472,12 @@ Rate limit for network registrations expressed in blocks
 
 
 
-### PruningScore
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-???
-Probably deprecated and need to chop
-
-
 ### Rho
 
-Allegedly unused, but is in `btcli`???
 
 **Type**: u16
 
-**Default**: ???
+**Default**: 10
 
 **`btcli` setter**: yes
 
@@ -570,6 +490,7 @@ Allegedly unused, but is in `btcli`???
 Deprecated.
 
 <!-- will this be chopped from btcli? -->
+
 ### ServingRateLimit
 
 
@@ -586,62 +507,6 @@ Deprecated.
 **Description**:
 
 Rate limit for calling `serve_axon` and `serve_prometheus` extrinsics used by miners.
-
-
-### StakeThreshold
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: none
-
-**Setter extrinsic**: `sudo_set_stake_threshold`
-
-**Permissions required to set**: root
-
-**Description**:
-
-The minimum possible stake value.
-
-<!-- Is this global? Per subnet? -->
-
-
-### SubnetMovingAlpha
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: `sudo_set_subnet_moving_alpha` 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-`SubnetMovingAlpha` is a parameter that is used to calculate `SubnetMovingPrice` from current subnet price. The higher `SubnetMovingAlpha`, the faster the moving price diverges to the current price.
-
-
-### SubnetOwnerCut
-
-
-**Type**: ???
-
-**Default**: 
-
-**`btcli` setter**: none
-
-**Setter extrinsic**: `sudo_set_subnet_owner_cut`
-
-**Permissions required to set**: root 
-
-**Description**:
-
-The ratio of all subnet alpha emissions that is given to subnet owner as stake. (Global, fixed at 18%.)
 
 
 ### TargetRegistrationsPerInterval
@@ -682,9 +547,9 @@ See [Emission](../emissions.md)
 ### ToggleTransfer
 
 
-**Type**: ???
+**Type**: Boolean
 
-**Default**: ???
+**Default**: True
 
 **`btcli` setter**: none
 
@@ -695,28 +560,6 @@ See [Emission](../emissions.md)
 **Description**:
 
 Allows/disallows transfer of stake between coldkeys.
-
-
-
-### TxRateLimit
-
-
-**Type**: u64
-
-**Default**: 1000
-
-**`btcli` setter**: none
-
-**Setter extrinsic**: `sudo_set_tx_rate_limit`
-
-**Permissions required to set**: root
-
-**Description**:
-
-Rate limit for `swap_hotkey` extrinsic.
-
-
-
 
 ### WeightsVersion
 
@@ -744,7 +587,7 @@ If the version key specified in `set_weights` extrinsic is lower than this syste
 
 **`btcli` setter**: `btcli sudo set --param weights_rate_limit`
 
-**Setter extrinsic**: ???
+**Setter extrinsic**: 
 
 **Permissions required to set**: Root
 
@@ -752,15 +595,13 @@ If the version key specified in `set_weights` extrinsic is lower than this syste
 
 How long, in blocks, a validator must wait between weight commits on a subnet.
 
-
-
 ## Global/Root State Variables
 
-The following variables are global and/or can only be configured with `root` permissions, which are held by a triumvirate of Opentensor Foundation employees.
+The following variables are global and/or can only be configured with `root` permissions, which are held by a triumvirate of Opentensor Foundation employees. They are listed here for reference.
 
-### ColdkeySwapScheduleDuration ???
+### ColdkeySwapScheduleDuration
 
-**Type**: int
+**Type**: u12
 
 **Default**: 
 
@@ -768,14 +609,14 @@ The following variables are global and/or can only be configured with `root` per
 
 **Setter extrinsic**: `sudo_set_coldkey_swap_schedule_duration`
 
-**Permissions required to set**: Root ??? Sounds like a whole network thing, not per subnet.
+**Permissions required to set**: Root
 
 **Description**:
 
-The number of blocks that need to pass from the moment when the coldkey swap is scheduled and the actual swap.
+The duration in blocks of the waiting period before a coldkey swap.
 
+See [Rotate/Swap your Coldkey](./schedule-coldkey-swap)
 
-What is a coldkey swap ??? This sounds important, is that a way to rotate your coldkey private key??? 
 
 ### Issuance
 
@@ -841,6 +682,22 @@ The number of blocks that need to pass in order for the network lock cost to hal
 
 `NetworkMinLockCost` is the minimum TAO to pay for subnet registration
 
+### StakeThreshold
+
+
+**Type**: u12
+
+**Default**: 1000
+
+**`btcli` setter**: none
+
+**Setter extrinsic**: `sudo_set_stake_threshold`
+
+**Permissions required to set**: root
+
+**Description**:
+
+The minimum stake required for validating. Currently 1000
 
 ### TxDelegateTakeRateLimit
 
@@ -861,3 +718,68 @@ Rate limit of how frequently can a delegate take be increased
 
 <!-- fact check what is this on chain -->
 
+### DissolveNetworkScheduleDuration
+
+Deprecated
+
+### EmissionValue
+
+**Description**:
+
+Deprecated. replaced with SubnetAlphaInEmission, SubnetAlphaOutEmission, and SubnetTaoInEmission. 
+
+### EvmChainId
+
+**Permissions required to set**: root
+
+**Description**:
+
+The Chain ID. `945` for Bittensor mainnet, a.k.a. Finney.
+
+
+### TxRateLimit
+
+
+**Type**: u64
+
+**Default**: 1000
+
+**`btcli` setter**: none
+
+**Setter extrinsic**: `sudo_set_tx_rate_limit`
+
+**Permissions required to set**: root
+
+**Description**:
+
+Rate limit for `swap_hotkey` extrinsic.
+
+
+### SubnetOwnerCut
+
+**`btcli` setter**: none
+
+**Setter extrinsic**: `sudo_set_subnet_owner_cut`
+
+**Permissions required to set**: root 
+
+**Description**:
+
+The ratio of all subnet alpha emissions that is given to subnet owner as stake. (Global, fixed at 18%.)
+
+### MaxAllowedUids
+
+
+**Type**: u16
+
+**Default**: ???
+
+**`btcli` setter**: no
+
+**Setter extrinsic**: `sudo_set_max_allowed_uids`
+
+**Permissions required to set**: root or sn ???
+
+**Description**:
+
+Maximum neurons on a subnet.
