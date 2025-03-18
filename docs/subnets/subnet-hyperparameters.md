@@ -184,7 +184,7 @@ See [Yuma Consensus: Penalizing out-of-consensus bonds](../yuma-consensus#penali
 
 **Setter extrinsic**: `sudo_set_commit_reveal_weights_interval`
 
-**Permissions required to set**: Subnet Creator ???
+**Permissions required to set**: Subnet Creator
 
 **Description**:
 
@@ -257,7 +257,7 @@ The number of blocks after registration when a miner is protected from deregistr
 
 **Setter extrinsic**: `sudo_set_kappa`
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
@@ -297,7 +297,7 @@ Enables the [liquid alpha ](./consensus-based-weights) feature.
 
 **Setter extrinsic**: `sudo_set_max_allowed_validators`
 
-**Permissions required to set**: root or sn ???
+**Permissions required to set**: Root
 
 **Description**:
 
@@ -331,7 +331,7 @@ The maximum of the dynamic range for TAO cost of burn registration on the subnet
 
 **Setter extrinsic**: 
 
-**Permissions required to set**: ???
+**Permissions required to set**: Subnet creator
 
 **Description**:
 
@@ -646,31 +646,8 @@ The number of blocks that need to pass in order for the network lock cost to hal
 `sudo_set_lock_reduction_interval`| root 
 
 
-### NetworkMaxStake ???
-
-
-**Type**: ???
-
-**Default**: ???
-
-**`btcli` setter**: 
-
-**Setter extrinsic**: 
-
-**Permissions required to set**: ???
-
-**Description**:
-
-`NetworkMaxStake` is deprecated, chop ???
-
-| `int` | N/A | `sudo_set_network_max_stake`| root | N/A |
-
 
 ### NetworkMinLockCost
-
-**Type**: ???
-
-**Default**: ???
 
 **`btcli` setter**: none
 
@@ -767,19 +744,3 @@ Rate limit for `swap_hotkey` extrinsic.
 
 The ratio of all subnet alpha emissions that is given to subnet owner as stake. (Global, fixed at 18%.)
 
-### MaxAllowedUids
-
-
-**Type**: u16
-
-**Default**: ???
-
-**`btcli` setter**: no
-
-**Setter extrinsic**: `sudo_set_max_allowed_uids`
-
-**Permissions required to set**: root or sn ???
-
-**Description**:
-
-Maximum neurons on a subnet.
