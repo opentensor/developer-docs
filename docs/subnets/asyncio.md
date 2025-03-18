@@ -1,5 +1,5 @@
 ---
-title: "Concurrency with AyncIO and AsyncSubtensor"
+title: "Working with Concurrency"
 ---
 
 This page provides some tips for working with concurrent async functions in Bittensor.
