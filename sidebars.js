@@ -128,6 +128,9 @@ const sidebars = {
             "bt-api-ref",    
             "getting-started/install-wallet-sdk",        
             "migration_guide",
+            "subnets/asyncio",
+            "sdk/managing-subtensor-connections",
+
           ]
         },        
         
@@ -154,8 +157,7 @@ const sidebars = {
       items: [
         "bittensor-networks",
         "subnets/commit-reveal",
-        "subnets/consensus-based-weights",        
-        "subnets/asyncio",
+        "subnets/consensus-based-weights",                
           "subnets/bt-logging-levels",        
         "utilities",
       ],
