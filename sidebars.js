@@ -140,6 +140,7 @@ const sidebars = {
             "getting-started/wallets",
             "getting-started/coldkey-hotkey-security",
             "working-with-keys",
+            "keys/multisig",
             "subnets/schedule-coldkey-swap",
           ]
         },
