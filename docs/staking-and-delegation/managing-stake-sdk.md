@@ -97,36 +97,39 @@ The following script incrementally stakes 3 TAO into several subnets over many b
 
 ```python
 
-import bittensor as bt
-sub = bt.Subtensor(network="test")
-wallet = bt.wallet(name="ExampleWalletName")
-wallet.unlock_coldkey()
+# Initialize the Subtensor connection
+with bt.Subtensor(network="test") as sub:
+    #Load the wallet
+    wallet = bt.wallet(name="jpe442")
+    wallet.unlock_coldkey()
 
-to_buy = [119, 277, 18, 5] # list of netuids to stake into
-increment = 0.01 # amount of TAO to stake
-total_spend = 0 # total amount of TAO spent
-stake = {} # dictionary to store the stake for each netuid
+    #Define staking parameters
+    to_buy = [119, 277, 18, 5] # list of netuids to stake into
+    increment = 0.01 # amount of TAO to stake
+    total_spend = 0 # total amount of TAO spent
+    stake = {} # dictionary to store the stake for each netuid
 
-while total_spend < 3:
-    for netuid in to_buy:
-        subnet = sub.subnet(netuid)
-        print(f"slippage for subnet {netuid}", subnet.slippage(increment))
-        sub.add_stake( 
-            wallet = wallet, 
-            netuid = netuid, 
-            hotkey = subnet.owner_hotkey, 
-            tao_amount = increment, 
-        )
+    # Staking loop
+    while total_spend < 3:
+        for netuid in to_buy:
+            subnet = sub.subnet(netuid)
+            print(f"slippage for subnet {netuid}", subnet.slippage(increment))
+            sub.add_stake( 
+                wallet = wallet, 
+                netuid = netuid, 
+                hotkey_ss58 = subnet.owner_hotkey, 
+                amount=bt.utils.balance.Balance.from_tao(increment),
+            )
 
-        current_stake = sub.get_stake(
-            coldkey_ss58 = wallet.coldkeypub.ss58_address,
-            hotkey_ss58 = subnet.owner_hotkey,
-            netuid = netuid,
-        )
-        stake[netuid] = current_stake
-        total_spend += increment
-        print (f'netuid {netuid} price {subnet.price} stake {current_stake}')
-    sub.wait_for_block()
+            current_stake = sub.get_stake(
+                coldkey_ss58 = wallet.coldkeypub.ss58_address,
+                hotkey_ss58 = subnet.owner_hotkey,
+                netuid = netuid,
+            )
+            stake[netuid] = current_stake
+            total_spend += increment
+            print (f'netuid {netuid} price {subnet.price} stake {current_stake}')
+        sub.wait_for_block()
 ```
 ```console
 Enter your password:
