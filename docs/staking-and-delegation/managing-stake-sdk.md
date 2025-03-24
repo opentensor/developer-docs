@@ -96,8 +96,10 @@ print(netuids)
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
 ```python
+import bittensor as bt
 
 # Initialize the Subtensor connection
+
 with bt.Subtensor(network="test") as sub:
     #Load the wallet
     wallet = bt.wallet(name="jpe442")
