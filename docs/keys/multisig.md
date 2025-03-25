@@ -43,8 +43,8 @@ For our practice scenario, we'll use three keys on a single workstation.
 
 1. Use `btcli` to create three coldkeys/wallets.
 
-	See [Creating/Importing a Bittensor Wallet](../getting-started/working-with-keys).
-	
+	See [Creating/Importing a Bittensor Wallet](../working-with-keys).
+
 1. Load the three keys into Polkadot-JS
 
 in polkadot-js, load all three keys in. this would only be the case in practice, in reality you'd never do this, you'd use 3 separate coldkey workstations
