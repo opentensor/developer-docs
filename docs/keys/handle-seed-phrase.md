@@ -28,9 +28,9 @@ There are two categories of security failure with a secret like a seed phrase/mn
 
 You must keep redundant backups of your coldkey. If you lose all access to your seed phrase/initialized wallets, you permanently and unrecoverably lose access to your account (TAO, stake, etc.). 
 
-## Recommended backup tactics
+## Backup tactics
 
-Each has pros and cons. A full backup strategy depends on multiple backups...
+Every option for backing up a seed phrase has pros and cons, and a full backup strategy relies on a combination of tactics that offers you a reasonable balance of security and accessbility.
 
 ### Paper
 
