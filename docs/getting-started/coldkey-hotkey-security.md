@@ -10,7 +10,7 @@ See also:
 
 - [Intro to Wallets, Coldkeys and Hotkeys in Bittensor](./wallets)
 - [Bittensor CLI: Permissions Guide](../btcli-permissions)
-
+- [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase)
 
 Interacting with Bittensor generally falls into one of three levels of security, depending on whether you need to use your coldkey private key, hotkey private key, or neither.
 
@@ -49,9 +49,10 @@ Websites that offer permissionless browsing of Bittensor data include:
 
 ## Coldkey workstation
 
-Your coldkey private key, accessible with your recovery seed phrase, is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seedphrase, there is no possible way to recover access to your wallet.
+Your coldkey private key, accessible with your recovery [seed phrase](./wallets#the-seed-phrase-aka-mnemonic), is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seed phrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
+
 
 ### Isolation of coldkey operations
 
@@ -81,34 +82,14 @@ This is required for using `btcli` or the Bittensor Python SDK for advanced use 
 ### Operational Hygiene
 
 Even on a minimal or air-gapped machine, follow standard security hygiene:
+- Always [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
 - Use strong passwords for your encryption passphrases.  
 - Do not reuse credentials across different environments.  
 - Keep your workstation’s operating system and critical software updated with the latest security patches.
 - Disable all network services (SSH, RDP, or anything else) that are not strictly needed.
 - Maintain logs of important oprations.
 
-### Your seed phrase
 
-The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (at least 12) words that is generated together with your wallet's cryptographic key pair, and which can be used to recover the coldkey private key. This seed phrase is therefore a human-usable way to save access to the cryptographic wallet offline, and to import the cryptographic wallet into a wallet application. 
-
-### Do not leak your seed-phrase
-
-1. Do not keep paper/analog copies somewhere they can be accessed without your knowledge.
-1. Do not expose your seed-phrase to untrustworthy software by entering into apps:
-	- messaging
-	- email
-	- online word processors
-1. Beware key-loggers, especially if you enter your seed phrase.
-1. Beward cameras and eye-balls (the "over the shoulder" attack) if you generate and export your seed phrase.
-
-### Do not lose your keys/seed-phrase
-
-You must keep redundant backups of your coldkey. If you lose all access to your seed-phrase/initialized wallets, you permanently and unrecoverably lose access to your account (TAO, stake, etc.). 
-
-Common approaches:
-- **Paper backups** of the mnemonic phrase, sealed in tamper-evident envelopes and locked in a safety deposit box or safe.
-- **Encrypted USB drives** with strong passphrases stored in a safety deposit box or safe.  
-- **Multiple locations strategy** so that a single disaster (fire or flood) cannot destroy all copies.
 
 ### Rotating your coldkey
 

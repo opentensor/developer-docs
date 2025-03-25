@@ -22,6 +22,43 @@ The coldkey private key is needed to authorize highly sensitive operations invol
 
 The coldkey public key identifies a wallet to the internet, serving as an address. To transfer ownership of TAO or alpha stake from one wallet to another, the sender needs only the public key of the recipient, and their own private key.
 
+## Wallets and wallet applications
+
+We must be careful to distinguish two senses of the term 'wallet' that can otherwise be confusing:
+
+- The **cryptographic wallet** is one or more cryptographic key pairs that comprise an identity, and allow a person to sign transactions or be referred to in transactions signed by others. In this sense, the wallet is more or less synonymous with the unique **coldkey** that controls access to your assets and serves as your public identity.
+
+- The **wallet application** is software that runs on your device and allows you to interact with the blockchain by entering your keys. There are several officially supported Bittensor wallet applications:
+
+  - The Bittensor wallet app for mobile: [bittensor.com/wallet](https://bittensor.com/wallet)
+  - [The Chrome extension](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc), which is also compatible with use of a Ledger hardware wallet. See [Using Ledger Hardware Wallet](../staking-and-delegation/using-ledger-hw-wallet.md)
+  - The Bittensor Python SDK, which includes the secure [Bittensor Wallet module](https://docs.bittensor.com/btwallet-api/html/autoapi/btwallet/wallet/index.html).
+  - The Bittensor CLI, `btcli`, which uses the Bittensor Wallet module under the hood. 
+
+Every Bittensor user has one or more cryptographic wallets, i.e. one or more coldkey. Any cryptographic wallet can be loaded into any number of wallet applications. If every wallet application that has been initialized with your cryptographic wallet (i.e. signed into with your coldkey private key) is closed, logged out, etc., and the device incinerated, your cryptographic wallet exists on the blockchain, and can be recovered with your *seed phrase*.
+
+Different wallet applications have different levels of functionality:
+
+- The mobile app and Chrome extension allow for staking and transfer of TAO balalnces, but do not include any hotkey management or advanced functionality.
+
+  - Note that the Chome extension is compatible with a hardware wallet, which can be a strong security option. This implies using a laptop as your [coldkey workstation](../getting-started/coldkey-hotkey-security).
+
+  - The mobile app depends on using a secure phone as a [coldkey workstation](../getting-started/coldkey-hotkey-security).
+
+- `btcli` and the SDK allow for hotkey management and other advanced functionality. These require a laptop as a [coldkey workstation](../getting-started/coldkey-hotkey-security).
+
+:::tip
+Note that you can also check balances on an unsecure device without entering your coldkey private key. For example, using [https://bittensor.com/scan](https://bittensor.com/scan). These website can be considered permissionless wallet applications.
+
+See [Coldkey and Hotkey Workstation Security: Permissionless workstation](../getting-started/coldkey-hotkey-security#permissionless-workstation)
+:::
+
+## The seed phrase a.k.a. mnemonic
+
+The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (at least 12) words that is generated together with your wallet's cryptographic key pair, and which can be used to recover the coldkey private key. This seed phrase is therefore a human-usable way to save access to the cryptographic wallet offline, and to import the cryptographic wallet into a wallet application.
+
+Arguably the most important operational goal when handling Bittensor wallets is to avoid losing or leaking your. Make sure you [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
+
 ## Wallet applications
 
 There are many different applications that can interact with your public and/or private keys in some way.
