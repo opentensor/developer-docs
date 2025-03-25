@@ -7,7 +7,7 @@ title: "Managing Subtensor Connections"
 Every time the Bittensor Python SDK's `Subtensor` or `AsyncSubtensor` class is instantiated, it creates a new websocket connection to Subtensor, Bittensor's Blockchain. Your code should ensure that these websocket connections are handled efficiently and closed when no longer in use by your code. 
 
 
-If not explicitly closed, connections *should* be terminated by Python's garbage collector, but threading can make this unreliable. (see [this comment](https://github.com/python-websockets/websockets/pull/1601#issuecomment-2705871026).
+If not explicitly closed, connections *should* be terminated by Python's garbage collector, but threading can make this unreliable. (see [this comment](https://github.com/python-websockets/websockets/pull/1601#issuecomment-2705871026).)
 
 Therefore, the best solution is to always use one of the following techniques to close your instance's connection:
 
