@@ -221,7 +221,6 @@ As a reminder, if you need to regenerate your wallets, you can use the `btcli` w
 btcli wallet regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
 ```
 
-
 ## Creating a Wallet with the Chrome Extension
 
 [The Chrome extension...](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc)
