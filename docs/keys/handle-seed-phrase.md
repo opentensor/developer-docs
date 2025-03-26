@@ -81,8 +81,6 @@ Keep redundant backups in separate, secure physical locations.
 
 Ensure that a single point of failure—like fire, flood, or theft—cannot destroy all copies.
 
-### Partition your seed phrase into overlapping segments
+### Shamir's Secret Sharing
 
-What about partitioning the seed phrase into 2/3 divisions? e.g. w 24 words, cache A gets words 1-16, B gets 9-24, C gets 1-8 and 17-24.
-
-This seems like a good idea to me but I don't want to recommend it just based on my own common sense... Does anyone discuss ideas like this?
+https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html
