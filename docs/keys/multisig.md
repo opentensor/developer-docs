@@ -53,7 +53,7 @@ Coldkeys private keys and seed phrases for wallets with real (mainnet) TAO are *
 
 In a realistic scenario, using wallets with real (mainnet) TAO, it would be crucial to follow proper workstation security. This implies that each coldkey would be provisioned to its own secure coldkey workstation, as maintaining separate workstations for each coldkey is important for minimizing the risk that multiple of the keys are lost or leaked; storing or handling the keys together undermines the purpose of having multiple keys.
 
-See [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
+See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 In the current *practice* scenario, using testnet TAO, we will forego full workstation security for ease, and handle all three keys on a single workstation, which can be an ordinary laptop rather than a secure workstation.
 
