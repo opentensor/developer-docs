@@ -34,28 +34,55 @@ Every option for backing up a seed phrase has pros and cons, and a full backup s
 
 ### Paper
 
-Write your seed phrase on acid-free, archival-quality paper.
+Tactics:
 
-Store it in a tamper-evident envelope in a locked safe or safety deposit box.
+- Write your seed phrase on acid-free, archival-quality paper.
+- Store it in a tamper-evident envelope in a locked safe or safety deposit box.
+- Avoid common paper degradation risks: humidity, fire, ink fade, etc.
 
-Avoid common paper degradation risks: humidity, fire, ink fade, etc.
+Pros:
+
+- No risk of digital leak (except cameras).
+- Can be hard to lose if properly secured in a safe.
+
+Cons:
+- Easy to leak if physical security is compromised (anyone can read or take a picture of it when the paper is exposed).
+- Easy to lose to physical disaster (e.g. fire).
 
 ### Metal
 
-Etch or stamp your seed phrase onto a metal plate designed to resist fire, water, and corrosion.
+Tactic: Etch or stamp your seed phrase onto a metal plate.
 
-Store it alongside your other offline backups.
+Pros:
+Extremely resistant to loss by destruction (e.g. fire).
+
+Cons:
+- Easy to leak if physical security is compromised (anyone can read or take a picture of it when the plate is exposed).
 
 ### Encrypted drive
 
-Save the seed phrase in an encrypted text file on a USB drive.
+Tactics:
+- Save the seed phrase in an encrypted text file on a USB drive.
+- Use strong, unique passphrases and encrypt using industry-standard tools (e.g., GPG, VeraCrypt).
+- Store the USB in a secure physical location—never leave it connected to a device.
+- Only connect the USB drive to secure coldkey workstations.
 
-Use strong, unique passphrases and encrypt using industry-standard tools (e.g., GPG, VeraCrypt).
+### Initialized hardware wallet
 
-Store the USB in a secure physical location—never leave it connected to a device.
+A hardware wallet such as a Ledger device that has a coldkey loaded into it is a backup, in a sense. It can't be used to exfiltrate the seed phrase, but it can be used to transfer out assets or even coldkey swap.
+
+A device like this is very resistant to leak (just don't lose your password to the device *and* the device itself) but very easy to lose (if you type the wrong password 3 times it'll factory restore itself, much less fire or flood).
+
+But, compared to making multiple paper or metal backups of a seed phrase, having multiple initialized hardware wallets seems potentially a lot safer? This seems like a good idea to me but I don't want to recommend it just based on my own common sense... Does anyone discuss ideas like this?
 
 ### Multiple-locations
 
 Keep redundant backups in separate, secure physical locations.
 
 Ensure that a single point of failure—like fire, flood, or theft—cannot destroy all copies.
+
+### Partition your seed phrase into overlapping segments
+
+What about partitioning the seed phrase into 2/3 divisions? e.g. w 24 words, cache A gets words 1-16, B gets 9-24, C gets 1-8 and 17-24.
+
+This seems like a good idea to me but I don't want to recommend it just based on my own common sense... Does anyone discuss ideas like this?

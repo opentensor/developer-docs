@@ -8,31 +8,7 @@ A multisig (multiple signatories) wallet is a way of distributing responsibility
 
 A multisig account requires multiple signatories to approve a transaction before it is executed. This prevents a single point of failure, adding a strong layer of protection against malicious coldkey access. In Bittensor, this level of protection may be appropriate for very valuable wallets, such as those with creator permissions over a subnet, or those that control validator hotkeys with significant stake.
 
-After a brief discussion of use cases, this page will guide the user through an example practice workflow of creating a multisig and using it to execute a transaction to create a subnet. For ease of practice, this entire workflow will be executed on a single workstation. However, in a realistic scenario, one or more operators would need to perform the steps on independent secure coldkey workstations in order to reap the full security benefits.
-
-## Use cases
-
-### Individuals seeking maximum security
-
-A user can distribute control across multiple devices or accounts.
-
-For example, you could have a multisig with three keys:
-- laptop with a software wallet
-- phone with software wallet
-- hw wallet in cold storage
-
-so if you do one on your phone you have to bust out your laptop, and the hw wallet is backup
-
-### Teams
-
-Multiple members can collectively manage funds, ensuring that no single person can execute transactions without consensus.
-
-Each member can secure their own key however they want (including with a multisig)
-
-## Choosing a signature threshold
-
-How many wallets, how many are needed for action? Considerations...
-
+This page will guide the user through an example practice workflow of creating a multisig wallet and transferring TAO to and from it. For ease of practice, this entire workflow will be executed on a single workstation. However, in a realistic scenario, one or more operators would need to perform the steps on independent secure coldkey workstations in order to reap the full security benefits of a multisig configuration.
 
 ## Prerequisites
 
@@ -46,10 +22,9 @@ A multisig depends on a set of pre-existing coldkeys, which will serve as the si
 
 For this simple example, we will use a two of three multisig, meaning total number $\N$ of signatories on the multisig is 3, and 2 signatures are required to authorize a transaction.
 
-
 ### Keep security in mind
+
 Coldkeys private keys and seed phrases for wallets with real (mainnet) TAO are **critical secrets**.
-:::
 
 In a realistic scenario, using wallets with real (mainnet) TAO, it would be crucial to follow proper workstation security. This implies that each coldkey would be provisioned to its own secure coldkey workstation, as maintaining separate workstations for each coldkey is important for minimizing the risk that multiple of the keys are lost or leaked; storing or handling the keys together undermines the purpose of having multiple keys.
 
@@ -151,21 +126,3 @@ A wallet with a test TAO balance sufficient to pay the fee
 ### Confirm success
 
 Check the multisig wallet's balance, which should have decreased by the transfer amount, and the destination wallet, which should have increased.
-<!-- 
-## Initialize the multisig transaction: create a subnet
-
-Next, use one of the signatory wallets to initiate the multisig transaction. Since we are triggering this transaction externally, it's referred to as an 'extrinsic' transaction. In this example, we'll create a subnet.
-
-1. Ensure that the wallet has sufficient (test) TAO to pay the fee. If you have testTAO in another wallet, use `btcli wallet transfer`. You can see the current burn cost for creating a subnet by running `btcli subnet burn-cost`.
-
-1. As that signatory go to the [Polkadot-JS app extrinsics page](https://polkadot.js.org/apps/#/extrinsics).
-1. Under **using the selected account**, select the multisig.
-1. Under **submit the following extrinsic**, select `subtensorModule` and `registerNetwork`.
-1. Copy out the **encoded call data** and **encoded call hash**. Other signatories must have the encoded call data in order to sign the transaction.
-1. Click **Submit Transaction**, which will open up the transaction signing modal.
-1. Under **multisig signatory**, select the wallet you wish to use, which must have 
-
-## Complete the mustisig transaction
-
-You need the call data thingy!!! and that url thing where you can decode it to see the actual transaction...
- -->
