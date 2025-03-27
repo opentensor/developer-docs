@@ -10,8 +10,11 @@ Whoever holds the seed phrase has full control over the wallet, so you should tr
 
 There are two categories of security failure with a secret like a seed phrase/mnemonic:
 
-- To *lose* the secret means no longer having access to it. 
-- To *leak* the secret means accidentally giving someone else access to it.
+- To *lose* the secret means no longer having access to it. This implies permanent, unrecoverable loss of the resources (TAO and alpha stake, subnet creator permissions on a subnet, etc.) controlled by a Bittensor coldkey private key.
+- To *leak* the secret means accidentally giving someone else access to it. This may result in them stealing your resources, or further leaking it to others who may in turn act maliciously. If your secret is leaked, you can (and should) rotate it, i.e. perform a coldkey swap.
+
+	See: [Rotating your coldkey](../getting-started/coldkey-hotkey-security#rotating-your-coldkey)
+
 
 ## Do not leak your keys/seed phrase
 
@@ -73,7 +76,21 @@ A hardware wallet such as a Ledger device that has a coldkey loaded into it is a
 
 A device like this is very resistant to leak (just don't lose your password to the device *and* the device itself) but very easy to lose (if you type the wrong password 3 times it'll factory restore itself, much less fire or flood).
 
-But, compared to making multiple paper or metal backups of a seed phrase, having multiple initialized hardware wallets seems potentially a lot safer? This seems like a good idea to me but I don't want to recommend it just based on my own common sense... Does anyone discuss ideas like this?
+Pros:
+
+- Strong protection against leaks
+
+- Tamper-resistant, PIN-protected
+
+Cons:
+
+- If lost and not backed up elsewhere, access is lost
+
+- High risk of mistaken factory reset (e.g. wrong PIN too many times)
+
+:::danger
+Only to be used in addition to backups of the seed phrase.
+:::
 
 ### Multiple-locations
 
