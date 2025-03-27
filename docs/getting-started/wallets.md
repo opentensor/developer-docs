@@ -57,7 +57,7 @@ See [Coldkey and Hotkey Workstation Security: Permissionless workstation](../get
 
 The ***seed phrase*** (a.k.a. 'menemonic' or 'recovery phrase') is a series of (at least 12) words that is generated together with your wallet's cryptographic key pair, and which can be used to recover the coldkey private key. This seed phrase is therefore a human-usable way to save access to the cryptographic wallet offline, and to import the cryptographic wallet into a wallet application.
 
-Arguably the most important operational goal when handling Bittensor wallets is to avoid losing or leaking your. Make sure you [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
+Arguably the most important operational goal when handling Bittensor wallets is to avoid losing or leaking your seed phrase. Make sure you [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
 
 ## Wallet applications
 
