@@ -89,7 +89,7 @@ Let's try executing a sensitive operation with the multisig wallet: transferring
 
 To transfer TAO out of the multisig wallet requires a multisig transaction, meaning it must be signed by threshold $M$ of the $\N$ total signatories. First, one wallet must propose the transaction. This proposal will exist on the blockchain where it can be signed by other signatories, which will execute the proposed transaction.
 
-Note that the signatory that proposes a multisig action must pay a small fee (less than .001 TAO), which will be displayed in the multisig transaction modal. But the wallet that will propose the multisig transaction must have a balance above this amount.
+Note that the signatory that proposes a multisig action must pay a fee, which will be displayed in the multisig transaction modal. The wallet that will propose the multisig transaction must have a balance above this amount.
 
 ### Propose the transfer
 

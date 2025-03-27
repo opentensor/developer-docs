@@ -16,7 +16,9 @@ Recommended background reading:
 
 - For discussion of security considerations about working with Bittensor wallets, see [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
 
-Arguably the most important operational goal when handling Bittensor wallets is to avoid losing or leaking your. Make sure you [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
+:::tip
+The most critical operational goal when handling Bittensor wallets is to avoid losing or leaking your seed phrase. Make sure you [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
+:::
 
 ## Creating a wallet with `btcli`
 
