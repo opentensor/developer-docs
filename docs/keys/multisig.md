@@ -4,9 +4,9 @@ title: "Secure your Coldkey with a Multisig"
 
 # Secure a Coldkey with a Multisig
 
-A multisig (multiple signatories) wallet is a way of distributing responsibility for a coldkey across a set of wallets, referred to as signatories. Any signatory can propose a transaction, but the action must be agreed by some threshold of others before it will execute. Conventionally, a multisig is described as "$M$ out of $\N$", where $M$ is the threshold number of signatories required to sign a transaction and $\N$ is the total number of signatories.
+A multisig (multiple signatories) wallet is a way of distributing responsibility for a coldkey across a set of wallets, referred to as signatories. Any signatory can propose a transaction, but the action must be agreed by some threshold of others before it will execute. Conventionally, a multisig is described as "$M$ out of $N$", where $M$ is the threshold number of signatories required to sign a transaction and $N$ is the total number of signatories. The signatories on a multisig may be seperate people, or a set of keys controlled by a single individual. This gives multisigs great versatility in providing security against single points of failure, including the loss of a single key or the decision of a team-mate to act irresponsibly.
 
-A multisig account requires multiple signatories to approve a transaction before it is executed. This prevents a single point of failure, adding a strong layer of protection against malicious coldkey access. In Bittensor, this level of protection may be appropriate for very valuable wallets, such as those with creator permissions over a subnet, or those that control validator hotkeys with significant stake.
+A multisig account requires multiple signatories to approve a transaction before it is executed. This prevents a single point of failure, adding a strong layer of protection against malicious coldkey access. In Bittensor, this level of protection may be appropriate for very valuable wallets. This includes those with creator permissions over a subnet and those that control validator hotkeys with significant stake, but it can also include any individual wallet used for holding TAO and staking.
 
 This page will guide the user through an example practice workflow of creating a multisig wallet and transferring TAO to and from it. For ease of practice, this entire workflow will be executed on a single workstation. However, in a realistic scenario, one or more operators would need to perform the steps on independent secure coldkey workstations in order to reap the full security benefits of a multisig configuration.
 
@@ -20,7 +20,7 @@ This page will guide the user through an example practice workflow of creating a
 
 A multisig depends on a set of pre-existing coldkeys, which will serve as the signatories for the multisig. In a realistic scenario, these coldkeys would belong to separate people--team-mates collectively managing a subnet or validator, for example, or family members managing a shared investment.
 
-For this simple example, we will use a two of three multisig, meaning total number $\N$ of signatories on the multisig is 3, and 2 signatures are required to authorize a transaction.
+For this simple example, we will use a two of three multisig, meaning total number $N$ of signatories on the multisig is 3, and 2 signatures are required to authorize a transaction.
 
 ### Keep security in mind
 
@@ -44,7 +44,7 @@ In the current *practice* scenario, using testnet TAO, we will forego full works
 
 Each of our 3 signatories needs a wallet. Either create them or re-use available test wallets.
 
-1. Use `btcli` to create three coldkeys/wallets, or use practice wallets you already have access to.
+1. Use `btcli` to create three coldkeys/wallets, or use practice wallets you already have access to. Alternatively, you can create wallets in the Polkadot-JS browser extension.
 
 	See [Creating/Importing a Bittensor Wallet](../working-with-keys).
 
@@ -56,6 +56,10 @@ Each of our 3 signatories needs a wallet. Either create them or re-use available
 1. Configure your keys to use the custom network (Bittensor's test net). For each key/**account**:
 	1. Click the menu (three dots) to configure the account.
 	1. Open the network dropdown selector, and choose **Allow use on any chain**.
+
+1. You may need to allow the PolkadotJS webapp to use specific wallets by clicking **connect** in the extension.
+
+1. You may need to refresh the PolkadotJS webapp to show updated accounts information.
 
 1. Confirm success by visiting the [accounts page](https://polkadot.js.org/apps/#/accounts). You should see all three wallets/accounts listed as **accounts available via browser extensions**.
 
@@ -87,9 +91,9 @@ In this step, we'll create the multisig wallet, specifying the signatory wallets
 
 Let's try executing a sensitive operation with the multisig wallet: transferring TAO. Choose any destination wallet that you control. It can be one of the signatories. Note this wallet's balance, so you can confirm the transaction's ultimate success by seeing the increase in that balance.
 
-To transfer TAO out of the multisig wallet requires a multisig transaction, meaning it must be signed by threshold $M$ of the $\N$ total signatories. First, one wallet must propose the transaction. This proposal will exist on the blockchain where it can be signed by other signatories, which will execute the proposed transaction.
+To transfer TAO out of the multisig wallet requires a multisig transaction, meaning it must be approved by threshold $M$ of the $N$ total signatories. First, one wallet must propose the transaction. This proposal will exist on the blockchain where it can be signed by other signatories, which will execute the proposed transaction.
 
-Note that the signatory that proposes a multisig action must pay a fee, which will be displayed in the multisig transaction modal. The wallet that will propose the multisig transaction must have a balance above this amount.
+Note that the signatory that proposes a multisig action must make a deposit that will be returned upon approval or rejection of the transaction, the amount of which will be displayed in the multisig transaction modal. The wallet that will propose the multisig transaction must have a balance above this amount.
 
 ### Propose the transfer
 
@@ -116,9 +120,16 @@ A wallet with a test TAO balance sufficient to pay the fee
 
 1. Return to the [accounts page](https://polkadot.js.org/apps/#/accounts).
 1. Find the multisig wallet, noting that it should now display a clickable element for **view pending approvals**. You can also click on the wallets three dot menu and select **Multisig approvals**.
-1. The approval modal will display the **encoded call hash**, allowing signatories to confirm the identity of the proposed transaction, but it does not display details about the call. To view details of the call, visit the link provided under **encoding details** when creating the transaction proposal.
+1. The approval modal will display the **encoded call hash**, allowing signatories to confirm the identity of the proposed transaction, but it does not display details about the call.
+
+	To view details of the call, visit the link provided under **encoding details** when creating the transaction proposal.
+
+	:::caution
+	Confirm that the **call hash** in the details link matches the **call hash** in the transaction you are approving. This is the only way to be certain you are approving the correct transaction.
+	:::
+
 1. Select the approving signatory, which cannot be the signatory who proposed the transaction.
-1. Enter the **encoded call data**, which was provided when the transaction was created, and is displayed at the top of the page at the **encoding details** link provided when the transaction proposal was created.
+1. If you are the final approver, enter the **encoded call data**, which was provided when the transaction was created, and is displayed at the top of the page at the **encoding details** link.
 1. Set the toggle to **Multisig message with call (for final approval)**.
 1. Click **Approve**, which will open the signing modal.
 1. Confirm the information and click **Sign and Submit**.

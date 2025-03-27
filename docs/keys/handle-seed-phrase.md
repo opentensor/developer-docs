@@ -95,13 +95,12 @@ Pros:
 - Shares can be safely distributed across multiple locations or people.
 
 Cons:
-- Stored secret is no longer human readable.
 - Imposes additional operational complexity.
-
+- Stored secret is no longer human readable. Can be remedied with [slip39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md).
 
 Tools:
-
-- [EasyShamirEncode CLI](https://github.com/MichaelTrestman/EasyShamirEncode/tree/main): A handy CLI wrapper around the [sssa-golang](https://github.com/SSSaaS/sssa-golang) implementation of SSS.
+- [`sssa-golang`](https://github.com/SSSaaS/sssa-golang): An implementation of Shamir's Secret Sharing Algorithm in Go.
+- [Banana Split](https://github.com/paritytech/banana_split): Open source tool that uses a variation of SSS to split a seed phrase into QR codes.
 - [PyCryptodome SSS](https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html): A Python-based implementation of the Shamir scheme.
 
 
