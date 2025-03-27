@@ -35,6 +35,12 @@ You must keep redundant backups of your coldkey. If you lose all access to your 
 
 Every option for backing up a seed phrase has pros and cons, and a full backup strategy relies on a combination of tactics that offers you a reasonable balance of security and accessbility.
 
+### Multiple-locations
+
+Keep redundant backups in separate, secure physical locations.
+
+Ensure that a single point of failure—like fire, flood, or theft—cannot destroy all copies.
+
 ### Paper
 
 Tactics:
@@ -79,24 +85,16 @@ A device like this is very resistant to leak (just don't lose your password to t
 Pros:
 
 - Strong protection against leaks
-
 - Tamper-resistant, PIN-protected
 
 Cons:
 
 - If lost and not backed up elsewhere, access is lost
-
 - High risk of mistaken factory reset (e.g. wrong PIN too many times)
 
 :::danger
 Only to be used in addition to backups of the seed phrase.
 :::
-
-### Multiple-locations
-
-Keep redundant backups in separate, secure physical locations.
-
-Ensure that a single point of failure—like fire, flood, or theft—cannot destroy all copies.
 
 ### Shamir's Secret Sharing
 
