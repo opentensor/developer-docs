@@ -83,4 +83,25 @@ Ensure that a single point of failure—like fire, flood, or theft—cannot dest
 
 ### Shamir's Secret Sharing
 
-https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html
+[Shamir’s Secret Sharing (SSS)](https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing) is a cryptographic method for securely splitting a secret—like your seed phrase—into multiple pieces or “shares.” A minimum number of these shares must be recombined to reconstruct the original secret. This offers strong protection against both loss and leak.
+
+For example, you might split a seed phrase into 5 shares, requiring any 3 to restore the secret. These can be stored separately or given to different custodians.
+
+Pros:
+
+- Extremely resistant to both single-point loss and leakage:
+	- The leak of any share does not compromise your wallet.
+	- The loss of any share does not result in loss of the wallet.
+- Shares can be safely distributed across multiple locations or people.
+
+Cons:
+- Stored secret is no longer human readable.
+- Imposes additional operational complexity.
+
+
+Tools:
+
+- [EasyShamirEncode CLI](https://github.com/MichaelTrestman/EasyShamirEncode/tree/main): A handy CLI wrapper around the [sssa-golang](https://github.com/SSSaaS/sssa-golang) implementation of SSS.
+- [PyCryptodome SSS](https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html): A Python-based implementation of the Shamir scheme.
+
+
