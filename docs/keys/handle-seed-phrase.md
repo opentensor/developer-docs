@@ -15,7 +15,6 @@ There are two categories of security failure with a secret like a seed phrase/mn
 
 	See: [Rotating your coldkey](../getting-started/coldkey-hotkey-security#rotating-your-coldkey)
 
-
 ## Do not leak your keys/seed phrase
 
 1. Do not keep paper/analog copies somewhere they can be accessed without your knowledge.
@@ -87,8 +86,7 @@ Pros:
 
 Cons:
 
-- Cannot export seed phrase
-- Signing device/cannot export seed phrase
+- Signing device, not proper backup; cannot export seed phrase
 - If lost and not backed up elsewhere, access is lost
 - High risk of mistaken factory reset (e.g. wrong PIN too many times)
 
@@ -110,7 +108,7 @@ Pros:
 
 Cons:
 
-- Cannot export seed phrase
+- Signing device, not proper backup; cannot export seed phrase
 - Physical access can compromise keys.
 - Requires careful configuration for offline mode.
 - App updates require full device reset and recovery from seed.
@@ -140,5 +138,4 @@ Tools:
 - [`sssa-golang`](https://github.com/SSSaaS/sssa-golang): An implementation of Shamir's Secret Sharing Algorithm in Go.
 - [Banana Split](https://github.com/paritytech/banana_split): Open source tool that uses a variation of SSS to split a seed phrase into QR codes.
 - [PyCryptodome SSS](https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html): A Python-based implementation of the Shamir scheme.
-
 
