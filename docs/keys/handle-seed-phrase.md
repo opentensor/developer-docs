@@ -74,9 +74,9 @@ Tactics:
 - Store the USB in a secure physical location—never leave it connected to a device.
 - Only connect the USB drive to secure coldkey workstations.
 
-### Initialized hardware wallet
+### Hardware wallet
 
-A hardware wallet such as a Ledger device that has a coldkey loaded into it is a backup, in a sense. It can't be used to exfiltrate the seed phrase, but it can be used to transfer out assets or even coldkey swap.
+A hardware wallet such as a Ledger device that has a coldkey loaded into it can act as a backup, in a sense. It cannot be used to exfiltrate the seed phrase, but it can be used to transfer out assets or even coldkey swap to a new coldkey.
 
 A device like this is very resistant to leak (just don't lose your password to the device *and* the device itself) but very easy to lose (if you type the wrong password 3 times it'll factory restore itself, much less fire or flood).
 
@@ -87,11 +87,36 @@ Pros:
 
 Cons:
 
+- Cannot export seed phrase
+- Signing device/cannot export seed phrase
 - If lost and not backed up elsewhere, access is lost
 - High risk of mistaken factory reset (e.g. wrong PIN too many times)
 
 :::danger
 Only to be used in addition to backups of the seed phrase.
+:::
+
+Here’s a concise, on-brand section you can drop into your doc, matching the tone and structure of the others:
+
+### Mobile phone vault (e.g. Polkadot Vault)
+
+[Polkadot Vault](https://wiki.polkadot.network/general/polkadot-vault/) turns a smartphone into an air-gapped signing device. It holds your private keys securely offline and is used only to sign transactions via QR code.
+
+Pros:
+
+- Strong protection against remote compromise (air-gapped and network-disabled).
+- No direct exposure of seed phrase during signing.
+- Can be used to sign extrinsics without revealing keys to online devices.
+
+Cons:
+
+- Cannot export seed phrase
+- Physical access can compromise keys.
+- Requires careful configuration for offline mode.
+- App updates require full device reset and recovery from seed.
+
+:::tip
+Use only a repurposed device kept permanently offline.
 :::
 
 ### Shamir's Secret Sharing
