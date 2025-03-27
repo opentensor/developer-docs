@@ -62,11 +62,9 @@ Cons:
 
 Tactic: Etch or stamp your seed phrase onto a metal plate.
 
-Pros:
-Extremely resistant to loss by destruction (e.g. fire).
+Pros: Extremely resistant to loss by destruction (e.g. fire).
 
-Cons:
-- Easy to leak if physical security is compromised (anyone can read or take a picture of it when the plate is exposed).
+Cons: Easy to leak if physical security is compromised (anyone can read or take a picture of it when the plate is exposed).
 
 ### Encrypted drive
 
