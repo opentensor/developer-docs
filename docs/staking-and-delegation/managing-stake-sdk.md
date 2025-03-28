@@ -156,6 +156,9 @@ print(f"Top {len(top_subnets)} subnets selected.")
 # Define staking amount in TAO (ensure it's above the minimum requirement)
 amount_to_stake_tao = 0.3  # Adjust this if needed
 
+# Convert the amount to the Balance type
+amount_to_stake = bt.Balance.from_tao(amount_to_stake_tao)
+
 # ✅ Declare dictionary before using it
 top_validators_per_subnet = {}  # Stores top validators for each subnet
 
