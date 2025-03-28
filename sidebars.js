@@ -138,8 +138,10 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/wallets",
+            "keys/handle-seed-phrase",
             "getting-started/coldkey-hotkey-security",
             "working-with-keys",
+            "keys/multisig",
             "subnets/schedule-coldkey-swap",
           ]
         },
