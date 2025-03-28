@@ -96,54 +96,126 @@ print(netuids)
 The following script incrementally stakes 3 TAO into several subnets over many blocks:
 
 ```python
+# Initialize the wallet
+wallet = bt.wallet(name='jpe442', hotkey='taostar')
 
-import bittensor as bt
-sub = bt.Subtensor(network="test")
-wallet = bt.wallet(name="ExampleWalletName")
-wallet.unlock_coldkey()
+# Initialize the subtensor connection
+subtensor = bt.subtensor(network='test')  # Use 'main' for the main network
 
-to_buy = [119, 277, 18, 5] # list of netuids to stake into
-increment = 0.01 # amount of TAO to stake
-total_spend = 0 # total amount of TAO spent
-stake = {} # dictionary to store the stake for each netuid
+print("Fetching subnet information...")
+all_subnets = subtensor.get_all_subnets_info()
+print(f"Retrieved {len(all_subnets)} subnets")
 
-while total_spend < 3:
-    for netuid in to_buy:
-        subnet = sub.subnet(netuid)
-        print(f"slippage for subnet {netuid}", subnet.slippage(increment))
-        sub.add_stake( 
-            wallet = wallet, 
-            netuid = netuid, 
-            hotkey = subnet.owner_hotkey, 
-            tao_amount = increment, 
-        )
 
-        current_stake = sub.get_stake(
-            coldkey_ss58 = wallet.coldkeypub.ss58_address,
-            hotkey_ss58 = subnet.owner_hotkey,
-            netuid = netuid,
-        )
-        stake[netuid] = current_stake
-        total_spend += increment
-        print (f'netuid {netuid} price {subnet.price} stake {current_stake}')
-    sub.wait_for_block()
+# Initialize the subtensor connection
+subtensor = bt.subtensor(network='finney')  # Use 'main' for the main network
+
+# Fetch all subnets with detailed info
+print("Fetching detailed subnet information...")
+all_subnets = subtensor.get_all_subnets_info()
+
+# List to store mining subnet details
+mining_subnets = []
+
+# Process each subnet
+for subnet in all_subnets:
+    if subnet.netuid == 0:
+        continue  # Skip subnet 0 as it's non-mining
+
+    print(f"\nFetching hyperparameters for subnet {subnet.netuid}...")
+
+    # Retrieve hyperparameters for the subnet
+    hyperparams = subtensor.get_subnet_hyperparameters(subnet.netuid)
+
+    if hyperparams:
+        print(f"✅ Retrieved hyperparameters for subnet {subnet.netuid}. Available parameters:")
+        
+        # Display all available hyperparameters dynamically
+        for param, value in vars(hyperparams).items():
+            print(f"  {param}: {value}")
+
+        # Example: If 'incentive' is not available, we need to use an alternative metric
+        potential_metric = getattr(hyperparams, 'difficulty', None)  # Adjust based on available params
+
+        if potential_metric is not None:
+            mining_subnets.append({'netuid': subnet.netuid, 'metric': potential_metric})
+            print(f"✅ Using '{potential_metric}' as the relevant metric for subnet {subnet.netuid}.")
+        else:
+            print(f"❌ No valid metric found for subnet {subnet.netuid}. Skipping.")
+    else:
+        print(f"❌ Failed to retrieve hyperparameters for subnet {subnet.netuid}.")
+
+# Step 2: Sort subnets by 'incentive' in descending order and pick top 3
+top_subnets = sorted(mining_subnets, key=lambda x: x['metric'], reverse=True)[:3]
+print(f"Top {len(top_subnets)} subnets selected.")
+
+
+
+# Step 3: Retrieve metagraph and find the top 3 validators by stake and print
+
+# Define staking amount in TAO (ensure it's above the minimum requirement)
+amount_to_stake_tao = 0.3  # Adjust this if needed
+
+# Convert the amount to the Balance type
+amount_to_stake = bt.Balance.from_tao(amount_to_stake_tao)
+
+# ✅ Declare dictionary before using it
+top_validators_per_subnet = {}  # Stores top validators for each subnet
+
+for subnet in top_subnets:
+    netuid = subnet['netuid']
+    print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
+    
+    start_time = time.time()
+    metagraph = subtensor.metagraph(netuid)
+    print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
+
+    # Extract validators and their stake amounts
+    uid_stake_pairs = [(uid, metagraph.S[uid]) for uid in range(len(metagraph.S))]
+    
+    # Sort validators by stake in descending order
+    top_validators = sorted(uid_stake_pairs, key=lambda x: x[1], reverse=True)[:3]
+
+    # ✅ Store the metagraph and top validators for Step 4
+    top_validators_per_subnet[netuid] = {
+        "metagraph": metagraph,
+        "validators": top_validators
+    }
+
+    # ✅ Print the top 3 validators for this subnet
+    print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
+    for rank, (uid, stake) in enumerate(top_validators, start=1):
+        print(f"  {rank}. Validator UID {uid} - Stake: {stake}")
+
+# ✅ Step 4: Stake to each top 3 validators in each top 3 subnets
+for netuid, data in top_validators_per_subnet.items():
+    metagraph = data["metagraph"]
+    top_validators = data["validators"]
+
+    for uid, stake in top_validators:
+        hotkey_ss58 = metagraph.hotkeys[uid]
+
+        print(f"💰 Staking {amount_to_stake_tao} TAO to {hotkey_ss58} on subnet {netuid}...")
+        start_time = time.time()
+        try:
+            # ✅ Use the correct staking amount
+            subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hotkey_ss58, amount=amount_to_stake_tao)
+            print(f"✅ Successfully staked {amount_to_stake_tao} TAO to {hotkey_ss58} on subnet {netuid} in {time.time() - start_time:.2f} seconds.")
+        except Exception as e:
+            print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}: {e}")
 ```
 ```console
-Enter your password:
+Enter your password: 
 Decrypting...
-
-slippage for subnet 119
-5.484198655671355
-netuid 119 price τ0.027592398 stake Ⲃ1.449590749
-slippage for subnet 277
-22.54931028877199
-netuid 277 price τ0.014734147 stake इ2.714201361
-slippage for subnet 18
-48.319842544421064
-netuid 18 price τ0.001067641 stake σ28.105321031
-slippage for subnet 5
-36.69607695087895
-netuid 5 price τ0.001784484 stake ε11.208213619
+slippage for subnet 119 (‎0.052748841Ⲃ‎, ‎0.000000013Ⲃ‎)
+netuid 119 price ‎0.189577575Ⲃ‎ stake ‎0.157267876Ⲃ‎
+slippage for subnet 277 (‎0.024904301इ‎, ‎0.000000000इ‎)
+netuid 277 price ‎0.401537040इ‎ stake ‎0.074669512इ‎
+slippage for subnet 18 (‎11.324874218σ‎, ‎0.000410611σ‎)
+netuid 18 price ‎0.000882980σ‎ stake ‎34.043919173σ‎
+slippage for subnet 5 (‎13.957537560ε‎, ‎0.000384885ε‎)
+netuid 5 price ‎0.000716439ε‎ stake ‎41.987408695ε‎
+slippage for subnet 119 (‎0.052748882Ⲃ‎, ‎0.000000014
 
 ...
 
