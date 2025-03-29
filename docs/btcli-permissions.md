@@ -66,6 +66,7 @@ Required for:
 - Running miners: 
   - Serving requests from validators
   - Making on-chain data commitments (if applicable)
+  - Being discoverable by validators
 - Running validators:
   - making signed requests to miners
   - setting weights
