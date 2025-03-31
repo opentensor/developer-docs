@@ -31,7 +31,7 @@ The workstations you use to do this work can be referred to as a permissionless 
     See [Permissionless workstation](./getting-started/coldkey-hotkey-security#permissionless-workstation)
     :::
 
-1. A **coldkey workstation** contains a coldkey in the `wallet_path`. For any coldkey associated with mainnet TAO, the coldkey workstation should be held to the highest possible security standards. 
+1. A **coldkey workstation** contains one or more coldkey private key in the `wallet_path`. For any coldkey associated with mainnet TAO, the coldkey workstation should be held to the highest possible security standards. 
 
     :::tip coldkey workstation security
     See [Coldkey workstation](./  getting-started/coldkey-hotkey-security#coldkey-workstation)
