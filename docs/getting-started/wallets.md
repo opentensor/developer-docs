@@ -127,6 +127,7 @@ style={{width: 750}}
 An existential deposit is the minumum required TAO in a wallet (i.e., in a coldkey).
 If a wallet balance goes below the existential deposit, then this wallet account is deactivated and the remaining TAO in it is destroyed.
 **This is set to 500 RAO for any Bittensor wallet**.
+
 See also [What is the Existential Deposit?](https://support.polkadot.network/support/solutions/articles/65000168651-what-is-the-existential-deposit-).
 
 ## Hotkey details
