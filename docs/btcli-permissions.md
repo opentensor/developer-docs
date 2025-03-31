@@ -401,4 +401,4 @@ To set weights with `commit`, a validator must meet several requirements. See [R
 ### `utils`
 
 #### `btcli utils convert`
-`btcli utils conver` is a convenience command for performing conversions between minimal units (RAO) and TAO, or other chain-specific conversions. It is permissionless (no key required) because it performs no on-chain operation, just a local calculation. 
+`btcli utils convert` is a convenience command for performing conversions between minimal units (RAO) and TAO, or other chain-specific conversions. It is permissionless (no key required) because it performs no on-chain operation, just a local calculation. 
