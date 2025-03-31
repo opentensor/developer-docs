@@ -179,7 +179,6 @@ This is in the form of stake to their hotkey owned by their coldkey, which can t
 ### How do I delegate my TAO to a validator’s hotkey?
 
 As a TAO holder, you can stake or delegate to a validator on a subnet by exchanging your TAO for a stake balance in the subnet's alpha $\alpha$ token, which is always tied to a hotkey in the subnet, i.e. that of a validator.
-By sending it from your own coldkey to the validator’s hotkey (the hotkey that’s tied to their UID), you are staking your TAO to a validator.
 
 See [Staking/Delegation Overview](../staking-and-delegation/delegation) for more on staking.
 
