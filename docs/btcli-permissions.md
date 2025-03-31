@@ -25,7 +25,7 @@ Interacting with Bittensor generally falls into one of three levels of security,
 
 The workstations you use to do this work can be referred to as a permissionless workstation (requiring neither private key), a coldkey workstation or a hotkey workstation, depending on which private key is provisioned.
 
-1. A **permissionless workstation** has only coldkey *public keys* on it. These are sufficient for viewing all public information about a wallet, such as TAO and alpha stake balances. That way, information about subnets, miners, and validators can be viewed without introducing the security risk of initializing your private keys on a device.
+1. A **permissionless workstation** has only coldkey *public keys* on it. Public keys are sufficient for viewing all information about a wallet, such as TAO and alpha stake balances. Information about wallets, subnets, miners, and validators can and should be viewed without initializing your private keys on a device, to avoid the security risk of compromising your keys.
 
     :::tip coldkey workstation security
     See [Permissionless workstation](./getting-started/coldkey-hotkey-security#permissionless-workstation)
