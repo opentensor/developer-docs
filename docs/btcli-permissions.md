@@ -122,7 +122,7 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 
 `wallet` subcommands have a variety of uses and must be run on all different kinds of workstation.
 
-The `walleet` command is required to provision keys to `btcli`, so btcli can access your wallet. This is essentially the equivalent of logging in/authentication. This is true for both coldkeys, which all users require, and hotkeys, which are required only by miners and validators as well as for advanced functions.
+The `wallet` command is required to provision keys to `btcli`, so it can access your wallet. This is essentially the equivalent of logging in/authentication. This is true for both coldkeys, which all users require, and hotkeys, which are required only by miners and validators as well as for advanced functions.
 
 :::tip mind your keys
 See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
