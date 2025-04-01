@@ -93,9 +93,13 @@ print(netuids)
 
 ## Stake
 
-The following script incrementally stakes 3 TAO into several subnets over many blocks:
+The following script incrementally stakes 1 TAO in each of the top three validators of the top three subnets:
 
 ```python
+import bittensor as bt
+import time
+from bittensor import tao
+
 # Initialize the wallet
 wallet = bt.wallet(name='jpe442', hotkey='taostar')
 
@@ -154,10 +158,10 @@ print(f"Top {len(top_subnets)} subnets selected.")
 # Step 3: Retrieve metagraph and find the top 3 validators by stake and print
 
 # Define staking amount in TAO (ensure it's above the minimum requirement)
-amount_to_stake_tao = 0.3  # Adjust this if needed
+amount_to_stake = 1  # Adjust this if needed
 
 # Convert the amount to the Balance type
-amount_to_stake = bt.Balance.from_tao(amount_to_stake_tao)
+amount_to_stake = bt.Balance.from_tao(amount_to_stake)
 
 # ✅ Declare dictionary before using it
 top_validators_per_subnet = {}  # Stores top validators for each subnet
@@ -195,12 +199,12 @@ for netuid, data in top_validators_per_subnet.items():
     for uid, stake in top_validators:
         hotkey_ss58 = metagraph.hotkeys[uid]
 
-        print(f"💰 Staking {amount_to_stake_tao} TAO to {hotkey_ss58} on subnet {netuid}...")
+        print(f"💰 Staking {amount_to_stake} TAO to {hotkey_ss58} on subnet {netuid}...")
         start_time = time.time()
         try:
             # ✅ Use the correct staking amount
-            subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hotkey_ss58, amount=amount_to_stake_tao)
-            print(f"✅ Successfully staked {amount_to_stake_tao} TAO to {hotkey_ss58} on subnet {netuid} in {time.time() - start_time:.2f} seconds.")
+            subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hotkey_ss58, amount=amount_to_stake)
+            print(f"✅ Successfully staked {amount_to_stake} TAO to {hotkey_ss58} on subnet {netuid} in {time.time() - start_time:.2f} seconds.")
         except Exception as e:
             print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}: {e}")
 ```
