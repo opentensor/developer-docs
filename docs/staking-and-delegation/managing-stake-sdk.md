@@ -112,7 +112,12 @@ if total_to_stake == None:
     print("Staking total not specified, dividing 1 TAO across top 3 validators in each of top 3 subnets by default.\n Usage: `TOTAL_TAO_TO STAKE=1 WALLET=my-wallet-name ./stakerscript.py`")
     total_to_stake = 1
 else:
-    print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
+    try:
+        total_to_stake = float(total_to_stake)
+    except:
+        print("invalid TAO amount!")
+    else:
+        print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
 
 # Initialize the subtensor connection within a block scope to ensure it is garbage collected
