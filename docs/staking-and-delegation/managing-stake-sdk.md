@@ -115,7 +115,7 @@ else:
     try:
         total_to_stake = float(total_to_stake)
     except:
-        print("invalid TAO amount!")
+        sys.exit("invalid TAO amount!")
     else:
         print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
