@@ -147,11 +147,11 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 
 #### Operations requiring coldkey private key:
 
-- **`swap-hotkey`**: rotates a hotkey coldkey owned by the coldkey.
-- **`new-hotkey`**: creates a new hotkey owned by the coldkey.
-- **`transfer`**: transfers TAO to another coldkey.
-- **`set-identity`**: sets the coldkey's public identity information.
-- **`sign`(with coldkey)**: signs a message with the coldkey.
+- **`swap-hotkey`** rotates a hotkey coldkey owned by the coldkey.
+- **`new-hotkey`** creates a new hotkey owned by the coldkey.
+- **`transfer`** transfers TAO to another coldkey.
+- **`set-identity`** sets the coldkey's public identity information.
+- **`sign`(with coldkey)** signs a message with the coldkey.
 
 #### Operations requiring hotkey private key:
 - **`sign`** (with hotkey): sign a message with the hotkey
@@ -283,16 +283,16 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 
 #### Read commands (permissionless)
 
-- **`get`**: (same as `btcli subnet hyperparameters`), displays hyperparameters.
-- **`proposals`**: displays proposals currently before the senate.
-- **`senate`**: displays current senators.
-- **`get-take`**: shows the validator take of a given validator.
+- **`get`** (same as `btcli subnet hyperparameters`), displays hyperparameters.
+- **`proposals`** displays proposals currently before the senate.
+- **`senate`** displays current senators.
+- **`get-take`** shows the validator take of a given validator.
 
 #### Write commands (require coldkey)
 
-- **`set`**: sets the hyperparameters for a subnet (requires the coldkey of the subnet creator).
-- **`set-take`**: sets the validator take for a validator (requires the validator's coldkey).
-- **`senate-vote`**: votes on a proposal before the senate (requres a coldkey with senate permissions).
+- **`set`** sets the hyperparameters for a subnet (requires the coldkey of the subnet creator).
+- **`set-take`** sets the validator take for a validator (requires the validator's coldkey).
+- **`senate-vote`** votes on a proposal before the senate (requres a coldkey with senate permissions).
 
 <details>
   <summary>`btcli sudo`</summary>
@@ -323,11 +323,11 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 
 #### Read commands (permissionless)
 
-- **`list`**: Lists subnets.
-- **`show` alias `metagraph`**: Displays info about miner and validator activity on the subnet.
-- **`hyperparameters`**: Shows configuration of a specific subnet.
-- **`price`**: Displays a graph of alpha token prices of subnets over time.
-- **`burn_cost`**: Shows current fee to create subnet.
+- **`list`** lists subnets.
+- **`show` alias `metagraph`** displays info about miner and validator activity on the subnet.
+- **`hyperparameters`** shows configuration of a specific subnet.
+- **`price`** displays a graph of alpha token prices of subnets over time.
+- **`burn_cost`** shows current fee to create subnet.
 
 #### Write commands (require coldkey)
 
