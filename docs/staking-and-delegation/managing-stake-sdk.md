@@ -114,7 +114,6 @@ if total_to_stake == None:
 else:
     print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
-wallet = bt.wallet(wallet_name)
 
 # Initialize the subtensor connection within a block scope to ensure it is garbage collected
 with bt.subtensor(network='test') as subtensor: 
@@ -129,6 +128,7 @@ with bt.subtensor(network='test') as subtensor:
 
     top_validators_per_subnet = {}
 
+    # find the top 3 valis in each subnet
     for subnet in top_subnets:
         print(f"\n🔍 Subnet {subnet.netuid} had {subnet.tao_in_emission} emissions!")
         
@@ -146,7 +146,7 @@ with bt.subtensor(network='test') as subtensor:
         # Sort validators by stake in descending order
         top_validators = sorted(uid_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
 
-        # Store the metagraph and top validators for Step 4
+        # remember the top validators for staking
         top_validators_per_subnet[netuid] = {
             "metagraph": metagraph,
             "validators": top_validators
@@ -158,6 +158,7 @@ with bt.subtensor(network='test') as subtensor:
             print(f"  {rank}. Validator UID {uid} - Stake: {stake}")
 
     # Stake to each top 3 validators in each top 3 subnets
+    wallet = bt.wallet(wallet_name)
     for netuid, data in top_validators_per_subnet.items():
         metagraph = data["metagraph"]
         top_validators = data["validators"]
@@ -212,7 +213,7 @@ Fetching information on top subnets by TAO emissions
   1. Validator UID 45 - Stake: 231638.96875
   2. Validator UID 101 - Stake: 110850.1640625
   3. Validator UID 21 - Stake: 22277.609375
-💰 Staking τ0.111111111 TAO to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 277...
+💰 Staking τ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 277...
 Enter your password:
 Decrypting...
 ✅ Successfully staked इ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 277 in 20.29 seconds.
