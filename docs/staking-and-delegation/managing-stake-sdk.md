@@ -245,161 +245,178 @@ Decrypting...
 The script below will unstake from the delegations (stakes) to validators on particular subnets that have yielded the least emissions in the last tempo.
 
 ```python
-import os, sys
+import os, sys, asyncio, time
 import bittensor as bt
 import bittensor_wallet
-import time
 from bittensor import tao
 
-# Initialize the wallet with walletname by running like 
-wallet_name=os.environ.get('WALLET')
-total_to_unstake=os.environ.get('TOTAL_TAO_TO_UNSTAKE')
-max_stakes_to_unstake=os.environ.get('MAX_STAKES_TO_UNSTAKE')
+wallet_name = os.environ.get('WALLET')
+total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
+max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
 
-print(f"\n🔍 Using wallet: {wallet_name}")
-if wallet_name == None:
-    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./stakerscript.py`")
-if total_to_unstake == None:
-    print("Unstaking total not specified, dividing 1 TAO across lowest emission validators on lowest emission.\n Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
+if wallet_name is None:
+    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
+
+if total_to_unstake is None:
+    print("Unstaking total not specified, defaulting to 1 TAO.")
     total_to_unstake = 1
-if max_stakes_to_unstake == None:
-    print("Count of stakes to unstake not specified, limiting to 10.\n Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
-    max_stakes_to_unstake = 10
 else:
     try:
         total_to_unstake = float(total_to_unstake)
     except:
         sys.exit("invalid TAO amount!")
-    else:
-        print(f"dividing {total_to_unstake} TAO to unstake across bottom {total_to_unstake} validators by emission")
+
+if max_stakes_to_unstake is None:
+    max_stakes_to_unstake = 10
+else:
+    try:
+        max_stakes_to_unstake = int(max_stakes_to_unstake)
+    except:
+        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
+
+print(f"🔍 Using wallet: {wallet_name}")
+print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
 
 total_to_unstake = bt.Balance.from_tao(total_to_unstake)
 wallet = bt.wallet(wallet_name)
 wallet_ck = wallet.coldkeypub.ss58_address
 
-def has_subnet(dely, netuid):
-    return netuid in dely.validator_permits
+unstake_minimum = 0.0005  # TAO
 
-# Initialize the subtensor connection within a block scope to ensure it is garbage collected
-with bt.subtensor(network='test') as subtensor: 
+async def perform_unstake(subtensor, stake, amount):
     try:
-        stakes = subtensor.get_stake_for_coldkey(wallet_ck)
-        stakes = sorted(stakes, key=lambda stake: stake.emission)
+        print(f"⏳ Attempting to unstake {amount} from {stake.hotkey_ss58} on subnet {stake.netuid}")
+        start = time.time()
+        result = await subtensor.unstake(
+            wallet, hotkey_ss58=stake.hotkey_ss58, netuid=stake.netuid, amount=amount
+        )
+        elapsed = time.time() - start
+        if result:
+            print(f"✅ Successfully unstaked {amount} from {stake.hotkey_ss58} on subnet {stake.netuid} in {elapsed:.2f}s")
+            return True
+        else:
+            print(f"❌ Failed to unstake from {stake.hotkey_ss58} on subnet {stake.netuid}")
+            return False
     except Exception as e:
-        print(f"❌ Failed to get stake info: {e}")            
+        print(f"❌ Error during unstake from {stake.hotkey_ss58} on subnet {stake.netuid}: {e}")
+        return False
 
-    print(f"filtering out stake too small to unstake, see https://docs.bittensor.com/subtensor-nodes/subtensor-error-messages#custom-error-1 ")
-    unstake_minimum = 0.0005
 
-    # stakes = list(filter(lambda stake: stake.stake > unstake_minimum, stakes))
-    stakes = list(filter(lambda stake: float(stake.stake) > unstake_minimum, stakes))
-
-    print(f"printing lowest {max_stakes_to_unstake} stakes in order lowest to highest")
-
-    # cap number of stakes to unstake
-    stakes = stakes[0:max_stakes_to_unstake]
-
-    for stake in stakes:
-        print("-----------")
-        print(f"hotkey_ss58:{stake.hotkey_ss58}")
-        print(f"stake-amount:{stake.stake}")
-        print(f"emission:{stake.emission}")
-        
-    my_subnet_validator_pairs = {}
-    my_validated_subnets = []
-    total_unstaked = 0
-    i = 0
-    while total_unstaked < total_to_unstake and i < max_stakes_to_unstake:
-        stake = stakes[i]
-        i += 1
-        amount_to_unstake = min(total_to_unstake/max_stakes_to_unstake, stake.stake)
-        print(f"attempting to unstake {amount_to_unstake} from {stake.hotkey_ss58} on {stake.netuid}")
-
+async def main():
+    async with bt.async_subtensor(network='test') as subtensor:
         try:
-            result = subtensor.unstake(wallet, hotkey_ss58=stake.hotkey_ss58, netuid=stake.netuid, amount=amount_to_unstake)
-
-            if result:
-                start_time = time.time()
-                print(f"✅ Successfully unstaked {amount_to_unstake} from {stake.hotkey_ss58} on subnets {stake.netuid} in {time.time() - start_time:.2f} seconds.")
-
-            else:
-                print(f"❌ Failed to unstake from {stake.hotkey_ss58}")
+            stakes = await subtensor.get_stake_for_coldkey(wallet_ck)
         except Exception as e:
-            print(f"❌ Failed to unstake from {stake.hotkey_ss58}: {e}")
+            sys.exit(f"❌ Failed to get stake info: {e}")
+
+        # Filter and sort
+        stakes = list(filter(lambda s: float(s.stake.tao) > unstake_minimum, stakes))
+        stakes = sorted(stakes, key=lambda s: s.emission.tao)
+        stakes = stakes[:max_stakes_to_unstake]
+
+        if not stakes:
+            sys.exit("❌ No eligible stakes found to unstake.")
+
+        print(f"\n📊 Preparing to unstake from {len(stakes)} validators:\n")
+        for s in stakes:
+            print(f"Validator: {s.hotkey_ss58}\n  NetUID: {s.netuid}\n  Stake: {s.stake}\n  Emission: {s.emission}\n-----------")
+
+        # Prepare concurrent unstake tasks
+        amount_per_stake = total_to_unstake / len(stakes)
+        tasks = [
+            perform_unstake(subtensor, stake, min(amount_per_stake, stake.stake))
+            for stake in stakes
+        ]
+
+        results = await asyncio.gather(*tasks)
+        success_count = sum(results)
+
+        print(f"\n🎯 Unstake complete. Success: {success_count}/{len(stakes)}")
+
+asyncio.run(main())
 
 ```
 ```console
-printing lowest 10 stakes in order lowest to highest
+Unstaking total not specified, defaulting to 1 TAO.
+🔍 Using wallet: PracticeKey!
+🧮 Unstaking a total of 1 TAO across up to 10 lowest-emission validators
 
-hotkey_ss58:5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
-stake-amount:228.896319796Ⲃ
-emission:0.000000000Ⲃ
------------
+📊 Preparing to unstake from 10 validators:
 
-hotkey_ss58:5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT
-stake-amount:20.166958098Ⲃ
-emission:0.000000000Ⲃ
+Validator: 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
+  NetUID: 119
+  Stake: 229.212349960Ⲃ
+  Emission: 0.000000000Ⲃ
 -----------
-
-hotkey_ss58:5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ
-stake-amount:18.875227001Ⲃ
-emission:0.000000000Ⲃ
+Validator: 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT
+  NetUID: 119
+  Stake: 19.766958098Ⲃ
+  Emission: 0.000000000Ⲃ
 -----------
-
-hotkey_ss58:5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK
-stake-amount:0.249122064ኤ
-emission:0.002273936ኤ
+Validator: 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ
+  NetUID: 119
+  Stake: 18.475227001Ⲃ
+  Emission: 0.000000000Ⲃ
 -----------
-
-hotkey_ss58:5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6
-stake-amount:44.852352013γ
-emission:0.005988248γ
+Validator: 5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6
+  NetUID: 3
+  Stake: 44.463571197γ
+  Emission: 0.005925040γ
 -----------
-
-hotkey_ss58:5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb
-stake-amount:786.418685451γ
-emission:0.102211637γ
+Validator: 5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb
+  NetUID: 3
+  Stake: 786.209456613γ
+  Emission: 0.102145233γ
 -----------
-
-hotkey_ss58:5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK
-stake-amount:5.458104740इ
-emission:4.549003064इ
+Validator: 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK
+  NetUID: 277
+  Stake: 5.058595339इ
+  Emission: 4.550549887इ
 -----------
-
-hotkey_ss58:5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT
-stake-amount:11.951413334γ
-emission:5.429369144γ
+Validator: 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT
+  NetUID: 3
+  Stake: 11.654577962γ
+  Emission: 5.429011017γ
 -----------
-
-hotkey_ss58:5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo
-stake-amount:5.458196773इ
-emission:11.038742700इ
+Validator: 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo
+  NetUID: 277
+  Stake: 5.258687558इ
+  Emission: 11.038508585इ
 -----------
-
-hotkey_ss58:5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4
-stake-amount:21.016200805Ⲃ
-emission:16.662489419Ⲃ
+Validator: 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4
+  NetUID: 119
+  Stake: 20.942357630Ⲃ
+  Emission: 16.662837489Ⲃ
 -----------
-attempting to unstake τ0.100000000 from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on 119
+Validator: 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb
+  NetUID: 3
+  Stake: 87.243220111γ
+  Emission: 22.063085545γ
+-----------
+⏳ Attempting to unstake τ0.100000000 from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on subnet 119
 Enter your password:
 Decrypting...
-✅ Successfully unstaked 0.100000000Ⲃ from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on subnets 119 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on 119
-✅ Successfully unstaked 0.100000000Ⲃ from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnets 119 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on 119
-✅ Successfully unstaked 0.100000000Ⲃ from 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnets 119 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on 250
-✅ Successfully unstaked 0.100000000ኤ from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on subnets 250 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6 on 3
-✅ Successfully unstaked 0.100000000γ from 5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6 on subnets 3 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb on 3
-✅ Successfully unstaked 0.100000000γ from 5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb on subnets 3 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on 277
-✅ Successfully unstaked 0.100000000इ from 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnets 277 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on 3
-✅ Successfully unstaked 0.100000000γ from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnets 3 in 0.00 seconds.
-attempting to unstake τ0.100000000 from 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on 277
+⏳ Attempting to unstake τ0.100000000 from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 119
+⏳ Attempting to unstake τ0.100000000 from 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnet 119
+⏳ Attempting to unstake τ0.100000000 from 5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6 on subnet 3
+⏳ Attempting to unstake τ0.100000000 from 5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb on subnet 3
+⏳ Attempting to unstake τ0.100000000 from 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnet 277
+⏳ Attempting to unstake τ0.100000000 from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 3
+⏳ Attempting to unstake τ0.100000000 from 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on subnet 277
+⏳ Attempting to unstake τ0.100000000 from 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 on subnet 119
+⏳ Attempting to unstake τ0.100000000 from 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb on subnet 3
+✅ Successfully unstaked 0.100000000इ from 5Gwz1AQmkya4UkiiXc9HASKYLc5dsQ9qzrgqCfSvjtbrbQp6 on subnet 3 in 10.78s
+✅ Successfully unstaked 0.100000000इ from 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnet 119 in 10.78s
+✅ Successfully unstaked 0.100000000इ from 5GEXJdUXxLVmrkaHBfkFmoodXrCSUMFSgPXULbnrRicEt1kK on subnet 119 in 15.23s
+✅ Successfully unstaked 0.100000000इ from 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb on subnet 3 in 10.78s
+✅ Successfully unstaked 0.100000000इ from 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on subnet 277 in 10.79s
+✅ Successfully unstaked 0.100000000इ from 5EscZNs55FCTfbpgFFDTbiSE7GgwSwqmdivfPikdqTyDiegb on subnet 3 in 10.79s
+✅ Successfully unstaked 0.100000000इ from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 3 in 10.83s
+✅ Successfully unstaked 0.100000000इ from 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 119 in 10.83s
+✅ Successfully unstaked 0.100000000इ from 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnet 277 in 10.84s
+✅ Successfully unstaked 0.100000000इ from 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 on subnet 119 in 10.89s
 
+🎯 Unstake complete. Success: 10/10
 ```
 
 
