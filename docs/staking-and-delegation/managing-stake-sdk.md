@@ -102,65 +102,75 @@ import time
 from bittensor import tao
 
 # Initialize the subtensor connection within a block scope to ensure it is garbage collected
+async def find_top_three_valis(subtensor,subnet):
+    netuid = subnet.netuid
+    print(f"\n🔍 Subnet {netuid} had {subnet.tao_in_emission} emissions!")
+    print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
+    
+    start_time = time.time()
+    metagraph = await subtensor.metagraph(netuid)
+
+    print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
+    # Extract validators and their stake amounts
+    hk_stake_pairs = [(metagraph.hotkeys[index], metagraph.stake[index]) for index in range(len(metagraph.stake))]
+    
+    # Sort validators by stake in descending order
+    top_validators = sorted(hk_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
+
+    # Print the top 3 validators for this subnet
+    print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
+    for rank, (index, stake) in enumerate(top_validators, start=1):
+        print(f"  {rank}. Validator index {index} - Stake: {stake}")
+    
+    return {
+        "netuid": netuid,
+        "metagraph": metagraph,
+        "validators": top_validators
+    }
+
 async def main():
     async with bt.async_subtensor(network='test') as subtensor: 
 
         print("Fetching information on top subnets by TAO emissions")
+        
+        # get subnets and sort by tao emissions
         sorted_subnets = sorted(list(await subtensor.all_subnets()), key=lambda subnet: subnet.tao_in_emission, reverse=True)
-        # sort by token price
         top_subnets = sorted_subnets[0:3]
         amount_to_stake = bt.Balance.from_tao(total_to_stake/9)
+        
+        # find the top 3 valis in each subnet        
+        top_vali_dicts = await asyncio.gather(*[find_top_three_valis(subtensor, subnet) for subnet in top_subnets])
         top_validators_per_subnet = {}
-
-        # find the top 3 valis in each subnet
-        for subnet in top_subnets:
-            netuid = subnet.netuid
-            print(f"\n🔍 Subnet {netuid} had {subnet.tao_in_emission} emissions!")
-            print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
-            
-            start_time = time.time()
-            metagraph = await subtensor.metagraph(netuid)
-            print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
-
-            # Extract validators and their stake amounts
-            uid_stake_pairs = [(uid, metagraph.stake[uid]) for uid in range(len(metagraph.stake))]
-            
-            # Sort validators by stake in descending order
-            top_validators = sorted(uid_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
-
-            # remember the top validators for staking
-            top_validators_per_subnet[netuid] = {
-                "metagraph": metagraph,
-                "validators": top_validators
-            }
-            # Print the top 3 validators for this subnet
-            print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
-            for rank, (uid, stake) in enumerate(top_validators, start=1):
-                print(f"  {rank}. Validator UID {uid} - Stake: {stake}")
+        for d in top_vali_dicts:
+            netuid = d['netuid']
+            for v in d['validators']:
+                hk = v[0]
+                stake = v[1]
+                if netuid in top_validators_per_subnet:
+                    top_validators_per_subnet[netuid].append(hk)
+                else:
+                    top_validators_per_subnet[netuid] = [hk]
 
         # Stake to each top 3 validators in each top 3 subnets
-        wallet = bt.wallet(wallet_name)
-        for netuid, data in top_validators_per_subnet.items():
-
-            metagraph = data["metagraph"]
-            top_validators = data["validators"]
-
-            for uid, stake in top_validators:
-                hotkey_ss58 = metagraph.hotkeys[uid]
-                print(f"💰 Staking {amount_to_stake} to {hotkey_ss58} on subnet {netuid}...")
+        for netuid, top_validators in top_validators_per_subnet.items():
+            for hk in top_validators:
+                print(f"💰 Staking {amount_to_stake} to {hk} on subnet {netuid}...")
                 start_time = time.time()
             try:
-                results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=metagraph.hotkeys[netuid], amount=amount_to_stake) for netuid, hotkey_ss58 in top_validators ] )
+                results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hk, amount=amount_to_stake) for hk in top_validators ] )
                 print(results)
             except Exception as e:
-                print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}: {e}")
+                print(f"❌ Failed to stake to {hk} on subnet {netuid}: {e}")
+
 # Initialize the wallet with walletname by running like 
 wallet_name=os.environ.get('WALLET')
 total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
 
-print(f"\n🔍 Using wallet: {wallet_name}")
 if wallet_name == None:
     sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_STAKE=1 WALLET=my-wallet-name ./stakerscript.py`")
+print(f"\n🔍 Using wallet: {wallet_name}")
+wallet = bt.wallet(wallet_name)
+
 if total_to_stake == None:
     print("Staking total not specified, dividing 1 TAO across top 3 validators in each of top 3 subnets by default.\n Usage: `TOTAL_TAO_TO STAKE=1 WALLET=my-wallet-name ./stakerscript.py`")
     total_to_stake = 1
@@ -172,7 +182,7 @@ else:
     else:
         print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
-asyncio.run(main())            
+asyncio.run(main())     
 ```
 ```console
 🔍 Using wallet: PracticeKey!
@@ -180,55 +190,49 @@ Staking total not specified, dividing 1 TAO across top 3 validators in each of t
  Usage: `TOTAL_TAO_TO STAKE=1 WALLET=my-wallet-name ./stakerscript.py`
 Fetching information on top subnets by TAO emissions
 
-🔍 Subnet 277 had τ0.415441165 emissions!
+🔍 Subnet 277 had τ0.415595173 emissions!
 
 🔍 Fetching metagraph for subnet 277...
-✅ Retrieved metagraph for subnet 277 in 1.61 seconds.
 
-🏆 Top 3 Validators for Subnet 277:
-  1. Validator UID 5 - Stake: 525929.0625
-  2. Validator UID 7 - Stake: 117530.796875
-  3. Validator UID 0 - Stake: 44520.4296875
-
-🔍 Subnet 3 had τ0.170820166 emissions!
+🔍 Subnet 3 had τ0.170148635 emissions!
 
 🔍 Fetching metagraph for subnet 3...
-✅ Retrieved metagraph for subnet 3 in 2.10 seconds.
 
-🏆 Top 3 Validators for Subnet 3:
-  1. Validator UID 7 - Stake: 268185.875
-  2. Validator UID 6 - Stake: 171939.25
-  3. Validator UID 254 - Stake: 54529.25390625
-
-🔍 Subnet 119 had τ0.139230825 emissions!
+🔍 Subnet 119 had τ0.137442127 emissions!
 
 🔍 Fetching metagraph for subnet 119...
-✅ Retrieved metagraph for subnet 119 in 2.36 seconds.
+✅ Retrieved metagraph for subnet 277 in 1.60 seconds.
+
+🏆 Top 3 Validators for Subnet 277:
+  1. Validator index 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT - Stake: 550446.75
+  2. Validator index 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo - Stake: 123175.8515625
+  3. Validator index 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK - Stake: 54379.609375
+✅ Retrieved metagraph for subnet 119 in 1.97 seconds.
 
 🏆 Top 3 Validators for Subnet 119:
-  1. Validator UID 45 - Stake: 231638.96875
-  2. Validator UID 101 - Stake: 110850.1640625
-  3. Validator UID 21 - Stake: 22277.609375
+  1. Validator index 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT - Stake: 231810.8125
+  2. Validator index 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ - Stake: 118400.6328125
+  3. Validator index 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 - Stake: 30794.974609375
+✅ Retrieved metagraph for subnet 3 in 2.00 seconds.
+
+🏆 Top 3 Validators for Subnet 3:
+  1. Validator index 5EHammhTy9rV9FhDdYeFY98YTMvU8Vz9Zv2FuFQQQyMTptc6 - Stake: 285393.71875
+  2. Validator index 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb - Stake: 190750.453125
+  3. Validator index 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT - Stake: 57048.80859375
 💰 Staking τ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 277...
+💰 Staking τ0.111111111 to 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on subnet 277...
+💰 Staking τ0.111111111 to 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnet 277...
 Enter your password:
 Decrypting...
-✅ Successfully staked इ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 277 in 20.29 seconds.
-💰 Staking इ0.111111111 to 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on subnet 277...
-✅ Successfully staked इ0.111111111 to 5EFtEvPcgZHheW36jGXMPMrDETzbngziR3DPPVVp5L5Gt7Wo on subnet 277 in 11.58 seconds.
-💰 Staking इ0.111111111 to 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnet 277...
-✅ Successfully staked इ0.111111111 to 5GNyf1SotvL34mEx86C2cvEGJ563hYiPZWazXUueJ5uu16EK on subnet 277 in 11.40 seconds.
-💰 Staking इ0.111111111 to 5EHammhTy9rV9FhDdYeFY98YTMvU8Vz9Zv2FuFQQQyMTptc6 on subnet 3...
-✅ Successfully staked γ0.111111111 to 5EHammhTy9rV9FhDdYeFY98YTMvU8Vz9Zv2FuFQQQyMTptc6 on subnet 3 in 12.67 seconds.
-💰 Staking γ0.111111111 to 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb on subnet 3...
-✅ Successfully staked γ0.111111111 to 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb on subnet 3 in 12.07 seconds.
-💰 Staking γ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 3...
-✅ Successfully staked γ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 3 in 11.83 seconds.
-💰 Staking γ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 119...
-✅ Successfully staked Ⲃ0.111111111 to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 119 in 12.51 seconds.
-💰 Staking Ⲃ0.111111111 to 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnet 119...
-✅ Successfully staked Ⲃ0.111111111 to 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnet 119 in 11.35 seconds.
-💰 Staking Ⲃ0.111111111 to 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 on subnet 119...
-✅ Successfully staked Ⲃ0.111111111 to 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 on subnet 119 in 12.55 seconds.
+[True, True, True]
+💰 Staking 0.111111111इ to 5EHammhTy9rV9FhDdYeFY98YTMvU8Vz9Zv2FuFQQQyMTptc6 on subnet 3...
+💰 Staking 0.111111111इ to 5FupG35rCCMghVEAzdYuxxb4SWHU7HtpKeveDmSoyCN8vHyb on subnet 3...
+💰 Staking 0.111111111इ to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 3...
+[True, True, True]
+💰 Staking 0.111111111γ to 5FCPTnjevGqAuTttetBy4a24Ej3pH9fiQ8fmvP1ZkrVsLUoT on subnet 119...
+💰 Staking 0.111111111γ to 5FRxKzKrBDX3cCGqXFjYb6zCNC7GMTEaam1FWtsE8Nbr1EQJ on subnet 119...
+💰 Staking 0.111111111γ to 5CFZ9xDaFQVLA9ERsTs9S3i6jp1VDydvjQH5RDsyWCCJkTM4 on subnet 119...
+[True, True, True]
 ```
 
 ## Unstake
