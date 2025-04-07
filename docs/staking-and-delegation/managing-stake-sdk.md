@@ -105,7 +105,6 @@ from bittensor import tao
 async def stake_batch(subtensor, netuid, top_validators, amount_to_stake):
     for hk in top_validators:
         print(f"💰 Staking {amount_to_stake} to {hk} on subnet {netuid}...")
-        start_time = time.time()
     try:
         results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hk, amount=amount_to_stake) for hk in top_validators ] )
         print(results)
@@ -162,8 +161,9 @@ async def main():
                     top_validators_per_subnet[netuid] = [hk]
 
         # Stake to each top 3 validators in each top 3 subnets
+        start_time = time.time()
         await asyncio.gather(*[stake_batch(subtensor, netuid,top_validators, amount_to_stake) for netuid, top_validators in top_validators_per_subnet.items()])
-        
+        print(f"Staking completed in {time.time() - start_time:.2f}s")
 # Initialize the wallet with walletname by running like 
 wallet_name=os.environ.get('WALLET')
 total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
@@ -184,7 +184,7 @@ else:
     else:
         print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
-asyncio.run(main())       
+asyncio.run(main())
 ```
 ```console
 🔍 Using wallet: PracticeKey!
