@@ -102,6 +102,16 @@ import time
 from bittensor import tao
 
 # Initialize the subtensor connection within a block scope to ensure it is garbage collected
+async def stake_batch(subtensor, netuid, top_validators, amount_to_stake):
+    for hk in top_validators:
+        print(f"💰 Staking {amount_to_stake} to {hk} on subnet {netuid}...")
+        start_time = time.time()
+    try:
+        results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hk, amount=amount_to_stake) for hk in top_validators ] )
+        print(results)
+    except Exception as e:
+        print(f"❌ Failed to stake to {hk} on subnet {netuid}: {e}")
+
 async def find_top_three_valis(subtensor,subnet):
     netuid = subnet.netuid
     print(f"\n🔍 Subnet {netuid} had {subnet.tao_in_emission} emissions!")
@@ -152,16 +162,8 @@ async def main():
                     top_validators_per_subnet[netuid] = [hk]
 
         # Stake to each top 3 validators in each top 3 subnets
-        for netuid, top_validators in top_validators_per_subnet.items():
-            for hk in top_validators:
-                print(f"💰 Staking {amount_to_stake} to {hk} on subnet {netuid}...")
-                start_time = time.time()
-            try:
-                results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hk, amount=amount_to_stake) for hk in top_validators ] )
-                print(results)
-            except Exception as e:
-                print(f"❌ Failed to stake to {hk} on subnet {netuid}: {e}")
-
+        await asyncio.gather(*[stake_batch(subtensor, netuid,top_validators, amount_to_stake) for netuid, top_validators in top_validators_per_subnet.items()])
+        
 # Initialize the wallet with walletname by running like 
 wallet_name=os.environ.get('WALLET')
 total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
@@ -182,7 +184,7 @@ else:
     else:
         print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
-asyncio.run(main())     
+asyncio.run(main())       
 ```
 ```console
 🔍 Using wallet: PracticeKey!
