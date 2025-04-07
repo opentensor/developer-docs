@@ -96,11 +96,64 @@ print(netuids)
 The following script incrementally stakes 1 TAO in each of the top three validators of the top three subnets:
 
 ```python
-import os, sys
+import os, sys, asyncio
 import bittensor as bt
 import time
 from bittensor import tao
 
+# Initialize the subtensor connection within a block scope to ensure it is garbage collected
+async def main():
+    async with bt.async_subtensor(network='test') as subtensor: 
+
+        print("Fetching information on top subnets by TAO emissions")
+        sorted_subnets = sorted(list(await subtensor.all_subnets()), key=lambda subnet: subnet.tao_in_emission, reverse=True)
+        # sort by token price
+        top_subnets = sorted_subnets[0:3]
+        amount_to_stake = bt.Balance.from_tao(total_to_stake/9)
+        top_validators_per_subnet = {}
+
+        # find the top 3 valis in each subnet
+        for subnet in top_subnets:
+            netuid = subnet.netuid
+            print(f"\n🔍 Subnet {netuid} had {subnet.tao_in_emission} emissions!")
+            print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
+            
+            start_time = time.time()
+            metagraph = await subtensor.metagraph(netuid)
+            print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
+
+            # Extract validators and their stake amounts
+            uid_stake_pairs = [(uid, metagraph.stake[uid]) for uid in range(len(metagraph.stake))]
+            
+            # Sort validators by stake in descending order
+            top_validators = sorted(uid_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
+
+            # remember the top validators for staking
+            top_validators_per_subnet[netuid] = {
+                "metagraph": metagraph,
+                "validators": top_validators
+            }
+            # Print the top 3 validators for this subnet
+            print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
+            for rank, (uid, stake) in enumerate(top_validators, start=1):
+                print(f"  {rank}. Validator UID {uid} - Stake: {stake}")
+
+        # Stake to each top 3 validators in each top 3 subnets
+        wallet = bt.wallet(wallet_name)
+        for netuid, data in top_validators_per_subnet.items():
+
+            metagraph = data["metagraph"]
+            top_validators = data["validators"]
+
+            for uid, stake in top_validators:
+                hotkey_ss58 = metagraph.hotkeys[uid]
+                print(f"💰 Staking {amount_to_stake} to {hotkey_ss58} on subnet {netuid}...")
+                start_time = time.time()
+            try:
+                results = await asyncio.gather(*[ subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=metagraph.hotkeys[netuid], amount=amount_to_stake) for netuid, hotkey_ss58 in top_validators ] )
+                print(results)
+            except Exception as e:
+                print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}: {e}")
 # Initialize the wallet with walletname by running like 
 wallet_name=os.environ.get('WALLET')
 total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
@@ -119,69 +172,7 @@ else:
     else:
         print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
-
-# Initialize the subtensor connection within a block scope to ensure it is garbage collected
-with bt.subtensor(network='test') as subtensor: 
-
-    print("Fetching information on top subnets by TAO emissions")
-    sorted_subnets = sorted(subtensor.all_subnets(), key=lambda subnet: subnet.tao_in_emission, reverse=True)
-
-    # sort by token price
-    top_subnets = sorted_subnets[0:3]
-
-    amount_to_stake = bt.Balance.from_tao(total_to_stake/9)
-
-    top_validators_per_subnet = {}
-
-    # find the top 3 valis in each subnet
-    for subnet in top_subnets:
-        print(f"\n🔍 Subnet {subnet.netuid} had {subnet.tao_in_emission} emissions!")
-        
-        netuid = subnet.netuid
-        
-        print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
-        
-        start_time = time.time()
-        metagraph = subtensor.metagraph(netuid)
-        print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
-
-        # Extract validators and their stake amounts
-        uid_stake_pairs = [(uid, metagraph.stake[uid]) for uid in range(len(metagraph.stake))]
-        
-        # Sort validators by stake in descending order
-        top_validators = sorted(uid_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
-
-        # remember the top validators for staking
-        top_validators_per_subnet[netuid] = {
-            "metagraph": metagraph,
-            "validators": top_validators
-        }
-
-        # Print the top 3 validators for this subnet
-        print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
-        for rank, (uid, stake) in enumerate(top_validators, start=1):
-            print(f"  {rank}. Validator UID {uid} - Stake: {stake}")
-
-    # Stake to each top 3 validators in each top 3 subnets
-    wallet = bt.wallet(wallet_name)
-    for netuid, data in top_validators_per_subnet.items():
-        metagraph = data["metagraph"]
-        top_validators = data["validators"]
-
-
-        for uid, stake in top_validators:
-            hotkey_ss58 = metagraph.hotkeys[uid]
-
-            print(f"💰 Staking {amount_to_stake} to {hotkey_ss58} on subnet {netuid}...")
-            start_time = time.time()
-            try:
-                result =subtensor.add_stake(wallet=wallet, netuid=netuid, hotkey_ss58=hotkey_ss58, amount=amount_to_stake)
-                if result:
-                    print(f"✅ Successfully staked {amount_to_stake} to {hotkey_ss58} on subnet {netuid} in {time.time() - start_time:.2f} seconds.")
-                else:
-                    print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}")
-            except Exception as e:
-                print(f"❌ Failed to stake to {hotkey_ss58} on subnet {netuid}: {e}")            
+asyncio.run(main())            
 ```
 ```console
 🔍 Using wallet: PracticeKey!
@@ -250,39 +241,6 @@ import bittensor as bt
 import bittensor_wallet
 from bittensor import tao
 
-wallet_name = os.environ.get('WALLET')
-total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
-max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
-
-if wallet_name is None:
-    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
-
-if total_to_unstake is None:
-    print("Unstaking total not specified, defaulting to 1 TAO.")
-    total_to_unstake = 1
-else:
-    try:
-        total_to_unstake = float(total_to_unstake)
-    except:
-        sys.exit("invalid TAO amount!")
-
-if max_stakes_to_unstake is None:
-    max_stakes_to_unstake = 10
-else:
-    try:
-        max_stakes_to_unstake = int(max_stakes_to_unstake)
-    except:
-        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
-
-print(f"🔍 Using wallet: {wallet_name}")
-print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
-
-total_to_unstake = bt.Balance.from_tao(total_to_unstake)
-wallet = bt.wallet(wallet_name)
-wallet_ck = wallet.coldkeypub.ss58_address
-
-unstake_minimum = 0.0005  # TAO
-
 async def perform_unstake(subtensor, stake, amount):
     try:
         print(f"⏳ Attempting to unstake {amount} from {stake.hotkey_ss58} on subnet {stake.netuid}")
@@ -332,6 +290,39 @@ async def main():
         success_count = sum(results)
 
         print(f"\n🎯 Unstake complete. Success: {success_count}/{len(stakes)}")
+
+wallet_name = os.environ.get('WALLET')
+total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
+max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
+
+if wallet_name is None:
+    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
+
+if total_to_unstake is None:
+    print("Unstaking total not specified, defaulting to 1 TAO.")
+    total_to_unstake = 1
+else:
+    try:
+        total_to_unstake = float(total_to_unstake)
+    except:
+        sys.exit("invalid TAO amount!")
+
+if max_stakes_to_unstake is None:
+    max_stakes_to_unstake = 10
+else:
+    try:
+        max_stakes_to_unstake = int(max_stakes_to_unstake)
+    except:
+        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
+
+print(f"🔍 Using wallet: {wallet_name}")
+print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
+
+total_to_unstake = bt.Balance.from_tao(total_to_unstake)
+wallet = bt.wallet(wallet_name)
+wallet_ck = wallet.coldkeypub.ss58_address
+
+unstake_minimum = 0.0005  # TAO
 
 asyncio.run(main())
 
