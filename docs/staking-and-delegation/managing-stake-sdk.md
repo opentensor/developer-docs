@@ -322,7 +322,8 @@ total_to_unstake = bt.Balance.from_tao(total_to_unstake)
 wallet = bt.wallet(wallet_name)
 wallet_ck = wallet.coldkeypub.ss58_address
 
-unstake_minimum = 0.0005  # TAO
+# There is a global on-chain minimum balanced allowed for unstaking operations.
+unstake_minimum = 0.0005
 
 asyncio.run(main())
 
