@@ -1,6 +1,7 @@
 ---
 title: "Managing Stake with BTCLI"
 ---
+<link rel="stylesheet" href="https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.css" />
 
 # Managing stake with `btcli`
 
@@ -58,10 +59,18 @@ btcli wallet balance
 ## View subnet currency reserves
 
 To see the list of subnets and their currencies, run:
+<script src="https://unpkg.com/@antonz/codapi@0.19.10/dist/settings.js"></script>
+<codapi-settings url="http://34.173.11.137:1313/v1/exec">
+</codapi-settings>
 
 ```shell
-btcli subnet list
+btcli w regen_coldkeypub --wallet.name test1 --ss58 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq --wallet.path ~/.bittensor/wallets
+
+btcli wallets list
+btcli stake list --no-prompt --wallet.name test1 --network test
 ```
+<codapi-snippet sandbox="python" editor="basic" init-delay="500">
+</codapi-snippet>
 
 You should see something like the following output. Notice that next to the subnets Netuid and Name is the subnet's token `Price (τ_in/α_in)`, which, as indicated, is a ratio of the TAO in reserve `τ_in` to alpha in reserve `α_in`.
 
@@ -314,3 +323,4 @@ Don't confuse this with `btcli stake transfer`, which is used to transfer owners
 :::
 
 
+<script src="https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.js"></script>
