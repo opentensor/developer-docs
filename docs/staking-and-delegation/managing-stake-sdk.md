@@ -247,47 +247,6 @@ import bittensor as bt
 import bittensor_wallet
 from bittensor import tao
 
-<<<<<<< HEAD
-=======
-# Load environmental variables
-wallet_name = os.environ.get('WALLET')
-total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
-max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
-
-# Basic input validation for wallet and TAO amount
-if wallet_name is None:
-    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
-
-if total_to_unstake is None:
-    print("Unstaking total not specified, defaulting to 1 TAO.")
-    total_to_unstake = 1
-else:
-    try:
-        total_to_unstake = float(total_to_unstake)
-    except:
-        sys.exit("invalid TAO amount!")
-
-if max_stakes_to_unstake is None:
-    max_stakes_to_unstake = 10
-else:
-    try:
-        max_stakes_to_unstake = int(max_stakes_to_unstake)
-    except:
-        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
-
-# Print summary for configuration
-print(f"🔍 Using wallet: {wallet_name}")
-print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
-
-# Initialize Bittensor wallet and balamce object
-total_to_unstake = bt.Balance.from_tao(total_to_unstake)
-wallet = bt.wallet(wallet_name)
-wallet_ck = wallet.coldkeypub.ss58_address
-
-unstake_minimum = 0.0005  # TAO
-
-# Async helper to perform the actual unstake call
->>>>>>> 84a50fd (Added commnets throughtout unstaking script)
 async def perform_unstake(subtensor, stake, amount):
     try:
         print(f"⏳ Attempting to unstake {amount} from {stake.hotkey_ss58} on subnet {stake.netuid}")
@@ -351,44 +310,7 @@ async def main():
         success_count = sum(results)
         print(f"\n🎯 Unstake complete. Success: {success_count}/{len(stakes)}")
 
-<<<<<<< HEAD
-wallet_name = os.environ.get('WALLET')
-total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
-max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
-
-if wallet_name is None:
-    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
-
-if total_to_unstake is None:
-    print("Unstaking total not specified, defaulting to 1 TAO.")
-    total_to_unstake = 1
-else:
-    try:
-        total_to_unstake = float(total_to_unstake)
-    except:
-        sys.exit("invalid TAO amount!")
-
-if max_stakes_to_unstake is None:
-    max_stakes_to_unstake = 10
-else:
-    try:
-        max_stakes_to_unstake = int(max_stakes_to_unstake)
-    except:
-        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
-
-print(f"🔍 Using wallet: {wallet_name}")
-print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
-
-total_to_unstake = bt.Balance.from_tao(total_to_unstake)
-wallet = bt.wallet(wallet_name)
-wallet_ck = wallet.coldkeypub.ss58_address
-
-# There is a global on-chain minimum balanced allowed for unstaking operations.
-unstake_minimum = 0.0005
-
-=======
 # Run the async workflow
->>>>>>> 84a50fd (Added commnets throughtout unstaking script)
 asyncio.run(main())
 
 ```
