@@ -91,9 +91,35 @@ netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
 print(netuids)
 ```
 
+## On asyncio.gather
+
+Bittensor operations like add_stake(), unstake(), metagraph(), and move_stake() are designed as asynchronous methods. 
+This means they return coroutine objects that must be awaited within an event loop. 
+This is especially useful in decentralized systems like Bittensor, where you're frequently making calls to many validators across various subnets. 
+Waiting for each call to complete before issuing the next would introduce unnecessary delays.
+
+Python's asyncio.gather() function allows you to run multiple awaitable operations concurrently.
+It accepts a list of coroutine objects and executes them in parallel, returning their results once all are complete.
+This is crucial for improving throughput when interacting with the blockchain.
+
+In the staking, unstaking, and stake-moving scripts below, asyncio.gather is used to:
+
+- Fetch metagraphs concurrently from multiple subnets.
+
+- Issue multiple add_stake() transactions in parallel across top validators in several subnets.
+
+- Submit multiple unstake() transactions simultaneously.
+
+- NOTE: Though move_stake() itself is called individually in its own script, it still relies on the asynchronous subtensor interface and runs within an event loop managed by asyncio.run().
+
+This design helps Bittensor scripts remain responsive and performant even when operating over large numbers of subnets or validators. 
+Without gather, you'd be stuck waiting for each network-bound call to finish before the next one begins—a big slowdown when you're operating at the scale Bittensor enables.
+
+Let’s walk through the scripts utilizing asyncio.gather. First a staking script, then an unstaking script, and finally a move stake script.
+
 ## Stake
 
-The following script incrementally stakes 1 TAO in each of the top three validators of the top three subnets:
+The following script incrementally stakes a user-defined amount of TAO in each of the user-defined number of the top subnets:
 
 ```python
 import os, sys, asyncio
@@ -204,12 +230,9 @@ async def main():
         await asyncio.gather(*[stake_batch(subtensor, netuid,top_validators, amount_to_stake) for netuid, top_validators in top_validators_per_subnet.items()])
         print(f"Staking completed in {time.time() - start_time:.2f}s")
 
-# Initialize the wallet with walletname by running like 
-
-
-
 asyncio.run(main())
 ```
+
 ```console
 🔍 Using wallet: PracticeKey!
 Staking total not specified, dividing 1 TAO across top 3 validators in each of top 3 subnets by default.
@@ -420,7 +443,6 @@ Decrypting...
 
 🎯 Unstake complete. Success: 10/10
 ```
-
 
 ## Move stake
 
