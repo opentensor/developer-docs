@@ -60,7 +60,7 @@ btcli wallet balance
 
 To see the list of subnets and their currencies, run:
 
-<codapi-settings url="https://34.173.11.137:666/v1/exec">
+<codapi-settings url="https://34.54.229.45:1313/v1/exec">
 </codapi-settings>
 
 ```shell
