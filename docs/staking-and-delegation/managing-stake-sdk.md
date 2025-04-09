@@ -101,6 +101,46 @@ import bittensor as bt
 import time
 from bittensor import tao
 
+# Load environmental variables
+wallet_name=os.environ.get('WALLET')
+total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
+num_subnets= os.environ.get('NUM_SUBNETS_TO_STAKE_IN')
+validators_per_subnet = os.environ.get('NUM_VALIDATORS_PER_SUBNET')
+
+# Validate inputs
+if wallet_name is None:
+    sys.exit("❌ WALLET not specified. Usage: `WALLET=my-wallet TOTAL_TAO_TO_STAKE=1 NUM_SUBNETS_TO_STAKE_IN=3 NUM_VALIDATORS_PER_SUBNET=3 python script.py`")
+
+if total_to_stake is None:
+    print("⚠️ TOTAL_TAO_TO_STAKE not specified. Defaulting to 1 TAO.")
+    total_to_stake = 1.0
+else:
+    try:
+        total_to_stake = float(total_to_stake)
+    except:
+        sys.exit("❌ Invalid TOTAL_TAO_TO_STAKE amount.")
+
+if num_subnets is None:
+    num_subnets = 3
+else:
+    try:
+        num_subnets = int(num_subnets)
+    except:
+        sys.exit("❌ Invalid NUM_SUBNETS_TO_STAKE_IN.")
+
+if validators_per_subnet is None:
+    validators_per_subnet = 3
+else:
+    try:
+        validators_per_subnet = int(validators_per_subnet)
+    except:
+        sys.exit("❌ Invalid NUM_VALIDATORS_PER_SUBNET.")
+
+print(f"\n🔓 Using wallet: {wallet_name}")
+print(f"📊 Dividing {total_to_stake} TAO across top {validators_per_subnet} validators in each of top {num_subnets} subnets.")
+
+wallet = bt.wallet(wallet_name)
+
 # Initialize the subtensor connection within a block scope to ensure it is garbage collected
 async def stake_batch(subtensor, netuid, top_validators, amount_to_stake):
     for hk in top_validators:
@@ -147,14 +187,13 @@ async def main():
         top_subnets = sorted_subnets[0:3]
         amount_to_stake = bt.Balance.from_tao(total_to_stake/9)
         
-        # find the top 3 valis in each subnet        
+        # find the top 3 validators in each subnet        
         top_vali_dicts = await asyncio.gather(*[find_top_three_valis(subtensor, subnet) for subnet in top_subnets])
         top_validators_per_subnet = {}
         for d in top_vali_dicts:
             netuid = d['netuid']
             for v in d['validators']:
                 hk = v[0]
-                stake = v[1]
                 if netuid in top_validators_per_subnet:
                     top_validators_per_subnet[netuid].append(hk)
                 else:
@@ -164,25 +203,10 @@ async def main():
         start_time = time.time()
         await asyncio.gather(*[stake_batch(subtensor, netuid,top_validators, amount_to_stake) for netuid, top_validators in top_validators_per_subnet.items()])
         print(f"Staking completed in {time.time() - start_time:.2f}s")
+
 # Initialize the wallet with walletname by running like 
-wallet_name=os.environ.get('WALLET')
-total_to_stake=os.environ.get('TOTAL_TAO_TO_STAKE')
 
-if wallet_name == None:
-    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_STAKE=1 WALLET=my-wallet-name ./stakerscript.py`")
-print(f"\n🔍 Using wallet: {wallet_name}")
-wallet = bt.wallet(wallet_name)
 
-if total_to_stake == None:
-    print("Staking total not specified, dividing 1 TAO across top 3 validators in each of top 3 subnets by default.\n Usage: `TOTAL_TAO_TO STAKE=1 WALLET=my-wallet-name ./stakerscript.py`")
-    total_to_stake = 1
-else:
-    try:
-        total_to_stake = float(total_to_stake)
-    except:
-        sys.exit("invalid TAO amount!")
-    else:
-        print(f"dividing {total_to_stake} TAO across top 3 validators in each of top 3 subnets by default")
 
 asyncio.run(main())
 ```
