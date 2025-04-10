@@ -55,12 +55,26 @@ btcli subnet list
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 ```shell
-
 btcli subnet show --netuid 3
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
 
+:::tip try it live
+<codapi-settings url="https://bittensor-codex.com/v1">
+</codapi-settings>
+```shell
+btcli wallet regen-coldkey \
+--mnemonic "add aerobic there stool organ switch about diagram arctic vague replace seminar" \
+--wallet.name 'playground-test1' \
+--no-use-password --wallet.path ~/.bittensor/wallets
+
+btcli stake list --network test --wallet.name playground-test1 --wallet-path ~/.bittensor/wallets --no-prompt
+
+```
+<codapi-snippet sandbox="python" editor="basic" init-delay="500">
+</codapi-snippet>
+:::
 
 ## Stakes 
