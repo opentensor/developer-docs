@@ -4,7 +4,7 @@ title: "Managing stake with Bittensor Python SDK"
 
 # Managing Stake with Bittensor Python SDK
 
-This pages demonstrates usage of `btcli`, the Bittensor CLI, for managing stake.
+This pages demonstrates usage of the Bittensor SDK for Python for managing stake.
 
 TAO holders can **stake** any amount of the liquidity they hold to a validator. Also known as **delegation**, staking supports validators, because their total stake in the subnet, including stake delegated to them by others, determines their consensus power and their share of emissions. After the validator/delegate extracts their **take** the remaining emissions are credited back to the stakers/delegators in proportion to their stake with that validator.
 
@@ -15,7 +15,7 @@ See also:
 
 
 :::tip
-Minimum transaction amount for stak/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
+Minimum transaction amount for stake/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
 :::
 
 ## Check your TAO balance
@@ -91,40 +91,15 @@ netuids = sub.get_netuids_for_hotkey(wallet.hotkey.ss58_address)
 print(netuids)
 ```
 
-## On asyncio.gather
-
-Bittensor operations like add_stake(), unstake(), metagraph(), and move_stake() are designed as asynchronous methods. 
-This means they return coroutine objects that must be awaited within an event loop. 
-This is especially useful in decentralized systems like Bittensor, where you're frequently making calls to many validators across various subnets. 
-Waiting for each call to complete before issuing the next would introduce unnecessary delays.
-
-Python's asyncio.gather() function allows you to run multiple awaitable operations concurrently.
-It accepts a list of coroutine objects and executes them in parallel, returning their results once all are complete.
-This is crucial for improving throughput when interacting with the blockchain.
-
-In the staking, unstaking, and stake-moving scripts below, asyncio.gather is used to:
-
-- Fetch metagraphs concurrently from multiple subnets.
-
-- Issue multiple add_stake() transactions in parallel across top validators in several subnets.
-
-- Submit multiple unstake() transactions simultaneously.
-
-- NOTE: Though move_stake() itself is called individually in its own script, it still relies on the asynchronous subtensor interface and runs within an event loop managed by asyncio.run().
-
-This design helps Bittensor scripts remain responsive and performant even when operating over large numbers of subnets or validators. 
-Without gather, you'd be stuck waiting for each network-bound call to finish before the next one begins—a big slowdown when you're operating at the scale Bittensor enables.
-
-Let’s walk through the scripts utilizing asyncio.gather. First a staking script, then an unstaking script, and finally a move stake script.
-
-## Stake
+## Asynchronously stake to top subnets/validators
 
 The following script incrementally stakes a user-defined amount of TAO in each of the user-defined number of the top subnets.
 
-Note that it uses asynchronous calls to the Bittensor blockchain via the `async_subtensor` module, employing the `await asyncio.gather(*tasks)` pattern. `AsyncSubtensor` methods like `add_stake()`, `unstake()`, `metagraph()`, and `move_stake()` are designed as zasynchronous methods, meaning that, unlike their `Subtensor` module equivalents, they return coroutine objects that must be awaizted within an event loop.
+Note that it uses asynchronous calls to the Bittensor blockchain via the `async_subtensor` module, employing the `await asyncio.gather(*tasks)` pattern.
+
+`AsyncSubtensor` methods like `add_stake()`, `unstake()`, `metagraph()`, and `move_stake()` are designed as asynchronous methods, meaning that, unlike their `Subtensor` module equivalents, they return coroutine objects that must be awaizted within an event loop.
 
 See [Working with Concurrency](/subnets/asyncio).
-
 
 ```python
 import os, sys, asyncio
@@ -289,7 +264,7 @@ Decrypting...
 [True, True, True]
 ```
 
-## Unstake
+## Asynchronously unstake from low-emissions validators
 
 The script below will unstake from the delegations (stakes) to validators on particular subnets that have yielded the least emissions in the last tempo.
 
@@ -475,7 +450,7 @@ Decrypting...
 
 ## Move stake
 
-...
+This stake moves stake from one delegate to another.
 
 ```python
 import asyncio
@@ -487,11 +462,10 @@ from bittensor.core.async_subtensor import AsyncSubtensor
 async def main():
     async with AsyncSubtensor("test") as subtensor:
         wallet = bt.wallet(
-            name="PracticeKey!",
-            hotkey="stakinkey1",
+            name="PracticeKey!"
         )
         wallet.unlock_coldkey()
-        success = await subtensor.move_stake(wallet = wallet,
+        result = await subtensor.move_stake(wallet = wallet,
             origin_hotkey = "5DyHnV9Wz6cnefGfczeBkQCzHZ5fJcVgy7x1eKVh8otMEd31",
             origin_netuid = 5,
             destination_hotkey = "5HidY9Danh9NhNPHL2pfrf97Zboew3v7yz4abuibZszcKEMv",
@@ -500,7 +474,7 @@ async def main():
             wait_for_inclusion = True,
             wait_for_finalization = False,
         )
-        if success:
+        if result:
             print("Stake was successfully moved!")
         else:
             print("Failed to move stake.")
