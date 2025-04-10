@@ -34,7 +34,8 @@ const sidebars = {
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
-        "yuma-consensus",        
+        "yuma-consensus",
+        "btcli/btcli-playground"   
       ],
     },
         {
@@ -113,6 +114,7 @@ const sidebars = {
           link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
+            "btcli/btcli-playground",
             "btcli-permissions",
             "btcli",
             "staking-and-delegation/managing-stake-btcli",            
