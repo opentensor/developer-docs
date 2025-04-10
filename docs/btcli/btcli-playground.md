@@ -32,8 +32,6 @@ btcli wallet balance \
 --wallet.name 'playground-test1' \
 --wallet.path ~/.bittensor/wallets
 
-
-btcli subnet show --netuid 3
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
