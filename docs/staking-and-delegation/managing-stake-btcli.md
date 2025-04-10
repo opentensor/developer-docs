@@ -65,10 +65,7 @@ To see the list of subnets and their currencies, run:
 </codapi-settings>
 
 ```shell
-btcli w regen_coldkeypub --wallet.name test1 --ss58 5G4mxrN8msvc4jjwp7xoBrtAejTfAMLCMTFGCivY5inmySbq --wallet.path ~/.bittensor/wallets
-
-btcli wallets list
-btcli stake list --no-prompt --wallet.name test1 --network test
+btcli subnet list
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
