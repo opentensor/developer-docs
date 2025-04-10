@@ -30,8 +30,8 @@ btcli wallet regen-coldkey \
 
 btcli wallet balance \
 --wallet.name 'playground-test1' \
---wallet.path ~/.bittensor/wallets
-
+--wallet.path ~/.bittensor/wallets \
+--network test
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
