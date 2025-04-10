@@ -119,7 +119,12 @@ Let’s walk through the scripts utilizing asyncio.gather. First a staking scrip
 
 ## Stake
 
-The following script incrementally stakes a user-defined amount of TAO in each of the user-defined number of the top subnets:
+The following script incrementally stakes a user-defined amount of TAO in each of the user-defined number of the top subnets.
+
+Note that it uses asynchronous calls to the Bittensor blockchain via the `async_subtensor` module, employing the `await asyncio.gather(*tasks)` pattern. `AsyncSubtensor` methods like `add_stake()`, `unstake()`, `metagraph()`, and `move_stake()` are designed as zasynchronous methods, meaning that, unlike their `Subtensor` module equivalents, they return coroutine objects that must be awaizted within an event loop.
+
+See [Working with Concurrency](/subnets/asyncio).
+
 
 ```python
 import os, sys, asyncio
@@ -302,8 +307,6 @@ async def perform_unstake(subtensor, stake, amount):
             wallet, hotkey_ss58=stake.hotkey_ss58, netuid=stake.netuid, amount=amount
         )
         elapsed = time.time() - start
-
-        # Check result object and log outcome
         if result:
             print(f"✅ Successfully unstaked {amount} from {stake.hotkey_ss58} on subnet {stake.netuid} in {elapsed:.2f}s")
             return True
@@ -314,50 +317,76 @@ async def perform_unstake(subtensor, stake, amount):
         print(f"❌ Error during unstake from {stake.hotkey_ss58} on subnet {stake.netuid}: {e}")
         return False
 
-# Main async workflow
+
 async def main():
-    # Use the async_subtensor context manager to interact with the chain
     async with bt.async_subtensor(network='test') as subtensor:
         try:
-            #Retrive all active active stakes asscociated with the coldkey
+            # Retrieve all active active stakes asscociated with the coldkey
             stakes = await subtensor.get_stake_for_coldkey(wallet_ck)
         except Exception as e:
             sys.exit(f"❌ Failed to get stake info: {e}")
 
-        # Filter: Remove small stakes that are under the minimum threshold
+        # Filter and sort
+        # Remove small stakes that are under the minimum threshold
         stakes = list(filter(lambda s: float(s.stake.tao) > unstake_minimum, stakes))
-
         # Sort by emission rate (lowest emission first)
         stakes = sorted(stakes, key=lambda s: s.emission.tao)
-
         # Limit to the N lowest emission validators
         stakes = stakes[:max_stakes_to_unstake]
 
         if not stakes:
             sys.exit("❌ No eligible stakes found to unstake.")
 
-        # Print a summary of selected stakes before executint
         print(f"\n📊 Preparing to unstake from {len(stakes)} validators:\n")
         for s in stakes:
-            print(f"Validator: {s.hotkey_ss58}\n  NetUID: {s.netuid}\n  Stake: {s.stake}\n  Emission: {s.emission}\n-----------")
+            print(f"Validator: {s.hotkey_ss58}\n  NetUID: {s.netuid}\n  Stake: {s.stake.tao}\n  Emission: {s.emission}\n-----------")
 
         # Determine how much TAO to unstake per validator
         amount_per_stake = total_to_unstake / len(stakes)
-
-        # Prepare all unstake calls to run concurrently
+        
+        # Prepare concurrent unstake tasks, then execute as a batch
         tasks = [
             perform_unstake(subtensor, stake, min(amount_per_stake, stake.stake))
             for stake in stakes
         ]
-
-        # Execute unstatke tasks concurrently using ayncio
         results = await asyncio.gather(*tasks)
 
         # Count successes and print final report
         success_count = sum(results)
         print(f"\n🎯 Unstake complete. Success: {success_count}/{len(stakes)}")
+        
+wallet_name = os.environ.get('WALLET')
+total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
+max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
 
-# Run the async workflow
+if wallet_name is None:
+    sys.exit("wallet name not specified. Usage: `TOTAL_TAO_TO_UNSTAKE=1 MAX_STAKES_TO_UNSTAKE=10 WALLET=my-wallet-name ./unstakerscript.py`")
+
+if total_to_unstake is None:
+    print("Unstaking total not specified, defaulting to 1 TAO.")
+    total_to_unstake = 1
+else:
+    try:
+        total_to_unstake = float(total_to_unstake)
+    except:
+        sys.exit("invalid TAO amount!")
+
+if max_stakes_to_unstake is None:
+    max_stakes_to_unstake = 10
+else:
+    try:
+        max_stakes_to_unstake = int(max_stakes_to_unstake)
+    except:
+        sys.exit("invalid number for MAX_STAKES_TO_UNSTAKE")
+
+print(f"🔍 Using wallet: {wallet_name}")
+print(f"🧮 Unstaking a total of {total_to_unstake} TAO across up to {max_stakes_to_unstake} lowest-emission validators")
+
+total_to_unstake = bt.Balance.from_tao(total_to_unstake)
+wallet = bt.wallet(wallet_name)
+wallet_ck = wallet.coldkeypub.ss58_address
+
+unstake_minimum = 0.0005  # TAO
 asyncio.run(main())
 
 ```
