@@ -119,7 +119,12 @@ btcli wallet transfer \
 	
 	:::info Challenges
 	1. Check your balance to make sure the transfer executed successfully on chain.
-	2. Switch the values to transfer TAO back from `playground-test2` to `playground-test1`.	
+	2. Switch the values to transfer TAO back from `playground-test2` to `playground-test1`.
+	3. Transfer some testnet TAO to a wallet you manage on another device. Just please don't take all of it. 
+	4. If you have some extra testnet TAO, transfer some to the playground-test wallets to refill them.
+
+		*Note: Testnet TAO has no monetary value.*
+
 :::
 
 
