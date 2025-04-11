@@ -173,4 +173,7 @@ btcli stake list --network test --wallet.name playground-test1 --wallet-path ~/.
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+
+	:::info Challenge
+	Try staking and unstaking from the playground-test wallets!
 :::
