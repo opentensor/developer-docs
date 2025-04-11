@@ -5,23 +5,17 @@ title: "BTCLI Live Coding Playground"
 
 This page gives the user a chance to try out some BTCLI functionality right in the browser.
 
-
-
+The BTCLI Live Coding Playground is an ephemeral environment run in a container, meaning nothing stays in between requests, so you'll have to load in you wallet each time. For this reason, you must only use test wallets in the playground. Any coldkey used in the playground should be considered compromised.
 
 :::warn
-Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO.
+Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO. This is not a secure code execution environment.
+
 This page is for practice/education/entertainment purposes only.
 :::
 
-
-## creating and importing wallets
-
-the playground is an ephemeral environment run in a container, meaning nothing stays in between requests, so you'll have to load in you wallet each time. For this reason, you must only use test wallets in the playground. Any coldkey used in the playground should be considered compromised.
-
 ### Import wallets and check balances.
 
-I've created two wallets for this tutorial. Run the code below to import them into bittensor-codex (the code execution service), and list them to see their public keys.
-
+I've created two wallets for this tutorial and put some testnet TAO into them. Run the code below to import them into bittensor-codex(the code execution service), and list them to see their public keys.
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
