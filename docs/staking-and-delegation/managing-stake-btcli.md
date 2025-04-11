@@ -2,7 +2,6 @@
 title: "Managing Stake with BTCLI"
 ---
 
-
 # Managing stake with `btcli`
 
 This pages demonstrates usage of `btcli`, the Bittensor CLI, for managing stake.
@@ -59,7 +58,6 @@ btcli wallet balance
 ## View subnet currency reserves
 
 To see the list of subnets and their currencies, run:
-
 
 ```shell
 btcli subnet list
@@ -315,5 +313,3 @@ The `btcli stake move` command is used to moves stake between validators or subn
 Don't confuse this with `btcli stake transfer`, which is used to transfer ownership of stake from one wallet (coldkey) to another.
 :::
 
-
-<script src="https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.js"></script>
