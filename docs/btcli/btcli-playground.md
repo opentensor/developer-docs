@@ -92,7 +92,9 @@ Transfer some Tao from playground-test1 to playground-test2. We can get the `--d
 
 Note: Just because the transaction fails to display in the browser below does not mean it failed on-chain. Check playground-test2's balance using the above command.
 
+
 :::tip run it!
+
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -112,6 +114,10 @@ btcli wallet transfer \
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+	
+	:::info Challenges
+	1. Check your balance to make sure the transfer executed successfully on chain.
+	2. Switch the values to transfer TAO back from `playground-test2` to `playground-test1`.	
 :::
 
 
