@@ -1,7 +1,7 @@
 ---
 title: "Managing Stake with BTCLI"
 ---
-<link rel="stylesheet" href="https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.css" />
+
 
 # Managing stake with `btcli`
 
