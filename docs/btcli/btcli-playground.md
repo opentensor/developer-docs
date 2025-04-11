@@ -7,6 +7,10 @@ This page gives the user a chance to try out some BTCLI functionality right in t
 
 The BTCLI Live Coding Playground is an ephemeral environment run in a container, meaning nothing stays in between requests, so you'll have to load in you wallet each time. For this reason, you must only use test wallets in the playground. Any coldkey used in the playground should be considered compromised.
 
+The BTCLI Live Coding Playground is also experimental and a bit flakey, so if you see error responses, try again, but if they persist, the service may be down.
+
+For a more satisfying experience, [install btcli locally](../getting-started/install-btcli) and try [managing stake with BTCLI](../staking-and-delegation/managing-stake-btcli)
+
 :::danger
 This is not a secure code execution environment. This page is for practice/education/entertainment purposes only.
 
