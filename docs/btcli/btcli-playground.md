@@ -23,6 +23,7 @@ the playground is an ephemeral environment run in a container, meaning nothing s
 I've created two wallets for this tutorial. Run the code below to import them into bittensor-codex (the code execution service), and list them to see their public keys.
 
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -42,10 +43,12 @@ btcli wallet list --wallet.path ~/.bittensor/wallets
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 For wallet `playground-test1`
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -62,11 +65,13 @@ btcli wallet balance \
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 
 For wallet `playground-test2`
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -84,12 +89,14 @@ btcli wallet balance \
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 ## Transfer
 
 Transfer some Tao from playground-test1 to playground-test2. We can get the `--destination` address from the `wallet list` command above.
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -109,8 +116,10 @@ btcli wallet transfer \
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -127,11 +136,13 @@ btcli wallet balance \
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 
 ## Subnets
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 ```shell
@@ -140,9 +151,11 @@ btcli subnet list
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 ```shell
@@ -150,8 +163,10 @@ btcli subnet show --netuid 3
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
+:::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
 
@@ -166,6 +181,7 @@ btcli stake list --network test --wallet.name playground-test1 --wallet-path ~/.
 ```
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
 
 ## Stakes 
