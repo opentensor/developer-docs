@@ -195,6 +195,12 @@ const config = {
           },
           {
             position: "left",
+            label: "BTCLI Live Coding Playground",
+            to: "btcli/btcli-playground",
+          },
+          
+          {
+            position: "left",
             label: "EVM on Bittensor",
             to: "evm-tutorials",
           },
