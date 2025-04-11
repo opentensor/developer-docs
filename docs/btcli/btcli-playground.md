@@ -66,7 +66,7 @@ btcli wallet balance \
 </codapi-snippet>
 :::
 
-#### Check balance for `playground-test2`
+### Check balance for `playground-test2`
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
