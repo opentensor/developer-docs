@@ -96,6 +96,8 @@ btcli wallet balance \
 
 Transfer some Tao from playground-test1 to playground-test2. We can get the `--destination` address from the `wallet list` command above.
 
+Note: Just because the transaction fails to display in the browser below does not mean it failed on-chain. Check playground-test2's balance using the above command.
+
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
@@ -117,27 +119,6 @@ btcli wallet transfer \
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
-
-
-:::tip run it!
-<codapi-settings url="https://bittensor-codex.com/v1">
-</codapi-settings>
-
-```shell
-btcli wallet regen-coldkey \
---mnemonic "add aerobic there stool organ switch about diagram arctic vague replace seminar" \
---wallet.name 'playground-test2' \
---no-use-password --wallet.path ~/.bittensor/wallets
-
-btcli wallet balance \
---wallet.name 'playground-test2' \
---wallet.path ~/.bittensor/wallets \
---network test
-```
-<codapi-snippet sandbox="python" editor="basic" init-delay="500">
-</codapi-snippet>
-:::
-
 
 
 ## Subnets
@@ -165,6 +146,9 @@ btcli subnet show --netuid 3
 </codapi-snippet>
 :::
 
+## List a wallet's stakes
+
+See [Staking/Delegation Overview](/staking-and-delegation/delegation).
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
@@ -182,6 +166,3 @@ btcli stake list --network test --wallet.name playground-test1 --wallet-path ~/.
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
-
-
-## Stakes 
