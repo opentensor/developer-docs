@@ -13,8 +13,8 @@ This is not a secure code execution environment. This page is for practice/educa
 **Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO into this or any insecure applicaiton!**
 
 See:
-- [Handle your Seed Phrase/Mnemonic Securely](keys/handle-seed-phrase)
-- [Coldkey and Hotkey Workstation Security](getting-started/coldkey-hotkey-security)
+- [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase)
+- [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
 :::
 
 ## Import wallets and check balances.
@@ -151,7 +151,7 @@ btcli subnet show --netuid 3
 
 ## List a wallet's stakes
 
-See [Staking/Delegation Overview](/staking-and-delegation/delegation).
+See [Staking/Delegation Overview](../staking-and-delegation/delegation).
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
