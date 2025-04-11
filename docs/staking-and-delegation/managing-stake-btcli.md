@@ -313,3 +313,4 @@ The `btcli stake move` command is used to moves stake between validators or subn
 Don't confuse this with `btcli stake transfer`, which is used to transfer ownership of stake from one wallet (coldkey) to another.
 :::
 
+
