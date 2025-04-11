@@ -25,7 +25,7 @@ Check for the latest release at the Python Package Index: [https://pypi.org/proj
 Use pip to install the desired version:
 
 ```shell
-pip install bittensor-cli==9.1.0 # Use latest or desired version
+pip install bittensor-cli # Use latest or desired version
 ```
 
 Verify your installation and its version by running:
@@ -34,12 +34,11 @@ btcli --version
 ```
 Example output:
 ```console
-BTCLI version: 9.1.0
+BTCLI version: 9.2.0
 ```
 :::warning Update frequently!
 Check frequently to make sure you are using the latest version of `btcli`.
 :::
-
 
 ### Install from source
 

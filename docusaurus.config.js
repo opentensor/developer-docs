@@ -125,16 +125,25 @@ const config = {
       },
     ],
   ],
-  // scripts: [
-  //   // String format.
-  //   // 'https://docusaurus.io/script.js',
-  //   // Object format.
-  //   {
-  //     src: "/static/feedbug-widjet.js",
-  //     async: true,
-  //   },
-  // ],
+  scripts: [
+
+  {
+            src:"https://unpkg.com/@antonz/codapi@0.19.10/dist/settings.js",
+            src: "https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.js",
+            defer: true,
+        },
+
+    // String format.
+    // 'https://docusaurus.io/script.js',
+    // Object format.
+    // {
+    //   src: "/static/feedbug-widjet.js",
+    //   async: true,
+    // },
+  ],
   // clientModules: ["/static/feedbug-widjet.js"],
+
+
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
@@ -142,6 +151,9 @@ const config = {
       integrity:
         "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
       crossorigin: "anonymous",
+    },
+    {
+        href: "https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.css",
     },
   ],
   themeConfig:
@@ -181,6 +193,12 @@ const config = {
             label: "What is Bittensor?",
             to: "learn/introduction",
           },
+          {
+            position: "left",
+            label: "BTCLI Live Coding Playground",
+            to: "btcli/btcli-playground",
+          },
+          
           {
             position: "left",
             label: "EVM on Bittensor",

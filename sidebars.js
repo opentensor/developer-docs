@@ -21,6 +21,7 @@ const sidebars = {
     // 	className: 'sidebarSearch', //  based on Class name it will add search component
     // },
     "index",
+    "btcli/btcli-playground",
     {
       type: "category",
       label: "Understand Bittensor",
@@ -113,6 +114,7 @@ const sidebars = {
           link: {type: "doc", id: "btcli/overview",},
           items: [
             "getting-started/install-btcli",
+            "btcli/btcli-playground",
             "btcli-permissions",
             "btcli",
             "staking-and-delegation/managing-stake-btcli",            
@@ -224,6 +226,7 @@ const sidebars = {
     "glossary",
 
   ],
+
 };
 
 module.exports = sidebars;
