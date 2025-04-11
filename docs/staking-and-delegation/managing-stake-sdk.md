@@ -44,10 +44,6 @@ print(balance)
 
 The following script displays exchange rates for a subnet alpha token, with and without slippage.
 
-<codapi-settings url="https://bittensor-codex.com/v1">
-</codapi-settings>
-
-
 ```python
 import bittensor as bt
 
@@ -63,8 +59,6 @@ print("tao_to_alpha_with_slippage percentage", subnet.tao_to_alpha_with_slippage
 print("tao_to_alpha", subnet.tao_to_alpha(100))
 print("alpha_to_tao", subnet.alpha_to_tao(100))
 ```
-<codapi-snippet sandbox="bittensor" editor="basic" init-delay="500">
-</codapi-snippet>
 
 ## Register on a subnet
 

@@ -60,16 +60,10 @@ btcli wallet balance
 
 To see the list of subnets and their currencies, run:
 
-:::tip try it live
-<codapi-settings url="https://bittensor-codex.com/v1">
-</codapi-settings>
 
 ```shell
 btcli subnet list
 ```
-<codapi-snippet sandbox="python" editor="basic" init-delay="500">
-</codapi-snippet>
-:::
 
 You should see something like the following output. Notice that next to the subnets Netuid and Name is the subnet's token `Price (τ_in/α_in)`, which, as indicated, is a ratio of the TAO in reserve `τ_in` to alpha in reserve `α_in`.
 
