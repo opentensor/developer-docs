@@ -7,15 +7,21 @@ This page gives the user a chance to try out some BTCLI functionality right in t
 
 The BTCLI Live Coding Playground is an ephemeral environment run in a container, meaning nothing stays in between requests, so you'll have to load in you wallet each time. For this reason, you must only use test wallets in the playground. Any coldkey used in the playground should be considered compromised.
 
-:::warn
-Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO. This is not a secure code execution environment.
+:::danger
+This is not a secure code execution environment. This page is for practice/education/entertainment purposes only.
 
-This page is for practice/education/entertainment purposes only.
+**Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO into this or any insecure applicaiton!**
+
+See:
+- [Handle your Seed Phrase/Mnemonic Securely](keys/handle-seed-phrase)
+- [Coldkey and Hotkey Workstation Security](getting-started/coldkey-hotkey-security)
 :::
 
-### Import wallets and check balances.
+## Import wallets and check balances.
 
 I've created two wallets for this tutorial and put some testnet TAO into them. Run the code below to import them into bittensor-codex(the code execution service), and list them to see their public keys.
+
+### Import both wallets and list their keys
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
@@ -39,8 +45,7 @@ btcli wallet list --wallet.path ~/.bittensor/wallets
 </codapi-snippet>
 :::
 
-
-For wallet `playground-test1`
+### Check balance for `playground-test1`
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
@@ -61,9 +66,7 @@ btcli wallet balance \
 </codapi-snippet>
 :::
 
-
-
-For wallet `playground-test2`
+#### Check balance for `playground-test2`
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
@@ -91,7 +94,6 @@ btcli wallet balance \
 Transfer some Tao from playground-test1 to playground-test2. We can get the `--destination` address from the `wallet list` command above.
 
 Note: Just because the transaction fails to display in the browser below does not mean it failed on-chain. Check playground-test2's balance using the above command.
-
 
 :::tip run it!
 
@@ -122,6 +124,7 @@ btcli wallet transfer \
 
 
 ## Subnets
+### Subnet list
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
@@ -135,7 +138,7 @@ btcli subnet list
 :::
 
 
-
+### Subnet show
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
