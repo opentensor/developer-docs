@@ -45,7 +45,7 @@ The Bittensor network constantly emits liquidity, in the form of its token, TAO 
 - **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking](./staking-and-delegation/delegation).
 
 :::tip Browse the subnets
-Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
+Browse the subnets and explore links to their code repositories on [tao.app](https://www.tao.app)'s subnets listings.
 :::
 
 <ResponsiveCards>
@@ -53,29 +53,33 @@ Browse the subnets and explore links to their code repositories on [Taostats' su
     icon={GiStarFormation}
     title='Bittensor frequently asked questions (FAQ)'
     link='questions-and-answers'
-    body='Everything you are afraid to ask about Bittensor.' />
+    body='Everything you were afraid to ask about Bittensor.' />
+    <ResponsiveCard
+    icon={GoNumber}
+    title='Subnet Listings on tao.app'
+    link='https://tao.app'
+    body='Discover the subnets that power Bittensor and browse real-time tokenomic data and analytics.'/>  
+    <ResponsiveCard 
+    icon={MdInstallDesktop}
+    title='BTCLI Live Coding Playground'
+    link='btcli/btcli-playground'
+    body='Try out some BTCLI functionality right in the browser.' />
     <ResponsiveCard 
     icon={HiAcademicCap}
-    title='Learn Bittensor concepts'
+    title='Introduction to Bittensor'
     link='learn/introduction'
-    body='Start by learning the Bittensor concept, building blocks and incentive mechanism.' />
+    body='Learn fundamental Bittensor concepts' />
     <ResponsiveCard
     icon={MdInstallDesktop}
     title='Guide to Bittensor tools'
     link='tools'
-    body='Opentensor Foundation maintains open source tools for the Bittensor ecosystem, including the Python SDK and `btcli`.' />  
-    <ResponsiveCard
-    icon={GoNumber}
-    title='Subnet Listings'
-    link='https://taostats.io/subnets'
-    body='Subnets on taostats.io' />  
+    body='Opentensor Foundation maintains open source tools for the Bittensor ecosystem, including the Python SDK and `btcli`.' />      
     <CardSmall
     icon={VscFileMedia}
     title='Bittensor media assets'
     link='media-assets'
     body='Media assets' />
 </ResponsiveCards>
-
 
 ## Participate
 
