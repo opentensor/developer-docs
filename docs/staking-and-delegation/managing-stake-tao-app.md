@@ -6,7 +6,6 @@ title: "Managing Stake with tao.app"
 
 ## Subnets Explorer
 
-
 ## Metrics/dTAO Market Overview
 
 The dTAO Market Overview panel gives ecosystem users and investors an overview into the many measurements for assessing various important aspects of the state of the overall TAO ecosystem. 
@@ -28,6 +27,10 @@ The most useful aspect of this overview metric is that it can give you, as an ec
 When the sum is closer to around 1 for the time period specified, it suggest that there has been little market pressure, low activity, and/or natural decay back to equilibrium between TAO and Alpha tokens.
 When the sum is greater than 1 for the time period specified, it suggests that at least some subnets are experiencing buying pressure, which is driving up prices.
 When there is a high sum (e.g. 10+) in a relatively short time frame, it could indicate widespread speculation, possibly even signaling a bubble, or at least high usage/subnet demand.
+
+## Metrics/dTAO Market Overview
+
+The dTAO Market Overview panel gives ecosystem users and investors an overview into themany measurements for assessing various important aspects of the state of the overall TAO ecosystem.
 
 
 ## Subnet details
