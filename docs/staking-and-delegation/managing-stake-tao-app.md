@@ -44,8 +44,6 @@ Because prices are AMM-driven, the sum can theoretically grow infinitely if ther
 
 #### Why it matters
 
-As a TAO ecosystem participant, I want to monitor the Sum of Alpha Prices so I can gauge how much trading activity and speculative value is accumulating across subnets, and assess whether the system is behaving in equilibrium or entering a speculative phase.
-
 The most useful aspect of this overview metric is that it can give you, as an ecosystem participant, insight into the level of speculation currently in the market overall over a given time period.
 
 When the sum is closer to around 1 for the time period specified, it suggest that there has been little market pressure, low activity, and/or natural decay back to equilibrium between TAO and Alpha tokens.
