@@ -14,7 +14,7 @@ See also:
 - [Understanding pricing and anticipating slippage](../dynamic-tao/staking-unstaking-dtao)
 
 :::tip
-Minimum transaction amount for stak/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
+Minimum transaction amount for stake/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
 :::
 
 ## Pre-requisite: Create a wallet
