@@ -45,7 +45,7 @@ The Bittensor network constantly emits liquidity, in the form of its token, TAO 
 - **Stakers**&mdash;TAO holders can support specific validators by staking TAO to them. See [Staking](./staking-and-delegation/delegation).
 
 :::tip Browse the subnets
-Browse the subnets and explore links to their code repositories on [tao.app](https://www.tao.app)'s subnets listings.
+Browse the subnets and explore links to their code repositories on [TAO.app](https://www.tao.app)'s subnets listings.
 :::
 
 <ResponsiveCards>
@@ -56,7 +56,7 @@ Browse the subnets and explore links to their code repositories on [tao.app](htt
     body='Everything you were afraid to ask about Bittensor.' />
     <ResponsiveCard
     icon={GoNumber}
-    title='Subnet Listings on tao.app'
+    title='Subnet Listings on TAO.app'
     link='https://tao.app'
     body='Discover the subnets that power Bittensor and browse real-time tokenomic data and analytics.'/>  
     <ResponsiveCard 
