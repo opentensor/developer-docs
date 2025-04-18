@@ -60,7 +60,7 @@ At the same time, validators are also incentivized to do their best work, becaus
 
 The task of miners is different in each subnet. For example, subnet 1 produces LLM inference, and the miner task is to respond to a text prompt with a completion. Subnet 2 serves machine translation, and subnet 21 serves storage.
 
-Browse the subnets on [tao.aoo](https://tao.app)
+Browse the subnets on [tao.app](https://tao.app)
 
 ### So where does the blockchain come in?
 
@@ -111,7 +111,7 @@ See:
 
 Unfortunately no. Subnets are not run or managed by Opentensor Foundation, and the landscape of subnets is constantly evolving. 
 
-Browse the subnets at [`tao.app`](https://tao.app), or on [Discord](https://discord.com/channels/799672011265015819/830068283314929684).
+Browse the subnets at [tao.app](https://tao.app), or on [Discord](https://discord.com/channels/799672011265015819/830068283314929684).
 
 ### Can I be a subnet miner or a subnet validator forever?
 
