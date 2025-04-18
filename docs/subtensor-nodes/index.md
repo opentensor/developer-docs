@@ -65,7 +65,7 @@ Use `--sync=full` and `--pruning archive` when starting a subtensor node. See [U
 The full synchronization performed by an archive node can be significantly slower than warp sync (done by a lite node) as it involves processing every block. Also, archive nodes require substantially more storage space due to the complete historical data.
 
   :::tip archive node for a blockchain explorer
-  Applications such as Bittensor blockchain explorer, for example, [Taostats](https://taostats.io/) that require access to historical blockchain data use an archive node. 
+  Applications such as Bittensor blockchain explorer, for example, [TAO.app](https://tao.app) that require access to historical blockchain data use an archive node. 
   :::
 
 

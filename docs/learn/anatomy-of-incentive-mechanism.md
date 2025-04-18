@@ -49,7 +49,7 @@ Ensure that your IM is proofed against gaming or unintended shortcuts through th
 
 Research what other subnet creators are doing.
 
-Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets), and learn about the latest research on subnet design, which is an active area.
+Browse the subnets and explore links to their code repositories on [TAO.app's subnets listings](https://tao.app), and learn about the latest research on subnet design, which is an active area.
 
 ## Components of an incentive mechanism
 

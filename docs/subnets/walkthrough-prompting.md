@@ -18,7 +18,7 @@ In this section we present a high-level walkthrough of the [Subnet 1: Prompting]
 This subnet is driven by large language models (LLMs). These LLMs search the internet and utilize specialized simulator modules to produce factually accurate and mathematically correct responses. 
 
 :::tip Subnet 1 Explorer
-You can see the prompting subnet in action on the [Taostats explorer (select Subnet 01: Text Prompting from the top menu)](https://taostats.io/). 
+You can see the prompting subnet in action on the [TAO.app explorer (select Subnet 01: Text Prompting from the top menu)](https://tao.app). 
 :::
 
 ## Before you proceed
@@ -28,7 +28,7 @@ If you are new to Bittensor subnets and building blocks, read the following sect
 - [Bittensor Building Blocks](../learn/bittensor-building-blocks).
 - [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanism).
 
-The below diagram shows a typical subnet with many subnet miners and subnet validators together executing the subnet incentive mechanism code. On the [Taostats explorer (select Subnet 01: Text Prompting from the top menu)](https://taostats.io/) the **Metagraph** view for this Subnet 1: Prompting shows the performance details for each subnet miner and validator. 
+The below diagram shows a typical subnet with many subnet miners and subnet validators together executing the subnet incentive mechanism code. On the [TAO.app explorer (select Subnet 01: Text Prompting from the top menu)](https://tao.app) the **Metagraph** view for this Subnet 1: Prompting shows the performance details for each subnet miner and validator. 
 
 For easier understanding, in this document we will focus on how a **single** subnet validator interacts with **multiple** subnet miners in this subnet. 
 
