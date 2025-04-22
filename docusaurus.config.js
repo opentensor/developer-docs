@@ -196,7 +196,7 @@ const config = {
           {
             position: "left",
             label: "Bittensor SDK Reference",
-            to: "python-api/autoapi/bittensor/index.html",
+            to: "bt-api-ref",
           },
           {
             position: "left",
