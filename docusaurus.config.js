@@ -195,6 +195,11 @@ const config = {
           },
           {
             position: "left",
+            label: "Bittensor SDK Reference",
+            to: "bt-api-ref",
+          },
+          {
+            position: "left",
             label: "BTCLI Live Coding Playground",
             to: "btcli/btcli-playground",
           },
@@ -205,26 +210,16 @@ const config = {
             to: "evm-tutorials",
           },
           {
-            position: "left",
-            label: "Understand Dynamic TAO",
-            to: "dynamic-tao",
-          },
-          {
-            position: "left",
-            label: "Bittensor 9.0 Migration Guide",
-            to: "migration_guide",
-          },
-          {
             type: "search",
             position: "left",
             className: "custom_algolia",
           },
 
-          // {
-          //   href: "https://github.com/opentensor/developer-docs",
-          //   label: "Docs GitHub",
-          //   position: "right",
-          // },
+          {
+            href: "https://github.com/opentensor/developer-docs",
+            label: "Docs GitHub",
+            position: "right",
+          },
         ],
       },
 

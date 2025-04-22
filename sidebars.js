@@ -38,20 +38,6 @@ const sidebars = {
         "yuma-consensus",        
       ],
     },
-        {
-      type: "category",
-      label: "Dynamic TAO",
-      link: {type: "doc", id: "dynamic-tao/index",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-      "dynamic-tao/dtao-guide",
-      "dynamic-tao/dtao-faq",
-      "dynamic-tao/sdk-cheat-sheet",
-      
-      ],
-    },
-
     {
       type: "category",
       label: "Staking/Delegation",
@@ -209,7 +195,20 @@ const sidebars = {
       "senate",
       "governance/senators-btcli-guide"
       ],
+    },            {
+      type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+      "dynamic-tao/dtao-guide",
+      "dynamic-tao/dtao-faq",
+      "dynamic-tao/sdk-cheat-sheet",
+      
+      ],
     },
+
     {
       type: "category",
       label: "Release Notes and Updates",
