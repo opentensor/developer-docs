@@ -95,7 +95,7 @@ If you have not already done so, create Bittensor wallet(s) using the steps desc
 ### Step 2. Get the current price 
 
 ```bash
-btcli subnet lock_cost --subtensor.network test
+btcli subnet burn-cost --subtensor.network test
 ```
 Output:
 ```bash
@@ -146,7 +146,7 @@ If you have not already done so, create Bittensor wallet(s) using the steps desc
 The code below shows how to get the current price of creating a subnet on the mainchain (when the `--subtensor.network` option is not used, then the `btcli` will default to the `mainchain`).
 
 ```bash
-btcli subnet lock_cost
+btcli subnet burn-cost
 ```
 Output:
 ```bash
