@@ -136,7 +136,7 @@ const sidebars = {
             "subnets/schedule-coldkey-swap",
           ]
         },
-                {
+    {
       type: "category",
       label: "Tools and Special Features",
       link: {type: "doc", id: "tools",},
@@ -150,6 +150,21 @@ const sidebars = {
         "utilities",
       ],
     },
+
+    {
+      type: "category",
+      label: "Local Development",
+      link: {type: "doc", id: "local-build/deploy",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "local-build/deploy",
+        "local-build/provision-wallets",
+        "local-build/create-subnet"
+      ],
+    },
+
+
 {
       type: "category",
       label: "Subtensor Nodes",
