@@ -70,7 +70,7 @@ git checkout main
 4. Remove any previous chain state:
 
 ```bash
-rm -rf /tmp/blockchain 
+rm -rf /var/lib/subtensor 
 ```
 
 5. Install Subtensor by compiling with Cargo:
@@ -88,7 +88,7 @@ You can now run the public subtensor node either as a lite node or as an archive
 To run a lite node connected to the mainchain, execute the below command (note the `--sync=warp` flag which runs the subtensor node in lite mode):
 
 ```bash title="With --sync=warp setting, for lite node"
-./target/production/node-subtensor --chain ./chainspecs/raw_spec_finney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --prometheus-external --rpc-external
+./target/production/node-subtensor --chain ./chainspecs/raw_spec_finney.json --base-path /var/lib/subtensor --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --prometheus-external --rpc-external
 ``` 
 
 ### Archive node on mainchain
@@ -96,7 +96,7 @@ To run a lite node connected to the mainchain, execute the below command (note t
 To run an archive node connected to the mainchain, execute the below command (note the `--sync=full` which syncs the node to the full chain and `--pruning archive` flags, which disables the node's automatic pruning of older historical data):
 
 ```bash title="With --sync=full and --pruning archive setting, for archive node"
-./target/production/node-subtensor --chain ./chainspecs/raw_spec_finney.json --base-path /tmp/blockchain --sync=full --pruning archive --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --prometheus-external --rpc-external
+./target/production/node-subtensor --chain ./chainspecs/raw_spec_finney.json --base-path /var/lib/subtensor --sync=full --pruning archive --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --prometheus-external --rpc-external
 ``` 
 
 ### Lite node on testchain 
@@ -104,7 +104,7 @@ To run an archive node connected to the mainchain, execute the below command (no
 To run a lite node connected to the testchain, execute the below command:
 
 ```bash title="With bootnodes set to testnet and --sync=warp setting, for lite node."
-./target/production/node-subtensor --chain ./chainspecs/raw_spec_testfinney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --prometheus-external --rpc-external
+./target/production/node-subtensor --chain ./chainspecs/raw_spec_testfinney.json --base-path /var/lib/subtensor --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --prometheus-external --rpc-external
 ``` 
 
 ### Archive node on testchain
@@ -112,5 +112,5 @@ To run a lite node connected to the testchain, execute the below command:
 To run an archive node connected to the testchain, execute the below command:
 
 ```bash title="With bootnodes set to testnet and --sync=full and --pruning archive setting, for archive node"
-./target/production/node-subtensor --chain ./chainspecs/raw_spec_testfinney.json --base-path /tmp/blockchain --sync=full --pruning archive --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --prometheus-external --rpc-external
+./target/production/node-subtensor --chain ./chainspecs/raw_spec_testfinney.json --base-path /var/lib/subtensor --sync=full --pruning archive --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/ws/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --prometheus-external --rpc-external
 ``` 
