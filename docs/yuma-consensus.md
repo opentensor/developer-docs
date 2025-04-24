@@ -20,7 +20,7 @@ See:
 
 Clipping is designed to punish innacurate miner evaluation, especially in patterns that could constitute collusion to manipulate the accuracy of consensus to favor certain miners.
 
-To achieve this, the judgment of the most trusted validators (as measured by stake) serves as a benchmark. Evaluations (bonds) that exceed this benchmark are *clipped*, meaning neither the miner nor the validator receives emissions for them.
+To achieve this, the judgment of the most trusted validators (as measured by stake) serves as a benchmark. Weights that exceed this benchmark are *clipped*, meaning neither the miner nor the validator receives emissions for them.
 
 This clipping protects against erroneous or collusive over-evaluation of miners by validators.
 
@@ -40,7 +40,9 @@ $$
 $$
 
 :::tip note
-Kappa is a configurable hyperparameter with default: $\kappa = 0.5$. 
+Kappa is a configurable hyperparameter with default: $\kappa = 0.5$.
+
+This means that if *least* generous half (0.5) of the validators (with each validator measured by stake, not 1 per validator) set weights for a given miner to no more than x, then the weights of the other, more generous, half of the validators for that miner are going to be clipped down to x. 'Generous' here refers to giving a high weight to the miner in question.
 :::
 
 ## Miner emissions

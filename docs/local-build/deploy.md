@@ -13,7 +13,7 @@ In the following tutorial, we will also provision several wallets to serve as su
 ## Prerequisites
 
 - Update your mac or linux workstation using your package manager
-- Install [Bittensor SDK] and [BTCLI]
+- Install [Bittensor SDK](../getting-started/installation) and [BTCLI](../getting-started/install-btcli)
 
 
 ## Build your local Subtensor
@@ -31,13 +31,24 @@ Update your shell's source to include Cargo's path:
 source "$HOME/.cargo/env"
 ```
 
-### Clone the Subtensor source
+### Clone and tweak the Subtensor source
 
-This step fetches the subtensor codebase to your local machine.
+We well clone the source and make a small modification to the state configuration with which the chain is deployed.
 
-```bash
-git clone https://github.com/opentensor/subtensor.git
-```
+Normally, the creation of new subnets is limited to one per day. This is inconvenient for local subnet development, so we will limit this restriction.
+
+
+
+1. Fetch the subtensor codebase to your local machine.
+
+  ```bash
+  git clone https://github.com/opentensor/subtensor.git
+  ```
+
+1. Open the source file `subtensor/runtime/src/lib.rs` in the your editor of choice, and find where the variable `SubtensorInitialNetworkRateLimit` is set. It is normally configured to 7200, which is the number of blocks per day written to the chain, i.e. the seconds in a day divided by 12, since a Subtensor block is written every twelve seconds.
+
+In otherwords, this setting limits the number of new subnets that can be created to one per day. Let's change the value to 1 (block), so we can create a new subnet every 12 seconds if we want to.
+
 
 ### Setup Rust
 
@@ -67,6 +78,11 @@ Next, run the localnet script and turn off the attempt to build the binary (as w
 ```bash
 BUILD_BINARY=0 ./scripts/localnet.sh 
 ```
+
+:::info troubleshooting
+If you see errors to the effect that the release cannot be found in `targets/fast-blocks`, you may need to move the build artifacts from `targets/release` to `targets/fast-blocks/release`.
+:::
+
 
 ## Validate
 

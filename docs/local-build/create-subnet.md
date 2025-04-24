@@ -75,3 +75,10 @@ To remedy your liquidity shortfall, transfer $\tau$ from the Alice account and t
 	🌏  📡 Transferring...
 	```
 1. Successfully create the subnet
+
+```shell
+btcli subnet create \
+--subnet-name awesome-first-subnet \
+--wallet.name sn-creator \
+--subtensor.chain_endpoint ws://127.0.0.1:9945
+```
