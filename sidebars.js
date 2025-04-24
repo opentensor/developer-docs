@@ -160,7 +160,8 @@ const sidebars = {
       items: [
         "local-build/deploy",
         "local-build/provision-wallets",
-        "local-build/create-subnet"
+        "local-build/create-subnet",
+        "local-build/mine-validate"
       ],
     },
 

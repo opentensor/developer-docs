@@ -4,7 +4,15 @@ title: "Create a Subnet (Locally)"
 
 # Create a Subnet (Locally)
 
-## Create it
+This page covers creating a subnet on a locally deployed Subtensor blockchain, which is useful for local Bittensor development.
+
+For creating a subnet on Bittensor test and main network, see [Create a Subnet](../subnets/create-a-subnet).
+
+Prerequisites:
+- [Deploy a Subtensor chain locally](./deploy)
+- [Provision wallets for the sn-creator, miner, and validator users for this tutorial.](./provision-wallets)
+
+## Create subnet (unsuccessful)
 
 To access the handy pre-provisioned development "Alice" account on your local chain, use:
 
@@ -14,13 +22,26 @@ btcli subnet create \
 --wallet.name sn-creator \
 --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
+### Trouble shoot
+#### Insufficient funds
 
-However, note that this will fail if you do not have a sufficient $\tau$ balance:
+If you are following this tutorial for the first time, the `subnet create` command will faill with an insufficient balance error.
+
+The coldkey signing the `subnet create` transaction must have a sufficient $\tau$ balance to cover the burn cost of subnet creation, so called because the funds cannot be recovered.
 
 ```console
 Subnet burn cost: τ 1,000.0000
 Your balance of: τ 0.0000 is not enough to burn τ 1,000.0000 to register a subnet.
 ```
+#### Network Rate Limit Error
+
+If you see a network rate limit error, you may need to adjust the `SubtensorInitialNetworkRateLimit` chain state parameter.  
+
+See [Clone and tweak the Subtensor source](./deploy#clone-and-tweak-the-subtensor-source)
+
+### Burn cost
+
+The burn cost for subnet creation is dynamic; it lowers gradually and doubles every time a subnet is created.
 
 :::tip try it live
 
