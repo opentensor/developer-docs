@@ -12,7 +12,7 @@ Prerequisites:
 - [Deploy a Subtensor chain locally](./deploy)
 - [Provision wallets for the sn-creator, miner, and validator users for this tutorial.](./provision-wallets)
 
-## Create subnet (unsuccessful)
+## Create subnet
 
 To access the handy pre-provisioned development "Alice" account on your local chain, use:
 
