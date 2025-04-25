@@ -33,6 +33,20 @@ The coldkey signing the `subnet create` transaction must have a sufficient $\tau
 Subnet burn cost: τ 1,000.0000
 Your balance of: τ 0.0000 is not enough to burn τ 1,000.0000 to register a subnet.
 ```
+
+Transfer funds from the Alice account to cover it and try again. Consult `btcli w list` and carefully check the ss58 address of the destination coldkey (in this case, the one with the name `sn-creator`).
+
+```shell
+btcli wallet transfer \
+--amount 1001 \
+--wallet.name alice \
+--destination "5C9xw4..." \
+--subtensor.chain_endpoint ws://127.0.0.1:9945
+```
+
+
+
+
 #### Network Rate Limit Error
 
 If you see a network rate limit error, you may need to adjust the `SubtensorInitialNetworkRateLimit` chain state parameter.  
@@ -95,65 +109,66 @@ To remedy your liquidity shortfall, transfer $\tau$ from the Alice account and t
 	for fee: τ 0.0001 [y/n]: y
 	🌏  📡 Transferring...
 	```
-1. Create some subnets.
+## Success
+Create some subnets.
 
-	For example:
+For example:
 
-	```shell
-	btcli subnet create \
-	--subnet-name awesome-first-subnet \
-	--wallet.name sn-creator \
-	--subtensor.chain_endpoint ws://127.0.0.1:9945
-	```
-	```console
-	Subnet burn cost: τ 1,000.0000
-	Your balance is: τ 1,001.0000
-	Do you want to burn τ 1,000.0000 to register a subnet? [y/n]:y
-	Enter your password:
-	Decrypting...
-	🌏  📡 Registering subnet..
-	```
+```shell
+btcli subnet create \
+--subnet-name awesome-first-subnet \
+--wallet.name sn-creator \
+--subtensor.chain_endpoint ws://127.0.0.1:9945
+```
+```console
+Subnet burn cost: τ 1,000.0000
+Your balance is: τ 1,001.0000
+Do you want to burn τ 1,000.0000 to register a subnet? [y/n]:y
+Enter your password:
+Decrypting...
+🌏  📡 Registering subnet..
+```
 
 
-	```shell
-	 btcli subnet create \
-	--subnet-name awesome-second-subnet \
-	--wallet.name sn-creator \
-	--subtensor.chain_endpoint ws://127.0.0.1:9945
-	```
+```shell
+ btcli subnet create \
+--subnet-name awesome-second-subnet \
+--wallet.name sn-creator \
+--subtensor.chain_endpoint ws://127.0.0.1:9945
+```
 
-	```console
-	Subnet burn cost: τ 1,999.9405
-	▰▱▱▱▱▱▱ 📡Retrieving lock cost from custom...
-	Your balance is: τ 2,003.0000
-	Do you want to burn τ 1,999.9405 to register a subnet? [y/n]: Please enter Y or N
-	Do you want to burn τ 1,999.9405 to register a subnet? [y/n]: y
-	Enter your password:
-	Decrypting...
-	✅ Registered subnetwork with netuid: 3
-	```
+```console
+Subnet burn cost: τ 1,999.9405
+▰▱▱▱▱▱▱ 📡Retrieving lock cost from custom...
+Your balance is: τ 2,003.0000
+Do you want to burn τ 1,999.9405 to register a subnet? [y/n]: Please enter Y or N
+Do you want to burn τ 1,999.9405 to register a subnet? [y/n]: y
+Enter your password:
+Decrypting...
+✅ Registered subnetwork with netuid: 3
+```
 
 1. List your subnets
-	
-	```shell
-	btcli subnet list \
-	--subtensor.chain_endpoint ws://127.0.0.1:9945
-	```
-	```console
-	                                                         Subnets
-	                                                     Network: custom
-	        ┃             ┃ Price       ┃ Market Cap  ┃              ┃ P (τ_in,    ┃ Stake        ┃             ┃
-	 Netuid ┃ Name        ┃ (τ_in/α_in) ┃ (α * Price) ┃ Emission (τ) ┃ α_in)       ┃ (α_out)      ┃ Supply (α)  ┃ Tempo (k/n)
-	━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━
-	   0    │ τ root      │ 1.0000 τ/Τ  │ τ 0.00      │ τ 0.0000     │ -, -        │ Τ 0.00       │ 0.00 Τ /21M │ -/-
-	   2    │ β           │ 1.0000 τ/β  │ τ 1.00k     │ τ 0.0000     │ τ 1.00k,    │ 0.00 β       │ 1.00k β     │ 29/360
-	        │ awesome-fi… │             │             │              │ 1.00k β     │              │ /21M        │
-	   3    │ γ           │ 1.0000 τ/γ  │ τ 1.00k     │ τ 0.0000     │ τ 1.00k,    │ 0.00 γ       │ 1.00k γ     │ 29/360
-	        │ awesome-se… │             │             │              │ 1.00k γ     │              │ /21M        │
-	   1    │ α apex      │ 1.0000 τ/α  │ τ 11.00     │ τ 0.0000     │ τ 10.00,    │ 1.00 α       │ 11.00 α     │ 29/100
-	        │             │             │             │              │ 10.00 α     │              │ /21M        │
-	────────┼─────────────┼─────────────┼─────────────┼──────────────┼─────────────┼──────────────┼─────────────┼─────────────
-	   4    │             │ τ 3.0       │             │ τ 0.0        │ τ           │              │             │
-	        │             │             │             │              │ 2.01k/29.00 │              │             │
-	        │             │             │             │              │ (6931.03%)  │              │             │
-	```
+
+```shell
+btcli subnet list \
+--subtensor.chain_endpoint ws://127.0.0.1:9945
+```
+```console
+                                                         Subnets
+                                                     Network: custom
+        ┃             ┃ Price       ┃ Market Cap  ┃              ┃ P (τ_in,    ┃ Stake        ┃             ┃
+ Netuid ┃ Name        ┃ (τ_in/α_in) ┃ (α * Price) ┃ Emission (τ) ┃ α_in)       ┃ (α_out)      ┃ Supply (α)  ┃ Tempo (k/n)
+━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━
+   0    │ τ root      │ 1.0000 τ/Τ  │ τ 0.00      │ τ 0.0000     │ -, -        │ Τ 0.00       │ 0.00 Τ /21M │ -/-
+   2    │ β           │ 1.0000 τ/β  │ τ 1.00k     │ τ 0.0000     │ τ 1.00k,    │ 0.00 β       │ 1.00k β     │ 29/360
+        │ awesome-fi… │             │             │              │ 1.00k β     │              │ /21M        │
+   3    │ γ           │ 1.0000 τ/γ  │ τ 1.00k     │ τ 0.0000     │ τ 1.00k,    │ 0.00 γ       │ 1.00k γ     │ 29/360
+        │ awesome-se… │             │             │              │ 1.00k γ     │              │ /21M        │
+   1    │ α apex      │ 1.0000 τ/α  │ τ 11.00     │ τ 0.0000     │ τ 10.00,    │ 1.00 α       │ 11.00 α     │ 29/100
+        │             │             │             │              │ 10.00 α     │              │ /21M        │
+────────┼─────────────┼─────────────┼─────────────┼──────────────┼─────────────┼──────────────┼─────────────┼─────────────
+   4    │             │ τ 3.0       │             │ τ 0.0        │ τ           │              │             │
+        │             │             │             │              │ 2.01k/29.00 │              │             │
+        │             │             │             │              │ (6931.03%)  │              │             │
+```
