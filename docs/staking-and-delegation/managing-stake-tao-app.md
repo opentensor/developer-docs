@@ -286,5 +286,117 @@ This is a network-wide metric.
 A low TAO requirement may reflect that most subnets are currently stable&mdash;either due to low Alpha issuance, sufficient reserves, or low trading activity&mdash;even if a few individual subnets are more volatile.
 :::
 
+### Total Trading Volume (TAO): 1h/1d
+
+#### How it works
+
+Total Trading Volume (TAO) measure the total amount of TAO that has been traded across all subnets over a selected time period&mdash;either the past 1 hour or past 24 hours.
+
+* This includes TAO used to buy or sell Alpha tokens in subnet liquidity pools.
+* It aggregates activity across the entire subnet layer (excluding Root).
+* The TAO shown reflects actual usage: people swapping, entering, or exiting subnets.
+
+By allowing users to toggle between 1-hour and 1-day views, the metric offers insight into short-term surges versus daily trends.
+
+#### Why it matters
+
+This metric matters because ecosystem participants want to monitor total trading volume so they can gauge the overall level of activity and engagement across the subnet layer, assess market sentiment, and determine if capital is flowing through the network.
+
+##### What this metric helps you do
+
+* **Measure network engagement**
+A rise in aggregate trading volume shows that subnet activity is increasing, even if it doesn't specify where.
+It's a high-level signal of ecosystem energy.
+
+* **Detect market momentum**
+Volume spikes often precede price shifts&mdash;if TAO is moving, it means participants are acting. 
+This can suggest speculative momentum, staking reallocation, or new subnet launches.
+
+* **Compare activity over time**
+By viewing 1 hour vs 1 day trends, you can:
+    * Spot real time surges (1h)
+    * Observed more sustained engagement or capital rotation (1d)
+
+:::tip
+This metric does not specify which subnets are responsible for volume increases.
+It reflects overall subnet layer activity, no per-subnet flows. 
+To pinpoint specific hotspots, pair this metric with subnet-level dashboards and Alpha price movements.
+:::
+
+### Cumulative Trading Volume (TAO) since _____
+
+#### How it works
+
+Cumulative Trading Volume (TAO) since _____ measures the total amount of TAO traded across all subnets (excluding Root) from a specific start date up to now.
+* It sums all trading volume across the entire network (excluding Root) over time.
+* It includes all TAO used to buy, sell, or swap Alpha tokens in any subnet's liquidity pool.
+* Unlike **Total Trading Volume**, which shows activity just for the last hour or day, **Cumulative Trading Volume** show the full accumulated total over multiple days up to around a couple months.
+
+In short, Cumulative Trading Volume (TAO) since _____ is a historical running total of trading activity since a specified date (max ~8 weeks).
+
+#### Why it matters
+
+This metric matters because ecosystem participants may want to track cumulative trading volume so they can understand longer-term network growth, adoption trends, and the overall scale of economic activity across subnets.
+
+##### This metric helps you
+
+* **Assess ecosystem growth**: A steadily rising cumulative volume line suggests increasing adoption, engagement, and liquidity over time.
+* **Analyze trend health**: 
+    * If cumulative volume is accelerating, user engagment is growing.
+    * If it flattens out, it may indicate reduced activity or ecosystem stagnation.
+* **Contextualize shorter-term activity**:
+    * While big 1-hour or 1-day spikes in Total Trading Volume are exciting, cumulative volume lets you check if they are **outliers** or part of **a broader growth trend**.
+* **Demonstrate network vitality**: Cumulative volume is a key **health metric** when evaluating the network's attractiveness to new users, investors, and developers.
+
+### TAO on Subnets
+
+#### How it works
+
+TAO in Subnets measures the percentage of **total circulating TAO** that is currently **deposited into subnet AMM liquidity pools&mdash;excluding Root**.
+* It shows what share of all TAO in the ecosystem is actively **supporting Alpha token liquidity** across all subnets.
+* Only TAO inside the AMM pools (available for bying/selling Alpha tokens) counts toward this metric.
+* It does **not include** TAO staked in Root or tAO simply sitting in wallets.
+
+In other words: "*Of all the TAO out there, what percent is locked into subnet economies to enable trading?*"
+
+#### Why it matters
+
+This metric matters because ecosystem participants may often want to track the percentage of TAO committed to subnet liquidity pools so they can gauge network decentralization, liquidity health, and strength of subnet economies in general.
+
+##### This metric helps you
+* **Understand decentralization trends**: Higher percentages suggest more TAO is supporting subnets directly, reducing reliance on Root and enhancing network resilience.
+* **Measure liquidity health**: More TAO in subnets means deeper AMM liquidity&mdash;leading to **smoother trading, lower slippage, and more stable Alpha token prices**.
+* **Evaluate growth and engagement**: Rising TAO commitment into subnets indicates **confidence** in subnet projects, incentives, and Alpha token ecosystems.
+* **Balance capital allocation**: Watching this trend helps participants gauge whether TAO is **flowing into** productive subnet liquidity&mdash;or sitting idle in wallets.
+
+### TAO on Root
+
+#### How it works
+
+TAO on Root measures the percentage of total circulating TAO that is currently **staked or deposited on Subnet 0 (Root)**.
+* This includes TAO that is actively staked to participate in Root's emission reward system.
+* It exludes tAO in subnet AMM pools and TAO sitting idle in wallets.
+* Root (Subnet 0) plays a special role in the network: it serves to anchor emissions, stability, and possibly governance.
+
+In short, this metric answers: "*Of all circulating TAO, what share is currently securing and supporting Root?*"
+
+#### Why it matters
+
+This metric matters because ecosystem participant may often want to track how much TAO is committed to Root, so they can assess the network's security, the health of Root's reward system, and shifts in capital allocation.
+
+##### This metric helps you
+* **Gauge network security and stability**: A higher percentage of TAO on Root suggests **strong confidence in the protocol's core**, providing stability for emissions and ecosystem incentives.
+* **Assess reward dynamics**: More TAO on Root generally means **more competition for staking rewards**&mdash;impacting individual APY and staking strategies.
+* **Watch for capital flows**: Changes in this percentage can signal movement between Root and Subnets:
+    * TAO leaving Root -> potential risk-taking in subnets
+    * TAO moving to Root -> desire for safer, protocol-backed rewards
+* **Understand macro health**: Root's TAO share acts like a **barometer of network risk appetite:
+    * High Root share = conservative, stable period
+    * Lower Root share = adventurous, speculative period
+* 
+
+
+
+
 
 ## Subnet details
