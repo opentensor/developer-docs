@@ -13,7 +13,7 @@ All mining in Bittensor occurs within a subnet. Each subnet independently produc
 
 Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for *you* to mine, given your own expertise and access to hardware.
 
-Browse the subnets and explore links to their code repositories on [Taostats' subnets listings](https://taostats.io/subnets).
+Browse the subnets and explore links to their code repositories on [TAO.app' subnets listings](https://tao.app).
 
 :::tip Typical compute requirements
 Each subnet may have distinct hardware requirements, but this [minimum requirements template for subnet creators](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml) may give an idea of minimum memory, bandwidth and storage requirements for a typical subnet node.

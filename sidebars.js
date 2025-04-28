@@ -38,20 +38,6 @@ const sidebars = {
         "yuma-consensus",        
       ],
     },
-        {
-      type: "category",
-      label: "Dynamic TAO",
-      link: {type: "doc", id: "dynamic-tao/index",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-      "dynamic-tao/dtao-guide",
-      "dynamic-tao/dtao-faq",
-      "dynamic-tao/sdk-cheat-sheet",
-      
-      ],
-    },
-
     {
       type: "category",
       label: "Staking/Delegation",
@@ -150,7 +136,7 @@ const sidebars = {
             "subnets/schedule-coldkey-swap",
           ]
         },
-                {
+    {
       type: "category",
       label: "Tools and Special Features",
       link: {type: "doc", id: "tools",},
@@ -164,6 +150,22 @@ const sidebars = {
         "utilities",
       ],
     },
+
+    {
+      type: "category",
+      label: "Local Development",
+      link: {type: "doc", id: "local-build/deploy",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "local-build/deploy",
+        "local-build/provision-wallets",
+        "local-build/create-subnet",
+        // "local-build/mine-validate"
+      ],
+    },
+
+
 {
       type: "category",
       label: "Subtensor Nodes",
@@ -209,7 +211,20 @@ const sidebars = {
       "senate",
       "governance/senators-btcli-guide"
       ],
+    },            {
+      type: "category",
+      label: "Dynamic TAO",
+      link: {type: "doc", id: "dynamic-tao/index",},
+      collapsible: true,
+      collapsed: true,
+      items: [
+      "dynamic-tao/dtao-guide",
+      "dynamic-tao/dtao-faq",
+      "dynamic-tao/sdk-cheat-sheet",
+      
+      ],
     },
+
     {
       type: "category",
       label: "Release Notes and Updates",

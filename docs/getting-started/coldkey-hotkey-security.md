@@ -45,7 +45,7 @@ To use the Bittensor CLI `btcli` as a permissionless workstation:
 Websites that offer permissionless browsing of Bittensor data include:
 
 - [bittensor.com/scan](https://bittensor.com/scan)
-- [taostats.io](https://taostats.io/)
+- [TAO.app (without using the browser extention to load private key)](https://tao.app)
 
 ## Coldkey workstation
 
