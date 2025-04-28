@@ -393,10 +393,38 @@ This metric matters because ecosystem participant may often want to track how mu
 * **Understand macro health**: Root's TAO share acts like a **barometer of network risk appetite:
     * High Root share = conservative, stable period
     * Lower Root share = adventurous, speculative period
-* 
 
+### TAO in Wallets
 
+TAO in Wallets measures the percentage of total circulating TAO that is not staked on Root, not deposited into subnet AMM pools, and simply held idle in user wallets.
+* This TAO is **not actively earning emissions or providing liquidity.
+* It is **liquid and available**&mdash;meaning users could **stake it, trade it, or move it** at any time.
+* It represents the capital "on the sidelines"&mdash;neither participating in Root's reward system nor helping to sustain subnet economies.
 
+In short, it answers: "*How much TAO is just sitting, ready to be deployed?*"
+
+#### Why it matters
+
+This metric matters because ecosystem participants may want to know how much TAO is sitting idle in wallets so they can assess potential future capital flows, risk appetite, and liquidity pressure in the network.
+
+##### This metric helps you:
+* **Gauge potential capital mobility**: A higher percentage of TAO in wallets suggest **lots of dry powder**&mdash;users could quickly stake, trade, or sell depending on market events.
+* **Predict liquidity shifts**:
+    * A large idle TAO supply could flood into subnets or Root if incentives change.
+    * Alternatively, it could signal **cautious sentiment** if users are holding instead of trading.
+* **Assess market sentiment**: Rising TAO in wallets can imply **uncertainty, caution, or speculative readiness**.
+    * Low TAO in wallets = most capital is already "working" in the system.
+    * High TAO in wallets = participants may be waiting for a reason to engage.
+* **Spot risk of volatility**: Idle TAO can re-enter markets suddenly, leading to **price swings, APY fluctuations, or AMM pressure** if it moves en masse.
+
+:::tip
+Once you have:
+* TAO in Subnets
+* TAO on Root
+* TAO in Wallets
+
+You can explain that 100% of circulating TAO is always split between these three states.
+Watching how TAO shifts between these three can give us insight into the big picture of the network's health, maturity, and momentum.
 
 
 ## Subnet details
