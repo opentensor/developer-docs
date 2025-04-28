@@ -4,7 +4,24 @@ title: "Managing Stake with tao.app"
 
 [Tao.app](https://tao.app) offers a portal to real-time tokenomic data about the Bittensor ecoystems and all its subnets, and allows users to securely manage their stake using the Bittensor wallet browser extension.
 
+At the very top of the main page, there are several metrics which gives some of the most important information an ecosystem user would likely want to be informed with:
+
+* **TAO Price**: The current price of the TAO coin and percentage increase or decrease over the last day.
+* **1D Volume**: The total amount of TAO traded over the last day and the percentage change in this, increase or decrease, over the lst 24 hour period.
+* **MC**: AKA Macro Cap, this measures:
+    * Total combined theoretical value of all subnet Alpha token markets (summed across their own AMM-derived prices and circulating supplies), not just TAO market cap.
+    * Potential network-wide economic value if you *sum the internal subnet economies*.
+    What this means is that:
+    * **Total Market Cap = *Market cap of TAO itself* (TAO circulating supply x TAO price)
+    * MC = *Sum of all Alpha token "market caps"* (Alpha circulating supply x Alpha price for each subnet, summed across all subnets)
+* FDW
+* Block
+
+
+
+
 ## Subnets Explorer
+
 
 
 ## Metrics/dTAO Market Overview
