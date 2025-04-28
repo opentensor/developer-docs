@@ -50,6 +50,7 @@ const sidebars = {
       "dynamic-tao/staking-unstaking-dtao",
       "staking-and-delegation/managing-stake-btcli",
       "staking-and-delegation/managing-stake-sdk",
+      "staking-and-delegation/managing-stake-tao-app",
       "staking-and-delegation/staking-polkadot-js",
       "staking-and-delegation/using-ledger-hw-wallet"],
     },
