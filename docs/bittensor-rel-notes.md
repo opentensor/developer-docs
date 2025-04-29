@@ -18,6 +18,45 @@ Major release to support chain upgrade to [Dynamic TAO](dynamic-tao/dtao-guide.m
 
 See [Bittensor 9.0 Migration Guide](./migration_guide.md).
 
+## Released 17 April 2025
+
+### Bittensor SDK 9.4.0
+
+- Release PRs and Changelog: [Full Changelog v9.3.0...v9.4.0](https://github.com/opentensor/bittensor/compare/v9.3.0...v9.4.0)
+- Added `get_next_epoch_start_block` method to Async/Subtensor.
+- Added compatibility for torch 2.6.0+.
+- Added `start_call` extrinsic to the SDK.
+- Added `timelock` module.
+- Improved/fixed flaky behavior in `test_incentive`, `test_commit_weights`, and `test_set_weights`.
+- Improved error handling in AsyncSubtensor.
+- Fixed async set_subnet_identity_extrinsic signing.
+- Improved e2e tests after new `start_call` limit in subtensor.
+- Updated documentation and links.
+- Removed requirements directory and `rao` endpoint from settings.
+- Various bug fixes and minor enhancements.
+
+---
+
+## Released 9 April 2025
+
+### Bittensor SDK 9.3.0
+
+- Release PRs and Changelog: [Full Changelog v8.5.2...v9.0.0](https://github.com/opentensor/bittensor/compare/v8.5.2...v9.0.0)
+- More E2E tests and improved test coverage.
+- Added all supported Python versions to E2E workflow.
+- Added pypi package and improved Docker image.
+- Major async-substrate overhaul (YAASO).
+- Added alias for `Subtensor.commit` as `set_commitment`.
+- Added methods to fetch metagraph data from the chain.
+- Refactored config.py and metagraph class.
+- Enhanced logging and error handling.
+- Added subnet registration extrinsic.
+- Added Latent Lite endpoint to the SDK.
+- Improved metagraph fields and info dataclasses.
+- Added logging for unexpected header keys in Synapse.
+- Updated default network/endpoint and improved dependency management.
+- Various bug fixes and enhancements.
+
 ## Released 12 December 2024
 
 ### Bittensor SDK 8.5.0
