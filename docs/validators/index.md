@@ -33,6 +33,25 @@ To have a **validator permit** in a given subnet, allowing you to submit miner e
 
 - You must be one of the top 64 validators in the subnet, ranked by stake weight.
 
+## Hotkey Association & Staking (subnet 0, the root subnet, only)
+
+:::tip Root Subnet (Subnet 0) only
+Skip this step if you are not registering a validator on the root subnet (subnet 0)
+:::
+
+```bash
+btcli wallet associate-hotkey --wallet.name  <wallet name> --hotkey <your hotkey>
+```
+Add stake to your validator before registering: 
+
+```bash
+# Stake funds to your hotkey account within the subnet.
+btcli stake add --wallet.name <wallet name> --wallet.hotkey <your validating hotkey>
+```
+:::tip Root Subnet (Subnet 0) only
+In order to be able to set weights in a subnet, you will need a minimum of 1000 of stake weight in the subnet's alpha token.  Stake weight is calculated as TAO * .18 + alpha: 1000 stake weight of alpha in a subnet could be 1000 alpha tokens staked, 18000 TAO staked, or a combination of the two such that the stake weight for the subnet is at least 1000.
+:::
+
 ## Validator registration
 
 To participate as a validator, you must first register your keys with the subnet in order to receive a UID on that subnet.
