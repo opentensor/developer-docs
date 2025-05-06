@@ -214,7 +214,11 @@ const config = {
             position: "left",
             className: "custom_algolia",
           },
-
+          {
+            to: "bittensor-rel-notes",
+            label: "Releases",
+            position: "left",
+          },
           {
             href: "https://github.com/opentensor/developer-docs",
             label: "Docs GitHub",
