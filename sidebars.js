@@ -21,6 +21,11 @@ const sidebars = {
     // 	className: 'sidebarSearch', //  based on Class name it will add search component
     // },
     "index",
+    {
+      type: 'doc',
+      id: 'bittensor-rel-notes',
+      label: 'Releases',
+    },
     "btcli/btcli-playground",
     {
       type: "category",
@@ -225,16 +230,7 @@ const sidebars = {
       ],
     },
 
-    {
-      type: "category",
-      label: "Release Notes and Updates",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "chain-rel-notes",
-        "bittensor-rel-notes",
-      ],
-    },
+    
 
     "errors-and-troubleshooting",
     "media-assets",
