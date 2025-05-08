@@ -243,8 +243,9 @@ const config = {
       footer: {
         copyright: `
 					<div className="copyRight">
-						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • Opentensor Foundation. <span>all rights reserved.</span>
-					</div>
+						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • <a href="https://latent.to/">Latent Holdings</a>, <span>all rights reserved.</span>
+            <a href="mailto:m@latent.to">contact the docs team</a>
+          </div>
 					<a href='https://bittensor.com/'>
 					<img src="img/logo-dark-mode.svg" alt="logo"/>
 					</a>
