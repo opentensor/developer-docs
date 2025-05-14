@@ -2233,7 +2233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/plugin-content-docs@npm:3.7.0":
+"@docusaurus/plugin-content-docs@npm:3.7.0, @docusaurus/plugin-content-docs@npm:^3.4.0":
   version: 3.7.0
   resolution: "@docusaurus/plugin-content-docs@npm:3.7.0"
   dependencies:
@@ -2407,7 +2407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-classic@npm:3.7.0":
+"@docusaurus/theme-classic@npm:3.7.0, @docusaurus/theme-classic@npm:^3.4.0":
   version: 3.7.0
   resolution: "@docusaurus/theme-classic@npm:3.7.0"
   dependencies:
@@ -4116,7 +4116,9 @@ __metadata:
     "@docusaurus/core": "npm:^3.4.0"
     "@docusaurus/module-type-aliases": "npm:^3.3.2"
     "@docusaurus/plugin-client-redirects": "npm:^3.4.0"
+    "@docusaurus/plugin-content-docs": "npm:^3.4.0"
     "@docusaurus/preset-classic": "npm:^3.4.0"
+    "@docusaurus/theme-classic": "npm:^3.4.0"
     "@docusaurus/theme-common": "npm:^3.4.0"
     "@docusaurus/theme-search-algolia": "npm:^3.4.0"
     "@docusaurus/tsconfig": "npm:^3.3.2"
