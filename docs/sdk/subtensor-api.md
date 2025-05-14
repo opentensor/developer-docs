@@ -9,7 +9,6 @@ title: Subtensor API
 
 The SubtensorApi is a unified interface for the Bittensor blockchain. It wraps both the synchronous and asynchronous Subtensor implementations, providing modular access to chain subsystems like wallets, delegates, neurons, and more.
 
-Reference docs: [SubtensorApi](pathname:///python-api/html/autoapi/bittensor/core/subtensor_api/index.html)
 
 ### Modules
 
@@ -28,7 +27,7 @@ All methods are grouped into logical modules for better organization and readabi
 | metagraphs | Metagraph data and operations |
 | neurons | Neuron-level APIs |
 | queries | General query endpoints |
-| stakes | Staking operations |
+| staking | Staking operations |
 | subnets | Subnet access and management |
 | wallets | Wallet creation, import/export |
 </details>
@@ -51,6 +50,8 @@ The behavior of the `SubtensorApi` object is configured with the following param
 | `mock`            | `bool`            | Enables mock mode for testing without connecting to the blockchain.                                         | `False`                        |
 </details>
 
+
+Reference docs: [SubtensorApi](pathname:///python-api/html/autoapi/bittensor/core/subtensor_api/index.html)
 
 ## Basic Usage
 
