@@ -38,6 +38,36 @@ Before you proceed to use EVM on subtensor, make a note of the following:
 1. **EVM smart contract executes on subtensor**: The EVM feature allows the subtensor blockchain to execute Ethereum-compatible smart contracts. Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
 2. **1 TAO = 1e18 on subtensor EVM**: While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
 
+## Available Precompiles
+
+The following precompiles are available on the Bittensor EVM:
+
+### Standard Ethereum Precompiles
+- `ECRecover` (0x1) - Recover the address associated with the public key from elliptic curve signature
+- `Sha256` (0x2) - SHA-256 hash function
+- `Ripemd160` (0x3) - RIPEMD-160 hash function
+- `Identity` (0x4) - Identity function (returns input data)
+- `Modexp` (0x5) - Modular exponentiation
+- `Sha3FIPS256` (0x400) - SHA3-256 hash function (FIPS variant)
+- `ECRecoverPublicKey` (0x401) - Recover the public key from an elliptic curve signature
+
+### Bittensor-Specific Precompiles
+- `Ed25519Verify` - Verify Ed25519 signatures
+- `BalanceTransfer` - Transfer TAO between accounts
+- `StakingPrecompileV2` (0x805) - Main staking operations including:
+  - `addStake` - Add stake to a hotkey
+  - `removeStake` - Remove stake from a hotkey
+  - `moveStake` - Move stake between hotkeys
+  - `transferStake` - Transfer stake between coldkeys
+  - `getTotalColdkeyStake` - Get total stake for a coldkey
+  - `getTotalHotkeyStake` - Get total stake for a hotkey
+  - `getStake` - Get stake between specific hotkey and coldkey
+  - `addProxy` - Add a proxy delegate
+  - `removeProxy` - Remove a proxy delegate
+- `SubnetPrecompile` - Manage subnet operations
+- `MetagraphPrecompile` - Interact with the metagraph
+- `NeuronPrecompile` - Manage neuron operations
+
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
 <ResponsiveCards>

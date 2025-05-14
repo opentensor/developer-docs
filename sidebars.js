@@ -200,11 +200,16 @@ const sidebars = {
         "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
         "evm-tutorials/evm-mainnet-with-metamask-wallet",
+        "evm-tutorials/hardhat-config-for-subtensor-evm",
+        "evm-tutorials/remix-config-for-subtensor-evm",
         "evm-tutorials/transfer-from-metamask-to-ss58",
         "evm-tutorials/transfer-between-two-h160-accounts",
-        "evm-tutorials/hardhat-config-for-subtensor-evm",
         "evm-tutorials/staking-precompile",
         "evm-tutorials/ed25519-verify-precompile",
+        "evm-tutorials/subnet-precompile",
+        "evm-tutorials/metagraph-precompile",
+        "evm-tutorials/neuron-precompile",
+        "evm-tutorials/troubleshooting"
       ],
     },
     {
