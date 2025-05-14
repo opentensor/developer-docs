@@ -1,0 +1,2 @@
+# Exclude large media files exceeding Cloudflare Pages 25 MiB limit
+static/bittensor-media-assets/Bittensor-mediaassets-2024Dec02.zip
