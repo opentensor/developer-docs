@@ -178,6 +178,7 @@ const sidebars = {
       collapsible: true,
       collapsed: true,
       items: [
+          "subtensor-nodes/subtensor-api",
         "subtensor-nodes/subtensor-node-requirements",
         "subtensor-nodes/using-source",
         "subtensor-nodes/using-docker",
