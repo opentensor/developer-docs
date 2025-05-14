@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bittensor.core.extrinsics.asyncex.registration &#8212; Bittensor SDK Docs  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/bittensor-custom.css?v=c1dfe055" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/bittensor/core/extrinsics/asyncex/registration';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.svg" class="logo__image only-light" alt="Bittensor SDK Docs  documentation - Home"/>
+    <img src="../../../../../_static/logo-dark-mode.svg" class="logo__image only-dark pst-js-only" alt="Bittensor SDK Docs  documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../autoapi/index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../autoapi/bittensor/index.html">bittensor</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../autoapi/bittensor/core/index.html">bittensor.core</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/async_subtensor/index.html">bittensor.core.async_subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/axon/index.html">bittensor.core.axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/chain_data/index.html">bittensor.core.chain_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/config/index.html">bittensor.core.config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/dendrite/index.html">bittensor.core.dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/errors/index.html">bittensor.core.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/extrinsics/index.html">bittensor.core.extrinsics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/metagraph/index.html">bittensor.core.metagraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/settings/index.html">bittensor.core.settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/stream/index.html">bittensor.core.stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/subtensor/index.html">bittensor.core.subtensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/subtensor_api/index.html">bittensor.core.subtensor_api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/synapse/index.html">bittensor.core.synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/tensor/index.html">bittensor.core.tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/threadpool/index.html">bittensor.core.threadpool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/timelock/index.html">bittensor.core.timelock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/core/types/index.html">bittensor.core.types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/index.html">bittensor.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/axon_utils/index.html">bittensor.utils.axon_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/balance/index.html">bittensor.utils.balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/btlogging/index.html">bittensor.utils.btlogging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/easy_imports/index.html">bittensor.utils.easy_imports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/formatting/index.html">bittensor.utils.formatting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/mock/index.html">bittensor.utils.mock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/networking/index.html">bittensor.utils.networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/registration/index.html">bittensor.utils.registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/subnets/index.html">bittensor.utils.subnets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/substrate_utils/index.html">bittensor.utils.substrate_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/version/index.html">bittensor.utils.version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../autoapi/bittensor/utils/weight_utils/index.html">bittensor.utils.weight_utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/opentensor/btcli/issues/new?title=Issue%20on%20page%20%2F_modules/bittensor/core/extrinsics/asyncex/registration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for bittensor.core.extrinsics.asyncex.registration</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides asynchronous functionalities for registering a wallet with the subtensor network using</span>
+<span class="sd">Proof-of-Work (PoW).</span>
+
+<span class="sd">Extrinsics:</span>
+<span class="sd">- register_extrinsic: Registers the wallet to the subnet.</span>
+<span class="sd">- burned_register_extrinsic: Registers the wallet to chain by recycling TAO.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span> <span class="nn">bittensor.utils</span> <span class="kn">import</span> <span class="n">unlock_key</span><span class="p">,</span> <span class="n">format_error_message</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.btlogging</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">bittensor.utils.registration</span> <span class="kn">import</span> <span class="n">log_no_torch_error</span><span class="p">,</span> <span class="n">create_pow_async</span><span class="p">,</span> <span class="n">torch</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">bittensor_wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+    <span class="kn">from</span> <span class="nn">bittensor.core.async_subtensor</span> <span class="kn">import</span> <span class="n">AsyncSubtensor</span>
+    <span class="kn">from</span> <span class="nn">bittensor.utils.registration.pow</span> <span class="kn">import</span> <span class="n">POWSolution</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">_do_burned_register</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs a burned register extrinsic call to the Subtensor chain.</span>
+
+<span class="sd">    This method sends a registration transaction to the Subtensor blockchain using the burned register mechanism.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        subtensor (bittensor.core.async_subtensor.AsyncSubtensor): Subtensor instance.</span>
+<span class="sd">        netuid (int): The network unique identifier to register on.</span>
+<span class="sd">        wallet (bittensor_wallet.Wallet): The wallet to be registered.</span>
+<span class="sd">        wait_for_inclusion (bool): Whether to wait for the transaction to be included in a block. Default is False.</span>
+<span class="sd">        wait_for_finalization (bool): Whether to wait for the transaction to be finalized. Default is True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[bool, Optional[str]]: A tuple containing a boolean indicating success or failure, and an optional error</span>
+<span class="sd">            message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># create extrinsic call</span>
+    <span class="n">call</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">compose_call</span><span class="p">(</span>
+        <span class="n">call_module</span><span class="o">=</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">,</span>
+        <span class="n">call_function</span><span class="o">=</span><span class="s2">&quot;burned_register&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;netuid&quot;</span><span class="p">:</span> <span class="n">netuid</span><span class="p">,</span>
+            <span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">sign_and_send_extrinsic</span><span class="p">(</span>
+        <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="burned_register_extrinsic">
+<a class="viewcode-back" href="../../../../../autoapi/bittensor/core/extrinsics/asyncex/registration/index.html#bittensor.core.extrinsics.asyncex.registration.burned_register_extrinsic">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">burned_register_extrinsic</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers the wallet to chain by recycling TAO.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        subtensor (bittensor.core.async_subtensor.AsyncSubtensor): Subtensor instance.</span>
+<span class="sd">        wallet (bittensor.wallet): Bittensor wallet object.</span>
+<span class="sd">        netuid (int): The ``netuid`` of the subnet to register on.</span>
+<span class="sd">        wait_for_inclusion (bool): If set, waits for the extrinsic to enter a block before returning ``True``, or</span>
+<span class="sd">            returns ``False`` if the extrinsic fails to enter the block within the timeout.</span>
+<span class="sd">        wait_for_finalization (bool): If set, waits for the extrinsic to be finalized on the chain before returning</span>
+<span class="sd">            ``True``, or returns ``False`` if the extrinsic fails to be finalized within the timeout.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        success (bool): Flag is ``True`` if extrinsic was finalized or included in the block. If we did not wait for</span>
+<span class="sd">            finalization / inclusion, the response is ``True``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">block_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">get_chain_head</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">subnet_exists</span><span class="p">(</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;:cross_mark: [red]Failed error:[/red] subnet [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue] does not exist.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">unlock</span> <span class="o">:=</span> <span class="n">unlock_key</span><span class="p">(</span><span class="n">wallet</span><span class="p">))</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">unlock</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;:satellite: [magenta]Checking Account on subnet[/magenta] [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue][magenta] ...[/magenta]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># We could do this as_completed because we don&#39;t actually need old_balance and recycle</span>
+    <span class="c1"># if neuron is null, but the complexity isn&#39;t worth it considering the small performance</span>
+    <span class="c1"># gains we&#39;d hypothetically receive in this situation</span>
+    <span class="n">neuron</span><span class="p">,</span> <span class="n">old_balance</span><span class="p">,</span> <span class="n">recycle_amount</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">subtensor</span><span class="o">.</span><span class="n">get_neuron_for_pubkey_and_subnet</span><span class="p">(</span>
+            <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span>
+        <span class="p">),</span>
+        <span class="n">subtensor</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span><span class="p">),</span>
+        <span class="n">subtensor</span><span class="o">.</span><span class="n">recycle</span><span class="p">(</span><span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">neuron</span><span class="o">.</span><span class="n">is_null</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:white_heavy_check_mark: [green]Already Registered[/green]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">uid: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">netuid: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">hotkey: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">hotkey</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">coldkey: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">coldkey</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;:satellite: [magenta]Recycling TAO for Registration...[/magenta]&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recycling </span><span class="si">{</span><span class="n">recycle_amount</span><span class="si">}</span><span class="s2"> to register on subnet:</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">success</span><span class="p">,</span> <span class="n">err_msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_do_burned_register</span><span class="p">(</span>
+        <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">,</span>
+        <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;:cross_mark: [red]Failed error:[/red] </span><span class="si">{</span><span class="n">err_msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="c1"># Successful registration, final check for neuron and pubkey</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:satellite: [magenta]Checking Balance...[/magenta]&quot;</span><span class="p">)</span>
+        <span class="n">block_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">get_chain_head</span><span class="p">()</span>
+        <span class="n">new_balance</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span>
+            <span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span>
+        <span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Balance: [blue]</span><span class="si">{</span><span class="n">old_balance</span><span class="si">}</span><span class="s2">[/blue] :arrow_right: [green]</span><span class="si">{</span><span class="n">new_balance</span><span class="si">}</span><span class="s2">[/green]&quot;</span>
+        <span class="p">)</span>
+        <span class="n">is_registered</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">is_hotkey_registered</span><span class="p">(</span>
+            <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_registered</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:white_heavy_check_mark: [green]Registered[/green]&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># neuron not found, try again</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;:cross_mark: [red]Unknown error. Neuron not found.[/red]&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">_do_pow_register</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">pow_result</span><span class="p">:</span> <span class="s2">&quot;POWSolution&quot;</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends a (POW) register extrinsic to the chain.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        subtensor (bittensor.core.async_subtensor.AsyncSubtensor): The subtensor to send the extrinsic to.</span>
+<span class="sd">        netuid (int): The subnet to register on.</span>
+<span class="sd">        wallet (bittensor.wallet): The wallet to register.</span>
+<span class="sd">        pow_result (POWSolution): The PoW result to register.</span>
+<span class="sd">        wait_for_inclusion (bool): If ``True``, waits for the extrinsic to be included in a block. Default to `False`.</span>
+<span class="sd">        wait_for_finalization (bool): If ``True``, waits for the extrinsic to be finalized. Default to `True`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        success (bool): ``True`` if the extrinsic was included in a block.</span>
+<span class="sd">        error (Optional[str]): ``None`` on success or not waiting for inclusion/finalization, otherwise the error</span>
+<span class="sd">            message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># create extrinsic call</span>
+    <span class="n">call</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">compose_call</span><span class="p">(</span>
+        <span class="n">call_module</span><span class="o">=</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">,</span>
+        <span class="n">call_function</span><span class="o">=</span><span class="s2">&quot;register&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;netuid&quot;</span><span class="p">:</span> <span class="n">netuid</span><span class="p">,</span>
+            <span class="s2">&quot;block_number&quot;</span><span class="p">:</span> <span class="n">pow_result</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+            <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="n">pow_result</span><span class="o">.</span><span class="n">nonce</span><span class="p">,</span>
+            <span class="s2">&quot;work&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">byte_</span><span class="p">)</span> <span class="k">for</span> <span class="n">byte_</span> <span class="ow">in</span> <span class="n">pow_result</span><span class="o">.</span><span class="n">seal</span><span class="p">],</span>
+            <span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+            <span class="s2">&quot;coldkey&quot;</span><span class="p">:</span> <span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">sign_and_send_extrinsic</span><span class="p">(</span>
+        <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="register_extrinsic">
+<a class="viewcode-back" href="../../../../../autoapi/bittensor/core/extrinsics/asyncex/registration/index.html#bittensor.core.extrinsics.asyncex.registration.register_extrinsic">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">register_extrinsic</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_allowed_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">output_in_place</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">cuda</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dev_id</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">tpb</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+    <span class="n">num_processes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">update_interval</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">log_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers the wallet to the chain.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        subtensor (bittensor.core.async_subtensor.AsyncSubtensor): initialized AsyncSubtensor object to use for chain</span>
+<span class="sd">            interactions</span>
+<span class="sd">        wallet (bittensor_wallet.Wallet): Bittensor wallet object.</span>
+<span class="sd">        netuid (int): The ``netuid`` of the subnet to register on.</span>
+<span class="sd">        wait_for_inclusion (bool): If set, waits for the extrinsic to enter a block before returning `True`, or returns</span>
+<span class="sd">            `False` if the extrinsic fails to enter the block within the timeout.</span>
+<span class="sd">        wait_for_finalization (bool): If set, waits for the extrinsic to be finalized on the chain before returning</span>
+<span class="sd">            `True`, or returns `False` if the extrinsic fails to be finalized within the timeout.</span>
+<span class="sd">        max_allowed_attempts (int): Maximum number of attempts to register the wallet.</span>
+<span class="sd">        output_in_place (bool): Whether the POW solving should be outputted to the console as it goes along.</span>
+<span class="sd">        cuda (bool): If `True`, the wallet should be registered using CUDA device(s).</span>
+<span class="sd">        dev_id: The CUDA device id to use, or a list of device ids.</span>
+<span class="sd">        tpb: The number of threads per block (CUDA).</span>
+<span class="sd">        num_processes: The number of processes to use to register.</span>
+<span class="sd">        update_interval: The number of nonces to solve between updates.</span>
+<span class="sd">        log_verbose: If `True`, the registration process will log more information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `True` if extrinsic was finalized or included in the block. If we did not wait for finalization/inclusion, the</span>
+<span class="sd">            response is `True`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">block_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">get_chain_head</span><span class="p">()</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;[magenta]Checking subnet status... [/magenta]&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">subnet_exists</span><span class="p">(</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;:cross_mark: [red]Failed error:[/red] subnet [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue] does not exist.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;:satellite: [magenta]Checking Account on subnet[/magenta] [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue] [magenta]...[/magenta]&quot;</span>
+    <span class="p">)</span>
+    <span class="n">neuron</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_neuron_for_pubkey_and_subnet</span><span class="p">(</span>
+        <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span> <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">block_hash</span><span class="o">=</span><span class="n">block_hash</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">neuron</span><span class="o">.</span><span class="n">is_null</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:white_heavy_check_mark: [green]Already Registered[/green]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">uid: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">netuid: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">hotkey: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">hotkey</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">coldkey: [blue]</span><span class="si">{</span><span class="n">neuron</span><span class="o">.</span><span class="n">coldkey</span><span class="si">}</span><span class="s2">[/blue]&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Registration hotkey: &lt;blue&gt;</span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="si">}</span><span class="s2">&lt;/blue&gt;, &lt;green&gt;Public&lt;/green&gt; coldkey: &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;&lt;blue&gt;</span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="si">}</span><span class="s2">&lt;/blue&gt; in the network: &lt;blue&gt;</span><span class="si">{</span><span class="n">subtensor</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2">&lt;/blue&gt;.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="p">:</span>
+        <span class="n">log_no_torch_error</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Attempt rolling registration.</span>
+    <span class="n">attempts</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;:satellite: [magenta]Registering...[/magenta] [blue](</span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">max_allowed_attempts</span><span class="si">}</span><span class="s2">)[/blue]&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># Solve latest POW.</span>
+        <span class="k">if</span> <span class="n">cuda</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+            <span class="n">pow_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_pow_async</span><span class="p">(</span>
+                <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">,</span>
+                <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+                <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+                <span class="n">output_in_place</span><span class="o">=</span><span class="n">output_in_place</span><span class="p">,</span>
+                <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+                <span class="n">dev_id</span><span class="o">=</span><span class="n">dev_id</span><span class="p">,</span>
+                <span class="n">tpb</span><span class="o">=</span><span class="n">tpb</span><span class="p">,</span>
+                <span class="n">num_processes</span><span class="o">=</span><span class="n">num_processes</span><span class="p">,</span>
+                <span class="n">update_interval</span><span class="o">=</span><span class="n">update_interval</span><span class="p">,</span>
+                <span class="n">log_verbose</span><span class="o">=</span><span class="n">log_verbose</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pow_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_pow_async</span><span class="p">(</span>
+                <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">,</span>
+                <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+                <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+                <span class="n">output_in_place</span><span class="o">=</span><span class="n">output_in_place</span><span class="p">,</span>
+                <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+                <span class="n">num_processes</span><span class="o">=</span><span class="n">num_processes</span><span class="p">,</span>
+                <span class="n">update_interval</span><span class="o">=</span><span class="n">update_interval</span><span class="p">,</span>
+                <span class="n">log_verbose</span><span class="o">=</span><span class="n">log_verbose</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># pow failed</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pow_result</span><span class="p">:</span>
+            <span class="c1"># might be registered already on this subnet</span>
+            <span class="n">is_registered</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">is_hotkey_registered</span><span class="p">(</span>
+                <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_registered</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;:white_heavy_check_mark: [green]Already registered on netuid:[/green] [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue]&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># pow successful, proceed to submit pow to chain for registration</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:satellite: [magenta]Submitting POW...[/magenta]&quot;</span><span class="p">)</span>
+            <span class="c1"># check if pow result is still valid</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="k">await</span> <span class="n">pow_result</span><span class="o">.</span><span class="n">is_stale_async</span><span class="p">(</span><span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">):</span>
+                <span class="n">result</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_do_pow_register</span><span class="p">(</span>
+                    <span class="n">subtensor</span><span class="o">=</span><span class="n">subtensor</span><span class="p">,</span>
+                    <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span>
+                    <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+                    <span class="n">pow_result</span><span class="o">=</span><span class="n">pow_result</span><span class="p">,</span>
+                    <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+                    <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="n">success</span><span class="p">,</span> <span class="n">err_msg</span> <span class="o">=</span> <span class="n">result</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                    <span class="c1"># Look error here</span>
+                    <span class="c1"># https://github.com/opentensor/subtensor/blob/development/pallets/subtensor/src/errors.rs</span>
+
+                    <span class="k">if</span> <span class="s2">&quot;HotKeyAlreadyRegisteredInSubNet&quot;</span> <span class="ow">in</span> <span class="n">err_msg</span><span class="p">:</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;:white_heavy_check_mark: [green]Already Registered on subnet:[/green] &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;[blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue].&quot;</span>
+                        <span class="p">)</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;:cross_mark: [red]Failed[/red]: </span><span class="si">{</span><span class="n">err_msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+                <span class="c1"># Successful registration, final check for neuron and pubkey</span>
+                <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;:satellite: Checking Registration status...&quot;</span><span class="p">)</span>
+                    <span class="n">is_registered</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">is_hotkey_registered</span><span class="p">(</span>
+                        <span class="n">netuid</span><span class="o">=</span><span class="n">netuid</span><span class="p">,</span> <span class="n">hotkey_ss58</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">is_registered</span><span class="p">:</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+                            <span class="s2">&quot;:white_heavy_check_mark: [green]Registered[/green]&quot;</span>
+                        <span class="p">)</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># neuron not found, try again</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                            <span class="s2">&quot;:cross_mark: [red]Unknown error. Neuron not found.[/red]&quot;</span>
+                        <span class="p">)</span>
+                        <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Exited loop because pow is no longer valid.</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[red]POW is stale.[/red]&quot;</span><span class="p">)</span>
+                <span class="c1"># Try again.</span>
+
+        <span class="k">if</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_allowed_attempts</span><span class="p">:</span>
+            <span class="c1"># Failed registration, retry pow</span>
+            <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;:satellite: [magenta]Failed registration, retrying pow ...[/magenta] &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;[blue](</span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">max_allowed_attempts</span><span class="si">}</span><span class="s2">)[/blue]&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Failed to register after max attempts.</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[red]No more attempts.[/red]&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="register_subnet_extrinsic">
+<a class="viewcode-back" href="../../../../../autoapi/bittensor/core/extrinsics/asyncex/registration/index.html#bittensor.core.extrinsics.asyncex.registration.register_subnet_extrinsic">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">register_subnet_extrinsic</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Registers a new subnetwork on the Bittensor blockchain asynchronously.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        subtensor (AsyncSubtensor): The async subtensor interface to send the extrinsic.</span>
+<span class="sd">        wallet (Wallet): The wallet to be used for subnet registration.</span>
+<span class="sd">        wait_for_inclusion (bool): If set, waits for the extrinsic to enter a block before returning true.</span>
+<span class="sd">        wait_for_finalization (bool): If set, waits for the extrinsic to be finalized on the chain before returning true.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the subnet registration was successful, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">balance</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkeypub</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">)</span>
+    <span class="n">burn_cost</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">get_subnet_burn_cost</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">burn_cost</span> <span class="o">&gt;</span> <span class="n">balance</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Insufficient balance </span><span class="si">{</span><span class="n">balance</span><span class="si">}</span><span class="s2"> to register subnet. Current burn cost is </span><span class="si">{</span><span class="n">burn_cost</span><span class="si">}</span><span class="s2"> TAO&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">call</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">compose_call</span><span class="p">(</span>
+        <span class="n">call_module</span><span class="o">=</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">,</span>
+        <span class="n">call_function</span><span class="o">=</span><span class="s2">&quot;register_network&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+            <span class="s2">&quot;mechid&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="n">extrinsic</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">create_signed_extrinsic</span><span class="p">(</span>
+        <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span> <span class="n">keypair</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">coldkey</span>
+    <span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">submit_extrinsic</span><span class="p">(</span>
+        <span class="n">extrinsic</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">wait_for_finalization</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">wait_for_inclusion</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">is_success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Failed to register subnet: </span><span class="si">{</span><span class="n">format_error_message</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="n">response</span><span class="o">.</span><span class="n">error_message</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+        <span class="s2">&quot;:white_heavy_check_mark: [green]Successfully registered subnet[/green]&quot;</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="set_subnet_identity_extrinsic">
+<a class="viewcode-back" href="../../../../../autoapi/bittensor/core/extrinsics/asyncex/registration/index.html#bittensor.core.extrinsics.asyncex.registration.set_subnet_identity_extrinsic">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">set_subnet_identity_extrinsic</span><span class="p">(</span>
+    <span class="n">subtensor</span><span class="p">:</span> <span class="s2">&quot;AsyncSubtensor&quot;</span><span class="p">,</span>
+    <span class="n">wallet</span><span class="p">:</span> <span class="s2">&quot;Wallet&quot;</span><span class="p">,</span>
+    <span class="n">netuid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">subnet_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">github_repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">subnet_contact</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">subnet_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">discord</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">additional</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">wait_for_inclusion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wait_for_finalization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the identity information for a given subnet.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        subtensor (AsyncSubtensor): An instance of the Subtensor class to interact with the blockchain.</span>
+<span class="sd">        wallet (Wallet): A wallet instance used to sign and submit the extrinsic.</span>
+<span class="sd">        netuid (int): The unique ID for the subnet.</span>
+<span class="sd">        subnet_name (str): The name of the subnet to assign the identity information.</span>
+<span class="sd">        github_repo (str): URL of the GitHub repository related to the subnet.</span>
+<span class="sd">        subnet_contact (str): Subnet&#39;s contact information, e.g., email or contact link.</span>
+<span class="sd">        subnet_url (str): The URL of the subnet&#39;s primary web portal.</span>
+<span class="sd">        discord (str): Discord server or contact for the subnet.</span>
+<span class="sd">        description (str): A textual description of the subnet.</span>
+<span class="sd">        additional (str): Any additional metadata or information related to the subnet.</span>
+<span class="sd">        wait_for_inclusion (bool): Whether to wait for the extrinsic inclusion in a block (default: False).</span>
+<span class="sd">        wait_for_finalization (bool): Whether to wait for the extrinsic finalization in a block (default: True).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[bool, str]: A tuple where the first element indicates success or failure (True/False), and the second</span>
+<span class="sd">            element contains a descriptive message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">unlock</span> <span class="o">:=</span> <span class="n">unlock_key</span><span class="p">(</span><span class="n">wallet</span><span class="p">))</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">unlock</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">unlock</span><span class="o">.</span><span class="n">message</span>
+
+    <span class="n">call</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">compose_call</span><span class="p">(</span>
+        <span class="n">call_module</span><span class="o">=</span><span class="s2">&quot;SubtensorModule&quot;</span><span class="p">,</span>
+        <span class="n">call_function</span><span class="o">=</span><span class="s2">&quot;set_subnet_identity&quot;</span><span class="p">,</span>
+        <span class="n">call_params</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;hotkey&quot;</span><span class="p">:</span> <span class="n">wallet</span><span class="o">.</span><span class="n">hotkey</span><span class="o">.</span><span class="n">ss58_address</span><span class="p">,</span>
+            <span class="s2">&quot;netuid&quot;</span><span class="p">:</span> <span class="n">netuid</span><span class="p">,</span>
+            <span class="s2">&quot;subnet_name&quot;</span><span class="p">:</span> <span class="n">subnet_name</span><span class="p">,</span>
+            <span class="s2">&quot;github_repo&quot;</span><span class="p">:</span> <span class="n">github_repo</span><span class="p">,</span>
+            <span class="s2">&quot;subnet_contact&quot;</span><span class="p">:</span> <span class="n">subnet_contact</span><span class="p">,</span>
+            <span class="s2">&quot;subnet_url&quot;</span><span class="p">:</span> <span class="n">subnet_url</span><span class="p">,</span>
+            <span class="s2">&quot;discord&quot;</span><span class="p">:</span> <span class="n">discord</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+            <span class="s2">&quot;additional&quot;</span><span class="p">:</span> <span class="n">additional</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">subtensor</span><span class="o">.</span><span class="n">substrate</span><span class="o">.</span><span class="n">submit_extrinsic</span><span class="p">(</span>
+        <span class="n">call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span>
+        <span class="n">wallet</span><span class="o">=</span><span class="n">wallet</span><span class="p">,</span>
+        <span class="n">wait_for_inclusion</span><span class="o">=</span><span class="n">wait_for_inclusion</span><span class="p">,</span>
+        <span class="n">wait_for_finalization</span><span class="o">=</span><span class="n">wait_for_finalization</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">wait_for_finalization</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">wait_for_inclusion</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Identities for subnet </span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2"> are sent to the chain.&quot;</span>
+
+    <span class="k">if</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">is_success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">success</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;:white_heavy_check_mark: [green]Identities for subnet[/green] [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue] [green]are set.[/green]&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Identities for subnet </span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2"> are set.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">error_message</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;:cross_mark: Failed to set identity for subnet [blue]</span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">[/blue]: </span><span class="si">{</span><span class="n">error_message</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Failed to set identity for subnet </span><span class="si">{</span><span class="n">netuid</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error_message</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Opentensor Foundation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Opentensor Foundation.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
