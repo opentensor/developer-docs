@@ -48,9 +48,6 @@ Add stake to your validator before registering:
 # Stake funds to your hotkey account within the subnet.
 btcli stake add --wallet.name <wallet name> --wallet.hotkey <your validating hotkey>
 ```
-:::tip Root Subnet (Subnet 0) only
-In order to be able to set weights in a subnet, you will need a minimum of 1000 of stake weight in the subnet's alpha token.  Stake weight is calculated as TAO * .18 + alpha: 1000 stake weight of alpha in a subnet could be 1000 alpha tokens staked, 18000 TAO staked, or a combination of the two such that the stake weight for the subnet is at least 1000.
-:::
 
 ## Validator registration
 
