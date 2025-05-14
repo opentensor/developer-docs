@@ -5,7 +5,7 @@ import {
   useSidebarBreadcrumbs,
   useHomePageRoute,
 } from '@docusaurus/theme-common/internal';
-import { useDoc } from "@docusaurus/theme-common/internal";
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';
