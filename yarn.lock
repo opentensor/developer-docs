@@ -1965,7 +1965,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:^3.8.1":
+"@docsearch/react@npm:^3.5.2, @docsearch/react@npm:^3.8.1":
   version: 3.9.0
   resolution: "@docsearch/react@npm:3.9.0"
   dependencies:
@@ -2444,7 +2444,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-common@npm:3.7.0":
+"@docusaurus/theme-common@npm:3.7.0, @docusaurus/theme-common@npm:^3.4.0":
   version: 3.7.0
   resolution: "@docusaurus/theme-common@npm:3.7.0"
   dependencies:
@@ -2468,7 +2468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-search-algolia@npm:3.7.0":
+"@docusaurus/theme-search-algolia@npm:3.7.0, @docusaurus/theme-search-algolia@npm:^3.4.0":
   version: 3.7.0
   resolution: "@docusaurus/theme-search-algolia@npm:3.7.0"
   dependencies:
@@ -4112,10 +4112,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "bittensor-docs@workspace:."
   dependencies:
+    "@docsearch/react": "npm:^3.5.2"
     "@docusaurus/core": "npm:^3.4.0"
     "@docusaurus/module-type-aliases": "npm:^3.3.2"
     "@docusaurus/plugin-client-redirects": "npm:^3.4.0"
     "@docusaurus/preset-classic": "npm:^3.4.0"
+    "@docusaurus/theme-common": "npm:^3.4.0"
+    "@docusaurus/theme-search-algolia": "npm:^3.4.0"
     "@docusaurus/tsconfig": "npm:^3.3.2"
     "@docusaurus/types": "npm:^3.3.2"
     "@gracefullight/docusaurus-plugin-vercel-analytics": "npm:^1.0.0"
