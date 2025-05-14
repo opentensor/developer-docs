@@ -54,6 +54,7 @@ The following precompiles are available on the Bittensor EVM:
 ### Bittensor-Specific Precompiles
 - `Ed25519Verify` - Verify Ed25519 signatures
 - `BalanceTransfer` - Transfer TAO between accounts
+- `StakingPrecompile`
 - `StakingPrecompileV2` (0x805) - Main staking operations including:
   - `addStake` - Add stake to a hotkey
   - `removeStake` - Remove stake from a hotkey
@@ -67,6 +68,7 @@ The following precompiles are available on the Bittensor EVM:
 - `SubnetPrecompile` - Manage subnet operations
 - `MetagraphPrecompile` - Interact with the metagraph
 - `NeuronPrecompile` - Manage neuron operations
+- UidLookupPrecompile
 
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
