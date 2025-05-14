@@ -10,7 +10,7 @@ import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
-import Unlisted from '@theme/Unlisted';
+import Unlisted from "@theme/ContentVisibility/Unlisted";
 import styles from './styles.module.css';
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
