@@ -44,7 +44,7 @@ The behavior of the `SubtensorApi` object is configured with the following param
 | `config`          | `Config` or `None`| Pre-built Bittensor configuration object.                                                                  | `None`                         |
 | `async_subtensor` | `bool`            | Whether to use the asynchronous version of the API.                                                        | `False`                        |
 | `legacy_methods`  | `bool`            | If `True`, all methods from the legacy `Subtensor` class are added to this class.                           | `False`                        |
-| `fallback_chains` | `list[str]` or `None`| List of fallback chains to use if the primary network is unavailable.                                      | `None`                         |
+| `fallback_endpoints` | `list[str]` or `None`| List of fallback endpoints to use if the primary network is unavailable.                                      | `None`                         |
 | `retry_forever`   | `bool`            | If `True`, continuously retries on connection errors until successful.                                      | `False`                        |
 | `log_verbose`     | `bool`            | Enables detailed logging output when set to `True`.                                                        | `False`                        |
 | `mock`            | `bool`            | Enables mock mode for testing without connecting to the blockchain.                                         | `False`                        |
@@ -103,14 +103,14 @@ print(sub.bonds(0))  # Classic method usage
 ## Advanced Usage
 ### Retry and Fallback RPC Nodes
 
-Enable redundancy and resilience with fallback chains and retry logic:
+Enable redundancy and resilience with fallback endpoints and retry logic:
 
 ```python
 import bittensor as bt
 
 sub = bt.SubtensorApi(
     "local",
-    fallback_chains=[
+    fallback_endpoints=[
         "wss://fallback1.taonetwork.com:9944",
         "wss://lite.sub.latent.to:443",
     ],
