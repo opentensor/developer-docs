@@ -31,12 +31,23 @@ Full Ethereum virtual machine (EVM) compatibility is now available on subtensor 
 - Interact with deployed smart contracts on the subtensor blockchain
 - Access standard Ethereum JSON-RPC methods from this EVM compatibility layer on [Subtensor](https://github.com/opentensor/subtensor), Bittensor's substrate blockchain.
 
-## Before you proceed
+:::tip notes
+| note | description |
+|---------|-------------|
+| EVM smart contracts execute on **Bittensor, not Ethereum blockchain** | Operations performed by subtensor EVM are executed solely on the subtensor blockchain, *not* on the Ethereum blockchain. |
+| 1 TAO = 1e18 on subtensor EVM | While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. <br></br>For [example](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58): `const value = BigInt(0.5 * 1e18).toString();`. |
+:::
+:::note networks
+|           | MAINNET                             | TESTNET                              | LOCALNET                 |
+|:---------------------|:------------------------------------|:-------------------------------------|:-------------------------|
+| **RPC URL**          | https://lite.chain.opentensor.ai    | https://test.chain.opentensor.ai     | http://localhost:9944    |
+| **Chain ID**         | 964                                 | 945                                  | _see below_              |
+| **Test TAO**         | None                                | Available on request                 | Use Alice account        |
 
-Before you proceed to use EVM on subtensor, make a note of the following:
+:::
+See section [EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.
 
-1. **EVM smart contract executes on subtensor**: The EVM feature allows the subtensor blockchain to execute Ethereum-compatible smart contracts. Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.
-2. **1 TAO = 1e18 on subtensor EVM**: While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+
 
 ## Available Precompiles
 
@@ -73,11 +84,11 @@ The following precompiles are available on the Bittensor EVM:
 Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
 
 <ResponsiveCards>
-    <ResponsiveCard
-    icon={FaNetworkWired}
-    title='Subtensor Networks'
-    link='/evm-tutorials/subtensor-networks'
-    body='RPC endpoints and Chain IDs for Mainnet and Testnets.' />
+    <ResponsiveCard 
+    icon={GiHiveMind}
+    title='Bittensor vs Ethereum Smart Contracts'
+    link='/evm-tutorials/evm-on-subtensor'
+    body='A beginner-friendly introduction to EVM on Bittensor.' />
     <ResponsiveCard
     icon={FaNetworkWired}
     title='Configure Hardhat for subtensor EVM'
@@ -88,11 +99,6 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='Configure Remix IDE for subtensor EVM'
     link='/evm-tutorials/remix-config-for-subtensor-evm'
     body='Remix IDE configuration to use with subtensor EVM.' />
-    <ResponsiveCard 
-    icon={GiHiveMind}
-    title='EVM on Subtensor: Basics'
-    link='/evm-tutorials/evm-on-subtensor'
-    body='A beginner-friendly introduction to EVM on Bittensor.' />
     <ResponsiveCard 
     icon={GiHiveMind}
     title='Install Dependencies'
