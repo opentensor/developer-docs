@@ -4,9 +4,56 @@ title: Subtensor API
 
 # Subtensor API
 
-The SubtensorApi is a high-level, unified interface to interact with the Bittensor blockchain. It wraps both the synchronous and asynchronous Subtensor implementations, providing modular access to chain subsystems like wallets, delegates, neurons, and more.
+
+## Overview
+
+The SubtensorApi is a unified interface for the Bittensor blockchain. It wraps both the synchronous and asynchronous Subtensor implementations, providing modular access to chain subsystems like wallets, delegates, neurons, and more.
+
+
+### Modules
+
+All methods are grouped into logical modules for better organization and readability. Some methods may belong to more than one group if they span multiple functional areas. This does not compromise the internal logic — rather, it enhances discoverability and cohesion. Method equivalence between `SubtensorApi` and the original `Subtensor` is automatically verified by test coverage on every pull request (PR).
+
+
+<details>
+  <summary>Subsystem modules</summary>
+
+| Property | Description |
+|----------|-------------|
+| chain | Blockchain interaction methods |
+| commitments | Commitment and reveal logic |
+| delegates | Delegate management tools |
+| extrinsics | Transaction construction and signing |
+| metagraphs | Metagraph data and operations |
+| neurons | Neuron-level APIs |
+| queries | General query endpoints |
+| staking | Staking operations |
+| subnets | Subnet access and management |
+| wallets | Wallet creation, import/export |
+</details>
+
+### Configuration
+
+The behavior of the `SubtensorApi` object is configured with the following parameters.
+<details>
+  <summary>Parameters</summary>
+
+| Parameter         | Type              | Description                                                                                              | Default Value                 |
+|-------------------|-------------------|----------------------------------------------------------------------------------------------------------|-------------------------------|
+| `network`         | `str` or `None`   | The network to connect to. If not specified, defaults to `"finney"`.                                        | `None` (interpreted as "finney")|
+| `config`          | `Config` or `None`| Pre-built Bittensor configuration object.                                                                  | `None`                         |
+| `async_subtensor` | `bool`            | Whether to use the asynchronous version of the API.                                                        | `False`                        |
+| `legacy_methods`  | `bool`            | If `True`, all methods from the legacy `Subtensor` class are added to this class.                           | `False`                        |
+| `fallback_endpoints` | `list[str]` or `None`| List of fallback endpoints to use if default or provided network is not available.                                      | `None`                         |
+| `retry_forever`   | `bool`            | If `True`, continuously retries on connection errors until successful.                                      | `False`                        |
+| `log_verbose`     | `bool`            | Enables detailed logging output when set to `True`.                                                        | `False`                        |
+| `mock`            | `bool`            | Enables mock mode for testing without connecting to the blockchain.                                         | `False`                        |
+</details>
+
 
 Reference docs: [SubtensorApi](pathname:///python-api/html/autoapi/bittensor/core/subtensor_api/index.html)
+
+## Basic Usage
 
 :::tip
 Upgrade to the [latest Bittensor release](https://pypi.org/project/bittensor/).
@@ -15,9 +62,7 @@ pip install bittensor
 ```
 :::
 
-## Basic Usage
-
-### Synchronous Usage (Default)
+### Synchronous (Default)
 
 ```python
 import bittensor as bt
@@ -29,7 +74,7 @@ print(sub.delegates.get_delegate_identities())
 sub.chain.tx_rate_limit()
 ```
 
-### Asynchronous Usage
+### Asynchronous
 
 ```python
 import bittensor as bt
@@ -44,8 +89,7 @@ async def main():
 
 asyncio.run(main())
 ```
-
-## Legacy Method Support
+### Legacy Method Support
 
 You can enable all legacy methods from the original `Subtensor` class directly on this interface:
 
@@ -56,16 +100,17 @@ sub = bt.SubtensorApi(legacy_methods=True)
 print(sub.bonds(0))  # Classic method usage
 ```
 
-## Retry and Fallback RPC Nodes
+## Advanced Usage
+### Retry and Fallback RPC Nodes
 
-Enable redundancy and resilience with fallback chains and retry logic:
+Enable redundancy and resilience with fallback endpoints and retry logic:
 
 ```python
 import bittensor as bt
 
 sub = bt.SubtensorApi(
     "local",
-    fallback_chains=[
+    fallback_endpoints=[
         "wss://fallback1.taonetwork.com:9944",
         "wss://lite.sub.latent.to:443",
     ],
@@ -74,7 +119,7 @@ sub = bt.SubtensorApi(
 print(sub.block)
 ```
 
-## Mock Mode for Testing
+### Mock Mode for Testing
 
 Use `mock=True` to simulate the interface without connecting to the blockchain:
 
@@ -85,26 +130,7 @@ sub = bt.SubtensorApi(mock=True)
 print(sub)  # Output: "<Network: None, Chain: Mock, Sync version>"
 ```
 
-## Subsystem Overview
-
-All methods are grouped into logical modules for better organization and readability. Some methods may belong to more than one group if they span multiple functional areas. This does not compromise the internal logic — rather, it enhances discoverability and cohesion. Method equivalence between `SubtensorApi` and the original `Subtensor` is automatically verified by test coverage on every pull request (PR).
-
-The following properties are modular access points for specialized subsystems:
-
-| Property | Description |
-|----------|-------------|
-| chain | Blockchain interaction methods |
-| commitments | Commitment and reveal logic |
-| delegates | Delegate management tools |
-| extrinsics | Transaction construction and signing |
-| metagraphs | Metagraph data and operations |
-| neurons | Neuron-level APIs |
-| queries | General query endpoints |
-| stakes | Staking operations |
-| subnets | Subnet access and management |
-| wallets | Wallet creation, import/export |
-
-## Custom Configuration Support
+### Custom Configuration
 
 You can pass a pre-built `Config` object:
 
