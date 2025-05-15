@@ -195,6 +195,11 @@ const config = {
           },
           {
             position: "left",
+            label: "SubtensorAPI",
+            to: "sdk/subtensor-api",
+          },
+          {
+            position: "left",
             label: "Bittensor SDK Reference",
             to: "bt-api-ref",
           },
