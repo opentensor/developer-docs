@@ -1,11 +1,11 @@
 ---
-title: "EVM Localnet with Metamask Wallet"
+title: "Metamask with Local Chain"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM Localnet with Metamask Wallet
+# Metamask with Local Chain
 
 This tutorial is for how to set up your Metamask wallet to use with EVM localnet on Bittensor. You must run either this step or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
 

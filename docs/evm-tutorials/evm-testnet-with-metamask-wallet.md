@@ -1,10 +1,10 @@
 ---
-title: "EVM Testnet with Metamask Wallet"
+title: "Metamask with Testnet"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM Testnet with Metamask Wallet
+# Metamask with Testnet
 
 This tutorial is for how to set up your Metamask wallet to use with the testnet on Bittensor. You must run this step before you can run other tutorials in this section. 
 

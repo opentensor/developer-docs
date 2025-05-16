@@ -27,13 +27,9 @@ import { GrStakeholder } from "react-icons/gr";
 
 Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to deploy most EVM smart contracts on subtensor without changing the code, interact with deployed smart contracts on the subtensor blockchain, and access standard Ethereum JSON-RPC methods.
 
-:::tip notes
-| note | description |
-|---------|-------------|
-| EVM smart contracts execute on **Bittensor, not Ethereum blockchain** | Operations performed by subtensor EVM are executed solely on the subtensor blockchain, *not* on the Ethereum blockchain. |
-| 1 TAO = 1e18 on subtensor EVM | While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. <br></br>For [example](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58): `const value = BigInt(0.5 * 1e18).toString();`. |
-:::
-:::note networks
+Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain, *not* on the Ethereum blockchain.**
+
+## Networks
 
 You can deploy smart contracts on Bittensor main net (aka 'finney'), test network, or on your own locally deployed Bittensor chain.
 <details>
@@ -45,18 +41,20 @@ You can deploy smart contracts on Bittensor main net (aka 'finney'), test networ
 | **RPC URL**          | https://lite.chain.opentensor.ai    | https://test.chain.opentensor.ai     | http://localhost:9944    |
 | **Chain ID**         | 964                                 | 945                                  | _see below_              |
 | **Test TAO**         | None                                | Available on request                 | Use [Alice account](../local-build/provision-wallets#access-the-alice-account)        |
+|Set-up Guide|[EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet)|[EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.|
 </details>
-:::
 
-See section [EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.
+
+
 
 
 
 ## Available Precompiles
 
 The following precompiles are available on the Bittensor EVM:
+<details>
+  <summary>Standard Ethereum Precompiles</summary>
 
-### Standard Ethereum Precompiles
 - `ECRecover` (0x1) - Recover the address associated with the public key from elliptic curve signature
 - `Sha256` (0x2) - SHA-256 hash function
 - `Ripemd160` (0x3) - RIPEMD-160 hash function
@@ -64,8 +62,10 @@ The following precompiles are available on the Bittensor EVM:
 - `Modexp` (0x5) - Modular exponentiation
 - `Sha3FIPS256` (0x400) - SHA3-256 hash function (FIPS variant)
 - `ECRecoverPublicKey` (0x401) - Recover the public key from an elliptic curve signature
+</details>
+<details>
+  <summary>Bittensor-Specific Precompiles</summary>
 
-### Bittensor-Specific Precompiles
 - `Ed25519Verify` - Verify Ed25519 signatures
 - `BalanceTransfer` - Transfer TAO between accounts
 - `StakingPrecompile`
@@ -83,30 +83,44 @@ The following precompiles are available on the Bittensor EVM:
 - `MetagraphPrecompile` - Interact with the metagraph
 - `NeuronPrecompile` - Manage neuron operations
 - UidLookupPrecompile
+</details>
 
-Run the below tutorials to learn how to use the EVM feature on the Bittensor blockchain. 
+## Ethereum vs Bittensor EVM Smart Contracts
 
-<ResponsiveCards>
-    <ResponsiveCard 
-    icon={GiHiveMind}
-    title='Bittensor vs Ethereum Smart Contracts'
-    link='/evm-tutorials/evm-on-subtensor'
-    body='A beginner-friendly introduction to EVM on Bittensor.' />
-    <ResponsiveCard
-    icon={FaNetworkWired}
-    title='Configure Hardhat for subtensor EVM'
-    link='/evm-tutorials/hardhat-config-for-subtensor-evm'
-    body='Using Hardhat? Configure it to work with subtensor EVM.' />
-    <ResponsiveCard
-    icon={FaNetworkWired}
-    title='Configure Remix IDE for subtensor EVM'
-    link='/evm-tutorials/remix-config-for-subtensor-evm'
-    body='Remix IDE configuration to use with subtensor EVM.' />
+
+On the Ethereum network, nodes such as full nodes, validator nodes and archive nodes run the Ethereum Virtual Environment (EVM) run-time environment. Smart contracts operate under this EVM. See the below high-level diagram.
+
+When we say “smart contracts on Bittensor” we refer to the new EVM compability feature in the Bittensor subtensor blockchain. When this EVM feature is turned ON, it allows the subtensor blockchain to execute Ethereum-compatible smart contracts. **Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.** 
+
+
+<left>
+<ThemedImage
+alt="Local blockchain vs public subtensor"
+sources={{
+    light: useBaseUrl('/img/docs/2-EVM-block-diagram.svg'),
+    dark: useBaseUrl('/img/docs/dark-2-EVM-block-diagram.svg'),
+  }}
+style={{width: 400}}
+/>
+</left>
+<right>
+<ThemedImage
+alt="Local blockchain vs public subtensor"
+sources={{
+    light: useBaseUrl('/img/docs/EVM-subtensor-block-diagram.svg'),
+    dark: useBaseUrl('/img/docs/dark-EVM-subtensor-block-diagram.svg'),
+  }}
+style={{width: 400}}
+/>
+</right>
+
+
+<ResponsiveCards>    
     <ResponsiveCard 
     icon={GiHiveMind}
     title='Install Dependencies'
     link='/evm-tutorials/install'
-    body='Get started by installing dependencies first.' />
+    body='Get started by installing dependencies first.' />    
     <ResponsiveCard
     icon={BiSolidNetworkChart}
     title='EVM Testnet with Metamask'
@@ -122,6 +136,16 @@ Run the below tutorials to learn how to use the EVM feature on the Bittensor blo
     title='EVM Mainnet with Metamask'
     link='/evm-tutorials/evm-mainnet-with-metamask-wallet'
     body='Learn how to set up your Metamask wallet with EVM mainnet.' />
+    <ResponsiveCard
+    icon={FaNetworkWired}
+    title='Configure Hardhat for subtensor EVM'
+    link='/evm-tutorials/hardhat-config-for-subtensor-evm'
+    body='Using Hardhat? Configure it to work with subtensor EVM.' />
+    <ResponsiveCard
+    icon={FaNetworkWired}
+    title='Configure Remix IDE for subtensor EVM'
+    link='/evm-tutorials/remix-config-for-subtensor-evm'
+    body='Remix IDE configuration to use with subtensor EVM.' />    
     <ResponsiveCard
     icon={GiCardExchange}
     title='TAO transfer from Metamask to SS58'
