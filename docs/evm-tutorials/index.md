@@ -1,5 +1,5 @@
 ---
-title: "EVM smart contracts on Bittensor"
+title: "Bittensor EVM Smart Contracts"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
@@ -23,13 +23,9 @@ import { BiSolidNetworkChart } from "react-icons/bi";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { GrStakeholder } from "react-icons/gr";
 
-# EVM smart contracts on Bittensor
+# Bittensor EVM Smart Contracts
 
-Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to:
-
-- Deploy most EVM smart contracts on subtensor without changing the code
-- Interact with deployed smart contracts on the subtensor blockchain
-- Access standard Ethereum JSON-RPC methods from this EVM compatibility layer on [Subtensor](https://github.com/opentensor/subtensor), Bittensor's substrate blockchain.
+Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to deploy most EVM smart contracts on subtensor without changing the code, interact with deployed smart contracts on the subtensor blockchain, and access standard Ethereum JSON-RPC methods.
 
 :::tip notes
 | note | description |
@@ -38,13 +34,20 @@ Full Ethereum virtual machine (EVM) compatibility is now available on subtensor 
 | 1 TAO = 1e18 on subtensor EVM | While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. <br></br>For [example](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58): `const value = BigInt(0.5 * 1e18).toString();`. |
 :::
 :::note networks
+
+You can deploy smart contracts on Bittensor main net (aka 'finney'), test network, or on your own locally deployed Bittensor chain.
+<details>
+  <summary>Network details</summary>
+
+
 |           | MAINNET                             | TESTNET                              | LOCALNET                 |
 |:---------------------|:------------------------------------|:-------------------------------------|:-------------------------|
 | **RPC URL**          | https://lite.chain.opentensor.ai    | https://test.chain.opentensor.ai     | http://localhost:9944    |
 | **Chain ID**         | 964                                 | 945                                  | _see below_              |
-| **Test TAO**         | None                                | Available on request                 | Use Alice account        |
-
+| **Test TAO**         | None                                | Available on request                 | Use [Alice account](../local-build/provision-wallets#access-the-alice-account)        |
+</details>
 :::
+
 See section [EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.
 
 

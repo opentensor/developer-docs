@@ -190,7 +190,7 @@ const sidebars = {
     
     {
       type: "category",
-      label: "EVM smart contracts on Bittensor",
+      label: "Bittensor EVM Smart Contracts",
       link: {type: "doc", id: "evm-tutorials/index",},
       collapsible: true,
       collapsed: true,

@@ -1,11 +1,11 @@
 ---
-title: "Bittensor vs Ethereum Smart Contracts"
+title: "Ethereum vs Bittensor EVM Smart Contracts"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Bittensor vs Ethereum Smart Contracts
+# Ethereum vs Bittensor EVM Smart Contracts
 
 This document explains how EVM for Bittensor is different from EVM for Ethereum.
 
