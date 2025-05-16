@@ -187,26 +187,48 @@ const sidebars = {
         "subtensor-nodes/subtensor-error-messages",
       ],
     },
-    
     {
-      type: "category",
-      label: "EVM smart contracts on Bittensor",
-      link: {type: "doc", id: "evm-tutorials/index",},
-      collapsible: true,
-      collapsed: true,
-      items: [
-        "evm-tutorials/evm-on-subtensor",
-        "evm-tutorials/install",
-        "evm-tutorials/evm-testnet-with-metamask-wallet",
+          type: 'category',
+          label: 'Bittensor EVM: Tooling and Configuration',
+          link: {type: "doc", id: "evm-tutorials/index"},
+          items:[
+          
+          "evm-tutorials/install",        
+          "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
         "evm-tutorials/evm-mainnet-with-metamask-wallet",
+        "evm-tutorials/hardhat-config-for-subtensor-evm",
+        "evm-tutorials/remix-config-for-subtensor-evm",
+                "evm-tutorials/troubleshooting"
+          ]
+        },
+        {
+          type: 'category',
+          link: {type: "doc", id: "evm-tutorials/transfer-from-metamask-to-ss58"},
+          label: 'Bittensor EVM: Examples and Precompiles',
+          items:[
         "evm-tutorials/transfer-from-metamask-to-ss58",
         "evm-tutorials/transfer-between-two-h160-accounts",
-        "evm-tutorials/hardhat-config-for-subtensor-evm",
         "evm-tutorials/staking-precompile",
         "evm-tutorials/ed25519-verify-precompile",
-      ],
-    },
+        "evm-tutorials/subnet-precompile",
+        "evm-tutorials/metagraph-precompile",
+        "evm-tutorials/neuron-precompile",
+          ]
+        },
+    // {
+    //   type: "category",
+    //   label: "Bittensor EVM Smart Contracts",
+    //   link: {type: "doc", id: "evm-tutorials/index",},
+    //   collapsible: true,
+    //   collapsed: true,
+    //   items: [
+    //     "evm-tutorials/install",      
+    //     ,
+
+
+    //   ],
+    // },
     {
       type: "category",
       label: "Governance",

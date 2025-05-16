@@ -31,7 +31,11 @@ You must run either [EVM Localnet with Metamask Wallet](./evm-localnet-with-meta
 3. Configure the amount to be sent. In this example we are using large numbers so that the result is visible in Metamask: Because Metamask doesn't respect decimals of 9 and always defaults to 18 decimals. In production environment 0.1 TAO will match to "100000000000" (10^8), while for this demonstration we have to use "100000000000000000" (10^17), which will appear as "0.1 TAO" in Metamask, but will actually be equal to 100000000 TAO (10^8 TAO).
 
     :::tip 1 TAO = 1e18 on subtensor EVM
-    While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. Also see this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+
+    In Bittensor EVM,  1 TAO should be written as $1e18$
+    
+    For [example](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58): `const value = BigInt(0.5 * 1e18).toString();`
+
     :::
 
     ```js

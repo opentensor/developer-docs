@@ -33,7 +33,7 @@ Test network tokens have no real value. Before managing liquidity on Bittensor m
 
 ## View TAO balance
 
-To stake, you'll first need some TAO. Inquire in Discord to obtain TAO on Bittensor test network.
+To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/830068283314929684) to obtain TAO on Bittensor test network.
 
 To ensure you are targeting the test network, run `btcli config set`, select network, and set it to `test`.
 

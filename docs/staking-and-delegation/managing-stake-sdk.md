@@ -20,7 +20,7 @@ Minimum transaction amount for stake/unstake/move/transfer: 500,000 RAO or 0.000
 
 ## Check your TAO balance
 
-To stake, you'll first need some TAO. Inquire in Discord to obtain TAO on Bittensor test network.
+To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/830068283314929684) to obtain TAO on Bittensor test network.
 
 :::danger
 The funds in a crypto wallet are only as secure as your private key and/or seed phrase, and the devices that have access to these.

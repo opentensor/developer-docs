@@ -1,10 +1,10 @@
 ---
-title: "EVM Testnet with Metamask Wallet"
+title: "Metamask with Testnet"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM Testnet with Metamask Wallet
+# Metamask with Testnet
 
 This tutorial is for how to set up your Metamask wallet to use with the testnet on Bittensor. You must run this step before you can run other tutorials in this section. 
 
@@ -43,7 +43,7 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 ## Step 3 Obtain TAO
 
-Next, request testnet TAO in the Bittensor community Discord. 
+Next, request testnet TAO in the Bittensor community [Discord](https://discord.com/channels/799672011265015819/830068283314929684). 
 
 ## Step 4. Copy Metamask wallet private key into config
 

@@ -49,8 +49,10 @@ Run:
 node transfer.js
 ```
 
-:::tip 1 TAO = 1e18 on subtensor EVM
-While working with the subtensor EVM, 1 TAO should be written as 1 followed by 18 zeroes, i.e., 1e18. See this code example: [https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58).
+:::tip
+In Bittensor EVM,  1 TAO should be written as $1e18$
+
+For [example](https://github.com/opentensor/evm-bittensor/blob/main/examples/withdraw.js#L58): `const value = BigInt(0.5 * 1e18).toString();`
 :::
 
 Then, run:
