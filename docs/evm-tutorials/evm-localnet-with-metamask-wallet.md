@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Metamask with Local Chain
 
-This tutorial is for how to set up your Metamask wallet to use with EVM localnet on Bittensor. You must run either this step or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
+This page covers how to set up your Metamask wallet to use with EVM localnet on Bittensor. You must run either this step or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
 
 :::tip blog post: EVM on Bittensor
 If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.

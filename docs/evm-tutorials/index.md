@@ -29,6 +29,17 @@ Full Ethereum virtual machine (EVM) compatibility is now available on subtensor 
 
 Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain, *not* on the Ethereum blockchain.**
 
+See: [Examples and Precompiles](./examples.md)
+
+The following Bittensor-specific precompiles are available:
+- [Ed25519Verify](./ed25519-verify-precompile.md) - Verify Ed25519 signatures
+- [BalanceTransfer](./transfer-between-two-h160-accounts.md) - Transfer TAO between accounts
+- [StakingPrecompile](./staking-precompile.md) - Manage staking operations
+- [StakingPrecompileV2](./staking-precompile.md) - Enhanced staking operations
+- [SubnetPrecompile](./subnet-precompile.md) - Manage subnet operations
+- [MetagraphPrecompile](./metagraph-precompile.md) - Interact with the metagraph
+- [NeuronPrecompile](./neuron-precompile.md) - Manage neuron operations
+
 ## Networks
 
 You can deploy smart contracts on Bittensor main net (aka 'finney'), test network, or on your own locally deployed Bittensor chain.
@@ -44,53 +55,11 @@ You can deploy smart contracts on Bittensor main net (aka 'finney'), test networ
 |Set-up Guide|[EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet)|[EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.|
 </details>
 
-
-
-
-
-
-## Available Precompiles
-
-The following precompiles are available on the Bittensor EVM:
-<details>
-  <summary>Standard Ethereum Precompiles</summary>
-
-- `ECRecover` (0x1) - Recover the address associated with the public key from elliptic curve signature
-- `Sha256` (0x2) - SHA-256 hash function
-- `Ripemd160` (0x3) - RIPEMD-160 hash function
-- `Identity` (0x4) - Identity function (returns input data)
-- `Modexp` (0x5) - Modular exponentiation
-- `Sha3FIPS256` (0x400) - SHA3-256 hash function (FIPS variant)
-- `ECRecoverPublicKey` (0x401) - Recover the public key from an elliptic curve signature
-</details>
-<details>
-  <summary>Bittensor-Specific Precompiles</summary>
-
-- `Ed25519Verify` - Verify Ed25519 signatures
-- `BalanceTransfer` - Transfer TAO between accounts
-- `StakingPrecompile`
-- `StakingPrecompileV2` (0x805) - Main staking operations including:
-  - `addStake` - Add stake to a hotkey
-  - `removeStake` - Remove stake from a hotkey
-  - `moveStake` - Move stake between hotkeys
-  - `transferStake` - Transfer stake between coldkeys
-  - `getTotalColdkeyStake` - Get total stake for a coldkey
-  - `getTotalHotkeyStake` - Get total stake for a hotkey
-  - `getStake` - Get stake between specific hotkey and coldkey
-  - `addProxy` - Add a proxy delegate
-  - `removeProxy` - Remove a proxy delegate
-- `SubnetPrecompile` - Manage subnet operations
-- `MetagraphPrecompile` - Interact with the metagraph
-- `NeuronPrecompile` - Manage neuron operations
-- UidLookupPrecompile
-</details>
-
 ## Ethereum vs Bittensor EVM Smart Contracts
-
 
 On the Ethereum network, nodes such as full nodes, validator nodes and archive nodes run the Ethereum Virtual Environment (EVM) run-time environment. Smart contracts operate under this EVM. See the below high-level diagram.
 
-When we say “smart contracts on Bittensor” we refer to the new EVM compability feature in the Bittensor subtensor blockchain. When this EVM feature is turned ON, it allows the subtensor blockchain to execute Ethereum-compatible smart contracts. **Note that all operations performed by this new subtensor EVM feature are executed solely on the subtensor blockchain, not on the Ethereum blockchain.** 
+**Note that all operations performed by Bittensor EVM are executed solely on the Bittensor blockchain, not on the Ethereum blockchain.** 
 
 
 <left>

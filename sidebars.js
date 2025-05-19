@@ -189,10 +189,10 @@ const sidebars = {
     },
     {
           type: 'category',
-          label: 'Bittensor EVM: Tooling and Configuration',
+          label: 'Bittensor EVM',
           link: {type: "doc", id: "evm-tutorials/index"},
           items:[
-          
+          "evm-tutorials/index",
           "evm-tutorials/install",        
           "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
@@ -204,9 +204,10 @@ const sidebars = {
         },
         {
           type: 'category',
-          link: {type: "doc", id: "evm-tutorials/transfer-from-metamask-to-ss58"},
+          link: {type: "doc", id: "evm-tutorials/examples"},
           label: 'Bittensor EVM: Examples and Precompiles',
           items:[
+          "evm-tutorials/examples",
         "evm-tutorials/transfer-from-metamask-to-ss58",
         "evm-tutorials/transfer-between-two-h160-accounts",
         "evm-tutorials/staking-precompile",
