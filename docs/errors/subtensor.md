@@ -1,424 +1,420 @@
 ---
-title: "Subtensor Errors"
+title: "Subtensor Standard Errors"
 ---
 
-# Subtensor Errors
+# Subtensor Standard Errors
 
 Subtensor errors are specific to the Bittensor blockchain implementation. These errors are defined in the Subtensor Rust codebase and can occur during various blockchain operations.
 
 Related: 
 - [Custom Errors](./custom.md) - Bittensor's custom error codes
-- [Substrate Errors](./substrate.md) - Errors from the underlying Substrate framework 
+- [Substrate Errors](https://polkadot.js.org/docs/substrate/errors/) - Errors from the underlying Substrate framework 
 
     
 ## Network and Subnet Errors
 
-### SubNetworkDoesNotExist
+### `SubNetworkDoesNotExist`
 
- The subnet does not exist
+The specified subnet does not exist.
 
-### RootNetworkDoesNotExist
+### `RootNetworkDoesNotExist`
 
- The root network does not exist
+The root network does not exist.
+<!-- Why would this ever happen? only local build? -->
 
-### SubnetNotExists
+### `SubnetNotExists`
 
- Trying to perform action on non-existent subnet
+Trying to perform action on non-existent subnet.
 
-### NotRootSubnet
+### `NotRootSubnet`
 
- Netuid does not match for setting root network weights
+Netuid does not match for setting root network weights.
 
-### CanNotSetRootNetworkWeights
+### `CanNotSetRootNetworkWeights`
 
- Cannot set weights for the root network
+Cannot set weights for the root network.
 
-### RegistrationNotPermittedOnRootSubnet
+### `RegistrationNotPermittedOnRootSubnet`
 
- Operation is not permitted on the root subnet
+Operation is not permitted on the root subnet.
 
-### AllNetworksInImmunity
+### `AllNetworksInImmunity`
 
- All subnets are in the immunity period
+All subnets are in the immunity period.
+<!-- umm why? -->
 
-### MechanismDoesNotExist
+### `MechanismDoesNotExist`
 
- Trying to register a subnet into a mechanism that does not exist
+Trying to register a subnet into a mechanism that does not exist.
+<!-- wth does this mean? -->
 
-### SubNetRegistrationDisabled
+### `SubNetRegistrationDisabled`
 
- Registration is disabled for this subnet
+Registration is disabled for this subnet.
 
-### NoNeuronIdAvailable
+### `NoNeuronIdAvailable`
 
- No neuron ID is available in the subnet
+No neuron ID is available in the subnet.
 
 ## Hotkey and Coldkey Errors
 
+### `HotKeyNotRegisteredInSubNet`
 
-### HotKeyNotRegisteredInSubNet
+The hotkey is not registered in the specified subnet.
 
- The hotkey is not registered in subnet
+### `HotKeyAccountNotExists`
 
-### HotKeyAccountNotExists
+The specified hotkey does not exist.
 
- The hotkey does not exist
+### `HotKeyNotRegisteredInNetwork`
 
-### HotKeyNotRegisteredInNetwork
+The hotkey is not registered in the specified subnet.
 
- The hotkey is not registered in any subnet
+### `NonAssociatedColdKey`
 
-### NonAssociatedColdKey
+Request made by a coldkey that is not associated with the hotkey account.
 
- Request made by a coldkey that is not associated with the hotkey account
+### `HotKeyAlreadyRegisteredInSubNet`
 
-### HotKeyAlreadyRegisteredInSubNet
+The caller is requesting a redundant registration for a neuron.
 
- The caller is requesting registering a neuron which already exists
+### `NewHotKeyIsSameWithOld`
 
-### NewHotKeyIsSameWithOld
+The new hotkey is the same as old one.
 
- The new hotkey is the same as old one
+### `HotKeyAlreadyDelegate`
 
-### HotKeyAlreadyDelegate
+The hotkey is attempting to become a delegate when already a delegate.
 
- The hotkey is attempting to become a delegate when already a delegate
+### `TransactorAccountShouldBeHotKey`
 
-### TransactorAccountShouldBeHotKey
+The hotkey is required to be the origin.
 
- The hotkey is required to be the origin
+### `NewColdKeyIsHotkey`
 
-### NewColdKeyIsHotkey
+New coldkey is hotkey.
 
- New coldkey is hotkey
+### `ColdKeyAlreadyAssociated`
 
-### ColdKeyAlreadyAssociated
+The coldkey has already been swapped.
 
- The coldkey has already been swapped
+### `ColdkeyIsInArbitration`
 
-### ColdkeyIsInArbitration
+The coldkey is in arbitration.
 
- The coldkey is in arbitration
+### `UnableToRecoverPublicKey`
 
-### UnableToRecoverPublicKey
+Public key cannot be recovered.
 
- Public key cannot be recovered
+### `InvalidRecoveredPublicKey`
 
-### InvalidRecoveredPublicKey
-
- Recovered public key is invalid
+Recovered public key is invalid.
 
 ## Stake and Balance Errors
 
+### `NotEnoughStake`
 
-### NotEnoughStake
+The caller does not have enough stake to perform this action.
 
- The caller does not have enough stake to perform this action
+### `NotEnoughStakeToWithdraw`
 
-### NotEnoughStakeToWithdraw
+Not enough stake to withdraw.
 
- Not enough stake to withdraw
+### `NotEnoughStakeToSetWeights`
 
-### NotEnoughStakeToSetWeights
+Less than minimum stake required to set weights.
 
- Less than minimum stake required to set weights
+### `NotEnoughStakeToSetChildkeys`
 
-### NotEnoughStakeToSetChildkeys
+Parent hotkey doesn't have enough own stake.
 
- Parent hotkey doesn't have enough own stake
+### `NotEnoughBalanceToStake`
 
-### NotEnoughBalanceToStake
+Not enough balance in coldkey account.
 
- Not enough balance in coldkey account
+### `BalanceWithdrawalError`
 
-### BalanceWithdrawalError
+Could not withdraw from coldkey account.
 
- Could not withdraw from coldkey account
+### `ZeroBalanceAfterWithdrawn`
 
-### ZeroBalanceAfterWithdrawn
+Balance would be zero after withdrawal.
 
- Balance would be zero after withdrawal
+### `StakeTooLowForRoot`
 
-### StakeTooLowForRoot
+Hotkey with too little stake attempting to join root subnet.
 
- Hotkey with too little stake attempting to join root subnet
+### `NotEnoughBalanceToPaySwapHotKey`
 
-### NotEnoughBalanceToPaySwapHotKey
+Not enough balance to pay swapping hotkey.
 
- Not enough balance to pay swapping hotkey
+### `NotEnoughBalanceToPaySwapColdKey`
 
-### NotEnoughBalanceToPaySwapColdKey
+Not enough balance to pay for the swap.
 
- Not enough balance to pay for the swap
+### `AmountTooLow`
 
-### AmountTooLow
+Stake amount is too low.
 
- Stake amount is too low
+### `ZeroMaxStakeAmount`
 
-### ZeroMaxStakeAmount
+Zero max stake amount.
 
- Zero max stake amount
+### `CannotUnstakeLock`
 
-### CannotUnstakeLock
+Cannot unstake lock amount.
 
- Cannot unstake lock amount
+### `NotEnoughAlphaOutToRecycle`
 
-### NotEnoughAlphaOutToRecycle
+Not enough AlphaOut to recycle.
 
- Not enough AlphaOut to recycle
+### `CannotBurnOrRecycleOnRootSubnet`
 
-### CannotBurnOrRecycleOnRootSubnet
+Cannot burn/recycle TAO from root subnet.
 
- Cannot burn/recycle TAO from root subnet
+### `InsufficientLiquidity`
 
-### InsufficientLiquidity
+Not enough liquidity in the pool.
 
- Not enough liquidity in the pool
+### `SlippageTooHigh`
 
-### SlippageTooHigh
+Transaction slippage is above your limit.
 
- Transaction slippage is above your limit
+### `TransferDisallowed`
 
-### TransferDisallowed
-
- Transfers are disallowed on this subnet
+Transfers are disallowed on this subnet.
 
 ## Weight Setting Errors
 
+### `NeuronNoValidatorPermit`
 
-### NeuronNoValidatorPermit
+Attempting to set non-self weights without being a permitted validator.
 
- Attempting to set non-self weights without being a permitted validator
+### `WeightVecNotEqualSize`
 
-### WeightVecNotEqualSize
+Weight keys and values vectors have different sizes.
 
- Weight keys and values vectors have different sizes
+### `DuplicateUids`
 
-### DuplicateUids
+Attempting to set weights with duplicate UIDs.
 
- Attempting to set weights with duplicate UIDs
+### `UidVecContainInvalidOne`
 
-### UidVecContainInvalidOne
+Attempting to set weight to non-existent UID.
 
- Attempting to set weight to non-existent UID
+### `WeightVecLengthIsLow`
 
-### WeightVecLengthIsLow
+Setting weights with fewer elements than allowed.
 
- Setting weights with fewer elements than allowed
+### `MaxWeightExceeded`
 
-### MaxWeightExceeded
+Weight value exceeds MaxWeightLimit.
 
- Weight value exceeds MaxWeightLimit
+### `SettingWeightsTooFast`
 
-### SettingWeightsTooFast
+Exceeded rate limit for setting weights.
 
- Exceeded rate limit for setting weights
+### `IncorrectWeightVersionKey`
 
-### IncorrectWeightVersionKey
+Incorrect weight version key.
 
- Incorrect weight version key
+### `UidsLengthExceedUidsInSubNet`
 
-### UidsLengthExceedUidsInSubNet
+More UIDs than allowed.
 
- More UIDs than allowed
+### `NoWeightsCommitFound`
 
-### NoWeightsCommitFound
+No commit found for hotkey+netuid combination.
 
- No commit found for hotkey+netuid combination
+### `InvalidRevealCommitHashNotMatch`
 
-### InvalidRevealCommitHashNotMatch
+Committed hash does not match reveal data.
 
- Committed hash does not match reveal data
+### `CommitRevealEnabled`
 
-### CommitRevealEnabled
+Attempting to call set_weights when commit/reveal is enabled.
 
- Attempting to call set_weights when commit/reveal is enabled
+### `CommitRevealDisabled`
 
-### CommitRevealDisabled
+Attempting to commit/reveal weights when disabled.
 
- Attempting to commit/reveal weights when disabled
+### `TooManyUnrevealedCommits`
 
-### TooManyUnrevealedCommits
+Maximum commit limit reached.
 
- Maximum commit limit reached
+### `ExpiredWeightCommit`
 
-### ExpiredWeightCommit
+Attempted to reveal expired weights.
 
- Attempted to reveal expired weights
+### `RevealTooEarly`
 
-### RevealTooEarly
+Attempted to reveal weights too early.
 
- Attempted to reveal weights too early
+### `InputLengthsUnequal`
 
-### InputLengthsUnequal
+Mismatched vector input lengths in batch reveal.
 
- Mismatched vector input lengths in batch reveal
+### `CommittingWeightsTooFast`
 
-### CommittingWeightsTooFast
+Exceeded rate limit for setting weights.
 
- Exceeded rate limit for setting weights
+### `LiquidAlphaDisabled`
 
-### LiquidAlphaDisabled
+Attempting to set alpha high/low while disabled.
 
- Attempting to set alpha high/low while disabled
+### `AlphaHighTooLow`
 
-### AlphaHighTooLow
+Alpha high value is too low (> 0.8 required).
 
- Alpha high value is too low (> 0.8 required)
+### `AlphaLowOutOfRange`
 
-### AlphaLowOutOfRange
-
- Alpha low value is out of allowed range (0 < alpha_low < 0.8)
+Alpha low value is out of allowed range (0 < alpha_low < 0.8).
 
 ## Rate Limiting Errors
 
+### `ServingRateLimitExceeded`
 
-### ServingRateLimitExceeded
+Rate limit exceeded for axon serve/publish.
 
- Rate limit exceeded for axon serve/publish
+### `NetworkTxRateLimitExceeded`
 
-### NetworkTxRateLimitExceeded
+Rate limit exceeded for add network transaction.
 
- Rate limit exceeded for add network transaction
+### `DelegateTxRateLimitExceeded`
 
-### DelegateTxRateLimitExceeded
+Rate limit exceeded for delegate transaction.
 
- Rate limit exceeded for delegate transaction
+### `HotKeySetTxRateLimitExceeded`
 
-### HotKeySetTxRateLimitExceeded
+Rate limit exceeded for setting/swapping hotkey.
 
- Rate limit exceeded for setting/swapping hotkey
+### `StakingRateLimitExceeded`
 
-### StakingRateLimitExceeded
+Rate limit exceeded for staking.
 
- Rate limit exceeded for staking
+### `TxRateLimitExceeded`
 
-### TxRateLimitExceeded
+Default transaction rate limit exceeded.
 
- Default transaction rate limit exceeded
+### `TxChildkeyTakeRateLimitExceeded`
 
-### TxChildkeyTakeRateLimitExceeded
-
- Childkey take rate limit exceeded
+Childkey take rate limit exceeded.
 
 ## Registration and Network Management
 
+### `TooManyRegistrationsThisBlock`
 
-### TooManyRegistrationsThisBlock
+Too many registrations in this block.
 
- Too many registrations in this block
+### `TooManyRegistrationsThisInterval`
 
-### TooManyRegistrationsThisInterval
+Too many registration attempts in interval.
 
- Too many registration attempts in interval
+### `CouldNotJoinSenate`
 
-### CouldNotJoinSenate
+Not able to join the senate.
 
- Not able to join the senate
+### `NotSenateMember`
 
-### NotSenateMember
+Not a senate member.
 
- Not a senate member
+### `NotSubnetOwner`
 
-### NotSubnetOwner
+Not a subnet owner.
 
- Not a subnet owner
+### `FirstEmissionBlockNumberAlreadySet`
 
-### FirstEmissionBlockNumberAlreadySet
+First emission block number already set.
 
- First emission block number already set
+### `NeedWaitingMoreBlocksToStarCall`
 
-### NeedWaitingMoreBlocksToStarCall
-
- Need to wait for more blocks
+Need to wait for more blocks.
 
 ## Delegation and Childkey Errors
 
+### `DelegateTakeTooLow`
 
-### DelegateTakeTooLow
+Delegate take is too low.
 
- Delegate take is too low
+### `DelegateTakeTooHigh`
 
-### DelegateTakeTooHigh
+Delegate take is too high.
 
- Delegate take is too high
+### `InvalidChild`
 
-### InvalidChild
+Invalid child for a hotkey.
 
- Invalid child for a hotkey
+### `DuplicateChild`
 
-### DuplicateChild
+Duplicate child when setting children.
 
- Duplicate child when setting children
+### `ProportionOverflow`
 
-### ProportionOverflow
+Proportion overflow when setting children.
 
- Proportion overflow when setting children
+### `TooManyChildren`
 
-### TooManyChildren
+Too many children. 
 
- Too many children (max 5)
+### `InvalidChildkeyTake`
 
-### InvalidChildkeyTake
-
- Childkey take is invalid
+Childkey take is invalid.
 
 ## Other Errors
 
+### `InvalidIpType`
 
-### InvalidIpType
+Invalid IP type (must be IPv4 or IPv6).
 
- Invalid IP type (must be IPv4 or IPv6)
+### `InvalidIpAddress`
 
-### InvalidIpAddress
+Invalid IP address.
 
- Invalid IP address
+### `InvalidPort`
 
-### InvalidPort
+Invalid port.
 
- Invalid port
+### `InvalidWorkBlock`
 
-### InvalidWorkBlock
+Invalid PoW hash block.
 
- Invalid PoW hash block
+### `InvalidDifficulty`
 
-### InvalidDifficulty
+PoW hash block does not meet network difficulty.
 
- PoW hash block does not meet network difficulty
+### `InvalidSeal`
 
-### InvalidSeal
+PoW hash seal does not match work.
 
- PoW hash seal does not match work
+### `FaucetDisabled`
 
-### FaucetDisabled
+Faucet is disabled.
 
- Faucet is disabled
+### `SwapAlreadyScheduled`
 
-### SwapAlreadyScheduled
+Swap already scheduled.
 
- Swap already scheduled
+### `FailedToSchedule`
 
-### FailedToSchedule
+Failed to schedule swap.
 
- Failed to schedule swap
+### `InvalidIdentity`
 
-### InvalidIdentity
+Invalid identity.
 
- Invalid identity
+### `ActivityCutoffTooLow`
 
-### ActivityCutoffTooLow
+Activity cutoff is too low.
 
- Activity cutoff is too low
+### `CallDisabled`
 
-### CallDisabled
+Call is disabled.
 
- Call is disabled
+### `SubtokenDisabled`
 
-### SubtokenDisabled
+SubToken disabled.
 
- SubToken disabled
+### `SameNetuid`
 
-### SameNetuid
-
- Invalid netuid duplication
+Invalid netuid duplication.
 
