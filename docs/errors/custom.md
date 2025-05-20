@@ -4,7 +4,9 @@ title: "Subtensor Custom Errors"
 
 # Custom Errors
 
-Custom errors in Bittensor are specific error codes that are returned when certain conditions are not met during blockchain operations. These errors are returned in the format:
+This section documents custom errors that can arise from Subtensor, the blockchain underlying the Bittensor network.
+
+These errors are returned in the format:
 
 ```json
 {
