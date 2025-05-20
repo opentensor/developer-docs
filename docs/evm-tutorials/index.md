@@ -31,14 +31,6 @@ Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain,
 
 See: [Examples and Precompiles](./examples.md)
 
-The following Bittensor-specific precompiles are available:
-- [Ed25519Verify](./ed25519-verify-precompile.md) - Verify Ed25519 signatures
-- [BalanceTransfer](./transfer-between-two-h160-accounts.md) - Transfer TAO between accounts
-- [StakingPrecompile](./staking-precompile.md) - Manage staking operations
-- [StakingPrecompileV2](./staking-precompile.md) - Enhanced staking operations
-- [SubnetPrecompile](./subnet-precompile.md) - Manage subnet operations
-- [MetagraphPrecompile](./metagraph-precompile.md) - Interact with the metagraph
-- [NeuronPrecompile](./neuron-precompile.md) - Manage neuron operations
 
 ## Networks
 
