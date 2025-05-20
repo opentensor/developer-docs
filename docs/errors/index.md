@@ -11,7 +11,7 @@ These errors can surface through different interfaces including the Bittensor CL
 
 Subtensor errors can be categorized into three main types:
 
-1. Normal [Subtensor Standard Errors](./subtensor.md) have a well defined error code.
+1. [Subtensor Standard Errors](./subtensor.md) have a well defined error code.
 1. [Custom Errors](./custom.md) are a little trickier, as they only display a numerical code.
 1. [Substrate Errors](https://polkadot.js.org/docs/substrate/errors/) are inherited by Subtensor from Substrate, the underlying software on top of which it is built.
 

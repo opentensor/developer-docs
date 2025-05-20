@@ -8,7 +8,7 @@ This page documents the standard errors that can arise from Subtensor, the block
 
 Related: 
 - [Source code in GitHub](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/macros/errors.rs)
-- [Custom Errors](./custom.md) - Bittensor's custom error codes
+- [Subtensor Custom Errors](./custom.md)
 - [Substrate Errors](https://polkadot.js.org/docs/substrate/errors/) - Errors from the underlying Substrate framework 
 
     
