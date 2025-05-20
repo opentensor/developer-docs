@@ -7,6 +7,7 @@ title: "Subtensor Standard Errors"
 Subtensor errors are specific to the Bittensor blockchain implementation. These errors are defined in the Subtensor Rust codebase and can occur during various blockchain operations.
 
 Related: 
+- [Source code in GitHub](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/macros/errors.rs)
 - [Custom Errors](./custom.md) - Bittensor's custom error codes
 - [Substrate Errors](https://polkadot.js.org/docs/substrate/errors/) - Errors from the underlying Substrate framework 
 

@@ -6,7 +6,8 @@ title: "Subtensor Error Codes"
 
 This section documents the various types of errors that can arise from Subtensor, the blockchain underlying the Bittensor network.
 
-These errors can surface through different interfaces including the Bittensor CLI (`btcli`), the Bittensor Python SDK, or direct blockchain interactions.
+These errors can surface through different interfaces including the Bittensor CLI (`btcli`), the Bittensor Python SDK, or extrinsic transaction interfaces such as PolkadotJS.
+<!-- I'm assuming you can see these in polkadot? -->
 
 Subtensor errors can be categorized into three main types:
 

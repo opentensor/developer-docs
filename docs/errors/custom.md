@@ -14,6 +14,7 @@ Custom errors in Bittensor are specific error codes that are returned when certa
 }
 ```
 Related: 
+- [Source code in GitHub](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/lib.rs#L1686)
 - [Subtensor Standard Errors](./subtensor.md) - Bittensor's custom error codes
 - [Substrate Errors](https://polkadot.js.org/docs/substrate/errors/) - Errors from the underlying Substrate framework 
 
