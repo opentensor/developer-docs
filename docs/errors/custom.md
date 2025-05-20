@@ -4,7 +4,7 @@ title: "Subtensor Custom Errors"
 
 # Custom Errors
 
-This section documents custom errors that can arise from Subtensor, the blockchain underlying the Bittensor network.
+This page documents custom errors that can arise from Subtensor, the blockchain underlying the Bittensor network.
 
 These errors are returned in the format:
 
