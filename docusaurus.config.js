@@ -121,25 +121,23 @@ const config = {
             to: "/bt-api-ref",
             from: "/reference/bittensor-api-ref",
           },
+          {
+            to: "/errors",
+            from: "/subtensor-nodes/subtensor-error-messages",
+          },
         ],
       },
     ],
   ],
   scripts: [
-
-  {
-            src:"https://unpkg.com/@antonz/codapi@0.19.10/dist/settings.js",
-            src: "https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.js",
-            defer: true,
-        },
-
-    // String format.
-    // 'https://docusaurus.io/script.js',
-    // Object format.
-    // {
-    //   src: "/static/feedbug-widjet.js",
-    //   async: true,
-    // },
+    {
+      src: "https://unpkg.com/@antonz/codapi@0.19.10/dist/settings.js",
+      defer: true,
+    },
+    {
+      src: "https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.js",
+      defer: true,
+    },
   ],
   // clientModules: ["/static/feedbug-widjet.js"],
 

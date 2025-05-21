@@ -184,7 +184,6 @@ const sidebars = {
         "subtensor-nodes/using-docker",
         "subtensor-nodes/subtensor-rate-limits",
         "subtensor-nodes/subtensor-storage-query-examples",
-        "subtensor-nodes/subtensor-error-messages",
       ],
     },
     {
@@ -254,9 +253,19 @@ const sidebars = {
       ],
     },
 
-    
-
-    "errors-and-troubleshooting",
+    {
+      type: "category",
+      label: "Errors and Troubleshooting",
+      collapsible: true,
+      collapsed: true,
+      link: {type: "doc", id: "errors/index",},
+      items: [
+        "errors/index",
+        "errors/custom",
+        "errors/subtensor",
+        "errors-and-troubleshooting",
+      ],
+    },
     "media-assets",
     "glossary",
 
