@@ -1,8 +1,8 @@
 ---
-title: "Errors and Troubleshooting"
+title: "Troubleshooting"
 ---
 
-# Errors and Troubleshooting
+# Troubleshooting
 
 This document presents helpful hints to troubleshoot the errors you may get while working in the Bittensor ecosystem. 
 
