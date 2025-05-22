@@ -1,10 +1,10 @@
 ---
-title: "Metamask with Mainnet"
+title: "EVM on Mainnet"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Metamask with Mainnet
+# EVM on Mainnet
 
 This page covers how to set up your Metamask wallet to use with the Mainnet (finney) on Bittensor. You must run this step before you can run other tutorials in this section. 
 

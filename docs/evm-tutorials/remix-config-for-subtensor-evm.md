@@ -1,11 +1,11 @@
 ---
-title: "Remix IDE Configuration for Subtensor EVM"
+title: "Configuring Remix IDE"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Remix IDE Configuration for Subtensor EVM
+# Configuring Remix IDE
 
 You can use [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=cancun&version=soljson-v0.8.24+commit.e11b9ed9.js) for the EVM feature on subtensor. The link above automatically configures Remix to use EVM Version **Cancun** that matches **Solidity 0.8.24**.
 

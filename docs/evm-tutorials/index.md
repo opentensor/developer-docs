@@ -29,7 +29,9 @@ Full Ethereum virtual machine (EVM) compatibility is now available on subtensor 
 
 Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain, *not* on the Ethereum blockchain.**
 
-See: [Examples and Precompiles](./examples.md)
+See:
+- [Examples and Precompiles](./examples.md)
+- Getting started with [Bittensor EVM on Testnet](./evm-testnet-with-metamask-wallet)
 
 
 ## Networks
