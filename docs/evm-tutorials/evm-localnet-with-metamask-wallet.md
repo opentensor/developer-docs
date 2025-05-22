@@ -1,13 +1,15 @@
 ---
-title: "EVM Localnet with Metamask Wallet"
+title: "EVM on Local Chain"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# EVM Localnet with Metamask Wallet
+# EVM on Local Chain
 
-This tutorial is for how to set up your Metamask wallet to use with EVM localnet on Bittensor. You must run either this step or [EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet.md) tutorial before you can run other tutorials in this section. 
+This page covers getting set up to use EVM on a locally deployed Bittensor blockchain.
+
+Consider first trying [EVM with Bittensor testnet](./evm-testnet-with-metamask-wallet.md). This allows you to try EVM without having to deploy a blockchain locally, but you will have to obtain testnet TAO by inquiring in discord, or by completing the [BTCLI playground](../btcli/btcli-playground)challenge to obtain testnet TAO.
 
 :::tip blog post: EVM on Bittensor
 If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.

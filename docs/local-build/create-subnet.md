@@ -15,7 +15,6 @@ Prerequisites:
 
 ## Create subnet
 
-To access the handy pre-provisioned development "Alice" account on your local chain, use:
 
 ```shell
 btcli subnet create \

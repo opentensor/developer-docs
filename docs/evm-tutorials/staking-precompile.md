@@ -7,109 +7,163 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Staking Precompile
 
-Staking precompile allows Ethereum code to interact with the staking feature of subtensor. For example, by using the staking precompile, the subtensor methods [`add_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/add_stake.rs) or [`remove_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/remove_stake.rs)  can be called in order to delegate stake to a hotkey or undelegate stake from a hotkey. 
+The staking precompile allows you to interact with staking operations on the Bittensor network through smart contracts. This precompile provides functionality for adding and removing stakes, moving stakes between hotkeys, and querying stake information.
 
-In this tutorial you will learn how to interact with staking precompile in two ways:
+## Precompile Address
 
-1. Call the staking precompile from another smart contract.
-2. Use the staking precompile's ABI and your Metamask wallet to call the staking precompile on EVM localnet. You will use [Remix IDE](https://remix.ethereum.org/) for this.
+The staking precompile is available at address `0x805` (2053 in decimal).
 
-## Prerequisites
+## Available Functions
 
-1. You should also be comfortable using [Remix IDE](https://remix.ethereum.org/).
-2. Read [EVM on Subtensor](./evm-on-subtensor.md) for a basic understanding of what an ABI is and how to use it. 
+### Stake Management
 
-## Setup EVM localnet, subnet and delegate
+#### `addStake(bytes32 hotkey, uint256 amount, uint256 netuid)`
+Add stake to a hotkey in a specific subnet. This is a payable function that requires TAO to be sent with the transaction.
 
-1. [Launch EVM localnet](./evm-localnet-with-metamask-wallet.md). Also, follow the instructions of running local chain all the way so that you have a Metamask address with some TAO balance.
+```solidity
+function addStake(bytes32 hotkey, uint256 amount, uint256 netuid) external payable;
+```
 
-2. On this EVM localnet create one subnet and a delegate hotkey. The commands below will create a subnet, register a neuron and nominate your hotkey as a delegate, in that order:
+#### `removeStake(bytes32 hotkey, uint256 amount, uint256 netuid)`
+Remove stake from a hotkey in a specific subnet.
 
-    ```bash
-    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9944
-    ```
+```solidity
+function removeStake(bytes32 hotkey, uint256 amount, uint256 netuid) external;
+```
 
-3. Save the delegate hotkey address. You will use this in the staking pool use case below.
+#### `moveStake(bytes32 origin_hotkey, bytes32 destination_hotkey, uint256 origin_netuid, uint256 destination_netuid, uint256 amount)`
+Move stake from one hotkey to another, potentially across different subnets.
 
-4. Disable staking rate limits by setting `targetStakesPerInterval` to 1000. Follow these below steps:
-    - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics/decode/0x0c00132fe803000000000000).
-    - Click on **Submission** tab.
-    - From the **using the selected account** field, select **ALICE**.
-    - Click on **Submit Transaction** at the bottom right. This will open the **authorize transaction** window.
-    - On this **authorize transaction** window, make sure the **sign and submit** toggle is ON and click on the **Sign and Submit** on the bottom right.
+```solidity
+function moveStake(
+    bytes32 origin_hotkey,
+    bytes32 destination_hotkey,
+    uint256 origin_netuid,
+    uint256 destination_netuid,
+    uint256 amount
+) external;
+```
 
-## Call the staking precompile from another smart contract (staking pool use case)
+#### `transferStake(bytes32 destination_coldkey, bytes32 hotkey, uint256 origin_netuid, uint256 destination_netuid, uint256 amount)`
+Transfer stake from one coldkey to another, potentially across different subnets.
 
-In this interaction you will compile [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol), a smart contract Solidity code and execute it on the subtensor EVM. This `stake.sol` will, in turn, call the staking precompile that is already deployed in the subtensor EVM.
+```solidity
+function transferStake(
+    bytes32 destination_coldkey,
+    bytes32 hotkey,
+    uint256 origin_netuid,
+    uint256 destination_netuid,
+    uint256 amount
+) external;
+```
 
-Before you proceed, familiarize yourself with the Solidity code of the [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol) smart contract. 
+### Stake Queries
 
-1. Copy the text of [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol) contract to Remix IDE.
+#### `getTotalColdkeyStake(bytes32 coldkey) returns (uint256)`
+Get the total stake for a coldkey across all subnets.
 
-2. You will now convert your delegate hotkey ss58 from the above [Setup EVM localnet, subnet and delegate](#setup-evm-localnet-subnet-and-delegate) step into its corresponding public key. Use the [ss58.org](https://ss58.org/) site to obtain the public key for your delegate hotkey ss58.
+```solidity
+function getTotalColdkeyStake(bytes32 coldkey) external view returns (uint256);
+```
 
-3. In the `stake.sol` text in Remix IDE, replace the `HOTKEY` constant on line 9, where it says `bytes32 constant HOTKEY = 0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d;`, with your delegate hotkey's public key.
+#### `getTotalHotkeyStake(bytes32 hotkey) returns (uint256)`
+Get the total stake for a hotkey across all subnets.
 
-4. Compile it in Remix IDE.
+```solidity
+function getTotalHotkeyStake(bytes32 hotkey) external view returns (uint256);
+```
 
-5. Connect Remix IDE to Injected Provider - Metamask and your Metamask address that has TAO balance. You will stake this TAO balance to the delegate hotkey's public key.
+#### `getStake(bytes32 hotkey, bytes32 coldkey, uint256 netuid) returns (uint256)`
+Get the stake between a specific hotkey and coldkey in a subnet.
 
-6. Execute the Stake contract method `stake_from_this_contract_to_alice` and pass 1e^9 to it (1 TAO).
+```solidity
+function getStake(bytes32 hotkey, bytes32 coldkey, uint256 netuid) external view returns (uint256);
+```
 
-7. Check the stake balance of your delegate hotkey and confirm that it has increased by 1 TAO.
+#### `getTotalAlphaStaked(bytes32 hotkey, uint256 netuid) returns (uint256)`
+Get the total amount of TAO staked by a hotkey in a specific subnet.
 
-## Use the staking precompile's ABI from your user account (staking as an individual use case)
+```solidity
+function getTotalAlphaStaked(bytes32 hotkey, uint256 netuid) external view returns (uint256);
+```
 
-In this tutorial, you will interact directly with the staking precompile by using its ABI, and use your Metamask wallet as the source of TAO to stake.
+#### `getAlphaStakedValidators(bytes32 hotkey, uint256 netuid) returns (bytes32[])`
+Get a list of validator addresses that have staked to a specific hotkey in a subnet.
 
-1. Copy this below ABI of staking precompile contract into Remix IDE as a new file:
+```solidity
+function getAlphaStakedValidators(bytes32 hotkey, uint256 netuid) external view returns (bytes32[]);
+```
 
-    ```json
-    [
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "hotkey",
-                    "type": "bytes32"
-                }
-            ],
-            "name": "addStake",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "hotkey",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "removeStake",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        }
-    ]
-    ```
+### Proxy Management
 
-2. Copy staking precompile address `0x0000000000000000000000000000000000000801` to the **At Address** field in Remix IDE, and click **At Address** button.
+#### `addProxy(bytes32 delegate)`
+Add a proxy delegate for staking operations.
 
-3. Remix IDE will find the precompile at the precompile address on the subtensor EVM and show it in the list of deployed contracts. Expand the contract, then expand the `addStake` method, and paste the public key of your delegate hotkey into the `hotkey` field. Then click **transact** and wait for the transaction to be completed.
+```solidity
+function addProxy(bytes32 delegate) external;
+```
 
-4. Follow these steps to see that the stake record is updated in [Polkadot JS app](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate): 
+#### `removeProxy(bytes32 delegate)`
+Remove a proxy delegate.
 
-   1.  Select **subtensorModule** + **stake** in the drop-down list.
-   2.  Paste the delegate hotkey account ID in the first parameter.
-   3.  Toggle **include option** OFF for the second parameter.
-   4.  Click the **+** button and find the new stake record.
+```solidity
+function removeProxy(bytes32 delegate) external;
+```
+
+## Example Usage
+
+Here's an example of how to use the staking precompile in a smart contract:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IStakingPrecompile {
+    function addStake(bytes32 hotkey, uint256 amount, uint256 netuid) external payable;
+    function removeStake(bytes32 hotkey, uint256 amount, uint256 netuid) external;
+    function getTotalColdkeyStake(bytes32 coldkey) external view returns (uint256);
+    function getTotalHotkeyStake(bytes32 hotkey) external view returns (uint256);
+    function getStake(bytes32 hotkey, bytes32 coldkey, uint256 netuid) external view returns (uint256);
+    function getTotalAlphaStaked(bytes32 hotkey, uint256 netuid) external view returns (uint256);
+    function getAlphaStakedValidators(bytes32 hotkey, uint256 netuid) external view returns (bytes32[]);
+}
+
+contract StakingManager {
+    address constant STAKING_PRECOMPILE = 0x805;
+    IStakingPrecompile staking = IStakingPrecompile(STAKING_PRECOMPILE);
+
+    function addStakeToHotkey(bytes32 hotkey, uint256 amount, uint256 netuid) external payable {
+        staking.addStake{value: msg.value}(hotkey, amount, netuid);
+    }
+
+    function getStakeInfo(bytes32 hotkey, bytes32 coldkey, uint256 netuid) external view returns (
+        uint256 totalColdkeyStake,
+        uint256 totalHotkeyStake,
+        uint256 specificStake,
+        uint256 totalAlphaStaked,
+        bytes32[] memory validators
+    ) {
+        totalColdkeyStake = staking.getTotalColdkeyStake(coldkey);
+        totalHotkeyStake = staking.getTotalHotkeyStake(hotkey);
+        specificStake = staking.getStake(hotkey, coldkey, netuid);
+        totalAlphaStaked = staking.getTotalAlphaStaked(hotkey, netuid);
+        validators = staking.getAlphaStakedValidators(hotkey, netuid);
+    }
+}
+```
+
+## Important Notes
+
+1. The `addStake` function is payable and requires TAO to be sent with the transaction.
+2. All amounts are in RAO (1 TAO = 1e18 RAO).
+3. The `netuid` parameter identifies the specific subnet for the operation.
+4. Proxy operations require appropriate permissions.
+5. Moving and transferring stakes may have additional restrictions based on network parameters.
+6. Some functions may require specific permissions or conditions to be met.
+
+## Next Steps
+
+- Learn about [subnet management](/evm-tutorials/subnet-precompile)
+- Understand [neuron operations](/evm-tutorials/neuron-precompile)
+- Explore [metagraph interactions](/evm-tutorials/metagraph-precompile)
 

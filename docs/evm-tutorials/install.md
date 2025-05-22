@@ -23,4 +23,3 @@ Before you can run any EVM tutorials, you must install the dependencies. Follow 
    ```bash
    npm install
    ```
-
