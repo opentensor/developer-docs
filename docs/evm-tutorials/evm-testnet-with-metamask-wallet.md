@@ -17,13 +17,25 @@ Key values:
 - **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
 - **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
  
+## Connect to EVM Testnet
 
-## Step 1. Create a Metamask wallet 
+Confirm the EVM node is online and accessible. You can check the node status independently using `curl` or similar tools:
+
+```bash
+curl  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
+  https://test.chain.opentensor.ai
+```
+```console
+{"jsonrpc":"2.0","id":1,"result":"0x460943"}
+```
+## Create a Metamask wallet 
 
 1. If you don't already have it, [install Metamask wallet](https://metamask.io/download/) browser extension.
 2. Create a new account.
 
-### Step 2. Add testnet to Metamask
+### Add testnet to Metamask
 
 Add the testnet to Metamask from within the Metamask wallet. Follow the below steps:
 
@@ -41,15 +53,11 @@ Add the testnet to Metamask from within the Metamask wallet. Follow the below st
 
 With the above steps, you have successfully configured your Metamask wallet with the testnet. 
 
-## Step 3 Obtain TAO
+## Obtain TAO
 
 Next, request testnet TAO in the Bittensor community [Discord](https://discord.com/channels/799672011265015819/830068283314929684). 
 
-## Step 4. Copy Metamask wallet private key into config
-
-:::danger Stop. Did you install the dependencies?
-Before you proceed, make sure you finished the [Install](./install.md) step.
-:::
+## Copy Metamask wallet private key into config
 
 In this step you will copy the private key from your Metamask wallet account and paste it into the configuration file in the repo. This step will ensure that you are not prompted with password each and every step as you run these tutorials. 
 

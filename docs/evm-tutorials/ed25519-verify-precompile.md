@@ -7,18 +7,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Ed25519 Verify Precompile
 
-This smart contract is precompiled at Bittensor EVM address `0x0000000000000000000000000000000000000402`.
-It allows you to verify an `ed25519` signature to confirm ownership of a `ss58` public key in EVM (for example, for a Bittensor wallets coldkey public key).
+The Ed25519 Verify Precompile allows EVM smart contracts to verify Ed25519 signatures, which are commonly used in Substrate-based chains like Bittensor. This is essential for bridging identity and ownership between Substrate and EVM ecosystems. For example, you may want to verify coldkey ownership before transferring to someone. EVM functionality doesn't allow transferring directly to a `ss58` address—like the public key of a Bittensor coldkey—because EVM uses the H160 address schema. To bridge the gap, you can use this precompile to prove a claim of ownership. The owner of a coldkey can send an EVM transaction with a signed message, serving as proof of ownership of the coldkey's `ss58` address.
 
-For example, you may want to verify coldkey ownership before transferring to someone. EVM functionality doesn't allow transferring directly to a `ss58` address&mdash;like the public key of a bittensor coldkey, because EVM uses the H160 address schema. To bridge the gap, you can use this precompile to prove a claim of ownership. The owner of a coldkey can send an EVM transaction with a signed message, serving as proof of ownership of the coldkey's `ss58` address.
+## Prerequisites
 
-Below, we'll explore a complete code example.
+- **Node.js** (v16 or later recommended)
+- **npm** or **yarn**
+- [Clone the Bittensor EVM examples repo](./install.md)
+- [Get set up for using EVM wallet on testnet](./evm-testnet-with-metamask-wallet)
+- [Install](./install) the EVM-Bittensor repo, containing scripts and examples.
 
-:::danger Stop. Did you install the dependencies?
-Before you proceed, make sure you finished the [Install](./install.md) step.
-:::
+A healthy node will return a JSON response with the latest block number. If you get a connection error or no response, the node is down or the URL is incorrect.
 
-## Run
+## Example
 
 Navigate to the `examples` directory of the EVM-Bittensor repo:
 
@@ -34,26 +35,16 @@ To run this precompile, execute:
 This example demonstrates how to:
 
 1. Sign an arbitrary message with `ed25519` key. 
-
-    Any substrate keyring can be initialized as `ed25519` with the same seed phrase or private key as used for signing subtensor transactions, even if they are usually used to create `sr25519` signatures. 
-  
-    The precompile only allows verification of 32-byte messages. However, the arbitrary message can be converted into 32-byte message by calculating the message hash (like it is done in this below example):
-
-    ```javascript
-      const messageHash = ethers.keccak256(messageHex); // Hash the message to fit into bytes32
-    ```
-
 2. Verify the signature using the precompile contract.
-3. Fail the verification of the signature using the corrupted message hash with the precompile contract.
-4. Fail the verification of the corrupted signature with the precompile contract.
+3. Fail the verification of the signature using a corrupted message hash with the precompile contract.
+4. Fail the verification of a corrupted signature with the precompile contract.
 
-
-## Code example
 
 [On GitHub](https://github.com/opentensor/evm-bittensor/blob/main/examples/ed25519-verify.js).
 
+<details>
+  <summary>Full code</summary>
 ```js
-// ed25519-verify.js
 const { ethers } = require('ethers');
 const { Keyring } = require('@polkadot/keyring');
 
@@ -171,4 +162,23 @@ function bytesToHex(bytes) {
   // Join all hex string parts into one string
   return '0x' + hex.join('');
 }
+```
+</details>
+## Example Output
+
+```
+node ed25519-verify.js
+@polkadot/util has multiple versions, ensure that there is only one installed.
+Either remove and explicitly install matching versions or dedupe using your package manager.
+The following conflicting packages were found:
+	cjs 12.2.1	node_modules/@polkadot/keyring/node_modules/@polkadot/util/cjs
+	cjs 13.5.1	node_modules/@polkadot/util/cjs
+messageHash = 0xd6ce89c7d4f347455c7dddf19b42e0357edd7587b73b81b384810253c3c3c8ff
+Signature: 0x35c3c28c3470ea348343cea4881bd353843236df73a04300261cb86411fe88a05a196842849eb1ef4335b1f171a70e74d2d4c8d3b71ad6a41b6fa48afec85b01
+Is the signature valid? true
+publicKeyBytes = 0x88dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee
+Is the signature valid according to the smart contract? true
+brokenMessageHash = 0xd7ce89c7d4f347455c7dddf19b42e0357edd7587b73b81b384810253c3c3c8ff
+Is the signature valid according to the smart contract for broken data? false
+Is the signature valid according to the smart contract for broken signature? false
 ```
