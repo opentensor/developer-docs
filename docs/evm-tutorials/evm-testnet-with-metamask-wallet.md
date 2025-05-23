@@ -44,7 +44,7 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 ## Step 3 Obtain TAO
 
-Next, request testnet TAO in the Bittensor community [Discord](https://discord.com/channels/799672011265015819/1176950765688987809). Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
+Next, request testnet TAO in the Bittensor community [Discord](https://discord.com/channels/799672011265015819/799672011814862902). Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
 :::info Note
 
