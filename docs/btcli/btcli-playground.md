@@ -1,6 +1,7 @@
 ---
 title: "BTCLI Live Coding Playground"
 ---
+
 <link rel="stylesheet" href="https://unpkg.com/@antonz/codapi@0.19.10/dist/snippet.css" />
 
 This page gives the user a chance to try out some BTCLI functionality right in the browser.
@@ -14,12 +15,13 @@ For a more satisfying experience, [install btcli locally](../getting-started/ins
 :::danger
 This is not a secure code execution environment. This page is for practice/education/entertainment purposes only.
 
-**Do not enter the seed phrase for a wallet with *real (main "finney" network)* TAO into this or any insecure applicaiton!**
+**Do not enter the seed phrase for a wallet with _real (main "finney" network)_ TAO into this or any insecure applicaiton!**
 
 See:
+
 - [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase)
 - [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security)
-:::
+  :::
 
 ## Import wallets and check balances.
 
@@ -45,6 +47,7 @@ btcli wallet regen-coldkey \
 btcli wallet list --wallet.path ~/.bittensor/wallets
 
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
@@ -66,6 +69,7 @@ btcli wallet balance \
 --wallet.path ~/.bittensor/wallets \
 --network test
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
@@ -88,16 +92,20 @@ btcli wallet balance \
 --wallet.path ~/.bittensor/wallets \
 --network test
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
 
-
 ## Transfer
 
-Transfer some Tao from playground-test1 to playground-test2. We can get the `--destination` address from the `wallet list` command above.
+Transfer some Tao from `playground-test1` to `playground-test2`. We can get the `--destination` address from the `wallet list` command above.
 
-Note: Just because the transaction fails to display in the browser below does not mean it failed on-chain. Check playground-test2's balance using the above command.
+:::info
+
+- The command returning a `request failed` response in the browser does not mean that the request failed on-chain. To confirm, check the wallet balance of `playground-test2` using the command above.
+- You can also replace the wallet address under the `--destination` flag to transfer testnet TAO to your address.
+  :::
 
 :::tip run it!
 
@@ -118,42 +126,49 @@ btcli wallet transfer \
 --no-prompt \
 --wallet.path ~/.bittensor/wallets
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
-	
-	:::info Challenges
-	1. Check your balance to make sure the transfer executed successfully on chain.
-	2. Switch the values to transfer TAO back from `playground-test2` to `playground-test1`.
-	3. Transfer some testnet TAO to a wallet you manage on another device. Just please don't take all of it. 
-	4. If you have some extra testnet TAO, transfer some to the playground-test wallets to refill them.
+:::
 
-		*Note: Testnet TAO has no monetary value.*
+:::info Challenges
+
+1. Check your balance to make sure the transfer executed successfully on chain.
+2. Switch the values to transfer TAO back from `playground-test2` to `playground-test1`.
+3. Transfer some testnet TAO to a wallet you manage on another device. Just please don't take all of it.
+4. If you have some extra testnet TAO, transfer some to the playground-test wallets to refill them.
+
+   _Note: Testnet TAO has no monetary value._
 
 :::
 
-
 ## Subnets
+
 ### Subnet list
 
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
+
 ```shell
 
 btcli subnet list
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
 
-
 ### Subnet show
+
 :::tip run it!
 <codapi-settings url="https://bittensor-codex.com/v1">
 </codapi-settings>
+
 ```shell
 btcli subnet show --netuid 3
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
@@ -175,9 +190,12 @@ btcli wallet regen-coldkey \
 btcli stake list --network test --wallet.name playground-test1 --wallet-path ~/.bittensor/wallets --no-prompt
 
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
+:::
 
-	:::info Challenge
-	Try staking and unstaking from the playground-test wallets!
+    :::info Challenge
+    Try staking and unstaking from the playground-test wallets!
+
 :::
