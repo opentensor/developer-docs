@@ -19,7 +19,7 @@ Minimum transaction amount for stake/unstake/move/transfer: 500,000 RAO or 0.000
 
 ## Check your TAO balance
 
-To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/799672011814862902) to obtain TAO on Bittensor test network. Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
+To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553) to obtain TAO on Bittensor test network. Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
 :::info Note
 
