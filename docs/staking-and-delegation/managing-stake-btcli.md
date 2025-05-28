@@ -33,11 +33,12 @@ Test network tokens have no real value. Before managing liquidity on Bittensor m
 
 ## View TAO balance
 
-To stake, you'll first need some TAO. Inquire in Discord to obtain TAO on Bittensor test network.
+To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553) to obtain TAO on Bittensor test network. Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
-To ensure you are targeting the test network, run `btcli config set`, select network, and set it to `test`.
+After creating a wallet, ensure that you are targeting the test network by running the `btcli config set` command. Next, select network, and set it to `test`.
 
 View your testnet balance with:
+
 ```shell
 btcli wallet balance
 ```
@@ -64,7 +65,6 @@ btcli subnet list
 ```
 
 You should see something like the following output. Notice that next to the subnets Netuid and Name is the subnet's token `Price (τ_in/α_in)`, which, as indicated, is a ratio of the TAO in reserve `τ_in` to alpha in reserve `α_in`.
-
 
 ```console
                                                                         Subnets
@@ -119,7 +119,6 @@ Using the specified network test from config
  46  │  928.60 Ⲃ │  928.23 Ⲃ │   τ 0.38 │  0.00439  │  0.0088   │   0.35965 Ⲃ   │ 5GuqX1 │ 5Ehuid  │ ~
 ```
 
-
 ## Stake into a node
 
 Use `btcli stake add` to stake to a validator on a subnet. You'll be prompted to choose a subnet and validator, as well as specify an amount of TAO to stake into the validator's hotkey as alpha.
@@ -160,7 +159,6 @@ Using the specified network test from config
 ```
 
 After selecting a validator to delegate stake to, you'll see your wallet balance and be asked to specify the amount of TAO you wish to stake.
-
 
 ```console
 Amount to stake (TAO τ): 5
@@ -217,9 +215,7 @@ Stake is held in alpha, but note that value at the current price is also display
 Press Enter to continue to the next hotkey...
 ```
 
-
 ## Transferring stake
-
 
 The `btcli stake transfer` command is used to transfer ownership of stake from one wallet (coldkey) to another.
 
@@ -228,6 +224,7 @@ Don't confuse this with `btcli stake move`, which does not transfer ownership to
 :::
 
 This operation effectively comprises a series of operations, which occur as an atomic transaction:
+
 - first, the specified amount is unstaked from the subnet alpha token into TAO
 - that amount of TAO is then transferred to the ownership of the recipient
 - the recipient then automatically stakes the newly received TAO into the subnet, receiving the alpha tokens in return
@@ -312,5 +309,3 @@ The `btcli stake move` command is used to moves stake between validators or subn
 :::tip
 Don't confuse this with `btcli stake transfer`, which is used to transfer ownership of stake from one wallet (coldkey) to another.
 :::
-
-
