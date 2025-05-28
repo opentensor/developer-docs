@@ -1,5 +1,5 @@
 ---
-title: "Converting Ethereum and Substrate Addresses"
+title: "Ethereum (H160) to Substrate (SS58) Address Converstion"
 ---
 
 # Converting Ethereum and Substrate Addresses
