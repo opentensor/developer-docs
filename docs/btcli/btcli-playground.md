@@ -99,13 +99,15 @@ btcli wallet balance \
 
 ## Transfer
 
-Transfer some Tao from `playground-test1` to `playground-test2`. We can get the `--destination` address from the `wallet list` command above.
+Transfer some TAO from `playground-test1` to `playground-test2`. We can get the `--destination` address from the `wallet list` command above.
 
 :::info
 
 - The command returning a `request failed` response in the browser does not mean that the request failed on-chain. To confirm, check the wallet balance of `playground-test2` using the command above.
 - You can also replace the wallet address under the `--destination` flag to transfer testnet TAO to your address.
   :::
+
+Run the following command to transfer testnet TAO:
 
 :::tip run it!
 

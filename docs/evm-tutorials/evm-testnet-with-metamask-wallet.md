@@ -46,12 +46,6 @@ With the above steps, you have successfully configured your Metamask wallet with
 
 Next, request testnet TAO in the Bittensor community [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553). Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
-:::info Note
-
-- The BTCLI Live Coding Playground contains a limited amount of testnet TAO, so it should be used sparingly and only for transferring small amounts of testnet TAO.
-- When transferring testnet TAO using the BTCLI Live Coding Playground, do not forget to replace the wallet address under the `--destination` flag with your testnet wallet address.
-  :::
-
 ## Step 4. Copy Metamask wallet private key into config
 
 :::danger Stop. Did you install the dependencies?

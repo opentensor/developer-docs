@@ -35,11 +35,6 @@ Test network tokens have no real value. Before managing liquidity on Bittensor m
 
 To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553) to obtain TAO on Bittensor test network. Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
-:::info Note
-
-The BTCLI Live Coding Playground contains a limited amount of testnet TAO, so it should be used sparingly and only for transferring small amounts of testnet TAO.
-:::
-
 After creating a wallet, ensure that you are targeting the test network by running the `btcli config set` command. Next, select network, and set it to `test`.
 
 View your testnet balance with:
