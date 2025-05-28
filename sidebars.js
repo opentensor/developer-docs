@@ -192,7 +192,8 @@ const sidebars = {
           link: {type: "doc", id: "evm-tutorials/index"},
           items:[
           "evm-tutorials/index",
-          "evm-tutorials/install",        
+          "evm-tutorials/subtensor-networks",
+
           "evm-tutorials/evm-testnet-with-metamask-wallet",
         "evm-tutorials/evm-localnet-with-metamask-wallet",
         "evm-tutorials/evm-mainnet-with-metamask-wallet",

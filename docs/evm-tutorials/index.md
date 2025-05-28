@@ -36,21 +36,6 @@ See:
 - [EVM on Mainnet](./evm-mainnet-with-metamask-wallet)
 - [OTF Blogpost: EVM on Bittensor](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7)
 
-## Networks
-
-You can deploy smart contracts on Bittensor main net (aka 'finney'), test network, or on your own locally deployed Bittensor chain.
-<details>
-  <summary>Network details</summary>
-
-
-|           | MAINNET                             | TESTNET                              | LOCALNET                 |
-|:---------------------|:------------------------------------|:-------------------------------------|:-------------------------|
-| **RPC URL**          | https://lite.chain.opentensor.ai    | https://test.chain.opentensor.ai     | http://localhost:9944    |
-| **Chain ID**         | 964                                 | 945                                  | _see below_              |
-| **Test TAO**         | None                                | Available on request                 | Use [Alice account](../local-build/provision-wallets#access-the-alice-account)        |
-|Set-up Guide|[EVM Testnet with Metamask Wallet](./evm-testnet-with-metamask-wallet)|[EVM Localnet with Metamask Wallet](./evm-localnet-with-metamask-wallet.md) for setting up a Local net.|
-</details>
-
 ## Ethereum vs Bittensor EVM Smart Contracts
 
 On the Ethereum network, nodes such as full nodes, validator nodes and archive nodes run the Ethereum Virtual Environment (EVM) run-time environment. Smart contracts operate under this EVM. See the below high-level diagram.

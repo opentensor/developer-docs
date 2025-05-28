@@ -22,8 +22,8 @@ This conversion is particularly useful when:
 2. Create a new account or import an existing one
 3. Add the Bittensor EVM network to MetaMask:
    - Network Name: Bittensor EVM
-   - RPC URL: `https://evm.bittensor.com`
-   - Chain ID: 3636
+   - RPC URL: `https://test.chain.opentensor.ai`
+   - Chain ID: 945
    - Currency Symbol: TAO
    - Block Explorer URL: `https://evm.bittensor.com`
 
