@@ -56,7 +56,7 @@ If you have not already done so, create Bittensor wallet(s) using the steps desc
 
 You will need tokens to register the subnet (which you will create below) on your local blockchain.  Run the following command to mint faucet tokens (fake TAO).
 ```bash
-btcli wallet faucet --wallet.name <owner-wallet-name> --subtensor.chain_endpoint ws://127.0.0.1:9946 
+btcli wallet faucet --wallet.name <owner-wallet-name> --network ws://127.0.0.1:9946 
 ```
 Output:
 ```bash
@@ -68,7 +68,7 @@ Output:
 Run the below command to create a new subnet on your local chain. The cost will be exactly τ100.000000000 for the first subnet you create.
 
 ```bash
-btcli subnet create --wallet.name owner --subtensor.chain_endpoint ws://127.0.0.1:9946 
+btcli subnet create --wallet.name owner --network ws://127.0.0.1:9946 
 ```
 Output:
 ```bash

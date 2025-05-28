@@ -31,8 +31,10 @@ Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain,
 
 See:
 - [Examples and Precompiles](./examples.md)
-- Getting started with [Bittensor EVM on Testnet](./evm-testnet-with-metamask-wallet)
-
+- [EVM on Testnet](./evm-testnet-with-metamask-wallet)
+- [EVM on Local Chain](./evm-localnet-with-metamask-wallet)
+- [EVM on Mainnet](./evm-mainnet-with-metamask-wallet)
+- [OTF Blogpost: EVM on Bittensor](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7)
 
 ## Networks
 

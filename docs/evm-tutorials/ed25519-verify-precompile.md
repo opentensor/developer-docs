@@ -1,11 +1,11 @@
 ---
-title: "Ed25519 Verify Precompile"
+title: "Verify Address Precompile"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Ed25519 Verify Precompile
+# Verify Address Precompile
 
 The Ed25519 Verify Precompile allows EVM smart contracts to verify Ed25519 signatures, which are commonly used in Substrate-based chains like Bittensor. This is essential for bridging identity and ownership between Substrate and EVM ecosystems. For example, you may want to verify coldkey ownership before transferring to someone. EVM functionality doesn't allow transferring directly to a `ss58` address—like the public key of a Bittensor coldkey—because EVM uses the H160 address schema. To bridge the gap, you can use this precompile to prove a claim of ownership. The owner of a coldkey can send an EVM transaction with a signed message, serving as proof of ownership of the coldkey's `ss58` address.
 
@@ -16,8 +16,6 @@ The Ed25519 Verify Precompile allows EVM smart contracts to verify Ed25519 signa
 - [Clone the Bittensor EVM examples repo](./install.md)
 - [Get set up for using EVM wallet on testnet](./evm-testnet-with-metamask-wallet)
 - [Install](./install) the EVM-Bittensor repo, containing scripts and examples.
-
-A healthy node will return a JSON response with the latest block number. If you get a connection error or no response, the node is down or the URL is incorrect.
 
 ## Example
 

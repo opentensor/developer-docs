@@ -8,9 +8,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page covers how to set up your Metamask wallet to use with the Mainnet (finney) on Bittensor. You must run this step before you can run other tutorials in this section. 
 
-:::tip blog post: EVM on Bittensor
-If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
-:::
 
 Key values:
 - The **Bittensor Mainnet URL:** `https://lite.chain.opentensor.ai`

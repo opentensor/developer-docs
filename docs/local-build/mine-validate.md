@@ -21,14 +21,14 @@ Register the subnet miner and validator with the following commands:
 btcli subnet register \
 --wallet.name validator \
 --wallet.hotkey default \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 ```bash
 btcli subnet register \
 --netuid 2 \
 --wallet.name miner \
 --wallet.hotkey default \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 
 
@@ -47,7 +47,7 @@ btcli wallet transfer \
 --amount 11 \
 --wallet.name alice \
 --destination "5EEy34..." \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 
 
@@ -82,9 +82,9 @@ Balance:
 Confirm your registration on the subnet with the following command:
 
 ```shell
-btcli wallet overview --wallet.name validator --subtensor.chain_endpoint ws://127.0.0.1:9945
+btcli wallet overview --wallet.name validator --network ws://127.0.0.1:9945
 
-btcli wallet overview --wallet.name miner --subtensor.chain_endpoint ws://127.0.0.1:9945
+btcli wallet overview --wallet.name miner --network ws://127.0.0.1:9945
 
 ```
 

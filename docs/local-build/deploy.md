@@ -91,7 +91,7 @@ Ensure your local chain is working by checking the list of subnets.
 Note the use of the `--chain_endpoint` flag to target the local chain, rather than, say, test network
 
 ```shell
- btcli subnet list --subtensor.chain_endpoint ws://127.0.0.1:9945
+ btcli subnet list --network ws://127.0.0.1:9945
  btcli subnet list --network test
 ```
 

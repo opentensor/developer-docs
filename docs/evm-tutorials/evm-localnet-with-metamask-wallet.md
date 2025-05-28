@@ -11,10 +11,6 @@ This page covers getting set up to use EVM on a locally deployed Bittensor block
 
 Consider first trying [EVM with Bittensor testnet](./evm-testnet-with-metamask-wallet.md). This allows you to try EVM without having to deploy a blockchain locally, but you will have to obtain testnet TAO by inquiring in discord, or by completing the [BTCLI playground](../btcli/btcli-playground)challenge to obtain testnet TAO.
 
-:::tip blog post: EVM on Bittensor
-If you are new to EVM, try this [blog post](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7) for a simplified explanation.
-:::
-
 Key values:
 - **EVM Subtensor Mainnet Chain ID:**: `964` (UTF-8 encoded TAO symbol) 
 - **EVM Subtensor Testnet Chain ID:**: `945` (UTF-8 encoded alpha character)

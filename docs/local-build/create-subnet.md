@@ -20,7 +20,7 @@ Prerequisites:
 btcli subnet create \
 --subnet-name awesome-first-subnet \
 --wallet.name sn-creator \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 ### Trouble shoot
 #### Insufficient funds
@@ -41,7 +41,7 @@ btcli wallet transfer \
 --amount 1001 \
 --wallet.name alice \
 --destination "5C9xw4..." \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 
 
@@ -98,7 +98,7 @@ To remedy your liquidity shortfall, transfer $\tau$ from the Alice account and t
 	--amount 1001 \
 	--wallet.name alice \
 	--destination "5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR" \
-	--subtensor.chain_endpoint ws://127.0.0.1:9945
+	--network ws://127.0.0.1:9945
 	```
 
 	```shell
@@ -118,7 +118,7 @@ For example:
 btcli subnet create \
 --subnet-name awesome-first-subnet \
 --wallet.name sn-creator \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 ```console
 Subnet burn cost: τ 1,000.0000
@@ -134,7 +134,7 @@ Decrypting...
  btcli subnet create \
 --subnet-name awesome-second-subnet \
 --wallet.name sn-creator \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 
 ```console
@@ -152,7 +152,7 @@ Decrypting...
 
 ```shell
 btcli subnet list \
---subtensor.chain_endpoint ws://127.0.0.1:9945
+--network ws://127.0.0.1:9945
 ```
 ```console
                                                          Subnets

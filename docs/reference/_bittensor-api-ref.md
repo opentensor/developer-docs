@@ -14,7 +14,7 @@ The `Subtensor` is utilized for managing interactions with the subtensor chain. 
 # Creating a default chain connection to remote finney instance.
 sub = bt.subtensor()
 
-# Parsing --subtensor.network and --subtensor.chain_endpoint from the command line
+# Parsing --subtensor.network and --network from the command line
 sub = bt.subtensor( config = bt.subtensor.config() )
 
 # Connecting subtensor's default local entrypoint "ws://127.0.0.1:9944"

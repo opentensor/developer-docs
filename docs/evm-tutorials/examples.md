@@ -9,6 +9,10 @@ The following precompiles are available on the Bittensor EVM.
 
 Code examples used throughout are provided by OTF, and come from [this repository.](https://github.com/opentensor/evm-bittensor/tree/main/examples)
 
+## Tutorials and Examples
+
+- [Converting Between Ethereum and Substrate Addresses](./address-conversion.md): Learn how to convert between H160 and SS58 address formats
+
 ## Standard Ethereum Precompiles
 
 - `ECRecover` (0x1): Recover the address associated with the public key from elliptic curve signature
