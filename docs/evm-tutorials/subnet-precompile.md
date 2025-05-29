@@ -13,7 +13,6 @@ The subnet precompile allows you to interact with subnet operations on the Bitte
 
 The subnet precompile is available at address `0x803` (2051 in decimal).
 
-
 ## Example Scripts
 
 ### Javascript
