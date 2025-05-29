@@ -208,7 +208,8 @@ const sidebars = {
           label: 'Bittensor EVM: Examples and Precompiles',
           items:[
           "evm-tutorials/examples",
-          "evm-tutorials/address-conversion",
+          "evm-tutorials/convert-h160-to-ss58",
+          "evm-tutorials/convert-ss58-to-h160",
           "evm-tutorials/ed25519-verify-precompile",
           "evm-tutorials/transfer-from-metamask-to-ss58",
           "evm-tutorials/transfer-between-two-h160-accounts",

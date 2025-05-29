@@ -41,7 +41,8 @@ Before you can run any EVM tutorials, you must install the dependencies. Follow 
 
 ## Examples
 
-- [Converting Between Ethereum and Substrate Addresses](./address-conversion.md): Learn how to convert between H160 and SS58 address formats
+- [Convert Ethereum (H160) Address to Substrate (SS58)](./convert-h160-to-ss58): Learn how to convert between H160 and SS58 address formats
+- [Converting Between Ethereum and Substrate Addresses](./convert-h160-to-ss58): Learn how to convert between H160 and SS58 address formats
 
 ## Standard Ethereum Precompiles
 

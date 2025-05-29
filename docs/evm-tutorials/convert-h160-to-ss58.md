@@ -1,8 +1,8 @@
 ---
-title: "Ethereum (H160) to Substrate (SS58) Address Converstion"
+title: "Convert Ethereum (H160) Address to Substrate (SS58)"
 ---
 
-# Converting Ethereum and Substrate Addresses
+# Convert Ethereum (H160) Address to Substrate (SS58)
 
 This tutorial demonstrates how to convert between Ethereum (H160) and Substrate (SS58) addresses in the Bittensor EVM environment.
 
