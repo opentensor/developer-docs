@@ -2,14 +2,55 @@
 title: "Withdraw TAO from Alice Account (Local Development)"
 ---
 
+import { InstallPartial } from "./_install.mdx";
+import { CreatePartial } from "./_create-mm-wallet.mdx";
+
 # Withdraw TAO from Alice Account (Local Development)
 
-The 'Alice' account is provisioned with a large bag of TAO to newly create Subtensor chains.
-This page shows how to withdraw TAO to your wallet using a transaction that requires root permissions, and therefore is only available in local development.
+Every locally deployed dev-mode blockchain comes provisioned with an 'Alice' account holding a large bag of TAO.
+
+This page shows how to withdraw TAO to your wallet, using a transaction that requires root permissions, and therefore is only available in local development.
+
+## Prerequesites
+
+[Deploy a Subtensor Blockchain locally](../local-build/deploy)
+
 
 ## Procedure
 
-## Script
+1. <CreatePartial />
+
+1. <InstallPartial />
+
+### Configure your request
+
+The withdraw.js script expects your configuration to be available in config.js.
+Select the local configuration options for `rpcURL` and `wsUrl`.
+
+:::danger
+Handle your private keys with care. Do not commit them to Github.
+:::
+```
+// PROTECT YOUR PRIVATE KEYS WELL, NEVER COMMIT THEM TO GITHUB OR SHARE WITH ANYONE
+const ethPrivateKey = <YOUR PRIVATE KEY>;
+const subSeed = "//Alice";
+const rpcUrlLocal = 'http://127.0.0.1:9946';
+const rpcUrlTestnet = 'https://test.chain.opentensor.ai';
+const wsUrlLocal = 'ws://127.0.0.1:9946';
+const wsUrlTestnet = 'wss://test.chain.opentensor.ai';
+
+module.exports = {
+    ethPrivateKey,
+    subSeed,
+    rpcUrl: rpcUrlLocal,
+    wsUrl: wsUrlLocal,
+}
+```
+### Run the script
+
+```bash
+node withdraw.js
+```
 
 **Source code**:
 

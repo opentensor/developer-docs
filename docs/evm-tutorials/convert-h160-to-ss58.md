@@ -1,6 +1,9 @@
 ---
 title: "Convert Ethereum (H160) Address to Substrate (SS58)"
 ---
+import { InstallPartial } from "./_install.mdx";
+import { CreatePartial } from "./_create-mm-wallet.mdx";
+
 
 # Convert Ethereum (H160) Address to Substrate (SS58)
 
@@ -16,36 +19,22 @@ This conversion is particularly useful when:
 
 ## Procedure
 
-### 1. Create Wallet with MetaMask
+<CreatePartial />
 
-1. Install MetaMask browser extension if you haven't already
-2. Create a new account or import an existing one
-3. Add the Bittensor EVM network to MetaMask:
-   - Network Name: Bittensor EVM
-   - RPC URL: `https://test.chain.opentensor.ai`
-   - Chain ID: 945
-   - Currency Symbol: TAO
-   - Block Explorer URL: `https://evm.bittensor.com`
+<InstallPartial />
 
-### 2. Convert Address for Bittensor
 
-1. Clone the EVM examples repository:
-   ```bash
-   git clone https://github.com/opentensor/evm-bittensor.git
-   cd evm-bittensor/examples
-   ```
+## Set your config
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
 
-3. Run the conversion script with your MetaMask address:
-   ```bash
-   node convert-address.js
-   ```
+### Convert Address for Bittensor
 
-4. Note down the SS58 address output by the script - this is your Bittensor address
+Run the conversion script with your MetaMask address:
+```bash
+node convert-address.js
+```
+
+Note down the SS58 address output by the script - this is your Bittensor address
 
 ### 3. Transfer TAO to EVM Wallet
 

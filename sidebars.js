@@ -217,6 +217,7 @@ const sidebars = {
           "evm-tutorials/subnet-precompile",
           "evm-tutorials/metagraph-precompile",
           "evm-tutorials/neuron-precompile",
+          "evm-tutorials/withdraw-from-alice",
 
           ]
         },

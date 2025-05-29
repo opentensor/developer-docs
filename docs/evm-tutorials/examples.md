@@ -2,6 +2,8 @@
 title: "Bittensor EVM: Examples and Precompiles"
 ---
 
+import { InstallPartial } from "./_install.mdx";
+
 # Bittensor EVM: Examples and Precompiles
 
 ## Available Precompiles
@@ -10,33 +12,8 @@ The following precompiles are available on the Bittensor EVM.
 
 Code examples used throughout are provided by OTF, and come from [this repository.](https://github.com/opentensor/evm-bittensor/tree/main/examples)
 
-<details>
-  <summary>Install Examples Repo</summary>
 
-Before you can run any EVM tutorials, you must install the dependencies. Follow the below steps: 
-
-1. Clone the Opentensor EVM-Bittensor GitHub repo:
-
-   ```bash
-   git clone https://github.com/opentensor/evm-bittensor.git
-   ```
-
-2. Navigate to `evm-bittensor` directory:
-
-    ```bash
-    cd evm-bittensor
-    ```
-
-3. Install the dependencies:
-   
-   ```bash
-   npm install
-   ```
-</details>
-
-
-
-
+<InstallPartial />
 
 
 ## Examples

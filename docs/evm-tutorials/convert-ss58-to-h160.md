@@ -13,6 +13,4 @@ Below is the code used above for the conversion.
 
 **Source code**:
 - [EVM examples repo](https://github.com/opentensor/evm-bittensor)
-- [Address mapping](https://github.com/opentensor/evm-bittensor/blob/main/examples/address-mapping.js)
-- [Convert address](https://github.com/opentensor/evm-bittensor/blob/main/examples/convert-address.js)
 
