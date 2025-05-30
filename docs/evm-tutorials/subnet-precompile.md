@@ -27,7 +27,7 @@ Subnet operations have distinct requirements!
 
 - Creating a subnet, i.e. [`registerNetwork`,](#registernetwork) requires a coldkey with sufficient TAO to cover the current burn cost.
 
-    See [burn cost for subnet creation](./docs/local-build/create-subnet#burn-cost).
+    See [burn cost for subnet creation](../local-build/create-subnet#burn-cost).
 
 - Setting subnet hyperparameters requires the private key for the coldkey that owns the subnet (the one that created it, unless this has been transferred).
 
