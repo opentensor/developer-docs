@@ -7,15 +7,32 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Subnet Precompile
 
-The subnet precompile allows you to interact with subnet operations on the Bittensor network through smart contracts, including functionality for registering networks, managing network parameters, and querying network state.
+This precompile allows you to interact with Bittensor subnets through EVM smart contracts, affording functionality for registering networks, viewing and setting network parameters, and querying network state.
 
 This page:
 - described the precompile's [available functions](#available-functions) on the precompile
 - demonstrates the precompile's usage with [example scripts](#example-script).
 
-## Precompile Address
+
 
 The subnet precompile is available at address `0x803` (2051 in decimal).
+
+View the [source on GitHub](https://github.com/opentensor/subtensor/blob/main/precompiles/src/subnet.rs)
+
+
+
+
+:::info permissions
+Subnet operations have distinct requirements!
+
+- Creating a subnet, i.e. [`registerNetwork`,](#registernetwork) requires a coldkey with sufficient TAO to cover the current burn cost.
+
+    See [burn cost for subnet creation](./docs/local-build/create-subnet#burn-cost).
+
+- Setting subnet hyperparameters requires the private key for the coldkey that owns the subnet (the one that created it, unless this has been transferred).
+
+:::
+
 
 ## Available Functions
 
@@ -24,7 +41,8 @@ The subnet precompile provides comprehensive functionality for subnet management
 ### Network Registration
 
 #### `registerNetwork`
-Registers a new subnet without additional identity information.
+
+Create/register a new subnet, without setting identity information.
 
 **Parameters:**
 - `hotkey` (bytes32): The hotkey (32 bytes) that will own the network
