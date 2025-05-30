@@ -4,18 +4,11 @@ title: "Convert Ethereum (H160) Address to Substrate (SS58)"
 import { InstallPartial } from "./_install.mdx";
 import { CreatePartial } from "./_create-mm-wallet.mdx";
 
-
 # Convert Ethereum (H160) Address to Substrate (SS58)
 
 This tutorial demonstrates how to convert between Ethereum (H160) and Substrate (SS58) addresses in the Bittensor EVM environment.
 
 When working with Bittensor's EVM implementation, you may need to convert between Ethereum-style addresses (H160) and Substrate-style addresses (SS58). This is particularly useful when interacting with both EVM and native Substrate functionality.
-
-This conversion is particularly useful when:
-- Interacting with both EVM and native Substrate contracts
-- Managing accounts that need to work across both environments
-- Verifying addresses across different address formats
-- Integrating EVM-based applications with native Bittensor functionality
 
 ## Procedure
 
@@ -23,29 +16,26 @@ This conversion is particularly useful when:
 
 <InstallPartial />
 
-
 ## Set your config
 
-
 ### Convert Address for Bittensor
+  
+Run the conversion script, replacing `ethereumAddress` with your address:
 
-Run the conversion script with your MetaMask address:
 ```bash
 node convert-address.js
 ```
 
-Note down the SS58 address output by the script - this is your Bittensor address
+Note down the SS58 address output by the script - this is your wallet's coldkey public key, your address on any Bittensor network.
 
-### 3. Transfer TAO to EVM Wallet
+### Transfer TAO to EVM Wallet
 
-1. Use `btcli` to transfer TAO to your SS58 address:
+Use `btcli` to transfer TAO to your SS58 address. Here we will use test network.
+
    ```bash
-   btcli root transfer --amount 1.0 --dest <your-ss58-address>
+   btcli wallet transfer --destination <your ss58 address> --network test
    ```
-
-2. Wait for the transfer to complete (usually takes a few blocks)
-
-### 4. Verify Balance in MetaMask
+### Verify Balance in MetaMask
 
 1. Open MetaMask
 2. Ensure you're connected to the Bittensor EVM network
