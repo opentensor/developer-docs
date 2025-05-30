@@ -29,11 +29,6 @@ Returns the total number of UIDs (neurons) in a specific subnetwork.
 **Returns:**
 - `uint16`: Total count of neurons in the subnetwork
 
-**Example:**
-```solidity
-// Get the number of neurons in subnetwork 1
-uint16 neuronCount = IMetagraph(METAGRAPH_PRECOMPILE).getUidCount(1);
-```
 
 ### Token and Consensus Metrics
 
@@ -309,54 +304,7 @@ Returns the coldkey (owner key) associated with a neuron's hotkey.
 bytes32 coldkey = IMetagraph(METAGRAPH_PRECOMPILE).getColdkey(1, 13);
 ```
 
-## Interface Definition
 
-Here's the complete Solidity interface for the Metagraph Precompile:
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-interface IMetagraph {
-    struct AxonInfo {
-        uint64 block;
-        uint32 version;
-        uint128 ip;
-        uint16 port;
-        uint8 ip_type;
-        uint8 protocol;
-    }
-    
-    // Network information
-    function getUidCount(uint16 netuid) external view returns (uint16);
-    
-    // Financial metrics
-    function getStake(uint16 netuid, uint16 uid) external view returns (uint64);
-    function getEmission(uint16 netuid, uint16 uid) external view returns (uint64);
-    
-    // Performance metrics
-    function getRank(uint16 netuid, uint16 uid) external view returns (uint16);
-    function getTrust(uint16 netuid, uint16 uid) external view returns (uint16);
-    function getConsensus(uint16 netuid, uint16 uid) external view returns (uint16);
-    function getIncentive(uint16 netuid, uint16 uid) external view returns (uint16);
-    function getDividends(uint16 netuid, uint16 uid) external view returns (uint16);
-    
-    // Validator functions
-    function getVtrust(uint16 netuid, uint16 uid) external view returns (uint16);
-    function getValidatorStatus(uint16 netuid, uint16 uid) external view returns (bool);
-    
-    // State information
-    function getLastUpdate(uint16 netuid, uint16 uid) external view returns (uint64);
-    function getIsActive(uint16 netuid, uint16 uid) external view returns (bool);
-    
-    // Network connection
-    function getAxon(uint16 netuid, uint16 uid) external view returns (AxonInfo memory);
-    
-    // Key management
-    function getHotkey(uint16 netuid, uint16 uid) external view returns (bytes32);
-    function getColdkey(uint16 netuid, uint16 uid) external view returns (bytes32);
-}
-```
 
 ## Usage Examples
 
@@ -439,40 +387,3 @@ The metagraph precompile can throw the following errors:
 
 - **InvalidRange**: Thrown when querying a UID that doesn't exist in the specified network
 - **"hotkey not found"**: Thrown when trying to get axon information for a non-existent neuron
-
-Always handle these errors appropriately in your smart contracts:
-
-```solidity
-contract SafeMetagraphQuery {
-    IMetagraph constant METAGRAPH = IMetagraph(0x0000000000000000000000000000000000000802);
-    
-    function safeGetStake(uint16 netuid, uint16 uid) external view returns (uint64, bool) {
-        try METAGRAPH.getStake(netuid, uid) returns (uint64 stake) {
-            return (stake, true);
-        } catch {
-            return (0, false);
-        }
-    }
-}
-```
-
-## Gas Considerations
-
-All metagraph precompile functions are view functions that don't modify state. They have very low gas costs, typically:
-
-- Simple queries (rank, trust, etc.): ~2,100 gas
-- Complex queries (axon info): ~3,000 gas
-- Key lookups: ~2,500 gas
-
-This makes them suitable for frequent queries and batch operations within smart contracts.
-
-## Best Practices
-
-1. **Batch Queries**: When querying multiple neurons, consider batching operations to reduce transaction costs
-2. **Cache Results**: If querying the same data multiple times, consider caching results within your contract
-3. **Error Handling**: Always implement proper error handling for edge cases
-4. **Network Validation**: Validate that the netuid exists before querying UIDs
-5. **UID Bounds Checking**: Ensure UIDs are within the valid range (0 to getUidCount - 1)
-
-
-
