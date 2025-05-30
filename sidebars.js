@@ -37,7 +37,7 @@ const sidebars = {
         "learn/introduction",
         "questions-and-answers",
         "subnets/understanding-subnets", 
-        "learn/bittensor-building-blocks",
+        "learn/neurons",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
         "yuma-consensus",        

@@ -53,7 +53,7 @@ For the rest of this tutorial we will proceed by demonstrating which blocks of P
 If you are new to Bittensor, read the following sections before you proceed:
 
 1. [Introduction](../learn/introduction.md) that describes how subnets form the heartbeat of the Bittensor network.
-2. [Bittensor Building Blocks](../learn/bittensor-building-blocks.md) that presents the basic building blocks you use to develop your subnet incentive mechanism.
+2. [Bittensor Building Blocks](../learn/neurons.md) that presents the basic building blocks you use to develop your subnet incentive mechanism.
 3. [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanism.md) that introduces the general concept of a subnet incentive mechanism. 
 
 ## OCR subnet summary
@@ -218,7 +218,7 @@ See the `OCRSynapse` class definition in [**ocr_subnet/protocol.py**](https://gi
 ```
 
 :::tip Study tip
-See [Neuron-to-neuron communication](../learn/bittensor-building-blocks.md#neuron-to-neuron-communication).
+See [Neuron-to-neuron communication](../learn/neurons.md#neuron-to-neuron-communication).
 :::
 
 #### Send OCRSynapse to miners

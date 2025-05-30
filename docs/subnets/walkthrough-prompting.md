@@ -25,7 +25,7 @@ You can see the prompting subnet in action on the [TAO.app explorer (select Subn
 
 If you are new to Bittensor subnets and building blocks, read the following sections before you proceed further:
 
-- [Bittensor Building Blocks](../learn/bittensor-building-blocks).
+- [Bittensor Building Blocks](../learn/neurons).
 - [Anatomy of Incentive Mechanism](../learn/anatomy-of-incentive-mechanism).
 
 The below diagram shows a typical subnet with many subnet miners and subnet validators together executing the subnet incentive mechanism code. On the [TAO.app explorer (select Subnet 01: Text Prompting from the top menu)](https://tao.app) the **Metagraph** view for this Subnet 1: Prompting shows the performance details for each subnet miner and validator. 

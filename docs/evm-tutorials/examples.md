@@ -8,10 +8,10 @@ import { InstallPartial } from "./_install.mdx";
 
 ## Available Precompiles
 
-The following precompiles are available on the Bittensor EVM.
+The following precompiled smart contracts are available on the Bittensor EVM.
+The source code can be found [on GitHub](https://github.com/opentensor/subtensor/blob/main/precompiles).
 
 Code examples used throughout are provided by OTF, and come from [this repository.](https://github.com/opentensor/evm-bittensor/tree/main/examples)
-
 
 <InstallPartial />
 
