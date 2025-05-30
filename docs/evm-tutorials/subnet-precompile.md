@@ -7,7 +7,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Subnet Precompile
 
-The subnet precompile allows you to interact with subnet operations on the Bittensor network through smart contracts. This precompile provides functionality for registering networks, managing network parameters, and querying network state.
+The subnet precompile allows you to interact with subnet operations on the Bittensor network through smart contracts, including functionality for registering networks, managing network parameters, and querying network state.
+
+This page:
+- described the precompile's [available functions](#available-functions) on the precompile
+- demonstrates the precompile's usage with [example scripts](#example-script).
 
 ## Precompile Address
 
