@@ -4,8 +4,13 @@ title: "Convert Substrate (SS58) Address to Ethereum (H160)"
 
 # Convert Substrate (SS58) Address to Ethereum (H160)
 
-
 ## Procedure
+
+### Create a wallet with BTCLI
+
+### Convert the address
+
+### Transfer TAO to it with an EVM smart contract
 
 ## Conversion Script
 

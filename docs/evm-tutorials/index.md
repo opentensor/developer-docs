@@ -39,7 +39,7 @@ See:
 - [EVM on Mainnet](./evm-mainnet-with-metamask-wallet)
 - [OTF Blogpost: EVM on Bittensor](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7)
 
-## Ethereum-style and Bittensor-style wallets on the Bittensor blockchian
+## EVM and Subtensor wallets on the Bittensor blockchian
 
 Bittensor wallets are based on Polkadot-style ss58 addresses, whereas Ethereum uses h160 addresses.
 
@@ -47,7 +47,7 @@ The holder of a private key for an ss58 address based on the corresponding publi
 
 Similarly, creating an Ethereum wallet gives you control of the h160 private key for the corresponding public key.
 
-It is a simple matter to convert an h160 address to an ss58 address, or vice versa, but this does *not* yield the corresponding private key. This means that if you create a wallet in Bittensor, you will not be able to sign Ethereum contracts with it, nor versa.
+It is a simple matter to [convert an h160 address to an ss58 address](./convert-h160-to-ss58), or vice versa, but this does *not* yield the corresponding private key. This means that if you create a wallet in Bittensor, you will not be able to sign Ethereum contracts with it, nor versa.
 
 Hence, in the context of Bittensor EVM we can distinguish between:
 - 'Bittensor wallets': created using the Bittensor tool chain and therefore able to sign transactions using Bittensor transaction clients (BTCLI and the Bittensor SDK), but not EVM smart contracts, on the Bittensor blockchain.
