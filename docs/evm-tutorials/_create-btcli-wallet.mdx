@@ -1,0 +1,32 @@
+import React from 'react';
+
+export const CreateBtcliPartial = () => (
+  <>
+    <h3>Create Wallet with BTCLI</h3>
+
+    <ol>
+      <li>Install BTCLI if you haven't already:
+        <p>
+          <code className="language-bash">
+            pip install bittensor
+          </code>
+        </p>
+      </li>
+      <li>Create a new wallet:
+        <p>
+          <code className="language-bash">
+            btcli wallet new_coldkey --wallet.name my_wallet
+          </code>
+        </p>
+      </li>
+      <li>Note down your wallet's SS58 address, which you can get with:
+        <p>
+          <code className="language-bash">
+            btcli wallet overview --wallet.name my_wallet
+          </code>
+        </p>
+      </li>
+      <li>Your coldkey address will start with "5" and is in SS58 format (for example: <code>5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty</code>).</li>
+    </ol>
+  </>
+); 

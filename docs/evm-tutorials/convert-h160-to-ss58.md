@@ -26,7 +26,7 @@ Run the conversion script, replacing `ethereumAddress` with your address:
 node convert-address.js
 ```
 
-Note down the SS58 address output by the script - this is your wallet's coldkey public key, your address on any Bittensor network.
+Note down the SS58 address output by the script - this is your wallet's Subtensor address on the Bittensor network.
 
 ### Transfer TAO to EVM Wallet
 

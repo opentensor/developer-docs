@@ -3,6 +3,7 @@ title: "EVM on Testnet"
 ---
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { CreatePartial } from "./_create-mm-wallet.mdx";
 
 # EVM on Testnet
 
@@ -12,7 +13,9 @@ Key values:
 - The **Bittensor Testnet URL:** `https://test.chain.opentensor.ai`
 - **EVM Subtensor Chain ID:** `945` (UTF-8 encoded alpha character)
 - **Opentensor EVM-Bittensor GitHub repo:** `https://github.com/opentensor/evm-bittensor/tree/main`
- 
+
+<CreatePartial />
+
 ## Connect to EVM Testnet
 
 Confirm the EVM node is online and accessible. You can check the node status independently using `curl` or similar tools:
@@ -26,11 +29,6 @@ curl  -X POST \
 ```console
 {"jsonrpc":"2.0","id":1,"result":"0x460943"}
 ```
-## Create a Metamask wallet 
-
-1. If you don't already have it, [install Metamask wallet](https://metamask.io/download/) browser extension.
-2. Create a new account.
-
 ### Add testnet to Metamask
 
 Add the testnet to Metamask from within the Metamask wallet. Follow the below steps:
