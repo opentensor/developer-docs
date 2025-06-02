@@ -55,9 +55,11 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 ## Miner deregistration
 
-Miners as well as validators can be deregistered if their emissions are low. Typical subnets have 256 UID slots, including maximums of 64 validator UIDs and 192 miner UIDs. 
+Miners as well as validators can be deregistered if their emissions are low.
 
 Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* validator node) with the lowest 'pruning score' (based solely on emissions) risks being replaced by a newly registered neuron, who takes over that UID.
+
+Typical subnets have 256 UID slots, including maximums of 64 validator UIDs. This leaves 192 UIDs for miners, though if there are fewer validators, a miner can occupy one of the additional slots.
 
 In case of a tie, the older node gets deregistered first.
 
