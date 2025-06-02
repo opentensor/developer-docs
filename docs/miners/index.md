@@ -23,7 +23,7 @@ Mining is not supported on Windows.
 
 ## Miner registration
 
-To participate as a miner, you must first register your keys with the subnet in order to receive a UID on that subnet.
+To participate as a miner, you must first register a hotkey with the subnet in order to receive a UID on that subnet.
 
 :::tip No need to create a subnet to mine
 You **do not** have to create a subnet to mine on the Bittensor network. Most miners work on established subnets.
@@ -55,12 +55,16 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 ## Miner deregistration
 
-A subnet neuron (whether miner or validator) can be deregistered if its emissions are low. Mining and validating are both competitive—and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs. 
+Miners as well as validators can be deregistered if their emissions are low. Typical subnets have 256 UID slots, including maximums of 64 validator UIDs and 192 miner UIDs. 
 
-Each tempo, the neuron (miner or validator node) with the lowest 'pruning score' (based solely on emissions) risks being replaced by a newly registered neuron, who takes over that UID.
+Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* validator node) with the lowest 'pruning score' (based solely on emissions) risks being replaced by a newly registered neuron, who takes over that UID.
 
-:::tip Deregistration is based on emissions
-The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions/pruning scores. Whoever has the lowest emissions will get deregistered. If there's a tie, the older UID gets deregistered. The subnet owner hotkey is immune forever.
+In case of a tie, the older node gets deregistered first.
+
+The subnet owner hotkey has permanent immiunity from deregistration.
+
+:::info Deregistration is based on emissions
+The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions (represented as 'pruning score'). Whoever has the lowest emissions will get deregistered. 
 :::
 
 - Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
@@ -87,7 +91,7 @@ style={{width: 990}}
 - The subnet validators refresh their metagraph and discover the new Axon.
 - The subnet validators send requests to that Axon and evaluate its responses. This drives the subnet’s incentive mechanism, awarding emissions to the miner.
 - While still in the `immunity_period`, the subnet miner builds up its emissions from zero.
-- At the end of the `immunity_period`, if this miner’s emission ranks the lowest among those also out of their `immunity_period`, then upon the next registration, this miner’s UID gets transferred to the new registrant.
+- If the miner’s emissions rank among the lowest for nodes outside of their `immunity_period`, their UID gets transferred to the next new registrant.
 
 :::tip Subnet miner emission
 Emissions may not always appear as a smooth curve. Emission might only update at the end of tempo periods, or subnet validators might do more frequent internal updates. For example, a validator might detect new miners and refresh every 100 blocks.
