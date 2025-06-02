@@ -172,3 +172,31 @@ Output:
 >> Registering subnet...
 ✅ Registered subnetwork with netuid: 1 # Your subnet netuid will show here, save this for later.
 ```
+
+:::caution A New Subnet is not Automatically Active
+To allow subnet owners to fully set up their subnets and to prevent extraction of emissions to subnet participants before the subnet is contributing to the network, new subnets are inactive and cannot be started for 7 * 7200 blocks (roughly one week) after they are registered.  During this time, you can register and activate validators and invite miners into the subnet.  **Be advised that the subnet and its participants will receive NO EMISSIONS during the time that the subnet is inactive.** 
+:::
+
+:::tip Validating in Your Own Subnet
+A validator requires a minimum of 1000 stake weight (see the stake weight calculation here: [validator stake weight](../dynamic-tao/dtao-guide#validator-stake-weight)). Practically speaking, this means that you either need 18000 TAO staked to a root subnet validator *or* enough TAO staked to your subnet validator so that it has 1000 alpha tokens staked *or* some combination of these such that the resulting stake weight is 1000.  However, this is only a *minimum* to allow your validators to set weights.  If your validator has insufficient stake with respect to other validators in the subnet, it may fall out of consensus and be deregistered (or may be deregistered if it is not among the top 64 validators in the subnet by stake).  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration.
+:::
+
+### Step 4. Check to see if you can start the subnet
+
+Use the below command to check whether the subnet can be started. 
+
+```bash
+btcli subnet check-start --netuid x
+```
+
+Where "x" is the subnet ID.
+
+The output will provide you with the block registered and the block at which the subnet can be started, with "blocks remaining" and an estimated time.  When this time has passed, the `check-start` command will return `Emission schedule can be started.` 
+
+### Step 5. Start the subnet
+
+Use the below command to start the subnet once `check-start` returns `Emission schedule can be started.` 
+
+```bash
+btcli subnet start --netuid x
+```
