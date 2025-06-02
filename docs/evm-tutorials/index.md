@@ -25,7 +25,10 @@ import { GrStakeholder } from "react-icons/gr";
 
 # Bittensor EVM Smart Contracts
 
-Full Ethereum virtual machine (EVM) compatibility is now available on subtensor (the blockchain in Bittensor). This allows users to deploy most EVM smart contracts on subtensor without changing the code, interact with deployed smart contracts on the subtensor blockchain, and access standard Ethereum JSON-RPC methods.
+A full ethereum virtual machine (EVM) runtime operates as an application layer on top of the Bittensor blockchain (Subtensor). This allows users to:
+- deploy most EVM smart contracts on subtensor without changing the code,
+- interact with deployed smart contracts on the subtensor blockchain, and
+- access standard Ethereum JSON-RPC methods.
 
 Bittensor EVM smart contracts are executed solely on the **Bittensor blockchain, *not* on the Ethereum blockchain.**
 
@@ -36,7 +39,22 @@ See:
 - [EVM on Mainnet](./evm-mainnet-with-metamask-wallet)
 - [OTF Blogpost: EVM on Bittensor](https://blog.bittensor.com/evm-on-bittensor-draft-6f323e69aff7)
 
-## Ethereum vs Bittensor EVM Smart Contracts
+## Ethereum-style and Bittensor-style wallets on the Bittensor blockchian
+
+Bittensor wallets are based on Polkadot-style ss58 addresses, whereas Ethereum uses h160 addresses.
+
+The holder of a private key for an ss58 address based on the corresponding public key can sign transactions on any Bittensor chain for thataddress. Anyone who creates key-pairs using `btcli wallet`, for example, holds the private key and the corresponding seed phrase, and hence can sign Bittensor transactions for that wallet.
+
+Similarly, creating an Ethereum wallet gives you control of the h160 private key for the corresponding public key.
+
+It is a simple matter to convert an h160 address to an ss58 address, or vice versa, but this does *not* yield the corresponding private key. This means that if you create a wallet in Bittensor, you will not be able to sign Ethereum contracts with it, nor versa.
+
+Hence, in the context of Bittensor EVM we can distinguish between:
+- 'Bittensor wallets': created using the Bittensor tool chain and therefore able to sign transactions using Bittensor transaction clients (BTCLI and the Bittensor SDK), but not EVM smart contracts, on the Bittensor blockchain.
+- 'EVM wallets': created using an EVM client such as MetaMask and therefore able to sign EVM smart contracts, but not Subtensor extrinsics, on the Bittensor blockchain.
+
+
+## Ethereum vs Bittensor EVM smart contract runtime
 
 On the Ethereum network, nodes such as full nodes, validator nodes and archive nodes run the Ethereum Virtual Environment (EVM) run-time environment. Smart contracts operate under this EVM. See the below high-level diagram.
 

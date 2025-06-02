@@ -6,9 +6,9 @@ import { CreatePartial } from "./_create-mm-wallet.mdx";
 
 # Convert Ethereum (H160) Address to Substrate (SS58)
 
-This tutorial demonstrates how to convert between Ethereum (H160) and Substrate (SS58) addresses in the Bittensor EVM environment.
+This tutorial demonstrates how to convert between Ethereum (H160) and Substrate (SS58) addresses. This is useful for moving across the boundary between a) EVM smart contracts and b)  core Subtensor functionality based on Polkadot.
 
-When working with Bittensor's EVM implementation, you may need to convert between Ethereum-style addresses (H160) and Substrate-style addresses (SS58). This is particularly useful when interacting with both EVM and native Substrate functionality.
+In what follows, we'll create a wallet in Metamask and convert it's public key to ss58 format in order to target it with a balance transfer using BTCLI.
 
 ## Procedure
 
@@ -86,14 +86,3 @@ function convertH160ToSS58(ethAddress) {
     return ss58Address;
 }
 ```
-
-### Step-by-Step Explanation
-
-1. **Prefix Addition**: The function adds an 'evm:' prefix to distinguish EVM addresses
-2. **Byte Conversion**: 
-   - Converts the prefix to bytes using TextEncoder
-   - Converts the Ethereum address to bytes using hexToU8a
-3. **Combination**: Creates a new Uint8Array containing both the prefix and address bytes
-4. **Hashing**: Uses Blake2b (via blake2AsU8a) to create a deterministic hash of the combined bytes
-5. **SS58 Encoding**: Finally encodes the hash as an SS58 address using network ID 42 (Bittensor's network ID)
-
