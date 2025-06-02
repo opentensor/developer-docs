@@ -55,19 +55,25 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 ## Miner deregistration
 
-A subnet miner can be deregistered if its performance is poor. Mining is competitive—and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs. Each tempo, the lowest ranked mine risks being replaced by a newly registered miner, who takes over that UID. 
+A subnet neuron (whether miner or validator) can be deregistered if its emissions are low. Mining and validating are both competitive—and the UID slots are limited. Except in Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs. 
+
+Each tempo, the neuron (miner or validator node) with the lowest 'pruning score' (based solely on emissions) risks being replaced by a newly registered neuron, who takes over that UID.
+
+:::tip Deregistration is based on emissions
+The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions/pruning scores. Whoever has the lowest emissions will get deregistered. If there's a tie, the older UID gets deregistered. The subnet owner hotkey is immune forever.
+:::
 
 - Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
     :::tip See
     See [`immunity_period`](../subnets/subnet-hyperparameters.md#immunity_period).
     :::
-- A subnet miner or validator at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
+- A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
 - The `immunity_period` starts when a miner or validator is registered into the subnet.
 
-Below is a diagram illustrating a subnet miner’s registration timeline:
+Below is a diagram illustrating a subnet neuron's registration timeline:
 
 <ThemedImage
-alt="Miner deregistration"
+alt="Neuron deregistration"
 sources={{
     light: useBaseUrl('/img/docs/miner-deregistration.svg'),
     dark: useBaseUrl('/img/docs/dark-miner-deregistration.svg'),
@@ -84,7 +90,7 @@ style={{width: 990}}
 - At the end of the `immunity_period`, if this miner’s emission ranks the lowest among those also out of their `immunity_period`, then upon the next registration, this miner’s UID gets transferred to the new registrant.
 
 :::tip Subnet miner emission
-A subnet miner's emission may not always appear as a smooth curve. Emission might only update at the end of tempo periods, or subnet validators might do more frequent internal updates. For example, a validator might detect new miners and refresh every 100 blocks.
+Emissions may not always appear as a smooth curve. Emission might only update at the end of tempo periods, or subnet validators might do more frequent internal updates. For example, a validator might detect new miners and refresh every 100 blocks.
 :::
 
 ## Moving a subnet miner to a different machine
