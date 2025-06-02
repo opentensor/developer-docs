@@ -61,7 +61,7 @@ Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* valid
 
 In case of a tie, the older node gets deregistered first.
 
-The subnet owner hotkey has permanent immiunity from deregistration.
+The subnet owner hotkey has permanent immunity from deregistration.
 
 :::info Deregistration is based on emissions
 The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions (represented as 'pruning score'). Whoever has the lowest emissions will get deregistered. 
