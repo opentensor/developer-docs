@@ -178,7 +178,7 @@ To allow subnet owners to fully set up their subnets and to prevent extraction o
 :::
 
 :::tip Validating in Your Own Subnet
-Ensure that you are meeting the [minimum requirements for validation](../validators#requirements-for-validation)  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration.
+Ensure that you are meeting the [minimum requirements for validation](../validators#requirements-for-validation)  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration. See the [Child Hotkeys](/child-hotkeys) documentation for more detail.
 :::
 
 ### Step 4. Check to see if you can start the subnet
