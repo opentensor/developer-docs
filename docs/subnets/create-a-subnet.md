@@ -178,7 +178,7 @@ To allow subnet owners to fully set up their subnets and to prevent extraction o
 :::
 
 :::tip Validating in Your Own Subnet
-A validator requires a minimum of 1000 stake weight (see the stake weight calculation here: [validator stake weight](../dynamic-tao/dtao-guide#validator-stake-weight)). Practically speaking, this means that you either need 18000 TAO staked to a root subnet validator *or* enough TAO staked to your subnet validator so that it has 1000 alpha tokens staked *or* some combination of these such that the resulting stake weight is 1000.  However, this is only a *minimum* to allow your validators to set weights.  If your validator has insufficient stake with respect to other validators in the subnet, it may fall out of consensus and be deregistered (or may be deregistered if it is not among the top 64 validators in the subnet by stake).  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration.
+Ensure that you are meeting the [minimum requirements for validation](../validators#requirements-for-validation)  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration.
 :::
 
 ### Step 4. Check to see if you can start the subnet
