@@ -93,5 +93,5 @@ Subnets should be endlessly improving.
 	- Ensure your scoring logic prevents partial outputs from being judged as similar to complete results.
 - Consider carefully how to balance speed, reliability, and quality.
 - Consider incorporating organic queries into the validation process.
-- Expect to frequently release updated that refine your incentive mechanism and address emergent exploits or other points of suboptimality. The best subnets update frequently, accomodating new hardware, new models, and new miner behaviors.
+- Expect to frequently release updates that refine your incentive mechanism and address emergent exploits or other points of suboptimality. The best subnets update frequently, accomodating new hardware, new models, and new miner behaviors.
 - Observe other subnets. Many solutions—like adopting multi-model strategies or partial randomization—can be adapted to your own.
