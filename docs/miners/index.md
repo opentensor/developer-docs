@@ -9,9 +9,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Choosing a subnet
 
-All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different *incentive mechanism* for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [Emissions](../emissions.md).
+All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different _incentive mechanism_ for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [Emissions](../emissions.md).
 
-Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for *you* to mine, given your own expertise and access to hardware.
+Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for _you_ to mine, given your own expertise and access to hardware.
 
 Browse the subnets and explore links to their code repositories on [TAO.app' subnets listings](https://tao.app).
 
@@ -36,7 +36,7 @@ A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UID
 Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
 
 :::tip Ownership belongs to a hotkey
-When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md). 
+When you delegate your TAO to a subnet validator, you attach your delegated TAO to that validator’s hotkey. See [Delegation](../staking-and-delegation/delegation.md).
 
 A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
 :::
@@ -49,6 +49,7 @@ btcli subnet register --netuid <your_preferred_netuid>  --wallet.name  <my_coldk
 ```
 
 For example, for subnet 1 (netuid of 1):
+
 ```bash
 btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test-hotkey
 ```
@@ -57,32 +58,32 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 Miners as well as validators can be deregistered if their emissions are low.
 
-Typical subnets have 256 UID slots, with a maximum of 64 slots capable of serving as validators. This leaves 192 UIDs for miners, though if there are fewer validators, a miner can occupy one of the additional slots.
+Typically, subnets have 256 UID slots, with a maximum of 64 slots capable of serving as validators by default. This leaves 192 UIDs for miners, though if there are fewer than 64 eligible validators on a subnet, miners can occupy one of the available slots.
 
-Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* validator node) with the lowest 'pruning score' (based solely on emissions), and that is no longer within its [immunity period](../subnets/subnet-hyperparameters.md#immunity_period), risks being replaced by a newly registered neuron, who takes over that UID.
+:::info
+Deregistration only occurs on subnets where all 256 UID slots are occupied. If a new registration occurs in a subnet with available UID slots, the registered neuron occupies one of the available UID slots.
+:::
+
+Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner _or_ validator node) with the lowest 'pruning score' (based solely on emissions), and that is no longer within its [immunity period](../subnets/subnet-hyperparameters.md#immunityperiod), risks being replaced by a newly registered neuron, who takes over that UID.
 
 :::info Deregistration is based on emissions
-The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions (represented as 'pruning score'). Whoever has the lowest emissions will get deregistered. 
+The subnet does not distinguish between miners and validators for the purpose of deregistration. The chain only looks at emissions (represented as 'pruning score'). Whenever a new registration occurs in the subnet, the neuron with the lowest emissions will get deregistered.
 :::
 
 ### Immunity period
 
-- Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
-    :::tip See
-    See [`immunity_period`](../subnets/subnet-hyperparameters.md#immunity_period).
-    :::
+Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks. A neuron's `immunity_period` starts when the miner or validator registers into the subnet. For more information, see [`immunity_period`](../subnets/subnet-hyperparameters.md#immunityperiod).
 
-- A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
+A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
 
-- The `immunity_period` starts when a miner or validator is registered into the subnet.
+:::tip Special cases
 
-### Special cases
+- In the unlikely event that all neurons are still immune, the one with the lowest "pruning score" will be deregistered by the next incoming registration.
 
-In case of a tie, the older node gets deregistered first.
+- In cases where two or more nodes have the lowest "pruning score", the older node gets deregistered first.
 
-In the unlikely event that all neurons are still immune, the one with the lowest 'pruning score' will be deregistered by the next incoming registration.
-
-The subnet owner hotkey has permanent immunity from deregistration.
+- The subnet owner's hotkey has permanent immunity from deregistration.
+  :::
 
 ### Registration flow diagram
 
@@ -131,24 +132,24 @@ btcli wallet overview --netuid
 
 After providing your wallet name when prompted, you will see output such as:
 
-| Parameter   | Value                | Description                                                                 |
-| :---------- | :------------------- | :-------------------------------------------------------------------------- |
-| COLDKEY     | my_coldkey          | The name of the coldkey associated with your slot.                          |
-| HOTKEY      | my_first_hotkey     | The name of the hotkey associated with your slot.                           |
-| UID         | 5                   | The index of the uid out of available uids.                                 |
-| ACTIVE      | True                | The validator has set weights within the subnet's activity_cutoff           |
-| STAKE(τ)    | 71.296              | The amount of stake in this wallet.                                         |
-| RANK        | 0.0629              | This miner's absolute ranking according to validators on the network.       |
-| TRUST       | 0.2629              | This miner's trust as a proportion of validators on the network.            |
-| CONSENSUS   | 0.89                | This validator's aggregate consensus score.                                 |
-| INCENTIVE   | 0.029               | This miner's incentive, TAO emission, is attained via mining.               |
-| DIVIDENDS   | 0.001               | This validator's dividends, TAO emission, are attained via validating.      |
-| EMISSION    | 29_340_153          | This miner's total emission in RAO (10^(-9) TAO) per block.                 |
-| VTRUST      | 0.96936             | This validator's trust score as a validator.                                |
-| VPERMIT     | *                   | For validators: The uid is considered active for validating on this subnet. |
-| UPDATED     | 43                  | Blocks since this miner set weights on the chain.                           |
-| AXON        | 131.186.56.85:8091  | The entrypoint advertised by this miner on the bittensor blockchain.        |
-| HOTKEY_SS58 | 5F4tQyWr...         | The ss58-encoded address of the miner's hotkey.                             |
+| Parameter   | Value              | Description                                                                 |
+| :---------- | :----------------- | :-------------------------------------------------------------------------- |
+| COLDKEY     | my_coldkey         | The name of the coldkey associated with your slot.                          |
+| HOTKEY      | my_first_hotkey    | The name of the hotkey associated with your slot.                           |
+| UID         | 5                  | The index of the uid out of available uids.                                 |
+| ACTIVE      | True               | The validator has set weights within the subnet's activity_cutoff           |
+| STAKE(τ)    | 71.296             | The amount of stake in this wallet.                                         |
+| RANK        | 0.0629             | This miner's absolute ranking according to validators on the network.       |
+| TRUST       | 0.2629             | This miner's trust as a proportion of validators on the network.            |
+| CONSENSUS   | 0.89               | This validator's aggregate consensus score.                                 |
+| INCENTIVE   | 0.029              | This miner's incentive, TAO emission, is attained via mining.               |
+| DIVIDENDS   | 0.001              | This validator's dividends, TAO emission, are attained via validating.      |
+| EMISSION    | 29_340_153         | This miner's total emission in RAO (10^(-9) TAO) per block.                 |
+| VTRUST      | 0.96936            | This validator's trust score as a validator.                                |
+| VPERMIT     | \*                 | For validators: The uid is considered active for validating on this subnet. |
+| UPDATED     | 43                 | Blocks since this miner set weights on the chain.                           |
+| AXON        | 131.186.56.85:8091 | The entrypoint advertised by this miner on the bittensor blockchain.        |
+| HOTKEY_SS58 | 5F4tQyWr...        | The ss58-encoded address of the miner's hotkey.                             |
 
 ## Checking miner registration status
 
@@ -161,7 +162,7 @@ Use any of the Python snippets below:
 
 ```python
 import bittensor as bt
-# Replace below with your SS58 hotkey 
+# Replace below with your SS58 hotkey
 hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
 network = "finney"
 sub = bt.subtensor(network)
@@ -172,7 +173,7 @@ print(f"Registration status for hotkey {hotkey} is: {sub.is_hotkey_registered(ho
 
 ```python
 import bittensor as bt
-# Replace below with your SS58 hotkey 
+# Replace below with your SS58 hotkey
 hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
 network = "finney"
 netuid = 1 # subnet uid
@@ -188,7 +189,7 @@ else:
 
 ```python
 import bittensor as bt
-# Replace below with your SS58 hotkey 
+# Replace below with your SS58 hotkey
 hotkey = "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2"
 network = "finney"
 netuid = 1 # subnet uid
