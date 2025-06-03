@@ -57,24 +57,34 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 Miners as well as validators can be deregistered if their emissions are low.
 
-Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* validator node) with the lowest 'pruning score' (based solely on emissions) risks being replaced by a newly registered neuron, who takes over that UID.
+Typical subnets have 256 UID slots, with a maximum of 64 slots capable of serving as validators. This leaves 192 UIDs for miners, though if there are fewer validators, a miner can occupy one of the additional slots.
 
-Typical subnets have 256 UID slots, including maximums of 64 validator UIDs. This leaves 192 UIDs for miners, though if there are fewer validators, a miner can occupy one of the additional slots.
-
-In case of a tie, the older node gets deregistered first.
-
-The subnet owner hotkey has permanent immunity from deregistration.
+Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner *or* validator node) with the lowest 'pruning score' (based solely on emissions), and that is no longer within its [immunity period](../subnets/subnet-hyperparameters.md#immunity_period), risks being replaced by a newly registered neuron, who takes over that UID.
 
 :::info Deregistration is based on emissions
 The subnet does not distinguish between miners and validators for deregistration purposes. The chain only looks at emissions (represented as 'pruning score'). Whoever has the lowest emissions will get deregistered. 
 :::
 
+### Immunity period
+
 - Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
     :::tip See
     See [`immunity_period`](../subnets/subnet-hyperparameters.md#immunity_period).
     :::
+
 - A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
+
 - The `immunity_period` starts when a miner or validator is registered into the subnet.
+
+### Special cases
+
+In case of a tie, the older node gets deregistered first.
+
+In the unlikely event that all neurons are still immune, the one with the lowest 'pruning score' will be deregistered by the next incoming registration.
+
+The subnet owner hotkey has permanent immunity from deregistration.
+
+### Registration flow diagram
 
 Below is a diagram illustrating a subnet neuron's registration timeline:
 
@@ -110,7 +120,6 @@ To move a subnet miner from one machine to another, follow these steps in order:
 3. Stop the old miner.
 
 It can take subnet validators some time to recognize the updated IP of the Axon for your subnet miner.
-
 
 ## Inspecting UIDs
 
