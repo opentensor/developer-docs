@@ -4,10 +4,23 @@ title: "Create a Subnet"
 
 # Create a Subnet
 
-This page describes the procedures for creating a Bittensor subnet. Read [Understanding Subnets](understanding-subnets) first to ensure you understand the concepts involved.
+This page describes the procedures for creating a new Bittensor subnet.
 
-:::tip Miners and validators
-You **do not** have to create a subnet to mine or validate on the Bittensor network.
+Creating a subnet is a major undertaking. You should read up on [Understanding Subnets](understanding-subnets) and research existing subnets before planning to create one.
+
+See also:
+
+- Real-time subnet info on [tao.app](https://www.tao.app/explorer)
+- LearnBittensor's [Subnet listings](https://learnbittensor.org/subnets)
+
+:::info A New Subnet is not Automatically Active
+To allow subnet owners to fully set up their subnets and to prevent extraction of emissions to subnet participants before the subnet is contributing to the network, new subnets are inactive and cannot be started for 7 * 7200 blocks (roughly one week) after they are registered.  During this time, you can register and activate validators and invite miners into the subnet.  **Be advised that the subnet and its participants will receive NO EMISSIONS during the time that the subnet is inactive.** 
+:::
+
+:::tip Validating in Your Own Subnet
+Ensure that you meet the [minimum requirements for validation](../validators#requirements-for-validation), or you will not be able to set weights in your own subnet.
+
+One option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration. See the [Child Hotkeys](./child-hotkeys) documentation for more detail.
 :::
 
 ## Recommended flow for deploying your subnet 
@@ -173,13 +186,6 @@ Output:
 ✅ Registered subnetwork with netuid: 1 # Your subnet netuid will show here, save this for later.
 ```
 
-:::caution A New Subnet is not Automatically Active
-To allow subnet owners to fully set up their subnets and to prevent extraction of emissions to subnet participants before the subnet is contributing to the network, new subnets are inactive and cannot be started for 7 * 7200 blocks (roughly one week) after they are registered.  During this time, you can register and activate validators and invite miners into the subnet.  **Be advised that the subnet and its participants will receive NO EMISSIONS during the time that the subnet is inactive.** 
-:::
-
-:::tip Validating in Your Own Subnet
-Ensure that you are meeting the [minimum requirements for validation](../validators#requirements-for-validation)  Another option for subnet owners is to ask one of the root network (subnet 0) validators to parent your validator hotkey as a childkey of theirs.  This will lend their stake to your validator, and can help you ensure that your validator maintains a sufficient stake to effectively participate in consensus as well as resist deregistration. See the [Child Hotkeys](./child-hotkeys) documentation for more detail.
-:::
 
 ### Step 4. Check to see if you can start the subnet
 
