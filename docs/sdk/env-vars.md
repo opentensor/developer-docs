@@ -26,7 +26,7 @@ Allows Bittensor to be run in read-only systems.<br/>
 ### `USE_TORCH`
 
 When set to `1`, forces the use of `PyTorch` instead of NumPy for certain operations.<br/>
-Default: `0`
+The SDK uses `False ` if the variable isn't set.
 
 ## Subtensor
 
@@ -41,6 +41,7 @@ See [Bittensor Networks](../bittensor-networks)
 ### `BT_NETWORK`
 
 The default Subtensor network name. Allows selecting the network (e.g., `finney` or testnet) during Subtensor initialization without specifying an explicit endpoint.
+The SDK uses `bittensor.core.settings.DEFAULT_NETWORK ` if the variable isn't set.
 The SDK uses `bittensor.core.settings.DEFAULT_NETWORK ` if the variable isn't set.
 
 ## Axon
@@ -124,8 +125,7 @@ The SDK uses `bittensor.core.settings.WALLETS_DIR` if the variable isn't set.
 
 ### `FAST_BLOCKS`
 
-If set to `0`, disables the fast-block chain feature (0.25 seconds per block) for e2e testing.<br/>
-Default: Use `fast_blocks`
+The SDK runs e2e tests in fast-block mode if the variable is not set.<br/>
 
 ### `USE_DOCKER`
 
