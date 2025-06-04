@@ -40,7 +40,7 @@ See [Bittensor Networks](../bittensor-networks)
 
 ### `BT_NETWORK`
 
-The default Subtensor network name. Allows selecting the network (e.g., `finney` or `testnet`) during Subtensor initialization without specifying an explicit endpoint.<br>
+The default Subtensor network name. Allows selecting the network (e.g., `finney` or `testnet`) during Subtensor initialization without specifying an explicit endpoint.<br/>
 The SDK uses `bittensor.core.settings.DEFAULT_NETWORK ` if the variable is not set.
 
 ## Axon
