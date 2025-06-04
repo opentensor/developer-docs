@@ -118,7 +118,8 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/installation",
-            "bt-api-ref",
+            "sdk/env-vars",
+            "bt-api-ref",          
             "sdk/subtensor-api",
             "getting-started/install-wallet-sdk",        
             "migration_guide",

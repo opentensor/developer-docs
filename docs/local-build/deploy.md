@@ -4,7 +4,7 @@ title: "Build and Deploy the Blockchain"
 
 # Deploy a Local Bittensor Blockchain Instance
 
-This tutorial will guide the user through deploying a local instance of Subtensor, Bittensor's L1 blockchain. This is useful in general Bittensor develoment, as it gives you more freedom over chain state than when working against mainnet or even testnet. For example, it is much easier to create subnets without having to wait for registration availability.
+This tutorial will guide the user through deploying a local instance of Subtensor, Bittensor's L1 blockchain. This is useful in general Bittensor development, as it gives you more freedom over chain state than when working against mainnet or even testnet. For example, it is much easier to create subnets without having to wait for registration availability.
 
 Each local chain is provisioned with an `alice` account with one million $\tau$.
 
