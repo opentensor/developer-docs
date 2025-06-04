@@ -15,19 +15,19 @@ This variable will be renamed or deprecated in Bittensor SDK version 10.
 
 ### `NEST_ASYNCIO`
 
-If the variable is set to `"1"`, the `nest_asyncio` patch is applied to support nested asyncio event loops.
+If the variable is set to `"1"`, the `nest_asyncio` patch is applied to support nested asyncio event loops.<br/>
 Default: 0
 
 ### `READ_ONLY`
 
 If set to `"1"`, Bittensor is run in in read-only mode, and write-required operations are disabled (e.g., `btlogging` and `bittensor-wallet`).
 
-Allows Bittensor to be run in read-only systems.
+Allows Bittensor to be run in read-only systems.<br/>
 Default: 0
 
 ### `USE_TORCH`
 
-When set to 1, forces the use of `PyTorch` instead of NumPy for certain operations.
+When set to 1, forces the use of `PyTorch` instead of NumPy for certain operations.<br/>
 Default: 0
 
 ## Subtensor
@@ -78,22 +78,22 @@ The maximum number of worker threads for the Axon server.
 <!-- What is Default log level? -->
 ### `BT_LOGGING_DEBUG`
 
-When set to "true" or "1", enables DEBUG level message output.
+When set to "true" or "1", enables DEBUG level message output.<br/>
 Default: 0
 
 ### `BT_LOGGING_TRACE`
 
-When set to "true" or "1", enables the most verbose TRACE logging level.
+When set to "true" or "1", enables the most verbose TRACE logging level.<br/>
 Default: 0
 
 ### `BT_LOGGING_INFO`
 
-When set to "true" or "1", enables INFO level message output.
+When set to "true" or "1", enables INFO level message output.<br/>
 Default: 0
 
 ### `BT_LOGGING_RECORD_LOG`
 
-When set to "true" or "1", enables log file recording.
+When set to "true" or "1", enables log file recording.<br/>
 Default: 0
 
 ### `BT_LOGGING_LOGGING_DIR`
@@ -118,17 +118,16 @@ Maximum task queue size for the `PriorityThreadPoolExecutor`.
 
 ### `FAST_BLOCKS`
 
-If set to `"1"`, use a fast-block chain (0.25 seconds per block) for e2e testing.
+If set to `"1"`, use a fast-block chain (0.25 seconds per block) for e2e testing.<br/>
 Default: 0
 
 ### `USE_DOCKER`
 
-If set to `"1"`, use the Docker-based LocalNet image for launching e2e tests.
+If set to `"1"`, use the Docker-based LocalNet image for launching e2e tests.<br/>
 Default: 0
 
 ### `LOCALNET_SH_PATH`
 
-Full path to the `scripts/localnet.sh` file in the cloned `Subtensor` repository used to launch the local chain (including for e2e tests if the Docker image is not used).
-
+Full path to the `scripts/localnet.sh` file in the cloned `Subtensor` repository used to launch the local chain (including for e2e tests if the Docker image is not used).<br/>
 Default: `./scripts/localnet.sh`
 
