@@ -34,7 +34,7 @@ Default: `0`
 
 The Subtensor node (RPC endpoint) URL to connect to Bittensor (overrides the default chain address).
 
-Defaults to Bittensor main network: `(wss://entrypoint-finney.opentensor.ai:443`
+The SDK uses `bittensor.core.settings.DEFAULT_ENDPOINT ` if the variable isn't set.
 
 See [Bittensor Networks](../bittensor-networks)
 
