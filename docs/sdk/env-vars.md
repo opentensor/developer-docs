@@ -108,6 +108,20 @@ Default: `5`
 Maximum task queue size for the `PriorityThreadPoolExecutor`.
 Default: `10`
 
+## Wallet
+
+### `BT_WALLET_NAME`
+
+Wallet name to use unless specified.
+The SDK uses `default` if the variable isn't set,
+
+### `BT_WALLET_HOTKEY`
+Hotkey name to use unless specified.
+The SDK uses `default` if the variable isn't set,
+
+### `BT_WALLET_PATH`
+The SDK uses `bittensor.core.settings.WALLETS_DIR` if the variable isn't set.
+
 ## Testing
 
 ### `FAST_BLOCKS`
