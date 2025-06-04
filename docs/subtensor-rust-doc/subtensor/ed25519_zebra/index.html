@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Build status dependency status"><title>ed25519_zebra - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="ed25519_zebra" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../ed25519_zebra/index.html">ed25519_<wbr>zebra</a><span class="version">4.0.3</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#zip-215-and-changes-to-zcash-flavored-ed25519" title="ZIP 215 and changes to Zcash-flavored Ed25519">ZIP 215 and changes to Zcash-flavored Ed25519</a></li><li><a href="#example" title="Example">Example</a></li><li><a href="#license" title="License">License</a></li></ul><h3><a href="#reexports">Crate Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>ed25519_zebra</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/ed25519_zebra/lib.rs.html#1-21">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><a href="https://github.com/ZcashFoundation/ed25519-zebra/actions/workflows/main.yml?query=branch%3Amain"><img src="https://github.com/ZcashFoundation/ed25519-zebra/actions/workflows/main.yml/badge.svg?branch=main" alt="Build status" /></a>
+<a href="https://deps.rs/repo/github/ZcashFoundation/ed25519-zebra"><img src="https://deps.rs/repo/github/ZcashFoundation/ed25519-zebra/status.svg" alt="dependency status" /></a></p>
+<p>Zcash-flavored Ed25519 for use in <a href="https://github.com/ZcashFoundation/zebra">Zebra</a>.</p>
+<p>Zcash uses Ed25519 for <a href="https://zips.z.cash/protocol/protocol.pdf#concretejssig">JoinSplit signatures</a> with
+particular validation rules around edge cases in Ed25519 signatures.  Ed25519,
+as specified in <a href="https://tools.ietf.org/html/rfc8032">RFC8032</a>, does not specify behaviour around these edge cases
+and so does not require conformant implementations to agree on whether a
+signature is valid.  For most applications, these edge cases are irrelevant,
+but in Zcash, nodes must be able to reach consensus on which signatures would
+be valid, so these validation behaviors are <em>consensus-critical</em>.</p>
+<p>Because the Ed25519 validation rules are consensus-critical for Zcash, Zebra
+requires an Ed25519 library that implements the Zcash-flavored validation rules
+specifically, and since it is unreasonable to expect an upstream dependency to
+maintain Zcash-specific behavior, this crate provides an Ed25519 implementation
+matching the Zcash consensus rules exactly.</p>
+<p>However, this library may be of independent interest, as it implements
+ZIP215, a set of precisely specified validation rules for Ed25519 that make
+individual verification consistent with batch verification and are
+backwards-compatible with all existing Ed25519 signatures. Any non-Zcash users
+should use the ZIP215 rules:</p>
+<div class="example-wrap"><pre class="language-toml"><code>ed25519-zebra = &quot;4&quot;</code></pre></div><h3 id="zip-215-and-changes-to-zcash-flavored-ed25519"><a class="doc-anchor" href="#zip-215-and-changes-to-zcash-flavored-ed25519">§</a>ZIP 215 and changes to Zcash-flavored Ed25519</h3>
+<p><a href="https://zips.z.cash/zip-0215">Zcash Improvement Proposal 215</a> changes validation criteria for
+Ed25519 signatures in Zcash after its activation (which occurred in the
+Canopy network upgrade at mainnet block height 1046400). These changes remove
+the dependence on validation rules inherited from a specific point release of
+<code>libsodium</code> and make individual verification consistent with batch
+verification. More details and motivation are available in the text of <a href="https://zips.z.cash/zip-0215">ZIP215</a>.</p>
+<p>The <code>1.x</code> series of this crate implements the legacy, pre-ZIP-215 validation
+criteria; the <code>2.x+</code> series of this crate implements the post-ZIP-215
+validation criteria.  Users (like Zebra or zcashd) who need to handle the
+upgrade can use both versions simultaneously using cargo renaming, e.g.,</p>
+<div class="example-wrap"><pre class="language-toml"><code>ed25519-zebra-legacy = { package = &quot;ed25519-zebra&quot;, version = &quot;1&quot; }
+ed25519-zebra-zip215 = { package = &quot;ed25519-zebra&quot;, version = &quot;4&quot; }</code></pre></div><h3 id="example"><a class="doc-anchor" href="#example">§</a>Example</h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::convert::TryFrom;
+<span class="kw">use </span>rand::thread_rng;
+<span class="kw">use </span>ed25519_zebra::<span class="kw-2">*</span>;
+
+<span class="kw">let </span>msg = <span class="string">b"Zcash"</span>;
+
+<span class="comment">// Signer's context
+</span><span class="kw">let </span>(vk_bytes, sig_bytes) = {
+    <span class="comment">// Generate a signing key and sign the message
+    </span><span class="kw">let </span>sk = SigningKey::new(thread_rng());
+    <span class="kw">let </span>sig = sk.sign(msg);
+
+    <span class="comment">// Types can be converted to raw byte arrays with From/Into
+    </span><span class="kw">let </span>sig_bytes: [u8; <span class="number">64</span>] = sig.into();
+    <span class="kw">let </span>vk_bytes: [u8; <span class="number">32</span>] = VerificationKey::from(<span class="kw-2">&amp;</span>sk).into();
+
+    (vk_bytes, sig_bytes)
+};
+
+<span class="comment">// Verify the signature
+</span><span class="macro">assert!</span>(
+    VerificationKey::try_from(vk_bytes)
+        .and_then(|vk| vk.verify(<span class="kw-2">&amp;</span>sig_bytes.into(), msg))
+        .is_ok()
+);</code></pre></div>
+<h3 id="license"><a class="doc-anchor" href="#license">§</a>License</h3>
+<p>ed25519-zebra is distributed under the terms of both the MIT license
+and the Apache License (Version 2.0).</p>
+<p>See <a href="LICENSE-APACHE">LICENSE-APACHE</a> and <a href="LICENSE-MIT">LICENSE-MIT</a>.</p>
+<p>Docs require the <code>nightly</code> feature until RFC 1990 lands.</p>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.ed25519"><code>pub use <a class="mod" href="../ed25519/index.html" title="mod ed25519">ed25519</a>;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="batch/index.html" title="mod ed25519_zebra::batch">batch</a></dt><dd>Performs batch Ed25519 signature verification.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Signature.html" title="struct ed25519_zebra::Signature">Signature</a></dt><dd>Ed25519 signature.</dd><dt><a class="struct" href="struct.SigningKey.html" title="struct ed25519_zebra::SigningKey">Signing<wbr>Key</a></dt><dd>An Ed25519 signing key.</dd><dt><a class="struct" href="struct.VerificationKey.html" title="struct ed25519_zebra::VerificationKey">Verification<wbr>Key</a></dt><dd>A valid Ed25519 verification key.</dd><dt><a class="struct" href="struct.VerificationKeyBytes.html" title="struct ed25519_zebra::VerificationKeyBytes">Verification<wbr>KeyBytes</a></dt><dd>A refinement type for <code>[u8; 32]</code> indicating that the bytes represent an
+encoding of an Ed25519 verification key.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.Error.html" title="enum ed25519_zebra::Error">Error</a></dt><dd>An error related to Ed25519 signatures.</dd></dl></section></div></main></body></html>

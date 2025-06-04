@@ -1,0 +1,1 @@
+searchState.loadedDescShard("common_path", 0, "Calculates the common prefix for a set of paths, if a …\nFind the common prefix, if any, between 2 paths\nFind the common prefix, if any, between any number of paths")

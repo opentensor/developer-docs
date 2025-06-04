@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Hash any number of complete inputs all at once."><title>hash_many in blake2b_simd::many - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="blake2b_simd" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../blake2b_simd/index.html">blake2b_<wbr>simd</a><span class="version">1.0.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">hash_<wbr>many</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In blake2b_<wbr>simd::<wbr>many</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">blake2b_simd</a>::<wbr><a href="index.html">many</a></div><h1>Function <span class="fn">hash_many</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/blake2b_simd/many.rs.html#386-419">Source</a> </span></div><pre class="rust item-decl"><code>pub fn hash_many&lt;'a, 'b, I&gt;(hash_many_jobs: I)<div class="where">where
+    I: <a class="trait" href="https://doc.rust-lang.org/1.86.0/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = &amp;'a mut <a class="struct" href="struct.HashManyJob.html" title="struct blake2b_simd::many::HashManyJob">HashManyJob</a>&lt;'b&gt;&gt;,
+    'b: 'a,</div></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Hash any number of complete inputs all at once.</p>
+<p>This is slightly more efficient than using <code>update_many</code> with <code>State</code>
+objects, because it doesn’t need to do any buffering.</p>
+<p>Running <code>hash_many</code> on the same <code>HashManyJob</code> object more than once has no
+effect.</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>blake2b_simd::{blake2b, Params, many::{HashManyJob, hash_many}};
+
+<span class="kw">let </span>inputs = [
+    <span class="kw-2">&amp;</span><span class="string">b"foo"</span>[..],
+    <span class="kw-2">&amp;</span><span class="string">b"bar"</span>[..],
+    <span class="kw-2">&amp;</span><span class="string">b"baz"</span>[..],
+    <span class="kw-2">&amp;</span><span class="string">b"bing"</span>[..],
+];
+
+<span class="kw">let </span><span class="kw-2">mut </span>params = Params::new();
+params.hash_length(<span class="number">16</span>);
+
+<span class="kw">let </span><span class="kw-2">mut </span>jobs = [
+    HashManyJob::new(<span class="kw-2">&amp;</span>params, inputs[<span class="number">0</span>]),
+    HashManyJob::new(<span class="kw-2">&amp;</span>params, inputs[<span class="number">1</span>]),
+    HashManyJob::new(<span class="kw-2">&amp;</span>params, inputs[<span class="number">2</span>]),
+    HashManyJob::new(<span class="kw-2">&amp;</span>params, inputs[<span class="number">3</span>]),
+];
+
+hash_many(jobs.iter_mut());
+
+<span class="kw">for </span>(input, job) <span class="kw">in </span>inputs.iter().zip(jobs.iter()) {
+    <span class="kw">let </span>expected = params.hash(input);
+    <span class="macro">assert_eq!</span>(expected, job.to_hash());
+}</code></pre></div>
+</div></details></section></div></main></body></html>

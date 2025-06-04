@@ -1,0 +1,1 @@
+searchState.loadedDescShard("subtensor", 0, "This crate exists for linting in CI. Look inside build.rs …")

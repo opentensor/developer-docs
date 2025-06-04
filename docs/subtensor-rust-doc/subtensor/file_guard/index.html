@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="A cross-platform library for simple advisory file locking."><title>file_guard - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="file_guard" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../file_guard/index.html">file_<wbr>guard</a><span class="version">0.2.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>file_guard</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/file_guard/lib.rs.html#1-384">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A cross-platform library for simple advisory file locking.</p>
+<p>The lock supports both exclusive and shared locking modes for a byte range
+of an opened <code>File</code> object. Exclusively locking a portion of a file denies
+all other processes both shared and exclusive access to the specified
+region of the file. Shared locking a portion of a file denies all processes
+exclusive access to the specified region of the file. The locked range does
+not need to exist within the file, and the ranges may be used for any
+arbitrary advisory locking protocol between processes.</p>
+<p>The result of a <a href="fn.lock.html"><code>lock()</code></a>, <a href="fn.try_lock.html"><code>try_lock()</code></a>, or <a href="fn.lock_any.html"><code>lock_any()</code></a> is a
+<a href="struct.FileGuard.html"><code>FileGuard</code></a>. When dropped, this <a href="struct.FileGuard.html"><code>FileGuard</code></a> will unlock the region of
+the file currently held. Exclusive locks may be <a href="struct.FileGuard.html#method.downgrade"><code>.downgrade()</code></a>’ed to
+either a shared lock cross platform.</p>
+<p>On Unix systems <code>fcntl</code> is used to perform the locking, and on Windows, <code>LockFileEx</code>.
+All generally available behavior is consistent across platforms. For platform-
+specific behavior, traits may be used for the respective platform. For example,
+on Windows, locks cannot be safely upgraded, whereas on Unix systems, this can
+be done safely and atomically. To use this feature, the
+<a href="os/unix/trait.FileGuardExt.html"><code>file_guard::os::unix::FileGuardExt</code></a> may <code>use</code>ed, enabling the <a href="os/unix/trait.FileGuardExt.html#tymethod.upgrade"><code>.upgrade()</code></a>
+and <a href="os/unix/trait.FileGuardExt.html#tymethod.try_upgrade"><code>.try_upgrade()</code></a> methods.</p>
+<p>Note that on Windows, the file must be open with write permissions to lock it.</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>file_guard::Lock;
+<span class="kw">use </span>std::fs::OpenOptions;
+
+<span class="kw">let </span><span class="kw-2">mut </span>file = OpenOptions::new()
+    .read(<span class="bool-val">true</span>)
+    .write(<span class="bool-val">true</span>)
+    .create(<span class="bool-val">true</span>)
+    .open(<span class="string">"example-lock"</span>)<span class="question-mark">?</span>;
+
+<span class="kw">let </span><span class="kw-2">mut </span>lock = file_guard::lock(<span class="kw-2">&amp;mut </span>file, Lock::Exclusive, <span class="number">0</span>, <span class="number">1</span>)<span class="question-mark">?</span>;
+write_to_file(<span class="kw-2">&amp;mut </span>lock)<span class="question-mark">?</span>;
+<span class="comment">// the lock will be unlocked when it goes out of scope</span></code></pre></div>
+<p>You can store one or more locks in a struct:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>file_guard::{FileGuard, Lock};
+<span class="kw">use </span>std::fs::{File, OpenOptions};
+
+<span class="kw">let </span>file = OpenOptions::new()
+    .read(<span class="bool-val">true</span>)
+    .write(<span class="bool-val">true</span>)
+    .create(<span class="bool-val">true</span>)
+    .open(<span class="string">"example-lock"</span>)<span class="question-mark">?</span>;
+
+<span class="kw">struct </span>Thing&lt;<span class="lifetime">'file</span>&gt; {
+    a: FileGuard&lt;<span class="kw-2">&amp;</span><span class="lifetime">'file </span>File&gt;,
+    b: FileGuard&lt;<span class="kw-2">&amp;</span><span class="lifetime">'file </span>File&gt;,
+}
+
+<span class="kw">let </span>t = Thing {
+    a: file_guard::lock(<span class="kw-2">&amp;</span>file, Lock::Exclusive, <span class="number">0</span>, <span class="number">1</span>)<span class="question-mark">?</span>,
+    b: file_guard::lock(<span class="kw-2">&amp;</span>file, Lock::Shared, <span class="number">1</span>, <span class="number">2</span>)<span class="question-mark">?</span>,
+};
+<span class="comment">// both locks will be unlocked when t goes out of scope</span></code></pre></div>
+<p>Anything that can <code>Deref</code> or <code>DerefMut</code> to a <code>File</code> can be used with the <a href="struct.FileGuard.html"><code>FileGuard</code></a>
+(i.e. <code>Rc&lt;File&gt;</code>):</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>file_guard::{FileGuard, Lock};
+<span class="kw">use </span>std::fs::{File, OpenOptions};
+<span class="kw">use </span>std::rc::Rc;
+
+<span class="kw">let </span>file = Rc::new(
+    OpenOptions::new()
+        .read(<span class="bool-val">true</span>)
+        .write(<span class="bool-val">true</span>)
+        .create(<span class="bool-val">true</span>)
+        .open(<span class="string">"example-lock"</span>)<span class="question-mark">?
+</span>);
+
+<span class="kw">struct </span>Thing {
+    a: FileGuard&lt;Rc&lt;File&gt;&gt;,
+    b: FileGuard&lt;Rc&lt;File&gt;&gt;,
+}
+
+<span class="kw">let </span>t = Thing {
+    a: file_guard::lock(file.clone(), Lock::Exclusive, <span class="number">0</span>, <span class="number">1</span>)<span class="question-mark">?</span>,
+    b: file_guard::lock(file, Lock::Shared, <span class="number">1</span>, <span class="number">2</span>)<span class="question-mark">?</span>,
+};
+<span class="comment">// both locks will be unlocked and the file will be closed when t goes out of scope</span></code></pre></div>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="os/index.html" title="mod file_guard::os">os</a></dt><dd>Provides low-level support operations for file locking.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.FileGuard.html" title="struct file_guard::FileGuard">File<wbr>Guard</a></dt><dd>An RAII implementation of a “scoped lock” of a file. When this structure
+is dropped (falls out of scope), the lock will be unlocked.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.Lock.html" title="enum file_guard::Lock">Lock</a></dt><dd>The type of a lock operation.</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.lock.html" title="fn file_guard::lock">lock</a></dt><dd>Wait and claim the desired <a href="enum.Lock.html"><code>Lock</code></a> type using a byte range of a file.</dd><dt><a class="fn" href="fn.lock_any.html" title="fn file_guard::lock_any">lock_<wbr>any</a></dt><dd>First attempt to claim an <a href="enum.Lock.html#variant.Exclusive"><code>Exclusive</code></a> lock and then fallback to a
+<a href="enum.Lock.html#variant.Shared"><code>Shared</code></a> lock for a byte range of a file. This is not currently an
+atomic operation.</dd><dt><a class="fn" href="fn.try_lock.html" title="fn file_guard::try_lock">try_<wbr>lock</a></dt><dd>Attempt to claim the desired <a href="enum.Lock.html"><code>Lock</code></a> type using a byte range of a file.</dd></dl></section></div></main></body></html>

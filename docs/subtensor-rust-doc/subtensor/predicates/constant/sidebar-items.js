@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["always","never"],"struct":["BooleanPredicate"]};

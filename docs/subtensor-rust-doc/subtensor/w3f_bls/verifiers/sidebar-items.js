@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["verify_simple","verify_unoptimized","verify_using_aggregated_auxiliary_public_keys","verify_with_distinct_messages"],"type":["PublicKeyAffine","PublicKeyProjective","SignatureAffine","SignatureProjective"]};

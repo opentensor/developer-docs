@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["connect","is_upgrade_request"]};

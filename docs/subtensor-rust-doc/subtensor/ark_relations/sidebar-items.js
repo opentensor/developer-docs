@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["lc","ns"],"mod":["r1cs"]};

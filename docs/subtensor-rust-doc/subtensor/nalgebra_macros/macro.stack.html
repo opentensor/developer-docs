@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Construct a new matrix by stacking matrices in a block matrix."><title>stack in nalgebra_macros - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="nalgebra_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../nalgebra_macros/index.html">nalgebra_<wbr>macros</a><span class="version">0.2.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">stack</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#panics" title="Panics">Panics</a></li><li><a href="#examples" title="Examples">Examples</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate nalgebra_<wbr>macros</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">nalgebra_macros</a></div><h1>Macro <span class="macro">stack</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/nalgebra_macros/lib.rs.html#256-259">Source</a> </span></div><pre class="rust item-decl"><code>stack!() { <span class="comment">/* proc-macro */</span> }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Construct a new matrix by stacking matrices in a block matrix.</p>
+<p><strong>Note: Requires the <code>macros</code> feature to be enabled (enabled by default)</strong>.</p>
+<p>This macro facilitates the construction of
+<a href="https://en.wikipedia.org/wiki/Block_matrix">block matrices</a>
+by stacking blocks (matrices) using the same MATLAB-like syntax as the <a href="macro.matrix.html" title="macro nalgebra_macros::matrix"><code>matrix!</code></a> and
+<a href="macro.dmatrix.html" title="macro nalgebra_macros::dmatrix"><code>dmatrix!</code></a> macros:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// a, b, c and d are matrices
+</span><span class="kw">let </span>block_matrix = <span class="macro">stack!</span>[ a, b;
+                           c, d ];</code></pre></div>
+<p>The resulting matrix is stack-allocated if the dimension of each block row and column
+can be determined at compile-time, otherwise it is heap-allocated.
+This is the case if, for every row, there is at least one matrix with a fixed number of rows,
+and, for every column, there is at least one matrix with a fixed number of columns.</p>
+<p><a href="macro.stack.html" title="macro nalgebra_macros::stack"><code>stack!</code></a> also supports special syntax to indicate zero blocks in a matrix:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// a and d are matrices
+</span><span class="kw">let </span>block_matrix = <span class="macro">stack!</span>[ a, <span class="number">0</span>;
+                           <span class="number">0</span>, d ];</code></pre></div>
+<p>Here, the <code>0</code> literal indicates a zero matrix of implicitly defined size.
+In order to infer the size of the zero blocks, there must be at least one matrix
+in every row and column of the matrix.
+In other words, no row or column can consist entirely of implicit zero blocks.</p>
+<h2 id="panics"><a class="doc-anchor" href="#panics">§</a>Panics</h2>
+<p>Panics if dimensions are inconsistent and it cannot be determined at compile-time.</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>nalgebra::{matrix, SMatrix, stack};
+
+<span class="kw">let </span>a = <span class="macro">matrix!</span>[<span class="number">1</span>, <span class="number">2</span>;
+                <span class="number">3</span>, <span class="number">4</span>];
+<span class="kw">let </span>b = <span class="macro">matrix!</span>[<span class="number">5</span>, <span class="number">6</span>;
+                <span class="number">7</span>, <span class="number">8</span>];
+<span class="kw">let </span>c = <span class="macro">matrix!</span>[<span class="number">9</span>, <span class="number">10</span>];
+
+<span class="kw">let </span>block_matrix = <span class="macro">stack!</span>[ a, b;
+                           c, <span class="number">0 </span>];
+
+<span class="macro">assert_eq!</span>(block_matrix, <span class="macro">matrix!</span>[<span class="number">1</span>,  <span class="number">2</span>,  <span class="number">5</span>,  <span class="number">6</span>;
+                                 <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">7</span>,  <span class="number">8</span>;
+                                 <span class="number">9</span>, <span class="number">10</span>,  <span class="number">0</span>,  <span class="number">0</span>]);
+
+<span class="comment">// Verify that the resulting block matrix is stack-allocated
+</span><span class="kw">let _</span>: SMatrix&lt;<span class="kw">_</span>, <span class="number">3</span>, <span class="number">4</span>&gt; = block_matrix;</code></pre></div>
+<p>The example above shows how stacking stack-allocated matrices results in a stack-allocated
+block matrix. If all row and column dimensions can not be determined at compile-time,
+the result is instead a dynamically allocated matrix:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>nalgebra::{dmatrix, DMatrix, Dyn, matrix, OMatrix, SMatrix, stack, U3};
+
+<span class="comment">// a and c as before, but b is a dynamic matrix this time
+</span><span class="kw">let </span>b = <span class="macro">dmatrix!</span>[<span class="number">5</span>, <span class="number">6</span>;
+                 <span class="number">7</span>, <span class="number">8</span>];
+
+<span class="comment">// In this case, the number of rows can be statically inferred to be 3 (U3),
+// but the number of columns cannot, hence it is dynamic
+</span><span class="kw">let </span>block_matrix: OMatrix&lt;<span class="kw">_</span>, U3, Dyn&gt; = <span class="macro">stack!</span>[ a, b;
+                                                c, <span class="number">0 </span>];
+
+<span class="comment">// If necessary, a fully dynamic matrix (DMatrix) can be obtained by reshaping
+</span><span class="kw">let </span>dyn_block_matrix: DMatrix&lt;<span class="kw">_</span>&gt; = block_matrix.reshape_generic(Dyn(<span class="number">3</span>), Dyn(<span class="number">4</span>));</code></pre></div>
+<p>Note that explicitly annotating the types of <code>block_matrix</code> and <code>dyn_block_matrix</code> is
+only made for illustrative purposes, and is not generally necessary.</p>
+</div></details></section></div></main></body></html>

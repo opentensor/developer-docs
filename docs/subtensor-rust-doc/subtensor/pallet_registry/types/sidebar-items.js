@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Data","IdentityField"],"struct":["IdentityFields","IdentityInfo","Registration"]};

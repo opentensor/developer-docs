@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"externcrate":["proto"],"fn":["version"],"mod":["caching_client","config","dns_lru","error","lookup","lookup_ip","name_server","system_conf"],"struct":["AsyncResolver","Hosts","Name","Resolver"],"trait":["IntoName","TryParseIp"],"type":["ResolverFuture","TokioAsyncResolver"]};

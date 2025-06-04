@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["MemoryTransportError"],"struct":["Chan","DialFuture","Listener","MemoryTransport"],"type":["Channel"]};

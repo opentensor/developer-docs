@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Safely cast bytes slices from/to slices of built-in fundamental numeric types."><title>byte_slice_cast - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="byte_slice_cast" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../byte_slice_cast/index.html">byte_<wbr>slice_<wbr>cast</a><span class="version">1.2.2</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example-with-slices" title="Example with slices">Example with slices</a></li><li><a href="#example-with-mutable-slices" title="Example with mutable slices">Example with mutable slices</a></li></ul><h3><a href="#enums">Crate Items</a></h3><ul class="block"><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#traits" title="Traits">Traits</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>byte_slice_cast</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/byte_slice_cast/lib.rs.html#5-1002">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Safely cast bytes slices from/to slices of built-in fundamental numeric types.</p>
+<p>The provided traits here allow safe casting between byte slices and slices of fundamental
+numeric types, like integers and floating point numbers. During casting, checks are performed
+to ensure that the output slice is safe to use: the input slice must be properly aligned for
+the output type and contain an integer number of values.</p>
+<p>Instead of working only on slices, the traits work on <code>AsRef&lt;[T]&gt;</code> in the immutable case and on
+<code>AsMut&lt;[T]&gt;</code> for the mutable case. As such, it is possible to directly work on e.g. <code>Vec&lt;T&gt;</code>
+and <code>Box&lt;[T]&gt;</code> too.</p>
+<p>The content of the output slice will be bitwise equivalent to the input slice, as such extra
+care has to be taken with regard to endianness.</p>
+<h2 id="example-with-slices"><a class="doc-anchor" href="#example-with-slices">§</a>Example with slices</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>byte_slice_cast::<span class="kw-2">*</span>;
+
+<span class="kw">let </span>slice = [<span class="number">0x0102u16</span>, <span class="number">0x0304u16</span>, <span class="number">0x0506u16</span>];
+
+<span class="kw">let </span>converted_slice = slice.as_byte_slice();
+
+<span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
+    <span class="macro">assert_eq!</span>(converted_slice, <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);
+} <span class="kw">else </span>{
+    <span class="macro">assert_eq!</span>(converted_slice, <span class="kw-2">&amp;</span>[<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">5</span>]);
+}
+
+<span class="kw">let </span>converted_back_slice = converted_slice.as_slice_of::&lt;u16&gt;().unwrap();
+
+<span class="macro">assert_eq!</span>(converted_back_slice, <span class="kw-2">&amp;</span>slice);</code></pre></div>
+<h2 id="example-with-mutable-slices"><a class="doc-anchor" href="#example-with-mutable-slices">§</a>Example with mutable slices</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>byte_slice_cast::<span class="kw-2">*</span>;
+
+<span class="kw">let </span><span class="kw-2">mut </span>slice = [<span class="number">0u32</span>; <span class="number">1</span>];
+<span class="kw">let </span><span class="kw-2">mut </span>converted_slice = slice.as_mut_byte_slice();
+converted_slice.copy_from_slice(<span class="kw-2">&amp;</span>[<span class="number">0x12</span>, <span class="number">0x34</span>, <span class="number">0x56</span>, <span class="number">0x78</span>]);
+
+<span class="kw">let </span><span class="kw-2">mut </span>converted_slice = converted_slice.as_mut_slice_of::&lt;u16&gt;().unwrap();
+converted_slice[<span class="number">0</span>] = <span class="number">0xffff</span>;
+
+<span class="kw">if </span><span class="macro">cfg!</span>(target_endian = <span class="string">"big"</span>) {
+    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>slice, <span class="kw-2">&amp;</span>[<span class="number">0xffff5678</span>]);
+} <span class="kw">else </span>{
+    <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>slice, <span class="kw-2">&amp;</span>[<span class="number">0x7856ffff</span>]);
+}
+</code></pre></div>
+</div></details><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.Error.html" title="enum byte_slice_cast::Error">Error</a></dt><dd>Possible errors during slice conversion.</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.AsByteSlice.html" title="trait byte_slice_cast::AsByteSlice">AsByte<wbr>Slice</a></dt><dd>Trait for converting from an immutable slice of a fundamental, built-in numeric type to an
+immutable byte slice.</dd><dt><a class="trait" href="trait.AsMutByteSlice.html" title="trait byte_slice_cast::AsMutByteSlice">AsMut<wbr>Byte<wbr>Slice</a></dt><dd>Trait for converting from a mutable slice of a fundamental, built-in numeric type to a mutable
+byte slice.</dd><dt><a class="trait" href="trait.AsMutSliceOf.html" title="trait byte_slice_cast::AsMutSliceOf">AsMut<wbr>Slice<wbr>Of</a></dt><dd>Trait for converting from a mutable byte slice to a mutable slice of a fundamental, built-in
+numeric type.</dd><dt><a class="trait" href="trait.AsSliceOf.html" title="trait byte_slice_cast::AsSliceOf">AsSlice<wbr>Of</a></dt><dd>Trait for converting from a byte slice to a slice of a fundamental, built-in numeric type.</dd><dt><a class="trait" href="trait.FromByteSlice.html" title="trait byte_slice_cast::FromByteSlice">From<wbr>Byte<wbr>Slice</a></dt><dd>Trait for converting from a byte slice to a slice of a fundamental, built-in numeric type.</dd><dt><a class="trait" href="trait.ToByteSlice.html" title="trait byte_slice_cast::ToByteSlice">ToByte<wbr>Slice</a></dt><dd>Trait for converting from an immutable slice of a fundamental, built-in numeric type to an
+immutable byte slice.</dd><dt><a class="trait" href="trait.ToMutByteSlice.html" title="trait byte_slice_cast::ToMutByteSlice">ToMut<wbr>Byte<wbr>Slice</a></dt><dd>Trait for converting from a mutable slice of a fundamental, built-in numeric type to a mutable
+byte slice.</dd></dl></section></div></main></body></html>

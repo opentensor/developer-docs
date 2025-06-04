@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Attribute for functions run at program initialization (before main)."><title>constructor in static_init - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="static_init" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc attr"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../static_init/index.html">static_<wbr>init</a><span class="version">1.0.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">constructor</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#safety" title="Safety">Safety</a></li><li><a href="#about-rust-standard-library-runtime" title="About rust standard library runtime">About rust standard library runtime</a></li><li><a href="#constructor-signature" title="Constructor signature">Constructor signature</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate static_<wbr>init</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">static_init</a></div><h1>Attribute Macro <span class="attr">constructor</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/static_init_macro/lib.rs.html#34">Source</a> </span></div><pre class="rust item-decl"><code>#[constructor]</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Attribute for functions run at program initialization (before main).</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[constructor]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>initer () {
+<span class="comment">// run before main start
+</span>}</code></pre></div>
+<p>The execution order of constructors is unspecified. Nevertheless on ELF plateform (linux, any unixes but mac) and
+windows plateform a priority can be specified using the syntax <code>constructor(&lt;num&gt;)</code> where
+<code>&lt;num&gt;</code> is a number included in the range [0 ; 2<sup>16</sup>-1].</p>
+<p>Constructors with a priority of 65535 are run first (in unspecified order), then constructors
+with priority 65534 are run …  then constructors
+with priority number 0</p>
+<p>An abscence of priority is equivalent to a priority of 0.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[constructor(<span class="number">0</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>first () {
+<span class="comment">// run before main start
+</span>}
+
+<span class="attr">#[constructor(<span class="number">1</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>then () {
+<span class="comment">// run before main start
+</span>}</code></pre></div>
+<h2 id="safety"><a class="doc-anchor" href="#safety">§</a>Safety</h2>
+<p>Any access to <em>raw statics</em> with an equal or lower
+initialization priority will cause undefined behavior. (NB: usual static data and <em>lazy
+statics</em> are always safe to access.</p>
+<h2 id="about-rust-standard-library-runtime"><a class="doc-anchor" href="#about-rust-standard-library-runtime">§</a>About rust standard library runtime</h2>
+<p>During program constructions some functionnality of the standard library will be missing on
+unixes:</p>
+<ul>
+<li>program argument as returned by <code>std::env::args</code> and environment variables as returned by
+<code>std::env::vars</code> will be emty on unixes other than linux-gnu. On linux/gnu they will be
+empty above priority</li>
+</ul>
+<ol start="65436">
+<li></li>
+</ol>
+<ul>
+<li>
+<p>call to <code>std::thread::current</code> will panick.</p>
+</li>
+<li>
+<p>standard streams may not be initialized.</p>
+</li>
+<li>
+<p>Some signal handler installed by the standard library may not be installed</p>
+</li>
+</ul>
+<p>On windows all the standard library should appear initialized.</p>
+<h2 id="constructor-signature"><a class="doc-anchor" href="#constructor-signature">§</a>Constructor signature</h2>
+<p>Constructor function should have type <code>extern "C" fn() -&gt; ()</code>.</p>
+<p>On plateform where the program is linked
+with the gnu variant of libc (which covers all gnu variant platforms) constructor functions
+can take (or not) <code>argc: i32, argv: **const u8, env: **const u8</code> as arguments.
+<code>argc</code> is the size of the argv
+sequence, <code>argv</code> and <code>env</code> both refer to null terminated contiguous sequence of pointer
+to c-string (c-strings are null terminated sequence of u8).</p>
+<p>Also after the null terminating <code>*const * const u8</code> of the environment variable list is found
+the auxilary vector that are information provided by the kernel. It is possible to retrieve
+from that vector information about the process and location of syscalls implemented in the
+vdso.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[constructor]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>get_args_env(argc: i32, <span class="kw-2">mut </span>argv: <span class="kw-2">*const *const </span>u8, env: <span class="kw-2">*const *const </span>u8) {}</code></pre></div>
+</div></details></section></div></main></body></html>

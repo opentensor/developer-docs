@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["config","dispatches","errors","events","genesis","hooks"]};

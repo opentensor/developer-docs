@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["OptimizationType"],"fn":["find_parameters","get_params"]};

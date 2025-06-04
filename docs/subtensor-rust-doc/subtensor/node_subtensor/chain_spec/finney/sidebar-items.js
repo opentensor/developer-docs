@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["finney_mainnet_config"]};

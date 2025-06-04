@@ -1,0 +1,440 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/w3f-bls-0.1.3/src/engine.rs`."><title>engine.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="w3f_bls" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">w3f_bls/</div>engine.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! ## Adaptation of `ark_ec::PairingEngine` to BLS-like signatures.
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! We provide an `EngineBLS` trait that adapts `pairing::Engine`
+<a href=#4 id=4 data-nosnippet>4</a>//! to BLS-like signatures by permitting the group roles to be
+<a href=#5 id=5 data-nosnippet>5</a>//! transposed, which involves removing the field of definition,
+<a href=#6 id=6 data-nosnippet>6</a>//! while retaining the correct associations.  
+<a href=#7 id=7 data-nosnippet>7</a>//!
+<a href=#8 id=8 data-nosnippet>8</a>//! We support same-message aggregation strategies using wrappers
+<a href=#9 id=9 data-nosnippet>9</a>//! that satisfy `EngineBLS` as well, primarily because these
+<a href=#10 id=10 data-nosnippet>10</a>//! strategies must ocntroll access to the public key type.
+<a href=#11 id=11 data-nosnippet>11</a>//!
+<a href=#12 id=12 data-nosnippet>12</a>//! In future, we should support [Pixel](https://github.com/w3f/bls/issues/4)
+<a href=#13 id=13 data-nosnippet>13</a>//! by adding wrapper that replace `SignatureGroup` with a product
+<a href=#14 id=14 data-nosnippet>14</a>//! of both groups.  I think this requires abstracting `CruveAffine`
+<a href=#15 id=15 data-nosnippet>15</a>//! and `CruveProjective` without their base fields and wNAF windows,
+<a href=#16 id=16 data-nosnippet>16</a>//! but still with their affine, projective, and compressed forms,
+<a href=#17 id=17 data-nosnippet>17</a>//! and batch normalization.
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">use </span>core::borrow::Borrow;
+<a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>core::ops::MulAssign;
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>alloc::{vec, vec::Vec};
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>ark_ec::hashing::curve_maps::wb::{WBConfig, WBMap};
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>ark_ec::hashing::{
+<a href=#26 id=26 data-nosnippet>26</a>    map_to_curve_hasher::{MapToCurve, MapToCurveBasedHasher},
+<a href=#27 id=27 data-nosnippet>27</a>    HashToCurve,
+<a href=#28 id=28 data-nosnippet>28</a>};
+<a href=#29 id=29 data-nosnippet>29</a><span class="kw">use </span>ark_ec::{
+<a href=#30 id=30 data-nosnippet>30</a>    pairing::{MillerLoopOutput, Pairing, PairingOutput},
+<a href=#31 id=31 data-nosnippet>31</a>    AffineRepr, CurveGroup,
+<a href=#32 id=32 data-nosnippet>32</a>};
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span>ark_ff::field_hashers::{DefaultFieldHasher, HashToField};
+<a href=#34 id=34 data-nosnippet>34</a><span class="kw">use </span>ark_ff::{Field, PrimeField, UniformRand, Zero};
+<a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span>ark_serialize::CanonicalSerialize;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>rand::Rng;
+<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span>rand_core::RngCore;
+<a href=#38 id=38 data-nosnippet>38</a>
+<a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span>core::fmt::Debug;
+<a href=#40 id=40 data-nosnippet>40</a>
+<a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>sha2::Sha256; <span class="comment">//IETF standard asks for SHA256
+<a href=#42 id=42 data-nosnippet>42</a>
+<a href=#43 id=43 data-nosnippet>43</a></span><span class="kw">use </span>ark_ec::bls12::Bls12Config;
+<a href=#44 id=44 data-nosnippet>44</a><span class="kw">use </span>core::marker::PhantomData;
+<a href=#45 id=45 data-nosnippet>45</a>
+<a href=#46 id=46 data-nosnippet>46</a><span class="comment">// Expand SHA256 from 256 bits to 1024 bits.
+<a href=#47 id=47 data-nosnippet>47</a>// let output_bits = 1024;
+<a href=#48 id=48 data-nosnippet>48</a>// let output_bytes = 1024 / 8;
+<a href=#49 id=49 data-nosnippet>49</a>// let mut hasher = FullDomainHash::&lt;Sha256&gt;::new(output_bytes).unwrap();
+<a href=#50 id=50 data-nosnippet>50</a>// hasher.update(b"ATTACK AT DAWN");
+<a href=#51 id=51 data-nosnippet>51</a>// let result = hasher.finalize_boxed().into_vec();
+<a href=#52 id=52 data-nosnippet>52</a>
+<a href=#53 id=53 data-nosnippet>53</a></span><span class="doccomment">/// A weakening of `pairing::Engine` to permit transposing the groups.
+<a href=#54 id=54 data-nosnippet>54</a>///
+<a href=#55 id=55 data-nosnippet>55</a>/// You cannot transpose the two groups in a `pairing::Engine` without
+<a href=#56 id=56 data-nosnippet>56</a>/// first providing panicing implementations of `pairing::PrimeField`
+<a href=#57 id=57 data-nosnippet>57</a>/// for `Engine::Fqe`, which is not a prime field, and second,
+<a href=#58 id=58 data-nosnippet>58</a>/// providing wrapper types for the projective and affine group
+<a href=#59 id=59 data-nosnippet>59</a>/// representations, which makes interacting with the original
+<a href=#60 id=60 data-nosnippet>60</a>/// `pairing::Engine` annoying.  This trait merely replicates
+<a href=#61 id=61 data-nosnippet>61</a>/// transposable functionality from `pairing::Engine` by removing
+<a href=#62 id=62 data-nosnippet>62</a>/// the fields of definition, but leaves the actual BLS signature
+<a href=#63 id=63 data-nosnippet>63</a>/// scheme to wrapper types.
+<a href=#64 id=64 data-nosnippet>64</a>///
+<a href=#65 id=65 data-nosnippet>65</a>/// We also extract two functions users may with to override:
+<a href=#66 id=66 data-nosnippet>66</a>/// random scalar generation and hashing to the singature curve.
+<a href=#67 id=67 data-nosnippet>67</a></span><span class="kw">pub trait </span>EngineBLS {
+<a href=#68 id=68 data-nosnippet>68</a>    <span class="kw">type </span>Engine: Pairing; <span class="comment">//&lt;Fr = Self::Scalar&gt;;
+<a href=#69 id=69 data-nosnippet>69</a>    </span><span class="kw">type </span>Scalar: PrimeField; <span class="comment">// = &lt;Self::Engine as ScalarEngine&gt;::Fr;
+<a href=#70 id=70 data-nosnippet>70</a>    </span><span class="doccomment">/// Group where BLS public keys live
+<a href=#71 id=71 data-nosnippet>71</a>    ///
+<a href=#72 id=72 data-nosnippet>72</a>    /// You should take this to be the `Engine::G1` curve usually
+<a href=#73 id=73 data-nosnippet>73</a>    /// becuase all verifiers perform additions on this curve, or
+<a href=#74 id=74 data-nosnippet>74</a>    /// even scalar multiplicaitons with delinearization.
+<a href=#75 id=75 data-nosnippet>75</a>    </span><span class="kw">type </span>PublicKeyGroupBaseField: Field;
+<a href=#76 id=76 data-nosnippet>76</a>    <span class="kw">type </span>PublicKeyGroupAffine: AffineRepr&lt;ScalarField = <span class="self">Self</span>::Scalar, Group = <span class="self">Self</span>::PublicKeyGroup&gt;
+<a href=#77 id=77 data-nosnippet>77</a>        + From&lt;<span class="self">Self</span>::PublicKeyGroup&gt;
+<a href=#78 id=78 data-nosnippet>78</a>        + Into&lt;<span class="self">Self</span>::PublicKeyGroup&gt;
+<a href=#79 id=79 data-nosnippet>79</a>        + Into&lt;<span class="self">Self</span>::PublicKeyPrepared&gt;;
+<a href=#80 id=80 data-nosnippet>80</a>    <span class="comment">//+ Into&lt;&lt;Self::PublicKeyGroup as CurveGroup&gt;::Affine&gt;;
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a>    </span><span class="kw">type </span>PublicKeyGroup: CurveGroup&lt;
+<a href=#83 id=83 data-nosnippet>83</a>            Affine = <span class="self">Self</span>::PublicKeyGroupAffine,
+<a href=#84 id=84 data-nosnippet>84</a>            ScalarField = <span class="self">Self</span>::Scalar,
+<a href=#85 id=85 data-nosnippet>85</a>            BaseField = <span class="self">Self</span>::PublicKeyGroupBaseField,
+<a href=#86 id=86 data-nosnippet>86</a>        &gt; + From&lt;<span class="self">Self</span>::PublicKeyGroupAffine&gt;
+<a href=#87 id=87 data-nosnippet>87</a>        + Into&lt;<span class="self">Self</span>::PublicKeyGroupAffine&gt;
+<a href=#88 id=88 data-nosnippet>88</a>        + MulAssign&lt;<span class="self">Self</span>::Scalar&gt;;
+<a href=#89 id=89 data-nosnippet>89</a>
+<a href=#90 id=90 data-nosnippet>90</a>    <span class="kw">type </span>PublicKeyPrepared: Default + Clone + Send + Sync + Debug + From&lt;<span class="self">Self</span>::PublicKeyGroupAffine&gt;;
+<a href=#91 id=91 data-nosnippet>91</a>
+<a href=#92 id=92 data-nosnippet>92</a>    <span class="kw">const </span>PUBLICKEY_SERIALIZED_SIZE: usize;
+<a href=#93 id=93 data-nosnippet>93</a>    <span class="kw">const </span>SECRET_KEY_SIZE: usize;
+<a href=#94 id=94 data-nosnippet>94</a>
+<a href=#95 id=95 data-nosnippet>95</a>    <span class="comment">// See https://www.ietf.org/archive/id/draft-irtf-cfrg-bls-signature-05.html#name-ciphersuites
+<a href=#96 id=96 data-nosnippet>96</a>    </span><span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8];
+<a href=#97 id=97 data-nosnippet>97</a>    <span class="kw">const </span>SIG_GROUP_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8];
+<a href=#98 id=98 data-nosnippet>98</a>    <span class="kw">const </span>CIPHER_SUIT_DOMAIN_SEPARATION: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8];
+<a href=#99 id=99 data-nosnippet>99</a>
+<a href=#100 id=100 data-nosnippet>100</a>    <span class="doccomment">/// Group where BLS signatures live
+<a href=#101 id=101 data-nosnippet>101</a>    ///
+<a href=#102 id=102 data-nosnippet>102</a>    /// You should take this to be the `Engine::G2` curve usually
+<a href=#103 id=103 data-nosnippet>103</a>    /// becuase only aggregators perform additions on this curve, or
+<a href=#104 id=104 data-nosnippet>104</a>    /// scalar multiplicaitons with delinearization.
+<a href=#105 id=105 data-nosnippet>105</a>    </span><span class="kw">type </span>SignatureGroupBaseField: Field;
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a>    <span class="kw">type </span>SignatureGroupAffine: AffineRepr&lt;ScalarField = <span class="self">Self</span>::Scalar, Group = <span class="self">Self</span>::SignatureGroup&gt;
+<a href=#108 id=108 data-nosnippet>108</a>        + From&lt;<span class="self">Self</span>::SignatureGroup&gt;
+<a href=#109 id=109 data-nosnippet>109</a>        + Into&lt;<span class="self">Self</span>::SignatureGroup&gt;
+<a href=#110 id=110 data-nosnippet>110</a>        + Into&lt;<span class="self">Self</span>::SignaturePrepared&gt;;
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a>    <span class="kw">type </span>SignatureGroup: CurveGroup&lt;
+<a href=#113 id=113 data-nosnippet>113</a>            Affine = <span class="self">Self</span>::SignatureGroupAffine,
+<a href=#114 id=114 data-nosnippet>114</a>            ScalarField = <span class="self">Self</span>::Scalar,
+<a href=#115 id=115 data-nosnippet>115</a>            BaseField = <span class="self">Self</span>::SignatureGroupBaseField,
+<a href=#116 id=116 data-nosnippet>116</a>        &gt; + Into&lt;<span class="self">Self</span>::SignatureGroupAffine&gt;
+<a href=#117 id=117 data-nosnippet>117</a>        + From&lt;<span class="self">Self</span>::SignatureGroupAffine&gt;
+<a href=#118 id=118 data-nosnippet>118</a>        + MulAssign&lt;<span class="self">Self</span>::Scalar&gt;;
+<a href=#119 id=119 data-nosnippet>119</a>
+<a href=#120 id=120 data-nosnippet>120</a>    <span class="kw">type </span>SignaturePrepared: Default + Clone + Send + Sync + Debug + From&lt;<span class="self">Self</span>::SignatureGroupAffine&gt;;
+<a href=#121 id=121 data-nosnippet>121</a>
+<a href=#122 id=122 data-nosnippet>122</a>    <span class="kw">const </span>SIGNATURE_SERIALIZED_SIZE: usize;
+<a href=#123 id=123 data-nosnippet>123</a>
+<a href=#124 id=124 data-nosnippet>124</a>    <span class="kw">type </span>HashToSignatureField: HashToField&lt;<span class="self">Self</span>::SignatureGroupBaseField&gt;;
+<a href=#125 id=125 data-nosnippet>125</a>    <span class="kw">type </span>MapToSignatureCurve: MapToCurve&lt;<span class="self">Self</span>::SignatureGroup&gt;;
+<a href=#126 id=126 data-nosnippet>126</a>
+<a href=#127 id=127 data-nosnippet>127</a>    <span class="doccomment">/// Generate a random scalar for use as a secret key.
+<a href=#128 id=128 data-nosnippet>128</a>    </span><span class="kw">fn </span>generate&lt;R: Rng + RngCore&gt;(rng: <span class="kw-2">&amp;mut </span>R) -&gt; <span class="self">Self</span>::Scalar {
+<a href=#129 id=129 data-nosnippet>129</a>        <span class="self">Self</span>::Scalar::rand(rng)
+<a href=#130 id=130 data-nosnippet>130</a>    }
+<a href=#131 id=131 data-nosnippet>131</a>
+<a href=#132 id=132 data-nosnippet>132</a>    <span class="doccomment">/// getter function for the hash to curve map
+<a href=#133 id=133 data-nosnippet>133</a>    </span><span class="kw">fn </span>hash_to_curve_map() -&gt; MapToCurveBasedHasher&lt;
+<a href=#134 id=134 data-nosnippet>134</a>        <span class="self">Self</span>::SignatureGroup,
+<a href=#135 id=135 data-nosnippet>135</a>        <span class="self">Self</span>::HashToSignatureField,
+<a href=#136 id=136 data-nosnippet>136</a>        <span class="self">Self</span>::MapToSignatureCurve,
+<a href=#137 id=137 data-nosnippet>137</a>    &gt;;
+<a href=#138 id=138 data-nosnippet>138</a>
+<a href=#139 id=139 data-nosnippet>139</a>    <span class="doccomment">/// Hash one message to the signature curve.
+<a href=#140 id=140 data-nosnippet>140</a>    </span><span class="kw">fn </span>hash_to_signature_curve&lt;M: Borrow&lt;[u8]&gt;&gt;(message: M) -&gt; <span class="self">Self</span>::SignatureGroup {
+<a href=#141 id=141 data-nosnippet>141</a>        <span class="self">Self</span>::hash_to_curve_map()
+<a href=#142 id=142 data-nosnippet>142</a>            .hash(message.borrow())
+<a href=#143 id=143 data-nosnippet>143</a>            .unwrap()
+<a href=#144 id=144 data-nosnippet>144</a>            .into_group()
+<a href=#145 id=145 data-nosnippet>145</a>    }
+<a href=#146 id=146 data-nosnippet>146</a>
+<a href=#147 id=147 data-nosnippet>147</a>    <span class="doccomment">/// Run the Miller loop from `Engine` but orients its arguments
+<a href=#148 id=148 data-nosnippet>148</a>    /// to be a `SignatureGroup` and `PublicKeyGroup`.
+<a href=#149 id=149 data-nosnippet>149</a>    </span><span class="kw">fn </span>miller_loop&lt;<span class="lifetime">'a</span>, I&gt;(i: I) -&gt; MillerLoopOutput&lt;<span class="self">Self</span>::Engine&gt;
+<a href=#150 id=150 data-nosnippet>150</a>    <span class="kw">where
+<a href=#151 id=151 data-nosnippet>151</a>        </span><span class="self">Self</span>::PublicKeyPrepared: <span class="lifetime">'a</span>,
+<a href=#152 id=152 data-nosnippet>152</a>        <span class="self">Self</span>::SignaturePrepared: <span class="lifetime">'a</span>,
+<a href=#153 id=153 data-nosnippet>153</a>        I: IntoIterator&lt;
+<a href=#154 id=154 data-nosnippet>154</a>            Item = <span class="kw-2">&amp;</span><span class="lifetime">'a </span>(
+<a href=#155 id=155 data-nosnippet>155</a>                &lt;<span class="self">Self </span><span class="kw">as </span>EngineBLS&gt;::PublicKeyPrepared,
+<a href=#156 id=156 data-nosnippet>156</a>                <span class="self">Self</span>::SignaturePrepared,
+<a href=#157 id=157 data-nosnippet>157</a>            ),
+<a href=#158 id=158 data-nosnippet>158</a>        &gt;;
+<a href=#159 id=159 data-nosnippet>159</a>
+<a href=#160 id=160 data-nosnippet>160</a>    <span class="doccomment">/// Perform final exponentiation on the result of a Miller loop.
+<a href=#161 id=161 data-nosnippet>161</a>    </span><span class="kw">fn </span>final_exponentiation(
+<a href=#162 id=162 data-nosnippet>162</a>        e: MillerLoopOutput&lt;<span class="self">Self</span>::Engine&gt;,
+<a href=#163 id=163 data-nosnippet>163</a>    ) -&gt; <span class="prelude-ty">Option</span>&lt;PairingOutput&lt;<span class="self">Self</span>::Engine&gt;&gt; {
+<a href=#164 id=164 data-nosnippet>164</a>        <span class="self">Self</span>::Engine::final_exponentiation(e)
+<a href=#165 id=165 data-nosnippet>165</a>    }
+<a href=#166 id=166 data-nosnippet>166</a>
+<a href=#167 id=167 data-nosnippet>167</a>    <span class="doccomment">/// Performs a pairing operation `e(p, q)` by calling `Engine::pairing`
+<a href=#168 id=168 data-nosnippet>168</a>    /// but orients its arguments to be a `PublicKeyGroup` and `SignatureGroup`.
+<a href=#169 id=169 data-nosnippet>169</a>    </span><span class="kw">fn </span>pairing&lt;G1, G2&gt;(p: G1, q: G2) -&gt; &lt;<span class="self">Self</span>::Engine <span class="kw">as </span>Pairing&gt;::TargetField
+<a href=#170 id=170 data-nosnippet>170</a>    <span class="kw">where
+<a href=#171 id=171 data-nosnippet>171</a>        </span>G1: Into&lt;&lt;<span class="self">Self</span>::PublicKeyGroup <span class="kw">as </span>CurveGroup&gt;::Affine&gt;,
+<a href=#172 id=172 data-nosnippet>172</a>        G2: Into&lt;&lt;<span class="self">Self</span>::SignatureGroup <span class="kw">as </span>CurveGroup&gt;::Affine&gt;;
+<a href=#173 id=173 data-nosnippet>173</a>    <span class="comment">/*
+<a href=#174 id=174 data-nosnippet>174</a>    {
+<a href=#175 id=175 data-nosnippet>175</a>        Self::final_exponentiation(&amp;Self::miller_loop(
+<a href=#176 id=176 data-nosnippet>176</a>            [(&amp;(p.into().prepare()), &amp;(q.into().prepare()))].into_iter(),
+<a href=#177 id=177 data-nosnippet>177</a>        )).unwrap()
+<a href=#178 id=178 data-nosnippet>178</a>    }
+<a href=#179 id=179 data-nosnippet>179</a>    */
+<a href=#180 id=180 data-nosnippet>180</a>
+<a href=#181 id=181 data-nosnippet>181</a>    </span><span class="doccomment">/// Implement verification equation for aggregate BLS signatures
+<a href=#182 id=182 data-nosnippet>182</a>    /// provided as prepared points
+<a href=#183 id=183 data-nosnippet>183</a>    ///
+<a href=#184 id=184 data-nosnippet>184</a>    /// This low-level routine does no verification of critical security
+<a href=#185 id=185 data-nosnippet>185</a>    /// properties like message distinctness.  It exists purely to
+<a href=#186 id=186 data-nosnippet>186</a>    /// simplify replacing mid-level routines with optimized variants,
+<a href=#187 id=187 data-nosnippet>187</a>    /// like versions that cache public key preperation or use fewer pairings.
+<a href=#188 id=188 data-nosnippet>188</a>    </span><span class="kw">fn </span>verify_prepared&lt;<span class="lifetime">'a</span>, I&gt;(signature: <span class="self">Self</span>::SignaturePrepared, inputs: I) -&gt; bool
+<a href=#189 id=189 data-nosnippet>189</a>    <span class="kw">where
+<a href=#190 id=190 data-nosnippet>190</a>        </span><span class="self">Self</span>::PublicKeyPrepared: <span class="lifetime">'a</span>,
+<a href=#191 id=191 data-nosnippet>191</a>        <span class="self">Self</span>::SignaturePrepared: <span class="lifetime">'a</span>,
+<a href=#192 id=192 data-nosnippet>192</a>        I: IntoIterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">'a </span>(<span class="self">Self</span>::PublicKeyPrepared, <span class="self">Self</span>::SignaturePrepared)&gt;,
+<a href=#193 id=193 data-nosnippet>193</a>    {
+<a href=#194 id=194 data-nosnippet>194</a>        <span class="kw">let </span>lhs: [<span class="kw">_</span>; <span class="number">1</span>] = [(
+<a href=#195 id=195 data-nosnippet>195</a>            <span class="self">Self</span>::minus_generator_of_public_key_group_prepared(),
+<a href=#196 id=196 data-nosnippet>196</a>            signature,
+<a href=#197 id=197 data-nosnippet>197</a>        )];
+<a href=#198 id=198 data-nosnippet>198</a>        <span class="self">Self</span>::final_exponentiation(<span class="self">Self</span>::miller_loop(inputs.into_iter().map(|t| t).chain(<span class="kw-2">&amp;</span>lhs)))
+<a href=#199 id=199 data-nosnippet>199</a>            .unwrap()
+<a href=#200 id=200 data-nosnippet>200</a>            == (PairingOutput::&lt;<span class="self">Self</span>::Engine&gt;::zero()) <span class="comment">//zero is the target_field::one !!
+<a href=#201 id=201 data-nosnippet>201</a>    </span>}
+<a href=#202 id=202 data-nosnippet>202</a>
+<a href=#203 id=203 data-nosnippet>203</a>    <span class="doccomment">/// Prepared negative of the generator of the public key curve.
+<a href=#204 id=204 data-nosnippet>204</a>    </span><span class="kw">fn </span>minus_generator_of_public_key_group_prepared() -&gt; <span class="self">Self</span>::PublicKeyPrepared;
+<a href=#205 id=205 data-nosnippet>205</a>
+<a href=#206 id=206 data-nosnippet>206</a>    <span class="doccomment">/// return the generator of signature group
+<a href=#207 id=207 data-nosnippet>207</a>    </span><span class="kw">fn </span>generator_of_signature_group() -&gt; <span class="self">Self</span>::SignatureGroup {
+<a href=#208 id=208 data-nosnippet>208</a>        &lt;<span class="self">Self</span>::SignatureGroup <span class="kw">as </span>CurveGroup&gt;::Affine::generator().into()
+<a href=#209 id=209 data-nosnippet>209</a>    }
+<a href=#210 id=210 data-nosnippet>210</a>
+<a href=#211 id=211 data-nosnippet>211</a>    <span class="doccomment">/// Process the public key to be use in pairing. This has to be
+<a href=#212 id=212 data-nosnippet>212</a>    /// implemented by the type of BLS system implementing the engine
+<a href=#213 id=213 data-nosnippet>213</a>    /// by calling either prepare_g1 or prepare_g2 based on which group
+<a href=#214 id=214 data-nosnippet>214</a>    /// is used by the signature system to host the public key
+<a href=#215 id=215 data-nosnippet>215</a>    </span><span class="kw">fn </span>prepare_public_key(g: <span class="kw">impl </span>Into&lt;<span class="self">Self</span>::PublicKeyGroupAffine&gt;) -&gt; <span class="self">Self</span>::PublicKeyPrepared {
+<a href=#216 id=216 data-nosnippet>216</a>        <span class="kw">let </span>g_affine: <span class="self">Self</span>::PublicKeyGroupAffine = g.into();
+<a href=#217 id=217 data-nosnippet>217</a>        <span class="self">Self</span>::PublicKeyPrepared::from(g_affine)
+<a href=#218 id=218 data-nosnippet>218</a>    }
+<a href=#219 id=219 data-nosnippet>219</a>
+<a href=#220 id=220 data-nosnippet>220</a>    <span class="doccomment">/// Process the signature to be use in pairing. This has to be
+<a href=#221 id=221 data-nosnippet>221</a>    /// implemented by the type of BLS system implementing the engine
+<a href=#222 id=222 data-nosnippet>222</a>    /// by calling either prepare_g1 or prepare_g2 based on which group
+<a href=#223 id=223 data-nosnippet>223</a>    /// is used by the signature system to host the public key
+<a href=#224 id=224 data-nosnippet>224</a>    </span><span class="kw">fn </span>prepare_signature(g: <span class="kw">impl </span>Into&lt;<span class="self">Self</span>::SignatureGroupAffine&gt;) -&gt; <span class="self">Self</span>::SignaturePrepared {
+<a href=#225 id=225 data-nosnippet>225</a>        <span class="kw">let </span>g_affine: <span class="self">Self</span>::SignatureGroupAffine = g.into();
+<a href=#226 id=226 data-nosnippet>226</a>        <span class="self">Self</span>::SignaturePrepared::from(g_affine)
+<a href=#227 id=227 data-nosnippet>227</a>    }
+<a href=#228 id=228 data-nosnippet>228</a>
+<a href=#229 id=229 data-nosnippet>229</a>    <span class="doccomment">/// Serialization helper for various sigma protocols
+<a href=#230 id=230 data-nosnippet>230</a>    </span><span class="kw">fn </span>signature_point_to_byte(point: <span class="kw-2">&amp;</span><span class="self">Self</span>::SignatureGroup) -&gt; Vec&lt;u8&gt; {
+<a href=#231 id=231 data-nosnippet>231</a>        <span class="kw">let </span><span class="kw-2">mut </span>point_as_bytes = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="self">Self</span>::SIGNATURE_SERIALIZED_SIZE];
+<a href=#232 id=232 data-nosnippet>232</a>        <span class="kw">let </span>point_affine = point.into_affine();
+<a href=#233 id=233 data-nosnippet>233</a>        point_affine
+<a href=#234 id=234 data-nosnippet>234</a>            .serialize_compressed(<span class="kw-2">&amp;mut </span>point_as_bytes[..])
+<a href=#235 id=235 data-nosnippet>235</a>            .unwrap();
+<a href=#236 id=236 data-nosnippet>236</a>        point_as_bytes
+<a href=#237 id=237 data-nosnippet>237</a>    }
+<a href=#238 id=238 data-nosnippet>238</a>
+<a href=#239 id=239 data-nosnippet>239</a>    <span class="kw">fn </span>public_key_point_to_byte(point: <span class="kw-2">&amp;</span><span class="self">Self</span>::PublicKeyGroup) -&gt; Vec&lt;u8&gt; {
+<a href=#240 id=240 data-nosnippet>240</a>        <span class="kw">let </span><span class="kw-2">mut </span>point_as_bytes = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="self">Self</span>::PUBLICKEY_SERIALIZED_SIZE];
+<a href=#241 id=241 data-nosnippet>241</a>        <span class="kw">let </span>point_affine = point.into_affine();
+<a href=#242 id=242 data-nosnippet>242</a>        point_affine
+<a href=#243 id=243 data-nosnippet>243</a>            .serialize_compressed(<span class="kw-2">&amp;mut </span>point_as_bytes[..])
+<a href=#244 id=244 data-nosnippet>244</a>            .unwrap();
+<a href=#245 id=245 data-nosnippet>245</a>        point_as_bytes
+<a href=#246 id=246 data-nosnippet>246</a>    }
+<a href=#247 id=247 data-nosnippet>247</a>}
+<a href=#248 id=248 data-nosnippet>248</a>
+<a href=#249 id=249 data-nosnippet>249</a><span class="doccomment">/// Usual aggregate BLS signature scheme on ZCash's BLS12-381 curve.
+<a href=#250 id=250 data-nosnippet>250</a></span><span class="kw">pub type </span>ZBLS = UsualBLS&lt;ark_bls12_381::Bls12_381, ark_bls12_381::Config&gt;;
+<a href=#251 id=251 data-nosnippet>251</a><span class="kw">pub type </span>BLS377 = UsualBLS&lt;ark_bls12_377::Bls12_377, ark_bls12_377::Config&gt;;
+<a href=#252 id=252 data-nosnippet>252</a>
+<a href=#253 id=253 data-nosnippet>253</a><span class="doccomment">/// Usual aggregate BLS signature scheme on ZCash's BLS12-381 curve.
+<a href=#254 id=254 data-nosnippet>254</a></span><span class="comment">// pub const Z_BLS : ZBLS = UsualBLS(::zexe_algebra::bls12_381::Bls12_381{});
+<a href=#255 id=255 data-nosnippet>255</a>
+<a href=#256 id=256 data-nosnippet>256</a></span><span class="doccomment">/// Usual BLS variant with tiny 48 byte public keys and 96 byte signatures.
+<a href=#257 id=257 data-nosnippet>257</a>///
+<a href=#258 id=258 data-nosnippet>258</a>/// We favor this variant because verifiers always perform
+<a href=#259 id=259 data-nosnippet>259</a>/// `O(signers)` additions on the `PublicKeyGroup`, or worse 128 bit
+<a href=#260 id=260 data-nosnippet>260</a>/// scalar multiplications with delinearization.
+<a href=#261 id=261 data-nosnippet>261</a>/// We also orient this variant to match zcash's traits.
+<a href=#262 id=262 data-nosnippet>262</a></span><span class="attr">#[derive(Default)]
+<a href=#263 id=263 data-nosnippet>263</a></span><span class="kw">pub struct </span>UsualBLS&lt;E: Pairing, P: Bls12Config + CurveExtraConfig&gt;(<span class="kw">pub </span>E, PhantomData&lt;<span class="kw">fn</span>() -&gt; P&gt;)
+<a href=#264 id=264 data-nosnippet>264</a><span class="kw">where
+<a href=#265 id=265 data-nosnippet>265</a>    </span>&lt;P <span class="kw">as </span>Bls12Config&gt;::G2Config: WBConfig,
+<a href=#266 id=266 data-nosnippet>266</a>    WBMap&lt;&lt;P <span class="kw">as </span>Bls12Config&gt;::G2Config&gt;: MapToCurve&lt;&lt;E <span class="kw">as </span>Pairing&gt;::G2&gt;;
+<a href=#267 id=267 data-nosnippet>267</a>
+<a href=#268 id=268 data-nosnippet>268</a><span class="kw">impl</span>&lt;E: Pairing, P: Bls12Config + CurveExtraConfig&gt; EngineBLS <span class="kw">for </span>UsualBLS&lt;E, P&gt;
+<a href=#269 id=269 data-nosnippet>269</a><span class="kw">where
+<a href=#270 id=270 data-nosnippet>270</a>    </span>&lt;P <span class="kw">as </span>Bls12Config&gt;::G2Config: WBConfig,
+<a href=#271 id=271 data-nosnippet>271</a>    WBMap&lt;&lt;P <span class="kw">as </span>Bls12Config&gt;::G2Config&gt;: MapToCurve&lt;&lt;E <span class="kw">as </span>Pairing&gt;::G2&gt;,
+<a href=#272 id=272 data-nosnippet>272</a>{
+<a href=#273 id=273 data-nosnippet>273</a>    <span class="kw">type </span>Engine = E;
+<a href=#274 id=274 data-nosnippet>274</a>    <span class="kw">type </span>Scalar = &lt;<span class="self">Self</span>::Engine <span class="kw">as </span>Pairing&gt;::ScalarField;
+<a href=#275 id=275 data-nosnippet>275</a>
+<a href=#276 id=276 data-nosnippet>276</a>    <span class="kw">type </span>PublicKeyGroup = E::G1;
+<a href=#277 id=277 data-nosnippet>277</a>    <span class="kw">type </span>PublicKeyGroupAffine = E::G1Affine;
+<a href=#278 id=278 data-nosnippet>278</a>    <span class="kw">type </span>PublicKeyPrepared = E::G1Prepared;
+<a href=#279 id=279 data-nosnippet>279</a>    <span class="kw">type </span>PublicKeyGroupBaseField = &lt;&lt;E <span class="kw">as </span>Pairing&gt;::G1 <span class="kw">as </span>CurveGroup&gt;::BaseField;
+<a href=#280 id=280 data-nosnippet>280</a>
+<a href=#281 id=281 data-nosnippet>281</a>    <span class="kw">const </span>PUBLICKEY_SERIALIZED_SIZE: usize = <span class="number">48</span>;
+<a href=#282 id=282 data-nosnippet>282</a>    <span class="kw">const </span>SECRET_KEY_SIZE: usize = <span class="number">32</span>;
+<a href=#283 id=283 data-nosnippet>283</a>
+<a href=#284 id=284 data-nosnippet>284</a>    <span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = P::CURVE_NAME;
+<a href=#285 id=285 data-nosnippet>285</a>    <span class="kw">const </span>SIG_GROUP_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"G2"</span>;
+<a href=#286 id=286 data-nosnippet>286</a>    <span class="kw">const </span>CIPHER_SUIT_DOMAIN_SEPARATION: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"_XMD:SHA-256_SSWU_RO_"</span>;
+<a href=#287 id=287 data-nosnippet>287</a>
+<a href=#288 id=288 data-nosnippet>288</a>    <span class="kw">type </span>SignatureGroup = E::G2;
+<a href=#289 id=289 data-nosnippet>289</a>    <span class="kw">type </span>SignatureGroupAffine = E::G2Affine;
+<a href=#290 id=290 data-nosnippet>290</a>    <span class="kw">type </span>SignaturePrepared = E::G2Prepared;
+<a href=#291 id=291 data-nosnippet>291</a>    <span class="kw">type </span>SignatureGroupBaseField = &lt;&lt;E <span class="kw">as </span>Pairing&gt;::G2 <span class="kw">as </span>CurveGroup&gt;::BaseField;
+<a href=#292 id=292 data-nosnippet>292</a>
+<a href=#293 id=293 data-nosnippet>293</a>    <span class="kw">const </span>SIGNATURE_SERIALIZED_SIZE: usize = <span class="number">96</span>;
+<a href=#294 id=294 data-nosnippet>294</a>
+<a href=#295 id=295 data-nosnippet>295</a>    <span class="kw">type </span>HashToSignatureField = DefaultFieldHasher&lt;Sha256, <span class="number">128</span>&gt;;
+<a href=#296 id=296 data-nosnippet>296</a>    <span class="kw">type </span>MapToSignatureCurve = WBMap&lt;P::G2Config&gt;;
+<a href=#297 id=297 data-nosnippet>297</a>
+<a href=#298 id=298 data-nosnippet>298</a>    <span class="kw">fn </span>miller_loop&lt;<span class="lifetime">'a</span>, I&gt;(i: I) -&gt; MillerLoopOutput&lt;E&gt;
+<a href=#299 id=299 data-nosnippet>299</a>    <span class="kw">where
+<a href=#300 id=300 data-nosnippet>300</a>        </span><span class="comment">// Self::PublicKeyPrepared: 'a,
+<a href=#301 id=301 data-nosnippet>301</a>        // Self::SignaturePrepared: 'a,
+<a href=#302 id=302 data-nosnippet>302</a>        </span>I: IntoIterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">'a </span>(<span class="self">Self</span>::PublicKeyPrepared, <span class="self">Self</span>::SignaturePrepared)&gt;,
+<a href=#303 id=303 data-nosnippet>303</a>    {
+<a href=#304 id=304 data-nosnippet>304</a>        <span class="kw">let </span>(i_a, i_b): (Vec&lt;<span class="self">Self</span>::PublicKeyPrepared&gt;, Vec&lt;<span class="self">Self</span>::SignaturePrepared&gt;) =
+<a href=#305 id=305 data-nosnippet>305</a>            i.into_iter().cloned().unzip();
+<a href=#306 id=306 data-nosnippet>306</a>
+<a href=#307 id=307 data-nosnippet>307</a>        E::multi_miller_loop(i_a, i_b)
+<a href=#308 id=308 data-nosnippet>308</a>    }
+<a href=#309 id=309 data-nosnippet>309</a>
+<a href=#310 id=310 data-nosnippet>310</a>    <span class="kw">fn </span>pairing&lt;G1, G2&gt;(p: G1, q: G2) -&gt; E::TargetField
+<a href=#311 id=311 data-nosnippet>311</a>    <span class="kw">where
+<a href=#312 id=312 data-nosnippet>312</a>        </span>G1: Into&lt;E::G1Affine&gt;,
+<a href=#313 id=313 data-nosnippet>313</a>        G2: Into&lt;E::G2Affine&gt;,
+<a href=#314 id=314 data-nosnippet>314</a>    {
+<a href=#315 id=315 data-nosnippet>315</a>        E::pairing(p.into(), q.into()).<span class="number">0
+<a href=#316 id=316 data-nosnippet>316</a>    </span>}
+<a href=#317 id=317 data-nosnippet>317</a>
+<a href=#318 id=318 data-nosnippet>318</a>    <span class="doccomment">/// Prepared negative of the generator of the public key curve.
+<a href=#319 id=319 data-nosnippet>319</a>    </span><span class="kw">fn </span>minus_generator_of_public_key_group_prepared() -&gt; <span class="self">Self</span>::PublicKeyPrepared {
+<a href=#320 id=320 data-nosnippet>320</a>        <span class="kw">let </span>g1_minus_generator = &lt;<span class="self">Self</span>::PublicKeyGroup <span class="kw">as </span>CurveGroup&gt;::Affine::generator();
+<a href=#321 id=321 data-nosnippet>321</a>        &lt;<span class="self">Self</span>::PublicKeyGroup <span class="kw">as </span>Into&lt;<span class="self">Self</span>::PublicKeyPrepared&gt;&gt;::into(
+<a href=#322 id=322 data-nosnippet>322</a>            -g1_minus_generator.into_group(),
+<a href=#323 id=323 data-nosnippet>323</a>        )
+<a href=#324 id=324 data-nosnippet>324</a>    }
+<a href=#325 id=325 data-nosnippet>325</a>
+<a href=#326 id=326 data-nosnippet>326</a>    <span class="kw">fn </span>hash_to_curve_map() -&gt; MapToCurveBasedHasher&lt;
+<a href=#327 id=327 data-nosnippet>327</a>        <span class="self">Self</span>::SignatureGroup,
+<a href=#328 id=328 data-nosnippet>328</a>        <span class="self">Self</span>::HashToSignatureField,
+<a href=#329 id=329 data-nosnippet>329</a>        <span class="self">Self</span>::MapToSignatureCurve,
+<a href=#330 id=330 data-nosnippet>330</a>    &gt; {
+<a href=#331 id=331 data-nosnippet>331</a>        MapToCurveBasedHasher::&lt;
+<a href=#332 id=332 data-nosnippet>332</a>            <span class="self">Self</span>::SignatureGroup,
+<a href=#333 id=333 data-nosnippet>333</a>            DefaultFieldHasher&lt;Sha256, <span class="number">128</span>&gt;,
+<a href=#334 id=334 data-nosnippet>334</a>            WBMap&lt;P::G2Config&gt;,
+<a href=#335 id=335 data-nosnippet>335</a>        &gt;::new(<span class="kw-2">&amp;</span>[<span class="number">1</span>])
+<a href=#336 id=336 data-nosnippet>336</a>        .unwrap()
+<a href=#337 id=337 data-nosnippet>337</a>    }
+<a href=#338 id=338 data-nosnippet>338</a>}
+<a href=#339 id=339 data-nosnippet>339</a>
+<a href=#340 id=340 data-nosnippet>340</a><span class="doccomment">/// Infrequently used BLS variant with tiny 48 byte signatures and 96 byte public keys,
+<a href=#341 id=341 data-nosnippet>341</a>///
+<a href=#342 id=342 data-nosnippet>342</a>/// We recommend gainst this variant by default because verifiers
+<a href=#343 id=343 data-nosnippet>343</a>/// always perform `O(signers)` additions on the `PublicKeyGroup`,
+<a href=#344 id=344 data-nosnippet>344</a>/// or worse 128 bit scalar multiplications with delinearization.
+<a href=#345 id=345 data-nosnippet>345</a>/// Yet, there are specific use cases where this variant performs
+<a href=#346 id=346 data-nosnippet>346</a>/// better.  We swapy two group roles relative to zcash here.
+<a href=#347 id=347 data-nosnippet>347</a></span><span class="attr">#[derive(Default)]
+<a href=#348 id=348 data-nosnippet>348</a></span><span class="kw">pub struct </span>TinyBLS&lt;E: Pairing, P: Bls12Config + CurveExtraConfig&gt;(<span class="kw">pub </span>E, PhantomData&lt;<span class="kw">fn</span>() -&gt; P&gt;)
+<a href=#349 id=349 data-nosnippet>349</a><span class="kw">where
+<a href=#350 id=350 data-nosnippet>350</a>    </span>&lt;P <span class="kw">as </span>Bls12Config&gt;::G1Config: WBConfig,
+<a href=#351 id=351 data-nosnippet>351</a>    WBMap&lt;&lt;P <span class="kw">as </span>Bls12Config&gt;::G1Config&gt;: MapToCurve&lt;&lt;E <span class="kw">as </span>Pairing&gt;::G1&gt;;
+<a href=#352 id=352 data-nosnippet>352</a>
+<a href=#353 id=353 data-nosnippet>353</a><span class="doccomment">/// Trait to add extra config for a curve which is not in ArkWorks library
+<a href=#354 id=354 data-nosnippet>354</a></span><span class="kw">pub trait </span>CurveExtraConfig {
+<a href=#355 id=355 data-nosnippet>355</a>    <span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8];
+<a href=#356 id=356 data-nosnippet>356</a>}
+<a href=#357 id=357 data-nosnippet>357</a>
+<a href=#358 id=358 data-nosnippet>358</a><span class="kw">impl</span>&lt;E: Pairing, P: Bls12Config + CurveExtraConfig&gt; EngineBLS <span class="kw">for </span>TinyBLS&lt;E, P&gt;
+<a href=#359 id=359 data-nosnippet>359</a><span class="kw">where
+<a href=#360 id=360 data-nosnippet>360</a>    </span>&lt;P <span class="kw">as </span>Bls12Config&gt;::G1Config: WBConfig,
+<a href=#361 id=361 data-nosnippet>361</a>    WBMap&lt;&lt;P <span class="kw">as </span>Bls12Config&gt;::G1Config&gt;: MapToCurve&lt;&lt;E <span class="kw">as </span>Pairing&gt;::G1&gt;,
+<a href=#362 id=362 data-nosnippet>362</a>{
+<a href=#363 id=363 data-nosnippet>363</a>    <span class="kw">type </span>Engine = E;
+<a href=#364 id=364 data-nosnippet>364</a>    <span class="kw">type </span>Scalar = &lt;<span class="self">Self</span>::Engine <span class="kw">as </span>Pairing&gt;::ScalarField;
+<a href=#365 id=365 data-nosnippet>365</a>
+<a href=#366 id=366 data-nosnippet>366</a>    <span class="kw">type </span>SignatureGroup = E::G1;
+<a href=#367 id=367 data-nosnippet>367</a>    <span class="kw">type </span>SignatureGroupAffine = E::G1Affine;
+<a href=#368 id=368 data-nosnippet>368</a>    <span class="kw">type </span>SignaturePrepared = E::G1Prepared;
+<a href=#369 id=369 data-nosnippet>369</a>    <span class="kw">type </span>SignatureGroupBaseField = &lt;&lt;E <span class="kw">as </span>Pairing&gt;::G1 <span class="kw">as </span>CurveGroup&gt;::BaseField;
+<a href=#370 id=370 data-nosnippet>370</a>
+<a href=#371 id=371 data-nosnippet>371</a>    <span class="kw">const </span>SIGNATURE_SERIALIZED_SIZE: usize = <span class="number">48</span>;
+<a href=#372 id=372 data-nosnippet>372</a>
+<a href=#373 id=373 data-nosnippet>373</a>    <span class="kw">type </span>PublicKeyGroup = E::G2;
+<a href=#374 id=374 data-nosnippet>374</a>    <span class="kw">type </span>PublicKeyGroupAffine = E::G2Affine;
+<a href=#375 id=375 data-nosnippet>375</a>    <span class="kw">type </span>PublicKeyPrepared = E::G2Prepared;
+<a href=#376 id=376 data-nosnippet>376</a>    <span class="kw">type </span>PublicKeyGroupBaseField = &lt;&lt;E <span class="kw">as </span>Pairing&gt;::G2 <span class="kw">as </span>CurveGroup&gt;::BaseField;
+<a href=#377 id=377 data-nosnippet>377</a>
+<a href=#378 id=378 data-nosnippet>378</a>    <span class="kw">const </span>PUBLICKEY_SERIALIZED_SIZE: usize = <span class="number">96</span>;
+<a href=#379 id=379 data-nosnippet>379</a>    <span class="kw">const </span>SECRET_KEY_SIZE: usize = <span class="number">32</span>;
+<a href=#380 id=380 data-nosnippet>380</a>
+<a href=#381 id=381 data-nosnippet>381</a>    <span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = P::CURVE_NAME;
+<a href=#382 id=382 data-nosnippet>382</a>    <span class="kw">const </span>SIG_GROUP_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"G1"</span>;
+<a href=#383 id=383 data-nosnippet>383</a>    <span class="kw">const </span>CIPHER_SUIT_DOMAIN_SEPARATION: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"_XMD:SHA-256_SSWU_RO_"</span>;
+<a href=#384 id=384 data-nosnippet>384</a>
+<a href=#385 id=385 data-nosnippet>385</a>    <span class="kw">type </span>HashToSignatureField = DefaultFieldHasher&lt;Sha256, <span class="number">128</span>&gt;;
+<a href=#386 id=386 data-nosnippet>386</a>    <span class="kw">type </span>MapToSignatureCurve = WBMap&lt;P::G1Config&gt;;
+<a href=#387 id=387 data-nosnippet>387</a>
+<a href=#388 id=388 data-nosnippet>388</a>    <span class="kw">fn </span>miller_loop&lt;<span class="lifetime">'a</span>, I&gt;(i: I) -&gt; MillerLoopOutput&lt;E&gt;
+<a href=#389 id=389 data-nosnippet>389</a>    <span class="kw">where
+<a href=#390 id=390 data-nosnippet>390</a>        </span>I: IntoIterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">'a </span>(<span class="self">Self</span>::PublicKeyPrepared, <span class="self">Self</span>::SignaturePrepared)&gt;,
+<a href=#391 id=391 data-nosnippet>391</a>    {
+<a href=#392 id=392 data-nosnippet>392</a>        <span class="comment">// We require an ugly unecessary allocation here because
+<a href=#393 id=393 data-nosnippet>393</a>        // zcash's pairing library cnsumes an iterator of references
+<a href=#394 id=394 data-nosnippet>394</a>        // to tuples of references, which always requires
+<a href=#395 id=395 data-nosnippet>395</a>        </span><span class="kw">let </span>(i_a, i_b): (Vec&lt;<span class="self">Self</span>::PublicKeyPrepared&gt;, Vec&lt;<span class="self">Self</span>::SignaturePrepared&gt;) =
+<a href=#396 id=396 data-nosnippet>396</a>            i.into_iter().cloned().unzip();
+<a href=#397 id=397 data-nosnippet>397</a>
+<a href=#398 id=398 data-nosnippet>398</a>        E::multi_miller_loop(i_b, i_a) <span class="comment">//in Tiny BLS signature is in G1
+<a href=#399 id=399 data-nosnippet>399</a>    </span>}
+<a href=#400 id=400 data-nosnippet>400</a>
+<a href=#401 id=401 data-nosnippet>401</a>    <span class="kw">fn </span>pairing&lt;G2, G1&gt;(p: G2, q: G1) -&gt; E::TargetField
+<a href=#402 id=402 data-nosnippet>402</a>    <span class="kw">where
+<a href=#403 id=403 data-nosnippet>403</a>        </span>G1: Into&lt;E::G1Affine&gt;,
+<a href=#404 id=404 data-nosnippet>404</a>        G2: Into&lt;E::G2Affine&gt;,
+<a href=#405 id=405 data-nosnippet>405</a>    {
+<a href=#406 id=406 data-nosnippet>406</a>        E::pairing(q.into(), p.into()).<span class="number">0
+<a href=#407 id=407 data-nosnippet>407</a>    </span>}
+<a href=#408 id=408 data-nosnippet>408</a>
+<a href=#409 id=409 data-nosnippet>409</a>    <span class="doccomment">/// Prepared negative of the generator of the public key curve.
+<a href=#410 id=410 data-nosnippet>410</a>    </span><span class="kw">fn </span>minus_generator_of_public_key_group_prepared() -&gt; <span class="self">Self</span>::PublicKeyPrepared {
+<a href=#411 id=411 data-nosnippet>411</a>        <span class="kw">let </span>g2_minus_generator = &lt;<span class="self">Self</span>::PublicKeyGroup <span class="kw">as </span>CurveGroup&gt;::Affine::generator();
+<a href=#412 id=412 data-nosnippet>412</a>        &lt;<span class="self">Self</span>::PublicKeyGroup <span class="kw">as </span>Into&lt;<span class="self">Self</span>::PublicKeyPrepared&gt;&gt;::into(
+<a href=#413 id=413 data-nosnippet>413</a>            -g2_minus_generator.into_group(),
+<a href=#414 id=414 data-nosnippet>414</a>        )
+<a href=#415 id=415 data-nosnippet>415</a>    }
+<a href=#416 id=416 data-nosnippet>416</a>
+<a href=#417 id=417 data-nosnippet>417</a>    <span class="kw">fn </span>hash_to_curve_map() -&gt; MapToCurveBasedHasher&lt;
+<a href=#418 id=418 data-nosnippet>418</a>        <span class="self">Self</span>::SignatureGroup,
+<a href=#419 id=419 data-nosnippet>419</a>        <span class="self">Self</span>::HashToSignatureField,
+<a href=#420 id=420 data-nosnippet>420</a>        <span class="self">Self</span>::MapToSignatureCurve,
+<a href=#421 id=421 data-nosnippet>421</a>    &gt; {
+<a href=#422 id=422 data-nosnippet>422</a>        MapToCurveBasedHasher::&lt;
+<a href=#423 id=423 data-nosnippet>423</a>            <span class="self">Self</span>::SignatureGroup,
+<a href=#424 id=424 data-nosnippet>424</a>            DefaultFieldHasher&lt;Sha256, <span class="number">128</span>&gt;,
+<a href=#425 id=425 data-nosnippet>425</a>            WBMap&lt;P::G1Config&gt;,
+<a href=#426 id=426 data-nosnippet>426</a>        &gt;::new(<span class="kw-2">&amp;</span>[<span class="number">1</span>])
+<a href=#427 id=427 data-nosnippet>427</a>        .unwrap()
+<a href=#428 id=428 data-nosnippet>428</a>    }
+<a href=#429 id=429 data-nosnippet>429</a>}
+<a href=#430 id=430 data-nosnippet>430</a>
+<a href=#431 id=431 data-nosnippet>431</a><span class="doccomment">/// Aggregate BLS signature scheme with Signature in G1 for BLS12-377 curve.
+<a href=#432 id=432 data-nosnippet>432</a></span><span class="kw">impl </span>CurveExtraConfig <span class="kw">for </span>ark_bls12_377::Config {
+<a href=#433 id=433 data-nosnippet>433</a>    <span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"BLS12377"</span>;
+<a href=#434 id=434 data-nosnippet>434</a>}
+<a href=#435 id=435 data-nosnippet>435</a><span class="kw">pub type </span>TinyBLS377 = TinyBLS&lt;ark_bls12_377::Bls12_377, ark_bls12_377::Config&gt;;
+<a href=#436 id=436 data-nosnippet>436</a><span class="doccomment">/// Aggregate BLS signature scheme with Signature in G1 for BLS12-381 curve.
+<a href=#437 id=437 data-nosnippet>437</a></span><span class="kw">impl </span>CurveExtraConfig <span class="kw">for </span>ark_bls12_381::Config {
+<a href=#438 id=438 data-nosnippet>438</a>    <span class="kw">const </span>CURVE_NAME: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>[u8] = <span class="string">b"BLS12381"</span>;
+<a href=#439 id=439 data-nosnippet>439</a>}
+<a href=#440 id=440 data-nosnippet>440</a><span class="kw">pub type </span>TinyBLS381 = TinyBLS&lt;ark_bls12_381::Bls12_381, ark_bls12_381::Config&gt;;</code></pre></div></section></main></body></html>

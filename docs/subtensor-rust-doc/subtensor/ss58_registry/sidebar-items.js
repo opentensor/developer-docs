@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Ss58AddressFormatRegistry","TokenRegistry"],"fn":["from_address_format","from_known_address_format"],"struct":["ParseError","Ss58AddressFormat","Token","TokenAmount"]};

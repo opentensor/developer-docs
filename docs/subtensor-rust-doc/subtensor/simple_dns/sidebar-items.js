@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CLASS","OPCODE","QCLASS","QTYPE","RCODE","SimpleDnsError","TYPE"],"mod":["header_buffer","rdata"],"struct":["CharacterString","Name","Packet","PacketFlag","Question","ResourceRecord"],"type":["Result"]};

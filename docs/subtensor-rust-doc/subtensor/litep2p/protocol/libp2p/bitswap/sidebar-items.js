@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BitswapEvent","BlockPresenceType","ResponseType","WantType"],"struct":["BitswapHandle","Config"],"type":["Cid"]};

@@ -1,0 +1,1 @@
+searchState.loadedDescShard("rpassword", 0, "This library makes it easy to read passwords in a console …\nPrompts on the TTY and then reads a password from TTY\nPrompts on the TTY and then reads a password from anything …\nReads a password from the TTY\nReads a password from anything that implements BufRead")

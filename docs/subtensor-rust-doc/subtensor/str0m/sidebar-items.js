@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CandidateKind","Event","IceConnectionState","Input","Output","RtcError"],"mod":["bwe","change","channel","error","format","media","net","rtp","stats"],"struct":["Candidate","IceCreds","Rtc","RtcConfig"]};

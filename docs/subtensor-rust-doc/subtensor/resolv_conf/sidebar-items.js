@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Family","Lookup","Network","ParseError","ScopedIp"],"struct":["AddrParseError","Config","DomainIter"]};

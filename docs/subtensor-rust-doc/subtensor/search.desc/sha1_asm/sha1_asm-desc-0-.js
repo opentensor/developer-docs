@@ -1,0 +1,1 @@
+searchState.loadedDescShard("sha1_asm", 0, "Assembly implementation of the SHA-1 compression function.\nSafe wrapper around assembly implementation of SHA-1 …")

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["DnsSecErrorKind","ProtoErrorKind"],"struct":["DnsSecError","ProtoError"],"trait":["FromProtoError"],"type":["DnsSecResult","ProtoResult"]};

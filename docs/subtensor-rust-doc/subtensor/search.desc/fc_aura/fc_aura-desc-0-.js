@@ -1,0 +1,1 @@
+searchState.loadedDescShard("fc_aura", 0, "Consensus data provider for Aura.\nReturns the argument unchanged.\nGet a mutable reference to the inner from the outer.\nGet a reference to the inner from the outer.\nCalls <code>U::from(self)</code>.\nCreates a new instance of the <code>AuraConsensusDataProvider</code>, …")

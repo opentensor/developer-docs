@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/multistream-select-0.13.0/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="multistream_select" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">multistream_select/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright 2017 Parity Technologies (UK) Ltd.
+<a href=#2 id=2 data-nosnippet>2</a>//
+<a href=#3 id=3 data-nosnippet>3</a>// Permission is hereby granted, free of charge, to any person obtaining a
+<a href=#4 id=4 data-nosnippet>4</a>// copy of this software and associated documentation files (the "Software"),
+<a href=#5 id=5 data-nosnippet>5</a>// to deal in the Software without restriction, including without limitation
+<a href=#6 id=6 data-nosnippet>6</a>// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+<a href=#7 id=7 data-nosnippet>7</a>// and/or sell copies of the Software, and to permit persons to whom the
+<a href=#8 id=8 data-nosnippet>8</a>// Software is furnished to do so, subject to the following conditions:
+<a href=#9 id=9 data-nosnippet>9</a>//
+<a href=#10 id=10 data-nosnippet>10</a>// The above copyright notice and this permission notice shall be included in
+<a href=#11 id=11 data-nosnippet>11</a>// all copies or substantial portions of the Software.
+<a href=#12 id=12 data-nosnippet>12</a>//
+<a href=#13 id=13 data-nosnippet>13</a>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+<a href=#14 id=14 data-nosnippet>14</a>// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+<a href=#15 id=15 data-nosnippet>15</a>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+<a href=#16 id=16 data-nosnippet>16</a>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+<a href=#17 id=17 data-nosnippet>17</a>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+<a href=#18 id=18 data-nosnippet>18</a>// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+<a href=#19 id=19 data-nosnippet>19</a>// DEALINGS IN THE SOFTWARE.
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="doccomment">//! # Multistream-select Protocol Negotiation
+<a href=#22 id=22 data-nosnippet>22</a>//!
+<a href=#23 id=23 data-nosnippet>23</a>//! This crate implements the `multistream-select` protocol, which is the protocol
+<a href=#24 id=24 data-nosnippet>24</a>//! used by libp2p to negotiate which application-layer protocol to use with the
+<a href=#25 id=25 data-nosnippet>25</a>//! remote on a connection or substream.
+<a href=#26 id=26 data-nosnippet>26</a>//!
+<a href=#27 id=27 data-nosnippet>27</a>//! &gt; **Note**: This crate is used primarily by core components of *libp2p* and it
+<a href=#28 id=28 data-nosnippet>28</a>//! &gt; is usually not used directly on its own.
+<a href=#29 id=29 data-nosnippet>29</a>//!
+<a href=#30 id=30 data-nosnippet>30</a>//! ## Roles
+<a href=#31 id=31 data-nosnippet>31</a>//!
+<a href=#32 id=32 data-nosnippet>32</a>//! Two peers using the multistream-select negotiation protocol on an I/O stream
+<a href=#33 id=33 data-nosnippet>33</a>//! are distinguished by their role as a _dialer_ (or _initiator_) or as a _listener_
+<a href=#34 id=34 data-nosnippet>34</a>//! (or _responder_). Thereby the dialer plays the active part, driving the protocol,
+<a href=#35 id=35 data-nosnippet>35</a>//! whereas the listener reacts to the messages received.
+<a href=#36 id=36 data-nosnippet>36</a>//!
+<a href=#37 id=37 data-nosnippet>37</a>//! The dialer has two options: it can either pick a protocol from the complete list
+<a href=#38 id=38 data-nosnippet>38</a>//! of protocols that the listener supports, or it can directly suggest a protocol.
+<a href=#39 id=39 data-nosnippet>39</a>//! Either way, a selected protocol is sent to the listener who can either accept (by
+<a href=#40 id=40 data-nosnippet>40</a>//! echoing the same protocol) or reject (by responding with a message stating
+<a href=#41 id=41 data-nosnippet>41</a>//! "not available"). If a suggested protocol is not available, the dialer may
+<a href=#42 id=42 data-nosnippet>42</a>//! suggest another protocol. This process continues until a protocol is agreed upon,
+<a href=#43 id=43 data-nosnippet>43</a>//! yielding a [`Negotiated`](self::Negotiated) stream, or the dialer has run out of
+<a href=#44 id=44 data-nosnippet>44</a>//! alternatives.
+<a href=#45 id=45 data-nosnippet>45</a>//!
+<a href=#46 id=46 data-nosnippet>46</a>//! See [`dialer_select_proto`](self::dialer_select_proto) and
+<a href=#47 id=47 data-nosnippet>47</a>//! [`listener_select_proto`](self::listener_select_proto).
+<a href=#48 id=48 data-nosnippet>48</a>//!
+<a href=#49 id=49 data-nosnippet>49</a>//! ## [`Negotiated`](self::Negotiated)
+<a href=#50 id=50 data-nosnippet>50</a>//!
+<a href=#51 id=51 data-nosnippet>51</a>//! A `Negotiated` represents an I/O stream that has settled on a protocol
+<a href=#52 id=52 data-nosnippet>52</a>//! to use. By default, with [`Version::V1`], protocol negotiation is always
+<a href=#53 id=53 data-nosnippet>53</a>//! at least one dedicated round-trip message exchange, before application
+<a href=#54 id=54 data-nosnippet>54</a>//! data for the negotiated protocol can be sent by the dialer. There is
+<a href=#55 id=55 data-nosnippet>55</a>//! a variant [`Version::V1Lazy`] that permits 0-RTT negotiation if the
+<a href=#56 id=56 data-nosnippet>56</a>//! dialer only supports a single protocol. In that case, when a dialer
+<a href=#57 id=57 data-nosnippet>57</a>//! settles on a protocol to use, the [`DialerSelectFuture`] yields a
+<a href=#58 id=58 data-nosnippet>58</a>//! [`Negotiated`](self::Negotiated) I/O stream before the negotiation
+<a href=#59 id=59 data-nosnippet>59</a>//! data has been flushed. It is then expecting confirmation for that protocol
+<a href=#60 id=60 data-nosnippet>60</a>//! as the first messages read from the stream. This behaviour allows the dialer
+<a href=#61 id=61 data-nosnippet>61</a>//! to immediately send data relating to the negotiated protocol together with the
+<a href=#62 id=62 data-nosnippet>62</a>//! remaining negotiation message(s). Note, however, that a dialer that performs
+<a href=#63 id=63 data-nosnippet>63</a>//! multiple 0-RTT negotiations in sequence for different protocols layered on
+<a href=#64 id=64 data-nosnippet>64</a>//! top of each other may trigger undesirable behaviour for a listener not
+<a href=#65 id=65 data-nosnippet>65</a>//! supporting one of the intermediate protocols. See
+<a href=#66 id=66 data-nosnippet>66</a>//! [`dialer_select_proto`](self::dialer_select_proto) and the documentation
+<a href=#67 id=67 data-nosnippet>67</a>//! of [`Version::V1Lazy`] for further details.
+<a href=#68 id=68 data-nosnippet>68</a>//!
+<a href=#69 id=69 data-nosnippet>69</a>//! ## Examples
+<a href=#70 id=70 data-nosnippet>70</a>//!
+<a href=#71 id=71 data-nosnippet>71</a>//! For a dialer:
+<a href=#72 id=72 data-nosnippet>72</a>//!
+<a href=#73 id=73 data-nosnippet>73</a>//! ```no_run
+<a href=#74 id=74 data-nosnippet>74</a>//! use async_std::net::TcpStream;
+<a href=#75 id=75 data-nosnippet>75</a>//! use multistream_select::{dialer_select_proto, Version};
+<a href=#76 id=76 data-nosnippet>76</a>//! use futures::prelude::*;
+<a href=#77 id=77 data-nosnippet>77</a>//!
+<a href=#78 id=78 data-nosnippet>78</a>//! async_std::task::block_on(async move {
+<a href=#79 id=79 data-nosnippet>79</a>//!     let socket = TcpStream::connect("127.0.0.1:10333").await.unwrap();
+<a href=#80 id=80 data-nosnippet>80</a>//!
+<a href=#81 id=81 data-nosnippet>81</a>//!     let protos = vec!["/echo/1.0.0", "/echo/2.5.0"];
+<a href=#82 id=82 data-nosnippet>82</a>//!     let (protocol, _io) = dialer_select_proto(socket, protos, Version::V1).await.unwrap();
+<a href=#83 id=83 data-nosnippet>83</a>//!
+<a href=#84 id=84 data-nosnippet>84</a>//!     println!("Negotiated protocol: {:?}", protocol);
+<a href=#85 id=85 data-nosnippet>85</a>//!     // You can now use `_io` to communicate with the remote.
+<a href=#86 id=86 data-nosnippet>86</a>//! });
+<a href=#87 id=87 data-nosnippet>87</a>//! ```
+<a href=#88 id=88 data-nosnippet>88</a>//!
+<a href=#89 id=89 data-nosnippet>89</a>
+<a href=#90 id=90 data-nosnippet>90</a></span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
+<a href=#91 id=91 data-nosnippet>91</a>
+<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">mod </span>dialer_select;
+<a href=#93 id=93 data-nosnippet>93</a><span class="kw">mod </span>length_delimited;
+<a href=#94 id=94 data-nosnippet>94</a><span class="kw">mod </span>listener_select;
+<a href=#95 id=95 data-nosnippet>95</a><span class="kw">mod </span>negotiated;
+<a href=#96 id=96 data-nosnippet>96</a><span class="kw">mod </span>protocol;
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a><span class="kw">pub use </span><span class="self">self</span>::dialer_select::{dialer_select_proto, DialerSelectFuture};
+<a href=#99 id=99 data-nosnippet>99</a><span class="kw">pub use </span><span class="self">self</span>::listener_select::{listener_select_proto, ListenerSelectFuture};
+<a href=#100 id=100 data-nosnippet>100</a><span class="kw">pub use </span><span class="self">self</span>::negotiated::{Negotiated, NegotiatedComplete, NegotiationError};
+<a href=#101 id=101 data-nosnippet>101</a><span class="kw">pub use </span><span class="self">self</span>::protocol::ProtocolError;
+<a href=#102 id=102 data-nosnippet>102</a>
+<a href=#103 id=103 data-nosnippet>103</a><span class="doccomment">/// Supported multistream-select versions.
+<a href=#104 id=104 data-nosnippet>104</a></span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
+<a href=#105 id=105 data-nosnippet>105</a></span><span class="kw">pub enum </span>Version {
+<a href=#106 id=106 data-nosnippet>106</a>    <span class="doccomment">/// Version 1 of the multistream-select protocol. See [1] and [2].
+<a href=#107 id=107 data-nosnippet>107</a>    ///
+<a href=#108 id=108 data-nosnippet>108</a>    /// [1]: https://github.com/libp2p/specs/blob/master/connections/README.md#protocol-negotiation
+<a href=#109 id=109 data-nosnippet>109</a>    /// [2]: https://github.com/multiformats/multistream-select
+<a href=#110 id=110 data-nosnippet>110</a>    </span><span class="attr">#[default]
+<a href=#111 id=111 data-nosnippet>111</a>    </span>V1,
+<a href=#112 id=112 data-nosnippet>112</a>    <span class="doccomment">/// A "lazy" variant of version 1 that is identical on the wire but whereby
+<a href=#113 id=113 data-nosnippet>113</a>    /// the dialer delays flushing protocol negotiation data in order to combine
+<a href=#114 id=114 data-nosnippet>114</a>    /// it with initial application data, thus performing 0-RTT negotiation.
+<a href=#115 id=115 data-nosnippet>115</a>    ///
+<a href=#116 id=116 data-nosnippet>116</a>    /// This strategy is only applicable for the node with the role of "dialer"
+<a href=#117 id=117 data-nosnippet>117</a>    /// in the negotiation and only if the dialer supports just a single
+<a href=#118 id=118 data-nosnippet>118</a>    /// application protocol. In that case the dialer immedidately "settles"
+<a href=#119 id=119 data-nosnippet>119</a>    /// on that protocol, buffering the negotiation messages to be sent
+<a href=#120 id=120 data-nosnippet>120</a>    /// with the first round of application protocol data (or an attempt
+<a href=#121 id=121 data-nosnippet>121</a>    /// is made to read from the `Negotiated` I/O stream).
+<a href=#122 id=122 data-nosnippet>122</a>    ///
+<a href=#123 id=123 data-nosnippet>123</a>    /// A listener will behave identically to `V1`. This ensures interoperability with `V1`.
+<a href=#124 id=124 data-nosnippet>124</a>    /// Notably, it will immediately send the multistream header as well as the protocol
+<a href=#125 id=125 data-nosnippet>125</a>    /// confirmation, resulting in multiple frames being sent on the underlying transport.
+<a href=#126 id=126 data-nosnippet>126</a>    /// Nevertheless, if the listener supports the protocol that the dialer optimistically
+<a href=#127 id=127 data-nosnippet>127</a>    /// settled on, it can be a 0-RTT negotiation.
+<a href=#128 id=128 data-nosnippet>128</a>    ///
+<a href=#129 id=129 data-nosnippet>129</a>    /// &gt; **Note**: `V1Lazy` is specific to `rust-libp2p`. The wire protocol is identical to `V1`
+<a href=#130 id=130 data-nosnippet>130</a>    /// &gt; and generally interoperable with peers only supporting `V1`. Nevertheless, there is a
+<a href=#131 id=131 data-nosnippet>131</a>    /// &gt; pitfall that is rarely encountered: When nesting multiple protocol negotiations, the
+<a href=#132 id=132 data-nosnippet>132</a>    /// &gt; listener should either be known to support all of the dialer's optimistically chosen
+<a href=#133 id=133 data-nosnippet>133</a>    /// &gt; protocols or there is must be no intermediate protocol without a payload and none of
+<a href=#134 id=134 data-nosnippet>134</a>    /// &gt; the protocol payloads must have the potential for being mistaken for a multistream-select
+<a href=#135 id=135 data-nosnippet>135</a>    /// &gt; protocol message. This avoids rare edge-cases whereby the listener may not recognize
+<a href=#136 id=136 data-nosnippet>136</a>    /// &gt; upgrade boundaries and erroneously process a request despite not supporting one of
+<a href=#137 id=137 data-nosnippet>137</a>    /// &gt; the intermediate protocols that the dialer committed to. See [1] and [2].
+<a href=#138 id=138 data-nosnippet>138</a>    ///
+<a href=#139 id=139 data-nosnippet>139</a>    /// [1]: https://github.com/multiformats/go-multistream/issues/20
+<a href=#140 id=140 data-nosnippet>140</a>    /// [2]: https://github.com/libp2p/rust-libp2p/pull/1212
+<a href=#141 id=141 data-nosnippet>141</a>    </span>V1Lazy,
+<a href=#142 id=142 data-nosnippet>142</a>    <span class="comment">// Draft: https://github.com/libp2p/specs/pull/95
+<a href=#143 id=143 data-nosnippet>143</a>    // V2,
+<a href=#144 id=144 data-nosnippet>144</a></span>}</code></pre></div></section></main></body></html>

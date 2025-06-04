@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Macro Magic 🪄"><title>macro_magic - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="macro_magic" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../macro_magic/index.html">macro_<wbr>magic</a><span class="version">0.5.1</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#macro-magic-" title="Macro Magic 🪄">Macro Magic 🪄</a><ul><li><a href="#overview" title="Overview">Overview</a></li><li><a href="#no_std" title="no_std">no_std</a></li><li><a href="#features" title="Features">Features</a></li><li><a href="#limitations" title="Limitations">Limitations</a></li><li><a href="#breaking-changes" title="Breaking Changes">Breaking Changes</a></li></ul></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#macros" title="Macros">Macros</a></li><li><a href="#attributes" title="Attribute Macros">Attribute Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>macro_magic</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/macro_magic/lib.rs.html#1-103">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="macro-magic-"><a class="doc-anchor" href="#macro-magic-">§</a>Macro Magic 🪄</h2>
+<p><img src="https://img.shields.io/github/actions/workflow/status/sam0x17/macro_magic/ci.yaml" alt="Build Status" />
+<img src="https://img.shields.io/github/license/sam0x17/macro_magic" alt="GitHub" />
+<img src="https://img.shields.io/crates/d/macro_magic" alt="Crates.io" />
+<img src="https://img.shields.io/docsrs/macro_magic?label=docs" alt="docs.rs" /></p>
+<h3 id="overview"><a class="doc-anchor" href="#overview">§</a>Overview</h3>
+<p>This crate provides an <a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a> attribute macro, and a number
+of companion macros, most prominently <a href="%60import_tokens_proc%60"><code>#[import_tokens_proc]</code></a> and
+<a href="%60import_tokens_attr%60"><code>#[import_tokens_attr]</code></a>, which, when used in tandem with
+<a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a>, allow you to create regular and attribute proc
+macros in which you can import and make use of the tokens of external/foreign items marked
+with <a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a> in other modules, files, and even in other
+crates merely by referring to them by name/path.</p>
+<p>Among other things, the patterns introduced by <code>macro_magic</code> can be used to implement safe
+and efficient exportation and importation of item tokens within the same file, and even
+across file and crate boundaries.</p>
+<h3 id="no_std"><a class="doc-anchor" href="#no_std">§</a>no_std</h3>
+<p><code>macro_magic</code> is designed to work with stable Rust, and is fully <code>no_std</code> compatible (in
+fact, there is a unit test to ensure everything is <code>no_std</code> safe).</p>
+<h3 id="features"><a class="doc-anchor" href="#features">§</a>Features</h3><h4 id="proc_support"><a class="doc-anchor" href="#proc_support">§</a>proc_support</h4>
+<p>The <code>proc_support</code> feature <em>must</em> be enabled in proc macro crates that make use of any
+import tokens functionality, including <a href="%60import_tokens_attr%60"><code>#[import_tokens_attr]</code></a>,
+<a href="%60import_tokens_proc%60"><code>#[import_tokens_proc]</code></a> and [<code>import_tokens!</code>]. Otherwise these
+macros will not function correctly and will issue compiler errors complaining about items
+not existing under <a href="mm_core/index.html" title="mod macro_magic::mm_core"><code>mm_core</code></a>. The <a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a> macro does not
+require this feature to function correctly, so you can safely use it without enabling this
+feature.</p>
+<p>The reason for this feature gating is that things like <code>syn</code>, <code>quote</code>, <code>proc_macro2</code>, etc.,
+are not 100% <code>no_std</code> compatible and should only be enabled in proc macro crates.</p>
+<h3 id="limitations"><a class="doc-anchor" href="#limitations">§</a>Limitations</h3>
+<p>One thing that <code>macro_magic</code> <em>doesn’t</em> provide is the ability to build up state information
+across multiple macro invocations, however this problem can be tackled effectively using
+the <a href="https://www.youtube.com/watch?v=aEWbZxNCH0A">outer macro pattern</a> or in some cases
+using static atomics and mutexes in your proc macro crate (which we actually do in this
+crate to keep track of unique identifiers).</p>
+<h3 id="breaking-changes"><a class="doc-anchor" href="#breaking-changes">§</a>Breaking Changes</h3>
+<ul>
+<li><strong>0.4x</strong> removed <code>#[use_attr]</code> and <code>#[use_proc]</code> (they are no longer needed with the new
+self-calling macro style that has been adopted in 0.4x) and also removed the ability to
+access <code>#[export_tokens]</code> invocations in inaccessible locations like inside of functions
+and across module permission boundaries like in an inaccessible private module. This
+feature may be re-added in the future if there is interest, however removing it allowed
+us to consolidate naming of our <code>macro_rules!</code> declarations and remove the need for
+<code>#[use_attr]</code> / <code>#[use_proc]</code>.</li>
+<li><strong>0.2x</strong> removed and/or re-wrote a number of features that relied on a non-future-proof
+behavior of writing/reading files in the <code>OUT_DIR</code>. Versions &gt;= 0.2.0 are completely safe
+and no longer contain this behavior, however features that provided the ability to
+enumerate all the <code>#[export_tokens]</code> calls in a namespace have been removed. The proper
+way to do this is with the outer macro pattern or with global state mutexes/atomics in
+your proc macro crate, as mentioned above.</li>
+</ul>
+<p>More detailed historical change information can be found in
+<a href="https://github.com/sam0x17/docify/releases">releases</a>.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="mm_core/index.html" title="mod macro_magic::mm_core">mm_core</a></dt><dd>Contains the internal code behind the <code>macro_magic</code> macros in a re-usable form, in case you
+need to design new macros that utilize some of the internal functionality of <code>macro_magic</code>.</dd></dl><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.export_tokens_alias.html" title="macro macro_magic::export_tokens_alias">export_<wbr>tokens_<wbr>alias</a></dt><dd>Creates an attribute proc macro that is an alias for
+<a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a>.</dd><dt><a class="macro" href="macro.forward_tokens.html" title="macro macro_magic::forward_tokens">forward_<wbr>tokens</a></dt><dd>“Forwards” the tokens of the specified exported item (specified by path as the first arg)
+to the specified proc or <code>macro_rules!</code> macro (specified by path as the second arg).</dd><dt><a class="macro" href="macro.forward_tokens_verbatim.html" title="macro macro_magic::forward_tokens_verbatim">forward_<wbr>tokens_<wbr>verbatim</a></dt></dl><h2 id="attributes" class="section-header">Attribute Macros<a href="#attributes" class="anchor">§</a></h2><dl class="item-table"><dt><a class="attr" href="attr.export_tokens.html" title="attr macro_magic::export_tokens">export_<wbr>tokens</a></dt><dd>Can be applied to any item. Doing so will make the tokens for this item available for
+import by the other macros in this crate.</dd><dt><a class="attr" href="attr.export_tokens_no_emit.html" title="attr macro_magic::export_tokens_no_emit">export_<wbr>tokens_<wbr>no_<wbr>emit</a></dt><dd>Like <a href="attr.export_tokens.html" title="attr macro_magic::export_tokens"><code>#[export_tokens]</code></a> but does not emit the tokens of the
+attached item locally.</dd><dt><a class="attr" href="attr.use_attr.html" title="attr macro_magic::use_attr">use_<wbr>attr</a></dt><dd>Deprecated: No-op</dd><dt><a class="attr" href="attr.use_proc.html" title="attr macro_magic::use_proc">use_<wbr>proc</a></dt><dd>Deprecated: No-op</dd></dl></section></div></main></body></html>

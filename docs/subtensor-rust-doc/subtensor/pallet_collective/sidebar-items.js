@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["RawOrigin"],"fn":["ensure_members"],"mod":["pallet","weights"],"struct":["EnsureMember","EnsureMembers","EnsureProportionAtLeast","EnsureProportionMoreThan","MoreThanMajorityThenPrimeDefaultVote","PrimeDefaultVote","Votes"],"trait":["CanPropose","CanVote","DefaultVote","GetVotingMembers"],"type":["MemberCount","ProposalIndex"]};

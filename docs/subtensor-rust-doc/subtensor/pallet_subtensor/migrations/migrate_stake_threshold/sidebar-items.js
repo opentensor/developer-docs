@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_stake_threshold"],"mod":["deprecated_weights_min_stake"]};

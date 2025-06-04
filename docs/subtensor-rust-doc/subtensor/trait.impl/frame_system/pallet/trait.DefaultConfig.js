@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["frame_system",[]],["pallet_balances",[["impl <a class=\"trait\" href=\"frame_system/pallet/trait.DefaultConfig.html\" title=\"trait frame_system::pallet::DefaultConfig\">DefaultConfig</a> for <a class=\"struct\" href=\"pallet_balances/pallet/config_preludes/struct.TestDefaultConfig.html\" title=\"struct pallet_balances::pallet::config_preludes::TestDefaultConfig\">TestDefaultConfig</a>"]]],["pallet_sudo",[["impl <a class=\"trait\" href=\"frame_system/pallet/trait.DefaultConfig.html\" title=\"trait frame_system::pallet::DefaultConfig\">DefaultConfig</a> for <a class=\"struct\" href=\"pallet_sudo/pallet/config_preludes/struct.TestDefaultConfig.html\" title=\"struct pallet_sudo::pallet::config_preludes::TestDefaultConfig\">TestDefaultConfig</a>"]]],["pallet_timestamp",[["impl <a class=\"trait\" href=\"frame_system/pallet/trait.DefaultConfig.html\" title=\"trait frame_system::pallet::DefaultConfig\">DefaultConfig</a> for <a class=\"struct\" href=\"pallet_timestamp/pallet/config_preludes/struct.TestDefaultConfig.html\" title=\"struct pallet_timestamp::pallet::config_preludes::TestDefaultConfig\">TestDefaultConfig</a>"]]],["pallet_transaction_payment",[["impl <a class=\"trait\" href=\"frame_system/pallet/trait.DefaultConfig.html\" title=\"trait frame_system::pallet::DefaultConfig\">DefaultConfig</a> for <a class=\"struct\" href=\"pallet_transaction_payment/pallet/config_preludes/struct.TestDefaultConfig.html\" title=\"struct pallet_transaction_payment::pallet::config_preludes::TestDefaultConfig\">TestDefaultConfig</a>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[19,375,363,378,408]}

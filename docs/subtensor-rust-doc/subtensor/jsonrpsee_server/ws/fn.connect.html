@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Low-level API that tries to upgrade the HTTP connection to a WebSocket connection."><title>connect in jsonrpsee_server::ws - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="jsonrpsee_server" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../jsonrpsee_server/index.html">jsonrpsee_<wbr>server</a><span class="version">0.24.7</span></h2></div><div class="sidebar-elems"><div id="rustdoc-modnav"><h2><a href="index.html">In jsonrpsee_<wbr>server::<wbr>ws</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">jsonrpsee_server</a>::<wbr><a href="index.html">ws</a></div><h1>Function <span class="fn">connect</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/jsonrpsee_server/transport/ws.rs.html#422-505">Source</a> </span></div><pre class="rust item-decl"><code>pub async fn connect&lt;L, B&gt;(
+    req: <a class="type" href="../type.HttpRequest.html" title="type jsonrpsee_server::HttpRequest">HttpRequest</a>&lt;B&gt;,
+    server_cfg: <a class="struct" href="../struct.ServerConfig.html" title="struct jsonrpsee_server::ServerConfig">ServerConfig</a>,
+    methods: impl <a class="trait" href="https://doc.rust-lang.org/1.86.0/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="../struct.Methods.html" title="struct jsonrpsee_server::Methods">Methods</a>&gt;,
+    conn: <a class="struct" href="../struct.ConnectionState.html" title="struct jsonrpsee_server::ConnectionState">ConnectionState</a>,
+    rpc_middleware: <a class="struct" href="../middleware/rpc/struct.RpcServiceBuilder.html" title="struct jsonrpsee_server::middleware::rpc::RpcServiceBuilder">RpcServiceBuilder</a>&lt;L&gt;,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.86.0/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="type" href="../type.HttpResponse.html" title="type jsonrpsee_server::HttpResponse">HttpResponse</a>, impl <a class="trait" href="https://doc.rust-lang.org/1.86.0/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.unit.html">()</a>&gt;), <a class="type" href="../type.HttpResponse.html" title="type jsonrpsee_server::HttpResponse">HttpResponse</a>&gt;<div class="where">where
+    L: for&lt;'a&gt; <a class="trait" href="../../tower_layer/trait.Layer.html" title="trait tower_layer::Layer">Layer</a>&lt;<a class="struct" href="../middleware/rpc/layer/rpc_service/struct.RpcService.html" title="struct jsonrpsee_server::middleware::rpc::layer::rpc_service::RpcService">RpcService</a>&gt;,
+    for&lt;'a&gt; &lt;L as <a class="trait" href="../../tower_layer/trait.Layer.html" title="trait tower_layer::Layer">Layer</a>&lt;<a class="struct" href="../middleware/rpc/layer/rpc_service/struct.RpcService.html" title="struct jsonrpsee_server::middleware::rpc::layer::rpc_service::RpcService">RpcService</a>&gt;&gt;::<a class="associatedtype" href="../../tower_layer/trait.Layer.html#associatedtype.Service" title="type tower_layer::Layer::Service">Service</a>: <a class="trait" href="https://doc.rust-lang.org/1.86.0/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/1.86.0/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static + <a class="trait" href="../middleware/rpc/trait.RpcServiceT.html" title="trait jsonrpsee_server::middleware::rpc::RpcServiceT">RpcServiceT</a>&lt;'a&gt;,</div></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Low-level API that tries to upgrade the HTTP connection to a WebSocket connection.</p>
+<p>Returns <code>Ok((http_response, conn_fut))</code> if the WebSocket connection was successfully established
+otherwise <code>Err(http_response)</code>.</p>
+<p><code>conn_fut</code> is a future that drives the WebSocket connection
+and if it’s dropped the connection will be closed.</p>
+<p>Because this API depends on <a href="../../hyper/index.html" title="mod hyper"><code>hyper</code></a> the response needs to be sent
+to complete the HTTP request.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>jsonrpsee_server::{ws, ServerConfig, Methods, ConnectionState, HttpRequest, HttpResponse};
+<span class="kw">use </span>jsonrpsee_server::middleware::rpc::{RpcServiceBuilder, RpcServiceT, RpcService};
+
+<span class="kw">async fn </span>handle_websocket_conn&lt;L&gt;(
+    req: HttpRequest,
+    server_cfg: ServerConfig,
+    methods: <span class="kw">impl </span>Into&lt;Methods&gt; + <span class="lifetime">'static</span>,
+    conn: ConnectionState,
+    rpc_middleware: RpcServiceBuilder&lt;L&gt;,
+    <span class="kw-2">mut </span>disconnect: tokio::sync::mpsc::Receiver&lt;()&gt;
+) -&gt; HttpResponse
+<span class="kw">where
+    </span>L: <span class="kw">for</span>&lt;<span class="lifetime">'a</span>&gt; tower::Layer&lt;RpcService&gt; + <span class="lifetime">'static</span>,
+    &lt;L <span class="kw">as </span>tower::Layer&lt;RpcService&gt;&gt;::Service: Send + Sync + <span class="lifetime">'static</span>,
+    <span class="kw">for</span>&lt;<span class="lifetime">'a</span>&gt; &lt;L <span class="kw">as </span>tower::Layer&lt;RpcService&gt;&gt;::Service: RpcServiceT&lt;<span class="lifetime">'a</span>&gt; + <span class="lifetime">'static</span>,
+{
+  <span class="kw">match </span>ws::connect(req, server_cfg, methods, conn, rpc_middleware).<span class="kw">await </span>{
+    <span class="prelude-val">Ok</span>((rp, conn_fut)) =&gt; {
+        tokio::spawn(<span class="kw">async move </span>{
+            <span class="comment">// Keep the connection alive until
+            // a close signal is sent.
+            </span><span class="macro">tokio::select!</span> {
+                <span class="kw">_ </span>= conn_fut =&gt; (),
+                <span class="kw">_ </span>= disconnect.recv() =&gt; (),
+            }
+        });
+        rp
+    }
+    <span class="prelude-val">Err</span>(rp) =&gt; rp,
+  }
+}</code></pre></div>
+</div></details></section></div></main></body></html>

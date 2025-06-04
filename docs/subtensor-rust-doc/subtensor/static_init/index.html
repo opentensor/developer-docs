@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Safe non const initialized statics and safe mutable statics with unbeatable performance."><title>static_init - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="static_init" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../static_init/index.html">static_<wbr>init</a><span class="version">1.0.3</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#feature" title="Feature">Feature</a></li><li><a href="#fastest-lazy-statics" title="Fastest Lazy Statics">Fastest Lazy Statics</a></li><li><a href="#safe-mutable-statics" title="Safe Mutable Statics">Safe Mutable Statics</a></li><li><a href="#classical-lazy-statics" title="Classical Lazy statics">Classical Lazy statics</a></li><li><a href="#no_std-support" title="`no_std` support"><code>no_std</code> support</a></li><li><a href="#performant" title="Performant">Performant</a><ul><li><a href="#under-the-hood" title="Under the hood">Under the hood</a></li><li><a href="#benchmark-results" title="Benchmark results">Benchmark results</a></li></ul></li><li><a href="#thread-local-support" title="Thread local support">Thread local support</a></li><li><a href="#unsafe-low-level" title="Unsafe Low level">Unsafe Low level</a><ul><li><a href="#unchecked-statics-initiliazed-at-program-start-up" title="Unchecked statics initiliazed at program start up">Unchecked statics initiliazed at program start up</a></li><li><a href="#program-constructor-destructor" title="Program constructor destructor">Program constructor destructor</a></li></ul></li><li><a href="#debug-support" title="Debug support">Debug support</a></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#traits" title="Traits">Traits</a></li><li><a href="#attributes" title="Attribute Macros">Attribute Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>static_init</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/static_init/lib.rs.html#8-1221">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Safe non const initialized statics and safe mutable statics with unbeatable performance.</p>
+<p>Also provides code execution at program start-up/exit.</p>
+<h2 id="feature"><a class="doc-anchor" href="#feature">§</a>Feature</h2>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+non const initialized statics.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+statics dropped at program exit.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+safe mutable lazy statics (locked).</li>
+<li><input disabled="" type="checkbox" checked=""/>
+every feature with <code>no_std</code> support.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+unbeatable performance, can be order of magnitude faster that any other solution.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+registration of code execution at program exit without allocation (as opposed to libc::at_exit).</li>
+<li><input disabled="" type="checkbox" checked=""/>
+ergonomic syntax.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+sound and safe.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+on nigtly, <code>thread_locals</code> and safe mutable <code>thread_locals</code>, guaranteed to be
+dropped at thread exit with the lowest possible overhead compared to
+what is provided by system library thread support or the standard library!</li>
+</ul>
+<h2 id="fastest-lazy-statics"><a class="doc-anchor" href="#fastest-lazy-statics">§</a>Fastest Lazy Statics</h2>
+<p>This crate provides <em>lazy statics</em> on all plateforms.</p>
+<p>On unixes and windows <em>lesser lazy statics</em> are <em>lazy</em> during program startup phase
+(before <code>main</code> is called). Once main is called, those statics are all guaranteed to be
+initialized and any access to them almost no incur any performance cost</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::{dynamic};
+
+<span class="attr">#[dynamic]
+</span><span class="kw">static </span>L1: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];
+
+<span class="attr">#[dynamic(drop)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>L2: Vec&lt;i32&gt; = {<span class="kw">let </span><span class="kw-2">mut </span>v = L1.clone(); v.push(<span class="number">43</span>); v};</code></pre></div>
+<p>Those static initialization and access can be 10x faster than
+what is provided by the standard library or other crates.</p>
+<h2 id="safe-mutable-statics"><a class="doc-anchor" href="#safe-mutable-statics">§</a>Safe Mutable Statics</h2>
+<p>Just add the <code>mut</code> keyword to have mutable locked statics.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::{dynamic};
+
+<span class="attr">#[dynamic]
+</span><span class="kw">static </span><span class="kw-2">mut </span>L1: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];
+
+<span class="attr">#[dynamic(drop)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>L2: Vec&lt;i32&gt; = {
+   <span class="comment">//get a unique lock:
+   </span><span class="kw">let </span><span class="kw-2">mut </span>lock = L1.write();
+   lock.push(<span class="number">42</span>);
+   lock.clone()
+   };</code></pre></div>
+<p>Those statics use an <em>apdaptative phase locker</em> that gives them surprising performance.</p>
+<h2 id="classical-lazy-statics"><a class="doc-anchor" href="#classical-lazy-statics">§</a>Classical Lazy statics</h2>
+<p>By default, initialization of statics declared with the <code>dynamic</code> is forced before main
+start on plateform that support it. If <em>lazyness</em> if a required feature, the attribute argument
+<code>lazy</code> can be used.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::{dynamic};
+
+<span class="attr">#[dynamic(lazy)]
+</span><span class="kw">static </span>L1: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];
+
+<span class="attr">#[dynamic(lazy,drop)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>L3: Vec&lt;i32&gt; =L1.clone();</code></pre></div>
+<p>Even if the static is not mut, dropped statics are always locked. There is also a <code>finalize</code> attribute
+argument that can be used to run a “drop” equivalent at program exit but leaves the static unchanged.</p>
+<p>Those lazy also provide superior performances compared to other solutions.</p>
+<h2 id="no_std-support"><a class="doc-anchor" href="#no_std-support">§</a><code>no_std</code> support</h2>
+<p>On linux or Reddox (TBC) this library is <code>no_std</code>. The library use directly the <code>futex</code> system call
+to place thread in a wait queue when needed.</p>
+<p>On other plateform <code>no_std</code> support can be gain by using the <code>spin_loop</code> feature. NB that lock strategies
+based on spin loop are not system-fair and cause entire system slow-down.</p>
+<h2 id="performant"><a class="doc-anchor" href="#performant">§</a>Performant</h2><h3 id="under-the-hood"><a class="doc-anchor" href="#under-the-hood">§</a>Under the hood</h3>
+<p>The statics and mutable statics declared with <code>dynamic</code> attribute use what we
+call an  <em>adaptative phase locker</em>. This is a lock that is in between a <code>Once</code>
+and a <code>RwLock</code>. It is carefully implemented as a variation over the <code>RwLock</code>
+algorithms of <code>parking_lot</code> crate with other tradeoff and different
+capabilities.</p>
+<p>It is qualified <em>adaptative</em> because the decision to take a read lock,
+a write lock or not to take a lock is performed while the lock attempt is
+performed and a thread may attempt to get a write lock but decides to be waked
+as the owner of a read lock if it is about to be placed in a wait queue.</p>
+<p>Statics and thread locals that need to register themselve for destruction at
+program or thread exit are implemented as members of an intrusive list. This
+implementation avoid heap memory allocation caused by system library support
+(<code>libc::at_exit</code>, <code>glibc::__cxa_at_thread_exit</code>, pthread… registers use heap
+memory allocation), and it avoid to fall on system library implementation
+limits that may cause <code>thread_locals</code> declared with <code>std::thread_locals</code> not to
+be dropped.</p>
+<p>Last but not least of the optimization, on windows and unixes (but not Mac yet)
+<code>dynamic</code> statics initialization is forced before main start. This fact unable
+a double check with a single boolean for all statics that is much faster other
+double check solution.</p>
+<h3 id="benchmark-results"><a class="doc-anchor" href="#benchmark-results">§</a>Benchmark results</h3>
+<p>(see the README file or run benchmark with <code>cargo bench --feature bench_nightly</code>)</p>
+<h2 id="thread-local-support"><a class="doc-anchor" href="#thread-local-support">§</a>Thread local support</h2>
+<p>On nightly <code>thread_local</code> support can be enable with the feature
+<code>thread_local</code>. The attribute <code>dynamic</code> can be used with thread locals as with
+regular statics. In this case, the mutable <code>thread_local</code> will behave similarly
+to a RefCell with the same syntax as mutable lazy statics.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="attr">#[dynamic(drop)] </span><span class="comment">//guaranteed to be drop: no leak contrarily to std::thread_local
+</span><span class="attr">#[thread_local]
+</span><span class="kw">static </span>V: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>];
+
+<span class="attr">#[dynamic]
+#[thread_local]
+</span><span class="kw">static </span><span class="kw-2">mut </span>W: Vec&lt;i32&gt; = V.clone();
+<span class="macro">assert_ne!</span>(W.read().len(), <span class="number">0</span>);
+<span class="macro">assert_ne!</span>(W.try_read().unwrap().len(), <span class="number">0</span>);</code></pre></div>
+<h2 id="unsafe-low-level"><a class="doc-anchor" href="#unsafe-low-level">§</a>Unsafe Low level</h2><h3 id="unchecked-statics-initiliazed-at-program-start-up"><a class="doc-anchor" href="#unchecked-statics-initiliazed-at-program-start-up">§</a>Unchecked statics initiliazed at program start up</h3>
+<p>The library also provides unchecked statics, whose initialization is run before main start. Those statics
+does not imply any memory overhead neither execution time overhead. This is the responsability of the coder
+to be sure not to access those static before they are initialized.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::dynamic;
+
+<span class="attr">#[dynamic(<span class="number">10</span>)]
+</span><span class="kw">static </span>A: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+
+<span class="attr">#[dynamic(<span class="number">0</span>,drop)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>B: Vec&lt;i32&gt; = <span class="kw">unsafe </span>{A.clone()};</code></pre></div>
+<p>Even if A is not declared mutable, the attribute macro convert it into a mutable static to ensure that every
+access to it is unsafe.</p>
+<p>The number indicates the priority, the larger the number, the sooner the static will be initialized.</p>
+<p>Those statics can also be droped at program exit with the <code>drop</code> attribute argument.</p>
+<h3 id="program-constructor-destructor"><a class="doc-anchor" href="#program-constructor-destructor">§</a>Program constructor destructor</h3>
+<p>It is possible to register fonction for execution before main start/ after main returns.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::{constructor, destructor};
+
+<span class="attr">#[constructor(<span class="number">10</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>run_first() {}
+
+<span class="attr">#[constructor(<span class="number">0</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>then_run() {}
+
+<span class="attr">#[destructor(<span class="number">0</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>pre_finish() {}
+
+<span class="attr">#[destructor(<span class="number">10</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>finaly() {}</code></pre></div>
+<h2 id="debug-support"><a class="doc-anchor" href="#debug-support">§</a>Debug support</h2>
+<p>The feature <code>debug_order</code> can be activated to detect trouble with initialization order of raw
+statics or dead locks due to lazy initialization depending on itself.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="lazy/index.html" title="mod static_init::lazy">lazy</a></dt><dd>Provides various implementation of lazily initialized types</dd><dt><a class="mod" href="phase/index.html" title="mod static_init::phase">phase</a></dt><dd>phases and bits to manipulate them;</dd><dt><a class="mod" href="raw_static/index.html" title="mod static_init::raw_static">raw_<wbr>static</a></dt><dd>Provides types for statics that are meant to run code before main start or after it exit.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AccessError.html" title="struct static_init::AccessError">Access<wbr>Error</a></dt><dd>Lazy access error</dd><dt><a class="struct" href="struct.Lazy.html" title="struct static_init::Lazy">Lazy</a></dt><dd>A type that initialize itself only once on the first access</dd><dt><a class="struct" href="struct.LockedLazy.html" title="struct static_init::LockedLazy">Locked<wbr>Lazy</a></dt><dd>A mutable locked lazy that initialize its content on the first lock</dd><dt><a class="struct" href="struct.Phase.html" title="struct static_init::Phase">Phase</a></dt><dd>The lifetime phase of an object, this indicate weither the object was initialized
+finalized (droped),…</dd><dt><a class="struct" href="struct.UnSyncLazy.html" title="struct static_init::UnSyncLazy">UnSync<wbr>Lazy</a></dt><dd>A version of <a href="struct.Lazy.html" title="struct static_init::Lazy">Lazy</a> whose reference can not be passed to other thread</dd><dt><a class="struct" href="struct.UnSyncLockedLazy.html" title="struct static_init::UnSyncLockedLazy">UnSync<wbr>Locked<wbr>Lazy</a></dt><dd>A RefCell that initializes its content on the first access</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.Finaly.html" title="trait static_init::Finaly">Finaly</a></dt><dd>Trait that must be implemented by #[dynamic(finalize)] statics.</dd><dt><a class="trait" href="trait.Generator.html" title="trait static_init::Generator">Generator</a></dt><dd>Generates a value of type <code>T</code></dd><dt><a class="trait" href="trait.GeneratorTolerance.html" title="trait static_init::GeneratorTolerance">Generator<wbr>Tolerance</a></dt><dt><a class="trait" href="trait.LazyAccess.html" title="trait static_init::LazyAccess">Lazy<wbr>Access</a></dt><dd>Helper trait to ease access static lazy associated functions</dd><dt><a class="trait" href="trait.Phased.html" title="trait static_init::Phased">Phased</a></dt><dd>Trait for objects that know in which <a href="struct.Phase.html" title="struct static_init::Phase">phase</a> they are.</dd><dt><a class="trait" href="trait.Uninit.html" title="trait static_init::Uninit">Uninit</a></dt><dd>Trait that must be implemented by #[dynamic(prime)] mutable statics.</dd></dl><h2 id="attributes" class="section-header">Attribute Macros<a href="#attributes" class="anchor">§</a></h2><dl class="item-table"><dt><a class="attr" href="attr.constructor.html" title="attr static_init::constructor">constructor</a></dt><dd>Attribute for functions run at program initialization (before main).</dd><dt><a class="attr" href="attr.destructor.html" title="attr static_init::destructor">destructor</a></dt><dd>Attribute for functions run at program termination (after main)</dd><dt><a class="attr" href="attr.dynamic.html" title="attr static_init::dynamic">dynamic</a></dt><dd>Declare statics that can be initialized with non const fonctions and safe mutable statics</dd></dl></section></div></main></body></html>

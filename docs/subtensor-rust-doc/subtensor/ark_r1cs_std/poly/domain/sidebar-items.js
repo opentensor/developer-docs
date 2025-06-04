@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["vanishing_poly"],"struct":["Radix2DomainVar"]};

@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="BER/DER Custom Derive Attributes"><title>asn1_rs::doc::derive - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="asn1_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../asn1_rs/index.html">asn1_rs</a><span class="version">0.6.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module derive</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#berder-custom-derive-attributes" title="BER/DER Custom Derive Attributes">BER/DER Custom Derive Attributes</a><ul><li><a href="#berder-sequence-parsers" title="BER/DER Sequence parsers">BER/DER Sequence parsers</a></li><li><a href="#tagged-values" title="Tagged values">Tagged values</a></li><li><a href="#optional-values-not-tagged" title="`OPTIONAL` values (not tagged)"><code>OPTIONAL</code> values (not tagged)</a></li><li><a href="#default" title="`DEFAULT`"><code>DEFAULT</code></a></li><li><a href="#debugging" title="Debugging">Debugging</a></li><li><a href="#berder-set-parsers" title="BER/DER Set parsers">BER/DER Set parsers</a></li></ul></li><li><a href="#advanced" title="Advanced">Advanced</a><ul><li><a href="#custom-errors" title="Custom errors">Custom errors</a></li><li><a href="#mapping-errors" title="Mapping errors">Mapping errors</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In asn1_<wbr>rs::<wbr>doc</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">asn1_rs</a>::<wbr><a href="../index.html">doc</a></div><h1>Module <span>derive</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/asn1_rs/doc/mod.rs.html#7">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="berder-custom-derive-attributes"><a class="doc-anchor" href="#berder-custom-derive-attributes">§</a>BER/DER Custom Derive Attributes</h2><h3 id="berder-sequence-parsers"><a class="doc-anchor" href="#berder-sequence-parsers">§</a>BER/DER Sequence parsers</h3><h4 id="ber"><a class="doc-anchor" href="#ber">§</a><code>BER</code></h4>
+<p>To derive a BER <code>SEQUENCE</code> parser, add the <a href="../../derive.BerSequence.html" title="derive asn1_rs::BerSequence"><code>BerSequence</code></a> derive attribute to an existing struct. Parsers will be derived automatically for all fields, which must implement the <a href="../../trait.FromBer.html" title="trait asn1_rs::FromBer"><code>FromBer</code></a> trait.</p>
+<p>For ex:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, BerSequence)]
+</span><span class="kw">pub struct </span>S {
+    a: u32,
+    b: u16,
+    c: u16,
+}
+
+<span class="kw">let </span>(rest, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>After parsing b, any bytes that were leftover and not used to fill val will be returned in <code>rest</code>.</p>
+<p>When parsing a <code>SEQUENCE</code> into a struct, any trailing elements of the <code>SEQUENCE</code> that do
+not have matching fields in val will not be included in <code>rest</code>, as these are considered
+valid elements of the <code>SEQUENCE</code> and not trailing data.</p>
+<h4 id="der"><a class="doc-anchor" href="#der">§</a><code>DER</code></h4>
+<p>To derive a <code>DER</code> parser, use the <a href="../../derive.DerSequence.html" title="derive asn1_rs::DerSequence"><code>DerSequence</code></a> custom attribute.</p>
+<p><em>Note: the <code>DerSequence</code> attributes derive both <code>BER</code> and <code>DER</code> parsers.</em></p>
+<h3 id="tagged-values"><a class="doc-anchor" href="#tagged-values">§</a>Tagged values</h3><h4 id="explicit"><a class="doc-anchor" href="#explicit">§</a><code>EXPLICIT</code></h4>
+<p>There are several ways of parsing tagged values: either using types like <a href="../../type.TaggedExplicit.html" title="type asn1_rs::TaggedExplicit"><code>TaggedExplicit</code></a>, or using custom annotations.</p>
+<p>Using <code>TaggedExplicit</code> works as usual. The only drawback is that the type is visible in the structure, so accessing the value must be done using <code>.as_ref()</code> or <code>.into_inner()</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S2 {
+    a: u16,
+}
+
+<span class="comment">// test with EXPLICIT Vec
+</span><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a INTEGER
+    </span>a: u32,
+    <span class="comment">// b INTEGER
+    </span>b: u16,
+    <span class="comment">// c [0] EXPLICIT SEQUENCE OF S2
+    </span>c: TaggedExplicit&lt;Vec&lt;S2&gt;, Error, <span class="number">0</span>&gt;,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;
+
+<span class="comment">// Get a reference on c (type is &amp;Vec&lt;S2&gt;)
+</span><span class="kw">let </span>ref_c = result.c.as_ref();</code></pre></div>
+<p><em>Note: tags are context-specific by default. To specify other kind of tags (like <code>APPLICATION</code>) use <a href="../../struct.TaggedValue.html" title="struct asn1_rs::TaggedValue"><code>TaggedValue</code></a>.</em></p>
+<h4 id="tag_explicit"><a class="doc-anchor" href="#tag_explicit">§</a><code>tag_explicit</code></h4>
+<p>To “hide” the tag from the parser, the <code>tag_explicit</code> attribute is provided. This attribute must specify the tag value (as an integer), and will automatically wrap reading the value with the specified tag.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a [0] EXPLICIT INTEGER
+    </span><span class="attr">#[tag_explicit(<span class="number">0</span>)]
+    </span>a: u16,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>This method handles transparently the encapsulation and the read of the tagged value.</p>
+<p><em>Note: tags are context-specific by default. To specify other kind of tags (like <code>APPLICATION</code>) add the tag class before the value in the <code>tag_explicit</code> attribute.</em>
+For ex: <code>tag_explicit(APPLICATION 0)</code> or <code>tag_explicit(PRIVATE 2)</code>.</p>
+<h4 id="tagged-optional-values"><a class="doc-anchor" href="#tagged-optional-values">§</a>Tagged optional values</h4>
+<p>The <code>optional</code> custom attribute can be used in addition of <code>tag_explicit</code> to specify that the value is <code>OPTIONAL</code>.</p>
+<p>The type of the annotated field member must be resolvable to <code>Option</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a [0] EXPLICIT INTEGER OPTIONAL
+    </span><span class="attr">#[tag_explicit(<span class="number">0</span>)]
+    #[optional]
+    </span>a: <span class="prelude-ty">Option</span>&lt;u16&gt;,
+    <span class="comment">// b INTEGER
+    </span>b: u16,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<h4 id="implicit"><a class="doc-anchor" href="#implicit">§</a><code>IMPLICIT</code></h4>
+<p>Tagged <code>IMPLICIT</code> values are handled similarly as for <code>EXPLICIT</code>, and can be parsed either using the <a href="../../type.TaggedImplicit.html" title="type asn1_rs::TaggedImplicit"><code>TaggedImplicit</code></a> type, or using the <code>tag_implicit</code> custom attribute.</p>
+<p>For ex:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a [0] IMPLICIT INTEGER OPTIONAL
+    </span><span class="attr">#[tag_implicit(<span class="number">0</span>)]
+    #[optional]
+    </span>a: <span class="prelude-ty">Option</span>&lt;u16&gt;,
+    <span class="comment">// b INTEGER
+    </span>b: u16,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<h3 id="optional-values-not-tagged"><a class="doc-anchor" href="#optional-values-not-tagged">§</a><code>OPTIONAL</code> values (not tagged)</h3>
+<p>The <code>optional</code> custom attribute can be specified to indicate the value is <code>OPTIONAL</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a INTEGER
+    </span>a: u16,
+    <span class="comment">// b INTEGER OPTIONAL
+    </span><span class="attr">#[optional]
+    </span>b: <span class="prelude-ty">Option</span>&lt;u16&gt;,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<p><strong>Important</strong>: there are several limitations to this attribute.</p>
+<p>In particular, the parser is eager: when an <code>OPTIONAL</code> value of some type is followed by another value (not <code>OPTIONAL</code>) of the same type, this can create problem.
+If only one value is present, the parser will affect it to the first field, and then raise an error because the second is absent.</p>
+<p>Note that this does not concern tagged optional values (unless they have the same tag).</p>
+<h3 id="default"><a class="doc-anchor" href="#default">§</a><code>DEFAULT</code></h3>
+<p>The <code>default</code> custom attribute can be specified to indicate the value has a <code>DEFAULT</code> attribute. The value can also be marked as
+<code>OPTIONAL</code>, but this can be omitted.</p>
+<p>Since the value can always be obtained, the type should not be <code>Option&lt;T&gt;</code>, but should use <code>T</code> directly.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq, DerSequence)]
+#[debug_derive]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a INTEGER
+    </span>a: u16,
+    <span class="comment">// b INTEGER DEFAULT 0
+    </span><span class="attr">#[default(<span class="number">0_u16</span>)]
+    </span>b: u16,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>Limitations are the same as for <code>OPTIONAL</code> attribute.</p>
+<h3 id="debugging"><a class="doc-anchor" href="#debugging">§</a>Debugging</h3>
+<p>To help debugging the generated code, the <code>#[debug_derive]</code> attribute has been added.</p>
+<p>When this attribute is specified, the generated code will be printed to <code>stderr</code> during compilation.</p>
+<p>Example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>asn1_rs::<span class="kw-2">*</span>;
+
+<span class="attr">#[derive(BerSequence)]
+#[debug_derive]
+</span><span class="kw">struct </span>S {
+  a: u32,
+}</code></pre></div>
+<h3 id="berder-set-parsers"><a class="doc-anchor" href="#berder-set-parsers">§</a>BER/DER Set parsers</h3>
+<p>Parsing BER/DER <code>SET</code> objects is very similar to <code>SEQUENCE</code>. Use the <a href="../../derive.BerSet.html" title="derive asn1_rs::BerSet"><code>BerSet</code></a> and <a href="../../derive.DerSet.html" title="derive asn1_rs::DerSet"><code>DerSet</code></a> custom derive attributes on the structure, and everything else is exactly the same as for sequences (see above for documentation).</p>
+<p>Example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::collections::BTreeSet;
+
+<span class="comment">// `Ord` is needed because we will parse as a `BTreeSet` later
+</span><span class="attr">#[derive(Debug, DerSet, PartialEq, Eq, PartialOrd, Ord)]
+</span><span class="kw">pub struct </span>S2 {
+    a: u16,
+}
+
+<span class="comment">// test with EXPLICIT Vec
+</span><span class="attr">#[derive(Debug, PartialEq, DerSet)]
+</span><span class="kw">pub struct </span>S {
+    <span class="comment">// a INTEGER
+    </span>a: u32,
+    <span class="comment">// b INTEGER
+    </span>b: u16,
+    <span class="comment">// c [0] EXPLICIT SET OF S2
+    </span>c: TaggedExplicit&lt;BTreeSet&lt;S2&gt;, Error, <span class="number">0</span>&gt;,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_ber(input)<span class="question-mark">?</span>;
+
+<span class="comment">// Get a reference on c (type is &amp;BTreeSet&lt;S2&gt;)
+</span><span class="kw">let </span>ref_c = result.c.as_ref();</code></pre></div>
+<h2 id="advanced"><a class="doc-anchor" href="#advanced">§</a>Advanced</h2><h3 id="custom-errors"><a class="doc-anchor" href="#custom-errors">§</a>Custom errors</h3>
+<p>Derived parsers can use the <code>error</code> attribute to specify the error type of the parser.</p>
+<p>The custom error type must implement <code>From&lt;Error&gt;</code>, so the derived parsers will transparently convert errors using the <a href="https://doc.rust-lang.org/1.86.0/core/convert/trait.Into.html" title="trait core::convert::Into"><code>Into</code></a> trait.</p>
+<p>Example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq)]
+</span><span class="kw">pub enum </span>MyError {
+    NotYetImplemented,
+}
+
+<span class="kw">impl </span>From&lt;asn1_rs::Error&gt; <span class="kw">for </span>MyError {
+    <span class="kw">fn </span>from(<span class="kw">_</span>: asn1_rs::Error) -&gt; <span class="self">Self </span>{
+        MyError::NotYetImplemented
+    }
+}
+
+<span class="attr">#[derive(DerSequence)]
+#[error(MyError)]
+</span><span class="kw">pub struct </span>T2 {
+    <span class="kw">pub </span>a: u32,
+}</code></pre></div>
+<h3 id="mapping-errors"><a class="doc-anchor" href="#mapping-errors">§</a>Mapping errors</h3>
+<p>Sometimes, it is necessary to map the returned error to another type, for example when a subparser returns a different error type than the parser’s, and the <a href="https://doc.rust-lang.org/1.86.0/core/convert/trait.Into.html" title="trait core::convert::Into"><code>Into</code></a> trait cannot be implemented. This is often used in combination with the <code>error</code> attribute, but can also be used alone.</p>
+<p>The <code>map_err</code> attribute can be used to specify a function or closure to map errors. The function signature is <code>fn (e1: E1) -&gt; E2</code>.</p>
+<p>Example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, PartialEq)]
+</span><span class="kw">pub enum </span>MyError {
+    NotYetImplemented,
+}
+
+<span class="kw">impl </span>From&lt;asn1_rs::Error&gt; <span class="kw">for </span>MyError {
+    <span class="kw">fn </span>from(<span class="kw">_</span>: asn1_rs::Error) -&gt; <span class="self">Self </span>{
+        MyError::NotYetImplemented
+    }
+}
+
+<span class="attr">#[derive(DerSequence)]
+#[error(MyError)]
+</span><span class="kw">pub struct </span>T2 {
+    <span class="kw">pub </span>a: u32,
+}
+
+<span class="comment">// subparser returns an error of type MyError,
+// which is mapped to `Error`
+</span><span class="attr">#[derive(DerSequence)]
+</span><span class="kw">pub struct </span>T4 {
+    <span class="attr">#[map_err(|<span class="kw">_</span>| Error::BerTypeError)]
+    </span><span class="kw">pub </span>a: T2,
+}</code></pre></div>
+<p><em>Note</em>: when deriving BER and DER parsers, errors paths are different (<code>TryFrom</code> returns the error type, while <a href="../../trait.FromDer.html" title="trait asn1_rs::FromDer"><code>FromDer</code></a> returns a <a href="../../type.ParseResult.html" title="type asn1_rs::ParseResult"><code>ParseResult</code></a>). Some code will be inserted by the <code>map_err</code> attribute to handle this transparently and keep the same function signature.</p>
+</div></details></section></div></main></body></html>

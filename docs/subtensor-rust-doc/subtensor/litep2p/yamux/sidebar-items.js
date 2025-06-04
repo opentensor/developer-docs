@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DEFAULT_CREDIT"],"enum":["ConnectionError","FrameDecodeError","HeaderDecodeError","Mode","WindowUpdateMode"],"struct":["Config","Connection","Control","ControlledConnection","Packet","Stream","StreamId"],"type":["Result"]};

@@ -1,0 +1,1 @@
+searchState.loadedDescShard("predicates_tree", 0, "Render <code>Case</code> as a tree.\nA <code>Case</code> rendered as a tree for display.\nRender <code>Self</code> as a displayable tree.\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.\nRender <code>Self</code> as a displayable tree.")

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["CommitmentOf","LastBondsReset","LastCommitment","MaxSpace","RevealedCommitments","TimelockedIndex","UsedSpaceOf"]};

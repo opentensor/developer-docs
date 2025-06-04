@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Fit a regression model directly on a matrix of input data"><title>fit_low_level_regression_model in linregress - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="linregress" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../linregress/index.html">linregress</a><span class="version">0.5.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">fit_<wbr>low_<wbr>level_<wbr>regression_<wbr>model</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#note" title="Note">Note</a></li><li><a href="#example" title="Example">Example</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate linregress</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">linregress</a></div><h1>Function <span class="fn">fit_low_level_regression_model</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/linregress/lib.rs.html#1040-1048">Source</a> </span></div><pre class="rust item-decl"><code>pub fn fit_low_level_regression_model(
+    data_row_major: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.f64.html">f64</a>],
+    num_rows: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.usize.html">usize</a>,
+    num_columns: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.usize.html">usize</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.86.0/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.LowLevelRegressionModel.html" title="struct linregress::LowLevelRegressionModel">LowLevelRegressionModel</a>, <a class="enum" href="enum.Error.html" title="enum linregress::Error">Error</a>&gt;</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Fit a regression model directly on a matrix of input data</p>
+<p>Expects a matrix in the format</p>
+<div><table><thead><tr><th>regressand</th><th>intercept</th><th>regressor 1</th><th>regressor 2</th><th>…</th></tr></thead><tbody>
+<tr><td>value</td><td>1.0</td><td>value</td><td>value</td><td>…</td></tr>
+<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+</tbody></table>
+</div>
+<p>in row major order.</p>
+<h2 id="note"><a class="doc-anchor" href="#note">§</a>Note</h2>
+<ul>
+<li>The matrix should already contain the <code>intercept</code> column consisting of only the value <code>1.0</code>.</li>
+<li>No validation of the data is performed, except for a simple dimension consistency check.</li>
+</ul>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linregress::{fit_low_level_regression_model, assert_slices_almost_eq};
+
+<span class="kw">let </span>data_row_major: Vec&lt;f64&gt; = <span class="macro">vec!</span>[
+    <span class="number">1.</span>, <span class="number">1.0</span>, <span class="number">1.</span>, <span class="number">7.</span>,
+    <span class="number">3.</span>, <span class="number">1.0</span>, <span class="number">2.</span>, <span class="number">6.</span>,
+    <span class="number">4.</span>, <span class="number">1.0</span>, <span class="number">3.</span>, <span class="number">5.</span>,
+    <span class="number">5.</span>, <span class="number">1.0</span>, <span class="number">4.</span>, <span class="number">4.</span>,
+    <span class="number">2.</span>, <span class="number">1.0</span>, <span class="number">5.</span>, <span class="number">3.</span>,
+    <span class="number">3.</span>, <span class="number">1.0</span>, <span class="number">6.</span>, <span class="number">2.</span>,
+    <span class="number">4.</span>, <span class="number">1.0</span>, <span class="number">7.</span>, <span class="number">1.</span>,
+];
+<span class="kw">let </span>model = fit_low_level_regression_model(<span class="kw-2">&amp;</span>data_row_major, <span class="number">7</span>, <span class="number">4</span>)<span class="question-mark">?</span>;
+<span class="kw">let </span>params = [
+    <span class="number">0.09523809523809518f64</span>,
+    <span class="number">0.5059523809523807</span>,
+    <span class="number">0.2559523809523811</span>,
+];
+<span class="macro">assert_slices_almost_eq!</span>(model.parameters(), <span class="kw-2">&amp;</span>params);</code></pre></div>
+</div></details></section></div></main></body></html>

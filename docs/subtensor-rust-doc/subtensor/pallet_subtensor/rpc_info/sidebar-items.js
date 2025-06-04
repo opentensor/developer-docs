@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["delegate_info","dynamic_info","metagraph","neuron_info","show_subnet","stake_info","subnet_info"]};

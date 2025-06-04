@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Aggregation of BLS signatures using proofs-of-possession"><title>w3f_bls::single_pop_aggregator - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="w3f_bls" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../w3f_bls/index.html">w3f_bls</a><span class="version">0.1.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module single_<wbr>pop_<wbr>aggregator</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#aggregation-of-bls-signatures-using-proofs-of-possession" title="Aggregation of BLS signatures using proofs-of-possession">Aggregation of BLS signatures using proofs-of-possession</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate w3f_<wbr>bls</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">w3f_bls</a></div><h1>Module <span>single_pop_aggregator</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/w3f_bls/single_pop_aggregator.rs.html#1-328">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h3 id="aggregation-of-bls-signatures-using-proofs-of-possession"><a class="doc-anchor" href="#aggregation-of-bls-signatures-using-proofs-of-possession">§</a>Aggregation of BLS signatures using proofs-of-possession</h3>
+<p>In this module, we provide the linear flavor of aggregate
+BLS signature in which the verifiers has previously checked
+proofs-of-possession for all public keys.  In other words,
+we simply add up the signatures because the previously checked
+proofs-of-possession for all signers prevent rogue key attacks.
+See the security arguments in The Power of Proofs-of-Possession:
+Securing Multiparty Signatures against Rogue-Key Attacks
+by Thomas Ristenpart and Scott Yilek at https://eprint.iacr.org/2007/264.pdf</p>
+<p>These proof-of-possession are simply self-signed certificates,
+so a BLS signature by each secret key on its own public key.
+Importantly, the message for this self-signed certificates
+must uniquely distinguish the public key for which the signature
+establishes a proof-of-possession.
+It follows that each proof-of-possession has a unique message,
+so distinct message aggregation is optimal for verifying them.</p>
+<p>In this vein, we note that aggregation under proofs-of-possession
+cannot improve performance when signers sign distinct messages,
+so proofs-of-possession help with aggregating votes in a concensus
+protocol, but should never be used for accounts on a block chain.</p>
+<p>We assume here that users provide their own data structure for
+proofs-of-poossession.  We provide more structure for users who
+one bit per vote in a concensus protocol:<br />
+You first verify the proofs-of-possession when building a data
+structure that holds the voters’ keys.  You implement the
+<code>ProofsOfPossession</code> trait for this data strtcuture as well,
+so that the <code>BitPoPSignedMessage</code> type provides a signature
+data type with reasonable sanity checks.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.SignatureAggregatorAssumingPoP.html" title="struct w3f_bls::single_pop_aggregator::SignatureAggregatorAssumingPoP">Signature<wbr>Aggregator<wbr>Assuming<wbr>PoP</a></dt></dl></section></div></main></body></html>

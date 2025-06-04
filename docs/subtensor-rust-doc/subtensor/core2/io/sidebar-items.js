@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ErrorKind","SeekFrom"],"struct":["Bytes","Chain","Cursor","Error","Take"],"trait":["BufRead","Read","Seek","Write"],"type":["Result"]};

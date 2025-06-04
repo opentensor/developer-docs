@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["META_RESERVED"],"enum":["RuntimeMetadata","RuntimeMetadataDeprecated"],"mod":["v14","v15"],"struct":["OpaqueMetadata","RuntimeMetadataPrefixed"]};

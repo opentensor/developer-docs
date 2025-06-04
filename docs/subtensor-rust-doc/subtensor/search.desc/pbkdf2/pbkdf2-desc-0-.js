@@ -1,0 +1,1 @@
+searchState.loadedDescShard("pbkdf2", 0, "This crate implements the PBKDF2 key derivation function …\nGeneric implementation of PBKDF2 algorithm which accepts …\nA variant of the <code>pbkdf2</code> function which returns an array …")

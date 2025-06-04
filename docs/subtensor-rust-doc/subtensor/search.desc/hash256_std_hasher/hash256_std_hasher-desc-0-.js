@@ -1,0 +1,1 @@
+searchState.loadedDescShard("hash256_std_hasher", 0, "Hasher that just takes 8 bytes of the provided value. May …\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.")

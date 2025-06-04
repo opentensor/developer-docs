@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Can be attached to an attribute proc macro function, causing it to receive the tokens for the external item referred to by the path provided as the `attr` / first argument to the attribute macro."><title>import_tokens_attr in macro_magic_macros - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="macro_magic_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc attr"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../macro_magic_macros/index.html">macro_<wbr>magic_<wbr>macros</a><span class="version">0.5.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">import_<wbr>tokens_<wbr>attr</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#overriding-macro_magic_root" title="Overriding `MACRO_MAGIC_ROOT`">Overriding <code>MACRO_MAGIC_ROOT</code></a></li><li><a href="#optional-feature-with_custom_parsing" title="Optional Feature: `#[with_custom_parsing(..)]`">Optional Feature: <code>#[with_custom_parsing(..)]</code></a></li><li><a href="#notes" title="Notes">Notes</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate macro_<wbr>magic_<wbr>macros</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">macro_magic_macros</a></div><h1>Attribute Macro <span class="attr">import_tokens_attr</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/macro_magic_macros/lib.rs.html#397-402">Source</a> </span></div><pre class="rust item-decl"><code>#[import_tokens_attr]</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Can be attached to an attribute proc macro function, causing it to receive the tokens for
+the external item referred to by the path provided as the <code>attr</code> / first argument to the
+attribute macro.</p>
+<p>The item whose path is provided as the <code>attr</code> / first argument <em>must</em> have the
+<a href="attr.export_tokens.html" title="attr macro_magic_macros::export_tokens"><code>#[export_tokens]</code></a> attribute attached to it, or this will not
+work.</p>
+<p>For example:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[import_tokens_attr]
+#[proc_macro_attribute]
+</span><span class="kw">pub fn </span>my_attribute(attr: TokenStream, tokens: TokenStream) -&gt; TokenStream {
+    <span class="kw">let </span>external_item = <span class="macro">parse_macro_input!</span>(attr <span class="kw">as </span>Item);
+    <span class="kw">let </span>attached_item = <span class="macro">parse_macro_input!</span>(tokens <span class="kw">as </span>Item);
+    <span class="comment">// ...
+</span>}</code></pre></div>
+<p>Which could then be used like:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[my_attribute(path::to::AnItem)]
+</span><span class="kw">mod </span>my_mod {
+    <span class="comment">// ...
+</span>}</code></pre></div>
+<p>This would result in the <code>external_item</code> variable having the parsed tokens of the external
+<code>path::to::AnItem</code> item, and the <code>attached_item</code> variable having the parsed tokens of the
+item the attribute is attached to (<code>my_mod</code>) as usual.</p>
+<p>This allows for the creation of extremely powerful attribute macros that take in an export
+tokens path as their <code>attr</code> and internally receive the tokens for that external item. For
+example you could write an attribute macro that combines two modules or two structs
+together, among many other things. Custom parsing, covered below, makes these capabilities
+even more powerful.</p>
+<h3 id="overriding-macro_magic_root"><a class="doc-anchor" href="#overriding-macro_magic_root">§</a>Overriding <a href="../macro_magic_core/constant.MACRO_MAGIC_ROOT.html" title="constant macro_magic_core::MACRO_MAGIC_ROOT"><code>MACRO_MAGIC_ROOT</code></a></h3>
+<p>You can also provide a module path as an optional argument to this attribute macro and that
+path will be used as the override for <a href="../macro_magic_core/constant.MACRO_MAGIC_ROOT.html" title="constant macro_magic_core::MACRO_MAGIC_ROOT"><code>MACRO_MAGIC_ROOT</code></a> within the context of code
+generated by this attribute. Instead of a <code>Path</code>, you are also free to provide any <code>Expr</code>
+that evaluates to something compatible with <a href="https://doc.rust-lang.org/1.86.0/core/convert/trait.Into.html" title="trait core::convert::Into"><code>Into&lt;String&gt;</code></a> so you can dynamically
+generate this path based on <code>format!</code> and other string manipulation machinery, if
+necessary.</p>
+<p>Here is an example of providing a <code>Path</code> as the override for <a href="../macro_magic_core/constant.MACRO_MAGIC_ROOT.html" title="constant macro_magic_core::MACRO_MAGIC_ROOT"><code>MACRO_MAGIC_ROOT</code></a>:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[import_tokens_attr(my_crate::__private::macro_magic)]
+</span><span class="kw">pub fn </span>my_macro(attr: TokenStream, tokens: TokenStream) -&gt; TokenStream {
+    <span class="comment">// ..
+</span>}</code></pre></div>
+<p>and here is an example of providing an <a href="https://doc.rust-lang.org/1.86.0/core/convert/trait.Into.html" title="trait core::convert::Into"><code>Into&lt;String&gt;</code></a>-compatible <code>Expr</code> as the override
+for <a href="../macro_magic_core/constant.MACRO_MAGIC_ROOT.html" title="constant macro_magic_core::MACRO_MAGIC_ROOT"><code>MACRO_MAGIC_ROOT</code></a>:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[import_tokens_proc(<span class="macro">format!</span>(<span class="string">"{}::__private::macro_magic"</span>, generate_crate_access_2018(<span class="string">"my_crate"</span>)))]
+</span><span class="kw">pub fn </span>my_macro(attr: TokenStream, tokens: TokenStream) -&gt; TokenStream {
+    <span class="comment">// ..
+</span>}</code></pre></div>
+<h3 id="optional-feature-with_custom_parsing"><a class="doc-anchor" href="#optional-feature-with_custom_parsing">§</a>Optional Feature: <code>#[with_custom_parsing(..)]</code></h3>
+<p>By default, <a href="attr.import_tokens_attr.html" title="attr macro_magic_macros::import_tokens_attr"><code>#[import_tokens_attr]</code></a>-based attribute macros
+expect the foreign item path to be passed directly as the only argument to the resulting
+macro. Sometimes, however, it is desirable to support multiple arguments, or otherwise
+implement some kind of custom parsing that determines how the foreign path is obtained. You
+can do this by attaching the optional attribute
+<a href="attr.with_custom_parsing.html" title="attr macro_magic_macros::with_custom_parsing"><code>#[with_custom_parsing(..)]</code></a> to the same proc macro
+attribute definition that you attached <code>#[import_tokens_attr]</code> to.</p>
+<p>This optional attribute takes one argument, which should be the path to a struct that
+implements <code>syn::parse::Parse</code>, <code>quote::ToTokens</code>, and <a href="../macro_magic_core/trait.ForeignPath.html" title="trait macro_magic_core::ForeignPath"><code>ForeignPath</code></a>. To access the
+tokens for your custom parsed input, you can use the magic variable <code>__custom_tokens: TokenStream</code> anywhere in your attribute proc macro.</p>
+<p>Here is a full example:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>MyCustomParsing {
+    foreign_path: syn::Path,
+    _comma: syn::token::Comma,
+    custom_path: syn::Path,
+}
+
+<span class="kw">impl </span>ToTokens <span class="kw">for </span>MyCustomParsing {
+    <span class="kw">fn </span>to_tokens(<span class="kw-2">&amp;</span><span class="self">self</span>, tokens: <span class="kw-2">&amp;mut </span>proc_macro2::TokenStream) {
+        tokens.extend(<span class="self">self</span>.foreign_path.to_token_stream());
+        tokens.extend(<span class="self">self</span>._comma.to_token_stream());
+        tokens.extend(<span class="self">self</span>.custom_path.to_token_stream());
+    }
+}
+
+<span class="kw">impl </span>ForeignPath <span class="kw">for </span>MyCustomParsing {
+    <span class="kw">fn </span>foreign_path(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>syn::Path {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.foreign_path
+    }
+}
+<span class="attr">#[import_tokens_attr]
+#[with_custom_parsing(MyCustomParsing)]
+#[proc_macro_attribute]
+</span><span class="kw">pub fn </span>my_attribute(attr: TokenStream, tokens: TokenStream) -&gt; TokenStream {
+    <span class="kw">let </span>external_item = <span class="macro">parse_macro_input!</span>(attr <span class="kw">as </span>Item);
+    <span class="kw">let </span>attached_item = <span class="macro">parse_macro_input!</span>(tokens <span class="kw">as </span>Item);
+    <span class="kw">let </span>custom_parsed_item = <span class="macro">parse_macro_input!</span>(__custom_tokens <span class="kw">as </span>MyCustomParsing);
+    <span class="comment">// ...
+</span>}</code></pre></div>
+<p>Usage would look like:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[my_attribute(foreign::path, some_other::path)]
+</span><span class="kw">struct </span>SomeItem {}</code></pre></div>
+<p>This is just an example, you could implement the parsing any way you want, maybe even using
+something that isn’t initially a <code>syn::Path</code> but is transformed into one. The possibilities
+are endless.</p>
+<h3 id="notes"><a class="doc-anchor" href="#notes">§</a>Notes</h3>
+<ul>
+<li>See <code>tests.rs</code> for more examples.</li>
+<li>Can only be used within a proc macro crate.</li>
+<li>A handy <code>__source_path: TokenStream</code> variable is also injected into your proc macro
+function definition which provides access to the original <code>syn::Path</code> that was provided
+as the path for the foreign item before its tokens were imported. You can access this
+directly simply by referring to <code>__source_path</code>. This should parse to a <code>syn::Path</code>.</li>
+<li>When using the custom parsing feature, you can also access the original tokens for the
+input attribute within your proc macro body using the magic variable <code>__custom_tokens</code>.
+For more information and an example see <a href="attr.with_custom_parsing.html" title="attr macro_magic_macros::with_custom_parsing"><code>with_custom_parsing</code></a>.</li>
+</ul>
+</div></details></section></div></main></body></html>

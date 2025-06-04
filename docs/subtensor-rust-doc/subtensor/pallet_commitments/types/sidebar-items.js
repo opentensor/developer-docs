@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_BIGRAW_COMMITMENT_SIZE_BYTES","MAX_TIMELOCK_COMMITMENT_SIZE_BYTES"],"enum":["Data"],"struct":["CommitmentInfo","Registration","RevealedData","UsageTracker"]};

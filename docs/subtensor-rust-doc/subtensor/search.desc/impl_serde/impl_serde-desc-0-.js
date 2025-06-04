@@ -1,0 +1,1 @@
+searchState.loadedDescShard("impl_serde", 0, "Serde serialization support for uint and fixed hash.\nAdd Serde serialization support to a fixed-sized hash type …\nAdd Serde serialization support to an integer created by …")

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fast_pairing_opt"]};

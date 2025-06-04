@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["AccountCodes","AccountCodesMetadata","AccountStorages","DisableWhitelistCheck","Suicided","WhitelistedCreators"]};

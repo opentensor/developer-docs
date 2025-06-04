@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ForwardedHeaderValueParseError","Identifier","Protocol"],"struct":["ForwardedHeaderValue","ForwardedHeaderValueIterator","ForwardedStanza"]};

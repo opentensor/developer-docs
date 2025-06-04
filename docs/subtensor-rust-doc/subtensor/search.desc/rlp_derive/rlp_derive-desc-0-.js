@@ -1,0 +1,1 @@
+searchState.loadedDescShard("rlp_derive", 0, "Derive macro for <code>#[derive(RlpEncodable, RlpDecodable)]</code>.")

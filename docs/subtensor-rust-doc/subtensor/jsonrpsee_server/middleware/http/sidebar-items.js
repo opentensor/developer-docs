@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["AuthorityError","Port"],"struct":["Authority","HostFilter","HostFilterLayer","InvalidPath","ProxyGetRequest","ProxyGetRequestLayer","WhitelistedHosts"]};

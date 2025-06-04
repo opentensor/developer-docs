@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Declare a new global reference module whose underlying value does not contain references."><title>environmental in environmental - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="environmental" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../environmental/index.html">environmental</a><span class="version">1.1.4</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">environmental</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate environmental</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">environmental</a></div><h1>Macro <span class="macro">environmental</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/environmental/lib.rs.html#241-365">Source</a> </span></div><pre class="rust item-decl"><code>macro_rules! environmental {
+    ($name:ident : $t:ty) =&gt; { ... };
+    ($name:ident : trait @$t:ident [$($args:ty,)*]) =&gt; { ... };
+    ($name:ident&lt;$traittype:ident&gt; : trait $t:ident &lt;$concretetype:ty&gt;) =&gt; { ... };
+    ($name:ident : trait $t:ident &lt;&gt;) =&gt; { ... };
+    ($name:ident : trait $t:ident &lt; $($args:ty),* $(,)* &gt;) =&gt; { ... };
+    ($name:ident : trait $t:ident) =&gt; { ... };
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Declare a new global reference module whose underlying value does not contain references.</p>
+<p>Will create a module of a given name that contains two functions:</p>
+<ul>
+<li><code>pub fn using&lt;R, F: FnOnce() -&gt; R&gt;(protected: &amp;mut $t, f: F) -&gt; R</code>
+This executes <code>f</code>, returning its value. During the call, the module’s reference is set to
+be equal to <code>protected</code>. When nesting <code>using</code> calls it will build a stack of the set values.
+Each call to <code>with</code> will always return the latest value in this stack.</li>
+<li><code>pub fn with&lt;R, F: FnOnce(&amp;mut $t) -&gt; R&gt;(f: F) -&gt; Option&lt;R&gt;</code>
+This executes <code>f</code>, returning <code>Some</code> of its value if called from code that is being executed
+as part of a <code>using</code> call. If not, it returns <code>None</code>. <code>f</code> is provided with one argument: the
+same reference as provided to the most recent <code>using</code> call.</li>
+<li><code>pub fn using_once&lt;R, F: FnOnce() -&gt; R&gt;(protected: &amp;mut $t, f: F) -&gt; R</code>
+This executes <code>f</code>, returning its value. During the call, the module’s reference is set to
+be equal to <code>protected</code> when there is not already a value set. In contrast to <code>using</code> this
+will not build a stack of set values and it will use the already set value.</li>
+</ul>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<p>Initializing the global context with a given value.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[macro_use] </span><span class="kw">extern crate </span>environmental;
+<span class="macro">environmental!</span>(counter: u32);
+<span class="kw">fn </span>main() {
+  <span class="kw">let </span><span class="kw-2">mut </span>counter_value = <span class="number">41u32</span>;
+  counter::using(<span class="kw-2">&amp;mut </span>counter_value, || {
+    <span class="kw">let </span>odd = counter::with(|value|
+      <span class="kw">if </span><span class="kw-2">*</span>value % <span class="number">2 </span>== <span class="number">1 </span>{
+        <span class="kw-2">*</span>value += <span class="number">1</span>; <span class="bool-val">true
+      </span>} <span class="kw">else </span>{
+        <span class="kw-2">*</span>value -= <span class="number">3</span>; <span class="bool-val">false
+      </span>}).unwrap();	<span class="comment">// safe because we're inside a counter::using
+    </span><span class="macro">println!</span>(<span class="string">"counter was {}"</span>, <span class="kw">match </span>odd { <span class="bool-val">true </span>=&gt; <span class="string">"odd"</span>, <span class="kw">_ </span>=&gt; <span class="string">"even" </span>});
+  });
+
+  <span class="macro">println!</span>(<span class="string">"The answer is {:?}"</span>, counter_value); <span class="comment">// 42
+</span>}</code></pre></div>
+<p>Roughly the same, but with a trait object:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[macro_use] </span><span class="kw">extern crate </span>environmental;
+
+<span class="kw">trait </span>Increment { <span class="kw">fn </span>increment(<span class="kw-2">&amp;mut </span><span class="self">self</span>); }
+
+<span class="kw">impl </span>Increment <span class="kw">for </span>i32 {
+<span class="kw">fn </span>increment(<span class="kw-2">&amp;mut </span><span class="self">self</span>) { <span class="kw-2">*</span><span class="self">self </span>+= <span class="number">1 </span>}
+}
+
+<span class="macro">environmental!</span>(val: Increment + <span class="lifetime">'static</span>);
+
+<span class="kw">fn </span>main() {
+<span class="kw">let </span><span class="kw-2">mut </span>local = <span class="number">0i32</span>;
+val::using(<span class="kw-2">&amp;mut </span>local, || {
+	val::with(|v| <span class="kw">for _ in </span><span class="number">0</span>..<span class="number">5 </span>{ v.increment() });
+});
+
+<span class="macro">assert_eq!</span>(local, <span class="number">5</span>);
+}</code></pre></div>
+</div></details></section></div></main></body></html>

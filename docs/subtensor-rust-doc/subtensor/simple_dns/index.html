@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Simple DNS"><title>simple_dns - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="simple_dns" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../simple_dns/index.html">simple_<wbr>dns</a><span class="version">0.5.7</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#simple-dns" title="Simple DNS">Simple DNS</a><ul><li><a href="#packet" title="Packet">Packet</a></li></ul></li><li><a href="#edns0-caveats" title="EDNS0 caveats">EDNS0 caveats</a><ul><li><a href="#dns-packet-parserbuilder" title="DNS Packet Parser/Builder">DNS Packet Parser/Builder</a></li></ul></li><li><a href="#update-packets-rfc-2136" title="Update packets (RFC 2136)">Update packets (RFC 2136)</a></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>simple_dns</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/simple_dns/lib.rs.html#1-11">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="simple-dns"><a class="doc-anchor" href="#simple-dns">§</a>Simple DNS</h2>
+<p>Pure Rust implementation to work with DNS packets</p>
+<p>You can parse or write a DNS packet by using <a href="struct.Packet.html" title="struct simple_dns::Packet">Packet</a></p>
+<h3 id="packet"><a class="doc-anchor" href="#packet">§</a>Packet</h3>
+<p>A <code>Packet</code> represents a dns packet, it is the main structure to construct and manipulate a packet before writing it into wire format.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>simple_dns::<span class="kw-2">*</span>;
+<span class="kw">use </span>simple_dns::rdata::<span class="kw-2">*</span>;
+
+<span class="kw">let </span><span class="kw-2">mut </span>packet = Packet::new_query(<span class="number">1</span>);
+
+<span class="kw">let </span>question = Question::new(Name::new_unchecked(<span class="string">"_srv._udp.local"</span>), TYPE::TXT.into(), CLASS::IN.into(), <span class="bool-val">false</span>);
+packet.questions.push(question);
+
+<span class="kw">let </span>resource = ResourceRecord::new(Name::new_unchecked(<span class="string">"_srv._udp.local"</span>), CLASS::IN, <span class="number">10</span>, RData::A(A { address: <span class="number">10 </span>}));
+packet.additional_records.push(resource);
+
+<span class="comment">// Write the packet in the provided buffer;
+</span><span class="kw">let </span><span class="kw-2">mut </span>bytes = [<span class="number">0u8</span>; <span class="number">200</span>];
+<span class="macro">assert!</span>(packet.write_to(<span class="kw-2">&amp;mut &amp;mut </span>bytes[..]).is_ok());
+
+<span class="comment">// Same as above, but allocates and returns a Vec&lt;u8&gt;
+</span><span class="kw">let </span>bytes = packet.build_bytes_vec();
+<span class="macro">assert!</span>(bytes.is_ok());
+
+<span class="comment">// Same as above, but Names are compressed
+</span><span class="kw">let </span>bytes = packet.build_bytes_vec_compressed();
+<span class="macro">assert!</span>(bytes.is_ok());
+</code></pre></div>
+<p>It doesn’t matter what order the resources are added, the packet will be built only when <code>build_bytes_vec</code> or <code>write_to</code> is called</p>
+<p>To parse the contents of a buffer into a packet, you need call call <a href="struct.Packet.html#method.parse" title="associated function simple_dns::Packet::parse">Packet::parse</a></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>simple_dns::Packet;
+
+<span class="kw">let </span>bytes = <span class="string">b"\x00\x03\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x06\x67\x6f\x6f\x67\x6c\x65\x03\x63\x6f\x6d\x00\x00\x01\x00\x01"</span>;
+<span class="kw">let </span>packet = Packet::parse(<span class="kw-2">&amp;</span>bytes[..]);
+<span class="macro">assert!</span>(packet.is_ok());</code></pre></div>
+<p>It is possible to check some information about a packet withouth parsing the packet, by using the <code>header_buffer</code> module functions.<br />
+Be cautious when checking <strong>RCODE</strong> and packet flags, see the module documentation for more information.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>simple_dns::{header_buffer, PacketFlag};
+<span class="kw">let </span>buffer = <span class="string">b"\x00\x03\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x06\x67\x6f\x6f\x67\x6c\x65\x03\x63\x6f\x6d\x00\x00\x01\x00\x01"</span>;
+
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Ok</span>(<span class="number">3</span>), header_buffer::id(<span class="kw-2">&amp;</span>buffer[..]));
+<span class="macro">assert!</span>(!header_buffer::has_flags(<span class="kw-2">&amp;</span>buffer[..], PacketFlag::RESPONSE).unwrap());</code></pre></div>
+<p>EDNS is supported by Packet <a href="struct.Packet.html#method.opt" title="method simple_dns::Packet::opt">opt</a> and <a href="struct.Packet.html#method.opt_mut" title="method simple_dns::Packet::opt_mut">opt_mut</a> functions, when working with ENDS packets,
+you <strong>SHOULD NOT</strong> add <strong>OPT Resource Records</strong> directly to the <strong>Additional Records</strong> sections unless you know exactly what you are doing.</p>
+<h2 id="edns0-caveats"><a class="doc-anchor" href="#edns0-caveats">§</a>EDNS0 caveats</h2>
+<p>EDNS extends the DNS packet header by adding an OPT resource record and <em>moving</em> part of the header information to the additional records section.
+RCODE went from 4 bits to 12 bits, where the first 4 bits are stored in the header section and the last 8 bits are stored somewhere else inside the packet.</p>
+<p>This has some implications on how a packet can be parsed or build</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>simple_dns::{header_buffer, RCODE, Packet};
+
+<span class="kw">let </span>buffer = <span class="string">b"\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x2e\x00\x00\x29\x01\xf4\x00\x00\x03\x01\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"</span>;
+<span class="kw">let </span>packet = Packet::parse(<span class="kw-2">&amp;</span>buffer[..]).unwrap();
+
+<span class="comment">// Without parsing the full packet, it is impossible to know the true RCODE of the packet
+</span><span class="macro">assert_eq!</span>(RCODE::NoError, header_buffer::rcode(<span class="kw-2">&amp;</span>buffer[..]).unwrap());
+<span class="macro">assert_eq!</span>(RCODE::BADVERS, packet.rcode());</code></pre></div>
+<p>Please, refer to <a href="https://datatracker.ietf.org/doc/html/rfc6891">RFC 6891</a> for more information</p>
+<h3 id="dns-packet-parserbuilder"><a class="doc-anchor" href="#dns-packet-parserbuilder">§</a>DNS Packet Parser/Builder</h3>
+<p>The <em>Packet</em> structure provides parsing e building of a DNS packet, it aims to be fully compliant with the RFCs bellow:</p>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc1034">RFC 1034</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1035">RFC 1035</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1138">RFC 1138</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1183">RFC 1183</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1706">RFC 1706</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1876">RFC 1876</a></li>
+<li><a href="https://tools.ietf.org/html/rfc1996">RFC 1996</a></li>
+<li><a href="https://tools.ietf.org/html/rfc2136">RFC 2136</a></li>
+<li><a href="https://tools.ietf.org/html/rfc6762">RFC 6762</a></li>
+<li><a href="https://tools.ietf.org/html/rfc2782">RFC 2782</a></li>
+<li><a href="https://tools.ietf.org/html/rfc3596">RFC 3596</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6891">RFC 6891</a></li>
+</ul>
+<p>Other Resource Records defined by other RFCs that are not in this list will be implemented over time</p>
+<h2 id="update-packets-rfc-2136"><a class="doc-anchor" href="#update-packets-rfc-2136">§</a>Update packets (RFC 2136)</h2>
+<p>This library can parse update packets, however, it does not validate update rules and the update fields are overloaded in the packet fields, as defined in the RFC 2136.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="header_buffer/index.html" title="mod simple_dns::header_buffer">header_<wbr>buffer</a></dt><dd>Helper functions to assert a buffer for the header flags of a DNS Packet. Useful for checking the header
+without parsing the whole packet.<br />
+WARNING: Flags and RCODE information may be incomplete if the packet contains EDNS (OPT) or
+DNSSEC Resource Records</dd><dt><a class="mod" href="rdata/index.html" title="mod simple_dns::rdata">rdata</a></dt><dd>Contains RData implementations</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.CharacterString.html" title="struct simple_dns::CharacterString">Character<wbr>String</a></dt><dd>CharacterString is expressed in one or two ways:</dd><dt><a class="struct" href="struct.Name.html" title="struct simple_dns::Name">Name</a></dt><dd>A Name represents a domain-name, which consists of character strings separated by dots.<br />
+Each section of a name is called label<br />
+ex: <code>google.com</code> consists of two labels <code>google</code> and <code>com</code></dd><dt><a class="struct" href="struct.Packet.html" title="struct simple_dns::Packet">Packet</a></dt><dd>Represents a DNS message packet</dd><dt><a class="struct" href="struct.PacketFlag.html" title="struct simple_dns::PacketFlag">Packet<wbr>Flag</a></dt><dd>Possible Packet Flags</dd><dt><a class="struct" href="struct.Question.html" title="struct simple_dns::Question">Question</a></dt><dd>Question represents a query in the DNS Packet</dd><dt><a class="struct" href="struct.ResourceRecord.html" title="struct simple_dns::ResourceRecord">Resource<wbr>Record</a></dt><dd>Resource Records are used to represent the answer, authority, and additional sections in DNS packets.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.CLASS.html" title="enum simple_dns::CLASS">CLASS</a></dt><dd>Possible CLASS values for a Resource in a DNS packet<br />
+Each value is described according to its own RFC</dd><dt><a class="enum" href="enum.OPCODE.html" title="enum simple_dns::OPCODE">OPCODE</a></dt><dd>Possible OPCODE values for a DNS packet, use to specify the type of operation.<br />
+<a href="https://tools.ietf.org/html/rfc1035">RFC 1035</a>: A four bit field that specifies kind of query in this message.<br />
+This value is set by the originator of a query and copied into the response.</dd><dt><a class="enum" href="enum.QCLASS.html" title="enum simple_dns::QCLASS">QCLASS</a></dt><dd>Possible QCLASS values for a Question in a DNS packet<br />
+Each value is described according to its own RFC</dd><dt><a class="enum" href="enum.QTYPE.html" title="enum simple_dns::QTYPE">QTYPE</a></dt><dd>Possible QTYPE values for a Question in a DNS packet<br />
+Each value is described according to its own RFC</dd><dt><a class="enum" href="enum.RCODE.html" title="enum simple_dns::RCODE">RCODE</a></dt><dd>Possible RCODE values for a DNS packet<br />
+<a href="https://tools.ietf.org/html/rfc1035">RFC 1035</a> Response code - this 4 bit field is set as part of responses.<br />
+The values have the following interpretation</dd><dt><a class="enum" href="enum.SimpleDnsError.html" title="enum simple_dns::SimpleDnsError">Simple<wbr>DnsError</a></dt><dd>Error types for SimpleDns</dd><dt><a class="enum" href="enum.TYPE.html" title="enum simple_dns::TYPE">TYPE</a></dt><dd>Possible TYPE values in DNS Resource Records
+Each value is described according to its own RFC</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.Result.html" title="type simple_dns::Result">Result</a></dt><dd>Alias type for Result&lt;T, SimpleDnsError&gt;;</dd></dl></section></div></main></body></html>

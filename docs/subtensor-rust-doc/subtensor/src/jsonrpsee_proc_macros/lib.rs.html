@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/jsonrpsee-proc-macros-0.24.7/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="jsonrpsee_proc_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">jsonrpsee_proc_macros/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright 2019-2021 Parity Technologies (UK) Ltd.
+<a href=#2 id=2 data-nosnippet>2</a>//
+<a href=#3 id=3 data-nosnippet>3</a>// Permission is hereby granted, free of charge, to any
+<a href=#4 id=4 data-nosnippet>4</a>// person obtaining a copy of this software and associated
+<a href=#5 id=5 data-nosnippet>5</a>// documentation files (the "Software"), to deal in the
+<a href=#6 id=6 data-nosnippet>6</a>// Software without restriction, including without
+<a href=#7 id=7 data-nosnippet>7</a>// limitation the rights to use, copy, modify, merge,
+<a href=#8 id=8 data-nosnippet>8</a>// publish, distribute, sublicense, and/or sell copies of
+<a href=#9 id=9 data-nosnippet>9</a>// the Software, and to permit persons to whom the Software
+<a href=#10 id=10 data-nosnippet>10</a>// is furnished to do so, subject to the following
+<a href=#11 id=11 data-nosnippet>11</a>// conditions:
+<a href=#12 id=12 data-nosnippet>12</a>//
+<a href=#13 id=13 data-nosnippet>13</a>// The above copyright notice and this permission notice
+<a href=#14 id=14 data-nosnippet>14</a>// shall be included in all copies or substantial portions
+<a href=#15 id=15 data-nosnippet>15</a>// of the Software.
+<a href=#16 id=16 data-nosnippet>16</a>//
+<a href=#17 id=17 data-nosnippet>17</a>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+<a href=#18 id=18 data-nosnippet>18</a>// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+<a href=#19 id=19 data-nosnippet>19</a>// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+<a href=#20 id=20 data-nosnippet>20</a>// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+<a href=#21 id=21 data-nosnippet>21</a>// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+<a href=#22 id=22 data-nosnippet>22</a>// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+<a href=#23 id=23 data-nosnippet>23</a>// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+<a href=#24 id=24 data-nosnippet>24</a>// IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+<a href=#25 id=25 data-nosnippet>25</a>// DEALINGS IN THE SOFTWARE.
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="doccomment">//! # jsonrpsee-proc-macros
+<a href=#28 id=28 data-nosnippet>28</a>
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="attr">#![cfg_attr(not(test), warn(unused_crate_dependencies))]
+<a href=#30 id=30 data-nosnippet>30</a>#![cfg_attr(docsrs, feature(doc_cfg))]
+<a href=#31 id=31 data-nosnippet>31</a>
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">use </span>proc_macro::TokenStream;
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span>rpc_macro::RpcDescription;
+<a href=#34 id=34 data-nosnippet>34</a>
+<a href=#35 id=35 data-nosnippet>35</a><span class="kw">mod </span>attributes;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">mod </span>helpers;
+<a href=#37 id=37 data-nosnippet>37</a><span class="kw">mod </span>render_client;
+<a href=#38 id=38 data-nosnippet>38</a><span class="kw">mod </span>render_server;
+<a href=#39 id=39 data-nosnippet>39</a><span class="kw">mod </span>rpc_macro;
+<a href=#40 id=40 data-nosnippet>40</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>visitor;
+<a href=#41 id=41 data-nosnippet>41</a>
+<a href=#42 id=42 data-nosnippet>42</a><span class="doccomment">/// Main RPC macro.
+<a href=#43 id=43 data-nosnippet>43</a>///
+<a href=#44 id=44 data-nosnippet>44</a>/// ## Description
+<a href=#45 id=45 data-nosnippet>45</a>///
+<a href=#46 id=46 data-nosnippet>46</a>/// This macro is capable of generating both server and client implementations on demand.
+<a href=#47 id=47 data-nosnippet>47</a>/// Based on the attributes provided to the `rpc` macro, either one or both of implementations
+<a href=#48 id=48 data-nosnippet>48</a>/// will be generated.
+<a href=#49 id=49 data-nosnippet>49</a>///
+<a href=#50 id=50 data-nosnippet>50</a>/// For clients, it will be an extension trait that adds all the required methods to a
+<a href=#51 id=51 data-nosnippet>51</a>/// type that implements `Client` or `SubscriptionClient` (depending on whether trait has
+<a href=#52 id=52 data-nosnippet>52</a>/// subscriptions methods or not), namely `HttpClient` and `WsClient`.
+<a href=#53 id=53 data-nosnippet>53</a>///
+<a href=#54 id=54 data-nosnippet>54</a>/// For servers, it will generate a trait mostly equivalent to the input, with the following differences:
+<a href=#55 id=55 data-nosnippet>55</a>///
+<a href=#56 id=56 data-nosnippet>56</a>/// - The trait will have one additional (already implemented) method, `into_rpc`, which turns any object that
+<a href=#57 id=57 data-nosnippet>57</a>///   implements the server trait into an `RpcModule`.
+<a href=#58 id=58 data-nosnippet>58</a>/// - For subscription methods:
+<a href=#59 id=59 data-nosnippet>59</a>///   - There will be one additional argument inserted right after `&amp;self`: `subscription_sink: SubscriptionSink`.
+<a href=#60 id=60 data-nosnippet>60</a>///     It should be used to accept or reject a subscription and send data back to the subscribers.
+<a href=#61 id=61 data-nosnippet>61</a>///   - The return type of the subscription method must implement `IntoSubscriptionCloseResponse`.
+<a href=#62 id=62 data-nosnippet>62</a>///
+<a href=#63 id=63 data-nosnippet>63</a>/// Since this macro can generate up to two traits, both server and client traits will have
+<a href=#64 id=64 data-nosnippet>64</a>/// a new name. For the `Foo` trait, server trait will be named `FooServer`, and client,
+<a href=#65 id=65 data-nosnippet>65</a>/// correspondingly, `FooClient`.
+<a href=#66 id=66 data-nosnippet>66</a>///
+<a href=#67 id=67 data-nosnippet>67</a>/// To use the `FooClient`, just import it in the context. To use the server, the `FooServer` trait must be implemented
+<a href=#68 id=68 data-nosnippet>68</a>/// on your type first.
+<a href=#69 id=69 data-nosnippet>69</a>///
+<a href=#70 id=70 data-nosnippet>70</a>/// Note: you need to import the `jsonrpsee` façade crate in your code for the macro to work properly.
+<a href=#71 id=71 data-nosnippet>71</a>///
+<a href=#72 id=72 data-nosnippet>72</a>/// ## Prerequisites
+<a href=#73 id=73 data-nosnippet>73</a>///
+<a href=#74 id=74 data-nosnippet>74</a>/// - Implementors of the server trait must be `Sync`, `Send`, `Sized` and `'static`. If you want to implement this
+<a href=#75 id=75 data-nosnippet>75</a>///   trait on some type that is not thread-safe, consider using `Arc&lt;RwLock&lt;..&gt;&gt;`.
+<a href=#76 id=76 data-nosnippet>76</a>///
+<a href=#77 id=77 data-nosnippet>77</a>/// ## Examples
+<a href=#78 id=78 data-nosnippet>78</a>///
+<a href=#79 id=79 data-nosnippet>79</a>/// Below you can find examples of the macro usage along with the code
+<a href=#80 id=80 data-nosnippet>80</a>/// that generated for it by the macro.
+<a href=#81 id=81 data-nosnippet>81</a>///
+<a href=#82 id=82 data-nosnippet>82</a>/// ```ignore
+<a href=#83 id=83 data-nosnippet>83</a>/// #[rpc(client, server, namespace = "foo")]
+<a href=#84 id=84 data-nosnippet>84</a>/// pub trait Rpc {
+<a href=#85 id=85 data-nosnippet>85</a>///     #[method(name = "foo")]
+<a href=#86 id=86 data-nosnippet>86</a>///     async fn async_method(&amp;self, param_a: u8, param_b: String) -&gt; u16;
+<a href=#87 id=87 data-nosnippet>87</a>///     #[method(name = "bar")]
+<a href=#88 id=88 data-nosnippet>88</a>///     fn sync_method(&amp;self) -&gt; String;
+<a href=#89 id=89 data-nosnippet>89</a>///
+<a href=#90 id=90 data-nosnippet>90</a>///     #[subscription(name = "subscribe", item = "String")]
+<a href=#91 id=91 data-nosnippet>91</a>///     async fn sub(&amp;self) -&gt; SubscriptionResult;
+<a href=#92 id=92 data-nosnippet>92</a>/// }
+<a href=#93 id=93 data-nosnippet>93</a>/// ```
+<a href=#94 id=94 data-nosnippet>94</a>///
+<a href=#95 id=95 data-nosnippet>95</a>/// Server code that will be generated:
+<a href=#96 id=96 data-nosnippet>96</a>///
+<a href=#97 id=97 data-nosnippet>97</a>/// ```ignore
+<a href=#98 id=98 data-nosnippet>98</a>/// #[async_trait]
+<a href=#99 id=99 data-nosnippet>99</a>/// pub trait RpcServer {
+<a href=#100 id=100 data-nosnippet>100</a>///     // RPC methods are normal methods and can be either sync or async.
+<a href=#101 id=101 data-nosnippet>101</a>///     async fn async_method(&amp;self, param_a: u8, param_b: String) -&gt; u16;
+<a href=#102 id=102 data-nosnippet>102</a>///     fn sync_method(&amp;self) -&gt; String;
+<a href=#103 id=103 data-nosnippet>103</a>///
+<a href=#104 id=104 data-nosnippet>104</a>///     // Note that `pending_subscription_sink` was added automatically.
+<a href=#105 id=105 data-nosnippet>105</a>///     async fn sub(&amp;self, pending: PendingSubscriptionSink) -&gt; SubscriptionResult;
+<a href=#106 id=106 data-nosnippet>106</a>///
+<a href=#107 id=107 data-nosnippet>107</a>///     fn into_rpc(self) -&gt; Result&lt;Self, jsonrpsee::core::Error&gt; {
+<a href=#108 id=108 data-nosnippet>108</a>///         // Actual implementation stripped, but inside we will create
+<a href=#109 id=109 data-nosnippet>109</a>///         // a module with one method and one subscription
+<a href=#110 id=110 data-nosnippet>110</a>///     }
+<a href=#111 id=111 data-nosnippet>111</a>/// }
+<a href=#112 id=112 data-nosnippet>112</a>/// ```
+<a href=#113 id=113 data-nosnippet>113</a>///
+<a href=#114 id=114 data-nosnippet>114</a>/// Client code that will be generated:
+<a href=#115 id=115 data-nosnippet>115</a>///
+<a href=#116 id=116 data-nosnippet>116</a>/// ```ignore
+<a href=#117 id=117 data-nosnippet>117</a>/// #[async_trait]
+<a href=#118 id=118 data-nosnippet>118</a>/// pub trait RpcClient: SubscriptionClient {
+<a href=#119 id=119 data-nosnippet>119</a>///     // In client implementation all the methods are (obviously) async.
+<a href=#120 id=120 data-nosnippet>120</a>///     async fn async_method(&amp;self, param_a: u8, param_b: String) -&gt; Result&lt;u16, Error&gt; {
+<a href=#121 id=121 data-nosnippet>121</a>///         // Actual implementations are stripped, but inside a corresponding `Client` or
+<a href=#122 id=122 data-nosnippet>122</a>///         // `SubscriptionClient` method is called.
+<a href=#123 id=123 data-nosnippet>123</a>///     }
+<a href=#124 id=124 data-nosnippet>124</a>///     async fn sync_method(&amp;self) -&gt; Result&lt;String, Error&gt; {
+<a href=#125 id=125 data-nosnippet>125</a>///         // ...
+<a href=#126 id=126 data-nosnippet>126</a>///     }
+<a href=#127 id=127 data-nosnippet>127</a>///
+<a href=#128 id=128 data-nosnippet>128</a>///     // Subscription method returns `Subscription` object in case of success.
+<a href=#129 id=129 data-nosnippet>129</a>///     async fn sub(&amp;self) -&gt; Result&lt;Subscription&lt;String&gt;, Error&gt; {
+<a href=#130 id=130 data-nosnippet>130</a>///         // ...
+<a href=#131 id=131 data-nosnippet>131</a>///     }
+<a href=#132 id=132 data-nosnippet>132</a>/// }
+<a href=#133 id=133 data-nosnippet>133</a>///
+<a href=#134 id=134 data-nosnippet>134</a>/// impl&lt;T&gt; RpcClient for T where T: SubscriptionClient {}
+<a href=#135 id=135 data-nosnippet>135</a>/// ```
+<a href=#136 id=136 data-nosnippet>136</a>///
+<a href=#137 id=137 data-nosnippet>137</a>/// ## Attributes
+<a href=#138 id=138 data-nosnippet>138</a>///
+<a href=#139 id=139 data-nosnippet>139</a>/// ### `rpc` attribute
+<a href=#140 id=140 data-nosnippet>140</a>///
+<a href=#141 id=141 data-nosnippet>141</a>/// `rpc` attribute is applied to a trait in order to turn it into an RPC implementation.
+<a href=#142 id=142 data-nosnippet>142</a>///
+<a href=#143 id=143 data-nosnippet>143</a>/// **Arguments:**
+<a href=#144 id=144 data-nosnippet>144</a>///
+<a href=#145 id=145 data-nosnippet>145</a>/// - `server`: generate `&lt;Trait&gt;Server` trait for the server implementation.
+<a href=#146 id=146 data-nosnippet>146</a>/// - `client`: generate `&lt;Trait&gt;Client` extension trait that builds RPC clients to invoke a concrete RPC
+<a href=#147 id=147 data-nosnippet>147</a>///   implementation's methods conveniently.
+<a href=#148 id=148 data-nosnippet>148</a>/// - `namespace`: add a prefix to all the methods and subscriptions in this RPC. For example, with namespace `foo` and
+<a href=#149 id=149 data-nosnippet>149</a>///   method `spam`, the resulting method name will be `foo_spam`.
+<a href=#150 id=150 data-nosnippet>150</a>/// - `server_bounds`: replace *all* auto-generated trait bounds with the user-defined ones for the server
+<a href=#151 id=151 data-nosnippet>151</a>///   implementation.
+<a href=#152 id=152 data-nosnippet>152</a>/// - `client_bounds`: replace *all* auto-generated trait bounds with the user-defined ones for the client
+<a href=#153 id=153 data-nosnippet>153</a>///   implementation.
+<a href=#154 id=154 data-nosnippet>154</a>///
+<a href=#155 id=155 data-nosnippet>155</a>/// **Trait requirements:**
+<a href=#156 id=156 data-nosnippet>156</a>///
+<a href=#157 id=157 data-nosnippet>157</a>/// A trait wrapped with the `rpc` attribute **must not**:
+<a href=#158 id=158 data-nosnippet>158</a>///
+<a href=#159 id=159 data-nosnippet>159</a>/// - have associated types or constants;
+<a href=#160 id=160 data-nosnippet>160</a>/// - have Rust methods not marked with either the `method` or `subscription` attribute;
+<a href=#161 id=161 data-nosnippet>161</a>/// - be empty.
+<a href=#162 id=162 data-nosnippet>162</a>///
+<a href=#163 id=163 data-nosnippet>163</a>/// At least one of the `server` or `client` flags must be provided, otherwise the compilation will err.
+<a href=#164 id=164 data-nosnippet>164</a>///
+<a href=#165 id=165 data-nosnippet>165</a>/// ### `method` attribute
+<a href=#166 id=166 data-nosnippet>166</a>///
+<a href=#167 id=167 data-nosnippet>167</a>/// `method` attribute is used to define an RPC method.
+<a href=#168 id=168 data-nosnippet>168</a>///
+<a href=#169 id=169 data-nosnippet>169</a>/// **Arguments:**
+<a href=#170 id=170 data-nosnippet>170</a>///
+<a href=#171 id=171 data-nosnippet>171</a>/// - `name` (mandatory): name of the RPC method. Does not have to be the same as the Rust method name.
+<a href=#172 id=172 data-nosnippet>172</a>/// - `aliases`: list of name aliases for the RPC method as a comma separated string.
+<a href=#173 id=173 data-nosnippet>173</a>///              Aliases are processed ignoring the namespace, so add the complete name, including the
+<a href=#174 id=174 data-nosnippet>174</a>///              namespace.
+<a href=#175 id=175 data-nosnippet>175</a>/// - `blocking`: when set method execution will always spawn on a dedicated thread. Only usable with non-`async` methods.
+<a href=#176 id=176 data-nosnippet>176</a>/// - `param_kind`: kind of structure to use for parameter passing. Can be "array" or "map", defaults to "array".
+<a href=#177 id=177 data-nosnippet>177</a>///
+<a href=#178 id=178 data-nosnippet>178</a>/// **Method requirements:**
+<a href=#179 id=179 data-nosnippet>179</a>///
+<a href=#180 id=180 data-nosnippet>180</a>/// A Rust method marked with the `method` attribute, **may**:
+<a href=#181 id=181 data-nosnippet>181</a>///
+<a href=#182 id=182 data-nosnippet>182</a>/// - be either `async` or not;
+<a href=#183 id=183 data-nosnippet>183</a>/// - have input parameters or not;
+<a href=#184 id=184 data-nosnippet>184</a>/// - have a return value or not (in the latter case, it will be considered a notification method).
+<a href=#185 id=185 data-nosnippet>185</a>///
+<a href=#186 id=186 data-nosnippet>186</a>/// ### `subscription` attribute
+<a href=#187 id=187 data-nosnippet>187</a>///
+<a href=#188 id=188 data-nosnippet>188</a>/// `subscription` attribute is used to define a publish/subscribe interface according to the [ethereum pubsub specification](https://geth.ethereum.org/docs/rpc/pubsub)
+<a href=#189 id=189 data-nosnippet>189</a>///
+<a href=#190 id=190 data-nosnippet>190</a>/// **Arguments:**
+<a href=#191 id=191 data-nosnippet>191</a>///
+<a href=#192 id=192 data-nosnippet>192</a>/// - `name` (mandatory): name of the RPC method. Does not have to be the same as the Rust method name.
+<a href=#193 id=193 data-nosnippet>193</a>/// - `unsubscribe` (optional): name of the RPC method to unsubscribe from the subscription. Must not be the same as `name`.
+<a href=#194 id=194 data-nosnippet>194</a>///                             This is generated for you if the subscription name starts with `subscribe`.
+<a href=#195 id=195 data-nosnippet>195</a>/// - `aliases` (optional): aliases for `name`. Aliases are processed ignoring the namespace,
+<a href=#196 id=196 data-nosnippet>196</a>///                         so add the complete name, including the namespace.
+<a href=#197 id=197 data-nosnippet>197</a>/// - `unsubscribe_aliases` (optional): Similar to `aliases` but for `unsubscribe`.
+<a href=#198 id=198 data-nosnippet>198</a>/// - `item` (mandatory): type of items yielded by the subscription. Note that it must be the type, not string.
+<a href=#199 id=199 data-nosnippet>199</a>/// - `param_kind`: kind of structure to use for parameter passing. Can be "array" or "map", defaults to "array".
+<a href=#200 id=200 data-nosnippet>200</a>///
+<a href=#201 id=201 data-nosnippet>201</a>/// **Method requirements:**
+<a href=#202 id=202 data-nosnippet>202</a>///
+<a href=#203 id=203 data-nosnippet>203</a>/// Rust method marked with the `subscription` attribute **must**:
+<a href=#204 id=204 data-nosnippet>204</a>///
+<a href=#205 id=205 data-nosnippet>205</a>/// - be asynchronous;
+<a href=#206 id=206 data-nosnippet>206</a>/// - return a type that implements `jsonrpsee::server::IntoSubscriptionCloseResponse`.
+<a href=#207 id=207 data-nosnippet>207</a>///
+<a href=#208 id=208 data-nosnippet>208</a>/// Rust method marked with `subscription` attribute **may**:
+<a href=#209 id=209 data-nosnippet>209</a>///
+<a href=#210 id=210 data-nosnippet>210</a>/// - have input parameters or not.
+<a href=#211 id=211 data-nosnippet>211</a>///
+<a href=#212 id=212 data-nosnippet>212</a>/// ### `argument` attribute
+<a href=#213 id=213 data-nosnippet>213</a>///
+<a href=#214 id=214 data-nosnippet>214</a>/// `argument` attribute is used to modify a function argument.
+<a href=#215 id=215 data-nosnippet>215</a>///
+<a href=#216 id=216 data-nosnippet>216</a>/// **Arguments:**
+<a href=#217 id=217 data-nosnippet>217</a>///
+<a href=#218 id=218 data-nosnippet>218</a>/// - `rename`: rename the generated JSON key.
+<a href=#219 id=219 data-nosnippet>219</a>///
+<a href=#220 id=220 data-nosnippet>220</a>///
+<a href=#221 id=221 data-nosnippet>221</a>/// ## Full workflow example
+<a href=#222 id=222 data-nosnippet>222</a>///
+<a href=#223 id=223 data-nosnippet>223</a>/// ```rust
+<a href=#224 id=224 data-nosnippet>224</a>/// //! Example of using proc macro to generate working client and server.
+<a href=#225 id=225 data-nosnippet>225</a>///
+<a href=#226 id=226 data-nosnippet>226</a>/// use std::net::SocketAddr;
+<a href=#227 id=227 data-nosnippet>227</a>///
+<a href=#228 id=228 data-nosnippet>228</a>/// use futures_channel::oneshot;
+<a href=#229 id=229 data-nosnippet>229</a>/// use jsonrpsee::{ws_client::*, server::ServerBuilder};
+<a href=#230 id=230 data-nosnippet>230</a>///
+<a href=#231 id=231 data-nosnippet>231</a>/// // RPC is put into a separate module to clearly show names of generated entities.
+<a href=#232 id=232 data-nosnippet>232</a>/// mod rpc_impl {
+<a href=#233 id=233 data-nosnippet>233</a>///     use jsonrpsee::{proc_macros::rpc, Extensions};
+<a href=#234 id=234 data-nosnippet>234</a>///     use jsonrpsee::server::{PendingSubscriptionSink, SubscriptionMessage, IntoSubscriptionCloseResponse, SubscriptionCloseResponse};
+<a href=#235 id=235 data-nosnippet>235</a>///     use jsonrpsee::core::{async_trait, RpcResult, SubscriptionResult};
+<a href=#236 id=236 data-nosnippet>236</a>///
+<a href=#237 id=237 data-nosnippet>237</a>///     enum CloseResponse {
+<a href=#238 id=238 data-nosnippet>238</a>///         None,
+<a href=#239 id=239 data-nosnippet>239</a>///         Failed,
+<a href=#240 id=240 data-nosnippet>240</a>///     }
+<a href=#241 id=241 data-nosnippet>241</a>///
+<a href=#242 id=242 data-nosnippet>242</a>///     impl IntoSubscriptionCloseResponse for CloseResponse {
+<a href=#243 id=243 data-nosnippet>243</a>///         fn into_response(self) -&gt; SubscriptionCloseResponse {
+<a href=#244 id=244 data-nosnippet>244</a>///            match self {
+<a href=#245 id=245 data-nosnippet>245</a>///                // Do not send a close response when the subscription is terminated.
+<a href=#246 id=246 data-nosnippet>246</a>///                CloseResponse::None =&gt; SubscriptionCloseResponse::None,
+<a href=#247 id=247 data-nosnippet>247</a>///                // Send a close response as an ordinary subscription notification
+<a href=#248 id=248 data-nosnippet>248</a>///                // when the subscription is terminated.
+<a href=#249 id=249 data-nosnippet>249</a>///                CloseResponse::Failed =&gt; SubscriptionCloseResponse::Notif("failed".into()),
+<a href=#250 id=250 data-nosnippet>250</a>///            }
+<a href=#251 id=251 data-nosnippet>251</a>///         }
+<a href=#252 id=252 data-nosnippet>252</a>///     }
+<a href=#253 id=253 data-nosnippet>253</a>///
+<a href=#254 id=254 data-nosnippet>254</a>///     // Generate both server and client implementations, prepend all the methods with `foo_` prefix.
+<a href=#255 id=255 data-nosnippet>255</a>///     #[rpc(client, server, namespace = "foo")]
+<a href=#256 id=256 data-nosnippet>256</a>///     pub trait MyRpc {
+<a href=#257 id=257 data-nosnippet>257</a>///         #[method(name = "foo")]
+<a href=#258 id=258 data-nosnippet>258</a>///         async fn async_method(
+<a href=#259 id=259 data-nosnippet>259</a>///             &amp;self,
+<a href=#260 id=260 data-nosnippet>260</a>///             param_a: u8,
+<a href=#261 id=261 data-nosnippet>261</a>///             #[argument(rename = "param_c")]
+<a href=#262 id=262 data-nosnippet>262</a>///             param_b: String
+<a href=#263 id=263 data-nosnippet>263</a>///         ) -&gt; RpcResult&lt;u16&gt;;
+<a href=#264 id=264 data-nosnippet>264</a>///
+<a href=#265 id=265 data-nosnippet>265</a>///         #[method(name = "bar")]
+<a href=#266 id=266 data-nosnippet>266</a>///         fn sync_method(&amp;self) -&gt; RpcResult&lt;u16&gt;;
+<a href=#267 id=267 data-nosnippet>267</a>///
+<a href=#268 id=268 data-nosnippet>268</a>///         #[method(name = "baz", blocking)]
+<a href=#269 id=269 data-nosnippet>269</a>///         fn blocking_method(&amp;self) -&gt; RpcResult&lt;u16&gt;;
+<a href=#270 id=270 data-nosnippet>270</a>///
+<a href=#271 id=271 data-nosnippet>271</a>///         /// Override the `foo_sub` and use `foo_subNotif` for the notifications.
+<a href=#272 id=272 data-nosnippet>272</a>///         ///
+<a href=#273 id=273 data-nosnippet>273</a>///         /// The item field indicates which type goes into result field below.
+<a href=#274 id=274 data-nosnippet>274</a>///         ///
+<a href=#275 id=275 data-nosnippet>275</a>///         /// The notification format:
+<a href=#276 id=276 data-nosnippet>276</a>///         ///
+<a href=#277 id=277 data-nosnippet>277</a>///         /// ```
+<a href=#278 id=278 data-nosnippet>278</a>///         /// {
+<a href=#279 id=279 data-nosnippet>279</a>///         ///     "jsonrpc":"2.0",
+<a href=#280 id=280 data-nosnippet>280</a>///         ///     "method":"foo_subNotif",
+<a href=#281 id=281 data-nosnippet>281</a>///         ///     "params":["subscription":"someID", "result":"some string"]
+<a href=#282 id=282 data-nosnippet>282</a>///         /// }
+<a href=#283 id=283 data-nosnippet>283</a>///         /// ```
+<a href=#284 id=284 data-nosnippet>284</a>///         #[subscription(name = "sub" =&gt; "subNotif", unsubscribe = "unsub", item = String)]
+<a href=#285 id=285 data-nosnippet>285</a>///         async fn sub_override_notif_method(&amp;self) -&gt; SubscriptionResult;
+<a href=#286 id=286 data-nosnippet>286</a>///
+<a href=#287 id=287 data-nosnippet>287</a>///         /// Use the same method name for both the `subscribe call` and `notifications`
+<a href=#288 id=288 data-nosnippet>288</a>///         ///
+<a href=#289 id=289 data-nosnippet>289</a>///         /// The unsubscribe method name is generated here `foo_unsubscribe`
+<a href=#290 id=290 data-nosnippet>290</a>///         /// Thus the `unsubscribe attribute` is not needed unless a custom unsubscribe method name is wanted.
+<a href=#291 id=291 data-nosnippet>291</a>///         ///
+<a href=#292 id=292 data-nosnippet>292</a>///         /// The notification format:
+<a href=#293 id=293 data-nosnippet>293</a>///         ///
+<a href=#294 id=294 data-nosnippet>294</a>///         /// ```
+<a href=#295 id=295 data-nosnippet>295</a>///         /// {
+<a href=#296 id=296 data-nosnippet>296</a>///         ///     "jsonrpc":"2.0",
+<a href=#297 id=297 data-nosnippet>297</a>///         ///     "method":"foo_subscribe",
+<a href=#298 id=298 data-nosnippet>298</a>///         ///     "params":["subscription":"someID", "result":"some string"]
+<a href=#299 id=299 data-nosnippet>299</a>///         /// }
+<a href=#300 id=300 data-nosnippet>300</a>///         /// ```
+<a href=#301 id=301 data-nosnippet>301</a>///         #[subscription(name = "subscribe", item = String)]
+<a href=#302 id=302 data-nosnippet>302</a>///         async fn sub(&amp;self) -&gt; SubscriptionResult;
+<a href=#303 id=303 data-nosnippet>303</a>///
+<a href=#304 id=304 data-nosnippet>304</a>///         #[subscription(name = "sub_custom_close_msg", unsubscribe = "unsub_custom_close_msg", item = String)]
+<a href=#305 id=305 data-nosnippet>305</a>///         async fn sub_custom_close_msg(&amp;self) -&gt; CloseResponse;
+<a href=#306 id=306 data-nosnippet>306</a>///     }
+<a href=#307 id=307 data-nosnippet>307</a>///
+<a href=#308 id=308 data-nosnippet>308</a>///     // Structure that will implement the `MyRpcServer` trait.
+<a href=#309 id=309 data-nosnippet>309</a>///     // It can have fields, if required, as long as it's still `Send + Sync + 'static`.
+<a href=#310 id=310 data-nosnippet>310</a>///     pub struct RpcServerImpl;
+<a href=#311 id=311 data-nosnippet>311</a>///
+<a href=#312 id=312 data-nosnippet>312</a>///     // Note that the trait name we use is `MyRpcServer`, not `MyRpc`!
+<a href=#313 id=313 data-nosnippet>313</a>///     #[async_trait]
+<a href=#314 id=314 data-nosnippet>314</a>///     impl MyRpcServer for RpcServerImpl {
+<a href=#315 id=315 data-nosnippet>315</a>///         async fn async_method(&amp;self, _param_a: u8, _param_b: String) -&gt; RpcResult&lt;u16&gt; {
+<a href=#316 id=316 data-nosnippet>316</a>///             Ok(42)
+<a href=#317 id=317 data-nosnippet>317</a>///         }
+<a href=#318 id=318 data-nosnippet>318</a>///
+<a href=#319 id=319 data-nosnippet>319</a>///         fn sync_method(&amp;self) -&gt; RpcResult&lt;u16&gt; {
+<a href=#320 id=320 data-nosnippet>320</a>///             Ok(10)
+<a href=#321 id=321 data-nosnippet>321</a>///         }
+<a href=#322 id=322 data-nosnippet>322</a>///
+<a href=#323 id=323 data-nosnippet>323</a>///         fn blocking_method(&amp;self) -&gt; RpcResult&lt;u16&gt; {
+<a href=#324 id=324 data-nosnippet>324</a>///             // This will block current thread for 1 second, which is fine since we marked
+<a href=#325 id=325 data-nosnippet>325</a>///             // this method as `blocking` above.
+<a href=#326 id=326 data-nosnippet>326</a>///             std::thread::sleep(std::time::Duration::from_millis(1000));
+<a href=#327 id=327 data-nosnippet>327</a>///             Ok(11)
+<a href=#328 id=328 data-nosnippet>328</a>///         }
+<a href=#329 id=329 data-nosnippet>329</a>///
+<a href=#330 id=330 data-nosnippet>330</a>///         // The stream API can be used to pipe items from the underlying stream
+<a href=#331 id=331 data-nosnippet>331</a>///         // as subscription responses.
+<a href=#332 id=332 data-nosnippet>332</a>///         async fn sub_override_notif_method(&amp;self, pending: PendingSubscriptionSink) -&gt; SubscriptionResult {
+<a href=#333 id=333 data-nosnippet>333</a>///             let mut sink = pending.accept().await?;
+<a href=#334 id=334 data-nosnippet>334</a>///             sink.send("Response_A".into()).await?;
+<a href=#335 id=335 data-nosnippet>335</a>///             Ok(())
+<a href=#336 id=336 data-nosnippet>336</a>///         }
+<a href=#337 id=337 data-nosnippet>337</a>///
+<a href=#338 id=338 data-nosnippet>338</a>///         // Send out two values on the subscription.
+<a href=#339 id=339 data-nosnippet>339</a>///         async fn sub(&amp;self, pending: PendingSubscriptionSink) -&gt; SubscriptionResult {
+<a href=#340 id=340 data-nosnippet>340</a>///             let sink = pending.accept().await?;
+<a href=#341 id=341 data-nosnippet>341</a>///
+<a href=#342 id=342 data-nosnippet>342</a>///             let msg1 = SubscriptionMessage::from("Response_A");
+<a href=#343 id=343 data-nosnippet>343</a>///             let msg2 = SubscriptionMessage::from("Response_B");
+<a href=#344 id=344 data-nosnippet>344</a>///
+<a href=#345 id=345 data-nosnippet>345</a>///             sink.send(msg1).await?;
+<a href=#346 id=346 data-nosnippet>346</a>///             sink.send(msg2).await?;
+<a href=#347 id=347 data-nosnippet>347</a>///
+<a href=#348 id=348 data-nosnippet>348</a>///             Ok(())
+<a href=#349 id=349 data-nosnippet>349</a>///         }
+<a href=#350 id=350 data-nosnippet>350</a>///
+<a href=#351 id=351 data-nosnippet>351</a>///         // If one doesn't want sent out a close message when a subscription terminates or treat
+<a href=#352 id=352 data-nosnippet>352</a>///         // errors as subscription error notifications then it's possible to implement
+<a href=#353 id=353 data-nosnippet>353</a>///         // `IntoSubscriptionCloseResponse` for customized behavior.
+<a href=#354 id=354 data-nosnippet>354</a>///         async fn sub_custom_close_msg(&amp;self, pending: PendingSubscriptionSink) -&gt; CloseResponse {
+<a href=#355 id=355 data-nosnippet>355</a>///             let Ok(sink) = pending.accept().await else {
+<a href=#356 id=356 data-nosnippet>356</a>///                 return CloseResponse::None;
+<a href=#357 id=357 data-nosnippet>357</a>///             };
+<a href=#358 id=358 data-nosnippet>358</a>///
+<a href=#359 id=359 data-nosnippet>359</a>///             if sink.send("Response_A".into()).await.is_ok() {
+<a href=#360 id=360 data-nosnippet>360</a>///                 CloseResponse::Failed
+<a href=#361 id=361 data-nosnippet>361</a>///             } else {
+<a href=#362 id=362 data-nosnippet>362</a>///                 CloseResponse::None
+<a href=#363 id=363 data-nosnippet>363</a>///             }
+<a href=#364 id=364 data-nosnippet>364</a>///
+<a href=#365 id=365 data-nosnippet>365</a>///         }
+<a href=#366 id=366 data-nosnippet>366</a>///     }
+<a href=#367 id=367 data-nosnippet>367</a>/// }
+<a href=#368 id=368 data-nosnippet>368</a>///
+<a href=#369 id=369 data-nosnippet>369</a>/// // Use the generated implementations of server and client.
+<a href=#370 id=370 data-nosnippet>370</a>/// use rpc_impl::{MyRpcClient, MyRpcServer, RpcServerImpl};
+<a href=#371 id=371 data-nosnippet>371</a>///
+<a href=#372 id=372 data-nosnippet>372</a>/// pub async fn server() -&gt; SocketAddr {
+<a href=#373 id=373 data-nosnippet>373</a>///     let server = ServerBuilder::default().build("127.0.0.1:0").await.unwrap();
+<a href=#374 id=374 data-nosnippet>374</a>///     let addr = server.local_addr().unwrap();
+<a href=#375 id=375 data-nosnippet>375</a>///     let server_handle = server.start(RpcServerImpl.into_rpc());
+<a href=#376 id=376 data-nosnippet>376</a>///
+<a href=#377 id=377 data-nosnippet>377</a>///     // `into_rpc()` method was generated inside of the `RpcServer` trait under the hood.
+<a href=#378 id=378 data-nosnippet>378</a>///     tokio::spawn(server_handle.stopped());
+<a href=#379 id=379 data-nosnippet>379</a>///
+<a href=#380 id=380 data-nosnippet>380</a>///     addr
+<a href=#381 id=381 data-nosnippet>381</a>/// }
+<a href=#382 id=382 data-nosnippet>382</a>///
+<a href=#383 id=383 data-nosnippet>383</a>/// // In the main function, we start the server, create a client connected to this server,
+<a href=#384 id=384 data-nosnippet>384</a>/// // and call the available methods.
+<a href=#385 id=385 data-nosnippet>385</a>/// #[tokio::main]
+<a href=#386 id=386 data-nosnippet>386</a>/// async fn main() {
+<a href=#387 id=387 data-nosnippet>387</a>///     let server_addr = server().await;
+<a href=#388 id=388 data-nosnippet>388</a>///     let server_url = format!("ws://{}", server_addr);
+<a href=#389 id=389 data-nosnippet>389</a>///     // Note that we create the client as usual, but thanks to the `use rpc_impl::MyRpcClient`,
+<a href=#390 id=390 data-nosnippet>390</a>///     // the client object will have all the methods to interact with the server.
+<a href=#391 id=391 data-nosnippet>391</a>///     let client = WsClientBuilder::default().build(&amp;server_url).await.unwrap();
+<a href=#392 id=392 data-nosnippet>392</a>///
+<a href=#393 id=393 data-nosnippet>393</a>///     // Invoke RPC methods.
+<a href=#394 id=394 data-nosnippet>394</a>///     assert_eq!(client.async_method(10, "a".into()).await.unwrap(), 42);
+<a href=#395 id=395 data-nosnippet>395</a>///     assert_eq!(client.sync_method().await.unwrap(), 10);
+<a href=#396 id=396 data-nosnippet>396</a>///
+<a href=#397 id=397 data-nosnippet>397</a>///     // Subscribe and receive messages from the subscription.
+<a href=#398 id=398 data-nosnippet>398</a>///     let mut sub = client.sub().await.unwrap();
+<a href=#399 id=399 data-nosnippet>399</a>///     let first_recv = sub.next().await.unwrap().unwrap();
+<a href=#400 id=400 data-nosnippet>400</a>///     assert_eq!(first_recv, "Response_A".to_string());
+<a href=#401 id=401 data-nosnippet>401</a>///     let second_recv = sub.next().await.unwrap().unwrap();
+<a href=#402 id=402 data-nosnippet>402</a>///     assert_eq!(second_recv, "Response_B".to_string());
+<a href=#403 id=403 data-nosnippet>403</a>/// }
+<a href=#404 id=404 data-nosnippet>404</a>/// ```
+<a href=#405 id=405 data-nosnippet>405</a></span><span class="attr">#[proc_macro_attribute]
+<a href=#406 id=406 data-nosnippet>406</a></span><span class="kw">pub fn </span>rpc(attr: TokenStream, item: TokenStream) -&gt; TokenStream {
+<a href=#407 id=407 data-nosnippet>407</a>	<span class="kw">let </span>rebuilt_rpc_attribute = syn::Attribute {
+<a href=#408 id=408 data-nosnippet>408</a>		pound_token: syn::token::Pound::default(),
+<a href=#409 id=409 data-nosnippet>409</a>		style: syn::AttrStyle::Outer,
+<a href=#410 id=410 data-nosnippet>410</a>		bracket_token: syn::token::Bracket::default(),
+<a href=#411 id=411 data-nosnippet>411</a>		meta: syn::Meta::List(syn::MetaList {
+<a href=#412 id=412 data-nosnippet>412</a>			path: syn::Ident::new(<span class="string">"rpc"</span>, proc_macro2::Span::call_site()).into(),
+<a href=#413 id=413 data-nosnippet>413</a>			delimiter: syn::MacroDelimiter::Paren(syn::token::Paren(proc_macro2::Span::call_site())),
+<a href=#414 id=414 data-nosnippet>414</a>			tokens: attr.into(),
+<a href=#415 id=415 data-nosnippet>415</a>		}),
+<a href=#416 id=416 data-nosnippet>416</a>	};
+<a href=#417 id=417 data-nosnippet>417</a>	<span class="kw">match </span>rpc_impl(rebuilt_rpc_attribute, item) {
+<a href=#418 id=418 data-nosnippet>418</a>		<span class="prelude-val">Ok</span>(tokens) =&gt; tokens,
+<a href=#419 id=419 data-nosnippet>419</a>		<span class="prelude-val">Err</span>(err) =&gt; err.to_compile_error(),
+<a href=#420 id=420 data-nosnippet>420</a>	}
+<a href=#421 id=421 data-nosnippet>421</a>	.into()
+<a href=#422 id=422 data-nosnippet>422</a>}
+<a href=#423 id=423 data-nosnippet>423</a>
+<a href=#424 id=424 data-nosnippet>424</a><span class="doccomment">/// Convenience form of `rpc` that may use `?` for error handling to avoid boilerplate.
+<a href=#425 id=425 data-nosnippet>425</a></span><span class="kw">fn </span>rpc_impl(attr: syn::Attribute, item: TokenStream) -&gt; <span class="prelude-ty">Result</span>&lt;proc_macro2::TokenStream, syn::Error&gt; {
+<a href=#426 id=426 data-nosnippet>426</a>	<span class="kw">let </span>trait_data: syn::ItemTrait = syn::parse(item)<span class="question-mark">?</span>;
+<a href=#427 id=427 data-nosnippet>427</a>	<span class="kw">let </span>rpc = RpcDescription::from_item(attr, trait_data)<span class="question-mark">?</span>;
+<a href=#428 id=428 data-nosnippet>428</a>	rpc.render()
+<a href=#429 id=429 data-nosnippet>429</a>}</code></pre></div></section></main></body></html>

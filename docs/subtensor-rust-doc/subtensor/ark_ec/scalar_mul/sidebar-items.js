@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["fixed_base","glv","variable_base","wnaf"],"trait":["ScalarMul"]};

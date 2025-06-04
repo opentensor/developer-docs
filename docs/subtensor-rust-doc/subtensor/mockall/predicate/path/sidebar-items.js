@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["eq_file","exists","is_dir","is_file","is_symlink","missing"]};

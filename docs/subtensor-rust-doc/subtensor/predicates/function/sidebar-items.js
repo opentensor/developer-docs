@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["function"],"struct":["FnPredicate"]};

@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This library provides wrapper types that permit sending non `Send` types to other threads and use runtime checks to ensure safety."><title>fragile - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="fragile" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../fragile/index.html">fragile</a><span class="version">2.0.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#fragile-usage" title="Fragile Usage">Fragile Usage</a></li><li><a href="#sticky-usage" title="Sticky Usage">Sticky Usage</a></li><li><a href="#why" title="Why?">Why?</a></li><li><a href="#drop--cleanup-behavior" title="Drop / Cleanup Behavior">Drop / Cleanup Behavior</a></li><li><a href="#features" title="Features">Features</a></li></ul><h3><a href="#macros">Crate Items</a></h3><ul class="block"><li><a href="#macros" title="Macros">Macros</a></li><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>fragile</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/fragile/lib.rs.html#1-157">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This library provides wrapper types that permit sending non <code>Send</code> types to
+other threads and use runtime checks to ensure safety.</p>
+<p>It provides three types: <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> and <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> which are similar in nature
+but have different behaviors with regards to how destructors are executed and
+the extra <a href="struct.SemiSticky.html" title="struct fragile::SemiSticky"><code>SemiSticky</code></a> type which uses <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> if the value has a
+destructor and <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> if it does not.</p>
+<p>All three types wrap a value and provide a <code>Send</code> bound.  Neither of the types permit
+access to the enclosed value unless the thread that wrapped the value is attempting
+to access it.  The difference between the types starts playing a role once
+destructors are involved.</p>
+<p>A <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> will actually send the <code>T</code> from thread to thread but will only
+permit the original thread to invoke the destructor.  If the value gets dropped
+in a different thread, the destructor will panic.</p>
+<p>A <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> on the other hand does not actually send the <code>T</code> around but keeps
+it stored in the original thread’s thread local storage.  If it gets dropped
+in the originating thread it gets cleaned up immediately, otherwise it leaks
+until the thread shuts down naturally.  <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> because it borrows into the
+TLS also requires you to “prove” that you are not doing any funny business with
+the borrowed value that lives for longer than the current stack frame which
+results in a slightly more complex API.</p>
+<p>There is a third typed called <a href="struct.SemiSticky.html" title="struct fragile::SemiSticky"><code>SemiSticky</code></a> which shares the API with <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a>
+but internally uses a boxed <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> if the type does not actually need a dtor
+in which case <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> is preferred.</p>
+<h2 id="fragile-usage"><a class="doc-anchor" href="#fragile-usage">§</a>Fragile Usage</h2>
+<p><a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> is the easiest type to use.  It works almost like a cell.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::thread;
+<span class="kw">use </span>fragile::Fragile;
+
+<span class="comment">// creating and using a fragile object in the same thread works
+</span><span class="kw">let </span>val = Fragile::new(<span class="bool-val">true</span>);
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span>val.get(), <span class="bool-val">true</span>);
+<span class="macro">assert!</span>(val.try_get().is_ok());
+
+<span class="comment">// once send to another thread it stops working
+</span>thread::spawn(<span class="kw">move </span>|| {
+    <span class="macro">assert!</span>(val.try_get().is_err());
+}).join()
+    .unwrap();</code></pre></div>
+<h2 id="sticky-usage"><a class="doc-anchor" href="#sticky-usage">§</a>Sticky Usage</h2>
+<p><a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> is similar to <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> but because it places the value in the
+thread local storage it comes with some extra restrictions to make it sound.
+The advantage is it can be dropped from any thread but it comes with extra
+restrictions.  In particular it requires that values placed in it are <code>'static</code>
+and that <a href="struct.StackToken.html" title="struct fragile::StackToken"><code>StackToken</code></a>s are used to restrict lifetimes.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::thread;
+<span class="kw">use </span>fragile::Sticky;
+
+<span class="comment">// creating and using a fragile object in the same thread works
+</span><span class="macro">fragile::stack_token!</span>(tok);
+<span class="kw">let </span>val = Sticky::new(<span class="bool-val">true</span>);
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span>val.get(tok), <span class="bool-val">true</span>);
+<span class="macro">assert!</span>(val.try_get(tok).is_ok());
+
+<span class="comment">// once send to another thread it stops working
+</span>thread::spawn(<span class="kw">move </span>|| {
+    <span class="macro">fragile::stack_token!</span>(tok);
+    <span class="macro">assert!</span>(val.try_get(tok).is_err());
+}).join()
+    .unwrap();</code></pre></div>
+<h2 id="why"><a class="doc-anchor" href="#why">§</a>Why?</h2>
+<p>Most of the time trying to use this crate is going to indicate some code smell.  But
+there are situations where this is useful.  For instance you might have a bunch of
+non <code>Send</code> types but want to work with a <code>Send</code> error type.  In that case the non
+sendable extra information can be contained within the error and in cases where the
+error did not cross a thread boundary yet extra information can be obtained.</p>
+<h2 id="drop--cleanup-behavior"><a class="doc-anchor" href="#drop--cleanup-behavior">§</a>Drop / Cleanup Behavior</h2>
+<p>All types will try to eagerly drop a value if they are dropped on the right thread.
+<a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> and <a href="struct.SemiSticky.html" title="struct fragile::SemiSticky"><code>SemiSticky</code></a> will however temporarily leak memory until a thread
+shuts down if the value is dropped on the wrong thread.  The benefit however is that
+if you have that type of situation, and you can live with the consequences, the
+type is not panicking.  A <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile</code></a> dropped in the wrong thread will not just panic,
+it will effectively also tear down the process because panicking in destructors is
+non recoverable.</p>
+<h2 id="features"><a class="doc-anchor" href="#features">§</a>Features</h2>
+<p>By default the crate has no dependencies.  Optionally the <code>slab</code> feature can
+be enabled which optimizes the internal storage of the <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky</code></a> type to
+make it use a <a href="https://docs.rs/slab/latest/slab/"><code>slab</code></a> instead.</p>
+</div></details><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.stack_token.html" title="macro fragile::stack_token">stack_<wbr>token</a></dt><dd>Crates a token on the stack with a certain name for semi-sticky.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Fragile.html" title="struct fragile::Fragile">Fragile</a></dt><dd>A <a href="struct.Fragile.html" title="struct fragile::Fragile"><code>Fragile&lt;T&gt;</code></a> wraps a non sendable <code>T</code> to be safely send to other threads.</dd><dt><a class="struct" href="struct.InvalidThreadAccess.html" title="struct fragile::InvalidThreadAccess">Invalid<wbr>Thread<wbr>Access</a></dt><dd>Returned when borrowing fails.</dd><dt><a class="struct" href="struct.SemiSticky.html" title="struct fragile::SemiSticky">Semi<wbr>Sticky</a></dt><dd>A <a href="struct.SemiSticky.html" title="struct fragile::SemiSticky"><code>SemiSticky&lt;T&gt;</code></a> keeps a value T stored in a thread if it has a drop.</dd><dt><a class="struct" href="struct.StackToken.html" title="struct fragile::StackToken">Stack<wbr>Token</a></dt><dd>A token that is placed to the stack to constrain lifetimes.</dd><dt><a class="struct" href="struct.Sticky.html" title="struct fragile::Sticky">Sticky</a></dt><dd>A <a href="struct.Sticky.html" title="struct fragile::Sticky"><code>Sticky&lt;T&gt;</code></a> keeps a value T stored in a thread.</dd></dl></section></div></main></body></html>

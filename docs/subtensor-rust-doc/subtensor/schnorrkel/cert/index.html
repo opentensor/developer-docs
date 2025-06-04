@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Adaptor signature-based implicit certificate scheme for Ristretto"><title>schnorrkel::cert - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="schnorrkel" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../schnorrkel/index.html">schnorrkel</a><span class="version">0.11.4</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module cert</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#adaptor-signature-based-implicit-certificate-scheme-for-ristretto" title="Adaptor signature-based implicit certificate scheme for Ristretto">Adaptor signature-based implicit certificate scheme for Ristretto</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate schnorrkel</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">schnorrkel</a></div><h1>Module <span>cert</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/schnorrkel/cert.rs.html#11-249">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h4 id="adaptor-signature-based-implicit-certificate-scheme-for-ristretto"><a class="doc-anchor" href="#adaptor-signature-based-implicit-certificate-scheme-for-ristretto">§</a>Adaptor signature-based implicit certificate scheme for Ristretto</h4>
+<p><a href="https://en.wikipedia.org/wiki/Implicit_certificate">Implicit certificates</a>
+provide an extremely space efficient public key certificate scheme.</p>
+<p>As a rule, implicit certificates do not prove possession of the
+private key.  We thus worry more about fear rogue key attack when
+using them, but all protocols here should provide strong defenses
+against then.</p>
+<p>We implement an implicit certificate scheme based on adaptor
+signatures as recommended by [1] and [2], which appears useful for
+“scriptless script” applications like [3] and [4].</p>
+<p>We should eventually place this into some more generally usable adaptor
+signature framework, but doing this safely this requires more work.
+We have not actually done security arguments for this code yet either,
+but we expect to find such results in the paymet channel literature [3].
+We might find arguments around Elliptic curve Qu-Vanstone (ECQV)
+helpful too [5,6].</p>
+<p>[1] “Schnorr Signatures for secp256k1”
+by Pieter Wuille, Jonas Nick, and Tim Ruffing
+https://github.com/sipa/bips/blob/bip-schnorr/bip-schnorr.mediawiki#Adaptor_Signatures
+[2] Ruben Somsen. “Schnorr signatures, adaptor signatures and statechains”
+https://bitcoinedge.org/transcript/telaviv2019/statechains
+[3] Giulio Malavolta and Pedro Moreno-Sanchez and Clara Schneidewind and Aniket Kate and Matteo Maffei
+“Anonymous Multi-Hop Locks for Blockchain Scalability and Interoperability”
+https://eprint.iacr.org/2018/472
+[4] Jonas Nick.  “Scriptless Scripts [Using Adaptor Signatures]”
+https://github.com/ElementsProject/scriptless-scripts
+[5] “Standards for efficient cryptography, SEC 4: Elliptic Curve
+Qu-Vanstone Implicit Certificate Scheme (ECQV)”.
+http://www.secg.org/sec4-1.0.pdf
+[6] Daniel R. L. Brown, Robert P. Gallant, and Scott A. Vanstone.
+“Provably Secure Implicit Certificate Schemes”. Financial
+Cryptography 2001. Lecture Notes in Computer Science.
+Springer Berlin Heidelberg. 2339 (1): 156–165. doi:10.1007/3-540-46088-8_15.
+http://www.cacr.math.uwaterloo.ca/techreports/2000/corr2000-55.ps</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AdaptorCertPublic.html" title="struct schnorrkel::cert::AdaptorCertPublic">Adaptor<wbr>Cert<wbr>Public</a></dt><dd>Adaptor Implicit Certificate Public Key Reconstruction Data</dd><dt><a class="struct" href="struct.AdaptorCertSecret.html" title="struct schnorrkel::cert::AdaptorCertSecret">Adaptor<wbr>Cert<wbr>Secret</a></dt><dd>Adaptor Implicit Certificate Secret</dd></dl></section></div></main></body></html>

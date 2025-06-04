@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["get_macro_magic_root"]};

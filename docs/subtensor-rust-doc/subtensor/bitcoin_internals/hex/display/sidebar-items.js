@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["fmt_hex_exact"],"struct":["DisplayArray","DisplayByteSlice"],"trait":["DisplayHex"]};

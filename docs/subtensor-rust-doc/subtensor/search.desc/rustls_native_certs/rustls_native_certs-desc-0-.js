@@ -1,0 +1,1 @@
+searchState.loadedDescShard("rustls_native_certs", 0, "rustls-native-certs allows rustls to use the platform’s …\nA newtype representing a single DER-encoded X.509 …\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.\nLoad root certificates found in the platform’s native …")

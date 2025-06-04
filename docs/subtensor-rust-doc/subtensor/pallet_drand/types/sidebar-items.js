@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["BeaconConfiguration","BeaconConfigurationPayload","BeaconInfoResponse","DrandResponseBody","Metadata","MetadataInfoResponse","Pulse","PulsesPayload"],"type":["BoundedHash","OpaquePublicKey","RoundNumber"]};

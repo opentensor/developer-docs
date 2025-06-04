@@ -1,0 +1,1 @@
+searchState.loadedDescShard("derive_syn_parse", 0, "Derive macro for <code>syn::parse::Parse</code>")

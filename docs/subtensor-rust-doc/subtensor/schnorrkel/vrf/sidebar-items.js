@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["KUSAMA_VRF","VRF_PREOUT_LENGTH","VRF_PROOF_BATCHABLE_LENGTH","VRF_PROOF_LENGTH"],"fn":["dleq_verify_batch","vrf_malleable_hash","vrf_verify_batch"],"struct":["Malleable","VRFInOut","VRFPreOut","VRFProof","VRFProofBatchable"],"trait":["VRFSigningTranscript"],"type":["VRFOutput"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["error_eof","error_unexpected","error_unexpected_last","parse_type","tt_call","tt_debug","tt_false","tt_if","tt_is_comma","tt_is_ident","tt_is_lifetime","tt_replace","tt_return","tt_true"]};

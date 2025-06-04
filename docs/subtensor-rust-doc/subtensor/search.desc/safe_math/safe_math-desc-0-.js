@@ -1,0 +1,1 @@
+searchState.loadedDescShard("safe_math", 0, "Safe division trait\nSafe sqrt with good precision\nSafe division that returns default value for division by …\nSafe division that returns supplied default value for …")

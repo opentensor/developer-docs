@@ -1,0 +1,1 @@
+searchState.loadedDescShard("rw_stream_sink", 0, "This crate provides the <code>RwStreamSink</code> type. It wraps around …\nWraps a <code>Stream</code> and <code>Sink</code> whose items are buffers. …\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.\nWraps around <code>inner</code>.")

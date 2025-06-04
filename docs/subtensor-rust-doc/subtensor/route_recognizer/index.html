@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Recognizes URL patterns with support for dynamic and wildcard segments"><title>route_recognizer - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="route_recognizer" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="icon" href="https://yoshuawuyts.com/assets/http-rs/favicon.ico"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../route_recognizer/index.html"><img src="https://yoshuawuyts.com/assets/http-rs/logo-rounded.png" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../route_recognizer/index.html"><img src="https://yoshuawuyts.com/assets/http-rs/logo-rounded.png" alt="logo"></a><h2><a href="../route_recognizer/index.html">route_<wbr>recognizer</a><span class="version">0.3.1</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li><li><a href="#routing-params" title="Routing params">Routing params</a></li></ul><h3><a href="#structs">Crate Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>route_recognizer</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/route_recognizer/lib.rs.html#1-568">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Recognizes URL patterns with support for dynamic and wildcard segments</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>route_recognizer::{Router, Params};
+
+<span class="kw">let </span><span class="kw-2">mut </span>router = Router::new();
+
+router.add(<span class="string">"/thomas"</span>, <span class="string">"Thomas"</span>.to_string());
+router.add(<span class="string">"/tom"</span>, <span class="string">"Tom"</span>.to_string());
+router.add(<span class="string">"/wycats"</span>, <span class="string">"Yehuda"</span>.to_string());
+
+<span class="kw">let </span>m = router.recognize(<span class="string">"/thomas"</span>).unwrap();
+
+<span class="macro">assert_eq!</span>(m.handler().as_str(), <span class="string">"Thomas"</span>);
+<span class="macro">assert_eq!</span>(m.params(), <span class="kw-2">&amp;</span>Params::new());</code></pre></div>
+<h2 id="routing-params"><a class="doc-anchor" href="#routing-params">§</a>Routing params</h2>
+<p>The router supports four kinds of route segments:</p>
+<ul>
+<li><strong>segments</strong>: these are of the format <code>/a/b</code>.</li>
+<li><strong>params</strong>: these are of the format <code>/a/:b</code>.</li>
+<li><strong>named wildcards</strong>: these are of the format <code>/a/*b</code>.</li>
+<li><strong>unnamed wildcards</strong>: these are of the format <code>/a/*</code>.</li>
+</ul>
+<p>The difference between a “named wildcard” and a “param” is how the
+matching rules apply. Given the router <code>/a/:b</code>, passing in <code>/foo/bar/baz</code>
+will not match because <code>/baz</code> has no counterpart in the router.</p>
+<p>However if we define the route <code>/a/*b</code> and we pass <code>/foo/bar/baz</code> we end up
+with a named param <code>"b"</code> that contains the value <code>"bar/baz"</code>. Wildcard
+routing rules are useful when you don’t know which routes may follow. The
+difference between “named” and “unnamed” wildcards is that the former will
+show up in <code>Params</code>, while the latter won’t.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Iter.html" title="struct route_recognizer::Iter">Iter</a></dt><dd>An iterator over <code>Params</code>.</dd><dt><a class="struct" href="struct.Match.html" title="struct route_recognizer::Match">Match</a></dt><dd>The result of a successful match returned by <code>Router::recognize</code>.</dd><dt><a class="struct" href="struct.Params.html" title="struct route_recognizer::Params">Params</a></dt><dd>Router parameters.</dd><dt><a class="struct" href="struct.Router.html" title="struct route_recognizer::Router">Router</a></dt><dd>Recognizes URL patterns with support for dynamic and wildcard segments.</dd></dl></section></div></main></body></html>

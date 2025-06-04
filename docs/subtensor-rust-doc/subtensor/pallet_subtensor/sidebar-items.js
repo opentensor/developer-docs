@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_CRV3_COMMIT_SIZE_BYTES"],"enum":["CallType","CustomTransactionError","RateLimitKey"],"mod":["coinbase","epoch","macros","migrations","pallet","rpc_info","staking","subnets","swap","utils"],"struct":["SubtensorSignedExtension"],"trait":["CollectiveInterface","MemberManagement"]};

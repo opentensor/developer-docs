@@ -1,0 +1,1 @@
+searchState.loadedDescShard("subtensor_macros", 0, "Freezes the layout of a struct to the current hash of its …")

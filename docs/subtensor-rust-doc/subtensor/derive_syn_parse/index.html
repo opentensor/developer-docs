@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Derive macro for `syn::parse::Parse`"><title>derive_syn_parse - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="derive_syn_parse" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../derive_syn_parse/index.html">derive_<wbr>syn_<wbr>parse</a><span class="version">0.2.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#usage" title="Usage">Usage</a></li><li><a href="#motivation" title="Motivation">Motivation</a></li><li><a href="#advanced-usage" title="Advanced Usage">Advanced Usage</a></li></ul><h3><a href="#derives">Crate Items</a></h3><ul class="block"><li><a href="#derives" title="Derive Macros">Derive Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>derive_syn_parse</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/derive_syn_parse/lib.rs.html#1-522">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Derive macro for <a href="https://docs.rs/syn/2.0.90/syn/parse/trait.Parse.html" title="trait syn::parse::Parse"><code>syn::parse::Parse</code></a></p>
+<p>A common pattern when writing custom <code>syn</code> parsers is repeating <code>&lt;name&gt;: input.parse()?</code> for
+each field in the output. <code>#[derive(Parse)]</code> handles that for you, with some extra helpful
+customization.</p>
+<h3 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h3>
+<p>Using this crate is as simple as adding it to your ‘Cargo.toml’ and importing the derive macro:</p>
+<div class="example-wrap"><pre class="language-toml"><code># Cargo.toml
+
+[dependencies]
+derive-syn-parse = &quot;0.2.0&quot;</code></pre></div>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// your_file.rs
+</span><span class="kw">use </span>derive_syn_parse::Parse;
+
+<span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>CustomParsable {
+    <span class="comment">// ...
+</span>}</code></pre></div>
+<p>The derived implementation of <code>Parse</code> always parses in the order that the fields are given.
+<strong>Note that deriving <code>Parse</code> is also available on enums.</strong> For more information, see the
+<a href="#enum-parsing">dedicated section</a>.</p>
+<p>This crate is intended for users who are already making heavy use of <code>syn</code>.</p>
+<h3 id="motivation"><a class="doc-anchor" href="#motivation">§</a>Motivation</h3>
+<p>When writing rust code that makes heavy use of <code>syn</code>’s parsing functionality, we often end up
+writing things like:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>syn::parse::{Parse, ParseStream};
+<span class="kw">use </span>syn::{Ident, Token, Type};
+
+<span class="comment">// A simplified struct field
+//
+//     x: i32
+</span><span class="kw">struct </span>MyField {
+    ident: Ident,
+    colon_token: <span class="macro">Token!</span>[:],
+    ty: Type,
+}
+
+<span class="kw">impl </span>Parse <span class="kw">for </span>MyField {
+    <span class="kw">fn </span>parse(input: ParseStream) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="prelude-val">Ok</span>(MyField {
+            ident: input.parse()<span class="question-mark">?</span>,
+            colon_token: input.parse()<span class="question-mark">?</span>,
+            ty: input.parse()<span class="question-mark">?</span>,
+        })
+    }
+}</code></pre></div>
+<p>This is really repetitive! Ideally, we’d like to just <code>#[derive(Parse)]</code> and have it work. And
+so we can! (for the most part) Adding <code>#[derive(Parse)]</code> to the previous struct produces an
+equivalent implementation of <code>Parse</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>syn::{Ident, Token, Type};
+<span class="kw">use </span>derive_syn_parse::Parse;
+
+<span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>MyField {
+    ident: Ident,
+    colon_token: <span class="macro">Token!</span>[:],
+    ty: Type,
+}</code></pre></div>
+<p>Of course, there are more complicated cases. This is mainly covered below in the ‘Advanced
+Usage’ section.</p>
+<h3 id="advanced-usage"><a class="doc-anchor" href="#advanced-usage">§</a>Advanced Usage</h3>
+<p>There are a few different facilities provided here, including:</p>
+<ul>
+<li>Enum variant parsing,</li>
+<li>Conditional field parsing,</li>
+<li>Parsing within token trees (parens, brackets, etc.),</li>
+<li>And much more!</li>
+</ul>
+<p>Each of the below sections can be expanded to view detailed information about how to use a
+particular component. Be warned - each section assumes a fair amount of knowledge about the relevant
+<code>syn</code> features.</p>
+<details><summary><b>Enum parsing</b></summary>
+<p>Parsing enums is a complex feature. When writing manual implementations of
+<code>Parse</code>, it doesn’t come up as often, but there are also typically <em>many</em> ways to do it:
+<code>syn</code> provides both forking the <code>ParseBuffer</code> <em>and</em> peeking to handle this, with the suggestion that
+peeking be preferred.</p>
+<p>This library does not support forking; it tends to suffer from poor error messages and general
+inefficiency. That being said, manual implementations of <code>Parse</code> can and should be written in the
+rare cases when this library is insufficient.</p>
+<p>We support peeking in a couple differnet ways - with the <code>#[peek]</code> and <code>#[peek_with]</code> attributes.
+One peeking attribute is required for each <code>enum</code> variant. The general syntax tends to look like:</p>
+<div class="example-wrap"><pre class="language-text"><code>#[peek($TYPE, name = $NAME)]</code></pre></div>
+<p>and</p>
+<div class="example-wrap"><pre class="language-text"><code>#[peek_with($EXPR, name = $NAME)]</code></pre></div>
+<p>The name is provided in order to construct useful error messages when input doesn’t match any of the
+variants.</p>
+<p>These essentially translate to:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">if </span>input.peek(<span class="macro-nonterminal">$TYPE</span>) {
+    <span class="comment">// parse variant
+</span>} <span class="kw">else </span>{
+    <span class="comment">// parse other variants
+</span>}</code></pre></div>
+<p>and</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">if </span>(<span class="macro-nonterminal">$EXPR</span>)(input) {
+    <span class="comment">// parse variant
+</span>} <span class="kw">else </span>{
+    <span class="comment">// parse other variants
+</span>}</code></pre></div>
+</details>
+<details><summary><b>Token Trees (parens, brackets, braces)</b></summary>
+<p>If derive macros had access to type information, we could auto-detect when a field contains any
+of <code>syn::token::{Paren, Bracket, Brace}</code>. Unfortunately, we can’t - and these don’t implement
+<code>Parse</code>, so they each have their own special attribute to mark them: <code>#[paren]</code>, <code>#[bracket]</code>,
+and <code>#[brace]</code>, respectively.</p>
+<p>These are typically used with the <code>#[inside]</code> attribute, which indicates that a field should be
+parsed inside a particular named token tree. This might look like:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>derive_syn_parse::Parse;
+<span class="kw">use </span>syn::{Ident, token, Expr};
+
+<span class="comment">// Parses a simple function call - something like
+//
+//   so_long(and_thanks + for_all * the_fish)
+</span><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>SingleArgFn {
+    name: Ident,
+    <span class="attr">#[paren]
+    </span>arg_paren: token::Paren,
+    <span class="attr">#[inside(arg_paren)]
+    </span>arg: Expr,
+}</code></pre></div>
+<p>The <code>#[inside]</code> attribute can - of course - be repeated with multiple token trees, though this
+may not necessarily produce the most readable type definitions.</p>
+<p>For reference, the above code produces an implementation equivalent to:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="kw">use </span>syn::parse::{Parse, ParseStream};
+
+<span class="kw">impl </span>Parse <span class="kw">for </span>SingleArgFn {
+    <span class="kw">fn </span>parse(input: ParseStream) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>paren;
+        <span class="prelude-val">Ok</span>(SingleArgFn {
+            name: input.parse()<span class="question-mark">?</span>,
+            arg_paren: <span class="macro">syn::parenthesized!</span>(paren <span class="kw">in </span>input),
+            arg: paren.parse()<span class="question-mark">?</span>,
+        })
+    }
+}</code></pre></div>
+</details>
+<details><summary><b>Custom parse functions (<code>#[call]</code>, <code>#[parse_terminated]</code>)</b></summary>
+<p>Not every type worth parsing implements <code>Parse</code>, but we still might want to parse them - things
+like <a href="https://docs.rs/syn/2.0.90/syn/attr/struct.Attribute.html" title="struct syn::attr::Attribute"><code>Vec&lt;Attribute&gt;</code></a> or any <a href="https://docs.rs/syn/2.0.90/syn/punctuated/struct.Punctuated.html" title="struct syn::punctuated::Punctuated"><code>Punctuated&lt;_, _&gt;</code></a> type. In these cases, the available
+attributes mirror the methods on <a href="https://docs.rs/syn/2.0.90/syn/parse/struct.ParseBuffer.html" title="struct syn::parse::ParseBuffer"><code>ParseBuffer</code></a>.</p>
+<p>For <code>#[parse_terminated]</code>, there aren’t any parameters that can be specified - it’s common
+enough that it’s provided for those <code>Punctuated</code> fields.</p>
+<p>Alternatively, <code>#[call]</code> has the syntax <code>#[call( EXPR )]</code>, where <code>EXPR</code> is <em>any expression</em>
+implementing <code>FnOnce(ParseBuffer) -&gt; syn::Result&lt;T&gt;</code>. Typically, this might be something like:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>syn::{Attribute, Ident, Token};
+
+<span class="comment">// Parses a unit struct with attributes.
+//
+//     #[derive(Copy, Clone)]
+//     struct S;
+</span><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>UnitStruct {
+    <span class="attr">#[call(Attribute::parse_outer)]
+    </span>attrs: Vec&lt;Attribute&gt;,
+    struct_token: <span class="macro">Token!</span>[<span class="kw">struct</span>],
+    name: Ident,
+    semi_token: <span class="macro">Token!</span>[;],
+}</code></pre></div>
+<p>Unlike with <a href="https://docs.rs/syn/2.0.90/syn/parse/struct.ParseBuffer.html" title="struct syn::parse::ParseBuffer"><code>ParseBuffer::call</code></a>, which only accepts functions that are
+<code>fn(ParseStream) -&gt; syn::Result&lt;T&gt;</code>, <code>#[call]</code> allows any expression that we can call with the
+<code>ParseBuffer</code>. So one could - hypothetically - implement <code>#[parse_if]</code> with this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo {
+    a: <span class="prelude-ty">Option</span>&lt;<span class="macro">Token!</span>[=&gt;]&gt;,
+    <span class="attr">#[call(|inp| <span class="kw">match </span><span class="kw-2">&amp;</span>a { <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(inp.parse()<span class="question-mark">?</span>)), <span class="prelude-val">None </span>=&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>) })]
+    </span>b: <span class="prelude-ty">Option</span>&lt;Bar&gt;,
+}</code></pre></div>
+<p>Though it’s probably best to just use <code>#[parse_if]</code> :)</p>
+</details>
+<details><summary><b>Conditional field parsing (<code>#[parse_if]</code>, <code>#[peek]</code>)</b></summary>
+<p>When implementing <code>Parse</code> for structs, it is occasionally the case that certain fields are
+optional - or should only be parsed under certain circumstances. There are attributes for that!</p>
+<p>Say we want to parse enums with the following, different syntax:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">enum </span>Foo {
+    Bar: Baz,
+    Qux,
+}</code></pre></div>
+<p>where the equivalent Rust code would be:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">enum </span>Foo {
+    Bar(Baz),
+    Qux,
+}</code></pre></div>
+<p>There’s two ways we could parse the variants here – either with a colon and following type or
+with no colon or type. To handle this, we can write:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Variant {
+    name: Ident,
+    <span class="comment">// `syn` already supports optional parsing of simple tokens
+    </span>colon: <span class="prelude-ty">Option</span>&lt;<span class="macro">Token!</span>[:]&gt;,
+    <span class="comment">// We only want to parse the trailing type if there's a colon:
+    </span><span class="attr">#[parse_if(colon.is_some())]
+    </span>ty: <span class="prelude-ty">Option</span>&lt;Type&gt;,
+}</code></pre></div>
+<p>Note that in this case, <code>ty</code> must be an <code>Option</code>. In addition to conditional parsing based on
+the values of what’s already been parsed, we can also peek - just as described above in the
+section on parsing enums. The only difference here is that we do not need to provide a name for
+the optional field. We could have equally implemented the above as:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Variant {
+    name: Ident,
+    <span class="attr">#[peek(<span class="macro">Token!</span>[:]</span>)]
+    ty: <span class="prelude-ty">Option</span>&lt;VariantType&gt;,
+}
+
+<span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>VariantType {
+    colon: <span class="macro">Token!</span>[:],
+    ty: Type,
+}</code></pre></div>
+</details>
+<details> <summary><b>Temporary parses: Prefix & postfix </b></summary>
+<p>A common pattern that sometimes occurs when deriving <code>Parse</code> implementations is to have many
+unused punctuation fields - imagine a hypothetical implementation of field parsing with default
+values:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// A field with default values, parsing something like:
+//
+//   foo: Bar = Bar::new()
+</span><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Field {
+    ident: Ident,
+    colon: <span class="macro">Token!</span>[:],
+    ty: Type,
+    eq: <span class="prelude-ty">Option</span>&lt;<span class="macro">Token!</span>[=]&gt;,
+    <span class="attr">#[parse_if(eq.is_some())]
+    </span>expr: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+}</code></pre></div>
+<p>Here, there’s a couple fields that probably won’t be used later - both <code>colon</code> and <code>eq</code>. We can
+elimitate both of these with the <code>#[prefix]</code> attribute:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// A field with default values, parsing something like:
+//
+//   foo: Bar = Bar::new()
+</span><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Field {
+    ident: Ident,
+    <span class="attr">#[prefix(<span class="macro">Token!</span>[:]</span>)]
+    ty: Type,
+    <span class="attr">#[prefix(<span class="prelude-ty">Option</span>&lt;<span class="macro">Token!</span>[=]</span>&gt; <span class="kw">as </span>eq)]
+    <span class="attr">#[parse_if(eq.is_some())]
+    </span>expr: <span class="prelude-ty">Option</span>&lt;Expr&gt;,
+}</code></pre></div>
+<p>We can use <code>"as &lt;Ident&gt;"</code> to give a temporary name to the value - including it as a parsed
+value that can be referenced in other parsing clauses, but without adding it as a struct field.</p>
+<p>There’s <em>also</em> a <code>#[postfix]</code> attribute, which operates very similarly to <code>#[prefix]</code>, but
+exists to allow unused fields at the end of the struct. In general, <code>#[postfix]</code> tends to be
+pretty tricky to read, so it’s generally preferable to use <code>#[prefix]</code> to keep the field
+ordering the same as the parse order.</p>
+<p>In some cases, we might want to have both a field and its prefix parsed inside some other token
+tree. Like the following contrived example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>syn::<span class="kw-2">*</span>;
+
+<span class="comment">// Parses.... something. Who knows if this is useful... :P
+//
+//   (=&gt; x + 2)
+</span><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Funky {
+    <span class="attr">#[paren]
+    </span>paren: token::Paren,
+    <span class="attr">#[inside(paren)]
+    </span>r_arrow: <span class="macro">Token!</span>[=&gt;],
+    <span class="attr">#[inside(paren)]
+    </span>expr: Expr,
+}</code></pre></div>
+<p>To remove the unused <code>r_arrow</code> field here, we have an other extra piece we can add:
+<code>"in" &lt;Ident&gt;"</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Parse)]
+</span><span class="kw">struct </span>Funky {
+    <span class="attr">#[paren]
+    </span>paren: token::Paren,
+    <span class="attr">#[prefix(<span class="macro">Token!</span>[=&gt;] </span><span class="kw">in </span>paren)]
+    <span class="attr">#[inside(paren)]
+    </span>expr: Expr,
+}</code></pre></div>
+<p>Note that attempting to write the <code>#[inside]</code> before <code>#[prefix]</code> is forbidden; it’s less clear
+what the expected behavior there should be.</p>
+<p>Finally, when combining both <code>"as" &lt;ident&gt;</code> and <code>"in" &lt;ident&gt;</code>, they should come in that
+order - e.g. <code>#[prefix(Foo as bar in baz)]</code>.</p>
+</details></div></details><h2 id="derives" class="section-header">Derive Macros<a href="#derives" class="anchor">§</a></h2><dl class="item-table"><dt><a class="derive" href="derive.Parse.html" title="derive derive_syn_parse::Parse">Parse</a></dt></dl></section></div></main></body></html>

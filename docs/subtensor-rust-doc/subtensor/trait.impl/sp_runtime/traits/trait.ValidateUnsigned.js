@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["frame_system",[["impl&lt;T: <a class=\"trait\" href=\"frame_system/pallet/trait.Config.html\" title=\"trait frame_system::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_runtime/traits/trait.ValidateUnsigned.html\" title=\"trait sp_runtime::traits::ValidateUnsigned\">ValidateUnsigned</a> for <a class=\"struct\" href=\"frame_system/pallet/struct.Pallet.html\" title=\"struct frame_system::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]],["node_subtensor_runtime",[["impl <a class=\"trait\" href=\"sp_runtime/traits/trait.ValidateUnsigned.html\" title=\"trait sp_runtime::traits::ValidateUnsigned\">ValidateUnsigned</a> for <a class=\"struct\" href=\"node_subtensor_runtime/struct.Runtime.html\" title=\"struct node_subtensor_runtime::Runtime\">Runtime</a>"]]],["pallet_drand",[["impl&lt;T: <a class=\"trait\" href=\"pallet_drand/pallet/trait.Config.html\" title=\"trait pallet_drand::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_runtime/traits/trait.ValidateUnsigned.html\" title=\"trait sp_runtime::traits::ValidateUnsigned\">ValidateUnsigned</a> for <a class=\"struct\" href=\"pallet_drand/pallet/struct.Pallet.html\" title=\"struct pallet_drand::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]],["pallet_grandpa",[["impl&lt;T: <a class=\"trait\" href=\"pallet_grandpa/pallet/trait.Config.html\" title=\"trait pallet_grandpa::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_runtime/traits/trait.ValidateUnsigned.html\" title=\"trait sp_runtime::traits::ValidateUnsigned\">ValidateUnsigned</a> for <a class=\"struct\" href=\"pallet_grandpa/pallet/struct.Pallet.html\" title=\"struct pallet_grandpa::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[445,323,446,456]}

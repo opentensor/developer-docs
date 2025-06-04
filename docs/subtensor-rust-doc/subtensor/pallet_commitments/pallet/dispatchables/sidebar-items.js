@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["set_commitment","set_max_space","set_rate_limit"]};

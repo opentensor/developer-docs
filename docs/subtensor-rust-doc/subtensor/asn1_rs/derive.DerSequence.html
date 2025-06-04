@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="DerSequence custom derive"><title>DerSequence in asn1_rs - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="asn1_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc derive"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../asn1_rs/index.html">asn1_rs</a><span class="version">0.6.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">DerSequence</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#dersequence-custom-derive" title="DerSequence custom derive">DerSequence custom derive</a><ul><li><a href="#examples" title="Examples">Examples</a></li><li><a href="#debugging" title="Debugging">Debugging</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate asn1_<wbr>rs</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">asn1_rs</a></div><h1>Derive Macro <span class="derive">DerSequence</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/asn1_rs_derive/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/synstructure-0.13.1/src/macros.rs.html#95-97">Source</a> </span></div><pre class="rust item-decl"><code>#[derive(DerSequence)]
+{
+    <span class="comment">// Attributes available to this derive:</span>
+    #[debug_derive]
+    #[default]
+    #[optional]
+    #[tag_explicit]
+    #[tag_implicit]
+    #[error]
+    #[map_err]
+}
+</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="dersequence-custom-derive"><a class="doc-anchor" href="#dersequence-custom-derive">§</a>DerSequence custom derive</h2>
+<p><code>DerSequence</code> is a custom derive attribute, to derive both BER and DER <a href="struct.Sequence.html" title="struct asn1_rs::Sequence"><code>Sequence</code></a> parsers automatically from the structure definition.
+This attribute will automatically derive implementations for the following traits:</p>
+<ul>
+<li><a href="struct.Any.html" title="struct asn1_rs::Any"><code>TryFrom&lt;Any&gt;</code></a>, also providing <a href="trait.FromBer.html" title="trait asn1_rs::FromBer"><code>FromBer</code></a></li>
+<li><a href="trait.Tagged.html" title="trait asn1_rs::Tagged"><code>Tagged</code></a></li>
+<li><a href="trait.CheckDerConstraints.html" title="trait asn1_rs::CheckDerConstraints"><code>CheckDerConstraints</code></a></li>
+<li><a href="trait.FromDer.html" title="trait asn1_rs::FromDer"><code>FromDer</code></a></li>
+</ul>
+<p><code>DerSequence</code> implies <code>BerSequence</code>, and will conflict with this custom derive.</p>
+<p>Parsers will be automatically derived from struct fields. Every field type must implement the <a href="trait.FromDer.html" title="trait asn1_rs::FromDer"><code>FromDer</code></a> trait.</p>
+<p>See <a href="doc/derive/index.html" title="mod asn1_rs::doc::derive"><code>derive</code></a> documentation for more examples and documentation.</p>
+<h3 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h3>
+<p>To parse the following ASN.1 structure:</p>
+<pre>
+S ::= SEQUENCE {
+    a INTEGER(0..2^32),
+    b INTEGER(0..2^16),
+    c INTEGER(0..2^16),
+}
+</pre>
+<p>Define a structure and add the <code>DerSequence</code> derive:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>asn1_rs::<span class="kw-2">*</span>;
+
+<span class="attr">#[derive(DerSequence)]
+</span><span class="kw">struct </span>S {
+  a: u32,
+  b: u16,
+  c: u16
+}</code></pre></div>
+<h3 id="debugging"><a class="doc-anchor" href="#debugging">§</a>Debugging</h3>
+<p>To help debugging the generated code, the <code>#[debug_derive]</code> attribute has been added.</p>
+<p>When this attribute is specified, the generated code will be printed to <code>stderr</code> during compilation.</p>
+<p>Example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>asn1_rs::<span class="kw-2">*</span>;
+
+<span class="attr">#[derive(DerSequence)]
+#[debug_derive]
+</span><span class="kw">struct </span>S {
+  a: u32,
+}</code></pre></div>
+</div></details></section></div></main></body></html>

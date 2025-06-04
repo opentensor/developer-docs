@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/netlink-packet-route-0.12.0/src/rtnl/link/nlas/inet/dev_conf.rs`."><title>dev_conf.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../../../../" data-static-root-path="../../../../../../static.files/" data-current-crate="netlink_packet_route" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../../../../static.files/storage-3a5871a4.js"></script><script defer src="../../../../../../static.files/src-script-b8d3f215.js"></script><script defer src="../../../../../../src-files.js"></script><script defer src="../../../../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">netlink_packet_route/rtnl/link/nlas/inet/</div>dev_conf.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// SPDX-License-Identifier: MIT
+<a href=#2 id=2 data-nosnippet>2</a>
+<a href=#3 id=3 data-nosnippet>3</a></span><span class="kw">use crate</span>::{
+<a href=#4 id=4 data-nosnippet>4</a>    traits::{Emitable, Parseable},
+<a href=#5 id=5 data-nosnippet>5</a>    DecodeError,
+<a href=#6 id=6 data-nosnippet>6</a>};
+<a href=#7 id=7 data-nosnippet>7</a>
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">pub const </span>DEV_CONF_LEN: usize = <span class="number">124</span>;
+<a href=#9 id=9 data-nosnippet>9</a>
+<a href=#10 id=10 data-nosnippet>10</a><span class="macro">buffer!</span>(InetDevConfBuffer(DEV_CONF_LEN) {
+<a href=#11 id=11 data-nosnippet>11</a>    forwarding: (i32, <span class="number">0</span>..<span class="number">4</span>),
+<a href=#12 id=12 data-nosnippet>12</a>    mc_forwarding: (i32, <span class="number">4</span>..<span class="number">8</span>),
+<a href=#13 id=13 data-nosnippet>13</a>    proxy_arp: (i32, <span class="number">8</span>..<span class="number">12</span>),
+<a href=#14 id=14 data-nosnippet>14</a>    accept_redirects: (i32, <span class="number">12</span>..<span class="number">16</span>),
+<a href=#15 id=15 data-nosnippet>15</a>    secure_redirects: (i32, <span class="number">16</span>..<span class="number">20</span>),
+<a href=#16 id=16 data-nosnippet>16</a>    send_redirects: (i32, <span class="number">20</span>..<span class="number">24</span>),
+<a href=#17 id=17 data-nosnippet>17</a>    shared_media: (i32, <span class="number">24</span>..<span class="number">28</span>),
+<a href=#18 id=18 data-nosnippet>18</a>    rp_filter: (i32, <span class="number">28</span>..<span class="number">32</span>),
+<a href=#19 id=19 data-nosnippet>19</a>    accept_source_route: (i32, <span class="number">32</span>..<span class="number">36</span>),
+<a href=#20 id=20 data-nosnippet>20</a>    bootp_relay: (i32, <span class="number">36</span>..<span class="number">40</span>),
+<a href=#21 id=21 data-nosnippet>21</a>    log_martians: (i32, <span class="number">40</span>..<span class="number">44</span>),
+<a href=#22 id=22 data-nosnippet>22</a>    tag: (i32, <span class="number">44</span>..<span class="number">48</span>),
+<a href=#23 id=23 data-nosnippet>23</a>    arpfilter: (i32, <span class="number">48</span>..<span class="number">52</span>),
+<a href=#24 id=24 data-nosnippet>24</a>    medium_id: (i32, <span class="number">52</span>..<span class="number">56</span>),
+<a href=#25 id=25 data-nosnippet>25</a>    noxfrm: (i32, <span class="number">56</span>..<span class="number">60</span>),
+<a href=#26 id=26 data-nosnippet>26</a>    nopolicy: (i32, <span class="number">60</span>..<span class="number">64</span>),
+<a href=#27 id=27 data-nosnippet>27</a>    force_igmp_version: (i32, <span class="number">64</span>..<span class="number">68</span>),
+<a href=#28 id=28 data-nosnippet>28</a>    arp_announce: (i32, <span class="number">68</span>..<span class="number">72</span>),
+<a href=#29 id=29 data-nosnippet>29</a>    arp_ignore: (i32, <span class="number">72</span>..<span class="number">76</span>),
+<a href=#30 id=30 data-nosnippet>30</a>    promote_secondaries: (i32, <span class="number">76</span>..<span class="number">80</span>),
+<a href=#31 id=31 data-nosnippet>31</a>    arp_accept: (i32, <span class="number">80</span>..<span class="number">84</span>),
+<a href=#32 id=32 data-nosnippet>32</a>    arp_notify: (i32, <span class="number">84</span>..<span class="number">88</span>),
+<a href=#33 id=33 data-nosnippet>33</a>    accept_local: (i32, <span class="number">88</span>..<span class="number">92</span>),
+<a href=#34 id=34 data-nosnippet>34</a>    src_vmark: (i32, <span class="number">92</span>..<span class="number">96</span>),
+<a href=#35 id=35 data-nosnippet>35</a>    proxy_arp_pvlan: (i32, <span class="number">96</span>..<span class="number">100</span>),
+<a href=#36 id=36 data-nosnippet>36</a>    route_localnet: (i32, <span class="number">100</span>..<span class="number">104</span>),
+<a href=#37 id=37 data-nosnippet>37</a>    igmpv2_unsolicited_report_interval: (i32, <span class="number">104</span>..<span class="number">108</span>),
+<a href=#38 id=38 data-nosnippet>38</a>    igmpv3_unsolicited_report_interval: (i32, <span class="number">108</span>..<span class="number">112</span>),
+<a href=#39 id=39 data-nosnippet>39</a>    ignore_routes_with_linkdown: (i32, <span class="number">112</span>..<span class="number">116</span>),
+<a href=#40 id=40 data-nosnippet>40</a>    drop_unicast_in_l2_multicast: (i32, <span class="number">116</span>..<span class="number">120</span>),
+<a href=#41 id=41 data-nosnippet>41</a>    drop_gratuitous_arp: (i32, <span class="number">120</span>..<span class="number">124</span>),
+<a href=#42 id=42 data-nosnippet>42</a>});
+<a href=#43 id=43 data-nosnippet>43</a>
+<a href=#44 id=44 data-nosnippet>44</a><span class="attr">#[derive(Clone, Copy, Eq, PartialEq, Debug)]
+<a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub struct </span>InetDevConf {
+<a href=#46 id=46 data-nosnippet>46</a>    <span class="kw">pub </span>forwarding: i32,
+<a href=#47 id=47 data-nosnippet>47</a>    <span class="kw">pub </span>mc_forwarding: i32,
+<a href=#48 id=48 data-nosnippet>48</a>    <span class="kw">pub </span>proxy_arp: i32,
+<a href=#49 id=49 data-nosnippet>49</a>    <span class="kw">pub </span>accept_redirects: i32,
+<a href=#50 id=50 data-nosnippet>50</a>    <span class="kw">pub </span>secure_redirects: i32,
+<a href=#51 id=51 data-nosnippet>51</a>    <span class="kw">pub </span>send_redirects: i32,
+<a href=#52 id=52 data-nosnippet>52</a>    <span class="kw">pub </span>shared_media: i32,
+<a href=#53 id=53 data-nosnippet>53</a>    <span class="kw">pub </span>rp_filter: i32,
+<a href=#54 id=54 data-nosnippet>54</a>    <span class="kw">pub </span>accept_source_route: i32,
+<a href=#55 id=55 data-nosnippet>55</a>    <span class="kw">pub </span>bootp_relay: i32,
+<a href=#56 id=56 data-nosnippet>56</a>    <span class="kw">pub </span>log_martians: i32,
+<a href=#57 id=57 data-nosnippet>57</a>    <span class="kw">pub </span>tag: i32,
+<a href=#58 id=58 data-nosnippet>58</a>    <span class="kw">pub </span>arpfilter: i32,
+<a href=#59 id=59 data-nosnippet>59</a>    <span class="kw">pub </span>medium_id: i32,
+<a href=#60 id=60 data-nosnippet>60</a>    <span class="kw">pub </span>noxfrm: i32,
+<a href=#61 id=61 data-nosnippet>61</a>    <span class="kw">pub </span>nopolicy: i32,
+<a href=#62 id=62 data-nosnippet>62</a>    <span class="kw">pub </span>force_igmp_version: i32,
+<a href=#63 id=63 data-nosnippet>63</a>    <span class="kw">pub </span>arp_announce: i32,
+<a href=#64 id=64 data-nosnippet>64</a>    <span class="kw">pub </span>arp_ignore: i32,
+<a href=#65 id=65 data-nosnippet>65</a>    <span class="kw">pub </span>promote_secondaries: i32,
+<a href=#66 id=66 data-nosnippet>66</a>    <span class="kw">pub </span>arp_accept: i32,
+<a href=#67 id=67 data-nosnippet>67</a>    <span class="kw">pub </span>arp_notify: i32,
+<a href=#68 id=68 data-nosnippet>68</a>    <span class="kw">pub </span>accept_local: i32,
+<a href=#69 id=69 data-nosnippet>69</a>    <span class="kw">pub </span>src_vmark: i32,
+<a href=#70 id=70 data-nosnippet>70</a>    <span class="kw">pub </span>proxy_arp_pvlan: i32,
+<a href=#71 id=71 data-nosnippet>71</a>    <span class="kw">pub </span>route_localnet: i32,
+<a href=#72 id=72 data-nosnippet>72</a>    <span class="kw">pub </span>igmpv2_unsolicited_report_interval: i32,
+<a href=#73 id=73 data-nosnippet>73</a>    <span class="kw">pub </span>igmpv3_unsolicited_report_interval: i32,
+<a href=#74 id=74 data-nosnippet>74</a>    <span class="kw">pub </span>ignore_routes_with_linkdown: i32,
+<a href=#75 id=75 data-nosnippet>75</a>    <span class="kw">pub </span>drop_unicast_in_l2_multicast: i32,
+<a href=#76 id=76 data-nosnippet>76</a>    <span class="kw">pub </span>drop_gratuitous_arp: i32,
+<a href=#77 id=77 data-nosnippet>77</a>}
+<a href=#78 id=78 data-nosnippet>78</a>
+<a href=#79 id=79 data-nosnippet>79</a><span class="kw">impl</span>&lt;T: AsRef&lt;[u8]&gt;&gt; Parseable&lt;InetDevConfBuffer&lt;T&gt;&gt; <span class="kw">for </span>InetDevConf {
+<a href=#80 id=80 data-nosnippet>80</a>    <span class="kw">fn </span>parse(buf: <span class="kw-2">&amp;</span>InetDevConfBuffer&lt;T&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, DecodeError&gt; {
+<a href=#81 id=81 data-nosnippet>81</a>        <span class="prelude-val">Ok</span>(<span class="self">Self </span>{
+<a href=#82 id=82 data-nosnippet>82</a>            forwarding: buf.forwarding(),
+<a href=#83 id=83 data-nosnippet>83</a>            mc_forwarding: buf.mc_forwarding(),
+<a href=#84 id=84 data-nosnippet>84</a>            proxy_arp: buf.proxy_arp(),
+<a href=#85 id=85 data-nosnippet>85</a>            accept_redirects: buf.accept_redirects(),
+<a href=#86 id=86 data-nosnippet>86</a>            secure_redirects: buf.secure_redirects(),
+<a href=#87 id=87 data-nosnippet>87</a>            send_redirects: buf.send_redirects(),
+<a href=#88 id=88 data-nosnippet>88</a>            shared_media: buf.shared_media(),
+<a href=#89 id=89 data-nosnippet>89</a>            rp_filter: buf.rp_filter(),
+<a href=#90 id=90 data-nosnippet>90</a>            accept_source_route: buf.accept_source_route(),
+<a href=#91 id=91 data-nosnippet>91</a>            bootp_relay: buf.bootp_relay(),
+<a href=#92 id=92 data-nosnippet>92</a>            log_martians: buf.log_martians(),
+<a href=#93 id=93 data-nosnippet>93</a>            tag: buf.tag(),
+<a href=#94 id=94 data-nosnippet>94</a>            arpfilter: buf.arpfilter(),
+<a href=#95 id=95 data-nosnippet>95</a>            medium_id: buf.medium_id(),
+<a href=#96 id=96 data-nosnippet>96</a>            noxfrm: buf.noxfrm(),
+<a href=#97 id=97 data-nosnippet>97</a>            nopolicy: buf.nopolicy(),
+<a href=#98 id=98 data-nosnippet>98</a>            force_igmp_version: buf.force_igmp_version(),
+<a href=#99 id=99 data-nosnippet>99</a>            arp_announce: buf.arp_announce(),
+<a href=#100 id=100 data-nosnippet>100</a>            arp_ignore: buf.arp_ignore(),
+<a href=#101 id=101 data-nosnippet>101</a>            promote_secondaries: buf.promote_secondaries(),
+<a href=#102 id=102 data-nosnippet>102</a>            arp_accept: buf.arp_accept(),
+<a href=#103 id=103 data-nosnippet>103</a>            arp_notify: buf.arp_notify(),
+<a href=#104 id=104 data-nosnippet>104</a>            accept_local: buf.accept_local(),
+<a href=#105 id=105 data-nosnippet>105</a>            src_vmark: buf.src_vmark(),
+<a href=#106 id=106 data-nosnippet>106</a>            proxy_arp_pvlan: buf.proxy_arp_pvlan(),
+<a href=#107 id=107 data-nosnippet>107</a>            route_localnet: buf.route_localnet(),
+<a href=#108 id=108 data-nosnippet>108</a>            igmpv2_unsolicited_report_interval: buf.igmpv2_unsolicited_report_interval(),
+<a href=#109 id=109 data-nosnippet>109</a>            igmpv3_unsolicited_report_interval: buf.igmpv3_unsolicited_report_interval(),
+<a href=#110 id=110 data-nosnippet>110</a>            ignore_routes_with_linkdown: buf.ignore_routes_with_linkdown(),
+<a href=#111 id=111 data-nosnippet>111</a>            drop_unicast_in_l2_multicast: buf.drop_unicast_in_l2_multicast(),
+<a href=#112 id=112 data-nosnippet>112</a>            drop_gratuitous_arp: buf.drop_gratuitous_arp(),
+<a href=#113 id=113 data-nosnippet>113</a>        })
+<a href=#114 id=114 data-nosnippet>114</a>    }
+<a href=#115 id=115 data-nosnippet>115</a>}
+<a href=#116 id=116 data-nosnippet>116</a>
+<a href=#117 id=117 data-nosnippet>117</a><span class="kw">impl </span>Emitable <span class="kw">for </span>InetDevConf {
+<a href=#118 id=118 data-nosnippet>118</a>    <span class="kw">fn </span>buffer_len(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+<a href=#119 id=119 data-nosnippet>119</a>        DEV_CONF_LEN
+<a href=#120 id=120 data-nosnippet>120</a>    }
+<a href=#121 id=121 data-nosnippet>121</a>
+<a href=#122 id=122 data-nosnippet>122</a>    <span class="kw">fn </span>emit(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;mut </span>[u8]) {
+<a href=#123 id=123 data-nosnippet>123</a>        <span class="kw">let </span><span class="kw-2">mut </span>buffer = InetDevConfBuffer::new(buffer);
+<a href=#124 id=124 data-nosnippet>124</a>        buffer.set_forwarding(<span class="self">self</span>.forwarding);
+<a href=#125 id=125 data-nosnippet>125</a>        buffer.set_mc_forwarding(<span class="self">self</span>.mc_forwarding);
+<a href=#126 id=126 data-nosnippet>126</a>        buffer.set_proxy_arp(<span class="self">self</span>.proxy_arp);
+<a href=#127 id=127 data-nosnippet>127</a>        buffer.set_accept_redirects(<span class="self">self</span>.accept_redirects);
+<a href=#128 id=128 data-nosnippet>128</a>        buffer.set_secure_redirects(<span class="self">self</span>.secure_redirects);
+<a href=#129 id=129 data-nosnippet>129</a>        buffer.set_send_redirects(<span class="self">self</span>.send_redirects);
+<a href=#130 id=130 data-nosnippet>130</a>        buffer.set_shared_media(<span class="self">self</span>.shared_media);
+<a href=#131 id=131 data-nosnippet>131</a>        buffer.set_rp_filter(<span class="self">self</span>.rp_filter);
+<a href=#132 id=132 data-nosnippet>132</a>        buffer.set_accept_source_route(<span class="self">self</span>.accept_source_route);
+<a href=#133 id=133 data-nosnippet>133</a>        buffer.set_bootp_relay(<span class="self">self</span>.bootp_relay);
+<a href=#134 id=134 data-nosnippet>134</a>        buffer.set_log_martians(<span class="self">self</span>.log_martians);
+<a href=#135 id=135 data-nosnippet>135</a>        buffer.set_tag(<span class="self">self</span>.tag);
+<a href=#136 id=136 data-nosnippet>136</a>        buffer.set_arpfilter(<span class="self">self</span>.arpfilter);
+<a href=#137 id=137 data-nosnippet>137</a>        buffer.set_medium_id(<span class="self">self</span>.medium_id);
+<a href=#138 id=138 data-nosnippet>138</a>        buffer.set_noxfrm(<span class="self">self</span>.noxfrm);
+<a href=#139 id=139 data-nosnippet>139</a>        buffer.set_nopolicy(<span class="self">self</span>.nopolicy);
+<a href=#140 id=140 data-nosnippet>140</a>        buffer.set_force_igmp_version(<span class="self">self</span>.force_igmp_version);
+<a href=#141 id=141 data-nosnippet>141</a>        buffer.set_arp_announce(<span class="self">self</span>.arp_announce);
+<a href=#142 id=142 data-nosnippet>142</a>        buffer.set_arp_ignore(<span class="self">self</span>.arp_ignore);
+<a href=#143 id=143 data-nosnippet>143</a>        buffer.set_promote_secondaries(<span class="self">self</span>.promote_secondaries);
+<a href=#144 id=144 data-nosnippet>144</a>        buffer.set_arp_accept(<span class="self">self</span>.arp_accept);
+<a href=#145 id=145 data-nosnippet>145</a>        buffer.set_arp_notify(<span class="self">self</span>.arp_notify);
+<a href=#146 id=146 data-nosnippet>146</a>        buffer.set_accept_local(<span class="self">self</span>.accept_local);
+<a href=#147 id=147 data-nosnippet>147</a>        buffer.set_src_vmark(<span class="self">self</span>.src_vmark);
+<a href=#148 id=148 data-nosnippet>148</a>        buffer.set_proxy_arp_pvlan(<span class="self">self</span>.proxy_arp_pvlan);
+<a href=#149 id=149 data-nosnippet>149</a>        buffer.set_route_localnet(<span class="self">self</span>.route_localnet);
+<a href=#150 id=150 data-nosnippet>150</a>        buffer.set_igmpv2_unsolicited_report_interval(<span class="self">self</span>.igmpv2_unsolicited_report_interval);
+<a href=#151 id=151 data-nosnippet>151</a>        buffer.set_igmpv3_unsolicited_report_interval(<span class="self">self</span>.igmpv3_unsolicited_report_interval);
+<a href=#152 id=152 data-nosnippet>152</a>        buffer.set_ignore_routes_with_linkdown(<span class="self">self</span>.ignore_routes_with_linkdown);
+<a href=#153 id=153 data-nosnippet>153</a>        buffer.set_drop_unicast_in_l2_multicast(<span class="self">self</span>.drop_unicast_in_l2_multicast);
+<a href=#154 id=154 data-nosnippet>154</a>        buffer.set_drop_gratuitous_arp(<span class="self">self</span>.drop_gratuitous_arp);
+<a href=#155 id=155 data-nosnippet>155</a>    }
+<a href=#156 id=156 data-nosnippet>156</a>}</code></pre></div></section></main></body></html>

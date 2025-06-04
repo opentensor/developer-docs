@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["G1PreparedVar","G2PreparedVar"],"type":["G1AffineVar","G1Var","G2AffineVar","G2Var"]};

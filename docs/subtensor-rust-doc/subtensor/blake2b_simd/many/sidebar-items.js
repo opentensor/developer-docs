@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_DEGREE"],"fn":["degree","hash_many","update_many"],"struct":["HashManyJob"]};

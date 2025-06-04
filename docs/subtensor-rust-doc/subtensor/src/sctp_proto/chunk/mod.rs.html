@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sctp-proto-0.2.2/src/chunk/mod.rs`."><title>mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="sctp_proto" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../../../static.files/src-script-b8d3f215.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">sctp_proto/chunk/</div>mod.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="attr">#[cfg(test)]
+<a href=#2 id=2 data-nosnippet>2</a></span><span class="kw">mod </span>chunk_test;
+<a href=#3 id=3 data-nosnippet>3</a>
+<a href=#4 id=4 data-nosnippet>4</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_abort;
+<a href=#5 id=5 data-nosnippet>5</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_cookie_ack;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_cookie_echo;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_error;
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_forward_tsn;
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_header;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_heartbeat;
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_heartbeat_ack;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_init;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">pub mod </span>chunk_payload_data;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_reconfig;
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_selective_ack;
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_shutdown;
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_shutdown_ack;
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_shutdown_complete;
+<a href=#19 id=19 data-nosnippet>19</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>chunk_type;
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a><span class="kw">use </span><span class="kw">crate</span>::error::{Error, <span class="prelude-ty">Result</span>};
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>chunk_header::<span class="kw-2">*</span>;
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>bytes::{Buf, BufMut, Bytes, BytesMut};
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>std::{any::Any, fmt};
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">trait </span>Chunk: fmt::Display + fmt::Debug {
+<a href=#28 id=28 data-nosnippet>28</a>    <span class="kw">fn </span>header(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ChunkHeader;
+<a href=#29 id=29 data-nosnippet>29</a>    <span class="kw">fn </span>unmarshal(raw: <span class="kw-2">&amp;</span>Bytes) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt;
+<a href=#30 id=30 data-nosnippet>30</a>    <span class="kw">where
+<a href=#31 id=31 data-nosnippet>31</a>        </span><span class="self">Self</span>: Sized;
+<a href=#32 id=32 data-nosnippet>32</a>    <span class="kw">fn </span>marshal_to(<span class="kw-2">&amp;</span><span class="self">self</span>, buf: <span class="kw-2">&amp;mut </span>BytesMut) -&gt; <span class="prelude-ty">Result</span>&lt;usize&gt;;
+<a href=#33 id=33 data-nosnippet>33</a>    <span class="kw">fn </span>check(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt;;
+<a href=#34 id=34 data-nosnippet>34</a>    <span class="kw">fn </span>value_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize;
+<a href=#35 id=35 data-nosnippet>35</a>    <span class="kw">fn </span>as_any(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>(<span class="kw">dyn </span>Any + Send + Sync);
+<a href=#36 id=36 data-nosnippet>36</a>
+<a href=#37 id=37 data-nosnippet>37</a>    <span class="kw">fn </span>marshal(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Bytes&gt; {
+<a href=#38 id=38 data-nosnippet>38</a>        <span class="kw">let </span>capacity = CHUNK_HEADER_SIZE + <span class="self">self</span>.value_length();
+<a href=#39 id=39 data-nosnippet>39</a>        <span class="kw">let </span><span class="kw-2">mut </span>buf = BytesMut::with_capacity(capacity);
+<a href=#40 id=40 data-nosnippet>40</a>        <span class="self">self</span>.marshal_to(<span class="kw-2">&amp;mut </span>buf)<span class="question-mark">?</span>;
+<a href=#41 id=41 data-nosnippet>41</a>        <span class="prelude-val">Ok</span>(buf.freeze())
+<a href=#42 id=42 data-nosnippet>42</a>    }
+<a href=#43 id=43 data-nosnippet>43</a>}
+<a href=#44 id=44 data-nosnippet>44</a>
+<a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// ErrorCauseCode is a cause code that appears in either a ERROR or ABORT chunk
+<a href=#46 id=46 data-nosnippet>46</a></span><span class="attr">#[derive(Debug, Copy, Clone, PartialEq, Eq, Default)]
+<a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">pub struct </span>ErrorCauseCode(<span class="kw">pub</span>(<span class="kw">crate</span>) u16);
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>INVALID_STREAM_IDENTIFIER: ErrorCauseCode = ErrorCauseCode(<span class="number">1</span>);
+<a href=#50 id=50 data-nosnippet>50</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>MISSING_MANDATORY_PARAMETER: ErrorCauseCode = ErrorCauseCode(<span class="number">2</span>);
+<a href=#51 id=51 data-nosnippet>51</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>STALE_COOKIE_ERROR: ErrorCauseCode = ErrorCauseCode(<span class="number">3</span>);
+<a href=#52 id=52 data-nosnippet>52</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>OUT_OF_RESOURCE: ErrorCauseCode = ErrorCauseCode(<span class="number">4</span>);
+<a href=#53 id=53 data-nosnippet>53</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>UNRESOLVABLE_ADDRESS: ErrorCauseCode = ErrorCauseCode(<span class="number">5</span>);
+<a href=#54 id=54 data-nosnippet>54</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>UNRECOGNIZED_CHUNK_TYPE: ErrorCauseCode = ErrorCauseCode(<span class="number">6</span>);
+<a href=#55 id=55 data-nosnippet>55</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>INVALID_MANDATORY_PARAMETER: ErrorCauseCode = ErrorCauseCode(<span class="number">7</span>);
+<a href=#56 id=56 data-nosnippet>56</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>UNRECOGNIZED_PARAMETERS: ErrorCauseCode = ErrorCauseCode(<span class="number">8</span>);
+<a href=#57 id=57 data-nosnippet>57</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>NO_USER_DATA: ErrorCauseCode = ErrorCauseCode(<span class="number">9</span>);
+<a href=#58 id=58 data-nosnippet>58</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>COOKIE_RECEIVED_WHILE_SHUTTING_DOWN: ErrorCauseCode = ErrorCauseCode(<span class="number">10</span>);
+<a href=#59 id=59 data-nosnippet>59</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>RESTART_OF_AN_ASSOCIATION_WITH_NEW_ADDRESSES: ErrorCauseCode = ErrorCauseCode(<span class="number">11</span>);
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>USER_INITIATED_ABORT: ErrorCauseCode = ErrorCauseCode(<span class="number">12</span>);
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>PROTOCOL_VIOLATION: ErrorCauseCode = ErrorCauseCode(<span class="number">13</span>);
+<a href=#62 id=62 data-nosnippet>62</a>
+<a href=#63 id=63 data-nosnippet>63</a><span class="kw">impl </span>fmt::Display <span class="kw">for </span>ErrorCauseCode {
+<a href=#64 id=64 data-nosnippet>64</a>    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
+<a href=#65 id=65 data-nosnippet>65</a>        <span class="kw">let </span>others = <span class="macro">format!</span>(<span class="string">"Unknown CauseCode: {}"</span>, <span class="self">self</span>.<span class="number">0</span>);
+<a href=#66 id=66 data-nosnippet>66</a>        <span class="kw">let </span>s = <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+<a href=#67 id=67 data-nosnippet>67</a>            INVALID_STREAM_IDENTIFIER =&gt; <span class="string">"Invalid Stream Identifier"</span>,
+<a href=#68 id=68 data-nosnippet>68</a>            MISSING_MANDATORY_PARAMETER =&gt; <span class="string">"Missing Mandatory Parameter"</span>,
+<a href=#69 id=69 data-nosnippet>69</a>            STALE_COOKIE_ERROR =&gt; <span class="string">"Stale Cookie Error"</span>,
+<a href=#70 id=70 data-nosnippet>70</a>            OUT_OF_RESOURCE =&gt; <span class="string">"Out Of Resource"</span>,
+<a href=#71 id=71 data-nosnippet>71</a>            UNRESOLVABLE_ADDRESS =&gt; <span class="string">"Unresolvable IP"</span>,
+<a href=#72 id=72 data-nosnippet>72</a>            UNRECOGNIZED_CHUNK_TYPE =&gt; <span class="string">"Unrecognized Chunk Type"</span>,
+<a href=#73 id=73 data-nosnippet>73</a>            INVALID_MANDATORY_PARAMETER =&gt; <span class="string">"Invalid Mandatory Parameter"</span>,
+<a href=#74 id=74 data-nosnippet>74</a>            UNRECOGNIZED_PARAMETERS =&gt; <span class="string">"Unrecognized Parameters"</span>,
+<a href=#75 id=75 data-nosnippet>75</a>            NO_USER_DATA =&gt; <span class="string">"No User Data"</span>,
+<a href=#76 id=76 data-nosnippet>76</a>            COOKIE_RECEIVED_WHILE_SHUTTING_DOWN =&gt; <span class="string">"Cookie Received While Shutting Down"</span>,
+<a href=#77 id=77 data-nosnippet>77</a>            RESTART_OF_AN_ASSOCIATION_WITH_NEW_ADDRESSES =&gt; {
+<a href=#78 id=78 data-nosnippet>78</a>                <span class="string">"Restart Of An Association With New Addresses"
+<a href=#79 id=79 data-nosnippet>79</a>            </span>}
+<a href=#80 id=80 data-nosnippet>80</a>            USER_INITIATED_ABORT =&gt; <span class="string">"User Initiated Abort"</span>,
+<a href=#81 id=81 data-nosnippet>81</a>            PROTOCOL_VIOLATION =&gt; <span class="string">"Protocol Violation"</span>,
+<a href=#82 id=82 data-nosnippet>82</a>            <span class="kw">_ </span>=&gt; others.as_str(),
+<a href=#83 id=83 data-nosnippet>83</a>        };
+<a href=#84 id=84 data-nosnippet>84</a>        <span class="macro">write!</span>(f, <span class="string">"{}"</span>, s)
+<a href=#85 id=85 data-nosnippet>85</a>    }
+<a href=#86 id=86 data-nosnippet>86</a>}
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a><span class="kw">impl </span>From&lt;u16&gt; <span class="kw">for </span>ErrorCauseCode {
+<a href=#89 id=89 data-nosnippet>89</a>    <span class="kw">fn </span>from(v: u16) -&gt; <span class="self">Self </span>{
+<a href=#90 id=90 data-nosnippet>90</a>        ErrorCauseCode(v)
+<a href=#91 id=91 data-nosnippet>91</a>    }
+<a href=#92 id=92 data-nosnippet>92</a>}
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a><span class="doccomment">/// ErrorCauseHeader represents the shared header that is shared by all error causes
+<a href=#95 id=95 data-nosnippet>95</a></span><span class="attr">#[derive(Debug, Clone, Default)]
+<a href=#96 id=96 data-nosnippet>96</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>ErrorCause {
+<a href=#97 id=97 data-nosnippet>97</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) code: ErrorCauseCode,
+<a href=#98 id=98 data-nosnippet>98</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) raw: Bytes,
+<a href=#99 id=99 data-nosnippet>99</a>}
+<a href=#100 id=100 data-nosnippet>100</a>
+<a href=#101 id=101 data-nosnippet>101</a><span class="doccomment">/// ErrorCauseInvalidMandatoryParameter represents an SCTP error cause
+<a href=#102 id=102 data-nosnippet>102</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>ErrorCauseInvalidMandatoryParameter = ErrorCause;
+<a href=#103 id=103 data-nosnippet>103</a>
+<a href=#104 id=104 data-nosnippet>104</a><span class="doccomment">/// ErrorCauseUnrecognizedChunkType represents an SCTP error cause
+<a href=#105 id=105 data-nosnippet>105</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>ErrorCauseUnrecognizedChunkType = ErrorCause;
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a><span class="doccomment">///
+<a href=#108 id=108 data-nosnippet>108</a>/// This error cause MAY be included in ABORT chunks that are sent
+<a href=#109 id=109 data-nosnippet>109</a>/// because an SCTP endpoint detects a protocol violation of the peer
+<a href=#110 id=110 data-nosnippet>110</a>/// that is not covered by the error causes described in Section 3.3.10.1
+<a href=#111 id=111 data-nosnippet>111</a>/// to Section 3.3.10.12.  An implementation MAY provide additional
+<a href=#112 id=112 data-nosnippet>112</a>/// information specifying what kind of protocol violation has been
+<a href=#113 id=113 data-nosnippet>113</a>/// detected.
+<a href=#114 id=114 data-nosnippet>114</a>///      0                   1                   2                   3
+<a href=#115 id=115 data-nosnippet>115</a>///      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+<a href=#116 id=116 data-nosnippet>116</a>///     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+<a href=#117 id=117 data-nosnippet>117</a>///     |         Cause Code=13         |      Cause Length=Variable    |
+<a href=#118 id=118 data-nosnippet>118</a>///     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+<a href=#119 id=119 data-nosnippet>119</a>///     /                    Additional Information                     /
+<a href=#120 id=120 data-nosnippet>120</a>///     \                                                               \
+<a href=#121 id=121 data-nosnippet>121</a>///     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+<a href=#122 id=122 data-nosnippet>122</a>///
+<a href=#123 id=123 data-nosnippet>123</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>ErrorCauseProtocolViolation = ErrorCause;
+<a href=#124 id=124 data-nosnippet>124</a>
+<a href=#125 id=125 data-nosnippet>125</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const </span>ERROR_CAUSE_HEADER_LENGTH: usize = <span class="number">4</span>;
+<a href=#126 id=126 data-nosnippet>126</a>
+<a href=#127 id=127 data-nosnippet>127</a><span class="doccomment">/// makes ErrorCauseHeader printable
+<a href=#128 id=128 data-nosnippet>128</a></span><span class="kw">impl </span>fmt::Display <span class="kw">for </span>ErrorCause {
+<a href=#129 id=129 data-nosnippet>129</a>    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; fmt::Result {
+<a href=#130 id=130 data-nosnippet>130</a>        <span class="macro">write!</span>(f, <span class="string">"{}"</span>, <span class="self">self</span>.code)
+<a href=#131 id=131 data-nosnippet>131</a>    }
+<a href=#132 id=132 data-nosnippet>132</a>}
+<a href=#133 id=133 data-nosnippet>133</a>
+<a href=#134 id=134 data-nosnippet>134</a><span class="kw">impl </span>ErrorCause {
+<a href=#135 id=135 data-nosnippet>135</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>unmarshal(buf: <span class="kw-2">&amp;</span>Bytes) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
+<a href=#136 id=136 data-nosnippet>136</a>        <span class="kw">if </span>buf.len() &lt; ERROR_CAUSE_HEADER_LENGTH {
+<a href=#137 id=137 data-nosnippet>137</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::ErrErrorCauseTooSmall);
+<a href=#138 id=138 data-nosnippet>138</a>        }
+<a href=#139 id=139 data-nosnippet>139</a>
+<a href=#140 id=140 data-nosnippet>140</a>        <span class="kw">let </span>reader = <span class="kw-2">&amp;mut </span>buf.clone();
+<a href=#141 id=141 data-nosnippet>141</a>
+<a href=#142 id=142 data-nosnippet>142</a>        <span class="kw">let </span>code = ErrorCauseCode(reader.get_u16());
+<a href=#143 id=143 data-nosnippet>143</a>        <span class="kw">let </span>len = reader.get_u16();
+<a href=#144 id=144 data-nosnippet>144</a>
+<a href=#145 id=145 data-nosnippet>145</a>        <span class="kw">if </span>len &lt; ERROR_CAUSE_HEADER_LENGTH <span class="kw">as </span>u16 {
+<a href=#146 id=146 data-nosnippet>146</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::ErrErrorCauseTooSmall);
+<a href=#147 id=147 data-nosnippet>147</a>        }
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a>        <span class="kw">let </span>value_length = len <span class="kw">as </span>usize - ERROR_CAUSE_HEADER_LENGTH;
+<a href=#150 id=150 data-nosnippet>150</a>        <span class="kw">let </span>raw = buf.slice(ERROR_CAUSE_HEADER_LENGTH..ERROR_CAUSE_HEADER_LENGTH + value_length);
+<a href=#151 id=151 data-nosnippet>151</a>
+<a href=#152 id=152 data-nosnippet>152</a>        <span class="prelude-val">Ok</span>(ErrorCause { code, raw })
+<a href=#153 id=153 data-nosnippet>153</a>    }
+<a href=#154 id=154 data-nosnippet>154</a>
+<a href=#155 id=155 data-nosnippet>155</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>marshal(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Bytes {
+<a href=#156 id=156 data-nosnippet>156</a>        <span class="kw">let </span><span class="kw-2">mut </span>buf = BytesMut::with_capacity(<span class="self">self</span>.length());
+<a href=#157 id=157 data-nosnippet>157</a>        <span class="kw">let _ </span>= <span class="self">self</span>.marshal_to(<span class="kw-2">&amp;mut </span>buf);
+<a href=#158 id=158 data-nosnippet>158</a>        buf.freeze()
+<a href=#159 id=159 data-nosnippet>159</a>    }
+<a href=#160 id=160 data-nosnippet>160</a>
+<a href=#161 id=161 data-nosnippet>161</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>marshal_to(<span class="kw-2">&amp;</span><span class="self">self</span>, writer: <span class="kw-2">&amp;mut </span>BytesMut) -&gt; usize {
+<a href=#162 id=162 data-nosnippet>162</a>        <span class="kw">let </span>len = <span class="self">self</span>.raw.len() + ERROR_CAUSE_HEADER_LENGTH;
+<a href=#163 id=163 data-nosnippet>163</a>        writer.put_u16(<span class="self">self</span>.code.<span class="number">0</span>);
+<a href=#164 id=164 data-nosnippet>164</a>        writer.put_u16(len <span class="kw">as </span>u16);
+<a href=#165 id=165 data-nosnippet>165</a>        writer.extend(<span class="self">self</span>.raw.clone());
+<a href=#166 id=166 data-nosnippet>166</a>        writer.len()
+<a href=#167 id=167 data-nosnippet>167</a>    }
+<a href=#168 id=168 data-nosnippet>168</a>
+<a href=#169 id=169 data-nosnippet>169</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+<a href=#170 id=170 data-nosnippet>170</a>        <span class="self">self</span>.raw.len() + ERROR_CAUSE_HEADER_LENGTH
+<a href=#171 id=171 data-nosnippet>171</a>    }
+<a href=#172 id=172 data-nosnippet>172</a>
+<a href=#173 id=173 data-nosnippet>173</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>error_cause_code(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ErrorCauseCode {
+<a href=#174 id=174 data-nosnippet>174</a>        <span class="self">self</span>.code
+<a href=#175 id=175 data-nosnippet>175</a>    }
+<a href=#176 id=176 data-nosnippet>176</a>}</code></pre></div></section></main></body></html>

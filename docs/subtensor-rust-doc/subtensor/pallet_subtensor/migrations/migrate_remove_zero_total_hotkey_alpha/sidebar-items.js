@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_remove_zero_total_hotkey_alpha"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_total_issuance"],"mod":["deprecated_loaded_emission_format"]};

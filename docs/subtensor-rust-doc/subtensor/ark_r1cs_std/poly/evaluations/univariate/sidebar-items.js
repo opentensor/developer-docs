@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["lagrange_interpolator"],"struct":["EvaluationsVar"]};

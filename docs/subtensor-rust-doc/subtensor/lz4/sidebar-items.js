@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BlockMode","BlockSize","ContentChecksum"],"mod":["block","liblz4"],"struct":["Decoder","Encoder","EncoderBuilder"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["contains","ends_with","is_empty","starts_with"],"struct":["ContainsPredicate","EndsWithPredicate","IsEmptyPredicate","MatchesPredicate","StartsWithPredicate","TrimPredicate","Utf8Predicate"],"trait":["PredicateStrExt"]};

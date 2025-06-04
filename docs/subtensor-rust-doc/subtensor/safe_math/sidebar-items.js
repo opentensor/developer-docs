@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["checked_sqrt"],"trait":["SafeDiv"]};

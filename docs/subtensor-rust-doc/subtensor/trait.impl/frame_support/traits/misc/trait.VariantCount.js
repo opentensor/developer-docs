@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["frame_support",[]],["node_subtensor_runtime",[["impl <a class=\"trait\" href=\"frame_support/traits/misc/trait.VariantCount.html\" title=\"trait frame_support::traits::misc::VariantCount\">VariantCount</a> for <a class=\"enum\" href=\"node_subtensor_runtime/enum.RuntimeFreezeReason.html\" title=\"enum node_subtensor_runtime::RuntimeFreezeReason\">RuntimeFreezeReason</a>"],["impl <a class=\"trait\" href=\"frame_support/traits/misc/trait.VariantCount.html\" title=\"trait frame_support::traits::misc::VariantCount\">VariantCount</a> for <a class=\"enum\" href=\"node_subtensor_runtime/enum.RuntimeHoldReason.html\" title=\"enum node_subtensor_runtime::RuntimeHoldReason\">RuntimeHoldReason</a>"]]],["pallet_preimage",[["impl <a class=\"trait\" href=\"frame_support/traits/misc/trait.VariantCount.html\" title=\"trait frame_support::traits::misc::VariantCount\">VariantCount</a> for <a class=\"enum\" href=\"pallet_preimage/pallet/enum.HoldReason.html\" title=\"enum pallet_preimage::pallet::HoldReason\">HoldReason</a>"]]],["pallet_registry",[["impl <a class=\"trait\" href=\"frame_support/traits/misc/trait.VariantCount.html\" title=\"trait frame_support::traits::misc::VariantCount\">VariantCount</a> for <a class=\"enum\" href=\"pallet_registry/pallet/enum.HoldReason.html\" title=\"enum pallet_registry::pallet::HoldReason\">HoldReason</a>"]]],["pallet_safe_mode",[["impl <a class=\"trait\" href=\"frame_support/traits/misc/trait.VariantCount.html\" title=\"trait frame_support::traits::misc::VariantCount\">VariantCount</a> for <a class=\"enum\" href=\"pallet_safe_mode/pallet/enum.HoldReason.html\" title=\"enum pallet_safe_mode::pallet::HoldReason\">HoldReason</a>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[20,681,325,325,328]}

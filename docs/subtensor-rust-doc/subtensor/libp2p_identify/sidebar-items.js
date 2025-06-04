@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["PROTOCOL_NAME","PUSH_PROTOCOL_NAME"],"enum":["Event","UpgradeError"],"struct":["Behaviour","Config","Info"]};

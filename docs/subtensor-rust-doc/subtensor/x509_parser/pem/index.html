@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Decoding functions for PEM-encoded data"><title>x509_parser::pem - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="x509_parser" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../x509_parser/index.html">x509_<wbr>parser</a><span class="version">0.16.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module pem</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate x509_<wbr>parser</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">x509_parser</a></div><h1>Module <span>pem</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/x509_parser/pem.rs.html#1-255">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Decoding functions for PEM-encoded data</p>
+<p>A PEM object is a container, which can store (amongst other formats) a public X.509
+Certificate, or a CRL, etc. It contains only printable characters.
+PEM-encoded binary data is essentially a beginning and matching end tag that encloses
+base64-encoded binary data (see:
+<a href="https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail">https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail</a>).</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<p>To parse a certificate in PEM format, first create the <code>Pem</code> object, then decode
+contents:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>x509_parser::pem::Pem;
+<span class="kw">use </span>x509_parser::x509::X509Version;
+
+<span class="kw">static </span>IGCA_PEM: <span class="kw-2">&amp;</span>str = <span class="string">"../assets/IGC_A.pem"</span>;
+
+<span class="kw">let </span>data = std::fs::read(IGCA_PEM).expect(<span class="string">"Could not read file"</span>);
+<span class="kw">for </span>pem <span class="kw">in </span>Pem::iter_from_buffer(<span class="kw-2">&amp;</span>data) {
+    <span class="kw">let </span>pem = pem.expect(<span class="string">"Reading next PEM block failed"</span>);
+    <span class="kw">let </span>x509 = pem.parse_x509().expect(<span class="string">"X.509: decoding DER failed"</span>);
+    <span class="macro">assert_eq!</span>(x509.tbs_certificate.version, X509Version::V3);
+}</code></pre></div>
+<p>This is the most direct method to parse PEM data.</p>
+<p>Another method to parse the certificate is to use <code>parse_x509_pem</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>x509_parser::pem::parse_x509_pem;
+<span class="kw">use </span>x509_parser::parse_x509_certificate;
+
+<span class="kw">static </span>IGCA_PEM: <span class="kw-2">&amp;</span>[u8] = <span class="macro">include_bytes!</span>(<span class="string">"../assets/IGC_A.pem"</span>);
+
+<span class="kw">let </span>res = parse_x509_pem(IGCA_PEM);
+<span class="kw">match </span>res {
+    <span class="prelude-val">Ok</span>((rem, pem)) =&gt; {
+        <span class="macro">assert!</span>(rem.is_empty());
+        <span class="comment">//
+        </span><span class="macro">assert_eq!</span>(pem.label, String::from(<span class="string">"CERTIFICATE"</span>));
+        <span class="comment">//
+        </span><span class="kw">let </span>res_x509 = parse_x509_certificate(<span class="kw-2">&amp;</span>pem.contents);
+        <span class="macro">assert!</span>(res_x509.is_ok());
+    },
+    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"PEM parsing failed: {:?}"</span>, res),
+}</code></pre></div>
+<p>Note that all methods require to store the <code>Pem</code> object in a variable, mainly because decoding
+the PEM object requires allocation of buffers, and that the lifetime of X.509 certificates will
+be bound to these buffers.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Pem.html" title="struct x509_parser::pem::Pem">Pem</a></dt><dd>Representation of PEM data</dd><dt><a class="struct" href="struct.PemIterator.html" title="struct x509_parser::pem::PemIterator">PemIterator</a></dt><dd>Iterator over PEM-encapsulated blocks</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.parse_x509_pem.html" title="fn x509_parser::pem::parse_x509_pem">parse_<wbr>x509_<wbr>pem</a></dt><dd>Read a PEM-encoded structure, and decode the base64 data</dd><dt><a class="fn" href="fn.pem_to_der.html" title="fn x509_parser::pem::pem_to_der">pem_<wbr>to_<wbr>der</a><wbr><span class="stab deprecated" title="">Deprecated</span></dt></dl></section></div></main></body></html>

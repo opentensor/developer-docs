@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["contribute","create","dissolve","finalize","refund","update_cap","update_end","update_min_contribution","withdraw"]};

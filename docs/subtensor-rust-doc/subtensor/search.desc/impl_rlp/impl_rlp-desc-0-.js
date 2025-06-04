@@ -1,0 +1,1 @@
+searchState.loadedDescShard("impl_rlp", 0, "RLP serialization support for uint and fixed hash.\nAdd RLP serialization support to a fixed-sized hash type …\nAdd RLP serialization support to an integer created by …")

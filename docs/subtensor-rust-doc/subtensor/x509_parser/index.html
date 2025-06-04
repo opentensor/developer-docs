@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="License: MIT Apache License 2.0 docs.rs crates.io Download numbers Github CI Minimum rustc version"><title>x509_parser - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="x509_parser" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../x509_parser/index.html">x509_<wbr>parser</a><span class="version">0.16.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#x509-parser" title="X.509 Parser">X.509 Parser</a></li><li><a href="#examples" title="Examples">Examples</a></li><li><a href="#features" title="Features">Features</a><ul><li><a href="#rust-version-requirements" title="Rust version requirements">Rust version requirements</a></li></ul></li></ul><h3><a href="#reexports">Crate Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>x509_parser</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/x509_parser/lib.rs.html#1-213">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><a href="./LICENSE-MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+<a href="./LICENSE-APACHE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache License 2.0" /></a>
+<a href="https://docs.rs/x509-parser"><img src="https://docs.rs/x509-parser/badge.svg" alt="docs.rs" /></a>
+<a href="https://crates.io/crates/x509-parser"><img src="https://img.shields.io/crates/v/x509-parser.svg" alt="crates.io" /></a>
+<a href="https://crates.io/crates/x509-parser"><img src="https://img.shields.io/crates/d/x509-parser.svg" alt="Download numbers" /></a>
+<a href="https://github.com/rusticata/x509-parser/actions"><img src="https://github.com/rusticata/x509-parser/workflows/Continuous%20integration/badge.svg" alt="Github CI" /></a>
+<a href="#rust-version-requirements"><img src="https://img.shields.io/badge/rustc-1.63.0+-lightgray.svg" alt="Minimum rustc version" /></a></p>
+<h2 id="x509-parser"><a class="doc-anchor" href="#x509-parser">§</a>X.509 Parser</h2>
+<p>A X.509 v3 (<a href="https://tools.ietf.org/html/rfc5280">RFC5280</a>) parser, implemented with the <a href="https://github.com/Geal/nom">nom</a>
+parser combinator framework.</p>
+<p>It is written in pure Rust, fast, and makes extensive use of zero-copy. A lot of care is taken
+to ensure security and safety of this crate, including design (recursion limit, defensive
+programming), tests, and fuzzing. It also aims to be panic-free.</p>
+<p>The code is available on <a href="https://github.com/rusticata/x509-parser">Github</a>
+and is part of the <a href="https://github.com/rusticata">Rusticata</a> project.</p>
+<p>Certificates are usually encoded in two main formats: PEM (usually the most common format) or
+DER.  A PEM-encoded certificate is a container, storing a DER object. See the
+<a href="pem/index.html"><code>pem</code></a> module for more documentation.</p>
+<p>To decode a DER-encoded certificate, the main parsing method is
+<code>X509Certificate::from_der</code> (
+part of the <a href="prelude/trait.FromDer.html"><code>FromDer</code></a> trait
+), which builds a
+<a href="certificate/struct.X509Certificate.html"><code>X509Certificate</code></a> object.</p>
+<p>An alternative method is to use <a href="certificate/struct.X509CertificateParser.html"><code>X509CertificateParser</code></a>,
+which allows specifying parsing options (for example, not automatically parsing option contents).</p>
+<p>The returned objects for parsers follow the definitions of the RFC. This means that accessing
+fields is done by accessing struct members recursively. Some helper functions are provided, for
+example <a href="certificate/struct.X509Certificate.html#method.issuer"><code>X509Certificate::issuer()</code></a> returns the
+same as accessing <code>&lt;object&gt;.tbs_certificate.issuer</code>.</p>
+<p>For PEM-encoded certificates, use the <a href="pem/index.html"><code>pem</code></a> module.</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<p>Parsing a certificate in DER format:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>x509_parser::prelude::<span class="kw-2">*</span>;
+
+<span class="kw">static </span>IGCA_DER: <span class="kw-2">&amp;</span>[u8] = <span class="macro">include_bytes!</span>(<span class="string">"../assets/IGC_A.der"</span>);
+
+<span class="kw">let </span>res = X509Certificate::from_der(IGCA_DER);
+<span class="kw">match </span>res {
+    <span class="prelude-val">Ok</span>((rem, cert)) =&gt; {
+        <span class="macro">assert!</span>(rem.is_empty());
+        <span class="comment">//
+        </span><span class="macro">assert_eq!</span>(cert.version(), X509Version::V3);
+    },
+    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"x509 parsing failed: {:?}"</span>, res),
+}</code></pre></div>
+<p>To parse a CRL and print information about revoked certificates:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>res = CertificateRevocationList::from_der(DER);
+<span class="kw">match </span>res {
+    <span class="prelude-val">Ok</span>((_rem, crl)) =&gt; {
+        <span class="kw">for </span>revoked <span class="kw">in </span>crl.iter_revoked_certificates() {
+            <span class="macro">println!</span>(<span class="string">"Revoked certificate serial: {}"</span>, revoked.raw_serial_as_string());
+            <span class="macro">println!</span>(<span class="string">"  Reason: {}"</span>, revoked.reason_code().unwrap_or_default().<span class="number">1</span>);
+        }
+    },
+    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"CRL parsing failed: {:?}"</span>, res),
+}</code></pre></div>
+<p>See also <code>examples/print-cert.rs</code>.</p>
+<h2 id="features"><a class="doc-anchor" href="#features">§</a>Features</h2>
+<ul>
+<li>The <code>verify</code> feature adds support for (cryptographic) signature verification, based on <code>ring</code>.
+It adds the
+<a href="certificate/struct.X509Certificate.html#method.verify_signature"><code>X509Certificate::verify_signature()</code></a>
+to <code>X509Certificate</code>.</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// Cryptographic signature verification: returns true if certificate was signed by issuer
+</span><span class="attr">#[cfg(feature = <span class="string">"verify"</span>)]
+</span><span class="kw">pub fn </span>check_signature(cert: <span class="kw-2">&amp;</span>X509Certificate&lt;<span class="lifetime">'_</span>&gt;, issuer: <span class="kw-2">&amp;</span>X509Certificate&lt;<span class="lifetime">'_</span>&gt;) -&gt; bool {
+    <span class="kw">let </span>issuer_public_key = issuer.public_key();
+    cert
+        .verify_signature(<span class="prelude-val">Some</span>(issuer_public_key))
+        .is_ok()
+}</code></pre></div>
+<ul>
+<li>The <code>validate</code> features add methods to run more validation functions on the certificate structure
+and values using the <a href="validate/trait.Validate.html"><code>Validate</code></a> trait.
+It does not validate any cryptographic parameter (see <code>verify</code> above).</li>
+</ul>
+<h3 id="rust-version-requirements"><a class="doc-anchor" href="#rust-version-requirements">§</a>Rust version requirements</h3>
+<p><code>x509-parser</code> requires <strong>Rustc version 1.63 or greater</strong>, based on der-parser
+dependencies and for proc-macro attributes support.</p>
+<p>Note that due to breaking changes in the <code>time</code> crate, a specific version of this
+crate must be specified for compiler versions &lt;= 1.63:
+<code>cargo update -p time --precise 0.3.20</code></p>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.der_parser"><code>pub use <a class="mod" href="../der_parser/index.html" title="mod der_parser">der_parser</a>;</code></dt><dt id="reexport.num_bigint"><code>pub use der_parser::<a class="mod" href="../num_bigint/index.html" title="mod num_bigint">num_bigint</a>;</code></dt><dt id="reexport.nom"><code>pub use <a class="mod" href="../nom/index.html" title="mod nom">nom</a>;</code></dt><dt id="reexport.oid_registry"><code>pub use <a class="mod" href="../oid_registry/index.html" title="mod oid_registry">oid_registry</a>;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="certificate/index.html" title="mod x509_parser::certificate">certificate</a></dt><dd>X.509 Certificate object definitions and operations</dd><dt><a class="mod" href="certification_request/index.html" title="mod x509_parser::certification_request">certification_<wbr>request</a></dt><dt><a class="mod" href="cri_attributes/index.html" title="mod x509_parser::cri_attributes">cri_<wbr>attributes</a></dt><dt><a class="mod" href="error/index.html" title="mod x509_parser::error">error</a></dt><dd>X.509 errors</dd><dt><a class="mod" href="extensions/index.html" title="mod x509_parser::extensions">extensions</a></dt><dd>X.509 Extensions objects and types</dd><dt><a class="mod" href="objects/index.html" title="mod x509_parser::objects">objects</a></dt><dd>X.509 helper objects definitions and registry</dd><dt><a class="mod" href="pem/index.html" title="mod x509_parser::pem">pem</a></dt><dd>Decoding functions for PEM-encoded data</dd><dt><a class="mod" href="prelude/index.html" title="mod x509_parser::prelude">prelude</a></dt><dd>A “prelude” for users of the x509-parser crate.</dd><dt><a class="mod" href="public_key/index.html" title="mod x509_parser::public_key">public_<wbr>key</a></dt><dt><a class="mod" href="revocation_list/index.html" title="mod x509_parser::revocation_list">revocation_<wbr>list</a></dt><dt><a class="mod" href="signature_algorithm/index.html" title="mod x509_parser::signature_algorithm">signature_<wbr>algorithm</a></dt><dt><a class="mod" href="signature_value/index.html" title="mod x509_parser::signature_value">signature_<wbr>value</a></dt><dt><a class="mod" href="time/index.html" title="mod x509_parser::time">time</a></dt><dt><a class="mod" href="utils/index.html" title="mod x509_parser::utils">utils</a></dt><dt><a class="mod" href="x509/index.html" title="mod x509_parser::x509">x509</a></dt><dd>X.509 objects and types</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.parse_crl_der.html" title="fn x509_parser::parse_crl_der">parse_<wbr>crl_<wbr>der</a><wbr><span class="stab deprecated" title="">Deprecated</span></dt><dd>Parse a DER-encoded X.509 v2 CRL, and return the remaining of the input and the built
+object.</dd><dt><a class="fn" href="fn.parse_x509_certificate.html" title="fn x509_parser::parse_x509_certificate">parse_<wbr>x509_<wbr>certificate</a></dt><dd>Parse a <strong>DER-encoded</strong> X.509 Certificate, and return the remaining of the input and the built
+object.</dd><dt><a class="fn" href="fn.parse_x509_crl.html" title="fn x509_parser::parse_x509_crl">parse_<wbr>x509_<wbr>crl</a></dt><dd>Parse a DER-encoded X.509 v2 CRL, and return the remaining of the input and the built
+object.</dd><dt><a class="fn" href="fn.parse_x509_der.html" title="fn x509_parser::parse_x509_der">parse_<wbr>x509_<wbr>der</a><wbr><span class="stab deprecated" title="">Deprecated</span></dt><dd>Parse a DER-encoded X.509 Certificate, and return the remaining of the input and the built</dd></dl><script type="text/json" id="notable-traits-data">{"&<Vec<T, A> as Index<I>>::Output":"<h3>Notable traits for <code><a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;</code></h3><pre><code><div class=\"where\">impl&lt;A&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;<div class=\"where\">where\n    A: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/core/alloc/trait.Allocator.html\" title=\"trait core::alloc::Allocator\">Allocator</a>,</div></div>","&mut <Vec<T, A> as Index<I>>::Output":"<h3>Notable traits for <code><a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;</code></h3><pre><code><div class=\"where\">impl&lt;A&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;<div class=\"where\">where\n    A: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/core/alloc/trait.Allocator.html\" title=\"trait core::alloc::Allocator\">Allocator</a>,</div></div>","<Vec<T, A> as IntoIterator>::IntoIter":"<h3>Notable traits for <code><a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;</code></h3><pre><code><div class=\"where\">impl&lt;A&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;<div class=\"where\">where\n    A: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/core/alloc/trait.Allocator.html\" title=\"trait core::alloc::Allocator\">Allocator</a>,</div></div>","<Vec<T> as ToStatic>::Owned":"<h3>Notable traits for <code><a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;</code></h3><pre><code><div class=\"where\">impl&lt;A&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u8.html\">u8</a>, A&gt;<div class=\"where\">where\n    A: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.86.0/core/alloc/trait.Allocator.html\" title=\"trait core::alloc::Allocator\">Allocator</a>,</div></div>"}</script></section></div></main></body></html>

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["attach_rng","signing_context"],"struct":["SigningContext","SigningTranscriptWithRng","XoFTranscript"],"trait":["SigningTranscript"]};

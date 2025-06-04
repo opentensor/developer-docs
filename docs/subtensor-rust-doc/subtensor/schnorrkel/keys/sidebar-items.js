@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["KEYPAIR_LENGTH","MINI_SECRET_KEY_LENGTH","PUBLIC_KEY_LENGTH","SECRET_KEY_LENGTH"],"enum":["ExpansionMode"],"struct":["Keypair","MiniSecretKey","PublicKey","SecretKey"]};

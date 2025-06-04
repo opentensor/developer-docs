@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Simple Mermaid diagrams RustDoc integration"><title>simple_mermaid - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="simple_mermaid" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../simple_mermaid/index.html">simple_<wbr>mermaid</a><span class="version">0.1.1</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#usage" title="Usage">Usage</a></li><li><a href="#options" title="Options">Options</a></li><li><a href="#alternatives" title="Alternatives">Alternatives</a><ul><li><a href="#aquamarine" title="aquamarine">aquamarine</a></li><li><a href="#rsdoc" title="rsdoc">rsdoc</a></li></ul></li><li><a href="#disclaimer" title="Disclaimer">Disclaimer</a></li></ul><h3><a href="#macros">Crate Items</a></h3><ul class="block"><li><a href="#macros" title="Macros">Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>simple_mermaid</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/simple_mermaid/lib.rs.html#1-149">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Simple Mermaid diagrams RustDoc integration</p>
+<p>This crate provides a simple declarative macro to include <a href="https://mermaid.js.org/">mermaid</a> diagrams in your rustdoc documentation.
+Lookup the great <a href="https://mermaid.js.org/intro/n00b-gettingStarted.html">mermaid documentation</a> for details on the diagram syntax.</p>
+<h2 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h2>
+<ol>
+<li>Create your <a href="https://mermaid.js.org/">mermaid</a> diagrams in their own files (usually with <code>.mmd</code> or <code>.mermaid</code> extension).</li>
+<li>Call the <a href="macro.mermaid.html" title="macro simple_mermaid::mermaid">mermaid!</a> macro in a <code>#[doc]</code> attribute. Specify the route to the diagram file as a
+string literal. Note that the path is interpreted relative to the file where the macro is called,
+as it happens with the underlying <a href="https://doc.rust-lang.org/std/macro.include_str.html">include_str</a>.</li>
+<li>Done!</li>
+</ol>
+<p>Diagrams can be intermixed freely with regular documentation comments.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// A sequence diagram
+</span><span class="attr">#[doc = <span class="macro">mermaid!</span>(<span class="string">"sequence.mmd"</span>)]
+</span><span class="doccomment">///
+/// Then a flowchart
+</span><span class="attr">#[doc = <span class="macro">mermaid!</span>(<span class="string">"flowchart.mmd"</span>)]
+</span><span class="doccomment">///
+/// And some more regular text to end this block</span></code></pre></div>
+<p>Outputs:</p>
+<pre>
+A sequence diagram
+<pre class="mermaid" style="text-align:center;background: transparent;">
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you ?
+    Bob->>Alice: Fine, thank you. And you?
+    create participant Carl
+    Alice->>Carl: Hi Carl!
+    create actor D as Donald
+    Carl->>D: Hi!
+    destroy Carl
+    Alice-xCarl: We are too many
+    destroy Bob
+    Bob->>Alice: I agree
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<p>Then a flowchart</p>
+<pre class="mermaid" style="text-align:center;background: transparent;">
+flowchart TD
+    A[Start] --> B{Is it?}
+    B -- Yes --> C[OK]
+    C --> D[Rethink]
+    D --> B
+    B -- No ----> E[End]
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<p>And some more regular text to end this block
+</pre></p>
+<h2 id="options"><a class="doc-anchor" href="#options">§</a>Options</h2>
+<p>By default, diagrams will be centered and have a transparent background. This behaviour can be
+controlled with the following keywords after the path to the <a href="https://mermaid.js.org/">mermaid</a> file:</p>
+<ul>
+<li><strong>left</strong>, left align the diagram.</li>
+<li><strong>right</strong>, right align the diagram.</li>
+<li><strong>center</strong>, has not effect, but it"s accepted for completeness.</li>
+<li><strong>framed</strong>, add a gray frame to the diagram.</li>
+<li><strong>transparent</strong>, do not add the gray frame to the diagram.</li>
+</ul>
+<p><em>Left</em>, <em>center</em> and <em>right</em> are, of course, mutually exclusive; but either can be combined with <em>framed</em>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[doc = <span class="macro">mermaid!</span>(<span class="string">"er.mmd" </span>left)]
+#[doc = <span class="macro">mermaid!</span>(<span class="string">"graph.mmd" </span>framed)]
+#[doc = <span class="macro">mermaid!</span>(<span class="string">"timeline.mmd" </span>right)]
+#[doc = <span class="macro">mermaid!</span>(<span class="string">"larger.mmd" </span>center framed)]</span></code></pre></div>
+<pre class="mermaid" style="text-align:left;background: transparent;">
+erDiagram
+    CAR ||--o{ NAMED-DRIVER : allows
+    CAR {
+        string registrationNumber
+        string make
+        string model
+    }
+    PERSON ||--o{ NAMED-DRIVER : is
+    PERSON {
+        string firstName
+        string lastName
+        int age
+    }
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<pre class="mermaid" style="text-align:center;">
+graph TD
+    A[Enter Chart Definition] --> B(Preview)
+    B --> C{decide}
+    C --> D[Keep]
+    C --> E[Edit Definition]
+    E --> B
+    D --> F[Save Image and Code]
+    F --> B
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<pre class="mermaid" style="text-align:right;background: transparent;">
+timeline
+    title Timeline of Industrial Revolution
+    section 17th-20th century
+        Industry 1.0 : Machinery, Water power, Steam <br>power
+        Industry 2.0 : Electricity, Internal combustion engine, Mass production
+        Industry 3.0 : Electronics, Computers, Automation
+    section 21st century
+        Industry 4.0 : Internet, Robotics, Internet of Things
+        Industry 5.0 : Artificial intelligence, Big data,3D printing
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<pre class="mermaid" style="text-align:center;background: transparent;">
+sequenceDiagram
+    participant web as Web Browser
+    participant blog as Blog Service
+    participant account as Account Service
+    participant mail as Mail Service
+    participant db as Storage
+
+    Note over web,db: The user must be logged in to submit blog posts
+    web->>+account: Logs in using credentials
+    account->>db: Query stored accounts
+    db->>account: Respond with query result
+
+    alt Credentials not found
+        account->>web: Invalid credentials
+    else Credentials found
+        account->>-web: Successfully logged in
+
+        Note over web,db: When the user is authenticated, they can now submit new posts
+        web->>+blog: Submit new post
+        blog->>db: Store post data
+
+        par Notifications
+            blog--)mail: Send mail to blog subscribers
+            blog--)db: Store in-site notifications
+        and Response
+            blog-->>-web: Successfully posted
+        end
+    end
+</pre><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";var doc_theme = localStorage.getItem("rustdoc-theme");if (doc_theme === "dark" || doc_theme === "ayu") mermaid.initialize({theme: "dark"});</script>
+<h2 id="alternatives"><a class="doc-anchor" href="#alternatives">§</a>Alternatives</h2><h3 id="aquamarine"><a class="doc-anchor" href="#aquamarine">§</a>aquamarine</h3>
+<p>The <a href="https://crates.io/crates/aquamarine">aquamarine</a> introduces a procedural macro that converts regular code blocks marked with the
+<a href="https://mermaid.js.org/">mermaid</a> language tag. It also allows including the diagram from external files, but that comes with some limitations:</p>
+<ul>
+<li>Only one external diagram can be added to a single doc block.</li>
+<li>The external diagram will always appear at the end of the doc block.</li>
+</ul>
+<p>Those limitations made <a href="https://crates.io/crates/aquamarine">aquamarine</a> a non-option for me, since I strongly prefer leaving the diagrams in external files for several reasons:
+clutter, maintainability, IDE support, and, re-usability of the diagrams.</p>
+<p>Besides, the declarative macro used in this crate should be easier on compile times. And it comes with no dependencies at all!</p>
+<h3 id="rsdoc"><a class="doc-anchor" href="#rsdoc">§</a>rsdoc</h3>
+<p>The <a href="https://crates.io/crates/rsdoc">rsdoc</a> crate provides procedural macros to embed <a href="https://plantuml.com/">PlantUML</a> and images in doc coments.
+It can be used with code-blocks (similar to aquamarine) or with external files (similar to this crate).
+So, in this case, for me it was just a matter of personal taste, both <a href="https://plantuml.com/">PlantUML</a> and <a href="https://mermaid.js.org/">mermaid</a> are fantastic
+opensource projects. But PlantUML is Java… and my plants always die (<em>even a cactus I once had! How can a cactus die? The thing should not need water!</em>).</p>
+<h2 id="disclaimer"><a class="doc-anchor" href="#disclaimer">§</a>Disclaimer</h2>
+<p>Neither this crate nor it’s autor have any relation or affiliation with the <a href="https://mermaid.js.org/">mermaid</a> project, other that being an user of this magnific library.</p>
+<p>All the examples in this documentation have been extracted, verbatim or with minor updates, from the <a href="https://mermaid.js.org/intro/n00b-gettingStarted.html">mermaid documentation</a>.</p>
+</div></details><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.mermaid.html" title="macro simple_mermaid::mermaid">mermaid</a></dt><dd>Include a mermaid diagram in the documentation.</dd></dl></section></div></main></body></html>

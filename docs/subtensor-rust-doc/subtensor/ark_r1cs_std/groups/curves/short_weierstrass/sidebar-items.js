@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["bls12","mnt4","mnt6","non_zero_affine"],"struct":["AffineVar","ProjectiveVar"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["short_weierstrass","twisted_edwards"]};

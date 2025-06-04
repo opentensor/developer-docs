@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ResponsePayload"],"struct":["Response","SubscriptionPayload","SubscriptionPayloadError","Success"],"type":["SubscriptionError","SubscriptionResponse"]};

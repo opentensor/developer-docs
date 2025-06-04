@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Docify provides a simple set of rust macros, namely `#[docify::export]` and `docify::embed!`, that allow you to dynamically embed tests and examples at compile time from the current crate or sub-crates of the current crate directly within rust docs comments, with the option to make these examples runnable."><title>docify - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="docify" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../docify/index.html">docify</a><span class="version">0.2.8</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#general-usage" title="General Usage">General Usage</a></li><li><a href="#runnable-examples" title="Runnable Examples">Runnable Examples</a></li><li><a href="#dynamic-embedding-in-markdown-files" title="Dynamic Embedding in Markdown Files">Dynamic Embedding in Markdown Files</a></li></ul><h3><a href="#macros">Crate Items</a></h3><ul class="block"><li><a href="#macros" title="Macros">Macros</a></li><li><a href="#attributes" title="Attribute Macros">Attribute Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>docify</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/docify/lib.rs.html#1-80">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Docify provides a simple set of rust macros, namely <a href="attr.export.html" title="attr docify::export"><code>#[docify::export]</code></a> and
+<a href="macro.embed.html" title="macro docify::embed"><code>docify::embed!</code></a>, that allow you to dynamically embed tests and examples at
+compile time from the current crate or sub-crates of the current crate directly within rust
+docs comments, with the option to make these examples runnable.</p>
+<p>The intent behind docify is to allow you to showcase your best examples and tests directly
+in your docs, without having to update them in two places every time there is a change. It
+also encourages a methodology where crate authors better document their tests, since they
+can now showcase these directly in their doc comments.</p>
+<p>All-in-all this is a much better workflow than having doc examples isolated within your docs,
+since you can avoid boilerplate from the surrounding code and just focus on showcasing the item
+you want to highlight.</p>
+<h3 id="general-usage"><a class="doc-anchor" href="#general-usage">§</a>General Usage</h3>
+<p>Using <code>docify</code> is simple. First mark the tests/examples/items that you wish to embed with
+<code>#[docify::export]</code>, such as the following:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[docify::export]
+</span><span class="kw">fn </span>some_example() {
+    <span class="macro">assert_eq!</span>(<span class="number">2 </span>+ <span class="number">2</span>, <span class="number">4</span>);
+    <span class="macro">assert_eq!</span>(<span class="number">2 </span>+ <span class="number">3</span>, <span class="number">5</span>);
+    <span class="macro">assert_eq!</span>(<span class="number">3 </span>+ <span class="number">3</span>, <span class="number">6</span>);
+}</code></pre></div>
+<p>You can then embed this item directly in doc comments using the <code>docify::embed</code> macro:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// These are some docs about an item. You can embed examples, tests, and
+/// other items directly into docs using the following macro:
+</span><span class="attr">#[doc = <span class="macro">docify::embed!</span>(<span class="string">"examples/samples.rs"</span>, some_example)]
+</span><span class="doccomment">/// More docs can go here, the example will embed itself inline exactly
+/// where you reference it.
+</span><span class="kw">pub struct </span>SomeItem;</code></pre></div>
+<p>This will result in the following expanded doc comments:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// These are some docs about an item. You can embed examples, tests, and
+/// other items directly into docs using the following macro:
+/// ```ignore
+/// fn some_example() {
+///     assert_eq!(2 + 2, 4);
+///     assert_eq!(2 + 3, 5);
+///     assert_eq!(3 + 3, 6);
+/// }
+/// ```
+/// More docs can go here, the example will embed itself inline exactly
+/// where you reference it.
+</span><span class="kw">pub struct </span>SomeItem;</code></pre></div>
+<p>You can embed any item capable of having an attribute macro attached to it.</p>
+<h3 id="runnable-examples"><a class="doc-anchor" href="#runnable-examples">§</a>Runnable Examples</h3>
+<p>Note that you can also use the <a href="macro.embed_run.html" title="macro docify::embed_run"><code>embed_run!</code></a> version of the macro to
+make the embedded example compile/run as part of doc tests, which is desirable in certain
+situations even though typically the example will already be running/compiling somewhere
+else in your project.</p>
+<h3 id="dynamic-embedding-in-markdown-files"><a class="doc-anchor" href="#dynamic-embedding-in-markdown-files">§</a>Dynamic Embedding in Markdown Files</h3>
+<p>A newly added feature allows compiling entire directories of markdown files with HTML
+comments that contain regular <a href="macro.embed.html" title="macro docify::embed"><code>docify::embed!</code></a> calls. See
+<a href="macro.compile_markdown.html" title="macro docify::compile_markdown"><code>compile_markdown!</code></a> for more info.</p>
+<p>There is a live example of this as well in <code>README.md</code> where this same sentence appears in
+the root of the repo. <code>README.md</code> is dynamically generated when <code>cargo doc</code> is run based on
+the contents of <code>.README.docify.md</code>.</p>
+</div></details><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.compile_markdown.html" title="macro docify::compile_markdown">compile_<wbr>markdown</a></dt><dd>Allows you to use <a href="macro.embed.html" title="macro docify::embed"><code>docify::embed!(..)</code></a> within markdown source files via
+HTML comments and compiles the result for you (at compile-time).</dd><dt><a class="macro" href="macro.embed.html" title="macro docify::embed">embed</a></dt><dd>Embeds the specified item from the specified source file in a rust doc example, with pretty
+formatting enabled.</dd><dt><a class="macro" href="macro.embed_run.html" title="macro docify::embed_run">embed_<wbr>run</a></dt><dd>Exactly like <a href="macro.embed.html" title="macro docify::embed"><code>docify::embed!(..)</code></a> in every way <em>except</em> the generated
+examples are also run automatically as rust doc examples (<code>ignore</code> is not included).</dd></dl><h2 id="attributes" class="section-header">Attribute Macros<a href="#attributes" class="anchor">§</a></h2><dl class="item-table"><dt><a class="attr" href="attr.export.html" title="attr docify::export">export</a></dt><dd>Marks an item for export, making it available for embedding as a rust doc example via
+<a href="macro.embed.html" title="macro docify::embed"><code>docify::embed!(..)</code></a> or <a href="macro.embed_run.html" title="macro docify::embed_run"><code>docify::embed_run!(..)</code></a>.</dd><dt><a class="attr" href="attr.export_content.html" title="attr docify::export_content">export_<wbr>content</a></dt><dd>Like <a href="attr.export.html" title="attr docify::export"><code>#[docify::export]</code></a> but only exports the inner contents of whatever
+item the attribute is attached to.</dd></dl></section></div></main></body></html>

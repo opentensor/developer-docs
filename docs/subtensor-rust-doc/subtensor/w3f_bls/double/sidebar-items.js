@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["DoublePublicKey","DoubleSignature","DoubleSignedMessage","PublicKeyInSignatureGroup"],"trait":["DoublePublicKeyScheme"]};

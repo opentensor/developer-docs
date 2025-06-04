@@ -1,0 +1,1 @@
+searchState.loadedDescShard("tuple_vec_map", 0, "Deserializing maps to tuple-vecs.\nDeserialize to a <code>Vec&lt;(K, V)&gt;</code> as if it were a <code>HashMap&lt;K, V&gt;</code>.\nSerialize an array of <code>(K, V)</code> pairs as if it were a …")

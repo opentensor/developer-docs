@@ -1,0 +1,794 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/parity-db-0.4.13/src/index.rs`."><title>index.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="parity_db" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">parity_db/</div>index.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright 2021-2022 Parity Technologies (UK) Ltd.
+<a href=#2 id=2 data-nosnippet>2</a>// This file is dual-licensed as Apache-2.0 or MIT.
+<a href=#3 id=3 data-nosnippet>3</a>
+<a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use crate</span>::{
+<a href=#5 id=5 data-nosnippet>5</a>	column::{ColId, MIN_INDEX_BITS},
+<a href=#6 id=6 data-nosnippet>6</a>	display::hex,
+<a href=#7 id=7 data-nosnippet>7</a>	error::{try_io, Error, <span class="prelude-ty">Result</span>},
+<a href=#8 id=8 data-nosnippet>8</a>	file::madvise_random,
+<a href=#9 id=9 data-nosnippet>9</a>	log::{LogQuery, LogReader, LogWriter},
+<a href=#10 id=10 data-nosnippet>10</a>	parking_lot::{RwLock, RwLockUpgradableReadGuard, RwLockWriteGuard},
+<a href=#11 id=11 data-nosnippet>11</a>	stats::{<span class="self">self</span>, ColumnStats},
+<a href=#12 id=12 data-nosnippet>12</a>	table::{key::TableKey, SIZE_TIERS_BITS},
+<a href=#13 id=13 data-nosnippet>13</a>	Key,
+<a href=#14 id=14 data-nosnippet>14</a>};
+<a href=#15 id=15 data-nosnippet>15</a><span class="attr">#[cfg(target_arch = <span class="string">"x86"</span>)]
+<a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">use </span>std::arch::x86::<span class="kw-2">*</span>;
+<a href=#17 id=17 data-nosnippet>17</a><span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">use </span>std::arch::x86_64::<span class="kw-2">*</span>;
+<a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>std::convert::TryInto;
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a><span class="comment">// Index chunk consists of 8 64-bit entries.
+<a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">const </span>CHUNK_LEN: usize = CHUNK_ENTRIES * ENTRY_BYTES; <span class="comment">// 512 bytes
+<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">const </span>CHUNK_ENTRIES: usize = <span class="number">1 </span>&lt;&lt; CHUNK_ENTRIES_BITS;
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">const </span>CHUNK_ENTRIES_BITS: u8 = <span class="number">6</span>;
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">const </span>HEADER_SIZE: usize = <span class="number">512</span>;
+<a href=#26 id=26 data-nosnippet>26</a><span class="kw">const </span>META_SIZE: usize = <span class="number">16 </span>* <span class="number">1024</span>; <span class="comment">// Contains header and column stats
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">const </span>ENTRY_BITS: u8 = <span class="number">64</span>;
+<a href=#28 id=28 data-nosnippet>28</a><span class="kw">pub const </span>ENTRY_BYTES: usize = ENTRY_BITS <span class="kw">as </span>usize / <span class="number">8</span>;
+<a href=#29 id=29 data-nosnippet>29</a>
+<a href=#30 id=30 data-nosnippet>30</a><span class="kw">const </span>EMPTY_CHUNK: Chunk = Chunk([<span class="number">0u8</span>; CHUNK_LEN]);
+<a href=#31 id=31 data-nosnippet>31</a><span class="kw">const </span>EMPTY_ENTRIES: [Entry; CHUNK_ENTRIES] = [Entry::empty(); CHUNK_ENTRIES];
+<a href=#32 id=32 data-nosnippet>32</a>
+<a href=#33 id=33 data-nosnippet>33</a><span class="attr">#[repr(C, align(<span class="number">8</span>))]
+<a href=#34 id=34 data-nosnippet>34</a>#[derive(PartialEq, Eq, Clone, Debug)]
+<a href=#35 id=35 data-nosnippet>35</a></span><span class="kw">pub struct </span>Chunk(<span class="kw">pub </span>[u8; CHUNK_LEN]);
+<a href=#36 id=36 data-nosnippet>36</a>
+<a href=#37 id=37 data-nosnippet>37</a><span class="attr">#[allow(clippy::assertions_on_constants)]
+<a href=#38 id=38 data-nosnippet>38</a></span><span class="kw">const _</span>: () = <span class="macro">assert!</span>(META_SIZE &gt;= HEADER_SIZE + stats::TOTAL_SIZE);
+<a href=#39 id=39 data-nosnippet>39</a>
+<a href=#40 id=40 data-nosnippet>40</a><span class="attr">#[derive(PartialEq, Eq, Clone, Copy)]
+<a href=#41 id=41 data-nosnippet>41</a></span><span class="kw">pub struct </span>Entry(u64);
+<a href=#42 id=42 data-nosnippet>42</a>
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">impl </span>Entry {
+<a href=#44 id=44 data-nosnippet>44</a>	<span class="attr">#[inline]
+<a href=#45 id=45 data-nosnippet>45</a>	</span><span class="kw">fn </span>new(address: Address, partial_key: u64, index_bits: u8) -&gt; Entry {
+<a href=#46 id=46 data-nosnippet>46</a>		Entry((partial_key &lt;&lt; <span class="self">Self</span>::address_bits(index_bits)) | address.as_u64())
+<a href=#47 id=47 data-nosnippet>47</a>	}
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a>	<span class="attr">#[inline]
+<a href=#50 id=50 data-nosnippet>50</a>	</span><span class="kw">pub fn </span>address_bits(index_bits: u8) -&gt; u8 {
+<a href=#51 id=51 data-nosnippet>51</a>		<span class="comment">// with n index bits there are n * 64 possible entries and 256 size tiers
+<a href=#52 id=52 data-nosnippet>52</a>		</span>index_bits + CHUNK_ENTRIES_BITS + SIZE_TIERS_BITS
+<a href=#53 id=53 data-nosnippet>53</a>	}
+<a href=#54 id=54 data-nosnippet>54</a>
+<a href=#55 id=55 data-nosnippet>55</a>	<span class="attr">#[inline]
+<a href=#56 id=56 data-nosnippet>56</a>	</span><span class="kw">pub fn </span>last_address(index_bits: u8) -&gt; u64 {
+<a href=#57 id=57 data-nosnippet>57</a>		(<span class="number">1u64 </span>&lt;&lt; <span class="self">Self</span>::address_bits(index_bits)) - <span class="number">1
+<a href=#58 id=58 data-nosnippet>58</a>	</span>}
+<a href=#59 id=59 data-nosnippet>59</a>
+<a href=#60 id=60 data-nosnippet>60</a>	<span class="attr">#[inline]
+<a href=#61 id=61 data-nosnippet>61</a>	</span><span class="kw">pub fn </span>address(<span class="kw-2">&amp;</span><span class="self">self</span>, index_bits: u8) -&gt; Address {
+<a href=#62 id=62 data-nosnippet>62</a>		Address::from_u64(<span class="self">self</span>.<span class="number">0 </span>&amp; <span class="self">Self</span>::last_address(index_bits))
+<a href=#63 id=63 data-nosnippet>63</a>	}
+<a href=#64 id=64 data-nosnippet>64</a>
+<a href=#65 id=65 data-nosnippet>65</a>	<span class="attr">#[inline]
+<a href=#66 id=66 data-nosnippet>66</a>	</span><span class="kw">pub fn </span>partial_key(<span class="kw-2">&amp;</span><span class="self">self</span>, index_bits: u8) -&gt; u64 {
+<a href=#67 id=67 data-nosnippet>67</a>		<span class="self">self</span>.<span class="number">0 </span>&gt;&gt; <span class="self">Self</span>::address_bits(index_bits)
+<a href=#68 id=68 data-nosnippet>68</a>	}
+<a href=#69 id=69 data-nosnippet>69</a>
+<a href=#70 id=70 data-nosnippet>70</a>	<span class="attr">#[inline]
+<a href=#71 id=71 data-nosnippet>71</a>	</span><span class="kw">fn </span>extract_key(key_prefix: u64, index_bits: u8) -&gt; u64 {
+<a href=#72 id=72 data-nosnippet>72</a>		(key_prefix &lt;&lt; index_bits) &gt;&gt; <span class="self">Self</span>::address_bits(index_bits)
+<a href=#73 id=73 data-nosnippet>73</a>	}
+<a href=#74 id=74 data-nosnippet>74</a>
+<a href=#75 id=75 data-nosnippet>75</a>	<span class="attr">#[inline]
+<a href=#76 id=76 data-nosnippet>76</a>	</span><span class="kw">pub fn </span>is_empty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+<a href=#77 id=77 data-nosnippet>77</a>		<span class="self">self</span>.<span class="number">0 </span>== <span class="number">0
+<a href=#78 id=78 data-nosnippet>78</a>	</span>}
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a>	<span class="kw">pub fn </span>as_u64(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#81 id=81 data-nosnippet>81</a>		<span class="self">self</span>.<span class="number">0
+<a href=#82 id=82 data-nosnippet>82</a>	</span>}
+<a href=#83 id=83 data-nosnippet>83</a>
+<a href=#84 id=84 data-nosnippet>84</a>	<span class="kw">const fn </span>empty() -&gt; <span class="self">Self </span>{
+<a href=#85 id=85 data-nosnippet>85</a>		Entry(<span class="number">0</span>)
+<a href=#86 id=86 data-nosnippet>86</a>	}
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a>	<span class="kw">fn </span>from_u64(e: u64) -&gt; <span class="self">Self </span>{
+<a href=#89 id=89 data-nosnippet>89</a>		Entry(e)
+<a href=#90 id=90 data-nosnippet>90</a>	}
+<a href=#91 id=91 data-nosnippet>91</a>}
+<a href=#92 id=92 data-nosnippet>92</a>
+<a href=#93 id=93 data-nosnippet>93</a><span class="attr">#[derive(Clone, Copy, Eq, PartialEq, Hash, Debug)]
+<a href=#94 id=94 data-nosnippet>94</a></span><span class="kw">pub struct </span>Address(u64);
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a><span class="kw">impl </span>Address {
+<a href=#97 id=97 data-nosnippet>97</a>	<span class="kw">pub const fn </span>new(offset: u64, size_tier: u8) -&gt; Address {
+<a href=#98 id=98 data-nosnippet>98</a>		Address((offset &lt;&lt; SIZE_TIERS_BITS) | size_tier <span class="kw">as </span>u64)
+<a href=#99 id=99 data-nosnippet>99</a>	}
+<a href=#100 id=100 data-nosnippet>100</a>
+<a href=#101 id=101 data-nosnippet>101</a>	<span class="kw">pub const fn </span>from_u64(a: u64) -&gt; Address {
+<a href=#102 id=102 data-nosnippet>102</a>		Address(a)
+<a href=#103 id=103 data-nosnippet>103</a>	}
+<a href=#104 id=104 data-nosnippet>104</a>
+<a href=#105 id=105 data-nosnippet>105</a>	<span class="kw">pub fn </span>offset(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#106 id=106 data-nosnippet>106</a>		<span class="self">self</span>.<span class="number">0 </span>&gt;&gt; SIZE_TIERS_BITS
+<a href=#107 id=107 data-nosnippet>107</a>	}
+<a href=#108 id=108 data-nosnippet>108</a>
+<a href=#109 id=109 data-nosnippet>109</a>	<span class="kw">pub fn </span>size_tier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
+<a href=#110 id=110 data-nosnippet>110</a>		(<span class="self">self</span>.<span class="number">0 </span>&amp; ((<span class="number">1 </span>&lt;&lt; SIZE_TIERS_BITS) <span class="kw">as </span>u64 - <span class="number">1</span>)) <span class="kw">as </span>u8
+<a href=#111 id=111 data-nosnippet>111</a>	}
+<a href=#112 id=112 data-nosnippet>112</a>
+<a href=#113 id=113 data-nosnippet>113</a>	<span class="kw">pub fn </span>as_u64(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#114 id=114 data-nosnippet>114</a>		<span class="self">self</span>.<span class="number">0
+<a href=#115 id=115 data-nosnippet>115</a>	</span>}
+<a href=#116 id=116 data-nosnippet>116</a>}
+<a href=#117 id=117 data-nosnippet>117</a>
+<a href=#118 id=118 data-nosnippet>118</a><span class="kw">impl </span>std::fmt::Display <span class="kw">for </span>Address {
+<a href=#119 id=119 data-nosnippet>119</a>	<span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
+<a href=#120 id=120 data-nosnippet>120</a>		<span class="macro">write!</span>(f, <span class="string">"addr {:02}:{}"</span>, hex(<span class="kw-2">&amp;</span>[<span class="self">self</span>.size_tier()]), <span class="self">self</span>.offset())
+<a href=#121 id=121 data-nosnippet>121</a>	}
+<a href=#122 id=122 data-nosnippet>122</a>}
+<a href=#123 id=123 data-nosnippet>123</a>
+<a href=#124 id=124 data-nosnippet>124</a><span class="kw">pub enum </span>PlanOutcome {
+<a href=#125 id=125 data-nosnippet>125</a>	Written,
+<a href=#126 id=126 data-nosnippet>126</a>	NeedReindex,
+<a href=#127 id=127 data-nosnippet>127</a>	Skipped,
+<a href=#128 id=128 data-nosnippet>128</a>}
+<a href=#129 id=129 data-nosnippet>129</a>
+<a href=#130 id=130 data-nosnippet>130</a><span class="attr">#[derive(Debug)]
+<a href=#131 id=131 data-nosnippet>131</a></span><span class="kw">pub struct </span>IndexTable {
+<a href=#132 id=132 data-nosnippet>132</a>	<span class="kw">pub </span>id: TableId,
+<a href=#133 id=133 data-nosnippet>133</a>	map: RwLock&lt;<span class="prelude-ty">Option</span>&lt;memmap2::MmapMut&gt;&gt;,
+<a href=#134 id=134 data-nosnippet>134</a>	path: std::path::PathBuf,
+<a href=#135 id=135 data-nosnippet>135</a>}
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a><span class="kw">fn </span>total_entries(index_bits: u8) -&gt; u64 {
+<a href=#138 id=138 data-nosnippet>138</a>	total_chunks(index_bits) * CHUNK_ENTRIES <span class="kw">as </span>u64
+<a href=#139 id=139 data-nosnippet>139</a>}
+<a href=#140 id=140 data-nosnippet>140</a>
+<a href=#141 id=141 data-nosnippet>141</a><span class="kw">fn </span>total_chunks(index_bits: u8) -&gt; u64 {
+<a href=#142 id=142 data-nosnippet>142</a>	<span class="number">1u64 </span>&lt;&lt; index_bits
+<a href=#143 id=143 data-nosnippet>143</a>}
+<a href=#144 id=144 data-nosnippet>144</a>
+<a href=#145 id=145 data-nosnippet>145</a><span class="kw">fn </span>file_size(index_bits: u8) -&gt; u64 {
+<a href=#146 id=146 data-nosnippet>146</a>	total_entries(index_bits) * <span class="number">8 </span>+ META_SIZE <span class="kw">as </span>u64
+<a href=#147 id=147 data-nosnippet>147</a>}
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a><span class="attr">#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
+<a href=#150 id=150 data-nosnippet>150</a></span><span class="kw">pub struct </span>TableId(u16);
+<a href=#151 id=151 data-nosnippet>151</a>
+<a href=#152 id=152 data-nosnippet>152</a><span class="kw">impl </span>TableId {
+<a href=#153 id=153 data-nosnippet>153</a>	<span class="kw">pub fn </span>new(col: ColId, index_bits: u8) -&gt; TableId {
+<a href=#154 id=154 data-nosnippet>154</a>		TableId(((col <span class="kw">as </span>u16) &lt;&lt; <span class="number">8</span>) | (index_bits <span class="kw">as </span>u16))
+<a href=#155 id=155 data-nosnippet>155</a>	}
+<a href=#156 id=156 data-nosnippet>156</a>
+<a href=#157 id=157 data-nosnippet>157</a>	<span class="kw">pub fn </span>from_u16(id: u16) -&gt; TableId {
+<a href=#158 id=158 data-nosnippet>158</a>		TableId(id)
+<a href=#159 id=159 data-nosnippet>159</a>	}
+<a href=#160 id=160 data-nosnippet>160</a>
+<a href=#161 id=161 data-nosnippet>161</a>	<span class="kw">pub fn </span>col(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ColId {
+<a href=#162 id=162 data-nosnippet>162</a>		(<span class="self">self</span>.<span class="number">0 </span>&gt;&gt; <span class="number">8</span>) <span class="kw">as </span>ColId
+<a href=#163 id=163 data-nosnippet>163</a>	}
+<a href=#164 id=164 data-nosnippet>164</a>
+<a href=#165 id=165 data-nosnippet>165</a>	<span class="kw">pub fn </span>index_bits(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u8 {
+<a href=#166 id=166 data-nosnippet>166</a>		(<span class="self">self</span>.<span class="number">0 </span>&amp; <span class="number">0xff</span>) <span class="kw">as </span>u8
+<a href=#167 id=167 data-nosnippet>167</a>	}
+<a href=#168 id=168 data-nosnippet>168</a>
+<a href=#169 id=169 data-nosnippet>169</a>	<span class="kw">pub fn </span>file_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
+<a href=#170 id=170 data-nosnippet>170</a>		<span class="macro">format!</span>(<span class="string">"index_{:02}_{}"</span>, <span class="self">self</span>.col(), <span class="self">self</span>.index_bits())
+<a href=#171 id=171 data-nosnippet>171</a>	}
+<a href=#172 id=172 data-nosnippet>172</a>
+<a href=#173 id=173 data-nosnippet>173</a>	<span class="kw">pub fn </span>is_file_name(col: ColId, name: <span class="kw-2">&amp;</span>str) -&gt; bool {
+<a href=#174 id=174 data-nosnippet>174</a>		name.starts_with(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"index_{col:02}_"</span>))
+<a href=#175 id=175 data-nosnippet>175</a>	}
+<a href=#176 id=176 data-nosnippet>176</a>
+<a href=#177 id=177 data-nosnippet>177</a>	<span class="kw">pub fn </span>as_u16(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u16 {
+<a href=#178 id=178 data-nosnippet>178</a>		<span class="self">self</span>.<span class="number">0
+<a href=#179 id=179 data-nosnippet>179</a>	</span>}
+<a href=#180 id=180 data-nosnippet>180</a>
+<a href=#181 id=181 data-nosnippet>181</a>	<span class="kw">pub fn </span>total_chunks(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#182 id=182 data-nosnippet>182</a>		total_chunks(<span class="self">self</span>.index_bits())
+<a href=#183 id=183 data-nosnippet>183</a>	}
+<a href=#184 id=184 data-nosnippet>184</a>
+<a href=#185 id=185 data-nosnippet>185</a>	<span class="kw">pub fn </span>total_entries(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#186 id=186 data-nosnippet>186</a>		total_entries(<span class="self">self</span>.index_bits())
+<a href=#187 id=187 data-nosnippet>187</a>	}
+<a href=#188 id=188 data-nosnippet>188</a>
+<a href=#189 id=189 data-nosnippet>189</a>	<span class="kw">pub fn </span>log_index(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+<a href=#190 id=190 data-nosnippet>190</a>		<span class="self">self</span>.col() <span class="kw">as </span>usize * (<span class="number">64 </span>- MIN_INDEX_BITS) <span class="kw">as </span>usize + <span class="self">self</span>.index_bits() <span class="kw">as </span>usize
+<a href=#191 id=191 data-nosnippet>191</a>	}
+<a href=#192 id=192 data-nosnippet>192</a>
+<a href=#193 id=193 data-nosnippet>193</a>	<span class="kw">pub fn </span>from_log_index(i: usize) -&gt; <span class="self">Self </span>{
+<a href=#194 id=194 data-nosnippet>194</a>		<span class="kw">let </span>col = i / (<span class="number">64 </span>- MIN_INDEX_BITS) <span class="kw">as </span>usize;
+<a href=#195 id=195 data-nosnippet>195</a>		<span class="kw">let </span>bits = i % (<span class="number">64 </span>- MIN_INDEX_BITS) <span class="kw">as </span>usize;
+<a href=#196 id=196 data-nosnippet>196</a>		TableId::new(col <span class="kw">as </span>ColId, bits <span class="kw">as </span>u8)
+<a href=#197 id=197 data-nosnippet>197</a>	}
+<a href=#198 id=198 data-nosnippet>198</a>
+<a href=#199 id=199 data-nosnippet>199</a>	<span class="kw">pub const fn </span>max_log_indicies(num_columns: usize) -&gt; usize {
+<a href=#200 id=200 data-nosnippet>200</a>		(<span class="number">64 </span>- MIN_INDEX_BITS) <span class="kw">as </span>usize * num_columns
+<a href=#201 id=201 data-nosnippet>201</a>	}
+<a href=#202 id=202 data-nosnippet>202</a>}
+<a href=#203 id=203 data-nosnippet>203</a>
+<a href=#204 id=204 data-nosnippet>204</a><span class="kw">impl </span>std::fmt::Display <span class="kw">for </span>TableId {
+<a href=#205 id=205 data-nosnippet>205</a>	<span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
+<a href=#206 id=206 data-nosnippet>206</a>		<span class="macro">write!</span>(f, <span class="string">"i{:02}-{:02}"</span>, <span class="self">self</span>.col(), <span class="self">self</span>.index_bits())
+<a href=#207 id=207 data-nosnippet>207</a>	}
+<a href=#208 id=208 data-nosnippet>208</a>}
+<a href=#209 id=209 data-nosnippet>209</a>
+<a href=#210 id=210 data-nosnippet>210</a><span class="kw">impl </span>IndexTable {
+<a href=#211 id=211 data-nosnippet>211</a>	<span class="kw">pub fn </span>open_existing(path: <span class="kw-2">&amp;</span>std::path::Path, id: TableId) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;IndexTable&gt;&gt; {
+<a href=#212 id=212 data-nosnippet>212</a>		<span class="kw">let </span><span class="kw-2">mut </span>path: std::path::PathBuf = path.into();
+<a href=#213 id=213 data-nosnippet>213</a>		path.push(id.file_name());
+<a href=#214 id=214 data-nosnippet>214</a>
+<a href=#215 id=215 data-nosnippet>215</a>		<span class="kw">let </span>file = <span class="kw">match </span>std::fs::OpenOptions::new().read(<span class="bool-val">true</span>).write(<span class="bool-val">true</span>).open(path.as_path()) {
+<a href=#216 id=216 data-nosnippet>216</a>			<span class="prelude-val">Err</span>(e) <span class="kw">if </span>e.kind() == std::io::ErrorKind::NotFound =&gt; <span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+<a href=#217 id=217 data-nosnippet>217</a>			<span class="prelude-val">Err</span>(e) =&gt; <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Io(e)),
+<a href=#218 id=218 data-nosnippet>218</a>			<span class="prelude-val">Ok</span>(file) =&gt; file,
+<a href=#219 id=219 data-nosnippet>219</a>		};
+<a href=#220 id=220 data-nosnippet>220</a>
+<a href=#221 id=221 data-nosnippet>221</a>		<span class="macro">try_io!</span>(file.set_len(file_size(id.index_bits())));
+<a href=#222 id=222 data-nosnippet>222</a>		<span class="kw">let </span><span class="kw-2">mut </span>map = <span class="macro">try_io!</span>(<span class="kw">unsafe </span>{ memmap2::MmapMut::map_mut(<span class="kw-2">&amp;</span>file) });
+<a href=#223 id=223 data-nosnippet>223</a>		madvise_random(<span class="kw-2">&amp;mut </span>map);
+<a href=#224 id=224 data-nosnippet>224</a>		<span class="macro">log::debug!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"Opened existing index {}"</span>, id);
+<a href=#225 id=225 data-nosnippet>225</a>		<span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(IndexTable { id, path, map: RwLock::new(<span class="prelude-val">Some</span>(map)) }))
+<a href=#226 id=226 data-nosnippet>226</a>	}
+<a href=#227 id=227 data-nosnippet>227</a>
+<a href=#228 id=228 data-nosnippet>228</a>	<span class="kw">pub fn </span>create_new(path: <span class="kw-2">&amp;</span>std::path::Path, id: TableId) -&gt; IndexTable {
+<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">let </span><span class="kw-2">mut </span>path: std::path::PathBuf = path.into();
+<a href=#230 id=230 data-nosnippet>230</a>		path.push(id.file_name());
+<a href=#231 id=231 data-nosnippet>231</a>		IndexTable { id, path, map: RwLock::new(<span class="prelude-val">None</span>) }
+<a href=#232 id=232 data-nosnippet>232</a>	}
+<a href=#233 id=233 data-nosnippet>233</a>
+<a href=#234 id=234 data-nosnippet>234</a>	<span class="kw">pub fn </span>load_stats(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;ColumnStats&gt; {
+<a href=#235 id=235 data-nosnippet>235</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#236 id=236 data-nosnippet>236</a>			<span class="prelude-val">Ok</span>(ColumnStats::from_slice(<span class="macro">try_io!</span>(<span class="prelude-val">Ok</span>(
+<a href=#237 id=237 data-nosnippet>237</a>				<span class="kw-2">&amp;</span>map[HEADER_SIZE..HEADER_SIZE + stats::TOTAL_SIZE]
+<a href=#238 id=238 data-nosnippet>238</a>			))))
+<a href=#239 id=239 data-nosnippet>239</a>		} <span class="kw">else </span>{
+<a href=#240 id=240 data-nosnippet>240</a>			<span class="prelude-val">Ok</span>(ColumnStats::empty())
+<a href=#241 id=241 data-nosnippet>241</a>		}
+<a href=#242 id=242 data-nosnippet>242</a>	}
+<a href=#243 id=243 data-nosnippet>243</a>
+<a href=#244 id=244 data-nosnippet>244</a>	<span class="kw">pub fn </span>write_stats(<span class="kw-2">&amp;</span><span class="self">self</span>, stats: <span class="kw-2">&amp;</span>ColumnStats) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#245 id=245 data-nosnippet>245</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;mut *</span><span class="self">self</span>.map.write() {
+<a href=#246 id=246 data-nosnippet>246</a>			<span class="kw">let </span>slice = <span class="macro">try_io!</span>(<span class="prelude-val">Ok</span>(<span class="kw-2">&amp;mut </span>map[HEADER_SIZE..HEADER_SIZE + stats::TOTAL_SIZE]));
+<a href=#247 id=247 data-nosnippet>247</a>			stats.to_slice(slice);
+<a href=#248 id=248 data-nosnippet>248</a>		}
+<a href=#249 id=249 data-nosnippet>249</a>		<span class="prelude-val">Ok</span>(())
+<a href=#250 id=250 data-nosnippet>250</a>	}
+<a href=#251 id=251 data-nosnippet>251</a>
+<a href=#252 id=252 data-nosnippet>252</a>	<span class="kw">fn </span>chunk_at(index: u64, map: <span class="kw-2">&amp;</span>memmap2::MmapMut) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw-2">&amp;</span>Chunk&gt; {
+<a href=#253 id=253 data-nosnippet>253</a>		<span class="kw">let </span>offset = META_SIZE + index <span class="kw">as </span>usize * CHUNK_LEN;
+<a href=#254 id=254 data-nosnippet>254</a>		<span class="kw">let </span>ptr = <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(map[offset..offset + CHUNK_LEN].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>Chunk) };
+<a href=#255 id=255 data-nosnippet>255</a>		<span class="prelude-val">Ok</span>(<span class="macro">try_io!</span>(<span class="prelude-val">Ok</span>(ptr)))
+<a href=#256 id=256 data-nosnippet>256</a>	}
+<a href=#257 id=257 data-nosnippet>257</a>
+<a href=#258 id=258 data-nosnippet>258</a>	<span class="kw">fn </span>chunk_entries_at(index: u64, map: <span class="kw-2">&amp;</span>memmap2::MmapMut) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw-2">&amp;</span>[Entry; CHUNK_ENTRIES]&gt; {
+<a href=#259 id=259 data-nosnippet>259</a>		<span class="kw">let </span>offset = META_SIZE + index <span class="kw">as </span>usize * CHUNK_LEN;
+<a href=#260 id=260 data-nosnippet>260</a>		<span class="kw">let </span>ptr = <span class="kw">unsafe </span>{
+<a href=#261 id=261 data-nosnippet>261</a>			<span class="kw-2">&amp;*</span>(map[offset..offset + CHUNK_LEN].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>[Entry; CHUNK_ENTRIES])
+<a href=#262 id=262 data-nosnippet>262</a>		};
+<a href=#263 id=263 data-nosnippet>263</a>		<span class="prelude-val">Ok</span>(<span class="macro">try_io!</span>(<span class="prelude-val">Ok</span>(ptr)))
+<a href=#264 id=264 data-nosnippet>264</a>	}
+<a href=#265 id=265 data-nosnippet>265</a>	<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#266 id=266 data-nosnippet>266</a>	</span><span class="kw">fn </span>find_entry(<span class="kw-2">&amp;</span><span class="self">self</span>, key_prefix: u64, sub_index: usize, chunk: <span class="kw-2">&amp;</span>Chunk) -&gt; (Entry, usize) {
+<a href=#267 id=267 data-nosnippet>267</a>		<span class="self">self</span>.find_entry_sse2(key_prefix, sub_index, chunk)
+<a href=#268 id=268 data-nosnippet>268</a>	}
+<a href=#269 id=269 data-nosnippet>269</a>
+<a href=#270 id=270 data-nosnippet>270</a>	<span class="attr">#[cfg(not(target_arch = <span class="string">"x86_64"</span>))]
+<a href=#271 id=271 data-nosnippet>271</a>	</span><span class="kw">fn </span>find_entry(<span class="kw-2">&amp;</span><span class="self">self</span>, key_prefix: u64, sub_index: usize, chunk: <span class="kw-2">&amp;</span>Chunk) -&gt; (Entry, usize) {
+<a href=#272 id=272 data-nosnippet>272</a>		<span class="self">self</span>.find_entry_base(key_prefix, sub_index, chunk)
+<a href=#273 id=273 data-nosnippet>273</a>	}
+<a href=#274 id=274 data-nosnippet>274</a>
+<a href=#275 id=275 data-nosnippet>275</a>	<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#276 id=276 data-nosnippet>276</a>	</span><span class="kw">fn </span>find_entry_sse2(<span class="kw-2">&amp;</span><span class="self">self</span>, key_prefix: u64, sub_index: usize, chunk: <span class="kw-2">&amp;</span>Chunk) -&gt; (Entry, usize) {
+<a href=#277 id=277 data-nosnippet>277</a>		<span class="macro">assert!</span>(chunk.<span class="number">0</span>.len() &gt;= CHUNK_ENTRIES * <span class="number">8</span>); <span class="comment">// Bound checking (not done by SIMD instructions)
+<a href=#278 id=278 data-nosnippet>278</a>		</span><span class="kw">const _</span>: () = <span class="macro">assert!</span>(
+<a href=#279 id=279 data-nosnippet>279</a>			CHUNK_ENTRIES % <span class="number">4 </span>== <span class="number">0</span>,
+<a href=#280 id=280 data-nosnippet>280</a>			<span class="string">"We assume here we got buffer with a number of elements that is a multiple of 4"
+<a href=#281 id=281 data-nosnippet>281</a>		</span>);
+<a href=#282 id=282 data-nosnippet>282</a>
+<a href=#283 id=283 data-nosnippet>283</a>		<span class="kw">let </span>shift = std::cmp::max(<span class="number">32</span>, Entry::address_bits(<span class="self">self</span>.id.index_bits()));
+<a href=#284 id=284 data-nosnippet>284</a>		<span class="kw">let </span>pk = (key_prefix &lt;&lt; <span class="self">self</span>.id.index_bits()) &gt;&gt; shift;
+<a href=#285 id=285 data-nosnippet>285</a>		<span class="kw">if </span>pk == <span class="number">0 </span>{
+<a href=#286 id=286 data-nosnippet>286</a>			<span class="comment">// Fallback to base version when partial key is zero and would match empty entries.
+<a href=#287 id=287 data-nosnippet>287</a>			</span><span class="kw">return </span><span class="self">self</span>.find_entry_base(key_prefix, sub_index, chunk)
+<a href=#288 id=288 data-nosnippet>288</a>		}
+<a href=#289 id=289 data-nosnippet>289</a>		<span class="kw">unsafe </span>{
+<a href=#290 id=290 data-nosnippet>290</a>			<span class="kw">let </span>target = _mm_set1_epi32(pk <span class="kw">as </span>i32);
+<a href=#291 id=291 data-nosnippet>291</a>			<span class="kw">let </span>shift_mask = _mm_set_epi64x(<span class="number">0</span>, shift.into());
+<a href=#292 id=292 data-nosnippet>292</a>			<span class="kw">let </span><span class="kw-2">mut </span>i = (sub_index &gt;&gt; <span class="number">2</span>) &lt;&lt; <span class="number">2</span>; <span class="comment">// We keep an alignment of 4
+<a href=#293 id=293 data-nosnippet>293</a>			</span><span class="kw">let </span><span class="kw-2">mut </span>skip = (sub_index - i) <span class="kw">as </span>i32;
+<a href=#294 id=294 data-nosnippet>294</a>			<span class="kw">while </span>i + <span class="number">4 </span>&lt;= CHUNK_ENTRIES {
+<a href=#295 id=295 data-nosnippet>295</a>				<span class="comment">// We load the value 2 by 2
+<a href=#296 id=296 data-nosnippet>296</a>				// Then we remove the address by shifting such that the partial key is in the low
+<a href=#297 id=297 data-nosnippet>297</a>				// part
+<a href=#298 id=298 data-nosnippet>298</a>				</span><span class="kw">let </span>first_two = _mm_shuffle_epi32::&lt;<span class="number">0b11011000</span>&gt;(_mm_srl_epi64(
+<a href=#299 id=299 data-nosnippet>299</a>					_mm_loadu_si128(chunk.<span class="number">0</span>[i * <span class="number">8</span>..].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>__m128i),
+<a href=#300 id=300 data-nosnippet>300</a>					shift_mask,
+<a href=#301 id=301 data-nosnippet>301</a>				));
+<a href=#302 id=302 data-nosnippet>302</a>				<span class="kw">let </span>last_two = _mm_shuffle_epi32::&lt;<span class="number">0b11011000</span>&gt;(_mm_srl_epi64(
+<a href=#303 id=303 data-nosnippet>303</a>					_mm_loadu_si128(chunk.<span class="number">0</span>[(i + <span class="number">2</span>) * <span class="number">8</span>..].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>__m128i),
+<a href=#304 id=304 data-nosnippet>304</a>					shift_mask,
+<a href=#305 id=305 data-nosnippet>305</a>				));
+<a href=#306 id=306 data-nosnippet>306</a>				<span class="comment">// We set into current the input low parts
+<a href=#307 id=307 data-nosnippet>307</a>				</span><span class="kw">let </span>current = _mm_unpacklo_epi64(first_two, last_two);
+<a href=#308 id=308 data-nosnippet>308</a>				<span class="kw">let </span>cmp = _mm_movemask_epi8(_mm_cmpeq_epi32(current, target)) &gt;&gt; (skip * <span class="number">4</span>);
+<a href=#309 id=309 data-nosnippet>309</a>				<span class="kw">if </span>cmp != <span class="number">0 </span>{
+<a href=#310 id=310 data-nosnippet>310</a>					<span class="kw">let </span>position = i + skip <span class="kw">as </span>usize + (cmp.trailing_zeros() <span class="kw">as </span>usize) / <span class="number">4</span>;
+<a href=#311 id=311 data-nosnippet>311</a>					<span class="kw">return </span>(<span class="self">Self</span>::read_entry(chunk, position), position)
+<a href=#312 id=312 data-nosnippet>312</a>				}
+<a href=#313 id=313 data-nosnippet>313</a>				i += <span class="number">4</span>;
+<a href=#314 id=314 data-nosnippet>314</a>				skip = <span class="number">0</span>;
+<a href=#315 id=315 data-nosnippet>315</a>			}
+<a href=#316 id=316 data-nosnippet>316</a>		}
+<a href=#317 id=317 data-nosnippet>317</a>		(Entry::empty(), <span class="number">0</span>)
+<a href=#318 id=318 data-nosnippet>318</a>	}
+<a href=#319 id=319 data-nosnippet>319</a>
+<a href=#320 id=320 data-nosnippet>320</a>	<span class="kw">fn </span>find_entry_base(<span class="kw-2">&amp;</span><span class="self">self</span>, key_prefix: u64, sub_index: usize, chunk: <span class="kw-2">&amp;</span>Chunk) -&gt; (Entry, usize) {
+<a href=#321 id=321 data-nosnippet>321</a>		<span class="kw">let </span>partial_key = Entry::extract_key(key_prefix, <span class="self">self</span>.id.index_bits());
+<a href=#322 id=322 data-nosnippet>322</a>		<span class="kw">for </span>i <span class="kw">in </span>sub_index..CHUNK_ENTRIES {
+<a href=#323 id=323 data-nosnippet>323</a>			<span class="kw">let </span>entry = <span class="self">Self</span>::read_entry(chunk, i);
+<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">if </span>entry.partial_key(<span class="self">self</span>.id.index_bits()) == partial_key &amp;&amp; !entry.is_empty() {
+<a href=#325 id=325 data-nosnippet>325</a>				<span class="kw">return </span>(entry, i)
+<a href=#326 id=326 data-nosnippet>326</a>			}
+<a href=#327 id=327 data-nosnippet>327</a>		}
+<a href=#328 id=328 data-nosnippet>328</a>		(Entry::empty(), <span class="number">0</span>)
+<a href=#329 id=329 data-nosnippet>329</a>	}
+<a href=#330 id=330 data-nosnippet>330</a>
+<a href=#331 id=331 data-nosnippet>331</a>	<span class="comment">// Only returns 54 bits of the actual key.
+<a href=#332 id=332 data-nosnippet>332</a>	</span><span class="kw">pub fn </span>recover_key_prefix(<span class="kw-2">&amp;</span><span class="self">self</span>, chunk: u64, entry: Entry) -&gt; Key {
+<a href=#333 id=333 data-nosnippet>333</a>		<span class="comment">// Restore first 54 bits of the key.
+<a href=#334 id=334 data-nosnippet>334</a>		</span><span class="kw">let </span>partial_key = entry.partial_key(<span class="self">self</span>.id.index_bits());
+<a href=#335 id=335 data-nosnippet>335</a>		<span class="kw">let </span>k = <span class="number">64 </span>- Entry::address_bits(<span class="self">self</span>.id.index_bits());
+<a href=#336 id=336 data-nosnippet>336</a>		<span class="kw">let </span>index_key = (chunk &lt;&lt; (<span class="number">64 </span>- <span class="self">self</span>.id.index_bits())) |
+<a href=#337 id=337 data-nosnippet>337</a>			(partial_key &lt;&lt; (<span class="number">64 </span>- k - <span class="self">self</span>.id.index_bits()));
+<a href=#338 id=338 data-nosnippet>338</a>		<span class="kw">let </span><span class="kw-2">mut </span>key = Key::default();
+<a href=#339 id=339 data-nosnippet>339</a>		key[<span class="number">0</span>..<span class="number">8</span>].copy_from_slice(<span class="kw-2">&amp;</span>index_key.to_be_bytes());
+<a href=#340 id=340 data-nosnippet>340</a>		key
+<a href=#341 id=341 data-nosnippet>341</a>	}
+<a href=#342 id=342 data-nosnippet>342</a>
+<a href=#343 id=343 data-nosnippet>343</a>	<span class="kw">pub fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, key: <span class="kw-2">&amp;</span>Key, sub_index: usize, log: <span class="kw-2">&amp;</span><span class="kw">impl </span>LogQuery) -&gt; <span class="prelude-ty">Result</span>&lt;(Entry, usize)&gt; {
+<a href=#344 id=344 data-nosnippet>344</a>		<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Querying {}"</span>, <span class="self">self</span>.id, hex(key));
+<a href=#345 id=345 data-nosnippet>345</a>		<span class="kw">let </span>key = TableKey::index_from_partial(key);
+<a href=#346 id=346 data-nosnippet>346</a>		<span class="kw">let </span>chunk_index = <span class="self">self</span>.chunk_index(key);
+<a href=#347 id=347 data-nosnippet>347</a>
+<a href=#348 id=348 data-nosnippet>348</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(entry) = log.with_index(<span class="self">self</span>.id, chunk_index, |chunk| {
+<a href=#349 id=349 data-nosnippet>349</a>			<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Querying overlay at {}"</span>, <span class="self">self</span>.id, chunk_index);
+<a href=#350 id=350 data-nosnippet>350</a>			<span class="self">self</span>.find_entry(key, sub_index, chunk)
+<a href=#351 id=351 data-nosnippet>351</a>		}) {
+<a href=#352 id=352 data-nosnippet>352</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(entry)
+<a href=#353 id=353 data-nosnippet>353</a>		}
+<a href=#354 id=354 data-nosnippet>354</a>
+<a href=#355 id=355 data-nosnippet>355</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#356 id=356 data-nosnippet>356</a>			<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Querying chunk at {}"</span>, <span class="self">self</span>.id, chunk_index);
+<a href=#357 id=357 data-nosnippet>357</a>			<span class="kw">let </span>chunk = <span class="self">Self</span>::chunk_at(chunk_index, map)<span class="question-mark">?</span>;
+<a href=#358 id=358 data-nosnippet>358</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="self">self</span>.find_entry(key, sub_index, chunk))
+<a href=#359 id=359 data-nosnippet>359</a>		}
+<a href=#360 id=360 data-nosnippet>360</a>		<span class="prelude-val">Ok</span>((Entry::empty(), <span class="number">0</span>))
+<a href=#361 id=361 data-nosnippet>361</a>	}
+<a href=#362 id=362 data-nosnippet>362</a>
+<a href=#363 id=363 data-nosnippet>363</a>	<span class="kw">pub fn </span>entries(<span class="kw-2">&amp;</span><span class="self">self</span>, chunk_index: u64, log: <span class="kw-2">&amp;</span><span class="kw">impl </span>LogQuery) -&gt; <span class="prelude-ty">Result</span>&lt;[Entry; CHUNK_ENTRIES]&gt; {
+<a href=#364 id=364 data-nosnippet>364</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(entry) =
+<a href=#365 id=365 data-nosnippet>365</a>			log.with_index(<span class="self">self</span>.id, chunk_index, |chunk| <span class="kw-2">*</span><span class="self">Self</span>::transmute_chunk(chunk))
+<a href=#366 id=366 data-nosnippet>366</a>		{
+<a href=#367 id=367 data-nosnippet>367</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(entry)
+<a href=#368 id=368 data-nosnippet>368</a>		}
+<a href=#369 id=369 data-nosnippet>369</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#370 id=370 data-nosnippet>370</a>			<span class="kw">let </span>chunk = <span class="self">Self</span>::chunk_at(chunk_index, map)<span class="question-mark">?</span>;
+<a href=#371 id=371 data-nosnippet>371</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="kw-2">*</span><span class="self">Self</span>::transmute_chunk(chunk))
+<a href=#372 id=372 data-nosnippet>372</a>		}
+<a href=#373 id=373 data-nosnippet>373</a>		<span class="prelude-val">Ok</span>(EMPTY_ENTRIES)
+<a href=#374 id=374 data-nosnippet>374</a>	}
+<a href=#375 id=375 data-nosnippet>375</a>
+<a href=#376 id=376 data-nosnippet>376</a>	<span class="kw">pub fn </span>sorted_entries(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;Entry&gt;&gt; {
+<a href=#377 id=377 data-nosnippet>377</a>		<span class="macro">log::info!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Loading into memory"</span>, <span class="self">self</span>.id);
+<a href=#378 id=378 data-nosnippet>378</a>		<span class="kw">let </span><span class="kw-2">mut </span>target = Vec::with_capacity(<span class="self">self</span>.id.total_entries() <span class="kw">as </span>usize / <span class="number">2</span>);
+<a href=#379 id=379 data-nosnippet>379</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#380 id=380 data-nosnippet>380</a>			<span class="kw">for </span>chunk_index <span class="kw">in </span><span class="number">0</span>..<span class="self">self</span>.id.total_chunks() {
+<a href=#381 id=381 data-nosnippet>381</a>				<span class="kw">let </span>source = <span class="self">Self</span>::chunk_entries_at(chunk_index, map)<span class="question-mark">?</span>;
+<a href=#382 id=382 data-nosnippet>382</a>				<span class="kw">for </span>e <span class="kw">in </span>source {
+<a href=#383 id=383 data-nosnippet>383</a>					<span class="kw">if </span>!e.is_empty() {
+<a href=#384 id=384 data-nosnippet>384</a>						target.push(<span class="kw-2">*</span>e);
+<a href=#385 id=385 data-nosnippet>385</a>					}
+<a href=#386 id=386 data-nosnippet>386</a>				}
+<a href=#387 id=387 data-nosnippet>387</a>			}
+<a href=#388 id=388 data-nosnippet>388</a>		}
+<a href=#389 id=389 data-nosnippet>389</a>		<span class="macro">log::info!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Sorting index"</span>, <span class="self">self</span>.id);
+<a href=#390 id=390 data-nosnippet>390</a>		target.sort_unstable_by(|a, b| {
+<a href=#391 id=391 data-nosnippet>391</a>			<span class="kw">let </span>a = a.address(<span class="self">self</span>.id.index_bits());
+<a href=#392 id=392 data-nosnippet>392</a>			<span class="kw">let </span>b = b.address(<span class="self">self</span>.id.index_bits());
+<a href=#393 id=393 data-nosnippet>393</a>			a.size_tier().cmp(<span class="kw-2">&amp;</span>b.size_tier()).then_with(|| a.offset().cmp(<span class="kw-2">&amp;</span>b.offset()))
+<a href=#394 id=394 data-nosnippet>394</a>		});
+<a href=#395 id=395 data-nosnippet>395</a>		<span class="prelude-val">Ok</span>(target)
+<a href=#396 id=396 data-nosnippet>396</a>	}
+<a href=#397 id=397 data-nosnippet>397</a>
+<a href=#398 id=398 data-nosnippet>398</a>	<span class="attr">#[inline(always)]
+<a href=#399 id=399 data-nosnippet>399</a>	</span><span class="kw">fn </span>transmute_chunk(chunk: <span class="kw-2">&amp;</span>Chunk) -&gt; <span class="kw-2">&amp;</span>[Entry; CHUNK_ENTRIES] {
+<a href=#400 id=400 data-nosnippet>400</a>		<span class="kw">unsafe </span>{ std::mem::transmute(chunk) }
+<a href=#401 id=401 data-nosnippet>401</a>	}
+<a href=#402 id=402 data-nosnippet>402</a>
+<a href=#403 id=403 data-nosnippet>403</a>	<span class="attr">#[inline(always)]
+<a href=#404 id=404 data-nosnippet>404</a>	</span><span class="kw">fn </span>write_entry(entry: <span class="kw-2">&amp;</span>Entry, at: usize, chunk: <span class="kw-2">&amp;mut </span>Chunk) {
+<a href=#405 id=405 data-nosnippet>405</a>		chunk.<span class="number">0</span>[at * <span class="number">8</span>..at * <span class="number">8 </span>+ <span class="number">8</span>].copy_from_slice(<span class="kw-2">&amp;</span>entry.as_u64().to_le_bytes());
+<a href=#406 id=406 data-nosnippet>406</a>	}
+<a href=#407 id=407 data-nosnippet>407</a>
+<a href=#408 id=408 data-nosnippet>408</a>	<span class="attr">#[inline(always)]
+<a href=#409 id=409 data-nosnippet>409</a>	</span><span class="kw">fn </span>read_entry(chunk: <span class="kw-2">&amp;</span>Chunk, at: usize) -&gt; Entry {
+<a href=#410 id=410 data-nosnippet>410</a>		Entry::from_u64(u64::from_le_bytes(chunk.<span class="number">0</span>[at * <span class="number">8</span>..at * <span class="number">8 </span>+ <span class="number">8</span>].try_into().unwrap()))
+<a href=#411 id=411 data-nosnippet>411</a>	}
+<a href=#412 id=412 data-nosnippet>412</a>
+<a href=#413 id=413 data-nosnippet>413</a>	<span class="attr">#[inline(always)]
+<a href=#414 id=414 data-nosnippet>414</a>	</span><span class="kw">fn </span>chunk_index(<span class="kw-2">&amp;</span><span class="self">self</span>, key_prefix: u64) -&gt; u64 {
+<a href=#415 id=415 data-nosnippet>415</a>		key_prefix &gt;&gt; (ENTRY_BITS - <span class="self">self</span>.id.index_bits())
+<a href=#416 id=416 data-nosnippet>416</a>	}
+<a href=#417 id=417 data-nosnippet>417</a>
+<a href=#418 id=418 data-nosnippet>418</a>	<span class="kw">fn </span>plan_insert_chunk(
+<a href=#419 id=419 data-nosnippet>419</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#420 id=420 data-nosnippet>420</a>		key_prefix: u64,
+<a href=#421 id=421 data-nosnippet>421</a>		address: Address,
+<a href=#422 id=422 data-nosnippet>422</a>		<span class="kw-2">mut </span>chunk: Chunk,
+<a href=#423 id=423 data-nosnippet>423</a>		sub_index: <span class="prelude-ty">Option</span>&lt;usize&gt;,
+<a href=#424 id=424 data-nosnippet>424</a>		log: <span class="kw-2">&amp;mut </span>LogWriter,
+<a href=#425 id=425 data-nosnippet>425</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;PlanOutcome&gt; {
+<a href=#426 id=426 data-nosnippet>426</a>		<span class="kw">let </span>chunk_index = <span class="self">self</span>.chunk_index(key_prefix);
+<a href=#427 id=427 data-nosnippet>427</a>		<span class="kw">if </span>address.as_u64() &gt; Entry::last_address(<span class="self">self</span>.id.index_bits()) {
+<a href=#428 id=428 data-nosnippet>428</a>			<span class="comment">// Address overflow
+<a href=#429 id=429 data-nosnippet>429</a>			</span><span class="macro">log::warn!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Address space overflow at {}: {}"</span>, <span class="self">self</span>.id, chunk_index, address);
+<a href=#430 id=430 data-nosnippet>430</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(PlanOutcome::NeedReindex)
+<a href=#431 id=431 data-nosnippet>431</a>		}
+<a href=#432 id=432 data-nosnippet>432</a>		<span class="kw">let </span>partial_key = Entry::extract_key(key_prefix, <span class="self">self</span>.id.index_bits());
+<a href=#433 id=433 data-nosnippet>433</a>		<span class="kw">let </span>new_entry = Entry::new(address, partial_key, <span class="self">self</span>.id.index_bits());
+<a href=#434 id=434 data-nosnippet>434</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(i) = sub_index {
+<a href=#435 id=435 data-nosnippet>435</a>			<span class="kw">let </span>entry = <span class="self">Self</span>::read_entry(<span class="kw-2">&amp;</span>chunk, i);
+<a href=#436 id=436 data-nosnippet>436</a>			<span class="macro">assert_eq!</span>(
+<a href=#437 id=437 data-nosnippet>437</a>				entry.partial_key(<span class="self">self</span>.id.index_bits()),
+<a href=#438 id=438 data-nosnippet>438</a>				new_entry.partial_key(<span class="self">self</span>.id.index_bits())
+<a href=#439 id=439 data-nosnippet>439</a>			);
+<a href=#440 id=440 data-nosnippet>440</a>			<span class="self">Self</span>::write_entry(<span class="kw-2">&amp;</span>new_entry, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#441 id=441 data-nosnippet>441</a>			<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Replaced at {}.{}: {}"</span>, <span class="self">self</span>.id, chunk_index, i, new_entry.address(<span class="self">self</span>.id.index_bits()));
+<a href=#442 id=442 data-nosnippet>442</a>			log.insert_index(<span class="self">self</span>.id, chunk_index, i <span class="kw">as </span>u8, chunk);
+<a href=#443 id=443 data-nosnippet>443</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(PlanOutcome::Written)
+<a href=#444 id=444 data-nosnippet>444</a>		}
+<a href=#445 id=445 data-nosnippet>445</a>		<span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#446 id=446 data-nosnippet>446</a>			<span class="kw">let </span>entry = <span class="self">Self</span>::read_entry(<span class="kw-2">&amp;</span>chunk, i);
+<a href=#447 id=447 data-nosnippet>447</a>			<span class="kw">if </span>entry.is_empty() {
+<a href=#448 id=448 data-nosnippet>448</a>				<span class="self">Self</span>::write_entry(<span class="kw-2">&amp;</span>new_entry, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#449 id=449 data-nosnippet>449</a>				<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Inserted at {}.{}: {}"</span>, <span class="self">self</span>.id, chunk_index, i, new_entry.address(<span class="self">self</span>.id.index_bits()));
+<a href=#450 id=450 data-nosnippet>450</a>				log.insert_index(<span class="self">self</span>.id, chunk_index, i <span class="kw">as </span>u8, chunk);
+<a href=#451 id=451 data-nosnippet>451</a>				<span class="kw">return </span><span class="prelude-val">Ok</span>(PlanOutcome::Written)
+<a href=#452 id=452 data-nosnippet>452</a>			}
+<a href=#453 id=453 data-nosnippet>453</a>		}
+<a href=#454 id=454 data-nosnippet>454</a>		<span class="macro">log::debug!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Index chunk full at {}"</span>, <span class="self">self</span>.id, chunk_index);
+<a href=#455 id=455 data-nosnippet>455</a>		<span class="prelude-val">Ok</span>(PlanOutcome::NeedReindex)
+<a href=#456 id=456 data-nosnippet>456</a>	}
+<a href=#457 id=457 data-nosnippet>457</a>
+<a href=#458 id=458 data-nosnippet>458</a>	<span class="kw">pub fn </span>write_insert_plan(
+<a href=#459 id=459 data-nosnippet>459</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#460 id=460 data-nosnippet>460</a>		key: <span class="kw-2">&amp;</span>Key,
+<a href=#461 id=461 data-nosnippet>461</a>		address: Address,
+<a href=#462 id=462 data-nosnippet>462</a>		sub_index: <span class="prelude-ty">Option</span>&lt;usize&gt;,
+<a href=#463 id=463 data-nosnippet>463</a>		log: <span class="kw-2">&amp;mut </span>LogWriter,
+<a href=#464 id=464 data-nosnippet>464</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;PlanOutcome&gt; {
+<a href=#465 id=465 data-nosnippet>465</a>		<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Inserting {} -&gt; {}"</span>, <span class="self">self</span>.id, hex(key), address);
+<a href=#466 id=466 data-nosnippet>466</a>		<span class="kw">let </span>key_prefix = TableKey::index_from_partial(key);
+<a href=#467 id=467 data-nosnippet>467</a>		<span class="kw">let </span>chunk_index = <span class="self">self</span>.chunk_index(key_prefix);
+<a href=#468 id=468 data-nosnippet>468</a>
+<a href=#469 id=469 data-nosnippet>469</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(chunk) = log.with_index(<span class="self">self</span>.id, chunk_index, |chunk| chunk.clone()) {
+<a href=#470 id=470 data-nosnippet>470</a>			<span class="kw">return </span><span class="self">self</span>.plan_insert_chunk(key_prefix, address, chunk, sub_index, log)
+<a href=#471 id=471 data-nosnippet>471</a>		}
+<a href=#472 id=472 data-nosnippet>472</a>
+<a href=#473 id=473 data-nosnippet>473</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#474 id=474 data-nosnippet>474</a>			<span class="kw">let </span>chunk = <span class="self">Self</span>::chunk_at(chunk_index, map)<span class="question-mark">?</span>.clone();
+<a href=#475 id=475 data-nosnippet>475</a>			<span class="kw">return </span><span class="self">self</span>.plan_insert_chunk(key_prefix, address, chunk, sub_index, log)
+<a href=#476 id=476 data-nosnippet>476</a>		}
+<a href=#477 id=477 data-nosnippet>477</a>
+<a href=#478 id=478 data-nosnippet>478</a>		<span class="kw">let </span>chunk = EMPTY_CHUNK.clone();
+<a href=#479 id=479 data-nosnippet>479</a>		<span class="self">self</span>.plan_insert_chunk(key_prefix, address, chunk, sub_index, log)
+<a href=#480 id=480 data-nosnippet>480</a>	}
+<a href=#481 id=481 data-nosnippet>481</a>
+<a href=#482 id=482 data-nosnippet>482</a>	<span class="kw">fn </span>plan_remove_chunk(
+<a href=#483 id=483 data-nosnippet>483</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#484 id=484 data-nosnippet>484</a>		key_prefix: u64,
+<a href=#485 id=485 data-nosnippet>485</a>		<span class="kw-2">mut </span>chunk: Chunk,
+<a href=#486 id=486 data-nosnippet>486</a>		sub_index: usize,
+<a href=#487 id=487 data-nosnippet>487</a>		log: <span class="kw-2">&amp;mut </span>LogWriter,
+<a href=#488 id=488 data-nosnippet>488</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;PlanOutcome&gt; {
+<a href=#489 id=489 data-nosnippet>489</a>		<span class="kw">let </span>chunk_index = <span class="self">self</span>.chunk_index(key_prefix);
+<a href=#490 id=490 data-nosnippet>490</a>		<span class="kw">let </span>partial_key = Entry::extract_key(key_prefix, <span class="self">self</span>.id.index_bits());
+<a href=#491 id=491 data-nosnippet>491</a>
+<a href=#492 id=492 data-nosnippet>492</a>		<span class="kw">let </span>i = sub_index;
+<a href=#493 id=493 data-nosnippet>493</a>		<span class="kw">let </span>entry = <span class="self">Self</span>::read_entry(<span class="kw-2">&amp;</span>chunk, i);
+<a href=#494 id=494 data-nosnippet>494</a>		<span class="kw">if </span>!entry.is_empty() &amp;&amp; entry.partial_key(<span class="self">self</span>.id.index_bits()) == partial_key {
+<a href=#495 id=495 data-nosnippet>495</a>			<span class="kw">let </span>new_entry = Entry::empty();
+<a href=#496 id=496 data-nosnippet>496</a>			<span class="self">Self</span>::write_entry(<span class="kw-2">&amp;</span>new_entry, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#497 id=497 data-nosnippet>497</a>			log.insert_index(<span class="self">self</span>.id, chunk_index, i <span class="kw">as </span>u8, chunk);
+<a href=#498 id=498 data-nosnippet>498</a>			<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Removed at {}.{}"</span>, <span class="self">self</span>.id, chunk_index, i);
+<a href=#499 id=499 data-nosnippet>499</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(PlanOutcome::Written)
+<a href=#500 id=500 data-nosnippet>500</a>		}
+<a href=#501 id=501 data-nosnippet>501</a>		<span class="prelude-val">Ok</span>(PlanOutcome::Skipped)
+<a href=#502 id=502 data-nosnippet>502</a>	}
+<a href=#503 id=503 data-nosnippet>503</a>
+<a href=#504 id=504 data-nosnippet>504</a>	<span class="kw">pub fn </span>write_remove_plan(
+<a href=#505 id=505 data-nosnippet>505</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#506 id=506 data-nosnippet>506</a>		key: <span class="kw-2">&amp;</span>Key,
+<a href=#507 id=507 data-nosnippet>507</a>		sub_index: usize,
+<a href=#508 id=508 data-nosnippet>508</a>		log: <span class="kw-2">&amp;mut </span>LogWriter,
+<a href=#509 id=509 data-nosnippet>509</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;PlanOutcome&gt; {
+<a href=#510 id=510 data-nosnippet>510</a>		<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Removing {}"</span>, <span class="self">self</span>.id, hex(key));
+<a href=#511 id=511 data-nosnippet>511</a>		<span class="kw">let </span>key_prefix = TableKey::index_from_partial(key);
+<a href=#512 id=512 data-nosnippet>512</a>
+<a href=#513 id=513 data-nosnippet>513</a>		<span class="kw">let </span>chunk_index = <span class="self">self</span>.chunk_index(key_prefix);
+<a href=#514 id=514 data-nosnippet>514</a>
+<a href=#515 id=515 data-nosnippet>515</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(chunk) = log.with_index(<span class="self">self</span>.id, chunk_index, |chunk| chunk.clone()) {
+<a href=#516 id=516 data-nosnippet>516</a>			<span class="kw">return </span><span class="self">self</span>.plan_remove_chunk(key_prefix, chunk, sub_index, log)
+<a href=#517 id=517 data-nosnippet>517</a>		}
+<a href=#518 id=518 data-nosnippet>518</a>
+<a href=#519 id=519 data-nosnippet>519</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#520 id=520 data-nosnippet>520</a>			<span class="kw">let </span>chunk = <span class="self">Self</span>::chunk_at(chunk_index, map)<span class="question-mark">?</span>.clone();
+<a href=#521 id=521 data-nosnippet>521</a>			<span class="kw">return </span><span class="self">self</span>.plan_remove_chunk(key_prefix, chunk, sub_index, log)
+<a href=#522 id=522 data-nosnippet>522</a>		}
+<a href=#523 id=523 data-nosnippet>523</a>
+<a href=#524 id=524 data-nosnippet>524</a>		<span class="prelude-val">Ok</span>(PlanOutcome::Skipped)
+<a href=#525 id=525 data-nosnippet>525</a>	}
+<a href=#526 id=526 data-nosnippet>526</a>
+<a href=#527 id=527 data-nosnippet>527</a>	<span class="kw">pub fn </span>enact_plan(<span class="kw-2">&amp;</span><span class="self">self</span>, index: u64, log: <span class="kw-2">&amp;mut </span>LogReader) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#528 id=528 data-nosnippet>528</a>		<span class="kw">let </span><span class="kw-2">mut </span>map = <span class="self">self</span>.map.upgradable_read();
+<a href=#529 id=529 data-nosnippet>529</a>		<span class="kw">if </span>map.is_none() {
+<a href=#530 id=530 data-nosnippet>530</a>			<span class="kw">let </span><span class="kw-2">mut </span>wmap = RwLockUpgradableReadGuard::upgrade(map);
+<a href=#531 id=531 data-nosnippet>531</a>			<span class="kw">let </span>file = <span class="macro">try_io!</span>(std::fs::OpenOptions::new()
+<a href=#532 id=532 data-nosnippet>532</a>				.write(<span class="bool-val">true</span>)
+<a href=#533 id=533 data-nosnippet>533</a>				.read(<span class="bool-val">true</span>)
+<a href=#534 id=534 data-nosnippet>534</a>				.create_new(<span class="bool-val">true</span>)
+<a href=#535 id=535 data-nosnippet>535</a>				.open(<span class="self">self</span>.path.as_path()));
+<a href=#536 id=536 data-nosnippet>536</a>			<span class="macro">log::debug!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"Created new index {}"</span>, <span class="self">self</span>.id);
+<a href=#537 id=537 data-nosnippet>537</a>			<span class="macro">try_io!</span>(file.set_len(file_size(<span class="self">self</span>.id.index_bits())));
+<a href=#538 id=538 data-nosnippet>538</a>			<span class="kw">let </span><span class="kw-2">mut </span>mmap = <span class="macro">try_io!</span>(<span class="kw">unsafe </span>{ memmap2::MmapMut::map_mut(<span class="kw-2">&amp;</span>file) });
+<a href=#539 id=539 data-nosnippet>539</a>			madvise_random(<span class="kw-2">&amp;mut </span>mmap);
+<a href=#540 id=540 data-nosnippet>540</a>			<span class="kw-2">*</span>wmap = <span class="prelude-val">Some</span>(mmap);
+<a href=#541 id=541 data-nosnippet>541</a>			map = RwLockWriteGuard::downgrade_to_upgradable(wmap);
+<a href=#542 id=542 data-nosnippet>542</a>		}
+<a href=#543 id=543 data-nosnippet>543</a>
+<a href=#544 id=544 data-nosnippet>544</a>		<span class="kw">let </span>map = map.as_ref().unwrap();
+<a href=#545 id=545 data-nosnippet>545</a>		<span class="kw">let </span>offset = META_SIZE + index <span class="kw">as </span>usize * CHUNK_LEN;
+<a href=#546 id=546 data-nosnippet>546</a>		<span class="comment">// Nasty mutable pointer cast. We do ensure that all chunks that are being written are
+<a href=#547 id=547 data-nosnippet>547</a>		// accessed through the overlay in other threads.
+<a href=#548 id=548 data-nosnippet>548</a>		</span><span class="kw">let </span>ptr: <span class="kw-2">*mut </span>u8 = map.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span>u8;
+<a href=#549 id=549 data-nosnippet>549</a>		<span class="kw">let </span>chunk: <span class="kw-2">&amp;mut </span>[u8] = <span class="kw">unsafe </span>{
+<a href=#550 id=550 data-nosnippet>550</a>			<span class="kw">let </span>ptr = ptr.add(offset);
+<a href=#551 id=551 data-nosnippet>551</a>			std::slice::from_raw_parts_mut(ptr, CHUNK_LEN)
+<a href=#552 id=552 data-nosnippet>552</a>		};
+<a href=#553 id=553 data-nosnippet>553</a>		<span class="kw">let </span><span class="kw-2">mut </span>mask_buf = [<span class="number">0u8</span>; <span class="number">8</span>];
+<a href=#554 id=554 data-nosnippet>554</a>		log.read(<span class="kw-2">&amp;mut </span>mask_buf)<span class="question-mark">?</span>;
+<a href=#555 id=555 data-nosnippet>555</a>		<span class="kw">let </span><span class="kw-2">mut </span>mask = u64::from_le_bytes(mask_buf);
+<a href=#556 id=556 data-nosnippet>556</a>		<span class="kw">while </span>mask != <span class="number">0 </span>{
+<a href=#557 id=557 data-nosnippet>557</a>			<span class="kw">let </span>i = mask.trailing_zeros();
+<a href=#558 id=558 data-nosnippet>558</a>			mask &amp;= !(<span class="number">1 </span>&lt;&lt; i);
+<a href=#559 id=559 data-nosnippet>559</a>			log.read(<span class="macro">try_io!</span>(<span class="prelude-val">Ok</span>(
+<a href=#560 id=560 data-nosnippet>560</a>				<span class="kw-2">&amp;mut </span>chunk[i <span class="kw">as </span>usize * ENTRY_BYTES..(i <span class="kw">as </span>usize + <span class="number">1</span>) * ENTRY_BYTES]
+<a href=#561 id=561 data-nosnippet>561</a>			)))<span class="question-mark">?</span>;
+<a href=#562 id=562 data-nosnippet>562</a>		}
+<a href=#563 id=563 data-nosnippet>563</a>		<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Enacted chunk {}"</span>, <span class="self">self</span>.id, index);
+<a href=#564 id=564 data-nosnippet>564</a>		<span class="prelude-val">Ok</span>(())
+<a href=#565 id=565 data-nosnippet>565</a>	}
+<a href=#566 id=566 data-nosnippet>566</a>
+<a href=#567 id=567 data-nosnippet>567</a>	<span class="kw">pub fn </span>validate_plan(<span class="kw-2">&amp;</span><span class="self">self</span>, index: u64, log: <span class="kw-2">&amp;mut </span>LogReader) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#568 id=568 data-nosnippet>568</a>		<span class="kw">if </span>index &gt;= <span class="self">self</span>.id.total_entries() {
+<a href=#569 id=569 data-nosnippet>569</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(Error::Corruption(<span class="string">"Bad index"</span>.into()))
+<a href=#570 id=570 data-nosnippet>570</a>		}
+<a href=#571 id=571 data-nosnippet>571</a>		<span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="number">0u8</span>; <span class="number">8</span>];
+<a href=#572 id=572 data-nosnippet>572</a>		log.read(<span class="kw-2">&amp;mut </span>buf)<span class="question-mark">?</span>;
+<a href=#573 id=573 data-nosnippet>573</a>		<span class="kw">let </span><span class="kw-2">mut </span>mask = u64::from_le_bytes(buf);
+<a href=#574 id=574 data-nosnippet>574</a>		<span class="kw">while </span>mask != <span class="number">0 </span>{
+<a href=#575 id=575 data-nosnippet>575</a>			<span class="kw">let </span>i = mask.trailing_zeros();
+<a href=#576 id=576 data-nosnippet>576</a>			mask &amp;= !(<span class="number">1 </span>&lt;&lt; i);
+<a href=#577 id=577 data-nosnippet>577</a>			log.read(<span class="kw-2">&amp;mut </span>buf[..])<span class="question-mark">?</span>;
+<a href=#578 id=578 data-nosnippet>578</a>		}
+<a href=#579 id=579 data-nosnippet>579</a>		<span class="macro">log::trace!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Validated chunk {}"</span>, <span class="self">self</span>.id, index);
+<a href=#580 id=580 data-nosnippet>580</a>		<span class="prelude-val">Ok</span>(())
+<a href=#581 id=581 data-nosnippet>581</a>	}
+<a href=#582 id=582 data-nosnippet>582</a>
+<a href=#583 id=583 data-nosnippet>583</a>	<span class="kw">pub fn </span>skip_plan(log: <span class="kw-2">&amp;mut </span>LogReader) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#584 id=584 data-nosnippet>584</a>		<span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="number">0u8</span>; <span class="number">8</span>];
+<a href=#585 id=585 data-nosnippet>585</a>		log.read(<span class="kw-2">&amp;mut </span>buf)<span class="question-mark">?</span>;
+<a href=#586 id=586 data-nosnippet>586</a>		<span class="kw">let </span><span class="kw-2">mut </span>mask = u64::from_le_bytes(buf);
+<a href=#587 id=587 data-nosnippet>587</a>		<span class="kw">while </span>mask != <span class="number">0 </span>{
+<a href=#588 id=588 data-nosnippet>588</a>			<span class="kw">let </span>i = mask.trailing_zeros();
+<a href=#589 id=589 data-nosnippet>589</a>			mask &amp;= !(<span class="number">1 </span>&lt;&lt; i);
+<a href=#590 id=590 data-nosnippet>590</a>			log.read(<span class="kw-2">&amp;mut </span>buf[..])<span class="question-mark">?</span>;
+<a href=#591 id=591 data-nosnippet>591</a>		}
+<a href=#592 id=592 data-nosnippet>592</a>		<span class="prelude-val">Ok</span>(())
+<a href=#593 id=593 data-nosnippet>593</a>	}
+<a href=#594 id=594 data-nosnippet>594</a>
+<a href=#595 id=595 data-nosnippet>595</a>	<span class="kw">pub fn </span>drop_file(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#596 id=596 data-nosnippet>596</a>		drop(<span class="self">self</span>.map);
+<a href=#597 id=597 data-nosnippet>597</a>		<span class="macro">try_io!</span>(std::fs::remove_file(<span class="self">self</span>.path.as_path()));
+<a href=#598 id=598 data-nosnippet>598</a>		<span class="macro">log::debug!</span>(target: <span class="string">"parity-db"</span>, <span class="string">"{}: Dropped table"</span>, <span class="self">self</span>.id);
+<a href=#599 id=599 data-nosnippet>599</a>		<span class="prelude-val">Ok</span>(())
+<a href=#600 id=600 data-nosnippet>600</a>	}
+<a href=#601 id=601 data-nosnippet>601</a>
+<a href=#602 id=602 data-nosnippet>602</a>	<span class="kw">pub fn </span>flush(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#603 id=603 data-nosnippet>603</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(map) = <span class="kw-2">&amp;*</span><span class="self">self</span>.map.read() {
+<a href=#604 id=604 data-nosnippet>604</a>			<span class="comment">// Flush everything except stats.
+<a href=#605 id=605 data-nosnippet>605</a>			</span><span class="macro">try_io!</span>(map.flush_range(META_SIZE, map.len() - META_SIZE));
+<a href=#606 id=606 data-nosnippet>606</a>		}
+<a href=#607 id=607 data-nosnippet>607</a>		<span class="prelude-val">Ok</span>(())
+<a href=#608 id=608 data-nosnippet>608</a>	}
+<a href=#609 id=609 data-nosnippet>609</a>}
+<a href=#610 id=610 data-nosnippet>610</a>
+<a href=#611 id=611 data-nosnippet>611</a><span class="attr">#[cfg(test)]
+<a href=#612 id=612 data-nosnippet>612</a></span><span class="kw">mod </span>test {
+<a href=#613 id=613 data-nosnippet>613</a>	<span class="kw">use super</span>::<span class="kw-2">*</span>;
+<a href=#614 id=614 data-nosnippet>614</a>	<span class="kw">use </span>rand::{Rng, SeedableRng};
+<a href=#615 id=615 data-nosnippet>615</a>	<span class="kw">use </span>std::path::PathBuf;
+<a href=#616 id=616 data-nosnippet>616</a>	<span class="attr">#[cfg(feature = <span class="string">"bench"</span>)]
+<a href=#617 id=617 data-nosnippet>617</a>	</span><span class="kw">use </span>test::Bencher;
+<a href=#618 id=618 data-nosnippet>618</a>	<span class="attr">#[cfg(feature = <span class="string">"bench"</span>)]
+<a href=#619 id=619 data-nosnippet>619</a>	</span><span class="kw">extern crate </span>test;
+<a href=#620 id=620 data-nosnippet>620</a>
+<a href=#621 id=621 data-nosnippet>621</a>	<span class="attr">#[test]
+<a href=#622 id=622 data-nosnippet>622</a>	</span><span class="kw">fn </span>test_entries() {
+<a href=#623 id=623 data-nosnippet>623</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk = IndexTable::transmute_chunk(<span class="kw-2">&amp;</span>EMPTY_CHUNK).clone();
+<a href=#624 id=624 data-nosnippet>624</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk2 = EMPTY_CHUNK;
+<a href=#625 id=625 data-nosnippet>625</a>		<span class="kw">for </span>(i, chunk) <span class="kw">in </span>chunk.iter_mut().enumerate().take(CHUNK_ENTRIES) {
+<a href=#626 id=626 data-nosnippet>626</a>			<span class="kw">use </span>std::{
+<a href=#627 id=627 data-nosnippet>627</a>				collections::hash_map::DefaultHasher,
+<a href=#628 id=628 data-nosnippet>628</a>				hash::{Hash, Hasher},
+<a href=#629 id=629 data-nosnippet>629</a>			};
+<a href=#630 id=630 data-nosnippet>630</a>			<span class="kw">let </span><span class="kw-2">mut </span>hasher = DefaultHasher::new();
+<a href=#631 id=631 data-nosnippet>631</a>			i.hash(<span class="kw-2">&amp;mut </span>hasher);
+<a href=#632 id=632 data-nosnippet>632</a>			<span class="kw">let </span>hash = hasher.finish();
+<a href=#633 id=633 data-nosnippet>633</a>			<span class="kw">let </span>entry = Entry::from_u64(hash);
+<a href=#634 id=634 data-nosnippet>634</a>			IndexTable::write_entry(<span class="kw-2">&amp;</span>entry, i, <span class="kw-2">&amp;mut </span>chunk2);
+<a href=#635 id=635 data-nosnippet>635</a>			<span class="kw-2">*</span>chunk = entry;
+<a href=#636 id=636 data-nosnippet>636</a>		}
+<a href=#637 id=637 data-nosnippet>637</a>
+<a href=#638 id=638 data-nosnippet>638</a>		<span class="macro">assert!</span>(IndexTable::transmute_chunk(<span class="kw-2">&amp;</span>chunk2) == <span class="kw-2">&amp;</span>chunk);
+<a href=#639 id=639 data-nosnippet>639</a>	}
+<a href=#640 id=640 data-nosnippet>640</a>
+<a href=#641 id=641 data-nosnippet>641</a>	<span class="attr">#[test]
+<a href=#642 id=642 data-nosnippet>642</a>	</span><span class="kw">fn </span>test_find_entries() {
+<a href=#643 id=643 data-nosnippet>643</a>		<span class="kw">let </span>partial_keys = [<span class="number">1</span>, <span class="number">1 </span>&lt;&lt; <span class="number">10</span>, <span class="number">1 </span>&lt;&lt; <span class="number">20</span>];
+<a href=#644 id=644 data-nosnippet>644</a>		<span class="kw">for </span>index_bits <span class="kw">in </span>[<span class="number">16</span>, <span class="number">18</span>, <span class="number">20</span>, <span class="number">22</span>] {
+<a href=#645 id=645 data-nosnippet>645</a>			<span class="kw">let </span>index_table = IndexTable {
+<a href=#646 id=646 data-nosnippet>646</a>				id: TableId(index_bits.into()),
+<a href=#647 id=647 data-nosnippet>647</a>				map: RwLock::new(<span class="prelude-val">None</span>),
+<a href=#648 id=648 data-nosnippet>648</a>				path: PathBuf::new(),
+<a href=#649 id=649 data-nosnippet>649</a>			};
+<a href=#650 id=650 data-nosnippet>650</a>
+<a href=#651 id=651 data-nosnippet>651</a>			<span class="kw">let </span>data_address = Address::from_u64((<span class="number">1 </span>&lt;&lt; index_bits) - <span class="number">1</span>);
+<a href=#652 id=652 data-nosnippet>652</a>
+<a href=#653 id=653 data-nosnippet>653</a>			<span class="kw">let </span><span class="kw-2">mut </span>chunk = Chunk([<span class="number">0</span>; CHUNK_ENTRIES * <span class="number">8</span>]);
+<a href=#654 id=654 data-nosnippet>654</a>			<span class="kw">for </span>(i, partial_key) <span class="kw">in </span>partial_keys.iter().enumerate() {
+<a href=#655 id=655 data-nosnippet>655</a>				chunk.<span class="number">0</span>[i * <span class="number">8</span>..(i + <span class="number">1</span>) * <span class="number">8</span>].copy_from_slice(
+<a href=#656 id=656 data-nosnippet>656</a>					<span class="kw-2">&amp;</span>Entry::new(data_address, <span class="kw-2">*</span>partial_key, index_bits).as_u64().to_le_bytes(),
+<a href=#657 id=657 data-nosnippet>657</a>				);
+<a href=#658 id=658 data-nosnippet>658</a>			}
+<a href=#659 id=659 data-nosnippet>659</a>
+<a href=#660 id=660 data-nosnippet>660</a>			<span class="kw">for </span>partial_key <span class="kw">in </span><span class="kw-2">&amp;</span>partial_keys {
+<a href=#661 id=661 data-nosnippet>661</a>				<span class="kw">let </span>key_prefix = <span class="kw-2">*</span>partial_key &lt;&lt; (CHUNK_ENTRIES_BITS + SIZE_TIERS_BITS);
+<a href=#662 id=662 data-nosnippet>662</a>				<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#663 id=663 data-nosnippet>663</a>				</span><span class="macro">assert_eq!</span>(
+<a href=#664 id=664 data-nosnippet>664</a>					index_table.find_entry_sse2(key_prefix, <span class="number">0</span>, <span class="kw-2">&amp;</span>chunk).<span class="number">0</span>.partial_key(index_bits),
+<a href=#665 id=665 data-nosnippet>665</a>					<span class="kw-2">*</span>partial_key
+<a href=#666 id=666 data-nosnippet>666</a>				);
+<a href=#667 id=667 data-nosnippet>667</a>				<span class="macro">assert_eq!</span>(
+<a href=#668 id=668 data-nosnippet>668</a>					index_table.find_entry_base(key_prefix, <span class="number">0</span>, <span class="kw-2">&amp;</span>chunk).<span class="number">0</span>.partial_key(index_bits),
+<a href=#669 id=669 data-nosnippet>669</a>					<span class="kw-2">*</span>partial_key
+<a href=#670 id=670 data-nosnippet>670</a>				);
+<a href=#671 id=671 data-nosnippet>671</a>			}
+<a href=#672 id=672 data-nosnippet>672</a>		}
+<a href=#673 id=673 data-nosnippet>673</a>	}
+<a href=#674 id=674 data-nosnippet>674</a>
+<a href=#675 id=675 data-nosnippet>675</a>	<span class="attr">#[test]
+<a href=#676 id=676 data-nosnippet>676</a>	</span><span class="kw">fn </span>test_find_any_entry() {
+<a href=#677 id=677 data-nosnippet>677</a>		<span class="kw">let </span>table =
+<a href=#678 id=678 data-nosnippet>678</a>			IndexTable { id: TableId(<span class="number">18</span>), map: RwLock::new(<span class="prelude-val">None</span>), path: Default::default() };
+<a href=#679 id=679 data-nosnippet>679</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk = Chunk([<span class="number">0u8</span>; CHUNK_LEN]);
+<a href=#680 id=680 data-nosnippet>680</a>		<span class="kw">let </span><span class="kw-2">mut </span>entries = [Entry::empty(); CHUNK_ENTRIES];
+<a href=#681 id=681 data-nosnippet>681</a>		<span class="kw">let </span><span class="kw-2">mut </span>keys = [<span class="number">0u64</span>; CHUNK_ENTRIES];
+<a href=#682 id=682 data-nosnippet>682</a>		<span class="kw">let </span><span class="kw-2">mut </span>rng = rand::prelude::SmallRng::from_seed(Default::default());
+<a href=#683 id=683 data-nosnippet>683</a>		<span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#684 id=684 data-nosnippet>684</a>			keys[i] = rng.gen();
+<a href=#685 id=685 data-nosnippet>685</a>			<span class="kw">let </span>partial_key = Entry::extract_key(keys[i], <span class="number">18</span>);
+<a href=#686 id=686 data-nosnippet>686</a>			<span class="kw">let </span>e = Entry::new(Address::new(<span class="number">0</span>, <span class="number">0</span>), partial_key, <span class="number">18</span>);
+<a href=#687 id=687 data-nosnippet>687</a>			entries[i] = e;
+<a href=#688 id=688 data-nosnippet>688</a>			IndexTable::write_entry(<span class="kw-2">&amp;</span>e, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#689 id=689 data-nosnippet>689</a>		}
+<a href=#690 id=690 data-nosnippet>690</a>
+<a href=#691 id=691 data-nosnippet>691</a>		<span class="kw">for </span>target <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#692 id=692 data-nosnippet>692</a>			<span class="kw">for </span>start_pos <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#693 id=693 data-nosnippet>693</a>				<span class="kw">let </span>(e, i) = table.find_entry_base(keys[target], start_pos, <span class="kw-2">&amp;</span>chunk);
+<a href=#694 id=694 data-nosnippet>694</a>				<span class="kw">if </span>start_pos &lt;= target {
+<a href=#695 id=695 data-nosnippet>695</a>					<span class="macro">assert_eq!</span>((e.as_u64(), i), (entries[target].as_u64(), target));
+<a href=#696 id=696 data-nosnippet>696</a>				} <span class="kw">else </span>{
+<a href=#697 id=697 data-nosnippet>697</a>					<span class="macro">assert_eq!</span>((e.as_u64(), i), (Entry::empty().as_u64(), <span class="number">0</span>));
+<a href=#698 id=698 data-nosnippet>698</a>				}
+<a href=#699 id=699 data-nosnippet>699</a>				<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#700 id=700 data-nosnippet>700</a>				</span>{
+<a href=#701 id=701 data-nosnippet>701</a>					<span class="kw">let </span>(e, i) = table.find_entry_sse2(keys[target], start_pos, <span class="kw-2">&amp;</span>chunk);
+<a href=#702 id=702 data-nosnippet>702</a>					<span class="kw">if </span>start_pos &lt;= target {
+<a href=#703 id=703 data-nosnippet>703</a>						<span class="macro">assert_eq!</span>((e.as_u64(), i), (entries[target].as_u64(), target));
+<a href=#704 id=704 data-nosnippet>704</a>					} <span class="kw">else </span>{
+<a href=#705 id=705 data-nosnippet>705</a>						<span class="macro">assert_eq!</span>((e.as_u64(), i), (Entry::empty().as_u64(), <span class="number">0</span>));
+<a href=#706 id=706 data-nosnippet>706</a>					}
+<a href=#707 id=707 data-nosnippet>707</a>				}
+<a href=#708 id=708 data-nosnippet>708</a>			}
+<a href=#709 id=709 data-nosnippet>709</a>		}
+<a href=#710 id=710 data-nosnippet>710</a>	}
+<a href=#711 id=711 data-nosnippet>711</a>
+<a href=#712 id=712 data-nosnippet>712</a>	<span class="attr">#[test]
+<a href=#713 id=713 data-nosnippet>713</a>	</span><span class="kw">fn </span>test_find_entry_same_value() {
+<a href=#714 id=714 data-nosnippet>714</a>		<span class="kw">let </span>table =
+<a href=#715 id=715 data-nosnippet>715</a>			IndexTable { id: TableId(<span class="number">18</span>), map: RwLock::new(<span class="prelude-val">None</span>), path: Default::default() };
+<a href=#716 id=716 data-nosnippet>716</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk = Chunk([<span class="number">0u8</span>; CHUNK_LEN]);
+<a href=#717 id=717 data-nosnippet>717</a>		<span class="kw">let </span>key = <span class="number">0x4242424242424242</span>;
+<a href=#718 id=718 data-nosnippet>718</a>		<span class="kw">let </span>partial_key = Entry::extract_key(key, <span class="number">18</span>);
+<a href=#719 id=719 data-nosnippet>719</a>		<span class="kw">let </span>entry = Entry::new(Address::new(<span class="number">0</span>, <span class="number">0</span>), partial_key, <span class="number">18</span>);
+<a href=#720 id=720 data-nosnippet>720</a>		<span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#721 id=721 data-nosnippet>721</a>			IndexTable::write_entry(<span class="kw-2">&amp;</span>entry, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#722 id=722 data-nosnippet>722</a>		}
+<a href=#723 id=723 data-nosnippet>723</a>
+<a href=#724 id=724 data-nosnippet>724</a>		<span class="kw">for </span>start_pos <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#725 id=725 data-nosnippet>725</a>			<span class="kw">let </span>(<span class="kw">_</span>, i) = table.find_entry_base(key, start_pos, <span class="kw-2">&amp;</span>chunk);
+<a href=#726 id=726 data-nosnippet>726</a>			<span class="macro">assert_eq!</span>(i, start_pos);
+<a href=#727 id=727 data-nosnippet>727</a>			<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#728 id=728 data-nosnippet>728</a>			</span>{
+<a href=#729 id=729 data-nosnippet>729</a>				<span class="kw">let </span>(<span class="kw">_</span>, i) = table.find_entry_sse2(key, start_pos, <span class="kw-2">&amp;</span>chunk);
+<a href=#730 id=730 data-nosnippet>730</a>				<span class="macro">assert_eq!</span>(i, start_pos);
+<a href=#731 id=731 data-nosnippet>731</a>			}
+<a href=#732 id=732 data-nosnippet>732</a>		}
+<a href=#733 id=733 data-nosnippet>733</a>	}
+<a href=#734 id=734 data-nosnippet>734</a>
+<a href=#735 id=735 data-nosnippet>735</a>	<span class="attr">#[test]
+<a href=#736 id=736 data-nosnippet>736</a>	</span><span class="kw">fn </span>test_find_entry_zero_pk() {
+<a href=#737 id=737 data-nosnippet>737</a>		<span class="kw">let </span>table =
+<a href=#738 id=738 data-nosnippet>738</a>			IndexTable { id: TableId(<span class="number">16</span>), map: RwLock::new(<span class="prelude-val">None</span>), path: Default::default() };
+<a href=#739 id=739 data-nosnippet>739</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk = Chunk([<span class="number">0u8</span>; CHUNK_LEN]);
+<a href=#740 id=740 data-nosnippet>740</a>		<span class="kw">let </span>zero_key = <span class="number">0x0000000000000000</span>;
+<a href=#741 id=741 data-nosnippet>741</a>		<span class="kw">let </span>entry = Entry::new(Address::new(<span class="number">1</span>, <span class="number">1</span>), zero_key, <span class="number">16</span>);
+<a href=#742 id=742 data-nosnippet>742</a>
+<a href=#743 id=743 data-nosnippet>743</a>		<span class="comment">// Write at index 1. Index 0 contains an empty entry.
+<a href=#744 id=744 data-nosnippet>744</a>		</span>IndexTable::write_entry(<span class="kw-2">&amp;</span>entry, <span class="number">1</span>, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#745 id=745 data-nosnippet>745</a>
+<a href=#746 id=746 data-nosnippet>746</a>		<span class="kw">let </span>(<span class="kw">_</span>, i) = table.find_entry_base(zero_key, <span class="number">0</span>, <span class="kw-2">&amp;</span>chunk);
+<a href=#747 id=747 data-nosnippet>747</a>		<span class="macro">assert_eq!</span>(i, <span class="number">1</span>);
+<a href=#748 id=748 data-nosnippet>748</a>		<span class="attr">#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#749 id=749 data-nosnippet>749</a>		</span>{
+<a href=#750 id=750 data-nosnippet>750</a>			<span class="kw">let </span>(<span class="kw">_</span>, i) = table.find_entry_sse2(zero_key, <span class="number">0</span>, <span class="kw-2">&amp;</span>chunk);
+<a href=#751 id=751 data-nosnippet>751</a>			<span class="macro">assert_eq!</span>(i, <span class="number">1</span>);
+<a href=#752 id=752 data-nosnippet>752</a>		}
+<a href=#753 id=753 data-nosnippet>753</a>	}
+<a href=#754 id=754 data-nosnippet>754</a>
+<a href=#755 id=755 data-nosnippet>755</a>	<span class="attr">#[cfg(feature = <span class="string">"bench"</span>)]
+<a href=#756 id=756 data-nosnippet>756</a>	</span><span class="kw">fn </span>bench_find_entry_internal&lt;
+<a href=#757 id=757 data-nosnippet>757</a>		F: Fn(<span class="kw-2">&amp;</span>IndexTable, u64, usize, <span class="kw-2">&amp;</span>[u8; CHUNK_LEN]) -&gt; (Entry, usize),
+<a href=#758 id=758 data-nosnippet>758</a>	&gt;(
+<a href=#759 id=759 data-nosnippet>759</a>		b: <span class="kw-2">&amp;mut </span>Bencher,
+<a href=#760 id=760 data-nosnippet>760</a>		f: F,
+<a href=#761 id=761 data-nosnippet>761</a>	) {
+<a href=#762 id=762 data-nosnippet>762</a>		<span class="kw">let </span>table =
+<a href=#763 id=763 data-nosnippet>763</a>			IndexTable { id: TableId(<span class="number">18</span>), map: RwLock::new(<span class="prelude-val">None</span>), path: Default::default() };
+<a href=#764 id=764 data-nosnippet>764</a>		<span class="kw">let </span><span class="kw-2">mut </span>chunk = Chunk([<span class="number">0u8</span>; CHUNK_LEN]);
+<a href=#765 id=765 data-nosnippet>765</a>		<span class="kw">let </span><span class="kw-2">mut </span>keys = [<span class="number">0u64</span>; CHUNK_ENTRIES];
+<a href=#766 id=766 data-nosnippet>766</a>		<span class="kw">let </span><span class="kw-2">mut </span>rng = rand::prelude::SmallRng::from_seed(Default::default());
+<a href=#767 id=767 data-nosnippet>767</a>		<span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..CHUNK_ENTRIES {
+<a href=#768 id=768 data-nosnippet>768</a>			keys[i] = rng.gen();
+<a href=#769 id=769 data-nosnippet>769</a>			<span class="kw">let </span>partial_key = Entry::extract_key(keys[i], <span class="number">18</span>);
+<a href=#770 id=770 data-nosnippet>770</a>			<span class="kw">let </span>e = Entry::new(Address::new(<span class="number">0</span>, <span class="number">0</span>), partial_key, <span class="number">18</span>);
+<a href=#771 id=771 data-nosnippet>771</a>			IndexTable::write_entry(<span class="kw-2">&amp;</span>e, i, <span class="kw-2">&amp;mut </span>chunk);
+<a href=#772 id=772 data-nosnippet>772</a>		}
+<a href=#773 id=773 data-nosnippet>773</a>
+<a href=#774 id=774 data-nosnippet>774</a>		<span class="kw">let </span><span class="kw-2">mut </span>index = <span class="number">0</span>;
+<a href=#775 id=775 data-nosnippet>775</a>		b.iter(|| {
+<a href=#776 id=776 data-nosnippet>776</a>			<span class="kw">let </span>x = f(<span class="kw-2">&amp;</span>table, keys[index], <span class="number">0</span>, <span class="kw-2">&amp;</span>chunk).<span class="number">1</span>;
+<a href=#777 id=777 data-nosnippet>777</a>			<span class="macro">assert_eq!</span>(x, index);
+<a href=#778 id=778 data-nosnippet>778</a>			index = (index + <span class="number">1</span>) % CHUNK_ENTRIES;
+<a href=#779 id=779 data-nosnippet>779</a>		});
+<a href=#780 id=780 data-nosnippet>780</a>	}
+<a href=#781 id=781 data-nosnippet>781</a>
+<a href=#782 id=782 data-nosnippet>782</a>	<span class="attr">#[cfg(feature = <span class="string">"bench"</span>)]
+<a href=#783 id=783 data-nosnippet>783</a>	#[bench]
+<a href=#784 id=784 data-nosnippet>784</a>	</span><span class="kw">fn </span>bench_find_entry(b: <span class="kw-2">&amp;mut </span>Bencher) {
+<a href=#785 id=785 data-nosnippet>785</a>		bench_find_entry_internal(b, IndexTable::find_entry_base)
+<a href=#786 id=786 data-nosnippet>786</a>	}
+<a href=#787 id=787 data-nosnippet>787</a>
+<a href=#788 id=788 data-nosnippet>788</a>	<span class="attr">#[cfg(feature = <span class="string">"bench"</span>)]
+<a href=#789 id=789 data-nosnippet>789</a>	#[cfg(target_arch = <span class="string">"x86_64"</span>)]
+<a href=#790 id=790 data-nosnippet>790</a>	#[bench]
+<a href=#791 id=791 data-nosnippet>791</a>	</span><span class="kw">fn </span>bench_find_entry_sse(b: <span class="kw-2">&amp;mut </span>Bencher) {
+<a href=#792 id=792 data-nosnippet>792</a>		bench_find_entry_internal(b, IndexTable::find_entry_sse2)
+<a href=#793 id=793 data-nosnippet>793</a>	}
+<a href=#794 id=794 data-nosnippet>794</a>}</code></pre></div></section></main></body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Schnorr signature variants using Ristretto point compression."><title>schnorrkel - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="schnorrkel" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../schnorrkel/index.html">schnorrkel</a><span class="version">0.11.4</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a><ul><li><a href="#serialisation" title="Serialisation">Serialisation</a></li></ul></li></ul><h3><a href="#reexports">Crate Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>schnorrkel</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/schnorrkel/lib.rs.html#11-280">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Schnorr signature variants using Ristretto point compression.</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<p>Creating a signature on a message is simple.</p>
+<p>First, we need to generate a <code>Keypair</code>, which includes both public and
+secret halves of an asymmetric key.  To do so, we need a cryptographically
+secure pseudorandom number generator (CSPRNG).</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>rand::{Rng, rngs::OsRng};
+<span class="kw">use </span>schnorrkel::{Keypair,Signature};
+
+<span class="kw">let </span>keypair: Keypair = Keypair::generate_with(OsRng);</code></pre></div>
+<p>We can now use this <code>keypair</code> to sign a message:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>context = signing_context(<span class="string">b"this signature does this thing"</span>);
+<span class="kw">let </span>message: <span class="kw-2">&amp;</span>[u8] = <span class="string">"This is a test of the tsunami alert system."</span>.as_bytes();
+<span class="kw">let </span>signature: Signature = keypair.sign(context.bytes(message));</code></pre></div>
+<p>As well as to verify that this is, indeed, a valid signature on
+that <code>message</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">assert!</span>(keypair.verify(context.bytes(message), <span class="kw-2">&amp;</span>signature).is_ok());</code></pre></div>
+<p>Anyone else, given the <code>public</code> half of the <code>keypair</code> can also easily
+verify this signature:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>schnorrkel::PublicKey;
+<span class="kw">let </span>public_key: PublicKey = keypair.public;
+<span class="macro">assert!</span>(public_key.verify(context.bytes(message), <span class="kw-2">&amp;</span>signature).is_ok());</code></pre></div>
+<h3 id="serialisation"><a class="doc-anchor" href="#serialisation">§</a>Serialisation</h3>
+<p><code>PublicKey</code>s, <code>MiniSecretKey</code>s, <code>Keypair</code>s, and <code>Signature</code>s can be serialised
+into byte-arrays by calling <code>.to_bytes()</code>.  It’s perfectly acceptable and
+safe to transfer and/or store those bytes.  (Of course, never transfer your
+secret key to anyone else, since they will only need the public key to
+verify your signatures!)</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>schnorrkel::{PUBLIC_KEY_LENGTH, SECRET_KEY_LENGTH, KEYPAIR_LENGTH, SIGNATURE_LENGTH};
+
+<span class="kw">let </span>public_key_bytes: [u8; PUBLIC_KEY_LENGTH] = public_key.to_bytes();
+<span class="kw">let </span>secret_key_bytes: [u8; SECRET_KEY_LENGTH] = keypair.secret.to_bytes();
+<span class="kw">let </span>keypair_bytes:    [u8; KEYPAIR_LENGTH]    = keypair.to_bytes();
+<span class="kw">let </span>signature_bytes:  [u8; SIGNATURE_LENGTH]  = signature.to_bytes();</code></pre></div>
+<p>And similarly, decoded from bytes with <code>::from_bytes()</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>public_key: PublicKey = PublicKey::from_bytes(<span class="kw-2">&amp;</span>public_key_bytes)<span class="question-mark">?</span>;
+<span class="kw">let </span>secret_key: SecretKey = SecretKey::from_bytes(<span class="kw-2">&amp;</span>secret_key_bytes)<span class="question-mark">?</span>;
+<span class="kw">let </span>keypair:    Keypair   = Keypair::from_bytes(<span class="kw-2">&amp;</span>keypair_bytes)<span class="question-mark">?</span>;
+<span class="kw">let </span>signature:  Signature = Signature::from_bytes(<span class="kw-2">&amp;</span>signature_bytes)<span class="question-mark">?</span>;</code></pre></div>
+<h4 id="using-serde"><a class="doc-anchor" href="#using-serde">§</a>Using Serde</h4>
+<p>If you prefer the bytes to be wrapped in another serialisation format, all
+types additionally come with built-in <a href="https://serde.rs">serde</a> support by
+building <code>schnorrkell</code> via:</p>
+<div class="example-wrap"><pre class="language-bash"><code>$ cargo build --features=&quot;serde&quot;</code></pre></div>
+<p>They can be then serialised into any of the wire formats which serde supports.
+For example, using <a href="https://github.com/TyOverby/bincode">bincode</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>bincode::{serialize};
+
+<span class="kw">let </span>encoded_public_key: Vec&lt;u8&gt; = serialize(<span class="kw-2">&amp;</span>public_key).unwrap();
+<span class="kw">let </span>encoded_signature: Vec&lt;u8&gt; = serialize(<span class="kw-2">&amp;</span>signature).unwrap();</code></pre></div>
+<p>After sending the <code>encoded_public_key</code> and <code>encoded_signature</code>, the
+recipient may deserialise them and verify:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>bincode::{deserialize};
+
+<span class="kw">let </span>message: <span class="kw-2">&amp;</span>[u8] = <span class="string">"This is a test of the tsunami alert system."</span>.as_bytes();
+<span class="kw">let </span>decoded_public_key: PublicKey = deserialize(<span class="kw-2">&amp;</span>encoded_public_key).unwrap();
+<span class="kw">let </span>decoded_signature: Signature = deserialize(<span class="kw-2">&amp;</span>encoded_signature).unwrap();
+
+<span class="macro">assert!</span>( public_key.verify(context.bytes(message), <span class="kw-2">&amp;</span>signature).is_ok() );</code></pre></div>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.signing_context"><code>pub use crate::context::<a class="fn" href="context/fn.signing_context.html" title="fn schnorrkel::context::signing_context">signing_context</a>;</code></dt><dt id="reexport.Signature"><code>pub use crate::sign::<a class="struct" href="sign/struct.Signature.html" title="struct schnorrkel::sign::Signature">Signature</a>;</code></dt><dt id="reexport.SIGNATURE_LENGTH"><code>pub use crate::sign::<a class="constant" href="sign/constant.SIGNATURE_LENGTH.html" title="constant schnorrkel::sign::SIGNATURE_LENGTH">SIGNATURE_LENGTH</a>;</code></dt><dt id="reexport.SignatureError"><code>pub use crate::errors::<a class="enum" href="errors/enum.SignatureError.html" title="enum schnorrkel::errors::SignatureError">SignatureError</a>;</code></dt><dt id="reexport.SignatureResult"><code>pub use crate::errors::<a class="type" href="errors/type.SignatureResult.html" title="type schnorrkel::errors::SignatureResult">SignatureResult</a>;</code></dt><dt><code>pub use crate::<a class="mod" href="keys/index.html" title="mod schnorrkel::keys">keys</a>::*;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="cert/index.html" title="mod schnorrkel::cert">cert</a></dt><dd>Adaptor signature-based implicit certificate scheme for Ristretto</dd><dt><a class="mod" href="context/index.html" title="mod schnorrkel::context">context</a></dt><dd>Schnorr signature contexts and configuration, adaptable to most Schnorr signature schemes.</dd><dt><a class="mod" href="derive/index.html" title="mod schnorrkel::derive">derive</a></dt><dd>Implementation of “hierarchical deterministic key derivation” (HDKD) for Schnorr signatures on Ristretto</dd><dt><a class="mod" href="errors/index.html" title="mod schnorrkel::errors">errors</a></dt><dd>Errors which may occur when parsing keys and/or signatures to or from wire formats.</dd><dt><a class="mod" href="keys/index.html" title="mod schnorrkel::keys">keys</a></dt><dd>Schnorr signatures on the 2-torsion free subgroup of ed25519, as provided by the Ristretto point compression.</dd><dt><a class="mod" href="musig/index.html" title="mod schnorrkel::musig">musig</a><wbr><span class="stab deprecated" title="">Deprecated</span></dt><dd>Implementation for Ristretto Schnorr signatures of
+“Simple Schnorr Multi-Signatures with Applications to Bitcoin” by
+Gregory Maxwell, Andrew Poelstra, Yannick Seurin, and Pieter Wuille
+https://eprint.iacr.org/2018/068</dd><dt><a class="mod" href="points/index.html" title="mod schnorrkel::points">points</a></dt><dd>Ristretto point tooling</dd><dt><a class="mod" href="sign/index.html" title="mod schnorrkel::sign">sign</a></dt><dd>Schnorr signature creation and verification, including batch verification.</dd><dt><a class="mod" href="vrf/index.html" title="mod schnorrkel::vrf">vrf</a></dt><dd>Implementation of a Verifiable Random Function (VRF) using Ristretto points and Schnorr DLEQ proofs.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.PreparedBatch.html" title="struct schnorrkel::PreparedBatch">Prepared<wbr>Batch</a></dt><dd>Half-aggregated aka prepared batch signature</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.verify_batch.html" title="fn schnorrkel::verify_batch">verify_<wbr>batch</a></dt><dd>Verify a batch of <code>signatures</code> on <code>messages</code> with their respective <code>public_keys</code>.</dd><dt><a class="fn" href="fn.verify_batch_deterministic.html" title="fn schnorrkel::verify_batch_deterministic">verify_<wbr>batch_<wbr>deterministic</a></dt><dd>Verify a batch of <code>signatures</code> on <code>messages</code> with their respective <code>public_keys</code>.</dd><dt><a class="fn" href="fn.verify_batch_rng.html" title="fn schnorrkel::verify_batch_rng">verify_<wbr>batch_<wbr>rng</a></dt><dd>Verify a batch of <code>signatures</code> on <code>messages</code> with their respective <code>public_keys</code>.</dd></dl></section></div></main></body></html>

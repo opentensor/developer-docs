@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Call","Error","Event"],"fn":["__type_value_for_default_beacon_config"],"mod":["dispatchables","storage_types"],"struct":["DefaultBeaconConfig","Pallet"],"trait":["Config"],"type":["BeaconConfig","Module","Pulses"]};

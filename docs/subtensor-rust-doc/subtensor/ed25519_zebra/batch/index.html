@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Performs batch Ed25519 signature verification."><title>ed25519_zebra::batch - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="ed25519_zebra" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../ed25519_zebra/index.html">ed25519_<wbr>zebra</a><span class="version">4.0.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module batch</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate ed25519_<wbr>zebra</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">ed25519_zebra</a></div><h1>Module <span>batch</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/ed25519_zebra/batch.rs.html#1-216">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Performs batch Ed25519 signature verification.</p>
+<p>Batch verification asks whether <em>all</em> signatures in some set are valid,
+rather than asking whether <em>each</em> of them is valid. This allows sharing
+computations among all signature verifications, performing less work overall
+at the cost of higher latency (the entire batch must complete), complexity of
+caller code (which must assemble a batch of signatures across work-items),
+and loss of the ability to easily pinpoint failing signatures.</p>
+<p>In addition to these general tradeoffs, design flaws in Ed25519 specifically
+mean that batched verification may not agree with individual verification.
+Some signatures may verify as part of a batch but not on their own.
+This problem is fixed by <a href="https://zips.z.cash/zip-0215">ZIP215</a>, a precise specification for edge cases
+in Ed25519 signature validation that ensures that batch verification agrees
+with individual verification in all cases.</p>
+<p>This crate implements ZIP215, so batch verification always agrees with
+individual verification, but this is not guaranteed by other implementations.
+<strong>Be extremely careful when using Ed25519 in a consensus-critical context
+like a blockchain.</strong></p>
+<p>This batch verification implementation is adaptive in the sense that it
+detects multiple signatures created with the same verification key and
+automatically coalesces terms in the final verification equation. In the
+limiting case where all signatures in the batch are made with the same
+verification key, coalesced batch verification runs twice as fast as ordinary
+batch verification.</p>
+<p><img src="https://www.zfnd.org/images/coalesced-batch-graph.png" alt="benchmark" /></p>
+<p>This optimization doesn’t help much with Zcash, where public keys are random,
+but could be useful in proof-of-stake systems where signatures come from a
+set of validators (provided that system uses the ZIP215 rules).</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>batch = batch::Verifier::new();
+<span class="kw">for _ in </span><span class="number">0</span>..<span class="number">32 </span>{
+    <span class="kw">let </span>sk = SigningKey::new(rand::thread_rng());
+    <span class="kw">let </span>vk_bytes = VerificationKeyBytes::from(<span class="kw-2">&amp;</span>sk);
+    <span class="kw">let </span>msg = <span class="string">b"BatchVerifyTest"</span>;
+    <span class="kw">let </span>sig = sk.sign(<span class="kw-2">&amp;</span>msg[..]);
+    batch.queue((vk_bytes, sig, <span class="kw-2">&amp;</span>msg[..]));
+}
+<span class="macro">assert!</span>(batch.verify(rand::thread_rng()).is_ok());</code></pre></div>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Item.html" title="struct ed25519_zebra::batch::Item">Item</a></dt><dd>A batch verification item.</dd><dt><a class="struct" href="struct.Verifier.html" title="struct ed25519_zebra::batch::Verifier">Verifier</a></dt><dd>A batch verification context.</dd></dl></section></div></main></body></html>

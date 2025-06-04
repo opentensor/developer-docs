@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Ping Tutorial - Getting started with rust-libp2p"><title>libp2p::tutorials::ping - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="libp2p" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="icon" href="https://libp2p.io/img/favicon.png"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../../../libp2p/index.html"><img src="https://libp2p.io/img/logo_small.png" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../libp2p/index.html"><img src="https://libp2p.io/img/logo_small.png" alt="logo"></a><h2><a href="../../../libp2p/index.html">libp2p</a><span class="version">0.52.4</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module ping</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#ping-tutorial---getting-started-with-rust-libp2p" title="Ping Tutorial - Getting started with rust-libp2p">Ping Tutorial - Getting started with rust-libp2p</a><ul><li><a href="#scaffolding" title="Scaffolding">Scaffolding</a></li><li><a href="#network-identity" title="Network identity">Network identity</a></li><li><a href="#transport" title="Transport">Transport</a></li><li><a href="#network-behaviour" title="Network behaviour">Network behaviour</a></li><li><a href="#swarm" title="Swarm">Swarm</a></li><li><a href="#idle-connection-timeout" title="Idle connection timeout">Idle connection timeout</a></li><li><a href="#multiaddr" title="Multiaddr">Multiaddr</a></li><li><a href="#continuously-polling-the-swarm" title="Continuously polling the Swarm">Continuously polling the Swarm</a></li><li><a href="#running-two-nodes" title="Running two nodes">Running two nodes</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In libp2p::<wbr>tutorials</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">libp2p</a>::<wbr><a href="../index.html">tutorials</a></div><h1>Module <span>ping</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/libp2p/tutorials/ping.rs.html#21-376">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="ping-tutorial---getting-started-with-rust-libp2p"><a class="doc-anchor" href="#ping-tutorial---getting-started-with-rust-libp2p">§</a>Ping Tutorial - Getting started with rust-libp2p</h2>
+<p>This tutorial aims to give newcomers a hands-on overview of how to use the
+Rust libp2p implementation. People new to Rust likely want to get started on
+<a href="https://www.rust-lang.org/">Rust</a> itself, before diving into all the
+networking fun. This library makes heavy use of asynchronous Rust. In case
+you are not familiar with this concept, the Rust
+<a href="https://rust-lang.github.io/async-book/">async-book</a> should prove useful.
+People new to libp2p might prefer to get a general overview at
+<a href="https://libp2p.io/">libp2p.io</a>
+first, although libp2p knowledge is not required for this tutorial.</p>
+<p>We are going to build a small <code>ping</code> clone, sending a ping to a peer,
+expecting a pong as a response.</p>
+<h3 id="scaffolding"><a class="doc-anchor" href="#scaffolding">§</a>Scaffolding</h3>
+<p>Let’s start off by</p>
+<ol>
+<li>
+<p>Updating to the latest Rust toolchain, e.g.: <code>rustup update</code></p>
+</li>
+<li>
+<p>Creating a new crate: <code>cargo init rust-libp2p-tutorial</code></p>
+</li>
+<li>
+<p>Adding <code>libp2p</code> as well as <code>futures</code> as dependencies in the
+<code>Cargo.toml</code> file. Current crate versions may be found at
+<a href="https://crates.io/">crates.io</a>.
+We will also include <code>async-std</code> with the
+“attributes” feature to allow for an <code>async main</code>.
+At the time of writing we have:</p>
+<div class="example-wrap"><pre class="language-yaml"><code>[package]
+    name = &quot;rust-libp2p-tutorial&quot;
+    version = &quot;0.1.0&quot;
+    edition = &quot;2021&quot;
+
+[dependencies]
+    libp2p = { version = &quot;0.52&quot;, features = [&quot;tcp&quot;, &quot;dns&quot;, &quot;async-std&quot;, &quot;noise&quot;, &quot;yamux&quot;, &quot;websocket&quot;, &quot;ping&quot;, &quot;macros&quot;] }
+    futures = &quot;0.3&quot;
+    env_logger = &quot;0.10.0&quot;
+    async-std = { version = &quot;1.12&quot;, features = [&quot;attributes&quot;] }</code></pre></div></li>
+</ol>
+<h3 id="network-identity"><a class="doc-anchor" href="#network-identity">§</a>Network identity</h3>
+<p>With all the scaffolding in place, we can dive into the libp2p specifics.
+First we need to create a network identity for our local node in <code>async fn main()</code>, annotated with an attribute to allow <code>main</code> to be <code>async</code>.
+Identities in libp2p are handled via a public/private key pair.
+Nodes identify each other via their <a href="../../struct.PeerId.html" title="struct libp2p::PeerId"><code>PeerId</code></a> which is
+derived from their public key. Now, replace the contents of main.rs by:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::error::Error;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    env_logger::init();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity();
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>Go ahead and build and run the above code with: <code>cargo run</code>. Nothing happening thus far.</p>
+<h3 id="transport"><a class="doc-anchor" href="#transport">§</a>Transport</h3>
+<p>Next up we need to construct a transport. Each transport in libp2p provides encrypted streams.
+E.g. combining TCP to establish connections, TLS to encrypt these connections and Yamux to run
+one or more streams on a connection. Another libp2p transport is QUIC, providing encrypted
+streams out-of-the-box. We will stick to TCP for now. Each of these implement the <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a>
+trait.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>libp2p::{identity, PeerId};
+<span class="kw">use </span>std::error::Error;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    env_logger::init();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?</span>;
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<h3 id="network-behaviour"><a class="doc-anchor" href="#network-behaviour">§</a>Network behaviour</h3>
+<p>Now it is time to look at another core trait of rust-libp2p: the
+<a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a>. While the previously introduced trait <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a>
+defines <em>how</em> to send bytes on the network, a <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a> defines
+<em>what</em> bytes and to <em>whom</em> to send on the network.</p>
+<p>To make this more concrete, let’s take a look at a simple implementation of
+the <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a> trait: the <a href="../../ping/struct.Behaviour.html" title="struct libp2p::ping::Behaviour"><code>ping::Behaviour</code></a>.
+As you might have guessed, similar to the good old ICMP <code>ping</code> network tool,
+libp2p <a href="../../ping/struct.Behaviour.html" title="struct libp2p::ping::Behaviour"><code>ping::Behaviour</code></a> sends a ping to a peer and expects
+to receive a pong in turn. The <a href="../../ping/struct.Behaviour.html" title="struct libp2p::ping::Behaviour"><code>ping::Behaviour</code></a> does not care <em>how</em>
+the ping and pong messages are sent on the network, whether they are sent via
+TCP, whether they are encrypted via <a href="../../noise/index.html" title="mod libp2p::noise">noise</a> or just in
+<a href="crate::plaintext">plaintext</a>. It only cares about <em>what</em> messages and to <em>whom</em> to sent on the
+network.</p>
+<p>The two traits <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a> and <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a> allow us to cleanly
+separate <em>how</em> to send bytes from <em>what</em> bytes and to <em>whom</em> to send.</p>
+<p>With the above in mind, let’s extend our example, creating a <a href="../../ping/struct.Behaviour.html" title="struct libp2p::ping::Behaviour"><code>ping::Behaviour</code></a> at the end:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>libp2p::swarm::NetworkBehaviour;
+<span class="kw">use </span>libp2p::{identity, ping, PeerId};
+<span class="kw">use </span>std::error::Error;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    env_logger::init();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?
+        </span>.with_behaviour(|<span class="kw">_</span>| ping::Behaviour::default())<span class="question-mark">?</span>;
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<h3 id="swarm"><a class="doc-anchor" href="#swarm">§</a>Swarm</h3>
+<p>Now that we have a <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a> and a <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a>, we can build the <a href="../../struct.Swarm.html" title="struct libp2p::Swarm"><code>Swarm</code></a>
+which connects the two, allowing both to make progress. Put simply, a <a href="../../struct.Swarm.html" title="struct libp2p::Swarm"><code>Swarm</code></a> drives both a
+<a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a> and a <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a> forward, passing commands from the <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a>
+to the <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a> as well as events from the <a href="../../trait.Transport.html" title="trait libp2p::Transport"><code>Transport</code></a> to the <a href="../../swarm/trait.NetworkBehaviour.html" title="trait libp2p::swarm::NetworkBehaviour"><code>NetworkBehaviour</code></a>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>libp2p::swarm::{NetworkBehaviour, SwarmBuilder};
+<span class="kw">use </span>libp2p::{identity, ping, PeerId};
+<span class="kw">use </span>std::error::Error;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    env_logger::init();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?
+        </span>.with_behaviour(|<span class="kw">_</span>| ping::Behaviour::default())<span class="question-mark">?
+        </span>.build();
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<h3 id="idle-connection-timeout"><a class="doc-anchor" href="#idle-connection-timeout">§</a>Idle connection timeout</h3>
+<p>Now, for this example in particular, we need set the idle connection timeout.
+Otherwise, the connection will be closed immediately.</p>
+<p>Whether you need to set this in your application too depends on your usecase.
+Typically, connections are kept alive if they are “in use” by a certain protocol.
+The ping protocol however is only an “auxiliary” kind of protocol.
+Thus, without any other behaviour in place, we would not be able to observe the pings.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>libp2p::swarm::{NetworkBehaviour, SwarmBuilder};
+<span class="kw">use </span>libp2p::{identity, ping, PeerId};
+<span class="kw">use </span>std::error::Error;
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    env_logger::init();
+
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?
+        </span>.with_behaviour(|<span class="kw">_</span>| ping::Behaviour::default())<span class="question-mark">?
+        </span>.with_swarm_config(|cfg| cfg.with_idle_connection_timeout(Duration::from_secs(<span class="number">30</span>))) <span class="comment">// Allows us to observe pings for 30 seconds.
+        </span>.build();
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<h3 id="multiaddr"><a class="doc-anchor" href="#multiaddr">§</a>Multiaddr</h3>
+<p>With the <a href="../../struct.Swarm.html" title="struct libp2p::Swarm"><code>Swarm</code></a> in place, we are all set to listen for incoming
+connections. We only need to pass an address to the <a href="../../struct.Swarm.html" title="struct libp2p::Swarm"><code>Swarm</code></a>, just like for
+<a href="https://doc.rust-lang.org/1.86.0/std/net/tcp/struct.TcpListener.html#method.bind" title="associated function std::net::tcp::TcpListener::bind"><code>std::net::TcpListener::bind</code></a>. But instead of passing an IP address, we
+pass a <a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a> which is yet another core concept of libp2p worth
+taking a look at.</p>
+<p>A <a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a> is a self-describing network address and protocol stack that
+is used to establish connections to peers. A good introduction to
+<a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a> can be found at
+<a href="https://docs.libp2p.io/concepts/addressing/">docs.libp2p.io/concepts/addressing</a>
+and its specification repository
+<a href="https://github.com/multiformats/multiaddr/">github.com/multiformats/multiaddr</a>.</p>
+<p>Let’s make our local node listen on a new socket.
+This socket is listening on multiple network interfaces at the same time. For
+each network interface, a new listening address is created. These may change
+over time as interfaces become available or unavailable.
+For example, in case of our TCP transport it may (among others) listen on the
+loopback interface (localhost) <code>/ip4/127.0.0.1/tcp/24915</code> as well as the local
+network <code>/ip4/192.168.178.25/tcp/24915</code>.</p>
+<p>In addition, if provided on the CLI, let’s instruct our local node to dial a
+remote peer.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>libp2p::swarm::{NetworkBehaviour, SwarmBuilder};
+<span class="kw">use </span>libp2p::{identity, ping, Multiaddr, PeerId};
+<span class="kw">use </span>std::error::Error;
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?
+        </span>.with_behaviour(|<span class="kw">_</span>| ping::Behaviour::default())<span class="question-mark">?
+        </span>.with_swarm_config(|cfg| cfg.with_idle_connection_timeout(Duration::from_secs(<span class="number">30</span>))) <span class="comment">// Allows us to observe pings for 30 seconds.
+        </span>.build();
+
+    <span class="comment">// Tell the swarm to listen on all interfaces and a random, OS-assigned
+    // port.
+    </span>swarm.listen_on(<span class="string">"/ip4/0.0.0.0/tcp/0"</span>.parse()<span class="question-mark">?</span>)<span class="question-mark">?</span>;
+
+    <span class="comment">// Dial the peer identified by the multi-address given as the second
+    // command-line argument, if any.
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(addr) = std::env::args().nth(<span class="number">1</span>) {
+        <span class="kw">let </span>remote: Multiaddr = addr.parse()<span class="question-mark">?</span>;
+        swarm.dial(remote)<span class="question-mark">?</span>;
+        <span class="macro">println!</span>(<span class="string">"Dialed {addr}"</span>)
+    }
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<h3 id="continuously-polling-the-swarm"><a class="doc-anchor" href="#continuously-polling-the-swarm">§</a>Continuously polling the Swarm</h3>
+<p>We have everything in place now. The last step is to drive the <a href="../../struct.Swarm.html" title="struct libp2p::Swarm"><code>Swarm</code></a> in
+a loop, allowing it to listen for incoming connections and establish an
+outgoing connection in case we specify an address on the CLI.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>futures::prelude::<span class="kw-2">*</span>;
+<span class="kw">use </span>libp2p::swarm::{NetworkBehaviour, SwarmEvent, SwarmBuilder};
+<span class="kw">use </span>libp2p::{identity, ping, Multiaddr, PeerId};
+<span class="kw">use </span>std::error::Error;
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[async_std::main]
+</span><span class="kw">async fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>Error&gt;&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>swarm = libp2p::SwarmBuilder::with_new_identity()
+        .with_async_std()
+        .with_tcp(
+            libp2p_tcp::Config::default(),
+            libp2p_tls::Config::new,
+            libp2p_yamux::Config::default,
+        )<span class="question-mark">?
+        </span>.with_behaviour(|<span class="kw">_</span>| ping::Behaviour::default())<span class="question-mark">?
+        </span>.with_swarm_config(|cfg| cfg.with_idle_connection_timeout(Duration::from_secs(<span class="number">30</span>))) <span class="comment">// Allows us to observe pings for 30 seconds.
+        </span>.build();
+
+    <span class="comment">// Tell the swarm to listen on all interfaces and a random, OS-assigned
+    // port.
+    </span>swarm.listen_on(<span class="string">"/ip4/0.0.0.0/tcp/0"</span>.parse()<span class="question-mark">?</span>)<span class="question-mark">?</span>;
+
+    <span class="comment">// Dial the peer identified by the multi-address given as the second
+    // command-line argument, if any.
+    </span><span class="kw">if let </span><span class="prelude-val">Some</span>(addr) = std::env::args().nth(<span class="number">1</span>) {
+        <span class="kw">let </span>remote: Multiaddr = addr.parse()<span class="question-mark">?</span>;
+        swarm.dial(remote)<span class="question-mark">?</span>;
+        <span class="macro">println!</span>(<span class="string">"Dialed {addr}"</span>)
+    }
+
+    <span class="kw">loop </span>{
+        <span class="kw">match </span>swarm.select_next_some().<span class="kw">await </span>{
+            SwarmEvent::NewListenAddr { address, .. } =&gt; <span class="macro">println!</span>(<span class="string">"Listening on {address:?}"</span>),
+            SwarmEvent::Behaviour(event) =&gt; <span class="macro">println!</span>(<span class="string">"{event:?}"</span>),
+            <span class="kw">_ </span>=&gt; {}
+        }
+    }
+}</code></pre></div>
+<h3 id="running-two-nodes"><a class="doc-anchor" href="#running-two-nodes">§</a>Running two nodes</h3>
+<p>For convenience the example created above is also implemented in full in
+<code>examples/ping.rs</code>. Thus, you can either run the commands below from your
+own project created during the tutorial, or from the root of the rust-libp2p
+repository. Note that in the former case you need to ignore the <code>--example ping</code> argument.</p>
+<p>You need two terminals. In the first terminal window run:</p>
+<div class="example-wrap"><pre class="language-sh"><code>cargo run --example ping</code></pre></div>
+<p>It will print the new listening addresses, e.g.</p>
+<div class="example-wrap"><pre class="language-sh"><code>Listening on &quot;/ip4/127.0.0.1/tcp/24915&quot;
+Listening on &quot;/ip4/192.168.178.25/tcp/24915&quot;
+Listening on &quot;/ip4/172.17.0.1/tcp/24915&quot;
+Listening on &quot;/ip6/::1/tcp/24915&quot;</code></pre></div>
+<p>In the second terminal window, start a new instance of the example with:</p>
+<div class="example-wrap"><pre class="language-sh"><code>cargo run --example ping -- /ip4/127.0.0.1/tcp/24915</code></pre></div>
+<p>Note: The <a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a> at the end being one of the <a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a> printed
+earlier in terminal window one.
+Both peers have to be in the same network with which the address is associated.
+In our case any printed addresses can be used, as both peers run on the same
+device.</p>
+<p>The two nodes will establish a connection and send each other ping and pong
+messages every 15 seconds.</p>
+</div></details></section></div></main></body></html>

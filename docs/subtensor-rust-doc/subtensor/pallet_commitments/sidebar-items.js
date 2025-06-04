@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CallType"],"mod":["pallet","types","weights"],"struct":["CommitmentsSignedExtension"],"trait":["CanCommit","OnMetadataCommitment"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["sizeof_bool","sizeof_enum","sizeof_int32","sizeof_int64","sizeof_len","sizeof_sint32","sizeof_sint64","sizeof_uint32","sizeof_uint64","sizeof_varint"]};

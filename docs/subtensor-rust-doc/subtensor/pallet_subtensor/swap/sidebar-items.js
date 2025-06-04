@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["swap_coldkey","swap_hotkey"]};

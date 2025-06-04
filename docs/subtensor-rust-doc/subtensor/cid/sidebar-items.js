@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Error","Version"],"struct":["CidGeneric"],"type":["Cid","Result"]};

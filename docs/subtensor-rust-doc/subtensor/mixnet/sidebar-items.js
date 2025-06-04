@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["core","reply_manager","request_manager"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["KEY_SIZE"],"enum":["CompressionType","Error","Operation"],"fn":["clear_column","migrate"],"struct":["BTreeIterator","CheckOptions","ColumnOptions","ColumnStatSummary","Db","Options","StatSummary","ValueIterState"],"type":["ColId","Key","Result","Value"]};

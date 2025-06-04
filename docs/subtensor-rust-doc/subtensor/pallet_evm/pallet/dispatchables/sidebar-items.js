@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["call","create","create2","disable_whitelist","set_whitelist","withdraw"]};

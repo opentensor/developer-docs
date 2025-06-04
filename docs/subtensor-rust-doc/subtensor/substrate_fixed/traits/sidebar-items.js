@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"trait":["Fixed","FixedOptionalFeatures","FixedSigned","FixedUnsigned","FromFixed","LossyFrom","LossyInto","ToFixed"]};

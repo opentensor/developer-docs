@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_cbor-0.11.2/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="serde_cbor" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">serde_cbor/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! CBOR and serialization.
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! # Usage
+<a href=#4 id=4 data-nosnippet>4</a>//!
+<a href=#5 id=5 data-nosnippet>5</a>//! Serde CBOR supports Rust 1.40 and up. Add this to your `Cargo.toml`:
+<a href=#6 id=6 data-nosnippet>6</a>//! ```toml
+<a href=#7 id=7 data-nosnippet>7</a>//! [dependencies]
+<a href=#8 id=8 data-nosnippet>8</a>//! serde_cbor = "0.10"
+<a href=#9 id=9 data-nosnippet>9</a>//! ```
+<a href=#10 id=10 data-nosnippet>10</a>//!
+<a href=#11 id=11 data-nosnippet>11</a>//! Storing and loading Rust types is easy and requires only
+<a href=#12 id=12 data-nosnippet>12</a>//! minimal modifications to the program code.
+<a href=#13 id=13 data-nosnippet>13</a>//!
+<a href=#14 id=14 data-nosnippet>14</a>//! ```rust
+<a href=#15 id=15 data-nosnippet>15</a>//! use serde_derive::{Deserialize, Serialize};
+<a href=#16 id=16 data-nosnippet>16</a>//! use std::error::Error;
+<a href=#17 id=17 data-nosnippet>17</a>//! use std::fs::File;
+<a href=#18 id=18 data-nosnippet>18</a>//!
+<a href=#19 id=19 data-nosnippet>19</a>//! // Types annotated with `Serialize` can be stored as CBOR.
+<a href=#20 id=20 data-nosnippet>20</a>//! // To be able to load them again add `Deserialize`.
+<a href=#21 id=21 data-nosnippet>21</a>//! #[derive(Debug, Serialize, Deserialize)]
+<a href=#22 id=22 data-nosnippet>22</a>//! struct Mascot {
+<a href=#23 id=23 data-nosnippet>23</a>//!     name: String,
+<a href=#24 id=24 data-nosnippet>24</a>//!     species: String,
+<a href=#25 id=25 data-nosnippet>25</a>//!     year_of_birth: u32,
+<a href=#26 id=26 data-nosnippet>26</a>//! }
+<a href=#27 id=27 data-nosnippet>27</a>//!
+<a href=#28 id=28 data-nosnippet>28</a>//! fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
+<a href=#29 id=29 data-nosnippet>29</a>//!     let ferris = Mascot {
+<a href=#30 id=30 data-nosnippet>30</a>//!         name: "Ferris".to_owned(),
+<a href=#31 id=31 data-nosnippet>31</a>//!         species: "crab".to_owned(),
+<a href=#32 id=32 data-nosnippet>32</a>//!         year_of_birth: 2015,
+<a href=#33 id=33 data-nosnippet>33</a>//!     };
+<a href=#34 id=34 data-nosnippet>34</a>//!
+<a href=#35 id=35 data-nosnippet>35</a>//!     let ferris_file = File::create("examples/ferris.cbor")?;
+<a href=#36 id=36 data-nosnippet>36</a>//!     // Write Ferris to the given file.
+<a href=#37 id=37 data-nosnippet>37</a>//!     // Instead of a file you can use any type that implements `io::Write`
+<a href=#38 id=38 data-nosnippet>38</a>//!     // like a HTTP body, database connection etc.
+<a href=#39 id=39 data-nosnippet>39</a>//!     serde_cbor::to_writer(ferris_file, &amp;ferris)?;
+<a href=#40 id=40 data-nosnippet>40</a>//!
+<a href=#41 id=41 data-nosnippet>41</a>//!     let tux_file = File::open("examples/tux.cbor")?;
+<a href=#42 id=42 data-nosnippet>42</a>//!     // Load Tux from a file.
+<a href=#43 id=43 data-nosnippet>43</a>//!     // Serde CBOR performs roundtrip serialization meaning that
+<a href=#44 id=44 data-nosnippet>44</a>//!     // the data will not change in any way.
+<a href=#45 id=45 data-nosnippet>45</a>//!     let tux: Mascot = serde_cbor::from_reader(tux_file)?;
+<a href=#46 id=46 data-nosnippet>46</a>//!
+<a href=#47 id=47 data-nosnippet>47</a>//!     println!("{:?}", tux);
+<a href=#48 id=48 data-nosnippet>48</a>//!     // prints: Mascot { name: "Tux", species: "penguin", year_of_birth: 1996 }
+<a href=#49 id=49 data-nosnippet>49</a>//!
+<a href=#50 id=50 data-nosnippet>50</a>//!     Ok(())
+<a href=#51 id=51 data-nosnippet>51</a>//! }
+<a href=#52 id=52 data-nosnippet>52</a>//! ```
+<a href=#53 id=53 data-nosnippet>53</a>//!
+<a href=#54 id=54 data-nosnippet>54</a>//! There are a lot of options available to customize the format.
+<a href=#55 id=55 data-nosnippet>55</a>//! To operate on untyped CBOR values have a look at the `Value` type.
+<a href=#56 id=56 data-nosnippet>56</a>//!
+<a href=#57 id=57 data-nosnippet>57</a>//! # Type-based Serialization and Deserialization
+<a href=#58 id=58 data-nosnippet>58</a>//! Serde provides a mechanism for low boilerplate serialization &amp; deserialization of values to and
+<a href=#59 id=59 data-nosnippet>59</a>//! from CBOR via the serialization API. To be able to serialize a piece of data, it must implement
+<a href=#60 id=60 data-nosnippet>60</a>//! the `serde::Serialize` trait. To be able to deserialize a piece of data, it must implement the
+<a href=#61 id=61 data-nosnippet>61</a>//! `serde::Deserialize` trait. Serde provides an annotation to automatically generate the
+<a href=#62 id=62 data-nosnippet>62</a>//! code for these traits: `#[derive(Serialize, Deserialize)]`.
+<a href=#63 id=63 data-nosnippet>63</a>//!
+<a href=#64 id=64 data-nosnippet>64</a>//! The CBOR API also provides an enum `serde_cbor::Value`.
+<a href=#65 id=65 data-nosnippet>65</a>//!
+<a href=#66 id=66 data-nosnippet>66</a>//! # Packed Encoding
+<a href=#67 id=67 data-nosnippet>67</a>//! When serializing structs or enums in CBOR the keys or enum variant names will be serialized
+<a href=#68 id=68 data-nosnippet>68</a>//! as string keys to a map. Especially in embedded environments this can increase the file
+<a href=#69 id=69 data-nosnippet>69</a>//! size too much. In packed encoding all struct keys, as well as any enum variant that has no data,
+<a href=#70 id=70 data-nosnippet>70</a>//! will be serialized as variable sized integers. The first 24 entries in any struct consume only a
+<a href=#71 id=71 data-nosnippet>71</a>//! single byte!  Packed encoding uses serde's preferred [externally tagged enum
+<a href=#72 id=72 data-nosnippet>72</a>//! format](https://serde.rs/enum-representations.html) and therefore serializes enum variant names
+<a href=#73 id=73 data-nosnippet>73</a>//! as string keys when that variant contains data.  So, in the packed encoding example, `FirstVariant`
+<a href=#74 id=74 data-nosnippet>74</a>//! encodes to a single byte, but encoding `SecondVariant` requires 16 bytes.
+<a href=#75 id=75 data-nosnippet>75</a>//!
+<a href=#76 id=76 data-nosnippet>76</a>//! To serialize a document in this format use `Serializer::new(writer).packed_format()` or
+<a href=#77 id=77 data-nosnippet>77</a>//! the shorthand `ser::to_vec_packed`. The deserialization works without any changes.
+<a href=#78 id=78 data-nosnippet>78</a>//!
+<a href=#79 id=79 data-nosnippet>79</a>//! If you would like to omit the enum variant encoding for all variants, including ones that
+<a href=#80 id=80 data-nosnippet>80</a>//! contain data, you can add `legacy_enums()` in addition to `packed_format()`, as can seen
+<a href=#81 id=81 data-nosnippet>81</a>//! in the Serialize using minimal encoding example.
+<a href=#82 id=82 data-nosnippet>82</a>//!
+<a href=#83 id=83 data-nosnippet>83</a>//! # Self describing documents
+<a href=#84 id=84 data-nosnippet>84</a>//! In some contexts different formats are used but there is no way to declare the format used
+<a href=#85 id=85 data-nosnippet>85</a>//! out of band. For this reason CBOR has a magic number that may be added before any document.
+<a href=#86 id=86 data-nosnippet>86</a>//! Self describing documents are created with `serializer.self_describe()`.
+<a href=#87 id=87 data-nosnippet>87</a>//!
+<a href=#88 id=88 data-nosnippet>88</a>//! # Examples
+<a href=#89 id=89 data-nosnippet>89</a>//! Read a CBOR value that is known to be a map of string keys to string values and print it.
+<a href=#90 id=90 data-nosnippet>90</a>//!
+<a href=#91 id=91 data-nosnippet>91</a>//! ```rust
+<a href=#92 id=92 data-nosnippet>92</a>//! use std::collections::BTreeMap;
+<a href=#93 id=93 data-nosnippet>93</a>//! use serde_cbor::from_slice;
+<a href=#94 id=94 data-nosnippet>94</a>//!
+<a href=#95 id=95 data-nosnippet>95</a>//! let slice = b"\xa5aaaAabaBacaCadaDaeaE";
+<a href=#96 id=96 data-nosnippet>96</a>//! let value: BTreeMap&lt;String, String&gt; = from_slice(slice).unwrap();
+<a href=#97 id=97 data-nosnippet>97</a>//! println!("{:?}", value); // {"e": "E", "d": "D", "a": "A", "c": "C", "b": "B"}
+<a href=#98 id=98 data-nosnippet>98</a>//! ```
+<a href=#99 id=99 data-nosnippet>99</a>//!
+<a href=#100 id=100 data-nosnippet>100</a>//! Read a general CBOR value with an unknown content.
+<a href=#101 id=101 data-nosnippet>101</a>//!
+<a href=#102 id=102 data-nosnippet>102</a>//! ```rust
+<a href=#103 id=103 data-nosnippet>103</a>//! use serde_cbor::from_slice;
+<a href=#104 id=104 data-nosnippet>104</a>//! use serde_cbor::value::Value;
+<a href=#105 id=105 data-nosnippet>105</a>//!
+<a href=#106 id=106 data-nosnippet>106</a>//! let slice = b"\x82\x01\xa1aaab";
+<a href=#107 id=107 data-nosnippet>107</a>//! let value: Value = from_slice(slice).unwrap();
+<a href=#108 id=108 data-nosnippet>108</a>//! println!("{:?}", value); // Array([U64(1), Object({String("a"): String("b")})])
+<a href=#109 id=109 data-nosnippet>109</a>//! ```
+<a href=#110 id=110 data-nosnippet>110</a>//!
+<a href=#111 id=111 data-nosnippet>111</a>//! Serialize an object.
+<a href=#112 id=112 data-nosnippet>112</a>//!
+<a href=#113 id=113 data-nosnippet>113</a>//! ```rust
+<a href=#114 id=114 data-nosnippet>114</a>//! use std::collections::BTreeMap;
+<a href=#115 id=115 data-nosnippet>115</a>//! use serde_cbor::to_vec;
+<a href=#116 id=116 data-nosnippet>116</a>//!
+<a href=#117 id=117 data-nosnippet>117</a>//! let mut programming_languages = BTreeMap::new();
+<a href=#118 id=118 data-nosnippet>118</a>//! programming_languages.insert("rust", vec!["safe", "concurrent", "fast"]);
+<a href=#119 id=119 data-nosnippet>119</a>//! programming_languages.insert("python", vec!["powerful", "friendly", "open"]);
+<a href=#120 id=120 data-nosnippet>120</a>//! programming_languages.insert("js", vec!["lightweight", "interpreted", "object-oriented"]);
+<a href=#121 id=121 data-nosnippet>121</a>//! let encoded = to_vec(&amp;programming_languages);
+<a href=#122 id=122 data-nosnippet>122</a>//! assert_eq!(encoded.unwrap().len(), 103);
+<a href=#123 id=123 data-nosnippet>123</a>//! ```
+<a href=#124 id=124 data-nosnippet>124</a>//!
+<a href=#125 id=125 data-nosnippet>125</a>//! Deserializing data in the middle of a slice
+<a href=#126 id=126 data-nosnippet>126</a>//! ```
+<a href=#127 id=127 data-nosnippet>127</a>//! # extern crate serde_cbor;
+<a href=#128 id=128 data-nosnippet>128</a>//! use serde_cbor::Deserializer;
+<a href=#129 id=129 data-nosnippet>129</a>//!
+<a href=#130 id=130 data-nosnippet>130</a>//! # fn main() {
+<a href=#131 id=131 data-nosnippet>131</a>//! let data: Vec&lt;u8&gt; = vec![
+<a href=#132 id=132 data-nosnippet>132</a>//!     0x66, 0x66, 0x6f, 0x6f, 0x62, 0x61, 0x72, 0x66, 0x66, 0x6f, 0x6f, 0x62,
+<a href=#133 id=133 data-nosnippet>133</a>//!     0x61, 0x72,
+<a href=#134 id=134 data-nosnippet>134</a>//! ];
+<a href=#135 id=135 data-nosnippet>135</a>//! let mut deserializer = Deserializer::from_slice(&amp;data);
+<a href=#136 id=136 data-nosnippet>136</a>//! let value: &amp;str = serde::de::Deserialize::deserialize(&amp;mut deserializer)
+<a href=#137 id=137 data-nosnippet>137</a>//!     .unwrap();
+<a href=#138 id=138 data-nosnippet>138</a>//! let rest = &amp;data[deserializer.byte_offset()..];
+<a href=#139 id=139 data-nosnippet>139</a>//! assert_eq!(value, "foobar");
+<a href=#140 id=140 data-nosnippet>140</a>//! assert_eq!(rest, &amp;[0x66, 0x66, 0x6f, 0x6f, 0x62, 0x61, 0x72]);
+<a href=#141 id=141 data-nosnippet>141</a>//! # }
+<a href=#142 id=142 data-nosnippet>142</a>//! ```
+<a href=#143 id=143 data-nosnippet>143</a>//!
+<a href=#144 id=144 data-nosnippet>144</a>//! Serialize using packed encoding
+<a href=#145 id=145 data-nosnippet>145</a>//!
+<a href=#146 id=146 data-nosnippet>146</a>//! ```rust
+<a href=#147 id=147 data-nosnippet>147</a>//! use serde_derive::{Deserialize, Serialize};
+<a href=#148 id=148 data-nosnippet>148</a>//! use serde_cbor::ser::to_vec_packed;
+<a href=#149 id=149 data-nosnippet>149</a>//! use WithTwoVariants::*;
+<a href=#150 id=150 data-nosnippet>150</a>//!
+<a href=#151 id=151 data-nosnippet>151</a>//! #[derive(Debug, Serialize, Deserialize)]
+<a href=#152 id=152 data-nosnippet>152</a>//! enum WithTwoVariants {
+<a href=#153 id=153 data-nosnippet>153</a>//!     FirstVariant,
+<a href=#154 id=154 data-nosnippet>154</a>//!     SecondVariant(u8),
+<a href=#155 id=155 data-nosnippet>155</a>//! }
+<a href=#156 id=156 data-nosnippet>156</a>//!
+<a href=#157 id=157 data-nosnippet>157</a>//! let cbor = to_vec_packed(&amp;FirstVariant).unwrap();
+<a href=#158 id=158 data-nosnippet>158</a>//! assert_eq!(cbor.len(), 1);
+<a href=#159 id=159 data-nosnippet>159</a>//!
+<a href=#160 id=160 data-nosnippet>160</a>//! let cbor = to_vec_packed(&amp;SecondVariant(0)).unwrap();
+<a href=#161 id=161 data-nosnippet>161</a>//! assert_eq!(cbor.len(), 16); // Includes 13 bytes of "SecondVariant"
+<a href=#162 id=162 data-nosnippet>162</a>//! ```
+<a href=#163 id=163 data-nosnippet>163</a>//!
+<a href=#164 id=164 data-nosnippet>164</a>//! Serialize using minimal encoding
+<a href=#165 id=165 data-nosnippet>165</a>//!
+<a href=#166 id=166 data-nosnippet>166</a>//! ```rust
+<a href=#167 id=167 data-nosnippet>167</a>//! use serde_derive::{Deserialize, Serialize};
+<a href=#168 id=168 data-nosnippet>168</a>//! use serde_cbor::{Result, Serializer, ser::{self, IoWrite}};
+<a href=#169 id=169 data-nosnippet>169</a>//! use WithTwoVariants::*;
+<a href=#170 id=170 data-nosnippet>170</a>//!
+<a href=#171 id=171 data-nosnippet>171</a>//! fn to_vec_minimal&lt;T&gt;(value: &amp;T) -&gt; Result&lt;Vec&lt;u8&gt;&gt;
+<a href=#172 id=172 data-nosnippet>172</a>//! where
+<a href=#173 id=173 data-nosnippet>173</a>//!     T: serde::Serialize,
+<a href=#174 id=174 data-nosnippet>174</a>//! {
+<a href=#175 id=175 data-nosnippet>175</a>//!     let mut vec = Vec::new();
+<a href=#176 id=176 data-nosnippet>176</a>//!     value.serialize(&amp;mut Serializer::new(&amp;mut IoWrite::new(&amp;mut vec)).packed_format().legacy_enums())?;
+<a href=#177 id=177 data-nosnippet>177</a>//!     Ok(vec)
+<a href=#178 id=178 data-nosnippet>178</a>//! }
+<a href=#179 id=179 data-nosnippet>179</a>//!
+<a href=#180 id=180 data-nosnippet>180</a>//! #[derive(Debug, Serialize, Deserialize)]
+<a href=#181 id=181 data-nosnippet>181</a>//! enum WithTwoVariants {
+<a href=#182 id=182 data-nosnippet>182</a>//!     FirstVariant,
+<a href=#183 id=183 data-nosnippet>183</a>//!     SecondVariant(u8),
+<a href=#184 id=184 data-nosnippet>184</a>//! }
+<a href=#185 id=185 data-nosnippet>185</a>//!
+<a href=#186 id=186 data-nosnippet>186</a>//! let cbor = to_vec_minimal(&amp;FirstVariant).unwrap();
+<a href=#187 id=187 data-nosnippet>187</a>//! assert_eq!(cbor.len(), 1);
+<a href=#188 id=188 data-nosnippet>188</a>//!
+<a href=#189 id=189 data-nosnippet>189</a>//! let cbor = to_vec_minimal(&amp;SecondVariant(0)).unwrap();
+<a href=#190 id=190 data-nosnippet>190</a>//! assert_eq!(cbor.len(), 3);
+<a href=#191 id=191 data-nosnippet>191</a>//! ```
+<a href=#192 id=192 data-nosnippet>192</a>//!
+<a href=#193 id=193 data-nosnippet>193</a>//! # `no-std` support
+<a href=#194 id=194 data-nosnippet>194</a>//!
+<a href=#195 id=195 data-nosnippet>195</a>//! Serde CBOR supports building in a `no_std` context, use the following lines
+<a href=#196 id=196 data-nosnippet>196</a>//! in your `Cargo.toml` dependencies:
+<a href=#197 id=197 data-nosnippet>197</a>//! ``` toml
+<a href=#198 id=198 data-nosnippet>198</a>//! [dependencies]
+<a href=#199 id=199 data-nosnippet>199</a>//! serde = { version = "1.0", default-features = false }
+<a href=#200 id=200 data-nosnippet>200</a>//! serde_cbor = { version = "0.10", default-features = false }
+<a href=#201 id=201 data-nosnippet>201</a>//! ```
+<a href=#202 id=202 data-nosnippet>202</a>//!
+<a href=#203 id=203 data-nosnippet>203</a>//! Without the `std` feature the functions [from_reader], [from_slice], [to_vec], and [to_writer]
+<a href=#204 id=204 data-nosnippet>204</a>//! are not exported. To export [from_slice] and [to_vec] enable the `alloc` feature. The `alloc`
+<a href=#205 id=205 data-nosnippet>205</a>//! feature uses the [`alloc` library][alloc-lib] and requires at least version 1.36.0 of Rust.
+<a href=#206 id=206 data-nosnippet>206</a>//!
+<a href=#207 id=207 data-nosnippet>207</a>//! [alloc-lib]: https://doc.rust-lang.org/alloc/
+<a href=#208 id=208 data-nosnippet>208</a>//!
+<a href=#209 id=209 data-nosnippet>209</a>//! *Note*: to use derive macros in serde you will need to declare `serde`
+<a href=#210 id=210 data-nosnippet>210</a>//! dependency like so:
+<a href=#211 id=211 data-nosnippet>211</a>//! ``` toml
+<a href=#212 id=212 data-nosnippet>212</a>//! serde = { version = "1.0", default-features = false, features = ["derive"] }
+<a href=#213 id=213 data-nosnippet>213</a>//! ```
+<a href=#214 id=214 data-nosnippet>214</a>//!
+<a href=#215 id=215 data-nosnippet>215</a>//! Serialize an object with `no_std` and without `alloc`.
+<a href=#216 id=216 data-nosnippet>216</a>//! ``` rust
+<a href=#217 id=217 data-nosnippet>217</a>//! # #[macro_use] extern crate serde_derive;
+<a href=#218 id=218 data-nosnippet>218</a>//! # fn main() -&gt; Result&lt;(), serde_cbor::Error&gt; {
+<a href=#219 id=219 data-nosnippet>219</a>//! use serde::Serialize;
+<a href=#220 id=220 data-nosnippet>220</a>//! use serde_cbor::Serializer;
+<a href=#221 id=221 data-nosnippet>221</a>//! use serde_cbor::ser::SliceWrite;
+<a href=#222 id=222 data-nosnippet>222</a>//!
+<a href=#223 id=223 data-nosnippet>223</a>//! #[derive(Serialize)]
+<a href=#224 id=224 data-nosnippet>224</a>//! struct User {
+<a href=#225 id=225 data-nosnippet>225</a>//!     user_id: u32,
+<a href=#226 id=226 data-nosnippet>226</a>//!     password_hash: [u8; 4],
+<a href=#227 id=227 data-nosnippet>227</a>//! }
+<a href=#228 id=228 data-nosnippet>228</a>//!
+<a href=#229 id=229 data-nosnippet>229</a>//! let mut buf = [0u8; 100];
+<a href=#230 id=230 data-nosnippet>230</a>//! let writer = SliceWrite::new(&amp;mut buf[..]);
+<a href=#231 id=231 data-nosnippet>231</a>//! let mut ser = Serializer::new(writer);
+<a href=#232 id=232 data-nosnippet>232</a>//! let user = User {
+<a href=#233 id=233 data-nosnippet>233</a>//!     user_id: 42,
+<a href=#234 id=234 data-nosnippet>234</a>//!     password_hash: [1, 2, 3, 4],
+<a href=#235 id=235 data-nosnippet>235</a>//! };
+<a href=#236 id=236 data-nosnippet>236</a>//! user.serialize(&amp;mut ser)?;
+<a href=#237 id=237 data-nosnippet>237</a>//! let writer = ser.into_inner();
+<a href=#238 id=238 data-nosnippet>238</a>//! let size = writer.bytes_written();
+<a href=#239 id=239 data-nosnippet>239</a>//! let expected = [
+<a href=#240 id=240 data-nosnippet>240</a>//!     0xa2, 0x67, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x2a, 0x6d,
+<a href=#241 id=241 data-nosnippet>241</a>//!     0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x5f, 0x68, 0x61, 0x73,
+<a href=#242 id=242 data-nosnippet>242</a>//!     0x68, 0x84, 0x1, 0x2, 0x3, 0x4
+<a href=#243 id=243 data-nosnippet>243</a>//! ];
+<a href=#244 id=244 data-nosnippet>244</a>//! assert_eq!(&amp;buf[..size], expected);
+<a href=#245 id=245 data-nosnippet>245</a>//! # Ok(())
+<a href=#246 id=246 data-nosnippet>246</a>//! # }
+<a href=#247 id=247 data-nosnippet>247</a>//! ```
+<a href=#248 id=248 data-nosnippet>248</a>//!
+<a href=#249 id=249 data-nosnippet>249</a>//! Deserialize an object.
+<a href=#250 id=250 data-nosnippet>250</a>//! ``` rust
+<a href=#251 id=251 data-nosnippet>251</a>//! # #[macro_use] extern crate serde_derive;
+<a href=#252 id=252 data-nosnippet>252</a>//! # fn main() -&gt; Result&lt;(), serde_cbor::Error&gt; {
+<a href=#253 id=253 data-nosnippet>253</a>//! #[derive(Debug, PartialEq, Deserialize)]
+<a href=#254 id=254 data-nosnippet>254</a>//! struct User {
+<a href=#255 id=255 data-nosnippet>255</a>//!     user_id: u32,
+<a href=#256 id=256 data-nosnippet>256</a>//!     password_hash: [u8; 4],
+<a href=#257 id=257 data-nosnippet>257</a>//! }
+<a href=#258 id=258 data-nosnippet>258</a>//!
+<a href=#259 id=259 data-nosnippet>259</a>//! let value = [
+<a href=#260 id=260 data-nosnippet>260</a>//!     0xa2, 0x67, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x2a, 0x6d,
+<a href=#261 id=261 data-nosnippet>261</a>//!     0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x5f, 0x68, 0x61, 0x73,
+<a href=#262 id=262 data-nosnippet>262</a>//!     0x68, 0x84, 0x1, 0x2, 0x3, 0x4
+<a href=#263 id=263 data-nosnippet>263</a>//! ];
+<a href=#264 id=264 data-nosnippet>264</a>//!
+<a href=#265 id=265 data-nosnippet>265</a>//! // from_slice_with_scratch will not alter input data, use it whenever you
+<a href=#266 id=266 data-nosnippet>266</a>//! // borrow from somewhere else.
+<a href=#267 id=267 data-nosnippet>267</a>//! // You will have to size your scratch according to the input data you
+<a href=#268 id=268 data-nosnippet>268</a>//! // expect.
+<a href=#269 id=269 data-nosnippet>269</a>//! use serde_cbor::de::from_slice_with_scratch;
+<a href=#270 id=270 data-nosnippet>270</a>//! let mut scratch = [0u8; 32];
+<a href=#271 id=271 data-nosnippet>271</a>//! let user: User = from_slice_with_scratch(&amp;value[..], &amp;mut scratch)?;
+<a href=#272 id=272 data-nosnippet>272</a>//! assert_eq!(user, User {
+<a href=#273 id=273 data-nosnippet>273</a>//!     user_id: 42,
+<a href=#274 id=274 data-nosnippet>274</a>//!     password_hash: [1, 2, 3, 4],
+<a href=#275 id=275 data-nosnippet>275</a>//! });
+<a href=#276 id=276 data-nosnippet>276</a>//!
+<a href=#277 id=277 data-nosnippet>277</a>//! let mut value = [
+<a href=#278 id=278 data-nosnippet>278</a>//!     0xa2, 0x67, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x2a, 0x6d,
+<a href=#279 id=279 data-nosnippet>279</a>//!     0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x5f, 0x68, 0x61, 0x73,
+<a href=#280 id=280 data-nosnippet>280</a>//!     0x68, 0x84, 0x1, 0x2, 0x3, 0x4
+<a href=#281 id=281 data-nosnippet>281</a>//! ];
+<a href=#282 id=282 data-nosnippet>282</a>//!
+<a href=#283 id=283 data-nosnippet>283</a>//! // from_mut_slice will move data around the input slice, you may only use it
+<a href=#284 id=284 data-nosnippet>284</a>//! // on data you may own or can modify.
+<a href=#285 id=285 data-nosnippet>285</a>//! use serde_cbor::de::from_mut_slice;
+<a href=#286 id=286 data-nosnippet>286</a>//! let user: User = from_mut_slice(&amp;mut value[..])?;
+<a href=#287 id=287 data-nosnippet>287</a>//! assert_eq!(user, User {
+<a href=#288 id=288 data-nosnippet>288</a>//!     user_id: 42,
+<a href=#289 id=289 data-nosnippet>289</a>//!     password_hash: [1, 2, 3, 4],
+<a href=#290 id=290 data-nosnippet>290</a>//! });
+<a href=#291 id=291 data-nosnippet>291</a>//! # Ok(())
+<a href=#292 id=292 data-nosnippet>292</a>//! # }
+<a href=#293 id=293 data-nosnippet>293</a>//! ```
+<a href=#294 id=294 data-nosnippet>294</a>//!
+<a href=#295 id=295 data-nosnippet>295</a>//! # Limitations
+<a href=#296 id=296 data-nosnippet>296</a>//!
+<a href=#297 id=297 data-nosnippet>297</a>//! While Serde CBOR strives to support all features of Serde and CBOR
+<a href=#298 id=298 data-nosnippet>298</a>//! there are a few limitations.
+<a href=#299 id=299 data-nosnippet>299</a>//!
+<a href=#300 id=300 data-nosnippet>300</a>//! * [Tags] are ignored during deserialization and can't be emitted during
+<a href=#301 id=301 data-nosnippet>301</a>//!     serialization. This is because Serde has no concept of tagged
+<a href=#302 id=302 data-nosnippet>302</a>//!     values. See:&amp;nbsp;[#3]
+<a href=#303 id=303 data-nosnippet>303</a>//! * Unknown [simple values] cause an `UnassignedCode` error.
+<a href=#304 id=304 data-nosnippet>304</a>//!     The simple values *False* and *True* are recognized and parsed as bool.
+<a href=#305 id=305 data-nosnippet>305</a>//!     *Null* and *Undefined* are both deserialized as *unit*.
+<a href=#306 id=306 data-nosnippet>306</a>//!     The *unit* type is serialized as *Null*. See:&amp;nbsp;[#86]
+<a href=#307 id=307 data-nosnippet>307</a>//! * [128-bit integers] can't be directly encoded in CBOR. If you need them
+<a href=#308 id=308 data-nosnippet>308</a>//!     store them as a byte string. See:&amp;nbsp;[#77]
+<a href=#309 id=309 data-nosnippet>309</a>//!
+<a href=#310 id=310 data-nosnippet>310</a>//! [Tags]: https://tools.ietf.org/html/rfc7049#section-2.4.4
+<a href=#311 id=311 data-nosnippet>311</a>//! [#3]: https://github.com/pyfisch/cbor/issues/3
+<a href=#312 id=312 data-nosnippet>312</a>//! [simple values]: https://tools.ietf.org/html/rfc7049#section-3.5
+<a href=#313 id=313 data-nosnippet>313</a>//! [#86]: https://github.com/pyfisch/cbor/issues/86
+<a href=#314 id=314 data-nosnippet>314</a>//! [128-bit integers]: https://doc.rust-lang.org/std/primitive.u128.html
+<a href=#315 id=315 data-nosnippet>315</a>//! [#77]: https://github.com/pyfisch/cbor/issues/77
+<a href=#316 id=316 data-nosnippet>316</a>
+<a href=#317 id=317 data-nosnippet>317</a></span><span class="attr">#![deny(missing_docs)]
+<a href=#318 id=318 data-nosnippet>318</a>#![cfg_attr(not(feature = <span class="string">"std"</span>), no_std)]
+<a href=#319 id=319 data-nosnippet>319</a>
+<a href=#320 id=320 data-nosnippet>320</a></span><span class="comment">// When we are running tests in no_std mode we need to explicitly link std, because `cargo test`
+<a href=#321 id=321 data-nosnippet>321</a>// will not work without it.
+<a href=#322 id=322 data-nosnippet>322</a></span><span class="attr">#[cfg(all(not(feature = <span class="string">"std"</span>), test))]
+<a href=#323 id=323 data-nosnippet>323</a></span><span class="kw">extern crate </span>std;
+<a href=#324 id=324 data-nosnippet>324</a>
+<a href=#325 id=325 data-nosnippet>325</a><span class="attr">#[cfg(feature = <span class="string">"alloc"</span>)]
+<a href=#326 id=326 data-nosnippet>326</a></span><span class="kw">extern crate </span>alloc;
+<a href=#327 id=327 data-nosnippet>327</a>
+<a href=#328 id=328 data-nosnippet>328</a><span class="kw">pub mod </span>de;
+<a href=#329 id=329 data-nosnippet>329</a><span class="kw">pub mod </span>error;
+<a href=#330 id=330 data-nosnippet>330</a><span class="kw">mod </span>read;
+<a href=#331 id=331 data-nosnippet>331</a><span class="kw">pub mod </span>ser;
+<a href=#332 id=332 data-nosnippet>332</a><span class="kw">pub mod </span>tags;
+<a href=#333 id=333 data-nosnippet>333</a><span class="kw">mod </span>write;
+<a href=#334 id=334 data-nosnippet>334</a>
+<a href=#335 id=335 data-nosnippet>335</a><span class="attr">#[cfg(feature = <span class="string">"std"</span>)]
+<a href=#336 id=336 data-nosnippet>336</a></span><span class="kw">pub mod </span>value;
+<a href=#337 id=337 data-nosnippet>337</a>
+<a href=#338 id=338 data-nosnippet>338</a><span class="comment">// Re-export the [items recommended by serde](https://serde.rs/conventions.html).
+<a href=#339 id=339 data-nosnippet>339</a></span><span class="attr">#[doc(inline)]
+<a href=#340 id=340 data-nosnippet>340</a></span><span class="kw">pub use </span><span class="kw">crate</span>::de::{Deserializer, StreamDeserializer};
+<a href=#341 id=341 data-nosnippet>341</a>
+<a href=#342 id=342 data-nosnippet>342</a><span class="attr">#[doc(inline)]
+<a href=#343 id=343 data-nosnippet>343</a></span><span class="kw">pub use </span><span class="kw">crate</span>::error::{Error, <span class="prelude-ty">Result</span>};
+<a href=#344 id=344 data-nosnippet>344</a>
+<a href=#345 id=345 data-nosnippet>345</a><span class="attr">#[doc(inline)]
+<a href=#346 id=346 data-nosnippet>346</a></span><span class="kw">pub use </span><span class="kw">crate</span>::ser::Serializer;
+<a href=#347 id=347 data-nosnippet>347</a>
+<a href=#348 id=348 data-nosnippet>348</a><span class="comment">// Convenience functions for serialization and deserialization.
+<a href=#349 id=349 data-nosnippet>349</a>// These functions are only available in `std` mode.
+<a href=#350 id=350 data-nosnippet>350</a></span><span class="attr">#[cfg(feature = <span class="string">"std"</span>)]
+<a href=#351 id=351 data-nosnippet>351</a>#[doc(inline)]
+<a href=#352 id=352 data-nosnippet>352</a></span><span class="kw">pub use </span><span class="kw">crate</span>::de::from_reader;
+<a href=#353 id=353 data-nosnippet>353</a>
+<a href=#354 id=354 data-nosnippet>354</a><span class="attr">#[cfg(any(feature = <span class="string">"std"</span>, feature = <span class="string">"alloc"</span>))]
+<a href=#355 id=355 data-nosnippet>355</a>#[doc(inline)]
+<a href=#356 id=356 data-nosnippet>356</a></span><span class="kw">pub use </span><span class="kw">crate</span>::de::from_slice;
+<a href=#357 id=357 data-nosnippet>357</a>
+<a href=#358 id=358 data-nosnippet>358</a><span class="attr">#[cfg(any(feature = <span class="string">"std"</span>, feature = <span class="string">"alloc"</span>))]
+<a href=#359 id=359 data-nosnippet>359</a>#[doc(inline)]
+<a href=#360 id=360 data-nosnippet>360</a></span><span class="kw">pub use </span><span class="kw">crate</span>::ser::to_vec;
+<a href=#361 id=361 data-nosnippet>361</a>
+<a href=#362 id=362 data-nosnippet>362</a><span class="attr">#[cfg(feature = <span class="string">"std"</span>)]
+<a href=#363 id=363 data-nosnippet>363</a>#[doc(inline)]
+<a href=#364 id=364 data-nosnippet>364</a></span><span class="kw">pub use </span><span class="kw">crate</span>::ser::to_writer;
+<a href=#365 id=365 data-nosnippet>365</a>
+<a href=#366 id=366 data-nosnippet>366</a><span class="comment">// Re-export the value type like serde_json
+<a href=#367 id=367 data-nosnippet>367</a></span><span class="attr">#[cfg(feature = <span class="string">"std"</span>)]
+<a href=#368 id=368 data-nosnippet>368</a>#[doc(inline)]
+<a href=#369 id=369 data-nosnippet>369</a></span><span class="kw">pub use </span><span class="kw">crate</span>::value::Value;</code></pre></div></section></main></body></html>

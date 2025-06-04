@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["migrations","pallet","weights"],"struct":["FindAccountFromAuthorIndex","PeriodicSessions","TestSessionHandler"],"trait":["SessionHandler","SessionManager","ShouldEndSession"]};

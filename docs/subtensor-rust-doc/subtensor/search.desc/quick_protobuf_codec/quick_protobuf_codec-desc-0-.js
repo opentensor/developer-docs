@@ -1,0 +1,1 @@
+searchState.loadedDescShard("quick_protobuf_codec", 0, "<code>Codec</code> implements <code>Encoder</code> and <code>Decoder</code>, uses <code>unsigned_varint</code> …\nReturns the argument unchanged.\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.\nCalls <code>U::from(self)</code>.\nCreate new <code>Codec</code>.")

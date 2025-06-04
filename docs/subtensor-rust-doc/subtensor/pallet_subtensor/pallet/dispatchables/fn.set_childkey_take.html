@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Sets the childkey take for a given hotkey."><title>set_childkey_take in pallet_subtensor::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_subtensor" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_subtensor/index.html">pallet_<wbr>subtensor</a><span class="version">4.0.0-dev</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">set_<wbr>childkey_<wbr>take</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#arguments" title="Arguments:">Arguments:</a></li><li><a href="#events" title="Events:">Events:</a></li><li><a href="#errors" title="Errors:">Errors:</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>subtensor::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_subtensor</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">set_childkey_take</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_subtensor/lib.rs.html#67">Source</a> </span></div><pre class="rust item-decl"><code>pub fn set_childkey_take&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_subtensor::pallet::Config">Config</a>&gt;(
+    hotkey: T::<a class="associatedtype" href="../../../frame_system/pallet/trait.Config.html#associatedtype.AccountId" title="type frame_system::pallet::Config::AccountId">AccountId</a>,
+    netuid: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+    take: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Sets the childkey take for a given hotkey.</p>
+<p>This function allows a coldkey to set the childkey take for a given hotkey.
+The childkey take determines the proportion of stake that the hotkey keeps for itself
+when distributing stake to its children.</p>
+<h2 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments:</h2>
+<ul>
+<li>
+<p><code>origin</code> (<T as frame_system::Config>::RuntimeOrigin):</p>
+<ul>
+<li>The signature of the calling coldkey. Setting childkey take can only be done by the coldkey.</li>
+</ul>
+</li>
+<li>
+<p><code>hotkey</code> (T::AccountId):</p>
+<ul>
+<li>The hotkey for which the childkey take will be set.</li>
+</ul>
+</li>
+<li>
+<p><code>take</code> (u16):</p>
+<ul>
+<li>The new childkey take value. This is a percentage represented as a value between 0 and 10000,
+where 10000 represents 100%.</li>
+</ul>
+</li>
+</ul>
+<h2 id="events"><a class="doc-anchor" href="#events">§</a>Events:</h2>
+<ul>
+<li><code>ChildkeyTakeSet</code>:
+<ul>
+<li>On successfully setting the childkey take for a hotkey.</li>
+</ul>
+</li>
+</ul>
+<h2 id="errors"><a class="doc-anchor" href="#errors">§</a>Errors:</h2>
+<ul>
+<li><code>NonAssociatedColdKey</code>:
+<ul>
+<li>The coldkey does not own the hotkey.</li>
+</ul>
+</li>
+<li><code>InvalidChildkeyTake</code>:
+<ul>
+<li>The provided take value is invalid (greater than the maximum allowed take).</li>
+</ul>
+</li>
+<li><code>TxChildkeyTakeRateLimitExceeded</code>:
+<ul>
+<li>The rate limit for changing childkey take has been exceeded.</li>
+</ul>
+</li>
+</ul>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.set_childkey_take" title="associated function pallet_subtensor::pallet::Pallet::set_childkey_take"><code>Pallet::set_childkey_take</code></a>.</p>
+</div></details></section></div></main></body></html>

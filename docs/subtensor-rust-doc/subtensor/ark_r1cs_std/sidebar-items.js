@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_bounded_ops","impl_ops"],"mod":["alloc","bits","eq","fields","groups","macros","pairing","poly","prelude","select"],"trait":["Assignment","R1CSVar","ToConstraintFieldGadget"]};

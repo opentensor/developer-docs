@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="— Adds stake to a hotkey. The call is made from the coldkey account linked in the hotkey. Only the associated coldkey is allowed to make staking and unstaking requests. This protects the neuron against attacks on its hotkey running in production code."><title>add_stake in pallet_subtensor::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_subtensor" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_subtensor/index.html">pallet_<wbr>subtensor</a><span class="version">4.0.0-dev</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">add_<wbr>stake</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#args" title="Args:">Args:</a></li><li><a href="#event" title="Event:">Event:</a></li><li><a href="#raises" title="Raises:">Raises:</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>subtensor::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_subtensor</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">add_stake</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_subtensor/lib.rs.html#67">Source</a> </span></div><pre class="rust item-decl"><code>pub fn add_stake&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_subtensor::pallet::Config">Config</a>&gt;(
+    hotkey: T::<a class="associatedtype" href="../../../frame_system/pallet/trait.Config.html#associatedtype.AccountId" title="type frame_system::pallet::Config::AccountId">AccountId</a>,
+    netuid: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+    amount_staked: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u64.html">u64</a>,
+)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>— Adds stake to a hotkey. The call is made from the
+coldkey account linked in the hotkey.
+Only the associated coldkey is allowed to make staking and
+unstaking requests. This protects the neuron against
+attacks on its hotkey running in production code.</p>
+<h2 id="args"><a class="doc-anchor" href="#args">§</a>Args:</h2>
+<ul>
+<li>
+<p>‘origin’: (<T as frame_system::Config>Origin):</p>
+<ul>
+<li>The signature of the caller’s coldkey.</li>
+</ul>
+</li>
+<li>
+<p>‘hotkey’ (T::AccountId):</p>
+<ul>
+<li>The associated hotkey account.</li>
+</ul>
+</li>
+<li>
+<p>‘netuid’ (u16):</p>
+<ul>
+<li>Subnetwork UID</li>
+</ul>
+</li>
+<li>
+<p>‘amount_staked’ (u64):</p>
+<ul>
+<li>The amount of stake to be added to the hotkey staking account.</li>
+</ul>
+</li>
+</ul>
+<h2 id="event"><a class="doc-anchor" href="#event">§</a>Event:</h2>
+<ul>
+<li>StakeAdded;
+<ul>
+<li>On the successfully adding stake to a global account.</li>
+</ul>
+</li>
+</ul>
+<h2 id="raises"><a class="doc-anchor" href="#raises">§</a>Raises:</h2>
+<ul>
+<li>
+<p>‘NotEnoughBalanceToStake’:</p>
+<ul>
+<li>Not enough balance on the coldkey to add onto the global account.</li>
+</ul>
+</li>
+<li>
+<p>‘NonAssociatedColdKey’:</p>
+<ul>
+<li>The calling coldkey is not associated with this hotkey.</li>
+</ul>
+</li>
+<li>
+<p>‘BalanceWithdrawalError’:</p>
+<ul>
+<li>Errors stemming from transaction pallet.</li>
+</ul>
+</li>
+</ul>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.add_stake" title="associated function pallet_subtensor::pallet::Pallet::add_stake"><code>Pallet::add_stake</code></a>.</p>
+</div></details></section></div></main></body></html>

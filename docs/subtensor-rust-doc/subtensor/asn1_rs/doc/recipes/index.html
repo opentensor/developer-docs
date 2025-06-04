@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Documentation: BER/DER parsing recipes"><title>asn1_rs::doc::recipes - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="asn1_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../asn1_rs/index.html">asn1_rs</a><span class="version">0.6.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module recipes</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#documentation-berder-parsing-recipes" title="Documentation: BER/DER parsing recipes">Documentation: BER/DER parsing recipes</a><ul><li><a href="#builtin-types" title="Builtin types">Builtin types</a></li><li><a href="#sequence-and-set" title="`SEQUENCE` and `SET`"><code>SEQUENCE</code> and <code>SET</code></a></li><li><a href="#explicit-tagged-values" title="`EXPLICIT` tagged values"><code>EXPLICIT</code> tagged values</a></li><li><a href="#implicit-tagged-values" title="`IMPLICIT` tagged values"><code>IMPLICIT</code> tagged values</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In asn1_<wbr>rs::<wbr>doc</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">asn1_rs</a>::<wbr><a href="../index.html">doc</a></div><h1>Module <span>recipes</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/asn1_rs/doc/mod.rs.html#4">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="documentation-berder-parsing-recipes"><a class="doc-anchor" href="#documentation-berder-parsing-recipes">§</a>Documentation: BER/DER parsing recipes</h2><h3 id="builtin-types"><a class="doc-anchor" href="#builtin-types">§</a>Builtin types</h3>
+<p>Most builtin types can be parsed by calling the <code>from_der</code> or <code>from_der</code> functions (see <code>FromBer</code> and <code>FromDer</code> traits for documentation).</p>
+<p>For ex:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = &lt;u32&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>Note: this crates makes extensive use of types annotation and turbofish operator, for example <code>&lt;Type&gt;::from_der()</code> or <code>TaggedExplicit::&lt;u32, Error, 0&gt;::from_der()</code>.</p>
+<p>See table B-3 in <a href="https://doc.rust-lang.org/book/appendix-02-operators.html">https://doc.rust-lang.org/book/appendix-02-operators.html</a> for reference on syntax.</p>
+<h3 id="sequence-and-set"><a class="doc-anchor" href="#sequence-and-set">§</a><code>SEQUENCE</code> and <code>SET</code></h3>
+<p>The <code>SEQUENCE</code> and <code>SET</code> types are handled very similarly, so recipes will be given for <code>SEQUENCE</code>, but can be adapted to <code>SET</code> by replacing words.</p>
+<h4 id="parsing-sequence"><a class="doc-anchor" href="#parsing-sequence">§</a>Parsing <code>SEQUENCE</code></h4>
+<p>Usually, the sequence envelope does not need to be stored, so it just needs to be parsed to get the sequence content and parse it.
+The methods <a href="../../struct.Sequence.html#method.from_ber_and_then" title="associated function asn1_rs::Sequence::from_ber_and_then"><code>from_ber_and_then</code></a> and <a href="../../struct.Sequence.html#method.from_der_and_then" title="associated function asn1_rs::Sequence::from_der_and_then"><code>from_der_and_then</code></a> provide helpers for that:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = Sequence::from_ber_and_then(input, |i| {
+    <span class="comment">// first item is INTEGER
+    </span><span class="kw">let </span>(rem, a) = u32::from_der(input)<span class="question-mark">?</span>;
+    <span class="comment">// second item is OCTET STRING
+    </span><span class="kw">let </span>(rem, b) = &lt;<span class="kw-2">&amp;</span>[u8]&gt;::from_der(input)<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>((rem, (a, b)))
+})<span class="question-mark">?</span>;
+<span class="comment">// result has type (u32, &amp;[u8])
+</span><span class="macro">assert_eq!</span>(result.<span class="number">0</span>, <span class="number">0</span>);
+<span class="macro">assert_eq!</span>(result.<span class="number">1</span>, <span class="string">b"\x00\x01"</span>);</code></pre></div>
+<h4 id="automatically-deriving-sequence-parsers"><a class="doc-anchor" href="#automatically-deriving-sequence-parsers">§</a>Automatically deriving sequence parsers</h4>
+<p>The <a href="../../derive.BerSequence.html" title="derive asn1_rs::BerSequence"><code>BerSequence</code></a> and <a href="../../derive.DerSequence.html" title="derive asn1_rs::DerSequence"><code>DerSequence</code></a>
+custom derive provide attributes to automatically derive a parser for a sequence.</p>
+<p>For ex:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(DerSequence)]
+</span><span class="kw">pub struct </span>S {
+    a: u32,
+    b: u16,
+    c: u16,
+}
+
+<span class="kw">let </span>(rem, result) = S::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>This will work for any field type that implements <a href="../../trait.FromBer.html" title="trait asn1_rs::FromBer"><code>FromBer</code></a> or <a href="../../trait.FromDer.html" title="trait asn1_rs::FromDer"><code>FromDer</code></a>, respectively.</p>
+<p>See <a href="../derive/index.html" title="mod asn1_rs::doc::derive"><code>derive</code></a> documentation for more examples and documentation.</p>
+<h4 id="parsing-sequence-of"><a class="doc-anchor" href="#parsing-sequence-of">§</a>Parsing <code>SEQUENCE OF</code></h4>
+<p><code>SEQUENCE OF T</code> can be parsed using either type <code>SequenceOf&lt;T&gt;</code> or <code>Vec&lt;T&gt;</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = SequenceOf::&lt;u32&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>or</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = &lt;Vec&lt;u32&gt;&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p><code>SET OF T</code> can be parsed using either <code>SetOf&lt;T&gt;</code>, <code>BTreeSet&lt;T&gt;</code> or <code>HashSet&lt;T&gt;</code>.</p>
+<h3 id="explicit-tagged-values"><a class="doc-anchor" href="#explicit-tagged-values">§</a><code>EXPLICIT</code> tagged values</h3><h4 id="parsing-explicit-expecting-a-known-tag"><a class="doc-anchor" href="#parsing-explicit-expecting-a-known-tag">§</a>Parsing <code>EXPLICIT</code>, expecting a known tag</h4>
+<p>If you expect only a specific tag, use <code>TaggedExplicit</code>.</p>
+<p>For ex, to parse a <code>[3] EXPLICIT INTEGER</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = TaggedExplicit::&lt;u32, Error, <span class="number">0</span>&gt;::from_der(input)<span class="question-mark">?</span>;
+<span class="comment">// result has type TaggedValue. Use `.as_ref()` or `.into_inner()` 
+// to access content
+</span><span class="kw">let </span>tag = result.tag();
+<span class="kw">let </span>class = result.class();
+<span class="macro">assert_eq!</span>(result.as_ref(), <span class="kw-2">&amp;</span><span class="number">0</span>);</code></pre></div>
+<h4 id="specifying-the-class"><a class="doc-anchor" href="#specifying-the-class">§</a>Specifying the class</h4>
+<p><code>TaggedExplicit</code> does not check the class, and accepts any class. It expects you to check the class after reading the value.</p>
+<p>To specify the class in the parser, use <code>TaggedValue</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Note: the strange notation (using braces) is required by the compiler to use
+// a constant instead of the numeric value.
+</span><span class="kw">let </span>(rem, result) = TaggedValue::&lt;u32, Error, Explicit, {Class::CONTEXT_SPECIFIC}, <span class="number">0</span>&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>Note that <code>TaggedExplicit</code> is a type alias to <code>TaggedValue</code>, so the objects are the same.</p>
+<h4 id="accepting-any-explicit-tag"><a class="doc-anchor" href="#accepting-any-explicit-tag">§</a>Accepting any <code>EXPLICIT</code> tag</h4>
+<p>To parse a value, accepting any class or tag, use <code>TaggedParser</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = TaggedParser::&lt;Explicit, u32&gt;::from_der(input)<span class="question-mark">?</span>;
+<span class="comment">// result has type TaggedParser. Use `.as_ref()` or `.into_inner()` 
+// to access content
+</span><span class="kw">let </span>tag = result.tag();
+<span class="kw">let </span>class = result.class();
+<span class="macro">assert_eq!</span>(result.as_ref(), <span class="kw-2">&amp;</span><span class="number">0</span>);</code></pre></div>
+<h4 id="optional-tagged-values"><a class="doc-anchor" href="#optional-tagged-values">§</a>Optional tagged values</h4>
+<p>To parse optional tagged values, <code>Option&lt;TaggedExplicit&lt;...&gt;&gt;</code> can be used:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = <span class="prelude-ty">Option</span>::&lt;TaggedExplicit::&lt;u32, Error, <span class="number">0</span>&gt;&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>The type <code>OptTaggedExplicit</code> is also provided as an alias:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = OptTaggedExplicit::&lt;u32, Error, <span class="number">0</span>&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<h3 id="implicit-tagged-values"><a class="doc-anchor" href="#implicit-tagged-values">§</a><code>IMPLICIT</code> tagged values</h3><h4 id="parsing-implicit-expecting-a-known-tag"><a class="doc-anchor" href="#parsing-implicit-expecting-a-known-tag">§</a>Parsing <code>IMPLICIT</code>, expecting a known tag</h4>
+<p>If you expect only a specific tag, use <code>TaggedImplicit</code>.</p>
+<p>For ex, to parse a <code>[3] EXPLICIT INTEGER</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = TaggedExplicit::&lt;u32, Error, <span class="number">0</span>&gt;::from_der(input)<span class="question-mark">?</span>;
+<span class="comment">// result has type TaggedValue. Use `.as_ref()` or `.into_inner()` 
+// to access content
+</span><span class="kw">let </span>tag = result.tag();
+<span class="kw">let </span>class = result.class();
+<span class="macro">assert_eq!</span>(result.as_ref(), <span class="kw-2">&amp;</span><span class="number">0</span>);</code></pre></div>
+<h4 id="specifying-the-class-1"><a class="doc-anchor" href="#specifying-the-class-1">§</a>Specifying the class</h4>
+<p><code>TaggedImplicit</code> does not check the class, and accepts any class. It expects you to check the class after reading the value.</p>
+<p>To specify the class in the parser, use <code>TaggedValue</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Note: the strange notation (using braces) is required by the compiler to use
+// a constant instead of the numeric value.
+</span><span class="kw">let </span>(rem, result) = TaggedValue::&lt;u32, Error, Implicit, { Class::CONTEXT_SPECIFIC }, <span class="number">1</span>&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>Note that <code>TaggedImplicit</code> is a type alias to <code>TaggedValue</code>, so the objects are the same.</p>
+<h4 id="accepting-any-implicit-tag"><a class="doc-anchor" href="#accepting-any-implicit-tag">§</a>Accepting any <code>IMPLICIT</code> tag</h4>
+<p>To parse a value, accepting any class or tag, use <code>TaggedParser</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = TaggedParser::&lt;Implicit, u32&gt;::from_der(input)<span class="question-mark">?</span>;
+<span class="comment">// result has type TaggedParser. Use `.as_ref()` or `.into_inner()` 
+// to access content
+</span><span class="kw">let </span>tag = result.tag();
+<span class="kw">let </span>class = result.class();
+<span class="macro">assert_eq!</span>(result.as_ref(), <span class="kw-2">&amp;</span><span class="number">0</span>);</code></pre></div>
+<h4 id="optional-tagged-values-1"><a class="doc-anchor" href="#optional-tagged-values-1">§</a>Optional tagged values</h4>
+<p>To parse optional tagged values, <code>Option&lt;TaggedImplicit&lt;...&gt;&gt;</code> can be used:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = <span class="prelude-ty">Option</span>::&lt;TaggedImplicit::&lt;u32, Error, <span class="number">0</span>&gt;&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+<p>The type <code>OptTaggedImplicit</code> is also provided as an alias:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(rem, result) = OptTaggedImplicit::&lt;u32, Error, <span class="number">0</span>&gt;::from_der(input)<span class="question-mark">?</span>;</code></pre></div>
+</div></details></section></div></main></body></html>

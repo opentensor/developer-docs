@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["BATCH_SIZE"],"struct":["RecvMeta","UdpSockRef","UdpSocketState","UdpState"]};

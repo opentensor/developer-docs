@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Call","Error","Event","PrecompileEnum"],"fn":["__type_value_for_default_precompile_enabled"],"mod":["dispatchables","storage_types"],"struct":["DefaultPrecompileEnabled","Pallet"],"trait":["Config"],"type":["Module","PrecompileEnable"]};

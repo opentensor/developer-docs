@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["KEY_TYPE","MAX_PULSES_TO_FETCH","QUICKNET_CHAIN_HASH"],"fn":["message"],"mod":["bls12_381","crypto","pallet","types","utils","verifier"]};

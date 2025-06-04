@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Call","Error","Event"],"fn":["__type_value_for_default_max_space"],"mod":["dispatchables","storage_types"],"struct":["DefaultMaxSpace","Pallet"],"trait":["Config","GetTempoInterface"],"type":["MaxSpace","Module","TimelockedIndex","UsedSpaceOf"]};

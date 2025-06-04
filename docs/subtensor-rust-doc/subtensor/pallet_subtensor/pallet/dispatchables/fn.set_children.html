@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Set a single child for a given hotkey on a specified network."><title>set_children in pallet_subtensor::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_subtensor" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_subtensor/index.html">pallet_<wbr>subtensor</a><span class="version">4.0.0-dev</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">set_<wbr>children</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#arguments" title="Arguments:">Arguments:</a></li><li><a href="#events" title="Events:">Events:</a></li><li><a href="#errors" title="Errors:">Errors:</a></li><li><a href="#detailed-explanation-of-checks" title="Detailed Explanation of Checks:">Detailed Explanation of Checks:</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>subtensor::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_subtensor</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">set_children</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_subtensor/lib.rs.html#67">Source</a> </span></div><pre class="rust item-decl"><code>pub fn set_children&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_subtensor::pallet::Config">Config</a>&gt;(
+    hotkey: T::<a class="associatedtype" href="../../../frame_system/pallet/trait.Config.html#associatedtype.AccountId" title="type frame_system::pallet::Config::AccountId">AccountId</a>,
+    netuid: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+    children: <a class="struct" href="https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;(<a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u64.html">u64</a>, T::<a class="associatedtype" href="../../../frame_system/pallet/trait.Config.html#associatedtype.AccountId" title="type frame_system::pallet::Config::AccountId">AccountId</a>)&gt;,
+)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Set a single child for a given hotkey on a specified network.</p>
+<p>This function allows a coldkey to set a single child for a given hotkey on a specified network.
+The proportion of the hotkey’s stake to be allocated to the child is also specified.</p>
+<h2 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments:</h2>
+<ul>
+<li>
+<p><code>origin</code> (<T as frame_system::Config>::RuntimeOrigin):</p>
+<ul>
+<li>The signature of the calling coldkey. Setting a hotkey child can only be done by the coldkey.</li>
+</ul>
+</li>
+<li>
+<p><code>hotkey</code> (T::AccountId):</p>
+<ul>
+<li>The hotkey which will be assigned the child.</li>
+</ul>
+</li>
+<li>
+<p><code>child</code> (T::AccountId):</p>
+<ul>
+<li>The child which will be assigned to the hotkey.</li>
+</ul>
+</li>
+<li>
+<p><code>netuid</code> (u16):</p>
+<ul>
+<li>The u16 network identifier where the childkey will exist.</li>
+</ul>
+</li>
+<li>
+<p><code>proportion</code> (u64):</p>
+<ul>
+<li>Proportion of the hotkey’s stake to be given to the child, the value must be u64 normalized.</li>
+</ul>
+</li>
+</ul>
+<h2 id="events"><a class="doc-anchor" href="#events">§</a>Events:</h2>
+<ul>
+<li><code>ChildAddedSingular</code>:
+<ul>
+<li>On successfully registering a child to a hotkey.</li>
+</ul>
+</li>
+</ul>
+<h2 id="errors"><a class="doc-anchor" href="#errors">§</a>Errors:</h2>
+<ul>
+<li><code>SubNetworkDoesNotExist</code>:
+<ul>
+<li>Attempting to register to a non-existent network.</li>
+</ul>
+</li>
+<li><code>RegistrationNotPermittedOnRootSubnet</code>:
+<ul>
+<li>Attempting to register a child on the root network.</li>
+</ul>
+</li>
+<li><code>NonAssociatedColdKey</code>:
+<ul>
+<li>The coldkey does not own the hotkey or the child is the same as the hotkey.</li>
+</ul>
+</li>
+<li><code>HotKeyAccountNotExists</code>:
+<ul>
+<li>The hotkey account does not exist.</li>
+</ul>
+</li>
+</ul>
+<h2 id="detailed-explanation-of-checks"><a class="doc-anchor" href="#detailed-explanation-of-checks">§</a>Detailed Explanation of Checks:</h2>
+<ol>
+<li><strong>Signature Verification</strong>: Ensures that the caller has signed the transaction, verifying the coldkey.</li>
+<li><strong>Root Network Check</strong>: Ensures that the delegation is not on the root network, as child hotkeys are not valid on the root.</li>
+<li><strong>Network Existence Check</strong>: Ensures that the specified network exists.</li>
+<li><strong>Ownership Verification</strong>: Ensures that the coldkey owns the hotkey.</li>
+<li><strong>Hotkey Account Existence Check</strong>: Ensures that the hotkey account already exists.</li>
+<li><strong>Child-Hotkey Distinction</strong>: Ensures that the child is not the same as the hotkey.</li>
+<li><strong>Old Children Cleanup</strong>: Removes the hotkey from the parent list of its old children.</li>
+<li><strong>New Children Assignment</strong>: Assigns the new child to the hotkey and updates the parent list for the new child.</li>
+</ol>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.set_children" title="associated function pallet_subtensor::pallet::Pallet::set_children"><code>Pallet::set_children</code></a>.</p>
+</div></details></section></div></main></body></html>

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["DatabaseSource"],"fn":["frontier_database_dir"],"mod":["static_keys"],"struct":["Backend","DatabaseSettings","LogIndexerBackend","MappingCommitment","MappingDb","MetaDb"],"trait":["Database"],"type":["DbHash"]};

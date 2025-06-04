@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Hole Punching Tutorial"><title>libp2p::tutorials::hole_punching - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="libp2p" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="icon" href="https://libp2p.io/img/favicon.png"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../../../libp2p/index.html"><img src="https://libp2p.io/img/logo_small.png" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../libp2p/index.html"><img src="https://libp2p.io/img/logo_small.png" alt="logo"></a><h2><a href="../../../libp2p/index.html">libp2p</a><span class="version">0.52.4</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module hole_<wbr>punching</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#hole-punching-tutorial" title="Hole Punching Tutorial">Hole Punching Tutorial</a><ul><li><a href="#setting-up-the-relay-server" title="Setting up the relay server">Setting up the relay server</a></li><li><a href="#setting-up-the-listening-client" title="Setting up the listening client">Setting up the listening client</a></li><li><a href="#connecting-to-the-listening-client-from-the-dialing-client" title="Connecting to the listening client from the dialing client">Connecting to the listening client from the dialing client</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In libp2p::<wbr>tutorials</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">libp2p</a>::<wbr><a href="../index.html">tutorials</a></div><h1>Module <span>hole_punching</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/libp2p/tutorials/hole_punching.rs.html#21-183">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="hole-punching-tutorial"><a class="doc-anchor" href="#hole-punching-tutorial">§</a>Hole Punching Tutorial</h2>
+<p>This tutorial shows hands-on how to overcome firewalls and NATs with libp2p’s hole punching
+mechanism. Before we get started, please read the <a href="https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/">blog
+post</a> to familiarize yourself with libp2p’s hole
+punching mechanism on a conceptual level.</p>
+<p>We will be using the <a href="crate::relay">Circuit Relay</a> and the <a href="crate::dcutr">Direct Connection
+Upgrade through Relay (DCUtR)</a> protocol.</p>
+<p>You will need 3 machines for this tutorial:</p>
+<ul>
+<li>A relay server:
+<ul>
+<li>Any public server will do, e.g. a cloud provider VM.</li>
+</ul>
+</li>
+<li>A listening client:
+<ul>
+<li>Any computer connected to the internet, but not reachable from outside its own network,
+works.</li>
+<li>This can e.g. be your friends laptop behind their router (firewall + NAT).</li>
+<li>This can e.g. be some cloud provider VM, shielded from incoming connections e.g. via
+Linux’s UFW on the same machine.</li>
+<li>Don’t use a machine that is in the same network as the dialing client. (This would require
+NAT hairpinning.)</li>
+</ul>
+</li>
+<li>A dialing client:
+<ul>
+<li>Like the above, any computer connected to the internet, but not reachable from the outside.</li>
+<li>Your local machine will likely fulfill these requirements.</li>
+</ul>
+</li>
+</ul>
+<h3 id="setting-up-the-relay-server"><a class="doc-anchor" href="#setting-up-the-relay-server">§</a>Setting up the relay server</h3>
+<p>Hole punching requires a public relay node for the two private nodes to coordinate their hole
+punch via. For that we need a public server somewhere in the Internet. In case you don’t have
+one already, any cloud provider VM will do.</p>
+<p>Either on the server directly, or on your local machine, compile the example relay server:</p>
+<div class="example-wrap"><pre class="language-bash"><code>## Inside the rust-libp2p repository.
+cargo build --bin relay-server-example</code></pre></div>
+<p>You can find the binary at <code>target/debug/relay-server-example</code>. In case you built it locally, copy
+it to your server.</p>
+<p>On your server, start the relay server binary:</p>
+<div class="example-wrap"><pre class="language-bash"><code>./relay-server-example --port 4001 --secret-key-seed 0</code></pre></div>
+<p>Now let’s make sure that the server is public, in other words let’s make sure one can reach it
+through the Internet. First, either manually replace <code>$RELAY_SERVER_IP</code> in the following
+commands or <code>export RELAY_SERVER_IP=ipaddr</code> with the appropriate relay server <code>ipaddr</code> in
+the dailing client and listening client.</p>
+<p>Now, from the dialing client:</p>
+<ol>
+<li>
+<p>Test that you can connect on Layer 3 (IP).</p>
+<div class="example-wrap"><pre class="language-bash"><code>ping $RELAY_SERVER_IP</code></pre></div></li>
+<li>
+<p>Test that you can connect on Layer 4 (TCP).</p>
+<div class="example-wrap"><pre class="language-bash"><code>telnet $RELAY_SERVER_IP 4001</code></pre></div></li>
+<li>
+<p>Test that you can connect via libp2p using <a href="https://github.com/mxinden/libp2p-lookup"><code>libp2p-lookup</code></a>.</p>
+<div class="example-wrap"><pre class="language-bash"><code>## For IPv4
+libp2p-lookup direct --address /ip4/$RELAY_SERVER_IP/tcp/4001
+## For IPv6
+libp2p-lookup direct --address /ip6/$RELAY_SERVER_IP/tcp/4001</code></pre></div></li>
+</ol>
+<p>The libp2p-lookup output should look something like:</p>
+<div class="example-wrap"><pre class="language-bash"><code>$ libp2p-lookup direct --address /ip4/111.11.111.111/tcp/4001
+Lookup for peer with id PeerId(&quot;12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN&quot;) succeeded.
+
+Protocol version: &quot;/TODO/0.0.1&quot;
+Agent version: &quot;rust-libp2p/0.36.0&quot;
+Observed address: &quot;/ip4/22.222.222.222/tcp/39212&quot;
+Listen addresses:
+        - &quot;/ip4/127.0.0.1/tcp/4001&quot;
+        - &quot;/ip4/111.11.111.111/tcp/4001&quot;
+        - &quot;/ip4/10.48.0.5/tcp/4001&quot;
+        - &quot;/ip4/10.124.0.2/tcp/4001&quot;
+Protocols:
+        - &quot;/libp2p/circuit/relay/0.2.0/hop&quot;
+        - &quot;/ipfs/ping/1.0.0&quot;
+        - &quot;/ipfs/id/1.0.0&quot;
+        - &quot;/ipfs/id/push/1.0.0&quot;</code></pre></div><h3 id="setting-up-the-listening-client"><a class="doc-anchor" href="#setting-up-the-listening-client">§</a>Setting up the listening client</h3>
+<p>Either on the listening client machine directly, or on your local machine, compile the example
+DCUtR client:</p>
+<div class="example-wrap"><pre class="language-bash"><code>## Inside the rust-libp2p repository.
+cargo build --bin dcutr-example</code></pre></div>
+<p>You can find the binary at <code>target/debug/dcutr-example</code>. In case you built it locally, copy
+it to your listening client machine.</p>
+<p>On the listening client machine:</p>
+<div class="example-wrap"><pre class="language-bash"><code>RUST_LOG=info ./dcutr-example --secret-key-seed 1 --mode listen --relay-address /ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN
+
+[2022-05-11T10:38:52Z INFO  client] Local peer id: PeerId(&quot;XXX&quot;)
+[2022-05-11T10:38:52Z INFO  client] Listening on &quot;/ip4/127.0.0.1/tcp/44703&quot;
+[2022-05-11T10:38:52Z INFO  client] Listening on &quot;/ip4/XXX/tcp/44703&quot;
+[2022-05-11T10:38:54Z INFO  client] Relay told us our public address: &quot;/ip4/XXX/tcp/53160&quot;
+[2022-05-11T10:38:54Z INFO  client] Told relay its public address.
+[2022-05-11T10:38:54Z INFO  client] Relay accepted our reservation request.
+[2022-05-11T10:38:54Z INFO  client] Listening on &quot;/ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/XXX&quot;</code></pre></div>
+<p>Now let’s make sure that the listening client is not public, in other words let’s make sure one
+can not reach it directly through the Internet. From the dialing client test that you can not
+connect on Layer 4 (TCP):</p>
+<div class="example-wrap"><pre class="language-bash"><code>telnet $LISTENING_CLIENT_IP_OBSERVED_BY_RELAY 53160</code></pre></div><h3 id="connecting-to-the-listening-client-from-the-dialing-client"><a class="doc-anchor" href="#connecting-to-the-listening-client-from-the-dialing-client">§</a>Connecting to the listening client from the dialing client</h3><div class="example-wrap"><pre class="language-bash"><code>RUST_LOG=info ./dcutr-example --secret-key-seed 2 --mode dial --relay-address /ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN --remote-peer-id 12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X</code></pre></div>
+<p>You should see the following logs appear:</p>
+<ol>
+<li>
+<p>The dialing client establishing a relayed connection to the listening client via the relay
+server. Note the <a href="../../multiaddr/enum.Protocol.html#variant.P2pCircuit" title="variant libp2p::multiaddr::Protocol::P2pCircuit"><code>/p2p-circuit</code> protocol</a> in the
+<a href="../../struct.Multiaddr.html" title="struct libp2p::Multiaddr"><code>Multiaddr</code></a>.</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code>[<span class="number">2022</span>-<span class="number">01</span>-<span class="number">30T12</span>:<span class="number">54</span>:<span class="number">10Z </span>INFO  client] Established connection to PeerId(<span class="string">"12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X"</span>) via Dialer { address: <span class="string">"/ip4/$RELAY_PEER_ID/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X"</span>, role_override: Dialer }</code></pre></div>
+</li>
+<li>
+<p>The listening client initiating a direct connection upgrade for the new relayed connection.
+Reported by <a href="crate::dcutr"><code>dcutr</code></a> through
+<a href="crate::dcutr::Event::RemoteInitiatedDirectConnectionUpgrade"><code>Event::RemoteInitiatedDirectConnectionUpgrade</code></a>.</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code>[<span class="number">2022</span>-<span class="number">01</span>-<span class="number">30T12</span>:<span class="number">54</span>:<span class="number">11Z </span>INFO  client] RemoteInitiatedDirectConnectionUpgrade { remote_peer_id: PeerId(<span class="string">"12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X"</span>), remote_relayed_addr: <span class="string">"/ip4/$RELAY_PEER_ID/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X" </span>}</code></pre></div>
+</li>
+<li>
+<p>The direct connection upgrade, also known as hole punch, succeeding. Reported by
+<a href="crate::dcutr"><code>dcutr</code></a> through
+<a href="crate::dcutr::Event::DirectConnectionUpgradeSucceeded"><code>Event::RemoteInitiatedDirectConnectionUpgrade</code></a>.</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code>[<span class="number">2022</span>-<span class="number">01</span>-<span class="number">30T12</span>:<span class="number">54</span>:<span class="number">11Z </span>INFO  client] DirectConnectionUpgradeSucceeded { remote_peer_id: PeerId(<span class="string">"12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X"</span>) }</code></pre></div>
+</li>
+</ol>
+</div></details></section></div></main></body></html>

@@ -1,0 +1,1 @@
+searchState.loadedDescShard("impl_codec", 0, "Parity Codec serialization support for uint and fixed hash.\nAdd Parity Codec serialization support to a fixed-sized …\nAdd Parity Codec serialization support to an integer …")

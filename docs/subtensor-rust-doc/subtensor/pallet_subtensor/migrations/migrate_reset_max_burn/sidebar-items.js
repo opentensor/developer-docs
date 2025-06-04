@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_reset_max_burn"]};

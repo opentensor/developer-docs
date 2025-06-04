@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["GasCost","StorageTarget","TransactionCost"],"fn":["call_transaction_cost","create_transaction_cost","dynamic_opcode_cost","init_code_cost","static_opcode_cost"],"struct":["Gasometer","MemoryCost"]};

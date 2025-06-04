@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["E","FRAC_PI_2","FRAC_PI_4","LOG2_E","ONE","PI","THREE","TWO","TWO_PI","ZERO"],"fn":["asin","cos","exp","ln","log2","pow","powi","sin","sqrt","tan"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Receipt","Transaction","TransactionAction"],"struct":["AccessListItem","LegacyTransactionMessage","Log","TransactionData"],"trait":["ValidatedTransaction"],"type":["Block"]};

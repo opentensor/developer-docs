@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["SMALL_TRANSFER_LIMIT"],"enum":["ProxyType"],"mod":["time"],"type":["AccountId","Balance","BlockNumber","Hash","Index","Nonce","Signature"]};

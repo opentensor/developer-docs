@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["boolean","constant","float","function","iter","name","ord","path","prelude","reflection","str"],"struct":["BoxPredicate"],"trait":["Predicate","PredicateBoxExt"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["authority_keys_from_seed","authority_keys_from_ss58","get_account_id_from_seed","get_aura_from_ss58_addr","get_from_seed","get_grandpa_from_ss58_addr"],"mod":["devnet","finney","localnet","testnet"],"struct":["Extensions"],"type":["ChainSpec"]};

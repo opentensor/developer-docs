@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/quinn-proto-0.9.6/src/transport_parameters.rs`."><title>transport_parameters.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="quinn_proto" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">quinn_proto/</div>transport_parameters.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! QUIC connection transport parameters
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! The `TransportParameters` type is used to represent the transport parameters
+<a href=#4 id=4 data-nosnippet>4</a>//! negotiated by peers while establishing a QUIC connection. This process
+<a href=#5 id=5 data-nosnippet>5</a>//! happens as part of the establishment of the TLS session. As such, the types
+<a href=#6 id=6 data-nosnippet>6</a>//! contained in this modules should generally only be referred to by custom
+<a href=#7 id=7 data-nosnippet>7</a>//! implementations of the `crypto::Session` trait.
+<a href=#8 id=8 data-nosnippet>8</a>
+<a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">use </span>std::{
+<a href=#10 id=10 data-nosnippet>10</a>    convert::TryFrom,
+<a href=#11 id=11 data-nosnippet>11</a>    net::{Ipv4Addr, Ipv6Addr, SocketAddrV4, SocketAddrV6},
+<a href=#12 id=12 data-nosnippet>12</a>};
+<a href=#13 id=13 data-nosnippet>13</a>
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>bytes::{Buf, BufMut};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>thiserror::Error;
+<a href=#16 id=16 data-nosnippet>16</a>
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use crate</span>::{
+<a href=#18 id=18 data-nosnippet>18</a>    cid_generator::ConnectionIdGenerator,
+<a href=#19 id=19 data-nosnippet>19</a>    cid_queue::CidQueue,
+<a href=#20 id=20 data-nosnippet>20</a>    coding::{BufExt, BufMutExt, UnexpectedEnd},
+<a href=#21 id=21 data-nosnippet>21</a>    config::{EndpointConfig, ServerConfig, TransportConfig},
+<a href=#22 id=22 data-nosnippet>22</a>    shared::ConnectionId,
+<a href=#23 id=23 data-nosnippet>23</a>    ResetToken, Side, TransportError, VarInt, LOC_CID_COUNT, MAX_CID_SIZE, MAX_STREAM_COUNT,
+<a href=#24 id=24 data-nosnippet>24</a>    RESET_TOKEN_SIZE,
+<a href=#25 id=25 data-nosnippet>25</a>};
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a><span class="comment">// Apply a given macro to a list of all the transport parameters having integer types, along with
+<a href=#28 id=28 data-nosnippet>28</a>// their codes and default values. Using this helps us avoid error-prone duplication of the
+<a href=#29 id=29 data-nosnippet>29</a>// contained information across decoding, encoding, and the `Default` impl. Whenever we want to do
+<a href=#30 id=30 data-nosnippet>30</a>// something with transport parameters, we'll handle the bulk of cases by writing a macro that
+<a href=#31 id=31 data-nosnippet>31</a>// takes a list of arguments in this form, then passing it to this macro.
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="macro">macro_rules!</span> apply_params {
+<a href=#33 id=33 data-nosnippet>33</a>    (<span class="macro-nonterminal">$</span><span class="kw">macro</span>:<span class="macro-nonterminal">ident</span>) =&gt; {
+<a href=#34 id=34 data-nosnippet>34</a>        <span class="macro-nonterminal">$</span><span class="macro">macro!</span> {
+<a href=#35 id=35 data-nosnippet>35</a>            <span class="comment">// #[doc] name (id) = default,
+<a href=#36 id=36 data-nosnippet>36</a>            </span><span class="doccomment">/// Milliseconds, disabled if zero
+<a href=#37 id=37 data-nosnippet>37</a>            </span><span class="macro-nonterminal">max_idle_timeout</span>(<span class="number">0x0001</span>) = <span class="number">0</span>,
+<a href=#38 id=38 data-nosnippet>38</a>            <span class="doccomment">/// Limits the size of UDP payloads that the endpoint is willing to receive
+<a href=#39 id=39 data-nosnippet>39</a>            </span>max_udp_payload_size(<span class="number">0x0003</span>) = <span class="number">65527</span>,
+<a href=#40 id=40 data-nosnippet>40</a>
+<a href=#41 id=41 data-nosnippet>41</a>            <span class="doccomment">/// Initial value for the maximum amount of data that can be sent on the connection
+<a href=#42 id=42 data-nosnippet>42</a>            </span>initial_max_data(<span class="number">0x0004</span>) = <span class="number">0</span>,
+<a href=#43 id=43 data-nosnippet>43</a>            <span class="doccomment">/// Initial flow control limit for locally-initiated bidirectional streams
+<a href=#44 id=44 data-nosnippet>44</a>            </span>initial_max_stream_data_bidi_local(<span class="number">0x0005</span>) = <span class="number">0</span>,
+<a href=#45 id=45 data-nosnippet>45</a>            <span class="doccomment">/// Initial flow control limit for peer-initiated bidirectional streams
+<a href=#46 id=46 data-nosnippet>46</a>            </span>initial_max_stream_data_bidi_remote(<span class="number">0x0006</span>) = <span class="number">0</span>,
+<a href=#47 id=47 data-nosnippet>47</a>            <span class="doccomment">/// Initial flow control limit for unidirectional streams
+<a href=#48 id=48 data-nosnippet>48</a>            </span>initial_max_stream_data_uni(<span class="number">0x0007</span>) = <span class="number">0</span>,
+<a href=#49 id=49 data-nosnippet>49</a>
+<a href=#50 id=50 data-nosnippet>50</a>            <span class="doccomment">/// Initial maximum number of bidirectional streams the peer may initiate
+<a href=#51 id=51 data-nosnippet>51</a>            </span>initial_max_streams_bidi(<span class="number">0x0008</span>) = <span class="number">0</span>,
+<a href=#52 id=52 data-nosnippet>52</a>            <span class="doccomment">/// Initial maximum number of unidirectional streams the peer may initiate
+<a href=#53 id=53 data-nosnippet>53</a>            </span>initial_max_streams_uni(<span class="number">0x0009</span>) = <span class="number">0</span>,
+<a href=#54 id=54 data-nosnippet>54</a>
+<a href=#55 id=55 data-nosnippet>55</a>            <span class="doccomment">/// Exponent used to decode the ACK Delay field in the ACK frame
+<a href=#56 id=56 data-nosnippet>56</a>            </span>ack_delay_exponent(<span class="number">0x000a</span>) = <span class="number">3</span>,
+<a href=#57 id=57 data-nosnippet>57</a>            <span class="doccomment">/// Maximum amount of time in milliseconds by which the endpoint will delay sending
+<a href=#58 id=58 data-nosnippet>58</a>            /// acknowledgments
+<a href=#59 id=59 data-nosnippet>59</a>            </span>max_ack_delay(<span class="number">0x000b</span>) = <span class="number">25</span>,
+<a href=#60 id=60 data-nosnippet>60</a>            <span class="doccomment">/// Maximum number of connection IDs from the peer that an endpoint is willing to store
+<a href=#61 id=61 data-nosnippet>61</a>            </span>active_connection_id_limit(<span class="number">0x000e</span>) = <span class="number">2</span>,
+<a href=#62 id=62 data-nosnippet>62</a>        }
+<a href=#63 id=63 data-nosnippet>63</a>    };
+<a href=#64 id=64 data-nosnippet>64</a>}
+<a href=#65 id=65 data-nosnippet>65</a>
+<a href=#66 id=66 data-nosnippet>66</a><span class="macro">macro_rules!</span> make_struct {
+<a href=#67 id=67 data-nosnippet>67</a>    {$($(<span class="attr">#[<span class="macro-nonterminal">$doc</span>:meta]</span>)* <span class="macro-nonterminal">$name</span>:ident (<span class="macro-nonterminal">$code</span>:expr) = <span class="macro-nonterminal">$default</span>:expr,)<span class="kw-2">*</span>} =&gt; {
+<a href=#68 id=68 data-nosnippet>68</a>        <span class="doccomment">/// Transport parameters used to negotiate connection-level preferences between peers
+<a href=#69 id=69 data-nosnippet>69</a>        </span><span class="attr">#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+<a href=#70 id=70 data-nosnippet>70</a>        </span><span class="kw">pub struct </span>TransportParameters {
+<a href=#71 id=71 data-nosnippet>71</a>            $($(<span class="attr">#[<span class="macro-nonterminal">$doc</span>]</span>)* <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="macro-nonterminal">$name </span>: VarInt,)*
+<a href=#72 id=72 data-nosnippet>72</a>
+<a href=#73 id=73 data-nosnippet>73</a>            <span class="doccomment">/// Does the endpoint support active connection migration
+<a href=#74 id=74 data-nosnippet>74</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) disable_active_migration: bool,
+<a href=#75 id=75 data-nosnippet>75</a>            <span class="doccomment">/// Maximum size for datagram frames
+<a href=#76 id=76 data-nosnippet>76</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) max_datagram_frame_size: <span class="prelude-ty">Option</span>&lt;VarInt&gt;,
+<a href=#77 id=77 data-nosnippet>77</a>            <span class="doccomment">/// The value that the endpoint included in the Source Connection ID field of the first
+<a href=#78 id=78 data-nosnippet>78</a>            /// Initial packet it sends for the connection
+<a href=#79 id=79 data-nosnippet>79</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) initial_src_cid: <span class="prelude-ty">Option</span>&lt;ConnectionId&gt;,
+<a href=#80 id=80 data-nosnippet>80</a>            <span class="doccomment">/// The endpoint is willing to receive QUIC packets containing any value for the fixed
+<a href=#81 id=81 data-nosnippet>81</a>            /// bit
+<a href=#82 id=82 data-nosnippet>82</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) grease_quic_bit: bool,
+<a href=#83 id=83 data-nosnippet>83</a>
+<a href=#84 id=84 data-nosnippet>84</a>            <span class="comment">// Server-only
+<a href=#85 id=85 data-nosnippet>85</a>            </span><span class="doccomment">/// The value of the Destination Connection ID field from the first Initial packet sent
+<a href=#86 id=86 data-nosnippet>86</a>            /// by the client
+<a href=#87 id=87 data-nosnippet>87</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) original_dst_cid: <span class="prelude-ty">Option</span>&lt;ConnectionId&gt;,
+<a href=#88 id=88 data-nosnippet>88</a>            <span class="doccomment">/// The value that the server included in the Source Connection ID field of a Retry
+<a href=#89 id=89 data-nosnippet>89</a>            /// packet
+<a href=#90 id=90 data-nosnippet>90</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) retry_src_cid: <span class="prelude-ty">Option</span>&lt;ConnectionId&gt;,
+<a href=#91 id=91 data-nosnippet>91</a>            <span class="doccomment">/// Token used by the client to verify a stateless reset from the server
+<a href=#92 id=92 data-nosnippet>92</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) stateless_reset_token: <span class="prelude-ty">Option</span>&lt;ResetToken&gt;,
+<a href=#93 id=93 data-nosnippet>93</a>            <span class="doccomment">/// The server's preferred address for communication after handshake completion
+<a href=#94 id=94 data-nosnippet>94</a>            </span><span class="kw">pub</span>(<span class="kw">crate</span>) preferred_address: <span class="prelude-ty">Option</span>&lt;PreferredAddress&gt;,
+<a href=#95 id=95 data-nosnippet>95</a>        }
+<a href=#96 id=96 data-nosnippet>96</a>
+<a href=#97 id=97 data-nosnippet>97</a>        <span class="kw">impl </span>Default <span class="kw">for </span>TransportParameters {
+<a href=#98 id=98 data-nosnippet>98</a>            <span class="doccomment">/// Standard defaults, used if the peer does not supply a given parameter.
+<a href=#99 id=99 data-nosnippet>99</a>            </span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+<a href=#100 id=100 data-nosnippet>100</a>                <span class="self">Self </span>{
+<a href=#101 id=101 data-nosnippet>101</a>                    $(<span class="macro-nonterminal">$name</span>: VarInt::from_u32(<span class="macro-nonterminal">$default</span>),)*
+<a href=#102 id=102 data-nosnippet>102</a>
+<a href=#103 id=103 data-nosnippet>103</a>                    disable_active_migration: <span class="bool-val">false</span>,
+<a href=#104 id=104 data-nosnippet>104</a>                    max_datagram_frame_size: <span class="prelude-val">None</span>,
+<a href=#105 id=105 data-nosnippet>105</a>                    initial_src_cid: <span class="prelude-val">None</span>,
+<a href=#106 id=106 data-nosnippet>106</a>                    grease_quic_bit: <span class="bool-val">false</span>,
+<a href=#107 id=107 data-nosnippet>107</a>
+<a href=#108 id=108 data-nosnippet>108</a>                    original_dst_cid: <span class="prelude-val">None</span>,
+<a href=#109 id=109 data-nosnippet>109</a>                    retry_src_cid: <span class="prelude-val">None</span>,
+<a href=#110 id=110 data-nosnippet>110</a>                    stateless_reset_token: <span class="prelude-val">None</span>,
+<a href=#111 id=111 data-nosnippet>111</a>                    preferred_address: <span class="prelude-val">None</span>,
+<a href=#112 id=112 data-nosnippet>112</a>                }
+<a href=#113 id=113 data-nosnippet>113</a>            }
+<a href=#114 id=114 data-nosnippet>114</a>        }
+<a href=#115 id=115 data-nosnippet>115</a>    }
+<a href=#116 id=116 data-nosnippet>116</a>}
+<a href=#117 id=117 data-nosnippet>117</a>
+<a href=#118 id=118 data-nosnippet>118</a><span class="macro">apply_params!</span>(make_struct);
+<a href=#119 id=119 data-nosnippet>119</a>
+<a href=#120 id=120 data-nosnippet>120</a><span class="kw">impl </span>TransportParameters {
+<a href=#121 id=121 data-nosnippet>121</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new(
+<a href=#122 id=122 data-nosnippet>122</a>        config: <span class="kw-2">&amp;</span>TransportConfig,
+<a href=#123 id=123 data-nosnippet>123</a>        endpoint_config: <span class="kw-2">&amp;</span>EndpointConfig,
+<a href=#124 id=124 data-nosnippet>124</a>        cid_gen: <span class="kw-2">&amp;</span><span class="kw">dyn </span>ConnectionIdGenerator,
+<a href=#125 id=125 data-nosnippet>125</a>        initial_src_cid: ConnectionId,
+<a href=#126 id=126 data-nosnippet>126</a>        server_config: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>ServerConfig&gt;,
+<a href=#127 id=127 data-nosnippet>127</a>    ) -&gt; <span class="self">Self </span>{
+<a href=#128 id=128 data-nosnippet>128</a>        TransportParameters {
+<a href=#129 id=129 data-nosnippet>129</a>            initial_src_cid: <span class="prelude-val">Some</span>(initial_src_cid),
+<a href=#130 id=130 data-nosnippet>130</a>            initial_max_streams_bidi: config.max_concurrent_bidi_streams,
+<a href=#131 id=131 data-nosnippet>131</a>            initial_max_streams_uni: config.max_concurrent_uni_streams,
+<a href=#132 id=132 data-nosnippet>132</a>            initial_max_data: config.receive_window,
+<a href=#133 id=133 data-nosnippet>133</a>            initial_max_stream_data_bidi_local: config.stream_receive_window,
+<a href=#134 id=134 data-nosnippet>134</a>            initial_max_stream_data_bidi_remote: config.stream_receive_window,
+<a href=#135 id=135 data-nosnippet>135</a>            initial_max_stream_data_uni: config.stream_receive_window,
+<a href=#136 id=136 data-nosnippet>136</a>            max_udp_payload_size: endpoint_config.max_udp_payload_size,
+<a href=#137 id=137 data-nosnippet>137</a>            max_idle_timeout: config.max_idle_timeout.unwrap_or(VarInt(<span class="number">0</span>)),
+<a href=#138 id=138 data-nosnippet>138</a>            disable_active_migration: server_config.map_or(<span class="bool-val">false</span>, |c| !c.migration),
+<a href=#139 id=139 data-nosnippet>139</a>            active_connection_id_limit: <span class="kw">if </span>cid_gen.cid_len() == <span class="number">0 </span>{
+<a href=#140 id=140 data-nosnippet>140</a>                <span class="number">2 </span><span class="comment">// i.e. default, i.e. unsent
+<a href=#141 id=141 data-nosnippet>141</a>            </span>} <span class="kw">else </span>{
+<a href=#142 id=142 data-nosnippet>142</a>                CidQueue::LEN <span class="kw">as </span>u32
+<a href=#143 id=143 data-nosnippet>143</a>            }
+<a href=#144 id=144 data-nosnippet>144</a>            .into(),
+<a href=#145 id=145 data-nosnippet>145</a>            max_datagram_frame_size: config
+<a href=#146 id=146 data-nosnippet>146</a>                .datagram_receive_buffer_size
+<a href=#147 id=147 data-nosnippet>147</a>                .map(|x| (x.min(u16::max_value().into()) <span class="kw">as </span>u16).into()),
+<a href=#148 id=148 data-nosnippet>148</a>            grease_quic_bit: endpoint_config.grease_quic_bit,
+<a href=#149 id=149 data-nosnippet>149</a>            ..<span class="self">Self</span>::default()
+<a href=#150 id=150 data-nosnippet>150</a>        }
+<a href=#151 id=151 data-nosnippet>151</a>    }
+<a href=#152 id=152 data-nosnippet>152</a>
+<a href=#153 id=153 data-nosnippet>153</a>    <span class="doccomment">/// Check that these parameters are legal when resuming from
+<a href=#154 id=154 data-nosnippet>154</a>    /// certain cached parameters
+<a href=#155 id=155 data-nosnippet>155</a>    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>validate_resumption_from(
+<a href=#156 id=156 data-nosnippet>156</a>        <span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#157 id=157 data-nosnippet>157</a>        cached: <span class="kw-2">&amp;</span>TransportParameters,
+<a href=#158 id=158 data-nosnippet>158</a>    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), TransportError&gt; {
+<a href=#159 id=159 data-nosnippet>159</a>        <span class="kw">if </span>cached.active_connection_id_limit &gt; <span class="self">self</span>.active_connection_id_limit
+<a href=#160 id=160 data-nosnippet>160</a>            || cached.initial_max_data &gt; <span class="self">self</span>.initial_max_data
+<a href=#161 id=161 data-nosnippet>161</a>            || cached.initial_max_stream_data_bidi_local &gt; <span class="self">self</span>.initial_max_stream_data_bidi_local
+<a href=#162 id=162 data-nosnippet>162</a>            || cached.initial_max_stream_data_bidi_remote &gt; <span class="self">self</span>.initial_max_stream_data_bidi_remote
+<a href=#163 id=163 data-nosnippet>163</a>            || cached.initial_max_stream_data_uni &gt; <span class="self">self</span>.initial_max_stream_data_uni
+<a href=#164 id=164 data-nosnippet>164</a>            || cached.initial_max_streams_bidi &gt; <span class="self">self</span>.initial_max_streams_bidi
+<a href=#165 id=165 data-nosnippet>165</a>            || cached.initial_max_streams_uni &gt; <span class="self">self</span>.initial_max_streams_uni
+<a href=#166 id=166 data-nosnippet>166</a>            || cached.max_datagram_frame_size &gt; <span class="self">self</span>.max_datagram_frame_size
+<a href=#167 id=167 data-nosnippet>167</a>            || cached.grease_quic_bit &amp;&amp; !<span class="self">self</span>.grease_quic_bit
+<a href=#168 id=168 data-nosnippet>168</a>        {
+<a href=#169 id=169 data-nosnippet>169</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(TransportError::PROTOCOL_VIOLATION(
+<a href=#170 id=170 data-nosnippet>170</a>                <span class="string">"0-RTT accepted with incompatible transport parameters"</span>,
+<a href=#171 id=171 data-nosnippet>171</a>            ));
+<a href=#172 id=172 data-nosnippet>172</a>        }
+<a href=#173 id=173 data-nosnippet>173</a>        <span class="prelude-val">Ok</span>(())
+<a href=#174 id=174 data-nosnippet>174</a>    }
+<a href=#175 id=175 data-nosnippet>175</a>
+<a href=#176 id=176 data-nosnippet>176</a>    <span class="doccomment">/// Maximum number of CIDs to issue to this peer
+<a href=#177 id=177 data-nosnippet>177</a>    ///
+<a href=#178 id=178 data-nosnippet>178</a>    /// Consider both a) the active_connection_id_limit from the other end; and
+<a href=#179 id=179 data-nosnippet>179</a>    /// b) LOC_CID_COUNT used locally
+<a href=#180 id=180 data-nosnippet>180</a>    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>issue_cids_limit(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+<a href=#181 id=181 data-nosnippet>181</a>        <span class="self">self</span>.active_connection_id_limit.<span class="number">0</span>.min(LOC_CID_COUNT)
+<a href=#182 id=182 data-nosnippet>182</a>    }
+<a href=#183 id=183 data-nosnippet>183</a>}
+<a href=#184 id=184 data-nosnippet>184</a>
+<a href=#185 id=185 data-nosnippet>185</a><span class="doccomment">/// A server's preferred address
+<a href=#186 id=186 data-nosnippet>186</a>///
+<a href=#187 id=187 data-nosnippet>187</a>/// This is communicated as a transport parameter during TLS session establishment.
+<a href=#188 id=188 data-nosnippet>188</a></span><span class="attr">#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+<a href=#189 id=189 data-nosnippet>189</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>PreferredAddress {
+<a href=#190 id=190 data-nosnippet>190</a>    <span class="kw">pub </span>address_v4: <span class="prelude-ty">Option</span>&lt;SocketAddrV4&gt;,
+<a href=#191 id=191 data-nosnippet>191</a>    <span class="kw">pub </span>address_v6: <span class="prelude-ty">Option</span>&lt;SocketAddrV6&gt;,
+<a href=#192 id=192 data-nosnippet>192</a>    <span class="kw">pub </span>connection_id: ConnectionId,
+<a href=#193 id=193 data-nosnippet>193</a>    <span class="kw">pub </span>stateless_reset_token: ResetToken,
+<a href=#194 id=194 data-nosnippet>194</a>}
+<a href=#195 id=195 data-nosnippet>195</a>
+<a href=#196 id=196 data-nosnippet>196</a><span class="kw">impl </span>PreferredAddress {
+<a href=#197 id=197 data-nosnippet>197</a>    <span class="kw">fn </span>wire_size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u16 {
+<a href=#198 id=198 data-nosnippet>198</a>        <span class="number">4 </span>+ <span class="number">2 </span>+ <span class="number">16 </span>+ <span class="number">2 </span>+ <span class="number">1 </span>+ <span class="self">self</span>.connection_id.len() <span class="kw">as </span>u16 + <span class="number">16
+<a href=#199 id=199 data-nosnippet>199</a>    </span>}
+<a href=#200 id=200 data-nosnippet>200</a>
+<a href=#201 id=201 data-nosnippet>201</a>    <span class="kw">fn </span>write&lt;W: BufMut&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, w: <span class="kw-2">&amp;mut </span>W) {
+<a href=#202 id=202 data-nosnippet>202</a>        w.write(<span class="self">self</span>.address_v4.map_or(Ipv4Addr::UNSPECIFIED, |x| <span class="kw-2">*</span>x.ip()));
+<a href=#203 id=203 data-nosnippet>203</a>        w.write::&lt;u16&gt;(<span class="self">self</span>.address_v4.map_or(<span class="number">0</span>, |x| x.port()));
+<a href=#204 id=204 data-nosnippet>204</a>        w.write(<span class="self">self</span>.address_v6.map_or(Ipv6Addr::UNSPECIFIED, |x| <span class="kw-2">*</span>x.ip()));
+<a href=#205 id=205 data-nosnippet>205</a>        w.write::&lt;u16&gt;(<span class="self">self</span>.address_v6.map_or(<span class="number">0</span>, |x| x.port()));
+<a href=#206 id=206 data-nosnippet>206</a>        w.write::&lt;u8&gt;(<span class="self">self</span>.connection_id.len() <span class="kw">as </span>u8);
+<a href=#207 id=207 data-nosnippet>207</a>        w.put_slice(<span class="kw-2">&amp;</span><span class="self">self</span>.connection_id);
+<a href=#208 id=208 data-nosnippet>208</a>        w.put_slice(<span class="kw-2">&amp;</span><span class="self">self</span>.stateless_reset_token);
+<a href=#209 id=209 data-nosnippet>209</a>    }
+<a href=#210 id=210 data-nosnippet>210</a>
+<a href=#211 id=211 data-nosnippet>211</a>    <span class="kw">fn </span>read&lt;R: Buf&gt;(r: <span class="kw-2">&amp;mut </span>R) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, Error&gt; {
+<a href=#212 id=212 data-nosnippet>212</a>        <span class="kw">let </span>ip_v4 = r.get::&lt;Ipv4Addr&gt;()<span class="question-mark">?</span>;
+<a href=#213 id=213 data-nosnippet>213</a>        <span class="kw">let </span>port_v4 = r.get::&lt;u16&gt;()<span class="question-mark">?</span>;
+<a href=#214 id=214 data-nosnippet>214</a>        <span class="kw">let </span>ip_v6 = r.get::&lt;Ipv6Addr&gt;()<span class="question-mark">?</span>;
+<a href=#215 id=215 data-nosnippet>215</a>        <span class="kw">let </span>port_v6 = r.get::&lt;u16&gt;()<span class="question-mark">?</span>;
+<a href=#216 id=216 data-nosnippet>216</a>        <span class="kw">let </span>cid_len = r.get::&lt;u8&gt;()<span class="question-mark">?</span>;
+<a href=#217 id=217 data-nosnippet>217</a>        <span class="kw">if </span>r.remaining() &lt; cid_len <span class="kw">as </span>usize || cid_len &gt; MAX_CID_SIZE <span class="kw">as </span>u8 {
+<a href=#218 id=218 data-nosnippet>218</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#219 id=219 data-nosnippet>219</a>        }
+<a href=#220 id=220 data-nosnippet>220</a>        <span class="kw">let </span><span class="kw-2">mut </span>stage = [<span class="number">0</span>; MAX_CID_SIZE];
+<a href=#221 id=221 data-nosnippet>221</a>        r.copy_to_slice(<span class="kw-2">&amp;mut </span>stage[<span class="number">0</span>..cid_len <span class="kw">as </span>usize]);
+<a href=#222 id=222 data-nosnippet>222</a>        <span class="kw">let </span>cid = ConnectionId::new(<span class="kw-2">&amp;</span>stage[<span class="number">0</span>..cid_len <span class="kw">as </span>usize]);
+<a href=#223 id=223 data-nosnippet>223</a>        <span class="kw">if </span>r.remaining() &lt; <span class="number">16 </span>{
+<a href=#224 id=224 data-nosnippet>224</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#225 id=225 data-nosnippet>225</a>        }
+<a href=#226 id=226 data-nosnippet>226</a>        <span class="kw">let </span><span class="kw-2">mut </span>token = [<span class="number">0</span>; RESET_TOKEN_SIZE];
+<a href=#227 id=227 data-nosnippet>227</a>        r.copy_to_slice(<span class="kw-2">&amp;mut </span>token);
+<a href=#228 id=228 data-nosnippet>228</a>        <span class="kw">let </span>address_v4 = <span class="kw">if </span>ip_v4.is_unspecified() &amp;&amp; port_v4 == <span class="number">0 </span>{
+<a href=#229 id=229 data-nosnippet>229</a>            <span class="prelude-val">None
+<a href=#230 id=230 data-nosnippet>230</a>        </span>} <span class="kw">else </span>{
+<a href=#231 id=231 data-nosnippet>231</a>            <span class="prelude-val">Some</span>(SocketAddrV4::new(ip_v4, port_v4))
+<a href=#232 id=232 data-nosnippet>232</a>        };
+<a href=#233 id=233 data-nosnippet>233</a>        <span class="kw">let </span>address_v6 = <span class="kw">if </span>ip_v6.is_unspecified() &amp;&amp; port_v6 == <span class="number">0 </span>{
+<a href=#234 id=234 data-nosnippet>234</a>            <span class="prelude-val">None
+<a href=#235 id=235 data-nosnippet>235</a>        </span>} <span class="kw">else </span>{
+<a href=#236 id=236 data-nosnippet>236</a>            <span class="prelude-val">Some</span>(SocketAddrV6::new(ip_v6, port_v6, <span class="number">0</span>, <span class="number">0</span>))
+<a href=#237 id=237 data-nosnippet>237</a>        };
+<a href=#238 id=238 data-nosnippet>238</a>        <span class="kw">if </span>address_v4.is_none() &amp;&amp; address_v6.is_none() {
+<a href=#239 id=239 data-nosnippet>239</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::IllegalValue);
+<a href=#240 id=240 data-nosnippet>240</a>        }
+<a href=#241 id=241 data-nosnippet>241</a>        <span class="prelude-val">Ok</span>(<span class="self">Self </span>{
+<a href=#242 id=242 data-nosnippet>242</a>            address_v4,
+<a href=#243 id=243 data-nosnippet>243</a>            address_v6,
+<a href=#244 id=244 data-nosnippet>244</a>            connection_id: cid,
+<a href=#245 id=245 data-nosnippet>245</a>            stateless_reset_token: token.into(),
+<a href=#246 id=246 data-nosnippet>246</a>        })
+<a href=#247 id=247 data-nosnippet>247</a>    }
+<a href=#248 id=248 data-nosnippet>248</a>}
+<a href=#249 id=249 data-nosnippet>249</a>
+<a href=#250 id=250 data-nosnippet>250</a><span class="doccomment">/// Errors encountered while decoding `TransportParameters`
+<a href=#251 id=251 data-nosnippet>251</a></span><span class="attr">#[derive(Debug, Copy, Clone, Eq, PartialEq, Error)]
+<a href=#252 id=252 data-nosnippet>252</a></span><span class="kw">pub enum </span>Error {
+<a href=#253 id=253 data-nosnippet>253</a>    <span class="doccomment">/// Parameters that are semantically invalid
+<a href=#254 id=254 data-nosnippet>254</a>    </span><span class="attr">#[error(<span class="string">"parameter had illegal value"</span>)]
+<a href=#255 id=255 data-nosnippet>255</a>    </span>IllegalValue,
+<a href=#256 id=256 data-nosnippet>256</a>    <span class="doccomment">/// Catch-all error for problems while decoding transport parameters
+<a href=#257 id=257 data-nosnippet>257</a>    </span><span class="attr">#[error(<span class="string">"parameters were malformed"</span>)]
+<a href=#258 id=258 data-nosnippet>258</a>    </span>Malformed,
+<a href=#259 id=259 data-nosnippet>259</a>}
+<a href=#260 id=260 data-nosnippet>260</a>
+<a href=#261 id=261 data-nosnippet>261</a><span class="kw">impl </span>From&lt;Error&gt; <span class="kw">for </span>TransportError {
+<a href=#262 id=262 data-nosnippet>262</a>    <span class="kw">fn </span>from(e: Error) -&gt; <span class="self">Self </span>{
+<a href=#263 id=263 data-nosnippet>263</a>        <span class="kw">match </span>e {
+<a href=#264 id=264 data-nosnippet>264</a>            Error::IllegalValue =&gt; TransportError::TRANSPORT_PARAMETER_ERROR(<span class="string">"illegal value"</span>),
+<a href=#265 id=265 data-nosnippet>265</a>            Error::Malformed =&gt; TransportError::TRANSPORT_PARAMETER_ERROR(<span class="string">"malformed"</span>),
+<a href=#266 id=266 data-nosnippet>266</a>        }
+<a href=#267 id=267 data-nosnippet>267</a>    }
+<a href=#268 id=268 data-nosnippet>268</a>}
+<a href=#269 id=269 data-nosnippet>269</a>
+<a href=#270 id=270 data-nosnippet>270</a><span class="kw">impl </span>From&lt;UnexpectedEnd&gt; <span class="kw">for </span>Error {
+<a href=#271 id=271 data-nosnippet>271</a>    <span class="kw">fn </span>from(<span class="kw">_</span>: UnexpectedEnd) -&gt; <span class="self">Self </span>{
+<a href=#272 id=272 data-nosnippet>272</a>        Error::Malformed
+<a href=#273 id=273 data-nosnippet>273</a>    }
+<a href=#274 id=274 data-nosnippet>274</a>}
+<a href=#275 id=275 data-nosnippet>275</a>
+<a href=#276 id=276 data-nosnippet>276</a><span class="kw">impl </span>TransportParameters {
+<a href=#277 id=277 data-nosnippet>277</a>    <span class="doccomment">/// Encode `TransportParameters` into buffer
+<a href=#278 id=278 data-nosnippet>278</a>    </span><span class="kw">pub fn </span>write&lt;W: BufMut&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, w: <span class="kw-2">&amp;mut </span>W) {
+<a href=#279 id=279 data-nosnippet>279</a>        <span class="macro">macro_rules!</span> write_params {
+<a href=#280 id=280 data-nosnippet>280</a>            {$($(<span class="attr">#[<span class="macro-nonterminal">$doc</span>:meta]</span>)* <span class="macro-nonterminal">$name</span>:ident (<span class="macro-nonterminal">$code</span>:expr) = <span class="macro-nonterminal">$default</span>:expr,)<span class="kw-2">*</span>} =&gt; {
+<a href=#281 id=281 data-nosnippet>281</a>                $(
+<a href=#282 id=282 data-nosnippet>282</a>                    <span class="kw">if </span><span class="self">self</span>.<span class="macro-nonterminal">$name</span>.<span class="number">0 </span>!= <span class="macro-nonterminal">$default </span>{
+<a href=#283 id=283 data-nosnippet>283</a>                        w.write_var(<span class="macro-nonterminal">$code</span>);
+<a href=#284 id=284 data-nosnippet>284</a>                        w.write(VarInt::try_from(<span class="self">self</span>.<span class="macro-nonterminal">$name</span>.size()).unwrap());
+<a href=#285 id=285 data-nosnippet>285</a>                        w.write(<span class="self">self</span>.<span class="macro-nonterminal">$name</span>);
+<a href=#286 id=286 data-nosnippet>286</a>                    }
+<a href=#287 id=287 data-nosnippet>287</a>                )*
+<a href=#288 id=288 data-nosnippet>288</a>            }
+<a href=#289 id=289 data-nosnippet>289</a>        }
+<a href=#290 id=290 data-nosnippet>290</a>        <span class="macro">apply_params!</span>(write_params);
+<a href=#291 id=291 data-nosnippet>291</a>
+<a href=#292 id=292 data-nosnippet>292</a>        <span class="comment">// Add a reserved parameter to keep people on their toes
+<a href=#293 id=293 data-nosnippet>293</a>        </span>w.write_var(<span class="number">31 </span>* <span class="number">5 </span>+ <span class="number">27</span>);
+<a href=#294 id=294 data-nosnippet>294</a>        w.write_var(<span class="number">0</span>);
+<a href=#295 id=295 data-nosnippet>295</a>
+<a href=#296 id=296 data-nosnippet>296</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">ref </span>x) = <span class="self">self</span>.stateless_reset_token {
+<a href=#297 id=297 data-nosnippet>297</a>            w.write_var(<span class="number">0x02</span>);
+<a href=#298 id=298 data-nosnippet>298</a>            w.write_var(<span class="number">16</span>);
+<a href=#299 id=299 data-nosnippet>299</a>            w.put_slice(x);
+<a href=#300 id=300 data-nosnippet>300</a>        }
+<a href=#301 id=301 data-nosnippet>301</a>
+<a href=#302 id=302 data-nosnippet>302</a>        <span class="kw">if </span><span class="self">self</span>.disable_active_migration {
+<a href=#303 id=303 data-nosnippet>303</a>            w.write_var(<span class="number">0x0c</span>);
+<a href=#304 id=304 data-nosnippet>304</a>            w.write_var(<span class="number">0</span>);
+<a href=#305 id=305 data-nosnippet>305</a>        }
+<a href=#306 id=306 data-nosnippet>306</a>
+<a href=#307 id=307 data-nosnippet>307</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(x) = <span class="self">self</span>.max_datagram_frame_size {
+<a href=#308 id=308 data-nosnippet>308</a>            w.write_var(<span class="number">0x20</span>);
+<a href=#309 id=309 data-nosnippet>309</a>            w.write_var(x.size() <span class="kw">as </span>u64);
+<a href=#310 id=310 data-nosnippet>310</a>            w.write(x);
+<a href=#311 id=311 data-nosnippet>311</a>        }
+<a href=#312 id=312 data-nosnippet>312</a>
+<a href=#313 id=313 data-nosnippet>313</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">ref </span>x) = <span class="self">self</span>.preferred_address {
+<a href=#314 id=314 data-nosnippet>314</a>            w.write_var(<span class="number">0x000d</span>);
+<a href=#315 id=315 data-nosnippet>315</a>            w.write_var(x.wire_size() <span class="kw">as </span>u64);
+<a href=#316 id=316 data-nosnippet>316</a>            x.write(w);
+<a href=#317 id=317 data-nosnippet>317</a>        }
+<a href=#318 id=318 data-nosnippet>318</a>
+<a href=#319 id=319 data-nosnippet>319</a>        <span class="kw">for </span><span class="kw-2">&amp;</span>(tag, cid) <span class="kw">in </span><span class="kw-2">&amp;</span>[
+<a href=#320 id=320 data-nosnippet>320</a>            (<span class="number">0x00</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.original_dst_cid),
+<a href=#321 id=321 data-nosnippet>321</a>            (<span class="number">0x0f</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.initial_src_cid),
+<a href=#322 id=322 data-nosnippet>322</a>            (<span class="number">0x10</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.retry_src_cid),
+<a href=#323 id=323 data-nosnippet>323</a>        ] {
+<a href=#324 id=324 data-nosnippet>324</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">ref </span>cid) = <span class="kw-2">*</span>cid {
+<a href=#325 id=325 data-nosnippet>325</a>                w.write_var(tag);
+<a href=#326 id=326 data-nosnippet>326</a>                w.write_var(cid.len() <span class="kw">as </span>u64);
+<a href=#327 id=327 data-nosnippet>327</a>                w.put_slice(cid);
+<a href=#328 id=328 data-nosnippet>328</a>            }
+<a href=#329 id=329 data-nosnippet>329</a>        }
+<a href=#330 id=330 data-nosnippet>330</a>
+<a href=#331 id=331 data-nosnippet>331</a>        <span class="kw">if </span><span class="self">self</span>.grease_quic_bit {
+<a href=#332 id=332 data-nosnippet>332</a>            w.write_var(<span class="number">0x2ab2</span>);
+<a href=#333 id=333 data-nosnippet>333</a>            w.write_var(<span class="number">0</span>);
+<a href=#334 id=334 data-nosnippet>334</a>        }
+<a href=#335 id=335 data-nosnippet>335</a>    }
+<a href=#336 id=336 data-nosnippet>336</a>
+<a href=#337 id=337 data-nosnippet>337</a>    <span class="doccomment">/// Decode `TransportParameters` from buffer
+<a href=#338 id=338 data-nosnippet>338</a>    </span><span class="kw">pub fn </span>read&lt;R: Buf&gt;(side: Side, r: <span class="kw-2">&amp;mut </span>R) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, Error&gt; {
+<a href=#339 id=339 data-nosnippet>339</a>        <span class="comment">// Initialize to protocol-specified defaults
+<a href=#340 id=340 data-nosnippet>340</a>        </span><span class="kw">let </span><span class="kw-2">mut </span>params = TransportParameters::default();
+<a href=#341 id=341 data-nosnippet>341</a>
+<a href=#342 id=342 data-nosnippet>342</a>        <span class="comment">// State to check for duplicate transport parameters.
+<a href=#343 id=343 data-nosnippet>343</a>        </span><span class="macro">macro_rules!</span> param_state {
+<a href=#344 id=344 data-nosnippet>344</a>            {$($(<span class="attr">#[<span class="macro-nonterminal">$doc</span>:meta]</span>)* <span class="macro-nonterminal">$name</span>:ident (<span class="macro-nonterminal">$code</span>:expr) = <span class="macro-nonterminal">$default</span>:expr,)<span class="kw-2">*</span>} =&gt; {{
+<a href=#345 id=345 data-nosnippet>345</a>                <span class="kw">struct </span>ParamState {
+<a href=#346 id=346 data-nosnippet>346</a>                    $(<span class="macro-nonterminal">$name</span>: bool,)*
+<a href=#347 id=347 data-nosnippet>347</a>                }
+<a href=#348 id=348 data-nosnippet>348</a>
+<a href=#349 id=349 data-nosnippet>349</a>                ParamState {
+<a href=#350 id=350 data-nosnippet>350</a>                    $(<span class="macro-nonterminal">$name</span>: <span class="bool-val">false</span>,)*
+<a href=#351 id=351 data-nosnippet>351</a>                }
+<a href=#352 id=352 data-nosnippet>352</a>            }}
+<a href=#353 id=353 data-nosnippet>353</a>        }
+<a href=#354 id=354 data-nosnippet>354</a>        <span class="kw">let </span><span class="kw-2">mut </span>got = <span class="macro">apply_params!</span>(param_state);
+<a href=#355 id=355 data-nosnippet>355</a>
+<a href=#356 id=356 data-nosnippet>356</a>        <span class="kw">while </span>r.has_remaining() {
+<a href=#357 id=357 data-nosnippet>357</a>            <span class="kw">let </span>id = r.get_var()<span class="question-mark">?</span>;
+<a href=#358 id=358 data-nosnippet>358</a>            <span class="kw">let </span>len = r.get_var()<span class="question-mark">?</span>;
+<a href=#359 id=359 data-nosnippet>359</a>            <span class="kw">if </span>(r.remaining() <span class="kw">as </span>u64) &lt; len {
+<a href=#360 id=360 data-nosnippet>360</a>                <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#361 id=361 data-nosnippet>361</a>            }
+<a href=#362 id=362 data-nosnippet>362</a>            <span class="kw">let </span>len = len <span class="kw">as </span>usize;
+<a href=#363 id=363 data-nosnippet>363</a>
+<a href=#364 id=364 data-nosnippet>364</a>            <span class="kw">match </span>id {
+<a href=#365 id=365 data-nosnippet>365</a>                <span class="number">0x00 </span>=&gt; decode_cid(len, <span class="kw-2">&amp;mut </span>params.original_dst_cid, r)<span class="question-mark">?</span>,
+<a href=#366 id=366 data-nosnippet>366</a>                <span class="number">0x02 </span>=&gt; {
+<a href=#367 id=367 data-nosnippet>367</a>                    <span class="kw">if </span>len != <span class="number">16 </span>|| params.stateless_reset_token.is_some() {
+<a href=#368 id=368 data-nosnippet>368</a>                        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#369 id=369 data-nosnippet>369</a>                    }
+<a href=#370 id=370 data-nosnippet>370</a>                    <span class="kw">let </span><span class="kw-2">mut </span>tok = [<span class="number">0</span>; RESET_TOKEN_SIZE];
+<a href=#371 id=371 data-nosnippet>371</a>                    r.copy_to_slice(<span class="kw-2">&amp;mut </span>tok);
+<a href=#372 id=372 data-nosnippet>372</a>                    params.stateless_reset_token = <span class="prelude-val">Some</span>(tok.into());
+<a href=#373 id=373 data-nosnippet>373</a>                }
+<a href=#374 id=374 data-nosnippet>374</a>                <span class="number">0x0c </span>=&gt; {
+<a href=#375 id=375 data-nosnippet>375</a>                    <span class="kw">if </span>len != <span class="number">0 </span>|| params.disable_active_migration {
+<a href=#376 id=376 data-nosnippet>376</a>                        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#377 id=377 data-nosnippet>377</a>                    }
+<a href=#378 id=378 data-nosnippet>378</a>                    params.disable_active_migration = <span class="bool-val">true</span>;
+<a href=#379 id=379 data-nosnippet>379</a>                }
+<a href=#380 id=380 data-nosnippet>380</a>                <span class="number">0x0d </span>=&gt; {
+<a href=#381 id=381 data-nosnippet>381</a>                    <span class="kw">if </span>params.preferred_address.is_some() {
+<a href=#382 id=382 data-nosnippet>382</a>                        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#383 id=383 data-nosnippet>383</a>                    }
+<a href=#384 id=384 data-nosnippet>384</a>                    params.preferred_address =
+<a href=#385 id=385 data-nosnippet>385</a>                        <span class="prelude-val">Some</span>(PreferredAddress::read(<span class="kw-2">&amp;mut </span>r.take(len <span class="kw">as </span>usize))<span class="question-mark">?</span>);
+<a href=#386 id=386 data-nosnippet>386</a>                }
+<a href=#387 id=387 data-nosnippet>387</a>                <span class="number">0x0f </span>=&gt; decode_cid(len, <span class="kw-2">&amp;mut </span>params.initial_src_cid, r)<span class="question-mark">?</span>,
+<a href=#388 id=388 data-nosnippet>388</a>                <span class="number">0x10 </span>=&gt; decode_cid(len, <span class="kw-2">&amp;mut </span>params.retry_src_cid, r)<span class="question-mark">?</span>,
+<a href=#389 id=389 data-nosnippet>389</a>                <span class="number">0x20 </span>=&gt; {
+<a href=#390 id=390 data-nosnippet>390</a>                    <span class="kw">if </span>len &gt; <span class="number">8 </span>|| params.max_datagram_frame_size.is_some() {
+<a href=#391 id=391 data-nosnippet>391</a>                        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#392 id=392 data-nosnippet>392</a>                    }
+<a href=#393 id=393 data-nosnippet>393</a>                    params.max_datagram_frame_size = <span class="prelude-val">Some</span>(r.get().unwrap());
+<a href=#394 id=394 data-nosnippet>394</a>                }
+<a href=#395 id=395 data-nosnippet>395</a>                <span class="number">0x2ab2 </span>=&gt; <span class="kw">match </span>len {
+<a href=#396 id=396 data-nosnippet>396</a>                    <span class="number">0 </span>=&gt; params.grease_quic_bit = <span class="bool-val">true</span>,
+<a href=#397 id=397 data-nosnippet>397</a>                    <span class="kw">_ </span>=&gt; <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed),
+<a href=#398 id=398 data-nosnippet>398</a>                },
+<a href=#399 id=399 data-nosnippet>399</a>                <span class="kw">_ </span>=&gt; {
+<a href=#400 id=400 data-nosnippet>400</a>                    <span class="macro">macro_rules!</span> parse {
+<a href=#401 id=401 data-nosnippet>401</a>                        {$($(<span class="attr">#[<span class="macro-nonterminal">$doc</span>:meta]</span>)* <span class="macro-nonterminal">$name</span>:ident (<span class="macro-nonterminal">$code</span>:expr) = <span class="macro-nonterminal">$default</span>:expr,)<span class="kw-2">*</span>} =&gt; {
+<a href=#402 id=402 data-nosnippet>402</a>                            <span class="kw">match </span>id {
+<a href=#403 id=403 data-nosnippet>403</a>                                $(<span class="macro-nonterminal">$code </span>=&gt; {
+<a href=#404 id=404 data-nosnippet>404</a>                                    <span class="kw">let </span>value = r.get::&lt;VarInt&gt;()<span class="question-mark">?</span>;
+<a href=#405 id=405 data-nosnippet>405</a>                                    <span class="kw">if </span>len != value.size() || got.<span class="macro-nonterminal">$name </span>{ <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed); }
+<a href=#406 id=406 data-nosnippet>406</a>                                    params.<span class="macro-nonterminal">$name </span>= value.into();
+<a href=#407 id=407 data-nosnippet>407</a>                                    got.<span class="macro-nonterminal">$name </span>= <span class="bool-val">true</span>;
+<a href=#408 id=408 data-nosnippet>408</a>                                })*
+<a href=#409 id=409 data-nosnippet>409</a>                                <span class="kw">_ </span>=&gt; r.advance(len <span class="kw">as </span>usize),
+<a href=#410 id=410 data-nosnippet>410</a>                            }
+<a href=#411 id=411 data-nosnippet>411</a>                        }
+<a href=#412 id=412 data-nosnippet>412</a>                    }
+<a href=#413 id=413 data-nosnippet>413</a>                    <span class="macro">apply_params!</span>(parse);
+<a href=#414 id=414 data-nosnippet>414</a>                }
+<a href=#415 id=415 data-nosnippet>415</a>            }
+<a href=#416 id=416 data-nosnippet>416</a>        }
+<a href=#417 id=417 data-nosnippet>417</a>
+<a href=#418 id=418 data-nosnippet>418</a>        <span class="comment">// Semantic validation
+<a href=#419 id=419 data-nosnippet>419</a>        </span><span class="kw">if </span>params.ack_delay_exponent.<span class="number">0 </span>&gt; <span class="number">20
+<a href=#420 id=420 data-nosnippet>420</a>            </span>|| params.max_ack_delay.<span class="number">0 </span>&gt;= <span class="number">1 </span>&lt;&lt; <span class="number">14
+<a href=#421 id=421 data-nosnippet>421</a>            </span>|| params.active_connection_id_limit.<span class="number">0 </span>&lt; <span class="number">2
+<a href=#422 id=422 data-nosnippet>422</a>            </span>|| params.max_udp_payload_size.<span class="number">0 </span>&lt; <span class="number">1200
+<a href=#423 id=423 data-nosnippet>423</a>            </span>|| params.initial_max_streams_bidi.<span class="number">0 </span>&gt; MAX_STREAM_COUNT
+<a href=#424 id=424 data-nosnippet>424</a>            || params.initial_max_streams_uni.<span class="number">0 </span>&gt; MAX_STREAM_COUNT
+<a href=#425 id=425 data-nosnippet>425</a>            || (side.is_server()
+<a href=#426 id=426 data-nosnippet>426</a>                &amp;&amp; (params.stateless_reset_token.is_some() || params.preferred_address.is_some()))
+<a href=#427 id=427 data-nosnippet>427</a>        {
+<a href=#428 id=428 data-nosnippet>428</a>            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::IllegalValue);
+<a href=#429 id=429 data-nosnippet>429</a>        }
+<a href=#430 id=430 data-nosnippet>430</a>
+<a href=#431 id=431 data-nosnippet>431</a>        <span class="prelude-val">Ok</span>(params)
+<a href=#432 id=432 data-nosnippet>432</a>    }
+<a href=#433 id=433 data-nosnippet>433</a>}
+<a href=#434 id=434 data-nosnippet>434</a>
+<a href=#435 id=435 data-nosnippet>435</a><span class="kw">fn </span>decode_cid(len: usize, value: <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;ConnectionId&gt;, r: <span class="kw-2">&amp;mut </span><span class="kw">impl </span>Buf) -&gt; <span class="prelude-ty">Result</span>&lt;(), Error&gt; {
+<a href=#436 id=436 data-nosnippet>436</a>    <span class="kw">if </span>len &gt; MAX_CID_SIZE || value.is_some() || r.remaining() &lt; len {
+<a href=#437 id=437 data-nosnippet>437</a>        <span class="kw">return </span><span class="prelude-val">Err</span>(Error::Malformed);
+<a href=#438 id=438 data-nosnippet>438</a>    }
+<a href=#439 id=439 data-nosnippet>439</a>
+<a href=#440 id=440 data-nosnippet>440</a>    <span class="kw-2">*</span>value = <span class="prelude-val">Some</span>(ConnectionId::from_buf(r, len));
+<a href=#441 id=441 data-nosnippet>441</a>    <span class="prelude-val">Ok</span>(())
+<a href=#442 id=442 data-nosnippet>442</a>}
+<a href=#443 id=443 data-nosnippet>443</a>
+<a href=#444 id=444 data-nosnippet>444</a><span class="attr">#[cfg(test)]
+<a href=#445 id=445 data-nosnippet>445</a></span><span class="kw">mod </span>test {
+<a href=#446 id=446 data-nosnippet>446</a>    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+<a href=#447 id=447 data-nosnippet>447</a>
+<a href=#448 id=448 data-nosnippet>448</a>    <span class="attr">#[test]
+<a href=#449 id=449 data-nosnippet>449</a>    </span><span class="kw">fn </span>coding() {
+<a href=#450 id=450 data-nosnippet>450</a>        <span class="kw">let </span><span class="kw-2">mut </span>buf = Vec::new();
+<a href=#451 id=451 data-nosnippet>451</a>        <span class="kw">let </span>params = TransportParameters {
+<a href=#452 id=452 data-nosnippet>452</a>            initial_src_cid: <span class="prelude-val">Some</span>(ConnectionId::new(<span class="kw-2">&amp;</span>[])),
+<a href=#453 id=453 data-nosnippet>453</a>            original_dst_cid: <span class="prelude-val">Some</span>(ConnectionId::new(<span class="kw-2">&amp;</span>[])),
+<a href=#454 id=454 data-nosnippet>454</a>            initial_max_streams_bidi: <span class="number">16u32</span>.into(),
+<a href=#455 id=455 data-nosnippet>455</a>            initial_max_streams_uni: <span class="number">16u32</span>.into(),
+<a href=#456 id=456 data-nosnippet>456</a>            ack_delay_exponent: <span class="number">2u32</span>.into(),
+<a href=#457 id=457 data-nosnippet>457</a>            max_udp_payload_size: <span class="number">1200u32</span>.into(),
+<a href=#458 id=458 data-nosnippet>458</a>            preferred_address: <span class="prelude-val">Some</span>(PreferredAddress {
+<a href=#459 id=459 data-nosnippet>459</a>                address_v4: <span class="prelude-val">Some</span>(SocketAddrV4::new(Ipv4Addr::LOCALHOST, <span class="number">42</span>)),
+<a href=#460 id=460 data-nosnippet>460</a>                address_v6: <span class="prelude-val">None</span>,
+<a href=#461 id=461 data-nosnippet>461</a>                connection_id: ConnectionId::new(<span class="kw-2">&amp;</span>[]),
+<a href=#462 id=462 data-nosnippet>462</a>                stateless_reset_token: [<span class="number">0xab</span>; RESET_TOKEN_SIZE].into(),
+<a href=#463 id=463 data-nosnippet>463</a>            }),
+<a href=#464 id=464 data-nosnippet>464</a>            grease_quic_bit: <span class="bool-val">true</span>,
+<a href=#465 id=465 data-nosnippet>465</a>            ..TransportParameters::default()
+<a href=#466 id=466 data-nosnippet>466</a>        };
+<a href=#467 id=467 data-nosnippet>467</a>        params.write(<span class="kw-2">&amp;mut </span>buf);
+<a href=#468 id=468 data-nosnippet>468</a>        <span class="macro">assert_eq!</span>(
+<a href=#469 id=469 data-nosnippet>469</a>            TransportParameters::read(Side::Client, <span class="kw-2">&amp;mut </span>buf.as_slice()).unwrap(),
+<a href=#470 id=470 data-nosnippet>470</a>            params
+<a href=#471 id=471 data-nosnippet>471</a>        );
+<a href=#472 id=472 data-nosnippet>472</a>    }
+<a href=#473 id=473 data-nosnippet>473</a>
+<a href=#474 id=474 data-nosnippet>474</a>    <span class="attr">#[test]
+<a href=#475 id=475 data-nosnippet>475</a>    </span><span class="kw">fn </span>resumption_params_validation() {
+<a href=#476 id=476 data-nosnippet>476</a>        <span class="kw">let </span>high_limit = TransportParameters {
+<a href=#477 id=477 data-nosnippet>477</a>            initial_max_streams_uni: <span class="number">32u32</span>.into(),
+<a href=#478 id=478 data-nosnippet>478</a>            ..Default::default()
+<a href=#479 id=479 data-nosnippet>479</a>        };
+<a href=#480 id=480 data-nosnippet>480</a>        <span class="kw">let </span>low_limit = TransportParameters {
+<a href=#481 id=481 data-nosnippet>481</a>            initial_max_streams_uni: <span class="number">16u32</span>.into(),
+<a href=#482 id=482 data-nosnippet>482</a>            ..Default::default()
+<a href=#483 id=483 data-nosnippet>483</a>        };
+<a href=#484 id=484 data-nosnippet>484</a>        high_limit.validate_resumption_from(<span class="kw-2">&amp;</span>low_limit).unwrap();
+<a href=#485 id=485 data-nosnippet>485</a>        low_limit.validate_resumption_from(<span class="kw-2">&amp;</span>high_limit).unwrap_err();
+<a href=#486 id=486 data-nosnippet>486</a>    }
+<a href=#487 id=487 data-nosnippet>487</a>}</code></pre></div></section></main></body></html>

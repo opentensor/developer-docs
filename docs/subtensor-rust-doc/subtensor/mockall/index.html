@@ -1,0 +1,872 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="A powerful mock object library for Rust."><title>mockall - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="mockall" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../mockall/index.html">mockall</a><span class="version">0.12.1</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#usage" title="Usage">Usage</a></li><li><a href="#user-guide" title="User Guide">User Guide</a><ul><li><a href="#getting-started" title="Getting Started">Getting Started</a></li><li><a href="#static-return-values" title="Static Return values">Static Return values</a></li><li><a href="#matching-arguments" title="Matching arguments">Matching arguments</a></li><li><a href="#call-counts" title="Call counts">Call counts</a></li><li><a href="#sequences" title="Sequences">Sequences</a></li><li><a href="#checkpoints" title="Checkpoints">Checkpoints</a></li><li><a href="#reference-arguments" title="Reference arguments">Reference arguments</a></li><li><a href="#reference-return-values" title="Reference return values">Reference return values</a></li><li><a href="#impl-trait" title="Impl Trait">Impl Trait</a></li><li><a href="#mocking-structs" title="Mocking structs">Mocking structs</a></li><li><a href="#generic-methods" title="Generic methods">Generic methods</a></li><li><a href="#generic-traits-and-structs" title="Generic traits and structs">Generic traits and structs</a></li><li><a href="#associated-types" title="Associated types">Associated types</a></li><li><a href="#multiple-and-inherited-traits" title="Multiple and inherited traits">Multiple and inherited traits</a></li><li><a href="#external-traits" title="External traits">External traits</a></li><li><a href="#static-methods" title="Static methods">Static methods</a></li><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#debug" title="Debug">Debug</a></li><li><a href="#async-traits" title="Async Traits">Async Traits</a></li><li><a href="#crate-features" title="Crate features">Crate features</a></li><li><a href="#examples" title="Examples">Examples</a></li></ul></li></ul><h3><a href="#modules-1">Crate Items</a></h3><ul class="block"><li><a href="#modules-1" title="Modules">Modules</a></li><li><a href="#macros" title="Macros">Macros</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#traits" title="Traits">Traits</a></li><li><a href="#attributes" title="Attribute Macros">Attribute Macros</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>mockall</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/mockall/lib.rs.html#2-1788">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A powerful mock object library for Rust.</p>
+<p>Mockall provides tools to create mock versions of almost any trait
+or struct. They can be used in unit tests as a stand-in for the real
+object.</p>
+<h2 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h2>
+<p>There are two ways to use Mockall.  The easiest is to use
+<a href="attr.automock.html"><code>#[automock]</code></a>.  It can mock most traits, or structs
+that only have a single <code>impl</code> block.  For things it can’t handle, there is
+<a href="macro.mock.html"><code>mock!</code></a>.</p>
+<p>Whichever method is used, the basic idea is the same.</p>
+<ul>
+<li>Create a mock struct.  It’s name will be the same as the original, with
+“Mock” prepended.</li>
+<li>In your test, instantiate the mock struct with its <code>new</code> or <code>default</code>
+method.</li>
+<li>Set expectations on the mock struct.  Each expectation can have required
+argument matchers, a required call count, and a required position in a
+<a href="struct.Sequence.html" title="struct mockall::Sequence"><code>Sequence</code></a>.  Each expectation must also have a return value.</li>
+<li>Supply the mock object to the code that you’re testing.  It will return
+the preprogrammed return values supplied in the previous step.  Any
+accesses contrary to your expectations will cause a panic.</li>
+</ul>
+<h2 id="user-guide"><a class="doc-anchor" href="#user-guide">§</a>User Guide</h2>
+<ul>
+<li><a href="#getting-started"><code>Getting started</code></a></li>
+<li><a href="#static-return-values"><code>Static Return values</code></a></li>
+<li><a href="#matching-arguments"><code>Matching arguments</code></a></li>
+<li><a href="#call-counts"><code>Call counts</code></a></li>
+<li><a href="#sequences"><code>Sequences</code></a></li>
+<li><a href="#checkpoints"><code>Checkpoints</code></a></li>
+<li><a href="#reference-arguments"><code>Reference arguments</code></a></li>
+<li><a href="#reference-return-values"><code>Reference return values</code></a></li>
+<li><a href="#impl-trait"><code>impl Trait</code></a></li>
+<li><a href="#mocking-structs"><code>Mocking structs</code></a></li>
+<li><a href="#generic-methods"><code>Generic methods</code></a></li>
+<li><a href="#generic-traits-and-structs"><code>Generic traits and structs</code></a></li>
+<li><a href="#associated-types"><code>Associated types</code></a></li>
+<li><a href="#multiple-and-inherited-traits"><code>Multiple and inherited traits</code></a></li>
+<li><a href="#external-traits"><code>External traits</code></a></li>
+<li><a href="#static-methods"><code>Static methods</code></a></li>
+<li><a href="#modules"><code>Modules</code></a></li>
+<li><a href="#foreign-functions"><code>Foreign functions</code></a></li>
+<li><a href="#debug"><code>Debug</code></a></li>
+<li><a href="#async-traits"><code>Async Traits</code></a></li>
+<li><a href="#crate-features"><code>Crate features</code></a></li>
+<li><a href="#examples"><code>Examples</code></a></li>
+</ul>
+<h3 id="getting-started"><a class="doc-anchor" href="#getting-started">§</a>Getting Started</h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>mockall::<span class="kw-2">*</span>;
+<span class="kw">use </span>mockall::predicate::<span class="kw-2">*</span>;
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>MyTrait {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32) -&gt; u32;
+}
+
+<span class="kw">fn </span>call_with_four(x: <span class="kw-2">&amp;</span><span class="kw">dyn </span>MyTrait) -&gt; u32 {
+    x.foo(<span class="number">4</span>)
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockMyTrait::new();
+mock.expect_foo()
+    .with(predicate::eq(<span class="number">4</span>))
+    .times(<span class="number">1</span>)
+    .returning(|x| x + <span class="number">1</span>);
+<span class="macro">assert_eq!</span>(<span class="number">5</span>, call_with_four(<span class="kw-2">&amp;</span>mock));</code></pre></div>
+<h3 id="static-return-values"><a class="doc-anchor" href="#static-return-values">§</a>Static Return values</h3>
+<p>Every expectation must have an associated return value (though when the
+<strong>nightly</strong> feature is enabled expectations will automatically return the
+default values of their return types, if their return types implement
+<code>Default</code>.).  For methods that return a <code>static</code> value, the macros will
+generate an <code>Expectation</code> struct like
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html" title="struct mockall::examples::__mock_MockFoo_Foo::__foo::Expectation"><code>this</code></a>.
+There are two ways to set such an expectation’s return value: with a
+constant
+(<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.return_const" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::return_const"><code>return_const</code></a>)
+or a closure
+(<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.returning" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::returning"><code>returning</code></a>).
+A closure will take the method’s arguments by value.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>MyTrait {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+    <span class="kw">fn </span>bar(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32, y: u32) -&gt; u32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockMyTrait::new();
+mock.expect_foo()
+    .return_const(<span class="number">42u32</span>);
+mock.expect_bar()
+    .returning(|x, y| x + y);</code></pre></div>
+<p>Additionally, constants that aren’t <code>Clone</code> can be returned with the
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.return_once" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::return_once"><code>return_once</code></a>
+method.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>NonClone();
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; NonClone;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+<span class="kw">let </span>r = NonClone{};
+mock.expect_foo()
+    .return_once(<span class="kw">move </span>|| r);</code></pre></div>
+<p><code>return_once</code> can also be used for computing the return value with an
+<code>FnOnce</code> closure.  This is useful for returning a non-<code>Clone</code> value and also
+triggering side effects at the same time.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>do_something() {}
+
+<span class="kw">struct </span>NonClone();
+
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; NonClone;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+<span class="kw">let </span>r = NonClone{};
+mock.expect_foo()
+    .return_once(<span class="kw">move </span>|| {
+        do_something();
+        r
+    });</code></pre></div>
+<p>Mock objects are always <code>Send</code>.  If you need to use a return type that
+isn’t, you can use the
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.return_const_st" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::return_const_st"><code>return_const_st</code></a>,
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.returning_st" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::returning_st"><code>returning_st</code></a>,
+or
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.return_once_st" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::return_once_st"><code>return_once_st</code></a>,
+methods. If you need to match arguments that are not <code>Send</code>, you can use the
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.withf_st" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::withf_st"><code>withf_st</code></a>
+These take a non-<code>Send</code> object and add runtime access checks.  The wrapped
+object will be <code>Send</code>, but accessing it from multiple threads will cause a
+runtime panic.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: Rc&lt;u32&gt;) -&gt; Rc&lt;u32&gt;;   <span class="comment">// Rc&lt;u32&gt; isn't Send
+</span>}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+<span class="kw">let </span>x = Rc::new(<span class="number">5</span>);
+<span class="kw">let </span>argument = x.clone();
+mock.expect_foo()
+    .withf_st(<span class="kw">move </span>|x| <span class="kw-2">*</span>x == argument)
+    .returning_st(<span class="kw">move </span>|<span class="kw">_</span>| Rc::new(<span class="number">42u32</span>));
+<span class="macro">assert_eq!</span>(<span class="number">42</span>, <span class="kw-2">*</span>mock.foo(x));</code></pre></div>
+<h3 id="matching-arguments"><a class="doc-anchor" href="#matching-arguments">§</a>Matching arguments</h3>
+<p>Optionally, expectations may have argument matchers set.  A matcher will
+verify that the expectation was called with the expected arguments, or panic
+otherwise.  A matcher is anything that implements the <a href="trait.Predicate.html"><code>Predicate</code></a> trait.
+For example:</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .with(eq(<span class="number">42</span>))
+    .return_const(());
+
+mock.foo(<span class="number">0</span>);    <span class="comment">// Panics!</span></code></pre></div>
+<p>See <a href="trait.Predicate.html"><code>predicate</code></a> for a list of Mockall’s builtin predicate functions.
+For convenience,
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.withf" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::withf"><code>withf</code></a>
+is a shorthand for setting the commonly used
+<a href="predicate/fn.function.html"><code>function</code></a> predicate.  The arguments to the predicate function are the
+method’s arguments, <em>by reference</em>.  For example:</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32, y: u32);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .withf(|x: <span class="kw-2">&amp;</span>u32, y: <span class="kw-2">&amp;</span>u32| x == y)
+    .return_const(());
+
+mock.foo(<span class="number">2 </span>+ <span class="number">2</span>, <span class="number">5</span>);    <span class="comment">// Panics!</span></code></pre></div>
+<h4 id="matching-multiple-calls"><a class="doc-anchor" href="#matching-multiple-calls">§</a>Matching multiple calls</h4>
+<p>Matchers can also be used to discriminate between different invocations of
+the same function.  Used that way, they can provide different return values
+for different arguments.  The way this works is that on a method call, all
+expectations set on a given method are evaluated in FIFO order.  The first
+matching expectation is used.  Only if none of the expectations match does
+Mockall panic.  For example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32) -&gt; u32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .with(eq(<span class="number">5</span>))
+    .return_const(<span class="number">50u32</span>);
+mock.expect_foo()
+    .with(eq(<span class="number">6</span>))
+    .return_const(<span class="number">60u32</span>);</code></pre></div>
+<p>One common pattern is to use multiple expectations in order of decreasing
+specificity.  The last expectation can provide a default or fallback value,
+and earlier ones can be more specific.  For example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>open(<span class="kw-2">&amp;</span><span class="self">self</span>, path: String) -&gt; <span class="prelude-ty">Option</span>&lt;u32&gt;;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_open()
+    .with(eq(String::from(<span class="string">"something.txt"</span>)))
+    .returning(|<span class="kw">_</span>| <span class="prelude-val">Some</span>(<span class="number">5</span>));
+mock.expect_open()
+    .return_const(<span class="prelude-val">None</span>);</code></pre></div>
+<h3 id="call-counts"><a class="doc-anchor" href="#call-counts">§</a>Call counts</h3>
+<p>By default, every expectation is allowed to be called an unlimited number of
+times.  But Mockall can optionally verify that an expectation was called a
+fixed number of times, or any number of times within a given range.</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: u32);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .times(<span class="number">1</span>)
+    .return_const(());
+
+mock.foo(<span class="number">0</span>);    <span class="comment">// Ok
+</span>mock.foo(<span class="number">1</span>);    <span class="comment">// Panics!</span></code></pre></div>
+<p>See also
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.never" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::never"><code>never</code></a> and
+<a href="examples/__mock_MockFoo_Foo/__foo/struct.Expectation.html#method.times" title="method mockall::examples::__mock_MockFoo_Foo::__foo::Expectation::times"><code>times</code></a>.</p>
+<h3 id="sequences"><a class="doc-anchor" href="#sequences">§</a>Sequences</h3>
+<p>By default expectations may be matched in any order.  But it’s possible to
+specify the order by using a <a href="struct.Sequence.html" title="struct mockall::Sequence"><code>Sequence</code></a>.  Any expectations may be added to
+the same sequence.  They don’t even need to come from the same object.</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>seq = Sequence::new();
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock1 = MockFoo::new();
+mock1.expect_foo()
+    .times(<span class="number">1</span>)
+    .in_sequence(<span class="kw-2">&amp;mut </span>seq)
+    .returning(|| ());
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock2 = MockFoo::new();
+mock2.expect_foo()
+    .times(<span class="number">1</span>)
+    .in_sequence(<span class="kw-2">&amp;mut </span>seq)
+    .returning(|| ());
+
+mock2.foo();    <span class="comment">// Panics!  mock1.foo should've been called first.</span></code></pre></div>
+<h3 id="checkpoints"><a class="doc-anchor" href="#checkpoints">§</a>Checkpoints</h3>
+<p>Sometimes its useful to validate all expectations mid-test, throw them away,
+and add new ones.  That’s what checkpoints do.  Every mock object has a
+<code>checkpoint</code> method.  When called, it will immediately validate all methods’
+expectations.  So any expectations that haven’t satisfied their call count
+will panic.  Afterwards, those expectations will be cleared so you can add
+new expectations and keep testing.</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .times(<span class="number">2</span>)
+    .returning(|| ());
+
+mock.foo();
+mock.checkpoint();  <span class="comment">// Panics!  foo hasn't yet been called twice.</span></code></pre></div>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>);
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .times(<span class="number">1</span>)
+    .returning(|| ());
+
+mock.foo();
+mock.checkpoint();
+mock.foo();         <span class="comment">// Panics!  The expectation has been cleared.</span></code></pre></div>
+<h3 id="reference-arguments"><a class="doc-anchor" href="#reference-arguments">§</a>Reference arguments</h3>
+<p>Mockall can mock methods with reference arguments, too.  There’s one catch:
+the matcher <a href="trait.Predicate.html"><code>Predicate</code></a> will take reference arguments by value, not by
+reference.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, x: <span class="kw-2">&amp;</span>u32) -&gt; u32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+<span class="kw">let </span>e = mock.expect_foo()
+    <span class="comment">// Note that x is a &amp;u32, not a &amp;&amp;u32
+    </span>.withf(|x: <span class="kw-2">&amp;</span>u32| <span class="kw-2">*</span>x == <span class="number">5</span>)
+    .returning(|x: <span class="kw-2">&amp;</span>u32| <span class="kw-2">*</span>x + <span class="number">1</span>);
+
+<span class="macro">assert_eq!</span>(<span class="number">6</span>, mock.foo(<span class="kw-2">&amp;</span><span class="number">5</span>));</code></pre></div>
+<h3 id="reference-return-values"><a class="doc-anchor" href="#reference-return-values">§</a>Reference return values</h3>
+<p>Mockall can also use reference return values.  There is one restriction: the
+lifetime of the returned reference must be either the same as the lifetime
+of the mock object, or <code>'static</code>.</p>
+<p>Mockall creates different expectation types for methods that return
+references.  Their API is the same as the basic <code>Expectation</code>, except for
+setting return values.</p>
+<p>Methods that return <code>'static</code> references work just like methods that return
+any other <code>'static</code> value.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Thing(u32);
+
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Container {
+    <span class="kw">fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, i: u32) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span>Thing;
+}
+
+<span class="kw">const </span>THING: Thing = Thing(<span class="number">42</span>);
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockContainer::new();
+mock.expect_get()
+    .return_const(<span class="kw-2">&amp;</span>THING);
+
+<span class="macro">assert_eq!</span>(<span class="number">42</span>, mock.get(<span class="number">0</span>).<span class="number">0</span>);</code></pre></div>
+<p>Methods that take a <code>&amp;self</code> argument use an <code>Expectation</code> class like
+<a href="examples/__mock_MockFoo_Foo/__bar/struct.Expectation.html" title="struct mockall::examples::__mock_MockFoo_Foo::__bar::Expectation">this</a>,
+which
+gets its return value from the
+<a href="examples/__mock_MockFoo_Foo/__bar/struct.Expectation.html#method.return_const" title="method mockall::examples::__mock_MockFoo_Foo::__bar::Expectation::return_const"><code>return_const</code></a> method.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Thing(u32);
+
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Container {
+    <span class="kw">fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, i: u32) -&gt; <span class="kw-2">&amp;</span>Thing;
+}
+
+<span class="kw">let </span>thing = Thing(<span class="number">42</span>);
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockContainer::new();
+mock.expect_get()
+    .return_const(thing);
+
+<span class="macro">assert_eq!</span>(<span class="number">42</span>, mock.get(<span class="number">0</span>).<span class="number">0</span>);</code></pre></div>
+<p>Methods that take a <code>&amp;mut self</code> argument use an <code>Expectation</code> class like
+<a href="examples/__mock_MockFoo_Foo/__baz/struct.Expectation.html" title="struct mockall::examples::__mock_MockFoo_Foo::__baz::Expectation">this</a>,
+class, regardless of whether the return value is actually mutable.  They can
+take their return value either from the
+<a href="examples/__mock_MockFoo_Foo/__baz/struct.Expectation.html#method.return_var" title="method mockall::examples::__mock_MockFoo_Foo::__baz::Expectation::return_var"><code>return_var</code></a>
+or
+<a href="examples/__mock_MockFoo_Foo/__baz/struct.Expectation.html#method.returning" title="method mockall::examples::__mock_MockFoo_Foo::__baz::Expectation::returning"><code>returning</code></a>
+methods.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Thing(u32);
+
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Container {
+    <span class="kw">fn </span>get_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, i: u32) -&gt; <span class="kw-2">&amp;mut </span>Thing;
+}
+
+<span class="kw">let </span>thing = Thing(<span class="number">42</span>);
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockContainer::new();
+mock.expect_get_mut()
+    .return_var(thing);
+
+mock.get_mut(<span class="number">0</span>).<span class="number">0 </span>= <span class="number">43</span>;
+<span class="macro">assert_eq!</span>(<span class="number">43</span>, mock.get_mut(<span class="number">0</span>).<span class="number">0</span>);</code></pre></div>
+<p>Unsized types that are common targets for
+<a href="https://doc.rust-lang.org/1.86.0/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref"><code>Deref</code></a>
+are special.  Mockall
+will automatically use the type’s owned form for the Expectation.
+Currently, the
+<a href="https://doc.rust-lang.org/1.86.0/core/ffi/c_str/struct.CStr.html" title="struct core::ffi::c_str::CStr"><code>CStr</code></a>,
+<a href="https://doc.rust-lang.org/1.86.0/std/ffi/os_str/struct.OsStr.html" title="struct std::ffi::os_str::OsStr"><code>OsStr</code></a>,
+<a href="https://doc.rust-lang.org/1.86.0/std/path/struct.Path.html" title="struct std::path::Path"><code>Path</code></a>,
+<a href="https://doc.rust-lang.org/1.86.0/alloc/slice/index.html" title="mod alloc::slice"><code>Slice</code></a>,
+and
+<a href="https://doc.rust-lang.org/1.86.0/alloc/str/index.html" title="mod alloc::str"><code>str</code></a>
+types are supported.  Using this feature is automatic:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_name().return_const(<span class="string">"abcd"</span>.to_owned());
+<span class="macro">assert_eq!</span>(<span class="string">"abcd"</span>, mock.name());</code></pre></div>
+<p>Similarly, Mockall will use a Boxed trait object for the Expectation of
+methods that return references to trait objects.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span>Display;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_name().return_const(Box::new(<span class="string">"abcd"</span>));
+<span class="macro">assert_eq!</span>(<span class="string">"abcd"</span>, <span class="macro">format!</span>(<span class="string">"{}"</span>, mock.name()));</code></pre></div>
+<h3 id="impl-trait"><a class="doc-anchor" href="#impl-trait">§</a>Impl Trait</h3>
+<p>Rust 1.26.0 introduced the <code>impl Trait</code> feature.  It allows functions to
+return concrete but unnamed types (and, less usefully, to take them as
+arguments).  It’s <em>almost</em> the same as <code>Box&lt;dyn Trait&gt;</code> but without the
+extra allocation.  Mockall supports deriving mocks for methods that return
+<code>impl Trait</code>, with limitations.  When you derive the mock for such a method,
+Mockall internally transforms the Expectation’s return type to <code>Box&lt;dyn Trait&gt;</code>, without changing the mock method’s signature.  So you can use it
+like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo {}
+<span class="attr">#[automock]
+</span><span class="kw">impl </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Debug {
+        <span class="comment">// ...
+    </span>}
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .returning(|| Box::new(String::from(<span class="string">"Hello, World!"</span>)));
+<span class="macro">println!</span>(<span class="string">"{:?}"</span>, mock.foo());</code></pre></div>
+<p>However, <code>impl Trait</code> isn’t <em>exactly</em> equivalent to <code>Box&lt;dyn Trait&gt;</code> but
+with fewer allocations.  There are some things the former can do but the
+latter can’t.  For one thing, you can’t build a trait object out of a
+<code>Sized</code> trait.  So this won’t work:</p>
+
+<div class="example-wrap compile_fail"><a href="#" class="tooltip" title="This example deliberately fails to compile">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo {}
+<span class="attr">#[automock]
+</span><span class="kw">impl </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Clone {
+        <span class="comment">// ...
+    </span>}
+}</code></pre></div>
+<p>Nor can you create a trait object that implements two or more non-auto
+types.  So this won’t work either:</p>
+
+<div class="example-wrap compile_fail"><a href="#" class="tooltip" title="This example deliberately fails to compile">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo {}
+<span class="attr">#[automock]
+</span><span class="kw">impl </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Debug + Display {
+        <span class="comment">// ...
+    </span>}
+}</code></pre></div>
+<p>For such cases, there is no magic bullet.  The best way to mock methods like
+those would be to refactor them to return named (but possibly opaque) types
+instead.</p>
+<p>See Also <a href="https://rust-lang-nursery.github.io/edition-guide/rust-2018/trait-system/impl-trait-for-returning-complex-types-with-ease"><code>impl-trait-for-returning-complex-types-with-ease.html</code></a></p>
+<h4 id="impl-future"><a class="doc-anchor" href="#impl-future">§</a>impl Future</h4>
+<p>Rust 1.36.0 added the <code>Future</code> trait.  Unlike virtually every trait that
+preceeded it, <code>Box&lt;dyn Future&gt;</code> is mostly useless.  Instead, you usually
+need a <code>Pin&lt;Box&lt;dyn Future&gt;&gt;</code>.  So that’s what Mockall will do when you mock
+a method returning <code>impl Future</code> or the related <code>impl Stream</code>.  Just
+remember to use <code>pin</code> in your expectations, like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo {}
+<span class="attr">#[automock]
+</span><span class="kw">impl </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Future&lt;Output=i32&gt; {
+        <span class="comment">// ...
+    </span>}
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .returning(|| Box::pin(future::ready(<span class="number">42</span>)));</code></pre></div>
+<h3 id="mocking-structs"><a class="doc-anchor" href="#mocking-structs">§</a>Mocking structs</h3>
+<p>Mockall mocks structs as well as traits.  The problem here is a namespace
+problem: it’s hard to supply the mock object to your code under test,
+because it has a different name.  The solution is to alter import paths
+during test.  The easiest way to do that is with the
+<a href="https://docs.rs/mockall_double/latest"><code>mockall_double</code></a> crate.</p>
+<p><a href="attr.automock.html"><code>#[automock]</code></a>
+works for structs that have a single <code>impl</code> block:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>mockall_double::double;
+<span class="kw">mod </span>thing {
+    <span class="kw">use </span>mockall::automock;
+    <span class="kw">pub struct </span>Thing{}
+    <span class="attr">#[automock]
+    </span><span class="kw">impl </span>Thing {
+        <span class="kw">pub fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
+            <span class="comment">// ...
+        </span>}
+    }
+}
+
+<span class="attr">#[double]
+</span><span class="kw">use </span>thing::Thing;
+
+<span class="kw">fn </span>do_stuff(thing: <span class="kw-2">&amp;</span>Thing) -&gt; u32 {
+    thing.foo()
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>t {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_foo() {
+        <span class="kw">let </span><span class="kw-2">mut </span>mock = Thing::default();
+        mock.expect_foo().returning(|| <span class="number">42</span>);
+        do_stuff(<span class="kw-2">&amp;</span>mock);
+    }
+}</code></pre></div>
+<p>For structs with more than one <code>impl</code> block or that have unsupported
+<code>#[derive(X)]</code> attributes, e.g. <code>Clone</code>, see <a href="macro.mock.html"><code>mock!</code></a> instead.</p>
+<h3 id="generic-methods"><a class="doc-anchor" href="#generic-methods">§</a>Generic methods</h3>
+<p>Mocking generic methods is possible, but the exact process depends on
+whether the parameters are <code>'static</code>, non-<code>'static</code>, or lifetimes.</p>
+<h4 id="with-static-parameters"><a class="doc-anchor" href="#with-static-parameters">§</a>With static parameters</h4>
+<p>With fully <code>'static</code> parameters, the mock method is generic and so is its
+expect_* method.  The expect_* method usually must be called with a
+turbofish.  Expectations set with different generic parameters operate
+completely independently of one another.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo&lt;T: <span class="lifetime">'static</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, t: T) -&gt; i32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo::&lt;i16&gt;()
+    .returning(|t| i32::from(t));
+mock.expect_foo::&lt;i8&gt;()
+    .returning(|t| -i32::from(t));
+
+<span class="macro">assert_eq!</span>(<span class="number">5</span>, mock.foo(<span class="number">5i16</span>));
+<span class="macro">assert_eq!</span>(-<span class="number">5</span>, mock.foo(<span class="number">5i8</span>));</code></pre></div>
+<h4 id="with-non-static-type-parameters"><a class="doc-anchor" href="#with-non-static-type-parameters">§</a>With non-<code>static</code> type parameters</h4>
+<p>Mocking methods with non-<code>'static</code> type parameters is harder.  The way
+Mockall does it is by turning the generic parameters into trait objects
+before evaluating expectations.  This makes the expect_* method concrete,
+rather than generic.  It also comes with many restrictions.  See
+<a href="attr.concretize.html"><code>#[concretize]</code></a> for more details.</p>
+<h4 id="with-generic-lifetimes"><a class="doc-anchor" href="#with-generic-lifetimes">§</a>With generic lifetimes</h4>
+<p>A method with a lifetime parameter is technically a generic method, but
+Mockall treats it like a non-generic method that must work for all possible
+lifetimes.  Mocking such a method is similar to mocking a non-generic
+method, with a few additional restrictions.  One restriction is that you
+can’t match calls with <code>with</code>, you must use <code>withf</code> instead.  Another is
+that the generic lifetime may not appear as part of the return type.
+Finally, no method may have both generic lifetime parameters <em>and</em> generic
+type parameters.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>X&lt;<span class="lifetime">'a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span>i32);
+
+<span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo&lt;<span class="lifetime">'a</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, x: X&lt;<span class="lifetime">'a</span>&gt;) -&gt; i32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo()
+    .withf(|f| <span class="kw-2">*</span>f.<span class="number">0 </span>== <span class="number">5</span>)
+    .return_const(<span class="number">42</span>);
+<span class="kw">let </span>x = X(<span class="kw-2">&amp;</span><span class="number">5</span>);
+<span class="macro">assert_eq!</span>(<span class="number">42</span>, mock.foo(x));</code></pre></div>
+<h3 id="generic-traits-and-structs"><a class="doc-anchor" href="#generic-traits-and-structs">§</a>Generic traits and structs</h3>
+<p>Mocking generic structs and generic traits is not a problem.  The mock
+struct will be generic, too.  The same restrictions apply as with mocking
+generic methods: each generic parameter must be <code>'static</code>, and generic
+lifetime parameters are not allowed.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo&lt;T: <span class="lifetime">'static</span>&gt; {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, t: T) -&gt; i32;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::&lt;i16&gt;::new();
+mock.expect_foo()
+    .returning(|t| i32::from(t));
+<span class="macro">assert_eq!</span>(<span class="number">5</span>, mock.foo(<span class="number">5i16</span>));</code></pre></div>
+<h3 id="associated-types"><a class="doc-anchor" href="#associated-types">§</a>Associated types</h3>
+<p>Traits with associated types can be mocked too.  Unlike generic traits, the
+mock struct will not be generic.  Instead, you must specify the associated
+types when defining the mock struct.  They’re specified as metaitems to the
+<a href="attr.automock.html"><code>#[automock]</code></a> attribute.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock(<span class="kw">type </span>Key=u16; <span class="kw">type </span>Value=i32;)]
+</span><span class="kw">pub trait </span>A {
+    <span class="kw">type </span>Key;
+    <span class="kw">type </span>Value;
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>, k: <span class="self">Self</span>::Key) -&gt; <span class="self">Self</span>::Value;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockA::new();
+mock.expect_foo()
+    .returning(|x: u16| i32::from(x));
+<span class="macro">assert_eq!</span>(<span class="number">4</span>, mock.foo(<span class="number">4</span>));</code></pre></div>
+<h3 id="multiple-and-inherited-traits"><a class="doc-anchor" href="#multiple-and-inherited-traits">§</a>Multiple and inherited traits</h3>
+<p>Creating a mock struct that implements multiple traits, whether inherited or
+not, requires using the <a href="macro.mock.html"><code>mock!</code></a> macro.  But once created,
+using it is just the same as using any other mock object:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">pub trait </span>A {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>);
+}
+
+<span class="kw">pub trait </span>B: A {
+    <span class="kw">fn </span>bar(<span class="kw-2">&amp;</span><span class="self">self</span>);
+}
+
+<span class="macro">mock!</span> {
+    <span class="comment">// Structure to mock
+    </span>C {}
+    <span class="comment">// First trait to implement on C
+    </span><span class="kw">impl </span>A <span class="kw">for </span>C {
+        <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    }
+    <span class="comment">// Second trait to implement on C
+    </span><span class="kw">impl </span>B <span class="kw">for </span>C {
+        <span class="kw">fn </span>bar(<span class="kw-2">&amp;</span><span class="self">self</span>);
+    }
+}
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockC::new();
+mock.expect_foo().returning(|| ());
+mock.expect_bar().returning(|| ());
+mock.foo();
+mock.bar();</code></pre></div>
+<h3 id="external-traits"><a class="doc-anchor" href="#external-traits">§</a>External traits</h3>
+<p>Mockall can mock traits and structs defined in external crates that are
+beyond your control, but you must use <a href="macro.mock.html"><code>mock!</code></a> instead of
+<a href="attr.automock.html"><code>#[automock]</code></a>.  Mock an external trait like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">mock!</span> {
+    MyStruct {}     <span class="comment">// Name of the mock struct, less the "Mock" prefix
+    </span><span class="kw">impl </span>Clone <span class="kw">for </span>MyStruct {   <span class="comment">// specification of the trait to mock
+        </span><span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span>;
+    }
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock1 = MockMyStruct::new();
+<span class="kw">let </span>mock2 = MockMyStruct::new();
+mock1.expect_clone()
+    .return_once(<span class="kw">move </span>|| mock2);
+<span class="kw">let </span>cloned = mock1.clone();</code></pre></div>
+<h3 id="static-methods"><a class="doc-anchor" href="#static-methods">§</a>Static methods</h3>
+<p>Mockall can also mock static methods.  But be careful!  The expectations are
+global.  If you want to use a static method in multiple tests, you must
+provide your own synchronization. See the <a href="https://github.com/asomers/mockall/blob/master/mockall/examples/synchronization.rs"><code>synchronization example</code></a>
+for a basic implementation. For ordinary methods, expectations are
+set on the mock object.  But static methods don’t have any mock object.
+Instead, you must create a <code>Context</code> object just to set their expectations.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">pub trait </span>A {
+    <span class="kw">fn </span>foo() -&gt; u32;
+}
+
+<span class="kw">let </span>ctx = MockA::foo_context();
+ctx.expect().returning(|| <span class="number">99</span>);
+<span class="macro">assert_eq!</span>(<span class="number">99</span>, MockA::foo());</code></pre></div>
+<p>A common pattern is mocking a trait with a constructor method.  In this case,
+you can easily set the mock constructor method to return a mock object.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Foo{}
+<span class="attr">#[automock]
+</span><span class="kw">impl </span>Foo {
+    <span class="kw">fn </span>from_i32(x: i32) -&gt; <span class="self">Self </span>{
+        <span class="comment">// ...
+    </span>}
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32 {
+        <span class="comment">// ...
+    </span>}
+}
+
+<span class="kw">let </span>ctx = MockFoo::from_i32_context();
+ctx.expect()
+    .returning(|x| {
+        <span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::default();
+        mock.expect_foo()
+            .return_const(x);
+        mock
+    });
+<span class="kw">let </span>foo = MockFoo::from_i32(<span class="number">42</span>);
+<span class="macro">assert_eq!</span>(<span class="number">42</span>, foo.foo());</code></pre></div>
+<h4 id="generic-static-methods"><a class="doc-anchor" href="#generic-static-methods">§</a>Generic static methods</h4>
+<p>Mocking static methods of generic structs or traits, whether or not the
+methods themselves are generic, should work seamlessly.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo&lt;T: <span class="lifetime">'static</span>&gt; {
+    <span class="kw">fn </span>new(t: T) -&gt; MockFoo&lt;T&gt;;
+}
+
+<span class="kw">let </span>ctx = MockFoo::&lt;u32&gt;::new_context();
+ctx.expect()
+    .returning(|<span class="kw">_</span>| MockFoo::default());
+<span class="kw">let </span>mock = MockFoo::&lt;u32&gt;::new(<span class="number">42u32</span>);</code></pre></div>
+<h4 id="context-checkpoints"><a class="doc-anchor" href="#context-checkpoints">§</a>Context checkpoints</h4>
+<p>The context object cleans up all expectations when it leaves scope.  It also
+has a <code>checkpoint</code> method that functions just like a mock object’s
+<code>checkpoint</code> method.</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">pub trait </span>A {
+    <span class="kw">fn </span>foo() -&gt; u32;
+}
+
+<span class="kw">let </span>ctx = MockA::foo_context();
+ctx.expect()
+    .times(<span class="number">1</span>)
+    .returning(|| <span class="number">99</span>);
+ctx.checkpoint();   <span class="comment">// Panics!</span></code></pre></div>
+<p>A mock object’s checkpoint method does <em>not</em> checkpoint static methods.
+This behavior is useful when using multiple mock objects at once.  For
+example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">pub trait </span>A {
+    <span class="kw">fn </span>build() -&gt; <span class="self">Self</span>;
+    <span class="kw">fn </span>bar(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; i32;
+}
+
+<span class="kw">let </span>ctx = MockA::build_context();
+ctx.expect()
+    .times(<span class="number">2</span>)
+    .returning(|| MockA::default());
+<span class="kw">let </span><span class="kw-2">mut </span>mock0 = MockA::build();
+mock0.expect_bar().return_const(<span class="number">4</span>);
+mock0.bar();
+mock0.checkpoint();     <span class="comment">// Does not checkpoint the build method
+</span><span class="kw">let </span>mock1 = MockA::build();</code></pre></div>
+<p>One more thing: Mockall normally creates a zero-argument <code>new</code> method for
+every mock struct.  But it <em>won’t</em> do that when mocking a struct that
+already has a method named <code>new</code>.  The <code>default</code> method will still be
+present.</p>
+<h3 id="modules"><a class="doc-anchor" href="#modules">§</a>Modules</h3>
+<p>In addition to mocking types, Mockall can also derive mocks for
+entire modules of Rust functions.  Mockall will generate a new module named
+“mock_xxx”, if “xxx” is the original module’s name.  You can also use
+<code>#[double]</code> to selectively import the mock module.</p>
+<p>Be careful!  Module functions are static and so have the same caveats as
+<a href="#static-methods">static methods</a> described above.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">mod </span>outer {
+    <span class="kw">use </span>mockall::automock;
+    <span class="attr">#[automock()]
+    </span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">mod </span>inner {
+        <span class="kw">pub fn </span>bar(x: u32) -&gt; i64 {
+            <span class="comment">// ...
+        </span>}
+    }
+}
+
+<span class="attr">#[double]
+</span><span class="kw">use </span>outer::inner;
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>t {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_foo_bar() {
+        <span class="kw">let </span>ctx = inner::bar_context();
+        ctx.expect()
+            .returning(|x| i64::from(x + <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">5</span>, inner::bar(<span class="number">4</span>));
+    }
+}</code></pre></div>
+<h4 id="foreign-functions"><a class="doc-anchor" href="#foreign-functions">§</a>Foreign functions</h4>
+<p>One reason to mock modules is when working with foreign functions.  Modules
+may contain foreign functions, even though structs and traits may not.  Like
+static methods, the expectations are global.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">mod </span>outer {
+    <span class="attr">#[automock]
+    </span><span class="kw">pub mod </span>ffi {
+        <span class="kw">extern </span><span class="string">"C" </span>{
+            <span class="kw">pub fn </span>foo(x: u32) -&gt; i64;
+        }
+    }
+}
+
+<span class="attr">#[double]
+</span><span class="kw">use </span>outer::ffi;
+
+<span class="kw">fn </span>do_stuff() -&gt; i64 {
+    <span class="kw">unsafe</span>{ ffi::foo(<span class="number">42</span>) }
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>t {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>test_foo() {
+        <span class="kw">let </span>ctx = ffi::foo_context();
+        ctx.expect()
+            .returning(|x| i64::from(x + <span class="number">1</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">43</span>, do_stuff());
+    }
+}</code></pre></div>
+<h3 id="debug"><a class="doc-anchor" href="#debug">§</a>Debug</h3>
+<p><code>#[automock]</code> will automatically generate <code>Debug</code> impls when mocking traits
+and struct impls.  <code>mock!</code> will too, if you add a <code>#[derive(Debug)]</code>, like
+this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">mock!</span> {
+    <span class="attr">#[derive(Debug)]
+    </span><span class="kw">pub </span>Foo {}
+}</code></pre></div>
+<h3 id="async-traits"><a class="doc-anchor" href="#async-traits">§</a>Async Traits</h3>
+<p>Async traits aren’t yet (as of 1.47.0) a part of the Rust language.  But
+they’re available from the
+<a href="https://docs.rs/async-trait/0.1.38/async_trait/"><code>async_trait</code></a> crate.
+Mockall is compatible with this crate, with two important limitations:</p>
+<ul>
+<li>
+<p>The <code>#[automock]</code> attribute must appear <em>before</em> the <code>#[async_trait]</code>
+attribute.</p>
+</li>
+<li>
+<p>The <code>#[async_trait]</code> macro must be imported with its canonical name.</p>
+</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// async_trait works with both #[automock]
+</span><span class="attr">#[automock]
+#[async_trait]
+</span><span class="kw">pub trait </span>Foo {
+   <span class="kw">async fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+}
+<span class="comment">// and mock!
+</span><span class="macro">mock!</span> {
+    <span class="kw">pub </span>Bar {}
+    <span class="attr">#[async_trait]
+    </span><span class="kw">impl </span>Foo <span class="kw">for </span>Bar {
+        <span class="kw">async fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32;
+    }
+}</code></pre></div>
+<h3 id="crate-features"><a class="doc-anchor" href="#crate-features">§</a>Crate features</h3>
+<p>Mockall has a <strong>nightly</strong> feature.  Currently this feature has two
+effects:</p>
+<ul>
+<li>
+<p>The compiler will produce better error messages.</p>
+</li>
+<li>
+<p>Expectations for methods whose return type implements <code>Default</code> needn’t
+have their return values explicitly set.  Instead, they will automatically
+return the default value.</p>
+</li>
+</ul>
+<p>With <strong>nightly</strong> enabled, you can omit the return value like this:</p>
+
+<div class="example-wrap should_panic"><a href="#" class="tooltip" title="This example panics">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[automock]
+</span><span class="kw">trait </span>Foo {
+    <span class="kw">fn </span>foo(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;u32&gt;;
+}
+
+<span class="kw">let </span><span class="kw-2">mut </span>mock = MockFoo::new();
+mock.expect_foo();
+<span class="macro">assert!</span>(mock.foo().is_empty());</code></pre></div>
+<h3 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h3>
+<p>For additional examples of Mockall in action, including detailed
+documentation on the autogenerated methods, see
+<a href="examples/index.html" title="mod mockall::examples"><code>examples</code></a>.</p>
+</div></details><h2 id="modules-1" class="section-header">Modules<a href="#modules-1" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="examples/index.html" title="mod mockall::examples">examples</a></dt><dd>Examples of Mockall’s generated code</dd><dt><a class="mod" href="predicate/index.html" title="mod mockall::predicate">predicate</a></dt><dd>Predicate factories</dd></dl><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.mock.html" title="macro mockall::mock">mock</a></dt><dd>Manually mock a structure.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Sequence.html" title="struct mockall::Sequence">Sequence</a></dt><dd>Used to enforce that mock calls must happen in the sequence specified.</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.Predicate.html" title="trait mockall::Predicate">Predicate</a></dt><dd>Trait for generically evaluating a type against a dynamically created
+predicate function.</dd><dt><a class="trait" href="trait.PredicateBooleanExt.html" title="trait mockall::PredicateBooleanExt">Predicate<wbr>Boolean<wbr>Ext</a></dt><dd><code>Predicate</code> extension that adds boolean logic.</dd><dt><a class="trait" href="trait.PredicateBoxExt.html" title="trait mockall::PredicateBoxExt">Predicate<wbr>BoxExt</a></dt><dd><code>Predicate</code> extension for boxing a <code>Predicate</code>.</dd><dt><a class="trait" href="trait.PredicateFileContentExt.html" title="trait mockall::PredicateFileContentExt">Predicate<wbr>File<wbr>Content<wbr>Ext</a></dt><dd><code>Predicate</code> extension adapting a <code>slice</code> Predicate.</dd><dt><a class="trait" href="trait.PredicateStrExt.html" title="trait mockall::PredicateStrExt">Predicate<wbr>StrExt</a></dt><dd><code>Predicate</code> extension adapting a <code>str</code> Predicate.</dd></dl><h2 id="attributes" class="section-header">Attribute Macros<a href="#attributes" class="anchor">§</a></h2><dl class="item-table"><dt><a class="attr" href="attr.automock.html" title="attr mockall::automock">automock</a></dt><dd>Automatically generate mock types for structs and traits.</dd><dt><a class="attr" href="attr.concretize.html" title="attr mockall::concretize">concretize</a></dt><dd>Decorates a method or function to tell Mockall to treat its generic arguments
+as trait objects when creating expectations.</dd></dl></section></div></main></body></html>

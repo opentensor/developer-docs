@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Attribute for functions run at program termination (after main)"><title>destructor in static_init - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="static_init" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc attr"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../static_init/index.html">static_<wbr>init</a><span class="version">1.0.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">destructor</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#about-rust-runtime" title="About rust runtime">About rust runtime</a></li><li><a href="#destructor-signature" title="Destructor signature">Destructor signature</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate static_<wbr>init</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">static_init</a></div><h1>Attribute Macro <span class="attr">destructor</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/static_init_macro/lib.rs.html#117">Source</a> </span></div><pre class="rust item-decl"><code>#[destructor]</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Attribute for functions run at program termination (after main)</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[destructor]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>droper () {
+<span class="comment">// run after main return
+</span>}</code></pre></div>
+<p>The execution order of destructors is unspecified. Nevertheless on ELF plateform (linux,any unixes but mac) and
+windows plateform a priority can be specified using the syntax <code>destructor(&lt;num&gt;)</code> where
+<code>&lt;num&gt;</code> is a number included in the range [0 ; 2<sup>16</sup>-1].</p>
+<p>Destructors with priority 0 are run first (in unspecified order),
+then destructors with priority number 1,… finaly destructors with priority 65535 are run.</p>
+<p>An abscence of priority is equivalent to a priority of 0.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[destructor(<span class="number">1</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>first () {
+<span class="comment">// run after main return
+</span>}
+
+<span class="attr">#[destructor(<span class="number">0</span>)]
+</span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>then () {
+<span class="comment">// run after main return
+</span>}</code></pre></div>
+<h2 id="about-rust-runtime"><a class="doc-anchor" href="#about-rust-runtime">§</a>About rust runtime</h2>
+<p>After main exit the standard streams are not buffered.</p>
+<h2 id="destructor-signature"><a class="doc-anchor" href="#destructor-signature">§</a>Destructor signature</h2>
+<p>Destructor function should have type <code>unsafe extern "C" fn() -&gt; ()</code>.</p>
+</div></details></section></div></main></body></html>

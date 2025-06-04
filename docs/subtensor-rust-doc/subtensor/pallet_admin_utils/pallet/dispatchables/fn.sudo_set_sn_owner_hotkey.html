@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Sets or updates the hotkey account associated with the owner of a specific subnet."><title>sudo_set_sn_owner_hotkey in pallet_admin_utils::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_admin_utils" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_admin_utils/index.html">pallet_<wbr>admin_<wbr>utils</a><span class="version">4.0.0-dev</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">sudo_<wbr>set_<wbr>sn_<wbr>owner_<wbr>hotkey</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#parameters" title="Parameters">Parameters</a></li><li><a href="#returns" title="Returns">Returns</a></li><li><a href="#errors" title="Errors">Errors</a></li><li><a href="#access-control" title="Access Control">Access Control</a></li><li><a href="#storage" title="Storage">Storage</a></li><li><a href="#rate-limiting" title="Rate Limiting">Rate Limiting</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>admin_<wbr>utils::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_admin_utils</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">sudo_set_sn_owner_hotkey</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_admin_utils/lib.rs.html#20">Source</a> </span></div><pre class="rust item-decl"><code>pub fn sudo_set_sn_owner_hotkey&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_admin_utils::pallet::Config">Config</a>&gt;(netuid: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>, hotkey: T::<a class="associatedtype" href="../../../frame_system/pallet/trait.Config.html#associatedtype.AccountId" title="type frame_system::pallet::Config::AccountId">AccountId</a>)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Sets or updates the hotkey account associated with the owner of a specific subnet.</p>
+<p>This function allows either the root origin or the current subnet owner to set or update
+the hotkey for a given subnet. The subnet must already exist. To prevent abuse, the call is
+rate-limited to once per configured interval (default: one week) per subnet.</p>
+<h2 id="parameters"><a class="doc-anchor" href="#parameters">§</a>Parameters</h2>
+<ul>
+<li><code>origin</code>: The dispatch origin of the call. Must be either root or the current owner of the subnet.</li>
+<li><code>netuid</code>: The unique identifier of the subnet whose owner hotkey is being set.</li>
+<li><code>hotkey</code>: The new hotkey account to associate with the subnet owner.</li>
+</ul>
+<h2 id="returns"><a class="doc-anchor" href="#returns">§</a>Returns</h2>
+<ul>
+<li><code>DispatchResult</code>: Returns <code>Ok(())</code> if the hotkey was successfully set, or an appropriate error otherwise.</li>
+</ul>
+<h2 id="errors"><a class="doc-anchor" href="#errors">§</a>Errors</h2>
+<ul>
+<li><code>Error::SubnetNotExists</code>: If the specified subnet does not exist.</li>
+<li><code>Error::TxRateLimitExceeded</code>: If the function is called more frequently than the allowed rate limit.</li>
+</ul>
+<h2 id="access-control"><a class="doc-anchor" href="#access-control">§</a>Access Control</h2>
+<p>Only callable by:</p>
+<ul>
+<li>Root origin, or</li>
+<li>The coldkey account that owns the subnet.</li>
+</ul>
+<h2 id="storage"><a class="doc-anchor" href="#storage">§</a>Storage</h2>
+<ul>
+<li>Updates [<code>SubnetOwnerHotkey</code>] for the given <code>netuid</code>.</li>
+<li>Reads and updates [<code>LastRateLimitedBlock</code>] for rate-limiting.</li>
+<li>Reads [<code>DefaultSetSNOwnerHotkeyRateLimit</code>] to determine the interval between allowed updates.</li>
+</ul>
+<h2 id="rate-limiting"><a class="doc-anchor" href="#rate-limiting">§</a>Rate Limiting</h2>
+<p>This function is rate-limited to one call per subnet per interval (e.g., one week).</p>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.sudo_set_sn_owner_hotkey" title="associated function pallet_admin_utils::pallet::Pallet::sudo_set_sn_owner_hotkey"><code>Pallet::sudo_set_sn_owner_hotkey</code></a>.</p>
+</div></details></section></div></main></body></html>

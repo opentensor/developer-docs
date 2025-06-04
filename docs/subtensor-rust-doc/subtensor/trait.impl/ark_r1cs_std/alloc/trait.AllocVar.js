@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["ark_crypto_primitives",[["impl&lt;F, CF&gt; <a class=\"trait\" href=\"ark_r1cs_std/alloc/trait.AllocVar.html\" title=\"trait ark_r1cs_std::alloc::AllocVar\">AllocVar</a>&lt;<a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;F&gt;, CF&gt; for <a class=\"struct\" href=\"ark_crypto_primitives/snark/constraints/struct.NonNativeFieldInputVar.html\" title=\"struct ark_crypto_primitives::snark::constraints::NonNativeFieldInputVar\">NonNativeFieldInputVar</a>&lt;F, CF&gt;<div class=\"where\">where\n    F: <a class=\"trait\" href=\"ark_ff/fields/prime/trait.PrimeField.html\" title=\"trait ark_ff::fields::prime::PrimeField\">PrimeField</a>,\n    CF: <a class=\"trait\" href=\"ark_ff/fields/prime/trait.PrimeField.html\" title=\"trait ark_ff::fields::prime::PrimeField\">PrimeField</a>,</div>"],["impl&lt;F: <a class=\"trait\" href=\"ark_ff/fields/prime/trait.PrimeField.html\" title=\"trait ark_ff::fields::prime::PrimeField\">PrimeField</a>, CF: <a class=\"trait\" href=\"ark_ff/fields/prime/trait.PrimeField.html\" title=\"trait ark_ff::fields::prime::PrimeField\">PrimeField</a>&gt; <a class=\"trait\" href=\"ark_r1cs_std/alloc/trait.AllocVar.html\" title=\"trait ark_r1cs_std::alloc::AllocVar\">AllocVar</a>&lt;<a class=\"struct\" href=\"https://doc.rust-lang.org/1.86.0/alloc/vec/struct.Vec.html\" title=\"struct alloc::vec::Vec\">Vec</a>&lt;F&gt;, CF&gt; for <a class=\"struct\" href=\"ark_crypto_primitives/snark/constraints/struct.BooleanInputVar.html\" title=\"struct ark_crypto_primitives::snark::constraints::BooleanInputVar\">BooleanInputVar</a>&lt;F, CF&gt;"]]],["ark_r1cs_std",[]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1655,20]}

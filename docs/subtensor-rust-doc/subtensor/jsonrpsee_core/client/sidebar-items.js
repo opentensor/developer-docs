@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["IdKind","ReceivedMessage","SubscriptionCloseReason","SubscriptionKind"],"fn":["generate_batch_id_range"],"mod":["error"],"struct":["BatchResponse","RequestIdManager","Subscription"],"trait":["ClientT","MaybeSend","SubscriptionClientT","TransportReceiverT","TransportSenderT"],"type":["BatchEntry"]};

@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="–– Set prometheus information for the neuron."><title>serve_prometheus in pallet_subtensor::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_subtensor" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_subtensor/index.html">pallet_<wbr>subtensor</a><span class="version">4.0.0-dev</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">serve_<wbr>prometheus</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#args" title="Args:">Args:</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>subtensor::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_subtensor</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">serve_prometheus</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_subtensor/lib.rs.html#67">Source</a> </span></div><pre class="rust item-decl"><code>pub fn serve_prometheus&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_subtensor::pallet::Config">Config</a>&gt;(
+    netuid: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+    version: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u32.html">u32</a>,
+    ip: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u128.html">u128</a>,
+    port: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u16.html">u16</a>,
+    ip_type: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.u8.html">u8</a>,
+)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>–– Set prometheus information for the neuron.</p>
+<h2 id="args"><a class="doc-anchor" href="#args">§</a>Args:</h2>
+<ul>
+<li>
+<p>‘origin’: (<T as frame_system::Config>Origin):</p>
+<ul>
+<li>The signature of the calling hotkey.</li>
+</ul>
+</li>
+<li>
+<p>‘netuid’ (u16):</p>
+<ul>
+<li>The u16 network identifier.</li>
+</ul>
+</li>
+<li>
+<p>‘version’ (u16):</p>
+<ul>
+<li>The bittensor version identifier.</li>
+</ul>
+</li>
+<li>
+<p>‘ip’ (u128):</p>
+<ul>
+<li>The prometheus ip information as a u128 encoded integer.</li>
+</ul>
+</li>
+<li>
+<p>‘port’ (u16):</p>
+<ul>
+<li>The prometheus port information as a u16 encoded integer.</li>
+</ul>
+</li>
+<li>
+<p>‘ip_type’ (u8):</p>
+<ul>
+<li>The ip type v4 or v6.</li>
+</ul>
+</li>
+</ul>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.serve_prometheus" title="associated function pallet_subtensor::pallet::Pallet::serve_prometheus"><code>Pallet::serve_prometheus</code></a>.</p>
+</div></details></section></div></main></body></html>

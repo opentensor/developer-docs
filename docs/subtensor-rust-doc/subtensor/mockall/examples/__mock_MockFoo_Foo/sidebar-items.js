@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["__bang","__bar","__baz","__bean","__foo"]};

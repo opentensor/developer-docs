@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_VARINT_LENGTH"],"fn":["write_varint"]};

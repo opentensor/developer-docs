@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["make_msm_args","make_pairing_args","make_scalar_args","make_scalar_args_projective","serialize_argument"],"type":["ScalarFieldFor"]};

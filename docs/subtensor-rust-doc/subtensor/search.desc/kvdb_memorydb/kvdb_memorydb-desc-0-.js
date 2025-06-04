@@ -1,0 +1,1 @@
+searchState.loadedDescShard("kvdb_memorydb", 0, "A key-value database fulfilling the <code>KeyValueDB</code> trait, …\nCreate an in-memory database with the given number of …\nReturns the argument unchanged.\nCalls <code>U::from(self)</code>.")

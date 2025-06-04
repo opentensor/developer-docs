@@ -1,0 +1,1 @@
+searchState.loadedDescShard("data_encoding_macro", 0, "Macros for data-encoding\nDefines a compile-time byte array by decoding a string …\nDefines a compile-time byte slice by decoding a string …\nDefines a compile-time custom encoding")

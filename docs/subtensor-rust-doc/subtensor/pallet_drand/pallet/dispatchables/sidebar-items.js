@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["set_beacon_config","write_pulse"]};

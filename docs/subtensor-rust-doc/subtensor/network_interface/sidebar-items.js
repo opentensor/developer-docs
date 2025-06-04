@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Addr","Error"],"struct":["NetworkInterface","V4IfAddr","V6IfAddr"],"trait":["NetworkInterfaceConfig"],"type":["Netmask","Result"]};

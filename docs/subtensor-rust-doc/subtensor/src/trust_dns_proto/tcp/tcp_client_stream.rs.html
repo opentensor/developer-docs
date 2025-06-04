@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/trust-dns-proto-0.23.2/src/tcp/tcp_client_stream.rs`."><title>tcp_client_stream.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="trust_dns_proto" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../../../static.files/src-script-b8d3f215.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">trust_dns_proto/tcp/</div>tcp_client_stream.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright 2015-2016 Benjamin Fry &lt;benjaminfry@me.com&gt;
+<a href=#2 id=2 data-nosnippet>2</a>//
+<a href=#3 id=3 data-nosnippet>3</a>// Licensed under the Apache License, Version 2.0, &lt;LICENSE-APACHE or
+<a href=#4 id=4 data-nosnippet>4</a>// http://apache.org/licenses/LICENSE-2.0&gt; or the MIT license &lt;LICENSE-MIT or
+<a href=#5 id=5 data-nosnippet>5</a>// http://opensource.org/licenses/MIT&gt;, at your option. This file may not be
+<a href=#6 id=6 data-nosnippet>6</a>// copied, modified, or distributed except according to those terms.
+<a href=#7 id=7 data-nosnippet>7</a>
+<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>std::fmt::{<span class="self">self</span>, Display};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>std::io;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>std::net::SocketAddr;
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>std::pin::Pin;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>std::task::{Context, Poll};
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>std::time::Duration;
+<a href=#14 id=14 data-nosnippet>14</a>
+<a href=#15 id=15 data-nosnippet>15</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">use </span>async_trait::async_trait;
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>futures_util::{future::Future, stream::Stream, StreamExt, TryFutureExt};
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>tracing::warn;
+<a href=#19 id=19 data-nosnippet>19</a>
+<a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span><span class="kw">crate</span>::error::ProtoError;
+<a href=#21 id=21 data-nosnippet>21</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">use </span><span class="kw">crate</span>::iocompat::AsyncIoTokioAsStd;
+<a href=#23 id=23 data-nosnippet>23</a><span class="kw">use </span><span class="kw">crate</span>::tcp::{Connect, DnsTcpStream, TcpStream};
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span><span class="kw">crate</span>::xfer::{DnsClientStream, SerialMessage};
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><span class="kw">crate</span>::BufDnsStreamHandle;
+<a href=#26 id=26 data-nosnippet>26</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">use </span><span class="kw">crate</span>::TokioTime;
+<a href=#28 id=28 data-nosnippet>28</a>
+<a href=#29 id=29 data-nosnippet>29</a><span class="doccomment">/// Tcp client stream
+<a href=#30 id=30 data-nosnippet>30</a>///
+<a href=#31 id=31 data-nosnippet>31</a>/// Use with `trust_dns_client::client::DnsMultiplexer` impls
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="attr">#[must_use = <span class="string">"futures do nothing unless polled"</span>]
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">pub struct </span>TcpClientStream&lt;S&gt;
+<a href=#34 id=34 data-nosnippet>34</a><span class="kw">where
+<a href=#35 id=35 data-nosnippet>35</a>    </span>S: DnsTcpStream,
+<a href=#36 id=36 data-nosnippet>36</a>{
+<a href=#37 id=37 data-nosnippet>37</a>    tcp_stream: TcpStream&lt;S&gt;,
+<a href=#38 id=38 data-nosnippet>38</a>}
+<a href=#39 id=39 data-nosnippet>39</a>
+<a href=#40 id=40 data-nosnippet>40</a><span class="kw">impl</span>&lt;S: Connect&gt; TcpClientStream&lt;S&gt; {
+<a href=#41 id=41 data-nosnippet>41</a>    <span class="doccomment">/// Constructs a new TcpStream for a client to the specified SocketAddr.
+<a href=#42 id=42 data-nosnippet>42</a>    ///
+<a href=#43 id=43 data-nosnippet>43</a>    /// Defaults to a 5 second timeout
+<a href=#44 id=44 data-nosnippet>44</a>    ///
+<a href=#45 id=45 data-nosnippet>45</a>    /// # Arguments
+<a href=#46 id=46 data-nosnippet>46</a>    ///
+<a href=#47 id=47 data-nosnippet>47</a>    /// * `name_server` - the IP and Port of the DNS server to connect to
+<a href=#48 id=48 data-nosnippet>48</a>    </span><span class="attr">#[allow(clippy::new_ret_no_self)]
+<a href=#49 id=49 data-nosnippet>49</a>    </span><span class="kw">pub fn </span>new(name_server: SocketAddr) -&gt; (TcpClientConnect&lt;S&gt;, BufDnsStreamHandle) {
+<a href=#50 id=50 data-nosnippet>50</a>        <span class="self">Self</span>::with_timeout(name_server, Duration::from_secs(<span class="number">5</span>))
+<a href=#51 id=51 data-nosnippet>51</a>    }
+<a href=#52 id=52 data-nosnippet>52</a>
+<a href=#53 id=53 data-nosnippet>53</a>    <span class="doccomment">/// Constructs a new TcpStream for a client to the specified SocketAddr.
+<a href=#54 id=54 data-nosnippet>54</a>    ///
+<a href=#55 id=55 data-nosnippet>55</a>    /// # Arguments
+<a href=#56 id=56 data-nosnippet>56</a>    ///
+<a href=#57 id=57 data-nosnippet>57</a>    /// * `name_server` - the IP and Port of the DNS server to connect to
+<a href=#58 id=58 data-nosnippet>58</a>    /// * `timeout` - connection timeout
+<a href=#59 id=59 data-nosnippet>59</a>    </span><span class="kw">pub fn </span>with_timeout(
+<a href=#60 id=60 data-nosnippet>60</a>        name_server: SocketAddr,
+<a href=#61 id=61 data-nosnippet>61</a>        timeout: Duration,
+<a href=#62 id=62 data-nosnippet>62</a>    ) -&gt; (TcpClientConnect&lt;S&gt;, BufDnsStreamHandle) {
+<a href=#63 id=63 data-nosnippet>63</a>        <span class="self">Self</span>::with_bind_addr_and_timeout(name_server, <span class="prelude-val">None</span>, timeout)
+<a href=#64 id=64 data-nosnippet>64</a>    }
+<a href=#65 id=65 data-nosnippet>65</a>
+<a href=#66 id=66 data-nosnippet>66</a>    <span class="doccomment">/// Constructs a new TcpStream for a client to the specified SocketAddr.
+<a href=#67 id=67 data-nosnippet>67</a>    ///
+<a href=#68 id=68 data-nosnippet>68</a>    /// # Arguments
+<a href=#69 id=69 data-nosnippet>69</a>    ///
+<a href=#70 id=70 data-nosnippet>70</a>    /// * `name_server` - the IP and Port of the DNS server to connect to
+<a href=#71 id=71 data-nosnippet>71</a>    /// * `bind_addr` - the IP and port to connect from
+<a href=#72 id=72 data-nosnippet>72</a>    /// * `timeout` - connection timeout
+<a href=#73 id=73 data-nosnippet>73</a>    </span><span class="attr">#[allow(clippy::new_ret_no_self)]
+<a href=#74 id=74 data-nosnippet>74</a>    </span><span class="kw">pub fn </span>with_bind_addr_and_timeout(
+<a href=#75 id=75 data-nosnippet>75</a>        name_server: SocketAddr,
+<a href=#76 id=76 data-nosnippet>76</a>        bind_addr: <span class="prelude-ty">Option</span>&lt;SocketAddr&gt;,
+<a href=#77 id=77 data-nosnippet>77</a>        timeout: Duration,
+<a href=#78 id=78 data-nosnippet>78</a>    ) -&gt; (TcpClientConnect&lt;S&gt;, BufDnsStreamHandle) {
+<a href=#79 id=79 data-nosnippet>79</a>        <span class="kw">let </span>(stream_future, sender) =
+<a href=#80 id=80 data-nosnippet>80</a>            TcpStream::&lt;S&gt;::with_bind_addr_and_timeout(name_server, bind_addr, timeout);
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a>        <span class="kw">let </span>new_future = Box::pin(
+<a href=#83 id=83 data-nosnippet>83</a>            stream_future
+<a href=#84 id=84 data-nosnippet>84</a>                .map_ok(<span class="kw">move </span>|tcp_stream| <span class="self">Self </span>{ tcp_stream })
+<a href=#85 id=85 data-nosnippet>85</a>                .map_err(ProtoError::from),
+<a href=#86 id=86 data-nosnippet>86</a>        );
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a>        (TcpClientConnect(new_future), sender)
+<a href=#89 id=89 data-nosnippet>89</a>    }
+<a href=#90 id=90 data-nosnippet>90</a>}
+<a href=#91 id=91 data-nosnippet>91</a>
+<a href=#92 id=92 data-nosnippet>92</a><span class="kw">impl</span>&lt;S: DnsTcpStream&gt; TcpClientStream&lt;S&gt; {
+<a href=#93 id=93 data-nosnippet>93</a>    <span class="doccomment">/// Wraps the TcpStream in TcpClientStream
+<a href=#94 id=94 data-nosnippet>94</a>    </span><span class="kw">pub fn </span>from_stream(tcp_stream: TcpStream&lt;S&gt;) -&gt; <span class="self">Self </span>{
+<a href=#95 id=95 data-nosnippet>95</a>        <span class="self">Self </span>{ tcp_stream }
+<a href=#96 id=96 data-nosnippet>96</a>    }
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a>    <span class="doccomment">/// Constructs a new TcpStream for a client to the specified SocketAddr.
+<a href=#99 id=99 data-nosnippet>99</a>    ///
+<a href=#100 id=100 data-nosnippet>100</a>    /// # Arguments
+<a href=#101 id=101 data-nosnippet>101</a>    ///
+<a href=#102 id=102 data-nosnippet>102</a>    /// * `future` - a future of a connecting tcp
+<a href=#103 id=103 data-nosnippet>103</a>    /// * `name_server` - the IP and Port of the DNS server to connect to
+<a href=#104 id=104 data-nosnippet>104</a>    /// * `timeout` - connection timeout
+<a href=#105 id=105 data-nosnippet>105</a>    </span><span class="attr">#[allow(clippy::new_ret_no_self)]
+<a href=#106 id=106 data-nosnippet>106</a>    </span><span class="kw">pub fn </span>with_future&lt;F: Future&lt;Output = io::Result&lt;S&gt;&gt; + Send + <span class="lifetime">'static</span>&gt;(
+<a href=#107 id=107 data-nosnippet>107</a>        future: F,
+<a href=#108 id=108 data-nosnippet>108</a>        name_server: SocketAddr,
+<a href=#109 id=109 data-nosnippet>109</a>        timeout: Duration,
+<a href=#110 id=110 data-nosnippet>110</a>    ) -&gt; (TcpClientConnect&lt;S&gt;, BufDnsStreamHandle) {
+<a href=#111 id=111 data-nosnippet>111</a>        <span class="kw">let </span>(stream_future, sender) = TcpStream::&lt;S&gt;::with_future(future, name_server, timeout);
+<a href=#112 id=112 data-nosnippet>112</a>
+<a href=#113 id=113 data-nosnippet>113</a>        <span class="kw">let </span>new_future = Box::pin(
+<a href=#114 id=114 data-nosnippet>114</a>            stream_future
+<a href=#115 id=115 data-nosnippet>115</a>                .map_ok(<span class="kw">move </span>|tcp_stream| <span class="self">Self </span>{ tcp_stream })
+<a href=#116 id=116 data-nosnippet>116</a>                .map_err(ProtoError::from),
+<a href=#117 id=117 data-nosnippet>117</a>        );
+<a href=#118 id=118 data-nosnippet>118</a>
+<a href=#119 id=119 data-nosnippet>119</a>        (TcpClientConnect(new_future), sender)
+<a href=#120 id=120 data-nosnippet>120</a>    }
+<a href=#121 id=121 data-nosnippet>121</a>}
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a><span class="kw">impl</span>&lt;S: DnsTcpStream&gt; Display <span class="kw">for </span>TcpClientStream&lt;S&gt; {
+<a href=#124 id=124 data-nosnippet>124</a>    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, formatter: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), fmt::Error&gt; {
+<a href=#125 id=125 data-nosnippet>125</a>        <span class="macro">write!</span>(formatter, <span class="string">"TCP({})"</span>, <span class="self">self</span>.tcp_stream.peer_addr())
+<a href=#126 id=126 data-nosnippet>126</a>    }
+<a href=#127 id=127 data-nosnippet>127</a>}
+<a href=#128 id=128 data-nosnippet>128</a>
+<a href=#129 id=129 data-nosnippet>129</a><span class="kw">impl</span>&lt;S: DnsTcpStream&gt; DnsClientStream <span class="kw">for </span>TcpClientStream&lt;S&gt; {
+<a href=#130 id=130 data-nosnippet>130</a>    <span class="kw">type </span>Time = S::Time;
+<a href=#131 id=131 data-nosnippet>131</a>
+<a href=#132 id=132 data-nosnippet>132</a>    <span class="kw">fn </span>name_server_addr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SocketAddr {
+<a href=#133 id=133 data-nosnippet>133</a>        <span class="self">self</span>.tcp_stream.peer_addr()
+<a href=#134 id=134 data-nosnippet>134</a>    }
+<a href=#135 id=135 data-nosnippet>135</a>}
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a><span class="kw">impl</span>&lt;S: DnsTcpStream&gt; Stream <span class="kw">for </span>TcpClientStream&lt;S&gt; {
+<a href=#138 id=138 data-nosnippet>138</a>    <span class="kw">type </span>Item = <span class="prelude-ty">Result</span>&lt;SerialMessage, ProtoError&gt;;
+<a href=#139 id=139 data-nosnippet>139</a>
+<a href=#140 id=140 data-nosnippet>140</a>    <span class="kw">fn </span>poll_next(<span class="kw-2">mut </span><span class="self">self</span>: Pin&lt;<span class="kw-2">&amp;mut </span><span class="self">Self</span>&gt;, cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; Poll&lt;<span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>::Item&gt;&gt; {
+<a href=#141 id=141 data-nosnippet>141</a>        <span class="kw">let </span>message = <span class="macro">try_ready_stream!</span>(<span class="self">self</span>.tcp_stream.poll_next_unpin(cx));
+<a href=#142 id=142 data-nosnippet>142</a>
+<a href=#143 id=143 data-nosnippet>143</a>        <span class="comment">// this is busted if the tcp connection doesn't have a peer
+<a href=#144 id=144 data-nosnippet>144</a>        </span><span class="kw">let </span>peer = <span class="self">self</span>.tcp_stream.peer_addr();
+<a href=#145 id=145 data-nosnippet>145</a>        <span class="kw">if </span>message.addr() != peer {
+<a href=#146 id=146 data-nosnippet>146</a>            <span class="comment">// TODO: this should be an error, right?
+<a href=#147 id=147 data-nosnippet>147</a>            </span><span class="macro">warn!</span>(<span class="string">"{} does not match name_server: {}"</span>, message.addr(), peer)
+<a href=#148 id=148 data-nosnippet>148</a>        }
+<a href=#149 id=149 data-nosnippet>149</a>
+<a href=#150 id=150 data-nosnippet>150</a>        Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(message)))
+<a href=#151 id=151 data-nosnippet>151</a>    }
+<a href=#152 id=152 data-nosnippet>152</a>}
+<a href=#153 id=153 data-nosnippet>153</a>
+<a href=#154 id=154 data-nosnippet>154</a><span class="comment">// TODO: create unboxed future for the TCP Stream
+<a href=#155 id=155 data-nosnippet>155</a></span><span class="doccomment">/// A future that resolves to an TcpClientStream
+<a href=#156 id=156 data-nosnippet>156</a></span><span class="kw">pub struct </span>TcpClientConnect&lt;S: DnsTcpStream&gt;(
+<a href=#157 id=157 data-nosnippet>157</a>    Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;TcpClientStream&lt;S&gt;, ProtoError&gt;&gt; + Send + <span class="lifetime">'static</span>&gt;&gt;,
+<a href=#158 id=158 data-nosnippet>158</a>);
+<a href=#159 id=159 data-nosnippet>159</a>
+<a href=#160 id=160 data-nosnippet>160</a><span class="kw">impl</span>&lt;S: DnsTcpStream&gt; Future <span class="kw">for </span>TcpClientConnect&lt;S&gt; {
+<a href=#161 id=161 data-nosnippet>161</a>    <span class="kw">type </span>Output = <span class="prelude-ty">Result</span>&lt;TcpClientStream&lt;S&gt;, ProtoError&gt;;
+<a href=#162 id=162 data-nosnippet>162</a>
+<a href=#163 id=163 data-nosnippet>163</a>    <span class="kw">fn </span>poll(<span class="kw-2">mut </span><span class="self">self</span>: Pin&lt;<span class="kw-2">&amp;mut </span><span class="self">Self</span>&gt;, cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">'_</span>&gt;) -&gt; Poll&lt;<span class="self">Self</span>::Output&gt; {
+<a href=#164 id=164 data-nosnippet>164</a>        <span class="self">self</span>.<span class="number">0</span>.as_mut().poll(cx)
+<a href=#165 id=165 data-nosnippet>165</a>    }
+<a href=#166 id=166 data-nosnippet>166</a>}
+<a href=#167 id=167 data-nosnippet>167</a>
+<a href=#168 id=168 data-nosnippet>168</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#169 id=169 data-nosnippet>169</a></span><span class="kw">use </span>tokio::net::TcpStream <span class="kw">as </span>TokioTcpStream;
+<a href=#170 id=170 data-nosnippet>170</a>
+<a href=#171 id=171 data-nosnippet>171</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#172 id=172 data-nosnippet>172</a></span><span class="kw">impl</span>&lt;T&gt; DnsTcpStream <span class="kw">for </span>AsyncIoTokioAsStd&lt;T&gt;
+<a href=#173 id=173 data-nosnippet>173</a><span class="kw">where
+<a href=#174 id=174 data-nosnippet>174</a>    </span>T: tokio::io::AsyncRead + tokio::io::AsyncWrite + Unpin + Send + Sync + Sized + <span class="lifetime">'static</span>,
+<a href=#175 id=175 data-nosnippet>175</a>{
+<a href=#176 id=176 data-nosnippet>176</a>    <span class="kw">type </span>Time = TokioTime;
+<a href=#177 id=177 data-nosnippet>177</a>}
+<a href=#178 id=178 data-nosnippet>178</a>
+<a href=#179 id=179 data-nosnippet>179</a><span class="attr">#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#180 id=180 data-nosnippet>180</a>#[async_trait]
+<a href=#181 id=181 data-nosnippet>181</a></span><span class="kw">impl </span>Connect <span class="kw">for </span>AsyncIoTokioAsStd&lt;TokioTcpStream&gt; {
+<a href=#182 id=182 data-nosnippet>182</a>    <span class="kw">async fn </span>connect_with_bind(
+<a href=#183 id=183 data-nosnippet>183</a>        addr: SocketAddr,
+<a href=#184 id=184 data-nosnippet>184</a>        bind_addr: <span class="prelude-ty">Option</span>&lt;SocketAddr&gt;,
+<a href=#185 id=185 data-nosnippet>185</a>    ) -&gt; io::Result&lt;<span class="self">Self</span>&gt; {
+<a href=#186 id=186 data-nosnippet>186</a>        <span class="kw">super</span>::tokio::connect_with_bind(<span class="kw-2">&amp;</span>addr, <span class="kw-2">&amp;</span>bind_addr)
+<a href=#187 id=187 data-nosnippet>187</a>            .<span class="kw">await
+<a href=#188 id=188 data-nosnippet>188</a>            </span>.map(AsyncIoTokioAsStd)
+<a href=#189 id=189 data-nosnippet>189</a>    }
+<a href=#190 id=190 data-nosnippet>190</a>}
+<a href=#191 id=191 data-nosnippet>191</a>
+<a href=#192 id=192 data-nosnippet>192</a><span class="attr">#[cfg(test)]
+<a href=#193 id=193 data-nosnippet>193</a>#[cfg(feature = <span class="string">"tokio-runtime"</span>)]
+<a href=#194 id=194 data-nosnippet>194</a></span><span class="kw">mod </span>tests {
+<a href=#195 id=195 data-nosnippet>195</a>    <span class="kw">use </span><span class="kw">super</span>::AsyncIoTokioAsStd;
+<a href=#196 id=196 data-nosnippet>196</a>    <span class="attr">#[cfg(not(target_os = <span class="string">"linux"</span>))]
+<a href=#197 id=197 data-nosnippet>197</a>    </span><span class="kw">use </span>std::net::Ipv6Addr;
+<a href=#198 id=198 data-nosnippet>198</a>    <span class="kw">use </span>std::net::{IpAddr, Ipv4Addr};
+<a href=#199 id=199 data-nosnippet>199</a>    <span class="kw">use </span>tokio::net::TcpStream <span class="kw">as </span>TokioTcpStream;
+<a href=#200 id=200 data-nosnippet>200</a>    <span class="kw">use </span>tokio::runtime::Runtime;
+<a href=#201 id=201 data-nosnippet>201</a>
+<a href=#202 id=202 data-nosnippet>202</a>    <span class="kw">use </span><span class="kw">crate</span>::tests::tcp_client_stream_test;
+<a href=#203 id=203 data-nosnippet>203</a>    <span class="attr">#[test]
+<a href=#204 id=204 data-nosnippet>204</a>    </span><span class="kw">fn </span>test_tcp_stream_ipv4() {
+<a href=#205 id=205 data-nosnippet>205</a>        <span class="kw">let </span>io_loop = Runtime::new().expect(<span class="string">"failed to create tokio runtime"</span>);
+<a href=#206 id=206 data-nosnippet>206</a>        tcp_client_stream_test::&lt;AsyncIoTokioAsStd&lt;TokioTcpStream&gt;, Runtime&gt;(
+<a href=#207 id=207 data-nosnippet>207</a>            IpAddr::V4(Ipv4Addr::new(<span class="number">127</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>)),
+<a href=#208 id=208 data-nosnippet>208</a>            io_loop,
+<a href=#209 id=209 data-nosnippet>209</a>        )
+<a href=#210 id=210 data-nosnippet>210</a>    }
+<a href=#211 id=211 data-nosnippet>211</a>
+<a href=#212 id=212 data-nosnippet>212</a>    <span class="attr">#[test]
+<a href=#213 id=213 data-nosnippet>213</a>    #[cfg(not(target_os = <span class="string">"linux"</span>))] </span><span class="comment">// ignored until Travis-CI fixes IPv6
+<a href=#214 id=214 data-nosnippet>214</a>    </span><span class="kw">fn </span>test_tcp_stream_ipv6() {
+<a href=#215 id=215 data-nosnippet>215</a>        <span class="kw">let </span>io_loop = Runtime::new().expect(<span class="string">"failed to create tokio runtime"</span>);
+<a href=#216 id=216 data-nosnippet>216</a>        tcp_client_stream_test::&lt;AsyncIoTokioAsStd&lt;TokioTcpStream&gt;, Runtime&gt;(
+<a href=#217 id=217 data-nosnippet>217</a>            IpAddr::V6(Ipv6Addr::new(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>)),
+<a href=#218 id=218 data-nosnippet>218</a>            io_loop,
+<a href=#219 id=219 data-nosnippet>219</a>        )
+<a href=#220 id=220 data-nosnippet>220</a>    }
+<a href=#221 id=221 data-nosnippet>221</a>}</code></pre></div></section></main></body></html>

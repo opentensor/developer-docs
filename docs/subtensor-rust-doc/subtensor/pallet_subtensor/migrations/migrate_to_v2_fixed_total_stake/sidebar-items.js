@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_to_v2_fixed_total_stake"],"mod":["deprecated_loaded_emission_format"]};

@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Embeds the specified item from the specified source file in a rust doc example, with pretty formatting enabled."><title>embed in docify - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="docify" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../docify/index.html">docify</a><span class="version">0.2.8</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">embed</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#arguments" title="Arguments">Arguments</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate docify</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">docify</a></div><h1>Macro <span class="macro">embed</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/docify_macros/lib.rs.html#523">Source</a> </span></div><pre class="rust item-decl"><code>embed!() { <span class="comment">/* proc-macro */</span> }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Embeds the specified item from the specified source file in a rust doc example, with pretty
+formatting enabled.</p>
+<p>Should be used in a <code>#[doc = ...]</code> statement, like the following:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="doccomment">/// some doc comments here
+</span><span class="attr">#[doc = <span class="macro">docify::embed!</span>(<span class="string">"path/to/file.rs"</span>, my_example)]
+</span><span class="doccomment">/// more doc comments
+</span><span class="kw">struct </span>DocumentedItem;</code></pre></div>
+<p>Which will expand to the <code>my_example</code> item in <code>path/to/file.rs</code> being embedded in a rust
+doc example marked with <code>ignore</code>. If you want to have your example actually run in rust
+docs as well, you should use <a href="macro.embed_run.html" title="macro docify::embed_run"><code>docify::embed_run!(..)</code></a>.</p>
+<h4 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h4>
+<ul>
+<li><code>source_path</code>: the file path (relative to the current crate root) that contains the item
+you would like to embed, represented as a string literal. If you wish to embed an entire
+file, simply specify only a <code>source_path</code> with no other arguments and the entire file
+will be embedded as a doc example. If the path cannot be read for whatever reason, a
+compile error will be issued. The <code>source_path</code> <em>does  not</em> have to be a file that is
+part of the current compilation unit, though typically it should be. The only requirement
+is that it must contain valid Rust source code, and must be a descendant of the current
+crate’s root directory. While embedding files from a parent directory of the current
+crate may work locally, this will fail when you go to deploy to <code>crates.io</code> and/or
+<code>docs.rs</code>, so you should not use <code>../</code> or similar means unless you plan to never deploy
+to these services.</li>
+<li><code>item_ident</code>: (optional) can be specified after <code>source_path</code>, preceded by a comma. This
+should match the export name you used to <a href="attr.export.html" title="attr docify::export"><code>#[docify::export(..)]</code></a> the
+item, or, if no export name was specified, this should match the inherent ident/name of
+the item. If the item cannot be found, a compile error will be issued. As mentioned
+above, if no <code>item_ident</code> is specified, the entire file will be embedded as an example.</li>
+</ul>
+<p>All items in the <code>source_file</code> exist in the same global scope when they are exported for
+embedding. Special care must be taken with how you
+<a href="attr.export.html" title="attr docify::export"><code>#[docify::export(..)]</code></a> items in order to get the item you want.</p>
+<p>If there multiple items in a file that resolve to the same <code>item_ident</code> (whether as an
+inherent ident name or as a manually specified <code>item_ident</code>), and you embed using this
+ident, all matching items will be embedded, one after another, listed in the order that
+they appear in the <code>source_file</code>.</p>
+<p>Here is an example of embedding an <em>entire</em> source file as an example:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="doccomment">/// Here is a cool example module:
+</span><span class="attr">#[doc = <span class="macro">docify::embed!</span>(<span class="string">"examples/my_example.rs"</span>)]
+</span><span class="kw">struct </span>DocumentedItem</code></pre></div>
+<p>You are also free to embed multiple examples in the same set of doc comments:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="doccomment">/// Example 1:
+</span><span class="attr">#[doc = <span class="macro">docify::embed!</span>(<span class="string">"examples/example_1.rs"</span>)]
+</span><span class="doccomment">/// Example 2:
+</span><span class="attr">#[doc = <span class="macro">docify::embed!</span>(<span class="string">"examples/example_2.rs"</span>)]
+</span><span class="doccomment">/// More docs
+</span><span class="kw">struct </span>DocumentedItem;</code></pre></div>
+<p>Note that all examples generated by <code>docify::embed!(..)</code> are set to <code>ignore</code> by default,
+since they are typically already functioning examples or tests elsewhere in the project,
+and so they do not need to be run as well in the context where they are being embedded. If
+for whatever reason you <em>do</em> want to also run an embedded example as a doc example, you can
+use <a href="macro.embed_run.html" title="macro docify::embed_run"><code>docify::embed_run!(..)</code></a> which removes the <code>ignore</code> tag from the
+generated example but otherwise functions exactly like <code>#[docify::embed!(..)]</code> in every
+way.</p>
+<p>Output should match <code>rustfmt</code> output exactly.</p>
+</div></details></section></div></main></body></html>

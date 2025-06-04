@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["pallet_drand",[["impl&lt;T: <a class=\"trait\" href=\"frame_system/offchain/trait.SigningTypes.html\" title=\"trait frame_system::offchain::SigningTypes\">SigningTypes</a>&gt; <a class=\"trait\" href=\"frame_system/offchain/trait.SignedPayload.html\" title=\"trait frame_system::offchain::SignedPayload\">SignedPayload</a>&lt;T&gt; for <a class=\"struct\" href=\"pallet_drand/types/struct.BeaconConfigurationPayload.html\" title=\"struct pallet_drand::types::BeaconConfigurationPayload\">BeaconConfigurationPayload</a>&lt;T::<a class=\"associatedtype\" href=\"frame_system/offchain/trait.SigningTypes.html#associatedtype.Public\" title=\"type frame_system::offchain::SigningTypes::Public\">Public</a>, <a class=\"type\" href=\"frame_system/pallet_prelude/type.BlockNumberFor.html\" title=\"type frame_system::pallet_prelude::BlockNumberFor\">BlockNumberFor</a>&lt;T&gt;&gt;"],["impl&lt;T: <a class=\"trait\" href=\"frame_system/offchain/trait.SigningTypes.html\" title=\"trait frame_system::offchain::SigningTypes\">SigningTypes</a>&gt; <a class=\"trait\" href=\"frame_system/offchain/trait.SignedPayload.html\" title=\"trait frame_system::offchain::SignedPayload\">SignedPayload</a>&lt;T&gt; for <a class=\"struct\" href=\"pallet_drand/types/struct.PulsesPayload.html\" title=\"struct pallet_drand::types::PulsesPayload\">PulsesPayload</a>&lt;T::<a class=\"associatedtype\" href=\"frame_system/offchain/trait.SigningTypes.html#associatedtype.Public\" title=\"type frame_system::offchain::SigningTypes::Public\">Public</a>, <a class=\"type\" href=\"frame_system/pallet_prelude/type.BlockNumberFor.html\" title=\"type frame_system::pallet_prelude::BlockNumberFor\">BlockNumberFor</a>&lt;T&gt;&gt;"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1701]}

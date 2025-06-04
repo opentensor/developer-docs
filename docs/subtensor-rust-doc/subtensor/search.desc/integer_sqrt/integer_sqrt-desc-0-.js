@@ -1,0 +1,1 @@
+searchState.loadedDescShard("integer_sqrt", 0, "This module contains the single trait <code>IntegerSquareRoot</code> …\nA trait implementing integer square root.\nFind the integer square root.\nFind the integer square root, returning <code>None</code> if the number …")

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["count_was_truncated","emit_message_parts","update_header_counts"],"struct":["HeaderCounts","Message","MessageParts","NoopMessageFinalizer"],"trait":["EmitAndCount","MessageFinalizer"],"type":["MessageVerifier"]};

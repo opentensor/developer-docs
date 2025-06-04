@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Sends a record to create on the server, this will fail if the record exists (atomicity depends on the server)"><title>create in trust_dns_proto::op::update_message - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="trust_dns_proto" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../trust_dns_proto/index.html">trust_<wbr>dns_<wbr>proto</a><span class="version">0.23.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">create</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#arguments" title="Arguments">Arguments</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In trust_<wbr>dns_<wbr>proto::<wbr>op::<wbr>update_<wbr>message</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">trust_dns_proto</a>::<wbr><a href="../index.html">op</a>::<wbr><a href="index.html">update_message</a></div><h1>Function <span class="fn">create</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/trust_dns_proto/op/update_message.rs.html#165-199">Source</a> </span></div><pre class="rust item-decl"><code>pub fn create(rrset: <a class="struct" href="../../rr/struct.RecordSet.html" title="struct trust_dns_proto::rr::RecordSet">RecordSet</a>, zone_origin: <a class="struct" href="../../rr/domain/struct.Name.html" title="struct trust_dns_proto::rr::domain::Name">Name</a>, use_edns: <a class="primitive" href="https://doc.rust-lang.org/1.86.0/std/primitive.bool.html">bool</a>) -&gt; <a class="struct" href="../message/struct.Message.html" title="struct trust_dns_proto::op::message::Message">Message</a></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Sends a record to create on the server, this will fail if the record exists (atomicity
+depends on the server)</p>
+<p><a href="https://tools.ietf.org/html/rfc2136">RFC 2136</a>, DNS Update, April 1997</p>
+<div class="example-wrap"><pre class="language-text"><code> 2.4.3 - RRset Does Not Exist
+
+  No RRs with a specified NAME and TYPE (in the zone and class denoted
+  by the Zone Section) can exist.
+
+  For this prerequisite, a requestor adds to the section a single RR
+  whose NAME and TYPE are equal to that of the RRset whose nonexistence
+  is required.  The RDLENGTH of this record is zero (0), and RDATA
+  field is therefore empty.  CLASS must be specified as NONE in order
+  to distinguish this condition from a valid RR whose RDLENGTH is
+  naturally zero (0) (for example, the NULL RR).  TTL must be specified
+  as zero (0).
+
+2.5.1 - Add To An RRset
+
+   RRs are added to the Update Section whose NAME, TYPE, TTL, RDLENGTH
+   and RDATA are those being added, and CLASS is the same as the zone
+   class.  Any duplicate RRs will be silently ignored by the Primary
+   Zone Server.</code></pre></div><h2 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h2>
+<ul>
+<li><code>rrset</code> - the record(s) to create</li>
+<li><code>zone_origin</code> - the zone name to update, i.e. SOA name</li>
+</ul>
+<p>The update must go to a zone authority (i.e. the server used in the ClientConnection)</p>
+</div></details></section></div></main></body></html>

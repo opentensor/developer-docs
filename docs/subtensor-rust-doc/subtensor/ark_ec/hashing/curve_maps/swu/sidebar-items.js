@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["parity"],"struct":["SWUMap"],"trait":["SWUConfig"]};

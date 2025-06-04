@@ -1,0 +1,1 @@
+searchState.loadedDescShard("simple_mermaid", 0, "Simple Mermaid diagrams RustDoc integration\nInclude a mermaid diagram in the documentation.")

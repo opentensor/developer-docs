@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["migrate_set_subtoken_enabled"]};

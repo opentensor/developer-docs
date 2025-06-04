@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["prompt_password","prompt_password_from_bufread","read_password","read_password_from_bufread"]};

@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `str0m` crate."><title>str0m - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="str0m" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../str0m/index.html">str0m</a><span class="version">0.5.1</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#join-us" title="Join us">Join us</a></li><li><a href="#usage" title="Usage">Usage</a><ul><li><a href="#tls" title="TLS">TLS</a></li><li><a href="#passive" title="Passive">Passive</a></li><li><a href="#active" title="Active">Active</a></li><li><a href="#run-loop" title="Run loop">Run loop</a></li><li><a href="#sending-media-data" title="Sending media data">Sending media data</a></li><li><a href="#media-time-wallclock-and-local-time" title="Media time, wallclock and local time">Media time, wallclock and local time</a></li></ul></li><li><a href="#project-status" title="Project status">Project status</a></li><li><a href="#design" title="Design">Design</a><ul><li><a href="#sample-or-rtp-level" title="Sample or RTP level?">Sample or RTP level?</a></li><li><a href="#nic-enumeration-and-turn-and-stun" title="NIC enumeration and TURN (and STUN)">NIC enumeration and TURN (and STUN)</a></li><li><a href="#the-importance-of-mut-self" title="The importance of `&#38;mut self`">The importance of <code>&amp;mut self</code></a></li><li><a href="#not-a-standard-webrtc-peer-connection-api" title="Not a standard WebRTC “Peer Connection” API">Not a standard WebRTC “Peer Connection” API</a></li><li><a href="#panics-errors-and-unwraps" title="Panics, Errors and unwraps">Panics, Errors and unwraps</a></li><li><a href="#faq" title="FAQ">FAQ</a></li></ul></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>str0m</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/str0m/lib.rs.html#1-2257">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><image src="https://user-images.githubusercontent.com/227204/226143511-66fe5264-6ab7-47b9-9551-90ba7e155b96.svg" alt="str0m logo" ></image></p>
+<p>A synchronous sans I/O WebRTC implementation in Rust.</p>
+<p>This is a <a href="https://sans-io.readthedocs.io">Sans I/O</a> implementation meaning the <code>Rtc</code> instance itself is not doing any network
+talking. Furthermore it has no internal threads or async tasks. All operations are synchronously
+happening from the calls of the public API.</p>
+<p>This is deliberately not a standard <code>RTCPeerConnection</code> API since that isn’t a great fit for Rust.
+See more details in below section.</p>
+<h2 id="join-us"><a class="doc-anchor" href="#join-us">§</a>Join us</h2>
+<p>We are discussing str0m things on Zulip. Join us using this <a href="https://str0m.zulipchat.com/join/hsiuva2zx47ujrwgmucjez5o/">invitation link</a>. Or browse the
+discussions anonymously at <a href="https://str0m.zulipchat.com">str0m.zulipchat.com</a></p>
+<p><image width="300px" src="https://user-images.githubusercontent.com/227204/209446544-f8a8d673-cb1b-4144-a0f2-42307b8d8869.gif" alt="silly clip showing video playing" ></image></p>
+<h2 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h2>
+<p>The <a href="https://github.com/algesten/str0m/blob/main/examples/chat.rs"><code>chat</code></a> example shows how to connect multiple browsers
+together and act as an SFU (Selective Forwarding Unit). The example
+multiplexes all traffic over one server UDP socket and uses two threads
+(one for the web server, and one for the SFU loop).</p>
+<h3 id="tls"><a class="doc-anchor" href="#tls">§</a>TLS</h3>
+<p>For the browser to do WebRTC, all traffic must be under TLS. The
+project ships with a self-signed certificate that is used for the
+examples. The certificate is for hostname <code>str0m.test</code> since TLD .test
+should never resolve to a real DNS name.</p>
+<div class="example-wrap"><pre class="language-text"><code>cargo run --example chat</code></pre></div>
+<p>The log should prompt you to connect a browser to https://10.0.0.103:3000 – this will
+most likely cause a security warning that you must get the browser to accept.</p>
+<p>The <a href="https://github.com/algesten/str0m/blob/main/examples/http-post.rs"><code>http-post</code></a> example roughly illustrates how to receive
+media data from a browser client. The example is single threaded and
+is a bit simpler than the chat. It is a good starting point to understand the API.</p>
+<div class="example-wrap"><pre class="language-text"><code>cargo run --example http-post</code></pre></div><h3 id="passive"><a class="doc-anchor" href="#passive">§</a>Passive</h3>
+<p>For passive connections, i.e. where the media and initial OFFER is
+made by a remote peer, we need these steps to open the connection.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Instantiate a new Rtc instance.
+</span><span class="kw">let </span><span class="kw-2">mut </span>rtc = Rtc::new();
+
+<span class="comment">//  Add some ICE candidate such as a locally bound UDP port.
+</span><span class="kw">let </span>addr = <span class="string">"1.2.3.4:5000"</span>.parse().unwrap();
+<span class="kw">let </span>candidate = Candidate::host(addr, <span class="string">"udp"</span>).unwrap();
+rtc.add_local_candidate(candidate);
+
+<span class="comment">// Accept an incoming offer from the remote peer
+// and get the corresponding answer.
+</span><span class="kw">let </span>offer = <span class="macro">todo!</span>();
+<span class="kw">let </span>answer = rtc.sdp_api().accept_offer(offer).unwrap();
+
+<span class="comment">// Forward the answer to the remote peer.
+
+// Go to _run loop_</span></code></pre></div>
+<h3 id="active"><a class="doc-anchor" href="#active">§</a>Active</h3>
+<p>Active connections means we are making the inital OFFER and waiting for a
+remote ANSWER to start the connection.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Instantiate a new Rtc instance.
+</span><span class="kw">let </span><span class="kw-2">mut </span>rtc = Rtc::new();
+
+<span class="comment">// Add some ICE candidate such as a locally bound UDP port.
+</span><span class="kw">let </span>addr = <span class="string">"1.2.3.4:5000"</span>.parse().unwrap();
+<span class="kw">let </span>candidate = Candidate::host(addr, <span class="string">"udp"</span>).unwrap();
+rtc.add_local_candidate(candidate);
+
+<span class="comment">// Create a `SdpApi`. The change lets us make multiple changes
+// before sending the offer.
+</span><span class="kw">let </span><span class="kw-2">mut </span>change = rtc.sdp_api();
+
+<span class="comment">// Do some change. A valid OFFER needs at least one "m-line" (media).
+</span><span class="kw">let </span>mid = change.add_media(MediaKind::Audio, Direction::SendRecv, <span class="prelude-val">None</span>, <span class="prelude-val">None</span>);
+
+<span class="comment">// Get the offer.
+</span><span class="kw">let </span>(offer, pending) = change.apply().unwrap();
+
+<span class="comment">// Forward the offer to the remote peer and await the answer.
+// How to transfer this is outside the scope for this library.
+</span><span class="kw">let </span>answer = <span class="macro">todo!</span>();
+
+<span class="comment">// Apply answer.
+</span>rtc.sdp_api().accept_answer(pending, answer).unwrap();
+
+<span class="comment">// Go to _run loop_</span></code></pre></div>
+<h3 id="run-loop"><a class="doc-anchor" href="#run-loop">§</a>Run loop</h3>
+<p>Driving the state of the <code>Rtc</code> forward is a run loop that, regardless of sync or async,
+looks like this.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Buffer for reading incoming UDP packets.
+</span><span class="kw">let </span><span class="kw-2">mut </span>buf = <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">2000</span>];
+
+<span class="comment">// A UdpSocket we obtained _somehow_.
+</span><span class="kw">let </span>socket: UdpSocket = <span class="macro">todo!</span>();
+
+<span class="kw">loop </span>{
+    <span class="comment">// Poll output until we get a timeout. The timeout means we
+    // are either awaiting UDP socket input or the timeout to happen.
+    </span><span class="kw">let </span>timeout = <span class="kw">match </span>rtc.poll_output().unwrap() {
+        <span class="comment">// Stop polling when we get the timeout.
+        </span>Output::Timeout(v) =&gt; v,
+
+        <span class="comment">// Transmit this data to the remote peer. Typically via
+        // a UDP socket. The destination IP comes from the ICE
+        // agent. It might change during the session.
+        </span>Output::Transmit(v) =&gt; {
+            socket.send_to(<span class="kw-2">&amp;</span>v.contents, v.destination).unwrap();
+            <span class="kw">continue</span>;
+        }
+
+        <span class="comment">// Events are mainly incoming media data from the remote
+        // peer, but also data channel data and statistics.
+        </span>Output::Event(v) =&gt; {
+
+            <span class="comment">// Abort if we disconnect.
+            </span><span class="kw">if </span>v == Event::IceConnectionStateChange(IceConnectionState::Disconnected) {
+                <span class="kw">return</span>;
+            }
+
+            <span class="comment">// TODO: handle more cases of v here, such as incoming media data.
+
+            </span><span class="kw">continue</span>;
+        }
+    };
+
+    <span class="comment">// Duration until timeout.
+    </span><span class="kw">let </span>duration = timeout - Instant::now();
+
+    <span class="comment">// socket.set_read_timeout(Some(0)) is not ok
+    </span><span class="kw">if </span>duration.is_zero() {
+        <span class="comment">// Drive time forwards in rtc straight away.
+        </span>rtc.handle_input(Input::Timeout(Instant::now())).unwrap();
+        <span class="kw">continue</span>;
+    }
+
+    socket.set_read_timeout(<span class="prelude-val">Some</span>(duration)).unwrap();
+
+    <span class="comment">// Scale up buffer to receive an entire UDP packet.
+    </span>buf.resize(<span class="number">2000</span>, <span class="number">0</span>);
+
+    <span class="comment">// Try to receive. Because we have a timeout on the socket,
+    // we will either receive a packet, or timeout.
+    // This is where having an async loop shines. We can await multiple things to
+    // happen such as outgoing media data, the timeout and incoming network traffic.
+    // When using async there is no need to set timeout on the socket.
+    </span><span class="kw">let </span>input = <span class="kw">match </span>socket.recv_from(<span class="kw-2">&amp;mut </span>buf) {
+        <span class="prelude-val">Ok</span>((n, source)) =&gt; {
+            <span class="comment">// UDP data received.
+            </span>buf.truncate(n);
+            Input::Receive(
+                Instant::now(),
+                Receive {
+                    proto: Protocol::Udp,
+                    source,
+                    destination: socket.local_addr().unwrap(),
+                    contents: buf.as_slice().try_into().unwrap(),
+                },
+            )
+        }
+
+        <span class="prelude-val">Err</span>(e) =&gt; <span class="kw">match </span>e.kind() {
+            <span class="comment">// Expected error for set_read_timeout().
+            // One for windows, one for the rest.
+            </span>ErrorKind::WouldBlock
+                | ErrorKind::TimedOut =&gt; Input::Timeout(Instant::now()),
+
+            e =&gt; {
+                <span class="macro">eprintln!</span>(<span class="string">"Error: {:?}"</span>, e);
+                <span class="kw">return</span>; <span class="comment">// abort
+            </span>}
+        },
+    };
+
+    <span class="comment">// Input is either a Timeout or Receive of data. Both drive the state forward.
+    </span>rtc.handle_input(input).unwrap();
+}</code></pre></div>
+<h3 id="sending-media-data"><a class="doc-anchor" href="#sending-media-data">§</a>Sending media data</h3>
+<p>When creating the media, we can decide which codecs to support, and they
+are negotiated with the remote side. Each codec corresponds to a
+“payload type” (PT). To send media data we need to figure out which PT
+to use when sending.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Obtain mid from Event::MediaAdded
+</span><span class="kw">let </span>mid: Mid = <span class="macro">todo!</span>();
+
+<span class="comment">// Create a media writer for the mid.
+</span><span class="kw">let </span>writer = rtc.writer(mid).unwrap();
+
+<span class="comment">// Get the payload type (pt) for the wanted codec.
+</span><span class="kw">let </span>pt = writer.payload_params().nth(<span class="number">0</span>).unwrap().pt();
+
+<span class="comment">// Write the data
+</span><span class="kw">let </span>wallclock = <span class="macro">todo!</span>();   <span class="comment">// Absolute time of the data
+</span><span class="kw">let </span>media_time = <span class="macro">todo!</span>();  <span class="comment">// Media time, in RTP time
+</span><span class="kw">let </span>data: <span class="kw-2">&amp;</span>[u8] = <span class="macro">todo!</span>(); <span class="comment">// Actual data
+</span>writer.write(pt, wallclock, media_time, data).unwrap();</code></pre></div>
+<h3 id="media-time-wallclock-and-local-time"><a class="doc-anchor" href="#media-time-wallclock-and-local-time">§</a>Media time, wallclock and local time</h3>
+<p>str0m has three main concepts of time. “now”, media time and wallclock.</p>
+<h4 id="now"><a class="doc-anchor" href="#now">§</a>Now</h4>
+<p>Some calls in str0m, such as <code>Rtc::handle_input</code> takes a <code>now</code> argument
+that is a <code>std::time::Instant</code>. These calls “drive the time forward” in
+the internal state. This is used for everything like deciding when
+to produce various feedback reports (RTCP) to remote peers, to
+bandwidth estimation (BWE) and statistics.</p>
+<p>Str0m has <em>no internal clock</em> calls. I.e. str0m never calls
+<code>Instant::now()</code> itself. All time is external input. That means it’s
+possible to construct test cases driving an <code>Rtc</code> instance faster
+than realtime (see the <a href="https://github.com/algesten/str0m/blob/main/tests/unidirectional.rs#L12">integration tests</a>).</p>
+<h4 id="media-time"><a class="doc-anchor" href="#media-time">§</a>Media time</h4>
+<p>Each RTP header has a 32 bit number that str0m calls <em>media time</em>.
+Media time is in some time base that is dependent on the codec,
+however all codecs in str0m use 90_000Hz for video and 48_000Hz
+for audio.</p>
+<p>For video the <code>MediaTime</code> type is <code>&lt;timestamp&gt;/90_000</code> str0m extends
+the 32 bit number in the RTP header to 64 bit taking into account
+“rollover”. 64 bit is such a large number the user doesn’t need to
+think about rollovers.</p>
+<h4 id="wallclock"><a class="doc-anchor" href="#wallclock">§</a>Wallclock</h4>
+<p>With <em>wallclock</em> str0m means the time a sample of media was produced
+at an originating source. I.e. if we are talking into a microphone the
+wallclock is the NTP time the sound is sampled.</p>
+<p>We can’t know the exact wallclock for media from a remote peer since
+not every device is synchronized with NTP. Every sender does
+periodically produce a Sender Report (SR) that contains the peer’s
+idea of its wallclock, however this number can be very wrong compared to
+“real” NTP time.</p>
+<p>Furthermore, not all remote devices will have a linear idea of
+time passing that exactly matches the local time. A minute on the
+remote peer might not be exactly one minute locally.</p>
+<p>These timestamps become important when handling simultaneous audio from
+multiple peers.</p>
+<p>When writing media we need to provide str0m with an estimated wallclock.
+The simplest strategy is to only trust local time and use arrival time
+of the incoming UDP packet. Another simple strategy is to lock some
+time T at the first UDP packet, and then offset each wallclock using
+<code>MediaTime</code>, i.e. for video we could have <code>T + &lt;media time&gt;/90_000</code></p>
+<p>A production worthy SFU probably needs an even more sophisticated
+strategy weighing in all possible time sources to get a good estimate
+of the remote wallclock for a packet.</p>
+<h2 id="project-status"><a class="doc-anchor" href="#project-status">§</a>Project status</h2>
+<p>Str0m was originally developed by Martin Algesten of
+<a href="https://www.lookback.com">Lookback</a>. We use str0m for a specific use case: str0m as a
+server SFU (as opposed to peer-2-peer). That means we are heavily
+testing and developing the parts needed for our use case. Str0m is
+intended to be an all-purpose WebRTC library, which means it should
+also work for peer-2-peer (mostly thinking about the ICE agent), but
+these areas have not received as much attention and testing.</p>
+<p>Performance is very good, there have been some work the discover and
+optimize bottlenecks. Such efforts are of course never ending with
+diminishing returns. While there are no glaringly obvious performance
+bottlenecks, more work is always welcome – both algorithmically and
+allocation/cloning in hot paths etc.</p>
+<h2 id="design"><a class="doc-anchor" href="#design">§</a>Design</h2>
+<p>Output from the <code>Rtc</code> instance can be grouped into three kinds.</p>
+<ol>
+<li>Events (such as receiving media or data channel data).</li>
+<li>Network output. Data to be sent, typically from a UDP socket.</li>
+<li>Timeouts. Indicates when the instance next expects a time input.</li>
+</ol>
+<p>Input to the <code>Rtc</code> instance is:</p>
+<ol>
+<li>User operations (such as sending media or data channel data).</li>
+<li>Network input. Typically read from a UDP socket.</li>
+<li>Timeouts. As obtained from the output above.</li>
+</ol>
+<p>The correct use can be seen in the above <a href="#run-loop">Run loop</a> or in the
+examples.</p>
+<p>Sans I/O is a pattern where we turn both network input/output as well
+as time passing into external input to the API. This means str0m has
+no internal threads, just an enormous state machine that is driven
+forward by different kinds of input.</p>
+<h3 id="sample-or-rtp-level"><a class="doc-anchor" href="#sample-or-rtp-level">§</a>Sample or RTP level?</h3>
+<p>Str0m defaults to the “sample level” which treats the RTP as an internal detail. The user
+will thus mainly interact with:</p>
+<ol>
+<li><a href="https://docs.rs/str0m/*/str0m/enum.Event.html#variant.MediaData"><code>Event::MediaData</code></a> to receive full “samples” (audio frames or video frames).</li>
+<li><a href="https://docs.rs/str0m/*/str0m/media/struct.Writer.html#method.write"><code>Writer::write</code></a> to write full samples.</li>
+<li><a href="https://docs.rs/str0m/*/str0m/media/struct.Writer.html#method.request_keyframe"><code>Writer::request_keyframe</code></a> to request keyframes.</li>
+</ol>
+<h4 id="sample-level"><a class="doc-anchor" href="#sample-level">§</a>Sample level</h4>
+<p>All codecs such as h264, vp8, vp9 and opus outputs what we call
+“Samples”. A sample has a very specific meaning for audio, but this
+project uses it in a broader sense, where a sample is either a video
+or audio time stamped chunk of encoded data that typically represents
+a chunk of audio, or <em>one single frame for video</em>.</p>
+<p>Samples are not suitable to use directly in UDP (RTP) packets - for
+one they are too big. Samples are therefore further chunked up by
+codec specific payloaders into RTP packets.</p>
+<h4 id="rtp-mode"><a class="doc-anchor" href="#rtp-mode">§</a>RTP mode</h4>
+<p>Str0m also provides an RTP level API. This would be similar to many other
+RTP libraries where the RTP packets themselves are the the API surface
+towards the user (when building an SFU one would often talk about “forwarding
+RTP packets”, while with str0m we can also “forward samples”).  Using
+this API requires a deeper knowledge of RTP and WebRTC.</p>
+<p>To enable RTP mode</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>rtc = Rtc::builder()
+    <span class="comment">// Enable RTP mode for this Rtc instance.
+    // This disables `MediaEvent` and the `Writer::write` API.
+    </span>.set_rtp_mode(<span class="bool-val">true</span>)
+    .build();</code></pre></div>
+<p>RTP mode gives us some new API points.</p>
+<ol>
+<li><a href="https://docs.rs/str0m/*/str0m/enum.Event.html#variant.RtpPacket"><code>Event::RtpPacket</code></a> emitted for every incoming RTP packet. Empty packets for bandwidth
+estimation are silently discarded.</li>
+<li><a href="https://docs.rs/str0m/*/str0m/rtp/struct.StreamTx.html#method.write_rtp"><code>StreamTx::write_rtp</code></a> to write outgoing RTP packets.</li>
+<li><a href="https://docs.rs/str0m/*/str0m/rtp/struct.StreamRx.html#method.request_keyframe"><code>StreamRx::request_keyframe</code></a> to request keyframes from remote.</li>
+</ol>
+<h3 id="nic-enumeration-and-turn-and-stun"><a class="doc-anchor" href="#nic-enumeration-and-turn-and-stun">§</a>NIC enumeration and TURN (and STUN)</h3>
+<p>The <a href="https://www.rfc-editor.org/rfc/rfc8445">ICE RFC</a> talks about “gathering ice candidates”. This means
+inspecting the local network interfaces and potentially binding UDP
+sockets on each usable interface. Since str0m is Sans I/O, this part
+is outside the scope of what str0m does. How the user figures out
+local IP addresses, via config or via looking up local NICs is not
+something str0m cares about.</p>
+<p>TURN is a way of obtaining IP addresses that can be used as fallback
+in case direct connections fail. We consider TURN similar to
+enumerating local network interfaces – it’s a way of obtaining
+sockets.</p>
+<p>All discovered candidates, be they local (NIC) or remote sockets
+(TURN), are added to str0m and str0m will perform the task of ICE
+agent, forming “candidate pairs” and figuring out the best connection
+while the actual task of sending the network traffic is left to the
+user.</p>
+<h3 id="the-importance-of-mut-self"><a class="doc-anchor" href="#the-importance-of-mut-self">§</a>The importance of <code>&amp;mut self</code></h3>
+<p>Rust shines when we can eschew locks and heavily rely <code>&amp;mut</code> for data
+write access. Since str0m has no internal threads, we never have to
+deal with shared data. Furthermore the the internals of the library is
+organized such that we don’t need multiple references to the same
+entities. In str0m there are no <code>Rc</code>, <code>Mutex</code>, <code>mpsc</code>, <code>Arc</code>(*),  or
+other locks.</p>
+<p>This means all input to the lib can be modelled as
+<code>handle_something(&amp;mut self, something)</code>.</p>
+<p>(*) Ok. There is one <code>Arc</code> if you use Windows where we also require openssl.</p>
+<h3 id="not-a-standard-webrtc-peer-connection-api"><a class="doc-anchor" href="#not-a-standard-webrtc-peer-connection-api">§</a>Not a standard WebRTC “Peer Connection” API</h3>
+<p>The library deliberately steps away from the “standard” WebRTC API as
+seen in JavaScript and/or <a href="https://github.com/webrtc-rs/webrtc">webrtc-rs</a> (or <a href="https://github.com/pion/webrtc">Pion</a> in Go).
+There are few reasons for this.</p>
+<p>First, in the standard API, events are callbacks, which are not a
+great fit for Rust. Callbacks require some kind of reference
+(ownership?) over the entity the callback is being dispatched
+upon. I.e. if in Rust we want <code>pc.addEventListener(x)</code>, <code>x</code> needs
+to be wholly owned by <code>pc</code>, or have some shared reference (like
+<code>Arc</code>). Shared references means shared data, and to get mutable shared
+data, we will need some kind of lock. i.e. <code>Arc&lt;Mutex&lt;EventListener&gt;&gt;</code>
+or similar.</p>
+<p>As an alternative we could turn all events into <code>mpsc</code> channels, but
+listening to multiple channels is awkward without async.</p>
+<p>Second, in the standard API, entities like <code>RTCPeerConnection</code> and
+<code>RTCRtpTransceiver</code>, are easily clonable and/or long lived
+references. I.e. <code>pc.getTranscievers()</code> returns objects that can be
+retained and owned by the caller. This pattern is fine for garbage
+collected or reference counted languages, but not great with Rust.</p>
+<h3 id="panics-errors-and-unwraps"><a class="doc-anchor" href="#panics-errors-and-unwraps">§</a>Panics, Errors and unwraps</h3>
+<p>Str0m adheres to <a href="https://en.wikipedia.org/wiki/Fail-fast">fail-fast</a>. That means rather than brushing state
+bugs under the carpet, it panics. We make a distinction between errors and
+bugs.</p>
+<ul>
+<li>Errors are as a result of incorrect or impossible to understand user input.</li>
+<li>Bugs are broken internal invariants (assumptions).</li>
+</ul>
+<p>If you scan the str0m code you find a few <code>unwrap()</code> (or <code>expect()</code>). These
+will (should) always be accompanied by a code comment that explains why the
+unwrap is okay. This is an internal invariant, a state assumption that
+str0m is responsible for maintaining.</p>
+<p>We do not believe it’s correct to change every <code>unwrap()</code>/<code>expect()</code> into
+<code>unwrap_or_else()</code>, <code>if let Some(x) = x { ... }</code> etc, because doing so
+brushes an actual problem (an incorrect assumption) under the carpet. Trying
+to hobble along with an incorrect state would at best result in broken
+behavior, at worst a security risk!</p>
+<p>Panics are our friends: <em>panic means bug</em></p>
+<p>And also: str0m should <em>never</em> panic on any user input. If you encounter a panic,
+please report it!</p>
+<h4 id="catching-panics"><a class="doc-anchor" href="#catching-panics">§</a>Catching panics</h4>
+<p>Panics should be incredibly rare, or we have a serious problem as a project. For an SFU,
+it might not be ideal if str0m encounters a bug and brings the entire server down with it.</p>
+<p>For those who want an extra level of safety, we recommend looking at <a href="https://doc.rust-lang.org/std/panic/fn.catch_unwind.html"><code>catch_unwind</code></a>
+to safely discard a faulty <code>Rtc</code> instance. Since <code>Rtc</code> has no internal threads, locks or async
+tasks, discarding the instance never risk poisoning locks or other issues that can happen
+when catching a panic.</p>
+<h3 id="faq"><a class="doc-anchor" href="#faq">§</a>FAQ</h3><h4 id="features"><a class="doc-anchor" href="#features">§</a>Features</h4>
+<p>Below is a brief comparison of features between libWebRTC and str0m to help you determine
+if str0m is suitable for your project.</p>
+<div><table><thead><tr><th>Feature</th><th>str0m</th><th>libWebRTC</th></tr></thead><tbody>
+<tr><td>Peer Connection API</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>SDP</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>ICE</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Data Channels</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Send/Recv Reports</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Transport Wide CC</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Bandwidth Estimation</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Simulcast</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>NACK</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Packetize</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Fixed Depacketize Buffer</td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td>Adaptive Jitter Buffer</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Video/audio capture</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Video/audio encode</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Video/audio decode</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Audio render</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Turn</td><td>:x:</td><td>:white_check_mark:</td></tr>
+<tr><td>Network interface enum</td><td>:x:</td><td>:white_check_mark:</td></tr>
+</tbody></table>
+</div><h4 id="platform-support"><a class="doc-anchor" href="#platform-support">§</a>Platform Support</h4>
+<p>Platforms str0m is compiled and tested on:</p>
+<div><table><thead><tr><th>Platform</th><th>Compiled</th><th>Tested</th></tr></thead><tbody>
+<tr><td><code>x86_64-pc-windows-msvc</code></td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td><code>x86_64-unknown-linux-gnu</code></td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+<tr><td><code>x86_64-apple-darwin</code></td><td>:white_check_mark:</td><td>:white_check_mark:</td></tr>
+</tbody></table>
+</div>
+<p>If your platform isn’t listed but is supported by Rust, we’d love for you to give str0m a try and
+share your experience. We greatly appreciate your feedback!</p>
+<h4 id="does-str0m-support-ipv4-ipv6-udp-and-tcp"><a class="doc-anchor" href="#does-str0m-support-ipv4-ipv6-udp-and-tcp">§</a>Does str0m support IPv4, IPv6, UDP and TCP?</h4>
+<p>Certainly! str0m fully support IPv4, IPv6, UDP and TCP protocols.</p>
+<h4 id="can-i-utilize-str0m-with-any-rust-async-runtime"><a class="doc-anchor" href="#can-i-utilize-str0m-with-any-rust-async-runtime">§</a>Can I utilize str0m with any Rust async runtime?</h4>
+<p>Absolutely! str0m is fully sync, ensuring that it integrates seamlessly with any Rust async
+runtime you opt for.</p>
+<h4 id="can-i-create-a-client-with-str0m"><a class="doc-anchor" href="#can-i-create-a-client-with-str0m">§</a>Can I create a client with str0m?</h4>
+<p>Of course! You have the freedom to create a client with str0m. However, please note that some
+common client features like media encoding, decoding, and capture are not included in str0m. But
+don’t let that stop you from building amazing applications!</p>
+<h4 id="can-i-use-str0m-in-a-media-server"><a class="doc-anchor" href="#can-i-use-str0m-in-a-media-server">§</a>Can I use str0m in a media server?</h4>
+<p>Yes! str0m excels as a server component with support for both RTP API and Sample API. You can
+easily build that recording server or SFU you dreamt of in Rust!</p>
+<h4 id="can-i-deploy-the-chat-example-into-production"><a class="doc-anchor" href="#can-i-deploy-the-chat-example-into-production">§</a>Can I deploy the chat example into production?</h4>
+<p>While the chat example showcases how to use str0m’s API, it’s not intended for production use or
+heavy load. Writing a full-featured SFU or MCU (Multipoint Control Unit) is a significant
+undertaking, involving various design decisions based on production requirements.</p>
+<h4 id="discovered-a-bug-heres-how-to-share-it-with-us"><a class="doc-anchor" href="#discovered-a-bug-heres-how-to-share-it-with-us">§</a>Discovered a bug? Here’s how to share it with us</h4>
+<p>We’d love to hear about it! Please submit an issue and consider joining our Zulip community
+to discuss further. For a seamless reporting experience, refer to this exemplary
+bug report: <a href="https://github.com/algesten/str0m/issues/382">https://github.com/algesten/str0m/issues/382</a>. We appreciate your contribution
+to making str0m better!</p>
+<h4 id="i-am-allergic-to-sdp-can-you-help-me"><a class="doc-anchor" href="#i-am-allergic-to-sdp-can-you-help-me">§</a>I am allergic to SDP can you help me?</h4>
+<p>Yes use the direct API!</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="bwe/index.html" title="mod str0m::bwe">bwe</a></dt><dd>Bandwidth estimation.</dd><dt><a class="mod" href="change/index.html" title="mod str0m::change">change</a></dt><dd>Ways to change the <a href="struct.Rtc.html" title="struct str0m::Rtc"><code>Rtc</code></a> session. SDP or Direct.</dd><dt><a class="mod" href="channel/index.html" title="mod str0m::channel">channel</a></dt><dd>Data channel related types.</dd><dt><a class="mod" href="error/index.html" title="mod str0m::error">error</a></dt><dd>Various error types.</dd><dt><a class="mod" href="format/index.html" title="mod str0m::format">format</a></dt><dd>Media formats and parameters</dd><dt><a class="mod" href="media/index.html" title="mod str0m::media">media</a></dt><dd>Media (audio/video) related content.</dd><dt><a class="mod" href="net/index.html" title="mod str0m::net">net</a></dt><dd>Network related types to get socket data in/out of <a href="struct.Rtc.html" title="struct str0m::Rtc"><code>Rtc</code></a>.</dd><dt><a class="mod" href="rtp/index.html" title="mod str0m::rtp">rtp</a></dt><dd>Low level RTP access.</dd><dt><a class="mod" href="stats/index.html" title="mod str0m::stats">stats</a></dt><dd>Statistics events.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Candidate.html" title="struct str0m::Candidate">Candidate</a></dt><dd>ICE candidates are network addresses used to connect to a peer.</dd><dt><a class="struct" href="struct.IceCreds.html" title="struct str0m::IceCreds">IceCreds</a></dt><dd>Credentials for STUN packages.</dd><dt><a class="struct" href="struct.Rtc.html" title="struct str0m::Rtc">Rtc</a></dt><dd>Instance that does WebRTC. Main struct of the entire library.</dd><dt><a class="struct" href="struct.RtcConfig.html" title="struct str0m::RtcConfig">RtcConfig</a></dt><dd>Customized config for creating an <a href="struct.Rtc.html" title="struct str0m::Rtc"><code>Rtc</code></a> instance.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.CandidateKind.html" title="enum str0m::CandidateKind">Candidate<wbr>Kind</a></dt><dd>Type of candidate.</dd><dt><a class="enum" href="enum.Event.html" title="enum str0m::Event">Event</a></dt><dd>Events produced by <a href="struct.Rtc.html#method.poll_output" title="method str0m::Rtc::poll_output"><code>Rtc::poll_output()</code></a>.</dd><dt><a class="enum" href="enum.IceConnectionState.html" title="enum str0m::IceConnectionState">IceConnection<wbr>State</a></dt><dd>States the ICE connection can be in.</dd><dt><a class="enum" href="enum.Input.html" title="enum str0m::Input">Input</a></dt><dd>Input as expected by <a href="struct.Rtc.html#method.handle_input" title="method str0m::Rtc::handle_input"><code>Rtc::handle_input()</code></a>. Either network data or a timeout.</dd><dt><a class="enum" href="enum.Output.html" title="enum str0m::Output">Output</a></dt><dd>Output produced by <a href="struct.Rtc.html#method.poll_output" title="method str0m::Rtc::poll_output"><code>Rtc::poll_output()</code></a></dd><dt><a class="enum" href="enum.RtcError.html" title="enum str0m::RtcError">RtcError</a></dt><dd>Errors for the whole Rtc engine.</dd></dl></section></div></main></body></html>

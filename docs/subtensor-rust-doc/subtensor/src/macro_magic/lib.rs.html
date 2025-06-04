@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/macro_magic-0.5.1/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="macro_magic" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">macro_magic/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Macro Magic 🪄
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! ![Build Status](https://img.shields.io/github/actions/workflow/status/sam0x17/macro_magic/ci.yaml)
+<a href=#4 id=4 data-nosnippet>4</a>//! ![GitHub](https://img.shields.io/github/license/sam0x17/macro_magic)
+<a href=#5 id=5 data-nosnippet>5</a>//! ![Crates.io](https://img.shields.io/crates/d/macro_magic)
+<a href=#6 id=6 data-nosnippet>6</a>//! ![docs.rs](https://img.shields.io/docsrs/macro_magic?label=docs)
+<a href=#7 id=7 data-nosnippet>7</a>//!
+<a href=#8 id=8 data-nosnippet>8</a>//! ## Overview
+<a href=#9 id=9 data-nosnippet>9</a>//!
+<a href=#10 id=10 data-nosnippet>10</a>//! This crate provides an [`#[export_tokens]`](`export_tokens`) attribute macro, and a number
+<a href=#11 id=11 data-nosnippet>11</a>//! of companion macros, most prominently [`#[import_tokens_proc]`](`import_tokens_proc`) and
+<a href=#12 id=12 data-nosnippet>12</a>//! [`#[import_tokens_attr]`](`import_tokens_attr`), which, when used in tandem with
+<a href=#13 id=13 data-nosnippet>13</a>//! [`#[export_tokens]`](`export_tokens`), allow you to create regular and attribute proc
+<a href=#14 id=14 data-nosnippet>14</a>//! macros in which you can import and make use of the tokens of external/foreign items marked
+<a href=#15 id=15 data-nosnippet>15</a>//! with [`#[export_tokens]`](`export_tokens`) in other modules, files, and even in other
+<a href=#16 id=16 data-nosnippet>16</a>//! crates merely by referring to them by name/path.
+<a href=#17 id=17 data-nosnippet>17</a>//!
+<a href=#18 id=18 data-nosnippet>18</a>//! Among other things, the patterns introduced by `macro_magic` can be used to implement safe
+<a href=#19 id=19 data-nosnippet>19</a>//! and efficient exportation and importation of item tokens within the same file, and even
+<a href=#20 id=20 data-nosnippet>20</a>//! across file and crate boundaries.
+<a href=#21 id=21 data-nosnippet>21</a>//!
+<a href=#22 id=22 data-nosnippet>22</a>//! ## no_std
+<a href=#23 id=23 data-nosnippet>23</a>//!
+<a href=#24 id=24 data-nosnippet>24</a>//! `macro_magic` is designed to work with stable Rust, and is fully `no_std` compatible (in
+<a href=#25 id=25 data-nosnippet>25</a>//! fact, there is a unit test to ensure everything is `no_std` safe).
+<a href=#26 id=26 data-nosnippet>26</a>//!
+<a href=#27 id=27 data-nosnippet>27</a>//! ## Features
+<a href=#28 id=28 data-nosnippet>28</a>//!
+<a href=#29 id=29 data-nosnippet>29</a>//! ### proc_support
+<a href=#30 id=30 data-nosnippet>30</a>//!
+<a href=#31 id=31 data-nosnippet>31</a>//! The `proc_support` feature _must_ be enabled in proc macro crates that make use of any
+<a href=#32 id=32 data-nosnippet>32</a>//! import tokens functionality, including [`#[import_tokens_attr]`](`import_tokens_attr`),
+<a href=#33 id=33 data-nosnippet>33</a>//! [`#[import_tokens_proc]`](`import_tokens_proc`) and [`import_tokens!`]. Otherwise these
+<a href=#34 id=34 data-nosnippet>34</a>//! macros will not function correctly and will issue compiler errors complaining about items
+<a href=#35 id=35 data-nosnippet>35</a>//! not existing under [`mm_core`]. The [`#[export_tokens]`](`export_tokens`) macro does not
+<a href=#36 id=36 data-nosnippet>36</a>//! require this feature to function correctly, so you can safely use it without enabling this
+<a href=#37 id=37 data-nosnippet>37</a>//! feature.
+<a href=#38 id=38 data-nosnippet>38</a>//!
+<a href=#39 id=39 data-nosnippet>39</a>//! The reason for this feature gating is that things like `syn`, `quote`, `proc_macro2`, etc.,
+<a href=#40 id=40 data-nosnippet>40</a>//! are not 100% `no_std` compatible and should only be enabled in proc macro crates.
+<a href=#41 id=41 data-nosnippet>41</a>//!
+<a href=#42 id=42 data-nosnippet>42</a>//! ## Limitations
+<a href=#43 id=43 data-nosnippet>43</a>//!
+<a href=#44 id=44 data-nosnippet>44</a>//! One thing that `macro_magic` _doesn't_ provide is the ability to build up state information
+<a href=#45 id=45 data-nosnippet>45</a>//! across multiple macro invocations, however this problem can be tackled effectively using
+<a href=#46 id=46 data-nosnippet>46</a>//! the [outer macro pattern](https://www.youtube.com/watch?v=aEWbZxNCH0A) or in some cases
+<a href=#47 id=47 data-nosnippet>47</a>//! using static atomics and mutexes in your proc macro crate (which we actually do in this
+<a href=#48 id=48 data-nosnippet>48</a>//! crate to keep track of unique identifiers).
+<a href=#49 id=49 data-nosnippet>49</a>//!
+<a href=#50 id=50 data-nosnippet>50</a>//! ## Breaking Changes
+<a href=#51 id=51 data-nosnippet>51</a>//!
+<a href=#52 id=52 data-nosnippet>52</a>//! - **0.4x** removed `#[use_attr]` and `#[use_proc]` (they are no longer needed with the new
+<a href=#53 id=53 data-nosnippet>53</a>//!   self-calling macro style that has been adopted in 0.4x) and also removed the ability to
+<a href=#54 id=54 data-nosnippet>54</a>//!   access `#[export_tokens]` invocations in inaccessible locations like inside of functions
+<a href=#55 id=55 data-nosnippet>55</a>//!   and across module permission boundaries like in an inaccessible private module. This
+<a href=#56 id=56 data-nosnippet>56</a>//!   feature may be re-added in the future if there is interest, however removing it allowed
+<a href=#57 id=57 data-nosnippet>57</a>//!   us to consolidate naming of our `macro_rules!` declarations and remove the need for
+<a href=#58 id=58 data-nosnippet>58</a>//!  `#[use_attr]` / `#[use_proc]`.
+<a href=#59 id=59 data-nosnippet>59</a>//! - **0.2x** removed and/or re-wrote a number of features that relied on a non-future-proof
+<a href=#60 id=60 data-nosnippet>60</a>//!   behavior of writing/reading files in the `OUT_DIR`. Versions &gt;= 0.2.0 are completely safe
+<a href=#61 id=61 data-nosnippet>61</a>//!   and no longer contain this behavior, however features that provided the ability to
+<a href=#62 id=62 data-nosnippet>62</a>//!   enumerate all the `#[export_tokens]` calls in a namespace have been removed. The proper
+<a href=#63 id=63 data-nosnippet>63</a>//!   way to do this is with the outer macro pattern or with global state mutexes/atomics in
+<a href=#64 id=64 data-nosnippet>64</a>//!   your proc macro crate, as mentioned above.
+<a href=#65 id=65 data-nosnippet>65</a>//!
+<a href=#66 id=66 data-nosnippet>66</a>//! More detailed historical change information can be found in
+<a href=#67 id=67 data-nosnippet>67</a>//! [releases](https://github.com/sam0x17/docify/releases).
+<a href=#68 id=68 data-nosnippet>68</a>
+<a href=#69 id=69 data-nosnippet>69</a></span><span class="attr">#![no_std]
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="doccomment">/// Contains the internal code behind the `macro_magic` macros in a re-usable form, in case you
+<a href=#72 id=72 data-nosnippet>72</a>/// need to design new macros that utilize some of the internal functionality of `macro_magic`.
+<a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">pub mod </span>mm_core {
+<a href=#74 id=74 data-nosnippet>74</a>    <span class="attr">#[cfg(feature = <span class="string">"proc_support"</span>)]
+<a href=#75 id=75 data-nosnippet>75</a>    </span><span class="kw">pub use </span>macro_magic_core::<span class="kw-2">*</span>;
+<a href=#76 id=76 data-nosnippet>76</a>}
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a><span class="kw">pub use </span>macro_magic_macros::{
+<a href=#79 id=79 data-nosnippet>79</a>    export_tokens, export_tokens_alias, export_tokens_no_emit, forward_tokens,
+<a href=#80 id=80 data-nosnippet>80</a>    forward_tokens_verbatim, use_attr, use_proc,
+<a href=#81 id=81 data-nosnippet>81</a>};
+<a href=#82 id=82 data-nosnippet>82</a>
+<a href=#83 id=83 data-nosnippet>83</a><span class="attr">#[cfg(feature = <span class="string">"proc_support"</span>)]
+<a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub use </span>macro_magic_macros::{
+<a href=#85 id=85 data-nosnippet>85</a>    import_tokens, import_tokens_attr, import_tokens_attr_verbatim, import_tokens_proc,
+<a href=#86 id=86 data-nosnippet>86</a>    with_custom_parsing,
+<a href=#87 id=87 data-nosnippet>87</a>};
+<a href=#88 id=88 data-nosnippet>88</a>
+<a href=#89 id=89 data-nosnippet>89</a><span class="doccomment">/// Contains re-exports required at compile-time by the macro_magic macros and support
+<a href=#90 id=90 data-nosnippet>90</a>/// functions.
+<a href=#91 id=91 data-nosnippet>91</a></span><span class="attr">#[doc(hidden)]
+<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub mod </span>__private {
+<a href=#93 id=93 data-nosnippet>93</a>    <span class="kw">pub use </span>macro_magic_macros::<span class="kw-2">*</span>;
+<a href=#94 id=94 data-nosnippet>94</a>
+<a href=#95 id=95 data-nosnippet>95</a>    <span class="attr">#[cfg(feature = <span class="string">"proc_support"</span>)]
+<a href=#96 id=96 data-nosnippet>96</a>    </span><span class="kw">pub use </span>quote;
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a>    <span class="attr">#[cfg(feature = <span class="string">"proc_support"</span>)]
+<a href=#99 id=99 data-nosnippet>99</a>    </span><span class="kw">pub use </span>syn;
+<a href=#100 id=100 data-nosnippet>100</a>
+<a href=#101 id=101 data-nosnippet>101</a>    <span class="attr">#[cfg(feature = <span class="string">"proc_support"</span>)]
+<a href=#102 id=102 data-nosnippet>102</a>    </span><span class="kw">pub use </span>syn::__private::TokenStream2;
+<a href=#103 id=103 data-nosnippet>103</a>}</code></pre></div></section></main></body></html>

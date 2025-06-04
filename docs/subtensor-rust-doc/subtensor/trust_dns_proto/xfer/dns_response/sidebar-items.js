@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["NegativeType"],"struct":["DnsResponse","DnsResponseStream"]};

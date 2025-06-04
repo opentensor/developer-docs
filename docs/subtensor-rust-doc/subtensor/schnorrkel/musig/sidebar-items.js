@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["aggregate_public_key_from_refs_slice","aggregate_public_key_from_slice","aggregate_public_key_from_sorted_slice","collect_cosignatures"],"struct":["AggregatePublicKeySlice","CollectStage","CommitStage","Commitment","CosignStage","Cosignature","MuSig","Reveal","RevealStage"],"trait":["AggregatePublicKey","TranscriptStages"]};

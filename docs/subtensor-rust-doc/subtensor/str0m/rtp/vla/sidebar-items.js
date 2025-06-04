@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["URI"],"struct":["ResolutionAndFramerate","Serializer","SimulcastStreamAllocation","SpatialLayerAllocation","TemporalLayerAllocation","VideoLayersAllocation"]};

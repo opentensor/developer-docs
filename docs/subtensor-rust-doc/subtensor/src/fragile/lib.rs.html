@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fragile-2.0.0/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="fragile" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">fragile/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! This library provides wrapper types that permit sending non `Send` types to
+<a href=#2 id=2 data-nosnippet>2</a>//! other threads and use runtime checks to ensure safety.
+<a href=#3 id=3 data-nosnippet>3</a>//!
+<a href=#4 id=4 data-nosnippet>4</a>//! It provides three types: [`Fragile`] and [`Sticky`] which are similar in nature
+<a href=#5 id=5 data-nosnippet>5</a>//! but have different behaviors with regards to how destructors are executed and
+<a href=#6 id=6 data-nosnippet>6</a>//! the extra [`SemiSticky`] type which uses [`Sticky`] if the value has a
+<a href=#7 id=7 data-nosnippet>7</a>//! destructor and [`Fragile`] if it does not.
+<a href=#8 id=8 data-nosnippet>8</a>//!
+<a href=#9 id=9 data-nosnippet>9</a>//! All three types wrap a value and provide a `Send` bound.  Neither of the types permit
+<a href=#10 id=10 data-nosnippet>10</a>//! access to the enclosed value unless the thread that wrapped the value is attempting
+<a href=#11 id=11 data-nosnippet>11</a>//! to access it.  The difference between the types starts playing a role once
+<a href=#12 id=12 data-nosnippet>12</a>//! destructors are involved.
+<a href=#13 id=13 data-nosnippet>13</a>//!
+<a href=#14 id=14 data-nosnippet>14</a>//! A [`Fragile`] will actually send the `T` from thread to thread but will only
+<a href=#15 id=15 data-nosnippet>15</a>//! permit the original thread to invoke the destructor.  If the value gets dropped
+<a href=#16 id=16 data-nosnippet>16</a>//! in a different thread, the destructor will panic.
+<a href=#17 id=17 data-nosnippet>17</a>//!
+<a href=#18 id=18 data-nosnippet>18</a>//! A [`Sticky`] on the other hand does not actually send the `T` around but keeps
+<a href=#19 id=19 data-nosnippet>19</a>//! it stored in the original thread's thread local storage.  If it gets dropped
+<a href=#20 id=20 data-nosnippet>20</a>//! in the originating thread it gets cleaned up immediately, otherwise it leaks
+<a href=#21 id=21 data-nosnippet>21</a>//! until the thread shuts down naturally.  [`Sticky`] because it borrows into the
+<a href=#22 id=22 data-nosnippet>22</a>//! TLS also requires you to "prove" that you are not doing any funny business with
+<a href=#23 id=23 data-nosnippet>23</a>//! the borrowed value that lives for longer than the current stack frame which
+<a href=#24 id=24 data-nosnippet>24</a>//! results in a slightly more complex API.
+<a href=#25 id=25 data-nosnippet>25</a>//!
+<a href=#26 id=26 data-nosnippet>26</a>//! There is a third typed called [`SemiSticky`] which shares the API with [`Sticky`]
+<a href=#27 id=27 data-nosnippet>27</a>//! but internally uses a boxed [`Fragile`] if the type does not actually need a dtor
+<a href=#28 id=28 data-nosnippet>28</a>//! in which case [`Fragile`] is preferred.
+<a href=#29 id=29 data-nosnippet>29</a>//!
+<a href=#30 id=30 data-nosnippet>30</a>//! # Fragile Usage
+<a href=#31 id=31 data-nosnippet>31</a>//!
+<a href=#32 id=32 data-nosnippet>32</a>//! [`Fragile`] is the easiest type to use.  It works almost like a cell.
+<a href=#33 id=33 data-nosnippet>33</a>//!
+<a href=#34 id=34 data-nosnippet>34</a>//! ```
+<a href=#35 id=35 data-nosnippet>35</a>//! use std::thread;
+<a href=#36 id=36 data-nosnippet>36</a>//! use fragile::Fragile;
+<a href=#37 id=37 data-nosnippet>37</a>//!
+<a href=#38 id=38 data-nosnippet>38</a>//! // creating and using a fragile object in the same thread works
+<a href=#39 id=39 data-nosnippet>39</a>//! let val = Fragile::new(true);
+<a href=#40 id=40 data-nosnippet>40</a>//! assert_eq!(*val.get(), true);
+<a href=#41 id=41 data-nosnippet>41</a>//! assert!(val.try_get().is_ok());
+<a href=#42 id=42 data-nosnippet>42</a>//!
+<a href=#43 id=43 data-nosnippet>43</a>//! // once send to another thread it stops working
+<a href=#44 id=44 data-nosnippet>44</a>//! thread::spawn(move || {
+<a href=#45 id=45 data-nosnippet>45</a>//!     assert!(val.try_get().is_err());
+<a href=#46 id=46 data-nosnippet>46</a>//! }).join()
+<a href=#47 id=47 data-nosnippet>47</a>//!     .unwrap();
+<a href=#48 id=48 data-nosnippet>48</a>//! ```
+<a href=#49 id=49 data-nosnippet>49</a>//!
+<a href=#50 id=50 data-nosnippet>50</a>//! # Sticky Usage
+<a href=#51 id=51 data-nosnippet>51</a>//!
+<a href=#52 id=52 data-nosnippet>52</a>//! [`Sticky`] is similar to [`Fragile`] but because it places the value in the
+<a href=#53 id=53 data-nosnippet>53</a>//! thread local storage it comes with some extra restrictions to make it sound.
+<a href=#54 id=54 data-nosnippet>54</a>//! The advantage is it can be dropped from any thread but it comes with extra
+<a href=#55 id=55 data-nosnippet>55</a>//! restrictions.  In particular it requires that values placed in it are `'static`
+<a href=#56 id=56 data-nosnippet>56</a>//! and that [`StackToken`]s are used to restrict lifetimes.
+<a href=#57 id=57 data-nosnippet>57</a>//!
+<a href=#58 id=58 data-nosnippet>58</a>//! ```
+<a href=#59 id=59 data-nosnippet>59</a>//! use std::thread;
+<a href=#60 id=60 data-nosnippet>60</a>//! use fragile::Sticky;
+<a href=#61 id=61 data-nosnippet>61</a>//!
+<a href=#62 id=62 data-nosnippet>62</a>//! // creating and using a fragile object in the same thread works
+<a href=#63 id=63 data-nosnippet>63</a>//! fragile::stack_token!(tok);
+<a href=#64 id=64 data-nosnippet>64</a>//! let val = Sticky::new(true);
+<a href=#65 id=65 data-nosnippet>65</a>//! assert_eq!(*val.get(tok), true);
+<a href=#66 id=66 data-nosnippet>66</a>//! assert!(val.try_get(tok).is_ok());
+<a href=#67 id=67 data-nosnippet>67</a>//!
+<a href=#68 id=68 data-nosnippet>68</a>//! // once send to another thread it stops working
+<a href=#69 id=69 data-nosnippet>69</a>//! thread::spawn(move || {
+<a href=#70 id=70 data-nosnippet>70</a>//!     fragile::stack_token!(tok);
+<a href=#71 id=71 data-nosnippet>71</a>//!     assert!(val.try_get(tok).is_err());
+<a href=#72 id=72 data-nosnippet>72</a>//! }).join()
+<a href=#73 id=73 data-nosnippet>73</a>//!     .unwrap();
+<a href=#74 id=74 data-nosnippet>74</a>//! ```
+<a href=#75 id=75 data-nosnippet>75</a>//!
+<a href=#76 id=76 data-nosnippet>76</a>//! # Why?
+<a href=#77 id=77 data-nosnippet>77</a>//!
+<a href=#78 id=78 data-nosnippet>78</a>//! Most of the time trying to use this crate is going to indicate some code smell.  But
+<a href=#79 id=79 data-nosnippet>79</a>//! there are situations where this is useful.  For instance you might have a bunch of
+<a href=#80 id=80 data-nosnippet>80</a>//! non `Send` types but want to work with a `Send` error type.  In that case the non
+<a href=#81 id=81 data-nosnippet>81</a>//! sendable extra information can be contained within the error and in cases where the
+<a href=#82 id=82 data-nosnippet>82</a>//! error did not cross a thread boundary yet extra information can be obtained.
+<a href=#83 id=83 data-nosnippet>83</a>//!
+<a href=#84 id=84 data-nosnippet>84</a>//! # Drop / Cleanup Behavior
+<a href=#85 id=85 data-nosnippet>85</a>//!
+<a href=#86 id=86 data-nosnippet>86</a>//! All types will try to eagerly drop a value if they are dropped on the right thread.
+<a href=#87 id=87 data-nosnippet>87</a>//! [`Sticky`] and [`SemiSticky`] will however temporarily leak memory until a thread
+<a href=#88 id=88 data-nosnippet>88</a>//! shuts down if the value is dropped on the wrong thread.  The benefit however is that
+<a href=#89 id=89 data-nosnippet>89</a>//! if you have that type of situation, and you can live with the consequences, the
+<a href=#90 id=90 data-nosnippet>90</a>//! type is not panicking.  A [`Fragile`] dropped in the wrong thread will not just panic,
+<a href=#91 id=91 data-nosnippet>91</a>//! it will effectively also tear down the process because panicking in destructors is
+<a href=#92 id=92 data-nosnippet>92</a>//! non recoverable.
+<a href=#93 id=93 data-nosnippet>93</a>//!
+<a href=#94 id=94 data-nosnippet>94</a>//! # Features
+<a href=#95 id=95 data-nosnippet>95</a>//!
+<a href=#96 id=96 data-nosnippet>96</a>//! By default the crate has no dependencies.  Optionally the `slab` feature can
+<a href=#97 id=97 data-nosnippet>97</a>//! be enabled which optimizes the internal storage of the [`Sticky`] type to
+<a href=#98 id=98 data-nosnippet>98</a>//! make it use a [`slab`](https://docs.rs/slab/latest/slab/) instead.
+<a href=#99 id=99 data-nosnippet>99</a></span><span class="kw">mod </span>errors;
+<a href=#100 id=100 data-nosnippet>100</a><span class="kw">mod </span>fragile;
+<a href=#101 id=101 data-nosnippet>101</a><span class="kw">mod </span>registry;
+<a href=#102 id=102 data-nosnippet>102</a><span class="kw">mod </span>semisticky;
+<a href=#103 id=103 data-nosnippet>103</a><span class="kw">mod </span>sticky;
+<a href=#104 id=104 data-nosnippet>104</a><span class="kw">mod </span>thread_id;
+<a href=#105 id=105 data-nosnippet>105</a>
+<a href=#106 id=106 data-nosnippet>106</a><span class="kw">use </span>std::marker::PhantomData;
+<a href=#107 id=107 data-nosnippet>107</a>
+<a href=#108 id=108 data-nosnippet>108</a><span class="kw">pub use </span><span class="kw">crate</span>::errors::InvalidThreadAccess;
+<a href=#109 id=109 data-nosnippet>109</a><span class="kw">pub use </span><span class="kw">crate</span>::fragile::Fragile;
+<a href=#110 id=110 data-nosnippet>110</a><span class="kw">pub use </span><span class="kw">crate</span>::semisticky::SemiSticky;
+<a href=#111 id=111 data-nosnippet>111</a><span class="kw">pub use </span><span class="kw">crate</span>::sticky::Sticky;
+<a href=#112 id=112 data-nosnippet>112</a>
+<a href=#113 id=113 data-nosnippet>113</a><span class="doccomment">/// A token that is placed to the stack to constrain lifetimes.
+<a href=#114 id=114 data-nosnippet>114</a>///
+<a href=#115 id=115 data-nosnippet>115</a>/// For more information about how these work see the documentation of
+<a href=#116 id=116 data-nosnippet>116</a>/// [`stack_token!`] which is the only way to create this token.
+<a href=#117 id=117 data-nosnippet>117</a></span><span class="kw">pub struct </span>StackToken(PhantomData&lt;<span class="kw-2">*const </span>()&gt;);
+<a href=#118 id=118 data-nosnippet>118</a>
+<a href=#119 id=119 data-nosnippet>119</a><span class="kw">impl </span>StackToken {
+<a href=#120 id=120 data-nosnippet>120</a>    <span class="doccomment">/// Stack tokens must only be created on the stack.
+<a href=#121 id=121 data-nosnippet>121</a>    </span><span class="attr">#[doc(hidden)]
+<a href=#122 id=122 data-nosnippet>122</a>    </span><span class="kw">pub unsafe fn </span>__private_new() -&gt; StackToken {
+<a href=#123 id=123 data-nosnippet>123</a>        <span class="comment">// we place a const pointer in there to get a type
+<a href=#124 id=124 data-nosnippet>124</a>        // that is neither Send nor Sync.
+<a href=#125 id=125 data-nosnippet>125</a>        </span>StackToken(PhantomData)
+<a href=#126 id=126 data-nosnippet>126</a>    }
+<a href=#127 id=127 data-nosnippet>127</a>}
+<a href=#128 id=128 data-nosnippet>128</a>
+<a href=#129 id=129 data-nosnippet>129</a><span class="doccomment">/// Crates a token on the stack with a certain name for semi-sticky.
+<a href=#130 id=130 data-nosnippet>130</a>///
+<a href=#131 id=131 data-nosnippet>131</a>/// The argument to the macro is the target name of a local variable
+<a href=#132 id=132 data-nosnippet>132</a>/// which holds a reference to a stack token.  Because this is the
+<a href=#133 id=133 data-nosnippet>133</a>/// only way to create such a token, it acts as a proof to [`Sticky`]
+<a href=#134 id=134 data-nosnippet>134</a>/// or [`SemiSticky`] that can be used to constrain the lifetime of the
+<a href=#135 id=135 data-nosnippet>135</a>/// return values to the stack frame.
+<a href=#136 id=136 data-nosnippet>136</a>///
+<a href=#137 id=137 data-nosnippet>137</a>/// This is necessary as otherwise a [`Sticky`] placed in a [`Box`] and
+<a href=#138 id=138 data-nosnippet>138</a>/// leaked with [`Box::leak`] (which creates a static lifetime) would
+<a href=#139 id=139 data-nosnippet>139</a>/// otherwise create a reference with `'static` lifetime.  This is incorrect
+<a href=#140 id=140 data-nosnippet>140</a>/// as the actual lifetime is constrained to the lifetime of the thread.
+<a href=#141 id=141 data-nosnippet>141</a>/// For more information see [`issue 26`](https://github.com/mitsuhiko/fragile/issues/26).
+<a href=#142 id=142 data-nosnippet>142</a>///
+<a href=#143 id=143 data-nosnippet>143</a>/// ```rust
+<a href=#144 id=144 data-nosnippet>144</a>/// let sticky = fragile::Sticky::new(true);
+<a href=#145 id=145 data-nosnippet>145</a>///
+<a href=#146 id=146 data-nosnippet>146</a>/// // this places a token on the stack.
+<a href=#147 id=147 data-nosnippet>147</a>/// fragile::stack_token!(my_token);
+<a href=#148 id=148 data-nosnippet>148</a>///
+<a href=#149 id=149 data-nosnippet>149</a>/// // the token needs to be passed to `get` and others.
+<a href=#150 id=150 data-nosnippet>150</a>/// let _ = sticky.get(my_token);
+<a href=#151 id=151 data-nosnippet>151</a>/// ```
+<a href=#152 id=152 data-nosnippet>152</a></span><span class="attr">#[macro_export]
+<a href=#153 id=153 data-nosnippet>153</a></span><span class="macro">macro_rules!</span> stack_token {
+<a href=#154 id=154 data-nosnippet>154</a>    (<span class="macro-nonterminal">$name</span>:ident) =&gt; {
+<a href=#155 id=155 data-nosnippet>155</a>        <span class="kw">let </span><span class="macro-nonterminal">$name </span>= <span class="kw-2">&amp;</span><span class="kw">unsafe </span>{ <span class="macro-nonterminal">$crate::StackToken::__private_new</span>() };
+<a href=#156 id=156 data-nosnippet>156</a>    };
+<a href=#157 id=157 data-nosnippet>157</a>}</code></pre></div></section></main></body></html>

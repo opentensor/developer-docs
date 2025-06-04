@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["pallet_admin_utils",[["impl&lt;T: <a class=\"trait\" href=\"pallet_admin_utils/pallet/trait.Config.html\" title=\"trait pallet_admin_utils::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_application_crypto/traits/trait.BoundToRuntimeAppPublic.html\" title=\"trait sp_application_crypto::traits::BoundToRuntimeAppPublic\">BoundToRuntimeAppPublic</a> for <a class=\"struct\" href=\"pallet_admin_utils/pallet/struct.Pallet.html\" title=\"struct pallet_admin_utils::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]],["pallet_aura",[["impl&lt;T: <a class=\"trait\" href=\"pallet_aura/pallet/trait.Config.html\" title=\"trait pallet_aura::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_application_crypto/traits/trait.BoundToRuntimeAppPublic.html\" title=\"trait sp_application_crypto::traits::BoundToRuntimeAppPublic\">BoundToRuntimeAppPublic</a> for <a class=\"struct\" href=\"pallet_aura/pallet/struct.Pallet.html\" title=\"struct pallet_aura::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]],["pallet_grandpa",[["impl&lt;T: <a class=\"trait\" href=\"pallet_grandpa/pallet/trait.Config.html\" title=\"trait pallet_grandpa::pallet::Config\">Config</a>&gt; <a class=\"trait\" href=\"sp_application_crypto/traits/trait.BoundToRuntimeAppPublic.html\" title=\"trait sp_application_crypto::traits::BoundToRuntimeAppPublic\">BoundToRuntimeAppPublic</a> for <a class=\"struct\" href=\"pallet_grandpa/pallet/struct.Pallet.html\" title=\"struct pallet_grandpa::pallet::Pallet\">Pallet</a>&lt;T&gt;"]]],["sp_application_crypto",[]],["sp_runtime",[]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[518,484,499,29,18]}

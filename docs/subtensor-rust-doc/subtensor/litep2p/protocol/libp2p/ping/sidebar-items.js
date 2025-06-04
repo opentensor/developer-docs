@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["PingEvent"],"struct":["Config","ConfigBuilder"]};

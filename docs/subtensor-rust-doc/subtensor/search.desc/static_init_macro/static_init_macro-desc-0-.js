@@ -1,0 +1,1 @@
+searchState.loadedDescShard("static_init_macro", 0, "")

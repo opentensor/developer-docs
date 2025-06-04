@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="lz4"><title>lz4 - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="lz4" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../lz4/index.html">lz4</a><span class="version">1.28.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#lz4" title="lz4">lz4</a><ul><li><a href="#usage" title="Usage">Usage</a></li></ul></li></ul><h3><a href="#reexports">Crate Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>lz4</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/lz4/lib.rs.html#1-20">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="lz4"><a class="doc-anchor" href="#lz4">§</a>lz4</h2>
+<p><a href="https://github.com/10XGenomics/lz4-rs/actions?query=branch%3Amaster"><img src="https://github.com/10XGenomics/lz4-rs/workflows/Test/badge.svg?branch=master" alt="Build Status" /></a>
+<a href="https://crates.io/crates/lz4"><img src="https://img.shields.io/crates/v/lz4.svg" alt="Crates.io" /></a>
+<a href="https://gitter.im/bozaro/lz4-rs?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/bozaro/lz4-rs" /></a>
+<a href="https://docs.rs/lz4/"><img src="https://img.shields.io/badge/doc-rustdoc-green.svg" alt="Rustdoc" /></a></p>
+<p>NOTE: 10xGenomics is the new official home of lz4-rs, replacing <a href="https://github.com/bozaro/lz4-rs">https://github.com/bozaro/lz4-rs</a></p>
+<p>This repository contains binding for lz4 compression library (https://github.com/Cyan4973/lz4).</p>
+<p>LZ4 is a very fast lossless compression algorithm, providing compression speed at 400 MB/s per core, with near-linear scalability for multi-threaded applications. It also features an extremely fast decoder, with speed in multiple GB/s per core, typically reaching RAM speed limits on multi-core systems.</p>
+<h3 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h3>
+<p>Put this in your <code>Cargo.toml</code>:</p>
+<div class="example-wrap"><pre class="language-toml"><code>[dependencies]
+lz4 = &quot;1.23.1&quot;</code></pre></div>
+<p>Sample code for compression/decompression:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern crate </span>lz4;
+
+<span class="kw">use </span>std::env;
+<span class="kw">use </span>std::fs::File;
+<span class="kw">use </span>std::io::{<span class="self">self</span>, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span>std::path::{Path, PathBuf};
+
+<span class="kw">use </span>lz4::{Decoder, EncoderBuilder};
+
+<span class="kw">fn </span>main() {
+    <span class="macro">println!</span>(<span class="string">"LZ4 version: {}"</span>, lz4::version());
+
+    <span class="kw">for </span>path <span class="kw">in </span>env::args().skip(<span class="number">1</span>).map(PathBuf::from) {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="string">"lz4"</span>) = path.extension().and_then(|e| e.to_str()) {
+            decompress(<span class="kw-2">&amp;</span>path, <span class="kw-2">&amp;</span>path.with_extension(<span class="string">""</span>)).unwrap();
+        } <span class="kw">else </span>{
+            compress(<span class="kw-2">&amp;</span>path, <span class="kw-2">&amp;</span>path.with_extension(<span class="string">"lz4"</span>)).unwrap();
+        }
+    }
+}
+
+<span class="kw">fn </span>compress(source: <span class="kw-2">&amp;</span>Path, destination: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="macro">println!</span>(<span class="string">"Compressing: {} -&gt; {}"</span>, source.display(), destination.display());
+
+    <span class="kw">let </span><span class="kw-2">mut </span>input_file = File::open(source)<span class="question-mark">?</span>;
+    <span class="kw">let </span>output_file = File::create(destination)<span class="question-mark">?</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>encoder = EncoderBuilder::new()
+        .level(<span class="number">4</span>)
+        .build(output_file)<span class="question-mark">?</span>;
+    io::copy(<span class="kw-2">&amp;mut </span>input_file, <span class="kw-2">&amp;mut </span>encoder)<span class="question-mark">?</span>;
+    <span class="kw">let </span>(_output, result) = encoder.finish();
+    result
+}
+
+<span class="kw">fn </span>decompress(source: <span class="kw-2">&amp;</span>Path, destination: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="macro">println!</span>(<span class="string">"Decompressing: {} -&gt; {}"</span>, source.display(), destination.display());
+
+    <span class="kw">let </span>input_file = File::open(source)<span class="question-mark">?</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>decoder = Decoder::new(input_file)<span class="question-mark">?</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>output_file = File::create(destination)<span class="question-mark">?</span>;
+    io::copy(<span class="kw-2">&amp;mut </span>decoder, <span class="kw-2">&amp;mut </span>output_file)<span class="question-mark">?</span>;
+
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.version"><code>pub use crate::liblz4::<a class="fn" href="liblz4/fn.version.html" title="fn lz4::liblz4::version">version</a>;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="block/index.html" title="mod lz4::block">block</a></dt><dd>This module provides access to the block mode functions of the lz4 C library.
+It somehow resembles the <a href="http://python-lz4.readthedocs.io/en/stable/lz4.block.html">Python-lz4</a> api,
+but using Rust’s Option type, the function parameters have been a little simplified.
+As does python-lz4, this module supports prepending the compressed buffer with a u32 value
+representing the size of the original, uncompressed data.</dd><dt><a class="mod" href="liblz4/index.html" title="mod lz4::liblz4">liblz4</a></dt></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Decoder.html" title="struct lz4::Decoder">Decoder</a></dt><dt><a class="struct" href="struct.Encoder.html" title="struct lz4::Encoder">Encoder</a></dt><dt><a class="struct" href="struct.EncoderBuilder.html" title="struct lz4::EncoderBuilder">Encoder<wbr>Builder</a></dt></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.BlockMode.html" title="enum lz4::BlockMode">Block<wbr>Mode</a></dt><dt><a class="enum" href="enum.BlockSize.html" title="enum lz4::BlockSize">Block<wbr>Size</a></dt><dt><a class="enum" href="enum.ContentChecksum.html" title="enum lz4::ContentChecksum">Content<wbr>Checksum</a></dt></dl></section></div></main></body></html>

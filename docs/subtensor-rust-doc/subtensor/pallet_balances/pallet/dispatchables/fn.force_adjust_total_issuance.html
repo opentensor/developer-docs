@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Adjust the total issuance in a saturating way."><title>force_adjust_total_issuance in pallet_balances::pallet::dispatchables - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="pallet_balances" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../pallet_balances/index.html">pallet_<wbr>balances</a><span class="version">39.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">force_<wbr>adjust_<wbr>total_<wbr>issuance</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li><li><a href="#warning-doc-only" title="Warning: Doc-Only">Warning: Doc-Only</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In pallet_<wbr>balances::<wbr>pallet::<wbr>dispatchables</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">pallet_balances</a>::<wbr><a href="../index.html">pallet</a>::<wbr><a href="index.html">dispatchables</a></div><h1>Function <span class="fn">force_adjust_total_issuance</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/pallet_balances/lib.rs.html#194">Source</a> </span></div><pre class="rust item-decl"><code>pub fn force_adjust_total_issuance&lt;T: <a class="trait" href="../trait.Config.html" title="trait pallet_balances::pallet::Config">Config</a>&lt;I&gt;, I: 'static&gt;(
+    direction: <a class="enum" href="../../enum.AdjustmentDirection.html" title="enum pallet_balances::AdjustmentDirection">AdjustmentDirection</a>,
+    delta: T::<a class="associatedtype" href="../trait.Config.html#associatedtype.Balance" title="type pallet_balances::pallet::Config::Balance">Balance</a>,
+)</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Adjust the total issuance in a saturating way.</p>
+<p>Can only be called by root and always needs a positive <code>delta</code>.</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[test]
+</span><span class="kw">fn </span>force_adjust_total_issuance_example() {
+	ExtBuilder::default().build_and_execute_with(|| {
+		<span class="comment">// First we set the TotalIssuance to 64 by giving Alice a balance of 64.
+		</span><span class="macro">assert_ok!</span>(Balances::force_set_balance(RuntimeOrigin::root(), ALICE, <span class="number">64</span>));
+		<span class="kw">let </span>old_ti = pallet_balances::TotalIssuance::&lt;Test&gt;::get();
+		<span class="macro">assert_eq!</span>(old_ti, <span class="number">64</span>, <span class="string">"TI should be 64"</span>);
+
+		<span class="comment">// Now test the increase:
+		</span><span class="macro">assert_ok!</span>(Balances::force_adjust_total_issuance(RawOrigin::Root.into(), Inc, <span class="number">32</span>));
+		<span class="kw">let </span>new_ti = pallet_balances::TotalIssuance::&lt;Test&gt;::get();
+		<span class="macro">assert_eq!</span>(old_ti + <span class="number">32</span>, new_ti, <span class="string">"Should increase by 32"</span>);
+
+		<span class="comment">// If Alice tries to call it, it errors:
+		</span><span class="macro">assert_noop!</span>(
+			Balances::force_adjust_total_issuance(RawOrigin::Signed(ALICE).into(), Inc, <span class="number">32</span>),
+			BadOrigin,
+		);
+	});
+}</code></pre></div>
+<h2 id="warning-doc-only"><a class="doc-anchor" href="#warning-doc-only">§</a>Warning: Doc-Only</h2>
+<p>This function is an automatically generated, and is doc-only, uncallable
+stub. See the real version in
+<a href="../struct.Pallet.html#method.force_adjust_total_issuance" title="associated function pallet_balances::pallet::Pallet::force_adjust_total_issuance"><code>Pallet::force_adjust_total_issuance</code></a>.</p>
+</div></details></section></div></main></body></html>

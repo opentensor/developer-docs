@@ -1,0 +1,1 @@
+searchState.loadedDescShard("fixed_hash", 0, "Construct a fixed-size hash type.\nImplements lossy conversions between the given types.")

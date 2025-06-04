@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Callback","CatchUpProcessingOutcome","CommitProcessingOutcome","CommunicationIn","CommunicationOut"],"mod":["report"],"struct":["BadCatchUp","BadCommit","GoodCatchUp","GoodCommit","RoundData","Voter"],"trait":["Environment","VoterState"]};

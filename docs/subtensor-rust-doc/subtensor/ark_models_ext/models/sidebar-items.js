@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["bls12","bw6","pairing","short_weierstrass","twisted_edwards"],"trait":["CurveConfig"]};

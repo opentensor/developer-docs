@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Apply"],"struct":["Basic","Log","MemoryAccount","MemoryBackend","MemoryVicinity"],"trait":["ApplyBackend","Backend"]};

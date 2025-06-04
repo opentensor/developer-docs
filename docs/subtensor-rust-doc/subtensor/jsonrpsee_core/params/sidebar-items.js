@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["ArrayParams","BatchRequestBuilder","EmptyBatchRequest","ObjectParams"]};

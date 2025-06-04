@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["BooleanInputVar","NonNativeFieldInputVar"],"trait":["CircuitSpecificSetupSNARKGadget","FromFieldElementsGadget","SNARKGadget","UniversalSetupSNARKGadget"]};

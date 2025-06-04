@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ConnectedPoint","Endpoint"],"fn":["address_translation"],"mod":["connection","either","multiaddr","muxing","peer_record","signed_envelope","transport","upgrade"],"struct":["DecodeError","Multiaddr","PeerRecord","SignedEnvelope"],"trait":["InboundUpgrade","OutboundUpgrade","StreamMuxer","Transport","UpgradeInfo"],"type":["Negotiated"]};

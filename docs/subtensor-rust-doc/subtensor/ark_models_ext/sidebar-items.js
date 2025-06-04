@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["TEFlags"],"mod":["fixed_base","glv","models","scalar_mul","twisted_edwards","variable_base","wnaf"],"struct":["Affine","MontgomeryAffine","Projective"],"trait":["AffineRepr","CurveGroup","Group","MontCurveConfig","ScalarMul","TECurveConfig","VariableBaseMSM"]};

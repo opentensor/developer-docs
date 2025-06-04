@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libp2p-0.52.4/src/tutorials/hole_punching.rs`."><title>hole_punching.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="libp2p" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../../../static.files/src-script-b8d3f215.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="icon" href="https://libp2p.io/img/favicon.png"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">libp2p/tutorials/</div>hole_punching.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright 2022 Protocol Labs.
+<a href=#2 id=2 data-nosnippet>2</a>//
+<a href=#3 id=3 data-nosnippet>3</a>// Permission is hereby granted, free of charge, to any person obtaining a
+<a href=#4 id=4 data-nosnippet>4</a>// copy of this software and associated documentation files (the "Software"),
+<a href=#5 id=5 data-nosnippet>5</a>// to deal in the Software without restriction, including without limitation
+<a href=#6 id=6 data-nosnippet>6</a>// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+<a href=#7 id=7 data-nosnippet>7</a>// and/or sell copies of the Software, and to permit persons to whom the
+<a href=#8 id=8 data-nosnippet>8</a>// Software is furnished to do so, subject to the following conditions:
+<a href=#9 id=9 data-nosnippet>9</a>//
+<a href=#10 id=10 data-nosnippet>10</a>// The above copyright notice and this permission notice shall be included in
+<a href=#11 id=11 data-nosnippet>11</a>// all copies or substantial portions of the Software.
+<a href=#12 id=12 data-nosnippet>12</a>//
+<a href=#13 id=13 data-nosnippet>13</a>// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+<a href=#14 id=14 data-nosnippet>14</a>// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+<a href=#15 id=15 data-nosnippet>15</a>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+<a href=#16 id=16 data-nosnippet>16</a>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+<a href=#17 id=17 data-nosnippet>17</a>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+<a href=#18 id=18 data-nosnippet>18</a>// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+<a href=#19 id=19 data-nosnippet>19</a>// DEALINGS IN THE SOFTWARE.
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="doccomment">//! # Hole Punching Tutorial
+<a href=#22 id=22 data-nosnippet>22</a>//!
+<a href=#23 id=23 data-nosnippet>23</a>//! This tutorial shows hands-on how to overcome firewalls and NATs with libp2p's hole punching
+<a href=#24 id=24 data-nosnippet>24</a>//! mechanism. Before we get started, please read the [blog
+<a href=#25 id=25 data-nosnippet>25</a>//! post](https://blog.ipfs.io/2022-01-20-libp2p-hole-punching/) to familiarize yourself with libp2p's hole
+<a href=#26 id=26 data-nosnippet>26</a>//! punching mechanism on a conceptual level.
+<a href=#27 id=27 data-nosnippet>27</a>//!
+<a href=#28 id=28 data-nosnippet>28</a>//! We will be using the [Circuit Relay](crate::relay) and the [Direct Connection
+<a href=#29 id=29 data-nosnippet>29</a>//! Upgrade through Relay (DCUtR)](crate::dcutr) protocol.
+<a href=#30 id=30 data-nosnippet>30</a>//!
+<a href=#31 id=31 data-nosnippet>31</a>//! You will need 3 machines for this tutorial:
+<a href=#32 id=32 data-nosnippet>32</a>//!
+<a href=#33 id=33 data-nosnippet>33</a>//! - A relay server:
+<a href=#34 id=34 data-nosnippet>34</a>//!    - Any public server will do, e.g. a cloud provider VM.
+<a href=#35 id=35 data-nosnippet>35</a>//! - A listening client:
+<a href=#36 id=36 data-nosnippet>36</a>//!    - Any computer connected to the internet, but not reachable from outside its own network,
+<a href=#37 id=37 data-nosnippet>37</a>//!      works.
+<a href=#38 id=38 data-nosnippet>38</a>//!    - This can e.g. be your friends laptop behind their router (firewall + NAT).
+<a href=#39 id=39 data-nosnippet>39</a>//!    - This can e.g. be some cloud provider VM, shielded from incoming connections e.g. via
+<a href=#40 id=40 data-nosnippet>40</a>//!      Linux's UFW on the same machine.
+<a href=#41 id=41 data-nosnippet>41</a>//!    - Don't use a machine that is in the same network as the dialing client. (This would require
+<a href=#42 id=42 data-nosnippet>42</a>//!      NAT hairpinning.)
+<a href=#43 id=43 data-nosnippet>43</a>//! - A dialing client:
+<a href=#44 id=44 data-nosnippet>44</a>//!    - Like the above, any computer connected to the internet, but not reachable from the outside.
+<a href=#45 id=45 data-nosnippet>45</a>//!    - Your local machine will likely fulfill these requirements.
+<a href=#46 id=46 data-nosnippet>46</a>//!
+<a href=#47 id=47 data-nosnippet>47</a>//! ## Setting up the relay server
+<a href=#48 id=48 data-nosnippet>48</a>//!
+<a href=#49 id=49 data-nosnippet>49</a>//! Hole punching requires a public relay node for the two private nodes to coordinate their hole
+<a href=#50 id=50 data-nosnippet>50</a>//! punch via. For that we need a public server somewhere in the Internet. In case you don't have
+<a href=#51 id=51 data-nosnippet>51</a>//! one already, any cloud provider VM will do.
+<a href=#52 id=52 data-nosnippet>52</a>//!
+<a href=#53 id=53 data-nosnippet>53</a>//! Either on the server directly, or on your local machine, compile the example relay server:
+<a href=#54 id=54 data-nosnippet>54</a>//!
+<a href=#55 id=55 data-nosnippet>55</a>//! ``` bash
+<a href=#56 id=56 data-nosnippet>56</a>//! ## Inside the rust-libp2p repository.
+<a href=#57 id=57 data-nosnippet>57</a>//! cargo build --bin relay-server-example
+<a href=#58 id=58 data-nosnippet>58</a>//! ```
+<a href=#59 id=59 data-nosnippet>59</a>//!
+<a href=#60 id=60 data-nosnippet>60</a>//! You can find the binary at `target/debug/relay-server-example`. In case you built it locally, copy
+<a href=#61 id=61 data-nosnippet>61</a>//! it to your server.
+<a href=#62 id=62 data-nosnippet>62</a>//!
+<a href=#63 id=63 data-nosnippet>63</a>//! On your server, start the relay server binary:
+<a href=#64 id=64 data-nosnippet>64</a>//!
+<a href=#65 id=65 data-nosnippet>65</a>//! ``` bash
+<a href=#66 id=66 data-nosnippet>66</a>//! ./relay-server-example --port 4001 --secret-key-seed 0
+<a href=#67 id=67 data-nosnippet>67</a>//! ```
+<a href=#68 id=68 data-nosnippet>68</a>//!
+<a href=#69 id=69 data-nosnippet>69</a>//! Now let's make sure that the server is public, in other words let's make sure one can reach it
+<a href=#70 id=70 data-nosnippet>70</a>//! through the Internet. First, either manually replace `$RELAY_SERVER_IP` in the following
+<a href=#71 id=71 data-nosnippet>71</a>//! commands or `export RELAY_SERVER_IP=ipaddr` with the appropriate relay server `ipaddr` in
+<a href=#72 id=72 data-nosnippet>72</a>//! the dailing client and listening client.
+<a href=#73 id=73 data-nosnippet>73</a>//!
+<a href=#74 id=74 data-nosnippet>74</a>//! Now, from the dialing client:
+<a href=#75 id=75 data-nosnippet>75</a>//!
+<a href=#76 id=76 data-nosnippet>76</a>//! 1. Test that you can connect on Layer 3 (IP).
+<a href=#77 id=77 data-nosnippet>77</a>//!
+<a href=#78 id=78 data-nosnippet>78</a>//!    ``` bash
+<a href=#79 id=79 data-nosnippet>79</a>//!    ping $RELAY_SERVER_IP
+<a href=#80 id=80 data-nosnippet>80</a>//!    ```
+<a href=#81 id=81 data-nosnippet>81</a>//!
+<a href=#82 id=82 data-nosnippet>82</a>//! 2. Test that you can connect on Layer 4 (TCP).
+<a href=#83 id=83 data-nosnippet>83</a>//!
+<a href=#84 id=84 data-nosnippet>84</a>//!    ``` bash
+<a href=#85 id=85 data-nosnippet>85</a>//!    telnet $RELAY_SERVER_IP 4001
+<a href=#86 id=86 data-nosnippet>86</a>//!    ```
+<a href=#87 id=87 data-nosnippet>87</a>//!
+<a href=#88 id=88 data-nosnippet>88</a>//! 3. Test that you can connect via libp2p using [`libp2p-lookup`](https://github.com/mxinden/libp2p-lookup).
+<a href=#89 id=89 data-nosnippet>89</a>//!
+<a href=#90 id=90 data-nosnippet>90</a>//!    ``` bash
+<a href=#91 id=91 data-nosnippet>91</a>//!    ## For IPv4
+<a href=#92 id=92 data-nosnippet>92</a>//!    libp2p-lookup direct --address /ip4/$RELAY_SERVER_IP/tcp/4001
+<a href=#93 id=93 data-nosnippet>93</a>//!    ## For IPv6
+<a href=#94 id=94 data-nosnippet>94</a>//!    libp2p-lookup direct --address /ip6/$RELAY_SERVER_IP/tcp/4001
+<a href=#95 id=95 data-nosnippet>95</a>//!    ```
+<a href=#96 id=96 data-nosnippet>96</a>//!
+<a href=#97 id=97 data-nosnippet>97</a>//! The libp2p-lookup output should look something like:
+<a href=#98 id=98 data-nosnippet>98</a>//!
+<a href=#99 id=99 data-nosnippet>99</a>//!    ``` bash
+<a href=#100 id=100 data-nosnippet>100</a>//!    $ libp2p-lookup direct --address /ip4/111.11.111.111/tcp/4001
+<a href=#101 id=101 data-nosnippet>101</a>//!    Lookup for peer with id PeerId("12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN") succeeded.
+<a href=#102 id=102 data-nosnippet>102</a>//!
+<a href=#103 id=103 data-nosnippet>103</a>//!    Protocol version: "/TODO/0.0.1"
+<a href=#104 id=104 data-nosnippet>104</a>//!    Agent version: "rust-libp2p/0.36.0"
+<a href=#105 id=105 data-nosnippet>105</a>//!    Observed address: "/ip4/22.222.222.222/tcp/39212"
+<a href=#106 id=106 data-nosnippet>106</a>//!    Listen addresses:
+<a href=#107 id=107 data-nosnippet>107</a>//!            - "/ip4/127.0.0.1/tcp/4001"
+<a href=#108 id=108 data-nosnippet>108</a>//!            - "/ip4/111.11.111.111/tcp/4001"
+<a href=#109 id=109 data-nosnippet>109</a>//!            - "/ip4/10.48.0.5/tcp/4001"
+<a href=#110 id=110 data-nosnippet>110</a>//!            - "/ip4/10.124.0.2/tcp/4001"
+<a href=#111 id=111 data-nosnippet>111</a>//!    Protocols:
+<a href=#112 id=112 data-nosnippet>112</a>//!            - "/libp2p/circuit/relay/0.2.0/hop"
+<a href=#113 id=113 data-nosnippet>113</a>//!            - "/ipfs/ping/1.0.0"
+<a href=#114 id=114 data-nosnippet>114</a>//!            - "/ipfs/id/1.0.0"
+<a href=#115 id=115 data-nosnippet>115</a>//!            - "/ipfs/id/push/1.0.0"
+<a href=#116 id=116 data-nosnippet>116</a>//!    ```
+<a href=#117 id=117 data-nosnippet>117</a>//!
+<a href=#118 id=118 data-nosnippet>118</a>//! ## Setting up the listening client
+<a href=#119 id=119 data-nosnippet>119</a>//!
+<a href=#120 id=120 data-nosnippet>120</a>//! Either on the listening client machine directly, or on your local machine, compile the example
+<a href=#121 id=121 data-nosnippet>121</a>//! DCUtR client:
+<a href=#122 id=122 data-nosnippet>122</a>//!
+<a href=#123 id=123 data-nosnippet>123</a>//! ``` bash
+<a href=#124 id=124 data-nosnippet>124</a>//! ## Inside the rust-libp2p repository.
+<a href=#125 id=125 data-nosnippet>125</a>//! cargo build --bin dcutr-example
+<a href=#126 id=126 data-nosnippet>126</a>//! ```
+<a href=#127 id=127 data-nosnippet>127</a>//!
+<a href=#128 id=128 data-nosnippet>128</a>//! You can find the binary at `target/debug/dcutr-example`. In case you built it locally, copy
+<a href=#129 id=129 data-nosnippet>129</a>//! it to your listening client machine.
+<a href=#130 id=130 data-nosnippet>130</a>//!
+<a href=#131 id=131 data-nosnippet>131</a>//! On the listening client machine:
+<a href=#132 id=132 data-nosnippet>132</a>//!
+<a href=#133 id=133 data-nosnippet>133</a>//! ``` bash
+<a href=#134 id=134 data-nosnippet>134</a>//! RUST_LOG=info ./dcutr-example --secret-key-seed 1 --mode listen --relay-address /ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN
+<a href=#135 id=135 data-nosnippet>135</a>//!
+<a href=#136 id=136 data-nosnippet>136</a>//! [2022-05-11T10:38:52Z INFO  client] Local peer id: PeerId("XXX")
+<a href=#137 id=137 data-nosnippet>137</a>//! [2022-05-11T10:38:52Z INFO  client] Listening on "/ip4/127.0.0.1/tcp/44703"
+<a href=#138 id=138 data-nosnippet>138</a>//! [2022-05-11T10:38:52Z INFO  client] Listening on "/ip4/XXX/tcp/44703"
+<a href=#139 id=139 data-nosnippet>139</a>//! [2022-05-11T10:38:54Z INFO  client] Relay told us our public address: "/ip4/XXX/tcp/53160"
+<a href=#140 id=140 data-nosnippet>140</a>//! [2022-05-11T10:38:54Z INFO  client] Told relay its public address.
+<a href=#141 id=141 data-nosnippet>141</a>//! [2022-05-11T10:38:54Z INFO  client] Relay accepted our reservation request.
+<a href=#142 id=142 data-nosnippet>142</a>//! [2022-05-11T10:38:54Z INFO  client] Listening on "/ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/XXX"
+<a href=#143 id=143 data-nosnippet>143</a>//! ```
+<a href=#144 id=144 data-nosnippet>144</a>//!
+<a href=#145 id=145 data-nosnippet>145</a>//! Now let's make sure that the listening client is not public, in other words let's make sure one
+<a href=#146 id=146 data-nosnippet>146</a>//! can not reach it directly through the Internet. From the dialing client test that you can not
+<a href=#147 id=147 data-nosnippet>147</a>//! connect on Layer 4 (TCP):
+<a href=#148 id=148 data-nosnippet>148</a>//!
+<a href=#149 id=149 data-nosnippet>149</a>//! ``` bash
+<a href=#150 id=150 data-nosnippet>150</a>//! telnet $LISTENING_CLIENT_IP_OBSERVED_BY_RELAY 53160
+<a href=#151 id=151 data-nosnippet>151</a>//! ```
+<a href=#152 id=152 data-nosnippet>152</a>//!
+<a href=#153 id=153 data-nosnippet>153</a>//! ## Connecting to the listening client from the dialing client
+<a href=#154 id=154 data-nosnippet>154</a>//!
+<a href=#155 id=155 data-nosnippet>155</a>//! ``` bash
+<a href=#156 id=156 data-nosnippet>156</a>//! RUST_LOG=info ./dcutr-example --secret-key-seed 2 --mode dial --relay-address /ip4/$RELAY_SERVER_IP/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN --remote-peer-id 12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X
+<a href=#157 id=157 data-nosnippet>157</a>//! ```
+<a href=#158 id=158 data-nosnippet>158</a>//!
+<a href=#159 id=159 data-nosnippet>159</a>//! You should see the following logs appear:
+<a href=#160 id=160 data-nosnippet>160</a>//!
+<a href=#161 id=161 data-nosnippet>161</a>//! 1. The dialing client establishing a relayed connection to the listening client via the relay
+<a href=#162 id=162 data-nosnippet>162</a>//!    server. Note the [`/p2p-circuit` protocol](crate::multiaddr::Protocol::P2pCircuit) in the
+<a href=#163 id=163 data-nosnippet>163</a>//!    [`Multiaddr`](crate::Multiaddr).
+<a href=#164 id=164 data-nosnippet>164</a>//!
+<a href=#165 id=165 data-nosnippet>165</a>//!    ``` ignore
+<a href=#166 id=166 data-nosnippet>166</a>//!    [2022-01-30T12:54:10Z INFO  client] Established connection to PeerId("12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X") via Dialer { address: "/ip4/$RELAY_PEER_ID/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X", role_override: Dialer }
+<a href=#167 id=167 data-nosnippet>167</a>//!    ```
+<a href=#168 id=168 data-nosnippet>168</a>//!
+<a href=#169 id=169 data-nosnippet>169</a>//! 2. The listening client initiating a direct connection upgrade for the new relayed connection.
+<a href=#170 id=170 data-nosnippet>170</a>//!    Reported by [`dcutr`](crate::dcutr) through
+<a href=#171 id=171 data-nosnippet>171</a>//!    [`Event::RemoteInitiatedDirectConnectionUpgrade`](crate::dcutr::Event::RemoteInitiatedDirectConnectionUpgrade).
+<a href=#172 id=172 data-nosnippet>172</a>//!
+<a href=#173 id=173 data-nosnippet>173</a>//!    ``` ignore
+<a href=#174 id=174 data-nosnippet>174</a>//!    [2022-01-30T12:54:11Z INFO  client] RemoteInitiatedDirectConnectionUpgrade { remote_peer_id: PeerId("12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X"), remote_relayed_addr: "/ip4/$RELAY_PEER_ID/tcp/4001/p2p/12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN/p2p-circuit/p2p/12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X" }
+<a href=#175 id=175 data-nosnippet>175</a>//!    ```
+<a href=#176 id=176 data-nosnippet>176</a>//!
+<a href=#177 id=177 data-nosnippet>177</a>//! 3. The direct connection upgrade, also known as hole punch, succeeding. Reported by
+<a href=#178 id=178 data-nosnippet>178</a>//!    [`dcutr`](crate::dcutr) through
+<a href=#179 id=179 data-nosnippet>179</a>//!    [`Event::RemoteInitiatedDirectConnectionUpgrade`](crate::dcutr::Event::DirectConnectionUpgradeSucceeded).
+<a href=#180 id=180 data-nosnippet>180</a>//!
+<a href=#181 id=181 data-nosnippet>181</a>//!    ``` ignore
+<a href=#182 id=182 data-nosnippet>182</a>//!    [2022-01-30T12:54:11Z INFO  client] DirectConnectionUpgradeSucceeded { remote_peer_id: PeerId("12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X") }
+<a href=#183 id=183 data-nosnippet>183</a>//!    ```</span></code></pre></div></section></main></body></html>

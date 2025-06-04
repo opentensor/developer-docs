@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["Contributions","Crowdloans","CurrentCrowdloanId","HasMigrationRun","NextCrowdloanId"]};

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Helper macro to declare integers at compile-time"><title>oid in asn1_rs - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="asn1_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../asn1_rs/index.html">asn1_rs</a><span class="version">0.6.2</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">oid</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#comparing-oids" title="Comparing oids">Comparing oids</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate asn1_<wbr>rs</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">asn1_rs</a></div><h1>Macro <span class="macro">oid</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/asn1_rs/asn1_types/oid.rs.html#443-460">Source</a> </span></div><pre class="rust item-decl"><code>macro_rules! oid {
+    (raw $( $item:literal ).*) =&gt; { ... };
+    (raw $items:expr) =&gt; { ... };
+    (rel $($item:literal ).*) =&gt; { ... };
+    ($($item:literal ).*) =&gt; { ... };
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Helper macro to declare integers at compile-time</p>
+<p>Since the DER encoded oids are not very readable we provide a
+procedural macro <code>oid!</code>. The macro can be used the following ways:</p>
+<ul>
+<li><code>oid!(1.4.42.23)</code>: Create a const expression for the corresponding <code>Oid&lt;'static&gt;</code></li>
+<li><code>oid!(rel 42.23)</code>: Create a const expression for the corresponding relative <code>Oid&lt;'static&gt;</code></li>
+<li><code>oid!(raw 1.4.42.23)</code>/<code>oid!(raw rel 42.23)</code>: Obtain the DER encoded form as a byte array.</li>
+</ul>
+<h2 id="comparing-oids"><a class="doc-anchor" href="#comparing-oids">§</a>Comparing oids</h2>
+<p>Comparing a parsed oid to a static oid is probably the most common
+thing done with oids in your code. The <code>oid!</code> macro can be used in expression positions for
+this purpose. For example</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>asn1_rs::{oid, Oid};
+
+<span class="kw">const </span>SOME_STATIC_OID: Oid&lt;<span class="lifetime">'static</span>&gt; = <span class="macro">oid!</span>(<span class="number">1.2</span>.<span class="number">456</span>);
+<span class="macro">assert_eq!</span>(some_oid, SOME_STATIC_OID)</code></pre></div>
+<p>To get a relative Oid use <code>oid!(rel 1.2)</code>.</p>
+<p>Because of limitations for procedural macros (<a href="https://github.com/rust-lang/rust/issues/54727">rust issue</a>)
+and constants used in patterns (<a href="https://github.com/rust-lang/rust/issues/31434">rust issue</a>)
+the <code>oid</code> macro can not directly be used in patterns, also not through constants.
+You can do this, though:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">const </span>SOME_OID: Oid&lt;<span class="lifetime">'static</span>&gt; = <span class="macro">oid!</span>(<span class="number">1.2</span>.<span class="number">456</span>);
+<span class="kw">if </span>some_oid == SOME_OID || some_oid == <span class="macro">oid!</span>(<span class="number">1.2</span>.<span class="number">456</span>) {
+    <span class="macro">println!</span>(<span class="string">"match"</span>);
+}
+
+<span class="comment">// Alternatively, compare the DER encoded form directly:
+</span><span class="kw">const </span>SOME_OID_RAW: <span class="kw-2">&amp;</span>[u8] = <span class="kw-2">&amp;</span><span class="macro">oid!</span>(raw <span class="number">1.2</span>.<span class="number">456</span>);
+<span class="kw">match </span>some_oid.as_bytes() {
+    SOME_OID_RAW =&gt; <span class="macro">println!</span>(<span class="string">"match"</span>),
+    <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"no match"</span>),
+}</code></pre></div>
+<p><em>Attention</em>, be aware that the latter version might not handle the case of a relative oid correctly. An
+extra check might be necessary.</p>
+</div></details></section></div></main></body></html>

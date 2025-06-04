@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["node_subtensor_runtime",[["impl <a class=\"trait\" href=\"pallet_subtensor/trait.CollectiveInterface.html\" title=\"trait pallet_subtensor::CollectiveInterface\">CollectiveInterface</a>&lt;&lt;&lt;<a class=\"enum\" href=\"sp_runtime/enum.MultiSignature.html\" title=\"enum sp_runtime::MultiSignature\">MultiSignature</a> as <a class=\"trait\" href=\"sp_runtime/traits/trait.Verify.html\" title=\"trait sp_runtime::traits::Verify\">Verify</a>&gt;::<a class=\"associatedtype\" href=\"sp_runtime/traits/trait.Verify.html#associatedtype.Signer\" title=\"type sp_runtime::traits::Verify::Signer\">Signer</a> as <a class=\"trait\" href=\"sp_runtime/traits/trait.IdentifyAccount.html\" title=\"trait sp_runtime::traits::IdentifyAccount\">IdentifyAccount</a>&gt;::<a class=\"associatedtype\" href=\"sp_runtime/traits/trait.IdentifyAccount.html#associatedtype.AccountId\" title=\"type sp_runtime::traits::IdentifyAccount::AccountId\">AccountId</a>, <a class=\"struct\" href=\"primitive_types/struct.H256.html\" title=\"struct primitive_types::H256\">H256</a>, <a class=\"primitive\" href=\"https://doc.rust-lang.org/1.86.0/std/primitive.u32.html\">u32</a>&gt; for <a class=\"struct\" href=\"node_subtensor_runtime/struct.TriumvirateVotes.html\" title=\"struct node_subtensor_runtime::TriumvirateVotes\">TriumvirateVotes</a>"]]],["pallet_subtensor",[]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1320,24]}

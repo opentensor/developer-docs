@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["__mock_MockBoo","__mock_MockBoo_Bah","__mock_MockFoo","__mock_MockFoo_Foo","ffi","mock_ffi","mock_my_module","my_module"],"struct":["MockBoo","MockFoo"],"trait":["Bah","Foo"]};

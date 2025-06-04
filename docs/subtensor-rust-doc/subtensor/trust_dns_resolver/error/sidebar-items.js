@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ResolveErrorKind"],"struct":["ResolveError"],"type":["ResolveResult"]};

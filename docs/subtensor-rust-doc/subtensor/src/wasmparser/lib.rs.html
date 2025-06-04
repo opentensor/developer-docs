@@ -1,0 +1,712 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/user/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasmparser-0.102.0/src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="wasmparser" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-b8d3f215.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">wasmparser/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">/* Copyright 2017 Mozilla Foundation
+<a href=#2 id=2 data-nosnippet>2</a> *
+<a href=#3 id=3 data-nosnippet>3</a> * Licensed under the Apache License, Version 2.0 (the "License");
+<a href=#4 id=4 data-nosnippet>4</a> * you may not use this file except in compliance with the License.
+<a href=#5 id=5 data-nosnippet>5</a> * You may obtain a copy of the License at
+<a href=#6 id=6 data-nosnippet>6</a> *
+<a href=#7 id=7 data-nosnippet>7</a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a href=#8 id=8 data-nosnippet>8</a> *
+<a href=#9 id=9 data-nosnippet>9</a> * Unless required by applicable law or agreed to in writing, software
+<a href=#10 id=10 data-nosnippet>10</a> * distributed under the License is distributed on an "AS IS" BASIS,
+<a href=#11 id=11 data-nosnippet>11</a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a href=#12 id=12 data-nosnippet>12</a> * See the License for the specific language governing permissions and
+<a href=#13 id=13 data-nosnippet>13</a> * limitations under the License.
+<a href=#14 id=14 data-nosnippet>14</a> */
+<a href=#15 id=15 data-nosnippet>15</a>
+<a href=#16 id=16 data-nosnippet>16</a></span><span class="doccomment">//! A simple event-driven library for parsing WebAssembly binary files
+<a href=#17 id=17 data-nosnippet>17</a>//! (or streams).
+<a href=#18 id=18 data-nosnippet>18</a>//!
+<a href=#19 id=19 data-nosnippet>19</a>//! The parser library reports events as they happen and only stores
+<a href=#20 id=20 data-nosnippet>20</a>//! parsing information for a brief period of time, making it very fast
+<a href=#21 id=21 data-nosnippet>21</a>//! and memory-efficient. The event-driven model, however, has some drawbacks.
+<a href=#22 id=22 data-nosnippet>22</a>//! If you need random access to the entire WebAssembly data-structure,
+<a href=#23 id=23 data-nosnippet>23</a>//! this is not the right library for you. You could however, build such
+<a href=#24 id=24 data-nosnippet>24</a>//! a data-structure using this library.
+<a href=#25 id=25 data-nosnippet>25</a>
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="attr">#![deny(missing_docs)]
+<a href=#27 id=27 data-nosnippet>27</a>
+<a href=#28 id=28 data-nosnippet>28</a></span><span class="doccomment">/// A helper macro to conveniently iterate over all opcodes recognized by this
+<a href=#29 id=29 data-nosnippet>29</a>/// crate. This can be used to work with either the [`Operator`] enumeration or
+<a href=#30 id=30 data-nosnippet>30</a>/// the [`VisitOperator`] trait if your use case uniformly handles all operators
+<a href=#31 id=31 data-nosnippet>31</a>/// the same way.
+<a href=#32 id=32 data-nosnippet>32</a>///
+<a href=#33 id=33 data-nosnippet>33</a>/// It is also possible to specialize handling of operators depending on the
+<a href=#34 id=34 data-nosnippet>34</a>/// Wasm proposal from which they are originating.
+<a href=#35 id=35 data-nosnippet>35</a>///
+<a href=#36 id=36 data-nosnippet>36</a>/// This is an "iterator macro" where this macro is invoked with the name of
+<a href=#37 id=37 data-nosnippet>37</a>/// another macro, and then that macro is invoked with the list of all
+<a href=#38 id=38 data-nosnippet>38</a>/// operators. An example invocation of this looks like:
+<a href=#39 id=39 data-nosnippet>39</a>///
+<a href=#40 id=40 data-nosnippet>40</a>/// The list of specializable Wasm proposals is as follows:
+<a href=#41 id=41 data-nosnippet>41</a>///
+<a href=#42 id=42 data-nosnippet>42</a>/// - `@mvp`: Denoting a Wasm operator from the initial Wasm MVP version.
+<a href=#43 id=43 data-nosnippet>43</a>/// - `@exceptions`: [Wasm `expection-handling` proposal]
+<a href=#44 id=44 data-nosnippet>44</a>/// - `@tail_call`: [Wasm `tail-calls` proposal]
+<a href=#45 id=45 data-nosnippet>45</a>/// - `@reference_types`: [Wasm `reference-types` proposal]
+<a href=#46 id=46 data-nosnippet>46</a>/// - `@sign_extension`: [Wasm `sign-extension-ops` proposal]
+<a href=#47 id=47 data-nosnippet>47</a>/// - `@saturating_float_to_int`: [Wasm `non_trapping_float-to-int-conversions` proposal]
+<a href=#48 id=48 data-nosnippet>48</a>/// - `@bulk_memory `:[Wasm `bulk-memory` proposal]
+<a href=#49 id=49 data-nosnippet>49</a>/// - `@threads`: [Wasm `threads` proposal]
+<a href=#50 id=50 data-nosnippet>50</a>/// - `@simd`: [Wasm `simd` proposal]
+<a href=#51 id=51 data-nosnippet>51</a>/// - `@relaxed_simd`: [Wasm `relaxed-simd` proposal]
+<a href=#52 id=52 data-nosnippet>52</a>///
+<a href=#53 id=53 data-nosnippet>53</a>/// [Wasm `expection-handling` proposal]:
+<a href=#54 id=54 data-nosnippet>54</a>/// https://github.com/WebAssembly/exception-handling
+<a href=#55 id=55 data-nosnippet>55</a>///
+<a href=#56 id=56 data-nosnippet>56</a>/// [Wasm `tail-calls` proposal]:
+<a href=#57 id=57 data-nosnippet>57</a>/// https://github.com/WebAssembly/tail-call
+<a href=#58 id=58 data-nosnippet>58</a>///
+<a href=#59 id=59 data-nosnippet>59</a>/// [Wasm `reference-types` proposal]:
+<a href=#60 id=60 data-nosnippet>60</a>/// https://github.com/WebAssembly/reference-types
+<a href=#61 id=61 data-nosnippet>61</a>///
+<a href=#62 id=62 data-nosnippet>62</a>/// [Wasm `sign-extension-ops` proposal]:
+<a href=#63 id=63 data-nosnippet>63</a>/// https://github.com/WebAssembly/sign-extension-ops
+<a href=#64 id=64 data-nosnippet>64</a>///
+<a href=#65 id=65 data-nosnippet>65</a>/// [Wasm `non_trapping_float-to-int-conversions` proposal]:
+<a href=#66 id=66 data-nosnippet>66</a>/// https://github.com/WebAssembly/nontrapping-float-to-int-conversions
+<a href=#67 id=67 data-nosnippet>67</a>///
+<a href=#68 id=68 data-nosnippet>68</a>/// [Wasm `bulk-memory` proposal]:
+<a href=#69 id=69 data-nosnippet>69</a>/// https://github.com/WebAssembly/bulk-memory-operations
+<a href=#70 id=70 data-nosnippet>70</a>///
+<a href=#71 id=71 data-nosnippet>71</a>/// [Wasm `threads` proposal]:
+<a href=#72 id=72 data-nosnippet>72</a>/// https://github.com/webassembly/threads
+<a href=#73 id=73 data-nosnippet>73</a>///
+<a href=#74 id=74 data-nosnippet>74</a>/// [Wasm `simd` proposal]:
+<a href=#75 id=75 data-nosnippet>75</a>/// https://github.com/webassembly/simd
+<a href=#76 id=76 data-nosnippet>76</a>///
+<a href=#77 id=77 data-nosnippet>77</a>/// [Wasm `relaxed-simd` proposal]:
+<a href=#78 id=78 data-nosnippet>78</a>/// https://github.com/WebAssembly/relaxed-simd
+<a href=#79 id=79 data-nosnippet>79</a>///
+<a href=#80 id=80 data-nosnippet>80</a>/// ```
+<a href=#81 id=81 data-nosnippet>81</a>/// macro_rules! define_visit_operator {
+<a href=#82 id=82 data-nosnippet>82</a>///     // The outer layer of repetition represents how all operators are
+<a href=#83 id=83 data-nosnippet>83</a>///     // provided to the macro at the same time.
+<a href=#84 id=84 data-nosnippet>84</a>///     //
+<a href=#85 id=85 data-nosnippet>85</a>///     // The `$proposal` identifier indicates the Wasm proposals from which
+<a href=#86 id=86 data-nosnippet>86</a>///     // the Wasm operator is originating.
+<a href=#87 id=87 data-nosnippet>87</a>///     // For example to specialize the macro match arm for Wasm SIMD proposal
+<a href=#88 id=88 data-nosnippet>88</a>///     // operators you could write `@simd` instead of `@$proposal:ident` to
+<a href=#89 id=89 data-nosnippet>89</a>///     // only catch those operators.
+<a href=#90 id=90 data-nosnippet>90</a>///     //
+<a href=#91 id=91 data-nosnippet>91</a>///     // The `$op` name is bound to the `Operator` variant name. The
+<a href=#92 id=92 data-nosnippet>92</a>///     // payload of the operator is optionally specified (the `$(...)?`
+<a href=#93 id=93 data-nosnippet>93</a>///     // clause) since not all instructions have payloads. Within the payload
+<a href=#94 id=94 data-nosnippet>94</a>///     // each argument is named and has its type specified.
+<a href=#95 id=95 data-nosnippet>95</a>///     //
+<a href=#96 id=96 data-nosnippet>96</a>///     // The `$visit` name is bound to the corresponding name in the
+<a href=#97 id=97 data-nosnippet>97</a>///     // `VisitOperator` trait that this corresponds to.
+<a href=#98 id=98 data-nosnippet>98</a>///     ($( @$proposal:ident $op:ident $({ $($arg:ident: $argty:ty),* })? =&gt; $visit:ident)*) =&gt; {
+<a href=#99 id=99 data-nosnippet>99</a>///         $(
+<a href=#100 id=100 data-nosnippet>100</a>///             fn $visit(&amp;mut self $($(,$arg: $argty)*)?) {
+<a href=#101 id=101 data-nosnippet>101</a>///                 // do nothing for this example
+<a href=#102 id=102 data-nosnippet>102</a>///             }
+<a href=#103 id=103 data-nosnippet>103</a>///         )*
+<a href=#104 id=104 data-nosnippet>104</a>///     }
+<a href=#105 id=105 data-nosnippet>105</a>/// }
+<a href=#106 id=106 data-nosnippet>106</a>///
+<a href=#107 id=107 data-nosnippet>107</a>/// pub struct VisitAndDoNothing;
+<a href=#108 id=108 data-nosnippet>108</a>///
+<a href=#109 id=109 data-nosnippet>109</a>/// impl&lt;'a&gt; wasmparser::VisitOperator&lt;'a&gt; for VisitAndDoNothing {
+<a href=#110 id=110 data-nosnippet>110</a>///     type Output = ();
+<a href=#111 id=111 data-nosnippet>111</a>///
+<a href=#112 id=112 data-nosnippet>112</a>///     wasmparser::for_each_operator!(define_visit_operator);
+<a href=#113 id=113 data-nosnippet>113</a>/// }
+<a href=#114 id=114 data-nosnippet>114</a>/// ```
+<a href=#115 id=115 data-nosnippet>115</a></span><span class="attr">#[macro_export]
+<a href=#116 id=116 data-nosnippet>116</a></span><span class="macro">macro_rules!</span> for_each_operator {
+<a href=#117 id=117 data-nosnippet>117</a>    (<span class="macro-nonterminal">$mac</span>:ident) =&gt; {
+<a href=#118 id=118 data-nosnippet>118</a>        <span class="macro-nonterminal">$</span><span class="macro">mac!</span> {
+<a href=#119 id=119 data-nosnippet>119</a>            @<span class="macro-nonterminal">mvp </span>Unreachable =&gt; visit_unreachable
+<a href=#120 id=120 data-nosnippet>120</a>            @mvp Nop =&gt; visit_nop
+<a href=#121 id=121 data-nosnippet>121</a>            @mvp Block { blockty: <span class="macro-nonterminal">$crate::BlockType </span>} =&gt; visit_block
+<a href=#122 id=122 data-nosnippet>122</a>            @mvp Loop { blockty: <span class="macro-nonterminal">$crate::BlockType </span>} =&gt; visit_loop
+<a href=#123 id=123 data-nosnippet>123</a>            @mvp If { blockty: <span class="macro-nonterminal">$crate::BlockType </span>} =&gt; visit_if
+<a href=#124 id=124 data-nosnippet>124</a>            @mvp Else =&gt; visit_else
+<a href=#125 id=125 data-nosnippet>125</a>            @exceptions Try { blockty: <span class="macro-nonterminal">$crate::BlockType </span>} =&gt; visit_try
+<a href=#126 id=126 data-nosnippet>126</a>            @exceptions Catch { tag_index: u32 } =&gt; visit_catch
+<a href=#127 id=127 data-nosnippet>127</a>            @exceptions Throw { tag_index: u32 } =&gt; visit_throw
+<a href=#128 id=128 data-nosnippet>128</a>            @exceptions Rethrow { relative_depth: u32 } =&gt; visit_rethrow
+<a href=#129 id=129 data-nosnippet>129</a>            @mvp End =&gt; visit_end
+<a href=#130 id=130 data-nosnippet>130</a>            @mvp Br { relative_depth: u32 } =&gt; visit_br
+<a href=#131 id=131 data-nosnippet>131</a>            @mvp BrIf { relative_depth: u32 } =&gt; visit_br_if
+<a href=#132 id=132 data-nosnippet>132</a>            @mvp BrTable { targets: <span class="macro-nonterminal">$crate::BrTable</span>&lt;<span class="lifetime">'a</span>&gt; } =&gt; visit_br_table
+<a href=#133 id=133 data-nosnippet>133</a>            @mvp Return =&gt; visit_return
+<a href=#134 id=134 data-nosnippet>134</a>            @mvp Call { function_index: u32 } =&gt; visit_call
+<a href=#135 id=135 data-nosnippet>135</a>            @mvp CallIndirect { type_index: u32, table_index: u32, table_byte: u8 } =&gt; visit_call_indirect
+<a href=#136 id=136 data-nosnippet>136</a>            @tail_call ReturnCall { function_index: u32 } =&gt; visit_return_call
+<a href=#137 id=137 data-nosnippet>137</a>            @tail_call ReturnCallIndirect { type_index: u32, table_index: u32 } =&gt; visit_return_call_indirect
+<a href=#138 id=138 data-nosnippet>138</a>            @exceptions Delegate { relative_depth: u32 } =&gt; visit_delegate
+<a href=#139 id=139 data-nosnippet>139</a>            @exceptions CatchAll =&gt; visit_catch_all
+<a href=#140 id=140 data-nosnippet>140</a>            @mvp Drop =&gt; visit_drop
+<a href=#141 id=141 data-nosnippet>141</a>            @mvp Select =&gt; visit_select
+<a href=#142 id=142 data-nosnippet>142</a>            @reference_types TypedSelect { ty: <span class="macro-nonterminal">$crate::ValType </span>} =&gt; visit_typed_select
+<a href=#143 id=143 data-nosnippet>143</a>            @mvp LocalGet { local_index: u32 } =&gt; visit_local_get
+<a href=#144 id=144 data-nosnippet>144</a>            @mvp LocalSet { local_index: u32 } =&gt; visit_local_set
+<a href=#145 id=145 data-nosnippet>145</a>            @mvp LocalTee { local_index: u32 } =&gt; visit_local_tee
+<a href=#146 id=146 data-nosnippet>146</a>            @mvp GlobalGet { global_index: u32 } =&gt; visit_global_get
+<a href=#147 id=147 data-nosnippet>147</a>            @mvp GlobalSet { global_index: u32 } =&gt; visit_global_set
+<a href=#148 id=148 data-nosnippet>148</a>            @mvp I32Load { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_load
+<a href=#149 id=149 data-nosnippet>149</a>            @mvp I64Load { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load
+<a href=#150 id=150 data-nosnippet>150</a>            @mvp F32Load { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_f32_load
+<a href=#151 id=151 data-nosnippet>151</a>            @mvp F64Load { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_f64_load
+<a href=#152 id=152 data-nosnippet>152</a>            @mvp I32Load8S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_load8_s
+<a href=#153 id=153 data-nosnippet>153</a>            @mvp I32Load8U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_load8_u
+<a href=#154 id=154 data-nosnippet>154</a>            @mvp I32Load16S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_load16_s
+<a href=#155 id=155 data-nosnippet>155</a>            @mvp I32Load16U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_load16_u
+<a href=#156 id=156 data-nosnippet>156</a>            @mvp I64Load8S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load8_s
+<a href=#157 id=157 data-nosnippet>157</a>            @mvp I64Load8U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load8_u
+<a href=#158 id=158 data-nosnippet>158</a>            @mvp I64Load16S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load16_s
+<a href=#159 id=159 data-nosnippet>159</a>            @mvp I64Load16U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load16_u
+<a href=#160 id=160 data-nosnippet>160</a>            @mvp I64Load32S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load32_s
+<a href=#161 id=161 data-nosnippet>161</a>            @mvp I64Load32U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_load32_u
+<a href=#162 id=162 data-nosnippet>162</a>            @mvp I32Store { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_store
+<a href=#163 id=163 data-nosnippet>163</a>            @mvp I64Store { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_store
+<a href=#164 id=164 data-nosnippet>164</a>            @mvp F32Store { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_f32_store
+<a href=#165 id=165 data-nosnippet>165</a>            @mvp F64Store { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_f64_store
+<a href=#166 id=166 data-nosnippet>166</a>            @mvp I32Store8 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_store8
+<a href=#167 id=167 data-nosnippet>167</a>            @mvp I32Store16 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_store16
+<a href=#168 id=168 data-nosnippet>168</a>            @mvp I64Store8 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_store8
+<a href=#169 id=169 data-nosnippet>169</a>            @mvp I64Store16 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_store16
+<a href=#170 id=170 data-nosnippet>170</a>            @mvp I64Store32 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_store32
+<a href=#171 id=171 data-nosnippet>171</a>            @mvp MemorySize { mem: u32, mem_byte: u8 } =&gt; visit_memory_size
+<a href=#172 id=172 data-nosnippet>172</a>            @mvp MemoryGrow { mem: u32, mem_byte: u8 } =&gt; visit_memory_grow
+<a href=#173 id=173 data-nosnippet>173</a>            @mvp I32Const { value: i32 } =&gt; visit_i32_const
+<a href=#174 id=174 data-nosnippet>174</a>            @mvp I64Const { value: i64 } =&gt; visit_i64_const
+<a href=#175 id=175 data-nosnippet>175</a>            @mvp F32Const { value: <span class="macro-nonterminal">$crate::Ieee32 </span>} =&gt; visit_f32_const
+<a href=#176 id=176 data-nosnippet>176</a>            @mvp F64Const { value: <span class="macro-nonterminal">$crate::Ieee64 </span>} =&gt; visit_f64_const
+<a href=#177 id=177 data-nosnippet>177</a>            @reference_types RefNull { hty: <span class="macro-nonterminal">$crate::HeapType </span>} =&gt; visit_ref_null
+<a href=#178 id=178 data-nosnippet>178</a>            @reference_types RefIsNull =&gt; visit_ref_is_null
+<a href=#179 id=179 data-nosnippet>179</a>            @reference_types RefFunc { function_index: u32 } =&gt; visit_ref_func
+<a href=#180 id=180 data-nosnippet>180</a>            @mvp I32Eqz =&gt; visit_i32_eqz
+<a href=#181 id=181 data-nosnippet>181</a>            @mvp I32Eq =&gt; visit_i32_eq
+<a href=#182 id=182 data-nosnippet>182</a>            @mvp I32Ne =&gt; visit_i32_ne
+<a href=#183 id=183 data-nosnippet>183</a>            @mvp I32LtS =&gt; visit_i32_lt_s
+<a href=#184 id=184 data-nosnippet>184</a>            @mvp I32LtU =&gt; visit_i32_lt_u
+<a href=#185 id=185 data-nosnippet>185</a>            @mvp I32GtS =&gt; visit_i32_gt_s
+<a href=#186 id=186 data-nosnippet>186</a>            @mvp I32GtU =&gt; visit_i32_gt_u
+<a href=#187 id=187 data-nosnippet>187</a>            @mvp I32LeS =&gt; visit_i32_le_s
+<a href=#188 id=188 data-nosnippet>188</a>            @mvp I32LeU =&gt; visit_i32_le_u
+<a href=#189 id=189 data-nosnippet>189</a>            @mvp I32GeS =&gt; visit_i32_ge_s
+<a href=#190 id=190 data-nosnippet>190</a>            @mvp I32GeU =&gt; visit_i32_ge_u
+<a href=#191 id=191 data-nosnippet>191</a>            @mvp I64Eqz =&gt; visit_i64_eqz
+<a href=#192 id=192 data-nosnippet>192</a>            @mvp I64Eq =&gt; visit_i64_eq
+<a href=#193 id=193 data-nosnippet>193</a>            @mvp I64Ne =&gt; visit_i64_ne
+<a href=#194 id=194 data-nosnippet>194</a>            @mvp I64LtS =&gt; visit_i64_lt_s
+<a href=#195 id=195 data-nosnippet>195</a>            @mvp I64LtU =&gt; visit_i64_lt_u
+<a href=#196 id=196 data-nosnippet>196</a>            @mvp I64GtS =&gt; visit_i64_gt_s
+<a href=#197 id=197 data-nosnippet>197</a>            @mvp I64GtU =&gt; visit_i64_gt_u
+<a href=#198 id=198 data-nosnippet>198</a>            @mvp I64LeS =&gt; visit_i64_le_s
+<a href=#199 id=199 data-nosnippet>199</a>            @mvp I64LeU =&gt; visit_i64_le_u
+<a href=#200 id=200 data-nosnippet>200</a>            @mvp I64GeS =&gt; visit_i64_ge_s
+<a href=#201 id=201 data-nosnippet>201</a>            @mvp I64GeU =&gt; visit_i64_ge_u
+<a href=#202 id=202 data-nosnippet>202</a>            @mvp F32Eq =&gt; visit_f32_eq
+<a href=#203 id=203 data-nosnippet>203</a>            @mvp F32Ne =&gt; visit_f32_ne
+<a href=#204 id=204 data-nosnippet>204</a>            @mvp F32Lt =&gt; visit_f32_lt
+<a href=#205 id=205 data-nosnippet>205</a>            @mvp F32Gt =&gt; visit_f32_gt
+<a href=#206 id=206 data-nosnippet>206</a>            @mvp F32Le =&gt; visit_f32_le
+<a href=#207 id=207 data-nosnippet>207</a>            @mvp F32Ge =&gt; visit_f32_ge
+<a href=#208 id=208 data-nosnippet>208</a>            @mvp F64Eq =&gt; visit_f64_eq
+<a href=#209 id=209 data-nosnippet>209</a>            @mvp F64Ne =&gt; visit_f64_ne
+<a href=#210 id=210 data-nosnippet>210</a>            @mvp F64Lt =&gt; visit_f64_lt
+<a href=#211 id=211 data-nosnippet>211</a>            @mvp F64Gt =&gt; visit_f64_gt
+<a href=#212 id=212 data-nosnippet>212</a>            @mvp F64Le =&gt; visit_f64_le
+<a href=#213 id=213 data-nosnippet>213</a>            @mvp F64Ge =&gt; visit_f64_ge
+<a href=#214 id=214 data-nosnippet>214</a>            @mvp I32Clz =&gt; visit_i32_clz
+<a href=#215 id=215 data-nosnippet>215</a>            @mvp I32Ctz =&gt; visit_i32_ctz
+<a href=#216 id=216 data-nosnippet>216</a>            @mvp I32Popcnt =&gt; visit_i32_popcnt
+<a href=#217 id=217 data-nosnippet>217</a>            @mvp I32Add =&gt; visit_i32_add
+<a href=#218 id=218 data-nosnippet>218</a>            @mvp I32Sub =&gt; visit_i32_sub
+<a href=#219 id=219 data-nosnippet>219</a>            @mvp I32Mul =&gt; visit_i32_mul
+<a href=#220 id=220 data-nosnippet>220</a>            @mvp I32DivS =&gt; visit_i32_div_s
+<a href=#221 id=221 data-nosnippet>221</a>            @mvp I32DivU =&gt; visit_i32_div_u
+<a href=#222 id=222 data-nosnippet>222</a>            @mvp I32RemS =&gt; visit_i32_rem_s
+<a href=#223 id=223 data-nosnippet>223</a>            @mvp I32RemU =&gt; visit_i32_rem_u
+<a href=#224 id=224 data-nosnippet>224</a>            @mvp I32And =&gt; visit_i32_and
+<a href=#225 id=225 data-nosnippet>225</a>            @mvp I32Or =&gt; visit_i32_or
+<a href=#226 id=226 data-nosnippet>226</a>            @mvp I32Xor =&gt; visit_i32_xor
+<a href=#227 id=227 data-nosnippet>227</a>            @mvp I32Shl =&gt; visit_i32_shl
+<a href=#228 id=228 data-nosnippet>228</a>            @mvp I32ShrS =&gt; visit_i32_shr_s
+<a href=#229 id=229 data-nosnippet>229</a>            @mvp I32ShrU =&gt; visit_i32_shr_u
+<a href=#230 id=230 data-nosnippet>230</a>            @mvp I32Rotl =&gt; visit_i32_rotl
+<a href=#231 id=231 data-nosnippet>231</a>            @mvp I32Rotr =&gt; visit_i32_rotr
+<a href=#232 id=232 data-nosnippet>232</a>            @mvp I64Clz =&gt; visit_i64_clz
+<a href=#233 id=233 data-nosnippet>233</a>            @mvp I64Ctz =&gt; visit_i64_ctz
+<a href=#234 id=234 data-nosnippet>234</a>            @mvp I64Popcnt =&gt; visit_i64_popcnt
+<a href=#235 id=235 data-nosnippet>235</a>            @mvp I64Add =&gt; visit_i64_add
+<a href=#236 id=236 data-nosnippet>236</a>            @mvp I64Sub =&gt; visit_i64_sub
+<a href=#237 id=237 data-nosnippet>237</a>            @mvp I64Mul =&gt; visit_i64_mul
+<a href=#238 id=238 data-nosnippet>238</a>            @mvp I64DivS =&gt; visit_i64_div_s
+<a href=#239 id=239 data-nosnippet>239</a>            @mvp I64DivU =&gt; visit_i64_div_u
+<a href=#240 id=240 data-nosnippet>240</a>            @mvp I64RemS =&gt; visit_i64_rem_s
+<a href=#241 id=241 data-nosnippet>241</a>            @mvp I64RemU =&gt; visit_i64_rem_u
+<a href=#242 id=242 data-nosnippet>242</a>            @mvp I64And =&gt; visit_i64_and
+<a href=#243 id=243 data-nosnippet>243</a>            @mvp I64Or =&gt; visit_i64_or
+<a href=#244 id=244 data-nosnippet>244</a>            @mvp I64Xor =&gt; visit_i64_xor
+<a href=#245 id=245 data-nosnippet>245</a>            @mvp I64Shl =&gt; visit_i64_shl
+<a href=#246 id=246 data-nosnippet>246</a>            @mvp I64ShrS =&gt; visit_i64_shr_s
+<a href=#247 id=247 data-nosnippet>247</a>            @mvp I64ShrU =&gt; visit_i64_shr_u
+<a href=#248 id=248 data-nosnippet>248</a>            @mvp I64Rotl =&gt; visit_i64_rotl
+<a href=#249 id=249 data-nosnippet>249</a>            @mvp I64Rotr =&gt; visit_i64_rotr
+<a href=#250 id=250 data-nosnippet>250</a>            @mvp F32Abs =&gt; visit_f32_abs
+<a href=#251 id=251 data-nosnippet>251</a>            @mvp F32Neg =&gt; visit_f32_neg
+<a href=#252 id=252 data-nosnippet>252</a>            @mvp F32Ceil =&gt; visit_f32_ceil
+<a href=#253 id=253 data-nosnippet>253</a>            @mvp F32Floor =&gt; visit_f32_floor
+<a href=#254 id=254 data-nosnippet>254</a>            @mvp F32Trunc =&gt; visit_f32_trunc
+<a href=#255 id=255 data-nosnippet>255</a>            @mvp F32Nearest =&gt; visit_f32_nearest
+<a href=#256 id=256 data-nosnippet>256</a>            @mvp F32Sqrt =&gt; visit_f32_sqrt
+<a href=#257 id=257 data-nosnippet>257</a>            @mvp F32Add =&gt; visit_f32_add
+<a href=#258 id=258 data-nosnippet>258</a>            @mvp F32Sub =&gt; visit_f32_sub
+<a href=#259 id=259 data-nosnippet>259</a>            @mvp F32Mul =&gt; visit_f32_mul
+<a href=#260 id=260 data-nosnippet>260</a>            @mvp F32Div =&gt; visit_f32_div
+<a href=#261 id=261 data-nosnippet>261</a>            @mvp F32Min =&gt; visit_f32_min
+<a href=#262 id=262 data-nosnippet>262</a>            @mvp F32Max =&gt; visit_f32_max
+<a href=#263 id=263 data-nosnippet>263</a>            @mvp F32Copysign =&gt; visit_f32_copysign
+<a href=#264 id=264 data-nosnippet>264</a>            @mvp F64Abs =&gt; visit_f64_abs
+<a href=#265 id=265 data-nosnippet>265</a>            @mvp F64Neg =&gt; visit_f64_neg
+<a href=#266 id=266 data-nosnippet>266</a>            @mvp F64Ceil =&gt; visit_f64_ceil
+<a href=#267 id=267 data-nosnippet>267</a>            @mvp F64Floor =&gt; visit_f64_floor
+<a href=#268 id=268 data-nosnippet>268</a>            @mvp F64Trunc =&gt; visit_f64_trunc
+<a href=#269 id=269 data-nosnippet>269</a>            @mvp F64Nearest =&gt; visit_f64_nearest
+<a href=#270 id=270 data-nosnippet>270</a>            @mvp F64Sqrt =&gt; visit_f64_sqrt
+<a href=#271 id=271 data-nosnippet>271</a>            @mvp F64Add =&gt; visit_f64_add
+<a href=#272 id=272 data-nosnippet>272</a>            @mvp F64Sub =&gt; visit_f64_sub
+<a href=#273 id=273 data-nosnippet>273</a>            @mvp F64Mul =&gt; visit_f64_mul
+<a href=#274 id=274 data-nosnippet>274</a>            @mvp F64Div =&gt; visit_f64_div
+<a href=#275 id=275 data-nosnippet>275</a>            @mvp F64Min =&gt; visit_f64_min
+<a href=#276 id=276 data-nosnippet>276</a>            @mvp F64Max =&gt; visit_f64_max
+<a href=#277 id=277 data-nosnippet>277</a>            @mvp F64Copysign =&gt; visit_f64_copysign
+<a href=#278 id=278 data-nosnippet>278</a>            @mvp I32WrapI64 =&gt; visit_i32_wrap_i64
+<a href=#279 id=279 data-nosnippet>279</a>            @mvp I32TruncF32S =&gt; visit_i32_trunc_f32_s
+<a href=#280 id=280 data-nosnippet>280</a>            @mvp I32TruncF32U =&gt; visit_i32_trunc_f32_u
+<a href=#281 id=281 data-nosnippet>281</a>            @mvp I32TruncF64S =&gt; visit_i32_trunc_f64_s
+<a href=#282 id=282 data-nosnippet>282</a>            @mvp I32TruncF64U =&gt; visit_i32_trunc_f64_u
+<a href=#283 id=283 data-nosnippet>283</a>            @mvp I64ExtendI32S =&gt; visit_i64_extend_i32_s
+<a href=#284 id=284 data-nosnippet>284</a>            @mvp I64ExtendI32U =&gt; visit_i64_extend_i32_u
+<a href=#285 id=285 data-nosnippet>285</a>            @mvp I64TruncF32S =&gt; visit_i64_trunc_f32_s
+<a href=#286 id=286 data-nosnippet>286</a>            @mvp I64TruncF32U =&gt; visit_i64_trunc_f32_u
+<a href=#287 id=287 data-nosnippet>287</a>            @mvp I64TruncF64S =&gt; visit_i64_trunc_f64_s
+<a href=#288 id=288 data-nosnippet>288</a>            @mvp I64TruncF64U =&gt; visit_i64_trunc_f64_u
+<a href=#289 id=289 data-nosnippet>289</a>            @mvp F32ConvertI32S =&gt; visit_f32_convert_i32_s
+<a href=#290 id=290 data-nosnippet>290</a>            @mvp F32ConvertI32U =&gt; visit_f32_convert_i32_u
+<a href=#291 id=291 data-nosnippet>291</a>            @mvp F32ConvertI64S =&gt; visit_f32_convert_i64_s
+<a href=#292 id=292 data-nosnippet>292</a>            @mvp F32ConvertI64U =&gt; visit_f32_convert_i64_u
+<a href=#293 id=293 data-nosnippet>293</a>            @mvp F32DemoteF64 =&gt; visit_f32_demote_f64
+<a href=#294 id=294 data-nosnippet>294</a>            @mvp F64ConvertI32S =&gt; visit_f64_convert_i32_s
+<a href=#295 id=295 data-nosnippet>295</a>            @mvp F64ConvertI32U =&gt; visit_f64_convert_i32_u
+<a href=#296 id=296 data-nosnippet>296</a>            @mvp F64ConvertI64S =&gt; visit_f64_convert_i64_s
+<a href=#297 id=297 data-nosnippet>297</a>            @mvp F64ConvertI64U =&gt; visit_f64_convert_i64_u
+<a href=#298 id=298 data-nosnippet>298</a>            @mvp F64PromoteF32 =&gt; visit_f64_promote_f32
+<a href=#299 id=299 data-nosnippet>299</a>            @mvp I32ReinterpretF32 =&gt; visit_i32_reinterpret_f32
+<a href=#300 id=300 data-nosnippet>300</a>            @mvp I64ReinterpretF64 =&gt; visit_i64_reinterpret_f64
+<a href=#301 id=301 data-nosnippet>301</a>            @mvp F32ReinterpretI32 =&gt; visit_f32_reinterpret_i32
+<a href=#302 id=302 data-nosnippet>302</a>            @mvp F64ReinterpretI64 =&gt; visit_f64_reinterpret_i64
+<a href=#303 id=303 data-nosnippet>303</a>            @sign_extension I32Extend8S =&gt; visit_i32_extend8_s
+<a href=#304 id=304 data-nosnippet>304</a>            @sign_extension I32Extend16S =&gt; visit_i32_extend16_s
+<a href=#305 id=305 data-nosnippet>305</a>            @sign_extension I64Extend8S =&gt; visit_i64_extend8_s
+<a href=#306 id=306 data-nosnippet>306</a>            @sign_extension I64Extend16S =&gt; visit_i64_extend16_s
+<a href=#307 id=307 data-nosnippet>307</a>            @sign_extension I64Extend32S =&gt; visit_i64_extend32_s
+<a href=#308 id=308 data-nosnippet>308</a>
+<a href=#309 id=309 data-nosnippet>309</a>            <span class="comment">// 0xFC operators
+<a href=#310 id=310 data-nosnippet>310</a>            // Non-trapping Float-to-int Conversions
+<a href=#311 id=311 data-nosnippet>311</a>            // https://github.com/WebAssembly/nontrapping-float-to-int-conversions
+<a href=#312 id=312 data-nosnippet>312</a>            </span>@saturating_float_to_int I32TruncSatF32S =&gt; visit_i32_trunc_sat_f32_s
+<a href=#313 id=313 data-nosnippet>313</a>            @saturating_float_to_int I32TruncSatF32U =&gt; visit_i32_trunc_sat_f32_u
+<a href=#314 id=314 data-nosnippet>314</a>            @saturating_float_to_int I32TruncSatF64S =&gt; visit_i32_trunc_sat_f64_s
+<a href=#315 id=315 data-nosnippet>315</a>            @saturating_float_to_int I32TruncSatF64U =&gt; visit_i32_trunc_sat_f64_u
+<a href=#316 id=316 data-nosnippet>316</a>            @saturating_float_to_int I64TruncSatF32S =&gt; visit_i64_trunc_sat_f32_s
+<a href=#317 id=317 data-nosnippet>317</a>            @saturating_float_to_int I64TruncSatF32U =&gt; visit_i64_trunc_sat_f32_u
+<a href=#318 id=318 data-nosnippet>318</a>            @saturating_float_to_int I64TruncSatF64S =&gt; visit_i64_trunc_sat_f64_s
+<a href=#319 id=319 data-nosnippet>319</a>            @saturating_float_to_int I64TruncSatF64U =&gt; visit_i64_trunc_sat_f64_u
+<a href=#320 id=320 data-nosnippet>320</a>
+<a href=#321 id=321 data-nosnippet>321</a>            <span class="comment">// 0xFC prefixed operators
+<a href=#322 id=322 data-nosnippet>322</a>            // bulk memory operations
+<a href=#323 id=323 data-nosnippet>323</a>            // https://github.com/WebAssembly/bulk-memory-operations
+<a href=#324 id=324 data-nosnippet>324</a>            </span>@bulk_memory MemoryInit { data_index: u32, mem: u32 } =&gt; visit_memory_init
+<a href=#325 id=325 data-nosnippet>325</a>            @bulk_memory DataDrop { data_index: u32 } =&gt; visit_data_drop
+<a href=#326 id=326 data-nosnippet>326</a>            @bulk_memory MemoryCopy { dst_mem: u32, src_mem: u32 } =&gt; visit_memory_copy
+<a href=#327 id=327 data-nosnippet>327</a>            @bulk_memory MemoryFill { mem: u32 } =&gt; visit_memory_fill
+<a href=#328 id=328 data-nosnippet>328</a>            @bulk_memory TableInit { elem_index: u32, table: u32 } =&gt; visit_table_init
+<a href=#329 id=329 data-nosnippet>329</a>            @bulk_memory ElemDrop { elem_index: u32 } =&gt; visit_elem_drop
+<a href=#330 id=330 data-nosnippet>330</a>            @bulk_memory TableCopy { dst_table: u32, src_table: u32 } =&gt; visit_table_copy
+<a href=#331 id=331 data-nosnippet>331</a>
+<a href=#332 id=332 data-nosnippet>332</a>            <span class="comment">// 0xFC prefixed operators
+<a href=#333 id=333 data-nosnippet>333</a>            // reference-types
+<a href=#334 id=334 data-nosnippet>334</a>            // https://github.com/WebAssembly/reference-types
+<a href=#335 id=335 data-nosnippet>335</a>            </span>@reference_types TableFill { table: u32 } =&gt; visit_table_fill
+<a href=#336 id=336 data-nosnippet>336</a>            @reference_types TableGet { table: u32 } =&gt; visit_table_get
+<a href=#337 id=337 data-nosnippet>337</a>            @reference_types TableSet { table: u32 } =&gt; visit_table_set
+<a href=#338 id=338 data-nosnippet>338</a>            @reference_types TableGrow { table: u32 } =&gt; visit_table_grow
+<a href=#339 id=339 data-nosnippet>339</a>            @reference_types TableSize { table: u32 } =&gt; visit_table_size
+<a href=#340 id=340 data-nosnippet>340</a>
+<a href=#341 id=341 data-nosnippet>341</a>            <span class="comment">// OxFC prefixed operators
+<a href=#342 id=342 data-nosnippet>342</a>            // memory control (experimental)
+<a href=#343 id=343 data-nosnippet>343</a>            // https://github.com/WebAssembly/design/issues/1439
+<a href=#344 id=344 data-nosnippet>344</a>            </span>@memory_control MemoryDiscard { mem: u32 } =&gt; visit_memory_discard
+<a href=#345 id=345 data-nosnippet>345</a>
+<a href=#346 id=346 data-nosnippet>346</a>            <span class="comment">// 0xFE prefixed operators
+<a href=#347 id=347 data-nosnippet>347</a>            // threads
+<a href=#348 id=348 data-nosnippet>348</a>            // https://github.com/WebAssembly/threads
+<a href=#349 id=349 data-nosnippet>349</a>            </span>@threads MemoryAtomicNotify { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_memory_atomic_notify
+<a href=#350 id=350 data-nosnippet>350</a>            @threads MemoryAtomicWait32 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_memory_atomic_wait32
+<a href=#351 id=351 data-nosnippet>351</a>            @threads MemoryAtomicWait64 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_memory_atomic_wait64
+<a href=#352 id=352 data-nosnippet>352</a>            @threads AtomicFence =&gt; visit_atomic_fence
+<a href=#353 id=353 data-nosnippet>353</a>            @threads I32AtomicLoad { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_load
+<a href=#354 id=354 data-nosnippet>354</a>            @threads I64AtomicLoad { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_load
+<a href=#355 id=355 data-nosnippet>355</a>            @threads I32AtomicLoad8U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_load8_u
+<a href=#356 id=356 data-nosnippet>356</a>            @threads I32AtomicLoad16U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_load16_u
+<a href=#357 id=357 data-nosnippet>357</a>            @threads I64AtomicLoad8U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_load8_u
+<a href=#358 id=358 data-nosnippet>358</a>            @threads I64AtomicLoad16U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_load16_u
+<a href=#359 id=359 data-nosnippet>359</a>            @threads I64AtomicLoad32U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_load32_u
+<a href=#360 id=360 data-nosnippet>360</a>            @threads I32AtomicStore { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_store
+<a href=#361 id=361 data-nosnippet>361</a>            @threads I64AtomicStore { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_store
+<a href=#362 id=362 data-nosnippet>362</a>            @threads I32AtomicStore8 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_store8
+<a href=#363 id=363 data-nosnippet>363</a>            @threads I32AtomicStore16 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_store16
+<a href=#364 id=364 data-nosnippet>364</a>            @threads I64AtomicStore8 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_store8
+<a href=#365 id=365 data-nosnippet>365</a>            @threads I64AtomicStore16 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_store16
+<a href=#366 id=366 data-nosnippet>366</a>            @threads I64AtomicStore32 { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_store32
+<a href=#367 id=367 data-nosnippet>367</a>            @threads I32AtomicRmwAdd { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_add
+<a href=#368 id=368 data-nosnippet>368</a>            @threads I64AtomicRmwAdd { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_add
+<a href=#369 id=369 data-nosnippet>369</a>            @threads I32AtomicRmw8AddU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_add_u
+<a href=#370 id=370 data-nosnippet>370</a>            @threads I32AtomicRmw16AddU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_add_u
+<a href=#371 id=371 data-nosnippet>371</a>            @threads I64AtomicRmw8AddU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_add_u
+<a href=#372 id=372 data-nosnippet>372</a>            @threads I64AtomicRmw16AddU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_add_u
+<a href=#373 id=373 data-nosnippet>373</a>            @threads I64AtomicRmw32AddU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_add_u
+<a href=#374 id=374 data-nosnippet>374</a>            @threads I32AtomicRmwSub { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_sub
+<a href=#375 id=375 data-nosnippet>375</a>            @threads I64AtomicRmwSub { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_sub
+<a href=#376 id=376 data-nosnippet>376</a>            @threads I32AtomicRmw8SubU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_sub_u
+<a href=#377 id=377 data-nosnippet>377</a>            @threads I32AtomicRmw16SubU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_sub_u
+<a href=#378 id=378 data-nosnippet>378</a>            @threads I64AtomicRmw8SubU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_sub_u
+<a href=#379 id=379 data-nosnippet>379</a>            @threads I64AtomicRmw16SubU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_sub_u
+<a href=#380 id=380 data-nosnippet>380</a>            @threads I64AtomicRmw32SubU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_sub_u
+<a href=#381 id=381 data-nosnippet>381</a>            @threads I32AtomicRmwAnd { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_and
+<a href=#382 id=382 data-nosnippet>382</a>            @threads I64AtomicRmwAnd { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_and
+<a href=#383 id=383 data-nosnippet>383</a>            @threads I32AtomicRmw8AndU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_and_u
+<a href=#384 id=384 data-nosnippet>384</a>            @threads I32AtomicRmw16AndU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_and_u
+<a href=#385 id=385 data-nosnippet>385</a>            @threads I64AtomicRmw8AndU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_and_u
+<a href=#386 id=386 data-nosnippet>386</a>            @threads I64AtomicRmw16AndU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_and_u
+<a href=#387 id=387 data-nosnippet>387</a>            @threads I64AtomicRmw32AndU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_and_u
+<a href=#388 id=388 data-nosnippet>388</a>            @threads I32AtomicRmwOr { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_or
+<a href=#389 id=389 data-nosnippet>389</a>            @threads I64AtomicRmwOr { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_or
+<a href=#390 id=390 data-nosnippet>390</a>            @threads I32AtomicRmw8OrU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_or_u
+<a href=#391 id=391 data-nosnippet>391</a>            @threads I32AtomicRmw16OrU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_or_u
+<a href=#392 id=392 data-nosnippet>392</a>            @threads I64AtomicRmw8OrU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_or_u
+<a href=#393 id=393 data-nosnippet>393</a>            @threads I64AtomicRmw16OrU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_or_u
+<a href=#394 id=394 data-nosnippet>394</a>            @threads I64AtomicRmw32OrU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_or_u
+<a href=#395 id=395 data-nosnippet>395</a>            @threads I32AtomicRmwXor { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_xor
+<a href=#396 id=396 data-nosnippet>396</a>            @threads I64AtomicRmwXor { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_xor
+<a href=#397 id=397 data-nosnippet>397</a>            @threads I32AtomicRmw8XorU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_xor_u
+<a href=#398 id=398 data-nosnippet>398</a>            @threads I32AtomicRmw16XorU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_xor_u
+<a href=#399 id=399 data-nosnippet>399</a>            @threads I64AtomicRmw8XorU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_xor_u
+<a href=#400 id=400 data-nosnippet>400</a>            @threads I64AtomicRmw16XorU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_xor_u
+<a href=#401 id=401 data-nosnippet>401</a>            @threads I64AtomicRmw32XorU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_xor_u
+<a href=#402 id=402 data-nosnippet>402</a>            @threads I32AtomicRmwXchg { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_xchg
+<a href=#403 id=403 data-nosnippet>403</a>            @threads I64AtomicRmwXchg { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_xchg
+<a href=#404 id=404 data-nosnippet>404</a>            @threads I32AtomicRmw8XchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_xchg_u
+<a href=#405 id=405 data-nosnippet>405</a>            @threads I32AtomicRmw16XchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_xchg_u
+<a href=#406 id=406 data-nosnippet>406</a>            @threads I64AtomicRmw8XchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_xchg_u
+<a href=#407 id=407 data-nosnippet>407</a>            @threads I64AtomicRmw16XchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_xchg_u
+<a href=#408 id=408 data-nosnippet>408</a>            @threads I64AtomicRmw32XchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_xchg_u
+<a href=#409 id=409 data-nosnippet>409</a>            @threads I32AtomicRmwCmpxchg { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw_cmpxchg
+<a href=#410 id=410 data-nosnippet>410</a>            @threads I64AtomicRmwCmpxchg { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw_cmpxchg
+<a href=#411 id=411 data-nosnippet>411</a>            @threads I32AtomicRmw8CmpxchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw8_cmpxchg_u
+<a href=#412 id=412 data-nosnippet>412</a>            @threads I32AtomicRmw16CmpxchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i32_atomic_rmw16_cmpxchg_u
+<a href=#413 id=413 data-nosnippet>413</a>            @threads I64AtomicRmw8CmpxchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw8_cmpxchg_u
+<a href=#414 id=414 data-nosnippet>414</a>            @threads I64AtomicRmw16CmpxchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw16_cmpxchg_u
+<a href=#415 id=415 data-nosnippet>415</a>            @threads I64AtomicRmw32CmpxchgU { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_i64_atomic_rmw32_cmpxchg_u
+<a href=#416 id=416 data-nosnippet>416</a>
+<a href=#417 id=417 data-nosnippet>417</a>            <span class="comment">// 0xFD operators
+<a href=#418 id=418 data-nosnippet>418</a>            // 128-bit SIMD
+<a href=#419 id=419 data-nosnippet>419</a>            // - https://github.com/webassembly/simd
+<a href=#420 id=420 data-nosnippet>420</a>            // - https://webassembly.github.io/simd/core/binary/instructions.html
+<a href=#421 id=421 data-nosnippet>421</a>            </span>@simd V128Load { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load
+<a href=#422 id=422 data-nosnippet>422</a>            @simd V128Load8x8S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load8x8_s
+<a href=#423 id=423 data-nosnippet>423</a>            @simd V128Load8x8U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load8x8_u
+<a href=#424 id=424 data-nosnippet>424</a>            @simd V128Load16x4S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load16x4_s
+<a href=#425 id=425 data-nosnippet>425</a>            @simd V128Load16x4U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load16x4_u
+<a href=#426 id=426 data-nosnippet>426</a>            @simd V128Load32x2S { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load32x2_s
+<a href=#427 id=427 data-nosnippet>427</a>            @simd V128Load32x2U { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load32x2_u
+<a href=#428 id=428 data-nosnippet>428</a>            @simd V128Load8Splat { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load8_splat
+<a href=#429 id=429 data-nosnippet>429</a>            @simd V128Load16Splat { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load16_splat
+<a href=#430 id=430 data-nosnippet>430</a>            @simd V128Load32Splat { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load32_splat
+<a href=#431 id=431 data-nosnippet>431</a>            @simd V128Load64Splat { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load64_splat
+<a href=#432 id=432 data-nosnippet>432</a>            @simd V128Load32Zero { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load32_zero
+<a href=#433 id=433 data-nosnippet>433</a>            @simd V128Load64Zero { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_load64_zero
+<a href=#434 id=434 data-nosnippet>434</a>            @simd V128Store { memarg: <span class="macro-nonterminal">$crate::MemArg </span>} =&gt; visit_v128_store
+<a href=#435 id=435 data-nosnippet>435</a>            @simd V128Load8Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_load8_lane
+<a href=#436 id=436 data-nosnippet>436</a>            @simd V128Load16Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_load16_lane
+<a href=#437 id=437 data-nosnippet>437</a>            @simd V128Load32Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_load32_lane
+<a href=#438 id=438 data-nosnippet>438</a>            @simd V128Load64Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_load64_lane
+<a href=#439 id=439 data-nosnippet>439</a>            @simd V128Store8Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_store8_lane
+<a href=#440 id=440 data-nosnippet>440</a>            @simd V128Store16Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_store16_lane
+<a href=#441 id=441 data-nosnippet>441</a>            @simd V128Store32Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_store32_lane
+<a href=#442 id=442 data-nosnippet>442</a>            @simd V128Store64Lane { memarg: <span class="macro-nonterminal">$crate::MemArg</span>, lane: u8 } =&gt; visit_v128_store64_lane
+<a href=#443 id=443 data-nosnippet>443</a>            @simd V128Const { value: <span class="macro-nonterminal">$crate::V128 </span>} =&gt; visit_v128_const
+<a href=#444 id=444 data-nosnippet>444</a>            @simd I8x16Shuffle { lanes: [u8; <span class="number">16</span>] } =&gt; visit_i8x16_shuffle
+<a href=#445 id=445 data-nosnippet>445</a>            @simd I8x16ExtractLaneS { lane: u8 } =&gt; visit_i8x16_extract_lane_s
+<a href=#446 id=446 data-nosnippet>446</a>            @simd I8x16ExtractLaneU { lane: u8 } =&gt; visit_i8x16_extract_lane_u
+<a href=#447 id=447 data-nosnippet>447</a>            @simd I8x16ReplaceLane { lane: u8 } =&gt; visit_i8x16_replace_lane
+<a href=#448 id=448 data-nosnippet>448</a>            @simd I16x8ExtractLaneS { lane: u8 } =&gt; visit_i16x8_extract_lane_s
+<a href=#449 id=449 data-nosnippet>449</a>            @simd I16x8ExtractLaneU { lane: u8 } =&gt; visit_i16x8_extract_lane_u
+<a href=#450 id=450 data-nosnippet>450</a>            @simd I16x8ReplaceLane { lane: u8 } =&gt; visit_i16x8_replace_lane
+<a href=#451 id=451 data-nosnippet>451</a>            @simd I32x4ExtractLane { lane: u8 } =&gt; visit_i32x4_extract_lane
+<a href=#452 id=452 data-nosnippet>452</a>            @simd I32x4ReplaceLane { lane: u8 } =&gt; visit_i32x4_replace_lane
+<a href=#453 id=453 data-nosnippet>453</a>            @simd I64x2ExtractLane { lane: u8 } =&gt; visit_i64x2_extract_lane
+<a href=#454 id=454 data-nosnippet>454</a>            @simd I64x2ReplaceLane { lane: u8 } =&gt; visit_i64x2_replace_lane
+<a href=#455 id=455 data-nosnippet>455</a>            @simd F32x4ExtractLane { lane: u8 } =&gt; visit_f32x4_extract_lane
+<a href=#456 id=456 data-nosnippet>456</a>            @simd F32x4ReplaceLane { lane: u8 } =&gt; visit_f32x4_replace_lane
+<a href=#457 id=457 data-nosnippet>457</a>            @simd F64x2ExtractLane { lane: u8 } =&gt; visit_f64x2_extract_lane
+<a href=#458 id=458 data-nosnippet>458</a>            @simd F64x2ReplaceLane { lane: u8 } =&gt; visit_f64x2_replace_lane
+<a href=#459 id=459 data-nosnippet>459</a>            @simd I8x16Swizzle =&gt; visit_i8x16_swizzle
+<a href=#460 id=460 data-nosnippet>460</a>            @simd I8x16Splat =&gt; visit_i8x16_splat
+<a href=#461 id=461 data-nosnippet>461</a>            @simd I16x8Splat =&gt; visit_i16x8_splat
+<a href=#462 id=462 data-nosnippet>462</a>            @simd I32x4Splat =&gt; visit_i32x4_splat
+<a href=#463 id=463 data-nosnippet>463</a>            @simd I64x2Splat =&gt; visit_i64x2_splat
+<a href=#464 id=464 data-nosnippet>464</a>            @simd F32x4Splat =&gt; visit_f32x4_splat
+<a href=#465 id=465 data-nosnippet>465</a>            @simd F64x2Splat =&gt; visit_f64x2_splat
+<a href=#466 id=466 data-nosnippet>466</a>            @simd I8x16Eq =&gt; visit_i8x16_eq
+<a href=#467 id=467 data-nosnippet>467</a>            @simd I8x16Ne =&gt; visit_i8x16_ne
+<a href=#468 id=468 data-nosnippet>468</a>            @simd I8x16LtS =&gt; visit_i8x16_lt_s
+<a href=#469 id=469 data-nosnippet>469</a>            @simd I8x16LtU =&gt; visit_i8x16_lt_u
+<a href=#470 id=470 data-nosnippet>470</a>            @simd I8x16GtS =&gt; visit_i8x16_gt_s
+<a href=#471 id=471 data-nosnippet>471</a>            @simd I8x16GtU =&gt; visit_i8x16_gt_u
+<a href=#472 id=472 data-nosnippet>472</a>            @simd I8x16LeS =&gt; visit_i8x16_le_s
+<a href=#473 id=473 data-nosnippet>473</a>            @simd I8x16LeU =&gt; visit_i8x16_le_u
+<a href=#474 id=474 data-nosnippet>474</a>            @simd I8x16GeS =&gt; visit_i8x16_ge_s
+<a href=#475 id=475 data-nosnippet>475</a>            @simd I8x16GeU =&gt; visit_i8x16_ge_u
+<a href=#476 id=476 data-nosnippet>476</a>            @simd I16x8Eq =&gt; visit_i16x8_eq
+<a href=#477 id=477 data-nosnippet>477</a>            @simd I16x8Ne =&gt; visit_i16x8_ne
+<a href=#478 id=478 data-nosnippet>478</a>            @simd I16x8LtS =&gt; visit_i16x8_lt_s
+<a href=#479 id=479 data-nosnippet>479</a>            @simd I16x8LtU =&gt; visit_i16x8_lt_u
+<a href=#480 id=480 data-nosnippet>480</a>            @simd I16x8GtS =&gt; visit_i16x8_gt_s
+<a href=#481 id=481 data-nosnippet>481</a>            @simd I16x8GtU =&gt; visit_i16x8_gt_u
+<a href=#482 id=482 data-nosnippet>482</a>            @simd I16x8LeS =&gt; visit_i16x8_le_s
+<a href=#483 id=483 data-nosnippet>483</a>            @simd I16x8LeU =&gt; visit_i16x8_le_u
+<a href=#484 id=484 data-nosnippet>484</a>            @simd I16x8GeS =&gt; visit_i16x8_ge_s
+<a href=#485 id=485 data-nosnippet>485</a>            @simd I16x8GeU =&gt; visit_i16x8_ge_u
+<a href=#486 id=486 data-nosnippet>486</a>            @simd I32x4Eq =&gt; visit_i32x4_eq
+<a href=#487 id=487 data-nosnippet>487</a>            @simd I32x4Ne =&gt; visit_i32x4_ne
+<a href=#488 id=488 data-nosnippet>488</a>            @simd I32x4LtS =&gt; visit_i32x4_lt_s
+<a href=#489 id=489 data-nosnippet>489</a>            @simd I32x4LtU =&gt; visit_i32x4_lt_u
+<a href=#490 id=490 data-nosnippet>490</a>            @simd I32x4GtS =&gt; visit_i32x4_gt_s
+<a href=#491 id=491 data-nosnippet>491</a>            @simd I32x4GtU =&gt; visit_i32x4_gt_u
+<a href=#492 id=492 data-nosnippet>492</a>            @simd I32x4LeS =&gt; visit_i32x4_le_s
+<a href=#493 id=493 data-nosnippet>493</a>            @simd I32x4LeU =&gt; visit_i32x4_le_u
+<a href=#494 id=494 data-nosnippet>494</a>            @simd I32x4GeS =&gt; visit_i32x4_ge_s
+<a href=#495 id=495 data-nosnippet>495</a>            @simd I32x4GeU =&gt; visit_i32x4_ge_u
+<a href=#496 id=496 data-nosnippet>496</a>            @simd I64x2Eq =&gt; visit_i64x2_eq
+<a href=#497 id=497 data-nosnippet>497</a>            @simd I64x2Ne =&gt; visit_i64x2_ne
+<a href=#498 id=498 data-nosnippet>498</a>            @simd I64x2LtS =&gt; visit_i64x2_lt_s
+<a href=#499 id=499 data-nosnippet>499</a>            @simd I64x2GtS =&gt; visit_i64x2_gt_s
+<a href=#500 id=500 data-nosnippet>500</a>            @simd I64x2LeS =&gt; visit_i64x2_le_s
+<a href=#501 id=501 data-nosnippet>501</a>            @simd I64x2GeS =&gt; visit_i64x2_ge_s
+<a href=#502 id=502 data-nosnippet>502</a>            @simd F32x4Eq =&gt; visit_f32x4_eq
+<a href=#503 id=503 data-nosnippet>503</a>            @simd F32x4Ne =&gt; visit_f32x4_ne
+<a href=#504 id=504 data-nosnippet>504</a>            @simd F32x4Lt =&gt; visit_f32x4_lt
+<a href=#505 id=505 data-nosnippet>505</a>            @simd F32x4Gt =&gt; visit_f32x4_gt
+<a href=#506 id=506 data-nosnippet>506</a>            @simd F32x4Le =&gt; visit_f32x4_le
+<a href=#507 id=507 data-nosnippet>507</a>            @simd F32x4Ge =&gt; visit_f32x4_ge
+<a href=#508 id=508 data-nosnippet>508</a>            @simd F64x2Eq =&gt; visit_f64x2_eq
+<a href=#509 id=509 data-nosnippet>509</a>            @simd F64x2Ne =&gt; visit_f64x2_ne
+<a href=#510 id=510 data-nosnippet>510</a>            @simd F64x2Lt =&gt; visit_f64x2_lt
+<a href=#511 id=511 data-nosnippet>511</a>            @simd F64x2Gt =&gt; visit_f64x2_gt
+<a href=#512 id=512 data-nosnippet>512</a>            @simd F64x2Le =&gt; visit_f64x2_le
+<a href=#513 id=513 data-nosnippet>513</a>            @simd F64x2Ge =&gt; visit_f64x2_ge
+<a href=#514 id=514 data-nosnippet>514</a>            @simd V128Not =&gt; visit_v128_not
+<a href=#515 id=515 data-nosnippet>515</a>            @simd V128And =&gt; visit_v128_and
+<a href=#516 id=516 data-nosnippet>516</a>            @simd V128AndNot =&gt; visit_v128_andnot
+<a href=#517 id=517 data-nosnippet>517</a>            @simd V128Or =&gt; visit_v128_or
+<a href=#518 id=518 data-nosnippet>518</a>            @simd V128Xor =&gt; visit_v128_xor
+<a href=#519 id=519 data-nosnippet>519</a>            @simd V128Bitselect =&gt; visit_v128_bitselect
+<a href=#520 id=520 data-nosnippet>520</a>            @simd V128AnyTrue =&gt; visit_v128_any_true
+<a href=#521 id=521 data-nosnippet>521</a>            @simd I8x16Abs =&gt; visit_i8x16_abs
+<a href=#522 id=522 data-nosnippet>522</a>            @simd I8x16Neg =&gt; visit_i8x16_neg
+<a href=#523 id=523 data-nosnippet>523</a>            @simd I8x16Popcnt =&gt; visit_i8x16_popcnt
+<a href=#524 id=524 data-nosnippet>524</a>            @simd I8x16AllTrue =&gt; visit_i8x16_all_true
+<a href=#525 id=525 data-nosnippet>525</a>            @simd I8x16Bitmask =&gt; visit_i8x16_bitmask
+<a href=#526 id=526 data-nosnippet>526</a>            @simd I8x16NarrowI16x8S =&gt; visit_i8x16_narrow_i16x8_s
+<a href=#527 id=527 data-nosnippet>527</a>            @simd I8x16NarrowI16x8U =&gt; visit_i8x16_narrow_i16x8_u
+<a href=#528 id=528 data-nosnippet>528</a>            @simd I8x16Shl =&gt; visit_i8x16_shl
+<a href=#529 id=529 data-nosnippet>529</a>            @simd I8x16ShrS =&gt; visit_i8x16_shr_s
+<a href=#530 id=530 data-nosnippet>530</a>            @simd I8x16ShrU =&gt; visit_i8x16_shr_u
+<a href=#531 id=531 data-nosnippet>531</a>            @simd I8x16Add =&gt; visit_i8x16_add
+<a href=#532 id=532 data-nosnippet>532</a>            @simd I8x16AddSatS =&gt; visit_i8x16_add_sat_s
+<a href=#533 id=533 data-nosnippet>533</a>            @simd I8x16AddSatU =&gt; visit_i8x16_add_sat_u
+<a href=#534 id=534 data-nosnippet>534</a>            @simd I8x16Sub =&gt; visit_i8x16_sub
+<a href=#535 id=535 data-nosnippet>535</a>            @simd I8x16SubSatS =&gt; visit_i8x16_sub_sat_s
+<a href=#536 id=536 data-nosnippet>536</a>            @simd I8x16SubSatU =&gt; visit_i8x16_sub_sat_u
+<a href=#537 id=537 data-nosnippet>537</a>            @simd I8x16MinS =&gt; visit_i8x16_min_s
+<a href=#538 id=538 data-nosnippet>538</a>            @simd I8x16MinU =&gt; visit_i8x16_min_u
+<a href=#539 id=539 data-nosnippet>539</a>            @simd I8x16MaxS =&gt; visit_i8x16_max_s
+<a href=#540 id=540 data-nosnippet>540</a>            @simd I8x16MaxU =&gt; visit_i8x16_max_u
+<a href=#541 id=541 data-nosnippet>541</a>            @simd I8x16AvgrU =&gt; visit_i8x16_avgr_u
+<a href=#542 id=542 data-nosnippet>542</a>            @simd I16x8ExtAddPairwiseI8x16S =&gt; visit_i16x8_extadd_pairwise_i8x16_s
+<a href=#543 id=543 data-nosnippet>543</a>            @simd I16x8ExtAddPairwiseI8x16U =&gt; visit_i16x8_extadd_pairwise_i8x16_u
+<a href=#544 id=544 data-nosnippet>544</a>            @simd I16x8Abs =&gt; visit_i16x8_abs
+<a href=#545 id=545 data-nosnippet>545</a>            @simd I16x8Neg =&gt; visit_i16x8_neg
+<a href=#546 id=546 data-nosnippet>546</a>            @simd I16x8Q15MulrSatS =&gt; visit_i16x8_q15mulr_sat_s
+<a href=#547 id=547 data-nosnippet>547</a>            @simd I16x8AllTrue =&gt; visit_i16x8_all_true
+<a href=#548 id=548 data-nosnippet>548</a>            @simd I16x8Bitmask =&gt; visit_i16x8_bitmask
+<a href=#549 id=549 data-nosnippet>549</a>            @simd I16x8NarrowI32x4S =&gt; visit_i16x8_narrow_i32x4_s
+<a href=#550 id=550 data-nosnippet>550</a>            @simd I16x8NarrowI32x4U =&gt; visit_i16x8_narrow_i32x4_u
+<a href=#551 id=551 data-nosnippet>551</a>            @simd I16x8ExtendLowI8x16S =&gt; visit_i16x8_extend_low_i8x16_s
+<a href=#552 id=552 data-nosnippet>552</a>            @simd I16x8ExtendHighI8x16S =&gt; visit_i16x8_extend_high_i8x16_s
+<a href=#553 id=553 data-nosnippet>553</a>            @simd I16x8ExtendLowI8x16U =&gt; visit_i16x8_extend_low_i8x16_u
+<a href=#554 id=554 data-nosnippet>554</a>            @simd I16x8ExtendHighI8x16U =&gt; visit_i16x8_extend_high_i8x16_u
+<a href=#555 id=555 data-nosnippet>555</a>            @simd I16x8Shl =&gt; visit_i16x8_shl
+<a href=#556 id=556 data-nosnippet>556</a>            @simd I16x8ShrS =&gt; visit_i16x8_shr_s
+<a href=#557 id=557 data-nosnippet>557</a>            @simd I16x8ShrU =&gt; visit_i16x8_shr_u
+<a href=#558 id=558 data-nosnippet>558</a>            @simd I16x8Add =&gt; visit_i16x8_add
+<a href=#559 id=559 data-nosnippet>559</a>            @simd I16x8AddSatS =&gt; visit_i16x8_add_sat_s
+<a href=#560 id=560 data-nosnippet>560</a>            @simd I16x8AddSatU =&gt; visit_i16x8_add_sat_u
+<a href=#561 id=561 data-nosnippet>561</a>            @simd I16x8Sub =&gt; visit_i16x8_sub
+<a href=#562 id=562 data-nosnippet>562</a>            @simd I16x8SubSatS =&gt; visit_i16x8_sub_sat_s
+<a href=#563 id=563 data-nosnippet>563</a>            @simd I16x8SubSatU =&gt; visit_i16x8_sub_sat_u
+<a href=#564 id=564 data-nosnippet>564</a>            @simd I16x8Mul =&gt; visit_i16x8_mul
+<a href=#565 id=565 data-nosnippet>565</a>            @simd I16x8MinS =&gt; visit_i16x8_min_s
+<a href=#566 id=566 data-nosnippet>566</a>            @simd I16x8MinU =&gt; visit_i16x8_min_u
+<a href=#567 id=567 data-nosnippet>567</a>            @simd I16x8MaxS =&gt; visit_i16x8_max_s
+<a href=#568 id=568 data-nosnippet>568</a>            @simd I16x8MaxU =&gt; visit_i16x8_max_u
+<a href=#569 id=569 data-nosnippet>569</a>            @simd I16x8AvgrU =&gt; visit_i16x8_avgr_u
+<a href=#570 id=570 data-nosnippet>570</a>            @simd I16x8ExtMulLowI8x16S =&gt; visit_i16x8_extmul_low_i8x16_s
+<a href=#571 id=571 data-nosnippet>571</a>            @simd I16x8ExtMulHighI8x16S =&gt; visit_i16x8_extmul_high_i8x16_s
+<a href=#572 id=572 data-nosnippet>572</a>            @simd I16x8ExtMulLowI8x16U =&gt; visit_i16x8_extmul_low_i8x16_u
+<a href=#573 id=573 data-nosnippet>573</a>            @simd I16x8ExtMulHighI8x16U =&gt; visit_i16x8_extmul_high_i8x16_u
+<a href=#574 id=574 data-nosnippet>574</a>            @simd I32x4ExtAddPairwiseI16x8S =&gt; visit_i32x4_extadd_pairwise_i16x8_s
+<a href=#575 id=575 data-nosnippet>575</a>            @simd I32x4ExtAddPairwiseI16x8U =&gt; visit_i32x4_extadd_pairwise_i16x8_u
+<a href=#576 id=576 data-nosnippet>576</a>            @simd I32x4Abs =&gt; visit_i32x4_abs
+<a href=#577 id=577 data-nosnippet>577</a>            @simd I32x4Neg =&gt; visit_i32x4_neg
+<a href=#578 id=578 data-nosnippet>578</a>            @simd I32x4AllTrue =&gt; visit_i32x4_all_true
+<a href=#579 id=579 data-nosnippet>579</a>            @simd I32x4Bitmask =&gt; visit_i32x4_bitmask
+<a href=#580 id=580 data-nosnippet>580</a>            @simd I32x4ExtendLowI16x8S =&gt; visit_i32x4_extend_low_i16x8_s
+<a href=#581 id=581 data-nosnippet>581</a>            @simd I32x4ExtendHighI16x8S =&gt; visit_i32x4_extend_high_i16x8_s
+<a href=#582 id=582 data-nosnippet>582</a>            @simd I32x4ExtendLowI16x8U =&gt; visit_i32x4_extend_low_i16x8_u
+<a href=#583 id=583 data-nosnippet>583</a>            @simd I32x4ExtendHighI16x8U =&gt; visit_i32x4_extend_high_i16x8_u
+<a href=#584 id=584 data-nosnippet>584</a>            @simd I32x4Shl =&gt; visit_i32x4_shl
+<a href=#585 id=585 data-nosnippet>585</a>            @simd I32x4ShrS =&gt; visit_i32x4_shr_s
+<a href=#586 id=586 data-nosnippet>586</a>            @simd I32x4ShrU =&gt; visit_i32x4_shr_u
+<a href=#587 id=587 data-nosnippet>587</a>            @simd I32x4Add =&gt; visit_i32x4_add
+<a href=#588 id=588 data-nosnippet>588</a>            @simd I32x4Sub =&gt; visit_i32x4_sub
+<a href=#589 id=589 data-nosnippet>589</a>            @simd I32x4Mul =&gt; visit_i32x4_mul
+<a href=#590 id=590 data-nosnippet>590</a>            @simd I32x4MinS =&gt; visit_i32x4_min_s
+<a href=#591 id=591 data-nosnippet>591</a>            @simd I32x4MinU =&gt; visit_i32x4_min_u
+<a href=#592 id=592 data-nosnippet>592</a>            @simd I32x4MaxS =&gt; visit_i32x4_max_s
+<a href=#593 id=593 data-nosnippet>593</a>            @simd I32x4MaxU =&gt; visit_i32x4_max_u
+<a href=#594 id=594 data-nosnippet>594</a>            @simd I32x4DotI16x8S =&gt; visit_i32x4_dot_i16x8_s
+<a href=#595 id=595 data-nosnippet>595</a>            @simd I32x4ExtMulLowI16x8S =&gt; visit_i32x4_extmul_low_i16x8_s
+<a href=#596 id=596 data-nosnippet>596</a>            @simd I32x4ExtMulHighI16x8S =&gt; visit_i32x4_extmul_high_i16x8_s
+<a href=#597 id=597 data-nosnippet>597</a>            @simd I32x4ExtMulLowI16x8U =&gt; visit_i32x4_extmul_low_i16x8_u
+<a href=#598 id=598 data-nosnippet>598</a>            @simd I32x4ExtMulHighI16x8U =&gt; visit_i32x4_extmul_high_i16x8_u
+<a href=#599 id=599 data-nosnippet>599</a>            @simd I64x2Abs =&gt; visit_i64x2_abs
+<a href=#600 id=600 data-nosnippet>600</a>            @simd I64x2Neg =&gt; visit_i64x2_neg
+<a href=#601 id=601 data-nosnippet>601</a>            @simd I64x2AllTrue =&gt; visit_i64x2_all_true
+<a href=#602 id=602 data-nosnippet>602</a>            @simd I64x2Bitmask =&gt; visit_i64x2_bitmask
+<a href=#603 id=603 data-nosnippet>603</a>            @simd I64x2ExtendLowI32x4S =&gt; visit_i64x2_extend_low_i32x4_s
+<a href=#604 id=604 data-nosnippet>604</a>            @simd I64x2ExtendHighI32x4S =&gt; visit_i64x2_extend_high_i32x4_s
+<a href=#605 id=605 data-nosnippet>605</a>            @simd I64x2ExtendLowI32x4U =&gt; visit_i64x2_extend_low_i32x4_u
+<a href=#606 id=606 data-nosnippet>606</a>            @simd I64x2ExtendHighI32x4U =&gt; visit_i64x2_extend_high_i32x4_u
+<a href=#607 id=607 data-nosnippet>607</a>            @simd I64x2Shl =&gt; visit_i64x2_shl
+<a href=#608 id=608 data-nosnippet>608</a>            @simd I64x2ShrS =&gt; visit_i64x2_shr_s
+<a href=#609 id=609 data-nosnippet>609</a>            @simd I64x2ShrU =&gt; visit_i64x2_shr_u
+<a href=#610 id=610 data-nosnippet>610</a>            @simd I64x2Add =&gt; visit_i64x2_add
+<a href=#611 id=611 data-nosnippet>611</a>            @simd I64x2Sub =&gt; visit_i64x2_sub
+<a href=#612 id=612 data-nosnippet>612</a>            @simd I64x2Mul =&gt; visit_i64x2_mul
+<a href=#613 id=613 data-nosnippet>613</a>            @simd I64x2ExtMulLowI32x4S =&gt; visit_i64x2_extmul_low_i32x4_s
+<a href=#614 id=614 data-nosnippet>614</a>            @simd I64x2ExtMulHighI32x4S =&gt; visit_i64x2_extmul_high_i32x4_s
+<a href=#615 id=615 data-nosnippet>615</a>            @simd I64x2ExtMulLowI32x4U =&gt; visit_i64x2_extmul_low_i32x4_u
+<a href=#616 id=616 data-nosnippet>616</a>            @simd I64x2ExtMulHighI32x4U =&gt; visit_i64x2_extmul_high_i32x4_u
+<a href=#617 id=617 data-nosnippet>617</a>            @simd F32x4Ceil =&gt; visit_f32x4_ceil
+<a href=#618 id=618 data-nosnippet>618</a>            @simd F32x4Floor =&gt; visit_f32x4_floor
+<a href=#619 id=619 data-nosnippet>619</a>            @simd F32x4Trunc =&gt; visit_f32x4_trunc
+<a href=#620 id=620 data-nosnippet>620</a>            @simd F32x4Nearest =&gt; visit_f32x4_nearest
+<a href=#621 id=621 data-nosnippet>621</a>            @simd F32x4Abs =&gt; visit_f32x4_abs
+<a href=#622 id=622 data-nosnippet>622</a>            @simd F32x4Neg =&gt; visit_f32x4_neg
+<a href=#623 id=623 data-nosnippet>623</a>            @simd F32x4Sqrt =&gt; visit_f32x4_sqrt
+<a href=#624 id=624 data-nosnippet>624</a>            @simd F32x4Add =&gt; visit_f32x4_add
+<a href=#625 id=625 data-nosnippet>625</a>            @simd F32x4Sub =&gt; visit_f32x4_sub
+<a href=#626 id=626 data-nosnippet>626</a>            @simd F32x4Mul =&gt; visit_f32x4_mul
+<a href=#627 id=627 data-nosnippet>627</a>            @simd F32x4Div =&gt; visit_f32x4_div
+<a href=#628 id=628 data-nosnippet>628</a>            @simd F32x4Min =&gt; visit_f32x4_min
+<a href=#629 id=629 data-nosnippet>629</a>            @simd F32x4Max =&gt; visit_f32x4_max
+<a href=#630 id=630 data-nosnippet>630</a>            @simd F32x4PMin =&gt; visit_f32x4_pmin
+<a href=#631 id=631 data-nosnippet>631</a>            @simd F32x4PMax =&gt; visit_f32x4_pmax
+<a href=#632 id=632 data-nosnippet>632</a>            @simd F64x2Ceil =&gt; visit_f64x2_ceil
+<a href=#633 id=633 data-nosnippet>633</a>            @simd F64x2Floor =&gt; visit_f64x2_floor
+<a href=#634 id=634 data-nosnippet>634</a>            @simd F64x2Trunc =&gt; visit_f64x2_trunc
+<a href=#635 id=635 data-nosnippet>635</a>            @simd F64x2Nearest =&gt; visit_f64x2_nearest
+<a href=#636 id=636 data-nosnippet>636</a>            @simd F64x2Abs =&gt; visit_f64x2_abs
+<a href=#637 id=637 data-nosnippet>637</a>            @simd F64x2Neg =&gt; visit_f64x2_neg
+<a href=#638 id=638 data-nosnippet>638</a>            @simd F64x2Sqrt =&gt; visit_f64x2_sqrt
+<a href=#639 id=639 data-nosnippet>639</a>            @simd F64x2Add =&gt; visit_f64x2_add
+<a href=#640 id=640 data-nosnippet>640</a>            @simd F64x2Sub =&gt; visit_f64x2_sub
+<a href=#641 id=641 data-nosnippet>641</a>            @simd F64x2Mul =&gt; visit_f64x2_mul
+<a href=#642 id=642 data-nosnippet>642</a>            @simd F64x2Div =&gt; visit_f64x2_div
+<a href=#643 id=643 data-nosnippet>643</a>            @simd F64x2Min =&gt; visit_f64x2_min
+<a href=#644 id=644 data-nosnippet>644</a>            @simd F64x2Max =&gt; visit_f64x2_max
+<a href=#645 id=645 data-nosnippet>645</a>            @simd F64x2PMin =&gt; visit_f64x2_pmin
+<a href=#646 id=646 data-nosnippet>646</a>            @simd F64x2PMax =&gt; visit_f64x2_pmax
+<a href=#647 id=647 data-nosnippet>647</a>            @simd I32x4TruncSatF32x4S =&gt; visit_i32x4_trunc_sat_f32x4_s
+<a href=#648 id=648 data-nosnippet>648</a>            @simd I32x4TruncSatF32x4U =&gt; visit_i32x4_trunc_sat_f32x4_u
+<a href=#649 id=649 data-nosnippet>649</a>            @simd F32x4ConvertI32x4S =&gt; visit_f32x4_convert_i32x4_s
+<a href=#650 id=650 data-nosnippet>650</a>            @simd F32x4ConvertI32x4U =&gt; visit_f32x4_convert_i32x4_u
+<a href=#651 id=651 data-nosnippet>651</a>            @simd I32x4TruncSatF64x2SZero =&gt; visit_i32x4_trunc_sat_f64x2_s_zero
+<a href=#652 id=652 data-nosnippet>652</a>            @simd I32x4TruncSatF64x2UZero =&gt; visit_i32x4_trunc_sat_f64x2_u_zero
+<a href=#653 id=653 data-nosnippet>653</a>            @simd F64x2ConvertLowI32x4S =&gt; visit_f64x2_convert_low_i32x4_s
+<a href=#654 id=654 data-nosnippet>654</a>            @simd F64x2ConvertLowI32x4U =&gt; visit_f64x2_convert_low_i32x4_u
+<a href=#655 id=655 data-nosnippet>655</a>            @simd F32x4DemoteF64x2Zero =&gt; visit_f32x4_demote_f64x2_zero
+<a href=#656 id=656 data-nosnippet>656</a>            @simd F64x2PromoteLowF32x4 =&gt; visit_f64x2_promote_low_f32x4
+<a href=#657 id=657 data-nosnippet>657</a>
+<a href=#658 id=658 data-nosnippet>658</a>            <span class="comment">// Relaxed SIMD operators
+<a href=#659 id=659 data-nosnippet>659</a>            // https://github.com/WebAssembly/relaxed-simd
+<a href=#660 id=660 data-nosnippet>660</a>            </span>@relaxed_simd I8x16RelaxedSwizzle =&gt; visit_i8x16_relaxed_swizzle
+<a href=#661 id=661 data-nosnippet>661</a>            @relaxed_simd I32x4RelaxedTruncF32x4S =&gt; visit_i32x4_relaxed_trunc_f32x4_s
+<a href=#662 id=662 data-nosnippet>662</a>            @relaxed_simd I32x4RelaxedTruncF32x4U =&gt; visit_i32x4_relaxed_trunc_f32x4_u
+<a href=#663 id=663 data-nosnippet>663</a>            @relaxed_simd I32x4RelaxedTruncF64x2SZero =&gt; visit_i32x4_relaxed_trunc_f64x2_s_zero
+<a href=#664 id=664 data-nosnippet>664</a>            @relaxed_simd I32x4RelaxedTruncF64x2UZero =&gt; visit_i32x4_relaxed_trunc_f64x2_u_zero
+<a href=#665 id=665 data-nosnippet>665</a>            @relaxed_simd F32x4RelaxedMadd =&gt; visit_f32x4_relaxed_madd
+<a href=#666 id=666 data-nosnippet>666</a>            @relaxed_simd F32x4RelaxedNmadd =&gt; visit_f32x4_relaxed_nmadd
+<a href=#667 id=667 data-nosnippet>667</a>            @relaxed_simd F64x2RelaxedMadd =&gt; visit_f64x2_relaxed_madd
+<a href=#668 id=668 data-nosnippet>668</a>            @relaxed_simd F64x2RelaxedNmadd =&gt; visit_f64x2_relaxed_nmadd
+<a href=#669 id=669 data-nosnippet>669</a>            @relaxed_simd I8x16RelaxedLaneselect =&gt; visit_i8x16_relaxed_laneselect
+<a href=#670 id=670 data-nosnippet>670</a>            @relaxed_simd I16x8RelaxedLaneselect =&gt; visit_i16x8_relaxed_laneselect
+<a href=#671 id=671 data-nosnippet>671</a>            @relaxed_simd I32x4RelaxedLaneselect =&gt; visit_i32x4_relaxed_laneselect
+<a href=#672 id=672 data-nosnippet>672</a>            @relaxed_simd I64x2RelaxedLaneselect =&gt; visit_i64x2_relaxed_laneselect
+<a href=#673 id=673 data-nosnippet>673</a>            @relaxed_simd F32x4RelaxedMin =&gt; visit_f32x4_relaxed_min
+<a href=#674 id=674 data-nosnippet>674</a>            @relaxed_simd F32x4RelaxedMax =&gt; visit_f32x4_relaxed_max
+<a href=#675 id=675 data-nosnippet>675</a>            @relaxed_simd F64x2RelaxedMin =&gt; visit_f64x2_relaxed_min
+<a href=#676 id=676 data-nosnippet>676</a>            @relaxed_simd F64x2RelaxedMax =&gt; visit_f64x2_relaxed_max
+<a href=#677 id=677 data-nosnippet>677</a>            @relaxed_simd I16x8RelaxedQ15mulrS =&gt; visit_i16x8_relaxed_q15mulr_s
+<a href=#678 id=678 data-nosnippet>678</a>            @relaxed_simd I16x8RelaxedDotI8x16I7x16S =&gt; visit_i16x8_relaxed_dot_i8x16_i7x16_s
+<a href=#679 id=679 data-nosnippet>679</a>            @relaxed_simd I32x4RelaxedDotI8x16I7x16AddS =&gt; visit_i32x4_relaxed_dot_i8x16_i7x16_add_s
+<a href=#680 id=680 data-nosnippet>680</a>
+<a href=#681 id=681 data-nosnippet>681</a>            <span class="comment">// Typed Function references
+<a href=#682 id=682 data-nosnippet>682</a>            </span>@function_references CallRef { hty: <span class="macro-nonterminal">$crate::HeapType </span>} =&gt; visit_call_ref
+<a href=#683 id=683 data-nosnippet>683</a>            @function_references ReturnCallRef { hty: <span class="macro-nonterminal">$crate::HeapType </span>} =&gt; visit_return_call_ref
+<a href=#684 id=684 data-nosnippet>684</a>            @function_references RefAsNonNull =&gt; visit_ref_as_non_null
+<a href=#685 id=685 data-nosnippet>685</a>            @function_references BrOnNull { relative_depth: u32 } =&gt; visit_br_on_null
+<a href=#686 id=686 data-nosnippet>686</a>            @function_references BrOnNonNull { relative_depth: u32 } =&gt; visit_br_on_non_null
+<a href=#687 id=687 data-nosnippet>687</a>        }
+<a href=#688 id=688 data-nosnippet>688</a>    };
+<a href=#689 id=689 data-nosnippet>689</a>}
+<a href=#690 id=690 data-nosnippet>690</a>
+<a href=#691 id=691 data-nosnippet>691</a><span class="macro">macro_rules!</span> format_err {
+<a href=#692 id=692 data-nosnippet>692</a>    (<span class="macro-nonterminal">$offset</span>:expr, $(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {
+<a href=#693 id=693 data-nosnippet>693</a>        <span class="kw">crate</span>::BinaryReaderError::fmt(<span class="macro">format_args!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>), <span class="macro-nonterminal">$offset</span>)
+<a href=#694 id=694 data-nosnippet>694</a>    }
+<a href=#695 id=695 data-nosnippet>695</a>}
+<a href=#696 id=696 data-nosnippet>696</a>
+<a href=#697 id=697 data-nosnippet>697</a><span class="macro">macro_rules!</span> bail {
+<a href=#698 id=698 data-nosnippet>698</a>    ($(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format_err!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>))}
+<a href=#699 id=699 data-nosnippet>699</a>}
+<a href=#700 id=700 data-nosnippet>700</a>
+<a href=#701 id=701 data-nosnippet>701</a><span class="kw">pub use </span><span class="kw">crate</span>::binary_reader::{BinaryReader, BinaryReaderError, <span class="prelude-ty">Result</span>};
+<a href=#702 id=702 data-nosnippet>702</a><span class="kw">pub use </span><span class="kw">crate</span>::parser::<span class="kw-2">*</span>;
+<a href=#703 id=703 data-nosnippet>703</a><span class="kw">pub use </span><span class="kw">crate</span>::readers::<span class="kw-2">*</span>;
+<a href=#704 id=704 data-nosnippet>704</a><span class="kw">pub use </span><span class="kw">crate</span>::resources::<span class="kw-2">*</span>;
+<a href=#705 id=705 data-nosnippet>705</a><span class="kw">pub use </span><span class="kw">crate</span>::validator::<span class="kw-2">*</span>;
+<a href=#706 id=706 data-nosnippet>706</a>
+<a href=#707 id=707 data-nosnippet>707</a><span class="kw">mod </span>binary_reader;
+<a href=#708 id=708 data-nosnippet>708</a><span class="kw">mod </span>limits;
+<a href=#709 id=709 data-nosnippet>709</a><span class="kw">mod </span>parser;
+<a href=#710 id=710 data-nosnippet>710</a><span class="kw">mod </span>readers;
+<a href=#711 id=711 data-nosnippet>711</a><span class="kw">mod </span>resources;
+<a href=#712 id=712 data-nosnippet>712</a><span class="kw">mod </span>validator;</code></pre></div></section></main></body></html>

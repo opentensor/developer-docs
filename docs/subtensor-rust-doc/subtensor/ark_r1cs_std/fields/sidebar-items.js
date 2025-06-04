@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["cubic_extension","fp","fp12","fp2","fp3","fp4","fp6_2over3","fp6_3over2","nonnative","quadratic_extension"],"trait":["FieldOpsBounds","FieldVar"]};

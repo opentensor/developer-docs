@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Compress","SerializationError","Validate"],"fn":["buffer_bit_byte_size","buffer_byte_size"],"struct":["EmptyFlags"],"trait":["CanonicalDeserialize","CanonicalDeserializeWithFlags","CanonicalSerialize","CanonicalSerializeHashExt","CanonicalSerializeWithFlags","Flags","Read","Valid","Write"]};

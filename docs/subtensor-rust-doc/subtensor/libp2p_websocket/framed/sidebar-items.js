@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Data","Incoming","OutgoingData"],"struct":["Connection","WsConfig"]};

@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["bounded_collections",[["impl&lt;K, V, S&gt; <a class=\"trait\" href=\"parity_scale_codec/codec/trait.DecodeLength.html\" title=\"trait parity_scale_codec::codec::DecodeLength\">DecodeLength</a> for <a class=\"struct\" href=\"bounded_collections/bounded_btree_map/struct.BoundedBTreeMap.html\" title=\"struct bounded_collections::bounded_btree_map::BoundedBTreeMap\">BoundedBTreeMap</a>&lt;K, V, S&gt;"],["impl&lt;T, S&gt; <a class=\"trait\" href=\"parity_scale_codec/codec/trait.DecodeLength.html\" title=\"trait parity_scale_codec::codec::DecodeLength\">DecodeLength</a> for <a class=\"struct\" href=\"bounded_collections/bounded_btree_set/struct.BoundedBTreeSet.html\" title=\"struct bounded_collections::bounded_btree_set::BoundedBTreeSet\">BoundedBTreeSet</a>&lt;T, S&gt;"],["impl&lt;T, S&gt; <a class=\"trait\" href=\"parity_scale_codec/codec/trait.DecodeLength.html\" title=\"trait parity_scale_codec::codec::DecodeLength\">DecodeLength</a> for <a class=\"struct\" href=\"bounded_collections/bounded_vec/struct.BoundedVec.html\" title=\"struct bounded_collections::bounded_vec::BoundedVec\">BoundedVec</a>&lt;T, S&gt;"],["impl&lt;T, S&gt; <a class=\"trait\" href=\"parity_scale_codec/codec/trait.DecodeLength.html\" title=\"trait parity_scale_codec::codec::DecodeLength\">DecodeLength</a> for <a class=\"struct\" href=\"bounded_collections/weak_bounded_vec/struct.WeakBoundedVec.html\" title=\"struct bounded_collections::weak_bounded_vec::WeakBoundedVec\">WeakBoundedVec</a>&lt;T, S&gt;"]]],["parity_scale_codec",[]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1499,26]}

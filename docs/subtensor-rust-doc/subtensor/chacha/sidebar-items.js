@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Error"],"fn":["permute","permute_and_add","selftest"],"struct":["ChaCha"],"trait":["KeyStream","SeekableKeyStream"]};

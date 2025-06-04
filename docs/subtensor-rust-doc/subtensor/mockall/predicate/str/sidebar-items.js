@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["contains","ends_with","is_empty","starts_with"]};

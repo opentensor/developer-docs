@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["CaseTree"],"trait":["CaseTreeExt"]};

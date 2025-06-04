@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Declare statics that can be initialized with non const fonctions and safe mutable statics"><title>dynamic in static_init - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="static_init" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc attr"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../static_init/index.html">static_<wbr>init</a><span class="version">1.0.3</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">dynamic</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#lazy-statics" title="Lazy statics">Lazy statics</a><ul><li><a href="#lesser-lazy-statics" title="Lesser Lazy Statics">Lesser Lazy Statics</a></li><li><a href="#realy-lazy-statics" title="Realy lazy Statics">Realy lazy Statics</a></li><li><a href="#finalized-statics" title="Finalized statics">Finalized statics</a></li><li><a href="#tolerances" title="Tolerances">Tolerances</a></li></ul></li><li><a href="#locked-lazy-statics" title="Locked lazy statics">Locked lazy statics</a><ul><li><a href="#dropped-locked-lazy-statics" title="Dropped locked lazy statics">Dropped locked lazy statics</a></li><li><a href="#primed-locked-lazy-statics" title="Primed locked lazy statics">Primed locked lazy statics</a></li></ul></li><li><a href="#raw-statics" title="Raw statics">Raw statics</a><ul><li><a href="#safety" title="Safety">Safety</a></li><li><a href="#execution-order" title="Execution Order">Execution Order</a></li><li><a href="#drop" title="Drop">Drop</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate static_<wbr>init</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">static_init</a></div><h1>Attribute Macro <span class="attr">dynamic</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/static_init_macro/lib.rs.html#134">Source</a> </span></div><pre class="rust item-decl"><code>#[dynamic]</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Declare statics that can be initialized with non const fonctions and safe mutable statics</p>
+<p>Statics on which this attribute is applied will be be initialized at run time (optionaly see
+bellow), before main start. This allow statics initialization with non const expressions.</p>
+<p>There are two main categories of statics:</p>
+<ul>
+<li>
+<p><em>lazy statics</em> which are statics that are always safe to use. They may be initialized on
+first acces or before main is called;</p>
+</li>
+<li>
+<p><em>locked lazy statics</em> which are the mutable version of lazy statics.</p>
+</li>
+<li>
+<p><em>raw statics</em>, which are initialized at program start-up and absolutely unchecked. Any
+access to them requires <code>unsafe</code> block;</p>
+</li>
+</ul>
+<h2 id="lazy-statics"><a class="doc-anchor" href="#lazy-statics">§</a>Lazy statics</h2>
+<p>Those statics are initialized on first access. An optimization implemented by <em>lesser lazy statics</em>
+initialize the static before main is called on all tier1 plateform but mach.</p>
+<p>The declared object is encapsulated in a type that implement <code>Deref</code>.</p>
+<p>Other access functionnality and state information are accessible through the <code>LazyAccess</code>
+trait.</p>
+<p>Those lazy can be used with regular statics and thread locals.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="attr">#[dynamic]
+</span><span class="kw">static </span>A :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="attr">#[dynamic]
+#[thread_local]
+</span><span class="kw">static </span>TL :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+</code></pre></div>
+<h3 id="lesser-lazy-statics"><a class="doc-anchor" href="#lesser-lazy-statics">§</a>Lesser Lazy Statics</h3>
+<p>They are declared with the <code>#[dynamic]</code> attribute (or equivalently <code>#[dynamic(lesser_lazy)]</code>.
+They are either initialized on first access or before main is called. They provide
+unsurpassable access performance: their access time is comparable to const initialized statics
+but they support non const initialization:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[dynamic]
+</span><span class="kw">static </span>V :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="macro">assert_eq!</span>(V.len(), <span class="number">2</span>);</code></pre></div>
+<h3 id="realy-lazy-statics"><a class="doc-anchor" href="#realy-lazy-statics">§</a>Realy lazy Statics</h3>
+<p>When initialization on first access is a requirement, the static shall be attributed with
+<code>#[dynamic(lazy)]</code></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[dynamic(lazy)]
+</span><span class="kw">static </span>V :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span>V, <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>]);</code></pre></div>
+<h3 id="finalized-statics"><a class="doc-anchor" href="#finalized-statics">§</a>Finalized statics</h3>
+<p>The attribute argument <code>finalize</code> can be used if the declared type of
+the static implement <code>Finaly</code> trait. The finalize method is called at
+program exit or at thread exit for thread locals. (NB: mutable lazy also
+support drop, see below)</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+
+<span class="kw">struct </span>A(i32);
+
+<span class="kw">impl </span>Finaly <span class="kw">for </span>A {
+    <span class="kw">fn </span>finaly(<span class="kw-2">&amp;</span><span class="self">self</span>){<span class="comment">/* some clean up code */ </span>}
+}
+
+<span class="attr">#[dynamic(finalize)] </span><span class="comment">//finalize execute at program exit
+</span><span class="kw">static </span>X :A = A(<span class="number">33</span>);
+
+<span class="attr">#[dynamic(lazy,finalize)] </span><span class="comment">//finalize executed at thread exit
+</span><span class="attr">#[thread_local]
+</span><span class="kw">static </span>Y :A = A(<span class="number">33</span>);</code></pre></div>
+<h3 id="tolerances"><a class="doc-anchor" href="#tolerances">§</a>Tolerances</h3><h4 id="initialization-fault-tolerance"><a class="doc-anchor" href="#initialization-fault-tolerance">§</a>Initialization fault tolerance</h4>
+<p>By default if the initialization of a lazy panic, initialization will be attempted
+once again on the next access attempt. If this is not desired the lazy should be declared
+with attribute argument <code>try_init_once</code>, in which case, the lazy will be poisonned if
+initialization panics.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[dynamic(try_init_once)]
+</span><span class="kw">static </span>X :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="attr">#[dynamic(lazy,try_init_once)] </span><span class="comment">//attribute argument can be combined
+</span><span class="kw">static </span>Y :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];</code></pre></div>
+<h4 id="registration-for-finalization-tolerance"><a class="doc-anchor" href="#registration-for-finalization-tolerance">§</a>Registration for finalization tolerance</h4>
+<p>By default lazy that intended to be finalized (because they use the <code>finalize</code> or <code>drop</code>
+attribute argument) refuse to initialize if registration of the finalization or drop at
+program exit or thread exit fails.</p>
+<p>If this is not desired, the <code>tolerate_leak</code> attribute argument can be used.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>A(i32);
+
+<span class="kw">impl </span>Finaly <span class="kw">for </span>A {
+    <span class="kw">fn </span>finaly(<span class="kw-2">&amp;</span><span class="self">self</span>){<span class="comment">/* some clean up code */ </span>}
+}
+
+<span class="attr">#[dynamic(finalize,tolerate_leak)]
+</span><span class="kw">static </span>X :A = A(<span class="number">21</span>);
+<span class="comment">//the initialization may succeed even if it is impossible to register
+//the call to finaly at program exit</span></code></pre></div>
+<h2 id="locked-lazy-statics"><a class="doc-anchor" href="#locked-lazy-statics">§</a>Locked lazy statics</h2>
+<p>Those statics are mutable statics, initialized on the first acces and protected behind
+a kind of read/write lock specialy designed for them.</p>
+<p>The are declared as <em>lazy statics</em> but with the <code>mut</code> keyword. The macro will actualy remove
+the <code>mut</code> keyword and use a r/w locked wrapper type:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="attr">#[dynamic]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+V.write().push(<span class="number">3</span>);
+
+<span class="macro">assert_eq!</span>(<span class="kw-2">*</span>V.read(), <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</code></pre></div>
+<p>Those statics provides different methods to access the target object. See the documentation of
+<a href="struct.LockedLazy.html" title="struct static_init::LockedLazy">LockedLazy</a> for exemple. All <em>locked lazy</em> types provide the same methods.</p>
+<p>Locked lazy statics support all attribute arguments supported by <em>lazy statics</em>: <code>finalize</code>,
+<code>try_init_once</code>, <code>tolerate_leak</code>. Moreover they support two other arguments:</p>
+<ul>
+<li><code>drop</code> in which case the static will be dropped at program exit:</li>
+<li><code>prime</code> which is a static that support access before it is actualy initialized
+and after it is droped;</li>
+</ul>
+<h3 id="dropped-locked-lazy-statics"><a class="doc-anchor" href="#dropped-locked-lazy-statics">§</a>Dropped locked lazy statics</h3>
+<p>Locked lazy statics can be droped at program exit or thread exit when declared with
+the <code>drop</code> attribute argument</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+
+
+<span class="attr">#[dynamic(drop)]
+#[thread_local]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="attr">#[dynamic(lazy,drop,tolerate_leak)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V2: Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];</code></pre></div>
+<h3 id="primed-locked-lazy-statics"><a class="doc-anchor" href="#primed-locked-lazy-statics">§</a>Primed locked lazy statics</h3>
+<p>Those statics model the case where an object should have a
+standard behavior and a fallback behavior after ressources
+are release or not yet acquired.</p>
+<p>Those statics are initialized in two steps:</p>
+<ul>
+<li>
+<p>a const initialization that happens at compile time</p>
+</li>
+<li>
+<p>a dynamic intialization that happens the first time they are accessed if
+if is declared with <code>lazy</code> attribute argument or just before.</p>
+</li>
+</ul>
+<p>More over they are conceptualy uninitialized if the type of the statics
+implement the <code>Uninit</code> trait and is declared with the <code>drop</code> attribute argument.</p>
+<p>They must be initialized with a match expression as exemplified bellow:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>static_init::{dynamic, Uninit};
+
+<span class="attr">#[dynamic(prime)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>O: <span class="prelude-ty">Option</span>&lt;Vec&lt;i32&gt;&gt; = <span class="kw">match </span>INIT {
+    PRIME =&gt; <span class="prelude-val">None</span>,
+    DYN =&gt; <span class="prelude-val">Some</span>(<span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>]),
+    };
+
+<span class="attr">#[dynamic(lazy,prime)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>OLAZY: <span class="prelude-ty">Option</span>&lt;Vec&lt;i32&gt;&gt; = <span class="kw">match </span>INIT {
+    PRIME =&gt; <span class="prelude-val">None</span>,
+    DYN =&gt; <span class="prelude-val">Some</span>(<span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>]),
+    };
+
+
+<span class="kw">struct </span>A(<span class="prelude-ty">Option</span>&lt;Vec&lt;i32&gt;&gt;);
+
+<span class="kw">impl </span>Uninit <span class="kw">for </span>A {
+    <span class="kw">fn </span>uninit(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.take();
+    }
+}
+
+<span class="attr">#[dynamic(prime,finalize)]</span><span class="comment">//finalize/drop actualy means uninit for primed lazy
+</span><span class="kw">static </span><span class="kw-2">mut </span>P: A = <span class="kw">match </span>INIT {
+    PRIME =&gt; A(<span class="prelude-val">None</span>),
+    DYN =&gt; A(<span class="prelude-val">Some</span>(<span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>])),
+    };
+
+<span class="kw">match </span>P.primed_read() {
+    <span class="prelude-val">Ok</span>(read_lock) =&gt; (),<span class="comment">/*a read lock that refers to the initialized statics */
+    </span><span class="prelude-val">Err</span>(read_lock) =&gt; (),<span class="comment">/* post finalization access, uninit has already been called*/
+    </span>}
+
+<span class="kw">match </span>P.primed_write() {
+    <span class="prelude-val">Ok</span>(write_lock) =&gt; (),<span class="comment">/*a write lock that refers to the initialized statics */
+    </span><span class="prelude-val">Err</span>(read_lock) =&gt; (),<span class="comment">/* post finalization access, uninit has already been called*/
+    </span>}</code></pre></div>
+<h2 id="raw-statics"><a class="doc-anchor" href="#raw-statics">§</a>Raw statics</h2>
+<p>Those statics will be initialized at program startup, without ordering, accept between those
+that have different priorities on plateform that support priorities. Those statics are
+supported on unixes and windows with priorities and mac without priorities.</p>
+<h3 id="safety"><a class="doc-anchor" href="#safety">§</a>Safety</h3>
+<p>During initialization, any access to other
+“dynamic” statics initialized with a lower priority will cause undefined behavior. Similarly,
+during drop any access to a “dynamic” static dropped with a lower priority will cause undefined
+behavior. For this reason those statics are always turn into mutable statics to ensure that all
+access attempt is unsafe.</p>
+<p>Those statics are interesting only to get the optimalest performance at the price of unsafety.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[dynamic(<span class="number">0</span>)]
+</span><span class="kw">static </span>V :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="macro">assert!</span>(<span class="kw">unsafe</span>{<span class="kw-2">*</span>V == <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>]})</code></pre></div>
+<h3 id="execution-order"><a class="doc-anchor" href="#execution-order">§</a>Execution Order</h3>
+<p>The execution order of raw static initializations is unspecified. Nevertheless on ELF plateform (linux,any unixes but mac) and
+windows plateform a priority can be specified using the syntax <code>dynamic(&lt;num&gt;)</code> where
+<code>&lt;num&gt;</code> is a number included in the range [0 ; 2<sup>16</sup>-1].</p>
+<p>Statics with priority number 65535 are initialized first (in unspecified order), then statics
+with priority number 65534 are initialized …  then statics
+with priority number 0.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">//V1 must be initialized first
+//because V2 uses the value of V1.
+
+</span><span class="attr">#[dynamic(<span class="number">20</span>)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V1 :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="attr">#[dynamic(<span class="number">10</span>)]
+</span><span class="kw">static </span>V2 :Vec&lt;i32&gt; = <span class="kw">unsafe</span>{V1.push(<span class="number">3</span>); V1.clone()};</code></pre></div>
+<h3 id="drop"><a class="doc-anchor" href="#drop">§</a>Drop</h3>
+<p>Those statics can use the <code>drop</code> attribute argument. In this case
+the static will be droped at program exit</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[dynamic(<span class="number">0</span>, drop)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V1 :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];</code></pre></div>
+<p>The drop priority can be specified with the <code>drop=&lt;priority&gt;</code> syntax. If no priority
+is given, the drop priority will equal the one of the initialization priority.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="attr">#[dynamic(<span class="number">10</span>, drop)] </span><span class="comment">//equivalent to #[dynamic(10,drop=10)]
+//or longer #[dynamic(init=10,drop=10)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V1 :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];
+
+<span class="attr">#[dynamic(<span class="number">42</span>, drop=<span class="number">33</span>)]
+</span><span class="kw">static </span><span class="kw-2">mut </span>V2 :Vec&lt;i32&gt; = <span class="macro">vec!</span>[<span class="number">1</span>,<span class="number">2</span>];</code></pre></div>
+<p>The drop priorities are sequenced in the reverse order of initialization priority. The smaller
+is the priority the sooner is droped the static.</p>
+<p>Finaly the <code>drop_only=&lt;priority&gt;</code> is equivalent to <code>#[dynamic(0,drop=&lt;priority&gt;)]</code> except that the
+static will be const initialized.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>A;
+<span class="kw">impl </span>Drop <span class="kw">for </span>A {
+  <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {}
+  }
+
+<span class="attr">#[dynamic(drop_only=<span class="number">33</span>)]
+</span><span class="kw">static </span>V2: A = A;</code></pre></div>
+</div></details></section></div></main></body></html>

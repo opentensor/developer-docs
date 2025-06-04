@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Multistream-select Protocol Negotiation"><title>multistream_select - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="multistream_select" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../static.files/storage-3a5871a4.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../multistream_select/index.html">multistream_<wbr>select</a><span class="version">0.13.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#multistream-select-protocol-negotiation" title="Multistream-select Protocol Negotiation">Multistream-select Protocol Negotiation</a><ul><li><a href="#roles" title="Roles">Roles</a></li><li><a href="#negotiated" title="`Negotiated`"><code>Negotiated</code></a></li><li><a href="#examples" title="Examples">Examples</a></li></ul></li></ul><h3><a href="#structs">Crate Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Crate <span>multistream_select</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/multistream_select/lib.rs.html#21-144">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="multistream-select-protocol-negotiation"><a class="doc-anchor" href="#multistream-select-protocol-negotiation">§</a>Multistream-select Protocol Negotiation</h2>
+<p>This crate implements the <code>multistream-select</code> protocol, which is the protocol
+used by libp2p to negotiate which application-layer protocol to use with the
+remote on a connection or substream.</p>
+<blockquote>
+<p><strong>Note</strong>: This crate is used primarily by core components of <em>libp2p</em> and it
+is usually not used directly on its own.</p>
+</blockquote>
+<h3 id="roles"><a class="doc-anchor" href="#roles">§</a>Roles</h3>
+<p>Two peers using the multistream-select negotiation protocol on an I/O stream
+are distinguished by their role as a <em>dialer</em> (or <em>initiator</em>) or as a <em>listener</em>
+(or <em>responder</em>). Thereby the dialer plays the active part, driving the protocol,
+whereas the listener reacts to the messages received.</p>
+<p>The dialer has two options: it can either pick a protocol from the complete list
+of protocols that the listener supports, or it can directly suggest a protocol.
+Either way, a selected protocol is sent to the listener who can either accept (by
+echoing the same protocol) or reject (by responding with a message stating
+“not available”). If a suggested protocol is not available, the dialer may
+suggest another protocol. This process continues until a protocol is agreed upon,
+yielding a <a href="struct.Negotiated.html" title="struct multistream_select::Negotiated"><code>Negotiated</code></a> stream, or the dialer has run out of
+alternatives.</p>
+<p>See <a href="fn.dialer_select_proto.html" title="fn multistream_select::dialer_select_proto"><code>dialer_select_proto</code></a> and
+<a href="fn.listener_select_proto.html" title="fn multistream_select::listener_select_proto"><code>listener_select_proto</code></a>.</p>
+<h3 id="negotiated"><a class="doc-anchor" href="#negotiated">§</a><a href="struct.Negotiated.html" title="struct multistream_select::Negotiated"><code>Negotiated</code></a></h3>
+<p>A <code>Negotiated</code> represents an I/O stream that has settled on a protocol
+to use. By default, with <a href="enum.Version.html#variant.V1" title="variant multistream_select::Version::V1"><code>Version::V1</code></a>, protocol negotiation is always
+at least one dedicated round-trip message exchange, before application
+data for the negotiated protocol can be sent by the dialer. There is
+a variant <a href="enum.Version.html#variant.V1Lazy" title="variant multistream_select::Version::V1Lazy"><code>Version::V1Lazy</code></a> that permits 0-RTT negotiation if the
+dialer only supports a single protocol. In that case, when a dialer
+settles on a protocol to use, the <a href="struct.DialerSelectFuture.html" title="struct multistream_select::DialerSelectFuture"><code>DialerSelectFuture</code></a> yields a
+<a href="struct.Negotiated.html" title="struct multistream_select::Negotiated"><code>Negotiated</code></a> I/O stream before the negotiation
+data has been flushed. It is then expecting confirmation for that protocol
+as the first messages read from the stream. This behaviour allows the dialer
+to immediately send data relating to the negotiated protocol together with the
+remaining negotiation message(s). Note, however, that a dialer that performs
+multiple 0-RTT negotiations in sequence for different protocols layered on
+top of each other may trigger undesirable behaviour for a listener not
+supporting one of the intermediate protocols. See
+<a href="fn.dialer_select_proto.html" title="fn multistream_select::dialer_select_proto"><code>dialer_select_proto</code></a> and the documentation
+of <a href="enum.Version.html#variant.V1Lazy" title="variant multistream_select::Version::V1Lazy"><code>Version::V1Lazy</code></a> for further details.</p>
+<h3 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h3>
+<p>For a dialer:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>async_std::net::TcpStream;
+<span class="kw">use </span>multistream_select::{dialer_select_proto, Version};
+<span class="kw">use </span>futures::prelude::<span class="kw-2">*</span>;
+
+async_std::task::block_on(<span class="kw">async move </span>{
+    <span class="kw">let </span>socket = TcpStream::connect(<span class="string">"127.0.0.1:10333"</span>).<span class="kw">await</span>.unwrap();
+
+    <span class="kw">let </span>protos = <span class="macro">vec!</span>[<span class="string">"/echo/1.0.0"</span>, <span class="string">"/echo/2.5.0"</span>];
+    <span class="kw">let </span>(protocol, _io) = dialer_select_proto(socket, protos, Version::V1).<span class="kw">await</span>.unwrap();
+
+    <span class="macro">println!</span>(<span class="string">"Negotiated protocol: {:?}"</span>, protocol);
+    <span class="comment">// You can now use `_io` to communicate with the remote.
+</span>});</code></pre></div>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.DialerSelectFuture.html" title="struct multistream_select::DialerSelectFuture">Dialer<wbr>Select<wbr>Future</a></dt><dd>A <code>Future</code> returned by <a href="fn.dialer_select_proto.html" title="fn multistream_select::dialer_select_proto"><code>dialer_select_proto</code></a> which negotiates
+a protocol iteratively by considering one protocol after the other.</dd><dt><a class="struct" href="struct.ListenerSelectFuture.html" title="struct multistream_select::ListenerSelectFuture">Listener<wbr>Select<wbr>Future</a></dt><dd>The <code>Future</code> returned by <a href="fn.listener_select_proto.html" title="fn multistream_select::listener_select_proto"><code>listener_select_proto</code></a> that performs a
+multistream-select protocol negotiation on an underlying I/O stream.</dd><dt><a class="struct" href="struct.Negotiated.html" title="struct multistream_select::Negotiated">Negotiated</a></dt><dd>An I/O stream that has settled on an (application-layer) protocol to use.</dd><dt><a class="struct" href="struct.NegotiatedComplete.html" title="struct multistream_select::NegotiatedComplete">Negotiated<wbr>Complete</a></dt><dd>A <code>Future</code> that waits on the completion of protocol negotiation.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.NegotiationError.html" title="enum multistream_select::NegotiationError">Negotiation<wbr>Error</a></dt><dd>Error that can happen when negotiating a protocol with the remote.</dd><dt><a class="enum" href="enum.ProtocolError.html" title="enum multistream_select::ProtocolError">Protocol<wbr>Error</a></dt><dd>A protocol error.</dd><dt><a class="enum" href="enum.Version.html" title="enum multistream_select::Version">Version</a></dt><dd>Supported multistream-select versions.</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.dialer_select_proto.html" title="fn multistream_select::dialer_select_proto">dialer_<wbr>select_<wbr>proto</a></dt><dd>Returns a <code>Future</code> that negotiates a protocol on the given I/O stream
+for a peer acting as the <em>dialer</em> (or <em>initiator</em>).</dd><dt><a class="fn" href="fn.listener_select_proto.html" title="fn multistream_select::listener_select_proto">listener_<wbr>select_<wbr>proto</a></dt><dd>Returns a <code>Future</code> that negotiates a protocol on the given I/O stream
+for a peer acting as the <em>listener</em> (or <em>responder</em>).</dd></dl></section></div></main></body></html>

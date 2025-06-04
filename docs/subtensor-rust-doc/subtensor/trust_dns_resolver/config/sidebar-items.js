@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["CLOUDFLARE_IPS","GOOGLE_IPS","QUAD9_IPS"],"enum":["LookupIpStrategy","Protocol","ServerOrderingStrategy"],"struct":["NameServerConfig","NameServerConfigGroup","ResolverConfig","ResolverOpts"]};

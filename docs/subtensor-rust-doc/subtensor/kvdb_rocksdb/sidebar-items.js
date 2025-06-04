@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DB_DEFAULT_COLUMN_MEMORY_BUDGET_MB","DB_DEFAULT_MEMORY_BUDGET_MB"],"fn":["rotational_from_df_output"],"struct":["CompactionProfile","Database","DatabaseConfig"]};

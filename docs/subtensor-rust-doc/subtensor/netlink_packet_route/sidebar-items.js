@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["NetlinkPayload"],"macro":["TC_H_MAKE"],"mod":["rtnl","traits"],"struct":["DecodeError","ErrorMessage","NetlinkBuffer","NetlinkHeader","NetlinkMessage"]};

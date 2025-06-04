@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["pallet","weights"],"struct":["CrowdloanInfo"],"type":["BalanceOf","BoundedCallOf","CrowdloanId","CrowdloanInfoOf","CurrencyOf"]};

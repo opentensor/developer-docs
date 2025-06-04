@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["NonNativeFieldMulResultVar","NonNativeFieldVar"],"mod":["params"],"struct":["AllocatedNonNativeFieldMulResultVar","AllocatedNonNativeFieldVar","NonNativeFieldConfig"]};

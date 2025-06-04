@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Block Execution"><title>frame_executive::block_flowchart - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="frame_executive" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../frame_executive/index.html">frame_<wbr>executive</a><span class="version">38.0.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module block_<wbr>flowchart</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#block-execution" title="Block Execution">Block Execution</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate frame_<wbr>executive</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">frame_executive</a></div><h1>Module <span>block_flowchart</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/frame_executive/lib.rs.html#149">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="block-execution"><a class="doc-anchor" href="#block-execution">§</a>Block Execution</h2>
+<p>These are the steps of block execution as done by <a href="../struct.Executive.html#method.execute_block" title="associated function frame_executive::Executive::execute_block"><code>Executive::execute_block</code></a>. A block is
+invalid if any of them fail.</p>
+<script type="module">
+    const mermaidModuleFile = "static.files.mermaid/mermaid.esm.min.mjs";
+    const fallbackRemoteUrl = "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+    const rustdocVarsId= "rustdoc-vars";
+    const dataRootPathAttr = "data-root-path";
+
+
+    function initializeMermaid(mermaid) {
+     var amrn_mermaid_theme =
+         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+         ? 'dark'
+         : 'default';
+
+      mermaid.initialize({
+        'startOnLoad':'true',
+        'theme': amrn_mermaid_theme,
+        'logLevel': 3 });
+      mermaid.run();
+    }
+
+	function failedToLoadWarnings() {
+		for(var elem of document.getElementsByClassName("mermaid")) {
+			 elem.innerHTML =
+			 `<div> <mark>
+			  &#9888; Cannot render diagram! Failed to import module from local
+			  file and remote location also!
+			  Either access the rustdocs via HTTP/S using a
+			  <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server">
+			   local web server
+			  </a>, for example:
+			   python3 -m http.server --directory target/doc/, <br> or enable local file access in your
+			   Safari/Firefox/Chrome browser, for example
+			  starting Chrome with flag '--allow-file-access-from-files'.
+			  </mark></div> `;
+		}
+	}
+
+
+    // If rustdoc is read from file directly, the import of mermaid module
+    // from file will fail. In this case falling back to remote location.
+    // If neither succeeds, the mermaid markdown is replaced by notice to
+    // enable file acecss in browser.
+    try {
+       var rootPath = document
+         .getElementById(rustdocVarsId)
+         .attributes[dataRootPathAttr]
+         .value;
+       const {
+         default: mermaid,
+       } = await import(rootPath + mermaidModuleFile);
+	   initializeMermaid(mermaid);
+    } catch (e) {
+       try {
+         const {
+            default: mermaid,
+         } = await import(fallbackRemoteUrl);
+	     initializeMermaid(mermaid);
+       } catch (e) {
+		 failedToLoadWarnings();
+	   }
+    }
+</script>
+<div class="mermaid">
+ flowchart TD
+     Executive::execute_block --> on_runtime_upgrade
+     on_runtime_upgrade --> System::initialize
+     Executive::initialize_block --> System::initialize
+     System::initialize --> on_initialize
+     on_initialize --> PreInherents[System::PreInherents]
+     PreInherents --> Inherents[Apply Inherents]
+     Inherents --> PostInherents[System::PostInherents]
+     PostInherents --> Check{MBM ongoing?}
+     Check -->|No| poll
+     Check -->|Yes| post_transactions_2[System::PostTransaction]
+     post_transactions_2 --> Step[MBMs::step]
+     Step --> on_finalize
+     poll --> transactions[Apply Transactions]
+     transactions --> post_transactions_1[System::PostTransaction]
+     post_transactions_1 --> CheckIdle{Weight remaining?}
+     CheckIdle -->|Yes| on_idle
+     CheckIdle -->|No| on_finalize
+     on_idle --> on_finalize
+</div></div></details></section></div></main></body></html>

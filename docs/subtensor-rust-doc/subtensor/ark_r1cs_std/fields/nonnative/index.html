@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This module contains a generic implementation of “nonnative” prime field variables. It emulates `Fp` arithmetic using `Fq` operations, where `p != q`."><title>ark_r1cs_std::fields::nonnative - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6c3ea77c.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="ark_r1cs_std" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0 (05f9846f8 2025-03-31)" data-channel="1.86.0" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../../static.files/storage-3a5871a4.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../ark_r1cs_std/index.html">ark_<wbr>r1cs_<wbr>std</a><span class="version">0.4.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module nonnative</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#overview" title="Overview">Overview</a></li><li><a href="#usage" title="Usage">Usage</a></li><li><a href="#advanced-optimization" title="Advanced optimization">Advanced optimization</a></li><li><a href="#inspiration-and-basic-design" title="Inspiration and basic design">Inspiration and basic design</a></li><li><a href="#references" title="References">References</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In ark_<wbr>r1cs_<wbr>std::<wbr>fields</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">ark_r1cs_std</a>::<wbr><a href="../index.html">fields</a></div><h1>Module <span>nonnative</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/ark_r1cs_std/fields/nonnative/mod.rs.html#1-202">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This module contains a generic implementation of “nonnative” prime field
+variables. It emulates <code>Fp</code> arithmetic using <code>Fq</code> operations, where <code>p != q</code>.</p>
+<h3 id="overview"><a class="doc-anchor" href="#overview">§</a>Overview</h3>
+<p>This module implements a field gadget for a prime field <code>Fp</code> over another
+prime field <code>Fq</code> where <code>p != q</code>.</p>
+<p>When writing constraint systems for many cryptographic proofs, we are
+restricted to a native field (e.g., the scalar field of the pairing-friendly
+curve). This can be inconvenient; for example, the recursive composition of
+proofs via cycles of curves requires the verifier to compute over a
+non-native field.</p>
+<p>The library makes it possible to write computations over a non-native field
+in the same way one would write computations over the native field. This
+naturally introduces additional overhead, which we minimize using a variety
+of optimizations. (Nevertheless, the overhead is still substantial, and
+native fields should be used where possible.)</p>
+<h3 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h3>
+<p>Because <a href="enum.NonNativeFieldVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldVar"><code>NonNativeFieldVar</code></a> implements the <a href="../trait.FieldVar.html" title="trait ark_r1cs_std::fields::FieldVar"><code>FieldVar</code></a> trait in arkworks,
+we can treat it like a native field variable (<a href="../fp/enum.FpVar.html" title="enum ark_r1cs_std::fields::fp::FpVar"><code>FpVar</code></a>).</p>
+<p>We can do the standard field operations, such as <code>+</code>, <code>-</code>, and <code>*</code>. See the
+following example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>ark_r1cs_std::fields::nonnative::NonNativeFieldVar;
+<span class="kw">use </span>ark_bls12_377::{Fr, Fq};
+
+
+<span class="kw">let </span>a = NonNativeFieldVar::&lt;Fr, Fq&gt;::new_witness(<span class="macro">ns!</span>(cs, <span class="string">"a"</span>), || <span class="prelude-val">Ok</span>(a_value))<span class="question-mark">?</span>;
+<span class="kw">let </span>b = NonNativeFieldVar::&lt;Fr, Fq&gt;::new_witness(<span class="macro">ns!</span>(cs, <span class="string">"b"</span>), || <span class="prelude-val">Ok</span>(b_value))<span class="question-mark">?</span>;
+
+<span class="comment">// add
+</span><span class="kw">let </span>a_plus_b = <span class="kw-2">&amp;</span>a + <span class="kw-2">&amp;</span>b;
+
+<span class="comment">// sub
+</span><span class="kw">let </span>a_minus_b = <span class="kw-2">&amp;</span>a - <span class="kw-2">&amp;</span>b;
+
+<span class="comment">// multiply
+</span><span class="kw">let </span>a_times_b = <span class="kw-2">&amp;</span>a * <span class="kw-2">&amp;</span>b;
+
+<span class="comment">// enforce equality
+</span>a.enforce_equal(<span class="kw-2">&amp;</span>b)<span class="question-mark">?</span>;</code></pre></div>
+<h3 id="advanced-optimization"><a class="doc-anchor" href="#advanced-optimization">§</a>Advanced optimization</h3>
+<p>After each multiplication, our library internally performs a <em>reduce</em>
+operation, which reduces an intermediate type <a href="enum.NonNativeFieldMulResultVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldMulResultVar"><code>NonNativeFieldMulResultVar</code></a>
+to the normalized type <a href="enum.NonNativeFieldVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldVar"><code>NonNativeFieldVar</code></a>. This enables a user to
+seamlessly perform a sequence of operations without worrying about the
+underlying details.</p>
+<p>However, this operation is expensive and is sometimes avoidable. We can
+reduce the number of constraints by using this intermediate type, which only
+supports additions. To multiply, it must be reduced back to
+<a href="enum.NonNativeFieldVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldVar"><code>NonNativeFieldVar</code></a>. See below for a skeleton example.</p>
+<hr />
+<p>To compute <code>a * b + c * d</code>, the straightforward (but more expensive)
+implementation is as follows:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">let </span>a_times_b = <span class="kw-2">&amp;</span>a * <span class="kw-2">&amp;</span>b;
+<span class="kw">let </span>c_times_d = <span class="kw-2">&amp;</span>c * <span class="kw-2">&amp;</span>d;
+<span class="kw">let </span>res = <span class="kw-2">&amp;</span>a_times_b + <span class="kw-2">&amp;</span>c_times_d;</code></pre></div>
+<p>This performs two <em>reduce</em> operations in total, one for each multiplication.</p>
+<hr />
+<p>We can save one reduction by using the <a href="enum.NonNativeFieldMulResultVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldMulResultVar"><code>NonNativeFieldMulResultVar</code></a>, as
+follows:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">let </span>a_times_b = a.mul_without_reduce(<span class="kw-2">&amp;</span>b)<span class="question-mark">?</span>;
+<span class="kw">let </span>c_times_d = c.mul_without_reduce(<span class="kw-2">&amp;</span>d)<span class="question-mark">?</span>;
+<span class="kw">let </span>res = (<span class="kw-2">&amp;</span>a_times_b + <span class="kw-2">&amp;</span>c_times_d)<span class="question-mark">?</span>.reduce()<span class="question-mark">?</span>;</code></pre></div>
+<p>It performs only one <em>reduce</em> operation and is roughly 2x faster than the
+first implementation.</p>
+<h3 id="inspiration-and-basic-design"><a class="doc-anchor" href="#inspiration-and-basic-design">§</a>Inspiration and basic design</h3>
+<p>This implementation employs the standard idea of using multiple <strong>limbs</strong> to
+represent an element of the target field. For example, an element in the
+TargetField may be represented by three BaseField elements (i.e., the
+limbs).</p>
+<div class="example-wrap"><pre class="language-text"><code>TargetField -&gt; limb 1, limb 2, and limb 3 (each is a BaseField element)</code></pre></div>
+<p>After some computation, the limbs become saturated and need to be
+<strong>reduced</strong>, in order to engage in more computation.</p>
+<p>We heavily use the optimization techniques in <a href="https://akosba.github.io/papers/xjsnark.pdf">[KPS18]</a> and <a href="https://eprint.iacr.org/2019/1494">[OWWB20]</a>.
+Both works have their own open-source libraries:
+<a href="https://github.com/akosba/xjsnark">xJsnark</a> and
+<a href="https://github.com/alex-ozdemir/bellman-bignat">bellman-bignat</a>.
+Compared with these, this module works with the <code>arkworks</code> ecosystem.
+It also provides the option (based on an <code>optimization_goal</code> for the
+constraint system) to optimize for constraint density instead of number of
+constraints, which improves efficiency in proof systems like <a href="https://github.com/arkworks-rs/marlin">Marlin</a>.</p>
+<h3 id="references"><a class="doc-anchor" href="#references">§</a>References</h3>
+<p>[KPS18]: A. E. Kosba, C. Papamanthou, and E. Shi. “xJsnark: a framework for efficient verifiable computation,” in <em>Proceedings of the 39th Symposium on Security and Privacy</em>, ser. S&amp;P ’18, 2018, pp. 944–961.</p>
+<p>[OWWB20]: A. Ozdemir, R. S. Wahby, B. Whitehat, and D. Boneh. “Scaling verifiable computation using efficient set accumulators,” in <em>Proceedings of the 29th USENIX Security Symposium</em>, ser. Security ’20, 2020.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="params/index.html" title="mod ark_r1cs_std::fields::nonnative::params">params</a></dt><dd>Utilities for sampling parameters for non-native field gadgets</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AllocatedNonNativeFieldMulResultVar.html" title="struct ark_r1cs_std::fields::nonnative::AllocatedNonNativeFieldMulResultVar">Allocated<wbr>NonNative<wbr>Field<wbr>MulResult<wbr>Var</a></dt><dd>The allocated form of <code>NonNativeFieldMulResultVar</code> (introduced below)</dd><dt><a class="struct" href="struct.AllocatedNonNativeFieldVar.html" title="struct ark_r1cs_std::fields::nonnative::AllocatedNonNativeFieldVar">Allocated<wbr>NonNative<wbr>Field<wbr>Var</a></dt><dd>The allocated version of <code>NonNativeFieldVar</code> (introduced below)</dd><dt><a class="struct" href="struct.NonNativeFieldConfig.html" title="struct ark_r1cs_std::fields::nonnative::NonNativeFieldConfig">NonNative<wbr>Field<wbr>Config</a></dt><dd>Parameters for a specific <code>NonNativeFieldVar</code> instantiation</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.NonNativeFieldMulResultVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldMulResultVar">NonNative<wbr>Field<wbr>MulResult<wbr>Var</a></dt><dd>An intermediate representation especially for the result of a
+multiplication, containing more limbs. It is intended for advanced usage to
+improve the efficiency.</dd><dt><a class="enum" href="enum.NonNativeFieldVar.html" title="enum ark_r1cs_std::fields::nonnative::NonNativeFieldVar">NonNative<wbr>Field<wbr>Var</a></dt><dd>A gadget for representing non-native (<code>TargetField</code>) field elements over the
+constraint field (<code>BaseField</code>).</dd></dl></section></div></main></body></html>
