@@ -75,7 +75,7 @@ btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --h
 
 Validators, like miners, can be deregistered if their emissions are low. However, validator deregistration involves additional steps compared to miner deregistration. This is because an active validator must be among the top 64 nodes in the subnet and, therefore, cannot be instantly "pruned" by a newly registered node.
 
-When a validator falls below the top 64 nodes by emissions, it loses its validation permit. If a validator loses its validation permit and has no means to gain emissions, it will eventually become the node with the lowest emission, making it eligible for deregistration.
+When a validator falls below the top 64 nodes by emissions, or has less than the required 1000 total stake weight, it loses its validation permit, but is not therefore automatically deregistered. If a validator loses its validation permit and has no means to gain emissions, it will eventually become the node with the lowest emission, making it eligible for deregistration.
 
 :::info
 Deregistration only occurs on subnets where all 256 UID slots are occupied. If a new registration occurs in a subnet with available UID slots, the registered neuron occupies one of the available UID slots.
