@@ -17,9 +17,19 @@ Each subnet may have distinct hardware requirements, but this [subnet minimum re
 Validating is not supported on Windows.
 :::
 
+## How it works
+
+Each subnet on the Bittensor blockchain supports a maximum of 256 active nodes, with each node assigned a unique UID slot. Out of these, only the top 64 nodes by emissions are eligible to serve as validators by default. A subnet with 64 validators means that all 64 top-ranked nodes meet the necessary criteria and choose to participate as validators.
+
+To qualify as a validator, a node must have a validator permit. This permit is only granted to nodes within the top 64 and allows them to submit miner evaluations using `btcli weights commit` or the SDK's [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html#module-bittensor.core.extrinsics.set_weights) function.
+
+:::tip Dynamic Validator Threshold
+The number of validators isn't hardcoded. The subnet governor has the authority to increase or decrease the maximum number of validators. Any change to this limit directly affects the number of nodes that can be issued a validator permit and, thus, act as validators.
+:::
+
 ## Requirements for validation
 
-Before you can be allowed you to submit miner evaluations using `btcli weights commit` or the SDK's [`set_weights`](pathname:///python-api/html/autoapi/bittensor/core/extrinsics/set_weights/index.html#module-bittensor.core.extrinsics.set_weights) function, you must first have a **validator permit** for that subnet. To get a validator permit, you must meet the following requirements:
+To have a **validator permit** in a given subnet, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
 - You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake multiplied by the `tao_weight` parameter (current value: 0.18):
@@ -30,7 +40,7 @@ Before you can be allowed you to submit miner evaluations using `btcli weights c
 
       $$
 
-- You must be one of the top 64 validators in the subnet, ranked by stake weight.
+- You must be one of the top 64 nodes in the subnet, ranked by emissions.
 
 ## Hotkey Association & Staking
 
@@ -53,15 +63,46 @@ btcli stake add --wallet.name <wallet name> --wallet.hotkey <your validating hot
 
 ## Validator registration
 
-To participate as a validator, you must first register your keys with the subnet in order to receive a UID on that subnet.
+To participate as a validator, you must first register a hotkey with the subnet in order to receive a UID on that subnet.
 
-A subnet can have a maximum of 64 active subnet validator UIDs and 192 subnet miner UIDs (256 total).
+By default, a subnet can have a maximum of 64 active subnet validator UIDs. Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
 
-Upon registration, your hotkey, which is part of your wallet, becomes the holder of the UID slot.
+To register:
 
 ```bash
 btcli subnet register --netuid <desired netuid> --wallet.name  <wallet name> --hotkey <your hotkey>
 ```
+
+## Validator deregistration
+
+Validators, like miners, can be deregistered if their emissions are low. However, validator deregistration involves additional steps compared to miner deregistration. This is because an active validator must be among the top 64 nodes in the subnet and, therefore, cannot be instantly "pruned" by a newly registered node.
+
+When a validator falls below the top 64 nodes by emissions, or has less than the required 1000 total stake weight, it loses its validation permit, but is not therefore automatically deregistered. If a validator loses its validation permit and has no means to gain emissions, it will eventually become the node with the lowest emission, making it eligible for deregistration.
+
+:::info
+Deregistration only occurs on subnets where all 256 UID slots are occupied. If a new registration occurs in a subnet with available UID slots, the registered neuron occupies one of the available UID slots.
+:::
+
+Each tempo, the '[neuron](../learn/bittensor-building-blocks)' (miner _or_ validator node) with the lowest 'pruning score' (based solely on emissions), and that is no longer within its [immunity period](../subnets/subnet-hyperparameters.md#immunityperiod), risks being replaced by a newly registered neuron, who takes over that UID.
+
+:::info Deregistration is based on emissions
+The subnet does not distinguish between miners and validators for the purpose of deregistration. The chain only looks at emissions (represented as 'pruning score'). Whenever a new registration occurs in the subnet, the neuron with the lowest emissions will get deregistered.
+:::
+
+### Immunity period
+
+Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks. A neuron's `immunity_period` starts when the miner or validator registers into the subnet. For more information, see [`immunity_period`](../subnets/subnet-hyperparameters.md#immunityperiod).
+
+A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_period` blocks to improve its performance. When `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
+
+:::tip Special cases
+
+- In the unlikely event that all neurons are still immune, the one with the lowest "pruning score" will be deregistered by the next incoming registration.
+
+- In cases where two or more nodes have the lowest "pruning score", the older node gets deregistered first.
+
+- The subnet owner's hotkey has permanent immunity from deregistration.
+  :::
 
 ## Acquiring stake
 
