@@ -162,6 +162,8 @@ A data structure that contains comprehensive information about the current state
 
 The process of removing a poor-performing subnet miner from a UID slot, making room for a newly registered miner.
 
+See [Mining in Bittensor: Miner Deregistration](./miners/#miner-deregistration)
+
 ### Mnemonic
 
 A sequence of words used to regenerate keys, in case of loss, and restore coldkeys and hotkeys in the Bittensor wallet.

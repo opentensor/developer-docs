@@ -45,8 +45,6 @@ btcli wallet transfer \
 ```
 
 
-
-
 #### Network Rate Limit Error
 
 If you see a network rate limit error, you may need to adjust the `SubtensorInitialNetworkRateLimit` chain state parameter.  
