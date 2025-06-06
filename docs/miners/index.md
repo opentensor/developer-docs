@@ -56,7 +56,7 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 ## Miner deregistration
 
-A subnet miner can be deregistered if its performance is poor. Mining is competitive—and the UID slots are limited. Aside from Subnet 1, all subnets have 256 UID slots per subnet. Of these 256 UID slots, a subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs. Each tempo, the lowest ranked miners risk being replaced by a newly registered miner, who takes over that UID.
+A miner can be deregistered if it earns low emissions due to receiving low weights (ratings) from validators. Typical subnets have 256 UID slots per subnet, of which a maximum of 64 subnet can be occupied by validators. Each tempo, the lowest ranked slot is deregistered from the hotkey that holds it and assigned to a new registrant.
 
 - Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
   :::tip See
