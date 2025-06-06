@@ -64,7 +64,7 @@ A miner can be deregistered if it earns low emissions due to receiving low weigh
   :::
 - A subnet miner or validator at a UID (in that subnet) has a defined number of blocks to improve its performance. This is known as `immunity_period`. When the `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
 - A neuron's `immunity_period` starts when the miner or validator is registered into the subnet.
-  Miners as well as validators can be deregistered if their emissions are low.
+Validators as well as miners can be deregistered if their emissions are low; either role requires a UID.
 
 Typically, subnets have 256 UID slots, with a maximum of 64 slots capable of serving as validators by default. This leaves 192 UIDs for miners, though if there are fewer than 64 eligible validators on a subnet, miners can occupy available slots.
 
