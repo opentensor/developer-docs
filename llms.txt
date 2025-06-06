@@ -6,21 +6,18 @@ The primary sources for Bittensor documentation and learning resources.
 - Learn Bittensor (More Accessible): https://learnbittensor.org - User-friendly explanations and tutorials for beginners
 
 ## Core Concepts
-Essential knowledge for understanding Bittensor's architecture and functionality.
-
 ### Introduction
-- Introduction to Bittensor: https://docs.bittensor.com/learn/introduction - Overview of Bittensor's core concepts and architecture
-- Learn Bittensor Introduction: https://learnbittensor.org/explore/article/introduction-to-bittensor - Beginner-friendly introduction to the Bittensor ecosystem
+- Introduction to Bittensor: https://docs.bittensor.com/learn/introduction
+- Learn Bittensor Introduction: https://learnbittensor.org/explore/article/introduction-to-bittensor
 
 ### Subnets
-Subnets are incentive-based competition marketplaces that produce specific AI-related digital commodities.
-- Understanding Subnets: https://docs.bittensor.com/subnets/understanding-subnets - Deep dive into subnet mechanics and purpose
-- Creating Subnets: https://docs.bittensor.com/subnets/create-a-subnet - Step-by-step guide to creating your own subnet
+- Understanding Subnets: https://docs.bittensor.com/subnets/understanding-subnets
+- Creating Subnets: https://docs.bittensor.com/subnets/create-a-subnet
 - Subnet Management:
-  - Subnet Creators Guide: https://docs.bittensor.com/subnets/subnet-creators-btcli-guide - Complete guide for subnet creators
-  - Subnet Hyperparameters: https://docs.bittensor.com/subnets/subnet-hyperparameters - Configuration options for subnet optimization
-  - Working with Subnets: https://docs.bittensor.com/subnets/working-with-subnets - Practical guide to subnet operations
-  - Prompting Walkthrough: https://docs.bittensor.com/subnets/walkthrough-prompting - Guide to effective prompting in subnets
+  - Subnet Creators Guide: https://docs.bittensor.com/subnets/subnet-creators-btcli-guide
+  - Subnet Hyperparameters: https://docs.bittensor.com/subnets/subnet-hyperparameters
+  - Working with Subnets: https://docs.bittensor.com/subnets/working-with-subnets
+  -  Walkthrough of example subnet: https://docs.bittensor.com/subnets/walkthrough-prompting
 
 ### Consensus and Emissions
 The mechanisms that power Bittensor's incentive system and reward distribution.
@@ -28,8 +25,6 @@ The mechanisms that power Bittensor's incentive system and reward distribution.
 - Emissions: https://docs.bittensor.com/emissions - How TAO and alpha tokens are distributed in the network
 
 ## Network Participants
-Roles and responsibilities within the Bittensor network.
-
 ### Miners
 Participants who provide AI services to the network.
 - Miner Documentation: https://docs.bittensor.com/miners/ - Complete guide to mining on Bittensor
@@ -44,14 +39,13 @@ Network participants who verify and rank miner performance.
 - Learn Bittensor Validator Concept: https://learnbittensor.org/explore/concept/validator - Beginner's guide to validation
 
 ### Staking and Delegation
-How to participate in network security and earn rewards.
-- Delegation Overview: https://docs.bittensor.com/staking-and-delegation/delegation - Understanding stake delegation
+- Staking/Delegation Overview: https://docs.bittensor.com/staking-and-delegation/delegation
 - Staking Guides:
-  - BTCLI Guide: https://docs.bittensor.com/staking-and-delegation/stakers-btcli-guide - Command-line staking operations
-  - Managing Stake with BTCLI: https://docs.bittensor.com/staking-and-delegation/managing-stake-btcli - Detailed stake management
-  - Managing Stake with SDK: https://docs.bittensor.com/staking-and-delegation/managing-stake-sdk - Programmatic stake management
-  - Polkadot.js Guide: https://docs.bittensor.com/staking-and-delegation/staking-polkadot-js - Web interface for staking
-  - Ledger Hardware Wallet: https://docs.bittensor.com/staking-and-delegation/using-ledger-hw-wallet - Secure staking with hardware wallet
+  - BTCLI Guide: https://docs.bittensor.com/staking-and-delegation/stakers-btcli-guide
+  - Managing Stake with BTCLI: https://docs.bittensor.com/staking-and-delegation/managing-stake-btcli
+  - Managing Stake with SDK: https://docs.bittensor.com/staking-and-delegation/managing-stake-sdk
+  - Polkadot.js Guide: https://docs.bittensor.com/staking-and-delegation/staking-polkadot-js
+  - Ledger Hardware Wallet: https://docs.bittensor.com/staking-and-delegation/using-ledger-hw-wallet
 
 ## Development Tools
 Essential tools for building and interacting with Bittensor.
@@ -63,99 +57,79 @@ The primary command-line tool for Bittensor operations.
 - Playground: https://docs.bittensor.com/btcli/btcli-playground - Interactive BTCLI learning environment
 - Permissions: https://docs.bittensor.com/btcli-permissions - Understanding BTCLI access levels
 
-### Python SDK
-The official Python library for Bittensor development.
-- Installation: https://docs.bittensor.com/getting-started/installation - Setting up the Python SDK
-- Wallet SDK Installation: https://docs.bittensor.com/getting-started/install-wallet-sdk - Wallet integration setup
+### Bittensor Python SDK
+- Installation: https://docs.bittensor.com/getting-started/installation
+- Wallet SDK Installation: https://docs.bittensor.com/getting-started/install-wallet-sdk
 - SDK Documentation:
-  - Async Subtensor: https://docs.bittensor.com/python-api/autoapi/bittensor/core/async_subtensor/index.html - Asynchronous operations
-  - Subtensor: https://docs.bittensor.com/python-api/autoapi/bittensor/core/subtensor/index.html - Core functionality
-- Migration Guide: https://docs.bittensor.com/migration_guide - Upgrading to newer versions
-- Subtensor Connections: https://docs.bittensor.com/sdk/managing-subtensor-connections - Network connection management
+  - Async Subtensor: https://docs.bittensor.com/python-api/autoapi/bittensor/core/async_subtensor/index.html
+  - Subtensor: https://docs.bittensor.com/python-api/autoapi/bittensor/core/subtensor/index.html
+- Migration Guide: https://docs.bittensor.com/migration_guide
+- Subtensor Connections: https://docs.bittensor.com/sdk/managing-subtensor-connections
 
 ## Security
-Best practices and tools for securing your Bittensor assets.
-
 ### Wallets and Keys
-Managing your cryptographic keys and wallet security.
-- Wallet Basics: https://docs.bittensor.com/getting-started/wallets - Understanding Bittensor wallets
-- Seed Phrase Security: https://docs.bittensor.com/keys/handle-seed-phrase - Protecting your seed phrase
-- Coldkey/Hotkey Security: https://docs.bittensor.com/getting-started/coldkey-hotkey-security - Key security best practices
-- Working with Keys: https://docs.bittensor.com/working-with-keys - Key management operations
-- Multisig Security: https://docs.bittensor.com/keys/multisig - Implementing multi-signature security
-- Coldkey Rotation: https://docs.bittensor.com/subnets/schedule-coldkey-swap - Changing your coldkey
+- Wallet Basics: https://docs.bittensor.com/getting-started/wallets
+- Seed Phrase Security: https://docs.bittensor.com/keys/handle-seed-phrase
+- Coldkey/Hotkey Security: https://docs.bittensor.com/getting-started/coldkey-hotkey-security
+- Working with Keys: https://docs.bittensor.com/working-with-keys
+- Multisig Security: https://docs.bittensor.com/keys/multisig
+- Coldkey Rotation: https://docs.bittensor.com/subnets/schedule-coldkey-swap
 
 ## Network Environments
-Different Bittensor networks for various purposes.
-
 ### Endpoints
-Connection points for different Bittensor networks.
-- Mainnet: wss://entrypoint-finney.opentensor.ai:443 - Production network
-- Testnet: wss://test.finney.opentensor.ai:443 - Testing environment
-- Devnet: wss://dev.chain.opentensor.ai:443 - Development network
+- Mainnet: wss://entrypoint-finney.opentensor.ai:443
+- Testnet: wss://test.finney.opentensor.ai:443
+- Devnet: wss://dev.chain.opentensor.ai:443
 
 ## Advanced Topics
-Specialized topics for advanced users and developers.
-
 ### Local Development
-Setting up local development environments.
-- Local Subtensor Deployment: https://docs.bittensor.com/local-build/deploy - Running a local Subtensor node
+- Local Subtensor Deployment: https://docs.bittensor.com/local-build/deploy
 
 ### Subtensor Nodes
-Running and managing Subtensor nodes.
-- Node Basics: https://docs.bittensor.com/subtensor-nodes/ - Introduction to Subtensor nodes
-- Node Requirements: https://docs.bittensor.com/subtensor-nodes/subtensor-node-requirements - Hardware and software requirements
-- Source Installation: https://docs.bittensor.com/subtensor-nodes/using-source - Building from source
-- Docker Installation: https://docs.bittensor.com/subtensor-nodes/using-docker - Containerized deployment
-- Rate Limits: https://docs.bittensor.com/subtensor-nodes/subtensor-rate-limits - API usage restrictions
-- Storage Queries: https://docs.bittensor.com/subtensor-nodes/subtensor-storage-query-examples - Data access patterns
-- Error Messages: https://docs.bittensor.com/subtensor-nodes/subtensor-error-messages - Troubleshooting guide
+- Node Basics: https://docs.bittensor.com/subtensor-nodes/
+- Node Requirements: https://docs.bittensor.com/subtensor-nodes/subtensor-node-requirements
+- Source Installation: https://docs.bittensor.com/subtensor-nodes/using-source
+- Docker Installation: https://docs.bittensor.com/subtensor-nodes/using-docker
+- Rate Limits: https://docs.bittensor.com/subtensor-nodes/subtensor-rate-limits
+- Storage Queries: https://docs.bittensor.com/subtensor-nodes/subtensor-storage-query-examples
+- Error Messages: https://docs.bittensor.com/subtensor-nodes/subtensor-error-messages
 
 ### EVM Integration
-Ethereum Virtual Machine compatibility and features.
-- EVM Tutorials: https://docs.bittensor.com/evm-tutorials/ - Overview of EVM features
-- EVM on Subtensor: https://docs.bittensor.com/evm-tutorials/evm-on-subtensor - EVM implementation details
-- Installation: https://docs.bittensor.com/evm-tutorials/install - Setting up EVM support
+- EVM on Bittensor Overview: https://docs.bittensor.com/evm-tutorials/
+- EVM on Subtensor: https://docs.bittensor.com/evm-tutorials/evm-on-subtensor
+- Installation: https://docs.bittensor.com/evm-tutorials/install
 - Setup:
-  - Hardhat Config: https://docs.bittensor.com/evm-tutorials/hardhat-config-for-subtensor-evm - Smart contract development
-  - Testnet: https://docs.bittensor.com/evm-tutorials/evm-testnet-with-metamask-wallet - Testing with Metamask
-  - Localnet: https://docs.bittensor.com/evm-tutorials/evm-localnet-with-metamask-wallet - Local development
-  - Mainnet: https://docs.bittensor.com/evm-tutorials/evm-mainnet-with-metamask-wallet - Production deployment
+  - Hardhat Config: https://docs.bittensor.com/evm-tutorials/hardhat-config-for-subtensor-evm
+  - Testnet: https://docs.bittensor.com/evm-tutorials/evm-testnet-with-metamask-wallet
+  - Localnet: https://docs.bittensor.com/evm-tutorials/evm-localnet-with-metamask-wallet
+  - Mainnet: https://docs.bittensor.com/evm-tutorials/evm-mainnet-with-metamask-wallet
 - Precompiles:
-  - Metamask to SS58: https://docs.bittensor.com/evm-tutorials/transfer-from-metamask-to-ss58 - Cross-format transfers
-  - Between H160 Accounts: https://docs.bittensor.com/evm-tutorials/transfer-between-two-h160-accounts - EVM account transfers
-  - Staking Precompile: https://docs.bittensor.com/evm-tutorials/staking-precompile - Staking contract integration
-  - ED25519 Verify: https://docs.bittensor.com/evm-tutorials/ed25519-verify-precompile - Cryptographic verification
+  - Metamask to SS58: https://docs.bittensor.com/evm-tutorials/transfer-from-metamask-to-ss58
+  - Between H160 Accounts: https://docs.bittensor.com/evm-tutorials/transfer-between-two-h160-accounts
+  - Staking Precompile: https://docs.bittensor.com/evm-tutorials/staking-precompile
+  - ED25519 Verify: https://docs.bittensor.com/evm-tutorials/ed25519-verify-precompile
 
 ### Governance
-Network governance and decision-making processes.
-- Overview: https://docs.bittensor.com/governance - Governance system explanation
-- Senate: https://docs.bittensor.com/senate - Senate operations and responsibilities
-- Senator Guide: https://docs.bittensor.com/governance/senators-btcli-guide - Guide for senate participants
+- Overview: https://docs.bittensor.com/governance
+- Senate: https://docs.bittensor.com/senate
+- Senator Guide: https://docs.bittensor.com/governance/senators-btcli-guide
 
 ### Dynamic TAO
-TAO token dynamics and economics.
-- Guide: https://docs.bittensor.com/dynamic-tao/dtao-guide - Understanding Dynamic TAO
-- SDK Cheat Sheet: https://docs.bittensor.com/dynamic-tao/sdk-cheat-sheet - Quick reference for developers
+- Guide: https://docs.bittensor.com/dynamic-tao/dtao-guide
+- SDK Cheat Sheet: https://docs.bittensor.com/dynamic-tao/sdk-cheat-sheet
 
 ## Releases
-Official software releases and updates.
-
 ### Bittensor
-Core Bittensor software releases.
-- PyPI: https://pypi.org/project/bittensor/ - Python package releases
-- GitHub: https://github.com/opentensor/bittensor/releases - Source code releases
+- PyPI: https://pypi.org/project/bittensor/
+- GitHub: https://github.com/opentensor/bittensor/releases
 
 ### BTCLI
-Command-line interface releases.
-- PyPI: https://pypi.org/project/bittensor-cli/ - Python package releases
-- GitHub: https://github.com/opentensor/btcli/releases - Source code releases
+- PyPI: https://pypi.org/project/bittensor-cli/
+- GitHub: https://github.com/opentensor/btcli/releases
 
 ### Subtensor
-Blockchain node software releases.
-- GitHub: https://github.com/opentensor/subtensor/releases - Source code releases
+- GitHub: https://github.com/opentensor/subtensor/releases
 
 ## Additional Resources
-Supplementary documentation and reference materials.
-- Glossary: https://docs.bittensor.com/glossary - Comprehensive terminology reference
+- Glossary: https://docs.bittensor.com/glossary
   
