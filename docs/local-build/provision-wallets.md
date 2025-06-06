@@ -18,7 +18,7 @@ btcli wallet create --uri alice
 Confirm Alice's massive $\tau$ bag.
 
 ```shell
- btcli w balance --wallet.name alice  --subtensor.chain_endpoint ws://127.0.0.1:9945
+ btcli w balance --wallet.name alice  --network ws://127.0.0.1:9945
 ```
 
 ```console

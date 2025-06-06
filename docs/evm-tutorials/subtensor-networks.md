@@ -1,11 +1,11 @@
 ---
-title: "Subtensor Networks"
+title: "EVM Network Details"
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Subtensor Networks
+# EVM Network Details
 
 | DESCRIPTION          | MAINNET                             | TESTNET                              | LOCALNET                 |
 |:---------------------|:------------------------------------|:-------------------------------------|:-------------------------|

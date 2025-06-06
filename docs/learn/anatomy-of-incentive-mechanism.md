@@ -6,7 +6,7 @@ title: "Understanding Incentive Mechanisms"
 
 This page explores the concept and usage of incentive mechanisms in Bittensor.
 
-See [Components of the Bittensor platform](../learn/bittensor-building-blocks) for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
+See [Components of the Bittensor platform](../learn/neurons) for an explanation of the basics, such as subnets, miners, validators, and the role of the blockchain.
 
 Each subnet has its own *incentive mechanism*, a scoring model that drives the behavior of its participants, and the production of the subnet's digital commodity, by defining **how validators are to evaluate miners’ work**. Miners are incentivized to optimize for this model so validators will score (or 'weight') their work highly, resulting in higher emissions. Validators are incentivized to accurately score miners' work according to the model because the algorithm penalizes departure from consensus in miner scores with lower emissions.
 
@@ -63,7 +63,7 @@ A subnet incentive mechanism must provide the following:
 
 A subnet creator must define a protocol for how validators are to query miners, and how miners should respond. Protocols are built using the Axon-Dendrite client-server model and Synapse data objects.
 
-See [Neuron to neuron communication](./bittensor-building-blocks.md#neuron-to-neuron-communication).
+See [Neuron to neuron communication](./neurons.md#neuron-to-neuron-communication).
 
 ### Subnet task
 
