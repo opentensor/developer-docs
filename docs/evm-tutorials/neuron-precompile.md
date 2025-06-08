@@ -12,11 +12,9 @@ This precompile enables full management of neurons (miner and validator nodes) t
 
 See [Understanding Neurons](../learn/neurons.md).
 
-
 :::info
 Payable functions require tokens for execution
 :::
-
 
 ## Precompile Address
 
@@ -31,16 +29,6 @@ The neuron precompile provides the following core functions for neuron managemen
 #### `setWeights`
 Set weights (rankings) for miners on the subnet. See [Requirements for validation](../validators/#requirements-for-validation)
 
-**Function Signature:**
-```solidity
-function setWeights(
-    uint16 netuid,
-    uint16[] memory dests,
-    uint16[] memory weights,
-    uint64 versionKey
-) external payable
-```
-
 **Parameters:**
 - `netuid` (uint16): The subnet ID where the neuron is registered
 - `dests` (uint16[]): Array of destination neuron UIDs to assign weights to
@@ -53,34 +41,15 @@ This function allows a neuron to set weights on other neurons in the same subnet
 #### `commitWeights`
 Commits weights using a hash commitment scheme for privacy and security.
 
-**Function Signature:**
-```solidity
-function commitWeights(
-    uint16 netuid,
-    bytes32 commitHash
-) external payable
-```
-
 **Parameters:**
 - `netuid` (uint16): The subnet ID where the neuron is registered
 - `commitHash` (bytes32): Hash commitment of the weights to be revealed later
 
 **Description:**
-This function implements a commit-reveal scheme for setting weights. The neuron first commits a hash of their weights, then later reveals the actual weights. This prevents front-running and manipulation of the weight-setting process.
+This function implements a commit-reveal scheme for setting weights. The neuron first commits a hash of their weights, then later reveals the actual weights. This prevents weight-copying.
 
 #### `revealWeights`
 Reveals previously committed weights by providing the original data that produces the committed hash.
-
-**Function Signature:**
-```solidity
-function revealWeights(
-    uint16 netuid,
-    uint16[] memory uids,
-    uint16[] memory values,
-    uint16[] memory salt,
-    uint64 versionKey
-) external payable
-```
 
 **Parameters:**
 - `netuid` (uint16): The subnet ID where the neuron is registered
@@ -94,18 +63,10 @@ This function completes the commit-reveal process by revealing the actual weight
 
 ### Neuron Registration
 
-Neuron registration is the process of joining a subnet and becoming part of the neural network structure described in [Understanding Neurons](../learn/neurons.md).
+Neuron registration is required for joining a subnet as a miner or validator
 
 #### `burnedRegister`
 Registers a neuron in a subnet by burning TAO tokens.
-
-**Function Signature:**
-```solidity
-function burnedRegister(
-    uint16 netuid,
-    bytes32 hotkey
-) external payable
-```
 
 **Parameters:**
 - `netuid` (uint16): The subnet ID to register the neuron in
@@ -118,20 +79,6 @@ This function registers a new neuron in the specified subnet by burning a certai
 
 #### `serveAxon`
 Configures and serves an axon endpoint for the neuron.
-
-**Function Signature:**
-```solidity
-function serveAxon(
-    uint16 netuid,
-    uint32 version,
-    uint128 ip,
-    uint16 port,
-    uint8 ipType,
-    uint8 protocol,
-    uint8 placeholder1,
-    uint8 placeholder2
-) external payable
-```
 
 **Parameters:**
 - `netuid` (uint16): The subnet ID where the neuron is serving
