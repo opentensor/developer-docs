@@ -40,7 +40,8 @@ const sidebars = {
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
-        "yuma-consensus",        
+        "yuma-consensus",
+        "yc3-blog"    
       ],
     },
     {
