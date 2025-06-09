@@ -57,7 +57,7 @@ When [Liquid Alpha is enabled](https://github.com/opentensor/subtensor/blob/main
 
 ### Fair Scaling for All Validators
 
-Bond values are computed using fixed-point arithmetic and then [converted to u16 for storage efficiency](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L859-L861), allowing precise fractional relationships while maintaining a 0-65535 storage scale. This levels the playing field between large and small validators.
+Bond values are computed using fixed-point arithmetic and then [converted to u16 for storage efficiency](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L859-L861), allowing precise fractional relationships while maintaining a 0-65535 storage scale. This fixes the disadvantages that plagued small-stake validators in previous versions.
 
 ### Early Recognition Rewards
 
@@ -108,10 +108,6 @@ When these conditions are satisfied, validators receive additional rewards for v
 The system maintains strong anti-fraud protection while providing smoother bond transitions. The adjustment rate is controlled by the [bonds moving average parameter](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L1055-L1062), which can be configured up to 97.5% (meaning bonds change by 2.5% per epoch toward their target values).
 
 **Technical note:** The [EMA calculation](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L1028) uses `alpha = 1 - (bonds_moving_average / 1_000_000)`, where bonds_moving_average is typically set to 975,000, resulting in approximately 2.5% adjustment per epoch.
-
-### Sparse Matrix Optimization
-
-While not YC3-specific, the implementation includes both [dense](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L208-L246) and [sparse matrix operations](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/epoch/run_epoch.rs#L621-L657) for memory and computational efficiency. The main epoch function uses sparse matrices by default to handle larger networks efficiently.
 
 ## The Real-World Impact
 
