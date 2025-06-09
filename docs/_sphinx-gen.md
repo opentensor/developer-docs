@@ -22,7 +22,7 @@ When you are ready to publish the docs, proceed to the below next step.
 Publish the docs
 
 To publish the docs on docs.bittensor.com, you will push the entire "build/html" directory into the docs repo. However, before you do that, remove the `html/_sources` directory. This directory contains reStructuredText source files and we don't want to version control them. So, do rm -r build/html/_sources first.
-In the docs repo, https://github.com/opentensor/developer-docs/tree/main , this "html" directory is located in the "developer-docs/static/python-api" path. Always replace the entire "html" directory even if you updated a single word or letter in a docstring. 
+In the docs repo, https://github.com/opentensor/developer-docs/tree/main , this "html" directory is located in the "developer-docs/python-api" path. Always replace the entire "html" directory even if you updated a single word or letter in a docstring. 
 In the Markdown file that contains links to these Python reference docs and sections, you will use "pathname:///python-api/html/index.html" for linking to the homepage of the Python ref docs. See "docs/bt-api-ref.md" for examples. 
 
 Conf.py

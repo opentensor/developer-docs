@@ -13,14 +13,13 @@ See also:
 - [Staking/delegation overview](./delegation)
 - [Understanding pricing and anticipating slippage](../dynamic-tao/staking-unstaking-dtao)
 
-
 :::tip
 Minimum transaction amount for stake/unstake/move/transfer: 500,000 RAO or 0.0005 TAO.
 :::
 
 ## Check your TAO balance
 
-To stake, you'll first need some TAO. Inquire in Discord to obtain TAO on Bittensor test network.
+To stake, you'll first need some TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553) to obtain TAO on Bittensor test network. Alternatively, you can transfer some testnet TAO to your wallet address using the [BTCLI Live Coding Playground](../btcli/btcli-playground.md#transfer).
 
 :::danger
 The funds in a crypto wallet are only as secure as your private key and/or seed phrase, and the devices that have access to these.
@@ -161,14 +160,14 @@ async def find_top_three_valis(subtensor,subnet):
     netuid = subnet.netuid
     print(f"\n🔍 Subnet {netuid} had {subnet.tao_in_emission} emissions!")
     print(f"\n🔍 Fetching metagraph for subnet {netuid}...")
-    
+
     start_time = time.time()
     metagraph = await subtensor.metagraph(netuid)
 
     print(f"✅ Retrieved metagraph for subnet {netuid} in {time.time() - start_time:.2f} seconds.")
     # Extract validators and their stake amounts
     hk_stake_pairs = [(metagraph.hotkeys[index], metagraph.stake[index]) for index in range(len(metagraph.stake))]
-    
+
     # Sort validators by stake in descending order
     top_validators = sorted(hk_stake_pairs, key=lambda x: x[1], reverse=True)[0:3]
 
@@ -176,7 +175,7 @@ async def find_top_three_valis(subtensor,subnet):
     print(f"\n🏆 Top 3 Validators for Subnet {netuid}:")
     for rank, (index, stake) in enumerate(top_validators, start=1):
         print(f"  {rank}. Validator index {index} - Stake: {stake}")
-    
+
     return {
         "netuid": netuid,
         "metagraph": metagraph,
@@ -184,16 +183,16 @@ async def find_top_three_valis(subtensor,subnet):
     }
 
 async def main():
-    async with bt.async_subtensor(network='test') as subtensor: 
+    async with bt.async_subtensor(network='test') as subtensor:
 
         print("Fetching information on top subnets by TAO emissions")
-        
+
         # get subnets and sort by tao emissions
         sorted_subnets = sorted(list(await subtensor.all_subnets()), key=lambda subnet: subnet.tao_in_emission, reverse=True)
         top_subnets = sorted_subnets[0:3]
         amount_to_stake = bt.Balance.from_tao(total_to_stake/9)
-        
-        # find the top 3 validators in each subnet        
+
+        # find the top 3 validators in each subnet
         top_vali_dicts = await asyncio.gather(*[find_top_three_valis(subtensor, subnet) for subnet in top_subnets])
         top_validators_per_subnet = {}
         for d in top_vali_dicts:
@@ -318,7 +317,7 @@ async def main():
 
         # Determine how much TAO to unstake per validator
         amount_per_stake = total_to_unstake / len(stakes)
-        
+
         # Prepare concurrent unstake tasks, then execute as a batch
         tasks = [
             perform_unstake(subtensor, stake, min(amount_per_stake, stake.stake))
@@ -329,7 +328,7 @@ async def main():
         # Count successes and print final report
         success_count = sum(results)
         print(f"\n🎯 Unstake complete. Success: {success_count}/{len(stakes)}")
-        
+
 wallet_name = os.environ.get('WALLET')
 total_to_unstake = os.environ.get('TOTAL_TAO_TO_UNSTAKE')
 max_stakes_to_unstake = os.environ.get('MAX_STAKES_TO_UNSTAKE')
@@ -365,6 +364,7 @@ unstake_minimum = 0.0005  # TAO
 asyncio.run(main())
 
 ```
+
 ```console
 Unstaking total not specified, defaulting to 1 TAO.
 🔍 Using wallet: PracticeKey!

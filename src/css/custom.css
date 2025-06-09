@@ -2,3 +2,18 @@
 
 
 /* You can override the default Infima variables here also you can overwrite the styles. you must have to use !important to overwrite style. */
+
+/* Fix anchor link scrolling to account for fixed header */
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
+  scroll-margin-top: 100px !important;
+}
+
+/* Also add scroll margin to elements with anchor links */
+:target {
+  scroll-margin-top: 100px !important;
+}

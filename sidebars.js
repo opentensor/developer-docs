@@ -40,7 +40,8 @@ const sidebars = {
         "learn/bittensor-building-blocks",
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
-        "yuma-consensus",        
+        "yuma-consensus",
+        "yc3-blog"    
       ],
     },
     {
@@ -118,7 +119,9 @@ const sidebars = {
           collapsed: true,
           items: [
             "getting-started/installation",
-            "bt-api-ref",    
+            "sdk/env-vars",
+            "bt-api-ref",          
+            "sdk/subtensor-api",
             "getting-started/install-wallet-sdk",        
             "migration_guide",
             "subnets/asyncio",
@@ -183,7 +186,6 @@ const sidebars = {
         "subtensor-nodes/using-docker",
         "subtensor-nodes/subtensor-rate-limits",
         "subtensor-nodes/subtensor-storage-query-examples",
-        "subtensor-nodes/subtensor-error-messages",
       ],
     },
     
@@ -230,9 +232,19 @@ const sidebars = {
       ],
     },
 
-    
-
-    "errors-and-troubleshooting",
+    {
+      type: "category",
+      label: "Errors and Troubleshooting",
+      collapsible: true,
+      collapsed: true,
+      link: {type: "doc", id: "errors/index",},
+      items: [
+        "errors/index",
+        "errors/custom",
+        "errors/subtensor",
+        "errors-and-troubleshooting",
+      ],
+    },
     "media-assets",
     "glossary",
 

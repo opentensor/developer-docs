@@ -14,7 +14,7 @@ Updates to the `subtensor` and `async_subtensor` modules and the `DynamicInfo` c
 To update to the Dynamic TAO-enabled versions of the SDK, run:
 
 ```
-pip install bittensor==8.5.1rc6
+pip install bittensor
 ```
 
 ### option 2: install from source
