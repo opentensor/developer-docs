@@ -32,17 +32,15 @@ The first version of the algorithm distributed validator rewards based on stake 
 
 The second version introduced a more sophisticated bonding mechanism with exponential moving averages, but still struggled with:
 - Unfair penalties for small validators due to rounding errors
-- Bond distribution issues when validator participation changed dramatically
 - Insufficient rewards for validators who recognized good miners early
 - Uniform alpha parameters that didn't account for individual validator-miner relationships
+- A serious bug in bond distribution, when validator participation changed dramatically.
 
-#### The Bug
+The last and most serious of these issues was that bonds were only redistributed when validators holding at least 50% of total stake cast votes for a given miner. This created a situation where:
 
-The bond distribution system had a fatal flaw in its anti-fraud mechanism. Bonds would only be redistributed when validators holding at least 50% of total stake cast votes for a given miner. This created a situation where:
-
-1. **Bonds would freeze** when validators stopped actively voting for a miner
-2. **Historical allocations persisted** for months, even when those validators were no longer evaluating the miner
-3. **New evaluators were locked out** until enough high-stake validators resumed voting
+1. **Bonds would freeze** when validators stopped actively voting for a miner.
+2. **Historical allocations persisted** for months, even when those validators were no longer evaluating the miner.
+3. **New evaluators were locked out** until enough high-stake validators resumed voting.
 4. **Unfair reward distribution** occurred when miners became relevant again - old bond holders received rewards despite not currently evaluating, while active evaluators received minimal bonds
 
 ## Yuma Consensus V3
