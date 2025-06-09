@@ -22,7 +22,7 @@ But the earlier versions of this system had some significant flaws—particularl
 
 ## The Evolution of Consensus
 
-In the world of Bittensor, validators play a crucial role in evaluating and ranking miners' performance. The Yuma Consensus mechanism, which determines how rewards are distributed, has evolved through several iterations to address fairness and efficiency concerns.
+The Yuma Consensus mechanism, which determines how emissions are distributed, has evolved through several iterations to address fairness concerns.
 
 ### The Limitations of Earlier Versions
 
