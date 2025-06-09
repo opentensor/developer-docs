@@ -1,29 +1,61 @@
 Blog Article: How Yuma Consensus 3 realizes the promise of fairness in Bittensor
 
+https://github.com/opentensor/subtensor/pull/1593
+
+## Yuma Consensus v3 (available for all subnets)
+* Per-bond EMA scaling: individual & sparse-mode bonds now adapt via exponential moving
+  averages for smoother rewards
+* Refactored α-parameters (including new sigmoid-steepness tuning) for fine-grained consensus
+  control
+* Monte Carlo scenario tests & map_consensus.py integration tests validate retention guarantees
+  under adversarial conditions
+* On-chain toggle event & ABI support to enable/disable Yuma3 per subnet for easy rollbacks
+* https://github.com/opentensor/subtensor/pull/1593
+
+### Notes for Subnet Owners
+* Yuma 3 should be beneficial and safe to use in model verification subnets (specifically subnets which guarantee that a change in miner performance happens with a knowledge commitment), provided the bond reset flag is used correctly.
+* It will distribute dividends to the validators more fairly than Yuma 2 did and Liquid Alpha 2.0 allows the subnet owners to disincentivize weight copying.
+
+
+
+
+
 How Yuma Consensus 3 Realizes the Promise of Fairness in Bittensor
 In the world of Bittensor, validators play a crucial role in evaluating and ranking miners' performance. The Yuma Consensus mechanism, which determines how rewards are distributed, has evolved through several iterations to address fairness and efficiency concerns. The latest version, Yuma Consensus 3 (YC3), introduces significant improvements that better align incentives and create a more equitable system for all participants.
 The Evolution of Yuma Consensus
+
 To understand YC3's improvements, let's look at how the system has evolved:
-Yuma 1: Initial Implementation
+
 The first iteration of Yuma Consensus distributed validator rewards based on their stake and the consensus weight of miners they evaluated. While functional, it had limitations in handling small validators and could lead to unfair rounding issues when distributing rewards.
-Yuma 2: Improved Bonding
+
 Yuma 2 introduced a more sophisticated bonding mechanism with a 10% daily adjustment limit. However, it still had issues:
-Small validators could get unfairly penalized due to rounding
-A bug in the anti-fraud system could cause bond distribution to freeze for months
-Early recognition of good miners wasn't properly rewarded
-Yuma 3: Revolutionary Improvements
-YC3 introduces significant improvements that better reward early recognition and create a more level playing field. Here's how it works:
+
+- Small validators could get unfairly penalized due to rounding
+- A bug in the anti-fraud system could cause bond distribution to freeze for months
+- Early recognition of good miners wasn't properly rewarded
+
+
+YC3 introduces significant improvements that better reward early recognition and create a more level playing field:
+
 Independent Bond Adjustment: Each validator's bonds can change by up to 10% per day, but crucially, they can increase or decrease independently of other validators' opinions.
+
 Fair Scaling: The bond values are stored on a 0-65535 scale, but in a way that allows every validator to potentially reach the maximum value for the same miner if they maintain high-quality evaluations.
+
 Early Recognition Rewards: Validators who identify promising miners early can start accumulating bonds before the miner becomes widely recognized. This creates a proper incentive for proactive evaluation rather than just following the crowd.
+
 Liquid Alpha Integration: YC3 works seamlessly with the Liquid Alpha feature, which provides additional rewards for validators who vote for miners that aren't yet receiving votes from other validators. This further encourages independent evaluation and early recognition.
-Key Improvements in YC3
+
 Fairness for Small Validators: Unlike previous versions, YC3 doesn't unfairly penalize validators with smaller stake. The system ensures that all validators, regardless of their size, can earn appropriate rewards for their evaluations.
+
 Better Early Recognition: The system properly rewards validators who identify promising miners early, creating stronger incentives for independent evaluation rather than just copying others' weights.
+
 Smoother Transitions: The 10% daily adjustment limit helps prevent sudden changes in reward distribution while still allowing for meaningful updates to validator evaluations.
+
 Anti-Fraud Protection: The system maintains strong protection against malicious behavior while fixing the issues that could cause bond distribution to freeze in Yuma 2.
 The Impact
+
 YC3 represents a significant step forward in creating a more fair and efficient consensus mechanism. By better rewarding early recognition and independent evaluation, it encourages validators to:
+
 Actively seek out and evaluate new miners
 Make independent judgments rather than following the crowd
 Maintain consistent, high-quality evaluations
