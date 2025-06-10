@@ -11,12 +11,12 @@ import {
   isActiveSidebarItem,
   findFirstSidebarItemLink,
   useDocSidebarItemsExpandedState,
-} from '@docusaurus/plugin-content-docs/client';
+  isSamePath,
+} from '@docusaurus/theme-common/internal';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import DocSidebarItems from '@theme/DocSidebarItems';
-import { isSamePath } from '@docusaurus/theme-common/internal';
 // If we navigate to a category and it becomes active, it should automatically
 // expand itself
 function useAutoExpandActiveCategory({isActive, collapsed, updateCollapsed}) {
