@@ -4,7 +4,7 @@ title: "How Yuma Consensus 3 Makes Bittensor More Fair"
 
 # How Yuma Consensus 3 Makes Bittensor More Fair
 
-YC3 is the next evolution of Bittensor's consensus mechanism, designed to reward miner innovation and early recognition by validators.
+YC3 is the next evolution of Bittensor's consensus mechanism. It optimizes emissions to reward validators for recognizing innovation quickly.
 
 ## Introduction: Understanding Yuma Consensus
 
