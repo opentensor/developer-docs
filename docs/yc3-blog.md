@@ -6,6 +6,10 @@ title: "How Yuma Consensus 3 Makes Bittensor More Fair"
 
 YC3 is the next evolution of Bittensor's consensus mechanism, designed to reward miner innovation and early recognition by validators.
 
+:::tip Migration Guide Available
+For subnet owners looking to migrate to Yuma3, see the [Yuma3 Migration Guide](./subnets/yuma3-migration-guide.md) for step-by-step instructions and best practices.
+:::
+
 ## Introduction: Understanding Yuma Consensus
 
 At the heart of every Bittensor subnet lies a fundamental challenge: how do you fairly distribute rewards for work, when that work can include a wide range of different digitial commodities or services? Bittensor approaches this as a distributed judgment problem: **Validators** serve as judges for the whole community, with trust in them being measured by the total stake they have been delegated. Their ratings of the performance of **miners** (who produce the commodities and services for each subnet) determine emissions to those miners.
@@ -122,6 +126,55 @@ YC3 creates a healthier ecosystem by encouraging validators to:
 
 This transformation means innovation and early recognition are properly rewarded, while maintaining the security and reliability that makes Bittensor networks trustworthy.
 
+## Practical Implementation: Migration to YC3
+
+### Deployment Status
+
+YC3 is designed as a **drop-in replacement** for existing consensus mechanisms. Subnet 2 has already successfully migrated to YC3, experiencing:
+- Seamless activation with no downtime
+- A brief stabilization period of 2-3 tempo periods
+- Improved fairness for validators of all sizes
+
+### Migration Process
+
+For most subnet owners, **no action is required**. YC3 maintains backward compatibility with existing configurations. However, to leverage the full benefits:
+
+```bash
+# Check current YC3 status
+btcli subnet hyperparameters --netuid YOUR_NETUID
+
+# Enable YC3 features (if not already enabled)
+btcli sudo set --param yuma3_enabled --value true --netuid YOUR_NETUID
+
+# Enable Liquid Alpha for enhanced benefits
+btcli sudo set --param liquid_alpha_enabled --value true --netuid YOUR_NETUID
+```
+
+### Configuration Parameters
+
+YC3 introduces several tunable parameters for advanced customization:
+
+```bash
+# Alpha sigmoid steepness (affects reward distribution curves)
+btcli sudo set --param alpha_sigmoid_steepness --value YOUR_VALUE --netuid YOUR_NETUID
+
+# Bonds moving average (default: 975000 for 2.5% adjustment per epoch)
+btcli sudo set --param bonds_moving_avg --value 975000 --netuid YOUR_NETUID
+
+# Alpha range parameters
+btcli sudo set --param alpha_high --value YOUR_VALUE --netuid YOUR_NETUID
+btcli sudo set --param alpha_low --value YOUR_VALUE --netuid YOUR_NETUID
+```
+
+### Monitoring Your Migration
+
+After enabling YC3, monitor these key metrics:
+
+- **Bond distribution patterns** using sparse matrix queries
+- **Individual alpha values** being applied to validator-miner pairs  
+- **Small validator performance** to ensure fairness improvements
+- **Early recognition rewards** for validators discovering new miners
+
 ## For Subnet Owners
 
 Yuma 3 works best in subnets where validators can independently evaluate miners and benefit from early recognition of promising innovations. The system distributes dividends more fairly than previous versions, and when combined with Liquid Alpha, provides powerful tools to encourage independent evaluation.
@@ -132,11 +185,24 @@ YC3 can be [toggled per subnet](https://github.com/opentensor/subtensor/blob/mai
 - Liquid Alpha must be enabled to get full YC3 benefits
 - The system requires active consensus formation to function optimally  
 - Bond reset functionality is available for subnets that need it
+- Testing on testnet is recommended before mainnet deployment
+
+**Migration Timeline:**
+- **Current**: YC3 is live and being adopted by subnets
+- **No forced deadline**: Subnets can adopt when ready
+- **Recommendation**: Monitor performance and consider gradual parameter tuning
 
 ## Looking Forward
 
 As Bittensor continues to grow, YC3 provides a solid foundation for fair and efficient consensus. The system's ability to reward early recognition while maintaining security makes it well-suited for the network's future development.
 
 For subnet owners ready to embrace more sophisticated consensus mechanisms, YC3 combined with Liquid Alpha provides a powerful toolkit for creating equitable and efficient subnet ecosystems.
+
+**Next Steps for Subnet Owners:**
+1. Review the [Yuma3 Migration Guide](./subnets/yuma3-migration-guide.md) for detailed implementation steps
+2. Test YC3 features on testnet before mainnet deployment
+3. Consider enabling Liquid Alpha to maximize validator incentives
+4. Monitor subnet performance during the migration period
+5. Engage with the Bittensor community for migration support
 
 YC3 was introduced to the Subtensor Code base in [PR 1593](https://github.com/opentensor/subtensor/pull/1593).
