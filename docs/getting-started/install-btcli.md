@@ -8,9 +8,7 @@ This page contains installation details for `btcli`, the Bittensor CLI.
 
 ## Prerequisite
 
-To install `btcli`, you must have Python version 3.9-3.12
-
-See: https://github.com/opentensor/btcli/blob/main/setup.py#L91-L94
+To install `btcli`, you must have Python version 3.9-3.12. See config file on [GitHub](https://github.com/opentensor/btcli/blob/main/pyproject.toml#L57-L60).
 
 ## Developer reference
 
@@ -18,7 +16,7 @@ For a full developer reference, see the [Bittensor CLI reference document](../bt
 
 ## Install on macOS and Linux
 
-### Install from Python Package Indexer 
+### Install from Python Package Indexer
 
 Check for the latest release at the Python Package Index: [https://pypi.org/project/bittensor-cli/](https://pypi.org/project/bittensor-cli/).
 
@@ -29,58 +27,60 @@ pip install bittensor-cli # Use latest or desired version
 ```
 
 Verify your installation and its version by running:
+
 ```shell
 btcli --version
 ```
+
 Example output:
+
 ```console
 BTCLI version: 9.2.0
 ```
+
 :::warning Update frequently!
 Check frequently to make sure you are using the latest version of `btcli`.
 :::
 
 ### Install from source
 
-
 1. Create and activate a virtual environment.
-    :::tip Create and activate a virtual environment
+   :::tip Create and activate a virtual environment
 
-    - Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
+   - Create Python virtual environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#creating-virtual-environments).
 
-    - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
-    :::
-    :::warning For Ubuntu-Linux users
-    If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
-    :::
+   - Activate the new environment. Follow [this guide on python.org](https://docs.python.org/3/library/venv.html#how-venvs-work)
+     :::
+     :::warning For Ubuntu-Linux users
+     If you are using Ubuntu-Linux, the script will prompt for `sudo` access to install all required apt-get packages.
+     :::
 
-    ```bash
-    python3 -m venv btcli_venv
-    source btcli_venv/bin/activate
-    ```
+   ```bash
+   python3 -m venv btcli_venv
+   source btcli_venv/bin/activate
+   ```
 
 2. Clone the Bittensor CLI repo.
 
-    ```bash
-    git clone https://github.com/opentensor/btcli.git
-    ```
+   ```bash
+   git clone https://github.com/opentensor/btcli.git
+   ```
 
 3. `cd` into `btcli` directory.
 
-    ```bash
-    cd btcli
-    ```
+   ```bash
+   cd btcli
+   ```
 
-4.  Install
+4. Install
 
-
-    ```bash
-    pip3 install .
-    ```
+   ```bash
+   pip3 install .
+   ```
 
 ## Install on Windows
 
-To install and run Bittensor SDK on Windows you must install [**WSL 2** (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) on Windows and select [Ubuntu Linux distribution](https://github.com/ubuntu/WSL/blob/main/docs/guides/install-ubuntu-wsl2.md). 
+To install and run Bittensor SDK on Windows you must install [**WSL 2** (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) on Windows and select [Ubuntu Linux distribution](https://github.com/ubuntu/WSL/blob/main/docs/guides/install-ubuntu-wsl2.md).
 
 After you installed the above, follow the same installation steps described above in [Install on macOS and Linux](#install-on-macos-and-linux).
 
@@ -88,18 +88,19 @@ After you installed the above, follow the same installation steps described abov
 While wallet transactions like delegating, transfer, registering, staking can be performed on a Windows machine using WSL 2, the mining and validating operations are not recommended and are not supported on Windows machines.
 :::
 
-
 ## Verify the installation
 
 ```bash
 btcli --version
 ```
+
 which will give you the below output:
 
 ```bash
 BTCLI version: <version number>
 ```
-You will see the version number you installed in place of `<version number>`. 
+
+You will see the version number you installed in place of `<version number>`.
 
 ## Configuration
 
@@ -123,10 +124,12 @@ metagraph_cols:
   CONSENSUS: true
   DIVIDENDS: true
   EMISSION: true
+  GLOBAL_STAKE: true
   HOTKEY: true
   INCENTIVE: true
+  LOCAL_STAKE: true
   RANK: true
-  STAKE: true
+  STAKE_WEIGHT: true
   TRUST: true
   UID: true
   UPDATED: true

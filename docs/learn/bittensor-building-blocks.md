@@ -9,10 +9,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The design of Bittensor subnets is inspired by the structure of a simple neural network, with each **neuron** being either a miner or validator.
 
-:::tip Neuron requirements 
+:::tip Neuron requirements
 See [minimum compute requirements](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml) for compute, memory, bandwidth and storage requirements for neurons.
-::: 
-
+:::
 
 ## Neuron Architecture Overview
 
@@ -22,14 +21,14 @@ Neurons in a subnet operate within a server-client architecture:
 - Dendrite (Client): Validators use Dendrite clients to transmit data to miners.
 - Synapse (Data Object): Encapsulates and structures data exchanged between neurons.
 
-Additionally, the [Metagraph serves as a global directory for managing subnet nodes, while the Subtensor connects neurons to the blockchain.
+Additionally, the Metagraph serves as a global directory for managing subnet nodes, while the Subtensor connects neurons to the blockchain.
 
-
-## Neuron-to-neuron communication 
+## Neuron-to-neuron communication
 
 Neurons exchange information by:
+
 - Encapsulating the information in a Synapse object.
-- Instantiating server (Axon) and client (dendrite) network elements and exchanging Synapse objects using this server-client (Axon-dendrite) protocol. See the below diagram. 
+- Instantiating the server (Axon) and client (dendrite) network elements and exchanging Synapse objects using this server-client (Axon-dendrite) protocol. See the below diagram.
 
 <center>
 <ThemedImage
@@ -43,17 +42,19 @@ sources={{
 
 ### Axon
 
-The `axon` module in Bittensor API uses FastAPI library to create and run API servers. For example, when a subnet miner calls,
+The `axon` module in the Bittensor API uses the FastAPI library to create and run API servers. For example, when a subnet miner calls,
+
 ```python
 axon = bt.axon(wallet=self.wallet, config=self.config)
 ```
-then an API server with the name `axon` is spawned on the subnet miner node. This `axon` API server receives incoming Synapse objects from subnet validators, i.e., the `axon` starts to serve on behalf of the subnet miner.
 
-Similarly, in your subnet miner code you must use the `axon` API to spawn an API server to receive incoming Synapse objects from the subnet validators. 
+then an API server with the name `axon` is created on the subnet miner node. This `axon` API server receives incoming Synapse objects from subnet validators, i.e., the `axon` starts to serve on behalf of the subnet miner.
+
+Similarly, in your subnet miner code you must use the `axon` API to create an API server to receive incoming Synapse objects from the subnet validators.
 
 ### Dendrite
 
-Axon is a **server** instance. Hence, a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the below code fragment:
+Axon is a **server** instance. Hence, a subnet validator will instantiate a `dendrite` **client** on itself to transmit information to axons that are on the subnet miners. For example, when a subnet validator runs the following code fragment:
 
 ```python
     responses: List[bt.Synapse] = await self.dendrite(
@@ -64,15 +65,16 @@ Axon is a **server** instance. Hence, a subnet validator will instantiate a `den
 ```
 
 then the subnet validator:
-- Has instantiated a `dendrite` client on itself.
-- Transmitted `synapse` objects to a set of `axons` (that are attached to subnet miners).
+
+- Instantiates a `dendrite` client on itself.
+- Transmits `synapse` objects to a set of `axons` (that are attached to subnet miners).
 - Waits until `timeout` expires.
 
 ### Synapse
 
-Synapse is a data object. Subnet validators and subnet miners use Synapse data objects as the main vehicle to exchange information. The Synapse class inherits from the `BaseModel` of the Pydantic data validation library. 
+A synapse is a data object. Subnet validators and subnet miners use Synapse data objects as the main vehicle to exchange information. The `Synapse` class inherits from the `BaseModel` of the Pydantic data validation library.
 
-For example, in the [Text Prompting Subnet](https://github.com/macrocosm-os/prompting/blob/414abbb72835c46ccc5c652e1b1420c0c2be5c03/prompting/protocol.py#L27), the subnet validator creates a Synapse object, called PromptingSynapse, with three fields. The fields `roles` and `messages` are set by the subnet validator during the initialization of this Prompting data object, and they cannot be changed after that. A third field, `completion`, is mutable. When a subnet miner receives this Prompting object from the subnet validator, the subnet miner updates this `completion` field. The subnet validator then reads this updated `completion` field. 
+For example, in the [Text Prompting Subnet](https://github.com/macrocosm-os/prompting/blob/414abbb72835c46ccc5c652e1b1420c0c2be5c03/prompting/protocol.py#L27), the subnet validator creates a `Synapse` object, called `PromptingSynapse`, with three fields—`roles`, `messages`, and `completion`. The fields `roles` and `messages` are set by the subnet validator during the initialization of this Prompting data object, and they cannot be changed after that. A third field, `completion`, is mutable. When a subnet miner receives this Prompting object from the subnet validator, the subnet miner updates this `completion` field. The subnet validator then reads this updated `completion` field.
 
 ## The Neuron Metagraph
 

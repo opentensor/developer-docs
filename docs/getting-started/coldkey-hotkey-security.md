@@ -22,25 +22,26 @@ The workstations you use to do this work can be referred to as a permissionless 
 
 ## Permissionless workstation
 
-You can check public information about Bittensor wallets (including your TAO and alpha stake balances), subnets, validators, and more *without* using a (coldkey or hotkey) private key. This is because transaction information is public on the Bittensor blockchain, with parties being identified by their wallet's coldkey public key.
+You can check public information about Bittensor wallets (including your TAO and alpha stake balances), subnets, validators, and more _without_ using a (coldkey or hotkey) private key. This is because transaction information is public on the Bittensor blockchain, with parties being identified by their wallet's coldkey public key.
 
-When you use a website and apps with *only your public key*, this is considered "permissionless" work. Whenever possible, you should do permissionless work on a **permissionless workstation**, meaning a device (laptop or desktop computer,  mobile phone, tablet, etc.) that does *not* have your coldkey private key loaded into it.
+When you use a website and apps with _only your public key_, this is considered "permissionless" work. Whenever possible, you should do permissionless work on a **permissionless workstation**, meaning a device (laptop or desktop computer, mobile phone, tablet, etc.) that does _not_ have your coldkey private key loaded into it.
 
-In other words, don't use your coldkey private key when you don't have to, and avoiding loading it into devices unnecessarily. Every device that *does* have your coldkey private key loaded into it is a **coldkey workstation**, and should be used with security precautions.
+In other words, don't use your coldkey private key when you don't have to, and avoiding loading it into devices unnecessarily. Every device that _does_ have your coldkey private key loaded into it is a **coldkey workstation**, and should be used with security precautions.
 
-When you just want to read/check the state of the blockchain (balances, emissions, token prices, etc.) and you don't need to use your coldkey to *change* anything (for exmaple, to transfer TAO or move stake), it is preferable to use a permissionless workstation.
+When you just want to read/check the state of the blockchain (balances, emissions, token prices, etc.) and you don't need to use your coldkey to _change_ anything (for exmaple, to transfer TAO or move stake), it is preferable to use a permissionless workstation.
 
 To use the Bittensor CLI `btcli` as a permissionless workstation:
 
-1. Importing your coldkey ***public key*** (not private key) with:
-	```shell
-	btcli w regen-coldkeypub --ss58 <YOUR COLDKEY PUBLIC KEY>
-	```
+1. Importing your coldkey **_public key_** (not private key) with:
 
-1. View your balances and stakes, as well as information about the Bittensor blockchain, subnets, miners, validators, etc., simply by running: 
-	```shell
-	btcli view dashboard
-	```
+   ```shell
+   btcli w regen-coldkeypub --ss58 <YOUR COLDKEY PUBLIC KEY>
+   ```
+
+1. View your balances and stakes, as well as information about the Bittensor blockchain, subnets, miners, validators, etc., simply by running:
+   ```shell
+   btcli view dashboard
+   ```
 
 Websites that offer permissionless browsing of Bittensor data include:
 
@@ -49,10 +50,9 @@ Websites that offer permissionless browsing of Bittensor data include:
 
 ## Coldkey workstation
 
-Your coldkey private key, accessible with your recovery [seed phrase](./wallets#the-seed-phrase-aka-mnemonic), is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seed phrase, there is no possible way to recover access to your wallet.
+Your coldkey private key, accessible with your recovery [seed phrase](./wallets#the-seed-phrase-aka-mnemonic), is the complete representation of your identity to Bittensor. In otherwords, holding the coldkey or seed phrase is the ultimate authority over your Bittensor wallet. If your coldkey key is leaked or stolen, it allows an attacker holder to transfer (steal) your TAO, redelegate your stakes, or take other actions that can’t be reversed. Conversely, without your coldkey private key or the seed phrase, there is no possible way to recover access to your wallet.
 
 Because of these high stakes, best practices should be diligently followed. Always prioritize confidentiality and integrity over convenience when handling coldkeys.
-
 
 ### Isolation of coldkey operations
 
@@ -60,11 +60,11 @@ The first principle is to isolate coldkey operations from day-to-day or internet
 
 In short, you should approach all operations involving your coldkey management as high-value, mission-critical, and laden with inherent risk.
 
-Ensure a clear boundary between coldkey operations and the working environment you use to carry them out, and everything else. 
+Ensure a clear boundary between coldkey operations and the working environment you use to carry them out, and everything else.
 
-:::tip Coldkeys do not mine
+:::warning Do not mine with coldkeys
 
-Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Ensure there is a clear boundary: The coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
+Miners will need coldkeys to manage their TAO and alpha currency, as well as hotkeys to serve requests. Miners must ensure that there is a clear boundary—the coldkey should **never** be on an environment with untrusted ML code from containers, frameworks, or libraries that might exfiltrate secrets.
 :::
 
 ### Coldkey mobile device
@@ -82,14 +82,13 @@ This is required for using `btcli` or the Bittensor Python SDK for advanced use 
 ### Operational Hygiene
 
 Even on a minimal or air-gapped machine, follow standard security hygiene:
+
 - Always [Handle your Seed Phrase/Mnemonic Securely](../keys/handle-seed-phrase).
-- Use strong passwords for your encryption passphrases.  
-- Do not reuse credentials across different environments.  
+- Use strong passwords for your encryption passphrases.
+- Do not reuse credentials across different environments.
 - Keep your workstation’s operating system and critical software updated with the latest security patches.
 - Disable all network services (SSH, RDP, or anything else) that are not strictly needed.
 - Maintain logs of important oprations.
-
-
 
 ### Rotating your coldkey
 
@@ -107,7 +106,6 @@ Effectively, this transfers all of your TAO and alpha stake balances, as well as
 - For each hotkey owned by the old coldkey, ownership transfers to the new coldkey. The list of owned hotkeys for both old and new coldkeys updates.
 - Any remaining balances transfer from the old coldkey to the new coldkey.
 
-
 ### Hardware Wallets and Hardware Security Modules (HSMs)
 
 Ledger can be integrated with the Bittensor Chrome Extension. This may be a good option for managing stake and TAO balances, but does not allow for advanced functions such as hotkey management, subnet configuration, and governance.
@@ -120,7 +118,7 @@ What about Hashicorp Vault? Can you use that with HSM? AWS CloudHSM or Azure Key
 
 See:
 
-- [AWS CloudHSM documentation](https://aws.amazon.com/cloudhsm/)  
+- [AWS CloudHSM documentation](https://aws.amazon.com/cloudhsm/)
 - Oblique reference to [HashiCorp Vault with HSM integration](https://developer.hashicorp.com/vault/docs/configuration/seal)
  -->
 
@@ -133,16 +131,10 @@ If you work within a team or DAO environment that collectively manages a coldkey
 ### Periodic Security Assessments
 
 Maintain a secure software environment:
-- Keep an eye on newly discovered OS or hardware vulnerabilities.  
-- Run vulnerability scans on any machine that touches your coldkey.  
+
+- Keep an eye on newly discovered OS or hardware vulnerabilities.
+- Run vulnerability scans on any machine that touches your coldkey.
 - Conduct red team exercises and penetration testing to identify weaknesses in your setup.
-
-
-
-
-
-
-
 
 ## Hotkey workstation
 
@@ -155,8 +147,8 @@ Overall, a hotkey workstation can be considered an “operational” environment
 Bittensor miners must handle hotkeys in MLOps workflows. Hotkeys must be created in coldkey workstation environments and then provisioned to the mining/hotkey workstation environment, i.e. a server that will handle requests from validators, for example by querying an AI model to generate a response (a generated image or text response) to a text prompt from a user.
 
 - Secure secrets management solution (like [HashiCorp Vault](https://www.vaultproject.io/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), or [GCP Secret Manager](https://cloud.google.com/secret-manager)) to provision the hotkey private key or seedphrase to the mining server.
-- Use ephemeral secret injection (CI/CD pipelines like GitLab or GitHub Actions allow storing secrets and injecting them at runtime).  
-- Never put keys in code repositories 
+- Use ephemeral secret injection (CI/CD pipelines like GitLab or GitHub Actions allow storing secrets and injecting them at runtime).
+- Never put keys in code repositories
 
 ### Hotkey rotation
 
@@ -164,10 +156,10 @@ If you suspect that a hotkey (but not a coldkey) has been leaked, rotate it as s
 
 Note that this operation incurs a $1 \tau$ recycling fee.
 
-
 ### Minimize dependency risk
 
 Bittensor nodes often run complex software stacks with many dependencies. Take steps to reduce risk:
-- Keep your Python environment or Docker images updated with the latest patches.  
-- Avoid installing unnecessary packages that might contain vulnerabilities.  
-- Consider sandboxing the ML library if possible, using solutions like [PyPy sandboxing](https://doc.pypy.org/en/latest/sandbox.html) or custom Docker seccomp profiles.  
+
+- Keep your Python environment or Docker images updated with the latest patches.
+- Avoid installing unnecessary packages that might contain vulnerabilities.
+- Consider sandboxing the ML library if possible, using solutions like [PyPy sandboxing](https://doc.pypy.org/en/latest/sandbox.html) or custom Docker seccomp profiles.

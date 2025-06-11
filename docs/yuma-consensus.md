@@ -119,6 +119,10 @@ Validators who stay near consensus build stronger EMA bonds and thus extract mor
 
 Each validator $i$’s share $V_i$ of validator emissions (41% of each subnet's total emissions) is the sum of all of its bonds to miners, weighted by the miner's total emissions:
 
+<details>
+<summary><strong>See how it's calculated</strong></summary>
 $$
 V_i = \sum_{j \in \mathbb{M}} \Bigl(\,B_{ij} \,\times\, M_j\Bigr)
 $$
+
+</details>
