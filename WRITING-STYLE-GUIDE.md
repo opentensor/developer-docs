@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------
 
-When you write a developer document for Opentensor Foundation, your audience should find your documentation readable, informative, and concise. To accomplish these goals, here below are a few helpful writing style recommendations. We encourage you to stick to the writing style described on this page.
+When you write a developer document for the Bittensor documentation, your audience should find your documentation readable, informative, and concise. To accomplish these goals, here below are a few helpful writing style recommendations. We encourage you to stick to the writing style described on this page.
 
 # General principles
 
