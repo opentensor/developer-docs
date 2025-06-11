@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://www.docs.bittensor.com">
+  <a href="https://www.docs.learnbittensor.org">
     <img alt="Tao Logo" src="./static/img/tao-logo.png" />
   </a>
 </h1>
