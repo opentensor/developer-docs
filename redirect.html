@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bittensor Documentation - Official Site Move</title>
+    <meta name="description" content="The official Bittensor documentation has moved to docs.learnbittensor.org">
+    <link rel="icon" href="https://docs.bittensor.com/img/favicon.ico">
+    
+    <!-- Preconnect to new domain -->
+    <link rel="preconnect" href="https://docs.learnbittensor.org">
+    
+    <!-- Auto redirect after 10 seconds -->
+    <meta http-equiv="refresh" content="10;url=https://docs.learnbittensor.org">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: url('https://docs.bittensor.com/img/logo-dark-mode.svg') no-repeat center;
+            background-size: contain;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+        
+        .official-notice {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+        }
+        
+        .official-notice h2 {
+            color: #3498db;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #e0e0e0;
+        }
+        
+        .countdown-container {
+            margin: 30px 0;
+        }
+        
+        .countdown {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3498db;
+            margin: 16px 0;
+        }
+        
+        .redirect-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            transition: background 0.3s ease;
+        }
+        
+        .redirect-button:hover {
+            background: #2980b9;
+        }
+        
+        .new-url {
+            font-size: 1.2rem;
+            color: #3498db;
+            font-weight: 600;
+            margin: 16px 0;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .security-note {
+            background: rgba(241, 196, 15, 0.2);
+            border: 1px solid #f1c40f;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        
+        .security-note strong {
+            color: #f1c40f;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .countdown {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        
+        <h1>Bittensor Documentation Has Moved</h1>
+        
+        <div class="official-notice">
+            <h2>🏛️ Official Notice from Opentensor Foundation</h2>
+            <p>As of December 2024, the Opentensor Foundation has officially moved the Bittensor developer documentation to a new location.</p>
+        </div>
+        
+        <p>The documentation is now hosted at:</p>
+        <div class="new-url">docs.learnbittensor.org</div>
+        
+        <div class="countdown-container">
+            <p>You will be automatically redirected in:</p>
+            <div class="countdown" id="countdown">10</div>
+            <p>seconds</p>
+        </div>
+        
+        <a href="https://docs.learnbittensor.org" class="redirect-button">
+            Take me to the new documentation site →
+        </a>
+        
+        <div class="security-note">
+            <strong>⚠️ Security Notice:</strong> Only trust documentation from official sources. The new site is the official home for Bittensor developer documentation.
+        </div>
+        
+        <div class="footer">
+            <p>If you are not automatically redirected, please click the button above or visit: <br>
+            <strong>https://docs.learnbittensor.org</strong></p>
+            
+            <p style="margin-top: 20px;">
+                © 2024 Bittensor • Latent Holdings
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Countdown functionality
+        let countdownElement = document.getElementById('countdown');
+        let timeLeft = 10;
+        
+        function updateCountdown() {
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                countdownElement.textContent = 'Redirecting...';
+                window.location.href = 'https://docs.learnbittensor.org';
+                return;
+            }
+            
+            timeLeft--;
+        }
+        
+        // Update countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // Handle manual redirect
+        document.querySelector('.redirect-button').addEventListener('click', function() {
+            clearInterval(countdownInterval);
+        });
+        
+        // Preload the new site
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'https://docs.learnbittensor.org';
+        document.head.appendChild(link);
+        
+        // Analytics tracking (if needed)
+        // You can add Google Analytics or other tracking here
+        console.log('Redirect page loaded - transitioning to docs.learnbittensor.org');
+    </script>
+</body>
+</html> 
