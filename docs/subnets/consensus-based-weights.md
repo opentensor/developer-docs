@@ -4,7 +4,7 @@ title: "Consensus-based Weights/Liquid alpha"
 
 # Consensus-based Weights
 
-This guide describes how to use the **consensus-based weights** feature (also called "liquid alpha"). 
+This guide describes how to use the **consensus-based weights** feature (also called "liquid alpha").
 
 With this feature, a subnet validator's dividends are better correlated to the performance of the subnet miner on which the subnet validator is setting the weights. In this context, see also the documentation for the [Commit Reveal](./commit-reveal.md) feature, as both these features help the subnet validators find new subnet miners that perform well and bond to them quickly.
 
@@ -20,7 +20,7 @@ A subnet owner can run the `weight_copy/liquid_alpha_diagnostic.ipynb` in the Py
 
 - For commit reveal diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/commit_reveal_diagnostic.ipynb?authuser=5
 - For liquid alpha diagnostic: https://colab.research.google.com/github/opentensor/developer-docs/blob/main/static/weight_copy/liquid_alpha_diagnostic.ipynb?authuser=5
-- [GitHub directory with Python notebooks](https://github.com/opentensor/developer-docs/tree/main/static/weight_copy/). 
+- [GitHub directory with Python notebooks](https://github.com/latent-to/developer-docs/tree/main/static/weight_copy/).
 
 ## Description
 
@@ -32,21 +32,21 @@ $$
 B_{ij}^{(t)} = \alpha\cdot\Delta B_{ij}^{(t)} + (1-\alpha)\cdot B_{ij}^{(t-1)}
 $$
 
-This EMA, $B_{ij}^{(t)}$, helps in the early discovery of promising subnet miners and prevents abrupt changes to the bond value. Typically, any abrupt change in the bond value indicates exploitation. 
+This EMA, $B_{ij}^{(t)}$, helps in the early discovery of promising subnet miners and prevents abrupt changes to the bond value. Typically, any abrupt change in the bond value indicates exploitation.
 
 Finally, the **dividend $D_i$ to a subnet validator $i$** is calculated as:
 
 $$
 D_i = \sum_j B_{ij} \cdot I_j
-$$ 
+$$
 
-where $B_{ij}$ is the EMA bond value of the subnet validator $i$ with the subnet miner $j$, and $I_j$ is the subnet miner's incentive. See the subtensor document section, [Validator bonding](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding) for a rigorous mathematical treatment of this topic. 
+where $B_{ij}$ is the EMA bond value of the subnet validator $i$ with the subnet miner $j$, and $I_j$ is the subnet miner's incentive. See the subtensor document section, [Validator bonding](https://github.com/opentensor/subtensor/blob/main/docs/consensus.md#validator-bonding) for a rigorous mathematical treatment of this topic.
 
 ### What changed with this feature
 
 Without the consensus-based weights feature, the $\alpha$ in the above equation is set to `0.9`. With the consensus-based weights feature, this $\alpha$ value is made into a variable. An optimum value for the variable $\alpha$ is determined based on the current consensus (YC-2) in a given subnet. Hence, this feature is called **consensus-based weights**.
 
-Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet. 
+Using the new subnet hyperparameters that are described below, a subnet owner should experiment and discover the optimum $\alpha$ for their subnet.
 
 ## Installing the consensus-based weights feature
 
@@ -61,7 +61,7 @@ The consensus-based weights feature is available in Bittensor 7.3.0 and later ve
 Here are summary steps to use the consensus-based weights feature. A subnet owner typically executes these steps:
 
 1. To activate this feature, a subnet owner should set the `liquid_alpha_enabled` (bool) hyperparameter to `True`.
-2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using a single subnet hyperparameter, `alpha_values` (List[int]). 
+2. Next, the subnet owner should set the upper and lower bounds for $\alpha$ by using a single subnet hyperparameter, `alpha_values` (List[int]).
 
 :::danger Set alpha low and high together
 You must set `alpha_low` and `alpha_high` together using `alpha_values`. See below.
@@ -85,16 +85,17 @@ You must set `alpha_low` and `alpha_high` together using `alpha_values`. See bel
 
 ### Value format
 
-When you set the subnet hyperparameters `alpha_low` and `alpha_high`, you must pass their integer equivalents in `u16`. This applies whether you set these hyperparameters using the `btcli` command or in your Python code. These integer values are then converted by the subtensor into their corresponding decimal values in the `u16` format. 
+When you set the subnet hyperparameters `alpha_low` and `alpha_high`, you must pass their integer equivalents in `u16`. This applies whether you set these hyperparameters using the `btcli` command or in your Python code. These integer values are then converted by the subtensor into their corresponding decimal values in the `u16` format.
 
 Use the below conversion formula to determine the integer values for your desired decimal values for both `alpha_low` and `alpha_high` hyperparameters.
 
-$$ 
+$$
 \text{Integer value} = \text{(your-desired-decimal-value)} \times 65535
 $$
 
 Hence, for example:
-- If you want `alpha_low` to be `0.1`, then you would pass `6554`, which is the rounded up value of `0.1 * 65535`. 
+
+- If you want `alpha_low` to be `0.1`, then you would pass `6554`, which is the rounded up value of `0.1 * 65535`.
 - If you want `alpha_high` to be `0.8`, then you would pass `52428`, which is the value of `0.8 * 65535`.
 
 ---
@@ -168,9 +169,9 @@ print(alpha_low_high_result)
 ```
 
 :::danger you must always set alpha_low and alpha_high together
-You must set the values for both `alpha_low` and `alpha_high` together. Current functionality does not allow setting a value to only one of `alpha_low` or `alpha_high`. 
+You must set the values for both `alpha_low` and `alpha_high` together. Current functionality does not allow setting a value to only one of `alpha_low` or `alpha_high`.
 
-For example, if you want to set a new value to `alpha_low` but do not want to change the `alpha_high` value, you must pass the new value of `alpha_low`, and also the current, unchanging value of `alpha_high`, while setting the `alpha_values`. 
+For example, if you want to set a new value to `alpha_low` but do not want to change the `alpha_high` value, you must pass the new value of `alpha_low`, and also the current, unchanging value of `alpha_high`, while setting the `alpha_values`.
 :::
 
 ---
@@ -194,11 +195,13 @@ For subnet 1 (`netuid` of `1`):
 ```bash
 btcli sudo set hyperparameters --netuid 1 --param liquid_alpha_enabled --value True
 ```
+
 or you can also use,
 
 ```bash
 btcli sudo set
 ```
+
 and follow the terminal prompts:
 
 ```bash
@@ -210,7 +213,7 @@ and follow the terminal prompts:
 ```
 
 :::info tip
-When you use `btcli sudo set` you can use `1` or `0` to enable or disable the `liquid_alpha_enabled` hyperparameter. You can also use `true` or `True`, or `false` or `False`. 
+When you use `btcli sudo set` you can use `1` or `0` to enable or disable the `liquid_alpha_enabled` hyperparameter. You can also use `true` or `True`, or `false` or `False`.
 :::
 
 #### 2. Use the `alpha_values` to set the `alpha_low` and `alpha_high`
@@ -230,6 +233,7 @@ btcli sudo set hyperparameters --netuid 1 --param alpha_values --value 6554,5242
 ```
 
 Output:
+
 ```bash
 >> Enter wallet name (default):    # <my_coldkey>
 >> Enter password to unlock key:   # <password>
@@ -238,7 +242,7 @@ Output:
 
 Now, if you want to only change the `alpha_high` value from `0.8` to `0.85` (integer `55705`), then:
 
-First, execute the `btcli sudo set` command and provide the `netuid`. The terminal will display the current alpha_low` and `alpha_high` values.
+First, execute the `btcli sudo set` command and provide the `netuid`. The terminal will display the current alpha_low`and`alpha_high` values.
 
 :::warning alert
 When you use `btcli sudo set,` the display will not show the `alpha_values` parameter. It will only show the `alpha_low` and `alpha_high` parameters.

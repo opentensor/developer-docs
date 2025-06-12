@@ -20,13 +20,13 @@ const config = {
   tagline: "Developer Documentation",
   favicon: "img/favicon.ico",
   // Set the production url of your site here
-  url: "https://docs.bittensor.com",
+  url: "https://docs.learnbittensor.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "opentensor", // Usually your GitHub org/user name.
+  organizationName: "latent-to", // Usually your GitHub org/user name.
   projectName: "developer-docs", // Usually your repo name.
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
@@ -37,7 +37,7 @@ const config = {
   customFields: {
     enableIssueLinks: true, // Set to true to enable issue links
     enableEditUrlLinks: true, // Set to true to enable edit url links
-    issueBaseUrl: "https://github.com/opentensor/developer-docs/issues",
+    issueBaseUrl: "https://github.com/latent-to/developer-docs/issues",
     enableFeedback: false, // Set to false to disable feedback
   },
 
@@ -59,7 +59,7 @@ const config = {
           sidebarCollapsible: true,
           showLastUpdateTime: true,
           docItemComponent: "@theme/DocItem",
-          editUrl: "https://github.com/opentensor/developer-docs/blob/main/",
+          editUrl: "https://github.com/latent-to/developer-docs/blob/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -179,7 +179,7 @@ const config = {
           alt: "Bittensor",
           src: "img/logo.svg",
           srcDark: "img/logo-dark-mode.svg",
-          href: "https://bittensor.com",
+          href: "https://learnbittensor.org",
           style: {
             objectFit: "contain",
             width: 21,
@@ -223,7 +223,7 @@ const config = {
             position: "left",
           },
           {
-            href: "https://github.com/opentensor/developer-docs",
+            href: "https://github.com/latent-to/developer-docs",
             label: "Docs GitHub",
             position: "right",
           },
@@ -246,10 +246,10 @@ const config = {
       footer: {
         copyright: `
 					<div className="copyRight">
-						© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • <a href="https://latent.to/">Latent Holdings</a>, <span>all rights reserved.</span>
+						© ${new Date().getFullYear()} <a href="https://learnbittensor.org">LearnBittensor</a> • <a href="https://latent.to/">Latent Holdings</a>, <span>all rights reserved.</span>
             <a href="mailto:m@latent.to">contact the docs team</a>
           </div>
-					<a href='https://bittensor.com/'>
+					<a href='https://learnbittensor.org/'>
 					<img src="img/logo-dark-mode.svg" alt="logo"/>
 					</a>
 				`,

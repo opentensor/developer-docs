@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://www.docs.bittensor.com">
+  <a href="https://www.docs.learnbittensor.org">
     <img alt="Tao Logo" src="./static/img/tao-logo.png" />
   </a>
 </h1>
@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------
 
-When you write a developer document for Opentensor Foundation, your audience should find your documentation readable, informative, and concise. To accomplish these goals, here below are a few helpful writing style recommendations. We encourage you to stick to the writing style described on this page.
+When you write a developer document for the Bittensor documentation, your audience should find your documentation readable, informative, and concise. To accomplish these goals, here below are a few helpful writing style recommendations. We encourage you to stick to the writing style described on this page.
 
 # General principles
 

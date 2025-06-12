@@ -4,7 +4,7 @@
   </a>
 </h1>
 <h2 align="center">Bittensor Developer Docs</h2>
-<h3 align="center">https://docs.bittensor.com</h3>
+<h3 align="center">https://docs.learnbittensor.org</h3>
 
 -----------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ In most cases you only need to follow this basic approach. If you know what you 
 ### Installation
 
 ```
-git clone https://github.com/opentensor/developer-docs.git
+git clone https://github.com/latent-to/developer-docs.git
 ```
 
 ```
