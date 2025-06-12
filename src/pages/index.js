@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Layout from '@theme/Layout';
 
 export default function Home() {
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout>
+    <div className="redirect-page">
       <div className="container">
         <div className="logo"></div>
         
@@ -91,6 +90,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 } 

@@ -1,33 +1,14 @@
-@import url("./style.css");
-
-
-/* You can override the default Infima variables here also you can overwrite the styles. you must have to use !important to overwrite style. */
-
-/* Fix anchor link scrolling to account for fixed header */
-h1[id],
-h2[id],
-h3[id],
-h4[id],
-h5[id],
-h6[id] {
-  scroll-margin-top: 100px !important;
-}
-
-/* Also add scroll margin to elements with anchor links */
-:target {
-  scroll-margin-top: 100px !important;
-}
-
-* {
+/* Base styles */
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  color: #ffffff;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: #ffffff;
+.redirect-page {
   min-height: 100vh;
   display: flex;
   align-items: center;

@@ -36,7 +36,6 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        hideableSidebar: true,
         items: [], // Remove all navbar items
       },
       footer: {
