@@ -4,7 +4,7 @@ export default function Home() {
   useEffect(() => {
     // Countdown functionality
     let countdownElement = document.getElementById('countdown');
-    let timeLeft = 10;
+    let timeLeft = 30;
     
     function updateCountdown() {
       countdownElement.textContent = timeLeft;
