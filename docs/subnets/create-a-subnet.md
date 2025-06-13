@@ -64,7 +64,7 @@ Subnet creations are limited to **one subnet creation per 7200 blocks** (approxi
 ## Prerequisites
 
 - [Install the most recent version of BTCLI](../getting-started/install-btcli).
-- [Created a wallet](../getting-started/wallets.md#creating-a-local-wallet). 
+- [Create a wallet](../getting-started/wallets.md#creating-a-local-wallet). 
 - To create a subnet on test chain, your wallet must have sufficient test net TAO. Inquire in [Discord](https://discord.com/channels/799672011265015819/1107738550373454028/threads/1331693251589312553) to obtain TAO on Bittensor test network.
 - To create a subnet on main network (finney) requires a substantial investment of TAO, depending on current registration cost for new subnets.
 

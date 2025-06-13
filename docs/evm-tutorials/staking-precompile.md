@@ -16,8 +16,8 @@ In this tutorial you will learn how to interact with staking precompile in two w
 
 ## Prerequisites
 
+1. Read [EVM on Subtensor](./) for a basic introduction to Bittensor EVM
 1. You should also be comfortable using [Remix IDE](https://remix.ethereum.org/).
-2. Read [EVM on Subtensor](./evm-on-subtensor.md) for a basic understanding of what an ABI is and how to use it. 
 
 ## Setup EVM localnet, subnet and delegate
 
@@ -25,11 +25,10 @@ In this tutorial you will learn how to interact with staking precompile in two w
 
 2. On this EVM localnet create one subnet and a delegate hotkey. The commands below will create a subnet, register a neuron and nominate your hotkey as a delegate, in that order:
 
-    ```bash
-    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9944
-    ```
+```sh
+btcli subnet create --network ws://127.0.0.1:9944
+btcli subnet register --network ws://127.0.0.1:9944    
+```
 
 3. Save the delegate hotkey address. You will use this in the staking pool use case below.
 
@@ -112,4 +111,3 @@ In this tutorial, you will interact directly with the staking precompile by usin
    2.  Paste the delegate hotkey account ID in the first parameter.
    3.  Toggle **include option** OFF for the second parameter.
    4.  Click the **+** button and find the new stake record.
-
