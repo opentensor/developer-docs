@@ -133,6 +133,14 @@ The SDK uses `False` if the variable is not set.
 
 ### `LOCALNET_SH_PATH`
 
-Full path to the `scripts/localnet.sh` file in the cloned `Subtensor` repository used to launch the local chain (including for e2e tests if the Docker image is not used).<br/>
+Full path to the `scripts/localnet.sh` file in the cloned `Subtensor` repository used to launch the local chain (including for e2e tests if the Docker image is not used).
+
 SDK skips running e2e tests if the variable is not set (used only together with the `USE_DOCKER` variable).
 
+### `SKIP_PULL`
+
+Controls whether the Docker image used for end-to-end tests should be pulled from a remote container registry (e.g. GitHub Container Registry) before the test run.
+This is useful in CI pipelines where a custom image is built and should not be overwritten by a remote version.
+
+- When `SKIP_PULL=0` (default), the test framework runs docker pull to ensure the latest version of the image is used.
+- When `SKIP_PULL=1`, the pull step is skipped. The tests will only run if the required Docker image is already available locally.
