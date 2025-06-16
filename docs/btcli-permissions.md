@@ -34,7 +34,7 @@ The workstations you use to do this work can be referred to as a permissionless 
 1. A **coldkey workstation** contains one or more coldkey private key in the `wallet_path`. For any coldkey associated with mainnet TAO, the coldkey workstation should be held to the highest possible security standards.
 
    :::tip coldkey workstation security
-   See [Coldkey workstation](./ getting-started/coldkey-hotkey-security#coldkey-workstation)
+   See [Coldkey workstation](./getting-started/coldkey-hotkey-security#coldkey-workstation)
    :::
 
 1. **A hotkey workstation**—which is generally a server used for mining or validation—contains a hotkey private key in the `wallet_path` located in the `btcli config`, as well as a coldkey public key for the corresponding coldkey. Compromised hotkeys can damage your reputation if they are used to maliciously to submit inaccurate weights as a validator, or bad work as a miner. However, ownership of TAO or alpha stake can only be transferred with a coldkey, and a leaked hotkey can be swapped using the coldkey; therefore hotkey leaks are far less dangerous than coldkey leaks.
