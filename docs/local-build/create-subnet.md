@@ -9,9 +9,9 @@ This page covers creating a subnet on a locally deployed Subtensor blockchain, w
 For creating a subnet on Bittensor test and main network, see [Create a Subnet](../subnets/create-a-subnet).
 
 Prerequisites:
+
 - [Deploy a Subtensor chain locally](./deploy)
 - [Provision wallets for the sn-creator, miner, and validator users for this tutorial.](./provision-wallets)
-
 
 ## Create subnet
 
@@ -23,7 +23,9 @@ btcli subnet create \
 --wallet.name sn-creator \
 --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
+
 ### Trouble shoot
+
 #### Insufficient funds
 
 If you are following this tutorial for the first time, the `subnet create` command will faill with an insufficient balance error.
@@ -45,10 +47,9 @@ btcli wallet transfer \
 --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
 
-
 #### Network Rate Limit Error
 
-If you see a network rate limit error, you may need to adjust the `SubtensorInitialNetworkRateLimit` chain state parameter.  
+If you see a network rate limit error, you may need to adjust the `SubtensorInitialNetworkRateLimit` chain state parameter.
 
 See [Clone and tweak the Subtensor source](./deploy#clone-and-tweak-the-subtensor-source)
 
@@ -67,12 +68,14 @@ Check the burn cost to create a subnet on Bittensor main network and test networ
 ```shell
 btcli subnet burn-cost --network finney
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 
 ```shell
 btcli subnet burn-cost --network test
 ```
+
 <codapi-snippet sandbox="python" editor="basic" init-delay="500">
 </codapi-snippet>
 :::
@@ -82,33 +85,35 @@ btcli subnet burn-cost --network test
 To remedy your liquidity shortfall, transfer $\tau$ from the Alice account and try again.
 
 1. First, get the ss58 address for the destination wallet for the transfer:
-	```shell
-	btcli w list
-	```
-	```shell
-	...
-	── Coldkey sn-creator  ss58_address 5C9xw4gDyu11ocdpWrmhT1sbi4xEHCpzEMsyMA4jGfAZQofQ
-    └── Hotkey default  ss58_address 5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR
-	```
-1. Execute the transfer from alice to the sn-creator wallet
+   ```shell
+   btcli w list
+   ```
+   ```shell
+   ...
+   ── Coldkey sn-creator  ss58_address 5C9xw4gDyu11ocdpWrmhT1sbi4xEHCpzEMsyMA4jGfAZQofQ
+   └── Hotkey default  ss58_address 5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR
+   ```
+1. Execute the transfer from `alice` to the sn-creator wallet
 
-	```console
-	btcli wallet transfer \
-	--amount 1001 \
-	--wallet.name alice \
-	--destination "5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR" \
-	--subtensor.chain_endpoint ws://127.0.0.1:9945
-	```
+   ```console
+   btcli wallet transfer \
+   --amount 1001 \
+   --wallet.name alice \
+   --destination "5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR" \
+   --subtensor.chain_endpoint ws://127.0.0.1:9945
+   ```
 
-	```shell
-	Do you want to transfer:
-	amount: τ 1,001.0000
-	from: alice : 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
-	to: 5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR
-	for fee: τ 0.0001 [y/n]: y
-	🌏  📡 Transferring...
-	```
+   ```shell
+   Do you want to transfer:
+   amount: τ 1,001.0000
+   from: alice : 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+   to: 5GVsCAY6RuSuoAA1E77xsHJ9PjdZJjJrRkNFDxVtRKPnw7TR
+   for fee: τ 0.0001 [y/n]: y
+   🌏  📡 Transferring...
+   ```
+
 ## Success
+
 Create some subnets.
 
 For example:
@@ -119,6 +124,7 @@ btcli subnet create \
 --wallet.name sn-creator \
 --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
+
 ```console
 Subnet burn cost: τ 1,000.0000
 Your balance is: τ 1,001.0000
@@ -127,7 +133,6 @@ Enter your password:
 Decrypting...
 🌏  📡 Registering subnet..
 ```
-
 
 ```shell
  btcli subnet create \
@@ -153,6 +158,7 @@ Decrypting...
 btcli subnet list \
 --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
+
 ```console
                                                          Subnets
                                                      Network: custom

@@ -15,16 +15,18 @@ In the following tutorial, we will also provision several wallets to serve as su
 - Update your mac or linux workstation using your package manager
 - Install [Bittensor SDK](../getting-started/installation) and [BTCLI](../getting-started/install-btcli)
 
-
 ## Build your local Subtensor
+
 ### Install Rust/Cargo
 
 To run locally, Substrate requires an up-to-date install of Cargo and Rust
 
 Install from Rust's website:
+
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+
 Update your shell's source to include Cargo's path:
 
 ```shell
@@ -37,18 +39,15 @@ We well clone the source and make a small modification to the state configuratio
 
 Normally, the creation of new subnets is limited to one per day. This is inconvenient for local subnet development, so we will limit this restriction.
 
-
-
 1. Fetch the subtensor codebase to your local machine.
 
-  ```bash
-  git clone https://github.com/opentensor/subtensor.git
-  ```
+```bash
+git clone https://github.com/opentensor/subtensor.git
+```
 
 1. Open the source file `subtensor/runtime/src/lib.rs` in the your editor of choice, and find where the variable `SubtensorInitialNetworkRateLimit` is set. It is normally configured to 7200, which is the number of blocks per day written to the chain, i.e. the seconds in a day divided by 12, since a Subtensor block is written every twelve seconds.
 
 In otherwords, this setting limits the number of new subnets that can be created to one per day. Let's change the value to 1 (block), so we can create a new subnet every 12 seconds if we want to.
-
 
 ### Setup Rust
 
@@ -64,7 +63,7 @@ Update to the nightly version of Rust:
 
 These steps initialize your local subtensor chain in development mode. These commands will set up and run a local subtensor.
 
-Build the binary with the faucet feature enabled:
+Build the binary:
 
 ```bash
 cd subtensor
@@ -76,13 +75,12 @@ cargo build -p node-subtensor --profile release
 Next, run the localnet script and turn off the attempt to build the binary (as we have already done this above):
 
 ```bash
-BUILD_BINARY=0 ./scripts/localnet.sh 
+BUILD_BINARY=0 ./scripts/localnet.sh
 ```
 
 :::info troubleshooting
 If you see errors to the effect that the release cannot be found in `targets/fast-blocks`, you may need to move the build artifacts from `targets/release` to `targets/fast-blocks/release`.
 :::
-
 
 ## Validate
 
@@ -110,8 +108,8 @@ Note the use of the `--chain_endpoint` flag to target the local chain, rather th
 
 ```
 
-
 ```shell
+
 ```
 
 ```console

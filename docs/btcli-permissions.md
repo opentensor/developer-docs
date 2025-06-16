@@ -25,25 +25,26 @@ Interacting with Bittensor generally falls into one of three levels of security,
 
 The workstations you use to do this work can be referred to as a permissionless workstation (requiring neither private key), a coldkey workstation or a hotkey workstation, depending on which private key is provisioned.
 
-1. A **permissionless workstation** has only coldkey *public keys* on it. Public keys are sufficient for viewing all information about a wallet, such as TAO and alpha stake balances. Information about wallets, subnets, miners, and validators can and should be viewed without initializing your private keys on a device, to avoid the security risk of compromising your keys.
+1. A **permissionless workstation** has only coldkey _public keys_ on it. Public keys are sufficient for viewing all information about a wallet, such as TAO and alpha stake balances. Information about wallets, subnets, miners, and validators can and should be viewed without initializing your private keys on a device, to avoid the security risk of compromising your keys.
 
-    :::tip coldkey workstation security
-    See [Permissionless workstation](./getting-started/coldkey-hotkey-security#permissionless-workstation)
-    :::
+   :::tip coldkey workstation security
+   See [Permissionless workstation](./getting-started/coldkey-hotkey-security#permissionless-workstation)
+   :::
 
-1. A **coldkey workstation** contains one or more coldkey private key in the `wallet_path`. For any coldkey associated with mainnet TAO, the coldkey workstation should be held to the highest possible security standards. 
+1. A **coldkey workstation** contains one or more coldkey private key in the `wallet_path`. For any coldkey associated with mainnet TAO, the coldkey workstation should be held to the highest possible security standards.
 
-    :::tip coldkey workstation security
-    See [Coldkey workstation](./  getting-started/coldkey-hotkey-security#coldkey-workstation)
-    :::
+   :::tip coldkey workstation security
+   See [Coldkey workstation](./ getting-started/coldkey-hotkey-security#coldkey-workstation)
+   :::
 
 1. **A hotkey workstation**—which is generally a server used for mining or validation—contains a hotkey private key in the `wallet_path` located in the `btcli config`, as well as a coldkey public key for the corresponding coldkey. Compromised hotkeys can damage your reputation if they are used to maliciously to submit inaccurate weights as a validator, or bad work as a miner. However, ownership of TAO or alpha stake can only be transferred with a coldkey, and a leaked hotkey can be swapped using the coldkey; therefore hotkey leaks are far less dangerous than coldkey leaks.
 
-    :::tip hotkey workstation
-    See [Hotkey workstation security](./getting-started/coldkey-hotkey-security#hotkey-workstation)
-    :::
+   :::tip hotkey workstation
+   See [Hotkey workstation security](./getting-started/coldkey-hotkey-security#hotkey-workstation)
+   :::
 
 ## Requirements for `btcli` functions
+
 ### Coldkey
 
 Your coldkey is your primary, fully privileged key; important for all users. This key should be handled on a maximum security **coldkey workstation** only, to avoid catastrophic loss or malicious actions if compromised.
@@ -51,6 +52,7 @@ Your coldkey is your primary, fully privileged key; important for all users. Thi
 See [Coldkey and Hotkey Workstation Security](../getting-started/coldkey-hotkey-security).
 
 Required for:
+
 - Moving and transferring TAO
 - Managing stake (add/remove/move)
 - Creating hotkeys
@@ -63,7 +65,8 @@ Required for:
 Hotkeys are used by **miners** and **validators** to sign transactions, and are required for governance.
 
 Required for:
-- Running miners: 
+
+- Running miners:
   - Serving requests from validators
   - Making on-chain data commitments (if applicable)
 - Running validators:
@@ -93,6 +96,7 @@ See [Senate: Requirements](./senate#requirements)
 ### `config`
 
 The `btcli config ...` commands are used to configure `btcli`, including:
+
 - selecting the targeted network (`finney` a.k.a. mainnet or `test` for test network)
 - setting the directory where your Bittensor wallet coldkeys and/or hotkeys are stored
 
@@ -128,19 +132,19 @@ The `wallet` command is required to provision keys to `btcli`, so it can access 
 See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security)
 :::
 
-####  Provisioning keys
+#### Provisioning keys
 
-1. **`btcli wallet regen-coldkeypub`**: This initializes a wallet for a **permissionless workstation** with a public key only. It allows you to read all information about your wallet, which is public information. However, it doesn't allow you to sign any transactions and therefore doesn't allow you to make any *changes* to the state of the blockchain, including any of your balances or stakes. 
+1. **`btcli wallet regen-coldkeypub`**: This initializes a wallet for a **permissionless workstation** with a public key only. It allows you to read all information about your wallet, which is public information. However, it doesn't allow you to sign any transactions and therefore doesn't allow you to make any _changes_ to the state of the blockchain, including any of your balances or stakes.
 
-1. **`new coldkey`** is used to initialize a coldkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
+1. **`new coldkey`** is used to initialize a coldkey workstation using a newly created _seed phrase_. This is a high security risk operation due to the inherent risk of handling the seed phrase.
 
-1. **`regen coldkey`** is used to initialize a coldkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
+1. **`regen coldkey`** is used to initialize a coldkey workstation using a pre-existing wallet's _seed phrase_. This is a high security risk operation due to the inherent risk of handling the seed phrase.
 
-1. **`new hotkey`** is used to initialize a hotkey workstation using a newly created *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase. Hotkeys should be created on secure coldkey workstation and then carefully provisioned to working nodes for mining and validation.
+1. **`new hotkey`** is used to initialize a hotkey workstation using a newly created _seed phrase_. This is a high security risk operation due to the inherent risk of handling the seed phrase. Hotkeys should be created on secure coldkey workstation and then carefully provisioned to working nodes for mining and validation.
 
-1. **`regen hotkey`** is used to initialize a hotkey workstation using a pre-existing wallet's *seed phrase*. This is a high security risk operation due to the inherent risk of handling the seed phrase.
+1. **`regen hotkey`** is used to initialize a hotkey workstation using a pre-existing wallet's _seed phrase_. This is a high security risk operation due to the inherent risk of handling the seed phrase.
 
-#### Permissionless operations 
+#### Permissionless operations
 
 - **`btcli wallet balance`**: Displays a wallet balance.
 - **`btcli wallet overview`**: Displays a wallet overview.
@@ -154,8 +158,8 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 - **`sign`(with coldkey)** signs a message with the coldkey.
 
 #### Operations requiring hotkey private key:
-- **`sign`** (with hotkey): sign a message with the hotkey
 
+- **`sign`** (with hotkey): sign a message with the hotkey
 
 <details>
   <summary>`btcli wallet`</summary>
@@ -171,7 +175,6 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 #### `btcli wallet overview`
 #### `btcli wallet transfer`
 #### `btcli wallet inspect`
-#### `btcli wallet faucet`
 #### `btcli wallet set-identity`
 #### `btcli wallet get-identity`
 #### `btcli wallet sign`
@@ -185,54 +188,99 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 #### `btcli wallet get_identity`
 
 #### `btcli w list`
+
 #### `btcli w swap-hotkey`
+
 #### `btcli w regen-coldkey`
+
 #### `btcli w regen-coldkeypub`
+
 #### `btcli w regen-hotkey`
+
 #### `btcli w new-hotkey`
+
 #### `btcli w new-coldkey`
+
 #### `btcli w create`
+
 #### `btcli w balance`
+
 #### `btcli w overview`
+
 #### `btcli w transfer`
+
 #### `btcli w inspect`
-#### `btcli w faucet`
+
 #### `btcli w set-identity`
+
 #### `btcli w get-identity`
+
 #### `btcli w sign`
+
 #### `btcli w swap_hotkey`
+
 #### `btcli w regen_coldkey`
+
 #### `btcli w regen_coldkeypub`
+
 #### `btcli w regen_hotkey`
+
 #### `btcli w new_hotkey`
+
 #### `btcli w new_coldkey`
+
 #### `btcli w set_identity`
+
 #### `btcli w get_identity`
+
 #### `btcli wallets list`
+
 #### `btcli wallets swap-hotkey`
+
 #### `btcli wallets regen-coldkey`
+
 #### `btcli wallets regen-coldkeypub`
+
 #### `btcli wallets regen-hotkey`
+
 #### `btcli wallets new-hotkey`
+
 #### `btcli wallets new-coldkey`
+
 #### `btcli wallets create`
+
 #### `btcli wallets balance`
+
 #### `btcli wallets history`
+
 #### `btcli wallets overview`
+
 #### `btcli wallets transfer`
+
 #### `btcli wallets inspect`
-#### `btcli wallets faucet`
+
 #### `btcli wallets set-identity`
+
 #### `btcli wallets get-identity`
+
 #### `btcli wallets sign`
+
 #### `btcli wallets swap_hotkey`
+
 #### `btcli wallets regen_coldkey`
+
 #### `btcli wallets regen_coldkeypub`
+
 #### `btcli wallets regen_hotkey`
+
 #### `btcli wallets new_hotkey`
+
 #### `btcli wallets new_coldkey`
+
 #### `btcli wallets set_identity`
+
 #### `btcli wallets get_identity`
+
 </details>
 
 ### `stake`
@@ -310,13 +358,21 @@ See: [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-
 #### `btcli su get`
 
 #### `btcli su senate`
+
 #### `btcli su proposals`
+
 #### `btcli su senate-vote`
+
 #### `btcli su set-take`
+
 #### `btcli su get-take`
+
 #### `btcli su senate_vote`
+
 #### `btcli su get_take`
+
 #### `btcli su set_take`
+
 </details>
 
 ### `subnets`
@@ -341,6 +397,7 @@ hyperparams are set with `btcli sudo`.
 Creating subnets requires a coldkey with sufficient balance.
 
 Miner and validator registering a hotkey uses a coldkey, has a TAO cost unless proof-of-work
+
 <!-- how does POW work??? -->
 
 <details>
@@ -393,12 +450,17 @@ To set weights with `commit`, a validator must meet several requirements. See [R
 #### `btcli weights commit`
 
 #### `btcli wt reveal`
+
 #### `btcli wt commit`
+
 #### `btcli weight reveal`
+
 #### `btcli weight commit`
+
 </details>
 
 ### `utils`
 
 #### `btcli utils convert`
-`btcli utils convert` is a convenience command for performing conversions between minimal units (RAO) and TAO, or other chain-specific conversions. It is permissionless (no key required) because it performs no on-chain operation, just a local calculation. 
+
+`btcli utils convert` is a convenience command for performing conversions between minimal units (RAO) and TAO, or other chain-specific conversions. It is permissionless (no key required) because it performs no on-chain operation, just a local calculation.

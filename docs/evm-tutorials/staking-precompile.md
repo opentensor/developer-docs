@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Staking Precompile
 
-Staking precompile allows Ethereum code to interact with the staking feature of subtensor. For example, by using the staking precompile, the subtensor methods [`add_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/add_stake.rs) or [`remove_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/remove_stake.rs)  can be called in order to delegate stake to a hotkey or undelegate stake from a hotkey. 
+Staking precompile allows Ethereum code to interact with the staking feature of subtensor. For example, by using the staking precompile, the subtensor methods [`add_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/add_stake.rs) or [`remove_stake`](https://github.com/opentensor/subtensor/blob/main/pallets/subtensor/src/staking/remove_stake.rs) can be called in order to delegate stake to a hotkey or undelegate stake from a hotkey.
 
 In this tutorial you will learn how to interact with staking precompile in two ways:
 
@@ -17,7 +17,7 @@ In this tutorial you will learn how to interact with staking precompile in two w
 ## Prerequisites
 
 1. You should also be comfortable using [Remix IDE](https://remix.ethereum.org/).
-2. Read [EVM on Subtensor](./evm-on-subtensor.md) for a basic understanding of what an ABI is and how to use it. 
+2. Read [EVM on Subtensor](./evm-on-subtensor.md) for a basic understanding of what an ABI is and how to use it.
 
 ## Setup EVM localnet, subnet and delegate
 
@@ -25,26 +25,25 @@ In this tutorial you will learn how to interact with staking precompile in two w
 
 2. On this EVM localnet create one subnet and a delegate hotkey. The commands below will create a subnet, register a neuron and nominate your hotkey as a delegate, in that order:
 
-    ```bash
-    btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9944
-    btcli root nominate --subtensor.chain_endpoint ws://127.0.0.1:9944
-    ```
+   ```bash
+   btcli subnet create --subtensor.chain_endpoint ws://127.0.0.1:9944
+   btcli subnet register --subtensor.chain_endpoint ws://127.0.0.1:9944
+   ```
 
 3. Save the delegate hotkey address. You will use this in the staking pool use case below.
 
 4. Disable staking rate limits by setting `targetStakesPerInterval` to 1000. Follow these below steps:
-    - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics/decode/0x0c00132fe803000000000000).
-    - Click on **Submission** tab.
-    - From the **using the selected account** field, select **ALICE**.
-    - Click on **Submit Transaction** at the bottom right. This will open the **authorize transaction** window.
-    - On this **authorize transaction** window, make sure the **sign and submit** toggle is ON and click on the **Sign and Submit** on the bottom right.
+   - Open the Polkadot JS app using [this link with encoded transaction](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/extrinsics/decode/0x0c00132fe803000000000000).
+   - Click on **Submission** tab.
+   - From the **using the selected account** field, select **ALICE**.
+   - Click on **Submit Transaction** at the bottom right. This will open the **authorize transaction** window.
+   - On this **authorize transaction** window, make sure the **sign and submit** toggle is ON and click on the **Sign and Submit** on the bottom right.
 
 ## Call the staking precompile from another smart contract (staking pool use case)
 
 In this interaction you will compile [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol), a smart contract Solidity code and execute it on the subtensor EVM. This `stake.sol` will, in turn, call the staking precompile that is already deployed in the subtensor EVM.
 
-Before you proceed, familiarize yourself with the Solidity code of the [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol) smart contract. 
+Before you proceed, familiarize yourself with the Solidity code of the [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol) smart contract.
 
 1. Copy the text of [`stake.sol`](https://github.com/opentensor/evm-bittensor/blob/main/solidity/stake.sol) contract to Remix IDE.
 
@@ -66,50 +65,49 @@ In this tutorial, you will interact directly with the staking precompile by usin
 
 1. Copy this below ABI of staking precompile contract into Remix IDE as a new file:
 
-    ```json
-    [
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "hotkey",
-                    "type": "bytes32"
-                }
-            ],
-            "name": "addStake",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "hotkey",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "removeStake",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        }
-    ]
-    ```
+   ```json
+   [
+     {
+       "inputs": [
+         {
+           "internalType": "bytes32",
+           "name": "hotkey",
+           "type": "bytes32"
+         }
+       ],
+       "name": "addStake",
+       "outputs": [],
+       "stateMutability": "payable",
+       "type": "function"
+     },
+     {
+       "inputs": [
+         {
+           "internalType": "bytes32",
+           "name": "hotkey",
+           "type": "bytes32"
+         },
+         {
+           "internalType": "uint256",
+           "name": "amount",
+           "type": "uint256"
+         }
+       ],
+       "name": "removeStake",
+       "outputs": [],
+       "stateMutability": "payable",
+       "type": "function"
+     }
+   ]
+   ```
 
 2. Copy staking precompile address `0x0000000000000000000000000000000000000801` to the **At Address** field in Remix IDE, and click **At Address** button.
 
 3. Remix IDE will find the precompile at the precompile address on the subtensor EVM and show it in the list of deployed contracts. Expand the contract, then expand the `addStake` method, and paste the public key of your delegate hotkey into the `hotkey` field. Then click **transact** and wait for the transaction to be completed.
 
-4. Follow these steps to see that the stake record is updated in [Polkadot JS app](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate): 
+4. Follow these steps to see that the stake record is updated in [Polkadot JS app](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate):
 
-   1.  Select **subtensorModule** + **stake** in the drop-down list.
-   2.  Paste the delegate hotkey account ID in the first parameter.
-   3.  Toggle **include option** OFF for the second parameter.
-   4.  Click the **+** button and find the new stake record.
-
+   1. Select **subtensorModule** + **stake** in the drop-down list.
+   2. Paste the delegate hotkey account ID in the first parameter.
+   3. Toggle **include option** OFF for the second parameter.
+   4. Click the **+** button and find the new stake record.
