@@ -11,6 +11,9 @@ docs/.obsidian
 .docusaurus
 .cache-loader
 .yarnclean
+.yarn
+.pnp.cjs
+.pnp.loader.mjs
 
 # Misc
 .DS_Store
