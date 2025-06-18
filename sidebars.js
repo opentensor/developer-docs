@@ -41,7 +41,6 @@ const sidebars = {
         "learn/anatomy-of-incentive-mechanism",
         "emissions",
         "yuma-consensus",
-        "yc3-blog"    
       ],
     },
     {
