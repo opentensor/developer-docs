@@ -34,7 +34,7 @@ style={{width: 600}}
 
 ## Subnet liquidity reserves
 
-The key mechanism introduced with Dynamic TAO is that each subnet functions as its own _Automated Market Marker_ (_AMM_), with two liquidity reserves, one containing TAO($$\tau$$)&mdash;the currency of the Bittensor network, and one containing a subnet specific "dynamic" currency, referred to as that subnet's alpha ($$\alpha$$) token. The alpha token is purchased by staking TAO into the subnet's reserve, which is initialized with a negligible amount of liquidity (1e-9).
+The key mechanism introduced with Dynamic TAO is that each subnet functions as its own _automated market maker_ (_AMM_), with two liquidity reserves, one containing TAO($$\tau$$)&mdash;the currency of the Bittensor network, and one containing a subnet specific "dynamic" currency, referred to as that subnet's alpha ($$\alpha$$) token. The alpha token is purchased by staking TAO into the subnet's reserve, which is initialized with a negligible amount of liquidity (1e-9).
 
 A subnet's economy therefore consists of three pools of currency:
 
