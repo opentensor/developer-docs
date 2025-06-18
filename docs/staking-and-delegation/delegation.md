@@ -22,7 +22,7 @@ Minimum required stake for nominators is 0.1 TAO.
 
 Staking is always local to a subnet.
 
-Each subnet operates its own Automated Market Maker (AMM), meaning it mantains its own reserves of the two tokens being traded so that it can facilitate a trade of any desired quantity of liquidity (as long as its available), at a price that it automated calculates.
+Each subnet operates its own automated market maker (AMM), meaning it mantains its own reserves of the two tokens being traded so that it can facilitate a trade of any desired quantity of liquidity (as long as its available), at a price that it automated calculates.
 
 Each subnet has a reserve of TAO and a reserve of its currency, referred to in general as its alpha ($\alpha$) currency. Stake is held in $\alpha$ token denominations.
 
