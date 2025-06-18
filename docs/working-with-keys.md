@@ -7,11 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Creating/Importing a Bittensor Wallet
 
-In Bittensor (like other cryptocurrency applications), a *wallet* is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets. 
+In Bittensor (like other cryptocurrency applications), a _wallet_ is a tool for proving your identity, signing transactions, accessing your TAO, and managing your stake in subnets.
 
 This page describes several different ways to instantiate your wallet keypairs into a wallet application, in order to interact with the Bittensor blockchain.
 
 Recommended background reading:
+
 - For an introduction to the core concepts, see [wallets and keys in Bittensor](getting-started/wallets.md).
 
 - For discussion of security considerations about working with Bittensor wallets, see [Coldkey and Hotkey Workstation Security](./getting-started/coldkey-hotkey-security).
@@ -32,11 +33,13 @@ Run the following command to create a coldkey-only wallet.
 btcli wallet new_coldkey --wallet.name <my_coldkey>
 ```
 
-For example, 
+For example,
+
 ```bash
 btcli wallet new_coldkey --wallet.name test-coldkey
 ```
-You will see the terminal output like the following, which includes your all-important seed phrase, a.k.a. the *mnemonic* to the coldkey.
+
+You will see the terminal output like the following, which includes your all-important seed phrase, a.k.a. the _mnemonic_ to the coldkey.
 
 ```text
 IMPORTANT: Store this mnemonic in a secure (preferable offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
@@ -51,18 +54,20 @@ If you plan to validate or mine in a subnet, you must create both a coldkey and 
 
 First, create a coldkey as described above in the [Creating a coldkey using `btcli`](#creating-a-coldkey-using-btcli). Then, provide this coldkey as a parameter to generate a hotkey. This will pair the hotkey with the coldkey. See below.
 
-Use the below command to generate the hotkey. Replace `<my_coldkey>` with the coldkey generated above, and `<my_hotkey>` with a name for your hotkey.
+Use the below command to generate the hotkey. Replace `<my_coldkey>` with the name of the coldkey generated above, and `<my_hotkey>` with a name for your hotkey.
 
 ```bash
 btcli wallet new_hotkey --wallet.name <my_coldkey> --wallet.hotkey <my_hotkey>
 ```
 
-For example, 
+For example,
+
 ```bash
 btcli wallet new_hotkey --wallet.name test-coldkey --wallet.hotkey test-hotkey
 ```
 
 You will see the terminal log like below. The mnemonic is hidden for security reasons.
+
 ```text
 IMPORTANT: Store this mnemonic in a secure (preferably offline place), as anyone who has possession of this mnemonic can use it to regenerate the key and access your tokens.
 The mnemonic to the new hotkey is:
@@ -70,6 +75,7 @@ The mnemonic to the new hotkey is:
 You can use the mnemonic to recreate the key in case it gets lost. The command to use to regenerate the key using this mnemonic is:
 btcli w regen_hotkey --mnemonic **** *** **** **** ***** **** *** **** **** **** ***** *****
 ```
+
 :::tip Regenerating the hotkey
 Make a note of the above command option `regen_hotkey` showing how to regenerate your hotkey in case you lose it.
 :::
@@ -77,6 +83,7 @@ Make a note of the above command option `regen_hotkey` showing how to regenerate
 ### Encrypting the hotkey
 
 By default, the hotkey is not encrypted on the device, whereas the coldkey is encrypted. To encrypt your hotkey, run this command:
+
 ```bash
 btcli wallet new_hotkey --use-password
 ```
@@ -92,7 +99,8 @@ wallet.create_if_non_existent()
 ```
 
 You will see a terminal output like this for an example wallet with `name` as `test-coldkey` and `hotkey` as `test-hotkey`. The mnemonic is hidden for security reasons.
-```text 
+
+```text
 >>> import bittensor as bt
 >>> wallet = bt.wallet(name = 'test-coldkey', hotkey = 'test-hotkey')
 >>> wallet.create_if_non_existent()
@@ -127,7 +135,7 @@ Both `btcli` and the Bittensor Python SDK use a local wallet/key store. By defau
 
 ```bash
 tree ~/.bittensor/
-``` 
+```
 
 You will see an output like this:
 
@@ -159,7 +167,7 @@ cat coldkeypub.txt | jq
 
 The contents of the `coldkeypub.txt` are to be interpreted as below:
 
-- The fields `accountId` and `publicKey` contain the same value. 
+- The fields `accountId` and `publicKey` contain the same value.
 - The `secretPhrase` and `secretSeed` are not included in the file due to the high-security nature of the coldkey. When you create your wallet, either using the Chrome extension or `btcli`, the mnemonic (`secretPhrase`) is shown only once, while `secretSeed` is not shown.
 - The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **This is your coldkey's public address, and can be used to transfer TAO from another wallet.**
 
@@ -183,21 +191,24 @@ cat hotkeys/test-hotkey | jq
 
 The contents of the `hotkeys/test-hotkey` file are to be interpreted as below:
 
-- The fields `accountId` and `publicKey` contain the same value, just as seen in `coldkeypub.txt`. 
+- The fields `accountId` and `publicKey` contain the same value, just as seen in `coldkeypub.txt`.
 - The `secretPhrase` and `secretSeed` are shown because the hotkey is, by default, not encrypted.
 - The `ss58Address` is the SS58-version of the `accountId` or `publicKey`. **This is your hotkey's public address and can be used to stake/delegate to your hotkey from other wallets.**
 
 :::danger
-Hotkeys are for staking. Do not *transfer* TAO to a hotkey!
+Hotkeys are for staking. Do not _transfer_ TAO to a hotkey!
 :::
 
 ## Listing all the local wallets
 
 You can list all the local wallets stored in Bittensor's root directly with:
+
 ```bash
 btcli wallet list
 ```
+
 You will see a terminal output like this:
+
 ```text
 Wallets
 └─
@@ -213,7 +224,7 @@ Use the above shown `ss58Address` field values as your public wallet addresses, 
 
 ## Store your mnemonics safely
 
-:::danger If someone has your mnemonic, they own your TAO 
+:::danger If someone has your mnemonic, they own your TAO
 If you lose the password to your wallet, or if you have lost access to the machine where the wallet is stored, you can regenerate the coldkey using the mnemonic you saved during the wallet creation steps above. You can **not** retrieve the wallet with the password alone. Remember that if someone has your mnemonic, they own your TAO.
 :::
 
@@ -228,11 +239,11 @@ btcli wallet regen_coldkey --mnemonic **** *** **** **** ***** **** *** **** ***
 [The Chrome extension...](https://chromewebstore.google.com/detail/bittensor-wallet/bdgmdoedahdcjmpmifafdhnffjinddgc)
 
 :::tip Suitable for non-technical users
-Use this option if your activities are limited to sending and receiving TAO and you are not creating a subnet or participating as a subnet validator or a subnet miner. 
+Use this option if your activities are limited to sending and receiving TAO and you are not creating a subnet or participating as a subnet validator or a subnet miner.
 :::
 
-1. The Wallet will first create a wallet account address in the form of a 48-hexadecimal character string that usually starts with `5`. 
-2. Critically, the Wallet will display your [*seed phrase*](./getting-started/wallets#the-seed-phrase-aka-mnemonic), which you must carefully save.
+1. The Wallet will first create a wallet account address in the form of a 48-hexadecimal character string that usually starts with `5`.
+2. Critically, the Wallet will display your [_seed phrase_](./getting-started/wallets#the-seed-phrase-aka-mnemonic), which you must carefully save.
 3. The Wallet will then prompt you for specific mnemonic words as a way of authentication.
 4. Next, you will assign a name and a password to your wallet account.
 5. Finally, to receive TAO from another party, you will give them your wallet account address from Step 1 (the 48-hexadecimal character string) as the destination address. Similarly, to send (transfer) TAO to another party, you will first ask them for their wallet address and send TAO to their wallet address. This way, you can create multiple wallet accounts, each with a different name and even a different password for each wallet account.
@@ -242,13 +253,16 @@ Use this option if your activities are limited to sending and receiving TAO and 
 It is important that you update any legacy Bittensor wallets to the new NaCL format for security. You may accomplish this with the `btcli` using the `wallet update` subcommands.
 
 See the below example command and the terminal output:
+
 ```bash
 btcli wallet update
 ```
+
 You will see an output like this:
+
 ```bash
 >> Do you want to update all legacy wallets? [y/n]: y
 >> =====  wallet(test-coldkey, default, ~/.bittensor/wallets/)  =====
->> ✅ Keyfile is updated. 
+>> ✅ Keyfile is updated.
 >> 🔑 Keyfile (NaCl encrypted, /Users/docwriter/.bittensor/wallets/test-coldkey/coldkey)>
 ```

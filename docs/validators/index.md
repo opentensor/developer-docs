@@ -7,12 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Validating in Bittensor
 
-All mining and validating in Bittensor occur within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different _incentive mechanism_ for validators to use in judging miners' work. The validator's work is to apply this incentive mechanism to miners, using it to score their performance, and then to submit these weights to the Bittensor blockchain. It is validators scores of miners' performance that determines the proportion of the subnet's emissions allocated to each miner, according to the Yuma Consensus algorithm. See [Emissions](../emissions.md).
+All validating in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, with each subnet creator defining a different _incentive mechanism_ for validators to use in judging miners' work. The validator's work is to apply this incentive mechanism to miners, using it to score their performance, and then to submit these weights to the Bittensor blockchain.  The validator scores of miners' performance determine the proportion of the subnet's emissions allocated to each miner, according to the Yuma Consensus algorithm. See [Emissions](../emissions.md).
 
 Browse the subnets and explore links to their code repositories on [TAO.app' subnets listings](https://tao.app).
 
 :::tip Typical compute requirements
-Each subnet may have distinct hardware requirements, but this [minimum requirements template for subnet creators](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml) may give an idea of minimum memory, bandwidth and storage requirements for a typical subnet node.
+Each subnet may have distinct hardware requirements, but this [subnet minimum requirements template](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml#L49) may give an idea of the minimum memory, bandwidth and storage requirements for validators in a typical subnet node.
 
 Validating is not supported on Windows.
 :::
@@ -32,7 +32,7 @@ The number of validators isn't hardcoded. The subnet governor has the authority 
 To have a **validator permit** in a given subnet, you must meet the following requirements:
 
 - Your hotkey must be registered, granting you a UID on the subnet
-- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake times the `tao_weight` parameter (current value: 0.18):
+- You must have a stake-weight on the subnet of least 1000, including stake delegated to your hotkey from other wallets' coldkeys. A validator's stake weight in a subnet equals their alpha stake plus their TAO stake multiplied by the `tao_weight` parameter (current value: 0.18):
 
       $$
 
@@ -42,11 +42,13 @@ To have a **validator permit** in a given subnet, you must meet the following re
 
 - You must be one of the top 64 nodes in the subnet, ranked by emissions.
 
-## Hotkey Association & Staking (subnet 0, the root subnet, only)
+## Hotkey Association & Staking
 
 :::tip Root Subnet (Subnet 0) only
-Skip this step if you are not registering a validator on the root subnet (subnet 0)
+This step is only required if you are registering on the root subnet (Subnet O). Skip this step if you are not registering a validator on the root subnet.
 :::
+
+To become a validator on the root subnet, you must first associate your hotkey and then stake funds to your hotkey account within the subnet. To associate your hotkey:
 
 ```bash
 btcli wallet associate-hotkey --wallet.name  <wallet name> --hotkey <your hotkey>
@@ -107,7 +109,7 @@ A subnet neuron (miner or validator) at a UID (in that subnet) has `immunity_per
 A validator's consensus weight and emissions depend on their hotkey's stake weight. You can stake your own TAO to your validator hotkey, or advertise your hotkey to others and seek stake. Any wallet's coldkey can stake to any hotkey, subsequently receiving emissions from that stake.
 
 :::tip Delegation
-See [StakingDelegation](../staking-and-delegation/delegation.md)
+See [Staking and Delegation](../staking-and-delegation/delegation.md)
 :::
 
 ### Add stake
@@ -151,7 +153,7 @@ btcli wallet overview --netuid
 
 After providing your wallet name at the prompt, you will see output like:
 
-| Parameter   | Value              | Description                                                                |
+| Parameter   | Example value      | Description                                                                |
 | :---------- | :----------------- | :------------------------------------------------------------------------- |
 | COLDKEY     | my_coldkey         | The name of the coldkey associated with your slot.                         |
 | HOTKEY      | my_first_hotkey    | The name of the hotkey associated with your slot.                          |

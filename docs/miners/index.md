@@ -9,14 +9,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Choosing a subnet
 
-All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose, each subnet creator defining a different _incentive mechanism_ for validators to use in judging miners' work. It is validators scores of miners' performance, according to this incentive mechanism, that determines the proportion of the subnet's emissions allocated to each miner. See [Emissions](../emissions.md).
+All mining in Bittensor occurs within a subnet. Each subnet independently produces the digital commodities that are its purpose. Each subnet creator defines a different _incentive mechanism_ for validators to use in judging miners' work. Its validators score miners' performances according to the subnet's incentive mechanism. These scores determine the proportion of the subnet's emissions allocated to each miner. See [Emissions](../emissions.md).
 
-Mining in Bittensor is not like mining Bitcoin or many other blockchains, it is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for _you_ to mine, given your own expertise and access to hardware.
+Mining in Bittensor differs significantly from mining Bitcoin or other blockchains. It is active, creative, and competitive. Preparing to be a subnet miner involves researching the right subnet(s) for _you_ to mine, given your own expertise and access to hardware.
 
 Browse the subnets and explore links to their code repositories on [TAO.app' subnets listings](https://tao.app).
 
 :::tip Typical compute requirements
-Each subnet may have distinct hardware requirements, but this [minimum requirements template for subnet creators](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml) may give an idea of minimum memory, bandwidth and storage requirements for a typical subnet node.
+Each subnet may have distinct hardware requirements, but this [subnet minimum requirements template](https://github.com/opentensor/bittensor-subnet-template/blob/main/min_compute.yml#L14) may give an idea of the minimum memory, bandwidth and storage requirements for miners in a typical subnet node.
 
 Mining is not supported on Windows.
 :::
@@ -26,10 +26,10 @@ Mining is not supported on Windows.
 To participate as a miner, you must first register a hotkey with the subnet in order to receive a UID on that subnet.
 
 :::tip No need to create a subnet to mine
-You **do not** have to create a subnet to mine on the Bittensor network. Most miners work on established subnets.
+You **do not** have to create a subnet to mine on the Bittensor network. Most miners work on already established subnets.
 :::
 
-Registration has a cost in TAO, which fluctuates dynamically based on time since last registration. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost.
+Registration has a cost in TAO, which fluctuates dynamically based on the time since the last registration. When you secure a UID slot in a subnet on the main chain, this TAO is sunk cost and cannot be recovered.
 
 A subnet can have a maximum of 64 subnet validator UIDs and 192 subnet miner UIDs (256 total) in subnets other than Subnet 1.
 
@@ -41,14 +41,14 @@ When you delegate your TAO to a subnet validator, you attach your delegated TAO 
 A hotkey can hold multiple UIDs across **separate** subnets. However, within one subnet, each UID must have a unique hotkey.
 :::
 
-Run the following command on your terminal, replacing `<your_preferred_netuid>`, `<my_coldkey>`, `<my_hotkey>`.
+To register your keys with a subnet, run the following command on your terminal, replacing `<your_preferred_netuid>`, `<my_coldkey>`, `<my_hotkey>`.
 `<your_preferred_netuid>` is the `netuid` of your preferred subnet.
 
 ```bash
 btcli subnet register --netuid <your_preferred_netuid>  --wallet.name  <my_coldkey> --wallet.hotkey <my_hotkey>
 ```
 
-For example, for subnet 1 (netuid of 1):
+For example, to register your keys with subnet 1—netuid of 1:
 
 ```bash
 btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test-hotkey
@@ -56,7 +56,15 @@ btcli subnet register --netuid 1 --wallet.name test-coldkey --wallet.hotkey test
 
 ## Miner deregistration
 
-Miners as well as validators can be deregistered if their emissions are low.
+A miner can be deregistered if it earns low emissions due to receiving low weights (ratings) from validators. Typical subnets have 256 UID slots per subnet, of which a maximum of 64 subnet can be occupied by validators. Each tempo, the lowest ranked slot is deregistered from the hotkey that holds it and assigned to a new registrant.
+
+- Every subnet has an `immunity_period` hyperparameter expressed in a number of blocks.
+  :::tip See
+  See [`immunity_period`](../subnets/subnet-hyperparameters.md#immunityperiod).
+  :::
+- A subnet miner or validator at a UID (in that subnet) has a defined number of blocks to improve its performance. This is known as `immunity_period`. When the `immunity_period` expires, that miner or validator can be deregistered if it has the lowest performance in the subnet and a new registration arrives.
+- A neuron's `immunity_period` starts when the miner or validator is registered into the subnet.
+  Validators as well as miners can be deregistered if their emissions are low; either role requires a UID.
 
 Typically, subnets have 256 UID slots, with a maximum of 64 slots capable of serving as validators by default. This leaves 192 UIDs for miners, though if there are fewer than 64 eligible validators on a subnet, miners can occupy available slots.
 
@@ -132,7 +140,7 @@ btcli wallet overview --netuid
 
 After providing your wallet name when prompted, you will see output such as:
 
-| Parameter   | Value              | Description                                                                 |
+| Parameter   | Example value      | Description                                                                 |
 | :---------- | :----------------- | :-------------------------------------------------------------------------- |
 | COLDKEY     | my_coldkey         | The name of the coldkey associated with your slot.                          |
 | HOTKEY      | my_first_hotkey    | The name of the hotkey associated with your slot.                           |

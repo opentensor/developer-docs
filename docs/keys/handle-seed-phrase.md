@@ -10,25 +10,25 @@ Whoever holds the seed phrase has full control over the wallet, so you should tr
 
 There are two categories of security failure with a secret like a seed phrase/mnemonic:
 
-- To *lose* the secret means no longer having access to it. This implies permanent, unrecoverable loss of the resources (TAO and alpha stake, subnet creator permissions on a subnet, etc.) controlled by a Bittensor coldkey private key.
-- To *leak* the secret means accidentally giving someone else access to it. This may result in them stealing your resources, or further leaking it to others who may in turn act maliciously. If your secret is leaked, you can (and should) rotate it, i.e. perform a coldkey swap.
+- To _lose_ the secret means no longer having access to it. This implies permanent, unrecoverable loss of the resources (TAO and alpha stake, subnet creator permissions on a subnet, etc.) controlled by a Bittensor coldkey private key.
+- To _leak_ the secret means accidentally giving someone else access to it. This may result in them stealing your resources, or further leaking it to others who may in turn act maliciously. If your secret is leaked, you can (and should) rotate it, i.e. perform a coldkey swap.
 
-	See: [Rotating your coldkey](../getting-started/coldkey-hotkey-security#rotating-your-coldkey)
+  See: [Rotating your coldkey](../getting-started/coldkey-hotkey-security#rotating-your-coldkey)
 
 ## Do not leak your keys/seed phrase
 
 1. Do not keep paper/analog copies somewhere they can be accessed without your knowledge.
-1. Do not expose your seed phrase to untrustworthy software by entering into applications:
-	- messaging
-	- email
-	- online word processors
-1. Beware key-logging software if you enter your seed phrase. Never enter your seed phrase on a device that may be compromised with malware!
-1. Beware screen capture software if you generate and export your seed phrase. Never enter your seed phrase on a device that may be compromised with malware!
+1. Do not expose your seed phrase to untrustworthy software by entering into the following applications:
+   - messaging
+   - email
+   - online word processors
+1. Beware of key-logging software when entering your seed phrase. Never enter your seed phrase on a device that may be compromised with malware!
+1. Beware of screen capture software if you generate and export your seed phrase. Never enter your seed phrase on a device that may be compromised with malware!
 1. Beware cameras and eye-balls (the "over the shoulder" attack) if you generate and export your seed phrase. Don’t write it down or display it on screen in public or semi-public places.
 
 ## Do not lose your keys/seed phrase
 
-You must keep redundant backups of your coldkey. If you lose all access to your seed phrase/initialized wallets, you permanently and unrecoverably lose access to your account (TAO, stake, etc.). 
+You must keep redundant backups of your coldkey. If you lose all access to your seed phrase/initialized wallets, you permanently and unrecoverably lose access to your account (TAO, stake, etc.).
 
 ## Backup tactics
 
@@ -54,6 +54,7 @@ Pros:
 - Can be hard to lose if properly secured in a safe.
 
 Cons:
+
 - Easy to leak if physical security is compromised (anyone can read or take a picture of it when the paper is exposed).
 - Easy to lose to physical disaster (e.g. fire).
 
@@ -68,6 +69,7 @@ Cons: Easy to leak if physical security is compromised (anyone can read or take 
 ### Encrypted drive
 
 Tactics:
+
 - Save the seed phrase in an encrypted text file on a USB drive.
 - Use strong, unique passphrases and encrypt using industry-standard tools (e.g., GPG, VeraCrypt).
 - Store the USB in a secure physical location—never leave it connected to a device.
@@ -84,7 +86,7 @@ Pros:
 
 Cons:
 
-- Signing device, *not* full backup; cannot export seed phrase
+- Signing device, _not_ full backup; cannot export seed phrase
 - If lost and not backed up elsewhere, access is lost
 - High risk of loss due to mistaken factory reset (e.g. wrong PIN too many times)
 
@@ -106,7 +108,7 @@ Pros:
 
 Cons:
 
-- Signing device, *not* full backup; cannot export seed phrase
+- Signing device, _not_ full backup; cannot export seed phrase
 - Physical access can compromise keys.
 - Requires careful configuration for offline mode.
 - App updates require full device reset and recovery from seed.
@@ -124,16 +126,17 @@ For example, you might split a seed phrase into 5 shares, requiring any 3 to res
 Pros:
 
 - Extremely resistant to both single-point loss and leakage:
-	- The leak of any share does not compromise your wallet.
-	- The loss of any share does not result in loss of the wallet.
+  - The leak of any share does not compromise your wallet.
+  - The loss of any share does not result in loss of the wallet.
 - Shares can be safely distributed across multiple locations or people.
 
 Cons:
+
 - Imposes additional operational complexity.
 - Stored secret is no longer human readable. Can be remedied with [slip39](https://github.com/satoshilabs/slips/blob/master/slip-0039.md).
 
 Tools:
+
 - [`sssa-golang`](https://github.com/SSSaaS/sssa-golang): An implementation of Shamir's Secret Sharing Algorithm in Go.
 - [Banana Split](https://github.com/paritytech/banana_split): Open source tool that uses a variation of SSS to split a seed phrase into QR codes.
 - [PyCryptodome SSS](https://pycryptodome.readthedocs.io/en/latest/src/protocol/ss.html): A Python-based implementation of the Shamir scheme.
-
