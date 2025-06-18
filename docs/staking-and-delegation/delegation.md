@@ -30,7 +30,7 @@ As a TAO holder, you will stake to a validator’s hotkey on a specific subnet. 
 
 **When you stake:**
 
-1. First, your TAO stake goes into the subnet's TAO reserve of its AMM (Automated Market Maker) pool.
+1. First, your TAO stake goes into the subnet's TAO reserve of its AMM pool.
 1. Then, the subnet's AMM pool algorithm uses the latest exchange rate and calculates the equivalent units of $\alpha$, for the TAO that was just added to the TAO reserve side. This amount of $\alpha$ is taken out of the alpha reserve of the pool and is sent to the validator’s hotkey.
 1. The validator’s hotkey holds the $\alpha$. The sum of stake among all hotkeys is referred as **$\alpha$ outstanding** for that subnet.
 
