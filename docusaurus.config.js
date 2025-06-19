@@ -23,8 +23,12 @@ const config = {
       "@docusaurus/preset-classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: false, // Disable docs
-        blog: false, // Disable blog
+        docs: false,
+        blog: false,
+        pages: {
+          path: 'src/pages',
+          routeBasePath: '/',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -36,7 +40,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        items: [], // Remove all navbar items
+        items: [],
       },
       footer: {
         copyright: `© ${new Date().getFullYear()} <a href="https://bittensor.com">Bittensor</a> • <a href="https://latent.to/">Latent Holdings</a>`,
