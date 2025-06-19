@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/((?!$).*)",
+      "destination": "https://docs.learnbittensor.org/$1",
+      "permanent": true
+    }
+  ]
+} 
